@@ -98,6 +98,7 @@ Sonderzeichen sind ebenfalls Teil dieser alphabetischen Reihenfolge, die Sortier
 Die zweite Dimension enthält pro Zeichen ein Array mit den Positionen der Zeichen im Text. An erster Stelle steht dabei das jeweilige Zeichen.
 Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden.
 
+Schreibe anschliessend ausserhalb dieser Methode das Ergebnis wie in folgendem Beispiel in die Konsole.
 Beispiel:
 
 ```String text = "Hallo mein Name ist Claudio"```
