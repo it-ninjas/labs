@@ -6326,7 +6326,7 @@ isHungry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9e
 &lt;/div>
 &lt;/div>&lt;p>Somit ist auch dieser Zyklus beendet.&lt;/p>
 &lt;p>Der code wird so stetig weiterentwickelt und neue Funktionalitäten werden auf diese Weise Schritt für Schritt und getestet hinzugefügt.
-Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.&lt;/p></description></item><item><title>Docs: Exception Handling</title><link>/docs/java/exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/exception_handling/</guid><description>
+Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.&lt;/p></description></item><item><title>Docs: Exception Handling</title><link>/docs/java/java-exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-exception_handling/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kenne die Schlüsselwörter try, catch, finally, throw und throws&lt;/li>
@@ -6855,7 +6855,647 @@ Grundsätzlich soll das Closeable-Interface für IO Streams verwendet werden, da
 &lt;p>Das Schliessen der Ressourcen hat stets die Reihenfolge von hinten nach vorne.&lt;br>
 In unserem Beispiel wird also zuerst der BufferedReader geschlossen und danach der FileReader.&lt;br>
 Die Verkettung von Ressourcen innerhalb eines try-with-resources Statements ist zu vermeiden.
-Besser sind separate Deklarationen wie oben gezeigt.&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/java/java-collections/java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/java-collections/</guid><description>
+Besser sind separate Deklarationen wie oben gezeigt.&lt;/p></description></item><item><title>Docs: Annotationen &amp; Reflection API</title><link>/docs/java/java-reflection-and-annotations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-reflection-and-annotations/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann mit Reflection Informationen zu Klassen, Objekten, Methoden und Attributen zur Laufzeit
+ermitteln&lt;/li>
+&lt;li>Ich kenne die Vor- und Nachteile von Reflection&lt;/li>
+&lt;li>Ich kenne die Metadaten Class&amp;lt;T&amp;gt;, Field und Method&lt;/li>
+&lt;li>Ich kann mit Reflection eine Methode auf einem Objekt aufrufen&lt;/li>
+&lt;li>Ich kann mit Reflection zur Laufzeit eine Klasse untersuchen&lt;/li>
+&lt;li>Ich kann mit Reflection ein neues Objekt zur Laufzeit erzeugen&lt;/li>
+&lt;li>Ich kenne die Grundlagen von Annotationen&lt;/li>
+&lt;li>Ich kenne die wichtigsten Standard-Annotationen des JDKs&lt;/li>
+&lt;li>Ich kann eigene Annotationen definieren und diese zur Laufzeit auswerten&lt;/li>
+&lt;/ul>
+&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
+&lt;ul>
+&lt;li>Fundierte Grundlagenkenntnisse von Java-Anwendungen&lt;/li>
+&lt;/ul>
+&lt;h2 id="reflection-api">Reflection API&lt;/h2>
+&lt;hr>
+&lt;h3 id="allgemeine-informationen">Allgemeine Informationen&lt;/h3>
+&lt;p>Reflection in Java ist eine Möglichkeit, Informationen über Klassen, Methoden und andere
+Sprachelemente zu erhalten,
+ohne diese Elemente während dem Programmieren (also während der Kompilierzeit) zu kennen.
+Mit Reflection können Klassen, Interfaces, Konstruktoren, Methoden und Felder zur Laufzeit
+untersucht und auch geändert werden.&lt;/p>
+&lt;p>Reflection hat die folgenden Einsatzgebiete:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Erweiterbarkeit:&lt;/strong> Eine Applikation kann mit Reflection solche Klassen instanziieren, die zum
+Zeitpunkt der Kompilierung noch gar nicht bekannt waren. Zur Laufzeit benötigen wir dazu nur den
+voll qualifizierten Namen einer solchen Klasse. Die restlichen Bestandteile der Klasse können zur
+Laufzeit abgefragt werden&lt;/li>
+&lt;li>&lt;strong>Class-Browser, Debugger, Tools zum Testen:&lt;/strong> Mit Reflection erhält eine Anwendung Zugriff auf
+alle Bestandteile einer Klasse. Reflection kann auch auf private Attribute und Methoden zugreifen
+und hebelt damit das Prinzip der Kapselung aus. Frameworks wie Spring oder jUnit nutzen
+Reflection, um damit ihre Annotationen auswerten zu können.&lt;/li>
+&lt;/ul>
+&lt;p>In der Regel wird Reflection eher selten benutzt da der Prozess der Komponenten-Bewertung,
+welcher mit Reflection getriggert wird, die Leistung und die Geschwindigkeit eines Programms
+erheblich beeinträchtigt.
+Es gibt jedoch Anwendungsfälle, die nur mit Reflection umzusetzen sind.
+Beim Einsatz von Reflection gilt also die folgende Regel: &lt;em>Wenn es eine Lösung ohne Reflection gibt,
+dann wähle diese!&lt;/em>&lt;/p>
+&lt;hr>
+&lt;h3 id="grundlagen">Grundlagen&lt;/h3>
+&lt;p>Reflection nutzt die folgenden Konstrukte, um damit eine Anwendung zu untersuchen.
+Diese Konstrukte werden Metadaten bzw. Metainformationen genannt:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>java.lang.Class&amp;lt;T&amp;gt;&lt;/strong>, Metadaten für Klassen. Beinhaltet Klassenname, implementierte
+Interfaces, Methoden und Attribute&lt;/li>
+&lt;li>&lt;strong>java.lang.reflect.Field&lt;/strong>, Metadaten für Instanzvariablen. Enthält Typ, Name, Sichtbarkeit, usw.&lt;/li>
+&lt;li>&lt;strong>java.lang.reflect.Method&lt;/strong>, Metadaten für Methoden. Enthält Name, Parameter, Sichtbarkeit, usw.&lt;/li>
+&lt;/ul>
+&lt;p>Damit wir an die Informationen einer Klasse gelangen können, benötigen wir einen Startpunkt.
+Dieser Startpunkt ist bei Reflection immer eine Instanz der Klasse java.lang.Class&amp;lt;T&amp;gt;.&lt;br>
+Die anderen Metadaten lassen sich dann über diese Instanz beziehen.
+Es gibt drei Möglichkeiten, an diesen Startpunkt zu gelangen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>#&lt;/th>
+&lt;th>Möglichkeit&lt;/th>
+&lt;th>Code-Beispiel&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>voll-qualifizierter Klassenname&lt;/td>
+&lt;td>Class&amp;lt;?&amp;gt; clazz = Class.forName(&amp;ldquo;package.ClassName&amp;rdquo;);&lt;/td>
+&lt;td>Der Name der gewünschten Klasse wird einfach als String übergeben. Dies ist sehr gut einsetzbar, wenn der konkrete Typ zur Laufzeit noch unbekannt ist. Es ist also beispielsweise möglich Klassennamen aus einer Konfigurationsdatei einzulesen.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Methode getClass()&lt;/td>
+&lt;td>Class&amp;lt;?&amp;gt; clazz = object.getClass();&lt;/td>
+&lt;td>Der Aufruf der Methode &lt;em>getClass()&lt;/em> auf einer Referenz liefert direkt eine Instanz des Klassenobjekts.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>statisches Attribut .class&lt;/td>
+&lt;td>Class&amp;lt;?&amp;gt; clazz = ClassName.class;&lt;/td>
+&lt;td>Durch Kenntnis des konkreten Typs erhält man den Zugriff auf das Klassenobjekt mit dem statischen Attribut &lt;em>class&lt;/em>.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Bei Arrays muss eine eher kryptische Notation verwendet werden. Hier wird aus Komplexitätsgründen
+nicht weiter darauf eingegangen.&lt;/p>
+&lt;hr>
+&lt;h3 id="methoden-aufrufen">Methoden aufrufen&lt;/h3>
+&lt;p>Der nächste Schritt ist nun, dass mit Reflection eine Methode aufgerufen werden kann.
+Die folgende Reihenfolge gibt einen guten Überblick, welche Schritte dazu notwendig sind:&lt;/p>
+&lt;ul>
+&lt;li>Ermitteln der Metainformationen zur Klasse&lt;/li>
+&lt;li>Ermitteln der Metainformationen zur Methode&lt;/li>
+&lt;li>Aufrufen der Methode&lt;/li>
+&lt;li>Exception Handling&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Beispiel&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Greeter&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> String &lt;span style="color:#a6e22e">greet&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String name&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> name&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String methodName &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;greet&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;[]&lt;/span> parameterTypes &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;[]{&lt;/span>String&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
+&lt;span style="color:#75715e">// Ermitteln der Metainformationen zur Klasse
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;&lt;/span> clazz &lt;span style="color:#f92672">=&lt;/span> Greeter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Ermitteln der Metainformationen zur Methode
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> Method greetMethod &lt;span style="color:#f92672">=&lt;/span> clazz&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getMethod&lt;/span>&lt;span style="color:#f92672">(&lt;/span>methodName&lt;span style="color:#f92672">,&lt;/span> parameterTypes&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// Methode aufrufen
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> String parameter &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Claudio&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+Object result &lt;span style="color:#f92672">=&lt;/span> greetMethod&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">invoke&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> Greeter&lt;span style="color:#f92672">(),&lt;/span> parameter&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>result&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>NoSuchMethodException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle exception
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>SecurityException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle exception
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>IllegalAccessException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle exception
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>IllegalArgumentException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle exception
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>InvocationTargetException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle exception
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie wir sehen gibt es zwei grosse Nachteile beim Einsatz von Reflection:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Viel Code:&lt;/strong> Vor Java 7 benötigt man für einen Methodenaufruf zwischen 40 und 50 Zeilen
+Programmcode.&lt;/li>
+&lt;li>&lt;strong>Viel Exception Handling:&lt;/strong> Da der Einsatz von Reflection spezielle Berechtigungen erfordert,
+welche je nach Sicherheitseinstellungen nicht immer verfügbar sind, ist die Anzahl mögliche
+Exceptions relativ gross&lt;/li>
+&lt;/ul>
+&lt;p>Seit Java 7 wurden die Nachteile ein wenig entschärft, da sich das Exception Handling deutlich
+eleganter gestalten lässt.
+Einerseits bietet Java 7 die Möglichkeit zum Multi-Catch (siehe Modul Exception Handling),
+andererseits wurden alle Exceptions beim Einsatz von Reflection in der Klasse
+&lt;em>java.lang.ReflectiveOperationException&lt;/em> zusammengefasst.&lt;/p>
+&lt;p>Abgekürzt lässt sich das oben gezeigte Beispiel so darstellen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String methodName &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;greet&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;[]&lt;/span> parameterTypes &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;[]{&lt;/span>String&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
+&lt;span style="color:#75715e">// Ermitteln der Metainformationen zur Klasse
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;&lt;/span> clazz &lt;span style="color:#f92672">=&lt;/span> Greeter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Ermitteln der Metainformationen zur Methode
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> Method greetMethod &lt;span style="color:#f92672">=&lt;/span> clazz&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getMethod&lt;/span>&lt;span style="color:#f92672">(&lt;/span>methodName&lt;span style="color:#f92672">,&lt;/span> parameterTypes&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// Methode aufrufen
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> String parameter &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Claudio&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+Object result &lt;span style="color:#f92672">=&lt;/span> greetMethod&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">invoke&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> Greeter&lt;span style="color:#f92672">(),&lt;/span> parameter&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>result&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>ReflectiveOperationException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle exception
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="zugriff-auf-methoden-und-attribute">Zugriff auf Methoden und Attribute&lt;/h3>
+&lt;p>Sobald wir ein Klassenobjekt ermittelt haben können wir auf weitere Metadaten zugreifen.
+Spannend ist, dass wir so nicht nur auf Methoden und Attribute, sondern auch auf Annotationen
+zugreifen können.&lt;/p>
+&lt;p>Im Beispiel oben wurde auf eine Methode zugegriffen. Dieser Zugriff besitzt die Einschränkung, dass
+nur öffentlich zugängliche Methoden ermittelt werden können. Damit wir auch Zugriff auf nicht
+öffentlich sichtbare Bestandteile erhalten, ist etwas mehr Aufwand notwendig. Um alle definierten
+Methoden einer Klasse unabhängig von der Sichtbarkeit aufzulisten, können wir die Methode _
+getDeclaredMethod(Class&amp;lt;?&amp;gt;)_ verwenden.&lt;/p>
+&lt;p>Mit einer Rekursion können wir sicherstellen, dass wir auch Methoden, welche aus der Super-Klasse
+stammen, finden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> Method &lt;span style="color:#a6e22e">findMethod&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;&lt;/span> clazz&lt;span style="color:#f92672">,&lt;/span>String methodName&lt;span style="color:#f92672">,&lt;/span>Class&lt;span style="color:#f92672">&amp;lt;?&amp;gt;...&lt;/span>&lt;span style="color:#a6e22e">parameterTypes&lt;/span>&lt;span style="color:#f92672">){&lt;/span>
+Objects&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">requireNonNull&lt;/span>&lt;span style="color:#f92672">(&lt;/span>methodName&lt;span style="color:#f92672">,&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Methodenname darf nicht null sein&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+Objects&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">requireNonNull&lt;/span>&lt;span style="color:#f92672">(&lt;/span>parameterTypes&lt;span style="color:#f92672">,&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Parameter dürfen nicht null sein&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span>&lt;span style="color:#f92672">(&lt;/span>clazz&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">){&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span>&lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> clazz&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getDeclaredMethod&lt;/span>&lt;span style="color:#f92672">(&lt;/span>methodName&lt;span style="color:#f92672">,&lt;/span>parameterTypes&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>&lt;span style="color:#66d9ef">catch&lt;/span>&lt;span style="color:#f92672">(&lt;/span>NoSuchMethodException e&lt;span style="color:#f92672">){&lt;/span>
+&lt;span style="color:#75715e">// Rekursiver Aufruf um die Methode in der Super-Klasse zu suchen
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> findMethod&lt;span style="color:#f92672">(&lt;/span>clazz&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getSuperclass&lt;/span>&lt;span style="color:#f92672">(),&lt;/span>methodName&lt;span style="color:#f92672">,&lt;/span>parameterTypes&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Methode &lt;em>getField(String)&lt;/em> liefert für den Namen eines Attributs das entsprechende Field-Objekt
+zurück. Mit der Methode &lt;em>getDeclaredField(String)&lt;/em> erhält man auch nicht öffentliche Attribute einer
+Klasse.&lt;/p>
+&lt;hr>
+&lt;h3 id="eigenschaften-ermitteln">Eigenschaften ermitteln&lt;/h3>
+&lt;p>Für Objekte des Typs &lt;em>Method&lt;/em> und &lt;em>Field&lt;/em> lassen sich mit der Methode &lt;em>getModifiers()&lt;/em> verschiedene
+Eigenschaften in Form einer Zahl abfragen. Die Auswertung kann dann mit der Hilfsklasse
+&lt;em>java.lang.reflect.Modifier&lt;/em> erfolgen.&lt;/p>
+&lt;p>Mögliche Abfragen sind beispielsweise:&lt;/p>
+&lt;ul>
+&lt;li>&lt;em>isPublic(int)&lt;/em>, &lt;em>isProtected(int)&lt;/em> und &lt;em>isPrivate(int)&lt;/em>&lt;/li>
+&lt;li>&lt;em>isStatic(int)&lt;/em>, &lt;em>isFinal(int)&lt;/em> und &lt;em>isAbstract(int)&lt;/em>&lt;/li>
+&lt;li>&lt;em>isSynchronized(int)&lt;/em> und &lt;em>isVolatile(int)&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Beispiel&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Method greetMethod &lt;span style="color:#f92672">=&lt;/span> clazz&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getMethod&lt;/span>&lt;span style="color:#f92672">(&lt;/span>methodName&lt;span style="color:#f92672">,&lt;/span>parameterTypes&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> modifiers &lt;span style="color:#f92672">=&lt;/span> greetMethod&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getModifiers&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> isPublic &lt;span style="color:#f92672">=&lt;/span> Modifier&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">isPublic&lt;/span>&lt;span style="color:#f92672">(&lt;/span>modifiers&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="spezialfall-konstruktoren">Spezialfall Konstruktoren&lt;/h3>
+&lt;p>Der Aufruf eines Konstruktors per Reflection ist mit der Methode &lt;em>newInstance()&lt;/em> möglich.
+Dies gilt nur für den Default-Konstruktor ohne Parameter.
+Der Aufruf eines Konstruktors mit Parameter erfordert zuerst einen Methodenaufruf von
+&lt;em>getDeclaredConstructor(Class&amp;lt;?&amp;gt;&amp;hellip;)&lt;/em>.
+So erhalten wir den Konstruktor mit passender Signatur als Constructor-Objekt.
+Auf diesem Objekt kann anschliessend der Methodenaufruf &lt;em>newInstance(Object&amp;hellip;)&lt;/em> mit den korrekten
+Parametern erfolgen.&lt;/p>
+&lt;hr>
+&lt;h2 id="annotationen">Annotationen&lt;/h2>
+&lt;hr>
+&lt;h3 id="einführung">Einführung&lt;/h3>
+&lt;p>Eine Annotation ist ein Java-Sprachelement, welches die Einbindung von Metadaten in den Quelltext
+erlaubt.
+Eine Annotation beginnt immer mit einem @-Zeichen und wird vor das entsprechende Element
+geschrieben, das annotiert werden soll. Optional kann eine, in runden Klammern eingefasste,
+kommagetrennte Parameterliste folgen.&lt;/p>
+&lt;p>Die Einsatzgebiete sind wie folgt:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Compiler-Informationen:&lt;/strong> Bereitstellung von Informationen an den Compiler wie beispielsweise
+mit
+der Annotation @Override&lt;/li>
+&lt;li>&lt;strong>Informationen für Tools:&lt;/strong> Diverse Annotationen, darunter auch selber geschriebene, können von
+speziellen Tools ausgewertet werden. Diese Tools nennt man Annotation-Processor. Ein solcher
+Annotation-Processor besitzt immer die Basisklasse &lt;em>javax.annotation.processing.AbstractProcessor&lt;/em>.
+Schwergewichtige Frameworks wie beispielsweise Spring basieren in ihrer Funktionalität zu grossen
+Teilen auf Annotationen und deren Auswertung&lt;/li>
+&lt;li>&lt;strong>Informationsbereitstellung zur Laufzeit:&lt;/strong> Annotationen und deren Parameter können zur Laufzeit
+über Reflection ausgelesen und auch ausgewertet werden&lt;/li>
+&lt;/ul>
+&lt;p>Nicht alle Annotationen sind für jeden der oben genannten Anwendungsfälle geeignet. Der Grund dafür
+sind die verschiedenen Lebensdauern von Annotationen. Abhängig von der Definition verwirft oder
+überträgt der Java-Compiler Annotationen in das Kompilat oder nicht.&lt;/p>
+&lt;hr>
+&lt;h3 id="standard-annotationen-des-jdks">Standard-Annotationen des JDKs&lt;/h3>
+&lt;p>Die folgenden Annotationen werden durch das JDK zur Verfügung gestellt.
+Bisher haben wir sie vielleicht bereits verwendet, nun wollen wir aber ihren Zweck nochmals genauer
+anschauen.&lt;/p>
+&lt;h4 id="deprecated">@Deprecated&lt;/h4>
+&lt;p>Zweck:&lt;/p>
+&lt;ul>
+&lt;li>Anzeige, dass ein markiertes Element veraltet ist und nicht mehr verwendet werden sollte&lt;/li>
+&lt;li>Wird ein solches Element verwendet, so beschwert sich der Compiler mit einer Warnung&lt;/li>
+&lt;li>Als zusätzliche Angabe sollte @deprecated im JavaDoc verwendet werden.&lt;/li>
+&lt;/ul>
+&lt;p>Möglich auf:&lt;/p>
+&lt;ul>
+&lt;li>Klassen&lt;/li>
+&lt;li>Felder (=Instanzvariablen)&lt;/li>
+&lt;li>Methoden&lt;/li>
+&lt;li>Parameter&lt;/li>
+&lt;li>Konstruktoren&lt;/li>
+&lt;li>Lokale Variablen&lt;/li>
+&lt;li>Packages&lt;/li>
+&lt;/ul>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * @deprecated Diese Methode führt zu Problemen und sollte nicht mehr verwendet werden.
+&lt;/span>&lt;span style="color:#75715e"> * Bitte stattdessen {@link #newMethod(int someValue)} benutzen.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#a6e22e">@Deprecated&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">oldMethod&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> someValue&lt;span style="color:#f92672">){&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="override">@Override&lt;/h4>
+&lt;p>Zweck:&lt;/p>
+&lt;ul>
+&lt;li>Zeigt an, dass die annotierte Methode eine gleichnamige Methode einer Basisklasse überschreibt
+bzw. ein Interface implementiert&lt;/li>
+&lt;li>Die Anwendung erscheint meistens nicht sehr sinnvoll, trotzdem hat diese Annotation ihre
+Berechtigung. Durch die Angabe dieser Annotation gleicht der Compiler die Signatur einer Methode
+mit derjenigen einer Basisklasse ab und warnt, wenn keine Überschreibung vorliegt&lt;/li>
+&lt;li>Auf diese Weise kann man sehr schnell Fehler finden, falls man sich beim Methodennamen vertippt&lt;/li>
+&lt;/ul>
+&lt;p>Möglich auf:&lt;/p>
+&lt;ul>
+&lt;li>Methoden&lt;/li>
+&lt;/ul>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">overridingMethod&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> someValue&lt;span style="color:#f92672">){&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="suppresswarnings">@SuppressWarnings&lt;/h4>
+&lt;p>Zweck:&lt;/p>
+&lt;ul>
+&lt;li>Erlaubt die Unterdrückung von Compiler-Warnungen&lt;/li>
+&lt;li>Der zu unterdrückende Typ wird als Parameter an die Annotation übergeben&lt;/li>
+&lt;li>Damit wir keine Fehler &amp;ldquo;verstecken&amp;rdquo; sollten wir diese Annotation nur sparsam einsetzen&lt;/li>
+&lt;li>Die folgenden vordefinierten Parameterwerte sind wichtig, sie unterdrücken die genannten
+Compiler-Warnungen:
+&lt;ul>
+&lt;li>boxing, für Typumwandlungen mit Auto-Boxing und Auto-Unboxing&lt;/li>
+&lt;li>deprecation, für die Verwendung von veralteten Implementationen&lt;/li>
+&lt;li>unused, für die Verwendung von unbenutzten Variablen und/oder Methoden&lt;/li>
+&lt;li>unchecked, für problematische Zugriffe wo der Compiler keine Typsicherheit garantieren kann.
+Dies ist vor allem beim kombinierten Einsatz von generischen Datentypen und untypisierten
+Klassen der Fall&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Möglich auf:&lt;/p>
+&lt;ul>
+&lt;li>Klassen&lt;/li>
+&lt;li>Felder (=Instanzvariablen)&lt;/li>
+&lt;li>Methoden&lt;/li>
+&lt;li>Parameter&lt;/li>
+&lt;li>Konstruktoren&lt;/li>
+&lt;li>Lokale Variablen&lt;/li>
+&lt;/ul>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">WarningSuppresser&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@SuppressWarnings&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;unchecked&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span>args&lt;span style="color:#f92672">){&lt;/span>
+&lt;span style="color:#a6e22e">@SuppressWarnings&lt;/span>&lt;span style="color:#f92672">(&lt;/span>value &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;unchecked&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;deprecation&amp;#34;&lt;/span>&lt;span style="color:#f92672">})&lt;/span>
+&lt;span style="color:#66d9ef">final&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Person&lt;span style="color:#f92672">&amp;gt;&lt;/span> persons &lt;span style="color:#f92672">=&lt;/span> getPersons&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">final&lt;/span> Person person&lt;span style="color:#f92672">:&lt;/span>persons&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#a6e22e">@Deprecated&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> List &lt;span style="color:#a6e22e">getPersons&lt;/span>&lt;span style="color:#f92672">(){&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Beispiel geht es wirklich nur darum, den Einsatz der Annotation zu zeigen. Das Beispiel
+zeigt generell eher schlechten Code, im Realfall würden wir die Methode &lt;em>getPersons()&lt;/em> einfach
+überarbeiten, anstatt die Warnungen zu unterdrücken :-)&lt;/p>
+&lt;hr>
+&lt;h3 id="definition-eigener-annotationen">Definition eigener Annotationen&lt;/h3>
+&lt;p>Annotationen werden in eigenen Dateien analog zu Klassen und Interfaces definiert.
+Statt des Schlüsselworts &lt;em>class&lt;/em> resp. &lt;em>interface&lt;/em> wird hier &lt;em>@interface&lt;/em> verwendet.
+Das sorgt automatisch dafür, dass die Annotation den Basistyp &lt;em>Annotation&lt;/em> aus dem Package
+&lt;em>java.lang.annotation&lt;/em> besitzt.&lt;/p>
+&lt;p>Die Definition einer eigenen Annotation schauen wir nun anhand eines Beispiels genauer an.
+Wir erstellen eine Annotation für die Klassendokumentation.&lt;/p>
+&lt;p>Wir definieren nun zuerst eine eigene Annotation, diese soll zur Laufzeit für Typen
+(Klassen, Interfaces, Enumeratoren) zur Verfügung stehen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.lang.annotation.ElementType&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">import&lt;/span> java.lang.annotation.Retention&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">import&lt;/span> java.lang.annotation.RetentionPolicy&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">import&lt;/span> java.lang.annotation.Target&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">// Meta-Annotationen
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">@Retention&lt;/span>&lt;span style="color:#f92672">(&lt;/span>RetentionPolicy&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">RUNTIME&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#a6e22e">@Target&lt;/span>&lt;span style="color:#f92672">(&lt;/span>ElementType&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">TYPE&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">// Annotation-Definition
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">@interface&lt;/span> Documentation &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Methode zur Übergabe von Informationen durch Parameter
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> String &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+String &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+String &lt;span style="color:#a6e22e">functionality&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das ist dann auch schon alles zur Definition einer eigenen Annotation. Bevor wir weitermachen folgt
+hier eine kurze Information zu den einzelnen Elementen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Element&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>@Retention&lt;/td>
+&lt;td>Festlegung zu welchem Zeitpunkt die Annotation später verfügbar sein soll. Hier wurde mit RetentionPolicy.RUNTIME die Verfügbarkeit zur Laufzeit gewählt.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>@Target&lt;/td>
+&lt;td>Festlegung wo diese Annotation später im Sourcecode angewendet werden darf. Wir wollen damit Klassen, Interfaces oder auch Enums markieren und wählen aus diesem Grund ElementType.TYPE.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>default&lt;/td>
+&lt;td>Angabe eines Default-Wertes für den entsprechenden Parameter, solche Parameter werden automatisch optional.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Der grössere Aufwand entsteht nun erst, wenn wir diese Annotation zur Laufzeit auslesen möchten.&lt;/p>
+&lt;hr>
+&lt;h3 id="eigene-annotationen-zur-laufzeit-auslesen">Eigene Annotationen zur Laufzeit auslesen&lt;/h3>
+&lt;p>Die Definition der Annotation ist nun bekannt. Wir betrachten diese nun im Einsatz und nehmen als
+Beispiel eine weitere Klasse, dort soll die Annotation nun zum Einsatz kommen:&lt;/p>
+&lt;h4 id="ohne-annotation">Ohne Annotation&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * This is the request for a job
+&lt;/span>&lt;span style="color:#75715e"> *
+&lt;/span>&lt;span style="color:#75715e"> * @author u210148 Claudio Zesiger
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#a6e22e">@Data&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">JobRequest&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String id&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String title&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String code&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String creator&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> LocalDateTime creationDate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="mit-annotation">Mit Annotation&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">
+&lt;span style="color:#a6e22e">@Documentation&lt;/span>&lt;span style="color:#f92672">(&lt;/span>id &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;u210148&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Claudio Zesiger&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> functionality &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;This is the request for a job&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#a6e22e">@Data&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">JobRequest&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String id&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String title&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String code&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String creator&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> LocalDateTime creationDate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="auswertung">Auswertung&lt;/h4>
+&lt;p>Die Auswertung unserer Annotation zur Laufzeit ist beispielsweise wie folgt möglich:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AnnotationTester&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span>args&lt;span style="color:#f92672">){&lt;/span>
+Documentation documentation&lt;span style="color:#f92672">=&lt;/span>JobRequest&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getAnnotation&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Documentation&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>JobRequest&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getName&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>documentation&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>documentation&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>documentation&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">functionality&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Durch eine solche Auswertung liesse sich beispielsweise eine automatische Dokumentation generieren.&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/java/java-collections/java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/java-collections/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann erklären, was Collections sind.&lt;/li>
@@ -9828,575 +10468,7 @@ Die häufigsten Steps sind:&lt;/p>
 &lt;p>Der Continuous-Build dient dabei Branches vom Typ feature oder bugfix (je nach Konfiguration) zu bauen. Nur erfolgreiche Builds dieser Weiterentwicklungen oder Bugfixes können anschliessend in den Haupt-Entwicklungsbranch zurück gemerged werden. Dieser Build wird nicht auf eine Stage ausgeliefert.
 Der Release-Build dient der Herstellung einer neuen Version einer Anwendung. Dieser Build taggt die Version auf dem GIT-Repository und liefert sie auf die entsprechend konfigurierten Stages aus. Vorbehalten bleibt normalerweise der Release auf eine produktive Umgebung.
 Der Deploy-Build dient dem Deployment einer bestimmten Version auf eine bestimmte Stage. Die Stage kann dabei gewählt werden. Dieser Step-Typ wird normalerweise für den Release auf Integration- oder Produktionsplattformen verwendet.&lt;/p>
-&lt;p>Zum Nachlesen gibt es hier noch die Dokumentation der Pipeline: &lt;a href="https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline">https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline&lt;/a>&lt;/p></description></item><item><title>Docs: Annotationen &amp; Reflection API</title><link>/docs/java/reflection/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/reflection/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kann mit Reflection Informationen zur Laufzeit zu Klassen, Objekten, Methoden und Attributen ermitteln&lt;/li>
-&lt;li>Ich kenne die Vor- und Nachteile von Reflection&lt;/li>
-&lt;li>Ich kenne die Metadaten Class&amp;lt;T&amp;gt;, Field und Method&lt;/li>
-&lt;li>Ich kann mit Reflection eine Methode auf einem Objekt aufrufen&lt;/li>
-&lt;li>Ich kann mit Reflection zur Laufzeit eine Klasse untersuchen&lt;/li>
-&lt;li>Ich kann mit Reflection ein neues Objekt zur Laufzeit erzeugen&lt;/li>
-&lt;li>Ich kenne die Grundlagen von Annotationen&lt;/li>
-&lt;li>Ich kenne die wichtigsten Standard-Annotationen des JDKs&lt;/li>
-&lt;li>Ich kann eigene Annotationen definieren und diese zur Laufzeit auswerten&lt;/li>
-&lt;/ul>
-&lt;h4 id="änderungskontrolle">Änderungskontrolle&lt;/h4>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Autor&lt;/th>
-&lt;th>Version&lt;/th>
-&lt;th>Datum&lt;/th>
-&lt;th>Änderungen&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Claudio Zesiger&lt;/td>
-&lt;td>0.1&lt;/td>
-&lt;td>21.10.2020&lt;/td>
-&lt;td>* Initiale Version erstellt&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Claudio Zesiger&lt;/td>
-&lt;td>0.2&lt;/td>
-&lt;td>22.10.2020&lt;/td>
-&lt;td>* Initiale Version abgeschlossen&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
-&lt;ul>
-&lt;li>Fundierte Grundlagenkenntnisse von Java-Anwendungen&lt;/li>
-&lt;/ul>
-&lt;h2 id="reflection-api">Reflection API&lt;/h2>
-&lt;hr>
-&lt;h3 id="allgemeine-informationen">Allgemeine Informationen&lt;/h3>
-&lt;p>Reflection erlaubt einer Anwendung, diverse Informationen über sich selbst herauszufinden, zudem kann man mit Reflection zur Laufzeit Instanzen von Klassen erzeugen. Ein normaler Applikationsentwickler wird diese Technik eher selten verwenden, es gibt aber Anwendungsfälle, die nur mit Reflection umzusetzen sind.&lt;/p>
-&lt;p>Reflection hat die folgenden Einsatzgebiete:&lt;/p>
-&lt;ul>
-&lt;li>Erweiterbarkeit: Eine Applikation kann mit Reflection Klassen instanziieren, die zum Zeitpunkt der Kompilierung noch gar nicht bekannt waren. Zur Laufzeit benötigen wir dazu nur den voll qualifizierten Namen einer solchen Klasse, die restlichen Bestandteile der Klasse können zur Laufzeit abgefragt werden&lt;/li>
-&lt;li>Class-Browser, Debugger, Tools zum Testen: Mit Reflection erhält eine Anwendung Zugriff auf alle Bestandteile einer Klasse. Reflection kann auch auf private Attribute und Methoden zugreifen und hebelt damit das Prinzip der Kapselung aus. Frameworks wie Spring oder jUnit nutzen Reflection, um damit ihre Annotationen auswerten zu können.&lt;/li>
-&lt;/ul>
-&lt;p>Beim Einsatz von Reflection gilt die folgende Regel: Wenn es eine Lösung ohne Reflection gibt, dann wähle diese!&lt;/p>
-&lt;hr>
-&lt;h3 id="grundlagen">Grundlagen&lt;/h3>
-&lt;p>Reflection nutzt die folgenden Konstrukte, um damit eine Anwendung zu untersuchen. Diese Konstrukte werden Metadaten bzw. Metainformationen genannt:&lt;/p>
-&lt;ul>
-&lt;li>java.lang.Class&amp;lt;T&amp;gt;, Metadaten für Klassen. Beinhaltet Klassenname, implementierte Interfaces, Methoden und Attribute&lt;/li>
-&lt;li>java.lang.reflect.Field, Metadaten für Instanzvariablen. Enthält Typ, Name, Sichtbarkeit, usw.&lt;/li>
-&lt;li>java.lang.reflect.Method, Metadaten für Methoden. Enthält Name, Parameter, Sichtbarkeit, usw.&lt;/li>
-&lt;/ul>
-&lt;p>Damit wir an die Informationen einer Klasse gelangen können, benötigen wir einen Startpunkt. Dieser Startpunkt ist bei Reflection immer eine Instanz der Klasse java.lang.Class&amp;lt;T&amp;gt;.&lt;/p>
-&lt;p>Die anderen Metadaten lassen sich dann über diese Instanz beziehen. Es gibt drei Möglichkeiten, an diesen Startpunkt zu gelangen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>#&lt;/th>
-&lt;th>Möglichkeit&lt;/th>
-&lt;th>Code-Beispiel&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>voll-qualifizierter Klassenname&lt;/td>
-&lt;td>Class&amp;lt;?&amp;gt; clazz = Class.forName(&amp;ldquo;package.ClassName&amp;rdquo;);&lt;/td>
-&lt;td>Der Name der gewünschten Klasse wird einfach als String übergeben. Dies ist sehr gut einsetzbar, wenn der konkrete Typ zur Laufzeit noch unbekannt ist. Es ist also beispielsweise möglich Klassennamen aus einer Konfigurationsdatei einzulesen.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Methode getClass()&lt;/td>
-&lt;td>Class&amp;lt;?&amp;gt; clazz = object.getClass();&lt;/td>
-&lt;td>Der Aufruf der Methode &lt;em>getClass()&lt;/em> auf einer Referenz liefert direkt eine Instanz des Klassenobjekts.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>statisches Attribut .class&lt;/td>
-&lt;td>Class&amp;lt;?&amp;gt; clazz = ClassName.class;&lt;/td>
-&lt;td>Durch Kenntnis des konkreten Typs erhält man den Zugriff auf das Klassenobjekt mit dem statischen Attribut &lt;em>class&lt;/em>.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Bei Arrays muss eine eher kryptische Notation verwendet werden. Hier wird aus Komplexitätsgründen nicht weiter darauf eingegangen.&lt;/p>
-&lt;hr>
-&lt;h3 id="methoden-aufrufen">Methoden aufrufen&lt;/h3>
-&lt;p>Der nächste Schritt ist nun, dass mit Reflection eine Methode aufgerufen werden kann. Die folgende Reihenfolge gibt einen guten Überblick welche Schritte dazu notwendig sind:&lt;/p>
-&lt;ul>
-&lt;li>Ermitteln der Metainformationen zur Klasse&lt;/li>
-&lt;li>Ermitteln der Metainformationen zur Methode&lt;/li>
-&lt;li>Aufrufen der Methode&lt;/li>
-&lt;li>Exception Handling&lt;/li>
-&lt;/ul>
-&lt;p>Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class Greeter {
-public String greet(String name) {
-return &amp;#34;Hello &amp;#34; + name;
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class Main {
-public static void main(String[] args) {
-String methodName = &amp;#34;greet&amp;#34;;
-Class&amp;lt;?&amp;gt;[] parameterTypes = new Class&amp;lt;?&amp;gt;[] { String.class };
-// Ermitteln der Metainformationen zur Klasse
-Class&amp;lt;?&amp;gt; clazz = Greeter.class;
-try {
-// Ermitteln der Metainformationen zur Methode
-Method greetMethod = clazz.getMethod(methodName, parameterTypes);
-// Methode aufrufen
-String parameter = &amp;#34;Claudio&amp;#34;;
-Object result = greetMethod.invoke(new Greeter(), parameter);
-System.out.println(result);
-} catch (NoSuchMethodException e) {
-// handle exception
-} catch (SecurityException e) {
-// handle exception
-} catch (IllegalAccessException e) {
-// handle exception
-} catch (IllegalArgumentException e) {
-// handle exception
-} catch (InvocationTargetException e) {
-// handle exception
-}
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wie wir sehen gibt es zwei grosse Nachteile beim Einsatz von Reflection:&lt;/p>
-&lt;ul>
-&lt;li>Viel Code. Vor Java 7 benötigt man für einen Methodenaufruf zwischen 40 und 50 Zeilen Programmcode.&lt;/li>
-&lt;li>Viel Exception Handling&lt;/li>
-&lt;/ul>
-&lt;p>Seit Java 7 wurden die Nachteile ein wenig entschärft, da sich das Exception Handling deutlich eleganter gestalten lässt. Einerseits bietet Java 7 die Möglichkeit zum Multi-Catch (siehe Modul Exception Handling) und andererseits wurden alle Exceptions beim Einsatz von Reflection in der Klasse &lt;em>java.lang.ReflectiveOperationException&lt;/em> zusammengefasst.&lt;/p>
-&lt;p>Abgekürzt lässt sich das oben gezeigte Beispiel so darstellen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">String methodName = &amp;#34;greet&amp;#34;;
-Class&amp;lt;?&amp;gt;[] parameterTypes = new Class&amp;lt;?&amp;gt;[] { String.class };
-// Ermitteln der Metainformationen zur Klasse
-Class&amp;lt;?&amp;gt; clazz = Greeter.class;
-try {
-// Ermitteln der Metainformationen zur Methode
-Method greetMethod = clazz.getMethod(methodName, parameterTypes);
-// Methode aufrufen
-String parameter = &amp;#34;Claudio&amp;#34;;
-Object result = greetMethod.invoke(new Greeter(), parameter);
-System.out.println(result);
-} catch (ReflectiveOperationException e) {
-// handle exception
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h3 id="zugriff-auf-methoden-und-attribute">Zugriff auf Methoden und Attribute&lt;/h3>
-&lt;p>Sobald wir ein Klassenobjekt ermittelt haben können wir auf weitere Metadaten zugreifen. Spannend ist, dass wir so nicht nur auf Methoden und Attribute, sondern auch auf Annotationen zugreifen können.&lt;/p>
-&lt;p>Im Beispiel oben wurde auf eine Methode zugegriffen. Dieser Zugriff besitzt die Einschränkung, dass nur öffentlich zugängliche Methoden ermittelt werden können. Damit wir auch Zugriff auf nicht öffentlich sichtbare Bestandteile erhalten, ist etwas mehr Aufwand notwendig. Um alle definierten Methoden einer Klasse unabhängig von der Sichtbarkeit aufzulisten können wir die Methode &lt;em>getDeclaredMethod(Class&amp;lt;?&amp;gt;)&lt;/em> verwenden. Um wirklich alle Methoden einer Klasse über den Namen zu finden, also inklusive den Methoden aus Superklassen, können wir uns ganz einfach einer Rekursion bedienen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static Method findMethods(Class&amp;lt;?&amp;gt; clazz, String methodName, Class&amp;lt;?&amp;gt;... parameterTypes) {
-Objects.requireNonNull(methodName, &amp;#34;Methodenname darf nicht null sein&amp;#34;);
-Objects.requireNonNull(parameterTypes, &amp;#34;Parameter dürfen nicht null sein&amp;#34;);
-if (clazz == null) {
-return null;
-}
-try {
-return clazz.getDeclaredMethod(methodName, parameterTypes);
-} catch (NoSuchMethodException e) {
-return findMethod(clazz.getSuperclass(), methodName, parameterTypes);
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Methode &lt;em>getField(String)&lt;/em> liefert für den Namen eines Attributs das entsprechende Field-Objekt zurück. Mit der Methode &lt;em>getDeclaredField(String)&lt;/em> erhält man auch nicht öffentliche Attribute einer Klasse.&lt;/p>
-&lt;hr>
-&lt;h3 id="eigenschaften-ermitteln">Eigenschaften ermitteln&lt;/h3>
-&lt;p>Für Objekte des Typs &lt;em>Method&lt;/em> und &lt;em>Field&lt;/em> lassen sich mit der Methode &lt;em>getModifiers()&lt;/em> verschiedene Eigenschaften in Form einer Zahl abfragen. Die Auswertung kann dann mit der Hilfsklasse &lt;em>java.lang.reflect.Modifier&lt;/em> erfolgen.&lt;/p>
-&lt;p>Mögliche Abfragen sind beispielsweise:&lt;/p>
-&lt;ul>
-&lt;li>&lt;em>isPublic(int), isProtected(int)&lt;/em> und &lt;em>isPrivate(int)&lt;/em>&lt;/li>
-&lt;li>&lt;em>isStatic(int), isFinal(int)&lt;/em> und &lt;em>isAbstract(int)&lt;/em>&lt;/li>
-&lt;li>&lt;em>isSynchronized(int)&lt;/em> und &lt;em>isVolatile(int)&lt;/em>&lt;/li>
-&lt;/ul>
-&lt;p>Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Method greetMethod = clazz.getMethod(methodName, parameterTypes);
-int modifiers = greetMethod.getModifiers();
-boolean isPublic = Modifier.isPublic(modifiers);
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h3 id="spezialfall-konstruktoren">Spezialfall Konstruktoren&lt;/h3>
-&lt;p>Der Aufruf eines Konstruktors per Reflection ist mit der Methode &lt;em>newInstance()&lt;/em> möglich. Dies gilt nur für den Default-Konstruktor ohne Parameter. Der Aufruf eines Konstruktors mit Parameter erfordert zuerst einen Methodenaufruf von &lt;em>getDeclaredConstructor(Class&amp;lt;?&amp;gt;&amp;hellip;)&lt;/em>. So erhalten wir den Konstruktor mit passender Signatur als Constructor-Objekt. Auf diesem Objekt kann anschliessend der Methodenaufruf &lt;em>newInstance(Object&amp;hellip;)&lt;/em> mit den korrekten Parametern erfolgen.&lt;/p>
-&lt;hr>
-&lt;h2 id="annotationen">Annotationen&lt;/h2>
-&lt;hr>
-&lt;h3 id="einführung">Einführung&lt;/h3>
-&lt;p>Annotationen existieren seit Java 5 als neue Sprachelemente. Eine Annotation beginnt immer mit einem @-Zeichen und wird vor das entsprechende Element geschrieben, das annotiert werden soll.&lt;/p>
-&lt;p>Die Einsatzgebiete sind wie folgt:&lt;/p>
-&lt;ul>
-&lt;li>Compiler-Informationen: Bereitstellung von Informationen an den Compiler wie beispielsweise mit der Annotation @Override&lt;/li>
-&lt;li>Informationen für Tools: Diverse Annotationen, darunter auch selber geschriebene, können von speziellen Tools ausgewertet werden. Diese Tools nennt man Annotation Processor. Ein solcher Annotation Processor besitzt immer die Basisklasse javax.annotation.processing.AbstractProcessor. Schwergewichtige Frameworks wie beispielsweise Spring basieren in ihrer Funktionalität zu grossen Teilen auf Annotationen und deren Auswertung&lt;/li>
-&lt;li>Informationsbereitstellung zur Laufzeit: Annotationen und deren Parameter können zur Laufzeit über Reflection ausgelesen und auch ausgewertet werden&lt;/li>
-&lt;/ul>
-&lt;p>Nicht alle Annotationen sind für jeden der oben genannten Anwendungsfälle geeignet. Der Grund dafür sind die verschiedenen Lebensdauern von Annotationen. Abhängig von der Definition verwirft oder überträgt der Java-Compiler Annotationen in das Kompilat oder nicht.&lt;/p>
-&lt;hr>
-&lt;h3 id="standard-annotationen-des-jdks">Standard-Annotationen des JDKs&lt;/h3>
-&lt;p>Die folgenden Annotationen werden durch das JDK zur Verfügung gestellt. Bisher haben wir sie vielleicht bereits verwendet, nun wollen wir aber ihren Zweck nochmals genauer anschauen.&lt;/p>
-&lt;h4 id="deprecated">@Deprecated&lt;/h4>
-&lt;p>Zweck:&lt;/p>
-&lt;ul>
-&lt;li>Anzeige, dass ein markiertes Element veraltet ist und nicht mehr verwendet werden sollte&lt;/li>
-&lt;li>Wird ein solches Element verwendet, so beschwert sich der Compiler mit einer Warnung&lt;/li>
-&lt;li>Als zusätzliche Angabe sollte @deprecated im JavaDoc verwendet werden.&lt;/li>
-&lt;/ul>
-&lt;p>Möglich auf:&lt;/p>
-&lt;ul>
-&lt;li>Klassen&lt;/li>
-&lt;li>Felder (=Instanzvariablen)&lt;/li>
-&lt;li>Methoden&lt;/li>
-&lt;li>Parameter&lt;/li>
-&lt;li>Konstruktoren&lt;/li>
-&lt;li>Lokale Variablen&lt;/li>
-&lt;li>Packages&lt;/li>
-&lt;/ul>
-&lt;p>Einsatzbeispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">/**
-* @deprecated Diese Methode führt zu Problemen und sollte nicht mehr verwendet werden. Bitte stattdessen {@link #newMethod(int someValue)} benutzen.
-*/
-@Deprecated
-public void oldMethod(int someValue) {
-// ...
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="override">@Override&lt;/h4>
-&lt;p>Zweck:&lt;/p>
-&lt;ul>
-&lt;li>Zeigt an, dass die annotierte Methode eine gleichnamige Methode einer Basisklasse überschreibt bzw. ein Interface implementiert&lt;/li>
-&lt;li>Die Anwendung erscheint meistens nicht sehr sinnvoll, trotzdem hat diese Annotation ihre Berechtigung. Durch die Angabe dieser Annotation gleicht der Compiler die Signatur einer Methode mit derjenigen einer Basisklasse ab und warnt, wenn keine Überschreibung vorliegt&lt;/li>
-&lt;li>Auf diese Weise kann man sehr schnell Fehler finden, falls man sich beim Methodennamen vertippt&lt;/li>
-&lt;/ul>
-&lt;p>Möglich auf:&lt;/p>
-&lt;ul>
-&lt;li>Methoden&lt;/li>
-&lt;/ul>
-&lt;p>Einsatzbeispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">@Override
-public void overridingMethod(int someValue) {
-// ...
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="suppresswarnings">@SuppressWarnings&lt;/h4>
-&lt;p>Zweck:&lt;/p>
-&lt;ul>
-&lt;li>Erlaubt die Unterdrückung von Compiler-Warnungen&lt;/li>
-&lt;li>Der zu unterdrückende Typ wird als Parameter an die Annotation übergeben&lt;/li>
-&lt;li>Damit wir keine Fehler &amp;ldquo;verstecken&amp;rdquo; sollten wir diese Annotation nur sparsam einsetzen&lt;/li>
-&lt;li>Die folgenden vordefinierten Parameterwerte sind wichtig, sie unterdrücken die genannten Compiler-Warnungen:
-&lt;ul>
-&lt;li>boxing, für Typumwandlungen mit Auto-Boxing und Auto-Unboxing&lt;/li>
-&lt;li>deprecation, für die Verwendung von veralteten Implementationen&lt;/li>
-&lt;li>unused, für die Verwendung von unbenutzten Variablen und/oder Methoden&lt;/li>
-&lt;li>unchecked, für problematische Zugriffe wo der Compiler keine Typsicherheit garantieren kann. Dies ist vorallem beim kombinierten Einsatz von generischen Datentypen und untypisierten Klassen der Fall&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>Möglich auf:&lt;/p>
-&lt;ul>
-&lt;li>Klassen&lt;/li>
-&lt;li>Felder (=Instanzvariablen)&lt;/li>
-&lt;li>Methoden&lt;/li>
-&lt;li>Parameter&lt;/li>
-&lt;li>Konstruktoren&lt;/li>
-&lt;li>Lokale Variablen&lt;/li>
-&lt;/ul>
-&lt;p>Einsatzbeispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">@SuppressWarnings(&amp;#34;unchecked&amp;#34;)
-public static void main(String[] args) {
-@SuppressWarnings(value = {&amp;#34;unchecked&amp;#34;, &amp;#34;deprecation&amp;#34;})
-final List&amp;lt;Person&amp;gt; persons = getPersons();
-for (final Person person: persons) {
-// ...
-}
-@Deprecated
-public static List getPersons() {
-return new ArrayList();
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>In diesem Beispiel geht es wirklich nur darum, den Einsatz der Annotation zu zeigen. Das Beispiel zeigt generell eher schlechten Code, im Realfall würden die Methode &lt;em>getPersons()&lt;/em> einfach überarbeiten anstatt die Warnungen zu unterdrücken :-)&lt;/p>
-&lt;hr>
-&lt;h3 id="definition-eigener-annotationen">Definition eigener Annotationen&lt;/h3>
-&lt;p>Annotationen werden in eigenen Dateien analog zu Klassen und Interfaces definiert. Statt des Schlüsselworts class resp. interface wird hier @interface verwendet. Das sorgt automatisch dafür, dass die Annotation den Basistyp &lt;em>Annotation&lt;/em> aus dem Package &lt;em>java.lang.annotation&lt;/em> besitzt.&lt;/p>
-&lt;p>Die Definition einer eigenen Annotation schauen wir nun anhand eines Beispiels genauer an. Wir erstellen eine Annotation für die Klassendokumentation.&lt;/p>
-&lt;p>Wir definieren nun zuerst eine eigene Annotation, diese soll zur Laufzeit für Typen (Klassen, Interfaces, Enumeratoren) zur Verfügung stehen.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-// Meta-Annotationen
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-// Annotation-Definition
-public @interface Documentation {
-// Methode zur Übergabe von Informationen durch Parameter
-String id();
-String name() default &amp;#34;&amp;#34;;
-String functionality();
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das ist dann auch schon alles zur Definition einer eigenen Annotation. Bevor wir weitermachen folgt hier eine kurze Information zu den einzelnen Elementen.&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Element&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>@Retention&lt;/td>
-&lt;td>Festlegung zu welchem Zeitpunkt die Annotation später verfügbar sein soll. Hier wurde mit RetentionPolicy.RUNTIME die Verfügbarkeit zur Laufzeit gewählt.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>@Target&lt;/td>
-&lt;td>Festlegung wo diese Annotation später im Sourcecode angewendet werden darf. Wir wollen damit Methoden markieren und wählen aus diesem Grund ElementType.METHOD.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>default&lt;/td>
-&lt;td>Angabe eines Default-Wertes für den entsprechenden Parameter, solche Parameter werden automatisch optional.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Der grössere Aufwand entsteht nun erst, wenn wir diese Annotation zur Laufzeit auslesen möchten.&lt;/p>
-&lt;hr>
-&lt;h3 id="eigene-annotationen-zur-laufzeit-auslesen">Eigene Annotationen zur Laufzeit auslesen&lt;/h3>
-&lt;p>Die Definition der Annotation ist nun bekannt. Wir betrachten diese nun im Einsatz und nehmen als Beispiel eine weitere Klasse, dort soll die Annotation nun zum Einsatz kommen:&lt;/p>
-&lt;h4 id="ohne-annotation">Ohne Annotation&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">\**
-* This is the request for a job
-*
-* @author u210148 Claudio Zesiger
-*/
-@Data
-public class JobRequest {
-private String id;
-private String title;
-private String code;
-private String creator;
-private LocalDateTime creationDate;
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="mit-annotation">Mit Annotation&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">@Documentation(id=&amp;#34;u210148&amp;#34;, name=&amp;#34;Claudio Zesiger&amp;#34;, functionality=&amp;#34;This is the request for a job&amp;#34;)
-@Data
-public class JobRequest {
-private String id;
-private String title;
-private String code;
-private String creator;
-private LocalDateTime creationDate;
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="auswertung">Auswertung&lt;/h4>
-&lt;p>Die Auswertung unserer Annotation zur Laufzeit ist beispielsweise wie folgt möglich:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static void main(String\[\] args) {
-Documentation documentation = JobRequest.class.getAnnotation(Documentation.class);
-System.out.println(JobRequest.class.getName());
-System.out.println(documentation.id());
-System.out.println(documentation.name());
-System.out.println(documentation.functionality());
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Durch eine solche Auswertung liesse sich beispielsweise eine automatische Dokumentation generieren.&lt;/p></description></item><item><title>Docs: Overview Lab</title><link>/docs/java/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/overview/</guid><description>
+&lt;p>Zum Nachlesen gibt es hier noch die Dokumentation der Pipeline: &lt;a href="https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline">https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline&lt;/a>&lt;/p></description></item><item><title>Docs: Overview Lab</title><link>/docs/java/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/overview/</guid><description>
 &lt;h2 id="50-meta">5.0: Meta&lt;/h2>
 &lt;h3 id="501-goals">5.0.1: Goals&lt;/h3>
 &lt;ul>

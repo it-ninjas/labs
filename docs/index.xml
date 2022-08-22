@@ -149,7 +149,127 @@ Es wird verwendet, um die dynamische Benutzeroberfläche der Webseiten mit hohem
 &lt;p>&lt;img src="../js_frameworks/react.png" alt="React">&lt;/p>
 &lt;h3 id="vuejs">Vue.js&lt;/h3>
 &lt;p>Obwohl dieses JavaScript-Framework erst im Jahr 2016 entwickelt wurde, hat es bereits seinen Weg in den Markt gefunden und sich durch verschiedene Funktionen bewährt. Es ist sehr zuverlässig um Cross-Plattform zu entwickeln.&lt;/p>
-&lt;p>&lt;img src="../js_frameworks/vue.png" alt="Vuejs">&lt;/p></description></item><item><title>Docs: Entwicklungsumgebung einrichten</title><link>/docs/java/entwicklungsumgebung/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/entwicklungsumgebung/</guid><description>
+&lt;p>&lt;img src="../js_frameworks/vue.png" alt="Vuejs">&lt;/p></description></item><item><title>Labs: Annotationen - Aufgaben</title><link>/labs/java/java-reflection-and-annotations/01_annotations_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-reflection-and-annotations/01_annotations_exercises/</guid><description>
+&lt;p>Die folgenden Aufgaben dienen der Vertiefung der beiden Themen Reflection API und Annotations.&lt;/p>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Implementiere eine eigene Annotation. Die Annotation soll der Dokumentation einer Klasse dienen und
+die folgenden Eigenschaften aufweisen:&lt;/p>
+&lt;ul>
+&lt;li>Verfügbar zur Compile Time&lt;/li>
+&lt;li>Verfügbar auf Klassen&lt;/li>
+&lt;li>Attribut zur Aufnahme von einem oder mehreren Autoren als String-Array&lt;/li>
+&lt;li>Attribut zur Aufnahme einer Beschreibung als String, der Default-Wert soll ein leerer String sein&lt;/li>
+&lt;li>Attribut zur Aufnahme einer Version als String, der Default-Wert ist 0.0.1&lt;/li>
+&lt;/ul>
+&lt;p>Der Name der Annotation soll anhand ihres Zwecks gewählt werden.&lt;/p>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Implementiere eine sinnvolle Modell-Klasse und wende deine neue Annotation an.
+Fülle die Werte für Autor, Beschreibung und Version ab.&lt;/p>
+&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;p>Implementiere einen Annotations-Prozessor, welcher die oben geschriebene Annotation auf der
+Modell-Klasse auswertet.
+Die Auswertung soll auf die Kommandozeile erfolgen.&lt;/p>
+&lt;h3 id="schritt-1">Schritt 1&lt;/h3>
+&lt;p>Implementiere eine neue Klasse, welche die folgende Basis hat:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">
+&lt;span style="color:#a6e22e">@SupportedAnnotationTypes&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#75715e">/*1*/&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#a6e22e">@SupportedSourceVersion&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SourceVersion&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">RELEASE_8&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DocumentationProcessor&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> AbstractProcessor &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">process&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Set&lt;span style="color:#f92672">&amp;lt;?&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> TypeElement&lt;span style="color:#f92672">&amp;gt;&lt;/span> annotations&lt;span style="color:#f92672">,&lt;/span> RoundEnvironment roundEnv&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Füge beim Punkt 1 den kompletten Pfad (Package und Name) deiner Annotation ein.&lt;/p>
+&lt;h3 id="schritt-2">Schritt 2&lt;/h3>
+&lt;p>Die beiden Parameter annotations und roundEnv werden durch den Annotations-Prozessor benutzt, um
+während der Kompilierung die entsprechende Annotation zu erhalten.
+Im Set annotations befinden sich alle Annotationen, welche unter Punkt 1 angegeben werden.
+Die Klasse RoundEnvironment erlaubt den Zugriff auf alle Elemente während der Kompilierung.
+Ergänze die Methode des Annotations-Prozessors mit den folgenden Loops:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">for&lt;/span>&lt;span style="color:#f92672">(&lt;/span>TypeElement annotation&lt;span style="color:#f92672">:&lt;/span>annotations&lt;span style="color:#f92672">){&lt;/span>
+Set&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#66d9ef">extends&lt;/span> Element&lt;span style="color:#f92672">&amp;gt;&lt;/span> annotatedElements &lt;span style="color:#f92672">=&lt;/span> roundEnv&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getElementsAnnotatedWith&lt;/span>&lt;span style="color:#f92672">(&lt;/span>annotation&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Element element&lt;span style="color:#f92672">:&lt;/span>annotatedElements&lt;span style="color:#f92672">){&lt;/span>
+X annotation&lt;span style="color:#f92672">=&lt;/span>element&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getAnnotation&lt;/span>&lt;span style="color:#f92672">(&lt;/span>X&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Klasse X kannst du durch deine Annotation ersetzen. Jetzt hast du Zugriff auf die Elemente
+deiner Annotation.&lt;/p>
+&lt;h3 id="schritt-3">Schritt 3&lt;/h3>
+&lt;p>Ergänze die Implementation, um den Klassennamen der Modell-Klasse und die Werte der Annotation
+auszudrucken. Hier ein Beispiel, wie der Ausdruck in etwa aussehen könnte:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">------
+Person
+------
+Model class representing a person with a name and age
+[u210148 (Claudio Zesiger)]
+0.0.1
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="schritt-4">Schritt 4&lt;/h3>
+&lt;p>Kompiliere die Annotation und den Annotations-Prozessor auf der Kommandozeile (Terminal) mit dem
+Befehl javac.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">javac &amp;lt;package&amp;gt;.&amp;lt;annotation&amp;gt;.java
+javac &amp;lt;package&amp;gt;.&amp;lt;annotationprocessor&amp;gt;.java
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ersetze das Package und die Namen der Annotation/des Annotations-Prozessors mit deinen Angaben.&lt;/p>
+&lt;h3 id="schritt-5">Schritt 5&lt;/h3>
+&lt;p>Kompiliere die implementierte Modell-Klasse mit dem folgenden Befehl:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">javac -processor &amp;lt;package&amp;gt;.&amp;lt;annotationsprocessor&amp;gt; &amp;lt;model-klasse&amp;gt;.java
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Ausgabe auf die Kommandozeile durch den Annotations-Prozessor sollte anschliessend angezeigt
+werden.&lt;/p></description></item><item><title>Docs: Entwicklungsumgebung einrichten</title><link>/docs/java/entwicklungsumgebung/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/entwicklungsumgebung/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich habe die Ersteinrichtung des Laptops vollständig durchgeführt&lt;/li>
@@ -300,7 +420,7 @@ Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zur
 Die Methode liefert das neue Array zurück.&lt;/p>
 &lt;h2 id="aufgabe-5">Aufgabe 5&lt;/h2>
 &lt;p>Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht mehr als den Wert 5 unterscheiden.
-Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück. Für die erste und die letzte Zahl im Array gibt es nur einen Nachbar.&lt;/p></description></item><item><title>Labs: Exception Handling - Aufgaben</title><link>/labs/java/exception-handling/01_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/exception-handling/01_exercises/</guid><description>
+Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück. Für die erste und die letzte Zahl im Array gibt es nur einen Nachbar.&lt;/p></description></item><item><title>Labs: Exception Handling - Aufgaben</title><link>/labs/java/java-exception-handling/01_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-exception-handling/01_exercises/</guid><description>
 &lt;p>Die folgenden Aufgaben bestehen zum Teil aus Exception Handling. Behandle die Exception also auch so, wie es in der Theorie erklärt wurde.&lt;/p>
 &lt;h2 id="aufgabe-1-file-reader">Aufgabe 1: File Reader&lt;/h2>
 &lt;p>&lt;a href="https://github.com/dwyl/english-words/raw/master/words.txt">Hier&lt;/a> findest du eine Datei, welche eine Liste mit ungefähr 466 Tausend englischen Wörtern enthält.&lt;/p>
@@ -2803,7 +2923,45 @@ Falls die Schüpercard beim Einkaufen gescannt, so wird dem Konto des Kunden pro
 (Es werden keine halben Punkte verteilt und es wird immer abgerundet).&lt;/p>
 &lt;p>Jeder Mitarbeiter einer CØØP Filiale ist im System hinterlegt.
 Es wird auch jederzeit nachgeführt, welcher Mitarbeiter sich zurzeit in welcher Filiale befindet.
-So kann der Chef die Anwesenheit aller Mitarbeiter sauber überprüfen.&lt;/p></description></item><item><title>Labs: Rollenspiel</title><link>/labs/java/java-ood/02_rollenspiel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-ood/02_rollenspiel/</guid><description>
+So kann der Chef die Anwesenheit aller Mitarbeiter sauber überprüfen.&lt;/p></description></item><item><title>Labs: Reflection API - Aufgaben</title><link>/labs/java/java-reflection-and-annotations/02_reflection_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-reflection-and-annotations/02_reflection_exercises/</guid><description>
+&lt;p>Die folgende Aufgabe dient der Vertiefung der beiden Themen Reflection API und Annotations.&lt;/p>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Implementiere eine Klasse &lt;em>Person&lt;/em> mit den Attributen Namen und Alter.
+Die Klasse muss einen Konstruktor mit beiden Attributen aufweisen. Für beide Attribute muss eine
+Get-Methode implementiert werden.&lt;br>
+Implementiere zudem eine toString Methode.&lt;/p>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Implementiere eine eigene Annotation. Die Annotation soll der Auffindung der Klasse zur Erzeugung
+von Instanzen der oben genannten Klasse dienen und die folgenden Eigenschaften aufweisen:&lt;/p>
+&lt;ul>
+&lt;li>Verfügbar zur Laufzeit&lt;/li>
+&lt;li>Verfügbar auf Klassen&lt;/li>
+&lt;/ul>
+&lt;p>Der Name der Annotation soll anhand ihres Zwecks gewählt werden. Die Annotation hat keine Attribute.&lt;/p>
+&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;p>Implementiere eine weitere Annotation. Die Annotation soll der Angabe von Daten für Personen dienen.
+Sie muss die folgenden Eigenschaften aufweisen:&lt;/p>
+&lt;ul>
+&lt;li>Verfügbar zur Laufzeit&lt;/li>
+&lt;li>Verfügbar auf Konstruktoren&lt;/li>
+&lt;li>Attribut für die Namen von Personen als String-Array&lt;/li>
+&lt;li>Attribut für das Alter von Personen als Integer-Array&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-4">Aufgabe 4&lt;/h2>
+&lt;p>Wende die beiden Annotationen auf deine Person-Klasse an. Eine auf der Klasse, die Andere auf dem
+Konstruktor.&lt;br>
+Die Annotation auf dem Konstruktor muss mindestens drei Namen und drei Altersangaben aufweisen.&lt;/p>
+&lt;h2 id="aufgabe-5">Aufgabe 5&lt;/h2>
+&lt;p>Implementiere eine Main-Klasse mit einer Main-Methode und nutze Reflection, um Instanzen anhand der
+Konstruktor-Annotation zu erzeugen. Gehe dabei wie folgt vor:&lt;/p>
+&lt;ul>
+&lt;li>Hol dir eine Klasseninstanz über den Package- und Klassennamen oder über das statische Feld class&lt;/li>
+&lt;li>Hol dir auf der Klasseninstanz den Konstruktor&lt;/li>
+&lt;li>Hol dir vom Konstruktor die Annotation&lt;/li>
+&lt;li>Hol aus der Annotation die Namen und Altersangaben&lt;/li>
+&lt;li>Nutze die Angaben in einem Loop, um entsprechend viele Instanzen der Klasse Person zu erzeugen&lt;/li>
+&lt;li>Drucke die Angaben der Personen auf der Kommandozeile aus&lt;/li>
+&lt;/ul></description></item><item><title>Labs: Rollenspiel</title><link>/labs/java/java-ood/02_rollenspiel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-ood/02_rollenspiel/</guid><description>
 &lt;p>In dieser Aufgabe wird ein Fantasy-Rollenspiel mit Vererbung modelliert.
 Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.&lt;/p>
 &lt;h2 id="einführung">Einführung&lt;/h2>
@@ -7832,483 +7990,4 @@ first line from testing
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="hands-on">Hands On&lt;/h3>
-&lt;p>&lt;a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/&lt;/a>&lt;/p></description></item><item><title>Docs: Java Lists und Streams Basics</title><link>/docs/java/java-lists-and-streams-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-lists-and-streams-basics/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich weiss, was eine Liste ist&lt;/li>
-&lt;li>Ich weiss, wozu und wie Listen verwendet werden&lt;/li>
-&lt;li>Ich kenne, die wichtigsten Methoden einer Liste&lt;/li>
-&lt;li>Ich kenne die Klasse ArrayList&lt;/li>
-&lt;li>Ich weiss was Streams sind&lt;/li>
-&lt;li>Ich kann Streams für die Iteration über Listen anwenden&lt;/li>
-&lt;li>Ich kenne ein paar wichtige Methoden aus dem Stream Interface&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="einführung-listen">Einführung Listen&lt;/h2>
-&lt;h3 id="was-ist-eine-liste">Was ist eine Liste?&lt;/h3>
-&lt;p>Eine Liste ist in Java ein Behälter (Container), der Objekte in einer festen Abfolge enthält.&lt;br>
-Im Gegensatz zu Arrays, deren Elemente im Speicher in fortlaufender Reihenfolge abgelegt werden und
-deren Grösse aus diesem Grund ohne Neuinitialisierung unveränderbar ist,
-können Listen flexible Mengen an Objekten enthalten.&lt;/p>
-&lt;p>Das &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html">List-Interface&lt;/a> ist ein Teil des Java-Collections-Frameworks.
-Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface umsetzen (mehr dazu in einem späteren Modul).&lt;/p>
-&lt;h3 id="die-wichtigsten-merkmale-einer-liste">Die wichtigsten Merkmale einer Liste&lt;/h3>
-&lt;ul>
-&lt;li>Eine Liste kann nur Objekte, bzw. die Referenzen auf diesen Objekten, beinhalten (es gibt also keine Liste mit primitiven Datentypen)&lt;/li>
-&lt;li>Eine Liste kann nur Objekte eines Typs beinhalten. Dieser Typ wird zur Zeit der Definition der Liste bestimmt.&lt;/li>
-&lt;li>Die Elemente innerhalb einer Liste haben eine feste Reihenfolge. Dies bedeutet, dass eine Iteration über eine Liste immer zu einem gleichen Ergebnis mit der gleichen Reihenfolge führt.&lt;/li>
-&lt;li>Duplikate innerhalb einer Liste sind erlaubt (dasselbe Objekt darf mehrmals in einer Liste vorkommen)&lt;/li>
-&lt;li>Eine Liste kann auch &amp;ldquo;null&amp;rdquo;-Elemente beinhalten&lt;/li>
-&lt;li>Die Indizes in einer Liste reichen immer von 0 bis Anzahl Elemente in der Liste minus 1.&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="die-wichtigsten-methoden-einer-liste">Die wichtigsten Methoden einer Liste&lt;/h3>
-&lt;p>Das List-Interface stellt mehrere Methoden zur Verfügung, welche von implementierenden Klassen dann - angepasst an ihre Struktur und ihren Zweck - umgesetzt werden.&lt;br>
-Nachfolgend werden einige Methoden und deren Zweck aufgelistet.
-Dort wo &amp;ldquo;E&amp;rdquo; steht, geht es um einen generischen Typ, welcher stellvertretend für einen konkreten Objekttyp steht (Generics werden in einem separaten Modul behandelt).&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e">* Returns: the number of elements in this list.
-&lt;/span>&lt;span style="color:#75715e">*/&lt;/span>
-&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E e&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Removes the first occurrence of the specified element from
-&lt;/span>&lt;span style="color:#75715e"> * this list, if it is present.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Returns: true if this list contains the specified element.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="die-klasse-arraylist">Die Klasse ArrayList&lt;/h2>
-&lt;p>ArrayList gehört zu der Liste der Standardsammelklassen und ist im java.util-Packet definiert.&lt;br>
-Die ArrayList ist eine Klasse, die zum Erstellen eines dynamischen Arrays verwendet wird. Dieses Array beinhaltet Objektreferenzen und kann bei Bedarf grösser werden.&lt;br>
-Die ArrayList kombiniert die Vorteile eines Arrays (z.B. schneller Zugriff auf einem bestimmten Element) mit den Vorteilen einer Liste (kann dynamisch wachsen) und ist deswegen sehr nützlich um eine Sammlung von Objekten, derer Grösse nicht bekannt ist, zu bearbeiten.
-Die ArrayList setzt alle Methoden (obligatorische wie auch optionale) des List-Interfaces um.&lt;/p>
-&lt;h3 id="arbeiten-mit-einer-arraylist---beispiel">Arbeiten mit einer ArrayList - Beispiel&lt;/h3>
-&lt;p>Um mit ArrayList arbeiten zu können, muss die Klasse zuerst importiert werden.&lt;br>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.ArrayList&lt;span style="color:#f92672">;&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Nun kann eine Variable definiert und erzeugt werden. Der Syntax hier wird in späteren Modulen erklärt,
-hier reicht es zu wissen, dass innerhalb der spitzigen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstellen einer ArrayList für String-Objekte.
-&lt;/span>&lt;span style="color:#75715e">// Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Sobald eine Liste erzeugt wurde, können beliebig viel Objekte dazu hinzugefügt oder daraus entfernt werden.&lt;br>
-Über die Liste kann mit einer Schleife iteriert werden oder auch mit einem Index direkt auf ein Element zugegriffen werden.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Elemente hinzufügen
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;World&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World, !]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;There are %d words in our list\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? true
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;The second word is: %s\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: World
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String word&lt;span style="color:#f92672">:&lt;/span> words&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Entfernt das dritte Element aus der Liste
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? false
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="streams">Streams&lt;/h2>
-&lt;p>Mit Java 8 ist zum java.util-Package des JDK das Stream-API hinzugekommen.
-Das API ist eine Erweiterung des Java-Collection-Frameworks mit einer Schnittstelle im Stil der funktionalen Programmierung.
-Mit dem Stream-API wurden mächtige Möglichkeiten zur Durchführung von Operationen auf Arrays und Listen eingeführt.&lt;br>
-In diesem Teil wird erklärt was Streams sind und wie sie für Operationen auf Arrays und Listen eingesetzt werden können.&lt;/p>
-&lt;h3 id="was-ist-ein-stream">Was ist ein Stream?&lt;/h3>
-&lt;p>Streams des Interface java.util.stream.Stream&lt;T> stellen Ströme von Referenzen dar, die es erlauben,
-verkettete Operationen auf diesen Referenzen nacheinander oder parallel auszuführen.
-Die Daten, die durch die Referenzen repräsentiert werden, werden durch den Stream selbst nicht verändert.&lt;/p>
-&lt;p>Ein Stream ist also keine Datenstruktur für sich. Er erhält sein Input aus andere Datenstrukturen wie
-z.B. Arrays oder Listen und führt die gewünschte Operationen auf diesem Input aus
-ohne die ursprüngliche Datenstruktur zu verändern.&lt;/p>
-&lt;p>Streams stellen Operationen zur Verfügung, welche in zwei Kategorien unterteilt werden können:&lt;/p>
-&lt;ul>
-&lt;li>Intermediäre Operationen, welche am Ende der Verarbeitung in einem Stream resultieren (und somit eine weitere, verkettete Verarbeitung ermöglichen).&lt;/li>
-&lt;li>Terminale Operationen, welche am Ende der Verarbeitung einen Wert zurückliefern (und somit den Stream beenden)&lt;/li>
-&lt;/ul>
-&lt;p>Ist ein Stream einmal beendet, so können keine weiteren Operationen auf ihm ausgeführt werden.&lt;/p>
-&lt;p>Folgendes Bild illustriert die Arbeitsweise von Streams
-&lt;img src="../java-lists-and-streams-basics/Streams.png" alt="Java Streams" title="Java Streams">&lt;/p>
-&lt;h3 id="erzeugung-von-streams">Erzeugung von Streams&lt;/h3>
-&lt;p>Wie erwähnt, können Streams aus Arrays, Listen und anderen Collections oder aber auch aus Einzelobjekten erzeugt werden.&lt;/p>
-&lt;h4 id="erzeugung-aus-elementes-eines-arrays">Erzeugung aus Elementes eines Arrays&lt;/h4>
-&lt;p>Aus den Elementen eines Arrays kann ein Stream mithilfe der Klasse Arrays aus dem java.util-Package wie folgt erzeugt werden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> numbers &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>1&lt;span style="color:#f92672">,&lt;/span> 2&lt;span style="color:#f92672">,&lt;/span> 3&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">};&lt;/span>
-IntStream numbersStream &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>numbers&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// IntStream ist eine Spezialisierung von Stream, welche die Verabeitung von primitive int-Werte ermöglicht
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-String&lt;span style="color:#f92672">[]&lt;/span> greeting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Streams&amp;#34;&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
-Stream&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> greetingStream &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Anhand der spitzigen Klammern wird ersichtlich, welche Objekttypen durch den Stream verarbeitet werden
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="erzeugung-aus-elementen-einer-liste--eine-collection">Erzeugung aus Elementen einer Liste / eine Collection&lt;/h4>
-&lt;p>Wenn eine Liste bereits vorhanden ist, kann die Methode stream() aufgerufen werden um einen Stream
-aus den Elementen der Liste zu erzeugen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> stringList &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;List&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Stream&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-Stream&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> stream2 &lt;span style="color:#f92672">=&lt;/span> stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="funktionale-interfaces">Funktionale Interfaces&lt;/h3>
-&lt;p>Streams arbeiten mit sog. Lambda-Expressions (diese werden im nächsten Abschnitt erläutert).
-Damit klar wird, was Lambda-Expressions sind, müssen wir zuerst funktionale Interfaces verstehen.&lt;/p>
-&lt;p>Ein funktionales Interface (functional interface) ist ein Interface, welche eine einzige abstrakte Methode beinhaltet.
-Das heisst, solche Interfaces stellen eine einzige Funktionalität zur Verfügung.&lt;/p>
-&lt;p>Vor Java 8 mussten funktionale Interfaces, wie alle andere Interfaces auch durch Klassen implementiert werden
-oder es musste für sie eine innere, anonyme Klasse definiert werden.
-Seit Java 8 kann eine Lambda-Expression statt eine anonyme Klasse verwendet werden, um die einzige Methode des funktionalen Interfaces umzusetzen.&lt;/p>
-&lt;h3 id="lambda-expressions">Lambda Expressions&lt;/h3>
-&lt;p>Lambda Expressions (Lambda-Ausdrücke) wurden in Java 8 eingeführt, um vor allem folgende Funktionalität zur Verfügung zu stellen:&lt;/p>
-&lt;ul>
-&lt;li>Funktionen als Argumente für Methode zu ermöglichen&lt;/li>
-&lt;li>Funktionen erstellen, welche zu keiner Klasse gehören&lt;/li>
-&lt;li>Eine Lambda-Expression kann wie ein Objekt weitergereicht und erst später ausgeführt werden.
-Da Lambda-Expressions oft in Streams verwendet werden, wird hier aufgezeigt wie Lambdas aussehen und wie sie verwendet werden können.&lt;/li>
-&lt;/ul>
-&lt;p>Lambda-Ausdrücke in Java sind quasi Methoden ohne Namen. Sie bestehen aus folgenden Elementen:&lt;/p>
-&lt;ul>
-&lt;li>eine Liste von formalen Parametern. Mehrere Parameter werden durch ein Komma separiert und mit Klammern umrundet.
-(keine Parameter werden mit leeren Klammern dargestellt, einen Parameter muss nicht zwingend mit Klammern umrundet werden)&lt;/li>
-&lt;li>ein Pfeil-Token -&amp;gt;&lt;/li>
-&lt;li>ein Funktionsrumpf. Wenn der Funktionsrumpf mehrzeilig ist, wird er mit geschweiften Klammern umrundet.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;img src="../java-lists-and-streams-basics/lambda-expression.jpg" alt="Lambda Expressions" title="Lambda-Expressions">&lt;/p>
-&lt;p>Im Gegensatz zu Methoden werden der Rückgabetyp und Exceptions nicht spezifiziert, sondern vom Compiler inferiert.&lt;/p>
-&lt;p>&lt;strong>Beispiele&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// keine Parameter
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Ich habe kein Parameter&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#75715e">// ein Parameter
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Ich habe einen Parameter erhalten, nämlich: %s&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> word&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#75715e">// zwei oder mehr Parameter
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">,&lt;/span> age&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;My name is &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> name &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; and I am &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> age &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;years old&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#75715e">// Funktionsrumpf mehrzeilig
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">,&lt;/span> age&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;My name is &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> name&lt;span style="color:#f92672">);&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;I am &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> age &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;years old&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="method-reference">Method Reference&lt;/h3>
-&lt;p>Eine Methoden-Referenz ist die verkürzte Schreibweise einer Lambda-Expression, welche nur einen einzigen Methodenaufruf beinhaltet.
-Die generische Syntax für Methodenreferenz sieht wie folgt aus: Object::method
-Wenn eine Methoden-Referenz verwendet wird, ist es nicht nötig die Argumente für die Methode zu deklarieren.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Lambda-Expression mit einem Methodenaufruf
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#75715e">// Method-Reference Syntax der obigen Lambda-Expression
-&lt;/span>&lt;span style="color:#75715e">// Das Argument (word) muss nicht mitgegeben werden
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="methodenausführung-auf-streams">Methodenausführung auf Streams&lt;/h2>
-&lt;h3 id="die-foreach-methode">Die forEach() Methode&lt;/h3>
-&lt;p>Die &lt;em>forEach(Consumer action)&lt;/em> Methode gehört zu den terminalen Operationen eines Streams.&lt;/p>
-&lt;p>Der Parameter &amp;ldquo;action&amp;rdquo; ist vom Typ &amp;ldquo;Consumer&amp;rdquo;. Dieser Typ repräsentiert eine Operation (eine Funktion),
-welche nur ein einziges Input-Argument akzeptiert und keine Ergebnisse zurückliefert.
-Ein Beispiel für so ein Consumer ist die Methode System.out.println,
-welche maximal ein einziges Objekt als Parameter akzeptiert, dieses Objekt in den Standard-Output ausgibt und &amp;ldquo;void&amp;rdquo; (also kein Ergebnis) zurückliefert.
-Die Methode System.out.println erfüllt also die Bedingungen eines Consumers und kann als Parameter für die &lt;em>forEach()&lt;/em> Methode verwendet werden&lt;/p>
-&lt;p>Die &lt;em>forEach()&lt;/em> Methode kann als Ersatz für einen for-Loop verwendet werden.&lt;/p>
-&lt;p>&lt;strong>Beispiel mit einem Array&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">String&lt;span style="color:#f92672">[]&lt;/span> greeting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Streams&amp;#34;&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
-&lt;span style="color:#75715e">// Hier wid jedes Element des Arrays ausgegeben
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String word &lt;span style="color:#f92672">:&lt;/span> greeting&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;span style="color:#75715e">// Hier wird mithilfe von Streams dasselbe erreicht wie beim for-loop
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">));&lt;/span>
-&lt;span style="color:#75715e">// Und nun noch kürzer mit dem Method-Reference Syntax der obigen Lambda-Expression
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>Beispiel mit einer Liste&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> greetingList &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Stream&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;List&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">// Einmal mit der vollen Syntax der Lambda-Expression
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">));&lt;/span>
-&lt;span style="color:#75715e">// Und einmal mit der verkürzte Variante mittels Method-Reference
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">// Collection, darunter auch Listen, haben selbst eine forEach Methode,
-&lt;/span>&lt;span style="color:#75715e">// welche die gleiche Ergebnisse liefert, wie diejenige vom Stream-Interface
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="die-sorted-methode">Die sorted() Methode&lt;/h3>
-&lt;p>Die &lt;em>sorted()&lt;/em> Methode gehört zu den intermediären Operationen eines Streams.&lt;/p>
-&lt;p>Die Methode liefert ein Stream zurück, worin die Elemente im Stream nach ihrer natürlichen Reihenfolge (natural order) sortiert sind.&lt;/p>
-&lt;p>Die Syntax der Methode ist wie folgt: &lt;em>Stream&lt;T> sorted()&lt;/em>
-wobei T der Typ der Elemente innerhalb des Streams ist&lt;/p>
-&lt;p>&lt;strong>Beispiel mit einem Array&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstelle ein Array mit Strings
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> greeting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;C&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
-&lt;span style="color:#75715e">// Sortiere die Strings nach ihrer natürlichen Reihenfolge (alphabetisch) und
-&lt;/span>&lt;span style="color:#75715e">// gib die sortierten Elementen in der Console wieder aus
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">sorted&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>Beispiel mit einer Liste&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstelle eine Liste mit Zahlen
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> list &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">asList&lt;/span>&lt;span style="color:#f92672">(-&lt;/span>9&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#f92672">-&lt;/span>18&lt;span style="color:#f92672">,&lt;/span> 0&lt;span style="color:#f92672">,&lt;/span> 25&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">// Sortiere die Zahlen nach ihrer natürlichen Reihenfolge (numerisch sortiert) und
-&lt;/span>&lt;span style="color:#75715e">// gib die sortierten Elementen in der Console wieder aus
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">sorted&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="die-collect-methode">Die collect() Methode&lt;/h3>
-&lt;p>Die &lt;em>collect(Collector collector)&lt;/em> Methode ist auch eine terminale Operation auf einem Stream.
-Sie ermöglicht es, die Ergebnisse der Bearbeitung des Streams in einer neuen Collection (List, Map usw.) zu speichern.
-Dies ist nötig, da bei der Bearbeitung des Streams die ursprüngliche Elemente nicht geändert werden können.&lt;/p>
-&lt;p>Der Parameter &lt;em>collector&lt;/em> ist vom Typ &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Collector.html" title="Collector">Collector&lt;/a>.
-Die Aufgabe eines Collectors besteht darin, mehrere Input-Elemente in einem Result-Container zusammenzufassen.
-Zum Beispiel können die Elemente eines Streams in einer Liste &amp;ldquo;gespeichert&amp;rdquo; und zurückgeliefert werden.&lt;/p>
-&lt;p>Um ein Collector zu erzeugen, wird oft die Klasse &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Collectors.html" title="Collectors">Collectors&lt;/a> aus dem &lt;em>java.util.stream&lt;/em> Packet verwendet.
-Diese beinhaltet mehrere öffentliche, statische Methode um Collectors unterschiedlicher Typen (List, Map usw.) erzeugen zu können.&lt;/p>
-&lt;p>&lt;strong>Beispiel&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstelle eine Liste von unsortieren Zahlen
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> unsortedList &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">asList&lt;/span>&lt;span style="color:#f92672">(-&lt;/span>9&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#f92672">-&lt;/span>18&lt;span style="color:#f92672">,&lt;/span> 0&lt;span style="color:#f92672">,&lt;/span> 25&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">// Aus der unstortierte Liste, erstelle eine NEUE, sortierte Liste
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> sortedList &lt;span style="color:#f92672">=&lt;/span> unsortedList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">sorted&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">collect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Collectors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">toList&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// hier wird aus dem sortierten Stream eine neue Liste erstellt
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;span style="color:#75715e">// gib die unsortierte Liste in der Konsole aus (die Original-Liste wurde nicht verändert!)
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>unsortedList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">// gib die sortierte Liste in der Konsole aus
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>sortedList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Labs: Wassermenge</title><link>/labs/java/java-oop/05_wassermenge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-oop/05_wassermenge/</guid><description>
-&lt;p>Schreibe eine Anwendung, welche entscheidet ob ein Damm geöffnet sein muss oder nicht.
-Die Entscheidung wird anhand der Wassermenge, welche in einen See hineinfliesst, verglichen
-mit der Wassermenge, welche aus diesem See wieder herausfliesst, gefällt.&lt;/p>
-&lt;p>Eine Wassermenge&lt;/p>
-&lt;ul>
-&lt;li>hat eine Menge&lt;/li>
-&lt;li>hat eine Einheit&lt;/li>
-&lt;/ul>
-&lt;h4 id="die-anwendung-soll">Die Anwendung soll&lt;/h4>
-&lt;ul>
-&lt;li>Auskunft geben, ob die hineinfliessende Wassermenge gleich ist wie die herausfliessende Wassermenge&lt;/li>
-&lt;li>Den Damm nur dann öffnen, wenn die hineinfliessende Wassermenge grösser ist als die herausfliessende Wassermenge.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;em>Es sollen keine Set Methoden für das Einfügen der Werte verwendet werden!&lt;/em>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/&lt;/a>&lt;/p></description></item></channel></rss>
