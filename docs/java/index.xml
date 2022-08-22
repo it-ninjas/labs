@@ -6326,7 +6326,536 @@ isHungry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9e
 &lt;/div>
 &lt;/div>&lt;p>Somit ist auch dieser Zyklus beendet.&lt;/p>
 &lt;p>Der code wird so stetig weiterentwickelt und neue Funktionalitäten werden auf diese Weise Schritt für Schritt und getestet hinzugefügt.
-Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/java/java-collections/java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/java-collections/</guid><description>
+Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.&lt;/p></description></item><item><title>Docs: Exception Handling</title><link>/docs/java/exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/exception_handling/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kenne die Schlüsselwörter try, catch, finally, throw und throws&lt;/li>
+&lt;li>Ich weiss was &amp;ldquo;Unchecked&amp;rdquo; und &amp;ldquo;Checked&amp;rdquo; Exceptions sind&lt;/li>
+&lt;li>Ich kann auftretende Exceptions abhandeln&lt;/li>
+&lt;li>Ich kann eigene Exceptions definieren und anwenden&lt;/li>
+&lt;li>Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden&lt;/li>
+&lt;li>Ich kenne die beiden Interfaces AutoCloseable und Closeable&lt;/li>
+&lt;/ul>
+&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
+&lt;ul>
+&lt;li>Gute Grundlagenkenntnisse von Java-Anwendungen&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="theorie--einleitung">Theorie / Einleitung&lt;/h2>
+&lt;p>In jeder Applikation kann es zu erwarteten oder unerwarteten Fehlern kommen.
+In Java werden diese Fehler durch den Bereich Exception Handling abgedeckt.
+Im Exception Handling gilt es, durch gezieltes Abhandeln von auftretenden Exceptions, Abstürze der Anwendung zu verhindern.
+Jeder Software-Entwickler muss sich bewusst sein, dass nicht behandelte Exceptions eine Anwendung jederzeit beenden können.&lt;/p>
+&lt;p>In Java unterscheidet man zwischen zwei Arten von Fehlern:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Error&lt;/strong>: das sind nicht reparierbare Laufzeitfehler oder ein Hardware-Problem, welche zum Absturz des Programms führen.&lt;/li>
+&lt;li>&lt;strong>Exception&lt;/strong>: das sind Fehler oder nicht geplante Ereignisse, welche während der Ausführung eines Programms vorkommen und dessen normalen Ablauf stören.&lt;/li>
+&lt;/ul>
+&lt;p>Eine Java-Applikation sollte nicht versuchen &lt;em>Errors&lt;/em> zu &amp;ldquo;fangen&amp;rdquo;, da die meisten Fehler dieser Art
+wegen abnormalen Bedingungen (wie z.B. nicht genügend Speicher) auftreten und unter normalen Bedingungen nicht behoben werden können.&lt;br>
+Exceptions sind hingegen unerwartete Fehler, auf die das Programm reagieren muss.&lt;/p>
+&lt;p>Innerhalb des Java Exception Handling unterscheiden wir zwei Arten von Exceptions:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Unchecked Exceptions&lt;/strong>: das sind Laufzeitfehler und sie werden durch den Compiler nicht erkannt.&lt;/li>
+&lt;li>&lt;strong>Checked Exceptions&lt;/strong>: das sind Fehler, welche vom Compiler zum Zeitpunkt der Kompilierung erkannt werden.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Unchecked Exceptions&lt;/em> sind oft Fehler, welche bei der Implementation übersehen werden.
+Der häufigste Laufzeitfehler ist die NullPointerException. Diese kann erst zur Laufzeit auftreten,
+da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt null sein kann.&lt;br>
+Die einzige Möglichkeit Laufzeitfehler abzuhandeln ist &amp;ldquo;Safe Programming&amp;rdquo;. Das heisst, dass wir während der Implementation
+Prüfungen und sog. &amp;ldquo;Guards&amp;rdquo; im Code einbauen (z.B. prüfen, ob eine Referenz nicht null ist bevor wir darauf zugreifen) um sicherzustellen,
+dass solche Situationen zur Laufzeit nicht auftreten.&lt;/p>
+&lt;p>&lt;em>Checked Exceptions&lt;/em> müssen zum Zeitpunkt der Kompilierung entweder am Ort des Auftretens abgehandelt werden oder
+sie werden an das Objekt weitergereicht, welches die entsprechende Methode aufgerufen hat.
+Damit wird auch die Verantwortung die Exception abzuhandeln an den Aufrufer weitergegeben.&lt;/p>
+&lt;p>Dazu ein kleines Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+PhoneBook phoneBook &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> PhoneBook&lt;span style="color:#f92672">();&lt;/span>
+Person person &lt;span style="color:#f92672">=&lt;/span> phoneBook&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">findByPhoneNumber&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;079 654 32 10&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>person&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getName&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ohne die Implementation der Methode findByPhoneNumber zu kennen, muss ein Software-Entwickler an dieser Stelle
+das zurückgelieferte Objekt vom Typ Person zuerst auf null prüfen.&lt;br>
+Schauen wir uns also die Implementation dieser Methode etwas genauer an:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PhoneBook&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Person&lt;span style="color:#f92672">&amp;gt;&lt;/span> entries &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> Person &lt;span style="color:#a6e22e">findByPhoneNumber&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String number&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Person p&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">entries&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>p&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getPhoneNumber&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">equals&lt;/span>&lt;span style="color:#f92672">(&lt;/span>number&lt;span style="color:#f92672">))&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> p&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie (vielleicht) erwartet liefert die Methode null zurück, falls kein Eintrag mit der gesuchten Nummer gefunden wird.
+Dies führt in der Main-Methode im Codeblock oben auf der letzten Zeile zu einer NullPointerException,
+da die Referenz der Person auf null zeigt. Abhilfe schafft hier ein einfaches If-Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+AddressBook addressBook &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> AddressBook&lt;span style="color:#f92672">();&lt;/span>
+Person person &lt;span style="color:#f92672">=&lt;/span> addressBook&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">findByPhoneNumber&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;079 654 32 10&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>person &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>person&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getName&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Laufzeitfehler kann nun nicht mehr auftreten. Es stellt sich nun die Frage, ob wir mit dieser Lösung zufrieden sein können.&lt;br>
+Im Prinzip müssten wir zumindest informiert werden, wenn keine Person mit dieser Nummer gefunden wird.
+Eine Möglichkeit, dies zu tun ist mittel eines Else-Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+AddressBook addressBook &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> AddressBook&lt;span style="color:#f92672">();&lt;/span>
+Person person &lt;span style="color:#f92672">=&lt;/span> addressBook&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">findByPhoneNumber&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;079 654 32 10&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>person &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>person&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getName&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Es wurde keine Person mit dieser Nummer gefunden!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Eine andere Lösung könnte sein das Null-Object Pattern oder auch ein Optional-Objekt zu verwenden
+und damit ein gültiges Objekt anstelle von null zurückzuliefern.&lt;/p>
+&lt;hr>
+&lt;h2 id="try--catch--finally">try / catch / finally&lt;/h2>
+&lt;p>Um eine Checked Exception abzuhandeln, muss der Block (welcher die Exception erzeugt) innerhalb eines
+try-Blocks angelegt werden. Der abzuhandelnde Exception-Typ wird dabei in den catch-Block geschrieben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code, welcher eine IOException werfen könnte
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>IOException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code für die Abhandlung der IOException
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ein solches Statement kann beliebig viele catch-Blöcke aufweisen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> array &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>2&lt;span style="color:#f92672">];&lt;/span>
+array&lt;span style="color:#f92672">[&lt;/span>3&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 30 &lt;span style="color:#f92672">/&lt;/span> 0&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>ArithmeticException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code für die Abhandlung der ArithmeticException
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>ArrayIndexOutOfBoundsException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code für die Abhandlung der ArrayIndexOutOfBoundsException
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Bei mehreren catch-Blöcken muss die spezifischste Exception stets zuoberst stehen.
+Je weiter unten der catch-Block steht, desto genereller wird die Exception, die abgefangen werden soll.
+Der Grund dafür ist, dass alle Checked Exceptions von der Klasse Exception abgeleitet sind.
+Steht eine allgemeinere Exception weiter oben, so wird der catch-Block der spezifischeren Exception
+weiter unten nicht mehr erreichbar sein.&lt;/p>
+&lt;p>An jeden try-Block (ob mit oder ohne catch-Block) kann zusätzlich ein finally-Block angehängt werden.
+Der finally-Block wird nach der Abhandlung der Exception ausgeführt.&lt;br>
+Wenn kein Exception aufgetreten ist, wird der Code im finally-Block direkt nach dem Code im try-Block ausgeführt.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code, welcher eine IOException werfen könnte
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>IOException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code für die Abhandlung der IOException
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">finally&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code, welcher nach der Abhandlung der Exception ausgeführt werden soll
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie oben erwähnt, kann der catch-Block weggelassen werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code, welcher eine beliebige Exception werfen könnte
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">finally&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Code, welcher nach der Abhandlung der Exception ausgeführt werden soll
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Vorsicht ist geboten bei return-Anweisungen innerhalb von catch- oder finally-Blöcken.
+Da der finally-Block immer zuletzt ausgeführt wird, ist das Statement in diesem Block auch massgebend für die Funktionalität.&lt;/p>
+&lt;hr>
+&lt;h2 id="throw--throws">throw / throws&lt;/h2>
+&lt;p>Wie bereits weiter oben erwähnt, muss eine Exception nicht immer dort abgehandelt werden, wo sie gerade auftreten kann.
+Wenn entschieden wird, die Abhandlung in andere Klassen zu verlagern, so kann mit dem Schlüsselwort throws angegeben werden,
+dass die aufrufende Komponente die Exception abhandeln muss.&lt;/p>
+&lt;p>Dazu ein kurzes Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">EntryForbiddenException&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> Exception &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Saloon&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">checkAge&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> age&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> EntryForbiddenException &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>age &lt;span style="color:#f92672">&amp;lt;&lt;/span> 18&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> EntryForbiddenException&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Saloon saloon &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Saloon&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+saloon&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">checkAge&lt;/span>&lt;span style="color:#f92672">(&lt;/span>15&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>EntryForbiddenException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie wir sehen, wird die Abhandlung in die Main-Methode verlagert.
+Die Weitergabe von Exceptions kann über beliebig viele Stufen erfolgen.&lt;br>
+Wird die Exception jedoch von der &amp;ldquo;obersten&amp;rdquo; Stufe (in diesem Fall die Main-Methode) nicht abgehandelt,
+so wird die Anwendung mit der entsprechenden Exception beendet. Dies passiert, weil niemand die Exception abgehandelt hat.&lt;/p>
+&lt;hr>
+&lt;h2 id="umwandlung-laufzeitfehler-in-checked-exception">Umwandlung Laufzeitfehler in Checked Exception&lt;/h2>
+&lt;p>Mit der Lösung aus dem Beispiel weiter oben können wir nicht wirklich zufrieden sein.&lt;br>
+Anstatt den Rückgabewert der Methode findByPhoneNumber auf null zu prüfen, wählen wir nun einen anderen Ansatz:&lt;br>
+Wir erweitern die Anwendung, sodass die Methode als Rückgabewert keine null-Werte mehr liefert.&lt;br>
+Da wir aber durch den Compiler gezwungen werden einen Rückgabewert zu definieren, bleibt uns nur noch
+die Möglichkeit übrig eine Exception zu werfen.
+Zu diesem Zweck definieren wir zuerst einmal eine entsprechende Exception:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PersonNotFoundException&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> Exception &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Diese Exception wird nun an der entsprechenden Stelle im Sourcecode geworfen.
+Die Methode erhält zudem noch eine Erweiterung mit dem Schlüsselwort throws:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PhoneBook&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Person&lt;span style="color:#f92672">&amp;gt;&lt;/span> entries &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> Person &lt;span style="color:#a6e22e">findByPhoneNumber&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String number&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> PersonNotFoundException &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Person p&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">entries&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>p&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getPhoneNumber&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">equals&lt;/span>&lt;span style="color:#f92672">(&lt;/span>number&lt;span style="color:#f92672">))&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> p&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> PersonNotFoundException&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beim Aufruf der Methode sind wir nun gezwungen, die Exception abzuhandeln:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+AddressBook addressBook &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> AddressBook&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Person person &lt;span style="color:#f92672">=&lt;/span> addressBook&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">findByPhoneNumber&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;079 654 32 10&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>person&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getName&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>PersonNotFoundException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Es wurde keine Person mit dieser Nummer gefunden!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Aus dem ursprünglichen Laufzeitfehler ist nun eine abgehandelte Exception geworden.
+Die Implementation vermeidet, wo immer möglich, die Rückgabe von null-Werten.&lt;/p>
+&lt;hr>
+&lt;h2 id="multi-catch">Multi-Catch&lt;/h2>
+&lt;p>Seit Java 7 gibt es die Möglichkeit für einen sogenannten Multi-Catch.&lt;br>
+Schauen wir uns das folgende Beispiel an:&lt;/p>
+&lt;h4 id="ohne-multi-catch">Ohne Multi-Catch&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Scanner scn &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Scanner&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">in&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> Integer&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">parseInt&lt;/span>&lt;span style="color:#f92672">(&lt;/span>scn&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">nextLine&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>99&lt;span style="color:#f92672">%&lt;/span>n &lt;span style="color:#f92672">==&lt;/span> 0&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>n &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; is a factor of 99&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>ArithmeticException ex&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Arithmetic Exception &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> ex&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>NumberFormatException ex&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Number Format Exception &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> ex&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="mit-multi-catch">Mit Multi-Catch&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Scanner scn &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Scanner&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">in&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> Integer&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">parseInt&lt;/span>&lt;span style="color:#f92672">(&lt;/span>scn&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">nextLine&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>99&lt;span style="color:#f92672">%&lt;/span>n &lt;span style="color:#f92672">==&lt;/span> 0&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>n &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; is a factor of 99&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>ArithmeticException &lt;span style="color:#f92672">|&lt;/span> NumberFormatException ex&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Exception &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> ex&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die beiden Exceptions werden in einem catch-Block zusammengefasst.
+Die Exceptions innerhalb eines Multi-Catch dürfen nicht in einer Vererbungsbeziehung zueinander stehen.
+Der Basistyp muss also unterschiedlich sein.&lt;/p>
+&lt;hr>
+&lt;h2 id="try-with-resources">Try-With-Resources&lt;/h2>
+&lt;p>Ebenfalls seit Java 7 gibt es die Möglichkeit für automatisches Ressourcen-Management.&lt;br>
+Betrachten wir dazu zuerst ein Beispiel ohne automatisches Ressourcen-Management:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> String &lt;span style="color:#a6e22e">readFirstLine&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String path&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+BufferedReader br &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+br &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> BufferedReader&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> FileReader&lt;span style="color:#f92672">(&lt;/span>path&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> br&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">readLine&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>IOException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle or rethrow
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">finally&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>br &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+br&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">close&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>IOException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// ignore
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der finally-Block ist notwendig, um die verwendete Ressource des Buffered-Readers zu schliessen.&lt;br>
+Da beim Schliessen aber eine IOException auftreten kann benötigen wir innerhalb des finally-Blocks
+einen zusätzlichen try-catch-Block.&lt;/p>
+&lt;p>Betrachten wir nun das gleiche Beispiel mit automatischem Ressourcen-Management:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> String &lt;span style="color:#a6e22e">readFirstLine&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String path&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">try&lt;/span> &lt;span style="color:#f92672">(&lt;/span>FileReader fr &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> FileReader&lt;span style="color:#f92672">(&lt;/span>path&lt;span style="color:#f92672">);&lt;/span> BufferedReader br &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> BufferedReader&lt;span style="color:#f92672">(&lt;/span>fr&lt;span style="color:#f92672">))&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> br&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">readLine&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">catch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>IOException e&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// handle or rethrow
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie wir sehen fällt der finally-Block zum Schliessen der Ressourcen komplett weg.&lt;br>
+Die beiden Ressourcen FileReader und BufferedReader werden automatisch geschlossen.
+Dies geschieht im Hintergrund über die Methode close, welche vom Interface AutoCloseable zur Verfügung gestellt wird.&lt;br>
+In einem try-with-resources Statement dürfen also nur Objekte vorliegen, welches das genannte Interface implementieren.&lt;br>
+Das Closeable-Interface mit der gleichen Funktion stellt dabei die Abwärtskompatibilität zu älteren Java-Versionen sicher.&lt;br>
+Grundsätzlich soll das Closeable-Interface für IO Streams verwendet werden, da es mit IOExceptions arbeitet.&lt;/p>
+&lt;p>Das Schliessen der Ressourcen hat stets die Reihenfolge von hinten nach vorne.&lt;br>
+In unserem Beispiel wird also zuerst der BufferedReader geschlossen und danach der FileReader.&lt;br>
+Die Verkettung von Ressourcen innerhalb eines try-with-resources Statements ist zu vermeiden.
+Besser sind separate Deklarationen wie oben gezeigt.&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/java/java-collections/java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/java-collections/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann erklären, was Collections sind.&lt;/li>
@@ -7951,509 +8480,7 @@ Node&lt;span style="color:#f92672">(&lt;/span>Node&lt;span style="color:#f92672"
 &lt;p>Beispiele kommen noch&lt;/p>
 &lt;h3 id="übungen-2">Übungen&lt;/h3>
 &lt;p>Übungen kommen noch&lt;/p>
-&lt;p>Fortsetzung folgt&amp;hellip;&lt;/p></description></item><item><title>Docs: Exception Handling</title><link>/docs/java/exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/exception_handling/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kenne die Schlüsselwörter try, catch, finally, throw und throws&lt;/li>
-&lt;li>Ich weiss was &amp;ldquo;Unchecked&amp;rdquo; und &amp;ldquo;Checked&amp;rdquo; Exceptions sind&lt;/li>
-&lt;li>Ich kann auftretende Exceptions abhandeln&lt;/li>
-&lt;li>Ich kann eigene Exceptions definieren und anwenden&lt;/li>
-&lt;li>Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden&lt;/li>
-&lt;li>Ich kenne die beiden Interfaces AutoCloseable und Closeable&lt;/li>
-&lt;/ul>
-&lt;h4 id="änderungskontrolle">Änderungskontrolle&lt;/h4>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Autor&lt;/th>
-&lt;th>Version&lt;/th>
-&lt;th>Datum&lt;/th>
-&lt;th>Änderungen&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Claudio Zesiger&lt;/td>
-&lt;td>0.1&lt;/td>
-&lt;td>01.09.2020&lt;/td>
-&lt;td>* Initiale Version erstellt&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Claudio Zesiger&lt;/td>
-&lt;td>0.2&lt;/td>
-&lt;td>21.10.2020&lt;/td>
-&lt;td>* Initiale Version abgeschlossen&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
-&lt;ul>
-&lt;li>Gute Grundlagenkenntnisse von Java-Anwendungen&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="theorie--einleitung">Theorie / Einleitung&lt;/h2>
-&lt;hr>
-&lt;p>In jeder Applikation kann es zu erwarteten oder unerwarteten Fehlern kommen. In Java werden diese Fehler durch den Bereich Exception Handling abgedeckt. Im Exception Handling gilt es, durch gezieltes Abhandeln von auftretenden Exceptions, Abstürze der Anwendung zu verhindern. Jeder Software-Entwickler muss sich bewusst sein, dass nicht behandelte Exceptions eine Anwendung jederzeit beenden können. Ebenfalls schlimme Auswirkungen in Form von &amp;ldquo;Memory Leaks&amp;rdquo; haben nicht geschlossene Streams.&lt;/p>
-&lt;p>Innerhalb des Java Exception Handling unterscheiden wir zwei Arten von Exceptions:&lt;/p>
-&lt;ul>
-&lt;li>Unchecked Exceptions&lt;/li>
-&lt;li>Checked Exceptions&lt;/li>
-&lt;/ul>
-&lt;p>Unchecked Exceptions sind Laufzeitfehler und werden durch den Compiler nicht erkannt. Bei der Implementation werden diese Fehler häufig übersehen. Der häufigste Laufzeitfehler ist die NullPointerException. Diese kann erst zur Laufzeit auftreten, da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt null sein kann. Die einzige Möglichkeit Laufzeitfehler abzuhandeln ist &amp;ldquo;Safe Programming&amp;rdquo;. Während der Implementation prüfen wir also beispielsweise, ob eine Referenz nicht null ist bevor wir darauf zugreifen.&lt;/p>
-&lt;p>Checked Exceptions hingegen werden durch den Compiler erkannt und müssen zum Zeitpunkt der Kompilierung entweder am Ort des Auftretens abgehandelt werden oder sie werden an das Objekt weitergereicht, welches die entsprechende Methode aufgerufen hat. Damit wird auch die Verantwortung die Exception abzuhandeln an den Aufrufer weitergegeben.&lt;/p>
-&lt;p>Dazu ein kleines Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static void main(String\[\] args) {
-PhoneBook phoneBook = new PhoneBook();
-Person person = phoneBook.findByPhoneNumber(&amp;#34;079 654 32 10&amp;#34;);
-System.out.println(person.getName());
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Ohne die Implementation der Methode findByPhoneNumber zu kennen, muss ein Software-Entwickler an dieser Stelle das zurückgelieferte Objekt vom Typ Person zuerst auf null prüfen.
-Schauen wir uns also die Implementation dieser Methode etwas genauer an:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class PhoneBook {
-private List&amp;lt;Person&amp;gt; entries = new ArrayList&amp;lt;&amp;gt;();
-public Person findByPhoneNumber(String number) {
-for (Person p: this.entries) {
-if (p.getPhoneNumber().equals(number)) {
-return p;
-}
-}
-return null;
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wie (vielleicht) erwartet liefert die Methode null zurück, falls kein Eintrag mit der gesuchten Nummer gefunden wird. Dies führt in der Main-Methode im Codeblock oben auf der letzten Zeile zu einer NullPointerException, da die Referenz der Person auf null zeigt. Abhilfe schafft hier ein einfaches If-Statement.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static void main(String\[\] args) {
-AddressBook addressBook = new AddressBook();
-Person person = addressBook.findByPhoneNumber(&amp;#34;079 654 32 10&amp;#34;);
-if (person != null) {
-System.out.println(person.getName());
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Der Laufzeitfehler kann nun nicht mehr auftreten. Es stellt sich nun die Frage, ob wir mit dieser Lösung zufrieden sein können. Im Prinzip müssten wir zumindest noch ein Else-Statement ergänzen, damit wir informiert werden wenn keine Person mit dieser Nummer gefunden wird.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static void main(String\[\] args) {
-AddressBook addressBook = new AddressBook();
-Person person = addressBook.findByPhoneNumber(&amp;#34;079 654 32 10&amp;#34;);
-if (person != null) {
-System.out.println(person.getName());
-} else {
-System.out.println(&amp;#34;Es wurde keine Person mit dieser Nummer gefunden!&amp;#34;);
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Eine andere Lösung könnte sein das Null-Object Pattern zu verwenden und damit ein gültiges Objekt anstelle von null zurückzuliefern.&lt;/p>
-&lt;hr>
-&lt;h2 id="try--catch--finally">try / catch / finally&lt;/h2>
-&lt;p>Um eine Checked Exception abzuhandeln, muss der Block (welcher die Exception erzeugt) innerhalb eines try-Blocks angelegt werden. Der abzuhandelnde Exception-Typ wird dabei in den catch-Block geschrieben.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">try {
-// Code, welcher eine IOException werfen könnte
-} catch (IOException e) {
-// Code für die Abhandlung der IOException
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Ein solches Statement kann beliebig viele catch-Blöcke aufweisen&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">try {
-int[] array = new int[2];
-array[3] = 30 / 0;
-} catch (ArithmeticException e) {
-// Code für die Abhandlung der ArithmeticException
-} catch (ArrayIndexOutOfBoundsException e) {
-// Code für die Abhandlung der ArrayIndexOutOfBoundsException
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Bei mehreren catch-Blöcken muss die spezifischste Exception stets zuoberst stehen. Je weiter unten der catch-Block steht, desto genereller wird die Exception, die abgefangen werden soll. Der Grund dafür ist, dass alle Checked Exceptions von der Klasse Exception abgeleitet sind.&lt;br>
-Steht eine allgemeinere Exception weiter oben, so wird der catch-Block der spezifischeren Exception weiter unten nicht mehr erreichbar.&lt;/p>
-&lt;p>An jeden try-Block (ob mit oder ohne catch-Block) kann zusätzlich ein finally-Block angehängt werden. Dieser Block wird nach der Abhandlung der Exception ausgeführt.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">try {
-// Code, welcher eine IOException werfen könnte
-} catch (IOException e) {
-// Code für die Abhandlung der IOException
-} finally {
-// Code, welcher nach der Abhandlung der Exception ausgeführt werden soll
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wie oben erwähnt, kann der catch-Block weggelassen werden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">try {
-// Code, welcher eine beliebige Exception werfen könnte
-} finally {
-// Code, welcher nach der Abhandlung der Exception ausgeführt werden soll
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Vorsicht ist geboten bei return-Anweisungen innerhalb von catch- oder finally-Blöcken. Da der finally-Block immer zuletzt ausgeführt wird, ist das Statement in diesem Block auch massgebend für die Funktionalität.&lt;/p>
-&lt;hr>
-&lt;h2 id="throw--throws">throw / throws&lt;/h2>
-&lt;p>Wie bereits weiter oben erwähnt, muss eine Exception nicht immer dort abgehandelt werden wo sie gerade auftreten kann. Wenn sich der Entwickler also entscheidet die Abhandlung in andere Klassen zu verlagern, so kann er mit dem Schlüsselwort throws angeben, dass die aufrufende Komponente die Exception abhandeln muss.&lt;/p>
-&lt;p>Dazu ein kurzes Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class EntryForbiddenException extends Exception {
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class Saloon {
-public void checkAge(int age) throws EntryForbiddenException {
-if (age &amp;lt; 18) {
-throw new EntryForbiddenException();
-}
-// ...
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class Main {
-public static void main(String\[\] args) {
-Saloon saloon = new Saloon();
-try {
-saloon.checkAge(15);
-} catch (EntryForbiddenException e) {
-// ...
-}
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wie wir sehen, wird die Abhandlung in die Main-Methode verlagert. Die Weitergabe von Exceptions kann über beliebig viele Stufen erfolgen. Wird die Exception jedoch von der &amp;ldquo;obersten&amp;rdquo; Stufe (in diesem Fall die Main-Methode) nicht abgehandelt, so wird die Anwendung mit der entsprechenden Exception beendet. Dies passiert, weil niemand die Exception abgehandelt hat.&lt;/p>
-&lt;hr>
-&lt;h2 id="umwandlung-laufzeitfehler-in-checked-exception">Umwandlung Laufzeitfehler in Checked Exception&lt;/h2>
-&lt;p>Mit der Lösung aus dem Beispiel weiter oben können wir nicht wirklich zufrieden sein. Anstatt den Rückgabewert der Methode findByPhoneNumber auf null zu prüfen, wählen wir nun einen anderen Ansatz: Wir erweitern die Anwendung, so dass die Methode als Rückgabewert keine null-Werte mehr liefert. Da wir aber durch den Compiler gezwungen werden einen Rückgabewert zu definieren, bleibt uns nur noch die Möglichkeit übrig eine Exception zu werfen.
-Zu diesem Zweck definieren wir zuerst einmal eine entsprechende Exception:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class PersonNotFoundException extends Exception {
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Diese Exception wird nun an der entsprechenden Stelle im Sourcecode geworfen. Die Methode erhält zudem noch eine Erweiterung mit dem Schlüsselwort throws.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public class PhoneBook {
-private List&amp;lt;Person&amp;gt; entries = new ArrayList&amp;lt;&amp;gt;();
-public Person findByPhoneNumber(String number) throws PersonNotFoundException {
-for (Person p: this.entries) {
-if (p.getPhoneNumber().equals(number)) {
-return p;
-}
-}
-throw new PersonNotFoundException();
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Beim Aufruf der Methode sind wir nun gezwungen, die Exception abzuhandeln.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static void main(String[] args) {
-AddressBook addressBook = new AddressBook();
-try {
-Person person = addressBook.findByPhoneNumber(&amp;#34;079 654 32 10&amp;#34;);
-System.out.println(person.getName());
-} catch (PersonNotFoundException e) {
-System.out.println(&amp;#34;Es wurde keine Person mit dieser Nummer gefunden!&amp;#34;);
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Aus dem ursprünglichen Laufzeitfehler ist nun eine abgehandelte Exception geworden. Die Implementation vermeidet wo immer möglich die Rückgabe von null-Werten.&lt;/p>
-&lt;hr>
-&lt;h2 id="multi-catch">Multi-Catch&lt;/h2>
-&lt;p>Seit Java 7 gibt es die Möglichkeit für einen sogenannten Multi-Catch.&lt;/p>
-&lt;p>Schauen wir uns das folgende Beispiel an:&lt;/p>
-&lt;h3 id="ohne-multi-catch">Ohne Multi-Catch&lt;/h3>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static void main(String[] args) {
-Scanner scn = new Scanner(System.in);
-try {
-int n = Integer.parseInt(scn.nextLine());
-if (99%n == 0) {
-System.out.println(n + &amp;#34; is a factor of 99&amp;#34;);
-}
-} catch (ArithmeticException ex) {
-System.out.println(&amp;#34;Arithmetic Exception &amp;#34; + ex);
-} catch (NumberFormatException ex) {
-System.out.println(&amp;#34;Number Format Exception &amp;#34; + ex);
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="mit-multi-catch">Mit Multi-Catch&lt;/h3>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static void main(String[] args) {
-Scanner scn = new Scanner(System.in);
-try {
-int n = Integer.parseInt(scn.nextLine());
-if (99%n == 0) {
-System.out.println(n + &amp;#34; is a factor of 99&amp;#34;);
-}
-} catch (ArithmeticException | NumberFormatException ex) {
-System.out.println(&amp;#34;Exception &amp;#34; + ex);
-}
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die beiden Exceptions werden in einem catch-Block zusammengefasst.
-Die Exceptions innerhalb eines Multi-Catch dürfen nicht in einer Vererbungsbeziehung zueinander stehen. Der Basistyp muss also unterschiedlich sein.&lt;/p>
-&lt;hr>
-&lt;h2 id="try-with-resources">Try-With-Resources&lt;/h2>
-&lt;p>Ebenfalls seit Java 7 gibt es die Möglichkeiten für automatisches Ressourcen-Management.
-Betrachten wir dazu zuerst ein Beispiel ohne automatisches Ressourcen-Management:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static String readFirstLine(String path) {
-BufferedReader br = null;
-try {
-br = new BufferedReader(new FileReader(path));
-return br.readLine();
-} catch (IOException e) {
-// handle or rethrow
-} finally {
-try {
-if (br != null) {
-br.close();
-}
-} catch (IOException e) {
-// ignore
-}
-}
-return &amp;#34;&amp;#34;;
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Der finally-Block ist notwendig, um die verwendete Ressource des Buffered-Readers zu schliessen. Da beim Schliessen aber eine IOException auftreten kann benötigen wir innerhalb des finally-Blocks einen zusätzlichen try-catch-Block.&lt;/p>
-&lt;p>Betrachten wir nun das gleiche Beispiel mit automatischem Ressourcen-Management:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">public static String readFirstLine(String path) {
-try (FileReader fr = new FileReader(path); BufferedReader br = new BufferedReader(fr)) {
-return br.readLine();
-} catch (IOException e) {
-// handle or rethrow
-}
-return &amp;#34;&amp;#34;;
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wie wir sehen fällt der finally-Block zum Schliessen der Ressourcen komplett weg. Die beiden Ressourcen FileReader und BufferedReader werden automatisch geschlossen. Dies geschieht im Hintergrund über die Methode close, welche vom Interface AutoCloseable zur Verfügung gestellt wird. In einem try-with-resources Statement dürfen also nur Objekte vorliegen, welches das genannte Interface implementieren. Das Closeable-Interface mit der gleichen Funktion stellt dabei die Abwärtskompatibilität zu älteren Java-Versionen sicher. Grundsätzlich soll das Closeable-Interface für IO Streams verwendet werden, da es mit IOExceptions arbeitet.&lt;/p>
-&lt;p>Das Schliessen der Ressourcen hat stets die Reihenfolge von hinten nach vorne. In unserem Beispiel wird also zuerst der BufferedReader geschlossen und danach der FileReader. Die Verkettung von Ressourcen innerhalb eines try-with-resources Statements ist zu vermeiden. Besser sind separate Deklarationen wie oben gezeigt.&lt;/p></description></item><item><title>Docs: Maven und Continuous Integration</title><link>/docs/java/maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/maven/</guid><description>
+&lt;p>Fortsetzung folgt&amp;hellip;&lt;/p></description></item><item><title>Docs: Maven und Continuous Integration</title><link>/docs/java/maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/maven/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kenne die Grundlagen von Maven&lt;/li>
