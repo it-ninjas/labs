@@ -2997,7 +2997,134 @@ NOT_FOUND
 &lt;/li>
 &lt;li>Jede Test-Methode prüft, dass alle Methoden eines Mocks/Spy&amp;rsquo;s welche aufgerufen werden müssen, auch aufgerufen wurden.&lt;/li>
 &lt;li>Jede Test-Methode prüft, dass alle Methoden eines Mocks/Spy&amp;rsquo;s welche NICHT aufgerufen werden sollen, auch nicht aufgerufen wurden.&lt;/li>
-&lt;/ul></description></item><item><title>Exams: Objektorientierte Programmierung Exam</title><link>/exams/java/java-oop/oopexam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-oop/oopexam/</guid><description>
+&lt;/ul></description></item><item><title>Challenges: Objektorientierte Programmierung Challenge</title><link>/challenges/java/java-oop/01_oop_challenge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/challenges/java/java-oop/01_oop_challenge/</guid><description>
+&lt;h3 id="hogwarts-sorting-hat-system">Hogwarts Sorting Hat System&lt;/h3>
+&lt;p>Hogwarts ist bekanntlich die beste Schule für Hexerei und Zauberei.
+Alle Hogwarts Schüler:innen werden vor Beginn des ersten Schuljahres gemäss ihren
+Charakter-Eigenschaften und Fähigkeiten in einem der vier Hogwarts &amp;ldquo;Häuser&amp;rdquo; eingeteilt.
+Die Einteilung in die Häuser ist die Aufgabe des &amp;ldquo;sprechenden Hutes&amp;rdquo; (engl. &amp;ldquo;Sorting Hat&amp;rdquo;).&lt;/p>
+&lt;p>Der sprechende Hut ist mittlerweile mehr als 1000 Jahre alt und soll in den verdienten Ruhestand gehen.
+Dazu ist die Digitalisierung auch bei Hogwarts endlich angekommen und der Schulmeister möchte dich beauftragen
+ein Sorting-Hat System zu bauen, welche die Aufgabe des sprechenden Hutes übernimmt und neue Schüler:innen
+in eines der vier Hogwarts-Häuser aufgrund von bestimmten Kriterien und Eigenschaften einteilt.&lt;/p>
+&lt;h4 id="die-hogwarts-häuser-und-ihre-eigenschaftenmerkmale">Die Hogwarts Häuser und ihre Eigenschaften/Merkmale&lt;/h4>
+&lt;p>Die vier Hogwarts Häuser - Gryffindor, Hufflepuff, Ravenclaw und Slytherin - haben bestimmte Merkmale
+und Eigenschaften, welche dem sprechenden Hut dabei helfen, die Schüler:innen in das richtige Haus einzuteilen.&lt;/p>
+&lt;p>Die folgende Tabelle listet ein paar wichtige Merkmale für jedes Haus auf:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Haus&lt;/th>
+&lt;th>Wichtigste Charakter-Eigenschaften&lt;/th>
+&lt;th>Hausfarben&lt;/th>
+&lt;th>Haustier&lt;/th>
+&lt;th>Element&lt;/th>
+&lt;th>Gründer:in&lt;/th>
+&lt;th>Anzahl Schüler:innen&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Gryffindor&lt;/td>
+&lt;td>Tapferkeit, Kühnheit, Courage, Ritterlichkeit, Entschlossenheit&lt;/td>
+&lt;td>Gold, Scharlachrot&lt;/td>
+&lt;td>Löwe&lt;/td>
+&lt;td>Feuer&lt;/td>
+&lt;td>Godric Gryffindor&lt;/td>
+&lt;td>31&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hufflepuff&lt;/td>
+&lt;td>Fleiss, Hingabe, Geduld, Loyalität, Fairplay&lt;/td>
+&lt;td>Gelb, Schwarz&lt;/td>
+&lt;td>Dachs&lt;/td>
+&lt;td>Erde&lt;/td>
+&lt;td>Helga Hufflepuff&lt;/td>
+&lt;td>15&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Ravenclaw&lt;/td>
+&lt;td>Intelligenz, Wissen, Neugier, Kreativität, geistige Wendigkeit&lt;/td>
+&lt;td>Blau, Bronze&lt;/td>
+&lt;td>Adler&lt;/td>
+&lt;td>Luft&lt;/td>
+&lt;td>Rowena Ravenclaw&lt;/td>
+&lt;td>33&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Slytherin&lt;/td>
+&lt;td>Ehrgeiz, Führerschaft, Selbsterhaltung, List, Einfallsreichtum&lt;/td>
+&lt;td>Smaragdgrün, Silber&lt;/td>
+&lt;td>Schlange&lt;/td>
+&lt;td>Wasser&lt;/td>
+&lt;td>Salazar Slytherin&lt;/td>
+&lt;td>48&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="einteilungsalgorithmus">Einteilungsalgorithmus&lt;/h4>
+&lt;p>Der sprechende Hut teilt angehende Hogwarts Schüler:innen in eines der vier Hogwarts-Häuser
+anhand von bestimmten Kriterien ein. Diese Kriterien sind:&lt;/p>
+&lt;ul>
+&lt;li>Charakter-Eigenschaften der Person, verglichen mit den Charakter-Eigenschaften, welche dem/der Gründer:in des Hauses wichtig waren&lt;/li>
+&lt;li>Lieblingsfarbe, verglichen mit den Hausfarben&lt;/li>
+&lt;li>Verwandtschaft mit einem ehemaligen Mitglied eines der Häuser&lt;/li>
+&lt;li>Das Wunschhaus der Person, welche eingeteilt werden soll&lt;/li>
+&lt;/ul>
+&lt;p>Der/die Schüler:in wird zu jedem Kriterium befragt (mehrere Antworten sind bei den meisten Kriterien möglich!).
+Die Antworten zu jedem Kriterium werden bewertet, sodass am Schluss für jedes Haus eine Gesamtbewertung vorliegt.
+Der/die Schüler:in wird in das Haus mit dem höchsten Wert eingeteilt.&lt;/p>
+&lt;p>Aber vorsicht, es gelten auch folgende Bestimmungen, welche die Auswertung des gewählten Hauses beeinflussen:&lt;/p>
+&lt;ul>
+&lt;li>Nicht alle Kriterien/Werte werden beim Einteilungsentscheid gleich gewichtet (die Gewichtung wird später erläutert).&lt;/li>
+&lt;li>Wenn zwei Häuser die gleiche Bewertung erhalten, wird das Haus mit der niedrigeren Anzahl Schüler:innen ausgewählt.&lt;/li>
+&lt;li>Das Wunschhaus wird bei der Gesamtbeurteilung manchmal berücksichtigt und manchmal nicht (mehr dazu später)&lt;/li>
+&lt;/ul>
+&lt;h4 id="gewichtung-der-kriterien">Gewichtung der Kriterien&lt;/h4>
+&lt;p>Folgend findest du die Bestimmungen und Gewichtungen, welche bei der Auswertung des passenden Hauses eingehalten werden müssen.
+Die Gesamtauswertung eines Hauses besteht aus der Summe aller Punkte, welche bei jedem Kriterium für dieses Haus berechnet worden sind.&lt;/p>
+&lt;h5 id="charakter-eigenschaften">Charakter-Eigenschaften&lt;/h5>
+&lt;p>Es sind insgesamt 20 Charakter-Eigenschaften möglich (siehe Tabelle der Hogwarts-Häuser hier oben).
+Der/die Benutzer:in muss mindestens drei Charakter-Eigenschaften auswählen, welche zu ihm/ihr passen.&lt;/p>
+&lt;p>Per Haus, hat jede Charakter-Eigenschaft ein Gewicht zwischen 1 und 20.
+Die wichtigsten Charakter-Eigenschaften eines Hauses erhalten die höchsten Gewichtswerte für dieses Haus.
+Die anderen Charakter-Eigenschaften bekommen niedrigere Werte.
+Bei der Auswertung werden für jedes Haus die Gewichtswerte für die eingegebenen Eigenschaften zusammenaddiert.&lt;/p>
+&lt;h5 id="farben">Farben&lt;/h5>
+&lt;p>In Hogwarts gibt es vier Hausfarben-Paare, also insgesamt acht Hausfarben (siehe Tabelle der Hogwarts-Häuser hier oben).
+Der/die Benutzer:in gibt seine/ihre Lieblingsfarbe ein.
+Wenn die Farbe, mit einer Hausfarbe übereinstimmt, erhält dieses Haus zusätzliche 10 Punkte.&lt;/p>
+&lt;h5 id="verwandtschaft">Verwandtschaft&lt;/h5>
+&lt;p>Eine Person kann mehrere Verwandte haben, welche in Hogwarts studiert haben und entsprechend
+einem Haus eingeteilt wurden.&lt;br>
+Die Anzahl Verwandte, welche einem Haus eingeteilt wurden, gibt diesem Haus einen zusätzlichen Wert,
+welcher der Fakultät dieser Anzahl Verwandten entspricht.&lt;/p>
+&lt;p>&lt;em>Hinweis:&lt;/em> eine Person kann mehrere Verwandte haben, welche in unterschiedliche Häuser eingeteilt worden waren&amp;hellip;&lt;/p>
+&lt;h5 id="wunschhaus">Wunschhaus&lt;/h5>
+&lt;p>Der/die Benutzer:in kann sein/ihr Wunschhaus eingeben.
+Das Wunschhaus &amp;ldquo;schenkt&amp;rdquo; dem gewählten Haus eine zufällige Anzahl Punkte zwischen 5 und 10 zur
+Gesamtbeurteilung aber nur wenn der/die Benutzer:in auch eine der Hausfarben dieses Hauses als Lieblingsfarbe ausgewählt hat.&lt;/p>
+&lt;h4 id="anforderungen-an-das-system">Anforderungen an das System&lt;/h4>
+&lt;ul>
+&lt;li>Verwende viele verschiedene Klassen, um dein System zu modellieren&lt;/li>
+&lt;li>Erzeuge ein gutes Abbild der Aufgabenstellung&lt;/li>
+&lt;li>Die &lt;em>main&lt;/em> Methode soll nur zur Interaktion mit dem/der Benutzer:in dienen.&lt;/li>
+&lt;li>Skizziere dein Modell, sodass du es danach auch erklären kannst&lt;/li>
+&lt;li>Teil der Aufgabe ist es, bestimmte Prinzipien kennenzulernen und zu verstehen. Wende entsprechend bei der Umsetzung folgende Prinzipien an:
+&lt;ul>
+&lt;li>Single Responsibility Principle&lt;/li>
+&lt;li>Immutable Objects&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Bonus Anforderungen&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Wenn sinnvoll, wende Generics an&lt;/li>
+&lt;li>Verwende, wenn möglich, Streams statt Loops&lt;/li>
+&lt;li>Füge ein Einteilungskriterium hinzu&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Wenn du an der Challenge teilnehmen willst, dann musst du die Aufgabe alleine lösen.
+Die Lösung vom Pult-Nachbar interessiert uns also nicht.&lt;/em>&lt;/p></description></item><item><title>Exams: Objektorientierte Programmierung Exam</title><link>/exams/java/java-oop/oopexam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-oop/oopexam/</guid><description>
 &lt;h2 id="cøøp">CØØP&lt;/h2>
 &lt;p>Unsere Supermarkt-Kette heisst CØØP.
 CØØP ist ein Supermarkt welcher an vielen Orten in der Schweiz vertreten ist.
@@ -7323,176 +7450,4 @@ Auch für diese Methode definiert die &lt;a href="https://docs.oracle.com/en/jav
 &lt;h3 id="zusatzauftrag-eine-andere-api-anbinden">Zusatzauftrag: Eine andere API anbinden&lt;/h3>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Versuche eine anderes API/Backend anzubinden und etwas auf einer Website anzuzeigen.&lt;/p>
 &lt;h3 id="früher-war-alles-besser">Früher war alles besser?&lt;/h3>
-&lt;p>Die &lt;code>fetch&lt;/code>-Funktion hat Webrequest stark vereinfacht. Früher durftest du dich mit XML HTTP Requests herumschlagen. Aber siehe selbst: &lt;a href="https://www.w3schools.com/xml/xml_http.asp">https://www.w3schools.com/xml/xml_http.asp&lt;/a>&lt;/p></description></item><item><title>Docs: HTML Formulare</title><link>/docs/web/html_css/05_forms/</link><pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/html_css/05_forms/</guid><description>
-&lt;h2 id="wieso-html-formulare">Wieso HTML-Formulare?&lt;/h2>
-&lt;p>Die Benutzer deiner Webseite möchten oder sollen Daten eingeben können, z.B. für ein Kontakt-Formular oder eine Login-Seite. HTML-Formulare ermöglichen genau das, auch ohne JavaScript.&lt;/p>
-&lt;h2 id="html-input-element">HTML-Input-Element&lt;/h2>
-&lt;p>Bevor wir uns HTML-Formulare genauer anschauen, wollen wir zuerst einen Blick auf Input-Elemente werfen, die das Eingeben von Daten überhaupt ermöglichen.&lt;/p>
-&lt;p>Beginnen wir mit einer einfachen TextBox:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">Was ist dein Vorname?
-&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;firstname&amp;#34;&lt;/span>/&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Probiere alle Beispiele immer selbst aus. Du hast gesehen, wie einfach eine TextBox in HTML eingebunden werden kann.&lt;/p>
-&lt;p>Das &lt;code>type&lt;/code>-Attribut definiert, um was für eine Art von Input-Element es sich handelt. &lt;code>text&lt;/code> steht für eine gewöhnliche TextBox. Das zweite Attribut kannst du im Moment noch ignorieren.&lt;/p>
-&lt;h2 id="label-für-input-elemente">Label für Input-Elemente&lt;/h2>
-&lt;p>Vor der TextBox haben wir einen Text (&amp;ldquo;Was ist dein Vorname&amp;rdquo;). Dieser Text wird auch &amp;ldquo;Label&amp;rdquo; genannt. Bei einer guten Webseite wird zudem die TextBox ausgewählt, wenn der User auf das Label klickt (nicht nur beim Klick auf die TextBox). Diese Funktionalität wollen wir hinzufügen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">label&lt;/span>&amp;gt;Was ist dein Vorname?&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;firstname&amp;#34;&lt;/span> /&amp;gt;&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Nun haben wir die gewünschte Funktionalität hinzufügen können. Aber was genau haben wir hier gemacht?&lt;/p>
-&lt;p>Wir haben das Label als Label definiert (da im &lt;code>label&lt;/code>-Element). Wenn wir ein Input-Element in einem Label hinzufügen, dann wird bei einem Klick auf dieses Label automatisch dieses Input-Element fokussiert.&lt;/p>
-&lt;p>Nun sieht das noch ein bisschen unübersichtlich aus. Das können wir besser! Zum Beispiel so:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">label&lt;/span> &lt;span style="color:#a6e22e">for&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;firstname&amp;#34;&lt;/span>&amp;gt;Was ist dein Vorname?&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;firstname&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;firstname&amp;#34;&lt;/span> /&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Abgesehen davon, dass das Input-Element nicht mehr im Label ist, ist der grosse Unterschied:&lt;/p>
-&lt;ul>
-&lt;li>dass das Input-Element nun ein &lt;code>id&lt;/code>-Attribut hat&lt;/li>
-&lt;li>und dass der Label mit dem &lt;code>for&lt;/code>-Attribut darauf referenziert.&lt;/li>
-&lt;/ul>
-&lt;p>Fassen wir zusammen, weshalb wir das &lt;code>label&lt;/code>-Element verwenden:&lt;/p>
-&lt;ul>
-&lt;li>Beim Klick auf das Label wird das entsprechende Input-Element ausgewählt.&lt;/li>
-&lt;li>Beim Klick in das entsprechende Input-Element würde ein Screen-Reader den Namen des Labels laut vorlesen, (falls verwendet).&lt;/li>
-&lt;li>Und ausserdem kann man später die Labels so einfacher stylen mit CSS.&lt;/li>
-&lt;/ul>
-&lt;h2 id="weitere-input-elemente">Weitere Input-Elemente&lt;/h2>
-&lt;p>In HTML gibt es sehr viele weitere Input-Elemente. Eine grössere Liste findest du hier: &lt;a href="https://www.w3schools.com/html/html_form_input_types.asp">https://www.w3schools.com/html/html_form_input_types.asp&lt;/a>&lt;/p>
-&lt;p>Kennen solltest du sicher die folgenden:&lt;/p>
-&lt;ul>
-&lt;li>button&lt;/li>
-&lt;li>checkbox&lt;/li>
-&lt;li>date&lt;/li>
-&lt;li>email&lt;/li>
-&lt;li>file&lt;/li>
-&lt;li>hidden&lt;/li>
-&lt;li>number&lt;/li>
-&lt;li>password&lt;/li>
-&lt;li>radio&lt;/li>
-&lt;/ul>
-&lt;p>Bitte schaue dir diese Elemente auf der obengenannten Seite rasch an. Du solltest wissen, wie diese Elemente aussehen und dass es sie gibt.&lt;/p>
-&lt;h2 id="formulare">Formulare&lt;/h2>
-&lt;p>Nun solltest du im Stande sein, UI-Elemente (UI = User Interface -&amp;gt; Benutzerschnittstelle) mit HTML auf einer Seite anzuzeigen. Jetzt wäre es schön, wenn diese Daten auch irgendwie verwendet werden könnten.&lt;/p>
-&lt;p>Theoretisch könntest du mit der Programmiersprache JavaScript direkt darauf zugreifen. Im Moment wollen wir aber bei HTML bleiben. Was wir mit HTML machen können, ist, die Werte an ein Backend (=Server) zu schicken.&lt;/p>
-&lt;p>Als Backend verwenden wir die folgende URL: &lt;a href="https://www.w3schools.com/action_page.php">https://www.w3schools.com/action_page.php&lt;/a>. Das ist eine spezielle Seite: sie zeigt die Daten an, die wir ihr schicken.&lt;/p>
-&lt;p>Folgender Code zeigt ein Formular, das eine E-Mail und ein Boolean beim Klick auf &amp;ldquo;Übermitteln&amp;rdquo; an das Backend schickt&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">form&lt;/span> &lt;span style="color:#a6e22e">action&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://www.w3schools.com/action_page.php&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;get&amp;#34;&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">label&lt;/span> &lt;span style="color:#a6e22e">for&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;email&amp;#34;&lt;/span>&amp;gt;Email:&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;email&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;email&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;email&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">required&lt;/span> /&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">br&lt;/span> /&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;checkbox&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;interested&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;interested&amp;#34;&lt;/span> /&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">label&lt;/span> &lt;span style="color:#a6e22e">for&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;interested&amp;#34;&lt;/span>&amp;gt;Newsletter abonnieren&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">br&lt;/span> /&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;submit&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Übermitteln&amp;#34;&lt;/span> /&amp;gt;
-&amp;lt;/&lt;span style="color:#f92672">form&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Entscheidend ist hier das &lt;code>&amp;lt;form&amp;gt;&lt;/code>-Tag. Das &lt;code>action&lt;/code>-Attribut legt fest, wo die Daten hingeschickt werden. Die &lt;code>method&lt;/code> legt fest, welche HTTP Request Method verwendet wird (GET oder POST). Bist du dir bei den Methoden nicht mehr so sicher, dann schaue bitte das &amp;ldquo;REST&amp;rdquo;-Kapitel hier noch einmal an: &lt;a href="https://labs.it-ninjas.ch/docs/java/spring_introduction/#625-rest">https://labs.it-ninjas.ch/docs/java/spring_introduction/#625-rest&lt;/a>&lt;/p>
-&lt;p>Bei Formularen verwendet man meistens entweder GET oder POST. Der grosse Unterschied zwischen beiden Methoden ist, dass bei GET die Daten in der URL mitgegeben wird, wobei bei POST die Daten ein bisschen besser versteckt im HTTP Request Body mitgeschickt werden. Verschickst du ein Passwort, solltest du lieber POST verwenden, weil sonst das Passwort womöglich im Browser in der URL-Box einsehbar sein könnte. Die zu verwendende Methode wird meistens vom Backend festgelegt. Unser Backend unterstützt beide Methoden.&lt;/p>
-&lt;p>Wichtig für das Formular ist, dass es einen &lt;code>submit&lt;/code>-Button besitzt. Dieser Submit-Button löst das Senden der Daten an die angegebene Url (&lt;code>action&lt;/code>) mit der entsprechenden HTTP Request Method (&lt;code>method&lt;/code>) aus. Probiere dieses Formular einmal aus. Du wirst sehen, dass etwas wie Folgendes an den Server übermittelt wird:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">email=hello@world.com&amp;amp;interested=on
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Daten werden also als Text übermittelt. Die einzelnen Felder werden jeweils mit&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">key=value
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>übermittelt und mit einem &amp;ldquo;&amp;amp;&amp;rdquo; miteinander kombiniert. Der &lt;code>key&lt;/code> stammt jeweils vom &lt;code>name&lt;/code>-Attribut der Input-Elemente.&lt;/p>
-&lt;p>Im oben gezeigten Beispiel haben wir bereits eine kleine Validierung (Überprüfung der Eingaben) integriert:&lt;/p>
-&lt;ul>
-&lt;li>Einerseits haben wir mit dem &lt;code>required&lt;/code>-Attribut festgelegt, dass die E-Mail-Box nicht leer sein darf beim Übermitteln.&lt;/li>
-&lt;li>Anderseits verbietet &lt;code>type=&amp;quot;email&amp;quot;&lt;/code> das Senden, wenn etwas anderes als eine E-Mail-Adresse eingegeben wird. Aus diesem Grund verwenden wir lieber &lt;code>type=&amp;quot;email&amp;quot;&lt;/code> als &lt;code>type=&amp;quot;text&amp;quot;&lt;/code> für E-Mail-Adressen, &lt;code>type=&amp;quot;tel&amp;quot;&lt;/code> für Telefonnummern und &lt;code>type=&amp;quot;date&amp;quot;&lt;/code> für ein Datum.&lt;/li>
-&lt;/ul>
-&lt;h3 id="ein-komplexeres-beispiel">Ein komplexeres Beispiel&lt;/h3>
-&lt;p>Um zu zeigen, wie einfach Input-Elemente verwendet werden könnten, kannst du folgendes Beispiel ausprobieren:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;Login&amp;lt;/&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">form&lt;/span> &lt;span style="color:#a6e22e">action&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://www.w3schools.com/action_page.php&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;get&amp;#34;&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">label&lt;/span>&amp;gt;email: &amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;email&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;your-email&amp;#34;&lt;/span> /&amp;gt;&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt; &amp;lt;&lt;span style="color:#f92672">br&lt;/span> /&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">label&lt;/span> &lt;span style="color:#a6e22e">for&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;pw&amp;#34;&lt;/span>&amp;gt;password:&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt; &amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;password&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;your-password&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;pw&amp;#34;&lt;/span> /&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">br&lt;/span> /&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">label&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;checkbox&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;stay&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;yes&amp;#34;&lt;/span> /&amp;gt;Stay logged in.&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;Favorite Language?&amp;lt;/&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-        &amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;radio&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;html&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;fav_language&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;HTML&amp;#34;&lt;/span>&amp;gt;
-        &amp;lt;&lt;span style="color:#f92672">label&lt;/span> &lt;span style="color:#a6e22e">for&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;html&amp;#34;&lt;/span>&amp;gt;HTML&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">br&lt;/span>&amp;gt;
-        &amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;radio&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;css&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;fav_language&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;CSS&amp;#34;&lt;/span>&amp;gt;
-        &amp;lt;&lt;span style="color:#f92672">label&lt;/span> &lt;span style="color:#a6e22e">for&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;css&amp;#34;&lt;/span>&amp;gt;CSS&amp;lt;/&lt;span style="color:#f92672">label&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">br&lt;/span>&amp;gt;
-    &amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;submit&amp;#34;&lt;/span> /&amp;gt;
-&amp;lt;/&lt;span style="color:#f92672">form&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="aufgabe">Aufgabe&lt;/h3>
-&lt;p>Nun bist du an der Reihe! Entwickle eine Registrierungsseite. Auf dieser Seite soll man mindestens folgendes angeben müssen:&lt;/p>
-&lt;ul>
-&lt;li>Name&lt;/li>
-&lt;li>Email&lt;/li>
-&lt;li>Gewünschtes Passwort&lt;/li>
-&lt;li>Mögliche Interessen (mittels Checkboxen)&lt;/li>
-&lt;li>Geburtsdatum&lt;/li>
-&lt;li>Lieblingsfarbe&lt;/li>
-&lt;li>Geschlecht (mittels Radiobuttons)&lt;/li>
-&lt;li>Handynummer&lt;/li>
-&lt;/ul>
-&lt;p>Als Backend kannst du &amp;ldquo;&lt;a href="https://www.w3schools.com/action_page.php%22">https://www.w3schools.com/action_page.php&amp;quot;&lt;/a> (wie im vorherigen Beispiel) verwenden. Schaue nach dem Klick an, wie die Daten übermittelt worden sind. Wie sieht die URL im Browser aus? Variere die HTTP Request Method.&lt;/p>
-&lt;p>Zeige deine Lösung dann einem Coach.&lt;/p></description></item></channel></rss>
+&lt;p>Die &lt;code>fetch&lt;/code>-Funktion hat Webrequest stark vereinfacht. Früher durftest du dich mit XML HTTP Requests herumschlagen. Aber siehe selbst: &lt;a href="https://www.w3schools.com/xml/xml_http.asp">https://www.w3schools.com/xml/xml_http.asp&lt;/a>&lt;/p></description></item></channel></rss>
