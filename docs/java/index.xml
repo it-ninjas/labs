@@ -1725,6 +1725,9 @@ i&lt;span style="color:#f92672">++;&lt;/span>
 &lt;li>Ich kenne die Zugriffsmodifikatoren &amp;lsquo;public&amp;rsquo;, &amp;lsquo;private&amp;rsquo; und &amp;lsquo;protected&amp;rsquo;&lt;/li>
 &lt;li>Ich weiss, dass Instanzvariablen immer mit dem Schlüsselwort &amp;lsquo;private&amp;rsquo; deklariert werden&lt;/li>
 &lt;li>Ich kenne die Methoden equals() und hashCode() und weiss unter welchen Umständen und wie ich diese überschreiben soll&lt;/li>
+&lt;li>Ich weiss was ein Enum ist und wann es benötigt wird&lt;/li>
+&lt;li>Ich kann Enums sinnvoll einsetzen&lt;/li>
+&lt;li>Ich kann Methoden und Konstruktoren in Enums anwenden&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="einführung">Einführung&lt;/h2>
@@ -2585,7 +2588,244 @@ Auch für diese Methode definiert die &lt;a href="https://docs.oracle.com/en/jav
 &lt;li>&lt;strong>Zusammenhang equals&lt;/strong>: Zwei Objekte, die gemäss equals() gleich sind, müssen den gleichen Hashwert liefern.&lt;/li>
 &lt;li>&lt;strong>Zusammenhang not-equals&lt;/strong>: Zwei Objekte die gemäss equals() verschieden sind, müssen nicht zwingend unterschiedliche Hashwerte liefern. Grundsätzlich wäre es aber besser für die Performanz, wenn verschiedene Objekte auch verschiedene Hashwerte liefern würden.&lt;/li>
 &lt;/ul>
-&lt;p>In der Regel entscheiden wir uns aufgrund von fachlichen Gegebenheiten für die Überschreibung der Methode &lt;em>equals()&lt;/em>. Die Überschreibung von &lt;em>hashCode()&lt;/em> resultiert daraus als Konsequenz der Bedingung &amp;ldquo;Zusammenhang equals&amp;rdquo;.&lt;/p></description></item><item><title>Docs: Java Lists und Streams Basics</title><link>/docs/java/java-lists-and-streams-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-lists-and-streams-basics/</guid><description>
+&lt;p>In der Regel entscheiden wir uns aufgrund von fachlichen Gegebenheiten für die Überschreibung der Methode &lt;em>equals()&lt;/em>. Die Überschreibung von &lt;em>hashCode()&lt;/em> resultiert daraus als Konsequenz der Bedingung &amp;ldquo;Zusammenhang equals&amp;rdquo;.&lt;/p>
+&lt;h2 id="enums">Enums&lt;/h2>
+&lt;p>Enums (kurz für &amp;ldquo;enumeration&amp;rdquo;, zu Deutsch: Aufzählung) bieten die Möglichkeit, vordefinierte Konstanten zusammen zu gruppieren.
+Enums werden dann verwendet, wenn alle mögliche Werte zur Kompilierzeit bekannt sind (z.B. alle Wochentage, alle Planeten im Sonnensystem usw.).&lt;/p>
+&lt;p>In Java sind Aufzählungstypen als Klassen realisiert und die definierten Werte sind als Objekte implementiert.
+Daraus ergeben sich folgenden nützlichen Eigenschaften:&lt;/p>
+&lt;ul>
+&lt;li>Enums können Konstruktoren, Instanzvariablen und Instanz-Methoden beinhalten&lt;/li>
+&lt;li>Der Name der Enum-Werte kann mithilfe der toString-Methode (oder mit dem Keywort &lt;em>this&lt;/em>) im Klartext ausgegeben werden.&lt;/li>
+&lt;li>Mithilfe des &amp;ldquo;==&amp;quot;-Operators kann auf Gleichheit geprüft werden.&lt;/li>
+&lt;li>Enumerations können in switch-Anweisungen verwendet werden.&lt;/li>
+&lt;li>Mithilfe der values-Methode wird ein Array zurückgegeben, das alle Elemente der Enumeration enthält. In Verbindung mit der erweiterten for-Schleife (for-each) können die Elemente sehr einfach durchlaufen werden.&lt;/li>
+&lt;/ul>
+&lt;p>Obwohl Java Enums als Klassen realisiert werden, müssen sie nicht mit &lt;em>new&lt;/em> instanziiert werden.
+Im Gegensatz zu Klassen können Java-Enums weder erweitert werden noch von anderen Klassen erben.&lt;/p>
+&lt;h3 id="enums-definieren">Enums definieren&lt;/h3>
+&lt;p>Enums können innerhalb oder ausserhalb einer Klasse definiert werden (nicht aber innerhalb einer Methode!).
+Um ein Enum zu definieren, wird das Java-Schlüsselwort &lt;em>enum&lt;/em> verwendet.&lt;/p>
+&lt;p>Die erste Zeile(n) innerhalb der Enum-Definition soll eine kommagetrennte Liste von Konstanten beinhalten (in Java per Konvention mit Grossbuchstaben geschrieben).
+Danach werden allfällige Variablen, Methoden und Konstruktoren definiert.&lt;/p>
+&lt;p>Jede Enum-Konstante ist implizit &lt;em>&lt;strong>public static final&lt;/strong>&lt;/em>.
+Weil es &lt;em>static&lt;/em> ist, kann über den Enum-Namen darauf zugegriffen werden.
+Weil es &lt;em>final&lt;/em> ist, kann es nicht erweitert werden.&lt;/p>
+&lt;h4 id="beispiel-definition-ausserhalb-einer-klasse">Beispiel: Definition ausserhalb einer Klasse&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">enum&lt;/span> Weekday &lt;span style="color:#f92672">{&lt;/span>
+MONDAY&lt;span style="color:#f92672">,&lt;/span> TUESDAY&lt;span style="color:#f92672">,&lt;/span> WEDNESDAY&lt;span style="color:#f92672">,&lt;/span> THURSDAY&lt;span style="color:#f92672">,&lt;/span> FRIDAY&lt;span style="color:#f92672">,&lt;/span> SATURDAY&lt;span style="color:#f92672">,&lt;/span> SUNDAY
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DailyPlanner&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">dailyMood&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Weekday weekday&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">switch&lt;/span> &lt;span style="color:#f92672">(&lt;/span>weekday&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">case&lt;/span> MONDAY&lt;span style="color:#f92672">:&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;I don&amp;#39;t like Mondays&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">break&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">case&lt;/span> FRIDAY&lt;span style="color:#f92672">:&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Thank God it&amp;#39;s Friday&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">break&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">case&lt;/span> SATURDAY&lt;span style="color:#f92672">:&lt;/span>
+&lt;span style="color:#66d9ef">case&lt;/span> SUNDAY&lt;span style="color:#f92672">:&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;There aren&amp;#39;t enough days in the weekend&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">break&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">default&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Some Midweek days feel like Mondays when I wish the were Fridays&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">break&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+dailyMood&lt;span style="color:#f92672">(&lt;/span>Weekday&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">MONDAY&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="beispiel-definition-innerhalb-einer-klasse">Beispiel: Definition innerhalb einer Klasse&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DailyPlanner&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">enum&lt;/span> Weekday &lt;span style="color:#f92672">{&lt;/span>
+MONDAY&lt;span style="color:#f92672">,&lt;/span> TUESDAY&lt;span style="color:#f92672">,&lt;/span> WEDNESDAY&lt;span style="color:#f92672">,&lt;/span> THURSDAY&lt;span style="color:#f92672">,&lt;/span> FRIDAY&lt;span style="color:#f92672">,&lt;/span> SATURDAY&lt;span style="color:#f92672">,&lt;/span> SUNDAY
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;I like &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> Weekday&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">SATURDAY&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; and &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> Weekday&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">SUNDAY&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; the best&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="enum-mit-einem-konstruktor">Enum mit einem Konstruktor&lt;/h3>
+&lt;p>Ein Enum-Konstruktor wird für jeder Enum-Konstante während dem Klassenladen des Enums ausgeführt.
+Es ist unmöglich Enum-Objekte explizit zu erzeugen. Darum kann ein Enum-Konstruktor auch nicht direkt aufgerufen werden.&lt;/p>
+&lt;h4 id="beispiel-enum-mit-einem-konstruktor">Beispiel: Enum mit einem Konstruktor&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">enum&lt;/span> Weekday &lt;span style="color:#f92672">{&lt;/span>
+MONDAY&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">),&lt;/span> TUESDAY&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">),&lt;/span> WEDNESDAY&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">),&lt;/span> THURSDAY&lt;span style="color:#f92672">(&lt;/span>4&lt;span style="color:#f92672">),&lt;/span> FRIDAY&lt;span style="color:#f92672">(&lt;/span>5&lt;span style="color:#f92672">),&lt;/span> SATURDAY&lt;span style="color:#f92672">(&lt;/span>6&lt;span style="color:#f92672">),&lt;/span> SUNDAY&lt;span style="color:#f92672">(&lt;/span>7&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">final&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> dayNumber&lt;span style="color:#f92672">;&lt;/span>
+Weekday&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Konstruktor für Tag &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">toString&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; wird ausgeführt. Das ist der &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">dayNumber&lt;/span>&lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;. Tag in der Woche&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestDays&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Weekday monday &lt;span style="color:#f92672">=&lt;/span> Weekday&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">MONDAY&lt;/span>&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// Output:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Konstruktor für Tag MONDAY wird ausgeführt. Das ist der 1. Tag in der Woche
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Konstruktor für Tag TUESDAY wird ausgeführt. Das ist der 2. Tag in der Woche
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Konstruktor für Tag WEDNESDAY wird ausgeführt. Das ist der 3. Tag in der Woche
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Konstruktor für Tag THURSDAY wird ausgeführt. Das ist der 4. Tag in der Woche
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Konstruktor für Tag FRIDAY wird ausgeführt. Das ist der 5. Tag in der Woche
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Konstruktor für Tag SATURDAY wird ausgeführt. Das ist der 6. Tag in der Woche
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Konstruktor für Tag SUNDAY wird ausgeführt. Das ist der 7. Tag in der Woche
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>monday&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: MONDAY
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="enum-mit-methoden">Enum mit Methoden&lt;/h3>
+&lt;p>Ein Enum kann konkrete wie auch abstrakte Methoden beinhalten. Wenn ein Enum eine abstrakte Methode beinhaltet,
+muss jede Instanz (also jede Konstante) dieses Enums diese Methode umsetzen (mehr Information über abstrakten Methoden findest du im Modul OOD).&lt;/p>
+&lt;h4 id="beispiel-enum-mit-konkreten-und-abstrakten-methoden">Beispiel: Enum mit konkreten und abstrakten Methoden&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">enum&lt;/span> Color &lt;span style="color:#f92672">{&lt;/span>
+RED &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Umsetzung der abstrakten Methode für die Farbe RED
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">colorPoem&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Roses are red&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">},&lt;/span>
+VIOLET &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Umsetzung der abstrakten Methode für die Farbe VIOLET
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">colorPoem&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Violets are blue&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">};&lt;/span>
+&lt;span style="color:#75715e">// Konkrete Methode, welche für alle Werte im Enum, dasselbe tut
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">generalColorInfo&lt;/span>&lt;span style="color:#f92672">(){&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Everyday color is a great color!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abstrakte Methode, welche von jedem Wert im Enum umgesetzt werden muss
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">abstract&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">colorPoem&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Test&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Color violet &lt;span style="color:#f92672">=&lt;/span> Color&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">VIOLET&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+violet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">generalColorInfo&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Output: Everyday color is a great color!
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> violet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">colorPoem&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Output: Violets are blue
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+Color red &lt;span style="color:#f92672">=&lt;/span> Color&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">RED&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+red&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">generalColorInfo&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Output: Everyday color is a great color!
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> red&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">colorPoem&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Output: Roses are red
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: Java Lists und Streams Basics</title><link>/docs/java/java-lists-and-streams-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-lists-and-streams-basics/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss, was eine Liste ist&lt;/li>
