@@ -4959,7 +4959,1335 @@ Von Aussen will man lediglich dem Student ein Kurs zuweisen können und alle Inf
 &lt;li>Die Attribute und damit der Zustand einer Klasse bzw. eines Objektes sind vor &amp;ldquo;fremden&amp;rdquo; Zugriff geschützt (Data-Hiding)&lt;/li>
 &lt;li>Die Klasse hat eine öffentliche API, welche von Benutzer der Klasse verwendet werden können. Somit ist auch klar definiert, was die Aufgabe dieser Klasse ist.&lt;/li>
 &lt;li>Die öffentliche API einer Klasse ermöglicht das Verbergen von Umsetzungsdetails. Somit haben interne Strukturänderungen dieser Klasse keinen Einfluss auf den Code des Benutzers&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Testing</title><link>/docs/java/java-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-testing/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Maven und Continuous Integration</title><link>/docs/java/maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/maven/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kenne die Grundlagen von Maven&lt;/li>
+&lt;li>Ich kann Maven lokal konfigurieren&lt;/li>
+&lt;li>Ich kann im Artifactory Abhängigkeiten suchen und diese verwenden&lt;/li>
+&lt;li>Ich kenne die Grundlagen von Project Object Models (pom)&lt;/li>
+&lt;li>Ich kenne die wichtigsten Maven Befehle und kann diese auf der Kommandozeile anwenden&lt;/li>
+&lt;li>Ich kann die Abhängigkeiten meiner Applikationen mit Maven verwalten&lt;/li>
+&lt;li>Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern&lt;/li>
+&lt;li>Ich kann den Begriff Continuous Integration erklären&lt;/li>
+&lt;li>Ich kenne die Komponenten der Deployment-Pipeline und deren Aufgaben&lt;/li>
+&lt;/ul>
+&lt;h2 id="maven">Maven&lt;/h2>
+&lt;h3 id="allgemeine-informationen">Allgemeine Informationen&lt;/h3>
+&lt;p>Apache Maven ist ein Build-Management Tool. Von einer einzelnen Datei aus, kann Maven den Build eines Projektes steuern.
+Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Der Build eines Projektes kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte Plattform reichen.&lt;/p>
+&lt;p>Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:&lt;/p>
+&lt;ul>
+&lt;li>Eine Maven-Installation, entweder separat oder Built-In wie beispielsweise mit IntelliJ&lt;/li>
+&lt;li>Eine POM-Datei pro Projekt oder Modul (es handelt sich um eine XML-Datei)&lt;/li>
+&lt;li>Ein zentrales Maven-Repository&lt;/li>
+&lt;li>Ein lokales Maven-Repository&lt;/li>
+&lt;li>Eine Konfigurationsdatei mit dem Namen settings.xml&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="installation">Installation&lt;/h3>
+&lt;p>Die Installation von Apache Maven wurde idealerweise bereits durchgeführt. Falls nicht, kann Maven hier heruntergeladen werden:
+&lt;a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi&lt;/a>, beim Herunterladen das Binary auswählen (nicht die Source).&lt;/p>
+&lt;hr>
+&lt;h3 id="pomxml">pom.xml&lt;/h3>
+&lt;p>Der Aufbau eines POM kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem umfangreichen Beispiel.
+Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses POM nicht alle Inhalte erklären kann, es dient nur als erstes Beispiel.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="color:#75715e">&amp;lt;!-- (1) Header --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">project&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span>
+&lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">modelVersion&lt;/span>&amp;gt;4.0.0&amp;lt;/&lt;span style="color:#f92672">modelVersion&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- (2) Angaben zum Artefakt --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;ch.sbb.interviewtool&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;interviewtool-backend&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;0.0.1-SNAPSHOT&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">packaging&lt;/span>&amp;gt;jar&amp;lt;/&lt;span style="color:#f92672">packaging&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- (3) Angaben zum Parent-Projekt --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">parent&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-parent&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;2.2.4.RELEASE&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">relativePath&lt;/span>/&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">parent&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- (4) Properties --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">properties&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">project.build.sourceEncoding&lt;/span>&amp;gt;UTF-8&amp;lt;/&lt;span style="color:#f92672">project.build.sourceEncoding&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">java.version&lt;/span>&amp;gt;1.8&amp;lt;/&lt;span style="color:#f92672">java.version&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">maven.build.timestamp.format&lt;/span>&amp;gt;yyyy-MM-dd HH:mm&amp;lt;/&lt;span style="color:#f92672">maven.build.timestamp.format&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">timestamp&lt;/span>&amp;gt;${maven.build.timestamp}&amp;lt;/&lt;span style="color:#f92672">timestamp&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">properties&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- (5) Abhängigkeiten --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">dependencies&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- Spring Boot --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-web&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-web-services&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-security&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-data-jpa&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-actuator&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- Spring --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-webmvc&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- Lombok --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.projectlombok&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;lombok&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;1.18.6&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- Datenbank --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;mysql&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;mysql-connector-java&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;8.0.20&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- Unit- und Integrationstests --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;com.h2database&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;h2&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;test&amp;lt;/&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-test&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;test&amp;lt;/&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.junit.jupiter&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;junit-jupiter-engine&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;test&amp;lt;/&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-test&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;test&amp;lt;/&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">dependencies&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- (6) Build-Informationen --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">build&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">plugins&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-maven-plugin&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.apache.maven.plugins&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;maven-compiler-plugin&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">configuration&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">compilerVersion&lt;/span>&amp;gt;1.8&amp;lt;/&lt;span style="color:#f92672">compilerVersion&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">source&lt;/span>&amp;gt;1.8&amp;lt;/&lt;span style="color:#f92672">source&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">target&lt;/span>&amp;gt;1.8&amp;lt;/&lt;span style="color:#f92672">target&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">configuration&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">plugins&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">build&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- (7) Auslieferung --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;mvn&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;https://bin.sbb.ch/artifactory/cca.mvn/&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">snapshotRepository&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;mvn&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;https://bin.sbb.ch/artifactory/cca.mvn/&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">snapshotRepository&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- (8) Entwickler-Informationen --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">developers&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">developer&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;U000000&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">name&lt;/span>&amp;gt;Vorname Name&amp;lt;/&lt;span style="color:#f92672">name&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">email&lt;/span>&amp;gt;vorname.name@sbb.ch&amp;lt;/&lt;span style="color:#f92672">email&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">organization&lt;/span>&amp;gt;SBB&amp;lt;/&lt;span style="color:#f92672">organization&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">organizationUrl&lt;/span>&amp;gt;https://www.sbb.ch&amp;lt;/&lt;span style="color:#f92672">organizationUrl&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">roles&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">role&lt;/span>&amp;gt;Software Architect&amp;lt;/&lt;span style="color:#f92672">role&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">role&lt;/span>&amp;gt;Lead Developer&amp;lt;/&lt;span style="color:#f92672">role&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">roles&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">developer&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">developers&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">project&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="abschnitt-1">Abschnitt 1&lt;/h4>
+&lt;p>Der Header einer POM-Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.&lt;/p>
+&lt;h4 id="abschnitt-2">Abschnitt 2&lt;/h4>
+&lt;p>Die Angaben zum Artefakt enthalten die folgenden Informationen:&lt;/p>
+&lt;ul>
+&lt;li>Gruppen-ID: Normalerweise eine umgekehrte URL, also beispielsweise ch.sbb.interviewtool. Darin sollte der Projektname enthalten sein&lt;/li>
+&lt;li>Artefakt-ID: Der Name des Projekts oder der Komponente&lt;/li>
+&lt;li>Version: Die momentane Version des Projekts, diese wird später durch Releases verändert&lt;/li>
+&lt;li>Paketierung: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR)&lt;/li>
+&lt;/ul>
+&lt;p>Bei der Versionierung nutzt Maven die folgenden Standards:&lt;/p>
+&lt;ul>
+&lt;li>Major-Version&lt;/li>
+&lt;li>Minor-Version&lt;/li>
+&lt;li>Incremental-Version&lt;/li>
+&lt;li>Build-Number&lt;/li>
+&lt;li>Qualifier&lt;/li>
+&lt;/ul>
+&lt;p>Dazu ein paar Beispiele:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Typ&lt;/th>
+&lt;th>Beispiel&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Major-Version&lt;/td>
+&lt;td>&lt;font color="red">1&lt;/font>.2.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Minor-Version&lt;/td>
+&lt;td>2.&lt;font color="red">0&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Incremental-Version&lt;/td>
+&lt;td>1.2&lt;font color="red">-SNAPSHOT&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Patch&lt;/td>
+&lt;td>1.2.&lt;font color="red">1&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Build-Number&lt;/td>
+&lt;td>1.4.2&lt;font color="red">-12&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Qualifier&lt;/td>
+&lt;td>1.2&lt;font color="red">-beta-2&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version &lt;strong>1.2-beta-2&lt;/strong> älter als die Version &lt;strong>1.2&lt;/strong>.
+Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den Vergleich dieser als String verglichen. So ist die Version &lt;strong>1.2-beta-2&lt;/strong> neuer als die Version &lt;strong>1.2-alpha-6&lt;/strong>.&lt;/p>
+&lt;p>Der SNAPSHOT Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version &lt;strong>0.1.2-SNAPSHOT&lt;/strong> sehr wahrscheinlich als Version &lt;strong>0.1.2&lt;/strong> ausgeliefert werden.&lt;/p>
+&lt;h4 id="abschnitt-3">Abschnitt 3&lt;/h4>
+&lt;p>Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vorallem bei Spring-Boot Projekten wichtig.&lt;/p>
+&lt;h4 id="abschnitt-4">Abschnitt 4&lt;/h4>
+&lt;p>Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine Version definiert werden.&lt;/p>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">&lt;span style="color:#f92672">&amp;lt;special.setting&amp;gt;&lt;/span>Value&lt;span style="color:#f92672">&amp;lt;/special.setting&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Innerhalb der POM-Datei kann dann mit&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">${special.setting}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>auf die Einstellung (Tag) und damit auf deren Wert (Value) zugegriffen werden.&lt;/p>
+&lt;h4 id="abschnitt-5">Abschnitt 5&lt;/h4>
+&lt;p>Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
+Mögliche Typen sind hier zu finden: &lt;a href="https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html">https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html&lt;/a>
+Vielfach wird auch noch der Scope verwendet, er gibt an in welchem Umfang die Fremdbibliothek miteinbezogen wird.
+Mögliche Scopes sind:&lt;/p>
+&lt;ul>
+&lt;li>compile - Das ist der Default-Scope. Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath)&lt;/li>
+&lt;li>provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und bereitgestellt wird&lt;/li>
+&lt;li>runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur Verfügung&lt;/li>
+&lt;li>test - Die Bibliothek steht nur für Tests zur Verfügung&lt;/li>
+&lt;li>system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss&lt;/li>
+&lt;/ul>
+&lt;h4 id="abschnitt-6">Abschnitt 6&lt;/h4>
+&lt;p>Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische Erweiterungen beliebig angepasst werden.
+Es ist auch möglich eigene Maven-Plugins zu entwickeln. Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es &lt;a href="https://maven.apache.org/plugins/index.html">hier&lt;/a>.&lt;/p>
+&lt;h4 id="abschnitt-7">Abschnitt 7&lt;/h4>
+&lt;p>Die Auslieferungs-Sektion bestimmt, wo die Artefakte nach dem Build abgelegt werden sollen.&lt;/p>
+&lt;h4 id="abschnitt-8">Abschnitt 8&lt;/h4>
+&lt;p>Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.&lt;/p>
+&lt;hr>
+&lt;h3 id="settingsxml">settings.xml&lt;/h3>
+&lt;p>Die folgenden Angaben sind nur für SBB-Mitarbeiter von Relevanz.&lt;/p>
+&lt;p>Zur Konfiguration von Maven muss eine Einstellungsdatei angelegt werden. Diese Datei sollte immer settings.xml heissen und sich (auf einem SBB-Laptop) im Verzeichnis &lt;strong>C:\Users\&amp;lt;Personalnummer&amp;gt;\.m2&lt;/strong> befinden.
+Bitte beachten, dass das Verzeichnis mit einem Punkt im Namen beginnt.&lt;/p>
+&lt;p>Sie sollte folgenden Inhalt aufweisen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">&lt;span style="color:#f92672">&amp;lt;settings&lt;/span>
+&lt;span style="color:#a6e22e">xsi:schemaLocation=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd&amp;#34;&lt;/span>
+&lt;span style="color:#a6e22e">xmlns=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.1.0&amp;#34;&lt;/span>
+&lt;span style="color:#a6e22e">xmlns:xsi=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;servers&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;server&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;id&amp;gt;&lt;/span>mvn&lt;span style="color:#f92672">&amp;lt;/id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;configuration&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;httpHeaders&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;property&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;name&amp;gt;&lt;/span>X-JFrog-Art-Api&lt;span style="color:#f92672">&amp;lt;/name&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;value&amp;gt;&lt;/span>REPOSITORY-KEY&lt;span style="color:#f92672">&amp;lt;/value&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/property&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/httpHeaders&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/configuration&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/server&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/servers&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;mirrors&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;mirror&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;mirrorOf&amp;gt;&lt;/span>*&lt;span style="color:#f92672">&amp;lt;/mirrorOf&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;name&amp;gt;&lt;/span>mvn&lt;span style="color:#f92672">&amp;lt;/name&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;url&amp;gt;&lt;/span>https://bin.sbb.ch/artifactory/mvn&lt;span style="color:#f92672">&amp;lt;/url&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;id&amp;gt;&lt;/span>mvn&lt;span style="color:#f92672">&amp;lt;/id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/mirror&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/mirrors&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;proxies&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;proxy&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;id&amp;gt;&lt;/span>zscaler&lt;span style="color:#f92672">&amp;lt;/id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;active&amp;gt;&lt;/span>true&lt;span style="color:#f92672">&amp;lt;/active&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;protocol&amp;gt;&lt;/span>https&lt;span style="color:#f92672">&amp;lt;/protocol&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;host&amp;gt;&lt;/span>zscaler.sbb.ch&lt;span style="color:#f92672">&amp;lt;/host&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;port&amp;gt;&lt;/span>10465&lt;span style="color:#f92672">&amp;lt;/port&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;nonProxyHosts&amp;gt;&lt;/span>repo.sbb.ch|bin.sbb.ch&lt;span style="color:#f92672">&amp;lt;/nonProxyHosts&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/proxy&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/proxies&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;profiles&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;profile&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;id&amp;gt;&lt;/span>properties&lt;span style="color:#f92672">&amp;lt;/id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;properties&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;tycho.disableP2Mirrors&amp;gt;&lt;/span>true&lt;span style="color:#f92672">&amp;lt;/tycho.disableP2Mirrors&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/properties&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/profile&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;profile&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;id&amp;gt;&lt;/span>default&lt;span style="color:#f92672">&amp;lt;/id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;repositories&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;repository&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;id&amp;gt;&lt;/span>mvn&lt;span style="color:#f92672">&amp;lt;/id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;name&amp;gt;&lt;/span>central.sbb.releases&lt;span style="color:#f92672">&amp;lt;/name&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;url&amp;gt;&lt;/span>https://bin.sbb.ch/artifactory/mvn&lt;span style="color:#f92672">&amp;lt;/url&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;releases&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;enabled&amp;gt;&lt;/span>true&lt;span style="color:#f92672">&amp;lt;/enabled&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;updatePolicy&amp;gt;&lt;/span>never&lt;span style="color:#f92672">&amp;lt;/updatePolicy&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/releases&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;snapshots&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;enabled&amp;gt;&lt;/span>true&lt;span style="color:#f92672">&amp;lt;/enabled&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;updatePolicy&amp;gt;&lt;/span>always&lt;span style="color:#f92672">&amp;lt;/updatePolicy&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/snapshots&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/repository&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/repositories&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;pluginRepositories&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;pluginRepository&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;id&amp;gt;&lt;/span>mvn&lt;span style="color:#f92672">&amp;lt;/id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;name&amp;gt;&lt;/span>central.sbb.plugins&lt;span style="color:#f92672">&amp;lt;/name&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;url&amp;gt;&lt;/span>https://bin.sbb.ch/artifactory/mvn&lt;span style="color:#f92672">&amp;lt;/url&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;layout&amp;gt;&lt;/span>default&lt;span style="color:#f92672">&amp;lt;/layout&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;snapshots&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;enabled&amp;gt;&lt;/span>true&lt;span style="color:#f92672">&amp;lt;/enabled&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;updatePolicy&amp;gt;&lt;/span>always&lt;span style="color:#f92672">&amp;lt;/updatePolicy&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/snapshots&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;releases&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;enabled&amp;gt;&lt;/span>true&lt;span style="color:#f92672">&amp;lt;/enabled&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;updatePolicy&amp;gt;&lt;/span>never&lt;span style="color:#f92672">&amp;lt;/updatePolicy&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/releases&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/pluginRepository&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/pluginRepositories&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/profile&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/profiles&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;activeProfiles&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;activeProfile&amp;gt;&lt;/span>default&lt;span style="color:#f92672">&amp;lt;/activeProfile&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/activeProfiles&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/settings&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Auf Zeile 11 muss der &lt;strong>persönliche&lt;/strong> Repository-Schlüssel (REPOSITORY-KEY) eingefügt werden.
+Um diesen Schlüssel zu generieren, müssen die folgenden Schritte ausgeführt werden:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>#&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>&lt;a href="https://bin.sbb.ch/ui/packages">Artifactory&lt;/a> öffnen&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Oben rechts auf &amp;ldquo;Log In&amp;rdquo; klicken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Anmelden&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>Oben rechts auf die eigene Personalnummer klicken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5&lt;/td>
+&lt;td>Das Menü &amp;ldquo;Edit Profile&amp;rdquo; auswählen&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6&lt;/td>
+&lt;td>Passwort eingeben und auf &amp;ldquo;Unlock&amp;rdquo; klicken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>7&lt;/td>
+&lt;td>Im Bereich der &amp;ldquo;Authentication Settings&amp;rdquo; einen neuen API Key generieren lassen und diesen gleich mit dem Kopieren-Button in die Zwischenablage kopieren.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>8&lt;/td>
+&lt;td>Abmelden&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>9&lt;/td>
+&lt;td>Den API Key in die settings.xml Datei einfügen und die Datei speichern.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Der Verbindung zwischen Artifactory und einem Maven-Projekt im IntelliJ steht nun nichts mehr im Weg :-)&lt;/p>
+&lt;hr>
+&lt;h3 id="intellij-idea-einrichten">IntelliJ IDEA einrichten&lt;/h3>
+&lt;p>Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven.
+&lt;img src="../maven/1657700434.png" alt="">&lt;/p>
+&lt;p>Die wichtigsten Einstellungen sind:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Einstellung&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Maven home directory&lt;/td>
+&lt;td>Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als &amp;ldquo;Bundled&amp;rdquo; bezeichnet&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>User settings file&lt;/td>
+&lt;td>Die XML-Datei, welche weiter oben angelegt wurde&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Local repository&lt;/td>
+&lt;td>Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\&amp;lt;Personalnummer&amp;gt;\.m2.\repository zu finden&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository korrekt sind.&lt;/p>
+&lt;hr>
+&lt;h3 id="umgebungsvariable-aufsetzen">Umgebungsvariable aufsetzen&lt;/h3>
+&lt;p>Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
+Im Windows muss also der Pfad zur Built-In Version des IntelliJ hinterlegt werden. Die folgenden Schritte sind dazu notwendig:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>#&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Anwendung &amp;ldquo;Systemumgebungsvariablen bearbeiten&amp;rdquo; aus der Systemsteuerung starten&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Unten rechts auf den Button &amp;ldquo;Umgebungsvariablen&amp;rdquo; klicken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Im unteren Teil &amp;ldquo;Systemvariablen&amp;rdquo; die Variable &amp;ldquo;Path&amp;rdquo; suchen und anklicken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>Auf den Button &amp;ldquo;Bearbeiten&amp;hellip;&amp;rdquo; klicken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5&lt;/td>
+&lt;td>Oben rechts auf den Button &amp;ldquo;Neu&amp;rdquo; klicken, es erscheint eine neue Zeile ganz unten&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6&lt;/td>
+&lt;td>Den Pfad zum Built-In Maven einfügen. Dieser ist normalerweise &amp;ldquo;&amp;lt;Installationsort IntelliJ IDEA&amp;gt;\plugins\maven\lib\maven3\bin&amp;rdquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>7&lt;/td>
+&lt;td>Alle offenen Windows-Fenster mit &amp;ldquo;OK&amp;rdquo; schliessen&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="repository">Repository&lt;/h3>
+&lt;h4 id="lokal">Lokal&lt;/h4>
+&lt;p>Zwischen dem JFrog Artifactory und deinem lokalen Repository gibt es also nun eine Verbindung.
+Sobald dein Projekt (in der Datei pom.xml) bestimmte Abhängigkeiten definiert, werden diese über das Artifactory aufgelöst und die entsprechenden Artefakte werden in dein lokales Repository heruntergeladen.
+Dies gilt für Abhängigkeiten und Plugins gleichermassen.&lt;/p>
+&lt;p>Beispiel:
+Im pom.xml Datei wird die folgende Abhängigkeit zu der Fremdbibliothek von Lombok definiert.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">&lt;span style="color:#75715e">&amp;lt;!-- Lombok --&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.projectlombok&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>lombok&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.18.12&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Sobald die pom.xml Datei gespeichert wird, wird das angeforderte Artefakt durch die oben eingerichtete Verbindung im Artifactory gesucht.&lt;/p>
+&lt;p>Dieser Vorgang kann auch manuell gemacht werden. Dazu kann man sich im &lt;a href="https://bin.sbb.ch">Artifactory&lt;/a> einloggen.
+Auf der Seite können mit dem Suchfeld bestimmte Artefakte gesucht werden. Als Stichwort reicht ein Teil des Names des gesuchten Artefakts.
+&lt;img src="../maven/1657700481.png" alt="">&lt;/p>
+&lt;p>Die angezeigten Resultate lassen sich durch einen Klick auf die Tabellen-Header sortieren. Ich habe die Sortierung nach Modifizierungsdatum gewählt
+&lt;img src="../maven/1657700492.png" alt="">&lt;/p>
+&lt;p>Wie wir sehen gibt es die von uns gewünschte Lombok-Version 1.18.12 als verschiedene Artefakte: javadoc, sources, pom und jar.
+Wir können auch sehen, dass es bereits eine neuere Version gibt 1.18.14.&lt;/p>
+&lt;p>Das angeforderte Artefakt wird nun in das lokale Repository heruntergeladen, wir müssten ihn dort also finden können.
+Die Artefakte sind nach Packages abgelegt. Beim Lombok-Artefakt fordern wir ja die Group-ID &amp;ldquo;org.projectlombok&amp;rdquo; an. Unter diesem Verzeichnis ist das Artefakt nun zu finden:
+&lt;img src="../maven/1657700516.png" alt="">&lt;/p>
+&lt;p>Das Artefakt wird unterhalb der Group-ID noch in einem Ordner mit der Artifact-ID abgelegt.
+Innerhalb dieses Verzeichnisses werden alle bisher angeforderten Versionen von Lombok abgelegt.&lt;/p>
+&lt;p>&lt;img src="../maven/1657700520.png" alt="">&lt;/p>
+&lt;p>Die beiden Dateien mit der Endung &amp;ldquo;.lastUpdated&amp;rdquo; dienen Maven zur Kontrolle der letzten Synchronisierung zwischen dem lokalen und dem remote Repository.&lt;/p>
+&lt;h4 id="remote-jfrog--artifactory">Remote (JFrog / Artifactory)&lt;/h4>
+&lt;p>Das Artifactory von JFrog ist das verwaltete Verzeichnis zur Speicherung und Beschreibung digitaler Objekte.
+Es ist also unser digitales Archiv bei der SBB. In diesem Archiv befinden sich Millionen von Fremdbibliotheken in unterschiedlichsten Versionen.
+Zudem werden alle Versionen von unseren ausgelieferten Bibliotheken, Artefakten, Komponenten und Applikationen dort archiviert.&lt;/p>
+&lt;hr>
+&lt;h3 id="commands">Commands&lt;/h3>
+&lt;p>Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt könnt ihr das Terminal öffnen und den folgenden Befehl eingeben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn -version
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das sollte nun in etwa so aussehen:&lt;/p>
+&lt;p>&lt;img src="../maven/1657700535.png" alt="">&lt;/p>
+&lt;p>Bevor wir die einzelnen Befehle kurz anschauen werfen wir einen Blick auf die einzelnen Phasen des Maven-Lebenszyklus.&lt;/p>
+&lt;p>&lt;img src="../maven/1657700671.png" alt="">&lt;/p>
+&lt;p>Jeder der in der Grafik genannten Befehle wird zusätzlich die vorangehenden Befehle ausführen.
+Die Ausführung von &amp;ldquo;mvn package&amp;rdquo; wird also die Phasen &lt;em>validate&lt;/em>, &lt;em>compile&lt;/em>, &lt;em>test&lt;/em> und &lt;em>package&lt;/em> ausführen.&lt;/p>
+&lt;h4 id="help">help&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn -help
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Ergebnis dürfte klar sein. Maven listet alle möglichen Befehle auf.&lt;/p>
+&lt;h4 id="dependencytree">dependency:tree&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn dependency:tree
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Befehl listet alle Abhängigkeiten zu Fremdbibliotheken als Baum auf.
+Das ist grundsätzlich sehr praktisch wenn man doppelte Abhängigkeiten erkennen/vermeiden will.&lt;/p>
+&lt;h4 id="clean">clean&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn clean
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Befehl löscht alle vorherigen lokale Maven-Build-Artefakte, indem er das Verzeichnis &amp;ldquo;target&amp;rdquo; löscht.&lt;/p>
+&lt;h4 id="compile">compile&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn compile
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Kompiliert den Sourcecode je nach Abhängigkeit von Plugins.
+Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung herangezogen.&lt;/p>
+&lt;h4 id="test">test&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn test
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-Tests mit jUnit.&lt;/p>
+&lt;h4 id="package">package&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn package
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das Verzeichnis &amp;ldquo;target&amp;rdquo;.&lt;/p>
+&lt;h4 id="verify">verify&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn verify
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen Maven-Befehl vorausgesetzt.&lt;/p>
+&lt;h4 id="install">install&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn install
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&amp;ldquo;Installiert&amp;rdquo; den Artefakt im lokalen Maven-Repository.&lt;/p>
+&lt;h4 id="deploy">deploy&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn deploy
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&amp;ldquo;Installiert&amp;rdquo; den Artefakt im Remote-Repository (Artifactory).&lt;/p>
+&lt;p>Die Maven-Befehle lassen sich kombinieren. Sehr nützlich ist zum Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn clean install
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen Maven-Befehle.&lt;/p>
+&lt;hr>
+&lt;h2 id="continuous-integration-ci--continuous-delivery-cd">Continuous Integration (CI) / Continuous Delivery (CD)&lt;/h2>
+&lt;p>Dieses Kapitel beschreibt CI/CD bei den SBB.&lt;br>
+&lt;strong>Hinweis&lt;/strong>: Für nicht-produktive Projekte darf niemals eine Build-Pipeline aufgesetzt werden!!!&lt;/p>
+&lt;p>Kontinuierliche Integration beschreibt den Prozess der fortlaufenden Zusammenfügung von Einzelkomponenten zu einer Anwendung.
+Das Ziel dabei ist stets die Steigerung der Qualität einer Software. Inhaltlich wird nicht nur die Software zusammengebaut, es können auch Tests durchgeführt oder Messungen der Code-Qualität vorgenommen werden.
+Der Auslöser ist stets das Hochladen (Push) von Änderungen am Programmcode in die Versionsverwaltung.
+Eine Weiterentwicklung der kontinuierlichen Integration stellt die kontinuierliche Auslieferung (Continuous Delivery) dar.
+Dort wird in bestimmten Zeitabständen, bei Erreichen einer bestimmten Qualität oder manuell eine neue Version der Software auf eine Zielplattform ausgeliefert.&lt;/p>
+&lt;hr>
+&lt;h3 id="grundsätze">Grundsätze&lt;/h3>
+&lt;p>Die folgenden Grundsätze dienen als Basis für die gemeinsame Entwicklung innerhalb eines Projektes mit CI / CD.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Grundsatz&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Versionsverwaltung&lt;/td>
+&lt;td>Gemeinsame Codebasis für alle Projektbeteiligten&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Statische Code-Analyse&lt;/td>
+&lt;td>Einheitlich definierte Qualität der Applikation&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Kontinuierliche Test-Entwicklung&lt;/td>
+&lt;td>Änderungen an der Software sind durch entsprechende Unit-Tests abzudecken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Häufige Integration&lt;/td>
+&lt;td>Code-Review durchführen und Änderungen möglichst rasch einchecken. Kleiner Stack an offenen Pull-Requests&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Integration Develop&lt;/td>
+&lt;td>Nahe am Develop-Branch entwickeln&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Häufige Testzyklen&lt;/td>
+&lt;td>Häufige Durchführung von vielen kleinen Tests, welche möglichst alle Test-Cases abdecken&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Integrationsumgebung&lt;/td>
+&lt;td>Alle Änderungen sollten auf einem der Produktion ähnlichen System getestet werden&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Einfacher Zugriff&lt;/td>
+&lt;td>Alle Projektbeteiligten, also auch Nicht-Entwickler, benötigen Zugriff auf die Ergebnisse der Software-Entwicklung&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Automatisiertes Reporting&lt;/td>
+&lt;td>Informationen zu Auslieferungen der Software müssen einfach und verständlich einsehbar sein&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Automatisiertes Deployment&lt;/td>
+&lt;td>Die Auslieferung der Software auf unterschiedliche Plattformen sollte so einfach wie möglich sein&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="vorteile-ci--cd">Vorteile CI / CD&lt;/h3>
+&lt;ul>
+&lt;li>Probleme bei der Auslieferung können früh erkannt und behoben werden&lt;/li>
+&lt;li>Test des Gesamtsystems als Verbund&lt;/li>
+&lt;li>Logik-Fehler können durch Unit-Testing rasch gefunden und behoben werden&lt;/li>
+&lt;li>Hohe Verfügbarkeit von Test- und Integrationsplattformen (auch für den Kunden)&lt;/li>
+&lt;li>Schnelle Feedback-Zyklen verbessern die Qualität des Systems&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="jenkins">Jenkins&lt;/h3>
+&lt;p>Die Software, welche von der SBB für CI/CD eingesetzt wird ist Jenkins. Die Anwendung ist &lt;a href="https://ci.sbb.ch/">hier&lt;/a> erreichbar.&lt;/p>
+&lt;hr>
+&lt;h3 id="deployment-pipeline">Deployment-Pipeline&lt;/h3>
+&lt;p>Zum Gesamtsystem von CI/CD (bei der SBB) und damit der Deployment-Pipeline gehören die folgenden Systeme/Anwendungen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>System&lt;/th>
+&lt;th>Zweck&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>GIT-Repository&lt;/td>
+&lt;td>Source-Code Ablage&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>JFrog Artifactory&lt;/td>
+&lt;td>Digitales Archiv&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Jenkins&lt;/td>
+&lt;td>CI/CD-Plattform&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Docker&lt;/td>
+&lt;td>Containervirtualisierung&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Openshift Container Plattform&lt;/td>
+&lt;td>Container Anwendungsplattform&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Bei Änderungen am GIT-Repository wird durch den Jenkins ein Maven-Build ausgelöst.
+Dieser legt je nach Build-Konfiguration ein neues Artefakt im Artifactory ab (CI).
+Aus dem Artifactory kann dieses Artefakt über den Jenkins via Docker auf die Openshift Container Plattform ausgeliefert werden (CD).&lt;/p>
+&lt;p>Für die Konfiguration einer solchen Deployment-Pipeline sind bei der SBB die folgenden Dateien notwendig:&lt;/p>
+&lt;ul>
+&lt;li>Jenkinsfile&lt;/li>
+&lt;li>Pipeline-Konfiguration als JSON&lt;/li>
+&lt;/ul>
+&lt;h4 id="jenkinsfile">Jenkinsfile&lt;/h4>
+&lt;p>Diese Datei wird durch den Jenkins in jedem GIT-Repository gesucht. Wenn Sie gefunden wird, dann wird der Jenkins anhand der Konfiguration im GIT-Repository handeln.&lt;/p>
+&lt;p>Der minimale Inhalt ist wie folgt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-groovy" data-lang="groovy">&lt;span style="color:#75715e">#!groovy&lt;/span>
+&lt;span style="color:#a6e22e">@Library&lt;/span>&lt;span style="color:#f92672">([&lt;/span>&lt;span style="color:#e6db74">&amp;#39;pipeline-helper@release&amp;#39;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#39;esta-cloud-pipeline@release&amp;#39;&lt;/span>&lt;span style="color:#f92672">])&lt;/span> _
+estaCloudPipeline&lt;span style="color:#f92672">([:])&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die erste Zeile markiert diese Datei als Groovy-Script. Die zweite Zeile lädt die zu verwendende Bibliothek, welche in diesem Fall der Release des Pipeline-Helpers ist.
+Der Source-Code des Pipeline-Helpers ist bei Interesse &lt;a href="https://code.sbb.ch/projects/KD_ESTA/repos/pipeline-helper/browse">hier&lt;/a> zu finden.
+Die letzte Zeile gibt den Namen der zu verwendenden Konfiguration an. Die Datei für die Konfiguration muss also den Namen estaCloudPipeline.json haben.&lt;/p>
+&lt;h4 id="pipeline-konfiguration-als-json">Pipeline-Konfiguration als JSON&lt;/h4>
+&lt;p>Die Pipeline-Konfiguration dient dem Jenkins zur Konfiguration der gesamten Pipeline inklusive deren auswählbaren Möglichkeiten für manuelle Optionen.
+Wir betrachten eine etwas umfangreichere Konfiguration am folgenden Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
+&lt;span style="color:#f92672">&amp;#34;mainBranch&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;master&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;hotfixBranch&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;hotfix&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;docker&amp;#34;&lt;/span>: {
+&lt;span style="color:#f92672">&amp;#34;artifactoryDockerRepo&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;cca&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftAppName&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;interviewtool-core&amp;#34;&lt;/span>
+},
+&lt;span style="color:#f92672">&amp;#34;mvn&amp;#34;&lt;/span>: {
+&lt;span style="color:#f92672">&amp;#34;parentPom&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;pom.xml&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;deployableArtifactsPom&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;pom.xml&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;artifactoryMavenRepo&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;cca.mvn&amp;#34;&lt;/span>
+},
+&lt;span style="color:#f92672">&amp;#34;stages&amp;#34;&lt;/span>: [
+{
+&lt;span style="color:#f92672">&amp;#34;stageName&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;dev&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isOpenshiftDeploymentEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftProject&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;interviewtool-dev&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftCluster&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aws&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftJenkinsCredentialsId&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;preCiDeploymentJob&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;postCiDeploymentJob&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+},
+{
+&lt;span style="color:#f92672">&amp;#34;stageName&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;int&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isOpenshiftDeploymentEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftProject&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;interviewtool-int&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftCluster&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aws&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftJenkinsCredentialsId&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;preCiDeploymentJob&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;postCiDeploymentJob&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+},
+{
+&lt;span style="color:#f92672">&amp;#34;stageName&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;prod&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isOpenshiftDeploymentEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftProject&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;interviewtool-prod&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftCluster&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aws&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;openshiftJenkinsCredentialsId&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;preCiDeploymentJob&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;postCiDeploymentJob&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+}
+],
+&lt;span style="color:#f92672">&amp;#34;steps&amp;#34;&lt;/span>: [
+{
+&lt;span style="color:#f92672">&amp;#34;stepType&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;continuous&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isBuildEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;branchNamePrefixes&amp;#34;&lt;/span>: [
+&lt;span style="color:#e6db74">&amp;#34;feature&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;develop&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;bugfix&amp;#34;&lt;/span>
+],
+&lt;span style="color:#f92672">&amp;#34;additionalBuildParams&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;-DskipITs&amp;#34;&lt;/span>
+},
+{
+&lt;span style="color:#f92672">&amp;#34;stepType&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;integrationBuild&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isBuildEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;xrayScanEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;failOnXrayScan&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;sonarScanEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;staging&amp;#34;&lt;/span>: {
+&lt;span style="color:#f92672">&amp;#34;stages&amp;#34;&lt;/span>: [
+&lt;span style="color:#e6db74">&amp;#34;dev&amp;#34;&lt;/span>
+]
+},
+&lt;span style="color:#f92672">&amp;#34;triggerBuildOnCommitEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+},
+{
+&lt;span style="color:#f92672">&amp;#34;stepType&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;release&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isBuildEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;xrayScanEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;failOnXrayScan&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;sonarScanEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;staging&amp;#34;&lt;/span>: {
+&lt;span style="color:#f92672">&amp;#34;stages&amp;#34;&lt;/span>: [
+&lt;span style="color:#e6db74">&amp;#34;dev&amp;#34;&lt;/span>
+]
+},
+&lt;span style="color:#f92672">&amp;#34;additionalBuildParams&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;-DskipITs&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;triggerBuildOnCommitEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;hotfixCreationEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+},
+{
+&lt;span style="color:#f92672">&amp;#34;stepType&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;hotfix&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isBuildEnabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+}
+]
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die folgenden Einstellungen können in der Konfiguration gefunden werden:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Gruppe&lt;/th>
+&lt;th>Einstellung&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Root&lt;/td>
+&lt;td>mainBranch&lt;/td>
+&lt;td>Name des Produktions-Branches. Normalerweise master oder develop&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Root&lt;/td>
+&lt;td>hotfixBranch&lt;/td>
+&lt;td>Prefix für Hotfix-Branches&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Docker&lt;/td>
+&lt;td>artifactoryDockerRepo&lt;/td>
+&lt;td>Repository-Pfad für Docker&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Docker&lt;/td>
+&lt;td>openshiftAppName&lt;/td>
+&lt;td>Name der Applikation auf der Openshift Container Plattform&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Maven&lt;/td>
+&lt;td>parentPom&lt;/td>
+&lt;td>Pfad zum pom.xml&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Maven&lt;/td>
+&lt;td>deployableArtifactsPom&lt;/td>
+&lt;td>Angabe aller auslieferbaren pom.xml&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Maven&lt;/td>
+&lt;td>artifactoryMavenRepo&lt;/td>
+&lt;td>Name des Artifactory-Verzeichnisses&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
+&lt;td>stageName&lt;/td>
+&lt;td>Name der Plattform als Abkürzung (dev, test, inte, prod)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
+&lt;td>isOpenshiftDeploymentEnabled&lt;/td>
+&lt;td>Deployment auf Openshift erlaubt (true / false)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
+&lt;td>openshiftProject&lt;/td>
+&lt;td>Name des Projekts auf der Openshift Container Plattform&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
+&lt;td>openshiftCluster&lt;/td>
+&lt;td>Openshift Cluster (OTC, AWS, &amp;hellip;)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
+&lt;td>openshiftJenkinsCredentialsId&lt;/td>
+&lt;td>Secret Key, damit sich Jenkins auf der Openshift Container Plattform einloggen kann&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
+&lt;td>preCiDeploymentJob&lt;/td>
+&lt;td>Name des vorgelagerten Jenkins-Jobs&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
+&lt;td>postCiDeploymentJob&lt;/td>
+&lt;td>Name des nachgelagerten Jenkins-Jobs&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>stepType&lt;/td>
+&lt;td>Name der Option&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>isBuildEnabled&lt;/td>
+&lt;td>Option aktiv (true / false)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>branchNamePrefixes&lt;/td>
+&lt;td>Angabe der Präfixe der zu verwendenden Branches&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>additionalBuildParams&lt;/td>
+&lt;td>Weitere Maven-Angaben&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>xrayScanEnabled&lt;/td>
+&lt;td>XRay aktiv (true / false)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>failOnXrayScan&lt;/td>
+&lt;td>Build schlägt fehl wenn XRay fehlschlägt (true / false)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>sonarScanEnabled&lt;/td>
+&lt;td>Sonar aktiv (true / false)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>staging&lt;/td>
+&lt;td>Angabe von Stages zur Auslieferung&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>triggerBuildOnCommitEnabled&lt;/td>
+&lt;td>Wird dieser Build ausgeführt, wenn ein Commit erfolgt (true / false)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
+&lt;td>hotfixCreationEnabled&lt;/td>
+&lt;td>Darf dieser Build einen Hotfix-Branch erzeugen (true / false)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Die genauen Beschreibungen der einzelnen Einstellungen sind sehr umfangreich.
+Weitere Informationen gibt es &lt;a href="https://confluence.sbb.ch/x/n4C8Tg">hier&lt;/a>&lt;/p>
+&lt;p>Zu Beginn gibt es Konfigurationen für GIT und Docker. Anschliessend benötigt Maven den Namen und den Pfad für das POM.
+Die Auslieferung erfolgt auf sogenannte Stages, dies sind Projekte auf der Openshift Container Plattform. Jede Stage kann individuell konfiguriert werden.
+Wichtig dabei ist der Schlüssel, welcher auf dem Jenkins hinterlegt sein muss. Nur mit diesem Schlüssel kann sich der Jenkins für ein Deployment auf der Openshift Container Plattform einloggen.
+Für jeden Step kann konfiguriert werden, ob er auf eine oder mehrere Stages ausgeliefert werden soll.&lt;/p>
+&lt;p>Die häufigsten Steps sind:&lt;/p>
+&lt;ul>
+&lt;li>Continuous&lt;/li>
+&lt;li>Release&lt;/li>
+&lt;li>Deploy&lt;/li>
+&lt;/ul>
+&lt;p>Der Continuous-Build dient dabei Branches vom Typ feature oder bugfix (je nach Konfiguration) zu bauen.
+Nur erfolgreiche Builds dieser Weiterentwicklungen oder Bugfixes können anschliessend in den Haupt-Entwicklungsbranch zurück gemerged werden.
+Dieser Build wird nicht auf eine Stage ausgeliefert.&lt;/p>
+&lt;p>Der Release-Build dient der Herstellung einer neuen Version einer Anwendung.
+Dieser Build taggt die Version auf dem GIT-Repository und liefert sie auf die entsprechend konfigurierten Stages aus.
+Vorbehalten bleibt normalerweise der Release auf eine produktive Umgebung.&lt;/p>
+&lt;p>Der Deploy-Build dient dem Deployment einer bestimmten Version auf eine bestimmte Stage.
+Die Stage kann dabei gewählt werden. Dieser Step-Typ wird normalerweise für den Release auf Integration- oder Produktionsplattformen verwendet.&lt;/p>
+&lt;p>Zum Nachlesen gibt es hier noch die &lt;a href="https://confluence.sbb.ch/x/mIC8Tg">Dokumentation&lt;/a> der Pipeline.&lt;/p></description></item><item><title>Docs: Testing</title><link>/docs/java/java-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-testing/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss, warum das Testen in der Softwareentwicklung eine zentrale Bedeutung hat&lt;/li>
@@ -9496,1355 +10824,7 @@ Node&lt;span style="color:#f92672">(&lt;/span>Node&lt;span style="color:#f92672"
 &lt;p>Beispiele kommen noch&lt;/p>
 &lt;h3 id="übungen-2">Übungen&lt;/h3>
 &lt;p>Übungen kommen noch&lt;/p>
-&lt;p>Fortsetzung folgt&amp;hellip;&lt;/p></description></item><item><title>Docs: Maven und Continuous Integration</title><link>/docs/java/maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/maven/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kenne die Grundlagen von Maven&lt;/li>
-&lt;li>Ich kann Maven lokal konfigurieren&lt;/li>
-&lt;li>Ich kann im Artifactory Abhängigkeiten suchen und diese verwenden&lt;/li>
-&lt;li>Ich kenne die Grundlagen von Project Object Models (pom)&lt;/li>
-&lt;li>Ich kenne die wichtigsten Maven Befehle und kann diese auf der Kommandozeile anwenden&lt;/li>
-&lt;li>Ich kann die Abhängigkeiten meiner Applikationen mit Maven verwalten&lt;/li>
-&lt;li>Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern&lt;/li>
-&lt;li>Ich kann den Begriff Continuous Integration erklären&lt;/li>
-&lt;li>Ich kenne die Komponenten der Deployment-Pipeline und deren Aufgaben&lt;/li>
-&lt;/ul>
-&lt;h4 id="änderungskontrolle">Änderungskontrolle&lt;/h4>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Autor&lt;/th>
-&lt;th>Version&lt;/th>
-&lt;th>Datum&lt;/th>
-&lt;th>Änderungen&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Claudio Zesiger&lt;/td>
-&lt;td>0.1&lt;/td>
-&lt;td>Mai 2020&lt;/td>
-&lt;td>Initiale Version erstellt&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Claudio Zesiger&lt;/td>
-&lt;td>0.2&lt;/td>
-&lt;td>27.08.2020&lt;/td>
-&lt;td>* Modul erweitert&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Claudio Zesiger&lt;/td>
-&lt;td>0.3&lt;/td>
-&lt;td>14.10.2020&lt;/td>
-&lt;td>* Modul erweitert&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
-&lt;ul>
-&lt;li>Gute Grundlagenkenntnisse von Java-Anwendungen&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="maven">Maven&lt;/h2>
-&lt;h3 id="allgemeine-informationen">Allgemeine Informationen&lt;/h3>
-&lt;p>Apache Maven ist ein Build-Management Tool. Von einer einzelnen Datei aus, kann Maven den Build eines Projektes steuern. Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Der Build eines Projektes kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte Plattform reichen.&lt;/p>
-&lt;p>Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:&lt;/p>
-&lt;ul>
-&lt;li>Eine Maven-Installation, entweder separat oder Built-In wie beispielsweise in der IntelliJ IDEA&lt;/li>
-&lt;li>Eine POM-Datei pro Projekt oder Modul (es handelt sich um eine XML-Datei)&lt;/li>
-&lt;li>Ein zentrales Maven-Repository&lt;/li>
-&lt;li>Ein lokales Maven-Repository&lt;/li>
-&lt;li>Eine Konfigurationsdatei mit dem Namen settings.xml&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="pomxml">pom.xml&lt;/h3>
-&lt;p>Der Aufbau eines POM kann grob in folgenden Abschnitte unterteilt werden, hier erklärt an einem umfangreichen Beispiel.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">142
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">144
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">145
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">146
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">147
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">148
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">149
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">150
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">151
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">152
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">153
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">154
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">155
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">156
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">157
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">158
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">159
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">160
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">161
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">162
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">163
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">164
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">165
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">166
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">167
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">168
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">169
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">170
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">171
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">172
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">173
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">174
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">175
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">176
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">177
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">178
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">179
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">180
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">181
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">182
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">183
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">184
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">185
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">186
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">187
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">188
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">189
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">190
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">191
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">192
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">193
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">194
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">195
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">196
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">197
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">198
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;lt;!-- (1) Header --&amp;gt;
-&amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;
-xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;
-xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt;
-&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;
-&amp;lt;!-- (2) Angaben zum Artefakt --&amp;gt;
-&amp;lt;groupId&amp;gt;ch.sbb.interviewtool&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;interviewtool-backend&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
-&amp;lt;packaging&amp;gt;jar&amp;lt;/packaging&amp;gt;
-&amp;lt;!-- (3) Angaben zum Parent-Projekt --&amp;gt;
-&amp;lt;parent&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.2.4.RELEASE&amp;lt;/version&amp;gt;
-&amp;lt;relativePath/&amp;gt;
-&amp;lt;/parent&amp;gt;
-&amp;lt;!-- (4) Properties --&amp;gt;
-&amp;lt;properties&amp;gt;
-&amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt;
-&amp;lt;java.version&amp;gt;1.8&amp;lt;/java.version&amp;gt;
-&amp;lt;maven.build.timestamp.format&amp;gt;yyyy-MM-dd HH:mm&amp;lt;/maven.build.timestamp.format&amp;gt;
-&amp;lt;timestamp&amp;gt;${maven.build.timestamp}&amp;lt;/timestamp&amp;gt;
-&amp;lt;itext.version&amp;gt;7.1.2&amp;lt;/itext.version&amp;gt;
-&amp;lt;/properties&amp;gt;
-&amp;lt;!-- (5) Abhängigkeiten --&amp;gt;
-&amp;lt;dependencies&amp;gt;
-&amp;lt;!-- Spring Boot --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-web-services&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-data-jpa&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-actuator&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;!-- Spring --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-webmvc&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;!-- Lombok --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;1.18.6&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;!-- Datenbank --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;8.0.20&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;!-- iText --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;com.itextpdf&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;kernel&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;${itext.version}&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;com.itextpdf&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;io&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;${itext.version}&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;com.itextpdf&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;layout&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;${itext.version}&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;!-- Unit- und Integrationstests --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;com.h2database&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;h2&amp;lt;/artifactId&amp;gt;
-&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
-&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.junit.jupiter&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;junit-jupiter-engine&amp;lt;/artifactId&amp;gt;
-&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-test&amp;lt;/artifactId&amp;gt;
-&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;/dependencies&amp;gt;
-&amp;lt;!-- (6) Build-Informationen --&amp;gt;
-&amp;lt;build&amp;gt;
-&amp;lt;plugins&amp;gt;
-&amp;lt;plugin&amp;gt;
-&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;spring-boot-maven-plugin&amp;lt;/artifactId&amp;gt;
-&amp;lt;/plugin&amp;gt;
-&amp;lt;plugin&amp;gt;
-&amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
-&amp;lt;configuration&amp;gt;
-&amp;lt;compilerVersion&amp;gt;1.8&amp;lt;/compilerVersion&amp;gt;
-&amp;lt;source&amp;gt;1.8&amp;lt;/source&amp;gt;
-&amp;lt;target&amp;gt;1.8&amp;lt;/target&amp;gt;
-&amp;lt;/configuration&amp;gt;
-&amp;lt;/plugin&amp;gt;
-&amp;lt;/plugins&amp;gt;
-&amp;lt;/build&amp;gt;
-&amp;lt;!-- (7) Auslieferung --&amp;gt;
-&amp;lt;distributionManagement&amp;gt;
-&amp;lt;repository&amp;gt;
-&amp;lt;id&amp;gt;mvn&amp;lt;/id&amp;gt;
-&amp;lt;url&amp;gt;https://bin.sbb.ch/artifactory/cca.mvn/&amp;lt;/url&amp;gt;
-&amp;lt;/repository&amp;gt;
-&amp;lt;snapshotRepository&amp;gt;
-&amp;lt;id&amp;gt;mvn&amp;lt;/id&amp;gt;
-&amp;lt;url&amp;gt;https://bin.sbb.ch/artifactory/cca.mvn/&amp;lt;/url&amp;gt;
-&amp;lt;/snapshotRepository&amp;gt;
-&amp;lt;/distributionManagement&amp;gt;
-&amp;lt;!-- (8) Maven-Repositories --&amp;gt;
-&amp;lt;repositories&amp;gt;
-&amp;lt;repository&amp;gt;
-&amp;lt;id&amp;gt;itext-releases&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;iText Repository - releases&amp;lt;/name&amp;gt;
-&amp;lt;url&amp;gt;https://repo.itextsupport.com/releases&amp;lt;/url&amp;gt;
-&amp;lt;/repository&amp;gt;
-&amp;lt;/repositories&amp;gt;
-&amp;lt;!-- (9) Entwickler-Informationen --&amp;gt;
-&amp;lt;developers&amp;gt;
-&amp;lt;developer&amp;gt;
-&amp;lt;id&amp;gt;U232509&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;Benjamin Schaffner&amp;lt;/name&amp;gt;
-&amp;lt;email&amp;gt;benjamin.schaffner@sbb.ch&amp;lt;/email&amp;gt;
-&amp;lt;organization&amp;gt;SBB&amp;lt;/organization&amp;gt;
-&amp;lt;organizationUrl&amp;gt;https://www.sbb.ch&amp;lt;/organizationUrl&amp;gt;
-&amp;lt;roles&amp;gt;
-&amp;lt;role&amp;gt;Product Owner&amp;lt;/role&amp;gt;
-&amp;lt;/roles&amp;gt;
-&amp;lt;/developer&amp;gt;
-&amp;lt;developer&amp;gt;
-&amp;lt;id&amp;gt;U210148&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;Claudio Zesiger&amp;lt;/name&amp;gt;
-&amp;lt;email&amp;gt;claudio.zesiger@sbb.ch&amp;lt;/email&amp;gt;
-&amp;lt;organization&amp;gt;SBB&amp;lt;/organization&amp;gt;
-&amp;lt;organizationUrl&amp;gt;https://www.sbb.ch&amp;lt;/organizationUrl&amp;gt;
-&amp;lt;roles&amp;gt;
-&amp;lt;role&amp;gt;Software Architect&amp;lt;/role&amp;gt;
-&amp;lt;role&amp;gt;Lead Developer&amp;lt;/role&amp;gt;
-&amp;lt;/roles&amp;gt;
-&amp;lt;/developer&amp;gt;
-&amp;lt;developer&amp;gt;
-&amp;lt;id&amp;gt;U233432&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;Nikola Milicic&amp;lt;/name&amp;gt;
-&amp;lt;email&amp;gt;nikola.milicic@sbb.ch&amp;lt;/email&amp;gt;
-&amp;lt;organization&amp;gt;SBB&amp;lt;/organization&amp;gt;
-&amp;lt;organizationUrl&amp;gt;https://www.sbb.ch&amp;lt;/organizationUrl&amp;gt;
-&amp;lt;roles&amp;gt;
-&amp;lt;role&amp;gt;Backend Developer&amp;lt;/role&amp;gt;
-&amp;lt;/roles&amp;gt;
-&amp;lt;/developer&amp;gt;
-&amp;lt;developer&amp;gt;
-&amp;lt;id&amp;gt;E515732&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;Samuel Allen&amp;lt;/name&amp;gt;
-&amp;lt;email&amp;gt;samuel_lucas.allen@sbb.ch&amp;lt;/email&amp;gt;
-&amp;lt;organization&amp;gt;SBB&amp;lt;/organization&amp;gt;
-&amp;lt;organizationUrl&amp;gt;https://www.sbb.ch&amp;lt;/organizationUrl&amp;gt;
-&amp;lt;roles&amp;gt;
-&amp;lt;role&amp;gt;Full-Stack Developer&amp;lt;/role&amp;gt;
-&amp;lt;/roles&amp;gt;
-&amp;lt;/developer&amp;gt;
-&amp;lt;/developers&amp;gt;
-&amp;lt;/project&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="abschnitt-1">Abschnitt 1&lt;/h4>
-&lt;p>Der Header einer POM-Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.&lt;/p>
-&lt;h4 id="abschnitt-2">Abschnitt 2&lt;/h4>
-&lt;p>Die Angaben zum Artefakt enthalten die folgenden Informationen:&lt;/p>
-&lt;ul>
-&lt;li>Gruppen-ID: Normalerweise eine umgekehrte URL, also beispielsweise ch.sbb.interviewtool. Darin sollte der Projektname enthalten sein&lt;/li>
-&lt;li>Artefakt-ID: Der Name des Projekts&lt;/li>
-&lt;li>Version: Die momentane Version des Projekts, diese wird später durch Releases verändert&lt;/li>
-&lt;li>Paketierung: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR)&lt;/li>
-&lt;/ul>
-&lt;h4 id="abschnitt-3">Abschnitt 3&lt;/h4>
-&lt;p>Falls das Projekt Teil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden.&lt;/p>
-&lt;h4 id="abschnitt-4">Abschnitt 4&lt;/h4>
-&lt;p>Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine Version definiert werden.
-Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;lt;special.setting&amp;gt;special&amp;lt;/special.setting&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Innerhalb der POM-Datei kann dann mit&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">${special.setting}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>auf die Einstellung und damit auf deren Wert (special) zugegriffen werden.&lt;/p>
-&lt;h4 id="abschnitt-5">Abschnitt 5&lt;/h4>
-&lt;p>Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
-Mögliche Typen sind hier zu finden: &lt;a href="https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html">https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html&lt;/a>
-Vielfach wird auch noch der Scope verwendet, er gibt an in welchem Umfang die Fremdbibliothek miteinbezogen wird.
-Mögliche Scopes sind:&lt;/p>
-&lt;ul>
-&lt;li>compile - Das ist der Default-Scope. Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath)&lt;/li>
-&lt;li>provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet wird&lt;/li>
-&lt;li>runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur Verfügung&lt;/li>
-&lt;li>test - Die Bibliothek steht nur für Tests zur Verfügung&lt;/li>
-&lt;li>system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss&lt;/li>
-&lt;/ul>
-&lt;h4 id="abschnitt-6">Abschnitt 6&lt;/h4>
-&lt;p>Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische Erweiterungen beliebig angepasst werden.
-Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es hier: &lt;a href="https://maven.apache.org/plugins/index.html">https://maven.apache.org/plugins/index.html&lt;/a>&lt;/p>
-&lt;h4 id="abschnitt-7">Abschnitt 7&lt;/h4>
-&lt;p>Die Auslieferungs-Sektion bestimmt, wo die Artefakte nach dem Build abgelegt werden sollen.&lt;/p>
-&lt;h4 id="abschnitt-8">Abschnitt 8&lt;/h4>
-&lt;p>Die Angabe von zusätzlichen Maven-Repositories für den Build ist notwendig, wenn die gewünschten Abhängigkeiten im SBB-Repository nicht verfügbar sind.&lt;/p>
-&lt;h4 id="abschnitt-9">Abschnitt 9&lt;/h4>
-&lt;p>Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.&lt;/p>
-&lt;hr>
-&lt;h3 id="settingsxml">settings.xml&lt;/h3>
-&lt;p>Zur Konfiguration von Maven muss eine Einstellungsdatei angelegt werden. Diese Datei sollte immer settings.xml heissen und sich im Verzeichnis C:\Users\&lt;Personalnummer>\.m2. befinden. Bitte beachten, dass das Verzeichnis mit einem Punkt im Namen beginnt.
-Sie sollte folgenden Inhalt aufweisen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;lt;settings
-xsi:schemaLocation=&amp;#34;http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd&amp;#34;
-xmlns=&amp;#34;http://maven.apache.org/SETTINGS/1.1.0&amp;#34;
-xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&amp;gt;
-&amp;lt;servers&amp;gt;
-&amp;lt;server&amp;gt;
-&amp;lt;id&amp;gt;mvn&amp;lt;/id&amp;gt;
-&amp;lt;configuration&amp;gt;
-&amp;lt;httpHeaders&amp;gt;
-&amp;lt;property&amp;gt;
-&amp;lt;name&amp;gt;X-JFrog-Art-Api&amp;lt;/name&amp;gt;
-&amp;lt;value&amp;gt;REPOSITORY-KEY&amp;lt;/value&amp;gt;
-&amp;lt;/property&amp;gt;
-&amp;lt;/httpHeaders&amp;gt;
-&amp;lt;/configuration&amp;gt;
-&amp;lt;/server&amp;gt;
-&amp;lt;/servers&amp;gt;
-&amp;lt;mirrors&amp;gt;
-&amp;lt;mirror&amp;gt;
-&amp;lt;mirrorOf&amp;gt;*&amp;lt;/mirrorOf&amp;gt;
-&amp;lt;name&amp;gt;mvn&amp;lt;/name&amp;gt;
-&amp;lt;url&amp;gt;https://bin.sbb.ch/artifactory/mvn&amp;lt;/url&amp;gt;
-&amp;lt;id&amp;gt;mvn&amp;lt;/id&amp;gt;
-&amp;lt;/mirror&amp;gt;
-&amp;lt;/mirrors&amp;gt;
-&amp;lt;proxies&amp;gt;
-&amp;lt;proxy&amp;gt;
-&amp;lt;id&amp;gt;zscaler&amp;lt;/id&amp;gt;
-&amp;lt;active&amp;gt;true&amp;lt;/active&amp;gt;
-&amp;lt;protocol&amp;gt;https&amp;lt;/protocol&amp;gt;
-&amp;lt;host&amp;gt;zscaler.sbb.ch&amp;lt;/host&amp;gt;
-&amp;lt;port&amp;gt;10465&amp;lt;/port&amp;gt;
-&amp;lt;nonProxyHosts&amp;gt;repo.sbb.ch|bin.sbb.ch&amp;lt;/nonProxyHosts&amp;gt;
-&amp;lt;/proxy&amp;gt;
-&amp;lt;/proxies&amp;gt;
-&amp;lt;profiles&amp;gt;
-&amp;lt;profile&amp;gt;
-&amp;lt;id&amp;gt;properties&amp;lt;/id&amp;gt;
-&amp;lt;properties&amp;gt;
-&amp;lt;tycho.disableP2Mirrors&amp;gt;true&amp;lt;/tycho.disableP2Mirrors&amp;gt;
-&amp;lt;/properties&amp;gt;
-&amp;lt;/profile&amp;gt;
-&amp;lt;profile&amp;gt;
-&amp;lt;id&amp;gt;default&amp;lt;/id&amp;gt;
-&amp;lt;repositories&amp;gt;
-&amp;lt;repository&amp;gt;
-&amp;lt;id&amp;gt;mvn&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;central.sbb.releases&amp;lt;/name&amp;gt;
-&amp;lt;url&amp;gt;https://bin.sbb.ch/artifactory/mvn&amp;lt;/url&amp;gt;
-&amp;lt;releases&amp;gt;
-&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-&amp;lt;updatePolicy&amp;gt;never&amp;lt;/updatePolicy&amp;gt;
-&amp;lt;/releases&amp;gt;
-&amp;lt;snapshots&amp;gt;
-&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-&amp;lt;updatePolicy&amp;gt;always&amp;lt;/updatePolicy&amp;gt;
-&amp;lt;/snapshots&amp;gt;
-&amp;lt;/repository&amp;gt;
-&amp;lt;/repositories&amp;gt;
-&amp;lt;pluginRepositories&amp;gt;
-&amp;lt;pluginRepository&amp;gt;
-&amp;lt;id&amp;gt;mvn&amp;lt;/id&amp;gt;
-&amp;lt;name&amp;gt;central.sbb.plugins&amp;lt;/name&amp;gt;
-&amp;lt;url&amp;gt;https://bin.sbb.ch/artifactory/mvn&amp;lt;/url&amp;gt;
-&amp;lt;layout&amp;gt;default&amp;lt;/layout&amp;gt;
-&amp;lt;snapshots&amp;gt;
-&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-&amp;lt;updatePolicy&amp;gt;always&amp;lt;/updatePolicy&amp;gt;
-&amp;lt;/snapshots&amp;gt;
-&amp;lt;releases&amp;gt;
-&amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-&amp;lt;updatePolicy&amp;gt;never&amp;lt;/updatePolicy&amp;gt;
-&amp;lt;/releases&amp;gt;
-&amp;lt;/pluginRepository&amp;gt;
-&amp;lt;/pluginRepositories&amp;gt;
-&amp;lt;/profile&amp;gt;
-&amp;lt;/profiles&amp;gt;
-&amp;lt;activeProfiles&amp;gt;
-&amp;lt;activeProfile&amp;gt;default&amp;lt;/activeProfile&amp;gt;
-&amp;lt;/activeProfiles&amp;gt;
-&amp;lt;/settings&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Auf Zeile 11 muss der &lt;strong>persönliche&lt;/strong> Repository-Schlüssel (REPOSITORY-KEY) eingefügt werden.
-Um diesen Schlüssel zu generieren, müssen die folgenden Schritte ausgeführt werden:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>#&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>&lt;a href="https://bin.sbb.ch/artifactory/webapp/#/home">https://bin.sbb.ch/artifactory/webapp/#/home&lt;/a> öffnen&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Oben rechts auf &amp;ldquo;Log In&amp;rdquo; klicken&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Anmelden&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>4&lt;/td>
-&lt;td>Oben rechts auf die eigene Personalnummer klicken&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>5&lt;/td>
-&lt;td>Passwort eingeben und auf &amp;ldquo;Unlock&amp;rdquo; klicken&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>6&lt;/td>
-&lt;td>Im Bereich der &amp;ldquo;Authentication Settings&amp;rdquo; einen neuen API Key generieren lassen und diesen gleich mit dem Kopier-Button in die Zwischenablage kopieren.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>7&lt;/td>
-&lt;td>Den API Key in die settings.xml Datei einfügen und die Datei speichern.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Der Verbindung zwischen Artifactory und IntelliJ steht nun nichts mehr im Weg :-)&lt;/p>
-&lt;hr>
-&lt;h3 id="intellij-idea-einrichten">IntelliJ IDEA einrichten&lt;/h3>
-&lt;p>Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven.
-&lt;img src="../maven/1657700434.png" alt="InteliJ Maven Settings" title="InteliJ Maven Settings">&lt;/p>
-&lt;p>Die wichtigsten Einstellungen sind:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Einstellung&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Maven home directory&lt;/td>
-&lt;td>Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als &amp;ldquo;Bundled&amp;rdquo; bezeichnet&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>User settings file&lt;/td>
-&lt;td>Die XML-Datei, welche weiter oben angelegt wurde&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Local repository&lt;/td>
-&lt;td>Der Ablageort für das lokale Repository&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Bei diesen Einstellungen muss überprüft werden, dass die Angaben für die XML-Datei und das lokale Repository korrekt sind.&lt;/p>
-&lt;hr>
-&lt;h3 id="repository">Repository&lt;/h3>
-&lt;h4 id="lokal">Lokal&lt;/h4>
-&lt;p>Zwischen dem JFrog Artifactory und deinem lokalen Repository gibt es also nun eine Verbindung. Sobald dein Projekt (in der Datei pom.xml) bestimmte Abhängigkeiten definiert, werden diese über das Artifactory aufgelöst und die entsprechenden Artefakte werden in dein lokales Repository heruntergeladen.&lt;/p>
-&lt;p>Beispiel:
-In meiner pom.xml Datei definiere ich die folgende Abhängigkeit zu der Fremdbibliothek von Lombok&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;lt;!-- Lombok --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;1.18.12&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Sobald ich die pom.xml Datei speichere, wird das angeforderte Artefakt durch die oben eingerichtete Verbindung im Artifactory gesucht. Dieser Vorgang kann auch manuell gemacht werden. Dazu kann man sich auf &lt;a href="https://bin.sbb.ch">https://bin.sbb.ch&lt;/a> einloggen.&lt;br>
-Auf der Seite können mit dem Suchfeld bestimmte Artefakte gesucht werden. Als Stichwort reicht ein Teil des Names des gesuchten Artefakts.
-&lt;img src="../maven/1657700481.png" alt="Artifactory" title="Artifactory">&lt;/p>
-&lt;p>Die angezeigten Resultate lassen sich durch einen Klick auf die Tabellen-Header sortieren. Ich habe die Sortierung nach Modifizierungsdatum gewählt
-&lt;img src="../maven/1657700492.png" alt="Artifactory Suchresultat" title="Artifactory Suchresultat">&lt;/p>
-&lt;p>Wie wir sehen gibt es die von uns gewünschte Lombok-Version 1.18.12 als verschiedene Artefakte: javadoc, sources, pom und jar. Wir können auch sehen, dass es bereits eine neuere Version gibt 1.18.14.&lt;/p>
-&lt;p>Der angeforderte Artefakt wird nun in das lokale Repository heruntergeladen, wir müssten ihn dort also finden können. Die Artefakte sind nach Packages abgelegt. Beim Lombok-Artefakt fordern wir ja die Group-ID &amp;ldquo;org.projectlombok&amp;rdquo; an. Unter diesem Verzeichnis müsste das Artefakt nun zu finden sein:
-&lt;img src="../maven/1657700516.png" alt="Artefakt im lokalen Repository" title="Artefakt im lokalen Repository">&lt;/p>
-&lt;p>Das Artefakt wird unterhalb der Group-ID noch in einem Ordner mit der Artifact-ID abgelegt. Innerhalb dieses Verzeichnisses werden alle bisher angeforderten Versionen von Lombok abgelegt.
-&lt;img src="../maven/1657700520.png" alt="Artefakt Versionen" title="Artefakt Versionen">&lt;/p>
-&lt;p>Die beiden Dateien mit der endung &amp;ldquo;lastUpdated&amp;rdquo; dienen dem Maven zur Kontrolle der letzten Synchronisierung.&lt;/p>
-&lt;h4 id="remote-jfrog--artifactory">Remote (JFrog / Artifactory)&lt;/h4>
-&lt;p>Das Artifactory von JFrog ist das verwaltete Verzeichnis zur Speicherung und Beschreibung digitaler Objekte. Es ist also unser digitales Archiv bei der SBB. In diesem Archiv befinden sich Millionen von Fremdbibliotheken in unterschiedlichsten Versionen. Zudem werden alle Versionen von unseren ausgelieferten Applikationen dort archiviert.&lt;/p>
-&lt;hr>
-&lt;h3 id="commands">Commands&lt;/h3>
-&lt;p>Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt könnt ihr das Terminal öffnen und den Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn -version
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>eingeben. Das sollte nun in etwa so aussehen:
-&lt;img src="../maven/1657700535.png" alt="Maven Console" title="Maven Console">&lt;/p>
-&lt;p>Bevor wir die einzelnen Befehle kurz anschauen werfen wir einen Blick auf die einzelnen Phasen des Maven-Lebenszyklus.
-&lt;img src="../maven/1657700671.png" alt="Maven Phasen" title="Maven Phasen">&lt;/p>
-&lt;p>Jeder der in der Grafik genannten Befehle wird zusätzlich die vorangehenden Befehle ausführen. Die Ausführung von &amp;ldquo;mvn package&amp;rdquo; wird also die Phasen &lt;em>validate&lt;/em>, &lt;em>compile&lt;/em>, &lt;em>test&lt;/em> und &lt;em>package&lt;/em> ausführen.&lt;/p>
-&lt;h4 id="help">help&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn -help
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das Ergebnis dürfte klar sein. Maven listet alle möglichen Befehle auf.&lt;/p>
-&lt;h4 id="dependencytree">dependency:tree&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn dependency:tree
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dieser Befehl listet alle Abhängigkeiten zu Fremdbibliotheken als Baum auf. Das ist grundsätzlich sehr praktisch wenn man doppelte Abhängigkeiten erkennen/vermeiden will.&lt;/p>
-&lt;h4 id="clean">clean&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn clean
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dieser Befehl löscht alle vorherigen lokale Maven-Builds, indem er das Verzeichnis &amp;ldquo;target&amp;rdquo; löscht.&lt;/p>
-&lt;h4 id="compile">compile&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn compile
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Kompiliert den Sourcecode je nach Abhängigkeit von Plugins. Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung herangezogen.&lt;/p>
-&lt;h4 id="test">test&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn test
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-Tests mit jUnit.&lt;/p>
-&lt;h4 id="package">package&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn package
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das Verzeichnis &amp;ldquo;target&amp;rdquo;.&lt;/p>
-&lt;h4 id="verify">verify&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn verify
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen Maven-Befehl vorausgesetzt.&lt;/p>
-&lt;h4 id="install">install&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn install
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&amp;ldquo;Installiert&amp;rdquo; den Artefakt im lokalen Maven-Repository.&lt;/p>
-&lt;h4 id="deploy">deploy&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn deploy
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&amp;ldquo;Installiert&amp;rdquo; den Artefakt im Remote-Repository (Artifactory)&lt;/p>
-&lt;p>Die Maven-Befehle lassen sich kombinieren. Sehr nützlich ist zum Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">mvn clean install
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Selbstverständlich gibt es sehr viele Optionen für die einzelnen Maven-Befehle.&lt;/p>
-&lt;hr>
-&lt;h2 id="continuous-integration">Continuous Integration&lt;/h2>
-&lt;p>Kontinuierliche Integration beschreibt den Prozess der fortlaufenden Zusammenfügung von Einzelkomponenten zu einer Anwendung. Das Ziel dabei ist stets die Steigerung der Qualität einer Software. Inhaltlich wird nicht nur die Software zusammengebaut, es können auch Tests durchgeführt oder Messungen der Code-Qualität vorgenommen werden.
-Der Auslöser ist stets das Hochladen (Einchecken) von Änderungen am Programmcode in die Versionsverwaltung. Eine Weiterentwicklung der kontinuierlichen Integration stellt die kontinuierliche Auslieferung (Continuous Delivery) dar, dort wird in bestimmten Zeitabständen, bei Erreichen einer bestimmten Qualität oder manuell eine neue Version der Software auf eine Zielplattform ausgeliefert.&lt;/p>
-&lt;hr>
-&lt;h3 id="grundsätze">Grundsätze&lt;/h3>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Grundsatz&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Versionsverwaltung&lt;/td>
-&lt;td>Gemeinsame Codebasis für alle Projektbeteiligten&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Statische Code-Analyse&lt;/td>
-&lt;td>Einheitlich definierte Qualität der Applikation&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Kontinuierliche Test-Entwicklung&lt;/td>
-&lt;td>Änderungen an der Software sind durch entsprechende Unit-Tests abzudecken&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Häufige Integration&lt;/td>
-&lt;td>Code-Review durchführen und Änderungen möglichst rasch einchecken. Kleiner Stack an offenen Pull-Requests&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Integration Develop&lt;/td>
-&lt;td>Nahe am Develop-Branch entwickeln&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Kurze und häufige Testzyklen&lt;/td>
-&lt;td>Häufiger Testen und dafür den Umfang der Tests klein halten&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Integrationsumgebung&lt;/td>
-&lt;td>Alle Änderungen sollten auf einem der Produktion ähnlichen System getestet werden&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Einfacher Zugriff&lt;/td>
-&lt;td>Alle Projektbeteiligten, also auch Nicht-Entwickler, benötigen Zugriff auf die Ergebnisse der Software-Entwicklung&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Automatisiertes Reporting&lt;/td>
-&lt;td>Informationen zu Auslieferungen der Software müssen einfach und verständlich einsehbar sein&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Automatisiertes Deployment&lt;/td>
-&lt;td>Die Auslieferung der Software auf unterschiedliche Plattformen sollte so einfach wie möglich sein&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;hr>
-&lt;h3 id="vorteile">Vorteile&lt;/h3>
-&lt;ul>
-&lt;li>Probleme bei der Auslieferung können früh erkannt und behoben werden&lt;/li>
-&lt;li>Test des Gesamtsystems als Verbund&lt;/li>
-&lt;li>Logik-Fehler können durch Unit-Testing rasch gefunden und behoben werden&lt;/li>
-&lt;li>Hohe Verfügbarkeit von Test- und Integrationsplattformen (auch für den Kunden)&lt;/li>
-&lt;li>Schnelle Reaktion des Systems beschleunigt die Entwicklung&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="jenkins">Jenkins&lt;/h3>
-&lt;p>Die Software, welche von der SBB für CI/CD eingesetzt wird ist Jenkins. Die Anwendung ist unter &lt;a href="https://ci.sbb.ch/">https://ci.sbb.ch/&lt;/a> erreichbar.&lt;/p>
-&lt;hr>
-&lt;h3 id="deployment-pipeline">Deployment-Pipeline&lt;/h3>
-&lt;p>Zum Gesamtsystem von CI/CD (bei der SBB) und damit der Deployment-Pipeline gehören die folgenden Systeme/Anwendungen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>System&lt;/th>
-&lt;th>Zweck&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>GIT-Repository&lt;/td>
-&lt;td>Source-Code Ablage&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Artifactory&lt;/td>
-&lt;td>Digitales Archiv&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Jenkins&lt;/td>
-&lt;td>CI/CD-Plattform&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Docker&lt;/td>
-&lt;td>Containervirtualisierung&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Openshift Container Plattform&lt;/td>
-&lt;td>Container Anwendungsplattform&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Bei Änderungen am GIT-Repository wird durch den Jenkins ein Maven-Build ausgelöst. Dieser legt je nach Build-Konfiguration ein neues Artefakt im Artifactory ab (CI). Aus dem Artifactory kann dieses Artefakt über den Jenkins via Docker auf die Openshift Container Plattform ausgeliefert werden (CD).&lt;/p>
-&lt;p>Für die Konfiguration einer Deployment-Pipeline sind die folgenden Dateien notwendig:&lt;/p>
-&lt;ul>
-&lt;li>Jenkinsfile&lt;/li>
-&lt;li>Pipeline-Konfiguration als JSON&lt;/li>
-&lt;/ul>
-&lt;h4 id="jenkinsfile">Jenkinsfile&lt;/h4>
-&lt;p>Diese Datei wird durch den Jenkins in jedem GIT-Repository gesucht. Wenn Sie gefunden wird, dann wird der Jenkins anhand der Konfiguration im GIT-Repository handeln.
-Der minimale Inhalt ist wie folgt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">#!groovy
-@Library([&amp;#39;pipeline-helper@release&amp;#39;, &amp;#39;esta-cloud-pipeline@release&amp;#39;]) _
-estaCloudPipeline([:])
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die erste Zeile markiert diese Datei als Groovy-Script. Die zweite Zeile lädt die zu verwendende Bibliothek, welche in diesem Fall der Release des Pipeline-Helpers ist.
-Die letzte Zeile gibt den Namen der zu verwendenden Konfiguration an. Die Datei für die Konfiguration muss also den Namen estaCloudPipeline.json haben.&lt;/p>
-&lt;h4 id="pipeline-konfiguration-als-json">Pipeline-Konfiguration als JSON&lt;/h4>
-&lt;p>Die Pipeline-Konfiguration dient dem Jenkins zur Konfiguration der gesamten Pipeline inklusive deren auswählbaren Möglichkeiten für manuelle Optionen.
-Wir betrachten eine etwas umfangreichere Konfiguration am folgenden Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">{
-&amp;#34;mainBranch&amp;#34;: &amp;#34;master&amp;#34;,
-&amp;#34;hotfixBranch&amp;#34;: &amp;#34;hotfix&amp;#34;,
-&amp;#34;docker&amp;#34;: {
-&amp;#34;artifactoryDockerRepo&amp;#34;: &amp;#34;cca&amp;#34;,
-&amp;#34;openshiftAppName&amp;#34;: &amp;#34;interviewtool-core&amp;#34;
-},
-&amp;#34;mvn&amp;#34;: {
-&amp;#34;parentPom&amp;#34;: &amp;#34;pom.xml&amp;#34;,
-&amp;#34;deployableArtifactsPom&amp;#34;: &amp;#34;pom.xml&amp;#34;,
-&amp;#34;artifactoryMavenRepo&amp;#34;: &amp;#34;cca.mvn&amp;#34;
-},
-&amp;#34;stages&amp;#34;: [
-{
-&amp;#34;stageName&amp;#34;: &amp;#34;dev&amp;#34;,
-&amp;#34;isOpenshiftDeploymentEnabled&amp;#34;: true,
-&amp;#34;openshiftProject&amp;#34;: &amp;#34;interviewtool-dev&amp;#34;,
-&amp;#34;openshiftCluster&amp;#34;: &amp;#34;aws&amp;#34;,
-&amp;#34;openshiftJenkinsCredentialsId&amp;#34;: &amp;#34;aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&amp;#34;,
-&amp;#34;preCiDeploymentJob&amp;#34;: &amp;#34;&amp;#34;,
-&amp;#34;postCiDeploymentJob&amp;#34;: &amp;#34;&amp;#34;
-},
-{
-&amp;#34;stageName&amp;#34;: &amp;#34;int&amp;#34;,
-&amp;#34;isOpenshiftDeploymentEnabled&amp;#34;: true,
-&amp;#34;openshiftProject&amp;#34;: &amp;#34;interviewtool-int&amp;#34;,
-&amp;#34;openshiftCluster&amp;#34;: &amp;#34;aws&amp;#34;,
-&amp;#34;openshiftJenkinsCredentialsId&amp;#34;: &amp;#34;aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&amp;#34;,
-&amp;#34;preCiDeploymentJob&amp;#34;: &amp;#34;&amp;#34;,
-&amp;#34;postCiDeploymentJob&amp;#34;: &amp;#34;&amp;#34;
-},
-{
-&amp;#34;stageName&amp;#34;: &amp;#34;prod&amp;#34;,
-&amp;#34;isOpenshiftDeploymentEnabled&amp;#34;: true,
-&amp;#34;openshiftProject&amp;#34;: &amp;#34;interviewtool-prod&amp;#34;,
-&amp;#34;openshiftCluster&amp;#34;: &amp;#34;aws&amp;#34;,
-&amp;#34;openshiftJenkinsCredentialsId&amp;#34;: &amp;#34;aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&amp;#34;,
-&amp;#34;preCiDeploymentJob&amp;#34;: &amp;#34;&amp;#34;,
-&amp;#34;postCiDeploymentJob&amp;#34;: &amp;#34;&amp;#34;
-}
-],
-&amp;#34;steps&amp;#34;: [
-{
-&amp;#34;stepType&amp;#34;: &amp;#34;continuous&amp;#34;,
-&amp;#34;isBuildEnabled&amp;#34;: true,
-&amp;#34;branchNamePrefixes&amp;#34;: [
-&amp;#34;feature&amp;#34;, &amp;#34;develop&amp;#34;, &amp;#34;bugfix&amp;#34;
-],
-&amp;#34;additionalBuildParams&amp;#34;: &amp;#34;-DskipITs&amp;#34;
-},
-{
-&amp;#34;stepType&amp;#34;: &amp;#34;integrationBuild&amp;#34;,
-&amp;#34;isBuildEnabled&amp;#34;: true,
-&amp;#34;xrayScanEnabled&amp;#34;: true,
-&amp;#34;failOnXrayScan&amp;#34;: false,
-&amp;#34;sonarScanEnabled&amp;#34;: true,
-&amp;#34;staging&amp;#34;: {
-&amp;#34;stages&amp;#34;: [
-&amp;#34;dev&amp;#34;
-]
-},
-&amp;#34;triggerBuildOnCommitEnabled&amp;#34;: false
-},
-{
-&amp;#34;stepType&amp;#34;: &amp;#34;release&amp;#34;,
-&amp;#34;isBuildEnabled&amp;#34;: true,
-&amp;#34;xrayScanEnabled&amp;#34;: true,
-&amp;#34;failOnXrayScan&amp;#34;: true,
-&amp;#34;sonarScanEnabled&amp;#34;: true,
-&amp;#34;staging&amp;#34;: {
-&amp;#34;stages&amp;#34;: [
-&amp;#34;dev&amp;#34;
-]
-},
-&amp;#34;additionalBuildParams&amp;#34;: &amp;#34;-DskipITs&amp;#34;,
-&amp;#34;triggerBuildOnCommitEnabled&amp;#34;: false,
-&amp;#34;hotfixCreationEnabled&amp;#34;: false
-},
-{
-&amp;#34;stepType&amp;#34;: &amp;#34;hotfix&amp;#34;,
-&amp;#34;isBuildEnabled&amp;#34;: true
-}
-]
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die folgenden Einstellungen können in der Konfiguration gefunden werden:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Gruppe&lt;/th>
-&lt;th>Einstellung&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Root&lt;/td>
-&lt;td>mainBranch&lt;/td>
-&lt;td>Name des Produktions-Branches. Normalerweise master oder develop&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Root&lt;/td>
-&lt;td>hotfixBranch&lt;/td>
-&lt;td>Prefix für Hotfix-Branches&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Docker&lt;/td>
-&lt;td>artifactoryDockerRepo&lt;/td>
-&lt;td>Repository-Pfad für Docker&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Docker&lt;/td>
-&lt;td>openshiftAppName&lt;/td>
-&lt;td>Name der Applikation auf der Openshift Container Plattform&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Maven&lt;/td>
-&lt;td>parentPom&lt;/td>
-&lt;td>Pfad zum pom.xml&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Maven&lt;/td>
-&lt;td>deployableArtifactsPom&lt;/td>
-&lt;td>Angabe aller auslieferbaren pom.xml&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Maven&lt;/td>
-&lt;td>artifactoryMavenRepo&lt;/td>
-&lt;td>Name des Artifactory-Verzeichnisses&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
-&lt;td>stageName&lt;/td>
-&lt;td>Name der Plattform als Abkürzung (dev, test, inte, prod)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
-&lt;td>isOpenshiftDeploymentEnabled&lt;/td>
-&lt;td>Deployment auf Openshift erlaubt (true / false)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
-&lt;td>openshiftProject&lt;/td>
-&lt;td>Name des Projekts auf der Openshift Container Plattform&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
-&lt;td>openshiftCluster&lt;/td>
-&lt;td>Openshift Cluster (OTC, AWS, &amp;hellip;)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
-&lt;td>openshiftJenkinsCredentialsId&lt;/td>
-&lt;td>Secret Key, damit sich Jenkins auf der Openshift Container Plattform einloggen kann&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
-&lt;td>preCiDeploymentJob&lt;/td>
-&lt;td>Name des vorgelagerten Jenkins-Jobs&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Stage (Angabe erfolgt pro Stage)&lt;/td>
-&lt;td>postCiDeploymentJob&lt;/td>
-&lt;td>Name des nachgelagerten Jenkins-Jobs&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>stepType&lt;/td>
-&lt;td>Name der Option&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>isBuildEnabled&lt;/td>
-&lt;td>Option aktiv (true / false)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>branchNamePrefixes&lt;/td>
-&lt;td>Angabe der Präfixe der zu verwendenden Branches&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>additionalBuildParams&lt;/td>
-&lt;td>Weitere Maven-Angaben&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>xrayScanEnabled&lt;/td>
-&lt;td>XRay aktiv (true / false)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>failOnXrayScan&lt;/td>
-&lt;td>Build schlägt fehl wenn XRay fehlschlägt (true / false)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>sonarScanEnabled&lt;/td>
-&lt;td>Sonar aktiv (true / false)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>staging&lt;/td>
-&lt;td>Angabe von Stages zur Auslieferung&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>triggerBuildOnCommitEnabled&lt;/td>
-&lt;td>Wird dieser Build ausgeführt, wenn ein Commit erfolgt (true / false)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Step (Angabe erfolgt pro Step)&lt;/td>
-&lt;td>hotfixCreationEnabled&lt;/td>
-&lt;td>Darf dieser Build einen Hotfix-Branch erzeugen (true / false)&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Die genauen Beschreibungen der einzelnen Einstellungen sind sehr umfangreich.
-Weitere Informationen gibt es hier: &lt;a href="https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline+-+Parameter+Documentation">https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline+-+Parameter+Documentation&lt;/a>&lt;/p>
-&lt;p>Zu Beginn gibt es Konfigurationen für GIT und Docker. Anschliessend benötigt Maven den Namen und den Pfad für das POM.
-Die Auslieferung erfolgt auf sogenannte Stages, dies sind Projekte auf der Openshift Container Plattform. Jede Stage kann individuell konfiguriert werden.
-Wichtig dabei ist der Schlüssel, welcher auf dem Jenkins hinterlegt sein muss. Nur mit diesem Schlüssel kann sich der Jenkins für ein Deployment auf der Openshift Container Plattform einloggen. Für jeden Step kann konfiguriert werden, ob er auf eine oder mehrere Stages ausgeliefert werden soll.
-Die häufigsten Steps sind:&lt;/p>
-&lt;ul>
-&lt;li>Continuous&lt;/li>
-&lt;li>Release&lt;/li>
-&lt;li>Deploy&lt;/li>
-&lt;/ul>
-&lt;p>Der Continuous-Build dient dabei Branches vom Typ feature oder bugfix (je nach Konfiguration) zu bauen. Nur erfolgreiche Builds dieser Weiterentwicklungen oder Bugfixes können anschliessend in den Haupt-Entwicklungsbranch zurück gemerged werden. Dieser Build wird nicht auf eine Stage ausgeliefert.
-Der Release-Build dient der Herstellung einer neuen Version einer Anwendung. Dieser Build taggt die Version auf dem GIT-Repository und liefert sie auf die entsprechend konfigurierten Stages aus. Vorbehalten bleibt normalerweise der Release auf eine produktive Umgebung.
-Der Deploy-Build dient dem Deployment einer bestimmten Version auf eine bestimmte Stage. Die Stage kann dabei gewählt werden. Dieser Step-Typ wird normalerweise für den Release auf Integration- oder Produktionsplattformen verwendet.&lt;/p>
-&lt;p>Zum Nachlesen gibt es hier noch die Dokumentation der Pipeline: &lt;a href="https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline">https://confluence.sbb.ch/display/CLEW/Esta+Cloud+Pipeline&lt;/a>&lt;/p></description></item><item><title>Docs: Overview Lab</title><link>/docs/java/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/overview/</guid><description>
+&lt;p>Fortsetzung folgt&amp;hellip;&lt;/p></description></item><item><title>Docs: Overview Lab</title><link>/docs/java/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/overview/</guid><description>
 &lt;h2 id="50-meta">5.0: Meta&lt;/h2>
 &lt;h3 id="501-goals">5.0.1: Goals&lt;/h3>
 &lt;ul>
