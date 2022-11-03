@@ -570,7 +570,25 @@ String &lt;span style="color:#a6e22e">checkWin&lt;/span>&lt;span style="color:#f
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Wenn du an der Challenge teilnehmen willst, dann musst du die Aufgabe alleine lösen.
-Die Lösung vom Pult-Nachbar interessiert uns also (leider) nicht.&lt;/p></description></item><item><title>Labs: Lists Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/01_listexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/01_listexercises/</guid><description>
+Die Lösung vom Pult-Nachbar interessiert uns also (leider) nicht.&lt;/p></description></item><item><title>Labs: JDBC - Aufgaben</title><link>/labs/java/java-jdbc/01_jdbc_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-jdbc/01_jdbc_exercises/</guid><description>
+&lt;h2 id="persistente-notenverwaltungssystem">Persistente Notenverwaltungssystem&lt;/h2>
+&lt;p>Schreibe eine Konsolen-basierte Java Anwendung, welche deine Schulnoten verwaltet und in einer Datenbank persistiert.&lt;/p>
+&lt;p>Die Anwendung soll mindestens die folgende Funktionalität beinhalten:&lt;/p>
+&lt;ul>
+&lt;li>Neue Note für ein bestimmtes Fach erfassen (inkl. Datum)&lt;/li>
+&lt;li>Eine bestehende Note löschen&lt;/li>
+&lt;li>Eine bestehende Note bearbeiten&lt;/li>
+&lt;li>Den aktuellen Notenstand eines Fachs ausgeben (Auflistung aller Noten und die Durchschnittsnote)&lt;/li>
+&lt;li>Die Durchschnittsnoten aller Fächer ausgeben (#Zeugnis)&lt;/li>
+&lt;/ul>
+&lt;p>Verwende eine MariaDB und setzte sie selbst auf. Den nötigen Treiber dazu findest du im Internet.
+Die Datenbank muss mindestens die folgenden Tabellen beinhalten:&lt;/p>
+&lt;ul>
+&lt;li>SCHOOL_SUBJECT - beinhaltet alle Schulfächer&lt;/li>
+&lt;li>GRADE - beinhaltet alle gültigen Noten zwischen 1 und 6 (in 0.25 Stufen -&amp;gt; also 1, 1.25. 1.5, 1.75, 2 usw..)&lt;/li>
+&lt;li>SCHOOL_SUBJECT_GRADE - beinhaltet die Relation zwischen Schulfächern und Noten. Jede Zeile stellt eine Note für ein Fach an einem bestimmten Tag dar.&lt;/li>
+&lt;/ul>
+&lt;p>Achte auf korrektes Exception-Handling (denke an &amp;ldquo;try with resources&amp;rdquo;) und sauberen Code.&lt;/p></description></item><item><title>Labs: Lists Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/01_listexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/01_listexercises/</guid><description>
 &lt;h3 id="aufgabe-1">Aufgabe 1&lt;/h3>
 &lt;p>Schreibe ein Programm, welche aus der Kommandozeile eine Reihe von Zahlen liest und die
 Zahl an der Position x (x ist die erste Zahl in der Reihe) in der Konsole ausgibt.
@@ -7535,160 +7553,4 @@ red&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">gene
 &lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Asynchrone Anfragen</title><link>/docs/web/javascript/05_js_async/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/05_js_async/</guid><description>
-&lt;h2 id="webanfrage-mit-javascript">Webanfrage mit JavaScript&lt;/h2>
-&lt;p>Wenn du eine Webanwendung schreibst, dann muss deine Website (=Frontend) wahrscheinlich Daten von (d)einem Backend abfragen.&lt;/p>
-&lt;p>In den meisten Fällen werden hierfür HTTP-Requests verwendet, die du bereits kennengelernt hast (REST API bei Spring und HTML Forms).&lt;/p>
-&lt;p>Um das einmal auszuprobieren, wollen wir eine API anfragen, die als Antwort zufällige &amp;ldquo;Fakten&amp;rdquo; über Chuck Norris zurückschickt. Wenn wir diese URL im Browser aufrufen (= HTTP GET), erhalten wir einen Witz in Form von JSON:&lt;/p>
-&lt;p>&lt;code>GET https://api.chucknorris.io/jokes/random&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
-&lt;span style="color:#f92672">&amp;#34;categories&amp;#34;&lt;/span>: [],
-&lt;span style="color:#f92672">&amp;#34;created_at&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;2020-01-05 13:42:20.262289&amp;#34;&lt;/span>,
-&lt;span style="color:#f92672">&amp;#34;icon_url&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;https://assets.chucknorris.host/img/avatar/chuck-norris.png&amp;#34;&lt;/span>,
-&lt;span style="color:#f92672">&amp;#34;id&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;6F3bv9fIRUGCPTcma6Je1w&amp;#34;&lt;/span>,
-&lt;span style="color:#f92672">&amp;#34;updated_at&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;2020-01-05 13:42:20.262289&amp;#34;&lt;/span>,
-&lt;span style="color:#f92672">&amp;#34;url&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;https://api.chucknorris.io/jokes/6F3bv9fIRUGCPTcma6Je1w&amp;#34;&lt;/span>,
-&lt;span style="color:#f92672">&amp;#34;value&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Albert Einstein&amp;#39;s hair used to be neatly combed...until the day he met Chuck Norris.&amp;#34;&lt;/span>
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Folglich interessiert uns der Wert für &lt;code>&amp;quot;value&amp;quot;&lt;/code>.&lt;/p>
-&lt;p>Damit für dich das Vorgehen verständlicher ist, führen wir Schritt für Schritt in der Browser-Konsole aus.&lt;/p>
-&lt;p>Die Abfrage kannst du wie folgt durchführen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">fetch&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;https://api.chucknorris.io/jokes/random&amp;#39;&lt;/span>, {&lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;get&amp;#39;&lt;/span>})
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Du wirst sehen, dass dieser Funktionsaufruf ein &lt;code>Promise {&amp;lt;pending&amp;gt;}&lt;/code> zurückgibt. Wir sehen, dass die Anfrage noch nicht vorbei ist (pending = anstehend). Dieses &lt;code>Promise&lt;/code>-Objekt wird die Antwort enthalten, sobald die Antwort verfügbar ist. Da wir sowieso erst weiterfahren möchten, wenn die Antwort bereit ist, interessieren wir uns nicht für das &lt;code>Promise&lt;/code>. Daher können wir einfach mit der Fortsetzung des Scriptes solange warten, bis wir die Antwort hätten. Das können wir wie folgt machen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">fetch&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;https://api.chucknorris.io/jokes/random&amp;#39;&lt;/span>, {&lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;get&amp;#39;&lt;/span>})
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das &lt;code>await&lt;/code> führt dazu, dass das Script erst weitergeht, wenn die Antwort da ist. Zusätzlich wird die Antwort automatisch aus dem &lt;code>Promise&lt;/code>-Objekt entpackt und wir erhalten so direkt ein Objekt vom Typ &lt;code>Response&lt;/code>.&lt;/p>
-&lt;p>Theoretisch haben wir nun die Daten, die wir wollen. Da wir als Antwort ein JSON-Objekt als Antwort erwarten, können wir direkt die Antwort als JavaScript-Objekt anfordern:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">response&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">fetch&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;https://api.chucknorris.io/jokes/random&amp;#39;&lt;/span>, {&lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;get&amp;#39;&lt;/span>});
-&lt;span style="color:#a6e22e">response&lt;/span>.&lt;span style="color:#a6e22e">json&lt;/span>();
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Komischerweise erhalten wir wieder ein &lt;code>Promise {&amp;lt;pending&amp;gt;}&lt;/code>. Was müssen wir machen, um das JSON aus diesem Promise zu kriegen?&lt;/p>
-&lt;p>Genau: Wir müssen es &lt;code>await&lt;/code>en:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">response&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">fetch&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;https://api.chucknorris.io/jokes/random&amp;#39;&lt;/span>, {&lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;get&amp;#39;&lt;/span>});
-&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">jokeObject&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">response&lt;/span>.&lt;span style="color:#a6e22e">json&lt;/span>()
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dies ist notwendig, da die Methode &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json">json()&lt;/a> asynchron den response Stream ausliest.&lt;/p>
-&lt;p>Wenn du nun das &lt;code>jokeObject&lt;/code> loggst (z.B. mit &lt;code>console.log(jokeObject)&lt;/code>), siehst du, dass wir nun das gleiche Objekt, das wir ganz oben erwartet haben, erhalten haben.&lt;/p>
-&lt;p>Den Witz kannst du wie folgt ausgeben:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">jokeObject&lt;/span>.&lt;span style="color:#a6e22e">value&lt;/span>);
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="anfrage-in-eine-funktion-einbinden">Anfrage in eine Funktion einbinden&lt;/h3>
-&lt;p>Im Normalfall packt man solche Logik in eine Funktion. Den oberen Code könntest du wie folgt in eine Methode einbinden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Requests a random Chuck Norris joke and returns it.
-&lt;/span>&lt;span style="color:#75715e"> * @return {Promise&amp;lt;string&amp;gt;} a random Chuck Norris joke.
-&lt;/span>&lt;span style="color:#75715e">*/&lt;/span>
-&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">fetchJoke&lt;/span>() {
-&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">response&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">fetch&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;https://api.chucknorris.io/jokes/random&amp;#39;&lt;/span>, { &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;get&amp;#39;&lt;/span> })
-&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">jokeObject&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">response&lt;/span>.&lt;span style="color:#a6e22e">json&lt;/span>();
-&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">jokeObject&lt;/span>.&lt;span style="color:#a6e22e">value&lt;/span>;
-}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dir ist sicher aufgefallen, dass wir nun das &lt;code>async&lt;/code>-Keyword vor &lt;code>function&lt;/code> geschrieben haben. Dies ist erforderlich, wenn man &lt;code>await&lt;/code> in einer Funktion verwenden möchte. Dieses &lt;code>async&lt;/code>-Keyword führt auch dazu, dass die Methode ein Objekt des Typen &lt;code>Promise&amp;lt;...&amp;gt;&lt;/code> zurückgibt.&lt;/p>
-&lt;p>Wenn du diese Funktion definiert hast, kannst du den Rückgabewert von ihr wie folgt loggen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">fetchJoke&lt;/span>());
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="await-umgehen">await umgehen&lt;/h3>
-&lt;p>Du wirst in die Situation kommen, wo du eine Antwort auf eine asynchrone Anfrage erhälst, aber kein &lt;code>await&lt;/code> brauchen darfst, weil du dich nicht in einer mit &lt;code>async&lt;/code> gekennzeichneten Funktion befindest.&lt;/p>
-&lt;p>Statt ein Promise zu awaiten, kannst du auch definieren, dass eine bestimmte Aktion durchgeführt werden soll, sobald die Antwort da ist. Dies kannst du mit &lt;code>Promise.then(...)&lt;/code> machen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">fetchJoke&lt;/span>().&lt;span style="color:#a6e22e">then&lt;/span>(&lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">joke&lt;/span>) {
-&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">joke&lt;/span>);
-});
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das kannst du auch schöner schreiben, funktioniert so aber nicht mehr im Internet Explorer:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">fetchJoke&lt;/span>().&lt;span style="color:#a6e22e">then&lt;/span>(&lt;span style="color:#a6e22e">joke&lt;/span> =&amp;gt; &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">joke&lt;/span>));
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Was genau haben wir hier gemacht?&lt;/p>
-&lt;p>Wir haben &lt;code>fetchJoke()&lt;/code> asynchron aufgerufen, ohne auf die Antwort zu warten. Deswegen erhalten wir ein Promise-Objekt. Promise-Objekte enthalten eine &lt;code>then&lt;/code>-Methode. Bei dieser Methode kannst du eine Funktion übergeben. Die übergebene Funktion wird aufgerufen, sobald die Antwort erhalten wurde.&lt;/p>
-&lt;h3 id="auftrag-seite-mit-joke">Auftrag: Seite mit Joke&lt;/h3>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Schreibe eine Website, die auf Knopfdruck einen solchen Witz anzeigt.&lt;/p>
-&lt;p>Solltest du fertig mit dieser Aufgabe sein, dann melde dich bei einem Coach.&lt;/p>
-&lt;h3 id="zusatzauftrag-eine-andere-api-anbinden">Zusatzauftrag: Eine andere API anbinden&lt;/h3>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Versuche eine anderes API/Backend anzubinden und etwas auf einer Website anzuzeigen.&lt;/p>
-&lt;h3 id="früher-war-alles-besser">Früher war alles besser?&lt;/h3>
-&lt;p>Die &lt;code>fetch&lt;/code>-Funktion hat Webrequest stark vereinfacht. Früher durftest du dich mit XML HTTP Requests herumschlagen. Aber siehe selbst: &lt;a href="https://www.w3schools.com/xml/xml_http.asp">https://www.w3schools.com/xml/xml_http.asp&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;/div></description></item></channel></rss>

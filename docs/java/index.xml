@@ -7735,7 +7735,143 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Durch eine solche Auswertung liesse sich beispielsweise eine automatische Dokumentation generieren.&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/java/java-collections/java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/java-collections/</guid><description>
+&lt;/div>&lt;p>Durch eine solche Auswertung liesse sich beispielsweise eine automatische Dokumentation generieren.&lt;/p></description></item><item><title>Docs: JDBC (Java Database connection)</title><link>/docs/java/java-jdbc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-jdbc/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich weiss was die JDBC-Schnittstelle ist und wofür sie benutzt wird&lt;/li>
+&lt;li>Ich weiss was JDBC-Treiber sind und warum sie benötigt werden&lt;/li>
+&lt;li>Ich kenne die wichtigsten Interfaces der JDBC-Schnittstelle&lt;/li>
+&lt;li>Ich weiss wie parametrisierte SQL-Anweisungen verwendet werden können&lt;/li>
+&lt;li>Ich kann eine Datenbank-Verbindung aus einer Java-Anwendung herstellen&lt;/li>
+&lt;li>Ich kann CRUD-Operationen aus einer Java-Anwendung ausführen&lt;/li>
+&lt;/ul>
+&lt;h2 id="einleitung">Einleitung&lt;/h2>
+&lt;p>Die meisten Apps und Webseiten, welche wir heutzutage fast täglich verwenden, dienen lediglich der Datenverarbeitung.&lt;br>
+Sobald du ein Bild deines Freundes likest, den Fahrplan abrufst oder eine neue Tastatur bestellst,
+es werden immer Daten gelesen, geschrieben, bearbeitet oder gelöscht.&lt;br>
+Es gibt Frameworks (darunter z.B. Spring), welche die Verbindung zu Datenbanken verwalten und die sog.
+&amp;ldquo;Boiler-Plate&amp;rdquo;-Details dazu von den Entwicklern verbergen. Diese Frameworks bieten auch einfache
+Interaktion mit der Datenbank z.B. im Form von CRUD-Operationen.
+Durch das Verwenden solcher Frameworks kann auf &amp;ldquo;Boiler-Plate&amp;rdquo; Code verzichtet werden.
+Die Entwicklung von Business-Logik ist somit von infrastrukturellen Details getrennt.&lt;/p>
+&lt;p>Es gibt jedoch Situationen, wo solche Frameworks nicht benutzt werden können oder man muss bestimmte
+Aktivitäten, welche diese Frameworks out-of-the-box anbieten, anders gestalten.
+In solchen Situationen kann die JDBC-Bibliothek von Java verwendet werden.&lt;/p>
+&lt;h2 id="was-ist-jdbc">Was ist JDBC&lt;/h2>
+&lt;p>JDBC ist eine Schnittstelle, welche dafür benutzt wird, um aus einer Java Anwendung eine Verbindung
+zu einer Datenbank herzustellen und Queries auf den Daten darin (z.B. lesen oder bearbeiten) ausführen zu können.&lt;br>
+Die JDBC-Schnittstelle stellt eine Datenbank unabhängige API zur Verfügung und trägt damit dazu bei, dass
+die Anwendung nicht an einer bestimmten Datenbank stark gekoppelt ist (sprich, die Anwendung muss die
+unterliegende Datenbank, theoretisch, gar nicht kennen).&lt;/p>
+&lt;p>Um die eigentliche Verbindung mit der Datenbank zu ermöglichen, werden JDBC-Treiber eingesetzt.
+Ein JDBC-Treiber ist eine Software-Komponente, welche die Zugriffstechnik für eine bestimmte Datenbank
+(z.B. Oracle, Postgres usw.) kennt und somit in der Lage ist, Anfragen an der Datenbank weiterzuleiten
+wie auch die Ergebnisse zurückzuliefern. Solche Treiber können umgetauscht werden, wenn die unterliegende Datenbank
+geändert werden soll, ohne dass es zu einer Anpassung in der Anwendung-Code kommt.&lt;/p>
+&lt;p>Eine vereinfachte Darstellung der JDBC-Architektur sieht also wie folgt aus:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/jdbc-architektur.png" alt="" title="JDBC-Architektur">&lt;/p>
+&lt;h2 id="jdbc-in-der-praxis">JDBC in der Praxis&lt;/h2>
+&lt;p>Die Klassen und Interfaces der JDBC-Schnittstelle befinden sich im Paket &amp;ldquo;java.sql&amp;rdquo;.
+Entsprechend reicht ein &amp;ldquo;import&amp;rdquo;-Statement um mit diesen Klassen/Interfaces arbeiten zu können.
+Die JDBC-Treiber sind jedoch separate und proprietäre Komponenten, welche zur Laufzeit vorhanden sein müssen
+damit der Classloader sie wirklich laden kann. Bei einem Maven-Projekt wird dies mittels einer Maven-Abhängigkeit
+erledigt. Ansonsten muss die Jar-Datei des Treibers auf dem Klassenpfad vorhanden sein.&lt;/p>
+&lt;p>Die ersten Schritte bei der Arbeit mit der JDBC-Schnittstelle beinhalten die nötige Konfiguration um die
+Verbindung zur Datenbank herstellen zu können. Anschliessend können Abfragen und sonstige
+SQL-Anweisungen ausgeführt werden.&lt;/p>
+&lt;p>Die folgenden Abschnitte zeigen die nötigen Schritte anhand von Beispielen.
+Diesen Beispiele wurden in einem Maven-Projekt ohne das Spring-Framework erstellt.&lt;/p>
+&lt;h3 id="maven-dependency">Maven-Dependency&lt;/h3>
+&lt;p>Sobald die gewünschte Datenbank festgelegt wurde, kann der dazugehörende JDBC-Treiber als
+Maven-Abhängigkeit herangezogen werden.&lt;/p>
+&lt;p>Das folgende Beispiel zeigt eine Abhängigkeit zu einem MySql-Treiber:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/dependency.png" alt="dependency.png">&lt;/p>
+&lt;p>Die restlichen Schritte erfolgen im Java-Code.&lt;/p>
+&lt;h3 id="treiber-ladenregistrieren">Treiber laden/registrieren&lt;/h3>
+&lt;p>&lt;strong>Hinweis&lt;/strong>&lt;br>
+Dieser Schritt wird nur bei JDBC-Versionen benötigt, welche älter sind als die Version 4!
+Bei neueren Versionen, werden alle Treiber geladen, welche auf dem Klassenpfad gefunden werden und
+somit braucht es diesen Schritt nicht mehr.&lt;/p>
+&lt;p>Mit der statischen Methode &lt;em>forName&lt;/em> von &lt;em>Class&lt;/em> wird die Klasse &lt;em>Driver&lt;/em> geladen.
+Hier geht es um die Datenbank spezifischer Treiber, welche es der Anwendung den Datenzugriff auf der
+gewünschten Datenbank ermöglicht.&lt;/p>
+&lt;p>Im folgenden Beispiel wird der JDBC-Treiber für MySql registriert:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/driver_registration.png" alt="">&lt;/p>
+&lt;h3 id="datenbankverbindung-herstellen">Datenbankverbindung herstellen&lt;/h3>
+&lt;p>Der Zugriff auf einer Datenbank erfordert die Konfiguration folgender Elemente:&lt;/p>
+&lt;ul>
+&lt;li>url: eine JDBC-URL, welche auf die gewünschte Datenquelle zeigt&lt;/li>
+&lt;li>Benutzername: einer, für den Zugriff auf die Datenbank, autorisierter Benutzer&lt;/li>
+&lt;li>Passwort: das Passwort des autorisierten Benutzers, womit er sich authentifizieren kann&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="../java-jdbc/connection_configuration.png" alt="">&lt;/p>
+&lt;p>Die Konfiguration wird hier einfachheitshalber als Klartext im Code geschrieben.
+Selbstverständlich dürfen vertrauliche Informationen wie z.B. das Passwort nicht als Klartext im Code stehen.
+Für diesen Zweck, wie auch für die Konfiguration unterschiedlichen Umgebungen, eignen sich System-
+oder Umgebungsvariablen (mit oder ohne Verschlüsselung) besser.&lt;/p>
+&lt;p>Die obige Konfiguration kann nun für die Herstellung einer Datenbankverbindung verwendet werden.
+Dazu wird die statische Methode &lt;em>getConnection&lt;/em> der Klasse &lt;em>DriverManager&lt;/em> verwendet:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/connection_creation.png" alt="">&lt;/p>
+&lt;p>Ab diesem Punkt repräsentiert das Connection-Objekt die Verbindung zur Datenbank.&lt;/p>
+&lt;h3 id="sql-anweisung-vorbereiten">SQL-Anweisung vorbereiten&lt;/h3>
+&lt;p>Die SQL-Anweisung kann als String vor der Ausführung vorbereitet werden:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/select_query_no_params.png" alt="">&lt;/p>
+&lt;p>Wenn eine IDE wie z.B. IntelliJ verwendet wird und eine Datasource mit der richtigen Datenbank definiert wird,
+erkennt die IDE, dass es sich um eine SQL-Anweisung handelt und liefert entsprechend
+Vorschläge und formatiert die Anweisung richtig und gut leserlich.&lt;/p>
+&lt;p>Die obige SQL-Anweisung dient dazu alle Daten aus einer bestehenden Tabelle zu Lesen.
+SQL-Anweisungen können aber auch Operationen wie Tabellen erstellen, Daten einfügen, löschen oder
+bearbeiten usw. beinhalten.&lt;/p>
+&lt;p>Als Beispiel, erstellt die folgende SQL-Anweisung eine Tabelle - falls diese noch nicht existiert -
+mit ein paar gewünschten Attributen (Spalten):&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/create_table_query.png" alt="">&lt;/p>
+&lt;h3 id="sql-anweisung-ausführen">SQL-Anweisung ausführen&lt;/h3>
+&lt;p>Um SQL-Anweisungen ausführen zu können wird zunächst ein Statement-Objekt aus dem vorhandenen
+Connection-Objekt erzeugt. Dieses Statement-Objekt wird verwendet, um die SQL-Anweisung an die
+Datenbank zu richten. Dazu wird eine der &lt;em>execute&lt;/em> Methoden des Statement-Objektes verwendet.&lt;/p>
+&lt;p>Im folgenden Beispiel wird die ein Statement-Objekt mithilfe des Connection-Objekt erstellt.
+Danach wird die Methode &lt;em>executeQuery&lt;/em> verwendet, welche eine SQL-Anweisung als
+Parameter entgegennimmt, diese ausführt und eine Referenz auf die Ergebnismenge (sog. ResultSet) zurückliefert:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/statement_exectution.png" alt="">&lt;/p>
+&lt;h3 id="parametrisierte-sql-anweisungen">Parametrisierte SQL-Anweisungen&lt;/h3>
+&lt;p>Bis jetzt haben wir SQL-Anweisungen ausgeführt, welche keine Einschränkungen beinhaltet haben.
+Oft werden jedoch SQL-Anweisungen mit bestimmten Kriterien oder Einschränkungen benötigt damit die
+zurückgelieferten Daten anhand dieser Kriterien gefiltert werden können.
+In solchen Situationen wird der SQL &amp;ldquo;WHERE&amp;rdquo;-Befehl benutzt. Zum Beispiel:&lt;/p>
+&lt;p>&lt;em>SELECT * FROM user WHERE username = &amp;lsquo;gandalf&amp;rsquo; and age &amp;gt; 20;&lt;/em>&lt;/p>
+&lt;p>In diesem Beispiel, werden nur Einträge zurückgeliefert, welche die Kriterien &lt;em>username = &amp;lsquo;gandalf&amp;rsquo;&lt;/em>
+und &lt;em>age &amp;gt; 20&lt;/em> erfüllen.
+Wenn nun dieselbe Anweisung mehrmals ausgeführt werden soll aber jeweils mit anderen Parameter (also mit unterschiedlichen &lt;em>username&lt;/em> und &lt;em>age&lt;/em>),
+wird die Anweisung mit Platzhaltern wie folgt geschrieben (ein Fragezeichen dient als einen Platzhalter):&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/query_with_placeholder.png" alt="">&lt;/p>
+&lt;p>Für das eigentliche Ausführen der Anweisung müssen alle Platzhalter durch konkrete Werte ersetzt werden.
+Dazu wird ein &lt;em>PreparedStatement&lt;/em> verwendet, welche es erlaubt, alle Platzhalter anhand ihrer Position (beginnend mit 1)
+mittels &lt;em>setXXX&lt;/em> Methoden anzusprechen und mit den konkreten Werten zu ersetzen.
+Anschliessend, kann auch hier eine der &lt;em>executeXXX&lt;/em> Methoden verwendet werden, um die Anweisung auszuführen:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/prepared_statement.png" alt="">&lt;/p>
+&lt;h3 id="rückgabewerte-verarbeiten">Rückgabewerte verarbeiten&lt;/h3>
+&lt;p>Bei der Ausführung von bestimmten SQL-Anweisungen (z.B. bei SELECT Operationen), wird eine Ergebnismenge zurückgeliefert.
+Ein ResultSet repräsentiert einen sog. &lt;em>Cursor&lt;/em> auf diese Ergebnismenge.
+Die Methoden des ResultSets, bewegen den Cursor (je nach Art des Cursors) vorwärts, rückwärts, zur ersten oder zur letzten Position usw.
+Somit kann über die gesamte Ergebnismenge, Zeile bei Zeile, iteriert werden, um die Werte zu lesen.&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/resultset_iteration.png" alt="">&lt;/p>
+&lt;p>Im obigen Beispiel wird die &lt;em>next&lt;/em> Methode verwendet um den Cursor jeweils eine Zeile vorwärtszubewegen.
+Aus jeder Zeile werden aus dem ResultSet mittels &lt;em>getXXX&lt;/em> Methoden (XXX steht für den Typ des Wertes)
+die Werte, welche in dieser aktuellen Zeile vorhanden sind.
+Die &lt;em>getXXX&lt;/em> Methoden, bekommen als Parameter entweder die Spaltenposition oder den Spaltennamen, welche gelesen werden soll.
+Bei einer Spaltenposition hat die erste zurückgelieferte Spalte die Position 1.
+Hinter der letzten Zeile liefert die &lt;em>next&lt;/em> Methode &lt;em>false&lt;/em> zurück und somit wird die Schleife beendet,
+nachdem alle Zeilen bearbeitet worden sind.&lt;/p>
+&lt;h3 id="verbindungen-schliessen">Verbindungen schliessen&lt;/h3>
+&lt;p>Objekte der Typ &lt;em>Connection&lt;/em>, &lt;em>Statement&lt;/em> oder auch &lt;em>PreparedStatement&lt;/em> sind sog. Ressourcen.
+Solche Ressourcen müssen nach Verbrauch wieder explizit geschlossen werden:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/close_statement_and_connection.png" alt="">&lt;/p>
+&lt;p>Wenn diese Ressourcen innerhalb eines try-with-resources Befehls erstellt werden, entfällt diese
+explizite Schliessung der Ressourcen.&lt;br>
+Die Arbeit mit try-with-resources ist immer vorzuziehen, wenn es um Closable-Ressourcen geht.&lt;/p>
+&lt;h3 id="zusammenfassung">Zusammenfassung&lt;/h3>
+&lt;p>Die folgende Beispiel-Methode fasst die oben erwähnten Arbeitsschritte mit JDBC (aktuelle Version) zusammen:&lt;/p>
+&lt;p>&lt;img src="../java-jdbc/jdbc_complete_code_example.png" alt="">&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/java/java-collections/java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/java-collections/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann erklären, was Collections sind.&lt;/li>
