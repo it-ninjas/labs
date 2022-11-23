@@ -3,7 +3,7 @@ title: "Queue"
 linkTitle: "Queue"
 weight: 4
 description: >
-  Queue
+  Die Datenstruktur für eine Warteschlange: die Queue.
 ---
 
 ## java.util.Queue
@@ -28,16 +28,16 @@ Ein Kunde stellt sich zu hinterst an  und rückt "in der Warteschlange" vor, wen
 ```java
 /*
  * Fügt das angegebene Element in diese Queue ein,
- * wenn dies  möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
- * Bei Erfolg wird true zurückgegeben und eine IllegalStateException ausgelöst wird, wenn derzeit
+ * wenn dies möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
+ * Bei Erfolg wird true zurückgegeben. Eine IllegalStateException wird ausgelöst, wenn derzeit
  * kein Platz verfügbar ist.
  */
 boolean add(E e);
 
 /*
  * Fügt das angegebene Element in diese Queue ein,
- * wenn dies  möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
- * Bei Erfolg wird true zurückgegeben und sonst wird fals zurückgegeben.
+ * wenn dies möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
+ * Bei Erfolg wird true zurückgegeben und sonst wird false zurückgegeben.
  *
  * Bei der Verwendung einer Queue mit Kapazitätsbeschränkungen ist diese Methode in der Regel add(E e) vorzuziehen, 
  * da bei Verletzung der Kapazitätsbeschränkungen keine Exception geworfen wird, sondern false zurückgegeben wird.
@@ -69,6 +69,8 @@ E peek();
  */
 E element();
 ```
+
+
 ## java.util.Deque
 Die Deque ist eine Queue mit zwei Enden, und Datenelemente können an beiden Enden hinzugefügt oder entfernt
 werden. Die Deque in Java wird über die das Interface java.util.Deque implementiert, die ein
@@ -83,7 +85,7 @@ Subtyp des Interface java.util.Queue ist.
 
 /*
  * Fügt das angegebene Element an den Anfang dieser Deque ein,
- * wenn dies  möglich ist, ohne Kapazitätsbeschränkungen zu verletzen 
+ * wenn dies möglich ist, ohne Kapazitätsbeschränkungen zu verletzen 
  * und löst eine IllegalStateException aus, wenn derzeit kein Platz verfügbar ist.
  */
 void addFirst(E e);
@@ -98,7 +100,7 @@ void addLast(E e);
 /*
  * Fügt das angegebene Element an den Anfang dieser Deque ein,
  * wenn dies  möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
- * Bei Erfolg wird true zurückgegeben und sonst wird fals zurückgegeben.
+ * Bei Erfolg wird true zurückgegeben und sonst wird false zurückgegeben.
  *
  * Bei der Verwendung einer Deque mit Kapazitätsbeschränkungen ist diese Methode in der Regel addFirst(E e) vorzuziehen, 
  * da bei Verletzung der Kapazitätsbeschränkungen keine Exception geworfen wird, sondern false zurückgegeben wird.
@@ -108,8 +110,8 @@ boolean offerFirst(E e);
 
 /*
  * Fügt das angegebene Element an das Ende dieser Deque ein,
- * wenn dies  möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
- * Bei Erfolg wird true zurückgegeben und sonst wird fals zurückgegeben.
+ * wenn dies möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
+ * Bei Erfolg wird true zurückgegeben und sonst wird false zurückgegeben.
  *
  * Bei der Verwendung einer Deque mit Kapazitätsbeschränkungen ist diese Methode in der Regel addLast(E e) vorzuziehen,
  * da bei Verletzung der Kapazitätsbeschränkungen keine Exception geworfen wird, sondern false zurückgegeben wird.

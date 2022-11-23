@@ -3,7 +3,7 @@ title: "Stack"
 linkTitle: "Stack"
 weight: 3
 description: >
-  Stack
+  Die Datenstruktur "Stapel".
 ---
 
 ## java.util.Stack
@@ -128,10 +128,12 @@ Stacks wird jedoch durch die oben aufgeführten Methoden ausgemacht.
 
 #### Beispiel 2 (EmptyStackException)
 
+In diesem Beispiel rufen wir die `pop()`-Methode auf einem leeren Stack auf:
+
 ```java
 import java.util.Stack;
 
-public class StackExampleEmtpyStackExceptionA {
+public class StackExampleEmptyStackExceptionA {
     public static void main(String[] args) {
         Stack<String> colors = new Stack<>();
         colors.pop(); // Throws: Exception in thread "main" java.util.EmptyStackException
@@ -139,19 +141,21 @@ public class StackExampleEmtpyStackExceptionA {
 }
 ```
 
-Output:
+Dies führt zu folgendem Output:
 ```
 Exception in thread "main" java.util.EmptyStackException
 	at java.base/java.util.Stack.peek(Stack.java:102)
 	at java.base/java.util.Stack.pop(Stack.java:84)
-	at ch.puzzle.stack.StackExampleEmtpyStackExceptionA.main(StackExampleEmtpyStackExceptionA.java:8)
+	at ch.puzzle.stack.StackExampleEmptyStackExceptionA.main(StackExampleEmptyStackExceptionA.java:8)
 
 ```
+
+Das gleiche Verhalten lässt sich auch bei der `peek()`-Methode feststellen:
 
 ```java
 import java.util.Stack;
 
-public class StackExampleEmtpyStackExceptionB {
+public class StackExampleEmptyStackExceptionB {
     public static void main(String[] args) {
         Stack<String> colors = new Stack<>();
         colors.peek(); // Throws: Exception in thread "main" java.util.EmptyStackException
@@ -159,11 +163,11 @@ public class StackExampleEmtpyStackExceptionB {
 }
 ```
 
-Output:
+Wie erwartet, kriegen wir folgenden Output:
 ```
 Exception in thread "main" java.util.EmptyStackException
 	at java.base/java.util.Stack.peek(Stack.java:102)
-	at ch.puzzle.stack.StackExampleEmtpyStackExceptionB.main(StackExampleEmtpyStackExceptionB.java:8)
+	at ch.puzzle.stack.StackExampleEmptyStackExceptionB.main(StackExampleEmptyStackExceptionB.java:8)
 
 ```
 

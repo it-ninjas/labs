@@ -3,7 +3,7 @@ title: "LinkedList"
 linkTitle: "LinkedList"
 weight: 5
 description: >
-  LinkedList
+  Eine verkettete Liste, die LinkedList.
 ---
 
 ## java.util.LinkedList
@@ -101,8 +101,11 @@ public class LinkedList<E>  extends AbstractSequentialList<E>  implements List<E
 
 ```
 
-Ein Knoten also das Objekt _Node_ enthält das Element, welches einen generischen Typ hat (deshalb `Node<E>`),
-die Referenz auf den vorherigen Knoten, also auf ein Node-Objekt und eine Referenz auf den nächsten Knoten.
+Ein Knoten, also das Objekt des Typs `Node`, enthält 
+* das Element, welches einen generischen Typ hat (deshalb `Node<E>`),
+* die Referenz auf den vorherigen Knoten, also auf ein Node-Objekt 
+* und eine Referenz auf den nächsten Knoten.
+
 Die statische Klasse `Node<E>` ist innerhalb der Klasse java.util.LinkedList definiert:
 
 ```java
