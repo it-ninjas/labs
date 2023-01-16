@@ -588,7 +588,186 @@ Die Datenbank muss mindestens die folgenden Tabellen beinhalten:&lt;/p>
 &lt;li>GRADE - beinhaltet alle gültigen Noten zwischen 1 und 6 (in 0.25 Stufen -&amp;gt; also 1, 1.25. 1.5, 1.75, 2 usw..)&lt;/li>
 &lt;li>SCHOOL_SUBJECT_GRADE - beinhaltet die Relation zwischen Schulfächern und Noten. Jede Zeile stellt eine Note für ein Fach an einem bestimmten Tag dar.&lt;/li>
 &lt;/ul>
-&lt;p>Achte auf korrektes Exception-Handling (denke an &amp;ldquo;try with resources&amp;rdquo;) und sauberen Code.&lt;/p></description></item><item><title>Labs: Lists Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/01_listexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/01_listexercises/</guid><description>
+&lt;p>Achte auf korrektes Exception-Handling (denke an &amp;ldquo;try with resources&amp;rdquo;) und sauberen Code.&lt;/p></description></item><item><title>Docs: List</title><link>/docs/java/java-collections/01_list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/01_list/</guid><description>
+&lt;h2 id="javautillist">java.util.List&lt;/h2>
+&lt;p>Listen sind geordnete Collections, denn sie enthalten beliebige Objekte in einer bestimmten Reihenfolge. In Listen
+werden eine Menge von Elemente (genauer genommen Referenzen auf Objekte)
+abgespeichert, wobei die Menge geordnet ist, da jedes Element an einer bestimmten Position zu finden ist:&lt;/p>
+&lt;p>&lt;img src="../../java-collections/list1.png" alt="list1">&lt;/p>
+&lt;p>Beachte, dass wir bei den Listen, die Indexierung der Positionen bei 0 beginnt, genauso wie bei dem primitiven Datentyp
+Array.&lt;/p>
+&lt;p>Listen haben eine dynamische Grösse, d.h. die Grösse der Liste muss bei der Erstellung nicht bekannt sein und die Anzahl
+der enthaltenen Elemente kann sich während der Laufzeit ändern. Daher ist es möglich, fortlaufend Elemente zur Liste
+hinzuzufügen oder aus der Liste zu entfernen. Hierbei entstehen nie Lücken:
+Fügt man ein Element an einer bestimmten Position zur Liste hinzu, dann rutschen alle nachfolgenden Elemente eine
+Position nach. Entfernt man ein Element an einer bestimmten Position, so rutschen alle nachfolgen Elemente eine Position
+nach oben.&lt;/p>
+&lt;p>Man kann auf Elemente über ihren ganzzahligen Index (Position in der Liste) zugreifen und nach Elementen in der Liste
+suchen.&lt;/p>
+&lt;p>&lt;img src="../../java-collections/list2.png" alt="list2">&lt;/p>
+&lt;p>Ein Element aus einer Liste entfernen:&lt;/p>
+&lt;p>&lt;img src="../../java-collections/list3.png" alt="list3">&lt;/p>
+&lt;p>Wie zu Beginn erwähnt, enthalten Lists Referenzen auf Objekte. Deshalb ist es nicht möglich, Listen zu erstellen, welche
+primitive Datentypen als Elemente enthalten (&lt;code>int&lt;/code>, &lt;code>double&lt;/code>, &lt;code>boolean&lt;/code>, &lt;code>char&lt;/code>, &lt;code>...&lt;/code>). Dafür müssen die sogenannten
+Wrapper-Klassen verwendet werden. Wrapper-Klassen bieten eine Möglichkeit, primitive Datentypen (int, double, boolean,
+char, &amp;hellip;) als Objekte zu verwenden:
+java.lang.Integer, java.lang.Double, java.lang.Boolean, java.lang.Character,..&lt;/p>
+&lt;p>Schauen wir uns die folgenden Beispiele an, wo wir einer Liste mit Elementen vom Typ Integer das Element 3 hinzufügen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> integerList &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+integerList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Integer&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">valueOf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Oben haben wir der Liste das Integer-Objekt 3 hinzugefügt - also ein &lt;code>Integer&lt;/code>-Objekt und nicht der Wert des primitiven Datentyps &lt;code>int&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> integerList &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+integerList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beim unteren Beispiel haben wir der Liste den int-Wert 3 als &lt;strong>primitiven Datentyp&lt;/strong> hinzu.
+Obwohl wir den int-Wert 3 als primitiver Datentypen und nicht als Integer-Objekte zur Liste
+&lt;code>integerList&lt;/code> hinzufügen, kompiliert dieser Code genau so ohne Fehler.
+&lt;code>integerList&lt;/code> ist jedoch eine Liste von Integer-Objekten und nicht eine Liste von int-Werten.
+Warum haben wir dann beim Kompilieren dieses Codes kein gekriegt?&lt;/p>
+&lt;p>Der Copmiler konvertiert den int-Wert zu einem Integer-Objekt und fügt dieses dann zur Liste &lt;em>integerList&lt;/em> hinzu.
+Diese Konvertierung nennt man &lt;em>Autoboxing&lt;/em>.
+&lt;em>Autoboxing&lt;/em> ist die automatische Konvertierung zwischen den primitiven Datentypen zu Objekten ihrer entsprechenden Wrapper-Klassen, die der Java Compiler durchführt
+(beispielsweise &lt;code>int&lt;/code> zu &lt;code>Integer&lt;/code>, &lt;code>double&lt;/code> zu &lt;code>Double&lt;/code>, ect.).
+Wenn die Konvertierung in die andere Richtung erfolgt, nennt man dies &lt;code>Unboxing&lt;/code>.&lt;/p>
+&lt;p>Somit ist es nicht mehr nötig, dass wir dieses Autoboxing wie im ersten Beispiel selber durchführen müssen.&lt;/p>
+&lt;h3 id="einige-methoden-vom-interface-javautillist">Einige Methoden vom Interface java.util.List&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt die Anzahl der Elemente in dieser Liste zurück.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt true zurück, wenn diese Liste keine Elemente enthält.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt true zurück, wenn diese Liste das angegebene Element enthält.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt das Element an der angegebenen Position in dieser Liste zurück.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Ersetzt das Element an der angegebenen Position in dieser Liste durch das angegebene Element.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">set&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">,&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt den Index des ersten Auftretens des angegebenen Elements in dieser Liste zurück,
+&lt;/span>&lt;span style="color:#75715e"> * oder -1, wenn diese Liste das Element nicht enthält.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">indexOf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Hängt das angegebene Element an das Ende der Liste an
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E e&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Fügt das angegebene Element an der angegebenen Position in dieser Liste ein.
+&lt;/span>&lt;span style="color:#75715e"> * Verschiebt das Element, das sich derzeit an dieser Position befindet (falls vorhanden),
+&lt;/span>&lt;span style="color:#75715e"> * und alle nachfolgenden Elemente.
+&lt;/span>&lt;span style="color:#75715e">*/&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">,&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Entfernt das erste Vorkommen des angegebenen Elements aus dieser Liste,
+&lt;/span>&lt;span style="color:#75715e"> * sofern es vorhanden ist. Wenn diese Liste das Element nicht enthält,
+&lt;/span>&lt;span style="color:#75715e"> * bleibt sie unverändert.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Entfernt das Element an der angegebenen Position in dieser Liste.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">/*&lt;/span>
+&lt;span style="color:#f92672">*&lt;/span> Entfernt alle Elemente aus dieser Liste&lt;span style="color:#f92672">.&lt;/span>
+&lt;span style="color:#f92672">/*&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">...&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Interface &lt;code>java.util.List&lt;/code> im Collection Framework ist der Datentyp der Listen, wobei in der abstrakten Klasse
+&lt;code>java.util.AbstractList&lt;/code> die grundlegenden Funktionalitäten implementiert sind, sodass diese den verschiedenen konkreten
+Listen-Implementierungen weiter geerbt werden können.&lt;/p>
+&lt;p>Auf der nächsten Seite geht es mit einer konkreten Umsetzung einer &lt;code>List&lt;/code> weiter. Nun wird es also praktischer!&lt;/p></description></item><item><title>Labs: Lists Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/01_listexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/01_listexercises/</guid><description>
 &lt;h3 id="aufgabe-1">Aufgabe 1&lt;/h3>
 &lt;p>Schreibe ein Programm, welche aus der Kommandozeile eine Reihe von Zahlen liest und die
 Zahl an der Position x (x ist die erste Zahl in der Reihe) in der Konsole ausgibt.
@@ -2557,7 +2736,390 @@ wenn die entsprechende Methode aufgerufen wurde.&lt;/p>
 &lt;li>einen Kontakt im Adressbuch durch den Namen finden&lt;/li>
 &lt;li>einen Kontakt aus dem Adressbuch über die E-Mail-Adresse entfernen&lt;/li>
 &lt;/ul>
-&lt;p>&lt;em>Generell gilt die Regel, dass jede E-Mail-Adresse einzigartig sein muss&lt;/em>&lt;/p></description></item><item><title>Labs: Bibliothek</title><link>/labs/java/java-generics/02_bibliothek/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-generics/02_bibliothek/</guid><description>
+&lt;p>&lt;em>Generell gilt die Regel, dass jede E-Mail-Adresse einzigartig sein muss&lt;/em>&lt;/p></description></item><item><title>Docs: ArrayList</title><link>/docs/java/java-collections/02_array-list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/02_array-list/</guid><description>
+&lt;h2 id="javautilarraylist">java.util.ArrayList&lt;/h2>
+&lt;p>java.util.ArrayList erbt von der abstrakten Klasse java.util.AbstractList und liefert eine konkrete Implementierung für
+das Interface java.util.List. Die ArrayList Klasse implementiert alle Methoden des Interface java.util.List. Der
+Implementierung der ArrayList Klasse liegen Arrays zugrunde, weshalb diese konkrete Klasse auch &lt;em>Array&lt;/em>List heisst.
+Die Klasse ArrayList enthält also ein normales Array. Wenn ein Element hinzugefügt wird, wird es in dieses Array eingefügt.
+Wenn das Array nicht groß genug ist, wird ein neues, größeres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
+des Arrays wird fortlaufend angepasst.&lt;/p>
+&lt;h3 id="einige-methoden-der-klasse-javautilarraylist">Einige Methoden der Klasse java.util.ArrayList&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Konstruktor: Erstellt eine initial leere Liste
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E e&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Fügt das angegebene Element an der angegebenen Position in diese Liste ein.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">,&lt;/span>E element&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Entfernt alle Elemente aus dieser Liste.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Entfernt das Element an der angegebenen Position in dieser Liste.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt das Element an der angegebenen Position in dieser Liste zurück.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt den Index des ersten Auftretens des angegebenen Elements in dieser Liste zurück,
+&lt;/span>&lt;span style="color:#75715e"> * oder -1, wenn diese Liste das Element nicht enthält.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">indexOf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt die Anzahl der Elemente in dieser Liste zurück.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt true zurück, wenn diese Liste keine Elemente enthält.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt true zurück, wenn diese Liste das angegebene Element enthält.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="beispiele">Beispiele&lt;/h3>
+&lt;h4 id="beispiel-1---verwendung-einer-arraylist">Beispiel 1 - Verwendung einer ArrayList.&lt;/h4>
+&lt;p>Im folgenden Beispiel erstellen wir zunächst eine leere ArrayList mit Elementen vom Typ String und wenden einige
+einfache ArrayList Methoden an und sehen, wie diese funktionieren (Das Hinzufügen von Elementen, das Entfernen von
+Elementen, &amp;hellip;),&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">
+&lt;span style="color:#f92672">import&lt;/span> java.util.ArrayList&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">import&lt;/span> java.util.List&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Pets&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Creating an ArrayList of String
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> pets &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>pets&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: []
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">// Adding new elements to the ArrayList
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Cat&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hamster&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Dog&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Goldfish&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>pets&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Cat, Hamster, Dog, Goldfish]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">// Adding an element at a particular index in an ArrayList
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Guinea pigs&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>pets&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Cat, Hamster, Guinea pigs, Dog, Goldfish]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>pets&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Cat, Hamster, Dog, Goldfish]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Dog&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>pets&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Cat, Hamster, Goldfish]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+pets&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>pets&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: []
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="beispiel-2-iteration-for-schleife">Beispiel 2 (Iteration &lt;code>for&lt;/code>-Schleife)&lt;/h4>
+&lt;p>Dieses Beispiel zeigt auf wie mit einer &lt;code>for&lt;/code>-Schleife über die Elemente einer Liste iteriert werden kann.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.ArrayList&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ListSum&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> numbers &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+numbers&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1000&lt;span style="color:#f92672">);&lt;/span>
+numbers&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2500&lt;span style="color:#f92672">);&lt;/span>
+numbers&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3750&lt;span style="color:#f92672">);&lt;/span>
+numbers&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>625&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> listSum &lt;span style="color:#f92672">=&lt;/span> 0&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Integer e &lt;span style="color:#f92672">:&lt;/span> numbers&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+listSum &lt;span style="color:#f92672">+=&lt;/span> e&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Die Summe der Elemente beträgt &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> listSum&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Output:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Die Summe der Elemente beträgt 7875
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="beispiel-3-iteration-while-schleife">Beispiel 3 (Iteration &lt;code>while&lt;/code>-Schleife)&lt;/h4>
+&lt;p>Dieses Beispiel zeigt auf wie mit einer &lt;code>while&lt;/code>-Schleife über die Elemente einer Liste iteriert werden kann.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Arrays&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">import&lt;/span> java.util.List&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">WhileLoopExample&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String&lt;span style="color:#f92672">[]&lt;/span> namesArray &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Simon&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Jan&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Nicole&amp;#34;&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
+&lt;span style="color:#75715e">// convert array to list
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> namesArrayList &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">asList&lt;/span>&lt;span style="color:#f92672">(&lt;/span>namesArray&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#f92672">(&lt;/span>i &lt;span style="color:#f92672">&amp;lt;&lt;/span> namesArrayList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>namesArrayList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>i&lt;span style="color:#f92672">));&lt;/span>
+i&lt;span style="color:#f92672">++;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Output:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Anna
+Simon
+Jan
+Nicole
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="indexoutofboundsexception">IndexOutOfBoundsException&lt;/h3>
+&lt;p>Eine der häufigsten Exceptions, die im Zusammenhang mit Listen auftritt, ist folgende:
+Es wird versucht, auf ein Element mit einem Index zuzugreifen, wobei der Index grösser als (oder gleich wie) die Länge der Liste ist. Dann wird die &lt;code>IndexOutOfBoundsException&lt;/code> geworfen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> list &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;uno&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;dos&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;tres&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hier wird dann diese Meldung angezeigt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;#34;java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3&amp;#34;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Fehler war hier, dass die Liste 3 Elemente enthielt, und versucht wird, auf das 4. Element (also Index 3) zuzugreifen. Weil das 4. Element in dieser Liste nicht existiert, wird eine Exception geworfen.&lt;/p>
+&lt;p>Ganz generell wird die &lt;code>IndexOutOfBoundException&lt;/code> geworfen, wenn versucht wird, auf einen ungültigen Index innerhalb einer Collection
+zuzugreifen. Hat eine Liste die Grösse x:&lt;/p>
+&lt;ul>
+&lt;li>dann sind die gültigen Indizes, um auf Elemente zuzugreifen 0, 1, 2, &amp;hellip;, x-1&lt;/li>
+&lt;li>und die Indizes x, x+1, x+2, &amp;hellip; wären ungültig.&lt;/li>
+&lt;/ul>
+&lt;p>Diese Exception kann bei den folgenden Methoden von oben geworfen werden:
+(Diese Liste hier ist genau so nicht vollständig, wie die oben.)&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>public void add(int index, E element)&lt;/code> (beachte das Argument &lt;code>index&lt;/code>.)&lt;/li>
+&lt;li>&lt;code>public E remove(int index)&lt;/code>&lt;/li>
+&lt;li>&lt;code>public E get(int index)&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="übungen">Übungen&lt;/h3>
+&lt;h4 id="aufgabe-1">Aufgabe 1&lt;/h4>
+&lt;p>Versuche eine eigene ArrayList-Klasse (&lt;code>MyArrayList&amp;lt;E&amp;gt;&lt;/code>) zu implementieren mithilfe von Arrays und verwende dabei keine
+anderen Collections-Klassen.&lt;/p>
+&lt;p>Die MyArrayList sollte eine dynamische Grösse haben. Da die Liste mithilfe von Arrays implementiert werden soll, muss
+also in deiner Klasse die Kapazität der Liste sichergestellt werden.&lt;/p>
+&lt;p>Implementiere die folgenden Methoden:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>void add(E e)&lt;/code>&lt;/li>
+&lt;li>&lt;code>E get(int i)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
+&lt;li>&lt;code>E remove(int i)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
+&lt;li>&lt;code>int size()&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean isEmpty()&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Beachte, dass du die &lt;code>toString()&lt;/code> Methode anpasst, sodass die MyArrayList-Listen beim printen übersichtlich
+dargestellt werden, wie im Beispiel oben: [Cat, Hamster, Dog, Goldfish]&lt;/p>
+&lt;h4 id="aufgabe-2">Aufgabe 2&lt;/h4>
+&lt;p>Erweitere deine MyArrayList Klasse. Implementiere zusätzlich die folgenden Methoden:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>void add(int index, E element)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
+&lt;li>&lt;code>boolean contains(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>int indexOf(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>E set(int index, E element)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean equals(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean remove(Object o)&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h4 id="aufgabe-3">Aufgabe 3&lt;/h4>
+&lt;p>Erstelle ein Programm, welches ein Zeugnis bestehend aus Modulen und deren Schlussnoten generiert und in der Konsole
+ausgibt.&lt;/p>
+&lt;p>Dazu sollen die Klassen &lt;code>Modul&lt;/code> und &lt;code>LBV&lt;/code> (Prüfung) erstellt werden. Zur weiteren Hilfe soll
+die &lt;code>ModulNotGradeableException&lt;/code> dienen.&lt;/p>
+&lt;p>Anforderungen an die &lt;code>LBV&lt;/code>-Klasse:&lt;/p>
+&lt;ul>
+&lt;li>Die Note der LBV ist als Float-Attribut gespeichert&lt;/li>
+&lt;li>Die Gewichtung der LBV ist ebenfalls als Float-Attribut gespeichert&lt;/li>
+&lt;/ul>
+&lt;p>Anforderungen an die &lt;code>Modul&lt;/code>-Klasse:&lt;/p>
+&lt;ul>
+&lt;li>Ein Modul hat den Modulnamen als Attribut.&lt;/li>
+&lt;li>Alle LBVs des Moduls, werden in einer ArrayList gespeichert.&lt;/li>
+&lt;li>LBVs werden dem Modul über die &lt;code>addLBV(LBV exam)&lt;/code> Methode hinzugefügt.&lt;/li>
+&lt;li>Der Moduldurchschnitt, soll von der Methode &lt;code>getFinalModuleGrade()&lt;/code> als &lt;code>float&lt;/code> zurückgegeben werden.&lt;/li>
+&lt;li>Das Modul kann nur bewertet werden, wenn die Gewichtung aller LBVs genau 1 ergib. Ansonsten soll
+eine &lt;code>ModulNotGradeableException&lt;/code> geworfen werden.&lt;/li>
+&lt;li>Die Methode &lt;code>printReportEntry()&lt;/code> soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format &lt;em>&amp;lt;
+MODUL_NAME&amp;gt;&lt;/em> : &lt;em>&amp;lt;MODUL_SCHLUSSNOTE&amp;gt;&lt;/em> auszugeben.&lt;/li>
+&lt;/ul></description></item><item><title>Labs: Bibliothek</title><link>/labs/java/java-generics/02_bibliothek/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-generics/02_bibliothek/</guid><description>
 &lt;p>Schreibe eine Anwendung, welche eine Bibliothek modelliert.
 In der Bibliothek findet man unterschiedliche Exemplare. z.B: Bücher, Zeitschriften, CDs, DVDs.&lt;/p>
 &lt;p>Ein Item&lt;/p>
@@ -6008,7 +6570,283 @@ i&lt;span style="color:#f92672">++;&lt;/span>
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#f92672">(&lt;/span>condition&lt;span style="color:#f92672">);&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Labs: Streaming Dienst</title><link>/labs/java/java-oop/03_streaming_dienst/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-oop/03_streaming_dienst/</guid><description>
+&lt;/div></description></item><item><title>Docs: Stack</title><link>/docs/java/java-collections/03_stack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/03_stack/</guid><description>
+&lt;h2 id="javautilstack">java.util.Stack&lt;/h2>
+&lt;p>java.util.Stack ist eine weitere Datenstruktur, bei der Elemente eingefügt und wieder entfernt werden können, wobei bei
+Stacks immer nur auf dasjenige Element zugegriffen werden kann, das zuletzt eingefügt wurde (Last-In-First-Out = LIFO).
+Auf Deutsch könnte man Stack als &amp;ldquo;Stapel&amp;rdquo; übersetzen.&lt;/p>
+&lt;p>&lt;img src="../../java-collections/stack1.png" alt="stack1">&lt;/p>
+&lt;p>Ein Stack kann leer sein oder kann beliebig wachsen. Mit der Methode &lt;code>push(E item)&lt;/code> legt man das Element &lt;em>item&lt;/em> auf den
+Stack, d.h. man fügt es zu oberst hinzu.
+&lt;code>pop()&lt;/code> entfernt das oberste Element vom Stack und gibt es zurück.&lt;/p>
+&lt;p>&lt;img src="../../java-collections/stack2.png" alt="stack2">&lt;/p>
+&lt;p>Die Methode &lt;code>peek()&lt;/code> gibt das Element zu oberst auf dem Stack zurück, ohne den Stack zu verändern.&lt;/p>
+&lt;p>Falls der Stack leer ist und man die Methode &lt;code>pop()&lt;/code> oder &lt;code>peek()&lt;/code> aufruft, wird die Exception &lt;code>EmptyStackException&lt;/code>
+geworfen.&lt;/p>
+&lt;p>Mit der Methode &lt;code>search(Object o)&lt;/code> kann man ein Element im Stack suchen, wobei die Position des Elements zurückgegeben
+wird. Bei den Stacks hat das oberste Element des Stacks die Position 1 und das Element darunter die Position 2, das
+Element darunter die Position 3, ect. Das heisst anders als bei den ArrayLists fangen wir nicht bei 0 an die Elemente zu
+indexieren, sondern bei 1.&lt;/p>
+&lt;h3 id="alle-methoden-der-klasse-javautilstack">Alle Methoden der Klasse java.util.Stack&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Konstruktor: Erstellt einen leeren Stack
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Stack&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Fügt ein Element an die oberste Stelle dieses Stacks hinzu.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E item&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Entfernt das Element an der obersten Stellen und gibt dieses Element
+&lt;/span>&lt;span style="color:#75715e"> * als Wert dieser Funktion zurück.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">pop&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt das Element an der obersten Stelle des Stacks zurück,
+&lt;/span>&lt;span style="color:#75715e"> * ohne es vom Stack zu entfernen.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">peek&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt true zurück, wenn der Stack keine Elemente enthält.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">empty&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Gibt die 1-basierte Position vom oberen Ende des Stapels zurück,
+&lt;/span>&lt;span style="color:#75715e"> * an der sich das Objekt befindet; der Rückgabewert -1 bedeutet,
+&lt;/span>&lt;span style="color:#75715e"> * dass sich das Objekt nicht auf dem Stapel befindet.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="beispiel">Beispiel&lt;/h3>
+&lt;h4 id="beispiel-1">Beispiel 1&lt;/h4>
+&lt;p>Im folgenden Beispiel erstellen wir zunächst ein leeres Stack mit Elementen vom Typ String und wenden die Methoden der
+Stack-Klasse an und sehen, wie diese funktionieren.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Stack&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StackExample&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Stack&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Stack&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;blue&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;yellow&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;green&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;orange&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>colors&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [blue, yellow, green, orange]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Color on top: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">peek&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Color on top: orange
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>colors&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [blue, yellow, green, orange]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Color on top: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">pop&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Color on top: orange
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>colors&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [blue, yellow, green]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Is stack empty? &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">empty&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Is stack empty? false
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Size of stack: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Size of stack: 3
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Position of element blue: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;blue&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Position of element blue: 3
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Position of element yellow: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;yellow&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Position of element yellow: 2
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Position of element green: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;green&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Position of element green: 1
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Output:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">[blue, yellow, green, orange]
+Color on top: orange
+[blue, yellow, green, orange]
+Color on top: orange
+[blue, yellow, green]
+Is stack empty? false
+Size of stack: 3
+Position of element blue: 3
+Position of element yellow: 2
+Position of element green: 1
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im oberen Beispiel verwenden wir die Methode &lt;em>size()&lt;/em>. Diese Methode ist nicht in der java.util.Stack-Klasse
+implementiert, wird jedoch von der Vector-Mutterklasse geerbt. Diese Vector-Klasse implementiert zusätzlich weitere
+Methoden des List-Interfaces, weshalb diese auch für Stacks verwendet werden können. Ein Stack bzw. die Datenstruktur des
+Stacks wird jedoch durch die oben aufgeführten Methoden ausgemacht.&lt;/p>
+&lt;h4 id="beispiel-2-emptystackexception">Beispiel 2 (EmptyStackException)&lt;/h4>
+&lt;p>In diesem Beispiel rufen wir die &lt;code>pop()&lt;/code>-Methode auf einem leeren Stack auf:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Stack&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StackExampleEmptyStackExceptionA&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Stack&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Stack&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">pop&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Throws: Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dies führt zu folgendem Output:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
+at java.base/java.util.Stack.peek(Stack.java:102)
+at java.base/java.util.Stack.pop(Stack.java:84)
+at ch.puzzle.stack.StackExampleEmptyStackExceptionA.main(StackExampleEmptyStackExceptionA.java:8)
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das gleiche Verhalten lässt sich auch bei der &lt;code>peek()&lt;/code>-Methode feststellen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Stack&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StackExampleEmptyStackExceptionB&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Stack&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Stack&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">peek&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Throws: Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie erwartet, kriegen wir folgenden Output:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
+at java.base/java.util.Stack.peek(Stack.java:102)
+at ch.puzzle.stack.StackExampleEmptyStackExceptionB.main(StackExampleEmptyStackExceptionB.java:8)
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="übungen">Übungen&lt;/h3>
+&lt;h4 id="aufgabe-1">Aufgabe 1&lt;/h4>
+&lt;p>Versuche eine eigene Stack-Klasse (&lt;code>MyStack&amp;lt;E&amp;gt;&lt;/code>) zu implementieren mithilfe von Arrays und verwende dabei keine anderen
+Collections-Klassen.&lt;/p>
+&lt;p>Die MyStack Klasse sollte eine dynamische Grösse haben, d.h. sie der Stack sollte beliebig wachsen können. Da der Stack
+mithilfe von Arrays implementiert werden soll, muss also in deiner Klasse die Kapazität des Stacks sichergestellt
+werden.&lt;/p>
+&lt;p>Implementiere die folgenden Methoden:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>public E push(E item)&lt;/code>&lt;/li>
+&lt;li>&lt;code>public E pop( )&lt;/code> (soll EmptyStackException werfen)&lt;/li>
+&lt;li>&lt;code>public E peek() &lt;/code> (soll EmptyStackException werfen)&lt;/li>
+&lt;li>&lt;code>int size()&lt;/code>&lt;/li>
+&lt;li>&lt;code>public boolean empty()&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Beachte, dass du die &lt;code>toString()&lt;/code> Methode anpasst, sodass die MyStack-Stacks beim printen übersichtlich dargestellt
+werden, wie im Beispiel oben: [blue, yellow, green, orange]&lt;/p>
+&lt;h4 id="aufgabe-2">Aufgabe 2&lt;/h4>
+&lt;p>Erweitere deine MyStack Klasse. Implementiere zusätzlich die folgende Methode:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>public int search(Object o)&lt;/code>&lt;/li>
+&lt;/ul></description></item><item><title>Labs: Streaming Dienst</title><link>/labs/java/java-oop/03_streaming_dienst/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-oop/03_streaming_dienst/</guid><description>
 &lt;p>Schreibe ein Programm, welches einen Streaming Dienst nachstellt.
 Die Anwendung soll die Filme und Serien in einem Streaming Dienst abspeichern,
 wenn die entsprechende Methode aufgerufen wurde.
@@ -6336,341 +7174,4 @@ mit dem die URL des Links spezifiziert wird. In unserem Fall ist &lt;code>https:
 &lt;/dl>
 &lt;/div>
 &lt;h2 id="todo">Todo&lt;/h2>
-&lt;p>relative Links&lt;/p></description></item><item><title>Docs: Components und Templates</title><link>/docs/web/angular/04_2_components_und_templates/</link><pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate><guid>/docs/web/angular/04_2_components_und_templates/</guid><description>
-&lt;img src="/images/angular/angular_components_description.png" alt="Components" style="width:60%"/>
-&lt;p>Ein Angular Component setzt sich aus 4 Dateien zusammen:&lt;/p>
-&lt;ul>
-&lt;li>Template&lt;/li>
-&lt;li>Unit Test File&lt;/li>
-&lt;li>Stylesheet&lt;/li>
-&lt;li>Component (Class)&lt;/li>
-&lt;/ul>
-&lt;img src="/images/angular/componentDesc.png" alt="Components Description" style="width:50%"/>
-&lt;h2 id="templates">Templates&lt;/h2>
-&lt;h3 id="was-ist-ein-template">Was ist ein Template?&lt;/h3>
-&lt;ul>
-&lt;li>Templates definieren die Views der Components.&lt;/li>
-&lt;li>Ein Template ist ein HTML Dokument, das Angular Elemente zum Rendern des Components enthält&lt;/li>
-&lt;li>Dank Angular kann unser HTML Dokument anhand von Direktiven mehr Logik beinhalten.&lt;br>
-Beispielsweise können wir im Template eine if-Kontrollstruktur wie folgt anwenden:&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">*&lt;/span>&lt;span style="color:#a6e22e">ngIf&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;condition; else elseBlock&amp;#34;&lt;/span>&amp;gt;Content to render when condition is true.&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">ng-template&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">#&lt;/span>&lt;span style="color:#a6e22e">elseBlock&lt;/span>&amp;gt;Content to render when condition is false.&amp;lt;/&lt;span style="color:#f92672">ng-template&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Welche weiteren Direktiven es gibt, könnt ihr in der &lt;a href="https://angular.io/api/common">offiziellen Dokumentation&lt;/a> unter dem Abschnitt &lt;code>Directives&lt;/code> nachlesen.&lt;/p></description></item><item><title>Docs: Git Erweitert</title><link>/docs/git/git-extended/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-extended/</guid><description>
-&lt;p>Nachdem du die Basics von git gelernt hast, ist es Zeit dich weiter zu vertiefen.&lt;/p>
-&lt;h2 id="inhalt">Inhalt&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="#Stash">Stash&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#CherryPick">Cherry Pick&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#Tag">Tag&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#Alias">Alias&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h2 id="stash">Stash&lt;/h2>
-&lt;h4 id="was-ist-stash">Was ist stash?&lt;/h4>
-&lt;p>Mit git stash ist es möglich Änderungen zwischenzuspeichern und diese später abzurufen.
-Nach dem stashen kannst du an anderen Dateien arbeiten bis du die zwischengespeicherten Daten problemlos wieder abrufen kannst.&lt;/p>
-&lt;h4 id="wie-funktioniert-stash">Wie funktioniert stash?&lt;/h4>
-&lt;p>Um Dateien zu stashen wird der folgende Befehl verwendet:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">git stash
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Um Dateien im Anschluss abzurufen wird der folgende Befehl verwendet:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">git stash pop
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Mit &lt;code>git stash pop&lt;/code> werden alle Änderungen des stashes gelöscht und der ursprünglichen Datei hinzugefügt.&lt;/p>
-&lt;p>Die Alternative dazu ist:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">git stash apply
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Mit &lt;code>git stash apply&lt;/code> werden die änderungen ebenfalls übernommen,
-der Unterschied zu &lt;code>git stash pop&lt;/code> liegt darin das stash apply die Dateien nicht aus dem Stash löscht,
-dies kann nützlich sein, wenn dieselbe Änderung mehreren Branches hinzugefügt werden soll.&lt;/p>
-&lt;h2 id="squash">Squash&lt;/h2>
-&lt;h4 id="was-ist-squash">Was ist Squash&lt;/h4>
-&lt;p>squash in Git meint mehrere Commits zu vereinen.
-Squash wird meistens benutzt, wenn Branches gemerged werden.
-An dieser Stelle ist es jedoch wichtig zu erwähnen das es keinen &lt;code>git squash&lt;/code> Befehl gibt.&lt;/p>
-&lt;h4 id="wie-funktioniert-squash">Wie funktioniert squash?&lt;/h4>
-&lt;p>Es gibt verschiedene Wege um Commits zu squashen.
-Zum Beispiel gibt es die Methode des manuellen squashens, dazu wird das Interactive rebase feature von Git genutzt.
-Um die Interactive Rebase session zu starten wird der folgende Befehl verwendet:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">git rebase -i HEAD~3
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Danach öffnet sich ein Editor der die letzten n Commits anzeigt, n wird durch die Zahl nach dem &amp;ldquo;~&amp;rdquo; definiert.
-Um jetzt die Commits zu squashen muss das pick zu beginn der zeile mit squash ersetzt werden.
-Jetzt werden alle Commits mit dem squash Schlüsselwort an den obersten Commit hinzugefügt.&lt;/p>
-&lt;h5 id="wieso-sollte-man-squashen">Wieso sollte man Squashen:&lt;/h5>
-&lt;p>Angenommen du beendest die Arbeit an einem Featurebranch und willst diese in den Main branch mergen,
-jedoch enthält der Featurebranch viele Commits die nicht zwingend im Mainbranch aufgeführt werden sollen,
-in diesem Fall eignet sich das squashen, um diese Commits zusammenzufassen.&lt;/p>
-&lt;h2 id="mergepull-requests">Merge/Pull Requests&lt;/h2>
-&lt;h3 id="was-ist-der-unterschied-zwischen-einer-merge-request-und-einer-pull-request">Was ist der Unterschied zwischen einer Merge Request und einer Pull Request?&lt;/h3>
-&lt;p>Beide Begriffe meinen dasselbe, werden jedoch mit einer anderen Plattform assoziiert.
-Der Begriff Merge Request wird im Zusammenhang mit GitLab verwendet.
-Im Zusammenhang mit GitHub wird jedoch der Begriff Pull Request verwendet.
-Der Einfachheit wird im folgenden Text nur von Pull Request gesprochen.&lt;/p>
-&lt;h3 id="was-ist-eine-pull-request-bzw-eine-merge-request">Was ist eine Pull Request bzw. eine Merge Request?&lt;/h3>
-&lt;p>In ihrer einfachsten Form sind Pull-Requests eine Funktion für Entwickler
-die andere Teammitglieder darüber informiert, dass ein Feature fertiggestellt wurde.
-Dies lässt alle Beteiligten wissen, dass der Code bereit für eine überprüfung ist und danach in Hauptzweig eingeführt werden kann.&lt;/p>
-&lt;h3 id="wie-kann-eine-pull-request-erstellt-werden-intellij">Wie kann eine Pull Request erstellt werden (IntelliJ)&lt;/h3>
-&lt;p>Um eine Pull Request direkt aus Intelij zu erstellen, muss zuerst sichergestellt werden das man selber berechtigt ist eine Pull Request zu erstellen.
-Sind diese Berechtigungen vorhanden, kann die Pull Request in wenigen Schritten erstellt werden.
-Oben Links in IntelliJ befindet sich einen Button der mit Pull Request beschriftet ist.
-Danach öffnet sich ein Fenster in dem ausgewählt werden kann, welchen der lokalen Branches in das Ziel Repo gemerged werden soll.
-Danach muss nach noch einen Titel festgelegt werden. Es besteht ebenfalls die Möglichkeit eine Beschreibung hinzuzufügen, dies ist jedoch nur optional.
-Im Anschluss besteht die Möglichkeit einen Reviewer hinzuzufügen.
-Jetzt kann die Pull Request erstellt werden.&lt;/p>
-&lt;h3 id="wie-kann-eine-pull-request-erstellt-werden-github">Wie kann eine Pull Request erstellt werden (Github)&lt;/h3>
-&lt;p>Um eine Pull Request direkt von GitHub aus zu senden, muss zuerst der Reiter Pull Request ausgewählt werden,
-Jetzt stehen verschiedene Möglichkeiten zu Auswahl, in unserem Fall wollen wir aber nur eine neue Pull Request erstellen.
-Im Anschluss erscheint ein neues Panel, das wichtigste dabei ist die Wahl des richtigen source und target branches.
-Als nächstes kann noch ein Name und eine Beschreibung für die Pull Request gesetzt werden.
-Wie in IntelliJ besteht auch hier die Möglichkeit einen Reviewer hinzuzufügen, der Button dazu befindet sich mittig auf der linken Seite.
-Da nun alle Einstellungen vorgenommen wurden, kann die Pull Request erstellt werden.&lt;/p>
-&lt;h2 id="cherry-pick">Cherry Pick&lt;/h2>
-&lt;h3 id="was-ist-cherry-pick-">Was ist Cherry-Pick ?&lt;/h3>
-&lt;p>git cherry-pick ist ein Befehl welcher es ermöglicht beliebige Git-Commits per Referenz
-anzusprechen und diese an den momentanen Arbeitskopf (HEAD) anzuheften.
-git cherry-pick kann sehr nützlich für das rückgängig Machen von Änderungen sein.&lt;/p>
-&lt;p>Zum Beispiel: Ein Commit ist aus Versehen im falschen Branch. Nun kannst du zum korrekten
-Branch wechselt und brauchst git cherry-pick um den Commit am richtigen Ort zu befestigen.&lt;/p>
-&lt;h3 id="wie-funktioniert-cherry-pick-">Wie funktioniert Cherry-Pick ?&lt;/h3>
-&lt;p>Um Cherry Pick anzuwenden gibt man folgenden Befehl ein:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git cherry-pick &amp;lt;commit-hash&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Der &lt;commit-hash> muss natürlich noch mit dem korrekten Hash des Commits ersetzt werden, welchen
-man verschieben will. Anschliessend wird der Commit an den Branch angeheftet, auf dem man sich gerade
-befindet. Darum Achtung!: Immer zuerst kontrollieren ob man derzeit auch wirklich auf dem korrekten
-Branch ist.&lt;/p>
-&lt;h2 id="tag">Tag&lt;/h2>
-&lt;h3 id="was-sind-tags-">Was sind Tags ?&lt;/h3>
-&lt;p>Tags sind Referenzen, welche an einen bestimmten Punkt der History
-zeigen. Tagging wird üblicherweise benutzt um wichtige Ereignisse wie z.B.
-das Release einer Applikation festzuhalten. Ein Tag ist etwas ähnliches
-wie ein Branch, nur das ein Tag sich nicht verändert. Anders als ein Branch,
-kann ein Tag nach dem Erstellen keine weiteren Commits
-beinhalten.&lt;/p>
-&lt;h3 id="wie-funktionieren-tags-">Wie funktionieren Tags ?&lt;/h3>
-&lt;p>Um ein Tag zu erstellen wird folgender Befehl benötigt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git tag &amp;lt;tagname&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wobei der &lt;tagname> auch wieder durch den gewünschten String ersetzt werden muss.
-Will man zusätzlich zum Tag eine Beschriftung hinzufügen, macht man das mit:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git tag &amp;lt;tagname&amp;gt; -a
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Damit wird ein annotated tag erstellt.&lt;/p>
-&lt;p>Auch wichtig anzumerken: Wenn du normal auf den Branch pushst, werden die Tags
-nicht standardmässig mitgepusht. Dazu brauchst du dann:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git push origin --tags
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Willst du nur ein einzelnes Tag pushen, brauche:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git push origin &amp;lt;tag&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="alias">Alias&lt;/h2>
-&lt;h3 id="was-sind-aliasse-">Was sind Aliasse ?&lt;/h3>
-&lt;p>Ein Git-Alias ist zu vergleichen mit einem Shortcut. Aliasse werden z.b.
-auch beim Arbeiten mit der Bash-Konsole eingesetzt. Aliase werden gebraucht um kürzere Befehle
-zu realisieren. Sie ermöglichen effizienteres Programmieren.&lt;/p>
-&lt;p>Nehmen wir zum Beispiel den git-checkout Befehl.
-Dieser Befehl wird häufig verwendet und muss immer wieder neu eingetippt werden. Mit den Git-Aliassen
-jedoch kann man git-checkout z.B. in git.co verwandeln. Dies spart enorme Schreibarbeit über längere Zeit
-und verliert dennoch nicht an Wirksamkeit.&lt;/p>
-&lt;h3 id="wie-funktionieren-aliasse">Wie funktionieren Aliasse?&lt;/h3>
-&lt;p>Um Aliasse festzulegen, müssen wir diese in der gitconfig-Datei definieren. Dort erstellen wir das
-Stichwort [alias]. Danach könnte das etwa so aussehen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">[alias]
-st = status
-ci = commit -v
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Aliasse können beliebig definiert werden, Ziel davon soll nur sein, die Schreibarbeit zu
-minimieren und das eigene Programmieren praktischer zu machen.&lt;/p>
-&lt;h2 id="gitg">Gitg&lt;/h2>
-&lt;h3 id="was-ist-gitg">Was ist Gitg&lt;/h3>
-&lt;p>Gitg ist eine grafische Benutzeroberfläche für git. Es zielt darauf ab, ein kleines,
-schnelles und bequemes Werkzeug zu sein, um Git-Repositories zu visualisieren.
-Neben der Visualisierung bietet Gitg auch einfache Möglichkeiten zur Verwaltung eines Repositorys.
-Jedoch bietet IntelliJ standardmässig die dieselben Möglichkeiten, sollte man jedoch eine IDE ohne Git integration verwenden ist gitg ein praktisches Tool.&lt;/p>
-&lt;h3 id="installationsanleitung">Installationsanleitung&lt;/h3>
-&lt;p>Unter Linux kann gitg mit folgendem Befehl installieren:
-&lt;br>&lt;code>sudo apt install gitg&lt;/code>&lt;br>
-Leider ist git unter Windows nicht verfügbar.
-Eine empfehlenswerte Alternative dazu ist der offizielle GitHub Client.&lt;/p>
-&lt;h2 id="github-client">Github Client&lt;/h2>
-&lt;h3 id="was-ist-der-github-client">Was ist der GitHub Client&lt;/h3>
-&lt;p>Der GitHub Client ist ein Windows Programm für die Verwaltung von Git Repositorys.
-Der GitHub Client funktioniert am besten mit GitHub repositorys,
-das bedeutet aber nicht das dieser keine Repositorys von anderen Quellen unterstützt.
-Es ist lediglich ein wenig aufwändiger Repositorys aus anderen Quellen einzubinden.&lt;/p>
-&lt;h3 id="installationsanleitung-1">Installationsanleitung&lt;/h3>
-&lt;p>Unter Windows kann der GitHub Client auf der folgenden Seite heruntergeladen werden:
-&lt;code>https://desktop.github.com/&lt;/code>
-Unter Linux der Client mithilfe des folgenden Scripts heruntergeladen werden:
-&lt;code>https://gist.github.com/berkorbay/6feda478a00b0432d13f1fc0a50467f1&lt;/code>&lt;/p>
-&lt;h2 id="git-blame">Git Blame&lt;/h2>
-&lt;h3 id="was-ist-git-blame">Was ist Git-Blame?&lt;/h3>
-&lt;p>Ist ein Befehl, welcher dazu dient den Author der letzten Änderung anzuzeigen. Deswegen auch
-git &amp;ldquo;blame&amp;rdquo;. Man &amp;ldquo;blamed&amp;rdquo; den Verfasser der letzten Änderung für seinen Fehler (falls er
-einen gemacht hat).&lt;/p>
-&lt;h3 id="wie-funktioniert-git-blame">Wie funktioniert Git-Blame?&lt;/h3>
-&lt;p>Um git blame anzuwenden braucht es nicht viel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git blame &amp;lt;filename&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Und schon haben wir den Verantwortlichen für die letzte Änderung an einem unserer
-Files. Jedoch bietet &lt;code>git blame&lt;/code> auch andere Anwendungsmöglichkeiten:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Bash" data-lang="Bash">git blame -L 1,5 &amp;lt;filename&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Hier zum Beispiel definieren wir eine Range von der Zeile 1 bis zur Zeile 5. Oder hier, noch
-eine weitere Variante:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git blame -e &amp;lt;filename&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Option -e zeigt uns anstatt des usernames des Authors, direkt die E-mail Adresse von
-ihm, so dass wir gerade Kontakt aufnehmen können.&lt;/p>
-&lt;p>Zum Schluss haben wir noch die -w Option&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git blame -w &amp;lt;filename&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dieser Befehl ignoriert wenn ein Author nur Leerschläge geändert hat. Das hat den Vorteil, dass
-wir nur die Authoren bekommen, welche auch wirklich etwas am Code selbst geändert und ihn
-nicht nur formatiert haben.&lt;/p>
-&lt;h2 id="blobs-und-trees">Blobs und Trees&lt;/h2>
-&lt;h3 id="was-sind-blobs-und-trees-show">Was sind Blobs und Trees show?&lt;/h3>
-&lt;p>Zuerst zu den Blobs: Blobs werden benutzt, um die Inhalte einzelner Dateien zu speichern.
-Trees wiederum beinhalten Referenzen zu anderen Blobs oder Unterbäumen.&lt;/p>
-&lt;h3 id="wozu-braucht-es-sie">Wozu braucht es sie?&lt;/h3>
-&lt;p>Wenn man eine Datei staged wird eine Blob-Datei erstellt. Dieser Blob hat den
-Inhalt der Datei und hat den Typ &amp;ldquo;blob&amp;rdquo;. Ein Blob eigentlich der Inhalt der Datei
-an einer bestimmten Instanz. Die verschiedenen Blobs fallen danach unter einen
-Tree.&lt;/p>
-&lt;p>Nun bildet sich hier eine Kette: Das Commit-Objekt greift auf die Tree-Objekte zu.
-Diese wiederum geben uns die Blob-Objekte zurück. Deshalb brauchen wir diese Konstellation also.
-Ohne die Trees und Blobs hätten wir keinen Zugriff auf die Inhalte unserer Dateien mehr.&lt;/p>
-&lt;img src="https://miro.medium.com/max/541/1*ZGVkiRbMErfng2CqpU3YQQ.png">
-Im Diagramm kann die Abhängigkeit dementsprechend besichtigt werden.</description></item><item><title>Labs: Immobilienfirma</title><link>/labs/java/java-oop/04_immofirma/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-oop/04_immofirma/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kann Namen für Objekte in einem Text identifizieren&lt;/li>
-&lt;li>Ich kann gute Namen für Attribute und Methoden wählen&lt;/li>
-&lt;li>Ich kann Objekte erstellen und ihnen entsprechende Eigenschaften geben&lt;/li>
-&lt;li>Ich kann Objekte untereinander verknüpfen&lt;/li>
-&lt;/ul>
-&lt;h3 id="immobilienfirma">Immobilienfirma&lt;/h3>
-&lt;p>In dieser Aufgabe soll eine Immobilienfirma mit Objekten abgebildet werden.
-Eine solche Firma besitzt beliebige Immobilien und hat einen Firmensitz an einer bestimmten Adresse.
-Die Firma hat diverse Angestellte und einen Namen.
-Eine Immobilie kann aus diversen Wohnungen bestehen, welche vermietet werden.
-Eine Immobilie hat eine bestimmte Adresse und ein Angestellter der Firma ist der Immobilie als Abwart zugeteilt.
-Ein Angestellter der Firma ist zudem der Verwalter einer solchen Immobilie.
-Eine Wohnung befindet sich in einem bestimmten Stockwerk, besitzt eine Wohnungsnummer und eine Beschreibung.
-Wenn ein Mieter in eine Wohnung einzieht, so gibt es zwischen Firma und Mieter einen Vertrag für eine bestimmte Wohnung.
-Jeder Vertrag hat ein Start- und ein End-Datum, zudem regelt der Vertrag den monatlichen Preis für eine Wohnung.
-Die Standardangaben für eine Person werden durch ein Geburtsdatum und ein Geschlecht ergänzt.&lt;/p>
-&lt;h4 id="teil-1">Teil 1&lt;/h4>
-&lt;p>Ermittle aus dem Text oben die verschiedenen Objekte und ihre Eigenschaften.
-Verknüpfe dann die Objekte miteinander, zum Beispiel hat eine Immobilienfirma eine Adresse als Firmensitz.&lt;/p>
-&lt;h4 id="teil-2">Teil 2&lt;/h4>
-&lt;p>Erstelle für deine Firma mindestens zwei Immobilien mit unterschiedlichen Wohnungen.
-Definiere Angestellte und Abwarte. Erstelle Mieter und Verträge.&lt;/p>
-&lt;h4 id="teil-3">Teil 3&lt;/h4>
-&lt;p>Erstelle für die Firma die folgenden Funktionen:&lt;/p>
-&lt;ul>
-&lt;li>Ermittle die total Anzahl an Wohnungen von allen Immobilien&lt;/li>
-&lt;li>Ermittle den Abwart für eine bestimmte Wohnung&lt;/li>
-&lt;li>Ermittle die Verträge für eine bestimmte Immobilie&lt;/li>
-&lt;li>Ermittle die leeren Wohnungen für eine bestimmte Immobilie&lt;/li>
-&lt;li>Ermittle die Verträge, die im nächsten Monat ablaufen&lt;/li>
-&lt;li>Ermittle alle Verträge sortiert nach Personen (eine Person kann mehrere Wohnungen mieten)&lt;/li>
-&lt;li>Ermittle das monatliche Einkommen pro Immobilie&lt;/li>
-&lt;li>Ermittle das jährliche Einkommen der Firma (ein Vertrag kann während dem Jahr ablaufen)&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;p>relative Links&lt;/p></description></item></channel></rss>
