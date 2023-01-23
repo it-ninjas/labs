@@ -522,4 +522,757 @@ Du kannst es aber auch mit gewöhnlichen HTML-Elementen versuchen.
 &lt;ul>
 &lt;li>&lt;a href="https://www.w3schools.com/graphics/svg_intro.asp">SVG&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://www.w3schools.com/html/html5_canvas.asp">Canvas&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;/ul></description></item><item><title>Docs: ES6: Variablen deklarieren</title><link>/docs/web/javascript/07_variables/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/07_variables/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, wie du Variablen deklarierst.&lt;/li>
+&lt;li>Du weisst, wann du eine Variable mit &lt;code>var&lt;/code>, &lt;code>let&lt;/code> oder &lt;code>const&lt;/code> deklarierst.&lt;/li>
+&lt;li>Du kannst das &amp;ldquo;Object Destructuring Assignment&amp;rdquo; anwenden&lt;/li>
+&lt;/ul>
+&lt;h2 id="basics">Basics&lt;/h2>
+&lt;p>In JavaScript deklarierst du Variablen mit dem &lt;code>let&lt;/code>- oder &lt;code>const&lt;/code>-Keyword - egal welcher Typ die Variable haben wird.&lt;/p>
+&lt;p>Das folgende Listing zeigt auf, wie du mit Variablen deklarieren und zuweisen (&amp;ldquo;assign&amp;rdquo;) kannst:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span>
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">b&lt;/span>)
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">B&lt;/span>
+&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;AA&amp;#34;&lt;/span>
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">AA&lt;/span>
+&lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;BB&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Uncaught&lt;/span> &lt;span style="color:#a6e22e">TypeError&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">Assignment&lt;/span> &lt;span style="color:#a6e22e">to&lt;/span> &lt;span style="color:#a6e22e">constant&lt;/span> &lt;span style="color:#a6e22e">variable&lt;/span>.
+&lt;span style="color:#a6e22e">at&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">anonymous&lt;/span>&lt;span style="color:#f92672">&amp;gt;:&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#f92672">:&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie du siehst, kannst du eine mit &lt;code>let&lt;/code> deklarierte Variable verändern. Veränderst du eine &lt;code>const&lt;/code>-Variable, wird ein Fehler geworfen.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Als Grundsatz gilt: Verwende immer &lt;code>const&lt;/code>, ausser du willst später der Variable im gleichen Scope (nächster Abschnitt) einen anderen Wert zuweisen. Dann verwende &lt;code>let&lt;/code>.&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>Die Verwendung von &lt;code>const&lt;/code> per Default hat die Vorteile, dass so Side-Effects vermieden werden können, welche auf Grund des Neu-Zuweisens von Variablen geschehen können.
+Wenn du z.B. sehr viele Variablen in einer Funktion hast, müsstest du überprüfen, dass du zuerst sicherstellen, dass deine neue Variable keine bestehende Variable im gleichen Scope überschreibst. Verwendest du standardmässig &lt;code>const&lt;/code>, wird dir ein Fehler geworfen, der dir dann direkt ins Auge sticht.&lt;/p>
+&lt;h3 id="scope">Scope&lt;/h3>
+&lt;h4 id="block-scope">Block-Scope&lt;/h4>
+&lt;p>Variablen, die mit &lt;code>const&lt;/code> oder &lt;code>let&lt;/code> definiert wurden, sind in ihrem &lt;strong>Block&lt;/strong>-Scope sichtbar und verwendbar.&lt;/p>
+&lt;p>Es ist sehr wichtig, dass du folgenden Code komplett verstehst und wieso es zum entsprechenden Resultat führt - und warum die Verwendung von &lt;code>const&lt;/code> nicht zu einem Fehler führt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;File&amp;#34;&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">myFunction&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Argument&amp;#34;&lt;/span>) {
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#66d9ef">true&lt;/span>) {
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;if&amp;#34;&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#a6e22e">a&lt;/span>);
+}
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#a6e22e">a&lt;/span>);
+}
+&lt;span style="color:#a6e22e">myFunction&lt;/span>();
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dies produziert folgenden Output:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">1 File
+2 Argument
+3 if
+4 Argument
+5 File
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="global-scope-und-function-scope">Global Scope und Function Scope&lt;/h4>
+&lt;p>Vor ES6 kannte JavaScript keinen Block-Scope, sondern nur einen globalen Scope und einen Function Scope.&lt;/p>
+&lt;p>Um das zu verstehen, lasse diesen Code einmal laufen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">myFunction&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">20&lt;/span>) {
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#66d9ef">true&lt;/span>) {
+&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">21&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">30&lt;/span>; &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">33&lt;/span>; &lt;span style="color:#a6e22e">a&lt;/span>&lt;span style="color:#f92672">++&lt;/span>){
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">40&lt;/span>; &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">44&lt;/span>; &lt;span style="color:#a6e22e">a&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+}
+}
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+}
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+}
+&lt;span style="color:#a6e22e">myFunction&lt;/span>();
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">11&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Du solltest dann folgende Zahlen im Output erhalten:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#ae81ff">10&lt;/span>, &lt;span style="color:#ae81ff">20&lt;/span>, &lt;span style="color:#ae81ff">21&lt;/span>, &lt;span style="color:#ae81ff">30&lt;/span>, &lt;span style="color:#ae81ff">40&lt;/span>, &lt;span style="color:#ae81ff">41&lt;/span>, &lt;span style="color:#ae81ff">42&lt;/span>, &lt;span style="color:#ae81ff">43&lt;/span>, &lt;span style="color:#ae81ff">45&lt;/span>, &lt;span style="color:#ae81ff">45&lt;/span>, &lt;span style="color:#ae81ff">10&lt;/span>, &lt;span style="color:#ae81ff">11&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie du siehst, haben alle Variablen, die innerhalb einer Funktion mit &lt;code>var&lt;/code> deklariert werden, den gleichen Scope:
+Das bedeutet, dass du z.B. eine &lt;code>var&lt;/code>-Variable, die du ganz oben in der Funktion definierst, veränderst, wenn du eine gleichnamige später in einer &lt;code>for&lt;/code>-Schleife mit &lt;code>var&lt;/code> definierst.&lt;/p>
+&lt;p>Einen solchen Function Scope haben nur Variablen, die mit &lt;code>var&lt;/code> definiert wurden. Variablen, die mit &lt;code>let&lt;/code> oder &lt;code>const&lt;/code> definiert wurden, haben einen Block-Scope und sind daher innerhalb ihres Blocks (&lt;code>for&lt;/code>/&lt;code>while&lt;/code>-Schlaufe, &lt;code>if&lt;/code>/&lt;code>else&lt;/code>-Block, Funktion, Datei) definiert und sichtbar.
+In &lt;code>Java&lt;/code> gilt der Block Scope immer.&lt;/p>
+&lt;h5 id="aufgabe-zu-global-scope-function-scope-und-block-scope">Aufgabe zu Global Scope, Function Scope und Block-Scope&lt;/h5>
+&lt;p>Im vorherigen Abschnitt hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit &lt;code>console.log(...)&lt;/code>s.&lt;/p>
+&lt;p>&lt;strong>Auftrag&lt;/strong>: Ändere in diesem Code alle &lt;code>var&lt;/code>s zu &lt;code>let&lt;/code>s oder &lt;code>const&lt;/code>s.&lt;/p>
+&lt;p>Beantworte folgende Fragen und dokumentiere deine Antworten:&lt;/p>
+&lt;ul>
+&lt;li>Was ist ein Scope?&lt;/li>
+&lt;li>Was sind Global Scope, Function Scope und Block-Scope? Was sind die Unterschiede?&lt;/li>
+&lt;li>Mit welchem Scope arbeitest du in Java? Begründe.&lt;/li>
+&lt;li>Wie werden Variablen im globalen Scope definiert?&lt;/li>
+&lt;li>Wie kannst du definieren, welche Variable welchen Scope haben soll?&lt;/li>
+&lt;li>Wann könnte die Verwendung von &lt;code>var&lt;/code> sinnvoll sein?&lt;/li>
+&lt;/ul>
+&lt;h4 id="wann-var-verwenden">Wann &lt;code>var&lt;/code> verwenden?&lt;/h4>
+&lt;p>Folgender Grundsatz gilt:&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Verwende nie &lt;code>var&lt;/code>, ausser du musst sicherstellen, dass der Code in Browser funktioniert, welche vor 2015 aktualisiert worden sind.&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>Wenn du wissen willst, wieso &lt;code>var&lt;/code> nicht mehr verwendet werden sollte, dann kannst du dein Wissen hier vertiefen: &lt;a href="https://medium.com/@codingsam/awesome-javascript-no-more-var-working-title-999428999994">https://medium.com/@codingsam/awesome-javascript-no-more-var-working-title-999428999994&lt;/a>.&lt;/p>
+&lt;h3 id="destructuring-assignment">Destructuring Assignment&lt;/h3>
+&lt;p>In JavaScript siehst du sehr oft, dass mehrere Variablen auf einmal definiert werden.&lt;/p>
+&lt;p>Wie in anderen Programmiersprachen kannst du Variablen in einem einzigen Statement definieren (das ist kein Destructuring Assignment):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nun kommt es oft vor, dass du in einem einzigen Methodenaufruf mehrere Werte zurückbekommst - in Form eines Arrays/Liste oder in Form eines Objekts. Oft willst du dann die einzelnen Werte in eigene Variablen speichern. Wie du das machen kannst, wird in den nächsten zwei Unterkapitel behandelt:&lt;/p>
+&lt;h4 id="destructuring-arrays">Destructuring Arrays&lt;/h4>
+&lt;p>Bekommst du ein Array und willst du z.B. den ersten und zweiten Wert aus einem Array je einer Variablen zuweisen, dann würdest du das normalerweise tun:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">array&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;B&amp;#39;&lt;/span>];
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">array&lt;/span>[&lt;span style="color:#ae81ff">0&lt;/span>], &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">array&lt;/span>[&lt;span style="color:#ae81ff">1&lt;/span>];
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Diese Schreibweise kannst du mit folgender Syntax vereinfachen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> [&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;B&amp;#39;&lt;/span>];
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ist z.B. das erste Element ein Index/Key/Zeilen- bzw. Spaltenname/&amp;hellip; und der Rest das eigentliche Array, dann hilft dir vielleicht diese Schreibweise:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> [&lt;span style="color:#a6e22e">name&lt;/span>, ...&lt;span style="color:#a6e22e">values&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#34;ColumnName&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>];
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hier hat &lt;code>name&lt;/code> den Wert &amp;ldquo;ColumnName&amp;rdquo; und &lt;code>values&lt;/code> ist das Array &lt;code>[1, 2, 3, 4]&lt;/code>.&lt;/p>
+&lt;h4 id="object-destructuring">Object Destructuring&lt;/h4>
+&lt;p>Diese Schreibweise ist dir sicher schon einmal aufgefallen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> {&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>} &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">anotherObject&lt;/span>;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das ist auch ein ganz einfaches Prinzip. Wenn du nachfolgenden Code verstanden hast, dann weisst du alles, was du zu diesem Thema wissen musst:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">object&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#a6e22e">a&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">c&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;C&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">d&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;D&amp;#34;&lt;/span>};
+&lt;span style="color:#66d9ef">const&lt;/span> {&lt;span style="color:#a6e22e">a&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">one&lt;/span>, &lt;span style="color:#a6e22e">d&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>} &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">object&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">one&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>, &lt;span style="color:#a6e22e">d&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">A&lt;/span> &lt;span style="color:#a6e22e">B&lt;/span> &lt;span style="color:#a6e22e">D&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Beispiel haben wir den Wert für &lt;code>a&lt;/code> in die Variable &lt;code>one&lt;/code> kopiert.&lt;/p>
+&lt;p>Wie du siehst, spielt hier die Reihenfolge der Variablen &lt;strong>keine&lt;/strong> Rolle.&lt;/p>
+&lt;details>
+&lt;summary>Schritt-für-Schritt-Erklärung zum Beispiel&lt;/summary>
+&lt;p>Die ersten zwei Anweisungen könnten auch in einer zusammengefasst werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> {&lt;span style="color:#a6e22e">a&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">one&lt;/span>, &lt;span style="color:#a6e22e">d&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>} &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#a6e22e">a&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">c&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;C&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">d&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;D&amp;#34;&lt;/span>};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ignorieren wir zuerst die Variable &lt;code>a&lt;/code> bzw. &lt;code>one&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>Auf der linken Seite deklarieren wir die Variablen &lt;code>d&lt;/code> und &lt;code>b&lt;/code>.&lt;/li>
+&lt;li>Die Felder &lt;code>d&lt;/code> und &lt;code>b&lt;/code> aus dem Objekt auf der rechten Seite werden in die Variablen &lt;code>d&lt;/code> und &lt;code>b&lt;/code> auf der linken Seite kopiert.
+&lt;ul>
+&lt;li>Die Variablen auf der linken Seite müssen nicht zwingend in der gleichen Reihenfolge stehen wie auf der rechten Seite.&lt;/li>
+&lt;li>Sie müssen lediglich gleich heissen.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Auf der linken Seite sieht &lt;code>a: one&lt;/code> vielleicht noch verwirrend aus, vor allem wenn du bereits &lt;em>TypeScript&lt;/em> kennst.
+&lt;ul>
+&lt;li>Diese bedeutet nur, dass du die Variable &lt;code>a&lt;/code> von der &lt;strong>rechten&lt;/strong> Seite in eine Variable &lt;strong>mit einem anderen Namen&lt;/strong> &lt;code>one&lt;/code> kopierst.&lt;/li>
+&lt;li>Folglich hast du eine Variable &lt;code>one&lt;/code> deklariert und zugewiesen.&lt;/li>
+&lt;li>Eine Variable &lt;code>a&lt;/code> hast du hier &lt;strong>NICHT&lt;/strong> deklariert.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Anschliessend gibts du die Werte von &lt;code>one&lt;/code>, &lt;code>b&lt;/code> und &lt;code>d&lt;/code> aus mit &lt;code>console.log(one, b, d);&lt;/code>.
+&lt;ul>
+&lt;li>Hätten wir versucht, eine Variable &lt;code>a&lt;/code> auszugeben, hätte das einen Fehler verursacht, weil keine solche Variable definiert wurde.&lt;/li>
+&lt;li>Das Gleiche mit &lt;code>c&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/details></description></item><item><title>Docs: ES6: Importe</title><link>/docs/web/javascript/08_imports/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/08_imports/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, wann du in JavaScript das Keyword &lt;code>import&lt;/code> brauchen kannst.&lt;/li>
+&lt;li>Du weisst, wie du &lt;code>export&lt;/code>s &lt;code>import&lt;/code>ieren kannst.&lt;/li>
+&lt;li>Du weisst, welche Variablen, Klassen, Methoden usw. in einer Datei &amp;ldquo;public&amp;rdquo; sind.&lt;/li>
+&lt;li>Du kennst die Unterschiede zwischen &lt;code>default&lt;/code> und named Exports/Imports.&lt;/li>
+&lt;/ul>
+&lt;h2 id="basics">Basics&lt;/h2>
+&lt;p>Was ist der Einfluss, wenn ein Browser eine JavaScript-Datei mit folgendem Inhalt ladet?&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Gugus&amp;#34;&lt;/span>;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Diese Datei bewirkt, dass in allen anderen Dateien evlt. auch diese omniöse Variable &lt;code>x&lt;/code> verfügbar ist (natürlich abhängig davon, was zuerst geladen wird).&lt;/p>
+&lt;p>Das kann in sehr vielen Hinsichten schlecht sein:&lt;/p>
+&lt;ul>
+&lt;li>Was, wenn in mehreren Dateien eine Variable &lt;code>x&lt;/code> deklariert wird?&lt;/li>
+&lt;li>Was, wenn wir diese Variable eigentlich gar nicht veröffentlichen wollten?&lt;/li>
+&lt;li>Diese Variable ist möglicherweise in den Entwicklungstools ([F12]-Taste) in der Konsole direkt ohne Aufwand ersichtlich, ausles- und manipulierbar.&lt;/li>
+&lt;li>Was, wenn du eine gleichnamige Variable aus einer anderen Datei benötigst?&lt;/li>
+&lt;/ul>
+&lt;p>Um viele solche Probleme aus dem Weg zu gehen, wurde in ES6 (ECMAScript 2015, JavaScript Standard) JavaScript Modules eingeführt.&lt;/p>
+&lt;p>Hast du in einer JavaScript-Datei Variablen, Funktionen oder Klassen, die du in einer anderen Datei brauchen willst, dann kannst du das wie folgt tun:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) { &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;}
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nun kannst du diese Variablen in einer anderen JavaScript-Datei wie folgt importieren:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>, &lt;span style="color:#a6e22e">Person&lt;/span> } &lt;span style="color:#a6e22e">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./path/to/your/file.js&amp;#34;&lt;/span>;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="imports-in-html-dateien">Imports in HTML-Dateien&lt;/h2>
+&lt;p>Vielleicht kommst du mal aus irgendeinem Grund in die Situation, in welcher du im Browser ohne JS-Framework wie React oder Angular ein JavaScript-Modul laden musst. Das kannst du das im HTML wie folgt ganz einfach machen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;module&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>, &lt;span style="color:#a6e22e">Person&lt;/span> } &lt;span style="color:#a6e22e">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./file.js&amp;#34;&lt;/span>;
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>, &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;Monkey Puppet&amp;#39;&lt;/span>));
+&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beachte, dass die &lt;code>type&lt;/code>-Angabe im &lt;code>&amp;lt;script&amp;gt;&lt;/code>-Tag zwingend ist und dass die Imports nur innerhalb dieses &lt;code>&amp;lt;script&amp;gt;&lt;/code>-Tags verfügbar sind.&lt;/p>
+&lt;p>Möchtest du ohne die Angabe von &lt;code>type=&amp;quot;module&amp;quot;&lt;/code> Variablen importieren (z.B. in den Browser-DevTools), dann kannst du das &lt;code>import&lt;/code>-Keyword nicht wie gewöhnlich benutzen. Importieren kannst du auf folgende Art und Weise:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">const&lt;/span> {&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>, &lt;span style="color:#a6e22e">Person&lt;/span> } &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#66d9ef">import&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;./file.js&amp;#39;&lt;/span>);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hier hast du &lt;code>import(...)&lt;/code> wie eine Funktion verwendet. Weil diese &amp;ldquo;Funktion&amp;rdquo; ein &lt;code>Promise&lt;/code> zurückgibt (da sie das Modul &lt;code>async&lt;/code>hron lädt), sollte hier der Import &lt;code>await&lt;/code>ed werden. So kann sichergestellt werden, dass der später folgende Code erst aufgerufen wird, nachdem das Modul komplett geladen wurde. Falls du dich nicht mit &lt;code>async&lt;/code> und &lt;code>await&lt;/code> auskennst, solltes du den Abschnitt &amp;ldquo;Asynchrone Anfragen&amp;rdquo; noch einmal anschauen.&lt;/p>
+&lt;h2 id="default-ex--und-importe">&lt;code>default&lt;/code> Ex- und Importe&lt;/h2>
+&lt;p>Das ES6-Modul-System unterscheidet zwischen &lt;code>default&lt;/code> und &amp;ldquo;named&amp;rdquo; Exporten:&lt;/p>
+&lt;ul>
+&lt;li>Eine Datei kann mehrere named-Exporte haben. Alle Exporte bis hier auf der Seite sind named Exporte.&lt;/li>
+&lt;li>Eine Datei kann aber nur einen &lt;code>default&lt;/code> Export besitzen. Wenn eine Datei z.B. nur etwas exportieren soll, dann eignet sich ein &lt;code>default&lt;/code>-Export hierfür.&lt;/li>
+&lt;/ul>
+&lt;p>Angenommen, wir haben z.B. eine Datei &amp;ldquo;person.js&amp;rdquo;, die eine Klasse und ein paar Utility-Funktionen zu dieser Klasse anbietet, dann könnten die Exporte wie folgt aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) { &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;}
+}
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">personFromJson&lt;/span>(&lt;span style="color:#a6e22e">jsonString&lt;/span>){
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">JSON&lt;/span>.&lt;span style="color:#a6e22e">parse&lt;/span>(&lt;span style="color:#a6e22e">jsonString&lt;/span>);
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>);
+}
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">getNameOfPerson&lt;/span>(&lt;span style="color:#a6e22e">person&lt;/span>){
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">person&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>;
+};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dies wiederum könnte z.B. wie folgt importiert werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">import&lt;/span> &lt;span style="color:#a6e22e">ClassForPerson&lt;/span>, { &lt;span style="color:#a6e22e">personFromJson&lt;/span>, &lt;span style="color:#a6e22e">getNameOfPerson&lt;/span> } &lt;span style="color:#a6e22e">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./person.js&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">person&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">personFromJson&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;{&amp;#34;name&amp;#34;: &amp;#34;Mr. Incredible&amp;#34;}&amp;#39;&lt;/span>);
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">getNameOfPerson&lt;/span>(&lt;span style="color:#a6e22e">person&lt;/span>));
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Mr&lt;/span>. &lt;span style="color:#a6e22e">Incredible&lt;/span>
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person&lt;/span> &lt;span style="color:#66d9ef">instanceof&lt;/span> &lt;span style="color:#a6e22e">ClassForPerson&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie du hier sehen kannst, können wir den &lt;code>default&lt;/code>-Export mit irgendeinem Namen importieren, der &lt;strong>nicht&lt;/strong> mit dem Namen in der Export-Datei übereinstimmen muss.&lt;/p></description></item><item><title>Docs: ES6: Optionale Argumente in Methoden und Konstruktoren</title><link>/docs/web/javascript/09_optional_args/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/09_optional_args/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, wie du in JavaScript optionale Argumente in einem Parameter einen Default-Wert zuweisen kannst.&lt;/li>
+&lt;li>Du weisst, wie du Named Arguments in Parameter verwenden kannst.&lt;/li>
+&lt;/ul>
+&lt;h2 id="basics">Basics&lt;/h2>
+&lt;p>Methoden (und daher auch Konstruktore) besitzen oft Werte, die zwingend übergeben werden müssen und welche, die optional sind.&lt;/p>
+&lt;p>Beim nächsten Beispiel wäre z.B. der Name bei einer Person zwingend, das Alter, Geschlecht und sein/ihr Verhältnis zu JavaScript optional:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;span style="color:#a6e22e">age&lt;/span>;
+&lt;span style="color:#a6e22e">gender&lt;/span>;
+&lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>;
+&lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>, &lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>) {
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">age&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">gender&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">gender&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">lovesJavaScript&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>;
+}
+}
+&lt;span style="color:#75715e">// Hier wollen wir eine Person erstellen, kennen aber das Alter, Geschlecht und seine Beziehung zu JS nicht:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Colonel Toad&amp;#34;&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Colonel Toad&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>}
+&lt;span style="color:#75715e">// Hier wollen wir neben dem Namen nur das Alter setzen:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Sweating Towel Guy&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">44&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Sweating Towel Guy&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">44&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>}
+&lt;span style="color:#75715e">/// Möchtest du das letzte Argument setzen, dann musst du die vorherigen Variablen auch setzen:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Man Ray&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">false&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Man Ray&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Mit dieser Lösung hast du zwar eine Lösung, das die Präferenz einer Person bez. JavaScript speichert, auch wenn nur ein Name angebeben wird. Aber was wäre, wenn du Eine Person erstellen möchtest mit einem Geschlecht, aber das Alter nicht angeben möchtest?&lt;/p>
+&lt;p>Hierfür bieten sich dann Named Parameters an:&lt;/p>
+&lt;h2 id="named-parameters">Named Parameters&lt;/h2>
+&lt;p>Dank dem Object Destructuring aus ES6 kannst du alle optionale Argument einzeln zuweisen bzw. überspringen. Das könnte wie folgt aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>, {&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>}) {
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">age&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">gender&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">gender&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">lovesJavaScript&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>;
+}
+}
+&lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Steven Crowder&amp;#34;&lt;/span>, {&lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;male&amp;#34;&lt;/span>});
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Steven Crowder&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;male&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: JSDoc</title><link>/docs/web/javascript/10_jsdoc/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/10_jsdoc/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, wie du in JavaScript bei Klassen und Funktionen eine Beschreibung hinzufügen kannst, die dir deine Entwicklungsumgebung anzeigt, wenn du mittels Auto-Completion diese Variable auswählst.&lt;/li>
+&lt;li>Du weisst, wie du in JavaScript eine Typ-Angabe machen kannst (die aber zur Laufzeit nichts tut).&lt;/li>
+&lt;/ul>
+&lt;h2 id="basics">Basics&lt;/h2>
+&lt;p>In TypeScript kannst du jeder Variable einen Typ, jeder Funktion einen Rückgabewert zuweisen. Dies kannst du in JavaScript nicht so einfach.&lt;/p>
+&lt;p>Trotzdem kannst du dank dem JSDoc-Projekt (&lt;a href="https://jsdoc.app/about-getting-started.html">https://jsdoc.app/about-getting-started.html&lt;/a>) Typ-Angaben machen, damit deine Entwicklungsumbegung reklamiert, wenn z.B. in einer Funktion ein Wert eines falschen Types übergeben wird.&lt;/p>
+&lt;p>In nächsten Beispiel siehst du, wie du in einer Funktion die Typen spezifizieren kannst:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Diese Funktion leitet die Argumente dem Konstruktor der Klasse `Person` weiter.
+&lt;/span>&lt;span style="color:#75715e"> * @param {string} name Der Name der Person
+&lt;/span>&lt;span style="color:#75715e"> * @param {Object} namedArgs (Eigentlich unnötig, wird aber als Label für Referenz auf die named Parameter benötigt)
+&lt;/span>&lt;span style="color:#75715e"> * @param {number} [namedArgs.age] Alter
+&lt;/span>&lt;span style="color:#75715e"> * @param {string} [namedArgs.gender] Geschlecht, darf irgend ein String sein.
+&lt;/span>&lt;span style="color:#75715e"> * @returns {Person} Ein Personen-Objekt mit den übergebenen Werten.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">createPerson&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>, { &lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span> }) {
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>, {
+&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">age&lt;/span>,
+&lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">gender&lt;/span>,
+})
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Deine Entwicklungsumgebung könnte diese Informationen nun auch anzeigen:&lt;/p>
+&lt;p>&lt;img src="../images/vscode-jsdoc.jpg" alt="VS Code zeigt nun den JSDoc an, wenn du diese Funktion eintippst" title="JSDoc in VS Code">&lt;/p>
+&lt;h2 id="tags">Tags&lt;/h2>
+&lt;p>Im vorherigen JSDoc wurden viele Tags verwendet. Hier eine Übersicht zu den wichtigsten:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>@param&lt;/code>: Damit wird ein Parameter beschrieben&lt;/li>
+&lt;li>&lt;code>@returns&lt;/code>: Damit wird der Rückgabewert beschrieben&lt;/li>
+&lt;li>&lt;code>{number}&lt;/code>: Das ist eine Typangabe. Hier musste das Argument eine Zahl sein.&lt;/li>
+&lt;li>&lt;code>[namedArgs.gender]&lt;/code>: Die eckigen Klammern spezifizieren das Argument als optional (nullable). Ansonsten sollten die Argument nicht den Wert &lt;code>undefined&lt;/code> oder &lt;code>null&lt;/code> haben.&lt;/li>
+&lt;/ul>
+&lt;p>Eine Auflistung von JSDoc-Tags findest du auch hier: &lt;a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html">https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html&lt;/a>&lt;/p>
+&lt;h2 id="fehler-anzeigen-wenn-typen-falsch-sind">Fehler anzeigen, wenn Typen falsch sind&lt;/h2>
+&lt;p>In VS Code gibt es die Möglichkeit, dass die IDE reklamiert, wenn du Werte des falschen Typs übergibst.&lt;/p>
+&lt;p>Um hiervon Gebrauch zu machen, kann im Projekt-Verzeichnis eine &lt;code>jsconfig.json&lt;/code>-Datei angelegt werden. Folgende Konfiguration könnte für Browser-Anwendungen Sinn ergeben, wenn sich die JS-Dateinen im Ordner &amp;ldquo;${workspaceFolder}/static/js/&amp;rdquo; (nur ein Beispiel, kann natürlich auch etwas anderes Sein) befinden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
+&lt;span style="color:#f92672">&amp;#34;compilerOptions&amp;#34;&lt;/span>: {
+&lt;span style="color:#f92672">&amp;#34;module&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;commonjs&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;target&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;es6&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;baseUrl&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;checkJs&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;importHelpers&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;lib&amp;#34;&lt;/span>: [
+&lt;span style="color:#e6db74">&amp;#34;DOM&amp;#34;&lt;/span>,
+&lt;span style="color:#e6db74">&amp;#34;ES2021&amp;#34;&lt;/span>,
+&lt;span style="color:#e6db74">&amp;#34;DOM.Iterable&amp;#34;&lt;/span>
+]
+},
+&lt;span style="color:#f92672">&amp;#34;exclude&amp;#34;&lt;/span>: [
+&lt;span style="color:#e6db74">&amp;#34;node_modules&amp;#34;&lt;/span>
+],
+&lt;span style="color:#f92672">&amp;#34;include&amp;#34;&lt;/span>: [
+&lt;span style="color:#e6db74">&amp;#34;static/js/*&amp;#34;&lt;/span>
+]
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dank dieser Konfiguration würde dir VS Code nun einen Fehler anzeigen, wenn du statt einem &lt;code>string&lt;/code> eine &lt;code>number&lt;/code> übergeben würdest:&lt;/p>
+&lt;p>&lt;img src="../images/vscode-jsdoc-error.jpg" alt="VS Code zeigt nun an, dass du einen string angeben solltest anstatt einer number" title="checkJs in VS Code">&lt;/p></description></item><item><title>Docs: Advanced console.log(...)'s</title><link>/docs/web/javascript/11_console.logs/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/11_console.logs/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du kennst Alternativen zu &lt;code>console.log(...)&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;h2 id="basics">Basics&lt;/h2>
+&lt;p>Das &lt;code>console.log(...)&lt;/code> in JavaScript ist das Äquivalent zu &lt;code>System.out.println(...)&lt;/code> in Java, das &lt;code>Console.WriteLine(...)&lt;/code> in C#, das &lt;code>print(...)&lt;/code> in Python oder das &lt;code>puts ...&lt;/code> in Ruby.&lt;/p>
+&lt;p>Es gibt aber noch sehr viele Alternativen zu &lt;code>console.log(...)&lt;/code>, die sehr nützlich sind.&lt;/p>
+&lt;p>Z.B. kannst du den Logs noch eine Kategorie zuordnen und werden in unterschiedlichen Farben geloggt:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>console.info(...)&lt;/code> (neutral)&lt;/li>
+&lt;li>&lt;code>console.warn(...)&lt;/code> (gelb/orange/grün)&lt;/li>
+&lt;li>&lt;code>console.error(...)&lt;/code> (rot)&lt;/li>
+&lt;li>&lt;code>console.debug(...)&lt;/code> (blau, aber nur sichtbar, wenn &amp;ldquo;Alle [Log-]Ebenen&amp;rdquo; in der Konsole anzeigt)&lt;/li>
+&lt;/ul>
+&lt;h3 id="nie-mehr-counter-variablen-für-debugging-zwecke">Nie mehr Counter-Variablen für Debugging-Zwecke!!&lt;/h3>
+&lt;p>Wenn du z.B. feststellen möchtest, wie oft etwas aufgerufen wird, hilft dir vielleicht &lt;code>console.count(&amp;quot;&amp;quot;)&lt;/code> weiter:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">count&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;alarm&amp;#34;&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">alarm&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="objekte-loggen">Objekte loggen&lt;/h3>
+&lt;p>Wenn du Objekte mit ihren Attributen und Werten loggen möchtest, dann bietet sich die &lt;code>console.dir(...)&lt;/code>-Funktion an:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">dir&lt;/span>(&lt;span style="color:#a6e22e">person&lt;/span>);
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Confused Nick Young&amp;#39;&lt;/span>,
+&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>,
+&lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;male&amp;#39;&lt;/span>,
+&lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="tabelle-loggen">Tabelle loggen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">table&lt;/span>(
+[&lt;span style="color:#a6e22e">person1&lt;/span>, &lt;span style="color:#a6e22e">person2&lt;/span>]
+)
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">┌─────────┬────────────────────────┬───────────┬───────────┬─────────────────┐&lt;/span>
+&lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> (&lt;span style="color:#a6e22e">index&lt;/span>) &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#a6e22e">gender&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span>
+&lt;span style="color:#960050;background-color:#1e0010">├─────────┼────────────────────────┼───────────┼───────────┼─────────────────┤&lt;/span>
+&lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Confused Nick Young&amp;#39;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#e6db74">&amp;#39;male&amp;#39;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span>
+&lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Tuxedo Winnie the Pooh&amp;#39;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">│&lt;/span>
+&lt;span style="color:#960050;background-color:#1e0010">└─────────┴────────────────────────┴───────────┴───────────┴─────────────────┘&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="log-stylen">Log stylen&lt;/h3>
+&lt;p>Mit einem &lt;code>%c&lt;/code> im Log kannst du den Text stylen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;%cHello World&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;color: blue; font-weight: bolder; background-color: white; border-radius: 2em; padding: 1em;&amp;#39;&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="falsche-werte-loggen">Falsche Werte loggen&lt;/h3>
+&lt;p>Als Entwickler bist du informiert werden, wenn irgendwo falsche Werte zurückgegeben wurden (z.B. Rückgabe-Wert einer Funktion).&lt;/p>
+&lt;p>Hierfür bietet sich &lt;code>console.assert(...)&lt;/code> an:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">connectionToDatabase&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">connectToDatabase&lt;/span>(); &lt;span style="color:#75715e">// returns `null` if connection fails.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">assert&lt;/span>(
+&lt;span style="color:#a6e22e">connectionToDatabase&lt;/span> &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>,
+{
+&lt;span style="color:#a6e22e">connectionToDatabase&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">connectionToDatabase&lt;/span>,
+&lt;span style="color:#a6e22e">errorMsg&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Es konnte keine Verbindung zur Datenbank hergestellt werden. ¯\_(ツ)_/¯&amp;#34;&lt;/span>
+});
+&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Assertionsfehler&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#a6e22e">connectionToDatabase&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>,
+&lt;span style="color:#a6e22e">errorMsg&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Es konnte keine Verbindung zur Datenbank hergestellt werden. ¯_(ツ)_/¯&amp;#39;&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
