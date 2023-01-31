@@ -767,7 +767,335 @@ E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">
 &lt;/div>&lt;p>Das Interface &lt;code>java.util.List&lt;/code> im Collection Framework ist der Datentyp der Listen, wobei in der abstrakten Klasse
 &lt;code>java.util.AbstractList&lt;/code> die grundlegenden Funktionalitäten implementiert sind, sodass diese den verschiedenen konkreten
 Listen-Implementierungen weiter geerbt werden können.&lt;/p>
-&lt;p>Auf der nächsten Seite geht es mit einer konkreten Umsetzung einer &lt;code>List&lt;/code> weiter. Nun wird es also praktischer!&lt;/p></description></item><item><title>Labs: Lists Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/01_listexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/01_listexercises/</guid><description>
+&lt;p>Auf der nächsten Seite geht es mit einer konkreten Umsetzung einer &lt;code>List&lt;/code> weiter. Nun wird es also praktischer!&lt;/p></description></item><item><title>Labs: List - Aufgaben</title><link>/labs/java/java-collections/01_list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/01_list/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Wir programmieren eine eigene ArrayList-Klasse &lt;code>MyArrayList&lt;/code>:&lt;/p>
+&lt;ol>
+&lt;li>Die Elemente sollen in einem Array gespeichert werden.&lt;/li>
+&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
+&lt;li>Die Klasse muss das Interface &lt;code>MyListInterfaceSimple&lt;/code> implementieren.&lt;/li>
+&lt;li>Die Klasse weiss nicht, wie viele Element man speichert. Sie muss die Grösse der internen Datenstruktur dynamische anpassen.&lt;/li>
+&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MyArrayList&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: &lt;code>[Cat, Hamster, Dog, Goldfish]&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;h3 id="input">Input&lt;/h3>
+&lt;details>
+&lt;summary>Inferface MyListInterfaceSimple&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> com.examples.list&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MyListInterfaceSimple&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list .
+&lt;/span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the element at the specified position in this list.
+&lt;/span>&lt;span style="color:#75715e"> * @param index index of the element to return
+&lt;/span>&lt;span style="color:#75715e"> * @return the element at the specified position in this list
+&lt;/span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the index is out of range
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
+&lt;/span>&lt;span style="color:#75715e"> * Returns the element that was removed from the list.
+&lt;/span>&lt;span style="color:#75715e"> * soll IndexOutOfBoundsException werfen
+&lt;/span>&lt;span style="color:#75715e"> * @param index the index of the element to be removed
+&lt;/span>&lt;span style="color:#75715e"> * @return the element previously at the specified position
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the number of elements in this list.
+&lt;/span>&lt;span style="color:#75715e"> * If this list contains more than Integer.MAX_VALUE elements, returns Integer.MAX_VALUE.
+&lt;/span>&lt;span style="color:#75715e"> * @return the number of elements in this list
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if this list contains no elements.
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this list contains no elements
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes all the elements from this list. The list will be empty after this call returns.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Nun erweitern wir unsere &lt;code>MyArrayList&lt;/code> Klasse.&lt;/p>
+&lt;ol>
+&lt;li>Erstelle eine Kopie deiner Klasse und nenne diese &lt;code>MyArrayListExtended&lt;/code>.&lt;/li>
+&lt;li>Diese soll das Interface &lt;code>MyListInterfaceExtended&lt;/code> implementieren, welche folgende zusätzliche Methoden aufweist:&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;code>void add(int index, E element)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean contains(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>int indexOf(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>E set(int index, E element)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean equals(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean remove(Object o)&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="input-1">Input&lt;/h3>
+&lt;details>
+&lt;summary>Inferface MyListInterfaceExtended&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">87
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">88
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">89
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">90
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">91
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">92
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">93
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">94
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">95
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">96
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">97
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> com.examples.list&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MyListInterfaceExtended&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list .
+&lt;/span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the element at the specified position in this list.
+&lt;/span>&lt;span style="color:#75715e"> * @param index index of the element to return
+&lt;/span>&lt;span style="color:#75715e"> * @return the element at the specified position in this list
+&lt;/span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the index is out of range
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
+&lt;/span>&lt;span style="color:#75715e"> * Returns the element that was removed from the list.
+&lt;/span>&lt;span style="color:#75715e"> * soll IndexOutOfBoundsException werfen
+&lt;/span>&lt;span style="color:#75715e"> * @param index the index of the element to be removed
+&lt;/span>&lt;span style="color:#75715e"> * @return the element previously at the specified position
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the number of elements in this list.
+&lt;/span>&lt;span style="color:#75715e"> * If this list contains more than Integer.MAX_VALUE elements, returns Integer.MAX_VALUE.
+&lt;/span>&lt;span style="color:#75715e"> * @return the number of elements in this list
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if this list contains no elements.
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this list contains no elements
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes all the elements from this list. The list will be empty after this call returns.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Inserts the specified element at the specified position in this list.
+&lt;/span>&lt;span style="color:#75715e"> * Shifts the element currently at that position (if any) and any subsequent elements to the right.
+&lt;/span>&lt;span style="color:#75715e"> * @param index index at which the specified element is to be inserted
+&lt;/span>&lt;span style="color:#75715e"> * @param element element to be inserted
+&lt;/span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the add operation is not supported by this list
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">,&lt;/span> E element&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if this list contains the specified element.
+&lt;/span>&lt;span style="color:#75715e"> * @param o element whose presence in this list is to be tested
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this list contains the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the index of the first occurrence of the specified element in this list,
+&lt;/span>&lt;span style="color:#75715e"> * or -1 if this list does not contain the element.
+&lt;/span>&lt;span style="color:#75715e"> * @param o element to search for
+&lt;/span>&lt;span style="color:#75715e"> * @return the index of the first occurrence of the specified element in this list,
+&lt;/span>&lt;span style="color:#75715e"> * or -1 if this list does not contain the element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">indexOf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Replaces the element at the specified position in this list with the specified element.
+&lt;/span>&lt;span style="color:#75715e"> * @param index index of the element to replace
+&lt;/span>&lt;span style="color:#75715e"> * @param element element to be stored at the specified position
+&lt;/span>&lt;span style="color:#75715e"> * @return the element previously at the specified position
+&lt;/span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the index is out of range
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">set&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">,&lt;/span> E element&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Compares the specified object with this list for equality.
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if and only if the specified object is also a list, both lists have the same size,
+&lt;/span>&lt;span style="color:#75715e"> * and all corresponding pairs of elements in the two lists are equal.
+&lt;/span>&lt;span style="color:#75715e"> * @param o the object to be compared for equality with this list
+&lt;/span>&lt;span style="color:#75715e"> * @return true if the specified object is equal to this list
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">equals&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes the first occurrence of the specified element from this list, if it is present.
+&lt;/span>&lt;span style="color:#75715e"> * If this list does not contain the element, it is unchanged.
+&lt;/span>&lt;span style="color:#75715e"> * @param o element to be removed from this list, if present
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this list contained the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;p>Erstelle ein Programm, welches ein Zeugnis bestehend aus Modulen und deren Schlussnoten generiert und in der Konsole
+ausgibt.&lt;/p>
+&lt;p>Dazu sollen die Klassen &lt;code>Modul&lt;/code> und &lt;code>LBV&lt;/code> (Prüfung) erstellt werden. Zur weiteren Hilfe soll
+die &lt;code>ModulNotGradeableException&lt;/code> dienen.&lt;/p>
+&lt;p>Anforderungen an die &lt;code>LBV&lt;/code>-Klasse:&lt;/p>
+&lt;ul>
+&lt;li>Die Note der LBV ist als Float-Attribut gespeichert&lt;/li>
+&lt;li>Die Gewichtung der LBV ist ebenfalls als Float-Attribut gespeichert&lt;/li>
+&lt;/ul>
+&lt;p>Anforderungen an die &lt;code>Modul&lt;/code>-Klasse:&lt;/p>
+&lt;ul>
+&lt;li>Ein Modul hat den Modulnamen als Attribut.&lt;/li>
+&lt;li>Alle LBVs des Moduls, werden in einer ArrayList gespeichert.&lt;/li>
+&lt;li>LBVs werden dem Modul über die &lt;code>addLBV(LBV exam)&lt;/code> Methode hinzugefügt.&lt;/li>
+&lt;li>Der Moduldurchschnitt, soll von der Methode &lt;code>getFinalModuleGrade()&lt;/code> als &lt;code>float&lt;/code> zurückgegeben werden.&lt;/li>
+&lt;li>Das Modul kann nur bewertet werden, wenn die Gewichtung aller LBVs genau 1 ergib. Ansonsten soll
+eine &lt;code>ModulNotGradeableException&lt;/code> geworfen werden.&lt;/li>
+&lt;li>Die Methode &lt;code>printReportEntry()&lt;/code> soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format &lt;em>&amp;lt;
+MODUL_NAME&amp;gt;&lt;/em> : &lt;em>&amp;lt;MODUL_SCHLUSSNOTE&amp;gt;&lt;/em> auszugeben.&lt;/li>
+&lt;/ul></description></item><item><title>Labs: Lists Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/01_listexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/01_listexercises/</guid><description>
 &lt;h3 id="aufgabe-1">Aufgabe 1&lt;/h3>
 &lt;p>Schreibe ein Programm, welche aus der Kommandozeile eine Reihe von Zahlen liest und die
 Zahl an der Position x (x ist die erste Zahl in der Reihe) in der Konsole ausgibt.
@@ -2744,7 +3072,7 @@ Implementierung der ArrayList Klasse liegen Arrays zugrunde, weshalb diese konkr
 Die Klasse ArrayList enthält also ein normales Array. Wenn ein Element hinzugefügt wird, wird es in dieses Array eingefügt.
 Wenn das Array nicht groß genug ist, wird ein neues, größeres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
 des Arrays wird fortlaufend angepasst.&lt;/p>
-&lt;h3 id="einige-methoden-der-klasse-javautilarraylist">Einige Methoden der Klasse java.util.ArrayList&lt;/h3>
+&lt;h3 id="methodenübersicht">Methodenübersicht&lt;/h3>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -2842,8 +3170,60 @@ des Arrays wird fortlaufend angepasst.&lt;/p>
 &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">)&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="beispiele">Beispiele&lt;/h3>
-&lt;h4 id="beispiel-1---verwendung-einer-arraylist">Beispiel 1 - Verwendung einer ArrayList.&lt;/h4>
+&lt;/div>
+&lt;a id="td-block-0" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Beispiel
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h3 id="indexoutofboundsexception">IndexOutOfBoundsException&lt;/h3>
+&lt;p>Eine der häufigsten Exceptions, die im Zusammenhang mit Listen auftritt, ist folgende:
+Es wird versucht, auf ein Element mit einem Index zuzugreifen, wobei der Index grösser als (oder gleich wie) die Länge der Liste ist. Dann wird die &lt;code>IndexOutOfBoundsException&lt;/code> geworfen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> list &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;uno&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;dos&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;tres&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hier wird dann diese Meldung angezeigt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;#34;java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3&amp;#34;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Fehler war hier, dass die Liste 3 Elemente enthielt, und versucht wird, auf das 4. Element (also Index 3) zuzugreifen. Weil das 4. Element in dieser Liste nicht existiert, wird eine Exception geworfen.&lt;/p>
+&lt;p>Ganz generell wird die &lt;code>IndexOutOfBoundException&lt;/code> geworfen, wenn versucht wird, auf einen ungültigen Index innerhalb einer Collection
+zuzugreifen. Hat eine Liste die Grösse x:&lt;/p>
+&lt;ul>
+&lt;li>dann sind die gültigen Indizes, um auf Elemente zuzugreifen 0, 1, 2, &amp;hellip;, x-1&lt;/li>
+&lt;li>und die Indizes x, x+1, x+2, &amp;hellip; wären ungültig.&lt;/li>
+&lt;/ul>
+&lt;p>Diese Exception kann bei den folgenden Methoden von oben geworfen werden:
+(Diese Liste hier ist genau so nicht vollständig, wie die oben.)&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>public void add(int index, E element)&lt;/code> (beachte das Argument &lt;code>index&lt;/code>.)&lt;/li>
+&lt;li>&lt;code>public E remove(int index)&lt;/code>&lt;/li>
+&lt;li>&lt;code>public E get(int index)&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="beispiel">Beispiel&lt;/h2>
+&lt;h3 id="beispiel-1---arraylist">Beispiel 1 - ArrayList&lt;/h3>
 &lt;p>Im folgenden Beispiel erstellen wir zunächst eine leere ArrayList mit Elementen vom Typ String und wenden einige
 einfache ArrayList Methoden an und sehen, wie diese funktionieren (Das Hinzufügen von Elementen, das Entfernen von
 Elementen, &amp;hellip;),&lt;/p>
@@ -2922,7 +3302,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="beispiel-2-iteration-for-schleife">Beispiel 2 (Iteration &lt;code>for&lt;/code>-Schleife)&lt;/h4>
+&lt;/div>&lt;h3 id="beispiel-2---for-schleife">Beispiel 2 - &lt;code>for&lt;/code>-Schleife&lt;/h3>
 &lt;p>Dieses Beispiel zeigt auf wie mit einer &lt;code>for&lt;/code>-Schleife über die Elemente einer Liste iteriert werden kann.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -2974,7 +3354,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Die Summe der Elemente beträgt 7875
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="beispiel-3-iteration-while-schleife">Beispiel 3 (Iteration &lt;code>while&lt;/code>-Schleife)&lt;/h4>
+&lt;/div>&lt;h3 id="beispiel-3---while-schleife">Beispiel 3 - &lt;code>while&lt;/code>-Schleife&lt;/h3>
 &lt;p>Dieses Beispiel zeigt auf wie mit einer &lt;code>while&lt;/code>-Schleife über die Elemente einer Liste iteriert werden kann.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -3030,96 +3410,17 @@ Jan
 Nicole
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="indexoutofboundsexception">IndexOutOfBoundsException&lt;/h3>
-&lt;p>Eine der häufigsten Exceptions, die im Zusammenhang mit Listen auftritt, ist folgende:
-Es wird versucht, auf ein Element mit einem Index zuzugreifen, wobei der Index grösser als (oder gleich wie) die Länge der Liste ist. Dann wird die &lt;code>IndexOutOfBoundsException&lt;/code> geworfen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> list &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;uno&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;dos&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;tres&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">));&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Hier wird dann diese Meldung angezeigt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;#34;java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3&amp;#34;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;a id="td-block-1" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Aufgaben
+&lt;/span>
 &lt;/div>
-&lt;/div>&lt;p>Der Fehler war hier, dass die Liste 3 Elemente enthielt, und versucht wird, auf das 4. Element (also Index 3) zuzugreifen. Weil das 4. Element in dieser Liste nicht existiert, wird eine Exception geworfen.&lt;/p>
-&lt;p>Ganz generell wird die &lt;code>IndexOutOfBoundException&lt;/code> geworfen, wenn versucht wird, auf einen ungültigen Index innerhalb einer Collection
-zuzugreifen. Hat eine Liste die Grösse x:&lt;/p>
-&lt;ul>
-&lt;li>dann sind die gültigen Indizes, um auf Elemente zuzugreifen 0, 1, 2, &amp;hellip;, x-1&lt;/li>
-&lt;li>und die Indizes x, x+1, x+2, &amp;hellip; wären ungültig.&lt;/li>
-&lt;/ul>
-&lt;p>Diese Exception kann bei den folgenden Methoden von oben geworfen werden:
-(Diese Liste hier ist genau so nicht vollständig, wie die oben.)&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>public void add(int index, E element)&lt;/code> (beachte das Argument &lt;code>index&lt;/code>.)&lt;/li>
-&lt;li>&lt;code>public E remove(int index)&lt;/code>&lt;/li>
-&lt;li>&lt;code>public E get(int index)&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h3 id="übungen">Übungen&lt;/h3>
-&lt;h4 id="aufgabe-1">Aufgabe 1&lt;/h4>
-&lt;p>Versuche eine eigene ArrayList-Klasse (&lt;code>MyArrayList&amp;lt;E&amp;gt;&lt;/code>) zu implementieren mithilfe von Arrays und verwende dabei keine
-anderen Collections-Klassen.&lt;/p>
-&lt;p>Die MyArrayList sollte eine dynamische Grösse haben. Da die Liste mithilfe von Arrays implementiert werden soll, muss
-also in deiner Klasse die Kapazität der Liste sichergestellt werden.&lt;/p>
-&lt;p>Implementiere die folgenden Methoden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>void add(E e)&lt;/code>&lt;/li>
-&lt;li>&lt;code>E get(int i)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
-&lt;li>&lt;code>E remove(int i)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
-&lt;li>&lt;code>int size()&lt;/code>&lt;/li>
-&lt;li>&lt;code>boolean isEmpty()&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>Beachte, dass du die &lt;code>toString()&lt;/code> Methode anpasst, sodass die MyArrayList-Listen beim printen übersichtlich
-dargestellt werden, wie im Beispiel oben: [Cat, Hamster, Dog, Goldfish]&lt;/p>
-&lt;h4 id="aufgabe-2">Aufgabe 2&lt;/h4>
-&lt;p>Erweitere deine MyArrayList Klasse. Implementiere zusätzlich die folgenden Methoden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>void add(int index, E element)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
-&lt;li>&lt;code>boolean contains(Object o)&lt;/code>&lt;/li>
-&lt;li>&lt;code>int indexOf(Object o)&lt;/code>&lt;/li>
-&lt;li>&lt;code>E set(int index, E element)&lt;/code>&lt;/li>
-&lt;li>&lt;code>boolean equals(Object o)&lt;/code>&lt;/li>
-&lt;li>&lt;code>boolean remove(Object o)&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h4 id="aufgabe-3">Aufgabe 3&lt;/h4>
-&lt;p>Erstelle ein Programm, welches ein Zeugnis bestehend aus Modulen und deren Schlussnoten generiert und in der Konsole
-ausgibt.&lt;/p>
-&lt;p>Dazu sollen die Klassen &lt;code>Modul&lt;/code> und &lt;code>LBV&lt;/code> (Prüfung) erstellt werden. Zur weiteren Hilfe soll
-die &lt;code>ModulNotGradeableException&lt;/code> dienen.&lt;/p>
-&lt;p>Anforderungen an die &lt;code>LBV&lt;/code>-Klasse:&lt;/p>
-&lt;ul>
-&lt;li>Die Note der LBV ist als Float-Attribut gespeichert&lt;/li>
-&lt;li>Die Gewichtung der LBV ist ebenfalls als Float-Attribut gespeichert&lt;/li>
-&lt;/ul>
-&lt;p>Anforderungen an die &lt;code>Modul&lt;/code>-Klasse:&lt;/p>
-&lt;ul>
-&lt;li>Ein Modul hat den Modulnamen als Attribut.&lt;/li>
-&lt;li>Alle LBVs des Moduls, werden in einer ArrayList gespeichert.&lt;/li>
-&lt;li>LBVs werden dem Modul über die &lt;code>addLBV(LBV exam)&lt;/code> Methode hinzugefügt.&lt;/li>
-&lt;li>Der Moduldurchschnitt, soll von der Methode &lt;code>getFinalModuleGrade()&lt;/code> als &lt;code>float&lt;/code> zurückgegeben werden.&lt;/li>
-&lt;li>Das Modul kann nur bewertet werden, wenn die Gewichtung aller LBVs genau 1 ergib. Ansonsten soll
-eine &lt;code>ModulNotGradeableException&lt;/code> geworfen werden.&lt;/li>
-&lt;li>Die Methode &lt;code>printReportEntry()&lt;/code> soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format &lt;em>&amp;lt;
-MODUL_NAME&amp;gt;&lt;/em> : &lt;em>&amp;lt;MODUL_SCHLUSSNOTE&amp;gt;&lt;/em> auszugeben.&lt;/li>
-&lt;/ul></description></item><item><title>Labs: Bibliothek</title><link>/labs/java/java-generics/02_bibliothek/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-generics/02_bibliothek/</guid><description>
+&lt;/section>
+&lt;h2 id="aufgaben">Aufgaben&lt;/h2>
+&lt;p>&lt;a href="../../../../labs/java/java-collections/01_list">Aufgaben zu Modul #J7 - Java Collections - List&lt;/a>&lt;/p></description></item><item><title>Labs: Bibliothek</title><link>/labs/java/java-generics/02_bibliothek/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-generics/02_bibliothek/</guid><description>
 &lt;p>Schreibe eine Anwendung, welche eine Bibliothek modelliert.
 In der Bibliothek findet man unterschiedliche Exemplare. z.B: Bücher, Zeitschriften, CDs, DVDs.&lt;/p>
 &lt;p>Ein Item&lt;/p>
@@ -4208,7 +4509,178 @@ nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwo
 &lt;li>Tiefere Werte verteilen also ihren Schaden später als höhere Werte&lt;/li>
 &lt;li>Eine Spielfigur mit tiefem Initiative-Wert kann nicht mehr zurückschlagen wenn sie getötet wird&lt;/li>
 &lt;li>Das Tragen von schweren Rüstungen verringert den Initiative-Wert&lt;/li>
-&lt;/ul></description></item><item><title>Exams: Exam zu JavaScript</title><link>/exams/web/html_css/02_exam_js/</link><pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate><guid>/exams/web/html_css/02_exam_js/</guid><description>
+&lt;/ul></description></item><item><title>Labs: Set - Aufgaben</title><link>/labs/java/java-collections/02_set/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/02_set/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Schreibe ein Programm, welches die Personen von vier Vereine auswertet.&lt;/p>
+&lt;ol>
+&lt;li>Pro Verein existiert ein &lt;code>Set&lt;/code> mit allen Vereinsmitlieder (siehe Input).&lt;/li>
+&lt;li>Das Programm analysiert die Vereinsmitglieder und schreibt verschiedene Aussagen in die Konsole (siehe Ausgabe).&lt;/li>
+&lt;/ol>
+&lt;h3 id="input">Input&lt;/h3>
+&lt;details>
+&lt;summary>4 Sets&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> fussballVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paula&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> schwimmVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Klaus&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anina&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Nicole&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Gerda&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> musikVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Kari&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Karin&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> tanzVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Lara&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Sabine&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="ausgabe">Ausgabe&lt;/h3>
+&lt;p>Die Ausgabe muss das folgende Format aufweisen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">- Wie viele Personen machen min. in einem Verein mit: 2: Maria,Xaver
+- Alle Personen, welche im Fussball und Tanz Verein sind: 2: Maria,Xaver
+- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 2: Maria,Xaver
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Wir programmieren eine eigene Set-Klasse &lt;code>MySet&lt;/code>, welche noch kein Hash-Code verwendet.&lt;/p>
+&lt;ol>
+&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
+&lt;li>Die Klasse muss das Interface &lt;code>MySetInterfaceSimple&lt;/code> implementieren.&lt;/li>
+&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichern muss. Sie muss die Grösse des Arrays dynamische anpassen.&lt;/li>
+&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MySet&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.&lt;/li>
+&lt;/ol>
+&lt;h3 id="input-1">Input&lt;/h3>
+&lt;details>
+&lt;summary>Inferface MySetInterfaceSimple&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> com.examples.list&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MySetInterfaceSimple&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * AAdds the specified element to this set if it is not already present.
+&lt;/span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this set did not already contain the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes the specified element from this set if it is present.
+&lt;/span>&lt;span style="color:#75715e"> * @param object object to be removed from this set, if present
+&lt;/span>&lt;span style="color:#75715e"> * @return true if the set contained the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains the specified element.
+&lt;/span>&lt;span style="color:#75715e"> * @param object element whose presence in this set is to be tested
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the number of elements in this set.
+&lt;/span>&lt;span style="color:#75715e"> * @return the number of elements in this set
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains no elements.
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains no elements
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes all the elements from this set. The set will be empty after this call returns.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Wir Kopieren unsere &lt;code>MySet&lt;/code> Klasse zu der Klasse &lt;code>MyHashSet&lt;/code> und erweitern diese, damit sie Hash Funktionalität verwendet:&lt;/p>
+&lt;ol>
+&lt;li>Beim Hinzufügen von neuen Elementen wird deren Hash-Code berechnet und ebenfalls abgespeichert.&lt;/li>
+&lt;li>Die Suche nach bestehenden Elementen wird anschliessend über den gespeicherten Hash-Code durchgeführt statt über die Elemente selbst.&lt;/li>
+&lt;/ol></description></item><item><title>Exams: Exam zu JavaScript</title><link>/exams/web/html_css/02_exam_js/</link><pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate><guid>/exams/web/html_css/02_exam_js/</guid><description>
 &lt;h1 id="exam---zeiterfassungs-dashboard-mit-javascript-ergänzen">Exam - Zeiterfassungs-Dashboard mit JavaScript ergänzen&lt;/h1>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> - Einzelarbeit&lt;/p>
 &lt;p>Bei diesem Exam geht es darum, dass du das Dashboard, welches du im &lt;a href="../01_exam_html_css_rtm">HTML-CSS-Exam&lt;/a> geschrieben hast, mit JavaScript-Logik ergänzt.&lt;/p>
@@ -5105,7 +5577,170 @@ private git@github.com:Lehrling/training-sbb-puzzle.git &lt;span style="color:#f
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="pushen">Pushen&lt;/h3>
-&lt;p>Wenn man seine Änderungen soweit hat, dass man sie mit dem Rest vom Team teilen will, dann kann man diese mit &lt;code>git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code> auf den Server laden. Dies funktioniert jedoch nur, wenn man auf dem Server auch Schreibrechte hat und niemand anderes vor einem gepusht hat.&lt;/p></description></item><item><title>Docs: Java Grundlagen</title><link>/docs/java/java-grundlagen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/</guid><description>
+&lt;p>Wenn man seine Änderungen soweit hat, dass man sie mit dem Rest vom Team teilen will, dann kann man diese mit &lt;code>git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code> auf den Server laden. Dies funktioniert jedoch nur, wenn man auf dem Server auch Schreibrechte hat und niemand anderes vor einem gepusht hat.&lt;/p></description></item><item><title>Docs: HashSet</title><link>/docs/java/java-collections/03_set/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/03_set/</guid><description>
+&lt;h2 id="javautilset">java.util.Set&lt;/h2>
+&lt;p>Eine &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html">&lt;code>Set&lt;/code>&lt;/a> verwendet man, um eine Menge von Elemente zu speichern.
+Dabei werden keine Duplikate gespeichert.
+Die &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html">&lt;code>java.util.HashSet&lt;/code>&lt;/a> ist die gebräuchlichste Implementierung eines Sets.
+Man könnte zum Beispiel in einem Set alle Wörter eines Texts speichern.
+Tritt ein Wort mehrmals auf, so wird dieses Wort nur bei ersten Male gespeichert.
+Im Set sind so alle auftretenden Wörter gespeichert und die &lt;code>size()&lt;/code> Methode liefert die Anzahl unterschiedlicher Wörter zurück.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Ein Set hat keine Duplikate!&lt;/h4>
+&lt;/div>
+&lt;p>Dabei ist der Schlüssel immer eindeutig. Speichert man zwei Zuweisungen mit dem gleichen Schlüssel, so wird die erste Zuweisung überschrieben.&lt;/p>
+&lt;p>&lt;img src="../../java-collections/set1.svg" alt="list1">&lt;/p>
+&lt;p>Die Benennung eines Sets sollte der Inhalt beschreiben.&lt;br>
+Zum Beispiel:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>nameSet&lt;/code> &amp;ndash;&amp;gt; ein &lt;strong>Set&lt;/strong> mit &lt;strong>Namen&lt;/strong>&lt;/li>
+&lt;li>&lt;code>names&lt;/code> &amp;ndash;&amp;gt; mehrere Namen&lt;/li>
+&lt;/ul>
+&lt;h3 id="methodenübersicht">Methodenübersicht&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Kurt&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: 4
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: false
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: 3
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Elemente eines &lt;code>Set&lt;/code> kann man mit den &lt;code>Collection&lt;/code> Methoden abrufen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>iterator()&lt;/strong>: Ein Iterator über die Elemente&lt;/li>
+&lt;li>&lt;strong>stream()&lt;/strong>: Ein sequentieller Stream über die Elemente&lt;/li>
+&lt;li>&lt;strong>forEach()&lt;/strong>: Führt eine bestimmte Aktion über alle Elemente aus&lt;/li>
+&lt;/ul>
+&lt;p>Die Reihenfolge der Elemente ist nicht garantiert.
+Es existieren Implementierung wie das &lt;code>SortedSet&lt;/code>, welche eine bestimmte Reihenfolge sicherstellt.&lt;/p>
+&lt;a id="td-block-1" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Beispiel
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="beispiel">Beispiel&lt;/h2>
+&lt;p>Für die Beispiele verwenden wir die folgende initialisierte &lt;code>HashMap&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Kurt&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="beispiel-1---set-erstellen">Beispiel 1 - Set erstellen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// mit Konstruktor
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// mit statischer of() Methode
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// of() liefert ein unmodifizierbares Set zurück. Kein HashSet!
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="beispiel-2---auslesen-der-elemente">Beispiel 2 - Auslesen der Elemente&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Abfrage der Elemente mit einem Iterator:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Iterator&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> iterator &lt;span style="color:#f92672">=&lt;/span> nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">iterator&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">while&lt;/span>&lt;span style="color:#f92672">(&lt;/span>iterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">hasNext&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>iterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">next&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Elemente mit einer for Schleife:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String name &lt;span style="color:#f92672">:&lt;/span> nameSet&lt;span style="color:#f92672">){&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Elemente mit einem Stream:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Elemente mit einem forEach:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;a id="td-block-2" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Aufgaben
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="aufgaben">Aufgaben&lt;/h2>
+&lt;p>&lt;a href="../../../../labs/java/java-collections/02_set">Aufgaben zu Modul #J7 - Java Collections - Set&lt;/a>&lt;/p></description></item><item><title>Docs: Java Grundlagen</title><link>/docs/java/java-grundlagen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss, was eine Klasse ist&lt;/li>
@@ -6570,24 +7205,54 @@ i&lt;span style="color:#f92672">++;&lt;/span>
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#f92672">(&lt;/span>condition&lt;span style="color:#f92672">);&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Stack</title><link>/docs/java/java-collections/03_stack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/03_stack/</guid><description>
-&lt;h2 id="javautilstack">java.util.Stack&lt;/h2>
-&lt;p>java.util.Stack ist eine weitere Datenstruktur, bei der Elemente eingefügt und wieder entfernt werden können, wobei bei
-Stacks immer nur auf dasjenige Element zugegriffen werden kann, das zuletzt eingefügt wurde (Last-In-First-Out = LIFO).
-Auf Deutsch könnte man Stack als &amp;ldquo;Stapel&amp;rdquo; übersetzen.&lt;/p>
-&lt;p>&lt;img src="../../java-collections/stack1.png" alt="stack1">&lt;/p>
-&lt;p>Ein Stack kann leer sein oder kann beliebig wachsen. Mit der Methode &lt;code>push(E item)&lt;/code> legt man das Element &lt;em>item&lt;/em> auf den
-Stack, d.h. man fügt es zu oberst hinzu.
-&lt;code>pop()&lt;/code> entfernt das oberste Element vom Stack und gibt es zurück.&lt;/p>
-&lt;p>&lt;img src="../../java-collections/stack2.png" alt="stack2">&lt;/p>
-&lt;p>Die Methode &lt;code>peek()&lt;/code> gibt das Element zu oberst auf dem Stack zurück, ohne den Stack zu verändern.&lt;/p>
-&lt;p>Falls der Stack leer ist und man die Methode &lt;code>pop()&lt;/code> oder &lt;code>peek()&lt;/code> aufruft, wird die Exception &lt;code>EmptyStackException&lt;/code>
-geworfen.&lt;/p>
-&lt;p>Mit der Methode &lt;code>search(Object o)&lt;/code> kann man ein Element im Stack suchen, wobei die Position des Elements zurückgegeben
-wird. Bei den Stacks hat das oberste Element des Stacks die Position 1 und das Element darunter die Position 2, das
-Element darunter die Position 3, ect. Das heisst anders als bei den ArrayLists fangen wir nicht bei 0 an die Elemente zu
-indexieren, sondern bei 1.&lt;/p>
-&lt;h3 id="alle-methoden-der-klasse-javautilstack">Alle Methoden der Klasse java.util.Stack&lt;/h3>
+&lt;/div></description></item><item><title>Labs: Map - Aufgaben</title><link>/labs/java/java-collections/03_map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/03_map/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Postleitzahlen einlesen und verarbeiten:&lt;/p>
+&lt;ol>
+&lt;li>Schreibe ein Programm, welches Postleitzahlen aus einer CSV-Datei herausliest und in einer HashMap speichert.&lt;/li>
+&lt;li>Nach dem Speichern schreibt das Programm verschiedene Informationen zu den Daten in die Konsole (siehe Ausgabe).&lt;/li>
+&lt;/ol>
+&lt;h3 id="input">Input&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="/content/en/data/csv/Postleitzahlen_UTF8.csv">PLZ (UTF8 Format)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="/content/en/data/csv/Postleitzahlen_ISO-8859-1.csv">PLZ (ISO-8859-1 Format)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="ausgabe">Ausgabe&lt;/h3>
+&lt;p>Die Ausgabe muss das folgende Format aufweisen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">- Anzahl PLZ: 42
+- kleinste PLZ mit Gemeinde: 4444 Bern
+- grösste PLZ mit Gemeinde: 4444 Bern
+- Anzahl Gemeinden mit mehr als 10 Buchstaben: 42
+- Anzahl Gemeinden mit der Buchstabenfolge &amp;#39;ent&amp;#39;: 42
+- Anzahl Buchstaben der kleinsten Gemeinden: 2
+- Kleinsten Gemeinden: di, ri, ru
+- Anzahl Buchstaben der grössten Gemeinden: 5
+- Grössten Gemeinden: diwil, riwil, ruwil
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Wir programmieren eine eigene Map-Klasse &lt;code>MyMap&lt;/code>, welche noch keinen Hash-Code verwendet:&lt;/p>
+&lt;ol>
+&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
+&lt;li>Die Klasse muss das Interface &lt;code>MyMapInterface&lt;/code> implementieren.&lt;/li>
+&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse internen Datenstruktur dynamische anpassen.&lt;/li>
+&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MyMap&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.&lt;/li>
+&lt;/ol>
+&lt;details>
+&lt;summary>Inferface MyMapInterface&lt;/summary>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -6624,554 +7289,93 @@ indexieren, sondern bei 1.&lt;/p>
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Konstruktor: Erstellt einen leeren Stack
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> com.examples.list&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MyMapInterface&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>K&lt;span style="color:#f92672">,&lt;/span> V&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Associates the specified value with the specified key in this map.
+&lt;/span>&lt;span style="color:#75715e"> * @param key key with which the specified value is to be associated
+&lt;/span>&lt;span style="color:#75715e"> * @param value value to be associated with the specified key
+&lt;/span>&lt;span style="color:#75715e"> * @return the previous value associated with {@code key}, or
+&lt;/span>&lt;span style="color:#75715e"> * {@code null} if there was no mapping for {@code key}.
 &lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Stack&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Fügt ein Element an die oberste Stelle dieses Stacks hinzu.
+V &lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>K key&lt;span style="color:#f92672">,&lt;/span> V value&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the value to which the specified key is mapped,
+&lt;/span>&lt;span style="color:#75715e"> * or {@code null} if this map contains no mapping for the key.
+&lt;/span>&lt;span style="color:#75715e"> * @param key the key whose associated value is to be returned
+&lt;/span>&lt;span style="color:#75715e"> * @return the value to which the specified key is mapped, or
+&lt;/span>&lt;span style="color:#75715e"> * {@code null} if this map contains no mapping for the key
 &lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E item&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Entfernt das Element an der obersten Stellen und gibt dieses Element
-&lt;/span>&lt;span style="color:#75715e"> * als Wert dieser Funktion zurück.
+V &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object key&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the number of key-value mappings in this map.
+&lt;/span>&lt;span style="color:#75715e"> * @return the number of key-value mappings in this map
 &lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">pop&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Gibt das Element an der obersten Stelle des Stacks zurück,
-&lt;/span>&lt;span style="color:#75715e"> * ohne es vom Stack zu entfernen.
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes all the mappings from this map.
+&lt;/span>&lt;span style="color:#75715e"> * The map will be empty after this call returns.
 &lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> E &lt;span style="color:#a6e22e">peek&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Gibt true zurück, wenn der Stack keine Elemente enthält.
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes the mapping for a key from this map if it is present.
+&lt;/span>&lt;span style="color:#75715e"> * @param key key whose mapping is to be removed from the map
+&lt;/span>&lt;span style="color:#75715e"> * @return the previous value associated with {@code key}, or
+&lt;/span>&lt;span style="color:#75715e"> * {@code null} if there was no mapping for {@code key}.
 &lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">empty&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Gibt die 1-basierte Position vom oberen Ende des Stapels zurück,
-&lt;/span>&lt;span style="color:#75715e"> * an der sich das Objekt befindet; der Rückgabewert -1 bedeutet,
-&lt;/span>&lt;span style="color:#75715e"> * dass sich das Objekt nicht auf dem Stapel befindet.
+V &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object key&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns {@code true} if this map contains a mapping for the specified
+&lt;/span>&lt;span style="color:#75715e"> * key.
+&lt;/span>&lt;span style="color:#75715e"> * @param key key whose presence in this map is to be tested
+&lt;/span>&lt;span style="color:#75715e"> * @return {@code true} if this map contains a mapping for the specified
+&lt;/span>&lt;span style="color:#75715e"> * key
 &lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">)&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="beispiel">Beispiel&lt;/h3>
-&lt;h4 id="beispiel-1">Beispiel 1&lt;/h4>
-&lt;p>Im folgenden Beispiel erstellen wir zunächst ein leeres Stack mit Elementen vom Typ String und wenden die Methoden der
-Stack-Klasse an und sehen, wie diese funktionieren.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Stack&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StackExample&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-Stack&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Stack&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;blue&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;yellow&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;green&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">push&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;orange&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>colors&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [blue, yellow, green, orange]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Color on top: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">peek&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Color on top: orange
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>colors&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [blue, yellow, green, orange]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Color on top: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">pop&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Color on top: orange
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>colors&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [blue, yellow, green]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Is stack empty? &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">empty&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Is stack empty? false
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Size of stack: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: Size of stack: 3
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Position of element blue: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;blue&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Position of element blue: 3
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Position of element yellow: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;yellow&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Position of element yellow: 2
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Position of element green: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">search&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;green&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Position of element green: 1
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">containsKey&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object key&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns {@code true} if this map maps one or more keys to the
+&lt;/span>&lt;span style="color:#75715e"> * specified value.
+&lt;/span>&lt;span style="color:#75715e"> * @param value value whose presence in this map is to be tested
+&lt;/span>&lt;span style="color:#75715e"> * @return {@code true} if this map maps one or more keys to the
+&lt;/span>&lt;span style="color:#75715e"> * specified value
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">containsValue&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object value&lt;span style="color:#f92672">);&lt;/span>
 &lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Output:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">[blue, yellow, green, orange]
-Color on top: orange
-[blue, yellow, green, orange]
-Color on top: orange
-[blue, yellow, green]
-Is stack empty? false
-Size of stack: 3
-Position of element blue: 3
-Position of element yellow: 2
-Position of element green: 1
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Im oberen Beispiel verwenden wir die Methode &lt;em>size()&lt;/em>. Diese Methode ist nicht in der java.util.Stack-Klasse
-implementiert, wird jedoch von der Vector-Mutterklasse geerbt. Diese Vector-Klasse implementiert zusätzlich weitere
-Methoden des List-Interfaces, weshalb diese auch für Stacks verwendet werden können. Ein Stack bzw. die Datenstruktur des
-Stacks wird jedoch durch die oben aufgeführten Methoden ausgemacht.&lt;/p>
-&lt;h4 id="beispiel-2-emptystackexception">Beispiel 2 (EmptyStackException)&lt;/h4>
-&lt;p>In diesem Beispiel rufen wir die &lt;code>pop()&lt;/code>-Methode auf einem leeren Stack auf:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Stack&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StackExampleEmptyStackExceptionA&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-Stack&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Stack&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">pop&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Throws: Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dies führt zu folgendem Output:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
-at java.base/java.util.Stack.peek(Stack.java:102)
-at java.base/java.util.Stack.pop(Stack.java:84)
-at ch.puzzle.stack.StackExampleEmptyStackExceptionA.main(StackExampleEmptyStackExceptionA.java:8)
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das gleiche Verhalten lässt sich auch bei der &lt;code>peek()&lt;/code>-Methode feststellen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Stack&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StackExampleEmptyStackExceptionB&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-Stack&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Stack&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-colors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">peek&lt;/span>&lt;span style="color:#f92672">();&lt;/span> &lt;span style="color:#75715e">// Throws: Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wie erwartet, kriegen wir folgenden Output:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Exception in thread &amp;#34;main&amp;#34; java.util.EmptyStackException
-at java.base/java.util.Stack.peek(Stack.java:102)
-at ch.puzzle.stack.StackExampleEmptyStackExceptionB.main(StackExampleEmptyStackExceptionB.java:8)
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="übungen">Übungen&lt;/h3>
-&lt;h4 id="aufgabe-1">Aufgabe 1&lt;/h4>
-&lt;p>Versuche eine eigene Stack-Klasse (&lt;code>MyStack&amp;lt;E&amp;gt;&lt;/code>) zu implementieren mithilfe von Arrays und verwende dabei keine anderen
-Collections-Klassen.&lt;/p>
-&lt;p>Die MyStack Klasse sollte eine dynamische Grösse haben, d.h. sie der Stack sollte beliebig wachsen können. Da der Stack
-mithilfe von Arrays implementiert werden soll, muss also in deiner Klasse die Kapazität des Stacks sichergestellt
-werden.&lt;/p>
-&lt;p>Implementiere die folgenden Methoden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>public E push(E item)&lt;/code>&lt;/li>
-&lt;li>&lt;code>public E pop( )&lt;/code> (soll EmptyStackException werfen)&lt;/li>
-&lt;li>&lt;code>public E peek() &lt;/code> (soll EmptyStackException werfen)&lt;/li>
-&lt;li>&lt;code>int size()&lt;/code>&lt;/li>
-&lt;li>&lt;code>public boolean empty()&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>Beachte, dass du die &lt;code>toString()&lt;/code> Methode anpasst, sodass die MyStack-Stacks beim printen übersichtlich dargestellt
-werden, wie im Beispiel oben: [blue, yellow, green, orange]&lt;/p>
-&lt;h4 id="aufgabe-2">Aufgabe 2&lt;/h4>
-&lt;p>Erweitere deine MyStack Klasse. Implementiere zusätzlich die folgende Methode:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>public int search(Object o)&lt;/code>&lt;/li>
-&lt;/ul></description></item><item><title>Labs: Streaming Dienst</title><link>/labs/java/java-oop/03_streaming_dienst/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-oop/03_streaming_dienst/</guid><description>
-&lt;p>Schreibe ein Programm, welches einen Streaming Dienst nachstellt.
-Die Anwendung soll die Filme und Serien in einem Streaming Dienst abspeichern,
-wenn die entsprechende Methode aufgerufen wurde.
-Der Streaming Dienst hat auch eine Liste an Personen,
-welche ein Abonnement bei dem Streaming Dienst gelöst haben.&lt;/p>
-&lt;p>Eine Person besitzt&lt;/p>
-&lt;ul>
-&lt;li>einen Namen&lt;/li>
-&lt;li>eine Email-Adresse&lt;/li>
-&lt;li>eine Kreditkarte&lt;/li>
-&lt;/ul>
-&lt;p>Ein Film&lt;/p>
-&lt;ul>
-&lt;li>einen Namen&lt;/li>
-&lt;li>eine Dauer&lt;/li>
-&lt;li>ein Genre&lt;/li>
-&lt;li>einen Produzenten&lt;/li>
-&lt;/ul>
-&lt;p>Eine Person kann&lt;/p>
-&lt;ul>
-&lt;li>einen Film als gesehen markieren (&lt;em>View&lt;/em>)&lt;/li>
-&lt;li>seine Kreditkarte ändern&lt;/li>
-&lt;li>zwischen der Zahlungsart Monatlich oder Jährlich entscheiden&lt;/li>
-&lt;/ul>
-&lt;p>Der Streaming Dienst kann&lt;/p>
-&lt;ul>
-&lt;li>die Anzahl der Personen zurückliefern, welche ein Abonnement gelöst haben&lt;/li>
-&lt;li>eine neue Person registrieren&lt;/li>
-&lt;li>eine Person löschen&lt;/li>
-&lt;li>nach einem Film über den Namen suchen&lt;/li>
-&lt;li>nach Filmen eines bestimmten Genres suchen&lt;/li>
-&lt;li>die anzahl &lt;em>Views&lt;/em> auf einem Film wiedergeben&lt;/li>
-&lt;li>alle Kreditkarten der Kunden ausgeben &lt;em>(println)&lt;/em>
-die das Abonnemente per Monatlichen Zahlung bezahlen&lt;/li>
-&lt;/ul>
-&lt;p>&lt;em>Generell gilt die Regel, dass jede E-Mail-Adresse und jeder Film-Name einzigartig sein muss&lt;/em>&lt;/p>
-&lt;h2 id="zusatzaufgabe-muss-nicht-gelöst-werden">Zusatzaufgabe (muss nicht gelöst werden):&lt;/h2>
-&lt;p>Dies ist eine Liste aller europäischen Sprachen:
-&lt;code>BULGARIAN,CROATIAN,CZECH,DANISH,DUTCH,ENGLISH,ESTONIAN,FINNISH,FRENCH,GERMAN,GREEK,HUNGARIAN,IRISH,ITALIAN,SLOVENIA,LATVIAN,LITHUANIAN,MALTESE,POLISH,PORTUGUESE,ROMANIAN,SLOVAK,SLOVENE,SPANISH,SWEDISH&lt;/code>&lt;/p>
-&lt;p>Ein Film soll um den Wert &lt;em>Sprachen&lt;/em> erweitert werden. Darin wird gepseichert, in welchen Sprachen der Film verfügbar ist.
-&lt;strong>Speichert die Sprache nicht in Form eines Strings!!!&lt;/strong>&lt;/p></description></item><item><title>Docs: JavaScript trainieren</title><link>/docs/web/javascript/04_js_training/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/04_js_training/</guid><description>
-&lt;h2 id="übung-macht-den-meiser">Übung macht den Meiser&lt;/h2>
-&lt;p>Bevor wir mit fortgeschrittenen JavaScript-Technologien weiterfahren, sollst du die Basics von JavaScript verstanden haben.&lt;/p>
-&lt;p>Hierfür empfehlen wir dir folgenden Online-Kurs: &lt;a href="https://www.codecademy.com/learn/introduction-to-javascript">https://www.codecademy.com/learn/introduction-to-javascript&lt;/a>&lt;/p>
-&lt;p>Dieser Kurs ist grundlegend. Da JavaScript und Java in der Syntax sehr ähnlich sind sollte ein grosser Teil für dich Repetition von Java-Teil sein.&lt;/p>
-&lt;p>Möchtest du z.B. zur nächsten Aufgabe ohne die aktuelle lösen zu müssen, dann kannst du 2x auf &amp;ldquo;Run&amp;rdquo; klicken, dann auf &amp;ldquo;View Solution&amp;rdquo; und anschliessend auf &amp;ldquo;Replace with Solution&amp;rdquo;.&lt;/p>
-&lt;p>Eine Übersicht über die Themen erhältst du via Klick oben links auf &amp;ldquo;Course Menu&amp;rdquo;.&lt;/p>
-&lt;p>Schaue, dass du mindestens folgendes verstanden hast und anwenden kannst:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Kaptiel&lt;/th>
-&lt;th>Das musst du anwenden können&lt;/th>
-&lt;th>Bemerkungen&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Introduction&lt;/td>
-&lt;td>Variablen definieren, Unterschied {var, let, const}, mathematische Operationen, typeof-Operator, String-Methoden wie {trim, startsWith, &amp;hellip;}&lt;/td>
-&lt;td>Prüfe zudem dein Wissen mit dem &amp;ldquo;Introduction to JavaScript&amp;rdquo;-Quiz&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Conditionals&lt;/td>
-&lt;td>if/else/switch statements, Vergleichsoperatoren, du kennst truthy und falsy Werte&lt;/td>
-&lt;td>Löse auch ein paar Aufgaben und den Test &amp;ldquo;Conditional Statements&amp;rdquo; solltest du fehlerfrei abschliessen können.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Functions&lt;/td>
-&lt;td>Funktions-Definition, -Aufruf, Default-Parameter, Arrow Functions, Function Expressions, Globaler und Block-Scope&lt;/td>
-&lt;td>Die Tests sind leider nicht mehr in der kostenlosen Version inbegriffen.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Arrays&lt;/td>
-&lt;td>Arrays/Listen erstellen, updaten, Länge bestimmen, durch Array durch iterieren&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Loops&lt;/td>
-&lt;td>Du kannst &lt;code>for&lt;/code>-, &lt;code>while&lt;/code>- und &lt;code>do while&lt;/code>-Schlaufen benutzen und mit &lt;code>break&lt;/code> kontrolliert abbrechen.&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Iterators&lt;/td>
-&lt;td>Functions as Data and Parameters, Iteratoren wie .forEach, .map, .filter, .reduce anwenden können&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Objects&lt;/td>
-&lt;td>Objekte erstellen mit Properties und Methoden, Pass By Reference verstehen, durch Objekte durchiterieren, Advanced Objects mit dem &lt;code>this&lt;/code>-Keyword, Getter und Setter&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table></description></item><item><title>Docs: Weitere HTML-Tags</title><link>/docs/web/html_css/04_weitere_tags/</link><pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/html_css/04_weitere_tags/</guid><description>
-&lt;h2 id="titel-heading">Titel (Heading)&lt;/h2>
-&lt;p>Du hast bereits erfahren, dass du mit &lt;code>&amp;lt;h1&amp;gt;&lt;/code> für Titel verwenden kannst. Oft hast du aber einen Titel für die Seite und dann Titel, die diesem Titel untergeordnet sind. Wie in einem Word-Dokument kannst du auch in HTML Titel hierarchisch verschachteln. Das geht so:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;Heading 1&amp;lt;/&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Hello&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;Heading 2&amp;lt;/&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;Heading 3&amp;lt;/&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;Heading 4&amp;lt;/&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">h5&lt;/span>&amp;gt;Heading 5&amp;lt;/&lt;span style="color:#f92672">h5&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">h6&lt;/span>&amp;gt;Heading 6&amp;lt;/&lt;span style="color:#f92672">h6&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Hello&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dies führt zu folgendem Ergebnis:&lt;/p>
-&lt;p>&lt;img src="../headings.jpg" alt="headings" title="(Bild, das zeigt, wie Headings dargestellt werden.)">&lt;/p>
-&lt;p>Es gibt also Tags für Titel erster bis sechste Stufe. Grundsätzlich gilt, je kleiner die Zahl der Stufe, je grösser wird der Titel dargestellt. Das obrige Ergebnis zeigt, wie Titel per Default gestylt werden. Du kannst das Styling dieser Titel selbstverständlich anpassen (kommt im CSS-Teil).&lt;/p>
-&lt;h2 id="paragrafen">Paragrafen&lt;/h2>
-&lt;p>Du hast bereits erfahren, dass Zeilenumbrüche in HTML keine Wirkung haben. Möchtest du eine neue Zeile einfügen, könnte dir das &lt;code>&amp;lt;br/&amp;gt;&lt;/code>-Tag weiterhelfen. Besser ist aber, wenn du den Text, der zusammengehört, auch entsprechend markierst: Das kannst du mit dem &lt;code>&amp;lt;p&amp;gt;&lt;/code>-Tag erreichen. Der Text, der innerhalb dieses Tags steht, wird in einem gleichen Abschnitt dargestellt. Ausserdem trennt es diesen Inhalt mit Leerschlag zum nächsten Element. Das wird im folgenden Beispiel verdeutlicht:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;Title&amp;lt;/&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;
-This is one line.
-This the second one. &amp;lt;&lt;span style="color:#f92672">br&lt;/span>/&amp;gt; And the third one.
-&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;And this is inside a paragraph.&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;This too.&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div style="border: 2px solid black; padding: 2em">
-&lt;h2>Title&lt;/h2>
-&lt;p>
-This is one line.
-This the second one. &lt;br/> And the third one.&lt;/p>
-&lt;p>And this is inside a paragraph.&lt;/p>
-&lt;p>This too.&lt;/p>
-&lt;/div>
-&lt;p>Beachte hier, dass &lt;code>&amp;lt;p&amp;gt;&lt;/code>-Tags mehr Leerraum erzeugen als &lt;code>&amp;lt;br/&amp;gt;&lt;/code>.&lt;/p>
-&lt;h2 id="text-formatieren">Text formatieren&lt;/h2>
-&lt;p>Du wirst in die Situation kommen, wo du einen bestimmten Teil eines Textes z.B. fett oder kursiv formatieren musst.&lt;/p>
-&lt;p>Das kannst du mit HTML sehr einfach erreichen, denn dafür gibt es spezielle Tags:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">strong&lt;/span>&amp;gt;Heared&amp;lt;/&lt;span style="color:#f92672">strong&lt;/span>&amp;gt; about
-the new restaurant called
-&amp;lt;&lt;span style="color:#f92672">em&lt;/span>&amp;gt;Karma?&amp;lt;/&lt;span style="color:#f92672">em&lt;/span>&amp;gt;
-&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-    There&amp;#39;s &amp;lt;&lt;span style="color:#f92672">b&lt;/span>&amp;gt;no menu&amp;lt;/&lt;span style="color:#f92672">b&lt;/span>&amp;gt;:
-    You get what you &amp;lt;&lt;span style="color:#f92672">i&lt;/span>&amp;gt;deserve&amp;lt;/&lt;span style="color:#f92672">i&lt;/span>&amp;gt;.
-&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Um also einen bestimmten Text fett darzustellen, kannst du es in ein &lt;code>&amp;lt;strong&amp;gt;&lt;/code>- oder &lt;code>&amp;lt;b&amp;gt;&lt;/code>-Element schmeissen. Beide Tags MACHEN im Prinzip genau das Gleiche, MEINEN aber nicht zwingend das Gleiche: &lt;code>&amp;lt;b&amp;gt;&lt;/code>-Elemente sind einfach fett-gedruckt, während &lt;code>&amp;lt;strong&amp;gt;&lt;/code>-Elemente betont sein sollen. &lt;code>&amp;lt;strong&amp;gt;&lt;/code> soll dem fett-gedruckten Wort also mehr Ausdruck verleihen. Mit einem eigenen Styling (kommt im CSS-Teil) könntest du &lt;code>&amp;lt;strong&amp;gt;&lt;/code>-Elemente z.B. auch grösser oder rot darstellen. Mit einem &lt;code>&amp;lt;b&amp;gt;&lt;/code>-Element sagt man im Prinzip nur, dass der Text fett-gedruckt sein soll.&lt;/p>
-&lt;p>Einen Text kursiv darzustellen kannst du mit &lt;code>&amp;lt;i&amp;gt;&lt;/code> bzw. &lt;code>&amp;lt;em&amp;gt;&lt;/code>. Das Pendant zu &lt;code>&amp;lt;b&amp;gt;&lt;/code> ist &lt;code>&amp;lt;i&amp;gt;&lt;/code> (italic), und dasjenige zu &lt;code>&amp;lt;strong&amp;gt;&lt;/code> das &lt;code>&amp;lt;em&amp;gt;&lt;/code> (emphasis = Betonung).&lt;/p>
-&lt;p>Das obige Beispiel wird so gerendert:&lt;/p>
-&lt;div style="border: 2px solid black; padding: 2em">
-&lt;p>
-    &lt;strong>Heared&lt;/strong> about
-the new restaurant called
-&lt;em>Karma?&lt;/em>
-&lt;/p>
-&lt;p>
-    There's &lt;b>no menu&lt;/b>: You get what you &lt;i>deserve&lt;/i>.
-&lt;/p>
-&lt;/div>
-&lt;p>Text zu formatieren ist Styling, was besser mit CSS statt HTML gemacht wird. Verwende diese Tags also mit Bedacht.&lt;/p>
-&lt;h2 id="links-und-bilder">Links und Bilder&lt;/h2>
-&lt;p>Eines der wichtigsten Elemente in HTML sind Links auf andere Seiten. Links werden mit &lt;code>a&lt;/code>-Elementen (anchor) realisiert. Einen Link kannn wie folgt erstellt werden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://www.sbb.ch/&amp;#34;&lt;/span>&amp;gt;Home&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Probiere das einmal aus.&lt;/p>
-&lt;p>Du wirst einen blauen und unterstrichenen Text &amp;ldquo;Home&amp;rdquo; sehen. &lt;code>&amp;lt;a&amp;gt;&lt;/code> ist der Tag, der generell für Hyperlinks verwendet wird. &lt;code>href&lt;/code> ist ein Attribut des &lt;code>a&lt;/code>-Tags,
-mit dem die URL des Links spezifiziert wird. In unserem Fall ist &lt;code>https://www.sbb.ch/&lt;/code> die URL, die beim Klick aufgerufen wird. &lt;code>Home&lt;/code> ist der Text, der dem User angezeigt wird.&lt;/p>
-&lt;p>Ziemlich ähnlich kannst du auch ein Bild aus dem Internet einbinden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">img&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://it-ninjas.ch/img/png/Ninja%20Elements_ninja_phone.png&amp;#34;&lt;/span>
-&lt;span style="color:#a6e22e">alt&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;IT Ninjas&amp;#34;&lt;/span>
-&lt;span style="color:#a6e22e">width&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;300&amp;#34;&lt;/span> /&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Ganz offensichtlich wird das &lt;code>&amp;lt;img/&amp;gt;&lt;/code>-Tag (Image) für Bilder verwendet. Das &lt;code>&amp;lt;img/&amp;gt;&lt;/code>-Tag ist ein Tag, welches keinen Inhalt zwischen Opening- und Closing-Tag hat. Mit dem &lt;code>/&lt;/code> im Opening-Tag kann man symbolisieren, dass das Tag ohne Closing-Tag geschlossen wird.&lt;/p>
-&lt;p>Das wichtigste Attribut im &lt;code>img&lt;/code>-Tag ist &lt;code>src&lt;/code> (source = Quelle). Als &lt;code>src&lt;/code> wird eine URL zu einem Bild erwartet. Vergiss bei absoluten Pfaden (wird später noch erklärt) nicht das Protokoll (also https://) anzugeben. Nicht zwingend aber erwartet ist auch das &lt;code>alt&lt;/code>-Attribut (alternative). Dieser Text wird angezeigt, wenn das Bild nicht geladen werden konnte. Optional sind hingegen Attribute wie &lt;code>width&lt;/code> oder &lt;code>height&lt;/code>, welche die Breite und Höhe des Bildes festlegen. Diese Grössen werden aber besser mit CSS spezifiziert, da CSS genauere Spezifikationen zulässt (also nicht nur in &amp;lsquo;Pixel&amp;rsquo; sondern auch anderen Einheiten).&lt;/p>
-&lt;p>Wenn du willst, dass man beim Klick auf ein Bild weitergeleitet wird, kannst du dein Bild in ein &lt;code>&amp;lt;a&amp;gt;&lt;/code>-Element schmeissen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://it-ninjas.ch/&amp;#34;&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">img&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://it-ninjas.ch/img/png/Ninja%20Elements_ninja_phone.png&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">alt&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;IT Ninjas&amp;#34;&lt;/span> /&amp;gt;
-&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="listen">Listen&lt;/h2>
-&lt;p>In HTML gibt es verschiedene Arten, um Aufzählungen darzustellen. Wir schauen uns Bullet-Point-Listen, Nummerierte-Listen und Definitions-Listen an.&lt;/p>
-&lt;p>Eine Bullet-Point-Liste kann man mit einer unsortierten Liste (unordered list) kreieren:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;What do you do in case of emergency?&amp;lt;/&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">ul&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;git commit -m &amp;#34;message&amp;#34;&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;git push&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Leave the building.&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-&amp;lt;/&lt;span style="color:#f92672">ul&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Möchtest du hingegen eine Nummerierung, dann verwende eine sortierte Liste (ordered list):&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;Most Difficult Programming Languages&amp;lt;/&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">ol&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Brainfuck&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Cow&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Intercal&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Malbolge&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Whitespace&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-&amp;lt;/&lt;span style="color:#f92672">ol&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das Ganze sieht dann ungefähr so aus:&lt;/p>
-&lt;div style="border: 2px solid black; padding: 2em">
-&lt;h4 id="what-do-you-do-in-case-of-emergencyh4">What do you do in case of emergency?&lt;/h4>&lt;/h4>
-&lt;ul>
-&lt;li>git commit -m &amp;ldquo;message&amp;rdquo;&lt;/li>
-&lt;li>git push&lt;/li>
-&lt;li>Leave the building&lt;/li>
-&lt;/ul>
-&lt;h4 id="most-difficult-programming-languages">Most Difficult Programming Languages&lt;/h4>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Wir Kopieren unsere &lt;code>MyMap&lt;/code> Klasse zu der Klasse &lt;code>MyHashMap&lt;/code> und erweitern diese, damit sie Hash Funktionalität verwendet:&lt;/p>
 &lt;ol>
-&lt;li>Brainfuck&lt;/li>
-&lt;li>Cow&lt;/li>
-&lt;li>Intercal&lt;/li>
-&lt;li>Malbolge&lt;/li>
-&lt;li>Whitespace&lt;/li>
-&lt;/ol>
-&lt;/div>
-&lt;p>Eine 3. Art von Listen sind Definitionslisten. Diese Art von Liste wird zwar nicht oft verwendet, kann aber hilfreich für ein Glossar oder ähnliches sein. Schaue dir dieses Beispiel an:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;Glossary&amp;lt;/&lt;span style="color:#f92672">h4&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">dl&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">dt&lt;/span>&amp;gt;buffoonish&amp;lt;/&lt;span style="color:#f92672">dt&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">dd&lt;/span>&amp;gt;like a clown &amp;lt;/&lt;span style="color:#f92672">dd&lt;/span>&amp;gt;
-   
-    &amp;lt;&lt;span style="color:#f92672">dt&lt;/span>&amp;gt;heyday&amp;lt;/&lt;span style="color:#f92672">dt&lt;/span>&amp;gt;
-    &amp;lt;&lt;span style="color:#f92672">dd&lt;/span>&amp;gt;the period of greatest prosperity or productivity&amp;lt;/&lt;span style="color:#f92672">dd&lt;/span>&amp;gt;
-&amp;lt;/&lt;span style="color:#f92672">dl&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div style="border: 2px solid black; padding: 2em">
-&lt;h4 id="glossary">Glossary&lt;/h4>
-&lt;dl>
-    &lt;dt>buffoonish&lt;/dt>
-    &lt;dd>like a clown &lt;/dd>
-   
-    &lt;dt>heyday&lt;/dt>
-    &lt;dd>the period of greatest prosperity or productivity&lt;/dd>
-&lt;/dl>
-&lt;/div>
-&lt;h2 id="todo">Todo&lt;/h2>
-&lt;p>relative Links&lt;/p></description></item></channel></rss>
+&lt;li>Beim Hinzufügen von Zuweisungen wird der Hash-Code vom Schlüssel berechnet und ebenfalls abgespeichert.&lt;/li>
+&lt;li>Die Schlüsselsuche wird anschliessend über die gespeicherten Hash-Code der Schlüssel durchgeführt statt über die Schlüssel selbst.&lt;/li>
+&lt;/ol></description></item></channel></rss>

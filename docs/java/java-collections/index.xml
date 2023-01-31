@@ -185,7 +185,7 @@ Implementierung der ArrayList Klasse liegen Arrays zugrunde, weshalb diese konkr
 Die Klasse ArrayList enthält also ein normales Array. Wenn ein Element hinzugefügt wird, wird es in dieses Array eingefügt.
 Wenn das Array nicht groß genug ist, wird ein neues, größeres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
 des Arrays wird fortlaufend angepasst.&lt;/p>
-&lt;h3 id="einige-methoden-der-klasse-javautilarraylist">Einige Methoden der Klasse java.util.ArrayList&lt;/h3>
+&lt;h3 id="methodenübersicht">Methodenübersicht&lt;/h3>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -283,8 +283,60 @@ des Arrays wird fortlaufend angepasst.&lt;/p>
 &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">)&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="beispiele">Beispiele&lt;/h3>
-&lt;h4 id="beispiel-1---verwendung-einer-arraylist">Beispiel 1 - Verwendung einer ArrayList.&lt;/h4>
+&lt;/div>
+&lt;a id="td-block-0" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Beispiel
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h3 id="indexoutofboundsexception">IndexOutOfBoundsException&lt;/h3>
+&lt;p>Eine der häufigsten Exceptions, die im Zusammenhang mit Listen auftritt, ist folgende:
+Es wird versucht, auf ein Element mit einem Index zuzugreifen, wobei der Index grösser als (oder gleich wie) die Länge der Liste ist. Dann wird die &lt;code>IndexOutOfBoundsException&lt;/code> geworfen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> list &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;uno&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;dos&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;tres&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hier wird dann diese Meldung angezeigt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;#34;java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3&amp;#34;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Fehler war hier, dass die Liste 3 Elemente enthielt, und versucht wird, auf das 4. Element (also Index 3) zuzugreifen. Weil das 4. Element in dieser Liste nicht existiert, wird eine Exception geworfen.&lt;/p>
+&lt;p>Ganz generell wird die &lt;code>IndexOutOfBoundException&lt;/code> geworfen, wenn versucht wird, auf einen ungültigen Index innerhalb einer Collection
+zuzugreifen. Hat eine Liste die Grösse x:&lt;/p>
+&lt;ul>
+&lt;li>dann sind die gültigen Indizes, um auf Elemente zuzugreifen 0, 1, 2, &amp;hellip;, x-1&lt;/li>
+&lt;li>und die Indizes x, x+1, x+2, &amp;hellip; wären ungültig.&lt;/li>
+&lt;/ul>
+&lt;p>Diese Exception kann bei den folgenden Methoden von oben geworfen werden:
+(Diese Liste hier ist genau so nicht vollständig, wie die oben.)&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>public void add(int index, E element)&lt;/code> (beachte das Argument &lt;code>index&lt;/code>.)&lt;/li>
+&lt;li>&lt;code>public E remove(int index)&lt;/code>&lt;/li>
+&lt;li>&lt;code>public E get(int index)&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="beispiel">Beispiel&lt;/h2>
+&lt;h3 id="beispiel-1---arraylist">Beispiel 1 - ArrayList&lt;/h3>
 &lt;p>Im folgenden Beispiel erstellen wir zunächst eine leere ArrayList mit Elementen vom Typ String und wenden einige
 einfache ArrayList Methoden an und sehen, wie diese funktionieren (Das Hinzufügen von Elementen, das Entfernen von
 Elementen, &amp;hellip;),&lt;/p>
@@ -363,7 +415,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="beispiel-2-iteration-for-schleife">Beispiel 2 (Iteration &lt;code>for&lt;/code>-Schleife)&lt;/h4>
+&lt;/div>&lt;h3 id="beispiel-2---for-schleife">Beispiel 2 - &lt;code>for&lt;/code>-Schleife&lt;/h3>
 &lt;p>Dieses Beispiel zeigt auf wie mit einer &lt;code>for&lt;/code>-Schleife über die Elemente einer Liste iteriert werden kann.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -415,7 +467,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Die Summe der Elemente beträgt 7875
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="beispiel-3-iteration-while-schleife">Beispiel 3 (Iteration &lt;code>while&lt;/code>-Schleife)&lt;/h4>
+&lt;/div>&lt;h3 id="beispiel-3---while-schleife">Beispiel 3 - &lt;code>while&lt;/code>-Schleife&lt;/h3>
 &lt;p>Dieses Beispiel zeigt auf wie mit einer &lt;code>while&lt;/code>-Schleife über die Elemente einer Liste iteriert werden kann.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -471,9 +523,89 @@ Jan
 Nicole
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="indexoutofboundsexception">IndexOutOfBoundsException&lt;/h3>
-&lt;p>Eine der häufigsten Exceptions, die im Zusammenhang mit Listen auftritt, ist folgende:
-Es wird versucht, auf ein Element mit einem Index zuzugreifen, wobei der Index grösser als (oder gleich wie) die Länge der Liste ist. Dann wird die &lt;code>IndexOutOfBoundsException&lt;/code> geworfen:&lt;/p>
+&lt;/div>
+&lt;a id="td-block-1" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Aufgaben
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="aufgaben">Aufgaben&lt;/h2>
+&lt;p>&lt;a href="../../../../labs/java/java-collections/01_list">Aufgaben zu Modul #J7 - Java Collections - List&lt;/a>&lt;/p></description></item><item><title>Docs: HashSet</title><link>/docs/java/java-collections/03_set/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/03_set/</guid><description>
+&lt;h2 id="javautilset">java.util.Set&lt;/h2>
+&lt;p>Eine &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html">&lt;code>Set&lt;/code>&lt;/a> verwendet man, um eine Menge von Elemente zu speichern.
+Dabei werden keine Duplikate gespeichert.
+Die &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html">&lt;code>java.util.HashSet&lt;/code>&lt;/a> ist die gebräuchlichste Implementierung eines Sets.
+Man könnte zum Beispiel in einem Set alle Wörter eines Texts speichern.
+Tritt ein Wort mehrmals auf, so wird dieses Wort nur bei ersten Male gespeichert.
+Im Set sind so alle auftretenden Wörter gespeichert und die &lt;code>size()&lt;/code> Methode liefert die Anzahl unterschiedlicher Wörter zurück.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Ein Set hat keine Duplikate!&lt;/h4>
+&lt;/div>
+&lt;p>Dabei ist der Schlüssel immer eindeutig. Speichert man zwei Zuweisungen mit dem gleichen Schlüssel, so wird die erste Zuweisung überschrieben.&lt;/p>
+&lt;p>&lt;img src="../../java-collections/set1.svg" alt="list1">&lt;/p>
+&lt;p>Die Benennung eines Sets sollte der Inhalt beschreiben.&lt;br>
+Zum Beispiel:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>nameSet&lt;/code> &amp;ndash;&amp;gt; ein &lt;strong>Set&lt;/strong> mit &lt;strong>Namen&lt;/strong>&lt;/li>
+&lt;li>&lt;code>names&lt;/code> &amp;ndash;&amp;gt; mehrere Namen&lt;/li>
+&lt;/ul>
+&lt;h3 id="methodenübersicht">Methodenübersicht&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Kurt&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: 4
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: false
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: 3
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Elemente eines &lt;code>Set&lt;/code> kann man mit den &lt;code>Collection&lt;/code> Methoden abrufen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>iterator()&lt;/strong>: Ein Iterator über die Elemente&lt;/li>
+&lt;li>&lt;strong>stream()&lt;/strong>: Ein sequentieller Stream über die Elemente&lt;/li>
+&lt;li>&lt;strong>forEach()&lt;/strong>: Führt eine bestimmte Aktion über alle Elemente aus&lt;/li>
+&lt;/ul>
+&lt;p>Die Reihenfolge der Elemente ist nicht garantiert.
+Es existieren Implementierung wie das &lt;code>SortedSet&lt;/code>, welche eine bestimmte Reihenfolge sicherstellt.&lt;/p>
+&lt;a id="td-block-1" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Beispiel
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="beispiel">Beispiel&lt;/h2>
+&lt;p>Für die Beispiele verwenden wir die folgende initialisierte &lt;code>HashMap&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -482,85 +614,302 @@ Es wird versucht, auf ein Element mit einem Index zuzugreifen, wobei der Index g
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> list &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;uno&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;dos&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;tres&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">));&lt;/span>
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Kurt&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Hier wird dann diese Meldung angezeigt:&lt;/p>
+&lt;/div>&lt;h3 id="beispiel-1---set-erstellen">Beispiel 1 - Set erstellen&lt;/h3>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;#34;java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3&amp;#34;
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// mit Konstruktor
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashSet&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// mit statischer of() Methode
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameSet &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// of() liefert ein unmodifizierbares Set zurück. Kein HashSet!
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Der Fehler war hier, dass die Liste 3 Elemente enthielt, und versucht wird, auf das 4. Element (also Index 3) zuzugreifen. Weil das 4. Element in dieser Liste nicht existiert, wird eine Exception geworfen.&lt;/p>
-&lt;p>Ganz generell wird die &lt;code>IndexOutOfBoundException&lt;/code> geworfen, wenn versucht wird, auf einen ungültigen Index innerhalb einer Collection
-zuzugreifen. Hat eine Liste die Grösse x:&lt;/p>
+&lt;/div>&lt;h3 id="beispiel-2---auslesen-der-elemente">Beispiel 2 - Auslesen der Elemente&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Abfrage der Elemente mit einem Iterator:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Iterator&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> iterator &lt;span style="color:#f92672">=&lt;/span> nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">iterator&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">while&lt;/span>&lt;span style="color:#f92672">(&lt;/span>iterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">hasNext&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>iterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">next&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Elemente mit einer for Schleife:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String name &lt;span style="color:#f92672">:&lt;/span> nameSet&lt;span style="color:#f92672">){&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Elemente mit einem Stream:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Elemente mit einem forEach:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>nameSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;a id="td-block-2" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Aufgaben
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="aufgaben">Aufgaben&lt;/h2>
+&lt;p>&lt;a href="../../../../labs/java/java-collections/02_set">Aufgaben zu Modul #J7 - Java Collections - Set&lt;/a>&lt;/p></description></item><item><title>Docs: HashMap</title><link>/docs/java/java-collections/04_map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/04_map/</guid><description>
+&lt;h2 id="javautilhashmap">java.util.HashMap&lt;/h2>
+&lt;p>Eine &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html">&lt;code>Map&lt;/code>&lt;/a> verwendet man, um Zuweisungen zu speichern.
+Die &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html">&lt;code>java.util.HashMap&lt;/code>&lt;/a> ist die gebräuchlichste Map.
+Man könnte zum Beispiel ein Register mit Postleitzahlen (PLZ) und den dazugehörigen Orten speichern.
+Die PLZ ist der Schlüssel und der Ort ist der zugewiesene Wert.&lt;/p>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Eine Zuweisung besteht aus einem Schlüssel (Key) und einem Wert (Value).&lt;/h4>
+&lt;/div>
+&lt;p>Dabei ist der Schlüssel immer eindeutig. Speichert man zwei Zuweisungen mit dem gleichen Schlüssel, so wird die erste Zuweisung überschrieben.&lt;/p>
+&lt;p>&lt;img src="../../java-collections/map1.svg" alt="list1">&lt;/p>
+&lt;p>Bei der Benennung eine Map versucht man die Zuweisung zu beschreiben:&lt;br>
+&lt;code>plzToCityMap&lt;/code> &amp;ndash;&amp;gt; &lt;strong>PLZ&lt;/strong> zu &lt;strong>City&lt;/strong> Zuweisung&lt;/p>
+&lt;h3 id="methodenübersicht">Methodenübersicht&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Map&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">,&lt;/span> String&lt;span style="color:#f92672">&amp;gt;&lt;/span> plzToCityMap &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashMap&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3000&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Zürich&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3000&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Bern&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3011&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Bern&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1234&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Vessy&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3920&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Zermatt&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Output: 4
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3000&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Bern
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">containsKey&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1234&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">containsValue&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Zürich&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: false
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">containsValue&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Zermatt&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die &lt;code>Map&lt;/code> offeriert drei Collection Ansichten auf den gespeicherten Inhalt:&lt;/p>
 &lt;ul>
-&lt;li>dann sind die gültigen Indizes, um auf Elemente zuzugreifen 0, 1, 2, &amp;hellip;, x-1&lt;/li>
-&lt;li>und die Indizes x, x+1, x+2, &amp;hellip; wären ungültig.&lt;/li>
+&lt;li>&lt;strong>keySet()&lt;/strong>: Set auf alle Schlüssel&lt;/li>
+&lt;li>&lt;strong>values()&lt;/strong>: Collection auf alle Werte&lt;/li>
+&lt;li>&lt;strong>entrySet()&lt;/strong>: Set auf alle Schlüssel-Werte Zuweisungen&lt;/li>
+&lt;li>&lt;strong>forEach()&lt;/strong>: Führt eine bestimmte Aktion über alle Elemente aus&lt;/li>
 &lt;/ul>
-&lt;p>Diese Exception kann bei den folgenden Methoden von oben geworfen werden:
-(Diese Liste hier ist genau so nicht vollständig, wie die oben.)&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>public void add(int index, E element)&lt;/code> (beachte das Argument &lt;code>index&lt;/code>.)&lt;/li>
-&lt;li>&lt;code>public E remove(int index)&lt;/code>&lt;/li>
-&lt;li>&lt;code>public E get(int index)&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h3 id="übungen">Übungen&lt;/h3>
-&lt;h4 id="aufgabe-1">Aufgabe 1&lt;/h4>
-&lt;p>Versuche eine eigene ArrayList-Klasse (&lt;code>MyArrayList&amp;lt;E&amp;gt;&lt;/code>) zu implementieren mithilfe von Arrays und verwende dabei keine
-anderen Collections-Klassen.&lt;/p>
-&lt;p>Die MyArrayList sollte eine dynamische Grösse haben. Da die Liste mithilfe von Arrays implementiert werden soll, muss
-also in deiner Klasse die Kapazität der Liste sichergestellt werden.&lt;/p>
-&lt;p>Implementiere die folgenden Methoden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>void add(E e)&lt;/code>&lt;/li>
-&lt;li>&lt;code>E get(int i)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
-&lt;li>&lt;code>E remove(int i)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
-&lt;li>&lt;code>int size()&lt;/code>&lt;/li>
-&lt;li>&lt;code>boolean isEmpty()&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>Beachte, dass du die &lt;code>toString()&lt;/code> Methode anpasst, sodass die MyArrayList-Listen beim printen übersichtlich
-dargestellt werden, wie im Beispiel oben: [Cat, Hamster, Dog, Goldfish]&lt;/p>
-&lt;h4 id="aufgabe-2">Aufgabe 2&lt;/h4>
-&lt;p>Erweitere deine MyArrayList Klasse. Implementiere zusätzlich die folgenden Methoden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>void add(int index, E element)&lt;/code> (soll IndexOutOfBoundsException werfen)&lt;/li>
-&lt;li>&lt;code>boolean contains(Object o)&lt;/code>&lt;/li>
-&lt;li>&lt;code>int indexOf(Object o)&lt;/code>&lt;/li>
-&lt;li>&lt;code>E set(int index, E element)&lt;/code>&lt;/li>
-&lt;li>&lt;code>boolean equals(Object o)&lt;/code>&lt;/li>
-&lt;li>&lt;code>boolean remove(Object o)&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h4 id="aufgabe-3">Aufgabe 3&lt;/h4>
-&lt;p>Erstelle ein Programm, welches ein Zeugnis bestehend aus Modulen und deren Schlussnoten generiert und in der Konsole
-ausgibt.&lt;/p>
-&lt;p>Dazu sollen die Klassen &lt;code>Modul&lt;/code> und &lt;code>LBV&lt;/code> (Prüfung) erstellt werden. Zur weiteren Hilfe soll
-die &lt;code>ModulNotGradeableException&lt;/code> dienen.&lt;/p>
-&lt;p>Anforderungen an die &lt;code>LBV&lt;/code>-Klasse:&lt;/p>
-&lt;ul>
-&lt;li>Die Note der LBV ist als Float-Attribut gespeichert&lt;/li>
-&lt;li>Die Gewichtung der LBV ist ebenfalls als Float-Attribut gespeichert&lt;/li>
-&lt;/ul>
-&lt;p>Anforderungen an die &lt;code>Modul&lt;/code>-Klasse:&lt;/p>
-&lt;ul>
-&lt;li>Ein Modul hat den Modulnamen als Attribut.&lt;/li>
-&lt;li>Alle LBVs des Moduls, werden in einer ArrayList gespeichert.&lt;/li>
-&lt;li>LBVs werden dem Modul über die &lt;code>addLBV(LBV exam)&lt;/code> Methode hinzugefügt.&lt;/li>
-&lt;li>Der Moduldurchschnitt, soll von der Methode &lt;code>getFinalModuleGrade()&lt;/code> als &lt;code>float&lt;/code> zurückgegeben werden.&lt;/li>
-&lt;li>Das Modul kann nur bewertet werden, wenn die Gewichtung aller LBVs genau 1 ergib. Ansonsten soll
-eine &lt;code>ModulNotGradeableException&lt;/code> geworfen werden.&lt;/li>
-&lt;li>Die Methode &lt;code>printReportEntry()&lt;/code> soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format &lt;em>&amp;lt;
-MODUL_NAME&amp;gt;&lt;/em> : &lt;em>&amp;lt;MODUL_SCHLUSSNOTE&amp;gt;&lt;/em> auszugeben.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Stack</title><link>/docs/java/java-collections/03_stack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/03_stack/</guid><description>
+&lt;p>Die Reihenfolge des Inhalts hängt von der Implementierung der Iteratoren ab, welche eine konkrete Map Klasse für die einzelnen Collection-Ansichten verwendet. Manche Implementation wie die &lt;code>TreeMap&lt;/code> garantiert eine bestimmte Reihenfolge, andere wie die &lt;code>HashMap&lt;/code> keine.&lt;/p>
+&lt;a id="td-block-1" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Beispiel
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="beispiel">Beispiel&lt;/h2>
+&lt;p>Für die Beispiele verwenden wir folgende &lt;code>HashMap&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Map&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">,&lt;/span> String&lt;span style="color:#f92672">&amp;gt;&lt;/span> plzToCityMap &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> HashMap&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3000&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Zürich&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3000&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Bern&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3011&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Bern&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1234&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Vessy&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">put&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3920&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Zermatt&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="beispiel-1---auslesen-der-schlüssel-werte-und-zuweisungen">Beispiel 1 - Auslesen der Schlüssel, Werte und Zuweisungen&lt;/h3>
+&lt;p>Mit der Methode &lt;code>keySet()&lt;/code> kann man alle Schlüssel einer &lt;code>Map&lt;/code> abfragen.
+Der Rückgabewert ist ein &lt;code>Set&lt;/code>, welches wir bestens kennen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Abfrage der Schlüssel mit einem Iterator:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Iterator&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> plzIterator &lt;span style="color:#f92672">=&lt;/span> plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">keySet&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">iterator&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">while&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzIterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">hasNext&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzIterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">next&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Schlüssel mit einer FOR Schleife:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Integer plz &lt;span style="color:#f92672">:&lt;/span> plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">keySet&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plz&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Schlüssel mit einem Stream:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">keySet&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plz &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plz&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ebenso kann man die Werte der Zuweisungen mit der Methode &lt;code>values()&lt;/code> abfragen.
+Als Resultat erhält man eine &lt;code>Collection&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Abfrage der Werte mit einem Iterator:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Iterator&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> nameIterator &lt;span style="color:#f92672">=&lt;/span> plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">values&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">iterator&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">while&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameIterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">hasNext&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nameIterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">next&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Werte mit einer FOR Schleife:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String name &lt;span style="color:#f92672">:&lt;/span> plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">values&lt;/span>&lt;span style="color:#f92672">()){&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Werte mit einem Stream:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">values&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Werte mit einem forEach:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">values&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">))&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Es besteht auch die Möglichkeit mit der Methode &lt;code>entrySet()&lt;/code> die Zuweisungen mit Schlüssel und Wert abzufragen.
+Man erhält wieder ein &lt;code>Set&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Abfrage der Zuweisungen mit einem Iterator:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Iterator&lt;span style="color:#f92672">&amp;lt;&lt;/span>Map&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">Entry&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">,&lt;/span> String&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> plzCityIterator &lt;span style="color:#f92672">=&lt;/span> plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">entrySet&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">iterator&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#66d9ef">while&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzCityIterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">hasNext&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Map&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">Entry&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">,&lt;/span> String&lt;span style="color:#f92672">&amp;gt;&lt;/span> entry &lt;span style="color:#f92672">=&lt;/span> plzCityIterator&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">next&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>entry&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getKey&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; : &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> entry&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getValue&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Zuweisungen mit einer FOR Schleife:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Map&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">Entry&lt;/span> entry &lt;span style="color:#f92672">:&lt;/span> plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">entrySet&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>entry&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getKey&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; : &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> entry&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getValue&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Zuweisungen mit einem Stream:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">entrySet&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzCity &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plzCity&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getKey&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; : &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> plzCity&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getValue&lt;/span>&lt;span style="color:#f92672">()));&lt;/span>
+&lt;span style="color:#75715e">// Abfrage der Zuweisungen mit einem forEach:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>plzToCityMap&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">((&lt;/span>plz&lt;span style="color:#f92672">,&lt;/span> city&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>plz &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; : &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> city&lt;span style="color:#f92672">));&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;a id="td-block-2" class="td-offset-anchor">&lt;/a>
+&lt;section class="row td-box td-box--orange position-relative td-box--gradient td-box--height-auto">
+&lt;div class="container text-center td-arrow-down">
+&lt;span class="h4 mb-0">
+Aufgaben
+&lt;/span>
+&lt;/div>
+&lt;/section>
+&lt;h2 id="aufgaben">Aufgaben&lt;/h2>
+&lt;p>&lt;a href="../../../../labs/java/java-collections/03_map">Aufgaben zu Modul #J7 - Java Collections - Map&lt;/a>&lt;/p></description></item><item><title>Docs: Stack</title><link>/docs/java/java-collections/05_stack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/05_stack/</guid><description>
 &lt;h2 id="javautilstack">java.util.Stack&lt;/h2>
 &lt;p>java.util.Stack ist eine weitere Datenstruktur, bei der Elemente eingefügt und wieder entfernt werden können, wobei bei
 Stacks immer nur auf dasjenige Element zugegriffen werden kann, das zuletzt eingefügt wurde (Last-In-First-Out = LIFO).
@@ -836,7 +1185,7 @@ werden, wie im Beispiel oben: [blue, yellow, green, orange]&lt;/p>
 &lt;p>Erweitere deine MyStack Klasse. Implementiere zusätzlich die folgende Methode:&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>public int search(Object o)&lt;/code>&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Queue</title><link>/docs/java/java-collections/04_queue/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/04_queue/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Queue + Deque</title><link>/docs/java/java-collections/06_queue/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/06_queue/</guid><description>
 &lt;h2 id="javautilqueue">java.util.Queue&lt;/h2>
 &lt;p>Eine Queue ist ähnlich einem Stack ein Behälter, in den Elemente eingefügt und nur in einer bestimmten Reihenfolge
 wieder entnommen werden können. Bei den Queues gilt das &lt;em>First In First Out&lt;/em> (=FIFO) Prinzip:
@@ -1145,7 +1494,7 @@ E &lt;span style="color:#a6e22e">getLast&lt;/span>&lt;span style="color:#f92672"
 Deques, bei denen Elemente nur an einem Ende eingefügt und am nur anderen Ende entnommen werden,
 stellen wiederum Queues dar.
 Deques, bei denen Elemente an einem Ende eingefügt und am gleichen Ende entnommen werden,
-stellen Stacks dar.&lt;/p></description></item><item><title>Docs: LinkedList</title><link>/docs/java/java-collections/05_linked_list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/05_linked_list/</guid><description>
+stellen Stacks dar.&lt;/p></description></item><item><title>Docs: LinkedList</title><link>/docs/java/java-collections/07_linked_list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/07_linked_list/</guid><description>
 &lt;h2 id="javautillinkedlist">java.util.LinkedList&lt;/h2>
 &lt;p>LinkedLists sind verkettete Listen. D.h. die Elemnte der Listen sind zu einander verkettet
 und nicht wie bei einer ArrayList an bestimmten Positionen platziert.&lt;/p>
