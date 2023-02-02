@@ -9370,6 +9370,45 @@ Das Interface Map definiert Grundfunktionen für das Einfügen, Lesen, Löschen,
 &lt;li>&lt;strong>&lt;a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html">TreeMap&lt;/a>&lt;/strong>: Speichert die Elemente in einem Red-Black Tree und ordnet die Elemente anhand deren Werte ein. Die Implementierung ist wesentlich langsamer als das HashMap.&lt;/li>
 &lt;li>&lt;strong>&lt;a href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html">LinkedHashMap&lt;/a>&lt;/strong>: Speichert die Elemente in einer Hash-Tabel ab, welche als verknüpfte Liste (Linked List) implementiert ist. Die Reihenfolge der Elemente entspricht der Reihenfolge, wie sie in die Map eingefügt wurden. Diese Implementierung hat einen geringfügigen höheren Preis als das HashMap.&lt;/li>
 &lt;/ul>
+&lt;/blockquote>
+&lt;h2 id="performanz">Performanz&lt;/h2>
+&lt;p>Das Collection-Framework macht regen Gebrauch von der Hash-Funktion.
+Klassen wie &lt;code>HashSet&lt;/code> oder &lt;code>HashMap&lt;/code> verwenden die Hash-Funktoin zur Steigerung der Performanz.&lt;/p>
+&lt;h3 id="hash-funktion">Hash-Funktion&lt;/h3>
+&lt;p>Alle Java Klassen erben von der Klasse &lt;code>java.lang.Object&lt;/code> die Methode &lt;code>public int hashCode()&lt;/code>.
+Diese liefert ein Hash Code von der eigenen Instanz zurück.
+Bei Java ist diese ein &lt;code>Integer&lt;/code>.&lt;/p>
+&lt;blockquote>
+&lt;p>Hashing bezeichnet die Umwandlung einer Zeichenfolge in einen normalerweise kürzeren, numerischen Wert oder Schlüssel mit fester Länge.&lt;/p>
+&lt;/blockquote>
+&lt;p>Der Java Hash Code ist nicht immer eindeutig.
+Es kann also vorkommen, dass unterschiedliche Instanzen von unterschiedlichen Klassen den gleichen Hash Code zurückreichen.
+In der Praxis ist das kein Problem, da der Hash Code nur für eine Vorselektierung verwendet wird.&lt;/p>
+&lt;h4 id="verwendung">Verwendung&lt;/h4>
+&lt;p>Stellen wir uns den Einsatz bei einem &lt;code>Set&lt;/code> vor:
+Bei einem Set können wir mit der Methode &lt;code>contains(Object o)&lt;/code> abfragen, ob ein Objekt in einem Set vorhanden ist.
+Das Set muss somit jedes Objekt mit dem Objekt vergleichen, welches wir der Methode &lt;code>contains&lt;/code> übergeben.
+Wenn wir uns vorstellen, dass ein Objekt viele Instanzvariablen enthalten kann, welche wiederum Objekte sein können, so kann jeder Vergleich eine aufwändige Arbeit sein.&lt;/p>
+&lt;p>Bei einer Handvoll Objekte im Set ist das vernachlässigbar.
+Bei einigen tausend Objekte sieht es schon schlechter aus.&lt;/p>
+&lt;p>Die Klasse &lt;code>HashSet&lt;/code> wendet eine andere Strategie an:&lt;/p>
+&lt;ol>
+&lt;li>Beim Hinzufügen eines neuen Objekts, berechnet sie mit der &lt;code>hashCode()&lt;/code> Methode deren Hash Code.
+Dieser Hash Code wird für das neue Objekt gespeichert.&lt;/li>
+&lt;li>Bei der Methode &lt;code>contains(Object o)&lt;/code> berechnet sie den Hash Code des Vergleichsobjekts.
+Anschliessen vergleicht sie diesen mit den gespeicherten Hash Code (Integer-Vergleich).&lt;/li>
+&lt;li>Da der Java Hash Code nicht eindeutig ist, vergleicht sie bei jedem Treffer zur Sicherheit beide Objekte mit der &lt;code>equals(Object o)&lt;/code> Methode.&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>Mit dem Hash Code Strategie kann das &lt;code>HashSet&lt;/code> die allermeisten Vergleiche auf ein Integer-Vergleich vereinfachen.&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="anforderung-an-die-hash-berechnung">Anforderung an die Hash Berechnung&lt;/h4>
+&lt;p>Was ist die Anforderung an die Java &lt;code>hashCode()&lt;/code> Methode?&lt;/p>
+&lt;blockquote>
+&lt;ol>
+&lt;li>Die Berechnung muss schnell sein.&lt;/li>
+&lt;li>Der Hash Code sollte in der Praxis meistens eindeutig sein.&lt;/li>
+&lt;/ol>
 &lt;/blockquote></description></item><item><title>Docs: Overview Lab</title><link>/docs/java/overview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/overview/</guid><description>
 &lt;h2 id="50-meta">5.0: Meta&lt;/h2>
 &lt;h3 id="501-goals">5.0.1: Goals&lt;/h3>
