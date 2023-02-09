@@ -710,6 +710,193 @@ werden, wie im Beispiel oben: [blue, yellow, green, orange]&lt;/p>
 &lt;li>&lt;code>public int search(Object o)&lt;/code>&lt;/li>
 &lt;/ul></description></item><item><title>Labs: Queue + Deque - Aufgaben</title><link>/labs/java/java-collections/05_queue/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/05_queue/</guid><description>
 &lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>&lt;em>Die Aufgaben folgen in Kürze&lt;/em>&lt;/p></description></item><item><title>Labs: LinkedList - Aufgaben</title><link>/labs/java/java-collections/06_linked_list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/06_linked_list/</guid><description>
+&lt;p>Wir implementieren eine einfache &lt;code>Job&lt;/code>-Verarbeitung.
+Zwei &lt;code>InputWorker&lt;/code> erstellen neue &lt;code>Job&lt;/code>&amp;rsquo;s, welche parallel von einem &lt;code>OutputWorker&lt;/code> abgearbeitet werden.&lt;/p>
+&lt;p>Jeder &lt;code>InputWorker&lt;/code> erstellt eine definierte Anzahl Jobs und stoppt anschliessend. Die Anzahl könnt ihr in der Start-Klasse anpassen: &lt;code>Start.INPUTWORKER_NUMBER_OF_JOBS&lt;/code>.&lt;/p>
+&lt;p>Nach jedem Arbeitsschritt (Job erstellen oder verarbeiten) machen die Workers eine kleine Pause.
+Ihr könnt die maximale zufällige Dauer über die statischen Variablen &lt;code>Start.INPUTWORKER_MAX_RELAX_TIME_MS&lt;/code> und &lt;code>Start.OUTPUTWORKER_MAX_RELAX_TIME_MS&lt;/code> steuern.
+Auch die maximal zufällige Dauer zum Abarbeiten eines Jobs kann definiert werden: &lt;code>Start.OUTPUTWORKER_MAX_PROCESS_TIME_MS&lt;/code>.&lt;/p>
+&lt;p>Der &lt;code>OutputWorker&lt;/code> stoppt, sobald er während einer Anzahl Durchgänge (&lt;code>Start.OUTPUTWORKER_STOP_AFTER_EMPTY_CYCLES&lt;/code>) keine Jobs zum Verarbeiten erhält.&lt;/p>
+&lt;p>Die Worker sind mit dem &lt;code>ProcessingInterface&lt;/code> entkoppelt, welches das Hinzufügen und Abholen der Jobs zur Verfügung stellt:&lt;/p>
+&lt;details>
+&lt;summary>Inferface ProcessingInterface&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> ch.itninjas.labs.j7.queue&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">ProcessingInterface&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Add a job to the system.
+&lt;/span>&lt;span style="color:#75715e"> * @return true if the job is added.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">addJob&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Job job&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Get the next job for processing.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> Job &lt;span style="color:#a6e22e">getNextJob&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Put the unprocessed job back to the system.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">getJobBack&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Job job&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Get the number of jobs in the system.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">getJobs&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Has jobs in the system for processing?
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">hasJobs&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;p>In der Konsole seht ihr die Arbeit der Workers:&lt;/p>
+&lt;details>
+&lt;summary>Mögliche Konsole-Ausgabe&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text"> [InputWorker-1] stared successfully
+[InputWorker-2] stared successfully
+-&amp;gt; [InputWorker-1] add job: Job{id=1, message=&amp;#39;[InputWorker-1]: (14:52:41) It is a very hard job!&amp;#39;, jobState=NEW}
+-&amp;gt; [InputWorker-2] add job: Job{id=2, message=&amp;#39;[InputWorker-2]: (14:52:41) It is a very hard job!&amp;#39;, jobState=NEW}
+-&amp;gt; [InputWorker-2] add job: Job{id=3, message=&amp;#39;[InputWorker-2]: (14:52:43) It is a very hard job!&amp;#39;, jobState=NEW}
+-&amp;gt; [InputWorker-1] add job: Job{id=4, message=&amp;#39;[InputWorker-1]: (14:52:43) It is a very hard job!&amp;#39;, jobState=NEW}
+[OutputWorker-1] stared successfully
+&amp;lt;- [OutputWorker-1] process job: Job{id=1, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+== [OutputWorker-1] finish job: Job{id=1, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+-&amp;gt; [InputWorker-2] add job: Job{id=5, message=&amp;#39;[InputWorker-2]: (14:52:43) It is a very hard job!&amp;#39;, jobState=NEW}
+&amp;lt;- [OutputWorker-1] process job: Job{id=2, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+-&amp;gt; [InputWorker-1] add job: Job{id=6, message=&amp;#39;[InputWorker-1]: (14:52:44) It is a very hard job!&amp;#39;, jobState=NEW}
+== [OutputWorker-1] finish job: Job{id=2, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&amp;lt;- [OutputWorker-1] process job: Job{id=3, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+-&amp;gt; [InputWorker-1] add job: Job{id=7, message=&amp;#39;[InputWorker-1]: (14:52:44) It is a very hard job!&amp;#39;, jobState=NEW}
+== [OutputWorker-1] finish job: Job{id=3, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+-&amp;gt; [InputWorker-2] add job: Job{id=8, message=&amp;#39;[InputWorker-2]: (14:52:45) It is a very hard job!&amp;#39;, jobState=NEW}
+&amp;lt;- [OutputWorker-1] process job: Job{id=4, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+== [OutputWorker-1] finish job: Job{id=4, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&amp;lt;- [OutputWorker-1] process job: Job{id=5, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+== [OutputWorker-1] finish job: Job{id=5, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+-&amp;gt; [InputWorker-1] add job: Job{id=9, message=&amp;#39;[InputWorker-1]: (14:52:46) It is a very hard job!&amp;#39;, jobState=NEW}
+&amp;lt;- [OutputWorker-1] process job: Job{id=6, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+-&amp;gt; [InputWorker-2] add job: Job{id=10, message=&amp;#39;[InputWorker-2]: (14:52:47) It is a very hard job!&amp;#39;, jobState=NEW}
+== [OutputWorker-1] finish job: Job{id=6, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&amp;lt;- [OutputWorker-1] process job: Job{id=7, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+== [OutputWorker-1] finish job: Job{id=7, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&amp;lt;- [OutputWorker-1] process job: Job{id=8, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+== [OutputWorker-1] finish job: Job{id=8, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&amp;lt;- [OutputWorker-1] process job: Job{id=9, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+== [OutputWorker-1] finish job: Job{id=9, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&amp;lt;- [OutputWorker-1] process job: Job{id=10, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+== [OutputWorker-1] finish job: Job{id=10, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+?? [OutputWorker-1] Nothing to do, I stop.
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;p>Mit der &lt;code>Start&lt;/code>-Klasse wird das gesamte System gestartet.
+Leider fehlt ein zentraler Teil des Systems:
+Ihr müsst das Interface &lt;code>ProcessingInterface&lt;/code> implementieren.&lt;/p>
+&lt;blockquote>
+&lt;p>Ihr findet den Programmcode im &lt;strong>work Repo&lt;/strong>:&lt;br>
+&lt;a href="https://github.com/it-ninjas/work/tree/main/labs/src/main/java/ch/itninjas/labs/j7/queue/lab1">https://github.com/it-ninjas/work/tree/main/labs/src/main/java/ch/itninjas/labs/j7/queue/lab1&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="aufgabe-11">Aufgabe 1.1&lt;/h3>
+&lt;ol>
+&lt;li>Implementiert das &lt;code>ProcessingInterface&lt;/code> mit einer Queue, damit die Jobs im &lt;strong>FIFO-Prinzip&lt;/strong> (Last-In-First-Out) verarbeitet werden.&lt;/li>
+&lt;li>Kontrolliert die Konsole-Ausgabe:
+&lt;ol>
+&lt;li>Ob alle Jobs verarbeitet wurden.&lt;/li>
+&lt;li>Ob die Jobs in der gewünschten Reihenfolge verarbeitet wurden.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Verändert die Pausen und Verarbeitungszeit der Worker und schaut euch der Einfluss in der Konsole an.&lt;/li>
+&lt;/ol>
+&lt;h3 id="aufgabe-12">Aufgabe 1.2&lt;/h3>
+&lt;ol>
+&lt;li>Implementiert das &lt;code>ProcessingInterface&lt;/code> mit einer Queue, damit die Jobs im &lt;strong>LIFO-Prinzip&lt;/strong> (Last-In-First-Out) verarbeitet werden.&lt;/li>
+&lt;li>Kontrolliert die Konsole-Ausgabe:
+&lt;ol>
+&lt;li>Ob alle Jobs verarbeitet wurden.&lt;/li>
+&lt;li>Ob die Jobs in der gewünschten Reihenfolge (Last-In-First-Out) verarbeitet wurden.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Verändert die Pausen und Verarbeitungszeit der Worker und schaut euch der Einfluss in der Konsole an.&lt;/li>
+&lt;/ol>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Erweitert den &lt;code>OutputWorker&lt;/code> so, dass er vor der Verarbeitung eines Jobs die Anzahl offener Jobs anzeigt.&lt;/p>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Erweitert den OutputWorker so, dass er zufällig einzelne Jobs nicht erfolgreich bearbeiten kann und diese mit der Methode &lt;code>ProcessingInterface.getJobBack(Job job)&lt;/code> zurück in die Queue stellt.&lt;/p>
+&lt;h2 id="aufgabe-4-optional">Aufgabe 4 (Optional)&lt;/h2>
+&lt;p>Erstellt ein JUnit-Test (JUnit Version 5), welcher die Schnittstelle &lt;code>ProcessingInterface&lt;/code> der Klasse &lt;code>Processing&lt;/code> ausführlich testet.&lt;/p></description></item><item><title>Labs: LinkedList - Aufgaben</title><link>/labs/java/java-collections/06_linked_list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/06_linked_list/</guid><description>
 &lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
 &lt;p>&lt;em>Die Aufgaben folgen in Kürze&lt;/em>&lt;/p></description></item></channel></rss>
