@@ -2105,9 +2105,144 @@ Hier sind von w3schools die wichtigsten Eigenschaften von Flex-Boxen beschrieben
 &lt;/div>
 &lt;/div>&lt;p>Mache den Browser mal ein bisschen kleiner und schaue, wie sich die Positionierung verhält, wenn du scrollst.&lt;/p>
 &lt;p>Möchtest du, dass die Positionierung immer gleich - unabhängig vom Scrollen - ist? Dann versuche es einmal mit &lt;code>position: fixed&lt;/code>.&lt;/p>
-&lt;p>&lt;img src="/images/hint.png" alt="asset"> Hierzu findest du eine &lt;a href="../../../../labs/web/html_css/02_css">Aufgabe im Lab&lt;/a>.&lt;/p></description></item><item><title>Docs: Abschluss</title><link>/docs/web/html_css/18_css_finish/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/html_css/18_css_finish/</guid><description>
+&lt;p>&lt;img src="/images/hint.png" alt="asset"> Hierzu findest du eine &lt;a href="../../../../labs/web/html_css/02_css">Aufgabe im Lab&lt;/a>.&lt;/p></description></item><item><title>Docs: Übergänge und Animationen</title><link>/docs/web/html_css/18_css_keyframes/</link><pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate><guid>/docs/web/html_css/18_css_keyframes/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, wie du bei Elementen Übergänge auf CSS-Property-Änderungen hinzufügen kannst.&lt;/li>
+&lt;li>Du weisst, wie du wiederholende Animationen erstellen kannst mit Keyframes.&lt;/li>
+&lt;/ul>
+&lt;h2 id="übergänge">Übergänge&lt;/h2>
+&lt;p>In CSS kannst du sehr einfach Übergänge erstellen. Zum Beispiel kannst du ungefähr so die Form eines &lt;code>&amp;lt;div&amp;gt;&lt;/code>s verändern:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;box&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">style&lt;/span>&amp;gt;
+.&lt;span style="color:#a6e22e">box&lt;/span> {
+&lt;span style="color:#75715e">/* Initialzustand: */&lt;/span>
+&lt;span style="color:#66d9ef">width&lt;/span>: &lt;span style="color:#ae81ff">10&lt;/span>&lt;span style="color:#66d9ef">em&lt;/span>;
+&lt;span style="color:#66d9ef">height&lt;/span>: &lt;span style="color:#ae81ff">10&lt;/span>&lt;span style="color:#66d9ef">em&lt;/span>;
+&lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#66d9ef">lightgrey&lt;/span>;
+&lt;span style="color:#66d9ef">border&lt;/span>: &lt;span style="color:#ae81ff">5&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#66d9ef">solid&lt;/span> &lt;span style="color:#66d9ef">black&lt;/span>;
+&lt;span style="color:#66d9ef">border-radius&lt;/span>: &lt;span style="color:#ae81ff">50&lt;/span>&lt;span style="color:#66d9ef">%&lt;/span>;
+&lt;span style="color:#75715e">/* Übergang wird mittels `transition` angegeben: */&lt;/span>
+&lt;span style="color:#66d9ef">transition&lt;/span>: &lt;span style="color:#66d9ef">width&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span>, &lt;span style="color:#66d9ef">background&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#66d9ef">color&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span>, &lt;span style="color:#66d9ef">border&lt;/span>&lt;span style="color:#f92672">-&lt;/span>radius &lt;span style="color:#ae81ff">3&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span>;
+}
+.&lt;span style="color:#a6e22e">box&lt;/span>:&lt;span style="color:#a6e22e">hover&lt;/span> {
+&lt;span style="color:#75715e">/* Zustand, wenn sich die Maus über dem Element befindet: */&lt;/span>
+&lt;span style="color:#66d9ef">width&lt;/span>: &lt;span style="color:#ae81ff">20&lt;/span>&lt;span style="color:#66d9ef">em&lt;/span>;
+&lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#FFBF00&lt;/span>;
+&lt;span style="color:#66d9ef">border-radius&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>;
+}
+&amp;lt;/&lt;span style="color:#f92672">style&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Probiere es zuerst einmal aus!&lt;/p>
+&lt;p>Aber wie funktioniert das? Beschränken wir uns bei diesem Beispiel einmal nur auf die Änderung der Breite. Da in der regulären CSS-Regel (also ohne &lt;code>:hover&lt;/code>) die Regel &lt;code>transition: width 1s&lt;/code> steht, reagiert dieses HTML-Element auf eine Änderung in der Breite mit einem Übergang (transition). In dieser CSS-Regel war &lt;code>width&lt;/code> der Name des CSS-Properties, auf welche der Übergang angewandt wurde. Die Angabe &lt;code>1s&lt;/code> spezifiziert, dass der Übergang 1 Sekunde lang dauert.&lt;/p>
+&lt;p>Oft siehst du die Angabe der Transition in diesem Format:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">&lt;span style="color:#f92672">transition&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">width&lt;/span> &lt;span style="color:#f92672">1s&lt;/span> &lt;span style="color:#f92672">ease&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Keyword &lt;code>ease&lt;/code> beschreibt, wie die Animation beschleunigt wird: &lt;code>ease&lt;/code>-Animationen beginnen langsam, sind dann schneller und am Schluss wird sie &amp;ldquo;gebremst&amp;rdquo;. &lt;code>ease&lt;/code> ist der Default-Wert (musst du also nicht angeben). Es gibt viele weitere:&lt;/p>
+&lt;ul>
+&lt;li>ease&lt;/li>
+&lt;li>linear&lt;/li>
+&lt;li>ease-in&lt;/li>
+&lt;li>ease-out&lt;/li>
+&lt;li>ease-in-out&lt;/li>
+&lt;li>cubic-bezier(n,n,n,n)&lt;/li>
+&lt;/ul>
+&lt;p>Weitere Informationen zu Transitions erhältst du hier: &lt;a href="https://www.w3schools.com/css/css3_transitions.asp">https://www.w3schools.com/css/css3_transitions.asp&lt;/a>&lt;/p>
+&lt;h2 id="animationen">Animationen&lt;/h2>
+&lt;p>In CSS sind auch Animationen sehr einfach realisierbar - auch ohne JavaScript.&lt;/p>
+&lt;p>Im folgenden Beispiel lassen wir eine Hand winken:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;hand&amp;#34;&lt;/span>&amp;gt;🖐&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">style&lt;/span>&amp;gt;
+.&lt;span style="color:#a6e22e">hand&lt;/span> {
+&lt;span style="color:#75715e">/* transform geht nicht für inline-Elemente: */&lt;/span>
+&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#66d9ef">block&lt;/span>;
+&lt;span style="color:#66d9ef">font-size&lt;/span>: &lt;span style="color:#ae81ff">72&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;span style="color:#75715e">/* Animation properties: */&lt;/span>
+&lt;span style="color:#66d9ef">animation-name&lt;/span>: wave;
+&lt;span style="color:#66d9ef">animation-duration&lt;/span>: &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span>;
+&lt;span style="color:#66d9ef">animation-direction&lt;/span>: &lt;span style="color:#66d9ef">alternate&lt;/span>;
+&lt;span style="color:#66d9ef">animation-iteration-count&lt;/span>: &lt;span style="color:#66d9ef">infinite&lt;/span>;
+}
+@&lt;span style="color:#66d9ef">keyframes&lt;/span> &lt;span style="color:#f92672">wave&lt;/span> {
+&lt;span style="color:#f92672">0&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {&lt;span style="color:#66d9ef">transform&lt;/span>: rotate(&lt;span style="color:#ae81ff">-90&lt;/span>&lt;span style="color:#66d9ef">deg&lt;/span>);}
+&lt;span style="color:#f92672">10&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {&lt;span style="color:#66d9ef">transform&lt;/span>: rotate(&lt;span style="color:#ae81ff">-90&lt;/span>&lt;span style="color:#66d9ef">deg&lt;/span>);}
+&lt;span style="color:#f92672">90&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {&lt;span style="color:#66d9ef">transform&lt;/span>: rotate(&lt;span style="color:#ae81ff">90&lt;/span>&lt;span style="color:#66d9ef">deg&lt;/span>);}
+&lt;span style="color:#f92672">100&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {&lt;span style="color:#66d9ef">transform&lt;/span>: rotate(&lt;span style="color:#ae81ff">90&lt;/span>&lt;span style="color:#66d9ef">deg&lt;/span>);}
+}
+&amp;lt;/&lt;span style="color:#f92672">style&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Zentrale an diesem Code-Beispiel ist der &lt;code>@keyframes&lt;/code>-Block. Das erste Wort nach diesem Schlüsselbegriff ist der Name, der du der Animation gibst.&lt;/p>
+&lt;p>Das &lt;code>0%&lt;/code> steht für den Anfang der Animation, diese Prozentangaben beschreiben also eine Zeitangabe: Zu welchem Zeitpunkt soll das Element wie gestylt werden?&lt;/p>
+&lt;p>Damit du die Animation (hier mit dem Namen &lt;code>wave&lt;/code>) verwenden kannst, musst du diese referenzieren: Das hast du mit &lt;code>animation-name: wave&lt;/code> gemacht. Anschliessen haben wir die Animation weiter konfiguriert:&lt;/p>
+&lt;ul>
+&lt;li>Mit &lt;code>animation-direction: alternate&lt;/code> haben wir eingestellt, dass die Animation wieder rückwärtsläuft, nachdem sie fertig ist. Hierfür war folgendes auch notwendig:&lt;/li>
+&lt;li>&lt;code>animation-iteration-count: infinite&lt;/code> bewirkt, dass die Animation immer wieder wiederholt wird.&lt;/li>
+&lt;/ul>
+&lt;p>Das ist bereits das Basis-Wissen zu Animationen in CSS. Interessierst du dich weiter für Animationen, dann kannst du dich gerne hier vertiefen: &lt;a href="https://www.w3schools.com/css/css3_animations.asp">https://www.w3schools.com/css/css3_animations.asp&lt;/a>&lt;/p>
+&lt;p>Damit du siehst, wofür Animationen eingesetzt werden können, schaue dir bitte noch dieses Beispiel an, wie einfach (und ohne JavaScript) ein Ladebalken implementiert werden kann: &lt;a href="https://www.w3schools.com/howto/howto_css_loader.asp">https://www.w3schools.com/howto/howto_css_loader.asp&lt;/a>&lt;/p></description></item><item><title>Docs: Abschluss</title><link>/docs/web/html_css/19_css_finish/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/html_css/19_css_finish/</guid><description>
 &lt;p>Bist du bereit für das Exam? Wenn nein, dann darfst du gerne den CSS-Teil aus dem &lt;a href="https://www.udacity.com/course/intro-to-html-and-css--ud001">Intro to HTML and CSS - Udacity&lt;/a>-Kurs anschauen.&lt;/p>
-&lt;p>Wenn du bereit bist, dann prüfe dein Wissen mit dem &lt;a href="../../../../exams/web/html_css/01_exam_html_css_rtm">Exam&lt;/a>.&lt;/p></description></item><item><title>Docs: Bootstrap</title><link>/docs/web/html_css/19_css_bootstrap/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/html_css/19_css_bootstrap/</guid><description>
+&lt;p>Wenn du bereit bist, dann prüfe dein Wissen mit dem &lt;a href="../../../../exams/web/html_css/01_exam_html_css_rtm">Exam&lt;/a>.&lt;/p>
+&lt;p>Anschliessend darfst du dich mit dem CSS-Framework Bootstrap vertraut machen. Dieses bietet sehr viele CSS-Klassen an, die nur darauf warten, von dir gebraucht zu werden. Diese reduzieren den Aufwand, den du ins Styling stecken müsstest, erheblich, und andere Entwickler:innen werden bei den Klassennamen auch besser verstehen, wofür sie gebraucht werden.&lt;/p></description></item><item><title>Docs: Bootstrap</title><link>/docs/web/html_css/20_css_bootstrap/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/html_css/20_css_bootstrap/</guid><description>
 &lt;p>In Frontend-Projekten wirst du dich immer wieder fragen, ob bereits ein Objekt
 gleich gestylt wurde wie eines, welches du gerade stylen möchtest. Du wirst es aber
 vielleicht nicht finden oder du schreibst die genau gleiche Regel ein weiteres Mal.
