@@ -1,3 +1,12 @@
+---
+title: "New Spring Doc"
+linkTitle: "New Spring Doc"
+weight: 15
+description: >
+Modul #J11 - Spring Boot
+---
+
+
 Framework
 
 Ein Framework ist eine Grundlage, auf der Applikationen basieren. Frameworks stellen Funktionen von essenzieller Wichtigkeit bereit damit man diese nicht jedes Mal neu schreiben muss.
@@ -82,6 +91,6 @@ Control Layer:
 
 Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäft Logiken. Auf der Technischen Ebene ist der Control Layer die grundlegendste und die wenigste interessante Schicht. Der Control Layer könnte wie folgt aussehen:
 
-<Codebeispiel in docs> 
+<Codebeispiel in docs>
 
 Control Layer noch nicht fertig!!! 
