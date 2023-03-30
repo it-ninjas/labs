@@ -1,7 +1,7 @@
 ---
 title: "New Spring Doc"
 linkTitle: "New Spring Doc"
-weight: 15
+weight: 16
 description: >
 Modul #J11 - Spring Boot
 ---
