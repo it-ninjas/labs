@@ -6,6 +6,7 @@ description: >
   Modul #J11 - Spring Boot
 ---
 
+
 ### Framework:
 
 Ein Framework ist eine Grundlage, auf der Applikationen basieren. Frameworks stellen Funktionen von
@@ -120,6 +121,71 @@ public interface ArticleRepository {
 Meistens wird das Interface im Hintergrund vom Framework implementiert und wir müssen nichts dafür
 tun.
 
+### Boundary Layer
+In diesem Layer definieren wir unsere REST Resourcen. Hier ein Beispiel einer Order Klasse in einem Webshop:
+
+```javascript
+@RestController
+@RequestMapping("/orders")
+public class OrderResource {
+
+    private final OrderService orderService;
+
+    public OrderResource(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @GetMapping
+    public List<Order> findAll() {
+        return orderService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Order findById(@PathVariable Long id) {
+        return orderService.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    @PostMapping
+    public Order save(@RequestBody Order order) {
+        return orderService.save(order);
+    }
+
+    @PutMapping("/{id}")
+    public Order update(@PathVariable Long id, @RequestBody Order order) {
+        return orderService.update(id, order);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        orderService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+}
+
+```
+
+Dies ist eine rest resource und sie wird definiert mit der Annotation @RestController. Die Annotation @RequestMapping("/orders") sagt, dass alle calls auf Orders diese Rest Ressource verwenden sollen.
+
+Schauen wir uns dies doch ein bisschen genauer an:
+
+```javascript
+@GetMapping("/{id}")
+public Order findById(@PathVariable Long id) {
+    return orderService.findById(id).orElseThrow(EntityNotFoundException::new);
+}
+```
+
+Mit der @GetMapping annotation bestimmen wir, dass alle Anfragen auf dem orders/id pfad von der annotierten Methode gehandelt werden. @PathVariable bestimmt, dass die ID als path variable angegeben wird. Das bedeutet, dass ein call auf /orders/12 das gleiche wie order findByID(12).
+
+```javascript
+@PutMapping("/{id}")
+public Order update(@PathVariable Long id, @RequestBody Order order) {
+    return orderService.update(id, order);
+}
+```
+
+Mit @RequestBody bestimmen wir, dass die Antwort als Body Part der Request kommt.
+
 ### Control Layer
 
 Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäft Logiken. Auf der
@@ -162,7 +228,10 @@ public class OrderService {
 }
 ```
 
-Control Layer noch nicht fertig!!!
+Diese Klasse ist recht einfach aufgebaut, da sie nur zwei Annotationen, nämlich @Service und @Transactional beinhaltet. Die @Service annotation markiert beans als holder
+der business logic. @Transactional sagt einfach, dass alle Funktionen in der Klasse in einer einzigen Transaktion ausgeführt werden sollen. Das musst du vorläufig aber noch nicht verstehen.
+Durch die sogenannte constructor injection wird hier auch noch der bean OrderRepository injected.
+
 
 ### Entity Layer
 
