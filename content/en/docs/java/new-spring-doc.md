@@ -6,7 +6,6 @@ description: >
   Modul #J11 - Spring Boot
 ---
 
-
 ### Framework:
 
 Ein Framework ist eine Grundlage, auf der Applikationen basieren. Frameworks stellen Funktionen von
@@ -122,9 +121,12 @@ Meistens wird das Interface im Hintergrund vom Framework implementiert und wir m
 tun.
 
 ### Boundary Layer
-In diesem Layer definieren wir unsere REST Resourcen. Hier ein Beispiel einer Order Klasse in einem Webshop:
+
+In diesem Layer definieren wir unsere REST Resourcen. Hier ein Beispiel einer Order Klasse in einem
+Webshop:
 
 ```java
+
 @RestController
 @RequestMapping("/orders")
 public class OrderResource {
@@ -163,24 +165,28 @@ public class OrderResource {
 }
 ```
 
-Dies ist eine rest resource und sie wird definiert mit der Annotation @RestController. Die Annotation @RequestMapping("/orders") sagt, dass alle calls auf Orders diese Rest Ressource verwenden sollen.
+Dies ist eine rest resource und sie wird definiert mit der Annotation @RestController. Die
+Annotation @RequestMapping("/orders") sagt, dass alle calls auf Orders diese Rest Ressource
+verwenden sollen.
 
 Schauen wir uns dies doch ein bisschen genauer an:
 
 ```java
 @GetMapping("/{id}")
-public Order findById(@PathVariable Long id) {
+public Order findById(@PathVariable Long id){
     return orderService.findById(id).orElseThrow(EntityNotFoundException::new);
-}
+    }
 ```
 
-Mit der @GetMapping annotation bestimmen wir, dass alle Anfragen auf dem orders/id pfad von der annotierten Methode gehandelt werden. @PathVariable bestimmt, dass die ID als path variable angegeben wird. Das bedeutet, dass ein call auf /orders/12 das gleiche wie order findByID(12).
+Mit der @GetMapping annotation bestimmen wir, dass alle Anfragen auf dem orders/id pfad von der
+annotierten Methode gehandelt werden. @PathVariable bestimmt, dass die ID als path variable
+angegeben wird. Das bedeutet, dass ein call auf /orders/12 das gleiche wie order findByID(12).
 
 ```java
 @PutMapping("/{id}")
-public Order update(@PathVariable Long id, @RequestBody Order order) {
-    return orderService.update(id, order);
-}
+public Order update(@PathVariable Long id,@RequestBody Order order){
+    return orderService.update(id,order);
+    }
 ```
 
 Mit @RequestBody bestimmen wir, dass die Antwort als Body Part der Request kommt.
@@ -192,6 +198,7 @@ Technischen Ebene ist der Control Layer die grundlegendste und die wenigste inte
 Der Control Layer könnte wie folgt aussehen:
 
 ```java
+
 @Service
 @Transactional
 public class OrderService {
@@ -226,10 +233,11 @@ public class OrderService {
 }
 ```
 
-Diese Klasse ist recht einfach aufgebaut, da sie nur zwei Annotationen, nämlich @Service und @Transactional beinhaltet. Die @Service annotation markiert beans als holder
-der business logic. @Transactional sagt einfach, dass alle Funktionen in der Klasse in einer einzigen Transaktion ausgeführt werden sollen. Das musst du vorläufig aber noch nicht verstehen.
+Diese Klasse ist recht einfach aufgebaut, da sie nur zwei Annotationen, nämlich @Service und
+@Transactional beinhaltet. Die @Service annotation markiert beans als holder
+der business logic. @Transactional sagt einfach, dass alle Funktionen in der Klasse in einer
+einzigen Transaktion ausgeführt werden sollen. Das musst du vorläufig aber noch nicht verstehen.
 Durch die sogenannte constructor injection wird hier auch noch der bean OrderRepository injected.
-
 
 ### Entity Layer
 
@@ -237,6 +245,55 @@ Der Entity Layer ist für die Datenspeicherung zuständig, auf diesem Layer gibt
 Teile Entity und Repository, Entitys sind klassen welche gespeichert werden, Repositorys verwalten
 diese Enitys
 
-Auch hier wird spring mit Annotationen gesagt was es machen soll die `@Entity` sagt, dass es sich bei dieser Klasse um eine Entity geht.
+Auch hier wird spring mit Annotationen gesagt was es machen soll die `@Entity` sagt, dass es sich
+bei dieser Klasse um eine Entity geht.
 
-Die `@Table` Annotation sagt auf welcher tabelle, in der Datenbank, diese Klasse gespeichert wird (Schreibweise `@Table(name = "tabelenNamen")`)
+Die `@Table` Annotation sagt auf welcher tabelle, in der Datenbank, diese Klasse gespeichert wird (
+Schreibweise `@Table(name = "tabelenNamen")`)
+
+Die `@GeneratedValue` Annotation besagt das diese werte in der Tabelle gespeichert werden.
+
+Die `@Id` Annotation sagt das dieses Feld als id in der Tabelle fungiert.
+
+Hier ist ein Beispiel:
+
+```java
+
+@Entity
+@Table(name = "orders")
+public class Order {
+
+    @Id
+    @GeneratedValue
+    Long id;
+    String name;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+}
+```
+
+Damit wir auf die Daten zugreifen können brauchen wir ein Repository dazu können wir ein Interface
+machen welches `CrudRepository` extended machen, das `CrudRepository` hat schon viele methoden
+implementiert deshalb müssen wir keine eigenen implementieren
+
+Hier ein Beispiel:
+
+```java
+@Repository
+public interface OrderRepository extends CrudRepository<Order, Long> {
+}
+```
