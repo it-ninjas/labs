@@ -85,8 +85,25 @@ Entity (Speicher): Auf dieser Schicht wird alles abgewickelt, was mit Datenspeic
 
 Eines der am häufigsten verwendeten Design-Patterns (siehe oben) ist das Repository Design-Pattern. Es ist ein Interface, das dafür zuständig ist, uns Zugang zu den Daten in der Datenbank zu bereiten. Man kann es sich ein wenig, wie einen Bibliothekar vorstellen. Er gibt uns die Bücher, die wir wollen, ohne dass wir wissen, wie er sie uns beschafft. Wir kennen nur die API, also die Befehle, und welche Resultate wir erwarten können.
 
-(Codebeispiel in docs) 
+```java
+public interface ArticleRepository {
 
+    List<Article> readAll();
+
+    List<Article> readLatest();
+
+    List<Article> readByTags(Tag... tags);
+
+    Article readById(long id);
+
+    Article create(Article article);
+
+    Article update(Article article);
+
+    Article delete(Article article);
+
+}
+```
 
 
 Meistens wird das Interface im Hintergrund vom Framework implementiert und wir müssen nichts dafür tun.
@@ -97,6 +114,39 @@ Control Layer:
 
 Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäft Logiken. Auf der Technischen Ebene ist der Control Layer die grundlegendste und die wenigste interessante Schicht. Der Control Layer könnte wie folgt aussehen:
 
-(Codebeispiel in docs)
+```java
+@Service
+@Transactional
+public class OrderService {
+
+    private final OrderRepository orderRepository;
+
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
+    public List<Order> findAll() {
+        return (List<Order>) orderRepository.findAll();
+    }
+
+    public Optional<Order> findById(Long id) {
+        return orderRepository.findById(id);
+    }
+
+    public Order save(Order order) {
+        return orderRepository.save(order);
+    }
+
+    public Order update(Long id, Order order) {
+        Order toUpdate = orderRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        toUpdate.setName(order.getName());
+        return toUpdate;
+    }
+
+    public void delete(Long id) {
+        orderRepository.deleteById(id);
+    }
+}
+```
 
 Control Layer noch nicht fertig!!! 
