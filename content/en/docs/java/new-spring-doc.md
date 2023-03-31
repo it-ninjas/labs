@@ -293,7 +293,43 @@ implementiert deshalb müssen wir keine eigenen implementieren
 Hier ein Beispiel:
 
 ```java
+
 @Repository
 public interface OrderRepository extends CrudRepository<Order, Long> {
+
 }
+```
+
+Du fragst dich vielleicht wo die Daten gespeichert werden, normalerweise macht Spring eine temporäre
+Datenbank, diese wird nach abschluss des Programmes jedoch wieder gelöscht. Wenn man die Daten nicht
+jedes mal neu machen will kann man sie in einer "Richtigen" Datenbank speichern, dazu müssen wir die
+Spring Konfiguration ändern.
+
+Spring lädt die Konfiguration von einer `application.properies` Datei (diese befindet sich im
+resources Ordner)
+
+Es gibt 5 wichtige Konfigurationen
+
+`spring.datasource.url` gibt die URL der Datenbank an (Format:
+jdbc:[datenbanktyp]://[server]:[port]/[datenbank]
+
+`spring.datasource.username` gibt den benutzername der Datenbank an
+
+`spring.datasource.password` gibt das Passwort der Datenbank an
+
+`spring.datasource.driver-class-name` gibt an wo der Datenbank treiber ist (muss als maven
+Dependency hinzugefügt werden)
+
+`spring.jpa.hibernate.ddl-auto` sagt wie Spring mit der Datenbank umgehen soll zb. `update` sorgt
+dafür das fehlende Spalten oder dergleichen automatisch erstellt werden und es werden nie sachen
+gelöscht, `create-drop` macht die Datenbank und löscht die objekte nachher, `none` beläst die Datenbank 
+
+Hier ist eine beispiel Konfiguration mit einer Mariadb Datenbank:
+
+```properties
+spring.datasource.url=jdbc:mariadb://localhost:3306/order
+spring.datasource.username=spring
+spring.datasource.password=1234
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
 ```
