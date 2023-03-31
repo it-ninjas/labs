@@ -124,7 +124,7 @@ tun.
 ### Boundary Layer
 In diesem Layer definieren wir unsere REST Resourcen. Hier ein Beispiel einer Order Klasse in einem Webshop:
 
-```javascript
+```java
 @RestController
 @RequestMapping("/orders")
 public class OrderResource {
@@ -168,7 +168,7 @@ Dies ist eine rest resource und sie wird definiert mit der Annotation @RestContr
 
 Schauen wir uns dies doch ein bisschen genauer an:
 
-```javascript
+```java
 @GetMapping("/{id}")
 public Order findById(@PathVariable Long id) {
     return orderService.findById(id).orElseThrow(EntityNotFoundException::new);
@@ -177,7 +177,7 @@ public Order findById(@PathVariable Long id) {
 
 Mit der @GetMapping annotation bestimmen wir, dass alle Anfragen auf dem orders/id pfad von der annotierten Methode gehandelt werden. @PathVariable bestimmt, dass die ID als path variable angegeben wird. Das bedeutet, dass ein call auf /orders/12 das gleiche wie order findByID(12).
 
-```javascript
+```java
 @PutMapping("/{id}")
 public Order update(@PathVariable Long id, @RequestBody Order order) {
     return orderService.update(id, order);
