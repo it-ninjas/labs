@@ -161,7 +161,6 @@ public class OrderResource {
         return ResponseEntity.ok().build();
     }
 }
-
 ```
 
 Dies ist eine rest resource und sie wird definiert mit der Annotation @RestController. Die Annotation @RequestMapping("/orders") sagt, dass alle calls auf Orders diese Rest Ressource verwenden sollen.
@@ -193,7 +192,6 @@ Technischen Ebene ist der Control Layer die grundlegendste und die wenigste inte
 Der Control Layer könnte wie folgt aussehen:
 
 ```java
-
 @Service
 @Transactional
 public class OrderService {
