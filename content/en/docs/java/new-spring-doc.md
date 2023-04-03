@@ -10,15 +10,21 @@ description: >
 
 * Ich weiss, was ein Java-Framework ist.
 * Ich kenne einige Vor- und Nachteile beim Verwenden eines Java-Frameworks.
-* Ich kenne ein paar Module des Spring-Frameworks (z.B. Core, Data-Access, Web usw.) und weiss, welche Aufgaben sie erfüllen.
-* Ich kenne die wichtigste Spring-Projekte (z.B. Spring-Boot, Spring-Cloud, Spring-Security usw.) und weiss wofür ich diese einsetzen kann.
+* Ich kenne ein paar Module des Spring-Frameworks (z.B. Core, Data-Access, Web usw.) und weiss,
+  welche Aufgaben sie erfüllen.
+* Ich kenne die wichtigste Spring-Projekte (z.B. Spring-Boot, Spring-Cloud, Spring-Security usw.)
+  und weiss wofür ich diese einsetzen kann.
 * Ich weiss, was "Inversion of Control" (IoC) bedeutet und kenne dessen Vorteile.
-* Ich weiss, was "Dependency-Injection" (DI) ist und kenne die verschiedene Möglichkeiten (z.B. Constructor-Based, Setter-Based, Field-Based) um DI in Spring zu benutzen.
+* Ich weiss, was "Dependency-Injection" (DI) ist und kenne die verschiedene Möglichkeiten (z.B.
+  Constructor-Based, Setter-Based, Field-Based) um DI in Spring zu benutzen.
 * Ich weiss, was ein "Spring-Bean" ist und wie es in Spring erzeugt und verwendet wird.
-* Ich kenne die verschiedene Scopes eines "Spring-Beans" (z.B. Singleton, Session, Application usw.).
-* Ich kenne die, am häufigsten verwendeten, Spring-Bean Annotationen (z.B. @Configuration, @Component, @Repository, @Controller usw.), wie ich diese einsetze und welchem Zweck sie dienen.
+* Ich kenne die verschiedene Scopes eines "Spring-Beans" (z.B. Singleton, Session, Application
+  usw.).
+* Ich kenne die, am häufigsten verwendeten, Spring-Bean Annotationen (z.B. @Configuration,
+  @Component, @Repository, @Controller usw.), wie ich diese einsetze und welchem Zweck sie dienen.
 * Ich weiss, was "Wiring" ist und wie es in Spring gemacht wird.
-* Ich weiss, wofür Properties in Spring verwendet werden und wie ich Properties in Spring setzen kann.
+* Ich weiss, wofür Properties in Spring verwendet werden und wie ich Properties in Spring setzen
+  kann.
 * Ich weiss, wozu Spring-Profiles verwendet werden und wie ich sie einsetzen kann.
 
 ---
@@ -102,14 +108,73 @@ ins Objekt importieren kann.
 In Spring gibt es einen sogenannten InversionOfControl container, in dem ist z.B. hinterlegt wie und
 wo die sachen Injected werden.
 
-Man kann diesen Container auf mehreren arten machen, eine Art wäre so. In diesem Fall wäre die
-Container Datei applicationContext.xml
+Man kann diesen Container auf mehreren arten machen, in unserem Fall können wir die Sachen mit Java
+Klassen Lösen.
 
-```Java
-ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+In Spring kann man Abhängigkeiten mit verschiedenen Möglichkeiten Injecten, mit Konstrukteure,
+settern und Feldern
+
+##### Konstruktor Injection
+
+Wenn wir eine Konstruktor Injection machen fungiert jedes Argument als eine Abhängigkeit. Ein
+Beispiel Sieht so aus:
+
+```java
+
+@Configuration
+public class AppConfig {
+
+  @Bean
+  public Item item1() {
+    return new ItemImpl1();
+  }
+
+  @Bean
+  public Store store() {
+    return new Store(item1());
+  }
+}
 ```
 
-In Spring kann man Abhängigkeiten mit verschiedenen Möglichkeiten Injecten, mit Konstrukteure, settern und Feldern
+Die `@Configuration` Annotation besagt das diese Klasse die Konfiguration beinhalten
+
+Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt, wenn wir keinen Bean namen
+angeben wird der Methoden namen genommen. (Im Singleton Scope wird überprüft, dass es nur eins gibt,
+was bein prototype nicht der Fall ist)
+
+##### Setter Injection
+
+Bei der Setter basierten Injection macht man Konstruktoren ohne Argumente, diese Injection passiert
+dann mit dem Setter. Es wird empfohlen obligatorische Abhängigkeiten mit Konstruktor Injections zu
+machen während man optionale Abhängigkeiten mit Setter Injections macht. Hier ein Beispiel:
+
+```java
+@Bean
+public Store store(){
+        Store store=new Store();
+        store.setItem(item1());
+        return store;
+        }
+```
+
+##### Felder Injection
+
+Bei der Felder Injection werden die Abhänigkeiten direkt in die Felder Injected, doch es ist nicht
+empfehlenswert zu benutzen weil diese Art von Injection Reflection benutzt was weniger Effizient
+ist. Hier ein Beispiel:
+
+```java
+public class Store {
+
+  @Autowired
+  private Item item;
+}
+```
+
+[comment]: <> (Kommt noch mehr)
+
+Quelle und weitere Informationen
+Hier: https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring
 
 ### Singleton
 
