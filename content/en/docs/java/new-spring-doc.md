@@ -6,18 +6,38 @@ description: >
   Modul #J11 - Spring Boot
 ---
 
-### Framework:
+### Framework
 
 Ein Framework ist eine Grundlage, auf der Applikationen basieren. Frameworks stellen Funktionen von
 essenzieller Wichtigkeit bereit damit man diese nicht jedes Mal neu schreiben muss.
 
-### Spring Framework
+## Spring Framework
 
 Das Spring Framework gibt uns die Werkzeuge eine einfache Web-Applikation zu erstellen. Mit ihm kann
 man vom Internet zugängliche Schnittstellen machen, mit einer Datenbank verbinden oder Objekte
 Speichern.
 
-### Boot:
+### Module
+
+Für das Spring Framework gibt es mehrere Module welche für verschidene Dinge zuständig sind diese
+sind in Gruppen Aufgeteilt zb. Core, Data Access, Web, etc.
+
+[comment]: <> (Bildlink funktioniert auf website, nicht in md!)
+
+![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png)
+
+Im Core Modul sind alle wichtigen sachen drin zb. dependency injection, etc. Im Beans Modul sind
+sachen drin mit dem Man die Beans (später mehr) machen kann.
+
+Das JDBC Modul bietet so eine art JDBC interface, mit welchem man auf Datenbanken zugreifen kann. Das
+ORM modul bietet zugriff auf Object mapping APIs z.B. JPA, JDO, Hibernate. Mit dem OXM Modul kann man
+auf Objekt/XML speicher implementationen zugreifen.
+
+Das Web Modul ist für die Kommunikation mit der Aussenwelt zuständig
+
+Weitere Informationen sind in der offiziellen Dokumentation: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html
+
+### Boot
 
 Spring Boot ist eine Art Vereinfachung des normalen spring Frameworks. Bei Spring Boot kann mithilfe
 des sogenannten Spring Initialializers Abhängigkeiten wie z.B. Datenbanktreiber oder Software für
@@ -25,7 +45,7 @@ die Cloud-infrastruktur ausgewählt werden. Somit entfällt die manuelle Konfigu
 Jedoch ist Spring Boot kein Ersatz für das Spring Framework, denn es hilft vor allem die
 Konfiguration zu vereinfachen.
 
-### Design-Pattern:
+## Design-Pattern
 
 Design-Patterns sind wiederverwendbare Vorlagen, die wir beim Erstellen von Anwendungen verwenden
 können. Das gute an diesen Design-Patterns ist, dass sie meist nicht spezifisch für eine
@@ -33,7 +53,7 @@ Programmiersprache geschaffen sind, sondern bei vielen verschiedenen Programmier
 werden können. Es gibt 3 verschiedene Design-Patterns: 1: Kreationsmuster 2: Strukturmuster 3:
 Verhaltensmuster
 
-### Inversion of Control:
+### Inversion of Control
 
 «Inversion of Control» ist ein Prinzip, das besagt, dass eine Entität nur das macht, was ihre
 Hauptaufgabe ist. Das heisst, dass jede Entität nur für etwas zuständig ist. Zum Beispiel wenn man
@@ -50,13 +70,13 @@ normalerweise sagt ein Objekt welche Abhängigkeiten es braucht). Das heisst, da
 Abhängigkeit einem Objekt, welches diese Benötigt übergeben muss und dass man die Abhängigkeit nicht
 ins Objekt importieren kann.
 
-### Singleton:
+### Singleton
 
 Wenn wir über Singleton sprechen, geht es um Objekte, die die einzige Instanz von deren Klasse sind.
 Das heisst wenn wir bereits ein Objekt einer bestimmten Klasse benutzen, können wir sicher sein,
 dass es kein weiteres Objekt dieser Klasse hier geben wird.
 
-### HTTP Access-Control:
+### HTTP Access-Control
 
 Die HTTP-Standards um auf Ressourcen zuzugreifen:
 
@@ -68,7 +88,7 @@ DELETE – Ressource löschen
 
 PUT – Updated oder created resourcen, falls diese noch nicht existieren
 
-### Bean:
+### Bean
 
 Bean Objekte sind eigentlich das Rückgrat einer Anwendung. Die Bean Objekte werden instanziiert,
 zusammengebaut und von einem Spring IoC-Container (Inversion of Control) verwaltet. Sie werden mit
@@ -76,7 +96,7 @@ Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
 
 ### Spring Struktur
 
-(Bildlink funktioniert auf website, nicht in md!)
+[comment]: <> (Bildlink funktioniert auf website, nicht in md!)
 
 ![spring-struktur.png](../new-spring-doc/spring-struktur.png)
 
@@ -89,7 +109,7 @@ Control (Verwaltung): Auf dieser Schicht sind alle Klassen mit der Logik.
 Entity (Speicher): Auf dieser Schicht wird alles abgewickelt, was mit Datenspeicherung und Auslesung
 zu tun hat (zb. Mit Repositories).
 
-### Repository:
+### Repository
 
 Eines der am häufigsten verwendeten Design-Patterns (siehe oben) ist das Repository Design-Pattern.
 Es ist ein Interface, das dafür zuständig ist, uns Zugang zu den Daten in der Datenbank zu bereiten.
@@ -322,7 +342,8 @@ Dependency hinzugefügt werden)
 
 `spring.jpa.hibernate.ddl-auto` sagt wie Spring mit der Datenbank umgehen soll zb. `update` sorgt
 dafür das fehlende Spalten oder dergleichen automatisch erstellt werden und es werden nie sachen
-gelöscht, `create-drop` macht die Datenbank und löscht die objekte nachher, `none` beläst die Datenbank 
+gelöscht, `create-drop` macht die Datenbank und löscht die objekte nachher, `none` beläst die
+Datenbank
 
 Hier ist eine beispiel Konfiguration mit einer Mariadb Datenbank:
 
