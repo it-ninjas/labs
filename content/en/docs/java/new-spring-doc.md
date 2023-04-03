@@ -92,13 +92,10 @@ dass es kein weiteres Objekt dieser Klasse hier geben wird.
 
 Die HTTP-Standards um auf Ressourcen zuzugreifen:
 
-GET – Read only access auf eine Ressource erhalten
-
-POST – Neue ressource erstellen
-
-DELETE – Ressource löschen
-
-PUT – Updated oder created resourcen, falls diese noch nicht existieren
+- GET – Ressourcen erhalten
+- POST – Neue ressource erstellen
+- DELETE – Ressource löschen
+- PUT – Ressource aktualisieren oder gegebenenfalls neu erstellen
 
 ### Bean
 
