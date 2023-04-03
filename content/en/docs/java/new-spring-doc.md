@@ -29,15 +29,27 @@ sind in Gruppen Aufgeteilt zb. Core, Data Access, Web, etc.
 Im Core Modul sind alle wichtigen sachen drin zb. dependency injection, etc. Im Beans Modul sind
 sachen drin mit dem Man die Beans (später mehr) machen kann.
 
-Das JDBC Modul bietet so eine art JDBC interface, mit welchem man auf Datenbanken zugreifen kann. Das
-ORM modul bietet zugriff auf Object mapping APIs z.B. JPA, JDO, Hibernate. Mit dem OXM Modul kann man
+Das JDBC Modul bietet so eine art JDBC interface, mit welchem man auf Datenbanken zugreifen kann.
+Das
+ORM modul bietet zugriff auf Object mapping APIs z.B. JPA, JDO, Hibernate. Mit dem OXM Modul kann
+man
 auf Objekt/XML speicher implementationen zugreifen.
 
 Das Web Modul ist für die Kommunikation mit der Aussenwelt zuständig
 
-Weitere Informationen sind in der offiziellen Dokumentation: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html
+Weitere Informationen sind in der offiziellen
+Dokumentation: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html
 
-### Boot
+### Spring Projekte
+
+Es gibt verschiedenen Spring Projekte, welche alle auf dem Spring Framework basieren und es einem
+Erlauben noch mehr mit Spring zu machen es gibt z.B. spring-security welche Sicherheit aspekte
+bringt oder spring-shell welches ein cli bereitstellt oder spring-boot mehr dazu im folgenden
+absatz.
+
+Weitere Projekte und infos dazu hier: https://github.com/spring-projects
+
+#### Boot
 
 Spring Boot ist eine Art Vereinfachung des normalen spring Frameworks. Bei Spring Boot kann mithilfe
 des sogenannten Spring Initialializers Abhängigkeiten wie z.B. Datenbanktreiber oder Software für
