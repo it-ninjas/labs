@@ -6,6 +6,23 @@ description: >
   Modul #J11 - Spring Boot
 ---
 
+#### Ziele
+
+* Ich weiss, was ein Java-Framework ist.
+* Ich kenne einige Vor- und Nachteile beim Verwenden eines Java-Frameworks.
+* Ich kenne ein paar Module des Spring-Frameworks (z.B. Core, Data-Access, Web usw.) und weiss, welche Aufgaben sie erfüllen.
+* Ich kenne die wichtigste Spring-Projekte (z.B. Spring-Boot, Spring-Cloud, Spring-Security usw.) und weiss wofür ich diese einsetzen kann.
+* Ich weiss, was "Inversion of Control" (IoC) bedeutet und kenne dessen Vorteile.
+* Ich weiss, was "Dependency-Injection" (DI) ist und kenne die verschiedene Möglichkeiten (z.B. Constructor-Based, Setter-Based, Field-Based) um DI in Spring zu benutzen.
+* Ich weiss, was ein "Spring-Bean" ist und wie es in Spring erzeugt und verwendet wird.
+* Ich kenne die verschiedene Scopes eines "Spring-Beans" (z.B. Singleton, Session, Application usw.).
+* Ich kenne die, am häufigsten verwendeten, Spring-Bean Annotationen (z.B. @Configuration, @Component, @Repository, @Controller usw.), wie ich diese einsetze und welchem Zweck sie dienen.
+* Ich weiss, was "Wiring" ist und wie es in Spring gemacht wird.
+* Ich weiss, wofür Properties in Spring verwendet werden und wie ich Properties in Spring setzen kann.
+* Ich weiss, wozu Spring-Profiles verwendet werden und wie ich sie einsetzen kann.
+
+---
+
 ### Framework
 
 Ein Framework ist eine Grundlage, auf der Applikationen basieren. Frameworks stellen Funktionen von
@@ -77,25 +94,37 @@ Das Spring Framework benutzt das «Inversion of Control» Prinzip.
 
 ### Dependency Injection
 
-Eine Dependency oder eine Abhängigkeit (Service) wird in ein Objekt (Client) weitergegeben (
-normalerweise sagt ein Objekt welche Abhängigkeiten es braucht). Das heisst, dass man die
+Eine Dependency oder eine Abhängigkeit (Service) wird in ein Objekt (Client) weitergegeben
+(Normalerweise sagt ein Objekt welche Abhängigkeiten es braucht). Das heisst, dass man die
 Abhängigkeit einem Objekt, welches diese Benötigt übergeben muss und dass man die Abhängigkeit nicht
 ins Objekt importieren kann.
+
+In Spring gibt es einen sogenannten InversionOfControl container, in dem ist z.B. hinterlegt wie und
+wo die sachen Injected werden.
+
+Man kann diesen Container auf mehreren arten machen, eine Art wäre so. In diesem Fall wäre die
+Container Datei applicationContext.xml
+
+```Java
+ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+```
+
+In Spring kann man Abhängigkeiten mit verschiedenen Möglichkeiten Injecten, mit Konstrukteure, settern und Feldern
 
 ### Singleton
 
 Wenn wir über Singleton sprechen, geht es um Objekte, die die einzige Instanz von deren Klasse sind.
-Das heisst wenn wir bereits ein Objekt einer bestimmten Klasse benutzen, können wir sicher sein,
+Das heisst, wenn wir bereits ein Objekt einer bestimmten Klasse benutzen, können wir sicher sein,
 dass es kein weiteres Objekt dieser Klasse hier geben wird.
 
 ### HTTP Access-Control
 
 Die HTTP-Standards um auf Ressourcen zuzugreifen:
 
-- GET – Ressourcen erhalten
-- POST – Neue ressource erstellen
-- DELETE – Ressource löschen
-- PUT – Ressource aktualisieren oder gegebenenfalls neu erstellen
+* GET – Ressourcen erhalten
+* POST – Neue ressource erstellen
+* DELETE – Ressource löschen
+* PUT – Ressource aktualisieren oder gegebenenfalls neu erstellen
 
 ### Bean
 
