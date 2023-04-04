@@ -112,12 +112,12 @@ Man kann diesen Container auf mehreren arten machen, in unserem Fall können wir
 Klassen Lösen.
 
 In Spring kann man Abhängigkeiten mit verschiedenen Möglichkeiten Injecten, mit Konstrukteure,
-settern und Feldern
+settern und Feldern.
 
 ##### Konstruktor Injection
 
 Wenn wir eine Konstruktor Injection machen fungiert jedes Argument als eine Abhängigkeit. Ein
-Beispiel Sieht so aus:
+Beispiel sieht so aus:
 
 ```java
 
@@ -167,6 +167,55 @@ ist. Hier ein Beispiel:
 public class Store {
 
   @Autowired
+  private Item item;
+}
+```
+
+##### Automatische Abhängigkeiten Injection (Autowired)
+
+Spring kann Abhängigkeiten auch automatisch erkennen und diese einsetzen es gibt vier verschiedenen
+Modi
+
+* `no` Standartwert, hier wird kein Autowirering gemacht.
+* `byName` Hier werden die Abhängigkeiten dem Namen nach eingesetzt.
+* `byType` Hier werden die Abhängigkeiten dem Typ nach eingesetzt, gibt es mehrere Beans eines Typus
+  gibt es einen Fehler.
+* `consturctor` Hier werden die Abhängigkeiten der Konstruktoren Argumente nach eingesetzt, das
+  heist, dass Spring nach Beans sucht mit denselben Typen wie die Konstruktoren Argumente.
+
+Hier ist ein Beispiel mit `byType`:
+
+```java
+
+@Bean(autowire = Autowire.BY_TYPE)
+public class Store {
+
+  private Item item;
+
+  public setItem(Item item) {
+    this.item = item;
+  }
+}
+```
+
+Mit der `@Aurowired` Annotation können wir auch mit Type einsetzten:
+
+```java
+public class Store {
+
+  @Autowired
+  private Item item;
+}
+```
+
+Wenn es mehr als eine Bean des gleichen typen gibt dann kann man mit `@Qualifier` einen namen
+Bestimmen:
+
+```java
+public class Store {
+
+  @Autowired
+  @Qualifier("item1")
   private Item item;
 }
 ```
@@ -288,8 +337,8 @@ public class OrderResource {
 }
 ```
 
-Dies ist eine rest resource und sie wird definiert mit der Annotation @RestController. Die
-Annotation @RequestMapping("/orders") sagt, dass alle calls auf Orders diese Rest Ressource
+Dies ist eine rest resource und sie wird definiert mit der Annotation `@RestController`. Die
+Annotation `@RequestMapping("/orders")` sagt, dass alle calls auf Orders diese Restressource
 verwenden sollen.
 
 Schauen wir uns dies doch ein bisschen genauer an:
@@ -301,9 +350,9 @@ public Order findById(@PathVariable Long id){
     }
 ```
 
-Mit der @GetMapping annotation bestimmen wir, dass alle Anfragen auf dem orders/id pfad von der
-annotierten Methode gehandelt werden. @PathVariable bestimmt, dass die ID als path variable
-angegeben wird. Das bedeutet, dass ein call auf /orders/12 das gleiche wie order findByID(12).
+Mit der `@GetMapping` annotation bestimmen wir, dass alle Anfragen auf dem orders/id pfad von der
+annotierten Methode gehandelt werden. `@PathVariable` bestimmt, dass die ID als path variable
+angegeben wird. Das bedeutet, dass ein call auf `/orders/12` das gleiche wie order `findByID(12)`.
 
 ```java
 @PutMapping("/{id}")
@@ -312,12 +361,12 @@ public Order update(@PathVariable Long id,@RequestBody Order order){
     }
 ```
 
-Mit @RequestBody bestimmen wir, dass die Antwort als Body Part der Request kommt.
+Mit `@RequestBody` bestimmen wir, dass die Antwort als Body Part der Request kommt.
 
 ### Control Layer
 
 Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäft Logiken. Auf der
-Technischen Ebene ist der Control Layer die grundlegendste und die wenigste interessante Schicht.
+technischen Ebene ist der Control Layer die grundlegendste und die wenigste interessante Schicht.
 Der Control Layer könnte wie folgt aussehen:
 
 ```java
@@ -356,9 +405,9 @@ public class OrderService {
 }
 ```
 
-Diese Klasse ist recht einfach aufgebaut, da sie nur zwei Annotationen, nämlich @Service und
-@Transactional beinhaltet. Die @Service annotation markiert beans als holder
-der business logic. @Transactional sagt einfach, dass alle Funktionen in der Klasse in einer
+Diese Klasse ist recht einfach aufgebaut, da sie nur zwei Annotationen, nämlich `@Service` und
+`@Transactional` beinhaltet. Die @Service annotation markiert beans als holder
+der business logic. `@Transactional` sagt einfach, dass alle Funktionen in der Klasse in einer
 einzigen Transaktion ausgeführt werden sollen. Das musst du vorläufig aber noch nicht verstehen.
 Durch die sogenannte constructor injection wird hier auch noch der bean OrderRepository injected.
 
@@ -371,8 +420,8 @@ diese Enitys
 Auch hier wird spring mit Annotationen gesagt was es machen soll die `@Entity` sagt, dass es sich
 bei dieser Klasse um eine Entity geht.
 
-Die `@Table` Annotation sagt auf welcher tabelle, in der Datenbank, diese Klasse gespeichert wird (
-Schreibweise `@Table(name = "tabelenNamen")`)
+Die `@Table` Annotation sagt auf welcher tabelle, in der Datenbank, diese Klasse gespeichert wird
+(Schreibweise `@Table(name = "tabelenNamen")`)
 
 Die `@GeneratedValue` Annotation besagt das diese werte in der Tabelle gespeichert werden.
 
