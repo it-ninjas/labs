@@ -229,6 +229,10 @@ Wenn wir über Singleton sprechen, geht es um Objekte, die die einzige Instanz v
 Das heisst, wenn wir bereits ein Objekt einer bestimmten Klasse benutzen, können wir sicher sein,
 dass es kein weiteres Objekt dieser Klasse hier geben wird.
 
+Hier ein Beispielbild:
+
+![beispielBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/singleton.png)
+
 ### HTTP Access-Control
 
 Die HTTP-Standards um auf Ressourcen zuzugreifen:
@@ -264,6 +268,46 @@ public class AppConfig {
 [Hier ist die offizielle Bean
 Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition)  
 [Hier ist die offizielle `@Bean` Annotation Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation)
+
+##### Scope
+
+Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird: hier eine Liste der Scopes:
+
+| Scope       | Beschreibung                                                                               |
+|-------------|--------------------------------------------------------------------------------------------|
+| singleton   | (Standard) Macht nur **eine** Bean Instanz in jedem IoC container. Mehr [Hier](#singleton) |
+| prototype   | Macht eine unbegrenzte anzahl Bean Instanzen.                                              |
+| request     | Macht für jeden HTTP request eine Bean Instanz.                                            |
+| session     | Macht für jede HTTP `Session` eine Bean Instanz.                                           |
+| application | Macht für jeden `ServetContext` eine Bean Instanz.                                         |
+| websocket   | Macht für jeden `WebSocket` eine Bean Instanz.                                             |
+
+Die beiden wichtigsten Scopes sind `singleton` und `prototype`
+
+Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird, mehr
+dazu [Hier](#singleton)
+
+Prototype besagt, dass für jede Abhängigkeit ein Neues Bean erstellt wird, hier ein Bild:
+
+![PrototpypeScopeBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/prototype.png)
+
+Der Scope wird durch die `@Scope` Annotation festgelegt, hier ein Beispiel:
+
+```java
+
+@Configuration
+public class MyConfiguration {
+
+  @Bean
+  @Scope("prototype")
+  public Encryptor encryptor() {
+    // ...
+  }
+}
+```
+
+Weitere Information
+hier: https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes
 
 ## Spring Struktur
 
