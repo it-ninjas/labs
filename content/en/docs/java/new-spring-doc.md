@@ -20,8 +20,9 @@ description: >
 * Ich weiss, was ein "Spring-Bean" ist und wie es in Spring erzeugt und verwendet wird.
 * Ich kenne die verschiedene Scopes eines "Spring-Beans" (z.B. Singleton, Session, Application
   usw.).
-* Ich kenne die, am häufigsten verwendeten, Spring-Bean Annotationen (z.B. @Configuration,
-  @Component, @Repository, @Controller usw.), wie ich diese einsetze und welchem Zweck sie dienen.
+* Ich kenne die, am häufigsten verwendeten, Spring-Bean Annotationen (z.B. `@Configuration`,
+  `@Component`, `@Repository`, `@Controller` usw.), wie ich diese einsetze und welchem Zweck sie
+  dienen.
 * Ich weiss, was "Wiring" ist und wie es in Spring gemacht wird.
 * Ich weiss, wofür Properties in Spring verwendet werden und wie ich Properties in Spring setzen
   kann.
@@ -250,7 +251,9 @@ Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
 
 Die Beans können als xml oder Java config erstellt werden (wie sonst auch) der einfachheit halber
 werden wir Java beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
-einer Methode welche in einer `@Confuguration` Klasse (oder ein Interface welches davon erbt) ist.
+einer Methode welche in einer `@Confuguration` Klasse (oder ein Interface welches davon erbt) ist. (
+Beans können auch in einer `@Component` Klasse deklariert werden, wenn sie nicht von anderen Beans
+abhängig sind)  
 Hier ein Beispiel:
 
 ```Java
@@ -323,6 +326,14 @@ Control (Verwaltung): Auf dieser Schicht sind alle Klassen mit der Logik.
 
 Entity (Speicher): Auf dieser Schicht wird alles abgewickelt, was mit Datenspeicherung und Auslesung
 zu tun hat (zb. Mit Repositories).
+
+Spring hat verschiedene annotationen für verschiedene Aufgaben mit der `@Component` wird eine
+generischer Spring Komponente dargestellt und alle anderen Annotationen sind auch eine Komponente
+sie grenzen nur ab was genau sie machen. In der `@Confifuration` Annotation werden dinge für die
+Konfiguration definiert. In der `@Repository` Annotation werden dinge welche mit datenspeicherung zu
+tun haben definiert. In der `@Controler` Annotation werden dinge welche mit der Kommunikation mit
+der Aussenwelt definiert. In der `@Service` Annotation werden dinge welche mit der Controllogik zu
+tun haben definiert.
 
 ### Repository
 
@@ -546,7 +557,7 @@ resources Ordner)
 Es gibt 5 wichtige Konfigurationen
 
 `spring.datasource.url` gibt die URL der Datenbank an (Format:
-jdbc:[datenbanktyp]://[server]:[port]/[datenbank]
+`jdbc:[datenbanktyp]://[server]:[port]/[datenbank]`)
 
 `spring.datasource.username` gibt den benutzername der Datenbank an
 
