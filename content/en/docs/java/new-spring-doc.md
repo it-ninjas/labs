@@ -43,7 +43,7 @@ Speichern.
 ### Module
 
 Für das Spring Framework gibt es mehrere Module welche für verschidene Dinge zuständig sind diese
-sind in Gruppen Aufgeteilt zb. Core, Data Access, Web, etc.
+sind in Gruppen aufgeteilt z.B. Core, Data Access, Web, etc.
 
 [comment]: <> (Bildlink funktioniert auf website, nicht in md!)
 
@@ -220,8 +220,6 @@ public class Store {
 }
 ```
 
-[comment]: <> (Kommt noch mehr)
-
 Quelle und weitere Informationen
 Hier: https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring
 
@@ -246,7 +244,28 @@ Bean Objekte sind eigentlich das Rückgrat einer Anwendung. Die Bean Objekte wer
 zusammengebaut und von einem Spring IoC-Container (Inversion of Control) verwaltet. Sie werden mit
 Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
 
-### Spring Struktur
+Die Beans können als xml oder Java config erstellt werden (wie sonst auch) der einfachheit halber
+werden wir Java beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
+einer Methode welche in einer `@Confuguration` Klasse (oder ein Interface welches davon erbt) ist.
+Hier ein Beispiel:
+
+```Java
+
+@Configuration
+public class AppConfig {
+
+  @Bean
+  public TransferServiceImpl transferService() {
+    return new TransferServiceImpl();
+  }
+}
+```
+
+[Hier ist die offizielle Bean
+Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition)  
+[Hier ist die offizielle `@Bean` Annotation Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation)
+
+## Spring Struktur
 
 [comment]: <> (Bildlink funktioniert auf website, nicht in md!)
 
