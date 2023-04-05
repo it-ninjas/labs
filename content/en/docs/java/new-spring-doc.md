@@ -43,14 +43,14 @@ Speichern.
 
 ### Module
 
-Für das Spring Framework gibt es mehrere Module welche für verschidene Dinge zuständig sind diese
+Für das Spring Framework gibt es mehrere Module welche für verschiedene Dinge zuständig sind diese
 sind in Gruppen aufgeteilt z.B. Core, Data Access, Web, etc.
 
 [comment]: <> (Bildlink funktioniert auf website, nicht in md!)
 
 ![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png)
 
-Im Core Modul sind alle wichtigen sachen drin zb. dependency injection, etc. Im Beans Modul sind
+Im Core Modul sind alle wichtigen sachen drin z.B. dependency injection, etc. Im Beans Modul sind
 sachen drin mit dem Man die Beans (später mehr) machen kann.
 
 Das JDBC Modul bietet so eine art JDBC interface, mit welchem man auf Datenbanken zugreifen kann.
@@ -74,7 +74,7 @@ Weitere Projekte und infos dazu hier: https://github.com/spring-projects
 #### Boot
 
 Spring Boot ist eine Art Vereinfachung des normalen spring Frameworks. Bei Spring Boot kann mithilfe
-des sogenannten Spring Initialializers Abhängigkeiten wie z.B. Datenbanktreiber oder Software für
+des sogenannten Spring Initializers Abhängigkeiten wie z.B. Datenbanktreiber oder Software für
 die Cloud-infrastruktur ausgewählt werden. Somit entfällt die manuelle Konfiguration des Projektes.
 Jedoch ist Spring Boot kein Ersatz für das Spring Framework, denn es hilft vor allem die
 Konfiguration zu vereinfachen.
@@ -82,7 +82,7 @@ Konfiguration zu vereinfachen.
 ## Design-Pattern
 
 Design-Patterns sind wiederverwendbare Vorlagen, die wir beim Erstellen von Anwendungen verwenden
-können. Das gute an diesen Design-Patterns ist, dass sie meist nicht spezifisch für eine
+können. Das Gute an diesen Design-Patterns ist, dass sie meist nicht spezifisch für eine
 Programmiersprache geschaffen sind, sondern bei vielen verschiedenen Programmiersprachen angewendet
 werden können. Es gibt 3 verschiedene Design-Patterns: 1: Kreationsmuster 2: Strukturmuster 3:
 Verhaltensmuster
@@ -90,7 +90,7 @@ Verhaltensmuster
 ### Inversion of Control
 
 «Inversion of Control» ist ein Prinzip, das besagt, dass eine Entität nur das macht, was ihre
-Hauptaufgabe ist. Das heisst, dass jede Entität nur für etwas zuständig ist. Zum Beispiel wenn man
+Hauptaufgabe ist. Das heisst, dass jede Entität nur für etwas zuständig ist. Zum Beispiel, wenn man
 mit dem Auto zur Arbeit fährt, ist man für das Fahren und das Arbeiten zuständig, würde man aber ein
 Taxi bestellen ist der Taxifahrer fürs Fahren und du fürs Arbeiten zuständig. Die Zuständigkeiten
 sind also getrennt.
@@ -115,8 +115,8 @@ settern und Feldern.
 
 ##### Konstruktor Injection
 
-Wenn wir eine Konstruktor Injection machen fungiert jedes Argument als eine Abhängigkeit. Ein
-Beispiel sieht so aus:
+Bei einer Konstruktor Injection fungiert jedes Argument als eine Abhängigkeit.  
+Ein Beispiel sieht so aus:
 
 ```java
 
@@ -157,7 +157,7 @@ public Store store(){
 
 ##### Felder Injection
 
-Bei der Felder Injection werden die Abhänigkeiten direkt in die Felder Injected, doch es ist nicht
+Bei der Felder Injection werden die Abhängigkeiten direkt in die Felder Injected, doch es ist nicht
 empfehlenswert zu benutzen, weil diese Art von Injection Reflection benutzt was weniger Effizient
 ist.  
 Hier ein Beispiel:
@@ -207,7 +207,7 @@ public class Store {
 }
 ```
 
-Wenn es mehr als eine Bean des gleichen typen gibt dann kann man mit `@Qualifier` einen namen
+Wenn es mehr als eine Bean des gleichen typen gibt, dann kann man mit `@Qualifier` einen namen
 Bestimmen:
 
 ```java
@@ -248,7 +248,7 @@ Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
 
 Die Beans können als xml oder Java config erstellt werden (wie sonst auch) der einfachheit halber
 werden wir Java beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
-einer Methode welche in einer `@Confuguration` Klasse (oder ein Interface welches davon erbt) ist.
+einer Methode, welche in einer `@Confuguration` Klasse ist (oder ein Interface welches davon erbt).
 (Beans können auch in einer `@Component` Klasse deklariert werden, wenn sie nicht von anderen Beans
 abhängig sind).  
 Hier ein Beispiel:
@@ -306,7 +306,7 @@ dazu [Hier](#singleton)
 Prototype besagt, dass für jede Abhängigkeit ein Neues Bean erstellt wird.  
 Hier ein Bild:
 
-![PrototpypeScopeBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/prototype.png)
+![PrototypeScopeBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/prototype.png)
 
 Der Scope wird durch die `@Scope` Annotation festgelegt.  
 Hier ein Beispiel:
@@ -342,9 +342,9 @@ Control (Verwaltung): Auf dieser Schicht sind alle Klassen mit der Logik.
 Entity (Speicher): Auf dieser Schicht wird alles abgewickelt, was mit Datenspeicherung und Auslesung
 zu tun hat (zb. Mit Repositories).
 
-Spring hat verschiedene annotationen für verschiedene Aufgaben mit der `@Component` wird eine
-generischer Spring Komponente dargestellt und alle anderen Annotationen sind auch eine Komponente
-sie grenzen nur ab was genau sie machen. In der `@Confifuration` Annotation werden dinge für die
+Spring hat verschiedene Annotationen für verschiedene Aufgaben mit der `@Component` Annotation wird
+eine generischer Spring Komponente dargestellt und alle anderen Annotationen sind auch Komponenten.
+Sie grenzen nur ab, was genau sie machen. In der `@Confifuration` Annotation werden dinge für die
 Konfiguration definiert. In der `@Repository` Annotation werden dinge welche mit datenspeicherung zu
 tun haben definiert. In der `@Controler` Annotation werden dinge welche mit der Kommunikation mit
 der Aussenwelt definiert. In der `@Service` Annotation werden dinge welche mit der Controllogik zu
@@ -383,7 +383,7 @@ tun.
 
 ### Boundary Layer
 
-In diesem Layer definieren wir unsere REST Resourcen. Hier ein Beispiel einer Order Klasse in einem
+In diesem Layer definieren wir unsere REST Ressourcen. Hier ein Beispiel einer Order Klasse in einem
 Webshop:
 
 ```java
@@ -503,8 +503,8 @@ Durch die sogenannte constructor injection wird hier auch noch der bean OrderRep
 ### Entity Layer
 
 Der Entity Layer ist für die Datenspeicherung zuständig, auf diesem Layer gibt es zwei hauptbestand
-Teile Entity und Repository, Entitys sind klassen welche gespeichert werden, Repositorys verwalten
-diese Enitys
+Teile Entity und Repository, Entities sind klassen welche gespeichert werden, Repositorys verwalten
+diese Entities
 
 Auch hier wird spring mit Annotationen gesagt was es machen soll die `@Entity` sagt, dass es sich
 bei dieser Klasse um eine Entity geht.
@@ -547,7 +547,7 @@ public class Order {
 }
 ```
 
-Damit wir auf die Daten zugreifen können brauchen wir ein Repository dazu können wir ein Interface
+Damit wir auf die Daten zugreifen können, brauchen wir ein Repository dazu können wir ein Interface
 machen welches `CrudRepository` extended machen, das `CrudRepository` hat schon viele methoden
 implementiert deshalb müssen wir keine eigenen implementieren
 
@@ -563,7 +563,8 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
 Du fragst dich vielleicht wo die Daten gespeichert werden, normalerweise macht Spring eine temporäre
 Datenbank, diese wird nach abschluss des Programmes jedoch wieder gelöscht. Wenn man die Daten nicht
-jedes mal neu machen will kann man sie in einer "Richtigen" Datenbank speichern, dazu müssen wir die
+jedes Mal neu machen will, kann man sie in einer "Richtigen" Datenbank speichern, dazu müssen wir
+die
 Spring Konfiguration ändern.
 
 Spring lädt die Konfiguration von einer `application.properies` Datei (diese befindet sich im
@@ -581,9 +582,9 @@ Es gibt 5 wichtige Konfigurationen
 `spring.datasource.driver-class-name` gibt an wo der Datenbank treiber ist (muss als maven
 Dependency hinzugefügt werden)
 
-`spring.jpa.hibernate.ddl-auto` sagt wie Spring mit der Datenbank umgehen soll zb. `update` sorgt
+`spring.jpa.hibernate.ddl-auto` sagt wie Spring mit der Datenbank umgehen soll, `update` z.B. sorgt
 dafür das fehlende Spalten oder dergleichen automatisch erstellt werden und es werden nie sachen
-gelöscht, `create-drop` macht die Datenbank und löscht die objekte nachher, `none` beläst die
+gelöscht, `create-drop` macht die Datenbank und löscht die objekte nachher, `none` belässt die
 Datenbank
 
 Hier ist eine beispiel Konfiguration mit einer Mariadb Datenbank:
@@ -604,7 +605,7 @@ laden, wenn das Dev Profil aktiv ist.
 
 Mit der `@Profile` Annotation kann man bei Klassen oder Methoden (Beans) sagen, ob sie bei einem
 Profil läuft. Das standard Profil ist `default`, wenn irgendein Profil aktiv ist, wird das `default`
-Profil deaktiviert  
+Profil deaktiviert.  
 Hier ist ein Beispiel:
 
 ```java
@@ -652,7 +653,7 @@ public class Demo {
 
 In diesem Beispiel werden die Methoden angesteuert, wenn das Profil `default` aktiv ist, wird
 die `defaultString` Methode geladen, wenn das Profil `test` oder `test2` aktiv ist, wird
-die `testString` Methode geladen, wenn keines der obengenanten Profile aktiv ist, wird
+die `testString` Methode geladen, wenn keines der obengenannten Profile aktiv ist, wird
 die `rewoltString` Methode geladen.
 
 In Spring kann man Mehrere Profile aktivieren. Die Profile können mit dem Program gesetzt werden.  
