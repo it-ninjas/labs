@@ -54,10 +54,8 @@ Im Core Modul sind alle wichtigen sachen drin zb. dependency injection, etc. Im 
 sachen drin mit dem Man die Beans (später mehr) machen kann.
 
 Das JDBC Modul bietet so eine art JDBC interface, mit welchem man auf Datenbanken zugreifen kann.
-Das
-ORM modul bietet zugriff auf Object mapping APIs z.B. JPA, JDO, Hibernate. Mit dem OXM Modul kann
-man
-auf Objekt/XML speicher implementationen zugreifen.
+Das ORM modul bietet zugriff auf Object mapping APIs z.B. JPA, JDO, Hibernate. Mit dem OXM Modul
+kann man auf Objekt/XML speicher implementationen zugreifen.
 
 Das Web Modul ist für die Kommunikation mit der Aussenwelt zuständig
 
@@ -139,15 +137,14 @@ public class AppConfig {
 
 Die `@Configuration` Annotation besagt das diese Klasse die Konfiguration beinhalten
 
-Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt, wenn wir keinen Bean namen
-angeben wird der Methoden namen genommen. (Im Singleton Scope wird überprüft, dass es nur eins gibt,
-was bein prototype nicht der Fall ist)
+Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu [Hier](#bean)
 
 ##### Setter Injection
 
 Bei der Setter basierten Injection macht man Konstruktoren ohne Argumente, diese Injection passiert
 dann mit dem Setter. Es wird empfohlen obligatorische Abhängigkeiten mit Konstruktor Injections zu
-machen während man optionale Abhängigkeiten mit Setter Injections macht. Hier ein Beispiel:
+machen während man optionale Abhängigkeiten mit Setter Injections macht.  
+Hier ein Beispiel:
 
 ```java
 @Bean
@@ -161,8 +158,9 @@ public Store store(){
 ##### Felder Injection
 
 Bei der Felder Injection werden die Abhänigkeiten direkt in die Felder Injected, doch es ist nicht
-empfehlenswert zu benutzen weil diese Art von Injection Reflection benutzt was weniger Effizient
-ist. Hier ein Beispiel:
+empfehlenswert zu benutzen, weil diese Art von Injection Reflection benutzt was weniger Effizient
+ist.  
+Hier ein Beispiel:
 
 ```java
 public class Store {
@@ -228,8 +226,7 @@ Hier: https://www.baeldung.com/inversion-control-and-dependency-injection-in-spr
 
 Wenn wir über Singleton sprechen, geht es um Objekte, die die einzige Instanz von deren Klasse sind.
 Das heisst, wenn wir bereits ein Objekt einer bestimmten Klasse benutzen, können wir sicher sein,
-dass es kein weiteres Objekt dieser Klasse hier geben wird.
-
+dass es kein weiteres Objekt dieser Klasse hier geben wird.  
 Hier ein Beispielbild:
 
 ![beispielBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/singleton.png)
@@ -251,9 +248,9 @@ Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
 
 Die Beans können als xml oder Java config erstellt werden (wie sonst auch) der einfachheit halber
 werden wir Java beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
-einer Methode welche in einer `@Confuguration` Klasse (oder ein Interface welches davon erbt) ist. (
-Beans können auch in einer `@Component` Klasse deklariert werden, wenn sie nicht von anderen Beans
-abhängig sind)  
+einer Methode welche in einer `@Confuguration` Klasse (oder ein Interface welches davon erbt) ist.
+(Beans können auch in einer `@Component` Klasse deklariert werden, wenn sie nicht von anderen Beans
+abhängig sind).  
 Hier ein Beispiel:
 
 ```Java
@@ -264,6 +261,22 @@ public class AppConfig {
   @Bean
   public TransferServiceImpl transferService() {
     return new TransferServiceImpl();
+  }
+}
+```
+
+Normalerweise werden Beans nach ihren methoden benannt, man kann den Namen auch selber Festlegen mit
+der `@Bean("meinName")` Annotation.  
+Hier ein Beispiel:
+
+```java
+
+@Configuration
+public class AppConfig {
+
+  @Bean("myThing")
+  public Thing thing() {
+    return new Thing();
   }
 }
 ```
@@ -290,11 +303,13 @@ Die beiden wichtigsten Scopes sind `singleton` und `prototype`
 Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird, mehr
 dazu [Hier](#singleton)
 
-Prototype besagt, dass für jede Abhängigkeit ein Neues Bean erstellt wird, hier ein Bild:
+Prototype besagt, dass für jede Abhängigkeit ein Neues Bean erstellt wird.  
+Hier ein Bild:
 
 ![PrototpypeScopeBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/prototype.png)
 
-Der Scope wird durch die `@Scope` Annotation festgelegt, hier ein Beispiel:
+Der Scope wird durch die `@Scope` Annotation festgelegt.  
+Hier ein Beispiel:
 
 ```java
 
@@ -580,3 +595,81 @@ spring.datasource.password=1234
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 ```
+
+### Profile
+
+In spring kann man verschiedene Profile erstellen dammit kann man sicherstellen das Bestimmte dinge
+nur dann gemacht werden, wenn man sie Braucht z.B. Die Datenbank soll zum Beispiel nur Beispieldaten
+laden, wenn das Dev Profil aktiv ist.
+
+Mit der `@Profile` Annotation kann man bei Klassen oder Methoden (Beans) sagen, ob sie bei einem
+Profil läuft. Das standard Profil ist `default`, wenn irgendein Profil aktiv ist, wird das `default`
+Profil deaktiviert  
+Hier ist ein Beispiel:
+
+```java
+
+@Component
+@Profile("test")
+public class TestString {
+
+  @Bean
+  public String test() {
+    return "test";
+  }
+}
+```
+
+Im Beispiel lädt die Komponente `TestString` nur wenn das Profil `test` aktiv ist.  
+Bei der `@Profile` Annotation kann man auch logische operatoren wie nicht (`!`), und (`&`) und
+oder (`|`) benutzen.  
+Hier ein Beispiel:
+
+```java
+
+@Component
+public class Demo {
+
+  @Bean
+  @Profile("default")
+  public String defaultString() {
+    return "Standard Profil";
+  }
+
+  @Bean
+  @Profile("test | test2")
+  public String testString() {
+    return "Test Test";
+  }
+
+  @Bean
+  @Profile("!(default | test | test2)")
+  public String rewoltString() {
+    return "None of the above";
+  }
+}
+```
+
+In diesem Beispiel werden die Methoden angesteuert, wenn das Profil `default` aktiv ist, wird
+die `defaultString` Methode geladen, wenn das Profil `test` oder `test2` aktiv ist, wird
+die `testString` Methode geladen, wenn keines der obengenanten Profile aktiv ist, wird
+die `rewoltString` Methode geladen.
+
+In Spring kann man Mehrere Profile aktivieren. Die Profile können mit dem Program gesetzt werden.  
+Beispiel hier:
+
+```java
+AnnotationConfigApplicationContext ctx=new AnnotationConfigApplicationContext();
+        ctx.getEnvironment().setActiveProfiles("test");
+        ctx.register(SomeConfig.class,StandaloneDataConfig.class,JndiDataConfig.class);
+        ctx.refresh();
+```
+
+Die Profile können auch über die `spring.profiles.active` Property aktiviert werden.
+Beispiel hier:
+
+```properties
+spring.profiles.active="test"
+```
+
+Bei beiden möglichkeiten wurde das Profil `test` aktiviert. 
