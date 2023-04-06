@@ -22,14 +22,29 @@ Bei Bedarf kannst du das Model erweitern.
 
 ## Auftrag (Smadar -> Ready for Review)
 Die Aufgaben in diesem Lab führen dich Schritt für Schritt beim Umsetzen einer Webanwendung mit Spring Boot, welche ein Notenverwaltungssystem entspricht.
-Am Ende dieses Auftrags wird deine Webanwendung zwei Rollen von Benutzern unterstützen:
-* "Anwender"
-* "Administrator"
+Die folgenden Abschnitte listen die grobe funktionale (was soll die Anwendung können) und die nicht funktionale (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung.
+Genauere Details zu den Anforderungen wie auch die Akzeptanzkriterien werden in den entsprechenden Kapiteln aufgeführt.
 
-Ein/Eine Anwender:in kann Information zu seiner/ihrer Fächer und Noten anschauen und in jedem Fach die Noten verwalten (hinzufügen, bearbeiten, löschen).
-Ein/Eine Administrator:in kann zusätzlich die Fächer bearbeiten (hinzufügen, bearbeiten, löschen).
-Die genauen Anforderungen und Akzeptanzkriterien werden in den nächsten Kapiteln detailliert aufgeführt. 
+### Funktionale Anforderungen
+* Die Anwendung unterstützt zwei unterschiedlichen Benutzerrollen: "Student" und "Administrator"
+* Eine Person mit der Rolle "Student", kann:
+  * Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)
+  * Alle Fächer und deren Durchschnittsnote auflisten
+  * Für ein bestimmtes Fach:
+    * Alle Noten und die Durchschnittsnote des Fachs auflisten
+    * Eine neue Note hinzufügen
+    * Eine bestehende Note ändern
+    * Eine bestehende Note löschen
+* Eine Person mit der Rolle "Administrator", kann (zusätzlich):
+  * Neue Fächer hinzufügen
+  * Bestehende Fächer bearbeiten
+  * Bestehende Fächer löschen
 
+### Nicht funktionale Anforderungen (NFAs)
+* Die Package-Struktur der Anwendung entspricht die Capabilities der Anwendung (Beispiele für Capabilities: Fächer-Bewirtschaftung, Rollen-Bewirtschaftung, Noten-Bewirtschaftung).
+* Eine Klasse hat eine einzige Aufgabe (Single Responsibility Prinzip)
+* Der direkte Zugriff auf der internen Struktur einer Klasse ist verboten (Datenkapselung)
+* Jede Klasse ist getestet
 
 ## Schritt 1: Maven-Projekt erstellen / pom.xml (Smadar -> Ready for Review)
 In diesem ersten Schritt wirst du eine Spring Boot Anwendung erstellen und ausführen.
@@ -85,7 +100,6 @@ Füge das "Parent" wie auch folgende Dependencies und Maven-Plugin in deinem pom
       </plugin>
     </plugins>
   </build>
-
 ```
 Lade alle Dependencies erneut (Maven-View -> Reload all maven projects).
 
