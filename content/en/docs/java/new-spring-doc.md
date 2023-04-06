@@ -3,7 +3,7 @@ title: "New Spring Doc"
 linkTitle: "New Spring Doc"
 weight: 16
 description: >
-  Modul #J11 - Spring Boot
+  Modul #J10 - Spring Framework
 ---
 
 #### Ziele
@@ -54,7 +54,7 @@ Im Core Modul sind alle wichtigen sachen drin z.B. dependency injection, etc. Im
 sachen drin mit dem Man die Beans (später mehr) machen kann.
 
 Das JDBC Modul bietet so eine art JDBC interface, mit welchem man auf Datenbanken zugreifen kann.
-Das ORM modul bietet zugriff auf Object mapping APIs z.B. JPA, JDO, Hibernate. Mit dem OXM Modul
+Das ORM Modul bietet zugriff auf Object mapping APIs z.B. JPA, JDO, Hibernate. Mit dem OXM Modul
 kann man auf Objekt/XML speicher implementationen zugreifen.
 
 Das Web Modul ist für die Kommunikation mit der Aussenwelt zuständig
@@ -673,4 +673,5 @@ Beispiel hier:
 spring.profiles.active="test"
 ```
 
-Bei beiden möglichkeiten wurde das Profil `test` aktiviert. 
+Bei beiden möglichkeiten wurde das Profil `test` aktiviert. Weitere Informationen in
+der [offiziellen Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition-profiles).
