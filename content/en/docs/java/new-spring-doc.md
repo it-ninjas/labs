@@ -71,7 +71,9 @@ absatz.
 
 Weitere Projekte und infos dazu hier: https://github.com/spring-projects
 
-#### Boot
+[comment]: <> (Link funktioniert auf Website)
+
+#### [Boot](../new-spring-boot-doc#spring-boot)
 
 Spring Boot ist eine Art Vereinfachung des normalen spring Frameworks. Bei Spring Boot kann mithilfe
 des sogenannten Spring Initializers Abhängigkeiten wie z.B. Datenbanktreiber oder Software für
@@ -248,7 +250,7 @@ Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
 
 Die Beans können als xml oder Java config erstellt werden (wie sonst auch) der einfachheit halber
 werden wir Java beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
-einer Methode, welche in einer `@Confuguration` Klasse ist (oder ein Interface welches davon erbt).
+einer Methode, welche in einer `@Configuration` Klasse ist (oder ein Interface welches davon erbt).
 (Beans können auch in einer `@Component` Klasse deklariert werden, wenn sie nicht von anderen Beans
 abhängig sind).  
 Hier ein Beispiel:
@@ -344,7 +346,7 @@ zu tun hat (zb. Mit Repositories).
 
 Spring hat verschiedene Annotationen für verschiedene Aufgaben mit der `@Component` Annotation wird
 eine generischer Spring Komponente dargestellt und alle anderen Annotationen sind auch Komponenten.
-Sie grenzen nur ab, was genau sie machen. In der `@Confifuration` Annotation werden dinge für die
+Sie grenzen nur ab, was genau sie machen. In der `@Configuration` Annotation werden dinge für die
 Konfiguration definiert. In der `@Repository` Annotation werden dinge welche mit datenspeicherung zu
 tun haben definiert. In der `@Controler` Annotation werden dinge welche mit der Kommunikation mit
 der Aussenwelt definiert. In der `@Service` Annotation werden dinge welche mit der Controllogik zu
