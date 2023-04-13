@@ -42,21 +42,45 @@ werden, ohne sich auf einen externen Webserver zu verlassen. Infolgedessen kanns
 auf jeder Plattform starten, indem du einfach auf ausführen drückst. (Falls man eine Anwendung ohne 
 eingebetteten Webserver erstellen will, kann man diese Funktion einfach deaktivieren).
 
+Nun ist aber die Frage, was ist überhaupt der Unterschied zwischen Spring Framework und Spring Boot?
+Und welches davon ist besser?
+
+Da Spring Boot auf dem Spring Framework aufbaut, gibt es in der Grundstruktur keine großen 
+Unterschiede. Jedoch einer der größten Unterschiede ist das Spring Boot sehr viel auf 
+Komfortfunktionen setzt wie z.b. einen schnellen Projektstart, Starter Pakete und so weiter. 
+Zudem besitzt Spring Boot noch Funktionen wie z.b. Eingebetteter Server, um Komplexität zu vermeiden.
+Automatische Konfigurationen für die Spring Funktionalität.
+
+In der Praxis lohnt sich eine Verwendung von Spring Boot, außer du benötigst eine sehr einzigartige
+Konfiguration implementieren. Da man mit Boot auch auf das Annotationssystemvon dem Spring Framework
+zugreifen kann und der Anwendung immer problemlos zusätzliche Abhängigkeiten hinzufügen kann, 
+wird Boot in den meisten Fällen empfohlen.
+
+
+
+### Boot Spezifische Annotationen
+
+Für Spring Boot gibt es spezifische Annotationen, die `@SpringBootApplication` konfiguriert eine
+Klasse. Die `@SpringBootApplication` Annotation ist equivalent
+zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@EnableAutoConfiguration`
+Annotation schaltet die automatische Konfiguration ein was einer der Hauptbestandteile von Spring
+Boot ist.
+
 ### Spring Boot Starter
 
 Wichtig zu erwähnen ist, dass die hier aufgeführten Starter nur ein Bruchteil von allen sind.
 Es sind jedoch die wichtigsten und am häufigsten verwendeten Starter.
-* Test Starter: Für Testing brauchen wir normalerweise ein paar der folgenden Erweiterungen: 
-JUnit, Hamcrest, Mockito oder Spring Test. Diese könnten wir Manuel einbringen oder wir verwenden
-den Test Starter der das für uns erledigt.
+* Test Starter: Für Testing brauchen wir normalerweise ein paar der folgenden Erweiterungen:
+  JUnit, Hamcrest, Mockito oder Spring Test. Diese könnten wir Manuel einbringen oder wir verwenden
+  den Test Starter der das für uns erledigt.
 * Data JPA Starter: Der Data JPA Starter hilft dir, dich effizient mit relationalen
-Datenbanken zu verbinden. Intern verwendet der Data JPA Starter die Spring-boot-Jpa-Abhängigkeit.
-Jedoch schreiben wir die SQL-Abfragen nicht mehr wie z.b. bei JDBC, den in der JPA speichern wir
-die Daten von Objekten in Tabellen und umgekehrt.
+  Datenbanken zu verbinden. Intern verwendet der Data JPA Starter die Spring-boot-Jpa-Abhängigkeit.
+  Jedoch schreiben wir die SQL-Abfragen nicht mehr wie z.b. bei JDBC, den in der JPA speichern wir
+  die Daten von Objekten in Tabellen und umgekehrt.
 * Mail Starter: vielleicht wirst du diesen Starter nicht allzu oft verwenden,
-jedoch ist es wichtig ihn zu erwähnen, dass du ihn kennst. Der Mail Starter kann hilfreich sein,
-in der Unternehmensentwicklung, da wir dort das Senden von E-Mails und der direkte Umgang
-mit Java Mail API normalerweise schwierig sein kann. Mail Starter verbirgt diese Komplexitäten.
+  jedoch ist es wichtig ihn zu erwähnen, dass du ihn kennst. Der Mail Starter kann hilfreich sein,
+  in der Unternehmensentwicklung, da wir dort das Senden von E-Mails und der direkte Umgang
+  mit Java Mail API normalerweise schwierig sein kann. Mail Starter verbirgt diese Komplexitäten.
 
 Nun schauen wir uns noch kurz an, wie man diese Starter in sein Projekt einbringen würde:
 
@@ -87,11 +111,3 @@ Mail Starter
     <artifactId>spring-boot-starter-mail</artifactId>
 </dependency>
 ```
-
-### Boot Spezifische Annotationen
-
-Für Spring Boot gibt es spezifische Annotationen, die `@SpringBootApplication` konfiguriert eine
-Klasse. Die `@SpringBootApplication` Annotation ist equivalent
-zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@EnableAutoConfiguration`
-Annotation schaltet die automatische Konfiguration ein was einer der Hauptbestandteile von Spring
-Boot ist.
