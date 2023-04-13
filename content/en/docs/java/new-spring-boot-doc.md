@@ -81,6 +81,9 @@ Es sind jedoch die wichtigsten und am häufigsten verwendeten Starter.
   jedoch ist es wichtig ihn zu erwähnen, dass du ihn kennst. Der Mail Starter kann hilfreich sein,
   in der Unternehmensentwicklung, da wir dort das Senden von E-Mails und der direkte Umgang
   mit Java Mail API normalerweise schwierig sein kann. Mail Starter verbirgt diese Komplexitäten.
+* Web Starter: Der Spring Boot web Starter konfiguriert dir automatisch folgende Dinge. Dispatcher
+  Servlet, Fehlerseite, Web-JAR's und Eingebettete Servlet-Behälter. Dies sind alles Wichtige
+  Konfigurationen, wenn du über Spring Boot auf web aufbauen willst.
 
 Nun schauen wir uns noch kurz an, wie man diese Starter in sein Projekt einbringen würde:
 
@@ -110,4 +113,12 @@ Mail Starter
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-mail</artifactId>
 </dependency>
+```
+Web Starter
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+  <version>2.2.2.RELEASE</version>
+</dependency>  
 ```
