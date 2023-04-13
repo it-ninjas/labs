@@ -111,4 +111,3 @@ Mail Starter
     <artifactId>spring-boot-starter-mail</artifactId>
 </dependency>
 ```
-
