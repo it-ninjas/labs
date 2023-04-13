@@ -88,6 +88,7 @@ Mail Starter
 </dependency>
 ```
 
+
 ### Boot Spezifische Annotationen
 
 Für Spring Boot gibt es spezifische Annotationen, die `@SpringBootApplication` konfiguriert eine
