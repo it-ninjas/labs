@@ -50,6 +50,8 @@ sind in Gruppen aufgeteilt z.B. Core, Data Access, Web, etc.
 
 ![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png)
 
+Quelle: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png
+
 Im Core Modul sind alle wichtigen sachen drin z.B. dependency injection, etc. Im Beans Modul sind
 sachen drin mit dem Man die Beans (später mehr) machen kann.
 
