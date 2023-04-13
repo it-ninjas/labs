@@ -3,7 +3,7 @@ title: "New Spring Boot Doc"
 linkTitle: "New Spring Boot Doc"
 weight: 17
 description: >
-  Modul #J11 - Spring Boot
+Modul #J11 - Spring Boot
 ---
 
 #### Ziele
@@ -23,9 +23,9 @@ description: >
 ## Spring Boot
 
 Spring Boot ist ein Projekt von Spring, welches dazu gemacht ist, dass man einfacher Spring benutzen
-kann, es konfiguriert viele Einstellungen wobei man sie immer noch anpassen kann, es gibt auch
+kann. Es konfiguriert viele Einstellungen wobei man sie immer noch anpassen kann. Es gibt auch
 [Spring Boot Initialisierer](https://start.spring.io/#!type=maven-project&language=java) welche ein
-Spring Boot Projekt machen, dort kann man dann auch weitere Abhängigkeiten hinzufügen und so weit.
+Spring Boot Projekt machen. Dort kann man dann auch weitere Abhängigkeiten hinzufügen und so weiter.
 
 Spring Boot nimmt uns eigentlich sehr viel Arbeit ab, wenn man damit umzugehen weiß.
 Z.b. beherrscht spring Boot die Autokonfiguration, kann zusätzlich eigenständige Anwendungen 
@@ -46,13 +46,12 @@ Nun ist aber die Frage, was ist überhaupt der Unterschied zwischen Spring Frame
 Und welches davon ist besser?
 
 Da Spring Boot auf dem Spring Framework aufbaut, gibt es in der Grundstruktur keine großen 
-Unterschiede. Jedoch einer der größten Unterschiede ist das Spring Boot sehr viel auf 
+Unterschiede. Jedoch einer der größten Unterschiede ist, das Spring Boot sehr viel auf
 Komfortfunktionen setzt wie z.b. einen schnellen Projektstart, Starter Pakete und so weiter. 
-Zudem besitzt Spring Boot noch Funktionen wie z.b. Eingebetteter Server, um Komplexität zu vermeiden.
-Automatische Konfigurationen für die Spring Funktionalität.
+Zudem besitzt Spring Boot noch Funktionen wie z.b. eingebettete Server, um Komplexität zu vermeiden aber auch automatische Konfigurationen für die Spring Funktionalität.
 
 In der Praxis lohnt sich eine Verwendung von Spring Boot, außer du benötigst eine sehr einzigartige
-Konfiguration implementieren. Da man mit Boot auch auf das Annotationssystemvon dem Spring Framework
+Konfiguration. Da man mit Boot auch auf das Annotationssystem von dem Spring Framework
 zugreifen kann und der Anwendung immer problemlos zusätzliche Abhängigkeiten hinzufügen kann, 
 wird Boot in den meisten Fällen empfohlen.
 
@@ -60,7 +59,7 @@ wird Boot in den meisten Fällen empfohlen.
 
 ### Boot Spezifische Annotationen
 
-Für Spring Boot gibt es spezifische Annotationen, die `@SpringBootApplication` konfiguriert eine
+Für Spring Boot gibt es spezifische Annotationen. Die `@SpringBootApplication` konfiguriert eine
 Klasse. Die `@SpringBootApplication` Annotation ist equivalent
 zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@EnableAutoConfiguration`
 Annotation schaltet die automatische Konfiguration ein was einer der Hauptbestandteile von Spring
