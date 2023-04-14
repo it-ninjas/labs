@@ -3,7 +3,7 @@ title: "New Spring Boot Doc"
 linkTitle: "New Spring Boot Doc"
 weight: 17
 description: >
-Modul #J11 - Spring Boot
+  Modul #J11 - Spring Boot
 ---
 
 #### Ziele
@@ -33,25 +33,25 @@ erstellen und vieles mehr. Wir gehen hier aber nur auf die wichtigsten Sachen ei
 * Autokonfiguration: Autokonfiguration bedeutet, dass deine Anwendungen bereits mit voreingestellten
 Abhängigkeiten initialisiert werden. Dies dient hauptsächlich dazu, Zeit zu sparen und blöde Fehler 
 bei der Konfiguration zu vermeiden.
-* Meinungsansatz: Spring Boot wählt nach eigenem Ermessen Pakete aus, welche installiert und welche 
+* Meinungsansatz: Spring Boot wählt nach eigenem Ermessen Pakete aus und welche 
 Standardwerte verwendet werden sollen, damit wir das nicht selbst machen müssen. Das Standard Spring
 Boot umfasst über 50 solcher spring Starter, jedoch gibt es noch viele weitere, die von 
 Drittanbietern zur Verfügung gestellt werden.
-* Eigenständige Anwendungen: Spring Boot kann selbst Anwendungen erstellen, die selbst ausgeführt 
+* Eigenständige Anwendungen: Spring Boot kann selbst Anwendungen erstellen, die eigenständig ausgeführt 
 werden, ohne sich auf einen externen Webserver zu verlassen. Infolgedessen kannst du deine Anwendung
-auf jeder Plattform starten, indem du einfach auf ausführen drückst. (Falls man eine Anwendung ohne 
-eingebetteten Webserver erstellen will, kann man diese Funktion einfach deaktivieren).
+auf jeder Plattform starten, indem du einfach auf ausführen drückst. Falls man eine Anwendung ohne 
+eingebetteten Webserver erstellen will, kann man diese Funktion einfach deaktivieren.
 
 Nun ist aber die Frage, was ist überhaupt der Unterschied zwischen Spring Framework und Spring Boot?
 Und welches davon ist besser?
 
 Da Spring Boot auf dem Spring Framework aufbaut, gibt es in der Grundstruktur keine großen 
-Unterschiede. Jedoch einer der größten Unterschiede ist, das Spring Boot sehr viel auf
+Unterschiede. Einer der größten Unterschiede ist jedoch, dass Spring Boot sehr viel auf
 Komfortfunktionen setzt wie z.b. einen schnellen Projektstart, Starter Pakete und so weiter. 
 Zudem besitzt Spring Boot noch Funktionen wie z.b. eingebettete Server, um Komplexität zu vermeiden aber auch automatische Konfigurationen für die Spring Funktionalität.
 
 In der Praxis lohnt sich eine Verwendung von Spring Boot, außer du benötigst eine sehr einzigartige
-Konfiguration. Da man mit Boot auch auf das Annotationssystem von dem Spring Framework
+Konfiguration. Da man mit Boot auch auf das Annotationssystem des Spring Frameworks
 zugreifen kann und der Anwendung immer problemlos zusätzliche Abhängigkeiten hinzufügen kann, 
 wird Boot in den meisten Fällen empfohlen.
 
@@ -74,15 +74,15 @@ Es sind jedoch die wichtigsten und am häufigsten verwendeten Starter.
   den Test Starter der das für uns erledigt.
 * Data JPA Starter: Der Data JPA Starter hilft dir, dich effizient mit relationalen
   Datenbanken zu verbinden. Intern verwendet der Data JPA Starter die Spring-boot-Jpa-Abhängigkeit.
-  Jedoch schreiben wir die SQL-Abfragen nicht mehr wie z.b. bei JDBC, den in der JPA speichern wir
+  Jedoch schreiben wir die SQL-Abfragen nicht mehr wie z.b. bei JDBC, denn in der JPA speichern wir
   die Daten von Objekten in Tabellen und umgekehrt.
-* Mail Starter: vielleicht wirst du diesen Starter nicht allzu oft verwenden,
-  jedoch ist es wichtig ihn zu erwähnen, dass du ihn kennst. Der Mail Starter kann hilfreich sein,
-  in der Unternehmensentwicklung, da wir dort das Senden von E-Mails und der direkte Umgang
+* Mail Starter: Vielleicht wirst du diesen Starter nicht allzu oft verwenden,
+  jedoch ist es wichtig ihn zu erwähnen, damit du ihn kennst. Der Mail Starter kann hilfreich sein
+  in der Unternehmensentwicklung, da dort das Senden von E-Mails und der direkte Umgang
   mit Java Mail API normalerweise schwierig sein kann. Mail Starter verbirgt diese Komplexitäten.
-* Web Starter: Der Spring Boot web Starter konfiguriert dir automatisch folgende Dinge. Dispatcher
-  Servlet, Fehlerseite, Web-JAR's und Eingebettete Servlet-Behälter. Dies sind alles Wichtige
-  Konfigurationen, wenn du über Spring Boot auf web aufbauen willst.
+* Web Starter: Der Spring Boot web Starter konfiguriert dir automatisch folgende Dinge: Dispatcher,
+  Servlet, Fehlerseite, Web-JAR's und Eingebettete Servlet-Behälter. Dies sind alles wichtige
+  Konfigurationen, wenn du über Spring Boot auf Web aufbauen willst.
 
 Nun schauen wir uns noch kurz an, wie man diese Starter in sein Projekt einbringen würde:
 
