@@ -9,7 +9,7 @@ description: >
 
 # Aufträge
 
-## Voraussetzungen (Smadar -> Ready for Review)
+## Voraussetzungen
 Im [Lab zu Modul #J8 (JDBC)](../../java-jdbc/01_jdbc_exercises/), hast du ein persistentes Notenverwaltungssystem umgesetzt.
 Zu diesem Zweck hast du eine MariaDB instanz mit folgenden Tabellen aufgesetzt:
 * SCHOOL_SUBJECT
@@ -20,7 +20,7 @@ Mehr Details dazu findest du im obenerwähnten Lab.
 Diese Datenbank und das dazu gehörende Datenbankmodel wirst du für unsere Spring-Aufgabe benötigen.  
 Bei Bedarf kannst du das Model erweitern.
 
-## Auftrag (Smadar -> Ready for Review)
+## Auftrag
 Die Aufgaben in diesem Lab führen dich Schritt für Schritt beim Umsetzen einer Webanwendung mit Spring Boot, welche ein Notenverwaltungssystem entspricht.
 Die folgenden Abschnitte listen die grobe funktionale (was soll die Anwendung können) und die nicht funktionale (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung.
 Genauere Details zu den Anforderungen wie auch die Akzeptanzkriterien werden in den entsprechenden Kapiteln aufgeführt.
@@ -36,17 +36,18 @@ Genauere Details zu den Anforderungen wie auch die Akzeptanzkriterien werden in 
     * Eine bestehende Note ändern
     * Eine bestehende Note löschen
 * Eine Person mit der Rolle "Administrator", kann (zusätzlich):
+  * Alle Fächer auflisten
   * Neue Fächer hinzufügen
   * Bestehende Fächer bearbeiten
   * Bestehende Fächer löschen
 
 ### Nicht funktionale Anforderungen (NFAs)
-* Die Package-Struktur der Anwendung entspricht die Capabilities der Anwendung (Beispiele für Capabilities: Fächer-Bewirtschaftung, Rollen-Bewirtschaftung, Noten-Bewirtschaftung).
-* Eine Klasse hat eine einzige Aufgabe (Single Responsibility Prinzip)
-* Der direkte Zugriff auf der internen Struktur einer Klasse ist verboten (Datenkapselung)
-* Jede Klasse ist getestet
+* Die Code (das Design) der Anwendung ist nach Themen gruppiert.
+* Eine Klasse hat eine einzige Aufgabe (Single Responsibility Prinzip).
+* Der direkte Zugriff auf der internen Struktur einer Klasse ist verboten (Datenkapselung).
+* Jede Klasse ist getestet.
 
-## Schritt 1: Maven-Projekt erstellen / pom.xml (Smadar -> Ready for Review)
+## Schritt 1: Maven-Projekt erstellen / pom.xml
 In diesem ersten Schritt wirst du eine Spring Boot Anwendung erstellen und ausführen.
 Hier stehen dir zwei Möglichkeiten für die Umsetzung zur Verfügung:
 * Die Projektstruktur manuel anzulegen (#Hard-Core-Variante)
@@ -131,7 +132,7 @@ File → New → Project from existing sources → Zum Root-Folder des Projektes
 Wenn du Spring-Initializr benutzt hast, wurde diese Klasse für dich automatisch erstellt.
 Starte deine Anwendung mit der Default-Run-Konfiguration.
 
-### Akzeptanzkriterien:
+### Akzeptanzkriterien Schritt 1
 Du bist mit diesem Schritt fertig erst, wenn folgende Aussagen stimmen:
 * Dein Projekt weist eine richtige Maven Projektstruktur aus:  
   ![](../assets/04_projekt_struktur.png)
@@ -144,12 +145,126 @@ Du bist mit diesem Schritt fertig erst, wenn folgende Aussagen stimmen:
 * Dein Projekt ist im vorbereiteten Bitbucket-Repository vorhanden
 * Der Stand des Projektes ist im Bitbucket mit dem Tag "INITIAL_MVN_PROJEKT" versehen
 
-## Schritt 2: API definieren und umsetzen (Smadar)
-DTOs definieren
-Controller
-URLs / REST
-Mock-Daten anlegen
-Akzeptanzkriterium: Zugriff mit Postman oder Browser
+## Schritt 2: Rest Schnittstelle definieren und umsetzen
+In diesem Schritt geht es darum die Schnittstelle (die API) zur Anwendung zu definieren.
+Über diese Schnittstelle werden Benutzer:innen die gewünschten Aktionen führen
+
+### Code Struktur
+Unsere Anwendung hat unterschiedliche Themengebiete, welche aus verschiedenen Funktionen bestehen.
+Damit, du die Struktur gemäss NFA anlegen kannst, musst du zuerst die Themengebiete der Anwendung festlegen.
+Ein Beispiel zu einem Themengebiet: Schulfachverwaltung (um Schulfächer zu bearbeiten oder auch aufzulisten)
+
+**Aufgabe**  
+Für jedes Themengebiet erstellst du ein Java-Package mit einem passenden Namen und fügst dein Code später entsprechend hinein.
+Die Themengebiet-Packages kannst du auch weiter verfeinern, wenn dies die Lesbarkeit deines Codes verbessert.
+
+### REST-Schnittstelle definieren
+Im vorherigen Abschnitt hast du Themengebiete definiert, welche deine Anwendung abbilden.
+Nun wirst du für jedes Themengebiet alle Interaktionen definieren, welche zur Verfügung gestellt werden sollen.
+In anderen Worten hier geht es um die Schnittstellendefinition für deine Anwendung.
+
+**Beispiel Schulfachverwaltung**  
+Gemäss den funktionalen Anforderungen, müssen folgende Interaktionen zur Verfügung gestellt werden:
+* Alle Fächer auflisten
+* Neue Fächer hinzufügen
+* Bestehende Fächer bearbeiten
+* Bestehende Fächer löschen
+
+Die entsprechende Schnittstelle könnte entsprechend so aussehen:
+
+| Beschreibung                | Http-Methode | URL                  | Request-Body Beispiel      | Path-Variable | Response-Body Beispiel                                       |
+|-----------------------------|--------------|----------------------|----------------------------|---------------|--------------------------------------------------------------|
+| Alle Fächer auflisten       | GET          | /admin/subjects      |                            | keine         | [ {"id": 1, "name": "Deutsch"}, {"id": 2, "name": "Franz"} ] |
+| Neues Fach hinzufügen       | POST         | /admin/subjects      | {"name": "Physik"}         | keine         | {"id": 3, "name": "Physik"}                                  |
+| Bestehendes Fach bearbeiten | PUT          | /admin/subjects/{id} | {"name": "Physik-Renamed"} | id            | {"id": 3, "name": "Physik-Renamed"}                          |
+| Bestehendes Fach löschen    | DELETE       | /admin/subjects/{id} |                            | id            |                                                              |
+
+Dort wo ein Request-Body und/oder ein Response-Body benötigt wird, wird mit JSON-Objekte gearbeitet.
+Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-Representation Klassen zu erzeugen.
+
+**Aufgabe**  
+Erstelle nun so eine Tabelle für die restlichen Capabilities und deren Funktionen.
+Damit wird die Gesamtschnittstelle für deine Anwendung abgebildet.
+
+### Resource-Representation Klassen erstellen
+Bei der Schnittstellendefinition haben wir JSON-Objekte beim Request- und beim Response- Body verwendet.
+Diese JSON-Objekte stellen Resource dar.
+Im Beispiel der Fachverwaltung-Capabilities stellen die JSON-Objekte ein Schulfach (Subject) dar.
+
+In diesem Abschnitt werden wir für alle JSON-Objekte Java-Klassen erstellen. Das sind sog. Resource-Representation Klassen.
+In unserer Anwendung werden wir die Resource-Representation Klassen als sog. DTOs (Data Transfer Objects) umsetzen.
+Diese Klassen werden wir später in unseren Controller verwenden.
+
+**Beispiel Schulfachverwaltung**  
+Das folgende JSON-Objekt stellt ein Schulfach dar:
+```json
+{
+  "id": 1,
+  "name": "Deutsch"
+}
+```
+Daraus können wir unsere DTO-Klasse erstellen (for erst nur mit Feldern und noch keine weitere Funktionalität):
+```java
+public class SubjectDto {
+    private final Long id;
+    private final String name;
+}
+```
+
+**Aufgabe**  
+Erstelle nun für jedes JSON-Objekt aus dem vorherigen Abschnitt eine DTO-Klasse.
+Denke daran, die Klassen in den richtigen Packages zu setzen.
+
+### Controller erstellen
+In Spring werden HTTP Requests von REST-Services von Controllers behandelt.
+Das ist eine Java-Klasse, welche mit @RestController annotiert wird.
+Die Controller sind die Umsetzung unserer Schnittstellendefinition.
+Da wir noch keine persistierten Daten haben, werden wir vorerst Mockdaten aus den Schnittstellenmethoden liefern müssen. 
+
+**Beispiel Schulfachverwaltung**
+```java
+@RestController
+@RequestMapping("admin")
+public class SubjectAdminController {
+
+  @GetMapping("/subjects")
+  public List<SubjectDto> getAllSubjects() {
+    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
+    return List.of(new SubjectDto(1, "Deutsch"), new SubjectDto(2, "Franz"));
+  }
+
+  @PostMapping("/subjects")
+  public SubjectDto createNewSubject(@RequestBody SubjectDto newSubject) {
+    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
+    return new SubjectDto(3, "Physik");
+  }
+
+  @PutMapping("/subjects/{id}")
+  public SubjectDto renameSubject(@RequestBody SubjectDto renamedSubject, @PathVariable Long id) {
+    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
+    return new SubjectDto(3, "Physik-Renamed");
+  }
+
+  @DeleteMapping("/subjects/{id}")
+  public SubjectDto renameSubject(@PathVariable Long id) {
+    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
+    return "Subject with id 3 was deleted";
+  }
+}
+```
+
+**Aufgabe**  
+Erstelle nun die restlichen Controller und deren Methoden (mit Mockdaten) um die Umsetzung deiner Schnittstelle abzuschliessen.
+
+### Akzeptanzkriterien Schritt 2
+* Die REST Schnittstelle ist für jede Funktion definiert
+* Es existiert ein Controller per Capability, welche die zur Verfügung gestellten Interaktionen beinhaltet
+* Jede API-Methode, welche Wert liefert, schreibt diesen Wert direkt in dem Response-Body (RestController)
+* Die API-Methoden sind "RESTful" (siehe [HTTP Methods in RESTful Web Services](https://www.javadevjournal.com/spring/restful-methods/))
+* Die API-Methoden, welche Wert(e) liefern, liefern Mockdaten zurück
+* Mit Postman oder mit dem HTTP-Browser kann auf jede API-Methode zugegriffen werden
+* Für jede API-Methode wurden passende Tests geschrieben und erfolgreich ausgeführt
+
 
 ## Service-Layer umsetzen (Claudio)
 DI
