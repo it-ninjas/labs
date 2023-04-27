@@ -256,12 +256,12 @@ Akzeptanzkriterium: Zugriff mit Postman oder Browser
 application.yml mit DB-Konfiguration
 Akzeptanzkriterium: Spring Boot Applikation startet mit DB
 
-## Schritt 6: Profile anlegen (Smadar)
+## Schritt 6: Profile anlegen
 In diesem Schritt erstellst du die gewünschten Spring Boot Profile: "student" und "admin".
 Diese Profile werden benutzt, um die verfügbare Funktionalität einzuschränken bzw. zu erweitern.
 Welche Funktionalität mit welchem Profil zur Verfügung stehen darf, entnimmst du aus den funktionalen Anforderungen.
 
-Mit der *@Profile* Annotation, kannst du bestimmten Beans aktivieren oder deaktivieren für den gegebenen Profil.
+Mit der *@Profile* Annotation, kannst du bestimmten Beans für den gegebenen Profil aktivieren bzw. deaktivieren.
 
 **Aufgabe**  
 Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem aktiven Profil
@@ -276,10 +276,40 @@ Queries schreiben
 RowMapper oder ResultSetExtractor umsetzen
 Verschiedene Arten von Queries umsetzen (JPQL, Native)
 
-## Schritt 8: API testen (Smadar)
-Postman
-Postman-Collections
-IntelliJ HTTP Client
+## Schritt 8: API testen
+Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
+In diesem Schritt wirst du deine Schnittstelle mit dem *IntelliJ HTTP-Client* testen.
+
+Eine Alternative zum *IntelliJ HTTP-Client* bietet der [*Postman API Client*](https://www.postman.com/api-platform/api-client/) an.
+Mit diesem Client kannst du alles tun, was dir *IntelliJ HTTP-Client* anbietet und vieles mehr.
+Die Core-Tools und Funktionalität der Postman-Plattform sind in der kostenlosen Version enthalten (eine Registration ist hier erforderlich).
+Wenn es dich interessiert, oder wenn du später mehr Funktionalität brauchst als das, was der *IntelliJ HTTP-Client* dir anbieten kann,
+schau dir die oben verlinkte Seite an und probiere Postman aus.
+Für unseren Test-Zwecken reicht jedoch IntelliJ völlig aus.
+
+### Testen mit IntelliJ HTTP Client
+Wenn du eine RestController-Klasse in IntelliJ offen hast, wird an einiger Stellen ein Symbol dargestellt wie hier mit Rot unterstrichen:
+![](../assets/05_intellij_http_client_symbol.png)
+
+Wenn man den Pfeil neben dem Symbol drückt, kann man die Option "Generate Request in HTTP Client" auswählen:
+![](../assets/06_intellij_http_client_dropdown.png)
+
+Somit wird der HTTP-Client Editor geöffnet, mit dem entsprechenden HTTP-Method und Pfad:
+![](../assets/07_intellij_http_client_editor.png)
+
+Mit einem Klick auf dem grünen Pfeil, wird die HTTP Request ausgeführt.
+Wenn du ein Beispiel brauchst, um zu wissen, wie du Requests erstellst (z.B. solche mit einem Request-Body)
+kannst du auf dem *Examples* Pfeil (oben rechts) klicken und die entsprechende Beispiele-Datei öffnen.
+
+Weitere Dokumentation zum IntelliJ HTTP-Client findest du [auf dieser IntelliJ IDEA Seite](https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html)
+
+**Aufgabe**  
+Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle ausführt.
+
+### Akzeptanzkriterien Schritt 8
+* Eine HTTP-Request Datei liegt vor, welche alle öffentliche Schnittstellen-Methoden ausführen kann.
+* Bei Methoden, welche Parametern oder ein Request-Body brauchen, sind diese in den Requests auch so konfiguriert.
+* Jede Methode, welche ausgeführt wird, liefert die erwarteten Ergebnisse (ggf. auch Anpassungen der Daten in der darunterliegenden Datenbank).
 
 ## Integrationstests mit H2 umsetzen (Claudio)
 Schema.sql
