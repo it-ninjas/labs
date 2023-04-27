@@ -256,17 +256,27 @@ Akzeptanzkriterium: Zugriff mit Postman oder Browser
 application.yml mit DB-Konfiguration
 Akzeptanzkriterium: Spring Boot Applikation startet mit DB
 
-## Profile anlegen (Smadar)
-Damit nicht alle Benutzer die Rechte 
-Admin-Rolle mit zusätzlicher Schnittstelle
-Neues Fach hinzufügen
+## Schritt 6: Profile anlegen (Smadar)
+In diesem Schritt erstellst du die gewünschten Spring Boot Profile: "student" und "admin".
+Diese Profile werden benutzt, um die verfügbare Funktionalität einzuschränken bzw. zu erweitern.
+Welche Funktionalität mit welchem Profil zur Verfügung stehen darf, entnimmst du aus den funktionalen Anforderungen.
+
+Mit der *@Profile* Annotation, kannst du bestimmten Beans aktivieren oder deaktivieren für den gegebenen Profil.
+
+**Aufgabe**  
+Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem aktiven Profil
+
+### Akzeptanzkriterien Schritt 6
+* Wenn die Anwendung mit dem Profil "student" gestartet wird, darf die Admin-Funktionalität nicht zur Verfügung stehen. Direkter Zugriff auf Admin-URLs liefert den HTTP Status-Code: 404 (Not Found)
+* Wenn die Anwendung mit dem Profil "admin" gestartet wird, steht die gesamte Funktionalität zur Verfügung.
+* Wenn die Anwendung mit dem Default-Profil gestartet wird, muss sie sich genauso verhalten, wie mit dem "student" Profil.
 
 ## Persistenz-Layer fertigstellen (Claudio)
 Queries schreiben
 RowMapper oder ResultSetExtractor umsetzen
 Verschiedene Arten von Queries umsetzen (JPQL, Native)
 
-## API testen (Smadar)
+## Schritt 8: API testen (Smadar)
 Postman
 Postman-Collections
 IntelliJ HTTP Client
