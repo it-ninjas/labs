@@ -26,8 +26,8 @@ Die folgenden Abschnitte listen die grobe funktionale (was soll die Anwendung k�
 Genauere Details zu den Anforderungen wie auch die Akzeptanzkriterien werden in den entsprechenden Kapiteln aufgeführt.
 
 ### Funktionale Anforderungen
-* Die Anwendung unterstützt zwei unterschiedlichen Benutzerrollen: "Student" und "Administrator"
-* Eine Person mit der Rolle "Student", kann:
+* Die Anwendung unterstützt zwei unterschiedlichen Profilen: "student" und "admin"
+* Wenn die Anwendung mit dem Profil "student" gestartet wird, steht folgende Funktionalität zur Verfügung:
   * Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)
   * Alle Fächer und deren Durchschnittsnote auflisten
   * Für ein bestimmtes Fach:
@@ -35,16 +35,16 @@ Genauere Details zu den Anforderungen wie auch die Akzeptanzkriterien werden in 
     * Eine neue Note hinzufügen
     * Eine bestehende Note ändern
     * Eine bestehende Note löschen
-* Eine Person mit der Rolle "Administrator", kann (zusätzlich):
+* Wenn die Anwendung mit dem Profil "admin" gestartet wird, steht zusätzlich auch folgende Funktionalität zur Verfügung:
   * Alle Fächer auflisten
   * Neue Fächer hinzufügen
   * Bestehende Fächer bearbeiten
   * Bestehende Fächer löschen
 
 ### Nicht funktionale Anforderungen (NFAs)
-* Die Code (das Design) der Anwendung ist nach Themen gruppiert.
+* Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Packages aufgesplittet.
 * Eine Klasse hat eine einzige Aufgabe (Single Responsibility Prinzip).
-* Der direkte Zugriff auf der internen Struktur einer Klasse ist verboten (Datenkapselung).
+* Direkter Zugriff auf der internen Struktur einer Klasse ist verboten (Datenkapselung).
 * Jede Klasse ist getestet.
 
 ## Schritt 1: Maven-Projekt erstellen / pom.xml
@@ -149,53 +149,43 @@ Du bist mit diesem Schritt fertig erst, wenn folgende Aussagen stimmen:
 In diesem Schritt geht es darum die Schnittstelle (die API) zur Anwendung zu definieren.
 Über diese Schnittstelle werden Benutzer:innen die gewünschten Aktionen führen
 
-### Code Struktur
-Unsere Anwendung hat unterschiedliche Themengebiete, welche aus verschiedenen Funktionen bestehen.
-Damit, du die Struktur gemäss NFA anlegen kannst, musst du zuerst die Themengebiete der Anwendung festlegen.
-Ein Beispiel zu einem Themengebiet: Schulfachverwaltung (um Schulfächer zu bearbeiten oder auch aufzulisten)
+### System-Design erstellen und Code Struktur anlegen
+Damit, du den Code gemäss NFA organisieren kannst, überleg dir zuerst wie du deine Anwendung zerlegen möchtest.  
+Dazu kannst du die Schritte der Methodik "functional decomposition" anwenden (mehr Information zur Methode findest du [in diesem Artikel](https://www.baeldung.com/cs/functional-decomposition)).  
+Bei der Zerlegung des Systems beachte auch Prinzipien wie Kohäsion (starke Kohäsion ist gewünscht) und Kopplung (lose Kopplung sollte das Ziel sein). 
 
 **Aufgabe**  
-Für jedes Themengebiet erstellst du ein Java-Package mit einem passenden Namen und fügst dein Code später entsprechend hinein.
-Die Themengebiet-Packages kannst du auch weiter verfeinern, wenn dies die Lesbarkeit deines Codes verbessert.
+Sobald du die Zerlegung deiner Anwendung gemacht hast, kannst du die passende Java-Packages erstellen, welche diese Zerlegung dann abbildet.
+Dein Code fügst du später an den richtigen Stellen hinzu.
 
 ### REST-Schnittstelle definieren
-Im vorherigen Abschnitt hast du Themengebiete definiert, welche deine Anwendung abbilden.
-Nun wirst du für jedes Themengebiet alle Interaktionen definieren, welche zur Verfügung gestellt werden sollen.
-In anderen Worten hier geht es um die Schnittstellendefinition für deine Anwendung.
+Die Struktur für deine Anwendung steht. Nun definierst du die Schnittstellen, womit die Benutzer:innen mit der Anwendung interagieren werden.
+Die nötige Funktionalität entnimmst du aus den funktionalen Anforderungen.
 
-**Beispiel Schulfachverwaltung**  
-Gemäss den funktionalen Anforderungen, müssen folgende Interaktionen zur Verfügung gestellt werden:
-* Alle Fächer auflisten
-* Neue Fächer hinzufügen
-* Bestehende Fächer bearbeiten
-* Bestehende Fächer löschen
-
+**Beispiel: Anforderung - ein neues Schulfach hinzufügen**  
 Die entsprechende Schnittstelle könnte entsprechend so aussehen:
 
-| Beschreibung                | Http-Methode | URL                  | Request-Body Beispiel      | Path-Variable | Response-Body Beispiel                                       |
-|-----------------------------|--------------|----------------------|----------------------------|---------------|--------------------------------------------------------------|
-| Alle Fächer auflisten       | GET          | /admin/subjects      |                            | keine         | [ {"id": 1, "name": "Deutsch"}, {"id": 2, "name": "Franz"} ] |
-| Neues Fach hinzufügen       | POST         | /admin/subjects      | {"name": "Physik"}         | keine         | {"id": 3, "name": "Physik"}                                  |
-| Bestehendes Fach bearbeiten | PUT          | /admin/subjects/{id} | {"name": "Physik-Renamed"} | id            | {"id": 3, "name": "Physik-Renamed"}                          |
-| Bestehendes Fach löschen    | DELETE       | /admin/subjects/{id} |                            | id            |                                                              |
+| Beschreibung               | Http-Methode | URL                 | Request-Body Beispiel      | Path-Variable | Response-Body Beispiel                                       |
+|----------------------------|--------------|---------------------|----------------------------|---------------|--------------------------------------------------------------|
+| Neues Schulfach hinzufügen | POST         | /admin/schulfaecher | {"name": "Physik"}         | keine         | {"id": 3, "name": "Physik"}                                  |
 
 Dort wo ein Request-Body und/oder ein Response-Body benötigt wird, wird mit JSON-Objekte gearbeitet.
 Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-Representation Klassen zu erzeugen.
 
 **Aufgabe**  
-Erstelle nun so eine Tabelle für die restlichen Capabilities und deren Funktionen.
-Damit wird die Gesamtschnittstelle für deine Anwendung abgebildet.
+Erweitere die obige Tabelle mit den restlichen Funktionen.
 
 ### Resource-Representation Klassen erstellen
-Bei der Schnittstellendefinition haben wir JSON-Objekte beim Request- und beim Response- Body verwendet.
-Diese JSON-Objekte stellen Resource dar.
-Im Beispiel der Fachverwaltung-Capabilities stellen die JSON-Objekte ein Schulfach (Subject) dar.
+Unsere Schnittstellendefinition verwendet JSON-Objekte bei bestimmten Requests und Responses.
+Diese JSON-Objekte stellen sog. "Resource" dar.
+Im Beispiel "Neues Schulfach hinzufügen" stellen die JSON-Objekte ein Schulfach dar.
 
-In diesem Abschnitt werden wir für alle JSON-Objekte Java-Klassen erstellen. Das sind sog. Resource-Representation Klassen.
+In diesem Abschnitt wirst du für alle JSON-Objekte entsprechende Java-Klassen erstellen. 
+Das sind sog. Resource-Representation Klassen.  
 In unserer Anwendung werden wir die Resource-Representation Klassen als sog. DTOs (Data Transfer Objects) umsetzen.
-Diese Klassen werden wir später in unseren Controller verwenden.
+Diese Klassen wirst du später in deinen Controllern verwenden.
 
-**Beispiel Schulfachverwaltung**  
+**Beispiel: Schulfach Resource-Representation**  
 Das folgende JSON-Objekt stellt ein Schulfach dar:
 ```json
 {
@@ -203,65 +193,50 @@ Das folgende JSON-Objekt stellt ein Schulfach dar:
   "name": "Deutsch"
 }
 ```
-Daraus können wir unsere DTO-Klasse erstellen (for erst nur mit Feldern und noch keine weitere Funktionalität):
+Daraus können wir unsere DTO-Klasse erstellen (vorerst nur mit Feldern und noch keine weitere Funktionalität):
 ```java
-public class SubjectDto {
+public class SchulfachDto {
     private final Long id;
     private final String name;
 }
 ```
 
 **Aufgabe**  
-Erstelle nun für jedes JSON-Objekt aus dem vorherigen Abschnitt eine DTO-Klasse.
+Erstelle für jedes JSON-Objekt aus dem vorherigen Abschnitt eine DTO-Klasse.
 Denke daran, die Klassen in den richtigen Packages zu setzen.
 
 ### Controller erstellen
-In Spring werden HTTP Requests von REST-Services von Controllers behandelt.
-Das ist eine Java-Klasse, welche mit @RestController annotiert wird.
-Die Controller sind die Umsetzung unserer Schnittstellendefinition.
-Da wir noch keine persistierten Daten haben, werden wir vorerst Mockdaten aus den Schnittstellenmethoden liefern müssen. 
+In Spring werden HTTP Requests von REST-Services von Controllern behandelt.
+Das ist eine Java-Klasse, welche mit *@RestController* annotiert wird.
+Controllern sind die Umsetzung unserer Schnittstellendefinition.
+Da wir noch keine persistierten Daten haben, wirst du vorerst Mockdaten aus den Schnittstellenmethoden liefern müssen. 
 
-**Beispiel Schulfachverwaltung**
+**Beispiel: Controller für die Schulfachverwaltung**
 ```java
 @RestController
 @RequestMapping("admin")
-public class SubjectAdminController {
+public class SchulfachAdminController {
 
-  @GetMapping("/subjects")
-  public List<SubjectDto> getAllSubjects() {
-    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
-    return List.of(new SubjectDto(1, "Deutsch"), new SubjectDto(2, "Franz"));
+  @PostMapping("/schulfaecher")
+  public SchulfachDto createNewSchulfach(@RequestBody SchulfachDto newSchulfach) {
+    // TODO: Das sind Mockdaten und sollten zu einem späteren Zeitpunkt mit "echtem" Code ersetzt werden
+    return new SchulfachDto(3, "Physik");
   }
 
-  @PostMapping("/subjects")
-  public SubjectDto createNewSubject(@RequestBody SubjectDto newSubject) {
-    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
-    return new SubjectDto(3, "Physik");
-  }
-
-  @PutMapping("/subjects/{id}")
-  public SubjectDto renameSubject(@RequestBody SubjectDto renamedSubject, @PathVariable Long id) {
-    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
-    return new SubjectDto(3, "Physik-Renamed");
-  }
-
-  @DeleteMapping("/subjects/{id}")
-  public SubjectDto deleteSubject(@PathVariable Long id) {
-    // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
-    return "Subject with id 3 was deleted";
-  }
+  // hier können weitere Methoden der Schnittstelle umgesetzt
 }
 ```
 
 **Aufgabe**  
-Erstelle nun die restlichen Controller und deren Methoden (mit Mockdaten) um die Umsetzung deiner Schnittstelle abzuschliessen.
+Erstelle Controllern und Methoden (mit Mockdaten) um die Umsetzung deiner Schnittstelle abzuschliessen.
 
 ### Akzeptanzkriterien Schritt 2
-* Die REST Schnittstelle ist für jede Funktion definiert
-* Es existiert ein Controller per Capability, welche die zur Verfügung gestellten Interaktionen beinhaltet
+* Ein grobes System-Design ist vorhanden (z.B. mit der Hilfe von Functionl-Decomposition-Diagramm).
+* Die Codestruktur entspricht dem Design.
+* Die REST Schnittstelle ist für jede relevante Funktion (gemäss funktionale Anforderungen) ist dokumentiert und mit Controllern umgesetzt.
 * Jede API-Methode, welche Wert liefert, schreibt diesen Wert direkt in dem Response-Body (RestController)
 * Die API-Methoden sind "RESTful" (siehe [HTTP Methods in RESTful Web Services](https://www.javadevjournal.com/spring/restful-methods/))
-* Die API-Methoden, welche Wert(e) liefern, liefern Mockdaten zurück
+* Die API-Methoden, welche Wert(e) liefern, liefern Mockdaten zurück (alle Aurufe einer Methode liefern immer die gleiche Mockdaten zurück)
 * Mit Postman oder mit dem HTTP-Browser kann auf jede API-Methode zugegriffen werden
 * Für jede API-Methode wurden passende Tests geschrieben und erfolgreich ausgeführt
 
@@ -282,6 +257,7 @@ application.yml mit DB-Konfiguration
 Akzeptanzkriterium: Spring Boot Applikation startet mit DB
 
 ## Profile anlegen (Smadar)
+Damit nicht alle Benutzer die Rechte 
 Admin-Rolle mit zusätzlicher Schnittstelle
 Neues Fach hinzufügen
 
