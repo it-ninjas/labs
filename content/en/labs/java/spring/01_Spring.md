@@ -246,7 +246,7 @@ public class SubjectAdminController {
   }
 
   @DeleteMapping("/subjects/{id}")
-  public SubjectDto renameSubject(@PathVariable Long id) {
+  public SubjectDto deleteSubject(@PathVariable Long id) {
     // TODO: Das sind Mockdaten und sollten zu einem späteren mit "echtem" Code ersetzt werden
     return "Subject with id 3 was deleted";
   }
