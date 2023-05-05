@@ -2,10 +2,10 @@
 title: "Java"
 weight: 1
 description: >
-  Einrichten der Entwicklungsumgebung
-  IntelliJ IDEA und Plugins
-  Erlernen der Programmiersprache Java
-  Maven
+  Einrichten der Entwicklungsumgebung<br>
+  IntelliJ IDEA und Plugins<br>
+  Erlernen der Programmiersprache Java<br>
+  Maven<br>
   Testing mit jUnit und Mockito
 ---
 

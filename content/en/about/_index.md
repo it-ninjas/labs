@@ -26,5 +26,3 @@ menu:
 </div>
 
 {{< /blocks/section >}}
-
-

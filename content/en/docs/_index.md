@@ -23,4 +23,5 @@ Das Ziel des Ausbildungsprogramms ist
 - das Erwerben von Kenntnissen zum Spring Framework und zu Spring Boot
 - das Erlernen von HTML/CSS und JavaScript
 - das Erlernen der Programmiersprache Typescript/Angular
+
 im begleiteten Selbst-Studium innerhalb des ersten Lehrjahres
