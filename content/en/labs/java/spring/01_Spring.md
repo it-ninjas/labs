@@ -107,7 +107,7 @@ Lade alle Dependencies erneut (Maven-View -> Reload all maven projects).
 #### Ersetze die Main Klasse mit einer SpringBootApplikation Klasse
 Wenn du beim Erstellen des Projektes "add sample code" angekreuzt hast, beinhaltet dein Projekt nun eine Main-Klasse in deinem Source-Folder (im richtigen Package selbstverständlich).
 Diese Main Klasse werden wir nun in einer SpringBootApplication-Klasse umwandeln:
-* Nenne die Main Klasse um sodass sie *<name-deines-artefaktes>*Application heisst (z.B. wenn dein Artefakt "demo" heisst, wird die Klasse nun "DemoApplication" heissen).
+* Nenne die Main Klasse um sodass sie <*name-deines-artefaktes*>Application heisst (z.B. wenn dein Artefakt "demo" heisst, wird die Klasse nun "DemoApplication" heissen).
 * Füge die Annotation **@SpringBootApplication** auf der Klassenebene
 * Passe deine **main** Methode, dass sie wie folgt aussieht (Ersetzte DemoApplication mit deinem Application-Klassennamen):
 ```java
