@@ -19,11 +19,11 @@ Du kannst ...
 - git konfigurieren
 - Repositories auschecken
 - Branches erstellen und auschecken
-- Commits erstellen und klare Commit Messages formulieren
+- Commits erstellen und Commit Messages nach gegebenen Richtlinien formulieren
 - Änderungen vom Server pullen
 - Merge-/Pullrequests erstellen (z.B. auf Github, Bitbucket, Gitlab)
 - Änderungen anhand der Git History nachvollziehen
-- Mergen und Rebasen von Branches
+- Branches mergen und rebasen
 
 Vielleicht sogar ...
 

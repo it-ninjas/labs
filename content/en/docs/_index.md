@@ -24,4 +24,4 @@ Das Ziel des Ausbildungsprogramms ist
 - das Erlernen von HTML/CSS und JavaScript
 - das Erlernen der Programmiersprache Typescript/Angular
 
-im begleiteten Selbst-Studium innerhalb des ersten Lehrjahres
+im begleiteten Selbst-Studium innerhalb des ersten Lehr-/Studienjahres
