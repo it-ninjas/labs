@@ -20,7 +20,7 @@ Bedingungen erfüllt sind, kannst du mit den Aufgaben beginnen.
 
 ### Anforderungen
 #### Funktional
-* Die Anwendung unterstützt zwei unterschiedlichen Profilen: "student" und "admin"
+* Die Anwendung unterstützt zwei unterschiedliche Profile: "student" und "admin"
 * Wenn die Anwendung mit dem Profil "student" gestartet wird, steht folgende Funktionalität zur Verfügung:
     * Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)
     * Alle Fächer und deren Durchschnittsnote auflisten
@@ -34,21 +34,33 @@ Bedingungen erfüllt sind, kannst du mit den Aufgaben beginnen.
     * Neue Fächer hinzufügen
     * Bestehende Fächer bearbeiten
     * Bestehende Fächer löschen
+* Die Anwendung ist Responsive gestaltet und ist auf Desktop, Tablet und Mobile verwendbar 
 
-[//]: # (TODO: Macht Internationalization sinn? Die Daten werden ja nur in Deutsch gespeichert?)
 * Zusätzliche Anforderungen
   * Die Anwendung ist in den Sprachen Deutsch, Französisch und Englisch verfügbar
   * Die Sprache kann direkt in der Applikation gewechselt werden
 #### Nicht-Funktional
 * Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Components/Services aufgesplittet.
 * Ein Component/Service hat eine einzige Aufgabe (Single Responsibility Prinzip).
-* Mögliche Exceptions wurden abgefangen und dem Benutzer wo nötig mitgeteilt.
-
-[//]: # (TODO: Eventuell ist oberes Kriterium nicht sehr genau)
 * Jeder Component/Service ist getestet.
 
+## Design
+Die Notenverwaltung sollte ungefähr einem vorgegebenen Design entsprechen. Farben und Schriftarten können frei gewählt
+werden, jedoch sollte das vorgegebene Design immer noch erkennbar sein. 
+
+Das Design wurde mit Figma erstellt und ist navigierbar. Also kannst du die benötigten Verlinkungen so selbst 
+herausfinden. Teilweise wurde eine Funktion, wie das Bearbeiten einer Note, nur einmal umgesetzt. Die Funktion soll
+beim Endprodukt aber logischerweise überall umgesetzt sein. Das Design wurde für Desktop, Tablet und Mobile erstellt, 
+die Anwendung sollte sich dementsprechend wie im Design anpassen.
+
+Hier der Link zum Design: [Figma Design - Notenverwaltung](https://www.figma.com/proto/CxwGOD9wyGZ1pDucOdusND/Notenverwaltung?type=design&node-id=1-4&viewport=1176%2C601%2C0.26&t=VG5c1EFhLub1VCVP-1&scaling=contain&starting-point-node-id=1%3A4&show-proto-sidebar=1&mode=design)
+
+[//]: # (INFO!!!!: Link zum Bearbeiten des Designs, falls eine Änderung nötig ist: https://www.figma.com/community/file/1265244364247644334)
+
+Es ist zu empfehlen, dass zum Erstellen der Applikation [Angular Material](https://material.angular.io/) eingesetzt 
+wird. So können bereits erstellte Komponenten inklusive Design verwendet werden.
+
 ## Aufgabe 1 - Erstellen der Components
-[//]: # (TODO: Eventuell sollte ein Design für die Notenverwaltung erstellt werden)
 Um alle Daten der Notenverwaltung anzeigen, erstellen, löschen und bearbeiten zu können, werden verschiedene Components
 benötigt. In dieser Aufgabe solltest du diese Punkte abarbeiten:
 * Überlege dir anhand der [Anforderungen](#anforderungen), wofür du alles einen Component benötigst. Die Unterscheidung
@@ -80,16 +92,11 @@ In dieser Aufgabe verbindest du jetzt das Frontend mit dem Backend. Erledige daz
 
 ## Aufgabe 5 - Admin und Student
 Ab diesem Zeitpunkt sollten alle grundlegenden Funktionen deiner Applikation umgesetzt sein, Glückwunsch! Jetzt möchten
-wir noch die Admin- und Student-Funktionen trennen.
+wir noch die Admin- und Student-Funktionen trennen. Dazu besteht im Backend ein Endpunkt, welcher das gestartete Profil 
+im Backend an das Frontend sendet. Darüber soll das Frontend die verschiedenen freischalten oder verstecken.
 
-[//]: # (TODO: Definieren, wie die unterscheidung zwischen student und admin gemacht wird)
+[//]: # (TODO: name des Endpoints ergänzen)
 
 ## Aufgabe 6 - Testing
 Wie in den Anforderungen bereits erwähnt, ist das Ziel alle Components und Services zu testen. Dazu werden die normalen
 `spec.ts` Dateien verwendet. Schlussendlich solltest du eine Coverage von mindestens 90% haben.
-
-[//]: # (TODO: Macht Internationalization sinn? Die Daten werden ja nur in Deutsch gespeichert?)
-[//]: # (Multilanguage umzusetzen dauert wahrscheinlich zu lange)
-## Aufgabe 7 - Zusatzaufgabe: Internationalization
-Durch Internationalization soll deine Applikation in insgesamt 3 Sprachen verfügbar sein. Ausserdem sollte die Sprache
-direkt in der Applikation gewechselt werden können.
