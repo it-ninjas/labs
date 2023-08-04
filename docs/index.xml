@@ -656,7 +656,75 @@ String &lt;span style="color:#a6e22e">checkWin&lt;/span>&lt;span style="color:#f
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Wenn du an der Challenge teilnehmen willst, dann musst du die Aufgabe alleine lösen.
-Die Lösung vom Pult-Nachbar interessiert uns also (leider) nicht.&lt;/p></description></item><item><title>Labs: JavaScript - Aufgaben</title><link>/labs/web/javascript/01_javascript/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/web/javascript/01_javascript/</guid><description>
+Die Lösung vom Pult-Nachbar interessiert uns also (leider) nicht.&lt;/p></description></item><item><title>Docs: Java-Einführung</title><link>/docs/java/java-grundlagen/01_java_intro/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/01_java_intro/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, dass jede Anweisung mit einem Strichpunkt abgeschlossen werden muss.&lt;/li>
+&lt;li>Ich weiss, dass geschweifte Klammern einen Block definieren und ich verwende sie in jeder Kontrollstruktur, um die Code-Blocks voneinander abzugrenzen.&lt;/li>
+&lt;li>Ich kenne die &lt;code>main&lt;/code>-Methode und weiss, warum eine Applikation nur EINE Main-Methode haben sollte.&lt;/li>
+&lt;li>Ich kenne die Methode &lt;code>System.out.println&lt;/code> und kann sie anwenden.&lt;/li>
+&lt;/ul>
+&lt;h3 id="cheatsheet-zum-herunterladen">Cheatsheet zum Herunterladen&lt;/h3>
+&lt;p>&lt;a href="../../java-grundlagen/cheatsheet.pdf">Core Java Cheatsheet&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;h3 id="was-ist-java">Was ist Java?&lt;/h3>
+&lt;p>Java ist eine objektorientierte Programmiersprache, die schon seit ca. zwei Jahrzehnten grosse Popularität geniesst.
+Die Entwicklung von Java begann Anfang der 1990er-Jahre beim US-amerikanischen Hard- und Softwarehersteller Sun Microsystems.
+1995 wurde die erste Version veröffentlicht. 2010 wurde Sun Microsystems von Oracle übernommen.
+Gegenwärtig erscheinen im Halbjahrestakt neue Java-Versionen; die nächste Version, Java 21, wird im September 2023 veröffentlicht.&lt;/p>
+&lt;hr>
+&lt;h3 id="wichtigste-merkmale-von-java">Wichtigste Merkmale von Java&lt;/h3>
+&lt;h4 id="plattformunabhängigkeit-write-once-run-anywhere">Plattformunabhängigkeit: «Write once, Run anywhere»&lt;/h4>
+&lt;p>Der Compiler wandelt den Quellcode in Bytecode (Kompilat) um, und anschliessend führt die Java Virtual Machine (JVM) den Bytecode aus.
+Jedes Betriebssystem hat eine andere JVM, aber jede JVM kann den Bytecode ausführen, daher kann ein- und dieselbe Java-Anwendung auf Windows, Linux, Mac OS und anderen Plattformen lauffähig sein.&lt;/p>
+&lt;h4 id="mehrfach-paradigma">Mehrfach-Paradigma&lt;/h4>
+&lt;p>Java ist in erster Linie eine objektorientierte und imperative Programmiersprache, bei der fast alles ein Objekt einer Klasse (eines Typs) ist.
+Wir können ein typisches Java-Programm als eine Menge von interagierenden Objekten betrachten. Die Objekte können Entitäten aus der realen Welt oder eine Art von Programmierabstraktionen darstellen.
+Wenn wir ein Programm schreiben, erklären wir, wie die Objekte miteinander interagieren sollen.
+Java unterstützt aber auch andere Programmierparadigmen, darunter generische Programmierung, parallele Programmierung, funktionale Programmierung (teilweise unterstützt) und andere.&lt;/p>
+&lt;h4 id="ausführbarer-bytecode">Ausführbarer Bytecode&lt;/h4>
+&lt;p>Eine kompilierte Klasse, welche bestimmte Voraussetzungen erfüllt (dazu später), kann eigenständig ausgeführt werden.
+Applikationen und Klassenbibliotheken bestehen oft aus mehreren Klassen und werden als Java Archive (JAR-Datei genannt) verpackt, verteilt und bereitgestellt.
+Eine JAR-Datei ist technisch gesehen eine komprimierte Datei in ZIP-Format und kann auch so erstellt werden, dass sie von der JVM ausgeführt werden kann.&lt;/p>
+&lt;h4 id="klassenpfad">Klassenpfad&lt;/h4>
+&lt;p>Um den Bytecode ausführen zu können, muss die JVM wissen wo sich dieser befindet.
+Damit die JVM nicht überall suchen muss, wird mit einem Klassenpfad (Classpath) angegeben, wo sie nach dem Bytecode suchen soll.
+Der Klassenpfad besteht aus einer Liste von Ordnern und .jar Dateien (sog. Java-Archive) und kann entweder als Parameter bei der Ausführung des Programms oder als eine Umgebungsvariable angegeben werden.&lt;/p>
+&lt;h4 id="garbage-collector">Garbage Collector&lt;/h4>
+&lt;p>Der Garbage Collector (Teil der JVM) führt zur Laufzeit eine automatische Speicherbereinigung von unbenutzten Objekten durch. Der Entwickler muss sich also nicht um das Aufräumen von unbenutzen Objekten kümmern.&lt;/p>
+&lt;h4 id="multithreading">Multithreading&lt;/h4>
+&lt;p>Java unterstützt Multithreading auf der Ebene der Sprache und der Standardbibliothek. Es ermöglicht die gleichzeitige und parallele Ausführung mehrerer Teile eines Java-Programms.&lt;/p>
+&lt;hr>
+&lt;h3 id="code-compile-run">Code, Compile, Run&lt;/h3>
+&lt;p>Ein/e Java-Entwickler/in schreibt ein Programm in eine Textdatei mit der Erweiterung .java. Ein Programm kann eine Vielzahl solcher Dateien enthalten. Dann übersetzt der Compiler (normalerweise javac) das Programm in eine .class-Datei, die den Bytecode des Programms enthält. Danach führt die JVM das Programm aus und gibt Low-Level-Befehle an den Computer. Der Computer ist hier eine Abstraktion, welche ein Server, ein PC oder sogar ein mobiles Gerät sein kann.
+Tatsächlich sind die Prozesse komplexer, als hier gezeigt wird. Es ist wichtig, Folgendes zu verstehen: Der Teil vor der JVM ist plattformunabhängig, der Teil nach der JVM ist plattformabhängig.
+&lt;img src="../../java-grundlagen/code-compile-run.png" alt="">&lt;/p>
+&lt;hr>
+&lt;h2 id="hello-world">Hello World&lt;/h2>
+&lt;p>Anhand des simplen Hello-World-Programms können wir bereits vieles über die zentralen Bestandteile einer Java-Anwendung erklären. Der folgende Sourcecode ist in einer Datei mit dem Namen HelloWorld.java abgelegt.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Bei diesem Beispiel arbeiten wir uns nun von aussen nach innen vor. Der erste Teil definiert eine neue Klasse mit dem Namen &lt;em>HelloWorld&lt;/em>. Die Deklaration der Klasse besteht aus dem Zugriffsmodifizierer &lt;em>public&lt;/em> (dazu später mehr) gefolgt vom Keyword &lt;em>class&lt;/em> und dem Klassennamen. Jede Java-Datei darf nur eine Klasse mit dem Zugriffsmodifizierer &lt;em>public&lt;/em> enthalten, weitere Klassen ohne &lt;em>public&lt;/em> sind jedoch erlaubt. Der Name der Klasse mit dem Modifizierer &lt;em>public&lt;/em> muss stets mit dem Dateinamen übereinstimmen. Der Klassenname wird stets gross geschrieben, einzelne Wörter werden durch einen erneuten Grossbuchstaben getrennt. Dies wird CamelCase genannt. Der &lt;em>Block&lt;/em> der Klasse wird durch geschweifte Klammern angegeben.&lt;/p>
+&lt;p>Innerhalb der Klasse wird nun eine Main-Methode definiert. Diese Methode ist der Einstiegspunkt eines jeden Java-Programms. Nur über eine solche Methode kann eine Java-Anwendung gestartet werden. Die Methode besteht aus dem Zugriffsmodifizierer &lt;em>public&lt;/em>, dem Keyword &lt;em>static&lt;/em>, dem Rückgabewert &lt;em>void&lt;/em> und dem Methodennamen &lt;em>main&lt;/em>.
+An den Namen der Methode schliesst sich ein paar runde Klammern an. Innerhalb dieser Klammern befinden sich die &lt;em>Parameter&lt;/em> der Methode, in diesem Fall handelt es sich um ein &lt;em>String&lt;/em>-&lt;em>Array&lt;/em>. Die Angabe der genannten Teile einer Methode nennt man Methodensignatur. Der &lt;em>Block&lt;/em> der Methode wird durch geschweifte Klammern angegeben. Die Main-Methode hat immer die oben gezeigte Signatur.&lt;/p>
+&lt;p>Innerhalb der Main-Methode sehen wir ein einzelnes Statement. Es besteht aus einer einfachen Anweisung, welche den Text &amp;ldquo;Hello, world!&amp;rdquo; auf die Kommandozeile ausgibt.
+Die statische Methode &lt;em>println()&lt;/em> auf dem öffentlich zugänglichen &lt;em>Feld&lt;/em> der Klasse &lt;em>System&lt;/em> dient dazu Text auf der Konsole auszugeben. Das Statement wird mit einem Semikolon abgeschlossen.&lt;/p>
+&lt;p>&lt;img src="/images/hint.png" alt="asset"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-1---ausgaben-auf-die-kommandozeile">Aufgabe 1&lt;/a> in den Labs.&lt;/p></description></item><item><title>Labs: JavaScript - Aufgaben</title><link>/labs/web/javascript/01_javascript/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/web/javascript/01_javascript/</guid><description>
 &lt;h3 id="aufgabe-1---seite-mit-joke">Aufgabe 1 - Seite mit Joke&lt;/h3>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Schreibe eine Website, die auf Knopfdruck einen Witz anzeigt.&lt;/p>
 &lt;p>Verwende hierfür die Juck Norris-API: &lt;code>GET https://api.chucknorris.io/jokes/random&lt;/code>&lt;/p>
@@ -3277,7 +3345,7 @@ wenn die entsprechende Methode aufgerufen wurde.&lt;/p>
 das Interface java.util.List. Die ArrayList Klasse implementiert alle Methoden des Interface java.util.List. Der
 Implementierung der ArrayList Klasse liegen Arrays zugrunde, weshalb diese konkrete Klasse auch &lt;em>Array&lt;/em>List heisst.
 Die Klasse ArrayList enthält also ein normales Array. Wenn ein Element hinzugefügt wird, wird es in dieses Array eingefügt.
-Wenn das Array nicht groß genug ist, wird ein neues, größeres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
+Wenn das Array nicht gross genug ist, wird ein neues, grösseres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
 des Arrays wird fortlaufend angepasst.&lt;/p>
 &lt;h3 id="methodenübersicht">Methodenübersicht&lt;/h3>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -4971,7 +5039,215 @@ Am Schluss des Programmes kann man mit &lt;code>OutputValidation.printControlHas
 &lt;li>Beim Hinzufügen von neuen Elementen wird deren Hash-Code berechnet und ebenfalls abgespeichert.&lt;/li>
 &lt;li>Die Suche nach bestehenden Elementen wird anschliessend über den gespeicherten Hash-Code durchgeführt statt über die Elemente selbst.&lt;/li>
 &lt;li>Du kannst deine Implemenation mit dem gleichen JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a> überprüfen, da sich die neue Klasse gleich verhalten soll. Erstelle vom Test eine Kopie &lt;code>MyHashSetTest&lt;/code> und ändere &lt;code>MySet&lt;/code> überall zu &lt;code>MyHahsSet&lt;/code>.&lt;/li>
-&lt;/ol></description></item><item><title>Exams: Exam zu JavaScript</title><link>/exams/web/html_css/02_exam_js/</link><pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate><guid>/exams/web/html_css/02_exam_js/</guid><description>
+&lt;/ol></description></item><item><title>Docs: Variablen in Java</title><link>/docs/java/java-grundlagen/02_variables/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/02_variables/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, was Variablen sind.&lt;/li>
+&lt;li>Ich kann eine Variable deklarieren und initialisieren.&lt;/li>
+&lt;/ul>
+&lt;h2 id="variablen">Variablen&lt;/h2>
+&lt;p>Auf der letzten Seite hast du ein kleines &amp;ldquo;Hello World&amp;rdquo; geschrieben, welches den Text &amp;ldquo;Hello, world!&amp;rdquo; in der Konsole ausschreibt. Stelle sicher, dass dieses Programm bei dir auch läuft.&lt;/p>
+&lt;p>Ändere dann den Code leicht ab in diesen und führe ihn aus:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+var nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nachricht&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Beispiel haben wir den Text, den wir ausgeben wollen (&amp;ldquo;Hello, world!&amp;quot;), in eine sogenannte &amp;ldquo;&lt;em>Variable&lt;/em>&amp;rdquo; mit dem Namen &lt;code>nachricht&lt;/code> ausgelagert:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">var nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Aber was macht dieser Code?&lt;/p>
+&lt;ul>
+&lt;li>Mit dem Keyword &lt;code>var&lt;/code> teilen wir mit, dass wir eine neue Variable definieren.&lt;/li>
+&lt;li>Mit &lt;code>var nachricht&lt;/code> deklarieren wir eine neue Variable mit dem Namen &lt;code>nachricht&lt;/code>.&lt;/li>
+&lt;li>Mit dem &lt;code>=&lt;/code>-Operator teilen wir mit, dass wir der Variable den Wert von der rechten Seite zuweisen möchten. Die Variable &lt;code>nachricht&lt;/code> wird dann also den Wert &lt;code>&amp;quot;Hello, world!&amp;quot;&lt;/code> enthalten.&lt;/li>
+&lt;li>Mit dem Semikolon (&amp;quot;;&amp;quot;) teilen wir mit, dass diese Anweisung (also die Zuweisung der Variable) abgeschlossen ist.&lt;/li>
+&lt;/ul>
+&lt;p>Aber was genau bringt mir das jetzt?&lt;/p>
+&lt;blockquote>
+&lt;pre>&lt;code>Variablen werden dazu verwendet, um Werte zu speichern und später ein- oder mehrmals darauf zuzugreifen.
+&lt;/code>&lt;/pre>
+&lt;/blockquote>
+&lt;p>Möchtest du beispielsweise diesen Text 5 mal ausgeben, dann könntest du das wie folgt tun:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+var nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nachricht&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nachricht&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nachricht&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nachricht&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>nachricht&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="deklaration">Deklaration&lt;/h3>
+&lt;p>Bevor eine Variable verwendet werden kann, muss das Programm diese Variable kennen. Dies tust du, indem du sie &amp;ldquo;deklarierst&amp;rdquo;.
+Unter der Deklaration einer Variable versteht man das erste &amp;ldquo;Erwähnen&amp;rdquo; einer Variable. In Java bedeutet dies, dass der Typ der Variable festgelegt wird.&lt;/p>
+&lt;p>Formal gilt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;lt;Typ-der-Variable&amp;gt; &amp;lt;Variablen-Name&amp;gt;;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wir geben also den Datentyp und den Namen der Variable an.&lt;/p>
+&lt;p>Im vorherigen Beispiel hatten wir eine Variable so definiert:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">var nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Keyword &lt;code>var&lt;/code> ist ein neueres Feature von Java, das den Typ erratet. Normalerweise gibt man stattdessen den Typ der Variable an:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">String nachricht&lt;span style="color:#f92672">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Bei der Variable &lt;code>nachricht&lt;/code> ist also &lt;code>String&lt;/code> der Typ. &lt;code>String&lt;/code> bedeutet, dass es sich hierbei um einen &lt;em>Text&lt;/em> - also eine &amp;ldquo;&lt;em>Zeichenkette&lt;/em>&amp;rdquo; - handelt.&lt;/p>
+&lt;p>Der Wert selbst muss bei der Deklaration nicht zwingend festgelegt werden. Zur &lt;em>Laufzeit&lt;/em> (also wenn das Programm läuft) wird dann für die Variable einen Bereich im Arbeitsspeicher (RAM) reserviert. Hier werden später die Werte, die der Variablen zugewiesen werden, gespeichert. Die Grösse des Speicherbereichs hängt vom Typ der Variable ab.&lt;/p>
+&lt;h3 id="initialisierung">Initialisierung&lt;/h3>
+&lt;p>Unter dem Begriff Initialisierung wird die direkte Zuweisen eines Wertes bei der Deklaration einer Variablen verstanden.
+Lokale Variablen (Variablen, die lediglich innerhalb einer Methode gültig sind) müssen initialisiert werden, bevor sie verwendet werden können.&lt;/p>
+&lt;p>Formal wird wie folgt eine Variable initialisiert (inkl. Deklaration):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">&amp;lt;&lt;/span>Typ&lt;span style="color:#f92672">-&lt;/span>der&lt;span style="color:#f92672">-&lt;/span>Variable&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>Variablen&lt;span style="color:#f92672">-&lt;/span>Name&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>Wert&lt;span style="color:#f92672">-&lt;/span>der&lt;span style="color:#f92672">-&lt;/span>Variable&lt;span style="color:#f92672">&amp;gt;;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hier ein kleines Beispiel, in welchem der Variable &lt;code>number&lt;/code> den Wert 3 zuweisen und ausgeben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> number &lt;span style="color:#f92672">=&lt;/span> 3&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>number&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nachfolgend ein Beispiel, in welchem versucht wird, zwei Zahlen zu addieren. Der erste Summand &lt;code>firstSummand&lt;/code> hat den Wert &lt;code>1&lt;/code>, beim zweiten Summand &lt;code>secondSummand&lt;/code> wird kein Wert zugewiesen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> firstSummand &lt;span style="color:#f92672">=&lt;/span> 1&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> secondSummand&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> sum &lt;span style="color:#f92672">=&lt;/span> firstSummand &lt;span style="color:#f92672">+&lt;/span> secondSummand&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>sum&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Weil die Variable &lt;strong>secondSummand&lt;/strong> nicht initialisiert wurde, kann die Zuweisung &lt;strong>int sum = firstSummand + secondSummand&lt;/strong> folglich nicht funktionieren. Deswegen führt dieser Code zu dieser Fehlermeldung:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">error: variable secondSummand might not have been initialized.
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Um dieses Problem zu lösen, muss die Variable &lt;code>secondSummand&lt;/code> initialisiert (also einen Wert zugewiesen) werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> firstSummand &lt;span style="color:#f92672">=&lt;/span> 1&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> secondSummand &lt;span style="color:#f92672">=&lt;/span> 2&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> sum &lt;span style="color:#f92672">=&lt;/span> firstSummand &lt;span style="color:#f92672">+&lt;/span> secondSummand&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>sum&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="deklaration-mit-initialisierung">Deklaration mit Initialisierung&lt;/h4>
+&lt;p>Wir können eine Variable nacheinander deklarieren und dann initialisieren oder beides zusammen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">int&lt;/span> number&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// 1. Deklaration
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>number &lt;span style="color:#f92672">=&lt;/span> 2&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// 2. Initialisierung
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> number &lt;span style="color:#f92672">=&lt;/span> 2&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// beides in einer Zeile
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="namensgebung">Namensgebung&lt;/h3>
+&lt;p>Variablen dienen dazu, Werte zu speichern. Zur Benennung von Variablen gibt es vier Regeln:&lt;/p>
+&lt;ul>
+&lt;li>Variablennamen beginnen mit einem Kleinbuchstaben.&lt;/li>
+&lt;li>Ein Variablenname darf die Buchstaben A-Z und a-z enthalten.&lt;/li>
+&lt;li>Ein Variablenname darf beliebige Zahlen von 0-9 enthalten, nicht aber am Anfang.&lt;/li>
+&lt;li>Ein Variablenname darf die Sonderzeichen $ und _ enthalten.&lt;/li>
+&lt;/ul>
+&lt;p>Der Name einer Variable sollte so gewählt werden, dass klar ist, welcher Wert darin gespeichert wird. Als Beispiel wählen wir den Namen &lt;em>sum&lt;/em> für eine Variable, welche das Resultat einer Addition enthält.&lt;/p></description></item><item><title>Exams: Exam zu JavaScript</title><link>/exams/web/html_css/02_exam_js/</link><pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate><guid>/exams/web/html_css/02_exam_js/</guid><description>
 &lt;h1 id="exam---zeiterfassungs-dashboard-mit-javascript-ergänzen">Exam - Zeiterfassungs-Dashboard mit JavaScript ergänzen&lt;/h1>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> - Einzelarbeit&lt;/p>
 &lt;p>Bei diesem Exam geht es darum, dass du das Dashboard, welches du im &lt;a href="../01_exam_html_css_rtm">HTML-CSS-Exam&lt;/a> geschrieben hast, mit JavaScript-Logik ergänzt.&lt;/p>
@@ -5365,512 +5641,4 @@ Umgekehrt funktioniert es auf dieselbe Weise, daher auch der Name &amp;ldquo;Two
 &lt;/ul>
 &lt;p>&lt;img src="/images/hint.png" alt="hint1"> - Hinweis:&lt;/p>
 &lt;p>Beziehungen zwischen Daten nicht vergessen.&lt;/p>
-&lt;p>Bei Fragen ungeniert melden.&lt;/p></description></item><item><title>Docs: Basics zu HTML</title><link>/docs/web/html_css/03_html_basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/web/html_css/03_html_basics/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kenne die HTML-Tags &lt;code>&amp;lt;h1&amp;gt;&lt;/code> und &lt;code>&amp;lt;p&amp;gt;&lt;/code> und weiss, was ihre Aufgaben sind.&lt;/li>
-&lt;li>Ich kenne die allgemeine Struktur von HTML-Tags.&lt;/li>
-&lt;/ul>
-&lt;h2 id="erklärung-zum-vorherigen-beispiel">Erklärung zum vorherigen Beispiel&lt;/h2>
-&lt;p>Im vorherigen Beispiel hatten wir diesen Code:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;Kleiner Witz&amp;lt;/&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Wie viele Softwareentwickler braucht man,
-um eine Glühbirne auszuwechseln?&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Keinen, das ist ein Hardware-Problem!&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Du hast gesehen, dass das zwischen &lt;code>&amp;lt;h1&amp;gt;&lt;/code> und &lt;code>&amp;lt;/h1&amp;gt;&lt;/code> wie ein Titel formatiert wurde, und dass der Text zwischen &lt;code>&amp;lt;p&amp;gt;&lt;/code> und &lt;code>&amp;lt;/p&amp;gt;&lt;/code> in eigenen Abschnitten dargestellt wurde.&lt;/p>
-&lt;h2 id="html-tags">HTML Tags&lt;/h2>
-&lt;p>Du hast schon die ersten &amp;ldquo;HTML Tags&amp;rdquo; kennengelernt: &lt;code>&amp;lt;h1&amp;gt;&lt;/code> und &lt;code>&amp;lt;p&amp;gt;&lt;/code>. &lt;code>&amp;lt;h1&amp;gt;&lt;/code> wird für Titel und &lt;code>&amp;lt;p&amp;gt;&lt;/code> wird für Paragrafen verwendet.&lt;/p>
-&lt;p>HTML Tags sind wie Keywords (Schlüsselbegriffe), die beschreiben, wie der Browser deren Inhalt (Content) formatiert bzw. darstellt.&lt;/p>
-&lt;p>Die Tags inklusiv deren Inhalt nennen wir &amp;ldquo;Element&amp;rdquo;. Das Element ist wie folgt aufgebaut:&lt;/p>
-&lt;p>&lt;img src="../html-tag.svg" alt="htmlElement" title="(Bild, das den Aufbau eines HTML-Elements zeigt.)">&lt;/p>
-&lt;p>Jedes Element beginnt mit einem &amp;ldquo;Opening Tag&amp;rdquo;. Zwischen diesem und dem Closing Tag befindet sich der Content, der auf Grundlage des Tags formatiert wird. Der Content wird oft &amp;ldquo;InnerText&amp;rdquo; oder &amp;ldquo;InnerHtml&amp;rdquo; genannt. Das Closing Tag hat immer vor dem Tag-Namen ein &amp;ldquo;/&amp;rdquo;, das symbolisiert, dass es sich um ein Closing Tag handelt.&lt;/p>
-&lt;p>Im Opening Tag können Attribute vorkommen, die den Tag &amp;ldquo;konfigurieren&amp;rdquo;. Eine solche Konfiguration beinhaltet in den meisten Fällen ein Attribut-Key und -Value, welche mit einem Gleichzeichen verbunden werden. Der Attribut-Value (Wert) beginnt und endet IN JEDEM FALL mit einem Anführungs- bzw. Schlusszeichen, auch wenn der Wert eine Zahl oder true bzw. false ist.&lt;/p></description></item><item><title>Docs: Git Basics</title><link>/docs/git/git-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-basics/</guid><description>
-&lt;p>Git kann auf unterschiedliche Arten eingesetzt werden, es gibt graphische Oberflächen und die meisten Git-Server Software bieten Weboberflächen, welche das interagieren mit Git Repositories kinderleicht gestalten. Da diese Oberflächen meist sehr Produktspezifisch sind und oft auch nicht alle Funktionen beinhaltet werden hier nur die Kommandozeilen Befehle angeschaut. Ausserdem empfiehlt es sich mit git auf der Kommandozeile zu starten da es so viel verständlicher ist.&lt;/p>
-&lt;h2 id="inhalt">Inhalt&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="#konfiguration-von-git">Konfiguration von Git&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#hilfe">Hilfe&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ein-git-repository-anlegen">Ein Git Repository anlegen&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#%C3%A4nderungen-verfolgen-und-im-repository-speichern">Änderungen verfolgen und im Repository speichern&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#anzeigen-der-commit-historie">Anzeigen der Commit Historie&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#%C3%A4nderungen-r%C3%BCckg%C3%A4ngig-machen">Änderungen rückgängig machen&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#mit-remotes-arbeiten">Mit Remotes arbeiten&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h2 id="konfiguration-von-git">Konfiguration von Git&lt;/h2>
-&lt;p>Git kann, wie die viele Software unter Linux, auf unterschiedlichen Level konfiguriert werden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>/etc/gitconfig&lt;/code> enthält die Werte, welche für alle Benutzer auf dem System gelten. Die Datei kann mit &lt;code>git config --system&lt;/code> gelesen oder editiert werden. Man braucht Administrator- oder Superuser-Rechte um die Datei zu editieren.&lt;/li>
-&lt;li>&lt;code>~/.gitconfig&lt;/code> oder &lt;code>~/.config/git/config&lt;/code> enthält die Werte, welche für den aktuellen Benutzer konfiguriert sind. Mit &lt;code>git config --global&lt;/code> können Werte gesetzt oder ausgelesen werden.&lt;/li>
-&lt;li>Die Datei &lt;code>config&lt;/code> im &lt;code>.git&lt;/code> Verzeichnis innerhalb eines Repositories enthält die Konfiguration, welche nur für dieses Repository zählt. Das Flag für &lt;code>git config&lt;/code> ist in diesem Fall &lt;code>--local&lt;/code>, ist jedoch in der Regel die Standardoption und kann weggelassen werden.&lt;/li>
-&lt;/ul>
-&lt;p>Jede dieser Konfiguration wird von der nächsten überschrieben, sodass die Repository bezogene Konfiguration den höchsten Wert hat. Um zu die aktuelle Konfiguration und ihren Ursprung anzusehen kann folgender Befehl ausgeführt werden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git config --list --show-origin
-file:/home/lehrling/.gitconfig user.email&lt;span style="color:#f92672">=&lt;/span>lehrling@puzzle.ch
-file:/home/lehrling/.gitconfig user.name&lt;span style="color:#f92672">=&lt;/span>Lehrling Puzzle
-file:/home/lehrling/.gitconfig push.default&lt;span style="color:#f92672">=&lt;/span>simple
-file:/home/lehrling/.gitconfig merge.tool&lt;span style="color:#f92672">=&lt;/span>meld
-file:.git/config core.repositoryformatversion&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
-file:.git/config core.filemode&lt;span style="color:#f92672">=&lt;/span>true
-file:.git/config core.bare&lt;span style="color:#f92672">=&lt;/span>false
-file:.git/config core.logallrefupdates&lt;span style="color:#f92672">=&lt;/span>true
-file:.git/config remote.origin.url&lt;span style="color:#f92672">=&lt;/span>git@github.com:puzzle-bbt/training-sbb-puzzle.git
-file:.git/config remote.origin.fetch&lt;span style="color:#f92672">=&lt;/span>+refs/heads/*:refs/remotes/origin/*
-file:.git/config branch.master.remote&lt;span style="color:#f92672">=&lt;/span>origin
-file:.git/config branch.master.merge&lt;span style="color:#f92672">=&lt;/span>refs/heads/master
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="konfigurationsbeispiele">Konfigurationsbeispiele&lt;/h3>
-&lt;p>Nach der Installation von Git sollte als erstes der Name und die Email Adresse konfiguriert werden, da diese beiden Angaben bei jedem Commit benötigt werden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git config --global user.name &lt;span style="color:#e6db74">&amp;#34;John Doe&amp;#34;&lt;/span>
-$ git config --global user.email johndoe@example.com
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wie wir bereits gelernt haben, schreiben wir mit dem &lt;code>--global&lt;/code> Flag in die Konfiguration in unserem &lt;code>home&lt;/code> Verzeichnis und sie gilt somit für alle Repositories, welche wir mit unserem User bearbeiten. Wollen wir dies fur ein bestimmtes Repo übersteuern, haben wir immer noch die Möglichkeit dies mit &lt;code>--local&lt;/code> zu machen.&lt;/p>
-&lt;p>Eine weitere Konfiguration die evtl. hilfreich sein kann ist &lt;code>core.editor&lt;/code> mit welcher, der Texteditor definiert werden kann. Git benutzt, falls hier nichts definiert ist, den standard Editor des Systems.&lt;/p>
-&lt;h2 id="hilfe">Hilfe&lt;/h2>
-&lt;p>Git bietet mehrere Möglichkeit, wie man an Hilfe gelangt, wenn mal einmal nicht weiter weiss:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git help &amp;lt;verb&amp;gt;
-$ git &amp;lt;verb&amp;gt; --help
-$ man git-&amp;lt;verb&amp;gt;
-&lt;span style="color:#75715e"># Kurzversion:&lt;/span>
-$ git &amp;lt;verb&amp;gt; -h
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wenn man also nicht mehr genau weiss, wie dies mit der Konfiguration von Git funktioniert kann man sich folgendermassen weiterhelfen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git help config &lt;span style="color:#75715e">#ruft die Manpage auf&lt;/span>
-&lt;span style="color:#f92672">[&lt;/span>..&lt;span style="color:#f92672">]&lt;/span>
-$ git config -h
-usage: git config &lt;span style="color:#f92672">[&lt;/span>&amp;lt;options&amp;gt;&lt;span style="color:#f92672">]&lt;/span>
-Config file location
---global use global config file
---system use system config file
---local use repository config file
---worktree use per-worktree config file
--f, --file &amp;lt;file&amp;gt; use given config file
---blob &amp;lt;blob-id&amp;gt; read config from given blob object
-Action
---get get value: name &lt;span style="color:#f92672">[&lt;/span>value-regex&lt;span style="color:#f92672">]&lt;/span>
---get-all get all values: key &lt;span style="color:#f92672">[&lt;/span>value-regex&lt;span style="color:#f92672">]&lt;/span>
---get-regexp get values &lt;span style="color:#66d9ef">for&lt;/span> regexp: name-regex &lt;span style="color:#f92672">[&lt;/span>value-regex&lt;span style="color:#f92672">]&lt;/span>
---get-urlmatch get value specific &lt;span style="color:#66d9ef">for&lt;/span> the URL: section&lt;span style="color:#f92672">[&lt;/span>.var&lt;span style="color:#f92672">]&lt;/span> URL
---replace-all replace all matching variables: name value &lt;span style="color:#f92672">[&lt;/span>value_regex&lt;span style="color:#f92672">]&lt;/span>
---add add a new variable: name value
---unset remove a variable: name &lt;span style="color:#f92672">[&lt;/span>value-regex&lt;span style="color:#f92672">]&lt;/span>
---unset-all remove all matches: name &lt;span style="color:#f92672">[&lt;/span>value-regex&lt;span style="color:#f92672">]&lt;/span>
---rename-section rename section: old-name new-name
---remove-section remove a section: name
--l, --list list all
--e, --edit open an editor
---get-color find the color configured: slot &lt;span style="color:#f92672">[&lt;/span>default&lt;span style="color:#f92672">]&lt;/span>
---get-colorbool find the color setting: slot &lt;span style="color:#f92672">[&lt;/span>stdout-is-tty&lt;span style="color:#f92672">]&lt;/span>
-Type
--t, --type &amp;lt;&amp;gt; value is given this type
---bool value is &lt;span style="color:#e6db74">&amp;#34;true&amp;#34;&lt;/span> or &lt;span style="color:#e6db74">&amp;#34;false&amp;#34;&lt;/span>
---int value is decimal number
---bool-or-int value is --bool or --int
---path value is a path &lt;span style="color:#f92672">(&lt;/span>file or directory name&lt;span style="color:#f92672">)&lt;/span>
---expiry-date value is an expiry date
-Other
--z, --null terminate values with NUL byte
---name-only show variable names only
---includes respect include directives on lookup
---show-origin show origin of config &lt;span style="color:#f92672">(&lt;/span>file, standard input, blob, command line&lt;span style="color:#f92672">)&lt;/span>
---show-scope show scope of config &lt;span style="color:#f92672">(&lt;/span>worktree, local, global, system, command&lt;span style="color:#f92672">)&lt;/span>
---default &amp;lt;value&amp;gt; with --get, use default value when missing entry
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="ein-git-repository-anlegen">Ein Git Repository anlegen&lt;/h2>
-&lt;p>Um lokal ein neues Git Repository anzulegen gibt es zwei Varianten:&lt;/p>
-&lt;ul>
-&lt;li>Umwandeln eines Verzeichnis, welches (noch) nicht mit Git verwaltet wird zu einem Git Repository&lt;/li>
-&lt;li>Klonen eines existierenden Repositories von einem anderen Ort&lt;/li>
-&lt;/ul>
-&lt;h3 id="ein-verzeichnis-zu-einem-git-repository-verwandeln">Ein Verzeichnis zu einem Git Repository verwandeln&lt;/h3>
-&lt;p>Um aus einem Ordner ein Git Repository zu erstellen, muss man zuerst in den Ordner wechseln und anschliessend das Repository initialisieren:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ cd ~/path/to/folder
-$ git init
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Der zweite Befehl erzeugt ein &lt;code>.git&lt;/code> Unterverzeichnis, welches die Repository Daten beinhaltet. Im Moment werden noch keine Dateien von Git verwaltet, sondern die müssen zuerst hinzugefügt (&lt;code>git add&lt;/code>) werden und committed werden (&lt;code>git commit&lt;/code>). Wenn wir von einem leeren Ordner aus gehen, müssen die Dateien natürlich zuerst noch erstellt werden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ vim README.md
-$ git add README.md
-$ git commit -m &lt;span style="color:#e6db74">&amp;#39;Initial Commit&amp;#39;&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="ein-bestehendes-repository-klonen">Ein bestehendes Repository klonen&lt;/h3>
-&lt;p>Um ein Repository zu klonen wird der Befehl &lt;code>git clone&lt;/code> verwendet:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git clone https://github.com/libgit2/libgit2
-$ ls
-libgit2
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Git legt dann automatisch ein Verzeichnis &lt;code>libgit2&lt;/code> an mit allen Dateien und initialisiert das Repository mit einem &lt;code>.git&lt;/code> Verzeichnis im Hauptverzeichnis. Wird hinter der URL noch etwas angegeben, wird dies als Name des Zielverzeichnisses interpretiert:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git clone https://github.com/libgit2/libgit2 mylibgit
-$ ls
-mylibgit
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="änderungen-verfolgen-und-im-repository-speichern">Änderungen verfolgen und im Repository speichern&lt;/h2>
-&lt;p>Zur Erinnerung, eine Datei in einem Git Folder kann vier Zustände haben:&lt;/p>
-&lt;ul>
-&lt;li>Untracked: Die Datei liegt im Ordner, wird aber nicht von Git versioniert&lt;/li>
-&lt;li>Unmodified: Die Datei wird von Git versioniert, sie ist seit dem letzten Commit unverändert.&lt;/li>
-&lt;li>Modified: Die Datei wurde seit dem letzten Commit verändert&lt;/li>
-&lt;li>Staged: eine neue oder editierte Datei wurde für den nächsten Commit vorgemerkt.&lt;/li>
-&lt;/ul>
-&lt;p>Der Befehl zum überprüfen, ob man Dateien in einem anderen Zustand als &lt;code>unmodified&lt;/code> hat ist &lt;code>git status&lt;/code>:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git status
-On branch feature/git-basics
-Your branch is up to date with &lt;span style="color:#e6db74">&amp;#39;origin/feature/git-basics&amp;#39;&lt;/span>.
-Changes to be committed:
-&lt;span style="color:#f92672">(&lt;/span>use &lt;span style="color:#e6db74">&amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34;&lt;/span> to unstage&lt;span style="color:#f92672">)&lt;/span>
-modified: content/en/docs/02.0/02.md
-Changes not staged &lt;span style="color:#66d9ef">for&lt;/span> commit:
-&lt;span style="color:#f92672">(&lt;/span>use &lt;span style="color:#e6db74">&amp;#34;git add &amp;lt;file&amp;gt;...&amp;#34;&lt;/span> to update what will be committed&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#f92672">(&lt;/span>use &lt;span style="color:#e6db74">&amp;#34;git restore &amp;lt;file&amp;gt;...&amp;#34;&lt;/span> to discard changes in working directory&lt;span style="color:#f92672">)&lt;/span>
-modified: content/en/docs/02.0/02.md
-Untracked files:
-&lt;span style="color:#f92672">(&lt;/span>use &lt;span style="color:#e6db74">&amp;#34;git add &amp;lt;file&amp;gt;...&amp;#34;&lt;/span> to include in what will be committed&lt;span style="color:#f92672">)&lt;/span>
-.gitignore
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wollen wir nun die Änderungen der Datei &lt;code>content/en/docs/02.0/02.md&lt;/code> (oder die Datei &lt;code>.gitignore&lt;/code>) zum nächsten Commit hinzufügen können wir dies mit &lt;code>git add &amp;lt;pfad/zur/datei&amp;gt;&lt;/code>. Im Beispiel oben sehen wir, dass die Datei &lt;code>content/en/docs/02.0/02.md&lt;/code> bereits gestaged ist. Ändern wir diese Datei erneut, wird die Datei sowohl bei &lt;em>Changes to be committed:&lt;/em> wie auch bei &lt;em>Changes not staged for commit:&lt;/em> auftauchen. Einmal mit den Änderungen, welche wir bereits gestaged haben und einmal mit den Änderungen, welche wir nach dem Stagen (&lt;code>git add&lt;/code>) gemacht haben. Wollen wir beide Änderungen im gleichen Commit, können wir die Datei einfach wieder mit &lt;code>git add&lt;/code> stagen und anschliessend commiten, wollen wir die Änderungen in separaten Commit, commiten wir zuerst die gestagten Änderungen und stagen anschliessend die zweite Änderungen und commiten erneut.&lt;/p>
-&lt;h3 id="gitignore">.gitignore&lt;/h3>
-&lt;p>Bevor wir lernen, wie man seine Änderungen commited wollen wir noch kurz die spezielle Datei &lt;code>.gitignore&lt;/code> anschauen. In dieser Datei können Dateien erfasst werden, welche Git nicht als untracked aufzählen soll, respektive ignorieren soll. Die Datei wird ganz normal wie jede andere auch ins Repo eingecheckt.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ cat .gitignore
-&lt;span style="color:#75715e"># ignore all .a files&lt;/span>
-*.a
-&lt;span style="color:#75715e"># but do track lib.a, even though you&amp;#39;re ignoring .a files above&lt;/span>
-!lib.a
-&lt;span style="color:#75715e"># only ignore the TODO file in the current directory, not subdir/TODO&lt;/span>
-/TODO
-&lt;span style="color:#75715e"># ignore all files in any directory named build&lt;/span>
-build/
-&lt;span style="color:#75715e"># ignore doc/notes.txt, but not doc/server/arch.txt&lt;/span>
-doc/*.txt
-&lt;span style="color:#75715e"># ignore all .pdf files in the doc/ directory and any of its subdirectories&lt;/span>
-doc/**/*.pdf
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Weitere Informationen bekommt man mit &lt;code>man gitignore&lt;/code> oder unter &lt;a href="https://github.com/github/gitignore">https://github.com/github/gitignore&lt;/a> findet man nützliche Beispiele.&lt;/p>
-&lt;h3 id="überprüfen-der-änderungen">Überprüfen der Änderungen&lt;/h3>
-&lt;p>Bevor man seine Änderungen commited, empfiehlt es sich diese nochmals zu überprüfen. Mit &lt;code>git status&lt;/code> sieht man, welche Dateien geändert wurden, jedoch nicht, was sich geändert hat. Dafür gibt es den Befehl &lt;code>git diff&lt;/code>:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-diff" data-lang="diff">diff --git a/content/en/docs/02.0/02.md b/content/en/docs/02.0/02.md
-index 1e6db46..dd7161b 100644
-&lt;span style="color:#f92672">--- a/content/en/docs/02.0/02.md
-&lt;/span>&lt;span style="color:#f92672">&lt;/span>&lt;span style="color:#a6e22e">+++ b/content/en/docs/02.0/02.md
-&lt;/span>&lt;span style="color:#a6e22e">&lt;/span>&lt;span style="color:#75715e">@@ -145,3 +145,60 @@ mylibgit
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-## Änderungen verfolgen und im Repository speichern
-&lt;span style="color:#a6e22e">+Zur Erinnerung, eine Datei in einem Git Folder kann vier Zustände haben:
-&lt;/span>&lt;span style="color:#a6e22e">&lt;/span>&lt;span style="color:#f92672">-Zur Erinnerung, eine Datei in einem Git Folder kann vier Zustaende haben
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;code>git diff&lt;/code> vergleicht die Änderungen welche noch nicht gestaged wurden, will man bereits gestagte Änderungen überprüfen braucht es zusätzlich das Flag &lt;code>--staged&lt;/code> oder &lt;code>--cached&lt;/code> (die beiden Flags sind Synonyme).&lt;/p>
-&lt;p>Anders als &lt;code>git diff&lt;/code> funktioniert &lt;code>git diff-tool&lt;/code> mit einem externen Tool, welches dir die Änderungen anzeigt. Beispiele dafür sind &amp;lsquo;P4Merge&amp;rsquo; oder auch &amp;lsquo;Beyond Compare&amp;rsquo;. Sie versuchen die Bearbeitungen besser zu visualisieren
-und es dem Benutzer einfacher zu machen, diese in einer Datei / im Code einzusehen.
-Jetzt bleibt die Frage: Wann brauchen wir was? Grundsätzlich
-wird &lt;code>git diff&lt;/code> bei folgenden Situationen gebraucht:&lt;/p>
-&lt;ul>
-&lt;li>Wenn wir kein GUI haben und nur mit dem Output des Terminals arbeiten&lt;/li>
-&lt;li>Falls wir gar kein externes Tool zur Verfügung haben&lt;/li>
-&lt;li>Wenn du keine &amp;lsquo;schweren&amp;rsquo; externen Tools starten möchtest, sondern so schnell wie möglich zum Ergebnis kommen willst.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;code>git diff-tool&lt;/code> kann man dann überall dort einsetzen, bei denen die oben erwähnten Situationen nicht zutreffen. Zu Beachten ist aber, dass es noch viele weitere Situationen gibt, in welchen man auf &lt;code>git diff-tool&lt;/code> verzichten kann.
-Zur genaueren Einsicht ist Googel immer eine gute Anhaltestelle.&lt;/p>
-&lt;h3 id="commiten">Commiten&lt;/h3>
-&lt;p>Ist man sicher, dass man nur die Änderungen gestaged hat, welche man auch commiten will, kann man dies mit dem Befehl &lt;code>git commit&lt;/code> bewerkstelligen. Dadurch wird ein Editor geöffnet und man wird gebeten eine Beschreibung für die Änderungen anzugeben. Wie solche Beschreibungen gestaltet werden sollen und was alles in eine &amp;ldquo;Commit Message&amp;rdquo; gehört, darüber gibt es ganz unterschiedliche Meinungen. Idealerweise probiert man sich vorzustellen, was man an Zusätzlichen Informationen braucht, wenn man die Änderungen in zwei Jahren wieder anschaut, um zu verstehen, was und warum das geändert wurde.&lt;/p>
-&lt;p>Oft gibt es pro Projekt Konventionen wie eine Commit Message aussehen soll. Falls dies nicht existiert gibt es ein paar wenige Punkte welche die Messages einiges lesbarer und verständlicher machen:&lt;/p>
-&lt;ul>
-&lt;li>Sprache: Englisch&lt;/li>
-&lt;li>Kurze und prägnante Message, idealerweise unter 50 Zeichen &lt;a href="https://chris.beams.io/posts/git-commit/#limit-50">Details&lt;/a>&lt;/li>
-&lt;li>Mit Grossbuchstaben beginnen &lt;a href="https://chris.beams.io/posts/git-commit/#capitalize">Details&lt;/a>&lt;/li>
-&lt;li>Kein Punkt am Schluss &lt;a href="https://chris.beams.io/posts/git-commit/#end">Details&lt;/a>&lt;/li>
-&lt;li>Den &lt;em>imperative mood&lt;/em> (Befehlsform) verwenden, also «Fix bug with X» statt «Fixed bug with X» oder «More fixes for broken stuff» &lt;a href="https://chris.beams.io/posts/git-commit/#imperative">Details&lt;/a>&lt;/li>
-&lt;li>Wenn vorhanden das Ticket referenzieren:
-&lt;ul>
-&lt;li>Bei Gitlab/Github Issues: «Add X #12345»&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>(&lt;a href="https://docs.puzzle.ch/qm-guide/latest/source-code-management/index.html#_konvention_commit_message">Puzzle Docs&lt;/a>)&lt;/p>
-&lt;p>Weitere Quellen dazu:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.conventionalcommits.org/en/v1.0.0/">https://www.conventionalcommits.org/en/v1.0.0/&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>Ein paar hilfreiche Flags zu &lt;code>git commit&lt;/code>:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>-m&lt;/code> um eine Message gleich anzugeben und nicht den Editor zu öffnen (kann je nach Commit Message Guideline hinderlich sein, da es keine Multiline Kommentare erlaubt):&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">git commit -m &lt;span style="color:#e6db74">&amp;#34;Story 182: added important Information to Readme&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">[&lt;/span>master 463dc4f&lt;span style="color:#f92672">]&lt;/span> Story 182: added important Information to Readme
-&lt;span style="color:#ae81ff">2&lt;/span> files changed, &lt;span style="color:#ae81ff">2&lt;/span> insertions&lt;span style="color:#f92672">(&lt;/span>+&lt;span style="color:#f92672">)&lt;/span>
-create mode &lt;span style="color:#ae81ff">100644&lt;/span> README
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>
-&lt;p>&lt;code>-a&lt;/code> um alle editierten Dateien gleich mitzustagen. (Kurzform von &lt;code>git add --all &amp;amp;&amp;amp; git commit&lt;/code>) &lt;strong>!ACHTUNG!&lt;/strong> kann gefährlich sein da so schnell Änderungen in einen Commit rutschen die nicht rein gehören!&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>-v&lt;/code> um ein &lt;code>git diff --staged&lt;/code> im Editor angezeigt zu bekommen. So muss man sich nicht merken, was man eigentlich geändert hat und bekommt es beim schreiben der Commit Message noch einmal präsentiert.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>WICHTIG:&lt;/strong> Es ist einiges einfacher Fehler vor dem Commiten als nach dem Commiten zu beheben, ein zweites mal über die Änderungen schauen ist sehr empfehlenswert!&lt;/p>
-&lt;h3 id="dateien-löschen">Dateien löschen&lt;/h3>
-&lt;p>Um eine Datei zu löschen muss diese zuerst entfernt und dann gestaged werden, damit dies in der Git Datenbank ankommt. Um nicht zuerst &lt;code>rm foo&lt;/code> und dann &lt;code>git add foo&lt;/code> eingeben zu müssen, gibt es den Befehl &lt;code>git rm foo&lt;/code>. Will man eine bereits gestagte Datei aus der Versionsverwaltung jedoch nicht vom Filesystem löschen, weil man diese zum Beispiel im &lt;code>.gitignore&lt;/code> ergänzen möchte, dann kann man dies mit &lt;code>git rm --cached foo&lt;/code> erledigen.&lt;/p>
-&lt;p>&lt;strong>WICHTIG:&lt;/strong> Jede Datei die irgendwann mal commited wurde ist für immer in der Git Geschichte und kann nur durch neu schreiben der selbigen wieder entfernt werden. Wer also zum Beispiel sein Passwort commited weil dies in einer &lt;code>secret.yml&lt;/code> Datei steht, der sollte sich sofort bei einem 10x-Git-Profi-Engineer Hilfe holen.&lt;/p>
-&lt;h3 id="dateien-verschieben">Dateien Verschieben&lt;/h3>
-&lt;p>Genauso wie löschen, muss auch beim Verschieben die Änderung Git mitgeteilt werden: &lt;code>mv README.md README &amp;amp;&amp;amp; git rm README.md &amp;amp;&amp;amp; git add README&lt;/code> oder in kurz und hübsch: &lt;code>git mv README.md README&lt;/code>.&lt;/p>
-&lt;h2 id="anzeigen-der-commit-historie">Anzeigen der Commit Historie&lt;/h2>
-&lt;p>Um die Geschichte eines Git Repositories anzuzeigen gibt es den Befehl &lt;code>git log&lt;/code>. Ohne Argumente zeigt &lt;code>git log&lt;/code> die Commits in umgekehrter chronologischer Reihenfolge, sprich jüngster Commit zuoberst. Pro Commit wird jeweils der Commit-Hash, der Name und Email Adresse des Authors, das Datum und die Commit-Message angezeigt. Um die effektiven Änderungen anzuzeigen gibt es das &lt;code>-p&lt;/code> oder &lt;code>--patch&lt;/code> Flag verwendet werden. Da der Output schnell gross wird und man wahrscheinlich auch nicht bis an den Ursprung der Geschichte zurück will empfiehlt es sich die Anzahl Commits anzugeben, will man zum Beispiel die letzten drei Commits anschauen macht man dies mit &lt;code>-3&lt;/code>. Oder man schränkt die Änderungen basierend auf die Zeit ein mit &lt;code>--since=&lt;/code> und &lt;code>--until=&lt;/code> ein (es werden die unterschiedlichsten Zeitangaben akzeptiert, am besten probiert man etwas aus. Bsp: &lt;code>--since=2.weeks&lt;/code> oder &lt;code>--until=&amp;quot;2020-06-03&amp;quot;&lt;/code>). Auch mit &lt;code>--grep&lt;/code> oder &lt;code>--author&lt;/code> kann man die Resultate einschränken. Weitere Information liefert die Manpage &lt;code>man git log&lt;/code> und die Hilfefunktion &lt;code>git log -h&lt;/code>.&lt;/p>
-&lt;h2 id="änderungen-rückgängig-machen">Änderungen rückgängig machen&lt;/h2>
-&lt;p>Wo gehobelt wird fallen Späne. Die meisten Schnitzer kann man jedoch selber wieder ausglätten. Am häufigsten committed man wohl zu schnell, hat eine Datei vergessen dazuzufügen oder hat sich bei der Commit Message vertan. Hier kann man ganz einfach die Änderungen noch vornehmen und an den letzten Commit berichtigen mit &lt;code>git commit --amend&lt;/code> (Wichtig, man editiert nicht den letzten Commit, sondern man löscht ihn und erstellt eine korrigierte neue Version davon. Dies kann dazuführen, dass ein Remote den Commit nicht mehr annimmt, da die History nicht mehr übereinstimmt. Aber mehr dazu später.)&lt;/p>
-&lt;p>Um eine gestagte Datei wieder zu modified (aber eben nicht gestaged) zu verschieben kann man &lt;code>git reset HEAD &amp;lt;file&amp;gt;&lt;/code> verwenden. Um die Änderungen einer Datei rückgängig zu machen (also modified zu unmodified)
-kann sie neu ausgecheckt werden mit &lt;code>git checkout -- &amp;lt;file&amp;gt;&lt;/code>. &lt;strong>Achtung&lt;/strong> Alle Änderungen seit dem letzte Commit gehen damit verloren!!! Wenn man sich an die beiden Befehle gerade mal nicht erinnern kann, dann kann man einfach ein &lt;code>git status&lt;/code> eingeben und den Hilfetext studieren 😉.&lt;/p>
-&lt;h2 id="mit-remotes-arbeiten">Mit Remotes arbeiten&lt;/h2>
-&lt;p>Um mit anderen an einem Git-Projekt mitarbeiten zu können, braucht es Remotes, sprich eine Version des Projekts im Netzwerk, wo alle Beteiligten ihre Änderungen hin pushen und die Änderungen der Anderen pullen können.&lt;/p>
-&lt;p>Nachdem man ein Repo gecloned hat sieht man ein Remote, man kann jedoch auch weitere definieren:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git clone git@github.com:puzzle-bbt/training-sbb-puzzle.git
-Cloning into &lt;span style="color:#e6db74">&amp;#39;training-sbb-puzzle&amp;#39;&lt;/span>...
-remote: Enumerating objects: 8485, &lt;span style="color:#66d9ef">done&lt;/span>.
-remote: Counting objects: 100% &lt;span style="color:#f92672">(&lt;/span>8485/8485&lt;span style="color:#f92672">)&lt;/span>, &lt;span style="color:#66d9ef">done&lt;/span>.
-remote: Compressing objects: 100% &lt;span style="color:#f92672">(&lt;/span>5276/5276&lt;span style="color:#f92672">)&lt;/span>, &lt;span style="color:#66d9ef">done&lt;/span>.
-remote: Total &lt;span style="color:#ae81ff">8485&lt;/span> &lt;span style="color:#f92672">(&lt;/span>delta 3095&lt;span style="color:#f92672">)&lt;/span>, reused &lt;span style="color:#ae81ff">8456&lt;/span> &lt;span style="color:#f92672">(&lt;/span>delta 3079&lt;span style="color:#f92672">)&lt;/span>, pack-reused &lt;span style="color:#ae81ff">0&lt;/span>
-Receiving objects: 100% &lt;span style="color:#f92672">(&lt;/span>8485/8485&lt;span style="color:#f92672">)&lt;/span>, 17.06 MiB | 5.11 MiB/s, &lt;span style="color:#66d9ef">done&lt;/span>.
-Resolving deltas: 100% &lt;span style="color:#f92672">(&lt;/span>3095/3095&lt;span style="color:#f92672">)&lt;/span>, &lt;span style="color:#66d9ef">done&lt;/span>.
-$ cd training-sbb-puzzle
-$ git remote
-origin
-$ git remote -v
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>fetch&lt;span style="color:#f92672">)&lt;/span>
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>push&lt;span style="color:#f92672">)&lt;/span>
-$ git remote add private git remote add private git@github.com:Lehrling/training-sbb-puzzle.git
-$ git remote -v
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>fetch&lt;span style="color:#f92672">)&lt;/span>
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>push&lt;span style="color:#f92672">)&lt;/span>
-private git@github.com:Lehrling/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>fetch&lt;span style="color:#f92672">)&lt;/span>
-private git@github.com:Lehrling/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>push&lt;span style="color:#f92672">)&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wollen wir nun alle Information holen, welches der Lehrling hat, jedoch noch nicht im Repo sind kann man dies mit &lt;code>git fetch private&lt;/code> ausführen.&lt;/p>
-&lt;h3 id="fetching-und-pulling">Fetching und Pulling&lt;/h3>
-&lt;p>Es gibt zwei Arten, wie man Daten von einem Remote abholen kann, nach dem man das Repo gecloned hat.&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;code>git fetch &amp;lt;remote&amp;gt;&lt;/code>: holt alle Änderungen vom Remote seit dem letzten abholen und speichert die lokal. Wichtig zu beachten ist, dass &lt;code>git fetch&lt;/code> die Änderungen nicht mit den lokalen Änderungen zusammenfügt, sondern dies manuell ausgeführt werden muss.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>git pull&lt;/code>: Wenn der lokale Branch mit einem remote Branch verknüpft ist, holt &lt;code>git pull&lt;/code> die Änderungen dieses remotes und fügt sie gleich mit den Änderungen im lokalen Branch zusammen (merge). Was Branches sind und wie ein Merge funktioniert schauen wir uns in kürze an, nur soviel, wird ein Repo gecloned, wird der lokale sogenannte &lt;code>master&lt;/code> Branch mit dem &lt;code>master&lt;/code> Branch des &lt;code>origin&lt;/code> Remotes verknüpft.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h3 id="pushen">Pushen&lt;/h3>
-&lt;p>Wenn man seine Änderungen soweit hat, dass man sie mit dem Rest vom Team teilen will, dann kann man diese mit &lt;code>git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code> auf den Server laden. Dies funktioniert jedoch nur, wenn man auf dem Server auch Schreibrechte hat und niemand anderes vor einem gepusht hat.&lt;/p></description></item></channel></rss>
+&lt;p>Bei Fragen ungeniert melden.&lt;/p></description></item></channel></rss>
