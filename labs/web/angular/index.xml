@@ -1,150 +1,628 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Angular Labs</title><link>/labs/web/angular/</link><description>Recent content in Angular Labs on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/labs/web/angular/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Angular Setup</title><link>/labs/web/angular/angular_setup/</link><pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate><guid>/labs/web/angular/angular_setup/</guid><description>
-&lt;p>In diesem Lab wirst du Angular installieren.&lt;/p>
-&lt;p>Das Lab orientiert sich stark an der offiziellen Dokumentation von Angular. Die Dokumentation findest du unter &lt;a href="https://angular.io/docs" target="_blank">angular.io/docs&lt;/a>.&lt;/p>
-&lt;h3 id="teil-1---installation-von-nodejs">Teil 1 - Installation von Node.js&lt;/h3>
-&lt;p>In diesem ersten Schritt wirst du Node.js installieren, falls Node.js noch nicht bei dir installiert ist.&lt;/p>
-&lt;p>Überprüfe zuerst, ob Node.js bereits auf deinem System installiert ist:&lt;/p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Angular Labs</title><link>/labs/web/angular/</link><description>Recent content in Angular Labs on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/labs/web/angular/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Labs zu Angular</title><link>/labs/web/angular/01_angular/</link><pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate><guid>/labs/web/angular/01_angular/</guid><description>
+&lt;h1 id="aufgaben">Aufgaben&lt;/h1>
+&lt;p>In diesen Aufgaben wirst du eine Applikation erstellen, die dir Informationen über verschiedene Velos anzeigt. Erstelle die Applikation anhand des bereitgestellten Codes und den dazugehörigen Informationen.&lt;/p>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Folgender Code ist gegeben:
+Datei &lt;code>../interfaces.ts&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">Bicycle&lt;/span> {
+&lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">url&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+}
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">BicycleImage&lt;/span> {
+&lt;span style="color:#a6e22e">displayLink&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">fileFormat&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">htmlSnippet&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">htmlTitle&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">image&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#a6e22e">byteSize&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">contextLink&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">height&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">thumbnailHeight&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">thumbnailLink&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">thumbnailWidth&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">width&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+};
+&lt;span style="color:#a6e22e">kind&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">link&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">mime&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">snippet&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">title&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+}
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">GoogleCustomSearchResponse&lt;/span> {
+&lt;span style="color:#a6e22e">kind&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">url&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#66d9ef">type&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">template&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+};
+&lt;span style="color:#a6e22e">queries&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#a6e22e">request&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#a6e22e">count&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">cx&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">inputEncoding&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">outputEncoding&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">safe&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">searchTerms&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">searchType&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">startIndex&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">title&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">totalResults&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+}[];
+&lt;span style="color:#a6e22e">nextPage&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#a6e22e">count&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">cx&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">inputEncoding&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">outputEncoding&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">safe&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">searchTerms&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">searchType&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">startIndex&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">title&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">totalResults&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+}[];
+};
+&lt;span style="color:#a6e22e">searchInformation&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#a6e22e">searchTime&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;span style="color:#a6e22e">formattedSearchTime&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">totalResults&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#a6e22e">formattedTotalResults&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+};
+&lt;span style="color:#a6e22e">items&lt;/span>: &lt;span style="color:#66d9ef">BicycleImage&lt;/span>[];
+&lt;span style="color:#a6e22e">context&lt;/span>&lt;span style="color:#f92672">?:&lt;/span> {
+&lt;span style="color:#a6e22e">title&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+};
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Datei &lt;code>bicycle.component.ts&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span>, &lt;span style="color:#a6e22e">OnInit&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">HttpClient&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/common/http&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Bicycle&lt;/span>, &lt;span style="color:#a6e22e">BicycleImage&lt;/span>, &lt;span style="color:#a6e22e">GoogleCustomSearchResponse&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;../interfaces&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">@Component&lt;/span>({
+&lt;span style="color:#a6e22e">selector&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;app-bicycle&amp;#39;&lt;/span>,
+&lt;span style="color:#a6e22e">templateUrl&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./bicycle.component.html&amp;#39;&lt;/span>,
+&lt;span style="color:#a6e22e">styleUrls&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;./bicycle.component.scss&amp;#39;&lt;/span>],
+})
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">BicycleComponent&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> &lt;span style="color:#a6e22e">OnInit&lt;/span> {
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">bicycle&lt;/span>: &lt;span style="color:#66d9ef">Bicycle&lt;/span> &lt;span style="color:#f92672">=&lt;/span> { &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">url&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span> };
+&lt;span style="color:#a6e22e">favoriteBicycle&lt;/span>: &lt;span style="color:#66d9ef">BicycleImage&lt;/span>[] &lt;span style="color:#f92672">=&lt;/span> [];
+&lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">httpClient&lt;/span>: &lt;span style="color:#66d9ef">HttpClient&lt;/span>) {}
+&lt;span style="color:#a6e22e">ngOnInit&lt;/span>()&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> {
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">bicycle&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Specialized Diverge Pro Carbon&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">bicycle&lt;/span>.&lt;span style="color:#a6e22e">url&lt;/span> &lt;span style="color:#f92672">=&lt;/span>
+&lt;span style="color:#e6db74">&amp;#39;https://assets.specialized.com/i/specialized/96220-10_DIVERGE-PRO-CARBON-ETAP-REDWD-SMK-CHRM_HERO?bg=rgb(241,241,241)&amp;amp;w=2500&amp;amp;h=1406&amp;amp;fmt=auto&amp;#39;&lt;/span>;
+}
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">displayBicycleName() {&lt;/span>
+&lt;span style="color:#a6e22e">alert&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">bicycle&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>);
+}
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">getFavoriteBicycleImage() {&lt;/span>
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">url&lt;/span> &lt;span style="color:#f92672">=&lt;/span>
+&lt;span style="color:#e6db74">&amp;#39;https://www.googleapis.com/customsearch/v1?key=AIzaSyDNGfS6NUdgwXOwKu9xlZPJFm84ylG6J4g&amp;amp;cx=005124428384360536924:rstfldysumw&amp;amp;q=&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">bicycle&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span>
+&lt;span style="color:#e6db74">&amp;#39;&amp;amp;searchType=image&amp;amp;safe=high&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">httpClient&lt;/span>.&lt;span style="color:#66d9ef">get&lt;/span>&amp;lt;&lt;span style="color:#f92672">GoogleCustomSearchResponse&lt;/span>&amp;gt;(&lt;span style="color:#a6e22e">url&lt;/span>).&lt;span style="color:#a6e22e">subscribe&lt;/span>((&lt;span style="color:#a6e22e">response&lt;/span>: &lt;span style="color:#66d9ef">GoogleCustomSearchResponse&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">item&lt;/span>: &lt;span style="color:#66d9ef">BicycleImage&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">response&lt;/span>.&lt;span style="color:#a6e22e">items&lt;/span>[&lt;span style="color:#a6e22e">i&lt;/span>];
+&lt;span style="color:#a6e22e">item&lt;/span>.&lt;span style="color:#a6e22e">image&lt;/span>.&lt;span style="color:#a6e22e">height&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#ae81ff">200&lt;/span> &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#a6e22e">item&lt;/span>.&lt;span style="color:#a6e22e">image&lt;/span>.&lt;span style="color:#a6e22e">width&lt;/span>) &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">item&lt;/span>.&lt;span style="color:#a6e22e">image&lt;/span>.&lt;span style="color:#a6e22e">height&lt;/span>;
+&lt;span style="color:#a6e22e">item&lt;/span>.&lt;span style="color:#a6e22e">image&lt;/span>.&lt;span style="color:#a6e22e">width&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">200&lt;/span>;
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">favoriteBicycle&lt;/span>.&lt;span style="color:#a6e22e">push&lt;/span>(&lt;span style="color:#a6e22e">item&lt;/span>);
+}
+});
+}
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Folgendes muss angezeigt werden, wenn die Seite geladen wurde:&lt;/p>
+&lt;p>&lt;img src="./../../../../docs/web/angular/images/first-page.png" alt="Components Description">&lt;/p>
+&lt;ul>
+&lt;li>&amp;ldquo;Wie heisst mein Fahrrad?&amp;rdquo; ist mit der Funktion &amp;ldquo;displayBicycleName()&amp;rdquo; verknüpft.&lt;/li>
+&lt;li>&amp;ldquo;Mein Liebslingsfahrrad suchen&amp;rdquo; ist mit der Funktion &amp;ldquo;getFavoriteBicycleImage()&amp;rdquo; verknüpft.&lt;/li>
+&lt;li>Für die Anzeige der Lieblingsfahrräder muss ein &lt;code>*ngFor&lt;/code> gebraucht werden.&lt;/li>
+&lt;li>Tipp: Die Weite und Höhe der Bilder kann direkt mit einem Propertybinding gemacht werden.&lt;/li>
+&lt;/ul>
+&lt;p>Folgendes wird nach dem Klick auf &amp;ldquo;Wie heisst mein Fahrrad?&amp;rdquo; angezeigt:&lt;/p>
+&lt;p>&lt;img src="../../../../docs/web/angular/images/bicycle-name-notification.png" alt="Bicycle Notification">&lt;/p>
+&lt;p>Folgende Seite wird nach dem Klick auf &amp;ldquo;Mein Lieblingsfahrrad suchen&amp;rdquo; angezeigt:&lt;/p>
+&lt;p>&lt;img src="../../../../docs/web/angular/images/second-page.png" alt="Components Description">&lt;/p>
+&lt;h2 id="aufgabe-11">Aufgabe 1.1&lt;/h2>
+&lt;p>Passe den bestehenden Code aus Aufgabe 1 so an, dass das Inputfeld ein &lt;code>FormControl&lt;/code> ist. Zudem soll neu dieses Inputfeld als Suche funktionieren, das bedeutet das man der Funktion der Wert des Inputs übergeben kann.
+So soll dann immer die Bilder zum Wert angezeigt werden und auch der Text &amp;ldquo;Mein Lieblingsfahrrad: &amp;quot; sollte immer den Wert es Inputs anzeigen.&lt;/p>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Diese Aufgabe wird ein nun grösseres Projekt, der Sinn hinter diesem ist das Verwalten der Fahrräder mit einem objekt-orientierten Ansatz. Zusätzlich soll die Trennung von Modell-Klassen, Services und Components detaillierter betrachtet werden.
+Zudem besitzt man nach Abschluss der Aufgabe ein richtiges und praxisorientiertem Beispiel für ein Frontend.&lt;/p>
+&lt;p>Erstelle ein neues Angular Projekt.&lt;/p>
+&lt;p>Im neu erstellten Projekt wollen wir Daten für folgende (Datenbank-)Entitäten mit einem objekt-orientierten Ansatz abbilden:
+&lt;img src="../../../../docs/web/angular/images/bicycle-erd-diagram.png" alt="ERD">&lt;/p>
+&lt;p>Folgende Anforderungen sind gegeben:&lt;/p>
+&lt;ul>
+&lt;li>Erstelle für jede Entität (ohne die Zwischentabelle &lt;code>Bicycle_Type&lt;/code>) des Models eine geeignete Modell-Klasse.&lt;/li>
+&lt;li>Erstelle für jede Modell-Klasse einen Service.&lt;/li>
+&lt;li>Erstelle bei jedem Service Beispieldaten.&lt;/li>
+&lt;li>Behalte die Ordnerstruktur korrekt (Ordner für die Components, Ordner für die Services, etc.).&lt;/li>
+&lt;li>Der BicycleService enthält folgende Funktionen: &lt;code>getBicycle(id: number)&lt;/code>, &lt;code>getAllBicycle()&lt;/code> und &lt;code>getFullBicycle(id: number)&lt;/code>. (Der Unterschied zwischen Bicycle und FullBicycle sollte sein das beim Full die Typen und Marke als String angegeben werden und bim Bicycle kann es nur die ID sein.)&lt;/li>
+&lt;li>Der BrandService enthält folgende Funktionen: &lt;code>getBrand(id: number)&lt;/code> und &lt;code>getBrandName(id: number)&lt;/code>.&lt;/li>
+&lt;li>Der TypeService enthält folgende Funktionen: &lt;code>getTypes(ids: number[])&lt;/code> und &lt;code>getTypesName(ids: number[])&lt;/code>.&lt;/li>
+&lt;li>Sollte der Benutzer bei den Services versuchen etwas zu getten was es nicht gibt sol einen Fehler geworfen werden mit &lt;code>throw Error&lt;/code>.&lt;/li>
+&lt;li>Erstelle einen globalen ErrorHandler um die möglichen Fehler der Services abzufangen und gib eine Mitteilung damit der Benutzer weiss, das ein Fehler passierte (Subject verwenden).&lt;/li>
+&lt;li>Erstelle einen neuen Component um die Daten alles Fahrräder anzuzeigen.&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-22">Aufgabe 2.2&lt;/h2>
+&lt;p>Erweitern wir die Anwendung nun ein wenig.&lt;/p>
+&lt;ul>
+&lt;li>Erstelle einen weiteren neuen Component, welcher ein Eingabefeld, mit ReactiveForms, besitzt um nach einem Fahrrad zu suchen und dieses anzuzeigen.&lt;/li>
+&lt;li>Erstelle eine Navigation für zwischen den Components hin und her zu wechseln.&lt;/li>
+&lt;li>Erstelle eine Route für die Components. Der Component welcher alle Fahrräder anzeigt ist zudem die Defaultroute.&lt;/li>
+&lt;li>Füge auf der Seite aller Fahrräder zwei Buttons hinzu. Einer um die Such-Seite zu aktiveren und den anderen um sie zu deaktivieren. Verwende hier ein &lt;code>BehaviorSubject&lt;/code> um den momentan State zu kennen.&lt;/li>
+&lt;li>Erstelle einen Guard welcher dich nur zu der Suche-Seite lässt, wenn du diese aktiviert hast mittels Button.&lt;/li>
+&lt;li>Erstelle auch ein Routing auf den neu zu Erstellenden Component, welche mithilfe eines Parameters alle Fahrräder (der name, wert, marke und typen) der jeweiligen Marke anzeigt. Zudem soll die Marke als Titel der Seite stehen.&lt;/li>
+&lt;li>Verlinke die brand_id, als routerLink auf der Seite aller Fahrräder um auf den neuen Component zu gelangen.&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-21">Aufgabe 2.1&lt;/h2>
+&lt;p>In den vorherigen Aufgaben hast du eine Grundstruktur geschaffen für die Anzeige. Wenn man nach einem Fahrrad sucht, sollte nun das Ergebnis mit einer Pipe angepasst werden.&lt;/p>
+&lt;ul>
+&lt;li>Erstelle nun eine Pipe welche die Spalte &lt;code>value&lt;/code> im Format &lt;code>1'720.00 CHF&lt;/code> anzeigt. Der Währungstyp wird mit einem Parameter weitergegeben.
+Sofern nichts angegeben wird, wähle Standardmässig &lt;code>CHF&lt;/code>.&lt;/li>
+&lt;li>Geh davon aus das in der Spalte &lt;code>value&lt;/code> auch Zahlen wie &lt;code>1287.87&lt;/code> oder &lt;code>5421.21&lt;/code> gespeichert sind. Runde diese je nachdem auf oder ab.&lt;/li>
+&lt;li>Auch das Hochzeichen (&lt;code>'&lt;/code>) soll immer nach 3 Stellen erscheinen.&lt;/li>
+&lt;li>Erstelle eine weitere Pipe, welche den Markennamen nur mit Grossbuchstaben anzeigt und hinter den Markennamen ein Copyrightzeichen (&lt;code>©&lt;/code>) setzt.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Wichtig&lt;/strong>: Wende die Pipe im Template an und nicht im Typescript.&lt;/p>
+&lt;h2 id="aufgabe-23">Aufgabe 2.3&lt;/h2>
+&lt;p>Um die Anwendung nun ein bisschen schöner darzustellen, brauchen wir nun Angular Material.
+Hier kannst du selbst auswählen welche Components du verwenden möchtest. Du musst jedoch mindestens 5 verschiedene Components in deiner Anwendung verwendet haben.&lt;/p></description></item><item><title>Labs: Labs zu RxJS</title><link>/labs/web/angular/02_rxjs/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/labs/web/angular/02_rxjs/</guid><description>
+&lt;h1 id="aufgaben">Aufgaben&lt;/h1>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> - Einzelarbeit&lt;/p>
+&lt;p>Erstelle eine Website, welche anhand von Observables eine Browsernotification ausgibt.
+Dazu soll sich auf der Website ein Button befinden, welcher das Event auslöst, um die Notification im Browser anzuzeigen.&lt;/p>
+&lt;p>Vorgehen:
+Lade die &lt;a href="/files/exams/angular/uebung1.html">Datei&lt;/a> herunter und öffne sie in VS Code. (Wenn sie im Browser geöffnet ist, mittels rechtsklick und dann &amp;ldquo;Speichern unter&amp;rdquo;.)
+Die Datei enthält lediglich das Grundgerüst der Übung, füge an den auskommentierten Stellen den entsprechenden Code ein.
+Am Grundgerüst der Datei soll nichts verändert werden.&lt;/p>
+&lt;p>&lt;img src="/images/hint.png" alt="asset"> &lt;br>
+Damit die Notifications fehlerfrei funktionieren, muss die Extension &amp;ldquo;Live Server&amp;rdquo; in VS Code hinzugefügt und angewendet werden.&lt;/p>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Im folgenden Code befindet sich eine Funktion für das Erhalten einer zufälligen Zahl zwischen dem min und max. Zudem befindet sich bereits ein Observable im Code, welches in zufälligen Intervallen einen Wert zurückgeben soll.&lt;/p>
+&lt;p>Die Aufgabe ist nun das Observable so anzupassen, dass in der Subscription jeweils in zufälligen Abständen ein Wert zurückgegeben wird.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Observable&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;rxjs&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">getRandomInterval&lt;/span>(&lt;span style="color:#a6e22e">min&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>, &lt;span style="color:#a6e22e">max&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">number&lt;/span> {
+&lt;span style="color:#66d9ef">return&lt;/span> Math.&lt;span style="color:#a6e22e">floor&lt;/span>(Math.&lt;span style="color:#a6e22e">random&lt;/span>() &lt;span style="color:#f92672">*&lt;/span> (&lt;span style="color:#a6e22e">max&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">min&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>)) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">min&lt;/span>;
+}
+&lt;span style="color:#75715e">// Observable
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">intervalObservable&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">number&lt;/span>&amp;gt;();
+&lt;span style="color:#75715e">// subcription
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">intervalObservable&lt;/span>.&lt;span style="color:#a6e22e">subscribe&lt;/span>((&lt;span style="color:#a6e22e">interval&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`Interval: &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">interval&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">ms`&lt;/span>);
+});
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;p>Auch bei dieser Aufgabe ist bereits ein wenig Code schon gegeben. Und zwar erneut eine Funktion zum Erhalten einer zufälligen Zahl für die Celsiusgrade.
+Auch das Observable ist hier bereits gegeben, dieses emitted alle zwei Sekunden eine neue Random Celsiusgrad Zahl.&lt;/p>
+&lt;p>Die Aufgabe ist nun beim subscriben auf das Observable, die kommende Celsius Zahl in Fahreinheiten umzuwandeln und dann beide zu loggen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Observable&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;rxjs&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">getRandomDegree&lt;/span>(&lt;span style="color:#a6e22e">min&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>, &lt;span style="color:#a6e22e">max&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">number&lt;/span> {
+&lt;span style="color:#66d9ef">return&lt;/span> Math.&lt;span style="color:#a6e22e">floor&lt;/span>(Math.&lt;span style="color:#a6e22e">random&lt;/span>() &lt;span style="color:#f92672">*&lt;/span> (&lt;span style="color:#a6e22e">max&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">min&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>)) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">min&lt;/span>;
+}
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">temperatureInC&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">number&lt;/span>&amp;gt;((&lt;span style="color:#a6e22e">subscriber&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#a6e22e">setInterval&lt;/span>(() &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#a6e22e">subscriber&lt;/span>.&lt;span style="color:#a6e22e">next&lt;/span>(&lt;span style="color:#a6e22e">getRandomDegree&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">45&lt;/span>));
+}, &lt;span style="color:#ae81ff">2000&lt;/span>);
+});
+&lt;span style="color:#a6e22e">temperatureInC&lt;/span>.&lt;span style="color:#a6e22e">subscribe&lt;/span>((&lt;span style="color:#a6e22e">celsius&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`Celsius: &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">celsius&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>);
+});
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Labs: (Zusatz) NgRx Labs</title><link>/labs/web/angular/03_ngrx/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/labs/web/angular/03_ngrx/</guid><description>
+&lt;h1 id="aufgaben">Aufgaben&lt;/h1>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Als Beispiel zur Verwendung von NgRx, setzen wir ein neues Angular-projekt auf und schreiben eine Anwendung mit einem Counter, der Inkrementier, Dekrementiert und Resettet werden kann.&lt;/p>
+&lt;h3 id="einrichten">Einrichten&lt;/h3>
+&lt;p>Als Erstes muss man ein neues Angular Projekt &lt;a href="../../../../docs/web/angular/03_1_ts_einf%C3%BChrung_angular#angular-projekt-aufsetzen">aufsetzen&lt;/a>.&lt;/p>
+&lt;p>Danach NgRx &lt;a href="../../../../docs/web/angular/08_1_ts_ngrx#installation">installieren&lt;/a>.&lt;/p>
+&lt;p>Nun erstellt man der Übersicht halber noch zwei Ordner names actions und reducers. Darin werden dann alle Actions und Reducer erstellt.&lt;/p>
+&lt;h3 id="actions-erstellen">Actions erstellen&lt;/h3>
+&lt;p>Als Erstes werden die Actions definiert, welche man alle für dieses Projekt benötigt. Wie bei der Einleitung erwähnt sind das Inkrementieren, Dekrementieren und Resetten. Dazu erstellt man nun ein neues Typescript File namens &lt;code>counter.actions.ts&lt;/code>.
+Lagere die Action Types in ein Enum aus.&lt;/p>
+&lt;p>Versuche selbständig auf eine Lösung zu kommen, bevor du dir die Lösung anschaust.&lt;/p>
+&lt;details>
+&lt;summary>Lösung (click to expand)&lt;/summary>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">node --version
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">enum&lt;/span> &lt;span style="color:#a6e22e">ActionTypes&lt;/span> {
+&lt;span style="color:#a6e22e">INCREMENT&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;[Counter Component] Increment&amp;#39;&lt;/span>,
+&lt;span style="color:#a6e22e">DECREMENT&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;[Counter Component] Decrement&amp;#39;&lt;/span>,
+&lt;span style="color:#a6e22e">RESET&lt;/span>&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;[Counter Component] Reset&amp;#39;&lt;/span>
+}
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Falls Node.js noch nicht auf deinem System installiert ist, kannst du Node.js über nvm (Node Version Manager) installieren.&lt;/p>
-&lt;p>Um nvm zu installieren, verwende das Skript&lt;code>install.sh&lt;/code>, das sich innerhalb des repository &lt;a href="https://github.com/nvm-sh/nvm" target="_blank">github.com/nvm-sh/nvm&lt;/a> befindet:&lt;/p>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createAction&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">increment&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createAction&lt;/span>(&lt;span style="color:#a6e22e">ActionTypes&lt;/span>.&lt;span style="color:#a6e22e">INCREMENT&lt;/span>);
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">decrement&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createAction&lt;/span>(&lt;span style="color:#a6e22e">ActionTypes&lt;/span>.&lt;span style="color:#a6e22e">DECREMENT&lt;/span>);
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">reset&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createAction&lt;/span>(&lt;span style="color:#a6e22e">ActionTypes&lt;/span>.&lt;span style="color:#a6e22e">RESET&lt;/span>);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="reducer-erstellen">Reducer erstellen&lt;/h3>
+&lt;p>Nun muss man eine Reducer-Funktion definieren, um Änderungen im Zählerwert basierend auf den bereitgestellten Aktionen zu verarbeiten. Erstelle dazu ein neues Typescript File namens &lt;code>counter.reducer.ts&lt;/code> und setze die Funktion darin um.&lt;/p>
+&lt;p>Versuche selbständig auf eine Lösung zu kommen, bevor du dir die Lösung anschaust.&lt;/p>
+&lt;details>
+&lt;summary>Lösung (click to expand)&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createReducer&lt;/span>, &lt;span style="color:#a6e22e">on&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">increment&lt;/span>, &lt;span style="color:#a6e22e">decrement&lt;/span>, &lt;span style="color:#a6e22e">reset&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./counter.actions&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">initialState&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">counterReducer&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createReducer&lt;/span>(
+&lt;span style="color:#a6e22e">initialState&lt;/span>,
+&lt;span style="color:#a6e22e">on&lt;/span>(&lt;span style="color:#a6e22e">increment&lt;/span>, (&lt;span style="color:#a6e22e">state&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>),
+&lt;span style="color:#a6e22e">on&lt;/span>(&lt;span style="color:#a6e22e">decrement&lt;/span>, (&lt;span style="color:#a6e22e">state&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>),
+&lt;span style="color:#a6e22e">on&lt;/span>(&lt;span style="color:#a6e22e">reset&lt;/span>, (&lt;span style="color:#a6e22e">state&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>)
+);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="component-erstellen">Component erstellen&lt;/h3>
+&lt;p>Erstelle mittels ng-Befehl einen neuen Component namens &lt;code>my-counter&lt;/code> innerhalb des app-Ordners. Das HTML soll einen Titel besitzen, drei Buttons für jede Actions und eine Anzeige für den aktuellen Counter.
+Im Typescript soll für jeden Button eine Methode erstellt werden, zudem ein Observable welches den aktuellen Count beinhaltet. Das Observable soll mit dem Wert des Stores verbunden sein.&lt;/p>
+&lt;p>Versuche selbständig auf eine Lösung zu kommen, bevor du dir die Lösung anschaust.&lt;/p>
+&lt;details>
+&lt;summary>Lösung (click to expand)&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Store&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Observable&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;rxjs&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">increment&lt;/span>, &lt;span style="color:#a6e22e">decrement&lt;/span>, &lt;span style="color:#a6e22e">reset&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;../counter.actions&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">@Component&lt;/span>({
+&lt;span style="color:#a6e22e">selector&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;app-my-counter&amp;#39;&lt;/span>,
+&lt;span style="color:#a6e22e">templateUrl&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./my-counter.component.html&amp;#39;&lt;/span>,
+})
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MyCounterComponent&lt;/span> {
+&lt;span style="color:#a6e22e">count$&lt;/span>: &lt;span style="color:#66d9ef">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">number&lt;/span>&amp;gt;;
+&lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>: &lt;span style="color:#66d9ef">Store&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>{ &lt;span style="color:#a6e22e">count&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span> }&lt;span style="color:#f92672">&amp;gt;&lt;/span>) {
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">count$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">select&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;count&amp;#39;&lt;/span>);
+}
+&lt;span style="color:#a6e22e">increment() {&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">increment&lt;/span>());
+}
+&lt;span style="color:#a6e22e">decrement() {&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">decrement&lt;/span>());
+}
+&lt;span style="color:#a6e22e">reset() {&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">reset&lt;/span>());
+}
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">(&lt;/span>&lt;span style="color:#a6e22e">click&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">)=&amp;#34;&lt;/span>&lt;span style="color:#a6e22e">increment&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">()&amp;#34;&lt;/span>&amp;gt;Increment&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">div&lt;/span>&amp;gt;Current Count: {{ count$ | async }}&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">(&lt;/span>&lt;span style="color:#a6e22e">click&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">)=&amp;#34;&lt;/span>&lt;span style="color:#a6e22e">decrement&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">()&amp;#34;&lt;/span>&amp;gt;Decrement&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">(&lt;/span>&lt;span style="color:#a6e22e">click&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">)=&amp;#34;&lt;/span>&lt;span style="color:#a6e22e">reset&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">()&amp;#34;&lt;/span>&amp;gt;Reset Counter&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="appmodule-anpassen">AppModule anpassen&lt;/h3>
+&lt;p>Das &lt;code>app.module.ts&lt;/code> muss nun noch mit dem Store und Reducer ergänzt werden.&lt;/p>
+&lt;p>Versuche selbständig auf eine Lösung zu kommen, bevor du dir die Lösung anschaust.&lt;/p>
+&lt;details>
+&lt;summary>Lösung (click to expand)&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">BrowserModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/platform-browser&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">NgModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppComponent&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./app.component&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">StoreModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">counterReducer&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./counter.reducer&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">MyCounterComponent&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./my-counter/my-counter.component&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">@NgModule&lt;/span>({
+&lt;span style="color:#a6e22e">declarations&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">AppComponent&lt;/span>, &lt;span style="color:#a6e22e">MyCounterComponent&lt;/span>],
+&lt;span style="color:#a6e22e">imports&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">BrowserModule&lt;/span>, &lt;span style="color:#a6e22e">StoreModule&lt;/span>.&lt;span style="color:#a6e22e">forRoot&lt;/span>({ &lt;span style="color:#a6e22e">count&lt;/span>: &lt;span style="color:#66d9ef">counterReducer&lt;/span> })],
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [],
+&lt;span style="color:#a6e22e">bootstrap&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">AppComponent&lt;/span>],
+})
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> {}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="im-appcomponent-anzeigen">Im AppComponent anzeigen&lt;/h3>
+&lt;p>Der neue Component soll nun mit dem &lt;code>app.component.html&lt;/code> verknüpft werden, sodass der Inhalt des Components sichtbar wird.&lt;/p>
+&lt;p>Versuche selbständig auf eine Lösung zu kommen, bevor du dir die Lösung anschaust.&lt;/p>
+&lt;details>
+&lt;summary>Lösung (click to expand)&lt;/summary>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;NgRx Tutorial&amp;lt;/&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">app-my-counter&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">app-my-counter&lt;/span>&amp;gt;
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Verwende den Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">nvm --version
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>um zu überprüfen, ob nvm richtig installiert wurde.&lt;/p>
-&lt;p>&lt;strong>nvm install&lt;/strong>&lt;/p>
-&lt;p>Um eine spezifische Version&lt;code>&amp;lt;x.y.z&amp;gt;&lt;/code>von Node.js zu installieren (Beispiel &lt;code>12.22.7&lt;/code>), verwende den Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">nvm install &amp;lt;version&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Angular benötigt eine Active LTS (long-term support) oder eine Maintenance LTS Version von Node.js. Die aktuellen Active LTS und Maintenance LTS Versionen von Node.js sind unten abgebildet (Stand Oktober 2021), und unter &lt;a href="https://nodejs.org/en/about/releases/" target="_blank">nodejs.org/en/about/releases&lt;/a> aufgelistet.&lt;/p>
-&lt;p>&lt;br />&lt;/p>
-&lt;p>&lt;img src="../angular_setup/node_js_schedule.svg" alt="Active LTS und Maintenance LTS Versionen von Node js">&lt;/p>
-&lt;p>&lt;strong>nvm list&lt;/strong>&lt;/p>
-&lt;p>Verwende den Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">nvm list
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>um alle installierten Versionen von Node.js aufzulisten.&lt;/p>
-&lt;p>&lt;strong>nvm use&lt;/strong>&lt;/p>
-&lt;p>Falls bereits eine Version von Node.js auf deinem System installiert war, und du nvm nachträglich installiert hast, kannst du mit dem Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">nvm use system
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>die bereits vorher installierte Version zur Verwendung auswählen.&lt;/p>
-&lt;p>Eine über nvm installierte Version &amp;lt;x.y.z&amp;gt; von Node.js kannst du mit&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">nvm use &amp;lt;x.y.z&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>zur Verwendung auswählen.&lt;/p>
-&lt;p>&lt;strong>nvm alias default&lt;/strong>&lt;/p>
-&lt;p>Zum Schluss, verwende&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">nvm alias default &amp;lt;version&amp;gt;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>um eine mit Angular kompatible Version &amp;lt;version&amp;gt; (Beispiele &lt;code>system&lt;/code>, &lt;code>12.22.7&lt;/code>) von Node.js als Standard festzulegen.&lt;/p>
-&lt;hr>
-&lt;p>Für die Installation von Angular im nächsten Schritt brauchst du den package mangager npm von Node.js. Stelle sicher, dass npm ebenfalls auf deinem System installiert ist:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">npm --version
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="teil-2---installation-des-cli-von-angular">Teil 2 - Installation des CLI von Angular&lt;/h3>
-&lt;p>In diesem Schritt wirst du das CLI (command line interface) von Angular über npm installieren.&lt;/p>
-&lt;p>Verwende dazu den Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">npm install -g @angular/cli
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Mit der Flag &lt;code>-g&lt;/code> wird das CLI von Angular global installiert. Das heisst unter anderem, dass executables in einem Verzeichnis installiert oder referenziet werden, das in der Umgebungsvariablen &lt;code>PATH&lt;/code> aufgelistet ist. Mehr Informationen dazu findest du &lt;a href="https://nodejs.org/en/blog/npm/npm-1-0-global-vs-local-installation/" target="_blank">hier&lt;/a>.&lt;/p>
-&lt;p>Zur Überprüfung, ob Angular richtig installiert wurde, verwende&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">ng version
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="teil-3---erstellen-einer-app-mit-dem-cli">Teil 3 - Erstellen einer App mit dem CLI&lt;/h3>
-&lt;p>Das Grundgerüst einer Angular-App erstellt man mit dem Befehl &lt;code>ng new&lt;/code>.&lt;/p>
-&lt;p>Verwende den Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">ng new my-app
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>um eine neue App mit der Bezeichnung &lt;code>my-app&lt;/code> zu erstellen.&lt;/p>
-&lt;p>Bei den zwei Eingabeaufforderungen / Prompts kannst du mit Enter die Standardoption bestätigen. Das CLI erstellt anschliessend ein Verzeichnis mit dem Namen &lt;code>my-app&lt;/code> und den generierten Dateien.&lt;/p>
-&lt;h3 id="teil-4---ausführen-einer-app-mit-dem-cli">Teil 4 - Ausführen einer App mit dem CLI&lt;/h3>
-&lt;p>Das CLI von Angular einthält einen Server, der eine App lokal bereitstellen kann.&lt;/p>
-&lt;p>Verwende innerhalb des mit dem CLI erstellten Verzeichnisses den Befehl&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">ng serve
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>um die in der letzten Aufgabe erstellte App zu builden und zu starten.&lt;/p>
-&lt;p>Mit der zusätzlichen Option&lt;code>--open&lt;/code>öffnet das CLI die App direkt in einem Browser. Per default wird die App unter der Webadresse &lt;code>localhost:4200&lt;/code> bereitgestellt.&lt;/p>
-&lt;p>Falls alles erfolgreich war, wird eine von Angular generierte Standardseite angezeigt. Die Seite ist unten abgebildet.&lt;/p>
-&lt;p>&lt;br />&lt;/p>
-&lt;p>&lt;img src="../angular_setup/ng_default_app.png" alt="Die von Angular generierte Standardseite.">&lt;/p></description></item></channel></rss>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Entwickle eine Angular-Anwendung für einen Online-Shop mit den folgenden Funktionen und Components: Produktübersicht und Warenkorb. Die Produktdaten sollen als Mockdaten in einem Service gespeichert werden. Implementiere Routing, um zwischen den verschiedenen Ansichten zu navigieren.&lt;/p>
+&lt;h3 id="produkt-attribute">Produkt Attribute&lt;/h3>
+&lt;ul>
+&lt;li>Name&lt;/li>
+&lt;li>Preis&lt;/li>
+&lt;/ul>
+&lt;h3 id="produktübersicht">Produktübersicht&lt;/h3>
+&lt;ul>
+&lt;li>Erstelle eine Seite für die Produktübersicht, auf der alle Produkte angezeigt werden.&lt;/li>
+&lt;li>Rufe die Produktdaten aus einem Mock-Datenservice ab und zeige sie an.&lt;/li>
+&lt;li>Implementiere zu jedem Produkt einen Button für das Hinzufügen von Produkten in den Warenkorb.&lt;/li>
+&lt;/ul>
+&lt;h3 id="warenkorb">Warenkorb:&lt;/h3>
+&lt;ul>
+&lt;li>Erstelle eine Seite, auf der die Produkte im Warenkorb angezeigt werden.&lt;/li>
+&lt;li>Verwende NgRx, um den Warenkorbzustand zu verwalten. Definiere Aktionen zum Hinzufügen und Entfernen von Produkten in den Warenkorb. (Verwende Selektoren, um den Zugriff auf den NgRx-Store zu erleichtern.))&lt;/li>
+&lt;li>Zeige eine Liste der ausgewählten Produkte im Warenkorb an, inklusive Name und Preis.&lt;/li>
+&lt;li>Implementiere einen Button für das Löschen von Produkten aus dem Warenkorb.&lt;/li>
+&lt;li>Füge eine Bestellfunktion hinzu, um den Kaufprozess abzuschliessen (kann eine einfache Bestätigungsnachricht sein).&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;p>Erstelle eine Angular-Anwendung für eine TODO-Liste, die das NgRx-Modul verwendet, um den Zustand der Aufgaben zu verwalten. Die Anwendung sollte die folgenden Funktionen enthalten:&lt;/p>
+&lt;h3 id="task-attribute">Task Attribute&lt;/h3>
+&lt;ul>
+&lt;li>ID&lt;/li>
+&lt;li>Name&lt;/li>
+&lt;li>Completed&lt;/li>
+&lt;/ul>
+&lt;h3 id="übersicht">Übersicht&lt;/h3>
+&lt;ul>
+&lt;li>Erstelle eine Seite, auf der die offene (Completed = false) Task (einfach der Name) angezeigt werden. (Verwende Selektoren, um den Zugriff auf die Tasks im NgRx-Store zu erleichtern.)&lt;/li>
+&lt;li>Verwende NgRx, um den Taskzustand zu verwalten. Definiere Aktionen zum Hinzufügen, Entfernen und Complete von Tasks.&lt;/li>
+&lt;li>Implementiere zu jedem Task einen Button für das Complete und Entfernen von Tasks.&lt;/li>
+&lt;/ul>
+&lt;h3 id="taskerstellungs-seite">Taskerstellungs-Seite&lt;/h3>
+&lt;ul>
+&lt;li>Erstelle auf der Seite eine Unterseite, auf der neue Task erfasst werden können. (Für die Id zu erstellen am einfachsten &lt;code>new Date().getTime()&lt;/code> nehmen)&lt;/li>
+&lt;li>Der Name des Tasks soll mittels Reactive Forms eingetragen werden.&lt;/li>
+&lt;li>completed ist immer auf &lt;code>false&lt;/code> bei 2einem neuen Task.&lt;/li>
+&lt;/ul></description></item></channel></rss>
