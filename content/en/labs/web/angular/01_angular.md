@@ -172,7 +172,7 @@ Folgende Anforderungen sind gegeben:
 - Erstelle einen globalen ErrorHandler um die möglichen Fehler der Services abzufangen und gib eine Mitteilung damit der Benutzer weiss, das ein Fehler passierte (Subject verwenden).
 - Erstelle einen neuen Component um die Daten alles Fahrräder anzuzeigen.
 
-## Aufgabe 2.2
+## Aufgabe 2.1
 Erweitern wir die Anwendung nun ein wenig.
 - Erstelle einen weiteren neuen Component, welcher ein Eingabefeld, mit ReactiveForms, besitzt um nach einem Fahrrad zu suchen und dieses anzuzeigen.
 - Erstelle eine Navigation für zwischen den Components hin und her zu wechseln.
@@ -183,7 +183,7 @@ Erweitern wir die Anwendung nun ein wenig.
 - Verlinke die brand_id, als routerLink auf der Seite aller Fahrräder um auf den neuen Component zu gelangen.
 
 
-## Aufgabe 2.1
+## Aufgabe 2.2
 In den vorherigen Aufgaben hast du eine Grundstruktur geschaffen für die Anzeige. Wenn man nach einem Fahrrad sucht, sollte nun das Ergebnis mit einer Pipe angepasst werden.
 - Erstelle nun eine Pipe welche die Spalte `value` im Format `1'720.00 CHF` anzeigt. Der Währungstyp wird mit einem Parameter weitergegeben.
   Sofern nichts angegeben wird, wähle Standardmässig `CHF`.
