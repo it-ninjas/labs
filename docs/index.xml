@@ -1020,7 +1020,128 @@ javac ./&amp;lt;path/to/my&amp;gt;/&amp;lt;Annotation&amp;gt;.java &amp;lt;path/
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">javac -processor &amp;lt;package&amp;gt;.&amp;lt;AnnotationsProcessor&amp;gt; &amp;lt;path/to/my&amp;gt;&amp;lt;ModelKlasse&amp;gt;.java
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Die Ausgabe auf die Kommandozeile durch den Annotations-Prozessor sollte anschliessend angezeigt werden.&lt;/p></description></item><item><title>Docs: Entwicklungsumgebung einrichten</title><link>/docs/java/entwicklungsumgebung/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/entwicklungsumgebung/</guid><description>
+&lt;/div>&lt;p>Die Ausgabe auf die Kommandozeile durch den Annotations-Prozessor sollte anschliessend angezeigt werden.&lt;/p></description></item><item><title>Docs: Datenbank 101</title><link>/docs/database/01_db-erklaert/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/01_db-erklaert/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du kennst den allgemeinen Aufbau einer Datenbank und kannst ihn erklären&lt;/li>
+&lt;li>Du kennst den Unterschied zwischen raltionalen und No-SQL Datenbanken&lt;/li>
+&lt;li>Du weisst wann welcher Datenbank-typ sinn macht&lt;/li>
+&lt;li>Du kennst die wichtigsten Datentypen und ihren Nutzen&lt;/li>
+&lt;/ul>
+&lt;h2 id="was-ist-eine-datenbank">Was ist eine Datenbank?&lt;/h2>
+&lt;p>Eine Datenbank ist ein System zur elektronischen Verwaltung von Daten.
+Grundsätzlich sagt der Name &amp;ldquo;Datenbank&amp;rdquo; bereits was sie ist: In einer Datenbank werden Daten in einer bestimmten Ordnung abgelegt.
+Ähnlich wie bei einer normalen Bank werden die Daten an einem klar definierten Ort abgespeichert.
+Fast so wie bei deinem Bankkonto, wo jeweils der Lohn eingezahlt wird.&lt;/p>
+&lt;p>Eine Datenbank ist meist in Stufen aufgebaut, die wie folgt aussehen können:&lt;/p>
+&lt;p>Zu oberst ist die Datenbank an sich. Sie ist eigentlich das Gebäude der Bank wo schlussendlich die Infrastruktur,
+sowie das Geld zu finden ist.&lt;/p>
+&lt;p>Die nächste Stufe ist das Schema. Dieses ist mit einem Raum zu vergleichen, der viele verschiedene
+Aktenschränke beinhaltet.&lt;/p>
+&lt;p>Diese Aktenschränke wären in einer Datenbank die Tabellen. Die Tabellen beinhalten schlussendlich
+die verschiedenen Daten, wie zum Beispiel dein erwähntes Bankkonto mit deinem Kontostand.&lt;/p>
+&lt;p>Schlussendlich sieht der Aufbau also so aus:&lt;/p>
+&lt;p>&lt;img src="../images/Beispiel_Bank.png" alt="">&lt;/p>
+&lt;h3 id="schema-und-tabelle">Schema und Tabelle&lt;/h3>
+&lt;p>Ein Schema ist eine strukturierte Art und Weise, wie Daten organisiert werden. Es legt fest, wie die Datenbank aufgebaut
+ist und wie die Daten gespeichert und abgerufen werden können. Eine Tabelle ist ein Tabellenblatt mit Spalten und
+Zeilen, in dem die eigentlichen Daten gespeichert werden. Schemata und Tabellen helfen dabei, Daten organisiert und
+leicht zugänglich zu halten. Sie ermöglichen es uns, Daten effizient abzufragen, zu aktualisieren und zu verwalten.
+Schemata und Tabellen sind auch wichtig, um die Sicherheit und Integrität der Daten zu gewährleisten, indem sie
+Zugriffsrechte und Einschränkungen festlegen.&lt;/p>
+&lt;h2 id="arten-von-datenbanken">Arten von Datenbanken&lt;/h2>
+&lt;p>In diesem Kapitel soll ein kleiner Überblick der verschiedenen Arten von Datenbanken und deren
+Vor- und Nachteile geklärt werden.&lt;/p>
+&lt;p>Die am meisten verwendeten Datenbank Arten sind Relationale &lt;em>(SQL)&lt;/em> und NO-SQL Datenbanken.
+Relationale &lt;em>(SQL)&lt;/em> Datenbanken werden klar am häufigsten eingesetzt und sind auch am bekanntesten&lt;/p>
+&lt;blockquote>
+&lt;p>Bei den Übungen, sowie Exams werden ausschliesslich Relationale &lt;em>(SQL)&lt;/em> Datenbanken verwendet.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="relational-sql">Relational &lt;em>(SQL)&lt;/em>&lt;/h3>
+&lt;p>Relationale Datenbanken sind ähnlich wie Excel Tabellen aufgebaut. Der Name kommt vom Konzept der Relationen (Tabellen)
+, die es ermöglichen, Daten logisch und strukturiert zu speichern und abzurufen. Sie verwenden Tabellen, die jeweils
+Zeilen und Spalten beinhalten &lt;em>(auch Rows und Columns genannt)&lt;/em>. Pro Spalte &lt;em>(Column)&lt;/em>, auch &lt;strong>Attribut&lt;/strong> genannt,
+muss ein Datentyp festgelegt werden. Dieser Datentyp definiert, welche Art von Daten in dieser Spalte gespeichert
+werden kann. Beispiel: Eine Spalte mit dem Namen &amp;ldquo;Alter&amp;rdquo; hat einen nummerischen Datentyp. Also können
+ausschliesslich Zahlen in dieser Spalte eingegeben werden.&lt;/p>
+&lt;p>Eine Zeile &lt;em>(Row)&lt;/em>, auch &lt;strong>Tupel&lt;/strong> genannt, beinhaltet jeweils einen ganzen Datensatz, wie beispielsweise alle
+Benutzerdaten.&lt;/p>
+&lt;p>&lt;img src="../images/Begriffe_relationaler_Datenbanken.png" alt="">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://de.wikipedia.org/wiki/Datenbanktabelle">https://de.wikipedia.org/wiki/Datenbanktabelle&lt;/a>&lt;/em>&lt;/p>
+&lt;h3 id="no-sql">NO-SQL&lt;/h3>
+&lt;p>Im Gegensatz zu relationalen Datenbanken speichern NoSQL-Datenbanken Daten in Formaten wie Dokumenten,
+Schlüssel-Wert-Paaren, Spalten oder Graphen. Dies ermöglicht es, unstrukturierte Daten effektiver zu speichern und
+abzurufen. Außerdem sind NoSQL-Datenbanken horizontal skalierbar, was bedeutet, dass sie auf mehrere Server verteilt
+werden können, um die Leistung zu verbessern und die Belastung auf mehrere Maschinen zu verteilen.&lt;/p>
+&lt;p>Wie erklärt gibt es viele verschiedene Ansätze bei NO-SQL, deshalb gibt es auch keine gemeinsame Syntax wie es sie bei
+SQL gibt. Bei den verschiedenen Anbietern kann also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen
+Speicherarten ist keine NO-SQL Datenbank wie die andere.&lt;/p>
+&lt;p>&lt;img src="../images/NoSQLDatabases.jpg" alt="">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/types-of-nosql-databases/">https://www.geeksforgeeks.org/types-of-nosql-databases/&lt;/a>&lt;/em>&lt;/p>
+&lt;h3 id="wann-verwende-ich-welche-datenbank">Wann verwende ich welche Datenbank?&lt;/h3>
+&lt;p>Eine relationale Datenbank eignet sich gut für Anwendungsfälle, bei denen eine komplexe Datenstruktur mit starken
+Beziehungen zwischen den Daten besteht, z. B. in Unternehmenssystemen oder Finanzanwendungen, da sie eine konsistente
+und sichere Datenhaltung gewährleistet.&lt;/p>
+&lt;p>NoSQL-Datenbanken sind nützlich, wenn Flexibilität und Skalierbarkeit Priorität haben und wenn die Datenstruktur häufig
+geändert werden muss oder es viele unstrukturierte oder semistrukturierte Daten gibt, wie beispielsweise in Big
+Data-Anwendungen, sozialen Netzwerken oder Echtzeit-Analysen.&lt;/p>
+&lt;h2 id="datentypen">Datentypen&lt;/h2>
+&lt;p>In diesem Teil werden kurz die wichtigsten Datentypen aufgelistet. Je nach Datenbank können die Namen der Datentypen
+abweichen, sollten jedoch von der Funktionalität gleich sein. In dieser Auflistung wurden die PostgreSQL Datentypen
+verwendet:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Typ-Name&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;th>Beispiel&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>INTEGER&lt;/td>
+&lt;td>Ganze Zahlen ohne Nachkommastellen im Bereich von -2.147.483.648 bis 2.147.483.647.&lt;/td>
+&lt;td>123&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NUMERIC&lt;/td>
+&lt;td>Genaue Dezimalzahlen mit beliebiger Anzahl von Dezimalstellen, häufig in der Finanz- und Buchhaltungsbranche verwendet.&lt;/td>
+&lt;td>1234.567&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>CHAR(n)&lt;/td>
+&lt;td>Zeichenkette mit fester Länge von n Zeichen, aufgefüllt mit Leerzeichen, falls kürzer.&lt;/td>
+&lt;td>&amp;lsquo;ABC&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>VARCHAR(n)&lt;/td>
+&lt;td>Zeichenkette mit variabler Länge bis maximal n Zeichen.&lt;/td>
+&lt;td>&amp;lsquo;OpenAI&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>DATE&lt;/td>
+&lt;td>Datumsangaben im Bereich zwischen 4713 v. Chr. und 5874897 n. Chr.&lt;/td>
+&lt;td>&amp;lsquo;2023-05-31&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>TIME&lt;/td>
+&lt;td>Zeitwerte im Bereich zwischen 00:00:00 und 24:00:00.&lt;/td>
+&lt;td>&amp;lsquo;14:30:00&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>TIMESTAMP&lt;/td>
+&lt;td>Datum und Uhrzeit kombiniert, häufig für Zeitstempel in Anwendungen verwendet.&lt;/td>
+&lt;td>&amp;lsquo;2023-05-31 14:30:00&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>BOOLEAN&lt;/td>
+&lt;td>Wahrheitswerte (TRUE oder FALSE), oft für Ja/Nein-Entscheidungen verwendet.&lt;/td>
+&lt;td>TRUE&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Wenn du noch mehr über die einzelnen Datentypen erfahren möchtest, findest du unter diesem Link alle verfügbaren
+Datentypen in PostgreSQL: &lt;a href="https://www.postgresql.org/docs/current/datatype.html#:~:text=The%20following%20types%20(or%20spellings,without%20time%20zone)%2C%20xml%20.">Liste aller Datentypen (PostgreSQL)&lt;/a>&lt;/p></description></item><item><title>Docs: Entwicklungsumgebung einrichten</title><link>/docs/java/entwicklungsumgebung/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/entwicklungsumgebung/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich habe die Ersteinrichtung des Laptops vollständig durchgeführt&lt;/li>
@@ -2781,7 +2902,36 @@ Dies erledigst du mit folgenden Schritten:&lt;/p>
 &lt;li>Klicke die Schaltfläche &amp;ldquo;Add user or group&amp;rdquo; und berechtige alle Coaches als Administratoren auf deinem Repository. Anschliessend klicke die &amp;ldquo;Add&amp;rdquo; Schaltfläche
 &lt;img src="../bitbucket/coaches_admin_permission.png" alt="Coaches Permissions">&lt;/li>
 &lt;/ol>
-&lt;p>Nun sind alle Coaches auf deinem Repository berechtigt.&lt;/p></description></item><item><title>Labs: Streams Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/02_streamexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/02_streamexercises/</guid><description>
+&lt;p>Nun sind alle Coaches auf deinem Repository berechtigt.&lt;/p></description></item><item><title>Labs: Setup</title><link>/labs/database/00_setup/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/database/00_setup/</guid><description>
+&lt;p>Um alle Übungen machen zu können wird eine lokale Datenbank benötigt. Dazu verwenden wir MariaDB. Falls du MariaDB noch
+nicht installiert hast, sind hier die Downloadlinks. Das DB-Tool dbeaver ist optional. Beim Download von MariaDB wird
+gleichzeitig HeidiSQL installiert, jedoch ist dieses Tool teilweise nicht so praktisch. Eine Alternative zu dbeaver ist
+die Intellij-Datenbankview, die bereits in Intellij ohne installation vorhanden ist.&lt;/p>
+&lt;p>MariaDB:&lt;/p>
+&lt;ul>
+&lt;li>Download: &lt;a href="https://mariadb.org/download/">https://mariadb.org/download/&lt;/a>&lt;/li>
+&lt;li>DB-Tool: &lt;a href="https://dbeaver.io/download/">https://dbeaver.io/download/&lt;/a>&lt;/li>
+&lt;li>Intellij-Datenbankview: &lt;a href="https://www.jetbrains.com/help/idea/relational-databases.html#first-steps">https://www.jetbrains.com/help/idea/relational-databases.html#first-steps&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Bei beiden Tools kann der normale Installationsprozess durchlaufen werden. Merke dir das Passwort, dass du bei MariaDB
+gesetzt hast. Du wirst es im nächsten Schritt brauchen. Nach der Installation kannst du DBeaver öffnen und MariaDB
+wie folgt verbinden:&lt;/p>
+&lt;ol>
+&lt;li>Klicke oben links auf das Verbinden-Icon (Stecker, im Bild rot markiert):
+&lt;img src="../images/Neue_Verbindung.PNG" alt="">&lt;/li>
+&lt;li>Wähle MariaDB aus und klicke auf &amp;ldquo;Weiter&amp;rdquo;:
+&lt;img src="../images/DB_Auswahl.PNG" alt="">&lt;/li>
+&lt;li>Gib dein Passwort ein und klicke auf &amp;ldquo;Fertigstellen&amp;rdquo;:
+&lt;img src="../images/Connection.PNG" alt="">&lt;/li>
+&lt;li>Wenn alles funktioniert hat, solltest du die DB in der Liste sehen können:
+&lt;img src="../images/Ende.PNG" alt="">&lt;/li>
+&lt;li>Um ein SQL-Script auszuführen, musst du einen SQL-Editor öffnen. Mache dazu Rechtsklick auf localhost und wähle
+&lt;code>SQL-Editor -&amp;gt; SQL-Skript&lt;/code> aus:&lt;br>
+&lt;img src="../images/SQL-Editor.PNG" alt="">&lt;/li>
+&lt;li>Vom SQL-Editor aus kannst du alle gelernten SQL-Statements anwenden. Zuerst solltest du jedoch eine Datenbank mit
+&lt;code>CREATE DATABASE name&lt;/code> erstellen. Dort kannst du wie in den Docs gelernt Tabellen usw. erstellen.&lt;/li>
+&lt;/ol>
+&lt;p>Wenn diese Schritte funktioniert haben, bist du für die Labs bereit.&lt;/p></description></item><item><title>Labs: Streams Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/02_streamexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/02_streamexercises/</guid><description>
 &lt;h3 id="aufgabe-1">Aufgabe 1&lt;/h3>
 &lt;p>Schreibe ein Programm, welches aus der Kommandozeile eine Reihe von Zahlen in einer beliebigen Reihenfolge
 liest und die unsortierte wie auch die sortierte Liste in der Konsole ausgibt.&lt;/p>
@@ -5339,396 +5489,4 @@ Konstruktor-Annotation zu erzeugen. Gehe dabei wie folgt vor:&lt;/p>
 &lt;li>Hol aus der Annotation die Namen und Altersangaben&lt;/li>
 &lt;li>Nutze die Angaben in einem Loop, um entsprechend viele Instanzen der Klasse Person zu erzeugen&lt;/li>
 &lt;li>Drucke die Angaben der Personen auf der Kommandozeile aus&lt;/li>
-&lt;/ul></description></item><item><title>Labs: Rollenspiel</title><link>/labs/java/java-ood/02_rollenspiel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-ood/02_rollenspiel/</guid><description>
-&lt;p>In dieser Aufgabe wird ein Fantasy-Rollenspiel mit Vererbung modelliert.
-Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.&lt;/p>
-&lt;h2 id="einführung">Einführung&lt;/h2>
-&lt;h3 id="spielfiguren">Spielfiguren&lt;/h3>
-&lt;ul>
-&lt;li>Es gibt verschiedene Spielfiguren:
-&lt;ul>
-&lt;li>Menschen&lt;/li>
-&lt;li>Zwerge&lt;/li>
-&lt;li>Elfen&lt;/li>
-&lt;li>Orks&lt;/li>
-&lt;li>Goblins&lt;/li>
-&lt;li>Trolle&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Jede Spielfigur hat einen Namen und besitzt eine bestimmte Anzahl an Lebenspunkten. Diese Lebenspunkte werden später im Kampf mit anderen Spielfiguren verringert&lt;/li>
-&lt;li>Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)&lt;/li>
-&lt;li>Elfen können zaubern und haben einen Zauberwert&lt;/li>
-&lt;li>Alle Spielfigur-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
-&lt;/ul>
-&lt;h3 id="waffen">Waffen&lt;/h3>
-&lt;ul>
-&lt;li>Es gibt verschiedene Waffenarten
-&lt;ul>
-&lt;li>Nahkampfwaffen (Schwert und Keule)&lt;/li>
-&lt;li>Fernkampfwaffen (Bogen und Wurfmesser)&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Alle Waffen haben einen Angriffswert&lt;/li>
-&lt;li>Nahkampfwaffen haben zusätzlich zu ihrem Angriffswert noch einen Verteidigungswert&lt;/li>
-&lt;li>Alle Waffen haben ein Gewicht&lt;/li>
-&lt;li>Alle Waffen-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
-&lt;/ul>
-&lt;h3 id="gegenstände">Gegenstände&lt;/h3>
-&lt;ul>
-&lt;li>Es gibt verschiedene Gegenstände
-&lt;ul>
-&lt;li>Tränke (Heiltrank und Stärketrank)
-&lt;ul>
-&lt;li>Ein Heiltrank kann bei einer Spielfigur eine bestimmte Anzahl an Lebenspunkten wiederherstellen&lt;/li>
-&lt;li>Ein Stärketrank erhöht den Angriffswert einer Spielfigur dauerhaft um einen bestimmten Wert&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Zauberringe (Kraftring, Schutzring)
-&lt;ul>
-&lt;li>Ein Kraftring erhöht die Tragkraft einer Spielfigur dauerhaft um einen bestimmten Wert&lt;/li>
-&lt;li>Ein Schutzring verringert dauerhaft den erlittenen Schaden&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Jeder Gegenstand hat eine Bezeichnung und ein Gewicht&lt;/li>
-&lt;li>Alle Gegenstand-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>Implementation&lt;/p>
-&lt;ul>
-&lt;li>der Packages&lt;/li>
-&lt;li>der Klassen&lt;/li>
-&lt;li>der Instanzvariablen in den Klassen&lt;/li>
-&lt;li>der Beziehungen zwischen den einzelnen Klassen&lt;/li>
-&lt;/ul>
-&lt;p>Vergiss nicht, dass es Generalisierungen und Spezalisierungen gibt. Achte auf eine gute Namensgebung bei Klassen und Variablen.&lt;/p>
-&lt;hr>
-&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
-&lt;p>Ergänze die Applikation mit den folgenden Möglichkeiten:&lt;/p>
-&lt;h4 id="spielfigur">Spielfigur&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur braucht einen Namen um instanziiert werden zu können&lt;/li>
-&lt;li>Zu Beginn hat eine Spielfigur keine Waffe&lt;/li>
-&lt;li>Jede Spielfigur hat eine Methode, die ihren Kampfwert zurückgibt
-&lt;ul>
-&lt;li>Der Kampfwert der Spielfigur setzt sich aus dem Kampfwert der akitven Waffe und der Multiplikation mit einer Zufallszahl zusammen. Die Zufallszahl liegt zwischen 0.9 und 1.1&lt;/li>
-&lt;li>Wenn eine Spielfigur keine Waffe besitzt, so ist ihr Kampfwert 1&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Elfen&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Um einen Elfen instanziieren zu können, muss zusätzlich zum Namen der Zauberwert des Elfen angegeben werden&lt;/li>
-&lt;li>Einem Elfen wird die Hälfte seines Zauberwerts zum Kampfwert addiert&lt;/li>
-&lt;li>Elfen sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Goblins&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Goblins sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Trolle&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Trolle verdoppeln ihren Kampfwert wenn sie eine Keule verwenden&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Orks&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Orks können in einen Kampfrausch verfallen, wenn ihre Lebenspunkte unter 25% fallen. Sie erhalten dann den dreifachen Kampfwert und erleiden nur den halben Schaden&lt;/li>
-&lt;/ul>
-&lt;h4 id="waffen-1">Waffen&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur kann mit einer Waffe ausgerüstet werden
-&lt;ul>
-&lt;li>Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert&lt;/li>
-&lt;li>Ist die Waffe zu schwer für die verbleibende Tragkraft, so kann die Spielfigur die Waffe nicht aufnehmen&lt;/li>
-&lt;li>Eine Spielfigur kann mehrere Waffen mit sich rumtragen, aber jeweils nur eine Waffe aktiv verwenden&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Spielfiguren können Waffen ablegen, um die verbleibende Tragkraft zu erhöhen&lt;/li>
-&lt;li>Alle Keulen haben den Angriffswert 5 und den Verteidigungswert 5. Die beiden Werte sind also konstant&lt;/li>
-&lt;li>Jede Waffe hat einen Kampfwert
-&lt;ul>
-&lt;li>Waffen geben als Kampfwert ihren Angriffswert zurück&lt;/li>
-&lt;li>Bei Nahkampfwaffen wird zum Angriffswert der halbe Verteidigungswert hinzuaddiert&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h4 id="gegenstände-1">Gegenstände&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur kann Gegenstände bis zur maximalen Tragkraft aufnehmen
-&lt;ul>
-&lt;li>Wird ein Gegenstand aufgenommen, wird die Tragkraft entsprechend reduziert&lt;/li>
-&lt;li>Ist der Gegenstand zu schwer für die verbleibende Tragkraft, so kann die Spielfigur den Gegenstand nicht aufnehmen&lt;/li>
-&lt;li>Eine Spielfigur kann mehrere Gegenstände mit sich rumtragen und diese Gegenstände später im Kampf aktiv einsetzen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h4 id="kampf">Kampf&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur kann gegen eine andere Spielfigur kämpfen
-&lt;ul>
-&lt;li>Der Kampf findet in Runden statt&lt;/li>
-&lt;li>Es wird solange gekämpft, bis eine oder beide Spielfiguren keine Lebenspunkte mehr haben&lt;/li>
-&lt;li>Steht nach 20 Runden noch kein Sieger fest, wird der Kampf abgebrochen&lt;/li>
-&lt;li>Bei jeder Runde wird der Kampfwert der einen Spielfigur den Lebenspunkten des Gegners abgezogen und umgekehrt&lt;/li>
-&lt;li>Diejenige Spielfigur mit den meisten verbliebenen Lebenspunkten gewinnt&lt;/li>
-&lt;li>Jede Spielfigur kann in einem Kampf von ihren Gegenständen Gebrauch machen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
-&lt;ul>
-&lt;li>Definiere nun eigene Regeln für deine Spielfiguren, damit das Spiel ein wenig ausgeglichener wird&lt;/li>
-&lt;li>Die Regeln können beliebig geändert werden&lt;/li>
-&lt;li>Es dürfen natürlich auch neue Waffen und Gegenstände eingeführt werden&lt;/li>
-&lt;li>Dein Entwurf soll mindestens eine neue Spielfigur, eine neue Waffe, einen neuen Gegenstand und eine neue Spezialität für eine Spielfigur enthalten&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-4">Aufgabe 4&lt;/h2>
-&lt;ul>
-&lt;li>Die Kämpfe können sehr unausgeglichen sein&lt;/li>
-&lt;li>Das Spiel soll so gestaltet werden, dass nicht immer die gleichen Spielfiguren gewinnen&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-5">Aufgabe 5&lt;/h2>
-&lt;ul>
-&lt;li>Das Spiel soll für alle Aktionen einen übersichtlichen Log generieren&lt;/li>
-&lt;li>Eine Ausgabe für die Kommandozeile genügt, wenn sie sauber formatiert ist&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-6">Aufgabe 6&lt;/h2>
-&lt;p>Die Applikation hat nun aufgrund der vielen Klassen und Möglichkeiten eine gewisse Grösse erreicht und damit auch an Übersichtlichkeit verloren.
-Die Logik der Applikation ist nun, je nach Implementation, in sehr vielen unterschiedlichen Klassen vorhanden.
-In bestimmten Fällen, wie der Spezalisierung einer bestimmten Klasse, ist dies in Ordnung.&lt;/p>
-&lt;p>Wir arbeiten aber wenn immer möglich nach dem Single-Responsibility-Principle. Dieses Prinzip besagt, dass jeder Teil (bspw. Klasse, Methode) einer Applikation
-nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwortlich ist. Kurz gesagt: eine Methode macht beispielsweise niemals zwei verschiedene Dinge gleichzeitig.&lt;/p>
-&lt;ul>
-&lt;li>Erstelle eine Klasse, welche den Kampf zwischen zwei Spielfiguren verwaltet. Diese Klasse enthält diverse Methoden und ist verantwortlich für:
-&lt;ul>
-&lt;li>das Starten eines neuen Kampfes zwischen zwei Spielfiguren&lt;/li>
-&lt;li>das Zählen der Kampfrunden&lt;/li>
-&lt;li>das Verrechnen von Schaden&lt;/li>
-&lt;li>das Ermitteln des Gewinners&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Stelle sicher, dass die spezalisierten Modell-Klassen (Elf, Heiltrank) nur die Logik enthalten, die für eine Spezalisierung gerechtfertigt ist
-&lt;ul>
-&lt;li>Beispiel 1: die Berechnung des Kampfwerts eines Elfen gehört in die Elf-Klasse, die diese die Spezialisierung für einen Elfen enthält&lt;/li>
-&lt;li>Beispiel 2: der Kampf zwischen zwei Spielfiguren gehört NICHT in die Spielfigur-Klasse, da diese generell gültige Informationen zu einer Spielfigur enthält und das eigentliche &amp;ldquo;Spiel&amp;rdquo; mit dem Kampf zweier Spielfiguren nicht die Aufgabe dieser Klasse ist&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-7">Aufgabe 7&lt;/h2>
-&lt;ul>
-&lt;li>Das Spiel soll erweitert werden, dass eine Spielfigur eine Rüstung tragen kann&lt;/li>
-&lt;li>Es gibt leichte und schwere Rüstungen
-&lt;ul>
-&lt;li>Elfen und Goblins dürfen nur leichte Rüstungen tragen&lt;/li>
-&lt;li>Menschen, Zwerge und Orks dürfen schwere Rüstungen tragen&lt;/li>
-&lt;li>Trolle können aufgrund ihrer Grösse keine Rüstung tragen&lt;/li>
-&lt;li>Eine Spielfigur, welche eine schwere Rüstung tragen kann, kann selbstverständlich auch eine leichte Rüstung anziehen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Eine Spielfigur muss nicht zwingend eine Rüstung tragen&lt;/li>
-&lt;li>Jede Rüstung hat ein Gewicht, welches die Tragkraft der Spielfigur entsprechend verringert&lt;/li>
-&lt;li>Eine Spielfigur kann eine Rüstung anziehen oder sie ablegen&lt;/li>
-&lt;li>Mit dem Tragen einer Rüstung ist es einer Spielfigur möglich im Kampf pro Runde den Schaden komplett zu verhindern. Die schwere Rüstung ist dabei erfolgreicher. Das Verhindern von Schaden passiert zufällig&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-8">Aufgabe 8&lt;/h2>
-&lt;ul>
-&lt;li>Verhindere die Instanziierung von Klassen, die keinen Sinn ergeben (Beispiel Waffe, Spielfigur, &amp;hellip;)&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-9">Aufgabe 9&lt;/h2>
-&lt;ul>
-&lt;li>Jede Spielfigur erhält einen Initiative-Wert&lt;/li>
-&lt;li>Je höher der Wert, desto früher darf die Spielfigur im Kampf zuschlagen&lt;/li>
-&lt;li>Tiefere Werte verteilen also ihren Schaden später als höhere Werte&lt;/li>
-&lt;li>Eine Spielfigur mit tiefem Initiative-Wert kann nicht mehr zurückschlagen wenn sie getötet wird&lt;/li>
-&lt;li>Das Tragen von schweren Rüstungen verringert den Initiative-Wert&lt;/li>
-&lt;/ul></description></item><item><title>Labs: Set - Aufgaben</title><link>/labs/java/java-collections/02_set/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/02_set/</guid><description>
-&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>Schreibe ein Programm, welches die Personen von vier Vereine auswertet.&lt;/p>
-&lt;ol>
-&lt;li>Pro Verein existiert ein &lt;code>Set&lt;/code> mit allen Vereinsmitlieder (siehe Input).&lt;/li>
-&lt;li>Das Programm analysiert die Vereinsmitglieder und schreibt verschiedene Aussagen in die Konsole (siehe Ausgabe).&lt;/li>
-&lt;li>Die Namen der Personen müssen in alphabetischer Reihenfolge angezeigt werden.&lt;/li>
-&lt;/ol>
-&lt;h3 id="input">Input&lt;/h3>
-&lt;details>
-&lt;summary>4 Sets&lt;/summary>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> fussballVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paula&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> schwimmVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Klaus&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anina&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Nicole&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Gerda&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> musikVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Kari&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Karin&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> tanzVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Lara&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Sabine&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/details>
-&lt;h3 id="ausgabe">Ausgabe&lt;/h3>
-&lt;p>Die Ausgabe muss das folgende Format aufweisen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">- Wie viele Personen machen min. in einem Verein mit: 2: Maria,Xaver
-- Alle Personen, welche im Fussball und Tanz Verein sind: 2: Maria,Xaver
-- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 2: Maria,Xaver
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="ausgabe-überprüfen">Ausgabe überprüfen&lt;/h3>
-&lt;p>Wie können wir die Ausgabe überprüfen, ohne dass ihr die Lösung kennt?
-Wir benützen dazu eine kleine Hilfsklasse &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java">&lt;code>OutputValidation&lt;/code>&lt;/a>.
-Die Klasse erlaubt es eure &lt;code>System.out.println()&lt;/code> Anweisungen mit &lt;code>OutputValidation.logAndPrint()&lt;/code> zu ersetzten.
-Am Schluss des Programmes kann man mit &lt;code>OutputValidation.printControlHash()&lt;/code> den Hash-Wert der eigenen Ausgabe anzeigen, oder mit &lt;code>OutputValidation.verifyControlHash()&lt;/code> einen Hash-Wert zur Überprüfung mit eurer Ausgabe überreichen.&lt;/p>
-&lt;p>Ein Anwendungsbeispiel seht ihr unter &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidationUsage.java">OutputValidationUsage&lt;/a>.&lt;/p>
-&lt;p>Der Hash für diese Aufgabe ist: &lt;strong>&lt;code>-1421274666&lt;/code>&lt;/strong>&lt;/p>
-&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
-&lt;p>Wir programmieren eine eigene Set-Klasse &lt;code>MySet&lt;/code>, welche noch kein Hash-Code verwendet.&lt;/p>
-&lt;ol>
-&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
-&lt;li>Die Klasse muss das Interface &lt;code>MySetInterfaceSimple&lt;/code> implementieren.&lt;/li>
-&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichern muss. Sie muss die Grösse des Arrays dynamische anpassen.&lt;/li>
-&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MySet&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.&lt;/li>
-&lt;li>Überprüfe deine Implemenation mit dem JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a>&lt;/li>
-&lt;/ol>
-&lt;h3 id="input-1">Input&lt;/h3>
-&lt;details>
-&lt;summary>Inferface MySetInterfaceSimple&lt;/summary>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> com.examples.list&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MySetInterfaceSimple&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Adds the specified element to this set if it is not already present.
-&lt;/span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
-&lt;/span>&lt;span style="color:#75715e"> * @return true if this set did not already contain the specified element
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Removes the specified element from this set if it is present.
-&lt;/span>&lt;span style="color:#75715e"> * @param object object to be removed from this set, if present
-&lt;/span>&lt;span style="color:#75715e"> * @return true if the set contained the specified element
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains the specified element.
-&lt;/span>&lt;span style="color:#75715e"> * @param object element whose presence in this set is to be tested
-&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains the specified element
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns the number of elements in this set.
-&lt;/span>&lt;span style="color:#75715e"> * @return the number of elements in this set
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains no elements.
-&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains no elements
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Removes all the elements from this set. The set will be empty after this call returns.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/details>
-&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
-&lt;p>Wir Kopieren unsere &lt;code>MySet&lt;/code> Klasse zu der Klasse &lt;code>MyHashSet&lt;/code> und erweitern diese, damit sie Hash Funktionalität verwendet:&lt;/p>
-&lt;ol>
-&lt;li>Beim Hinzufügen von neuen Elementen wird deren Hash-Code berechnet und ebenfalls abgespeichert.&lt;/li>
-&lt;li>Die Suche nach bestehenden Elementen wird anschliessend über den gespeicherten Hash-Code durchgeführt statt über die Elemente selbst.&lt;/li>
-&lt;li>Du kannst deine Implemenation mit dem gleichen JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a> überprüfen, da sich die neue Klasse gleich verhalten soll. Erstelle vom Test eine Kopie &lt;code>MyHashSetTest&lt;/code> und ändere &lt;code>MySet&lt;/code> überall zu &lt;code>MyHahsSet&lt;/code>.&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/ul></description></item></channel></rss>
