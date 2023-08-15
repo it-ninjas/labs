@@ -1,7 +1,7 @@
 ---
 title: "Overview Lab"
 linkTitle: "Overview Lab"
-weight: 102
+weight: 12
 description: >
   Overview Lab: Theory of everything
 sectionnumber: 5

@@ -1,7 +1,7 @@
 ---
 title: "Maven und Continuous Integration"
 linkTitle: "Maven"
-weight: 8
+weight: 6
 description: >
   Modul #S2
 ---

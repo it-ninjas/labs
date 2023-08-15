@@ -1,7 +1,7 @@
 ---
 title: "JDBC (Java Database connection)"
 linkTitle: "JDBC (Java Database connection)"
-weight: 12
+weight: 11
 description: >
   Modul #J8 - JDBC
 ---

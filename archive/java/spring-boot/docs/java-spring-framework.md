@@ -1,7 +1,7 @@
 ---
 title: "Spring Framework Introduction"
 linkTitle: "Spring Framework Introduction"
-weight: 14
+weight: 13
 description: >
   Modul #J10 - Spring Basics IoC / DI
 ---

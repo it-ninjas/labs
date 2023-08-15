@@ -1,7 +1,7 @@
 ---
 title: "Annotationen & Reflection API"
 linkTitle: "Annotationen & Reflection"
-weight: 11
+weight: 9
 description: >
   Modul #J6 - Annotationen & Reflection API
 ---

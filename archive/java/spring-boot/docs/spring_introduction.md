@@ -1,7 +1,7 @@
 ---
 title: "Spring Framework Introduction"
 linkTitle: "Spring Framework Introduction"
-weight: 103
+weight: 15
 description: >
   A short introduction to the Spring framework
 sectionnumber: 6
