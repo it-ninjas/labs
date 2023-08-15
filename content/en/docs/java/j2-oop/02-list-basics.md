@@ -120,3 +120,7 @@ System.out.println(words); // Output: [Hello, World]
 System.out.printf("Our list contains \"!\". True or false? %b\n", words.contains("!")); // Output: Our list contains "!". True or false? false
 
 ```
+
+---
+
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1 und 2](../../../../labs/java/java-lists-and-streams-basics/01_listexercises) in den List-Labs.

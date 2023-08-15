@@ -355,3 +355,7 @@ Das Entfernen der generischen Informationen heisst "type erasure" und der Compil
 * Alle Typparameter in generischen Typen mit ihren "bound"-Typen (falls definiert) oder mit Object umzutauschen. Der prduzierte Bytecode beinhaltet dann nur "normale" Klassen, Interfaces und Methoden.
 * Type-Casting dort wo nötig hinzuzufügen, um die Typsicherheit bewahren zu können
 * Sog. Bridge-Methoden zu generieren, um Polymorphismus in erweiterte generische Typen zu bewahren
+
+---
+
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/java-generics) in den Generics-Labs.
