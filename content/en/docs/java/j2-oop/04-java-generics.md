@@ -1,9 +1,9 @@
 ---
 title: "Java Generics Grundlagen"
 linkTitle: "Java Generics Grundlagen"
-weight: 6
+weight: 4
 description: >
-  Modul #J2 - Generics I
+  Modul #J2
 ---
 
 #### Ziele
