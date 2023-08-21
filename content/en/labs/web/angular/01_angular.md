@@ -172,17 +172,6 @@ Folgende Anforderungen sind gegeben:
 - Erstelle einen globalen ErrorHandler um die möglichen Fehler der Services abzufangen und gib eine Mitteilung damit der Benutzer weiss, das ein Fehler passierte (Subject verwenden).
 - Erstelle einen neuen Component um die Daten alles Fahrräder anzuzeigen.
 
-## Aufgabe 2.2
-Erweitern wir die Anwendung nun ein wenig.
-- Erstelle einen weiteren neuen Component, welcher ein Eingabefeld, mit ReactiveForms, besitzt um nach einem Fahrrad zu suchen und dieses anzuzeigen.
-- Erstelle eine Navigation für zwischen den Components hin und her zu wechseln.
-- Erstelle eine Route für die Components. Der Component welcher alle Fahrräder anzeigt ist zudem die Defaultroute.
-- Füge auf der Seite aller Fahrräder zwei Buttons hinzu. Einer um die Such-Seite zu aktiveren und den anderen um sie zu deaktivieren. Verwende hier ein `BehaviorSubject` um den momentan State zu kennen.
-- Erstelle einen Guard welcher dich nur zu der Suche-Seite lässt, wenn du diese aktiviert hast mittels Button.
-- Erstelle auch ein Routing auf den neu zu Erstellenden Component, welche mithilfe eines Parameters alle Fahrräder (der name, wert, marke und typen) der jeweiligen Marke anzeigt. Zudem soll die Marke als Titel der Seite stehen.
-- Verlinke die brand_id, als routerLink auf der Seite aller Fahrräder um auf den neuen Component zu gelangen.
-
-
 ## Aufgabe 2.1
 In den vorherigen Aufgaben hast du eine Grundstruktur geschaffen für die Anzeige. Wenn man nach einem Fahrrad sucht, sollte nun das Ergebnis mit einer Pipe angepasst werden.
 - Erstelle nun eine Pipe welche die Spalte `value` im Format `1'720.00 CHF` anzeigt. Der Währungstyp wird mit einem Parameter weitergegeben.
@@ -192,6 +181,16 @@ In den vorherigen Aufgaben hast du eine Grundstruktur geschaffen für die Anzeig
 - Erstelle eine weitere Pipe, welche den Markennamen nur mit Grossbuchstaben anzeigt und hinter den Markennamen ein Copyrightzeichen (`©`) setzt.
 
 **Wichtig**: Wende die Pipe im Template an und nicht im Typescript.
+
+## Aufgabe 2.2
+Erweitern wir die Anwendung nun ein wenig.
+- Erstelle einen weiteren neuen Component, welcher ein Eingabefeld, mit ReactiveForms, besitzt um nach einem Fahrrad zu suchen und dieses anzuzeigen.
+- Erstelle eine Navigation für zwischen den Components hin und her zu wechseln.
+- Erstelle eine Route für die Components. Der Component welcher alle Fahrräder anzeigt ist zudem die Defaultroute.
+- Füge auf der Seite aller Fahrräder zwei Buttons hinzu. Einer um die Such-Seite zu aktiveren und den anderen um sie zu deaktivieren. Verwende hier ein `BehaviorSubject` um den momentan State zu kennen.
+- Erstelle einen Guard welcher dich nur zu der Suche-Seite lässt, wenn du diese aktiviert hast mittels Button.
+- Erstelle auch ein Routing auf den neu zu Erstellenden Component, welche mithilfe eines Parameters alle Fahrräder (der name, wert, marke und typen) der jeweiligen Marke anzeigt. Zudem soll die Marke als Titel der Seite stehen.
+- Verlinke die brand_id, als routerLink auf der Seite aller Fahrräder um auf den neuen Component zu gelangen.
 
 ## Aufgabe 2.3
 Um die Anwendung nun ein bisschen schöner darzustellen, brauchen wir nun Angular Material.
