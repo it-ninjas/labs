@@ -11,30 +11,30 @@ description: >
 * Ich kann Methoden und Konstruktoren in Enums anwenden.
 
 ## Enums
-Enums (kurz für "enumeration", zu Deutsch: Aufzählung) bieten die Möglichkeit, vordefinierte Konstanten zusammen zu gruppieren.
+Enums (kurz für "enumeration", zu Deutsch "Aufzählung") bieten die Möglichkeit, vordefinierte Konstanten zusammen zu gruppieren.
 Enums werden dann verwendet, wenn alle mögliche Werte zur Kompilierzeit bekannt sind (z.B. alle Wochentage, alle Planeten im Sonnensystem usw.).
 
 In Java sind Aufzählungstypen als Klassen realisiert und die definierten Werte sind als Objekte implementiert. 
 Daraus ergeben sich folgenden nützlichen Eigenschaften:
 - Enums können Konstruktoren, Instanzvariablen und Instanz-Methoden beinhalten
-- Der Name der Enum-Werte kann mithilfe der toString-Methode (oder mit dem Keywort _this_) im Klartext ausgegeben werden.
-- Mithilfe des "=="-Operators kann auf Gleichheit geprüft werden.
-- Enumerations können in switch-Anweisungen verwendet werden.
-- Mithilfe der values-Methode wird ein Array zurückgegeben, das alle Elemente der Enumeration enthält. In Verbindung mit der erweiterten for-Schleife (for-each) können die Elemente sehr einfach durchlaufen werden.
+- Der Name der Enum-Werte kann mithilfe der `toString()`-Methode (oder mit dem Keywort `this`) im Klartext ausgegeben werden.
+- Mithilfe des `==`-Operators kann auf Gleichheit geprüft werden.
+- Enumerations können in `switch`-Anweisungen verwendet werden.
+- Mithilfe der `values`-Methode wird ein Array zurückgegeben, das alle Elemente der Enumeration enthält. In Verbindung mit der erweiterten `for`-Schleife (for-each) können die Elemente sehr einfach durchlaufen werden.
 
-Obwohl Java Enums als Klassen realisiert werden, müssen sie nicht mit _new_ instanziiert werden.
+Obwohl Java Enums als Klassen realisiert werden, müssen sie nicht mit `new` instanziiert werden.
 Im Gegensatz zu Klassen können Java-Enums weder erweitert werden noch von anderen Klassen erben.
 
 ### Enums definieren
 Enums können innerhalb oder ausserhalb einer Klasse definiert werden (nicht aber innerhalb einer Methode!).
-Um ein Enum zu definieren, wird das Java-Schlüsselwort _enum_ verwendet.
+Um ein Enum zu definieren, wird das Java-Schlüsselwort `enum` verwendet.
 
 Die erste Zeile(n) innerhalb der Enum-Definition soll eine kommagetrennte Liste von Konstanten beinhalten (in Java per Konvention mit Grossbuchstaben geschrieben).
 Danach werden allfällige Variablen, Methoden und Konstruktoren definiert.
 
-Jede Enum-Konstante ist implizit _**public static final**_.
-Weil es _static_ ist, kann über den Enum-Namen darauf zugegriffen werden.
-Weil es _final_ ist, kann es nicht erweitert werden.
+Jede Enum-Konstante ist implizit **`public static final`**.
+Weil es `static` ist, kann über den Enum-Namen darauf zugegriffen werden.
+Weil es `final` ist, kann es nicht erweitert werden.
 
 #### Beispiel: Definition ausserhalb einer Klasse
 ```java
@@ -82,7 +82,7 @@ public class DailyPlanner {
 
 ### Enum mit einem Konstruktor
 Ein Enum-Konstruktor wird für jeder Enum-Konstante während dem Klassenladen des Enums ausgeführt.
-Es ist unmöglich Enum-Objekte explizit zu erzeugen. Darum kann ein Enum-Konstruktor auch nicht direkt aufgerufen werden.
+Es ist unmöglich, Enum-Objekte explizit zu erzeugen. Darum kann ein Enum-Konstruktor auch nicht direkt aufgerufen werden.
 
 #### Beispiel: Enum mit einem Konstruktor
 ```java
@@ -90,7 +90,8 @@ enum Weekday {
     MONDAY(1), TUESDAY(2), WEDNESDAY(3), THURSDAY(4), FRIDAY(5), SATURDAY(6), SUNDAY(7);
     
     final int dayNumber;
-    Weekday() {
+    Weekday(int dayNumber) {
+        this.dayNumber = dayNumber;
         System.out.println("Konstruktor für Tag " + this.toString() + " wird ausgeführt. Das ist der " + this.dayNumber+ ". Tag in der Woche");
     }
 }

@@ -23,7 +23,7 @@ class Person {
     private String name;
 }
 ```
-UML-Symbol: -
+UML-Symbol: `-`
 
 ### Public
 Auf Variablen und Methoden, die mit dem Schlüsselwort public deklariert sind, kann von einem beliebigen Ort des Programms zugegriffen werden.
@@ -42,21 +42,21 @@ Auf öffentliche Methoden und Felder kann ein Objekt über den Punkt-Operator zu
 Person p = new Person();
 c.getName();
 ```
-UML-Symbol: +
+UML-Symbol: `+`
 
 ### Protected
 Wenn eine Variable oder Methode protected deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen bzw. Vererbung folgt im Modul «Objektorientiertes Design»).
-UML-Symbol: #
+UML-Symbol: `#`
 
 ### Package-Private
 Wenn eine Variable oder Methode keinen Zugriffsmodifikator hat, so besitzt sie trotzdem einen. Dieser wird Package-Private genannt. Die Sichtbarkeit ist grundsätzlich private, wird aber auf Klasse im gleichen Package ausgeweitet.
 
 ### Zusammenfassung
-| Modifikator    | Eigene Klasse | Klasse im gleichen Package / innere-Klassen | Unterklassen | Sonstige Klassen |
-|----------------|---------------|---------------------------------------------|--------------|------------------|
-| private        | ja            | nein                                        | nein         | nein             |
-| public         | ja            | ja                                          | ja           | ja               |
-| protected      | ja            | ja                                          | ja           | nein             |
-| ohne / package | ja            | ja                                          | nein         | nein             |
+| Modifikator      | Eigene Klasse | Klasse im gleichen Package / innere-Klassen | Unterklassen | Sonstige Klassen |
+|------------------|---------------|---------------------------------------------|--------------|------------------|
+| `private`        | ja            | nein                                        | nein         | nein             |
+| `public`         | ja            | ja                                          | ja           | ja               |
+| `protected`      | ja            | ja                                          | ja           | nein             |
+| ohne / package   | ja            | ja                                          | nein         | nein             |
 
 ---

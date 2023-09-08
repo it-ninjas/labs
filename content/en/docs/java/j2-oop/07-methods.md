@@ -7,8 +7,9 @@ description: >
 ---
 
 ## Ziele
+* Ich weiss, welche Regeln ein Methodenname einhalten sollte (Konventionen).
 * Ich kann Getter- und Setter-Methoden schreiben.
-* Ich kenne die Methoden `equals()` und `hashCode()` und weiss unter welchen Umständen und wie ich diese überschreiben soll.
+* Ich kenne die Methoden `equals()` und `hashCode()` und weiss, unter welchen Umständen und wie ich diese überschreiben soll.
 
 ## Instanzmethoden
 Methoden werden benutzt, um Funktionen zur Verfügung zu stellen. Diese Funktionalitäten reichen von einfachen Änderungen am Zustand eines Objekts bis zu komplexen Algorithmen zur Berechnung von mathematischen Dingen. Hier passiert also die Magie in einer Applikation.
@@ -16,23 +17,24 @@ Diese Methoden können also entweder den Inhalt von Datenfelder ändern oder ihr
 Der Zugriffsmodifizierer einer Methode sollte immer so restriktiv wie möglich gewählt werden.
 
 Eine Methodendeklaration besteht aus bis zu sieben Komponenten:
-1. Zugriffsmodifikator. public, protected, private oder package-private
-2. Sonstige Modifikatoren. Beispielsweise static oder synchronized
-2. Rückgabewert. Der Datentyp des von der Methode zurückgegebenen Werts oder _void_, wenn die Methode keinen Wert zurückgibt
-3. Methodenname / Bezeichner
-4. Parameterliste in Klammern. Eine durch Kommas getrennte Liste von Eingabeparametern (Datentyp + Bezeichner). Wenn keine Parameter vorhanden sind, genügt die Angabe der beiden Klammern
-5. Exceptions. Dazu mehr später im Modul Exception Handling
+1. Zugriffsmodifikator: `public`, `protected`, `private` oder package-private.
+2. Sonstige Modifikatoren. Beispielsweise `static` oder `synchronized`.
+2. Rückgabewert. Der Datentyp des von der Methode zurückgegebenen Werts oder `void`, wenn die Methode keinen Wert zurückgibt.
+3. Methodenname / Bezeichner.
+4. Parameterliste in Klammern. Eine durch Kommas getrennte Liste von Eingabeparametern (Datentyp + Bezeichner). Wenn keine Parameter vorhanden sind, genügt die Angabe der beiden Klammern.
+5. Exceptions. Dazu mehr später im Modul Exception Handling.
 6. Methodenkörper.
 
 ### Namenskonventionen für Methoden
-* Erster Buchstabe immer klein
-* CamelCase
-* sollten aus einem Verb und einem Nomen zusammengesetzt werden
-* Möglichst aussagekräftige Namen
-* Möglichst keine Abkürzungen
+Methodennamen sollen folgende Regeln einhalten:
+* Erster Buchstabe ist immer klein.
+* CamelCase: Alle Buchstaben sind klein ausser jeweils der erste Buchstaben ab dem zweiten Wort.
+* Der Methodenname sollte aus einem Verb und einem Nomen zusammengesetzt werden.
+* Der Methodenname soll möglichst aussagekräftig sein.
+* Statt Abkürzungen sollen die einzelnen Wörter möglichst ausgeschrieben werden (ausser es handelt sich um sehr bekannte Abkürzungen).
 
 ### Getter und Setter
-Diese beiden Arten von Methoden sind in der objektorientierten Programmierung unverzichtbar. Eine get-Methode (Getter) ruft den Wert eines bestimmten Datenfelds ab, während eine set-Methode (Setter) ihren Wert verändert. Dies dient dem Prinzip der Kapselung und kann unter anderem dazu verwendet werden, ein bestimmtes Datenfeld read-only zu gestalten (wenn es keine Setter-Methode dazu gibt).
+Diese beiden Arten von Methoden sind in der objektorientierten Programmierung unverzichtbar. Eine _get_-Methode (Getter) ruft den Wert eines bestimmten Datenfelds ab, während eine _set_-Methode (Setter) ihren Wert verändert. Dies dient dem Prinzip der Kapselung und kann unter anderem dazu verwendet werden, ein bestimmtes Datenfeld read-only zu gestalten (wenn es keine Setter-Methode dazu gibt).
 
 #### Namenskonventionen
 Für Getter- und Setter-Methoden werden immer die gleichen Methodennamen verwendet. Als Präfix benutzen wir _get_ und _set_ gefolgt vom Namen des Datenfelds worauf sich die Methode bezieht.
@@ -60,7 +62,7 @@ class Demo {
 ```
 
 ### Methoden überladen
-In Java können wir Methoden überladen. Das heisst, wir können mehrere Methoden mit demselben Namen definieren, solange die Anzahl an Parametern oder die Datentypen der Parameter variiert. Beim Aufruf der Methode wird vom Compiler die entsprechende Definition ausgewählt.
+In Java können wir Methoden überladen. Das heisst, wir können mehrere Methoden mit demselben Namen definieren, solange die Anzahl an Parametern oder die Datentypen der Parameter variieren. Beim Aufruf der Methode wird vom Compiler die entsprechende Definition ausgewählt.
 ```java
 class Calculator {
 
@@ -98,29 +100,60 @@ class Demo {
 Methoden, deren Parameter gleich sind (gleiche Anzahl, gleiche Datentypen) und sich lediglich in ihren Rückgabetypen unterscheiden, können nicht überladen werden, da der Compiler nicht in der Lage ist, zwischen ihren Aufrufen zu unterscheiden.
 
 ### Die Methoden equals() und hashCode()
-Die Methoden *equals()* und *hashCode()* gehören zu den grundlegenden Java APIs.
-Beide Methoden gehören automatisch zur öffentlichen Schnittstelle jeder Klasse, da sie durch die implizite Ableitung von der Object-Klasse geerbt werden (mehr dazu im Teil "Objektorientiertes Design" in diesem Modul).<br>
-Ob die Default-Umsetzung beider Methoden ausreicht, wird aufgrund von den fachlichen Gegebenheiten entschieden und ggf. werden **beide** Methoden überschrieben.
+Die Methoden `equals()` und `hashCode()` gehören zu den grundlegenden Java APIs.
+Beide Methoden gehören automatisch zur öffentlichen Schnittstelle jeder Klasse, da sie durch die implizite Ableitung von der Object-Klasse geerbt werden (mehr dazu im Modul "Objektorientiertes Design (OOD)").
 
 #### equals()
-Die Methode *equals()* ermöglicht uns das aus dem fachlichen Kontext stammende Gleichheitsverständnis im Code umzusetzen.<br>
-Die Default-Umsetzung der Methode in der Object-Klasse definiert, dass zwei Objekte nur dann gleich sind wenn sie die gleiche Identität haben. Das heisst, zwei unterschiedliche Instanzen (also zwei Objekte) einer Klasse sind gemäss dieser Umsetzung nicht gleich auch wenn alle Felder der beiden Objekten mit den gleichen Werte befüllt werden. 
-Aufgrund der fachlichen Gegebenheiten kann diese Definition der Gleichheit nicht korrekt sein. In so einem Fall muss die Methode *equals()* überschrieben werden.
+Möchtest du überprüfen, ob zwei Objekte den gleichen Wert repräsentieren, dann verwendest du die Methode `equals()`.
 
-Bei der Umsetzung müssen folgende Bedingungen für die Definition der Gleichheit bei nicht-null Objekten gemäss [API-Definition für equals()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) erfüllt werden:<br>
+Die Default-Umsetzung der Methode in der Object-Klasse definiert, dass zwei Objekte nur dann gleich sind, wenn sie die gleiche Identität haben. Das heisst, zwei unterschiedliche Instanzen (also zwei Objekte) einer Klasse sind gemäss dieser Umsetzung nicht gleich auch wenn alle Felder der beiden Objekten mit den gleichen Werte befüllt werden.
+
+Aufgrund der fachlichen Gegebenheiten kann diese Definition der Gleichheit nicht korrekt sein. In so einem Fall muss die Methode `equals()` überschrieben werden.
+
+Bei der Umsetzung müssen folgende Bedingungen für die Definition der Gleichheit bei nicht-`null` Objekten gemäss [API-Definition für equals()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) erfüllt werden:
 - **Reflexivität**: Das Objekt liefert beim Vergleich mit sich selbst true.
 - **Symmetrie**: Das Resultat des Vergleichs x mit y ist gleich wie das des Vergleichs y mit x. Es ist also egal wie verglichen wird.
 - **Transivität**: Wenn x gleich y ist und y gleich z, dann ist x gleich z.
 - **Konsistenz**: Egal wie häufig der Vergleich durchgeführt wird, es kommt immer dasselbe heraus, sofern sich der Inhalt der Objekte nicht verändert.
-- **Behandlung von null**: Der Vergleich mit null liefert immer false.
+- **Behandlung von `null`**: Der Vergleich mit `null` liefert immer false.
+
+Eine mögliche Implementierung von `equals()` für die Klasse `Car` könnte wie folgt aussehen:
+
+```java
+@Override
+public boolean equals(Object other) {
+    if (this == other) return true;
+    if (other == null || getClass() != other.getClass()) return false;
+    Car car = (Car) other;
+    return speed == car.speed;
+}
+```
+
+(Die Angabe ("Annotation") von `@Override` ist freiwillig. Sie wird angegeben, wenn eine bestehende Methode (z.B. von der Klasse `Object`) überschrieben wird. Diese Angabe bewirkt, dass es ein Kompilierfehler gibt, falls keine bestehende Methode überschrieben wird.)
+
+Die `equals()`-Methode kannst du wie eine ganz normale Methode aufrufen, wird aber meistens in einer `if`-Anweisung verwendet:
+
+```java
+Car carA = new Car();
+carA.setSpeed(3);
+Car carB = new Car();
+
+if (carA.equals(carB)){
+    System.out.println("Both cars are equal.");
+} else {
+    System.out.println("The cars are different.");
+}
+```
 
 #### hashCode()
-Die Methode *hashCode()* sollte für jedes Objekt einen Hashwert (Fingerabdruck) liefern, der das Objekt möglichst eindeutig identifiziert.<br>
-Der berechnete Hashwert ermöglicht einen effizienten und schnellen Zugriff auf ein bestimmtes Objekt innerhalb eines Hash-basierten Containers wie z.B. einer *HashMap*.<br>
-Auch für diese Methode definiert die [API-Definition für hashCode()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html#hashCode()) Bedingungen, welche erfüllt werden müssen damit die Methode zweckmässig verwendet werden kann:
+Die Methode `hashCode()` sollte für jedes Objekt einen Hashwert (Fingerabdruck) liefern, der das Objekt möglichst eindeutig identifiziert.
 
-- **Konsistenz**: Egal wie häufig hashCode() aufgerufen wird, es kommt stets dasselbe Resultat zurück, sofern der Inhalt des Objekts nicht geändert wurde.
-- **Zusammenhang equals**: Zwei Objekte, die gemäss equals() gleich sind, müssen den gleichen Hashwert liefern.
-- **Zusammenhang not-equals**: Zwei Objekte die gemäss equals() verschieden sind, müssen nicht zwingend unterschiedliche Hashwerte liefern. Grundsätzlich wäre es aber besser für die Performanz, wenn verschiedene Objekte auch verschiedene Hashwerte liefern würden.
+Der berechnete Hashwert ermöglicht einen effizienten und schnellen Zugriff auf ein bestimmtes Objekt innerhalb eines Hash-basierten Containers wie z.B. einer `HashMap`.
 
-In der Regel entscheiden wir uns aufgrund von fachlichen Gegebenheiten für die Überschreibung der Methode *equals()*. Die Überschreibung von *hashCode()* resultiert daraus als Konsequenz der Bedingung "Zusammenhang equals".
+Auch für diese Methode definiert die [API-Definition für hashCode()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html#hashCode()) Bedingungen, welche erfüllt werden müssen, damit die Methode zweckmässig verwendet werden kann:
+
+- **Konsistenz**: Egal wie häufig `hashCode()` aufgerufen wird, es kommt stets dasselbe Resultat zurück, sofern der Inhalt des Objekts nicht geändert wurde.
+- **Zusammenhang equals**: Zwei Objekte, die gemäss `equals()` gleich sind, müssen den gleichen Hashwert liefern.
+- **Zusammenhang not-equals**: Zwei Objekte die gemäss `equals()` verschieden sind, müssen nicht zwingend unterschiedliche Hashwerte liefern. Grundsätzlich wäre es aber besser für die Performanz, wenn verschiedene Objekte auch verschiedene Hashwerte liefern würden.
+
+In der Regel entscheiden wir uns aufgrund von fachlichen Gegebenheiten für die Überschreibung der Methode `equals()`. Die Überschreibung von `hashCode()` resultiert daraus als Konsequenz der Bedingung "Zusammenhang equals".

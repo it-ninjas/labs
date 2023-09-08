@@ -32,7 +32,7 @@ Die Trennung der verschiedenen Packages erfolgt beim Import-Statement durch eine
 
 ### Ordnerstruktur
 Programmcode muss organisiert sein. Grundsätzlich legen wir Quellcode im einem Verzeichnis ab, das _src_ genannt wird.
-Innerhalb dieses Verzeichnisses legen wir ein Verzeichnis _main_ und ein Verzeichnis _java_ an. Innerhalb des Java-Verzeichnisses können wir beliebig viele eigene Packages anlegen, um unseren Programmcode zu organisieren.
+Innerhalb dieses Verzeichnisses legen wir ein Verzeichnis _main_ und darin wiederum ein Verzeichnis _java_ an. Innerhalb des Java-Verzeichnisses können wir beliebig viele eigene Packages anlegen, um unseren Programmcode zu organisieren.
 
 ### Klassen mit gleichem Namen
 Es kann passieren, dass wir zwei Klassen haben, die den gleichen Namen haben. Beispiel: Wir arbeiten mit der externen Bibliothek Abstract Window Toolkit (AWT). Darin gibt es eine Klasse mit dem Namen _Rectangle_. Es ist natürlich erlaubt eine eigene Klasse mit diesem Namen anzulegen, solang sie sich nicht in einem Package mit dem gleichen Namen befindet.

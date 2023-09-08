@@ -110,7 +110,7 @@ class Patient {
     float size;
 }
 ```
-Im obigen Code haben wir zwei Patienten erstellt, John und Alice, die Werte ihrer Felder definiert und dann die Informationen über sie ausgedruckt. Wir sehen, dass wir mit dem Punkt-Operator auf die Felder des Objekts zugreifen können (john.name = "John"). Allerdings soll hier erwähnt sein, dass das nur geht, wenn die Instanzvariablen nicht private sind (wir behandeln das Thema Zugriffsmodifikatoren weiter unten).
+Im obigen Code haben wir zwei Patienten erstellt, John und Alice, die Werte ihrer Felder definiert und dann die Informationen über sie ausgedruckt. Wir sehen, dass wir mit dem Punkt-Operator auf die Felder des Objekts zugreifen können (john.name = "John"). Allerdings soll hier erwähnt sein, dass das nur geht, wenn die Instanzvariablen nicht private sind (wir behandeln das Thema Zugriffsmodifikatoren später).
 
 ### Veränderungen an Objekten - Immutable & mutable objects
 In der Programmierung gibt es ein wichtiges Konzept, das Unveränderlichkeit genannt wird. Unveränderlichkeit bedeutet, dass ein Objekt immer dieselben Werte speichert. Wenn wir diese Werte ändern wollen, müssen wir ein neues Objekt erstellen. Das klassische Beispiel ist die Klasse _String_. Zeichenfolgen sind unveränderliche Objekte, sodass alle String-Operationen einen neuen String erzeugen.
