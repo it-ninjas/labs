@@ -247,7 +247,7 @@ DELETE FROM table_name WHERE condition;
 ```
 
 Als Erstes kommt immer das "DELETE" gefolgt von FROM und der betroffenen Tabelle. Ein Delete sollte immer mit einem
-Where verwendet werden, da sonst alle Daten aus gelöscht werden. Hier ein konkretes Beispiel dazu:
+Where verwendet werden, da sonst alle Daten aus der Tabelle gelöscht werden. Hier ein konkretes Beispiel dazu:
 
 Ausgangstabelle:
 
@@ -317,9 +317,9 @@ abhängig vom Statement und welches Keyword verwendet wird. Schauen wir uns das 
 ``` sql
 SELECT * FROM tabelle_a RIGHT JOIN tabelle_b ON tabelle_a.id = tabelle_b.id;
 ```
-In diesem Query wird das Keyword RIGHT verwendet. Das bedeutet, dass die **rechte** Tabelle verwendet wird. Was
+In diesem Query wird das Keyword `RIGHT` verwendet. Das bedeutet, dass die **rechte** Tabelle verwendet wird. Was
 definiert jetzt aber welches die rechte Tabelle ist? In diesem Fall ist tabelle_b die rechte Tabelle, da sie rechts 
-vom JOIN steht. Dieser Logik entsprechend ist im unteren Beispiel tabelle_a die linke Tabelle, die also komplett 
+vom `JOIN` steht. Dieser Logik entsprechend ist im unteren Beispiel tabelle_a die linke Tabelle, die also komplett 
 zurückgegeben wird.
 
 ``` sql
