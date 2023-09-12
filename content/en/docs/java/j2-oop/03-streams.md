@@ -26,7 +26,7 @@ verkettete Operationen auf diesen Referenzen nacheinander oder parallel auszufü
 Die Daten, die durch die Referenzen repräsentiert werden, werden durch den Stream selbst nicht verändert.
 
 Ein Stream ist also keine Datenstruktur für sich. Er erhält sein Input aus andere Datenstrukturen wie 
-z.B. Arrays oder Listen und führt die gewünschte Operationen auf diesem Input aus
+z.B. Arrays oder Listen und führt die gewünschte Operationen auf diesem Input aus,
 ohne die ursprüngliche Datenstruktur zu verändern.
 
 Streams stellen Operationen zur Verfügung, welche in zwei Kategorien unterteilt werden können:
@@ -91,17 +91,17 @@ public class Weapon {
 Wie erwähnt, können Streams aus Arrays, Listen und anderen Collections oder aber auch aus Einzelobjekten erzeugt werden.
 
 #### Erzeugung aus Elementes eines Arrays
-Aus den Elementen eines Arrays kann ein Stream mithilfe der Klasse Arrays aus dem java.util-Package wie folgt erzeugt werden:
+Aus den Elementen eines Arrays kann ein Stream mithilfe der Klasse `Arrays` aus dem `java.util`-Package wie folgt erzeugt werden:
 ```java
 int[] numbers = {1, 2, 3, 4};
-IntStream numbersStream = Arrays.stream(numbers); // IntStream ist eine Spezialisierung von Stream, welche die Verabeitung von primitive int-Werte ermöglicht
+IntStream numbersStream = Arrays.stream(numbers); // IntStream ist eine Spezialisierung von Stream, welche die Verabeitung von primitive int-Werte ermöglicht.
 
 String[] greeting = {"Hello", "Streams"};
-Stream<String> greetingStream = Arrays.stream(greeting); // Anhand der spitzigen Klammern wird ersichtlich, welche Objekttypen durch den Stream verarbeitet werden
+Stream<String> greetingStream = Arrays.stream(greeting); // Anhand der spitzigen Klammern wird ersichtlich, welche Objekttypen durch den Stream verarbeitet werden.
 ```
 
 #### Erzeugung aus Elementen einer Liste / eine Collection
-Wenn eine Liste bereits vorhanden ist, kann die Methode stream() aufgerufen werden um einen Stream 
+Wenn eine Liste bereits vorhanden ist, kann die Methode `stream()` aufgerufen werden, um einen Stream 
 aus den Elementen der Liste zu erzeugen:
 ```java
 List<String> stringList = new ArrayList<>();
@@ -157,7 +157,7 @@ Da Lambda-Expressions oft in Streams verwendet werden, wird hier aufgezeigt, wie
 Lambda-Ausdrücke in Java sind quasi Methoden ohne Namen. Sie bestehen aus folgenden Elementen:
 - eine Liste von formalen Parametern. Mehrere Parameter werden durch ein Komma separiert und mit Klammern umrundet.
 (keine Parameter werden mit leeren Klammern `()` dargestellt, einen Parameter muss nicht zwingend mit Klammern umrundet werden)
-- ein Pfeil-Token -> 
+- ein Pfeil-Token `->` 
 - ein Funktionsrumpf. Wenn der Funktionsrumpf mehrere Anweisungen lang ist, wird er mit geschweiften Klammern `{ ... }` umrundet.
 
 ![Lambda Expressions](../lambda-expression.jpg "Lambda-Expressions")
