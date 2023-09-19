@@ -30,17 +30,19 @@ description: >
 
 ## Aufgabe 2 - Conditional Statements
 ![task1](/images/task.png) Löse die folgende Aufgaben:
-* Schreibe eine Methode, die feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist
-* Schreibe eine Methode, die dich begrüsst wenn dein Name als Parameter übergeben wird
-* Schreibe eine Methode, die feststellt, ob das übergebene Jahr ein Schaltjahr ist
-* Schreibe eine Methode, die überprüft, ob eine Zahl (als Parameter) gerade oder ungerade ist
-* Debugge mindestens zwei dieser Methoden mit einem Breakpoint
+* Schreibe eine Methode, die feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist.
+* Schreibe eine Methode, die dich begrüsst wenn dein Name als Parameter übergeben wird.
+* Schreibe eine Methode, die feststellt, ob das übergebene Jahr ein Schaltjahr ist.
+* Schreibe eine Methode, die überprüft, ob eine Zahl (als Parameter) gerade oder ungerade ist.
+* Schreibe eine Methode, die eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (z.B. 2 -> Februar).
+* Schreibe eine Methode, die einen Wochentag als Parameter übergeben bekommt und dann ausgibt, der wievielte Tag in der Woche er ist: `Der <Wochentag> ist der <X>. Tag in der Woche`. Schreibe die Methode so, dass maximal 1 `println()` (oder ähnliches) verwendet wird. Hinweis: Hier kann dir ein `switch`-Assignment sehr viel Code ersparen.
+* Debugge mindestens zwei dieser Methoden mit einem Breakpoint.
 
 ## Aufgabe 3 - Loops
 ![task1](/images/task.png) Löse die folgenden Aufgaben:
 * Schreibe eine Methode, welche eine beliebige Ganzzahl als Parameter übernimmt und die [Fakultät](https://www.studysmarter.de/schule/mathe/algebra/fakultaet/) dieser Zahl berechnet.
-* Schreibe einen Loop, welcher alle Zahlen von 1 bis 100 zusammenzählt, welche durch 8 teilbar sind
-  * Erweitere deine Lösung mit einer Methode, welche eine Zahl entgegennimmt und dann die Zahlen zusammenzählt, welche durch diese Zahl teilbar sind
+* Schreibe einen Loop, welcher alle Zahlen von 1 bis 100 zusammenzählt, welche durch 8 teilbar sind.
+  * Erweitere deine Lösung mit einer Methode, welche eine Zahl entgegennimmt und dann die Zahlen zusammenzählt, welche durch diese Zahl teilbar sind.
 
 
 ## Aufgabe 4 - Einfache Berechnungen
