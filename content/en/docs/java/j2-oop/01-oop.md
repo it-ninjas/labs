@@ -91,7 +91,7 @@ public class PatientDemo {
         // Wir greifen über den Punkt-Operator auf die Variablen zu und speichern Werte darin
         john.name = "John";
         john.age = 30;
-        john.size = 180f;
+        john.height = 180f;
         System.out.println(john.name + " " + john.age + " " + john.height);
 
         Patient alice = new Patient();
@@ -107,7 +107,7 @@ public class PatientDemo {
 class Patient {
     String name;
     int age;
-    float size;
+    float height;
 }
 ```
 Im obigen Code haben wir zwei Patienten erstellt, John und Alice, die Werte ihrer Felder definiert und dann die Informationen über sie ausgedruckt. Wir sehen, dass wir mit dem Punkt-Operator auf die Felder des Objekts zugreifen können (john.name = "John"). Allerdings soll hier erwähnt sein, dass das nur geht, wenn die Instanzvariablen nicht private sind (wir behandeln das Thema Zugriffsmodifikatoren später).
