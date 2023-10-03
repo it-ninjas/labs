@@ -121,7 +121,8 @@ Gratuliere! Du hast nun dein Projekt angelegt, und zwar Hard-Core. Bravo!
 Fahre nun mit dem Schritt "Führe deine Anwendung aus" fort.
 
 ### Variante II: Projekt mit Spring-Initializr anlegen
-Öffne die Seite: https://start.spring.io/ und ersetzte die Angaben zu Group, Artifact (der Name wird sich automatisch ändern) und Description durch passende Werte.  
+Öffne die Seite: https://start.spring.io/ und ersetzte die Angaben zu Group, Artifact (der Name wird sich automatisch ändern) und Description durch passende Werte. 
+Achte das bei Project "Maven" ausgewählt ist und nicht Gradle.
 Füge die Abhängigkeit für "Spring Web" hinzu und drücke den "GENERATE" Knopf.
 ![](../assets/01_spring-initializr.png)
 
@@ -295,7 +296,6 @@ public class SchulfachAdminController {
 
   private final SchulfachAdminService schulfachAdminService;
 
-  @Autowired
   public SchulfachAdminController(SchulfachAdminService schulfachAdminService) {
       this.schulfachAdminService = schulfachAdminService;
   }
@@ -308,8 +308,6 @@ public class SchulfachAdminController {
   // ...
 }
 ```
-Die Annotation *@Autowired* ist in den neuen Spring-Versionen nicht mehr zwingend notwendig.
-TODO: @Autowired weglassen
 
 ---
 **Aufgabe**  
@@ -335,13 +333,9 @@ Dieser Layer wird Persistenz-Layer genannt.
 Repository-Klassen werden grundsätzlich mit der Annotation *@Repository* annotiert.
 
 Die Verbindung zu einer Datenbank kann auf verschiedene Arten realisiert werden.
-In diesem Kapitel werden wir auf drei verschiedene Möglichkeiten eingehen. 
+In diesem Kapitel werden wir JDBCTemplate eingehen. 
 
-TODO: auf JDBC verweisen, JDBCTemplate Einführung
-TODO: Unterkapitel für JPA / Spring Data und JPQL auslagern (= Optional)
-TODO: In entsprechende Unterkapitel unterteilen und Hauptseite gestalten
-
-
+// Kommt raus 
 #### Möglichkeit 1: JPA-Repository mit Spring Data
 Bei dieser Variante wird die Jakarta Persistence API (JPA) mit Spring Data verwendet.
 Sie ermöglicht die automatische Generierung von Queries durch die Deklaration eines entsprechenden Methodennamens.
@@ -512,27 +506,107 @@ public interface GradeRepository extends JpaRepository<Grade, Integer> {
 TODO: Tutorials (auch von Spring) suchen und verlinken
 TODO: Optionale Themen tiefer priorisieren
 
+TODO: JDBC bleibt alles andere kommt raus
+### JDBC-Template
+JDBC steht für "Java Database Connectivity" und ist eine Technologie in Java, die es ermöglicht, auf Datenbanken zuzugreifen und mit ihnen zu interagieren. Mit JDBC können Java-Anwendungen Daten aus einer Datenbank abrufen, in die Datenbank schreiben, Daten aktualisieren und löschen.
 
+#### Dependency
+// evtl. oben bei den Dependency hinzufügen
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jdbc</artifactId>
+</dependency>
+```
 
-#### Möglichkeit 2: JPA-Repository mit JPQL
+#### Entity-Klasse 
+Eine Entity-Klasse ist eine normale Java-Klasse, die als Modell für eine Tabelle in der Datenbank dient. Jedes Objekt dieser Klasse entspricht einer Zeile in der Tabelle.
+```java
+public class Grade {
+    private Long gradeId;
+    private Double gradeValue;
+}
+```
 
+#### Repository
+Ein Repository ein Designmuster oder eine Klasse, die den Datenbankzugriff für eine bestimmte Entität oder ein bestimmtes Objektmodell verwaltet. Es hilft, den Code zu organisieren und zentrale Methoden für den Zugriff auf die Datenbank bereitzustellen.
 
-#### Möglichkeit 3: JDBC-Template
+```java
 
+@Repository
+public class StudentRepository {
+    private final JdbcTemplate jdbcTemplate;
+
+    public StudentRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public List<SchoolSubject> getAllSubjectsAndGrades() {
+        return null;
+    }
+    
+    // ...
+}
+```
 
 ### Repository-Klassen und Service-Klassen verbinden
+Die Verbindung zwischen Repository- und Service-Klassen in einer Softwareanwendung ist entscheidend für eine saubere Struktur und effiziente Datenverwaltung. Repository-Klassen handhaben den Datenzugriff, während Service-Klassen die Geschäftslogik umsetzen. Service-Klassen nutzen die Methoden der Repository-Klassen, um auf Daten zuzugreifen oder diese zu manipulieren. Diese Trennung ermöglicht eine klare Aufgabenverteilung, verbessert die Wartbarkeit und erleichtert die Integration von Datenzugriff und Geschäftslogik.
+
+```java
+@Service
+public class StudentService {
+
+    private final StudentRepository studentRepository;
+
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
+    public List<SchoolSubjectGradeDto> getAllSubjectsAndGrades() {
+        return studentRepository.getAllSubjectsAndGrades();
+    }
+
+    // ...
+}
+```
 
 
+**Aufgabe**  
 
-## Persistenz-Layer anlegen (Claudio)
-TODO: gehört in Kapitel 4 rein
-Repos anlegen
-Mock-Daten in Repository verschieben
-Akzeptanzkriterium: Zugriff mit Postman oder Browser
+### Akzeptanzkriterien Schritt 4
+* 
 
-## Konfiguration anlegen (Claudio)
-application.yml mit DB-Konfiguration
-Akzeptanzkriterium: Spring Boot Applikation startet mit DB
+
+// TODO
+## Schritt 5: Konfiguration anlegen (Claudio)
+In der Konfigurationsdatei können Einstellungen für die Datenbankverbindung, Log-Ebene, Profile, Spring-Profile, Webserver-Port, Sicherheitskonfigurationen und viele andere Aspekte der Anwendung angegeben werden.
+
+Die zwei häufigsten Arten eine Konfigurationsdatei anzulegen sind in `application.yml` oder die `application.properties`. Der Unterschied der beiden besteht darin das die `application.yml`-Datei, in YAML-Syntax geschrieben ist, und die `application.properties`-Datei eine einfache Key-Value-Paar-Syntax verwendet.
+
+application.properties:
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/[your_database]
+spring.datasource.username=[your_username]
+spring.datasource.password=[your_password]
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+```
+
+application.yml:
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/[your_database]
+    username: [your_username]
+    password: [your_password]
+    driver-class-name: org.mariadb.jdbc.Driver
+```
+
+// TODO
+**Aufgabe**  
+Konfiguriere deine Konfigurationsdatei entsprechend deiner Datenbank.
+
+### Akzeptanzkriterien Schritt 5
+* Die Spring Boot Applikation startet mit der Datenbank.
 
 ## Schritt 6: Profile anlegen
 In diesem Schritt erstellst du die gewünschten Spring Boot Profile: "student" und "admin".
@@ -549,10 +623,167 @@ Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem a
 * Wenn die Anwendung mit dem Profil "admin" gestartet wird, steht die gesamte Funktionalität zur Verfügung.
 * Wenn die Anwendung mit dem Default-Profil gestartet wird, muss sie sich genauso verhalten, wie mit dem "student" Profil.
 
-## Persistenz-Layer fertigstellen (Claudio)
+// TODO
+## Schritt 7 Persistenz-Layer fertigstellen (Claudio)
+// einfaches query im repo schwerer im xml file
 Queries schreiben
+
+// Mapper evtl overkill
 RowMapper oder ResultSetExtractor umsetzen
 TODO: Verschiedene Arten von Queries umsetzen (JPQL, Native) --> nur native Queries
+
+// TODO
+### Repository- und Service-Implementierungen
+In Spring Boot ist die Verwendung von Repository- und Service-Implementierungen eine bewährte Methode, um eine saubere Trennung von Geschäftslogik, Datenzugriff und Präsentation sicherzustellen. Diese Trennung hilft, den Code übersichtlich, wartbar und testbar zu machen.
+
+* Repository-Interface: Definiert die Methoden für den Datenzugriff.
+
+* Repository-Implementierung (RepositoryImpl): Implementiert die Methoden des Repository-Interfaces und führt die tatsächlichen Datenbankoperationen aus.
+
+* Service-Interface: Definiert die Methoden für die Geschäftslogik.
+
+* Service-Implementierung (ServiceImpl): Implementiert die Methoden des Service-Interfaces und ruft bei Bedarf das Repository auf, um auf Daten zuzugreifen.
+
+```java
+public interface StudentRepository {
+    List<SchoolSubject> getAllSubjectsAndGrades();
+    
+    // ...
+}
+```
+
+```java
+@Repository
+public class StudentRepositoryImpl implements StudentRepository { 
+    private final JdbcTemplate jdbcTemplate;
+
+    public StudentRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    
+    @Override
+    public List<SchoolSubject> getAllSubjectsAndGrades() {
+        return null;
+    }
+    
+    // ...
+}
+```
+
+// TODO
+### Queries 
+Typischerweise implementieren JDBC-Repositories benutzerdefinierte Methoden für spezielle Datenbankabfragen. Diese Methoden nutzen das JdbcTemplate (Teil des Spring-Frameworks), um SQL-Queries auszuführen. Dabei können Platzhalter oder Named Parameters verwendet werden, um dynamische Werte in die Abfragen einzufügen.
+
+```sql
+INSERT INTO GRADE (subject_id, grade_value) VALUES (?, ?)
+```
+```java
+@Repository
+public class StudentRepositoryImpl implements StudentRepository { 
+    private final JdbcTemplate jdbcTemplate;
+
+    public StudentRepositoryImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    
+    // ...
+
+    @Override
+    public void addGradeForSubject(Long subjectId, Grade grade) {
+        String sql = "INSERT INTO GRADE (subject_id, grade_value) VALUES (?, ?)";
+        jdbcTemplate.update(sql, subjectId, grade);
+    }
+    
+    // ...
+}
+```
+
+#### Queries auslagern
+Spring Boot ermöglicht es, JDBC-Abfragen in XML-Dateien auszulagern, um eine bessere Trennung von Code und Abfragen zu erreichen. Diese XML-Dateien können dann in den Repository-Methoden verwendet werden.
+
+Durch diese Trennung können JDBC-Abfragen leicht gewartet und geändert werden, ohne den Java-Code zu beeinflussen. Dies verbessert die Lesbarkeit und Wartbarkeit des Codes.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="gradeQueries" class="">
+        <property name="properties">
+            <props>
+                <prop key="addGradeForSubject">
+                    INSERT INTO GRADE (
+                        subject_id, 
+                        grade_value
+                        )
+                    VALUES (
+                        :subjectId
+                        :grade
+                        )
+                </prop>
+              
+                // ...
+              
+            </props>
+        </property>
+    </bean>
+</beans>
+```
+```java
+
+```
+
+
+// TODO
+### Mapping
+In der Softwareentwicklung stellt sich oft die Frage, wie man das Mapping zwischen verschiedenen Ebenen der Anwendung am besten handhabt. Insbesondere geht es darum, wie man Daten zwischen der Datenbank, der Geschäftslogik (Services) und der Benutzerschnittstelle (DTOs - Data Transfer Objects) hin- und herbewegt.
+
+Eine Möglichkeit ist, das Mapping nicht im Service durchzuführen. Dies wird zwar nicht zwingend empfohlen, aber es ähnelt dem Ansatz von JPA (Java Persistence API) und kann daher vorteilhaft sein. Hierbei wird das Mapping eher in den Repositories durchgeführt. Dies verringert die Belastung des Service mit zusätzlichem Mapping und spezifischen Abfragen (Queries). Allerdings kann dies zu einer unübersichtlichen Repository-Schicht führen, da sie dann sowohl für das Mapping als auch für die Abfragen verantwortlich ist.
+
+Wenn das Mapping im Service durchgeführt wird, bedeutet dies ein zusätzliches Mapping von der Abfrage (Query) zu den Entity-Objekten und dann zu den DTOs. Dies kann ineffizient erscheinen, da man ein Objekt erstellt, das später vom Garbage Collector aufgeräumt werden muss.
+
+Der JPA-Ansatz könnte mehr Daten zurückholen, als tatsächlich benötigt werden, da alle Eigenschaften in das Entity-Objekt geladen werden, selbst wenn sie im DTO nicht benötigt werden. Dies könnte ineffizient sein, insbesondere wenn nur ein Teil der Daten benötigt wird.
+
+Im Kontext von JDBC (Java Database Connectivity) gibt es viele verschiedene Ansätze und keinen "einen" richtigen Weg. Es ist möglich, JPA und JDBC zu mischen, um das Beste aus beiden Welten zu nutzen.
+
+Insgesamt ist die Wahl des richtigen Ansatzes abhängig von den Anforderungen des Projekts, der Skalierbarkeit, der Performance und den individuellen Vorlieben des Entwicklungsteams. Es ist wichtig, die Vor- und Nachteile der verschiedenen Ansätze abzuwägen und den am besten geeigneten Ansatz für das spezifische Projekt zu wählen.
+
+#### RowMapper
+In JDBC, RowMapper sind ein Interface, das verwendet wird, um das Mapping von Zeilen aus dem ResultSet auf Objekte zu ermöglichen. Es wird verwendet, um das Ergebnis jedes Datensatzes aus der Abfrage in ein Objekt umzuwandeln.
+
+Erstelle eine Klasse, die das `RowMapper`-Interface implementiert und die `mapRow`-Methode überschreibt. In dieser Methode wird definiert, wie eine Zeile aus dem ResultSet in ein Objekt gemappt wird.
+```java
+
+```
+
+Im RepositoryImpl kann man nun die erstellte Mapper-Methode verwenden um das Ergebnis der JDBC Operation zu mappen.
+```java
+
+```
+
+// TODO
+#### ResultSetExtractor
+Auch der ResultSetExtractor ist ein funktionales Interface, das verwendet wird, um das Mapping von ResultSet auf ein Objekt oder eine Liste von Objekten zu ermöglichen. Es ermöglicht eine benutzerdefinierte Verarbeitung der ResultSet-Daten.
+
+Erstelle eine Klasse und verwende das `ResultSetExtractor`-Interface, um zu definieren, wie das ResultSet in ein Objekt oder eine Liste von Objekten umgewandelt werden soll.
+```java
+
+```
+
+Im RepositoryImpl kann man nun die erstellte Extractor-Methode verwenden um das Ergebnis der JDBC Operation zu mappen.
+```java
+
+```
+
+// TODO
+**Aufgabe**
+Passe die Services und Repositorys entsprechend der Implementierung-Struktur an. Und implementiere die benötigten Mapper (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
+
+### Akzeptanzkriterien Schritt 7
+*
 
 ## Schritt 8: API testen
 Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
