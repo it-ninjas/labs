@@ -12,7 +12,7 @@ description: >
 Erstelle eine neue TypeScript-Projektstruktur und richte eine tsconfig.json-Datei ein, um den TypeScript-Compiler für das Projekt zu konfigurieren.
 
 1. Erstelle ein neues Verzeichnis für dein TypeScript-Projekt. 
-2. Navigiere in das Verzeichnis und Initialisiere das Projekt mit den Node Befehlen. Diese können [hier](../../../docs/web/ide_advanced/01_nodejs.md#npm-commands) nachgelesen werden. 
+2. Navigiere in das Verzeichnis und Initialisiere das Projekt mit den Node Befehlen. Diese können [hier](../../../../docs/web/ide_advanced/01_nodejs#npm-commands) nachgelesen werden. 
 4. InstalliereTypeScript. 
 5. Erstelle eine `tsconfig.json`-Datei im Stammverzeichnis des Projekts. Und richte diese anhand der folgenden Informationen korrekt ein:
    * ECMAScript-Version = es6
@@ -30,8 +30,12 @@ In der Konsole solltest du `HelloWorld!` sehen.
 ## Aufgabe 2
 ![task2](/images/task.png) - Einzelarbeit
 
-Lade die [Datei](/files/exams/angular/uebung2.ts) herunter und fülle wo nötig Quellcode ein.
-Die Person soll sich folgendermassen vorstellen: "Hallo, mein Name ist [Name]"
+Lade die <a href="/files/exams/angular/uebung2.ts" download>Datei</a> herunter und fülle wo nötig Quellcode ein.
+Die Person soll sich folgendermassen vorstellen:
+```
+Hallo, mein Name ist [Name].
+```
+
 Die Grundstruktur, sowie die letzten 2 Codezeilen dürfen nicht verändert werden.
 
 
@@ -59,7 +63,7 @@ In der Konsole sollte Dir nun folgendes angezeigt werden.
 ## Aufgabe 3
 ![task4](/images/task.png) - Einzelarbeit
 
-Lade die [Datei](/files/exams/angular/uebung3.ts) herunter.
+Lade <a href="/files/exams/angular/uebung3.ts" download>diese Datei</a> herunter.
 In dieser Aufgabe wollen wir Benutzereingabe in der Konsole verarbeiten.
 Dazu verwenden wir in diesem Beispiel readline(https://nodejs.org/api/readline.html) von NodeJS.
 Wir wollen nun ein kleines Programm schreiben, welches wie folgt aussieht.
