@@ -511,7 +511,7 @@ TODO: JDBC bleibt alles andere kommt raus
 JDBC steht für "Java Database Connectivity" und ist eine Technologie in Java, die es ermöglicht, auf Datenbanken zuzugreifen und mit ihnen zu interagieren. Mit JDBC können Java-Anwendungen Daten aus einer Datenbank abrufen, in die Datenbank schreiben, Daten aktualisieren und löschen.
 
 #### Dependency
-// evtl. oben bei den Dependency hinzufügen
+Damit JDBC verwendet werden kann, muss man zuerst eine neuen Dependency in das `pom.xml` hinzufügen.
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -571,14 +571,17 @@ public class StudentService {
 ```
 
 
-**Aufgabe**  
+**Aufgabe** 
+Füge die benötigte Dependency in dein Projekt ein und erstelle die nötigen Entity-Klassen. Zudem erstelle die benötigten Services und Repositorys in der korrekten packages Struktur.
 
 ### Akzeptanzkriterien Schritt 4
-* 
+* Dependency wurde im `pom.xml` hinzugefügt.
+* Alle nötigen Entities wurden erstellt.
+* Alle benötigten Services wurden erstellt und in einen Ordner für alle Services abgelegt. 
+* Alle benötigten Repositorys wurden erstellt und in einen Ordner für alle Repositorys abgelegt.
 
 
-// TODO
-## Schritt 5: Konfiguration anlegen (Claudio)
+## Schritt 5: Konfiguration anlegen 
 In der Konfigurationsdatei können Einstellungen für die Datenbankverbindung, Log-Ebene, Profile, Spring-Profile, Webserver-Port, Sicherheitskonfigurationen und viele andere Aspekte der Anwendung angegeben werden.
 
 Die zwei häufigsten Arten eine Konfigurationsdatei anzulegen sind in `application.yml` oder die `application.properties`. Der Unterschied der beiden besteht darin das die `application.yml`-Datei, in YAML-Syntax geschrieben ist, und die `application.properties`-Datei eine einfache Key-Value-Paar-Syntax verwendet.
@@ -601,7 +604,6 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
 ```
 
-// TODO
 **Aufgabe**  
 Konfiguriere deine Konfigurationsdatei entsprechend deiner Datenbank.
 
@@ -623,16 +625,7 @@ Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem a
 * Wenn die Anwendung mit dem Profil "admin" gestartet wird, steht die gesamte Funktionalität zur Verfügung.
 * Wenn die Anwendung mit dem Default-Profil gestartet wird, muss sie sich genauso verhalten, wie mit dem "student" Profil.
 
-// TODO
-## Schritt 7 Persistenz-Layer fertigstellen (Claudio)
-// einfaches query im repo schwerer im xml file
-Queries schreiben
-
-// Mapper evtl overkill
-RowMapper oder ResultSetExtractor umsetzen
-TODO: Verschiedene Arten von Queries umsetzen (JPQL, Native) --> nur native Queries
-
-// TODO
+## Schritt 7 Business-Logik- und Persistenz-Layer anpassen
 ### Repository- und Service-Implementierungen
 In Spring Boot ist die Verwendung von Repository- und Service-Implementierungen eine bewährte Methode, um eine saubere Trennung von Geschäftslogik, Datenzugriff und Präsentation sicherzustellen. Diese Trennung hilft, den Code übersichtlich, wartbar und testbar zu machen.
 
@@ -670,7 +663,15 @@ public class StudentRepositoryImpl implements StudentRepository {
 }
 ```
 
-// TODO
+**Aufgabe**  
+Passe deine Services und Repositorys entsprechend der Implementierungs-Methode an.
+
+### Akzeptanzkriterien Schritt 7
+* Alle Servies sind mit der Implementierungs-Methode ausgestattet.
+* Alle Respositorys sind mit der Implementierungs-Methode ausgestattet
+
+## Schritt 8 Persistenz-Layer fertigstellen (Claudio)
+
 ### Queries 
 Typischerweise implementieren JDBC-Repositories benutzerdefinierte Methoden für spezielle Datenbankabfragen. Diese Methoden nutzen das JdbcTemplate (Teil des Spring-Frameworks), um SQL-Queries auszuführen. Dabei können Platzhalter oder Named Parameters verwendet werden, um dynamische Werte in die Abfragen einzufügen.
 
@@ -703,6 +704,7 @@ Spring Boot ermöglicht es, JDBC-Abfragen in XML-Dateien auszulagern, um eine be
 
 Durch diese Trennung können JDBC-Abfragen leicht gewartet und geändert werden, ohne den Java-Code zu beeinflussen. Dies verbessert die Lesbarkeit und Wartbarkeit des Codes.
 
+In dieser XML-Datei (queries.xml) werden SQL-Abfragen definiert, die später in der Anwendung verwendet werden. Diese Abfragen können Platzhalter(`:subjectId`) enthalten, die später mit spezifischen Werten ersetzt werden.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -711,7 +713,7 @@ Durch diese Trennung können JDBC-Abfragen leicht gewartet und geändert werden,
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="gradeQueries" class="">
+    <bean id="gradeQueries" class="CommonDeclarableProperties">
         <property name="properties">
             <props>
                 <prop key="addGradeForSubject">
@@ -732,12 +734,129 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
     </bean>
 </beans>
 ```
-```java
 
+Die zwei folgenden Klassen sind Java-Beans, die verwendet werden, um SQL-Abfragen und ihre Platzhalter zu verwalten. `CommonDeclarableProperties` dient als Sammlung von allgemeinen Abfragen, während `DeclarableProperties spezifische Abfragen für eine bestimmte Datenbank und ein bestimmtes Schema hält. Sie erlauben auch die dynamische Ersetzung von Platzhaltern in den Abfragen.
+```java
+ import java.util.Properties;
+
+/**
+ * Bean for common library queries, see commonQueries.xml
+ */
+public class CommonDeclarableProperties extends Properties {
+
+  private static final long serialVersionUID = 6951295575346027065L;
+
+  public void setProperties(Properties properties) {
+    this.putAll(properties);
+  }
+
+}
 ```
 
+```java
+import java.io.Serial;
+import java.util.Map;
+import java.util.Properties;
 
-// TODO
+import org.springframework.beans.factory.annotation.Value;
+
+/**
+ * Bean for queries, see queries.xml in main repository
+ */
+public class DeclarableProperties extends Properties {
+
+    @Serial
+    private static final long serialVersionUID = 5057815837254711305L;
+
+    private static final String DATABASE_NAME_PLACEHOLDER = "__database-name__";
+
+    private static final String SCHEMA_NAME_PLACEHOLDER = "__schema-name__";
+
+    private static final String DOUBLE_QUOTE = "\"";
+
+    private static final String POINT = ".";
+
+    private static final String EMPTY_STRING = "";
+
+    @Value("${database.database-name}")
+    private String databaseName;
+
+    @Value("${database.schema-name}")
+    private String schemaName;
+
+    public void setProperties(Properties properties) {
+        this.putAll(properties);
+    }
+
+    public String getPropertyRegexReplacement(String key, Map<String, String> regexReplacements) {
+        String property = super.getProperty(key);
+        for (Map.Entry<String, String> entry : regexReplacements.entrySet()) {
+            property = property.replaceAll(entry.getKey(), entry.getValue());
+        }
+        return property;
+    }
+
+    @Override
+    public String getProperty(String key) {
+        String query = super.getProperty(key);
+
+        // skip, if there are no replacements
+        if (!query.contains(DATABASE_NAME_PLACEHOLDER) && !query.contains(SCHEMA_NAME_PLACEHOLDER)) {
+            return query;
+        }
+
+        // replace database name in the query
+        if (this.databaseName != null && !this.databaseName.isEmpty()) {
+            query = query.replace(DATABASE_NAME_PLACEHOLDER, this.databaseName);
+        } else {
+            query = query.replace(DOUBLE_QUOTE + DATABASE_NAME_PLACEHOLDER + DOUBLE_QUOTE + POINT, EMPTY_STRING);
+        }
+
+        // replace schema name in the query
+        if (this.schemaName != null && !this.schemaName.isEmpty()) {
+            query = query.replace(SCHEMA_NAME_PLACEHOLDER, this.schemaName);
+        } else {
+            query = query.replace(DOUBLE_QUOTE + SCHEMA_NAME_PLACEHOLDER + DOUBLE_QUOTE + POINT, EMPTY_STRING);
+        }
+
+        return query;
+    }
+
+}
+```
+
+```java
+@Repository
+public class StudentRepositoryImpl implements StudentRepository { 
+    private final NamedParameterJdbcTemplate jdbcTemplate;
+
+    private final CommonDeclarableProperties declarableProperties;
+  
+    public StudentRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, CommonDeclarableProperties declarableProperties) {
+      this.jdbcTemplate = jdbcTemplate;
+      this.declarableProperties = declarableProperties;
+    }
+    
+    // ...
+
+    @Override
+    public void addGradeForSubject(Long subjectId, Grade grade) {
+        String query = this.declarableProperties.getProperty("addGradeForSubject");
+        Map<String, Object> queryParameters = new HashMap<>();
+        queryParameters.put("subjectId", subjectId);
+        queryParameters.put("grade", grade);
+        MapSqlParameterSource parameters = new MapSqlParameterSource(queryParameters);
+        this.jdbcTemplate.query(query, parameters);
+    }
+    
+    // ...
+}
+```
+
+Die SQL-Abfragen werden aus der XML-Datei geladen und in `DeclarableProperties` gespeichert. Diese Abfragen können in der Repository-Implementierung (`StudentRepositoryImpl`) verwendet werden, um mit der Datenbank zu interagieren.
+
+Die Methode `addGradeForSubject` in `StudentRepositoryImpl verwendet die in der Konfiguration definierte SQL-Abfrage, ersetzt die Platzhalter durch die übergebenen Parameter und führt die Abfrage mit Hilfe von Spring JDBC aus.
+
 ### Mapping
 In der Softwareentwicklung stellt sich oft die Frage, wie man das Mapping zwischen verschiedenen Ebenen der Anwendung am besten handhabt. Insbesondere geht es darum, wie man Daten zwischen der Datenbank, der Geschäftslogik (Services) und der Benutzerschnittstelle (DTOs - Data Transfer Objects) hin- und herbewegt.
 
@@ -756,36 +875,114 @@ In JDBC, RowMapper sind ein Interface, das verwendet wird, um das Mapping von Ze
 
 Erstelle eine Klasse, die das `RowMapper`-Interface implementiert und die `mapRow`-Methode überschreibt. In dieser Methode wird definiert, wie eine Zeile aus dem ResultSet in ein Objekt gemappt wird.
 ```java
+import org.springframework.jdbc.core.RowMapper;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class GradeDtoRowMapper implements RowMapper<GradeDto> {
+
+    @Override
+    public GradeDto mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+        Long gradeId = resultSet.getLong("grade_id");
+        Double gradeValue = resultSet.getDouble("grade_value");
+
+        return new GradeDto(gradeId, gradeValue);
+    }
+}
 ```
 
 Im RepositoryImpl kann man nun die erstellte Mapper-Methode verwenden um das Ergebnis der JDBC Operation zu mappen.
 ```java
+@Repository
+public class StudentRepositoryImpl implements StudentRepository {
+    private final NamedParameterJdbcTemplate jdbcTemplate;
 
+    private final CommonDeclarableProperties declarableProperties;
+
+    public StudentRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, CommonDeclarableProperties declarableProperties) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.declarableProperties = declarableProperties;
+    }
+    
+    // ...
+  
+    @Override
+    public List<GradeDto> getGradesForSubject(Long subjectId) {
+        String query = this.declarableProperties.getProperty("getGradesForSubject");
+        Map<String, Object> queryParameters = new HashMap<>();
+        queryParameters.put("subjectId", subjectId);
+        MapSqlParameterSource parameters = new MapSqlParameterSource(queryParameters);
+        return this.jdbcTemplate.query(query, parameters, new GradeDtoRowMapper());
+    }
+    
+    // ...
+
+}
 ```
 
-// TODO
 #### ResultSetExtractor
 Auch der ResultSetExtractor ist ein funktionales Interface, das verwendet wird, um das Mapping von ResultSet auf ein Objekt oder eine Liste von Objekten zu ermöglichen. Es ermöglicht eine benutzerdefinierte Verarbeitung der ResultSet-Daten.
 
 Erstelle eine Klasse und verwende das `ResultSetExtractor`-Interface, um zu definieren, wie das ResultSet in ein Objekt oder eine Liste von Objekten umgewandelt werden soll.
 ```java
+public class GradeDtoResultSetExtractor implements ResultSetExtractor<List<GradeDto>> {
 
+    @Override
+    public List<GradeDto> extractData(ResultSet resultSet) throws SQLException {
+        List<GradeDto> gradeDtos = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Long gradeId = resultSet.getLong("grade_id");
+            Double gradeValue = resultSet.getDouble("grade_value");
+
+            GradeDto gradeDto = new GradeDto(gradeId, gradeValue);
+            gradeDtos.add(gradeDto);
+        }
+
+        return gradeDtos;
+    }
+}
 ```
 
 Im RepositoryImpl kann man nun die erstellte Extractor-Methode verwenden um das Ergebnis der JDBC Operation zu mappen.
 ```java
+@Repository
+public class StudentRepositoryImpl implements StudentRepository {
+    private final NamedParameterJdbcTemplate jdbcTemplate;
 
+    private final CommonDeclarableProperties declarableProperties;
+
+    public StudentRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, CommonDeclarableProperties declarableProperties) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.declarableProperties = declarableProperties;
+    }
+    
+    // ...
+
+    @Override
+    public List<GradeDto> getGradesForSubject(Long subjectId) {
+        String query = this.declarableProperties.getProperty("getGradesForSubject");
+        Map<String, Object> queryParameters = new HashMap<>();
+        queryParameters.put("subjectId", subjectId);
+        MapSqlParameterSource parameters = new MapSqlParameterSource(queryParameters);
+        return this.jdbcTemplate.query(query, parameters, new GradeDtoResultSetExtractor());
+    }
+
+    // ...
+}
 ```
 
-// TODO
 **Aufgabe**
-Passe die Services und Repositorys entsprechend der Implementierung-Struktur an. Und implementiere die benötigten Mapper (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
+Ergänze deine Repositorys mit den nötigen SQL-Queries (wähle selbst, ob du es auslagern möchtest oder nicht).
+Implementiere die benötigten Mapper und setze sie an den benötigten Orten ei (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
 
-### Akzeptanzkriterien Schritt 7
-*
+### Akzeptanzkriterien Schritt 8
+* Die Datenbank abfragen werden nun nicht mehr mittels Mockdaten erledigt, sondern es werden SQL-Queries benutzt.
+* Die Daten, welche man von der Datenbank erhält, werden korrekt gemappt für die DAOs.
+* Die DAOs werden korrekt gemappt bevor sie an die Datenbank gesendet werden.
 
-## Schritt 8: API testen
+## Schritt 9: API testen
 Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
 In diesem Schritt wirst du deine Schnittstelle mit dem *IntelliJ HTTP-Client* testen.
 
@@ -815,7 +1012,7 @@ Weitere Dokumentation zum IntelliJ HTTP-Client findest du [auf dieser IntelliJ I
 **Aufgabe**  
 Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle ausführt.
 
-### Akzeptanzkriterien Schritt 8
+### Akzeptanzkriterien Schritt 9
 * Eine HTTP-Request Datei liegt vor, welche alle öffentliche Schnittstellen-Methoden ausführen kann.
 * Bei Methoden, welche Parameter oder einen Request-Body brauchen, sind diese in den Requests auch so konfiguriert.
 * Jede Methode, welche ausgeführt wird, liefert die erwarteten Ergebnisse (ggf. auch Anpassungen der Daten in der darunterliegenden Datenbank).
