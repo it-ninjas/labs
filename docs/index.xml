@@ -775,18 +775,24 @@ Zudem besitzt man nach Abschluss der Aufgabe ein richtiges und praxisorientierte
 &lt;img src="../../../../docs/web/angular/images/bicycle-erd-diagram.png" alt="ERD">&lt;/p>
 &lt;p>Folgende Anforderungen sind gegeben:&lt;/p>
 &lt;ul>
+&lt;li>Behalte die Ordnerstruktur korrekt (Ordner für die Components, Ordner für die Services, etc.).&lt;/li>
 &lt;li>Erstelle für jede Entität (ohne die Zwischentabelle &lt;code>Bicycle_Type&lt;/code>) des Models eine geeignete Modell-Klasse.&lt;/li>
 &lt;li>Erstelle für jede Modell-Klasse einen Service.&lt;/li>
 &lt;li>Erstelle bei jedem Service Beispieldaten.&lt;/li>
-&lt;li>Behalte die Ordnerstruktur korrekt (Ordner für die Components, Ordner für die Services, etc.).&lt;/li>
-&lt;li>Der BicycleService enthält folgende Funktionen: &lt;code>getBicycle(id: number)&lt;/code>, &lt;code>getAllBicycle()&lt;/code> und &lt;code>getFullBicycle(id: number)&lt;/code>. (Der Unterschied zwischen Bicycle und FullBicycle sollte sein das beim Full die Typen und Marke als String angegeben werden und bim Bicycle kann es nur die ID sein.)&lt;/li>
+&lt;li>Der BicycleService enthält folgende Funktionen:
+&lt;ul>
+&lt;li>&lt;code>getBicycle(id: number)&lt;/code>: Gibt ein bestimmtes Bicycle über die ID zurück.&lt;/li>
+&lt;li>&lt;code>getAllBicycle()&lt;/code>: Gibt alle Bicycles zurück. Ein Bicycle hat stellvertretend für den Typ und die Marke nur die dazugehörige id.&lt;/li>
+&lt;li>&lt;code>getFullBicycle(id: number)&lt;/code>: Gibt alle Bicycles zurück. Ein FullBicycle hat den effektiven Wert des Typs und der Marke.&lt;/li>
+&lt;/ul>
+&lt;/li>
 &lt;li>Der BrandService enthält folgende Funktionen: &lt;code>getBrand(id: number)&lt;/code> und &lt;code>getBrandName(id: number)&lt;/code>.&lt;/li>
 &lt;li>Der TypeService enthält folgende Funktionen: &lt;code>getTypes(ids: number[])&lt;/code> und &lt;code>getTypesName(ids: number[])&lt;/code>.&lt;/li>
 &lt;li>Sollte der Benutzer bei den Services versuchen etwas zu getten was es nicht gibt sol einen Fehler geworfen werden mit &lt;code>throw Error&lt;/code>.&lt;/li>
 &lt;li>Erstelle einen globalen ErrorHandler um die möglichen Fehler der Services abzufangen und gib eine Mitteilung damit der Benutzer weiss, das ein Fehler passierte (Subject verwenden).&lt;/li>
 &lt;li>Erstelle einen neuen Component um die Daten alles Fahrräder anzuzeigen.&lt;/li>
 &lt;/ul>
-&lt;h2 id="aufgabe-22">Aufgabe 2.2&lt;/h2>
+&lt;h2 id="aufgabe-21">Aufgabe 2.1&lt;/h2>
 &lt;p>Erweitern wir die Anwendung nun ein wenig.&lt;/p>
 &lt;ul>
 &lt;li>Erstelle einen weiteren neuen Component, welcher ein Eingabefeld, mit ReactiveForms, besitzt um nach einem Fahrrad zu suchen und dieses anzuzeigen.&lt;/li>
@@ -797,7 +803,7 @@ Zudem besitzt man nach Abschluss der Aufgabe ein richtiges und praxisorientierte
 &lt;li>Erstelle auch ein Routing auf den neu zu Erstellenden Component, welche mithilfe eines Parameters alle Fahrräder (der name, wert, marke und typen) der jeweiligen Marke anzeigt. Zudem soll die Marke als Titel der Seite stehen.&lt;/li>
 &lt;li>Verlinke die brand_id, als routerLink auf der Seite aller Fahrräder um auf den neuen Component zu gelangen.&lt;/li>
 &lt;/ul>
-&lt;h2 id="aufgabe-21">Aufgabe 2.1&lt;/h2>
+&lt;h2 id="aufgabe-22">Aufgabe 2.2&lt;/h2>
 &lt;p>In den vorherigen Aufgaben hast du eine Grundstruktur geschaffen für die Anzeige. Wenn man nach einem Fahrrad sucht, sollte nun das Ergebnis mit einer Pipe angepasst werden.&lt;/p>
 &lt;ul>
 &lt;li>Erstelle nun eine Pipe welche die Spalte &lt;code>value&lt;/code> im Format &lt;code>1'720.00 CHF&lt;/code> anzeigt. Der Währungstyp wird mit einem Parameter weitergegeben.
