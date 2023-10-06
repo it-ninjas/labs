@@ -26,9 +26,9 @@ Das Template kann jedoch mehr als nur HTML enthalten. Es kann auch Angularspezif
         <p>May your path be filled with glory and triumph!</p>
     </div>
 
-    <div #otherName>
+    <ng-template #otherName>
         <p>You are not the true Dragon Warrior. You are not worthy of this battle.</p>
-    </div>
+    </ng-template>
 
 
     <p>Additional content specific to all warriors...</p>
