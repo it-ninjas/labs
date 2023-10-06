@@ -161,18 +161,21 @@ Im neu erstellten Projekt wollen wir Daten für folgende (Datenbank-)Entitäten 
 ![ERD](../../../../docs/web/angular/images/bicycle-erd-diagram.png)
 
 Folgende Anforderungen sind gegeben:
+- Behalte die Ordnerstruktur korrekt (Ordner für die Components, Ordner für die Services, etc.).
 - Erstelle für jede Entität (ohne die Zwischentabelle `Bicycle_Type`) des Models eine geeignete Modell-Klasse.
 - Erstelle für jede Modell-Klasse einen Service.
 - Erstelle bei jedem Service Beispieldaten.
-- Behalte die Ordnerstruktur korrekt (Ordner für die Components, Ordner für die Services, etc.).
-- Der BicycleService enthält folgende Funktionen: `getBicycle(id: number)`, `getAllBicycle()` und `getFullBicycle(id: number)`. (Der Unterschied zwischen Bicycle und FullBicycle sollte sein das beim Full die Typen und Marke als String angegeben werden und bim Bicycle kann es nur die ID sein.)
+- Der BicycleService enthält folgende Funktionen: 
+  - `getBicycle(id: number)`: Gibt ein bestimmtes Bicycle über die ID zurück.
+  - `getAllBicycle()`: Gibt alle Bicycles zurück. Ein Bicycle hat stellvertretend für den Typ und die Marke nur die dazugehörige id. 
+  - `getFullBicycle(id: number)`: Gibt alle Bicycles zurück. Ein FullBicycle hat den effektiven Wert des Typs und der Marke.
 - Der BrandService enthält folgende Funktionen: `getBrand(id: number)` und `getBrandName(id: number)`.
 - Der TypeService enthält folgende Funktionen: `getTypes(ids: number[])` und `getTypesName(ids: number[])`.
 - Sollte der Benutzer bei den Services versuchen etwas zu getten was es nicht gibt sol einen Fehler geworfen werden mit `throw Error`.
 - Erstelle einen globalen ErrorHandler um die möglichen Fehler der Services abzufangen und gib eine Mitteilung damit der Benutzer weiss, das ein Fehler passierte (Subject verwenden).
 - Erstelle einen neuen Component um die Daten alles Fahrräder anzuzeigen.
 
-## Aufgabe 2.2
+## Aufgabe 2.1
 Erweitern wir die Anwendung nun ein wenig.
 - Erstelle einen weiteren neuen Component, welcher ein Eingabefeld, mit ReactiveForms, besitzt um nach einem Fahrrad zu suchen und dieses anzuzeigen.
 - Erstelle eine Navigation für zwischen den Components hin und her zu wechseln.
@@ -183,7 +186,7 @@ Erweitern wir die Anwendung nun ein wenig.
 - Verlinke die brand_id, als routerLink auf der Seite aller Fahrräder um auf den neuen Component zu gelangen.
 
 
-## Aufgabe 2.1
+## Aufgabe 2.2
 In den vorherigen Aufgaben hast du eine Grundstruktur geschaffen für die Anzeige. Wenn man nach einem Fahrrad sucht, sollte nun das Ergebnis mit einer Pipe angepasst werden.
 - Erstelle nun eine Pipe welche die Spalte `value` im Format `1'720.00 CHF` anzeigt. Der Währungstyp wird mit einem Parameter weitergegeben.
   Sofern nichts angegeben wird, wähle Standardmässig `CHF`.
