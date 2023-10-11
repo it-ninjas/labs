@@ -10,19 +10,18 @@ description: >
 # Aufträge
 
 ## Voraussetzungen
-Im [Lab zu Modul #J8 (JDBC)](../../java-jdbc/01_jdbc_exercises/), hast du ein persistentes Notenverwaltungssystem umgesetzt.
-Zu diesem Zweck hast du eine MariaDB instanz mit folgenden Tabellen aufgesetzt:
+Im [Lab zu Modul #J8 (JDBC)](../../java-jdbc/01_jdbc_exercises/) hast du ein persistentes Notenverwaltungssystem umgesetzt.
+Zu diesem Zweck hast du eine MariaDB-Instanz mit folgenden Tabellen aufgesetzt:
 * SCHOOL_SUBJECT
 * GRADE
 * SCHOOL_SUBJECT_GRADE
 
-Mehr Details dazu findest du im obenerwähnten Lab.  
-Diese Datenbank und das dazu gehörende Datenbankmodel wirst du für unsere Spring-Aufgabe benötigen.  
+Mehr Details dazu findest du im obenerwähnten Lab. Diese Datenbank und das dazu gehörende Datenbankmodel wirst du für unsere Spring-Aufgabe benötigen.  
 Bei Bedarf kannst du das Model erweitern.
 
 ## Auftrag
 Die Aufgaben in diesem Lab führen dich Schritt für Schritt durch die Umsetzung einer Webanwendung mit Spring Boot, welche einem Notenverwaltungssystem entspricht.
-Die folgenden Abschnitte listen die groben funktionalen (was soll die Anwendung können) und die nicht-funktionalen (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung auf.
+Die folgenden Abschnitte listen die groben Funktionalen (was soll die Anwendung können) und die nicht-funktionalen (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung auf.
 Genauere Details zu den Anforderungen und den Akzeptanzkriterien werden in den entsprechenden Kapiteln aufgeführt.
 
 ### Funktionale Anforderungen
@@ -57,12 +56,12 @@ Hier stehen dir zwei Möglichkeiten für die Umsetzung zur Verfügung:
 Beide Möglichkeiten werden in dieser Aufgabe aufgeführt.
 
 ### Voraussetzungen (was du brauchst)
-* Java 1.7 oder neuer ist installiert
-* Maven 3.5 oder neuer ist installiert
-* IntelliJ ist installiert und konfiguriert
-* Ein Bitbucket Repository steht bereit, um den Code des Projektes zu verwalten und ist auf der lokalen Maschine geklont worden
+* Java 1.7 oder neuer ist installiert.
+* Maven 3.5 oder neuer ist installiert.
+* IntelliJ ist installiert und konfiguriert.
+* Ein Bitbucket Repository steht bereit, um den Code des Projektes zu verwalten und ist auf der lokalen Maschine geklont worden.
 
-### Variante I: Projekt manuel anlegen
+### Variante I: Projekt manuell anlegen
 #### Erstelle ein Maven-Projekt in IntelliJ
 Öffne IntelliJ und erstelle ein neues Maven-Projekt (File → New → Project):
 ![](../assets/03_create_project_with_intellij.png)
@@ -152,7 +151,7 @@ In diesem Schritt geht es darum die Schnittstellen (die API) zur Anwendung zu de
 Über diese Schnittstellen können die Benutzer:innen die gewünschten Aktionen ausführen
 
 ### System-Design erstellen und Code Struktur anlegen
-Damit, du den Code gemäss den nicht-funktionalen Anforderungen (NFA) aufbauen kannst, überleg dir zuerst wie du deine Anwendung zerlegen möchtest.  
+Damit, du den Code gemäss den nicht-funktionalen Anforderungen (NFA) aufbauen kannst, überlege dir zuerst, wie du deine Anwendung zerlegen möchtest.  
 Dazu kannst du die Schritte der Methodik "functional decomposition" anwenden (mehr Information zur Methode findest du [in diesem Artikel](https://www.baeldung.com/cs/functional-decomposition)).  
 Bei der Zerlegung des Systems beachte auch Prinzipien wie Kohäsion (starke Kohäsion ist gewünscht) und Kopplung (lose Kopplung sollte das Ziel sein). 
 
@@ -239,7 +238,7 @@ Erstelle Controller und Methoden (mit Mockdaten), um die Umsetzung deiner Schnit
 * Die REST Schnittstellen sind für jede relevante Funktion (gemäss funktionalen Anforderungen) dokumentiert und mit Controllern umgesetzt.
 * Jede API-Methode, welche einen Wert liefert, schreibt diesen Wert direkt in den Response-Body (RestController)
 * Die API-Methoden sind "RESTful" (siehe [HTTP Methods in RESTful Web Services](https://www.javadevjournal.com/spring/restful-methods/))
-* Die API-Methoden, welche einen Wert liefern, liefern zurzeit Mockdaten zurück (alle Aurufe einer Methode liefern immer die gleiche Mockdaten zurück)
+* Die API-Methoden, welche einen Wert liefern, liefern zurzeit Mockdaten zurück (alle Aufrufe einer Methode liefern immer die gleiche Mockdaten zurück)
 * Mit Postman oder mit dem HTTP-Browser kann auf jede API-Methode zugegriffen werden
 * Für jede API-Methode wurden passende Unit-Tests geschrieben und erfolgreich ausgeführt
 
@@ -247,7 +246,7 @@ Erstelle Controller und Methoden (mit Mockdaten), um die Umsetzung deiner Schnit
 
 ### Service-Klassen erstellen
 In diesem Schritt wird ein komplett neuer Layer angelegt, welcher die Business-Logik der Applikation enthalten wird.
-Er ist zuständig für Aufgaben wie Exception Handling und Validierung. Dieser Layer wird Service-Layer genannt.
+Er ist zuständig für Aufgaben wie Exception-Handling und Validierung. Dieser Layer wird Service-Layer genannt.
 Service-Klassen werden grundsätzlich mit der Annotation *@Service* annotiert.
 Diese Annotation ist eine von drei möglichen Spezialisierungen eines Spring Components.
 
@@ -358,15 +357,15 @@ public class Schulfach {
 }
 ```
 
-Die gezeigte Entität wird mit *@Entity* annotiert, damit sie generell als solche erkannt wird. Die Annotation *@Table* verbindet die Entität
-mit der entsprechenden Tabelle. Für jede Kolonne in der Datenbank wird eine Instanzvariable angelegt, welche diese mit *@Column* und
-der Angabe des Kolonnennamens mit der entsprechenden Kolonne aus der Datenbank verbindet.
-Die Annotation *@Id* dient der Markierung des Primärschlüssels.
+Die gezeigte Entität wird mit `@Entity` annotiert, damit sie generell als solche erkannt wird. Die Annotation `@Table` verbindet die Entität
+mit der entsprechenden Tabelle. Für jede Kolonne in der Datenbank wird eine Instanzvariable angelegt, welche diese mit `@Column` und
+der Angabe des Spaltennamens mit der entsprechenden Spalten aus der Datenbank verbindet.
+Die Annotation `@Id` dient der Markierung des Primärschlüssels.
 
 ---
 **Aufgabe**  
 Erstelle die Entitäten für die anderen beiden Tabellen *GRADE* und *SCHOOL_SUBJECT_GRADE*.
-Wähle für alle Attribute die richtigen Datentypen und gib die richtigen Kolonnennamen an.
+Wähle für alle Attribute die richtigen Datentypen und gib die richtigen Spaltennamen an.
 ---
 
 Nun sollen die drei Entitäten miteinander verbunden werden. Die Beziehung zwischen den Tabellen ist wie folgt geregelt:
@@ -400,15 +399,15 @@ public class SchulfachNote {
 }
 ```
 
-Bei der Klasse *Schulfach* sehen wir die Verbindung zu allen Schulfach-Noten über ein Set und die Annotation *@OneToMany*
-unter Angabe des Namens der Instanzvariable aus der Klasse *SchulfachNote*.
-Bei der Klasse *SchulfachNote* sehen wir die Verbindung zu einem Schulfach über die Annotation *@ManyToOne* und der Angabe
-der Kolonne, welche den Fremdschlüssel enthält. Die Angabe von *nullable = false* dient der Angabe, dass die Kolonne des
-Fremdschlüssels keine Null-Werte zulässt.
+Bei der Klasse *Schulfach* sehen wir die Verbindung zu allen Schulfach-Noten über ein Set und die Annotation `@OneToMany`
+unter Angabe des Namens der Instanzvariable aus der Klasse `SchulfachNote`.
+Bei der Klasse `SchulfachNote` sehen wir die Verbindung zu einem Schulfach über die Annotation `@ManyToOne` und der Angabe
+der Kolonne, welche den Fremdschlüssel enthält. Die Angabe von `nullable = false` dient der Angabe, dass die Kolonne des
+Fremdschlüssels keine `null`-Werte zulässt.
 
 ---
 **Aufgabe**  
-Verbinde die anderen beiden Entitäten *GRADE* und *SCHOOL_SUBJECT_GRADE* mit den richtigen Beziehungen.
+Verbinde die anderen beiden Entitäten `GRADE` und `SCHOOL_SUBJECT_GRADE` mit den richtigen Beziehungen.
 ---
 
 Im nächsten Schritt werden nun die Repository-Interfaces angelegt.
@@ -421,7 +420,7 @@ public interface SchulfachAdminRepository extends JpaRepository<Schulfach, Strin
 }
 ```
 
-Bei diesem Repository sehen wir die Definition eines Interfaces, welches ein *JpaRepository* erweitert.
+Bei diesem Repository sehen wir die Definition eines Interfaces, welches ein `JpaRepository` erweitert.
 Die generischen Angaben stehen für die Klasse der Entität und dessen Primärschlüssel-Typ.
 Durch dieses Repository stehen bereits die wichtigsten CRUD-Operationen zur Verfügung.
 
@@ -577,13 +576,13 @@ public class StudentService {
 
 
 **Aufgabe** 
-Füge die benötigte Dependency in dein Projekt ein und erstelle die nötigen Entity-Klassen. Zudem erstelle die benötigten Services und Repositorys in der korrekten packages Struktur.
+Füge die benötigte Dependency in dein Projekt ein und erstelle die nötigen Entity-Klassen. Zudem erstelle die benötigten Services und Repositories in der korrekten packages Struktur.
 
 ### Akzeptanzkriterien Schritt 4
 * Dependency wurde im `pom.xml` hinzugefügt.
 * Alle nötigen Entities wurden erstellt.
 * Alle benötigten Services wurden erstellt und in einen Ordner für alle Services abgelegt. 
-* Alle benötigten Repositorys wurden erstellt und in einen Ordner für alle Repositorys abgelegt.
+* Alle benötigten Repositories wurden erstellt und in einen Ordner für alle Repositories abgelegt.
 
 
 ## Schritt 5: Konfiguration anlegen 
@@ -669,11 +668,11 @@ public class StudentRepositoryImpl implements StudentRepository {
 ```
 
 **Aufgabe**  
-Passe deine Services und Repositorys entsprechend der Implementierungs-Methode an.
+Passe deine Services und Repositories entsprechend der Implementierungs-Methode an.
 
 ### Akzeptanzkriterien Schritt 7
-* Alle Servies sind mit der Implementierungs-Methode ausgestattet.
-* Alle Respositorys sind mit der Implementierungs-Methode ausgestattet
+* Alle Services sind mit der Implementierungs-Methode ausgestattet.
+* Alle Repositories sind mit der Implementierungs-Methode ausgestattet
 
 ## Schritt 8 Persistenz-Layer fertigstellen (Claudio)
 
@@ -905,7 +904,7 @@ public class GradeDtoRowMapper implements RowMapper<GradeDto> {
 }
 ```
 
-Im RepositoryImpl kann man nun die erstellte Mapper-Methode verwenden um das Ergebnis der JDBC Operation zu mappen.
+Im RepositoryImpl kann man nun die erstellte Mapper-Methode verwenden, um das Ergebnis der JDBC-Operation zu mappen.
 ```java
 @Repository
 public class StudentRepositoryImpl implements StudentRepository {
@@ -985,7 +984,7 @@ public class AdminRepositoryImpl implements AdminRepository {
 ```
 
 **Aufgabe**
-Ergänze deine Repositorys mit den nötigen SQL-Queries (wähle selbst, ob du es auslagern möchtest oder nicht).
+Ergänze deine Repositories mit den nötigen SQL-Queries (wähle selbst, ob du es auslagern möchtest oder nicht).
 Implementiere die benötigten Mapper und setze sie an den benötigten Orten ei (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
 
 ### Akzeptanzkriterien Schritt 8
