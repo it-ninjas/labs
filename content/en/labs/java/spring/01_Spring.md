@@ -517,6 +517,11 @@ Damit JDBC verwendet werden kann, muss man zuerst eine neuen Dependency in das `
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-jdbc</artifactId>
 </dependency>
+<dependency>
+    <groupId>org.mariadb.jdbc</groupId>
+    <artifactId>mariadb-java-client</artifactId>
+<version>3.1.0</version>
+</dependency>
 ```
 
 #### Entity-Klasse 
@@ -588,7 +593,7 @@ Die zwei häufigsten Arten eine Konfigurationsdatei anzulegen sind in `applicati
 
 application.properties:
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/[your_database]
+spring.datasource.url=jdbc:mariadb://localhost:3306/[your_database]
 spring.datasource.username=[your_username]
 spring.datasource.password=[your_password]
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
@@ -598,7 +603,7 @@ application.yml:
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/[your_database]
+    url: jdbc:mariadb://localhost:3306/[your_database]
     username: [your_username]
     password: [your_password]
     driver-class-name: org.mariadb.jdbc.Driver
@@ -675,6 +680,9 @@ Passe deine Services und Repositorys entsprechend der Implementierungs-Methode a
 ### Queries 
 Typischerweise implementieren JDBC-Repositories benutzerdefinierte Methoden für spezielle Datenbankabfragen. Diese Methoden nutzen das JdbcTemplate (Teil des Spring-Frameworks), um SQL-Queries auszuführen. Dabei können Platzhalter oder Named Parameters verwendet werden, um dynamische Werte in die Abfragen einzufügen.
 
+`PreparedStatementSetter` ist ein funktionales Interface in Spring JDBC. Es wird verwendet, um Parameter für parametrisierte Abfragen auf einem PreparedStatement festzulegen.
+Die Verwendung von `PreparedStatementSetter` hilft, die Logik zum Setzen von Parametern zu kapseln, was den Code modularer und leichter wartbar macht.
+
 ```sql
 INSERT INTO GRADE (subject_id, grade_value) VALUES (?, ?)
 ```
@@ -689,11 +697,15 @@ public class StudentRepositoryImpl implements StudentRepository {
     
     // ...
 
-    @Override
-    public void addGradeForSubject(Long subjectId, Grade grade) {
-        String sql = "INSERT INTO GRADE (subject_id, grade_value) VALUES (?, ?)";
-        jdbcTemplate.update(sql, subjectId, grade);
-    }
+  @Override
+  public void addSubject(SchoolSubjectDto schoolSubjectDto) {
+      String sql = "INSERT INTO SCHOOL_SUBJECT (subject_name) VALUES (?)";
+      PreparedStatementSetter preparedStatementSetter = preparedStatement -> {
+          preparedStatement.setString(1, schoolSubjectDto.getSubjectName());
+      };
+
+      jdbcTemplate.update(sql, preparedStatementSetter);
+  }
     
     // ...
 }
@@ -870,6 +882,7 @@ Im Kontext von JDBC (Java Database Connectivity) gibt es viele verschiedene Ans�
 
 Insgesamt ist die Wahl des richtigen Ansatzes abhängig von den Anforderungen des Projekts, der Skalierbarkeit, der Performance und den individuellen Vorlieben des Entwicklungsteams. Es ist wichtig, die Vor- und Nachteile der verschiedenen Ansätze abzuwägen und den am besten geeigneten Ansatz für das spezifische Projekt zu wählen.
 
+// TODO evtl. entfernen?
 #### RowMapper
 In JDBC, RowMapper sind ein Interface, das verwendet wird, um das Mapping von Zeilen aus dem ResultSet auf Objekte zu ermöglichen. Es wird verwendet, um das Ergebnis jedes Datensatzes aus der Abfrage in ein Objekt umzuwandeln.
 
@@ -926,47 +939,45 @@ Auch der ResultSetExtractor ist ein funktionales Interface, das verwendet wird, 
 
 Erstelle eine Klasse und verwende das `ResultSetExtractor`-Interface, um zu definieren, wie das ResultSet in ein Objekt oder eine Liste von Objekten umgewandelt werden soll.
 ```java
-public class GradeDtoResultSetExtractor implements ResultSetExtractor<List<GradeDto>> {
-
+public class SchoolSubjectDtoResultSetExtractor implements ResultSetExtractor<List<SchoolSubjectDto>> { 
+    
     @Override
-    public List<GradeDto> extractData(ResultSet resultSet) throws SQLException {
-        List<GradeDto> gradeDtos = new ArrayList<>();
+    public List<SchoolSubjectDto> extractData(ResultSet resultSet) throws SQLException {
+    List<SchoolSubjectDto> schoolSubjectDtos = new ArrayList<>();
 
-        while (resultSet.next()) {
-            Long gradeId = resultSet.getLong("grade_id");
-            Double gradeValue = resultSet.getDouble("grade_value");
+    while (resultSet.next()) {
+      Long gradeId = resultSet.getLong("subject_id");
+      String subjectName = resultSet.getString("subject_name");
 
-            GradeDto gradeDto = new GradeDto(gradeId, gradeValue);
-            gradeDtos.add(gradeDto);
-        }
-
-        return gradeDtos;
+      SchoolSubjectDto schoolSubjectDto = new SchoolSubjectDto(gradeId, subjectName);
+      schoolSubjectDtos.add(schoolSubjectDto);
     }
+
+    return schoolSubjectDtos;
+  }
 }
 ```
 
 Im RepositoryImpl kann man nun die erstellte Extractor-Methode verwenden um das Ergebnis der JDBC Operation zu mappen.
 ```java
 @Repository
-public class StudentRepositoryImpl implements StudentRepository {
-    private final NamedParameterJdbcTemplate jdbcTemplate;
+public class AdminRepositoryImpl implements AdminRepository {
 
-    private final CommonDeclarableProperties declarableProperties;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public StudentRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, CommonDeclarableProperties declarableProperties) {
+    private final JdbcTemplate jdbcTemplate;
+
+    public AdminRepositoryImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate, JdbcTemplate jdbcTemplate) {
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.jdbcTemplate = jdbcTemplate;
-        this.declarableProperties = declarableProperties;
     }
     
     // ...
 
     @Override
-    public List<GradeDto> getGradesForSubject(Long subjectId) {
-        String query = this.declarableProperties.getProperty("getGradesForSubject");
-        Map<String, Object> queryParameters = new HashMap<>();
-        queryParameters.put("subjectId", subjectId);
-        MapSqlParameterSource parameters = new MapSqlParameterSource(queryParameters);
-        return this.jdbcTemplate.query(query, parameters, new GradeDtoResultSetExtractor());
+    public List<SchoolSubjectDto> getAllSubjects() {
+        String sql = "SELECT * FROM SCHOOL_SUBJECT";
+        return namedParameterJdbcTemplate.query(sql, new SchoolSubjectDtoResultSetExtractor());
     }
 
     // ...
