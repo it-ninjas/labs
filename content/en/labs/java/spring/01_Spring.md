@@ -216,7 +216,7 @@ Da wir noch keine persistierten Daten haben, wirst du vorerst Mockdaten aus den 
 **Beispiel: Controller für die Schulfachverwaltung**
 ```java
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/api/admin")
 public class SchulfachAdminController {
 
   @PostMapping("/schulfaecher")
@@ -290,7 +290,7 @@ Die Methoden der Controller leiten nun ihre Anfragen an die entsprechenden Servi
 **Beispiel: Constructor-Injection**
 ```java
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/api/admin")
 public class SchulfachAdminController {
 
   private final SchulfachAdminService schulfachAdminService;
@@ -710,164 +710,6 @@ public class StudentRepositoryImpl implements StudentRepository {
 }
 ```
 
-#### Queries auslagern
-Spring Boot ermöglicht es, JDBC-Abfragen in XML-Dateien auszulagern, um eine bessere Trennung von Code und Abfragen zu erreichen. Diese XML-Dateien können dann in den Repository-Methoden verwendet werden.
-
-Durch diese Trennung können JDBC-Abfragen leicht gewartet und geändert werden, ohne den Java-Code zu beeinflussen. Dies verbessert die Lesbarkeit und Wartbarkeit des Codes.
-
-In dieser XML-Datei (queries.xml) werden SQL-Abfragen definiert, die später in der Anwendung verwendet werden. Diese Abfragen können Platzhalter(`:subjectId`) enthalten, die später mit spezifischen Werten ersetzt werden.
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="gradeQueries" class="CommonDeclarableProperties">
-        <property name="properties">
-            <props>
-                <prop key="addGradeForSubject">
-                    INSERT INTO GRADE (
-                        subject_id, 
-                        grade_value
-                        )
-                    VALUES (
-                        :subjectId
-                        :grade
-                        )
-                </prop>
-              
-                // ...
-              
-            </props>
-        </property>
-    </bean>
-</beans>
-```
-
-Die zwei folgenden Klassen sind Java-Beans, die verwendet werden, um SQL-Abfragen und ihre Platzhalter zu verwalten. `CommonDeclarableProperties` dient als Sammlung von allgemeinen Abfragen, während `DeclarableProperties spezifische Abfragen für eine bestimmte Datenbank und ein bestimmtes Schema hält. Sie erlauben auch die dynamische Ersetzung von Platzhaltern in den Abfragen.
-```java
- import java.util.Properties;
-
-/**
- * Bean for common library queries, see commonQueries.xml
- */
-public class CommonDeclarableProperties extends Properties {
-
-  private static final long serialVersionUID = 6951295575346027065L;
-
-  public void setProperties(Properties properties) {
-    this.putAll(properties);
-  }
-
-}
-```
-
-```java
-import java.io.Serial;
-import java.util.Map;
-import java.util.Properties;
-
-import org.springframework.beans.factory.annotation.Value;
-
-/**
- * Bean for queries, see queries.xml in main repository
- */
-public class DeclarableProperties extends Properties {
-
-    @Serial
-    private static final long serialVersionUID = 5057815837254711305L;
-
-    private static final String DATABASE_NAME_PLACEHOLDER = "__database-name__";
-
-    private static final String SCHEMA_NAME_PLACEHOLDER = "__schema-name__";
-
-    private static final String DOUBLE_QUOTE = "\"";
-
-    private static final String POINT = ".";
-
-    private static final String EMPTY_STRING = "";
-
-    @Value("${database.database-name}")
-    private String databaseName;
-
-    @Value("${database.schema-name}")
-    private String schemaName;
-
-    public void setProperties(Properties properties) {
-        this.putAll(properties);
-    }
-
-    public String getPropertyRegexReplacement(String key, Map<String, String> regexReplacements) {
-        String property = super.getProperty(key);
-        for (Map.Entry<String, String> entry : regexReplacements.entrySet()) {
-            property = property.replaceAll(entry.getKey(), entry.getValue());
-        }
-        return property;
-    }
-
-    @Override
-    public String getProperty(String key) {
-        String query = super.getProperty(key);
-
-        // skip, if there are no replacements
-        if (!query.contains(DATABASE_NAME_PLACEHOLDER) && !query.contains(SCHEMA_NAME_PLACEHOLDER)) {
-            return query;
-        }
-
-        // replace database name in the query
-        if (this.databaseName != null && !this.databaseName.isEmpty()) {
-            query = query.replace(DATABASE_NAME_PLACEHOLDER, this.databaseName);
-        } else {
-            query = query.replace(DOUBLE_QUOTE + DATABASE_NAME_PLACEHOLDER + DOUBLE_QUOTE + POINT, EMPTY_STRING);
-        }
-
-        // replace schema name in the query
-        if (this.schemaName != null && !this.schemaName.isEmpty()) {
-            query = query.replace(SCHEMA_NAME_PLACEHOLDER, this.schemaName);
-        } else {
-            query = query.replace(DOUBLE_QUOTE + SCHEMA_NAME_PLACEHOLDER + DOUBLE_QUOTE + POINT, EMPTY_STRING);
-        }
-
-        return query;
-    }
-
-}
-```
-
-```java
-@Repository
-public class StudentRepositoryImpl implements StudentRepository { 
-    private final NamedParameterJdbcTemplate jdbcTemplate;
-
-    private final CommonDeclarableProperties declarableProperties;
-  
-    public StudentRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, CommonDeclarableProperties declarableProperties) {
-      this.jdbcTemplate = jdbcTemplate;
-      this.declarableProperties = declarableProperties;
-    }
-    
-    // ...
-
-    @Override
-    public void addGradeForSubject(Long subjectId, Grade grade) {
-        String query = this.declarableProperties.getProperty("addGradeForSubject");
-        Map<String, Object> queryParameters = new HashMap<>();
-        queryParameters.put("subjectId", subjectId);
-        queryParameters.put("grade", grade);
-        MapSqlParameterSource parameters = new MapSqlParameterSource(queryParameters);
-        this.jdbcTemplate.query(query, parameters);
-    }
-    
-    // ...
-}
-```
-
-Die SQL-Abfragen werden aus der XML-Datei geladen und in `DeclarableProperties` gespeichert. Diese Abfragen können in der Repository-Implementierung (`StudentRepositoryImpl`) verwendet werden, um mit der Datenbank zu interagieren.
-
-Die Methode `addGradeForSubject` in `StudentRepositoryImpl verwendet die in der Konfiguration definierte SQL-Abfrage, ersetzt die Platzhalter durch die übergebenen Parameter und führt die Abfrage mit Hilfe von Spring JDBC aus.
-
 ### Mapping
 In der Softwareentwicklung stellt sich oft die Frage, wie man das Mapping zwischen verschiedenen Ebenen der Anwendung am besten handhabt. Insbesondere geht es darum, wie man Daten zwischen der Datenbank, der Geschäftslogik (Services) und der Benutzerschnittstelle (DTOs - Data Transfer Objects) hin- und herbewegt.
 
@@ -908,12 +750,12 @@ Im RepositoryImpl kann man nun die erstellte Mapper-Methode verwenden, um das Er
 ```java
 @Repository
 public class StudentRepositoryImpl implements StudentRepository {
-    private final NamedParameterJdbcTemplate jdbcTemplate;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     private final CommonDeclarableProperties declarableProperties;
 
-    public StudentRepositoryImpl(NamedParameterJdbcTemplate jdbcTemplate, CommonDeclarableProperties declarableProperties) {
-        this.jdbcTemplate = jdbcTemplate;
+    public StudentRepositoryImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate, CommonDeclarableProperties declarableProperties) {
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.declarableProperties = declarableProperties;
     }
     
@@ -925,7 +767,7 @@ public class StudentRepositoryImpl implements StudentRepository {
         Map<String, Object> queryParameters = new HashMap<>();
         queryParameters.put("subjectId", subjectId);
         MapSqlParameterSource parameters = new MapSqlParameterSource(queryParameters);
-        return this.jdbcTemplate.query(query, parameters, new GradeDtoRowMapper());
+        return this.namedParameterJdbcTemplate.query(query, parameters, new GradeDtoRowMapper());
     }
     
     // ...
@@ -996,11 +838,18 @@ Implementiere die benötigten Mapper und setze sie an den benötigten Orten ei (
 Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
 In diesem Schritt wirst du deine Schnittstelle mit dem *IntelliJ HTTP-Client* testen.
 
-Eine Alternative zum *IntelliJ HTTP-Client* bietet der [*Postman API Client*](https://www.postman.com/api-platform/api-client/) an.
-Mit diesem Client kannst du alles tun, was dir *IntelliJ HTTP-Client* anbietet und vieles mehr.
-Die Core-Tools und Funktionalität der Postman-Plattform sind in der kostenlosen Version enthalten (eine Registration ist hier erforderlich).
-Wenn es dich interessiert, oder wenn du später mehr Funktionalität brauchst als das, was der *IntelliJ HTTP-Client* dir anbieten kann,
-schau dir die oben verlinkte Seite an und probiere Postman aus.
+Eine Alternative zum *IntelliJ HTTP-Client* bietet der `Swagger` an.
+Swagger ist ein Open-Source-Framework, das in erster Linie dazu dient, APIs zu entwerfen, zu dokumentieren und zu testen. Es ermöglicht eine einfache und strukturierte Beschreibung von Webdiensten, um deren Funktionalitäten, Parameter und Endpunkte zu verstehen.
+
+Mit Spring Boot 3 kann man neu nur noch einen Dependency hinzufügen damit der Swagger läuft. Diese sieht folgerndermassen aus:
+```xml
+<dependency>
+  <groupId>org.springdoc</groupId>
+  <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+  <version>2.2.0</version>
+</dependency>
+```
+
 Für unsere Test-Zwecke reicht der IntelliJ HTTP-Client völlig aus.
 
 ### Testen mit IntelliJ HTTP Client
