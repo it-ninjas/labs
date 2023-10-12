@@ -490,7 +490,7 @@ if (optional.isPresent()) {
 ```
 
 Denn
-* wenn kein `null`-Check gemacht wird vor dem Aufrufen von `.get()` (was denn eigentlichen Wert zurückgibt), dann reklamiert deine Entwicklungsumgebung (IntelliJ/VS Code) automatisch mit einer Warnung.
+* wenn kein `null`-Check vor dem Aufrufen von `.get()` (was den eigentlichen Wert zurückgibt) gemacht wird , dann reklamiert deine Entwicklungsumgebung (IntelliJ/VS Code) automatisch mit einer Warnung.
 * wenn `.get()` aufgerufen wird, und der Wert `null` repräsentiert, dann wird bereits an dieser Stelle eine `NullPointerException` geworfen.
 
 `Optionals` sind daher eine der gängigsten Möglichkeiten, Entwickler:innen zu zwingen, Werte auf `null` zu prüfen.
