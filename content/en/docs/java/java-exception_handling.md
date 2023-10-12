@@ -351,7 +351,7 @@ Besser sind separate Deklarationen wie oben gezeigt.
 ## Null-Safety
 Der häufigsten Laufzeitfehler in Java ist die `NullPointerException`. Diese Exception tritt auf, wenn
 * eine Methode auf einem `null`-Objekt aufgerufen wird,
-* oder wenn versucht wir, auf ein Feld (Variable) eines `null`-Objektes zuzugreifen.
+* oder wenn versucht wird, auf ein Feld (Variable) eines `null`-Objektes zuzugreifen.
 
 Häufig wird einfach vergessen, dass eine bestimmte Variable `null` sein kann:
 
