@@ -324,7 +324,6 @@ Die ursprünglich erstellten Test sollten immer noch erfolgreich ausführbar sei
 * Für alle Service-Methoden wurden entsprechende Unit-Tests geschrieben
 
 ## Schritt 4: Datenbank-Verbindung herstellen
-TODO: Persistenz-Layer
 
 ### Repository-Klassen erstellen
 In diesem Schritt wird erneut ein komplett neuer Layer angelegt, welcher die Verbindung der Applikation zu einer Datenbank aufbauen wird.
@@ -334,7 +333,6 @@ Repository-Klassen werden grundsätzlich mit der Annotation *@Repository* annoti
 Die Verbindung zu einer Datenbank kann auf verschiedene Arten realisiert werden.
 In diesem Kapitel werden wir JDBCTemplate eingehen. 
 
-// Kommt raus 
 #### Möglichkeit 1: JPA-Repository mit Spring Data
 Bei dieser Variante wird die Jakarta Persistence API (JPA) mit Spring Data verwendet.
 Sie ermöglicht die automatische Generierung von Queries durch die Deklaration eines entsprechenden Methodennamens.
@@ -502,10 +500,6 @@ public interface GradeRepository extends JpaRepository<Grade, Integer> {
 }
 ```
 
-TODO: Tutorials (auch von Spring) suchen und verlinken
-TODO: Optionale Themen tiefer priorisieren
-
-TODO: JDBC bleibt alles andere kommt raus
 ### JDBC-Template
 JDBC steht für "Java Database Connectivity" und ist eine Technologie in Java, die es ermöglicht, auf Datenbanken zuzugreifen und mit ihnen zu interagieren. Mit JDBC können Java-Anwendungen Daten aus einer Datenbank abrufen, in die Datenbank schreiben, Daten aktualisieren und löschen.
 
@@ -674,7 +668,7 @@ Passe deine Services und Repositories entsprechend der Implementierungs-Methode 
 * Alle Services sind mit der Implementierungs-Methode ausgestattet.
 * Alle Repositories sind mit der Implementierungs-Methode ausgestattet
 
-## Schritt 8 Persistenz-Layer fertigstellen (Claudio)
+## Schritt 8 Persistenz-Layer fertigstellen
 
 ### Queries 
 Typischerweise implementieren JDBC-Repositories benutzerdefinierte Methoden für spezielle Datenbankabfragen. Diese Methoden nutzen das JdbcTemplate (Teil des Spring-Frameworks), um SQL-Queries auszuführen. Dabei können Platzhalter oder Named Parameters verwendet werden, um dynamische Werte in die Abfragen einzufügen.
@@ -683,7 +677,7 @@ Typischerweise implementieren JDBC-Repositories benutzerdefinierte Methoden für
 Die Verwendung von `PreparedStatementSetter` hilft, die Logik zum Setzen von Parametern zu kapseln, was den Code modularer und leichter wartbar macht.
 
 ```sql
-INSERT INTO GRADE (subject_id, grade_value) VALUES (?, ?)
+INSERT INTO SCHOOL_SUBJECT (subject_name) VALUES (?)
 ```
 ```java
 @Repository
@@ -723,7 +717,38 @@ Im Kontext von JDBC (Java Database Connectivity) gibt es viele verschiedene Ans�
 
 Insgesamt ist die Wahl des richtigen Ansatzes abhängig von den Anforderungen des Projekts, der Skalierbarkeit, der Performance und den individuellen Vorlieben des Entwicklungsteams. Es ist wichtig, die Vor- und Nachteile der verschiedenen Ansätze abzuwägen und den am besten geeigneten Ansatz für das spezifische Projekt zu wählen.
 
-// TODO evtl. entfernen?
+#### DTO zu Entity
+Durch das Mappen der Entity-Objekte auf DTOs können wir die Datenstruktur an die spezifischen Anforderungen anpassen. DTOs enthalten nur die relevanten Daten, die zwischen verschiedenen Teilen der Anwendung oder sogar zu externen Systemen übertragen werden müssen. Dies ermöglicht eine effizientere Datenübertragung und verhindert die Offenlegung von sensiblen oder unnötigen Informationen.
+
+Des Weiteren schafft die Verwendung von DTOs eine klare Trennung der Verantwortlichkeiten. Die Entity-Objekte kümmern sich um die Interaktion mit der Datenbank, während die DTOs die übertragenen Daten in geeigneter Form halten. Somit wird eine saubere Architektur gefördert, die gut skalierbar und wartbar ist.
+```java
+public static SchoolSubject mapDtoToEntity(SchoolSubjectDto dto) {
+    if (dto == null) {
+        return null;
+    }
+
+    SchoolSubject entity = new SchoolSubject();
+    entity.setSubjectId(dto.getSubjectId());
+    entity.setSubjectName(dto.getSubjectName());
+    return entity;
+}
+```
+```java
+ @Service
+public class AdminService {
+
+    private final AdminRepository adminRepository;
+
+    public AdminService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+    }
+
+    public void addSubject(SchoolSubjectDto schoolSubjectDto) {
+        adminRepository.addSubject(mapDtoToEntity(schoolSubjectDto));
+    }
+}
+```
+
 #### RowMapper
 In JDBC, RowMapper sind ein Interface, das verwendet wird, um das Mapping von Zeilen aus dem ResultSet auf Objekte zu ermöglichen. Es wird verwendet, um das Ergebnis jedes Datensatzes aus der Abfrage in ein Objekt umzuwandeln.
 
@@ -734,15 +759,16 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GradeDtoRowMapper implements RowMapper<GradeDto> {
+public class SchoolSubjectDtoRowMapper implements RowMapper<SchoolSubjectDto> {
 
-    @Override
-    public GradeDto mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        Long gradeId = resultSet.getLong("grade_id");
-        Double gradeValue = resultSet.getDouble("grade_value");
 
-        return new GradeDto(gradeId, gradeValue);
-    }
+  @Override
+  public SchoolSubjectDto mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+    Long subjectId = resultSet.getLong("subject_id");
+    String subjectName = resultSet.getString("subject_name");
+
+    return new SchoolSubjectDto(subjectId, subjectName);
+  }
 }
 ```
 
@@ -760,14 +786,11 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
     
     // ...
-  
+
     @Override
-    public List<GradeDto> getGradesForSubject(Long subjectId) {
-        String query = this.declarableProperties.getProperty("getGradesForSubject");
-        Map<String, Object> queryParameters = new HashMap<>();
-        queryParameters.put("subjectId", subjectId);
-        MapSqlParameterSource parameters = new MapSqlParameterSource(queryParameters);
-        return this.namedParameterJdbcTemplate.query(query, parameters, new GradeDtoRowMapper());
+    public List<SchoolSubjectDto> getAllSubjects() {
+        String sql = "SELECT * FROM SCHOOL_SUBJECT";
+        return namedParameterJdbcTemplate.query(sql, new SchoolSubjectDtoRowMapper());
     }
     
     // ...
