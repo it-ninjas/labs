@@ -77,6 +77,12 @@ if (dollars < 1000) {
 }
 ```
 
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2a zu den if-else-Bedingungen](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-2a---die-if--und-else-bedingungen) in den Labs.
+
+---
+
+
 #### Switch-Statement
 Die Switch-Anweisung bietet eine Möglichkeit, basierend auf dem Wert einer einzelnen Variablen (kein Ausdruck!) zwischen mehreren Fällen zu wählen. Die Variable kann eine Ganzzahl, ein Zeichen, eine Zeichenfolge oder eine Aufzählung sein.
 
@@ -130,7 +136,7 @@ System.out.println("You're on the " + place + suffix + " place.");
 
 
 ---
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-2---conditional-statements) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2b zum Switch-Statement](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-2b---das-switch-statement) in den Labs.
 
 ---
 

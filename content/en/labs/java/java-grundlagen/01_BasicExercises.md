@@ -29,12 +29,18 @@ description: >
 
 
 ## Aufgabe 2 - Conditional Statements
+
+### Aufgabe 2a - Die `if`- und `else`-Bedingungen
 ![task1](/images/task.png) Löse die folgende Aufgaben:
 * Schreibe eine Methode, die feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist.
 * Schreibe eine Methode, die dich begrüsst wenn dein Name als Parameter übergeben wird.
-* Schreibe eine Methode, die feststellt, ob das übergebene Jahr ein Schaltjahr ist.
+* Schreibe eine Methode, die feststellt, ob das übergebene Jahr ein Schaltjahr ist. Recherchiere, was die Bedingungen sind.
 * Schreibe eine Methode, die überprüft, ob eine Zahl (als Parameter) gerade oder ungerade ist.
-* Schreibe eine Methode, die eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (z.B. 2 -> Februar).
+
+
+### Aufgabe 2b - Das `switch`-Statement
+![task1](/images/task.png) Löse die folgende Aufgaben:
+* Schreibe eine Methode, die eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (für den Wert `2` wird dann der String `"Februar"` zurückgegeben).
 * Schreibe eine Methode, die einen Wochentag als Parameter übergeben bekommt und dann ausgibt, der wievielte Tag in der Woche er ist: `Der <Wochentag> ist der <X>. Tag in der Woche`. Schreibe die Methode so, dass maximal 1 `println()` (oder ähnliches) verwendet wird. Hinweis: Hier kann dir ein `switch`-Assignment sehr viel Code ersparen.
 * Debugge mindestens zwei dieser Methoden mit einem Breakpoint.
 
