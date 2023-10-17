@@ -77,6 +77,12 @@ if (dollars < 1000) {
 }
 ```
 
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2a zu den if-else-Bedingungen](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-2a---die-if--und-else-bedingungen) in den Labs.
+
+---
+
+
 #### Switch-Statement
 Die Switch-Anweisung bietet eine Möglichkeit, basierend auf dem Wert einer einzelnen Variablen (kein Ausdruck!) zwischen mehreren Fällen zu wählen. Die Variable kann eine Ganzzahl, ein Zeichen, eine Zeichenfolge oder eine Aufzählung sein.
 
@@ -97,11 +103,40 @@ switch (variable) {
         break; // it can be omitted
 }
 ```
-Die Schlüsselwörter switch und case werden hier immer benötigt. Die Schlüsselwörter break und default sind optional. Das Schlüsselwort break verlässt die Switch-Anweisung.
-Wenn ein Fall nicht über das Keyword _break_ verfügt, wird auch der darauffolgende Fall ausgewertet. Dies ist spannend, um die einzelnen Auswertungen verketten zu können. Der Default-Fall wird ausgewertet, wenn kein Fall mit dem Variablenwert übereinstimmt.
+Die Schlüsselwörter `switch` und `case` werden hier immer benötigt. Die Schlüsselwörter `break` und `default` sind optional. Das Schlüsselwort `break` verlässt die Switch-Anweisung.
+Wenn ein Fall nicht über das Keyword `break` verfügt, wird auch der darauffolgende Fall ausgewertet. Dies ist spannend, um die einzelnen Auswertungen verketten zu können. Der Default-Fall wird ausgewertet, wenn kein Fall mit dem Variablenwert übereinstimmt.
+
+Seit Java 12 kann das `switch`-Statement kürzer geschrieben werden, indem statt einem Doppelpunkt der Pfeil-Operator `->` verwendet wird und dadurch die `break`-Zeile entfällt:
+
+```java
+String mood = "happy";
+
+switch (mood) {
+    case "happy" -> System.out.println("Keep smiling.");
+    case "sad" -> System.out.println("Don't be sad!");
+    case "angry" -> System.out.println("Take a deep breath!");
+    default -> System.out.println("I'm sorry, I don't recognize that mood.");
+}
+```
+
+Ausserdem ist es nun direkt möglich, eine Variable direkt mittels `switch`-Assignment zuzuweisen:
+
+```java
+int place = 1;
+
+String suffix = switch (place) {
+    case 1 -> "st";
+    case 2 -> "nd";
+    case 3 -> "rd";
+    default -> "th";
+};
+
+System.out.println("You're on the " + place + suffix + " place.");
+```
+
 
 ---
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-2---conditional-statements) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2b zum Switch-Statement](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-2b---das-switch-statement) in den Labs.
 
 ---
 
