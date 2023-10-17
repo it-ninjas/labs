@@ -5906,20 +5906,17 @@ isHungry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9e
 &lt;/div>&lt;p>Somit ist auch dieser Zyklus beendet.&lt;/p>
 &lt;p>Der code wird so stetig weiterentwickelt und neue Funktionalitäten werden auf diese Weise Schritt für Schritt und getestet hinzugefügt.
 Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.&lt;/p></description></item><item><title>Docs: Exception Handling</title><link>/docs/java/java-exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-exception_handling/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
-&lt;li>Ich kenne die Schlüsselwörter try, catch, finally, throw und throws&lt;/li>
+&lt;li>Ich kenne die Schlüsselwörter &lt;code>try&lt;/code>, &lt;code>catch&lt;/code>, &lt;code>finally&lt;/code>, &lt;code>throw&lt;/code> und &lt;code>throws&lt;/code>&lt;/li>
 &lt;li>Ich weiss was &amp;ldquo;Unchecked&amp;rdquo; und &amp;ldquo;Checked&amp;rdquo; Exceptions sind&lt;/li>
 &lt;li>Ich kann auftretende Exceptions abhandeln&lt;/li>
 &lt;li>Ich kann eigene Exceptions definieren und anwenden&lt;/li>
 &lt;li>Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden&lt;/li>
-&lt;li>Ich kenne die beiden Interfaces AutoCloseable und Closeable&lt;/li>
+&lt;li>Ich kenne die beiden Interfaces AutoCloseable und Closeable.&lt;/li>
+&lt;li>Ich kenne eine Möglichkeit, um klar zu machen, dass bestimmte Werte &amp;ldquo;nullable&amp;rdquo; bzw. nicht &amp;ldquo;nullable&amp;rdquo; sind.&lt;/li>
+&lt;li>Ich weiss, inwiefern &lt;code>Optionals&lt;/code> meinen Code &lt;code>null&lt;/code>-safer machen.&lt;/li>
 &lt;/ul>
-&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
-&lt;ul>
-&lt;li>Gute Grundlagenkenntnisse von Java-Anwendungen&lt;/li>
-&lt;/ul>
-&lt;hr>
 &lt;h2 id="theorie--einleitung">Theorie / Einleitung&lt;/h2>
 &lt;p>In jeder Applikation kann es zu erwarteten oder unerwarteten Fehlern kommen.
 In Java werden diese Fehler durch den Bereich Exception Handling abgedeckt.
@@ -6434,7 +6431,265 @@ Grundsätzlich soll das Closeable-Interface für IO Streams verwendet werden, da
 &lt;p>Das Schliessen der Ressourcen hat stets die Reihenfolge von hinten nach vorne.&lt;br>
 In unserem Beispiel wird also zuerst der BufferedReader geschlossen und danach der FileReader.&lt;br>
 Die Verkettung von Ressourcen innerhalb eines try-with-resources Statements ist zu vermeiden.
-Besser sind separate Deklarationen wie oben gezeigt.&lt;/p></description></item><item><title>Docs: Annotationen &amp; Reflection API</title><link>/docs/java/java-reflection-and-annotations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-reflection-and-annotations/</guid><description>
+Besser sind separate Deklarationen wie oben gezeigt.&lt;/p>
+&lt;hr>
+&lt;h2 id="null-safety">Null-Safety&lt;/h2>
+&lt;p>Der häufigsten Laufzeitfehler in Java ist die &lt;code>NullPointerException&lt;/code>. Diese Exception tritt auf, wenn&lt;/p>
+&lt;ul>
+&lt;li>eine Methode auf einem &lt;code>null&lt;/code>-Objekt aufgerufen wird,&lt;/li>
+&lt;li>oder wenn versucht wird, auf ein Feld (Variable) eines &lt;code>null&lt;/code>-Objektes zuzugreifen.&lt;/li>
+&lt;/ul>
+&lt;p>Häufig wird einfach vergessen, dass eine bestimmte Variable &lt;code>null&lt;/code> sein kann:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+method&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String parameter&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Länge des Wortes: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> parameter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im letzten Beispiel wird versucht, die Methode &lt;code>length()&lt;/code> auf dem Objekt mit Wert &lt;code>null&lt;/code> aufzurufen. Aus diesem Grund wird die &lt;code>NullPointerException&lt;/code> geworfen.&lt;/p>
+&lt;p>In diesem Beispiel sieht man ziemlich gut, wie &lt;code>NullPointerException&lt;/code>s auftreten können:&lt;/p>
+&lt;ul>
+&lt;li>Einer Variable (hier &lt;code>parameter&lt;/code>) wird &lt;code>null&lt;/code> zugewiesen/übergeben, was aber nicht erlaubt sein sollte.&lt;/li>
+&lt;li>Oder es wird vergessen, dass eine Variable auch den Wert &lt;code>null&lt;/code> haben kann.&lt;/li>
+&lt;/ul>
+&lt;p>Diese beide Fälle können in Java auf verschiedene Arten abgedeckt werden.&lt;/p>
+&lt;h3 id="null-durch-check-abfangen">&lt;code>null&lt;/code> durch Check abfangen&lt;/h3>
+&lt;p>Die offensichtlichste Möglichkeiten, &lt;code>NullPointerException&lt;/code>s zu umgehen ist die Verwendung von &lt;code>null&lt;/code>-Checks.
+Im folgenden Beispiel verbieten wir den Wert &lt;code>null&lt;/code>, indem wir zu Beginn der Methode die Variable auf &lt;code>null&lt;/code> überprüfen und eine &lt;code>Exception&lt;/code> werfen (und somit die Methode abbrechen), falls die Variable dem Wert &lt;code>null&lt;/code> entspricht.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String parameter&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> IllegalArgumentException &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>parameter &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> IllegalArgumentException&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Parameter parameter must not be null.&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Länge des Wortes: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> parameter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Beispiel haben wir den Fall abgedeckt, in welchem für das Argument der Wert &lt;code>null&lt;/code> verbietet wird. Dieser Code hat neben den 3 zusätzlichen Zeilen Code den Nachteil, dass der/die Entwickler:in nicht direkt von aussen sieht, dass &lt;code>null&lt;/code>-Werte verboten sind. Diesen Fall wird besser mit einer anderen Technik angegangen, die später vorgestellt wird (&lt;code>@NotNull&lt;/code>-Annotation).&lt;/p>
+&lt;p>Sprechen wir aber nun über den Fall, in welchem der Wert &lt;code>null&lt;/code> eigentlich auch unterstützt werden müsste. Statt einem Fehler zu werfen, benutzen wir Bedingungen, um den richtigen Code auszuführen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String parameter&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>parameter &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Länge des Wortes: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> parameter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Länge fes Wortes: ist nicht definiert bzw. 0.&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Um hier &lt;code>null&lt;/code>-Sicherheit zu garantieren, haben wir nun 3 Zeilen hinzugefügt, was relativ viel für diesen Zweck ist.
+In solchen Fällen lohnt es sich oft, nur den problematischen Teil durch eine Bedingung zu ersetzen.
+In Java hilft der &amp;ldquo;Ternary-Operator&amp;rdquo; weiter:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String parameter&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Länge des Wortes: &amp;#34;&lt;/span>
+&lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#f92672">(&lt;/span>parameter &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">?&lt;/span> parameter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ist nicht definiert bzw. 0.&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Ternary-Ausdruck ist hierbei der folgende:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">parameter &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">?&lt;/span> parameter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ist nicht definiert bzw. 0.&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Ausdruck gibt &lt;code>parameter.length()&lt;/code> zurück, wenn &lt;code>parameter != null&lt;/code> ist. Ansonsten gibt er den String &lt;code>&amp;quot;ist nicht definiert bzw. 0.&amp;quot;&lt;/code> zurück.&lt;/p>
+&lt;p>Ganz allgemein ist der Ternary-Ausdruck wie folgt aufgebaut:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">Bedingung ? Wert-wenn-Bedingung-true : Wert-wenn-Bedingung-false
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="annotationen-wie-notnull-und-nullable">Annotationen wie &lt;code>@NotNull&lt;/code> und &lt;code>@Nullable&lt;/code>&lt;/h3>
+&lt;p>Sicherlich ist dir schon einmal die Angabe &lt;code>@Nullable&lt;/code> bei einem Argument von einer Methode aus einer externen Library aufgefallen.&lt;/p>
+&lt;p>Solche Annotationen teilen mit,&lt;/p>
+&lt;ul>
+&lt;li>dass bei einer Variable erwartet wird, dass sie unter Umständen auch den Wert &lt;code>null&lt;/code> haben kann (&lt;code>@Nullable&lt;/code>)&lt;/li>
+&lt;li>bzw. dass eine Variable nicht den Wert &lt;code>null&lt;/code> aufweisen darf (&lt;code>@NotNull&lt;/code> bzw. &lt;code>@NonNull&lt;/code>).&lt;/li>
+&lt;/ul>
+&lt;p>Für die folgenden Beispiele haben wir die Library &lt;code>org.jetbrains.annotations&lt;/code> verwendet, es gibt aber weitere bekannte mit ähnlichen Annotationen.
+Da zu diesem Zeitpunkt noch nicht erklärt wurde, wie du Dependencies hinzufügen kannst (Maven-Teil), halten wir dies rein theoretisch.&lt;/p>
+&lt;p>Hier ein Beispiel, wie Annotationen zu mehr &lt;code>null&lt;/code>-Sicherheit führen können:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+method&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Lightning Moon&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String&lt;span style="color:#f92672">[]{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Lightning&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Moon&amp;#34;&lt;/span>&lt;span style="color:#f92672">});&lt;/span>
+method&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#a6e22e">@Nullable&lt;/span> String fullName&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#a6e22e">@NotNull&lt;/span> String&lt;span style="color:#f92672">[]&lt;/span> names&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>fullName&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>names &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">toString&lt;/span>&lt;span style="color:#f92672">(&lt;/span>names&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Beispiel wird&lt;/p>
+&lt;ul>
+&lt;li>die Annotation &lt;code>@Nullable&lt;/code> verwendet, um mitzuteilen, dass bei der Variable &lt;code>fullName&lt;/code> der Wert &lt;code>null&lt;/code> möglich ist. In IntelliJ Idea (von Jetbrains) wird dadurch die Methode &lt;code>length()&lt;/code> gelb unterstrichen, weil für die Variable &lt;code>fullName&lt;/code> der &lt;code>null&lt;/code>-Check fehlt.&lt;/li>
+&lt;li>die Annotation &lt;code>@NotNull&lt;/code> verwendet, um mitzuteilen, dass die Variable &lt;code>names&lt;/code> &lt;ins>&lt;strong>nicht&lt;/strong>&lt;/ins> den Wert &lt;code>null&lt;/code> haben darf. Leider fügt diese Möglichkeit kein Warning beim Aufruf von &lt;code>method(..., null)&lt;/code> hinzu. Dafür aber wird eine &lt;code>IllegalArgumentException&lt;/code> zur Laufzeit geworfen, falls ihr &lt;code>null&lt;/code> beim Methodenaufruf zugewiesen wird.&lt;/li>
+&lt;/ul>
+&lt;h3 id="optionals">Optionals&lt;/h3>
+&lt;p>In Java gibt es auch ohne externe Dependency eine Möglichkeit anzugeben, dass eine Variable den Wert &lt;code>null&lt;/code> &amp;ldquo;repräsentieren&amp;rdquo; kann.&lt;/p>
+&lt;p>Hierfür wurde die generische Klasse &lt;code>Optional&amp;lt;T&amp;gt;&lt;/code> ins Leben gerufen.&lt;/p>
+&lt;p>Die Idee ist, dass Variablen, die den Wert &lt;code>null&lt;/code> haben können, den Typ &lt;code>Optional&amp;lt;...&amp;gt;&lt;/code> bekommen. Für ein nullable &lt;code>String&lt;/code> wird also z.B. der Typ &lt;code>Optional&amp;lt;String&amp;gt;&lt;/code> gewählt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Optional&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Richtige Verwendung von Optionals:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> method&lt;span style="color:#f92672">(&lt;/span>Optional&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello World&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Repräsentiert den Wert &amp;#34;Hello World&amp;#34;.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> method&lt;span style="color:#f92672">(&lt;/span>Optional&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">empty&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// Repräsentiert den Wert null.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">// Falsche Verwendung von Optionals:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> method&lt;span style="color:#f92672">(&lt;/span>Optional&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Null-Pointer, weil `Optional.of()` beim Wert `null` einen Fehler wirft.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> method&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Null-Pointer, weil `isPresent()` nicht auf `null` aufgerufen werden kann.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">method&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Optional&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> parameter&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Länge des Wortes: &amp;#34;&lt;/span>
+&lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#f92672">(&lt;/span>parameter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">isPresent&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">?&lt;/span> parameter&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ist nicht definiert bzw. 0.&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Nutzen von &lt;code>Optional&lt;/code>s ist, dass man als Entwickler:in gezwungen wird, einen &lt;code>null&lt;/code>-Check zu machen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>optional&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">isPresent&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Wert ist: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> optional&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Denn&lt;/p>
+&lt;ul>
+&lt;li>wenn kein &lt;code>null&lt;/code>-Check vor dem Aufrufen von &lt;code>.get()&lt;/code> (was den eigentlichen Wert zurückgibt) gemacht wird , dann reklamiert deine Entwicklungsumgebung (IntelliJ/VS Code) automatisch mit einer Warnung.&lt;/li>
+&lt;li>wenn &lt;code>.get()&lt;/code> aufgerufen wird, und der Wert &lt;code>null&lt;/code> repräsentiert, dann wird bereits an dieser Stelle eine &lt;code>NullPointerException&lt;/code> geworfen.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>Optionals&lt;/code> sind daher eine der gängigsten Möglichkeiten, Entwickler:innen zu zwingen, Werte auf &lt;code>null&lt;/code> zu prüfen.&lt;/p>
+&lt;p>Diese Technik wird z.B. bei Streams häufig eingesetzt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Optional&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> firstResult &lt;span style="color:#f92672">=&lt;/span> Stream
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">,&lt;/span> 2&lt;span style="color:#f92672">,&lt;/span> 3&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">,&lt;/span> 5&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">filter&lt;/span>&lt;span style="color:#f92672">(&lt;/span>x &lt;span style="color:#f92672">-&amp;gt;&lt;/span> x &lt;span style="color:#f92672">%&lt;/span> 6 &lt;span style="color:#f92672">==&lt;/span> 0&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">findFirst&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">// Die Verwendung des Optionals zwingt einen dazu, den `.isPresent()`-Check zu machen, da es vorkommen könnte,
+&lt;/span>&lt;span style="color:#75715e">// dass kein solches Element vorhanden ist, welches die Bedingung erfüllt:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>firstResult&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">isPresent&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Erste Zahl aus der 6er-Reihe: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> firstResult&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Keine Zahl aus der 6er-Reihe präsent.&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="zusammenfassung-zu-null-safety">Zusammenfassung zu Null-Safety&lt;/h3>
+&lt;p>Die &lt;code>NullPointerException&lt;/code> ist eine der häufigsten Exceptions in Java-Programmen. Deswegen lohnt es sich, besser mit &lt;code>null&lt;/code>-Werten umzugehen bzw. besser sichtbar zu machen, dass Werte &lt;code>null&lt;/code> sein können.&lt;/p>
+&lt;p>Drei der häufigsten Möglichkeiten, um mehr Null-Sicherheit in deinen Code zu bringen, sind:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>null&lt;/code>-Checks&lt;/li>
+&lt;li>Annotationen wie &lt;code>@NotNull&lt;/code> und &lt;code>@Nullable&lt;/code>&lt;/li>
+&lt;li>und &lt;code>Optional&amp;lt;...&amp;gt;&lt;/code>-Typen zu verwenden.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../labs/java/java-exception-handling/01_exercises">Aufgaben zu Exception Handling&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Annotationen &amp; Reflection API</title><link>/docs/java/java-reflection-and-annotations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-reflection-and-annotations/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann mit Reflection Informationen zu Klassen, Objekten, Methoden und Attributen zur Laufzeit
