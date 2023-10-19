@@ -500,7 +500,7 @@ public interface GradeRepository extends JpaRepository<Grade, Integer> {
 }
 ```
 
-### JDBC-Template
+### Möglichkeit 2: JDBC-Template
 JDBC steht für "Java Database Connectivity" und ist eine Technologie in Java, die es ermöglicht, auf Datenbanken zuzugreifen und mit ihnen zu interagieren. Mit JDBC können Java-Anwendungen Daten aus einer Datenbank abrufen, in die Datenbank schreiben, Daten aktualisieren und löschen.
 
 #### Dependency
@@ -520,6 +520,8 @@ Damit JDBC verwendet werden kann, muss man zuerst eine neuen Dependency in das `
 #### Entity-Klasse 
 Eine Entity-Klasse ist eine normale Java-Klasse, die als Modell für eine Tabelle in der Datenbank dient. Jedes Objekt dieser Klasse entspricht einer Zeile in der Tabelle.
 ```java
+@Getter
+@Setter
 public class Grade {
     private Long gradeId;
     private Double gradeValue;
@@ -668,9 +670,9 @@ Passe deine Services und Repositories entsprechend der Implementierungs-Methode 
 * Alle Services sind mit der Implementierungs-Methode ausgestattet.
 * Alle Repositories sind mit der Implementierungs-Methode ausgestattet
 
-## Schritt 8 Persistenz-Layer fertigstellen
+## Schritt 8 Persistenz-Layer fertigstellen (Nur für JDBC)
 
-### Queries 
+### Queries
 Typischerweise implementieren JDBC-Repositories benutzerdefinierte Methoden für spezielle Datenbankabfragen. Diese Methoden nutzen das JdbcTemplate (Teil des Spring-Frameworks), um SQL-Queries auszuführen. Dabei können Platzhalter oder Named Parameters verwendet werden, um dynamische Werte in die Abfragen einzufügen.
 
 `PreparedStatementSetter` ist ein funktionales Interface in Spring JDBC. Es wird verwendet, um Parameter für parametrisierte Abfragen auf einem PreparedStatement festzulegen.
@@ -861,7 +863,7 @@ Implementiere die benötigten Mapper und setze sie an den benötigten Orten ei (
 Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
 In diesem Schritt wirst du deine Schnittstelle mit dem *IntelliJ HTTP-Client* testen.
 
-Eine Alternative zum *IntelliJ HTTP-Client* bietet der `Swagger` an.
+Eine Alternative zum *IntelliJ HTTP-Client* bietet `Swagger` an.
 Swagger ist ein Open-Source-Framework, das in erster Linie dazu dient, APIs zu entwerfen, zu dokumentieren und zu testen. Es ermöglicht eine einfache und strukturierte Beschreibung von Webdiensten, um deren Funktionalitäten, Parameter und Endpunkte zu verstehen.
 
 Mit Spring Boot 3 kann man neu nur noch einen Dependency hinzufügen damit der Swagger läuft. Diese sieht folgerndermassen aus:
@@ -899,8 +901,100 @@ Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle a
 * Bei Methoden, welche Parameter oder einen Request-Body brauchen, sind diese in den Requests auch so konfiguriert.
 * Jede Methode, welche ausgeführt wird, liefert die erwarteten Ergebnisse (ggf. auch Anpassungen der Daten in der darunterliegenden Datenbank).
 
-## Integrationstests mit H2 umsetzen (Claudio)
-Schema.sql
-Data.sql
-MockMVC
-TODO: Optionales Thema für weit Fortgeschrittene
+## Integrationstests mit H2 umsetzen
+Integrationstests mit H2 in einem Spring-Boot-Projekt umzusetzen ist eine bewährte Methode, um die Interaktion zwischen verschiedenen Komponenten einer Anwendung zu testen, ohne auf eine reale Datenbank angewiesen zu sein. 
+In diesem Kontext dient H2, eine In-Memory-Datenbank, als Ersatz für die eigentliche Datenbank und erlaubt es, Tests zu schreiben, welche die Anwendungslogik unter simulierten Bedingungen überprüft.
+
+### Dependencies
+Damit man H2 verwenden kann, muss man auch hier noch einen Dependency im `pom.xml` hinzufügen. Diese ist folgende:
+```xml
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>test</scope>
+</dependency>
+```
+
+### Konfiguration anlegen
+In der Testkonfiguration (z. B. `application-test.properties`), konfiguriert man H2 als Datenbank für die Integrationstests. Es wird die Verbindungs-URL, den Treiber und die Anmeldeinformationen für H2 festgelegt. Diese Datenbank wird in den Tests automatisch erstellt und verwaltet.
+
+application-test.properties:
+```properties
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.datasource.platform=h2
+spring.jpa.hibernate.ddl-auto=update
+```
+
+application-test.yml:
+```yaml
+spring: 
+  datasource: 
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    platform: h2
+    driver-class-name: org.h2.Driver
+jpa: 
+  hibernate:
+    ddl-auto: update
+```
+
+### SQL Files
+Nun erstellt man SQL-Skripte, wie `schema.sql` und `data.sql`, die das Datenbankschema und Testdaten definieren. Diese Skripte werden während der Testausführung automatisch geladen.
+
+#### Schema File
+```sql
+CREATE TABLE SCHOOL_SUBJECT (
+    subject_id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_name VARCHAR(255) NOT NULL
+);
+```
+
+#### Data File
+```sql
+INSERT INTO SCHOOL_SUBJECT (subject_name) VALUES ('Mathematics');
+INSERT INTO SCHOOL_SUBJECT (subject_name) VALUES ('History');
+INSERT INTO SCHOOL_SUBJECT (subject_name) VALUES ('Science');
+INSERT INTO SCHOOL_SUBJECT (subject_name) VALUES ('English');
+```
+
+### Integration Test
+Integrationstests sind wichtig, um sicherzustellen, dass verschiedene Komponenten einer Anwendung (z. B. Klassen, Module, Services, REST-Endpunkte) ordnungsgemäss miteinander interagieren und Daten korrekt austauschen. Sie helfen dabei, potenzielle Fehler und Inkompatibilitäten zwischen den Komponenten frühzeitig zu erkennen und zu beheben.
+
+```java
+@SpringBootTest
+@AutoConfigureMockMvc
+@ActiveProfiles("admin")
+@ExtendWith(SpringExtension.class)
+public class AdminControllerIntegrationTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private AdminService adminService;
+    
+    @Test
+    public void testGetAllSubjects() throws Exception {
+      List<SchoolSubjectDto> subjects = new ArrayList<>();
+      subjects.add(new SchoolSubjectDto(1, "Mathematics"));
+      subjects.add(new SchoolSubjectDto(2, "History"));
+    
+      when(adminService.getAllSubjects()).thenReturn(subjects);
+    
+      mockMvc.perform(get("/api/admin/subjects")
+                      .contentType(MediaType.APPLICATION_JSON))
+              .andExpect(status().isOk())
+              .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+              .andExpect(jsonPath("$[0].subjectId").value(1))
+              .andExpect(jsonPath("$[0].subjectName").value("Mathematics"))
+              .andExpect(jsonPath("$[1].subjectId").value(2))
+              .andExpect(jsonPath("$[1].subjectName").value("History"));
+    }
+
+    // ...
+}
+```
