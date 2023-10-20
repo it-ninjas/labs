@@ -528,6 +528,18 @@ public class Grade {
 }
 ```
 
+Lombok ist eine Java-Bibliothek, die es Entwicklern ermöglicht, boilerplate Code in ihren Java-Klassen zu reduzieren. Die Annotationen `@Getter` und `@Setter` sind zwei der am häufigsten verwendeten Annotationen in Lombok. Sie generieren automatisch Getter- und Setter-Methoden für die Felder einer Klasse.
+
+Damit man Lombok jedoch verwenden kann, muss man die folgende Dependency im `pom.xml` hinzufügen:
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.22</version>
+    <scope>provided</scope>
+</dependency>
+```
+
 #### Repository
 Ein Repository ein Designmuster oder eine Klasse, die den Datenbankzugriff für eine bestimmte Entität oder ein bestimmtes Objektmodell verwaltet. Es hilft, den Code zu organisieren und zentrale Methoden für den Zugriff auf die Datenbank bereitzustellen.
 
