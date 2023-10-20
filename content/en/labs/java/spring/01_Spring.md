@@ -905,6 +905,29 @@ Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle a
 Integrationstests mit H2 in einem Spring-Boot-Projekt umzusetzen ist eine bewährte Methode, um die Interaktion zwischen verschiedenen Komponenten einer Anwendung zu testen, ohne auf eine reale Datenbank angewiesen zu sein. 
 In diesem Kontext dient H2, eine In-Memory-Datenbank, als Ersatz für die eigentliche Datenbank und erlaubt es, Tests zu schreiben, welche die Anwendungslogik unter simulierten Bedingungen überprüft.
 
+### Struktur
+Es wird folgende Ordnerstruktur empfohlen, damit das gesamte Testing wie gewollt funktioniert:
+```xml
+src/
+|-- main/
+|   |-- java/
+|   |   |-- com/
+|   |       |-- example/
+|   |           |-- myapp/
+|   |               |-- YourProductionCode.java
+|-- test/
+|   |-- java/
+|   |   |-- com/
+|   |       |-- example/
+|   |           |-- myapp/
+|   |               |-- integration/
+|   |                   |-- YourIntegrationTests.java
+|   |-- resources/
+|       |-- application-test.properties
+|       |-- schema.sql
+|       |-- data.sql
+```
+
 ### Dependencies
 Damit man H2 verwenden kann, muss man auch hier noch einen Dependency im `pom.xml` hinzufügen. Diese ist folgende:
 ```xml
