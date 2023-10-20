@@ -107,6 +107,36 @@ for (String word : words) {
 }
 ```
 
+## Zweidimensionale Arrays (2D Array)
+Bis jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch, 
+um Listen-Artige Daten zu speichern. Zweidimensionale Arrays haben wie es der Name schon verrät eine zweite Dimension.
+Diese Art von Arrays sind praktisch für tabellarische Daten. 
+
+Du kannst dir ein 2D-Array wie eine Excel vorstellen. Es besteht aus Reihen und Spalten die gleich wie im normalen Array
+mit einem Index/einer Position definiert werden. 
+
+### Syntax
+Für die Deklaration benötigt eines zweidimensionalen Arrays wird eine Angabe von der Anzahl Reihen und Spalten benötigt.
+Bei dieser Art von Array können die gleichen Datentypen wie bei den normalen Arrays verwendet werden. So sieht schliesslich
+die Syntax aus:
+```java
+int anzahlReihen = 4;
+int anzahlSpalten = 3;
+
+int[][] zweiDArray = new int[anzahlReihen][anzahlSpalten];
+```
+### Zugriff auf Elemente
+Da wir jetzt im zweidimensionalen Bereich unterwegs sind, müssen wir für den Zugriff auf Elemente beide Dimensionen beachten.
+Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe angeben müssen. Hier ein Beispiel dazu:
+```java
+int[][] zweiDArray = new int[4][2];
+
+zweiDArray[0][1] = 69; // Wert 69 zuweisen
+int output = zweiDArray[0][1]; // Wert auf position 0 1 in zweiDArray in output variable speichern
+
+System.out.println(output); // Ausgabe: 69
+```
+
 ---
 
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 8](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-8---arrays) in den Labs.
