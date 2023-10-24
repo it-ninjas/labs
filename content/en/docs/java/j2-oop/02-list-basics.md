@@ -8,10 +8,11 @@ description: >
 
 #### Ziele
 
-* Ich weiss, was eine Liste ist.
-* Ich weiss, wozu und wie Listen verwendet werden.
-* Ich kenne die wichtigsten Methoden einer Liste.
-* Ich kenne die Klasse ArrayList.
+* Ich kann ohne Hilfsmittel die Unterschiede zwischen Listen und Arrays in Java nennen.
+* Ich kann mindestens drei der wichtigsten Merkmale einer Java-Liste auflisten.
+* Ich kann mindestens 5 Methoden einer Liste korrekt und ohne Hilfsmittel nennen.
+* Ich kann erklären, wozu die `ArrayList`-Klasse verwendet wird, und was sie für Vorteile mitbringt.
+* Ich kann eine neue Liste erstellen und bei ihr Elemente hinzufügen sowie entfernen.
 
 ---
 
@@ -24,16 +25,16 @@ Im Gegensatz zu Arrays, deren Elemente im Speicher in fortlaufender Reihenfolge 
 deren Grösse aus diesem Grund ohne Neuinitialisierung unveränderbar ist, 
 können Listen flexible Mengen an Objekten enthalten.
 
-Das [List-Interface](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html) ist ein Teil des Java-Collections-Frameworks.
+Das [List-Interface](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html) ist ein Teil des Java-Collections-Frameworks.
 Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface umsetzen (mehr dazu in einem späteren Modul).
 
 ### Die wichtigsten Merkmale einer Liste
 
-- Eine Liste kann nur Objekte, bzw. die Referenzen auf diesen Objekten, beinhalten (es gibt also keine Liste mit primitiven Datentypen)
+- Eine Liste kann nur Objekte beinhalten (es gibt also keine Liste mit primitiven Datentypen)
 - Eine Liste kann nur Objekte eines Typs beinhalten. Dieser Typ wird zur Zeit der Definition der Liste bestimmt. 
 - Die Elemente innerhalb einer Liste haben eine feste Reihenfolge. Dies bedeutet, dass eine Iteration über eine Liste immer zu einem gleichen Ergebnis mit der gleichen Reihenfolge führt. 
 - Duplikate innerhalb einer Liste sind erlaubt (dasselbe Objekt darf mehrmals in einer Liste vorkommen)
-- Eine Liste kann auch "null"-Elemente beinhalten
+- Eine Liste kann auch `null`-Elemente beinhalten.
 - Die Indizes in einer Liste reichen immer von 0 bis Anzahl Elemente in der Liste minus 1.
 
 ---
@@ -93,7 +94,7 @@ Nun kann eine Variable definiert und erzeugt werden. Der Syntax hier wird in sp�
 hier reicht es zu wissen, dass innerhalb der spitzigen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen. 
 ```java
 // Erstellen einer ArrayList für String-Objekte.
-// Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren
+// Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren.
 List<String> words = new ArrayList<>();
 ```
 
