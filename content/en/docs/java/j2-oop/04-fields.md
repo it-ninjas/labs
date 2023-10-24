@@ -7,7 +7,11 @@ description: >
 ---
 
 ## Ziele
-* Ich weiss, was Datenfelder sind und verstehe den Unterschied zwischen statischen und nicht-statischen Feldern.
+* Ich kann ohne Hilfsmittel die 3 verschiedenen Arten von Variablen auflisten (in welchem Kontext werden die Variablen wie genannt?).
+* Ich schreibe eine Definition eines statische Feldes selbstständig und korrekt.
+* Ich kann in eigenen Worten erklären, wozu statische Felder benutzt werden.
+* Ich kann in eigenen Worten den Unterschied zwischen statischen und nicht-statischen Feldern erklären.
+* Ich kann anhand einer Skizze in eigenen Worten den Unterschied zwischen einer Klasse und deren Instanz nennen.
 
 ## Felder
 Wir haben bereits verschiedene Arten von Variablen kennengelernt:
@@ -19,7 +23,7 @@ Wir werden uns nun den Feldern widmen. Felder sind Variablen, die innerhalb eine
 Es gibt zwei verschiedene Typen von Feldern, statische und nicht-statische.
 
 ### Statische Felder - Klassenvariablen / Konstanten
-Manchmal brauchen wir eine Variable, die allen Objekten gemeinsam ist. Dann verwenden wir eine Variable, die mit Schlüsselwort _static_ deklariert ist. Diese Variable bezeichnen wir als statisches Feld oder Klassenvariable. Ein statisches Feld ist der Klasse selbst zugeordnet und nicht den Referenzen dieser Klasse. Denn jede Instanz der Klasse teilt sich diese Klassenvariable, die sich an einem festen Ort im Speicher befindet. Egal wie viele Objekte dieser Klasse existieren, der Wert des statischen Feldes ist für alle exakt gleich. Jedes Objekt kann grundsätzlich den Wert einer Klassenvariablen lese und verändern.
+Manchmal brauchen wir eine Variable, die allen Objekten gemeinsam ist. Dann verwenden wir eine Variable, die mit Schlüsselwort `static` deklariert ist. Diese Variable bezeichnen wir als statisches Feld oder Klassenvariable. Ein statisches Feld ist der Klasse selbst zugeordnet und nicht den Referenzen dieser Klasse. Denn jede Instanz (= jedes Objekt) der Klasse teilt sich diese Klassenvariable, die sich an einem festen Ort im Speicher befindet. Egal wie viele Objekte dieser Klasse existieren, der Wert des statischen Feldes ist für alle exakt gleich. Jedes Objekt kann den Wert einer Klassenvariablen lese und verändern.
 ```java
 public class Counter { 
 	private static int count = 0;
@@ -52,7 +56,7 @@ public class Bicycle {
     }
 }
 ```
-Manchmal verwenden wir statische Felder, um Konstanten zu definieren. Eine _Konstante_ ist eine Variable, deren Wert nicht mehr verändert werden kann, sobald man ihr einmal einen Wert zugewiesen hat. Um eine Variable als Konstante zu kennzeichnen, verwenden wir zusätzlich das Keyword _final_. Der Name der Konstante wird zudem immer in Grossbuchstaben geschrieben. Um mehrere Wörter abzutrennen verwenden wir den Underscore (_).
+Manchmal verwenden wir statische Felder, um Konstanten zu definieren. Eine _Konstante_ ist eine Variable, deren Wert nicht mehr verändert werden kann, sobald man ihr einmal einen Wert zugewiesen hat. Um eine Variable als Konstante zu kennzeichnen, verwenden wir zusätzlich das Keyword `final`. Der Name der Konstante wird zudem per Konvention immer in Grossbuchstaben geschrieben. Um mehrere Wörter abzutrennen verwenden wir Underscores `_`.
 Zum Beispiel definiert die folgende Variablendeklaration eine Konstante mit dem Namen PI:
 ```java
 static final double PI = 3.141592653589793;

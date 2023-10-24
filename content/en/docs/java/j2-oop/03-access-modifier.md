@@ -7,17 +7,21 @@ description: >
 ---
 
 ## Ziele
-* Ich kenne die Zugriffsmodifikatoren `public`, `private` und `protected`.
-* Ich weiss, dass Instanzvariablen immer mit dem Schlüsselwort `private` deklariert werden.
+* Ich kann ohne Hilfsmittel alle Zugriffsmodifikatoren beschreiben.
+* Ich kann die Auswirkungen von allen Zugriffsmodifikatoren auf Klassen-, Felder- und Methoden-Ebene beschreiben.
+* Ich kann erklären, warum Felder (Instanzvariablen) immer mit dem Schlüsselwort `private` deklariert werden sollten.
 
 ## Zugriffsmodifikatoren
-In Java können wir Feldern und Methoden Zugriffsbeschränkungen auferlegen. Diese Einschränkungen werden durch Zugriffsmodifikatoren festgelegt.
-Zugriffsmodifikatoren bestimmen die Sichtbarkeit von Feldern und Methoden und damit deren Verwendbarkeit aus anderen Programmteilen.
+In Java können wir Klassen, Feldern und Methoden Zugriffsbeschränkungen auferlegen. Diese Einschränkungen werden durch Zugriffsmodifikatoren festgelegt.
+Zugriffsmodifikatoren bestimmen die Sichtbarkeit von Klassen, Feldern und Methoden und damit deren Verwendbarkeit aus anderen Programmteilen.
 Es gibt vier Zugriffsmodifikatoren.
 
 ### Private
 Auf eine private Instanzvariable oder -methode kann von ausserhalb der Klasse nicht zugegriffen werden.
 Es ist eine gängige Praxis, Instanzvariablen privat zu halten. Wir möchten schliesslich nicht, dass jemand unsere Daten direkt manipuliert. Dieses Prinzip nennt man auch Kapselung.
+
+Klassen, welche als `private` deklariert werden sind immer sog. _innere_ oder _nested_ Klassen. Auf diese Klassen kann nur innerhalb der umhüllende Klasse zugegriffen werden.
+
 ```java
 class Person {
     private String name;
@@ -26,10 +30,10 @@ class Person {
 UML-Symbol: `-`
 
 ### Public
-Auf Variablen und Methoden, die mit dem Schlüsselwort public deklariert sind, kann von einem beliebigen Ort des Programms zugegriffen werden.
+Auf Klassen, Felder und Methoden, die mit dem Schlüsselwort `public` deklariert sind, kann von einem beliebigen Ort des Programms zugegriffen werden.
 Sie sind also öffentlich.
 ```java
-class Person {
+public class Person {
 	private String name;
 
 	public String getName() {
@@ -45,11 +49,12 @@ c.getName();
 UML-Symbol: `+`
 
 ### Protected
-Wenn eine Variable oder Methode protected deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen bzw. Vererbung folgt im Modul «Objektorientiertes Design»).
-UML-Symbol: `#`
+Wenn eine Klasse, ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Mehr über Unterklassen bzw. Vererbung findest du im Modul «Objektorientiertes Design»).
+UML-Symbol: `#`.
 
 ### Package-Private
-Wenn eine Variable oder Methode keinen Zugriffsmodifikator hat, so besitzt sie trotzdem einen. Dieser wird Package-Private genannt. Die Sichtbarkeit ist grundsätzlich private, wird aber auf Klasse im gleichen Package ausgeweitet.
+Wenn eine Klasse, ein Feld oder eine Methode keinen Zugriffsmodifikator hat, so besitzt sie trotzdem einen. Dieser wird Package-Private genannt. Die Sichtbarkeit ist grundsätzlich private, wird aber auf Klasse im gleichen Package ausgeweitet.
+Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese Klasse, Felder und Methoden haben.
 
 ### Zusammenfassung
 | Modifikator      | Eigene Klasse | Klasse im gleichen Package / innere-Klassen | Unterklassen | Sonstige Klassen |

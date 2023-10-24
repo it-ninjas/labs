@@ -7,7 +7,10 @@ description: >
 ---
 
 ## Ziele
-* Ich weiss, was ein Konstruktor ist.
+* Ich kann die zwei Hauptunterschiede von einem Konstruktor und einer gewöhnlichen Methode nennen.
+* Ich kann in eigenen Worten erklären, was ein Konstruktor ist und wozu er verwendet wird.
+* Ich kann in eigenen Worten erklären, was ein Default-Konstruktor ist, wann er erzeugt wird und wann er entfällt.
+* Ich demonstriere die Anwendung von Konstruktoren anhand eines Beispiels ohne Hilfsmittel.
 
 ## Konstruktoren
 Konstruktoren sind spezielle Methoden, die benutzt werden, sobald ein neues Objekt einer Klasse erstellt wird. Ein Konstruktor einer Klasse wird aufgerufen, wenn eine neue Instanz mit dem Schlüsselwort `new` erstellt wird.
@@ -56,9 +59,9 @@ Wir können eine Instanz der Klasse Patient mit dem Standardkonstruktor ohne Arg
 ```java
 Patient patient = new Patient();
 ```
-In diesem Fall werden alle Felder mit den Standardwerten ihrer Typen gefüllt.
+In diesem Fall werden alle Felder mit den Standardwerten ihrer Typen befüllt (z.B: für ein `int` wird `0` als Standardwert definiert).
 Wenn wir einen bestimmten Konstruktor definieren, wird der Standardkonstruktor nicht mehr automatisch erstellt.
-Wir können einen Konstruktor auch ohne Argumente definieren, aber damit Standardwerte für Felder einer Klasse festlegen. Zum Beispiel können wir das Feld _name_ mit "Unknown" initialisieren. Durch eine solche Definition wird der Default-Konstruktor ersetzt.
+Wir können einen Konstruktor auch ohne Argumente definieren, und damit eigene Standardwerte für Felder einer Klasse festlegen (der Standartwert für `String` ist `null`). Zum Beispiel können wir das Feld `name` mit `"Unknown"` initialisieren. Durch eine solche Definition wird der Default-Konstruktor ersetzt.
 ```java
 public class Patient {
     private String name;
@@ -66,6 +69,7 @@ public class Patient {
     private float height;
 
     public Patient() {
+        // Hier wird nur einen Wert für `name` gesetzt, die andere Felder erhalten den Standardwert für ihre respektiven Datentypen.
         this.name = "Unknown";
     }
 }

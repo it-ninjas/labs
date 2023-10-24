@@ -6,6 +6,13 @@ description: >
   Modul #J2
 ---
 
+## Ziele
+* Ich kann ohne Hilfsmittel mindestens zwei Vorteile für das Verwenden von Packages nennen.
+* Ich kann ohne Hilfsmittel die Namenkonvention für Java-Packages beschreiben.
+* Ich zeige auf, wie mehreren Klassen vom gleichen Packet mit einem `import`-Statement importiert werden.
+* Ich kann korrekt und ohne Hilfsmittel erklären, was ein statischer Import ist und wozu es verwendet wird.
+* Ich kann erläutern, warum es keine gute Idee ist, Klassen ohne Package-Anweisung zu schreiben.
+
 ## Packages
 Bevor wir uns intensiver mit den Bestandteilen einer Klasse auseinandersetzen, schauen wir uns Packages an.
 Ein Package dient der Gruppierung und Organisation von Klassen, Schnittstellen und anderen Packages.
@@ -31,7 +38,9 @@ Gemäss der Namenskonvention werden Package-Namen immer in Kleinbuchstaben gesch
 Die Trennung der verschiedenen Packages erfolgt beim Import-Statement durch einen Punkt.
 
 ### Ordnerstruktur
-Programmcode muss organisiert sein. Grundsätzlich legen wir Quellcode im einem Verzeichnis ab, das _src_ genannt wird.
+Programmcode muss organisiert sein. Obwohl die Ordnerstruktur nicht vorgegeben ist, hat sich die folgende Konvention in Java-Projekten (vor allem solche, welche Maven im Einsatz haben - dazu mehr im Maven-Modul) etabliert.
+
+Grundsätzlich legen wir Quellcode im einem Verzeichnis ab, das _src_ genannt wird.
 Innerhalb dieses Verzeichnisses legen wir ein Verzeichnis _main_ und darin wiederum ein Verzeichnis _java_ an. Innerhalb des Java-Verzeichnisses können wir beliebig viele eigene Packages anlegen, um unseren Programmcode zu organisieren.
 
 ### Klassen mit gleichem Namen
@@ -43,10 +52,11 @@ import ch.sbb.rectangle.Rectangle;
 
 public class Main {
     public static void main(String[] args) {
+        // Deklaration und Initialisierung eines AWT-Rectangles:
         java.awt.Rectangle rectAWT = new java.awt.Rectangle()
-        // ...
+
+        // Deklaration und Initialisierung eines Rectangles aus dem Package ch.sbb.rectangle:
         Rectangle myRect = new Rectangle();
-        // ...
     }
 }
 ```
@@ -55,17 +65,17 @@ public class Main {
 
 ### Import *
 Wenn sich zwei Klassen im selben Paket befinden und eine Klasse in der anderen verwendet wird, muss die Klasse nicht importiert werden.
-Es ist auch möglich, alle Klassen aus dem Paket zu importieren. Dazu müssen wir einen * anstelle eines bestimmten Klassennamens in das Import-Statement schreiben.
+Es ist auch möglich, alle Klassen aus dem Paket zu importieren. Dazu müssen wir einen `*` anstelle eines bestimmten Klassennamens in das Import-Statement schreiben.
 ```java
 import java.awt.*;
 ```
 
 ### Package java.lang
-Obwohl wir die meisten Pakete importieren müssen, gibt es ein Java-Paket, das immer automatisch importiert wird. Es ist java.lang. Dieses Paket enthält viele weit verbreitete Klassen, wie String, System, Long, Integer, NullPointerException und andere.
+Obwohl wir die meisten Pakete importieren müssen, gibt es ein Java-Paket, das immer automatisch importiert wird. Es ist `java.lang`. Dieses Paket enthält viele weit verbreitete Klassen wie `String`, `System`, `Long`, `Integer`, `NullPointerException` und andere.
 
 ### Statischer Import
-Wir können auch statische Elemente (Konstanten) einer Klasse in eine andere Klasse importieren. Wenn wir * in die import-Anweisung schreiben, müssen wir den importierten Klassennamen nicht angeben, bevor wir statische Methoden aufrufen oder statische Felder lesen.
-Hier ist ein Beispiel für den statischen Import der Klasse Arrays, die viele nützliche Methoden zur Verarbeitung von Arrays enthält:
+Wir können auch statische Elemente (Konstanten) einer Klasse in eine andere Klasse importieren. Wenn wir `*` in die import-Anweisung schreiben, müssen wir den importierten Klassennamen nicht angeben, bevor wir statische Methoden aufrufen oder statische Felder lesen.
+Hier ist ein Beispiel für den statischen Import der Klasse `Arrays`, die viele nützliche Methoden zur Verarbeitung von Arrays enthält:
 ```java
 package org.hyperskill.java.packages.theory;
 
