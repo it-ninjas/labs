@@ -1,7 +1,7 @@
 ---
 title: "Arrays"
 linkTitle: "Arrays"
-weight: 10
+weight: 11
 description: >
   Modul #J1
 ---
@@ -107,6 +107,11 @@ for (String word : words) {
 }
 ```
 
+### Lernvideo
+Wenn du dir die Erklärung noch mit Videos genauer anschauen möchtest, empfiehlt dir das Coaching-Team diese
+Videos: [Theoretische Erklärung](https://www.youtube.com/watch?v=SRJZ1XmqHfA), 
+[Anwendung in Java](https://www.youtube.com/watch?v=lfIUilgq4qo)
+
 ## Zweidimensionale Arrays (2D Array)
 Bis jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch, 
 um Listen-Artige Daten zu speichern. Zweidimensionale Arrays haben wie es der Name schon verrät eine zweite Dimension.
@@ -137,6 +142,9 @@ int output = zweiDArray[0][1]; // Wert auf position 0 1 in zweiDArray in output 
 System.out.println(output); // Ausgabe: 69
 ```
 
----
+### Lernvideo
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+[Video](https://www.youtube.com/watch?v=R0YzQPBusAg).
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 8](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-8---arrays) in den Labs.
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 9](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-9---arrays) in den Labs.

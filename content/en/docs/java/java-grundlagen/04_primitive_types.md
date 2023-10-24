@@ -119,3 +119,7 @@ if (done)
 ```
 
 Damit etwas ausgegeben werden würde, müsste die Variable `done` den Wert `true` haben.
+
+### Lernvideo
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+[Video](https://www.youtube.com/watch?v=NSeJhsah-hE).

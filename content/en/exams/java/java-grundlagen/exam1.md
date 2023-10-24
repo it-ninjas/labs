@@ -39,6 +39,8 @@ Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zur
 Schreibe eine Methode, welche alle Zahlen aus dem Array in positive Zahlen verwandelt und diese in ein neues Array schreibt.
 Die Methode liefert das neue Array zurück.
 
+_`Math.abs` darf für diese Aufgabe nicht verwendet werden._
+
 ## Aufgabe 5
 Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht mehr als den Wert 5 unterscheiden.
 Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück. Für die erste und die letzte Zahl im Array gibt es nur einen Nachbar.

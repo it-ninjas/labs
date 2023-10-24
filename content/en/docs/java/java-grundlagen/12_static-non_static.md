@@ -1,7 +1,7 @@
 ---
 title: "Statische und nicht-statische Elemente"
 linkTitle: "Static / Non-Static"
-weight: 11
+weight: 12
 description: >
   Modul #J1
 ---
