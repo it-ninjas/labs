@@ -23,9 +23,19 @@ Verwende hierfür Streams.
 
 Verwende hierfür Streams.
 
-##  Aufgabe 3 - Notenschnitt berechnen
+## Aufgabe 3 - Kalorien berechnen
+Mache dir Gedanken über das, was du gestern gegessen hast. Schreibe die einzelnen Gerichte/Snacks auf.
 
-![task1](/images/task.png) Schreibe ein Programm, dass den Notenschnitt über alle Fächer berechnet.
+Versuche für jede Mahlzeit die Anzahl Kalorien zu ermitteln. Speichere die Gerichte mit den Kalorien-Werten als String in einem Array oder einer Liste - z.B. `{"Grilled Chicken Breast (230 calories)", "Mixed Greens Salad (50 calories)", "Balsamic Vinaigrette Dressing (60 calories)", "500 ml Cola (200 calories)"}`.
+
+![task1](/images/task.png) Schreibe ein Programm, das mit Hilfe von Streams die Kalorien-Anzahl aus den Strings zusammenzählt.
+
+
+##  Aufgabe 4 - Notenschnitt berechnen
+
+![info](/images/hint.png) Löse diese Aufgabe erst nach dem du dich mit OOP vertraut gemacht hast.
+
+![task1](/images/task.png) Schreibe ein Programm, dass den Notenschnitt über Fächer berechnet.
 
 Erstelle hierfür eine Klasse, die eine Note und ein Fach speichert. Erstelle einen Stream, der Objekte dieser Klasse beinhaltet.
 

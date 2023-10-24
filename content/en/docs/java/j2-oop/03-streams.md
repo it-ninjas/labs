@@ -77,9 +77,7 @@ Stream<String> stream2 = stringList.stream();
 ```
 
 #### Unterschied zwischen generischen Streams und IntStreams
-Mit der Methode `Arrays.stream(T[] array)` bekommst du aus einem Array von einem bestimmten Typ `T` ein Stream vom Typ `Stream<T>` - wobei `T` für irgendeine Klasse wie `String` stehen kann.
-
-Ausnahmen gibt es aber für Zahlen:
+Wenn du beim Aufruf von `Arrays.stream(...)` ein Array vom Typ `int[]` oder `double[]` übergibst, erhältst du keinen gewöhnlichen Stream vom Typ `Stream` sondern einen optimierten Stream-Typ für den entsprechenden Datentyp:
 * ein `int`-Array resultiert in einem `IntStream`,
 * ein `double`-Array in einem `DoubleStream`, usw.
 
@@ -320,11 +318,11 @@ Die `collect(Collector collector)`-Methode ist auch eine terminale Operation auf
 Sie ermöglicht es, die Ergebnisse der Bearbeitung des Streams in einer neuen Collection (List, Map usw.) zu speichern.
 Dies ist nötig, da bei der Bearbeitung des Streams die ursprüngliche Elemente nicht geändert werden können.
 
-Der Parameter *collector* ist vom Typ [Collector](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Collector.html "Collector").
+Der Parameter *collector* ist vom Typ [Collector](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Collector.html "Collector").
 Die Aufgabe eines Collectors besteht darin, mehrere Input-Elemente in einem Result-Container zusammenzufassen.
 Zum Beispiel können die Elemente eines Streams in einer Liste "gespeichert" und zurückgeliefert werden.
 
-Um ein Collector zu erzeugen, wird oft die Klasse [Collectors](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Collectors.html "Collectors") aus dem *java.util.stream* Packet verwendet.
+Um ein Collector zu erzeugen, wird oft die Klasse [Collectors](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Collectors.html "Collectors") aus dem `java.util.stream`-Package verwendet.
 Diese beinhaltet mehrere öffentliche, statische Methode um Collectors unterschiedlicher Typen (List, Map usw.) erzeugen zu können.
 
 **Beispiel**
