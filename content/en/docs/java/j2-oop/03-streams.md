@@ -7,9 +7,9 @@ description: >
 ---
 
 ## Ziele
-* Ich weiss, was Streams sind.
+* Ich kann in eigenen Worten skizzieren, was Streams sind und wofür sie verwendet werden.
 * Ich kann Streams für die Iteration über Listen anwenden.
-* Ich kenne ein paar wichtige Methoden aus dem Stream Interface.
+* Ich kann mindestens eine intermediäre und eine terminale Stream-Operation aus dem Kopf nennen und beschreiben.
 
 ---
 
@@ -21,74 +21,38 @@ Mit dem Stream-API wurden mächtige Möglichkeiten zur Durchführung von Operati
 In diesem Teil wird erklärt, was `Stream`s sind und wie sie für Operationen auf Arrays und Listen eingesetzt werden können.
 
 ### Was ist ein Stream?
-Streams des Interface `java.util.stream.Stream<T>` stellen Ströme von Referenzen dar, die es erlauben, 
+Streams stellen Ströme von Referenzen dar, die es erlauben, 
 verkettete Operationen auf diesen Referenzen nacheinander oder parallel auszuführen.
-Die Daten, die durch die Referenzen repräsentiert werden, werden durch den Stream selbst nicht verändert.
 
-Ein Stream ist also keine Datenstruktur für sich. Er erhält sein Input aus andere Datenstrukturen wie 
-z.B. Arrays oder Listen und führt die gewünschte Operationen auf diesem Input aus,
+Ein Stream erhält seinen Input aus Datenstrukturen wie 
+Arrays oder Listen und führt die gewünschte Operationen auf diesem Input aus,
 ohne die ursprüngliche Datenstruktur zu verändern.
 
-Streams stellen Operationen zur Verfügung, welche in zwei Kategorien unterteilt werden können:
-- _Intermediäre Operationen_, welche am Ende der Verarbeitung in einem Stream resultieren (und somit eine weitere, verkettete Verarbeitung ermöglichen).
-- _Terminale Operationen_, welche am Ende der Verarbeitung einen Wert zurückliefern (und somit den Stream beenden)
-
-Ist ein Stream einmal beendet, so können keine weiteren Operationen auf ihm ausgeführt werden.
-
-Folgendes Bild illustriert die Arbeitsweise von Streams
-![Java Streams](../Streams.png "Java Streams")
-
-Nachfolgend ist ein Code in der `main(...)`-Methode aufgelistet, der aus einem Array
-1. alle Taschenwaffen (`fitsInPocket`) herausfiltert (_Intermediäre Operation_),
-2. dann bei diesen das Gewicht (`weight`) für den nächsten Schritt übernommen wird (_Intermediäre Operation_),
-3. damit dann die Summe (`sum()`) der Gewichte berechnet werden kann (_Terminale Operation_).
-
-Konzentriere dich bei diesem Code nur auf die 4 Zeilen unterhalb des Kommentars "Gewicht aller verdeckbaren Waffen".
-Die einzelnen Bestandteile werden in den weiteren Unterkapitel genauer beleuchtet:
+Nachfolgend ist ein Code aufgelistet, der aus einem Array mit den verschiedenen Punktzahlen von verschiedenen Studierenden aus
+einer Prüfung
+1. alle Punktzahlen aussortiert, die `0` oder kleiner sind (_Intermediäre Operation_ `filter(...)`),
+2. dann die Punktzahlen in Noten umrechnet (_Intermediäre Operation_ `mapToDouble(...)`),
+3. und dann den Durchschnitt über alle Studierenden berechnet (_Terminale Operation_ `average()`, zu Deutsch "Durchschnitt").
 
 ```java
 import java.util.Arrays;
 
-public class Weapon {
-    private String name;
-    private double weight;
-    private boolean fitsInPocket;
 
-    public Weapon(String name, double weight, boolean fitsInPocket) {
-        this.name = name;
-        this.weight = weight;
-        this.fitsInPocket = fitsInPocket;
-    }
+int[] scores = new int[] { 4, 19, 22, 23, 0, 12 };
+int maxScores = 24;
 
-    public static void main(String[] args) {
-        Weapon[] weapons = {
-                new Weapon("Shuriken", 0.02, true),
-                new Weapon("Ninjatō", 1.2, false),
-                new Weapon("Kusarigama", 2.5, false),
-                new Weapon("Kunai", 0.15, true),
-                new Weapon("Fukiya", 0.1, true),
-                new Weapon("Kyoketsu-Shoge", 1.8, false),
-                new Weapon("Kusari-fundo", 1.0, false),
-                new Weapon("Nekote", 0.5, true),
-                new Weapon("Makibishi", 0.03, true),
-                new Weapon("Tekko-Kagi", 0.8, true)
-        };
+var averageGrade = Arrays.stream(scores)
+        .filter(score -> score > 0)
+        .mapToDouble(score -> score * 5.0 / maxScores + 1.0)
+        .average();
 
-        // Gewicht aller verdeckbaren Waffen:
-        double weightOfPocketWeapon = Arrays.stream(weapons)
-                .filter(weapon -> weapon.fitsInPocket)
-                .mapToDouble(weapon -> weapon.weight)
-                .sum();
-
-        System.out.println("All pocket weapons together weight " + weightOfPocketWeapon + " kg.");
-    }
-
-}
+System.out.println("Average: " + averageGrade.getAsDouble());
 ```
 
+Die einzelnen Bestandteile werden in den weiteren Unterkapitel genauer beleuchtet und die sogenannten Lambda-Ausdrücke `score -> score > 0` und `score -> score * 5f / maxScores + 1f` werden später erläutert.
 
 ### Erzeugung von Streams
-Wie erwähnt, können Streams aus Arrays, Listen und anderen Collections oder aber auch aus Einzelobjekten erzeugt werden.
+Damit überhaupt mit Streams gearbeitet werden kann, muss zuerst ein Stream existieren bzw. erzeugt werden. Streams können aus Arrays, Listen und anderen Collections erzeugt werden.
 
 #### Erzeugung aus Elementes eines Arrays
 Aus den Elementen eines Arrays kann ein Stream mithilfe der Klasse `Arrays` aus dem `java.util`-Package wie folgt erzeugt werden:
@@ -100,7 +64,7 @@ String[] greeting = {"Hello", "Streams"};
 Stream<String> greetingStream = Arrays.stream(greeting); // Anhand der spitzigen Klammern wird ersichtlich, welche Objekttypen durch den Stream verarbeitet werden.
 ```
 
-#### Erzeugung aus Elementen einer Liste / eine Collection
+#### Erzeugung aus Elementen einer Liste
 Wenn eine Liste bereits vorhanden ist, kann die Methode `stream()` aufgerufen werden, um einen Stream 
 aus den Elementen der Liste zu erzeugen:
 ```java
@@ -121,7 +85,7 @@ Ausnahmen gibt es aber für Zahlen:
 
 An dieser Stelle könnte man sich fragen wieso. Aber die Antwort ist ziemlich klar:
 
-Ein `IntStream` besitzt mehr Methoden als ein `Stream<Integer>`. So kannst du auf dem Stream z.B. direkt eine Summe (`.sum()`) berechnen, statt selbst eine Summen-Funktion zu implementieren.
+Ein `IntStream` besitzt mehr Methoden als ein `Stream<Integer>`. So kannst du auf dem Stream z.B. direkt eine Summe (`.sum()`) oder Durchschnitt (`.average()`) berechnen, statt selbst diese Funktionen zu implementieren.
 
 Hast du z.B. ein `Stream<Integer>` und möchtest aber eine Summe berechnen, dann kannst du z.B. den `Stream<Integer>` mit der Methode `mapToInt(...)` in einen `IntStream` umwandeln:
 
@@ -136,35 +100,40 @@ System.out.println("Summe der Zahlen 1 bis 5: " + summe);
 
 Lasse dich von der "_Methodenreferenz_" `Integer::intValue` nicht verwirren - wird in einem der nächsten Unterkapitel erklärt. Diese wird hier angegeben, damit beim Stream klar ist, wie jeder einzelne `Integer` in einen `int` umgewandelt wird. In diesem Fall wird ein `Integer integer` wie folgt umgewandelt: `int neuerWert = integer.intValue()`.
 
-### Funktionale Interfaces
-Streams arbeiten mit sog. Lambda-Expressions oder Methodenreferenzen (diese werden im nächsten Abschnitten erläutert).
-Damit klar wird, was Lambda-Expressions sind, müssen wir zuerst funktionale Interfaces verstehen.
-
-Ein funktionales Interface (_functional interface_) ist ein Interface, welche eine einzige abstrakte Methode beinhaltet.
-Das heisst, solche Interfaces stellen eine einzige Funktionalität zur Verfügung.
-
-Vor Java 8 mussten funktionale Interfaces, wie alle andere Interfaces auch durch Klassen implementiert werden 
-oder es musste für sie eine innere, anonyme Klasse definiert werden.
-Seit Java 8 kann eine Lambda-Expression statt eine anonyme Klasse verwendet werden, um die einzige Methode des funktionalen Interfaces umzusetzen.
-
 ### Lambda Expressions
-Lambda Expressions (Lambda-Ausdrücke) wurden in Java 8 eingeführt, um vor allem folgende Funktionalität zur Verfügung zu stellen:
-- Funktionen als Argumente für Methoden zu ermöglichen.
-- Funktionen erstellen, welche zu keiner Klasse gehören.
-- Eine Lambda-Expression kann wie ein Objekt weitergereicht und erst später ausgeführt werden.
+Streams arbeiten mit sog. Lambda-Expressions oder Methodenreferenzen.
+Lambda Expressions (Lambda-Ausdrücke) wurden in Java 8 eingeführt, damit Funktionen als Argumente bei Methoden übergeben werden können.
+
 Da Lambda-Expressions oft in Streams verwendet werden, wird hier aufgezeigt, wie Lambdas aussehen und wie sie verwendet werden können.
 
 Lambda-Ausdrücke in Java sind quasi Methoden ohne Namen. Sie bestehen aus folgenden Elementen:
-- eine Liste von formalen Parametern. Mehrere Parameter werden durch ein Komma separiert und mit Klammern umrundet.
+- einer Liste von Parametern. Mehrere Parameter werden durch ein Komma separiert und mit Klammern umrundet.
 (keine Parameter werden mit leeren Klammern `()` dargestellt, einen Parameter muss nicht zwingend mit Klammern umrundet werden)
-- ein Pfeil-Token `->` 
-- ein Funktionsrumpf. Wenn der Funktionsrumpf mehrere Anweisungen lang ist, wird er mit geschweiften Klammern `{ ... }` umrundet.
+- einem Pfeil-Token `->`
+- und einem Funktionsrumpf. Wenn der Funktionsrumpf mehrere Anweisungen lang ist, wird er mit geschweiften Klammern `{ ... }` umrundet. Wenn keine geschweiften Klammern verwendet werden, dann ist der Ausdruck nach dem Pfeil-Token automatisch der Rückgabewert der Funktion (das `return` entfällt).
 
 ![Lambda Expressions](../lambda-expression.jpg "Lambda-Expressions")
 
-Im Gegensatz zu Methoden werden der Rückgabetyp und Exceptions nicht spezifiziert, sondern vom Compiler inferiert.
+Im Gegensatz zu Methoden werden der Rückgabetyp und Exceptions nicht spezifiziert, sondern vom Compiler "erraten".
+
+Im Beispiel mit den Prüfungsnoten haben wir mit `.mapToDouble(score -> score * 5.0 / maxScores + 1.0)` die einzelnen Punktzahlen in Noten umgerechnet (`map()`-Methoden werden später erklärt). Hierbei wurde der Lambda-Ausdruck `score -> score * 5.0 / maxScores + 1.0` verwendet. Dieser Lambda-Ausdruck ist eine Funktion (Methode), die beschreibt, wie jede Punktzahl in eine Note umgerechnet werden soll. Würden wir diesen Lambda-Ausdruck in eine Methode umschreiben, dann könnte diese so aussehen:
+
+```java
+private static double punkteZuNote(int score) {
+    return score * 5.0 / maxScores + 1.0;
+}
+```
+
+Der Lambda-Ausdruck `score -> score > 0` hingegen könnte als Methode so geschrieben werden:
+```java
+private static boolean isScoreGreaterThan0(int score) {
+    return score > 0;
+}
+```
 
 **Beispiele**
+
+Hier noch ein paar Beispiele, wie Lambda-Ausdrücke geschrieben werden können:
 
 ```java
 // keine Parameter
@@ -181,36 +150,12 @@ word -> System.out.printf("Ich habe einen Parameter erhalten, nämlich: %s", wor
   System.out.println("My name is " + name);
   System.out.println("I am " + age + "years old");
 }
-
-```
-
-Und hier ist noch ein Beispiel, wie du Lambda-Ausdrücke zusammen mit einem eigenen `FunctionalInterface` verwenden kannst:
-
-```java
-// So kannst du ein eigenes FunctionalInterface definieren:
-@FunctionalInterface  // Diese @-Angabe ist optional und darf auch weggelassen werden.
-interface Operator {
-    int calculate(int a, int b);
-}
-
-public static void main(String[] args) {
-    
-    // Lambda-Ausdrücke für Addieren und Multiplizieren:
-    Operator add = (a, b) -> a + b;
-    Operator multiply = (a, b) -> a * b;
-
-    int a = 3, b = 4;
-
-    // Die Funktion wird via Methodennamen aufgerufen, der im Interface spezifiziert wurde (calculate()):
-    System.out.println("Summe: " + add.calculate(a, b));
-    System.out.println("Produkt: " + multiply.calculate(a, b));
-}
 ```
 
 ### Method Reference
 Eine Methoden-Referenz ist die verkürzte Schreibweise einer Lambda-Expression, welche nur einen einzigen Methodenaufruf beinhaltet.
-Die generische Syntax für Methodenreferenz sieht wie folgt aus: Object::method.
-Wenn eine Methoden-Referenz verwendet wird, ist es nicht nötig, die Argumente für die Methode zu deklarieren.
+Die generische Syntax für Methodenreferenz sieht wie folgt aus: Klasse::methode.
+Bei Methoden-Referenzen werden die Argumente für die Methode nicht notiert.
 
 ```java
 // Lambda-Expression mit einem Methodenaufruf
@@ -219,12 +164,109 @@ Wenn eine Methoden-Referenz verwendet wird, ist es nicht nötig, die Argumente f
 // Method-Reference Syntax der obigen Lambda-Expression
 // Das Argument (word) muss nicht mitgegeben werden
 System.out::println
-
-
 ```
 
+Der wesentliche Vorteil von dieser Schreibweise ist, dass er kürzer ist. Lambda-Ausdrücke sind aber oft einfacher zu verstehen.
+
 ## Methodenausführung auf Streams
-### Die forEach() Methode
+Im Beispiel mit den Prüfungsnoten haben wir verschiedene Operationen auf dem Stream durchgeführt, die die einzelnen Werte entweder umrechnen oder am Schluss in einem einzigen Wert zusammenfasst (z.B. `average()`).
+Folglich stellen Streams Operationen zur Verfügung, welche in zwei Kategorien unterteilt werden können:
+- _Intermediäre Operationen_, welche am Ende der Verarbeitung in einem Stream resultieren (und somit eine weitere, verkettete Verarbeitung ermöglichen) wie z.B. `filter(...)` oder `map(...)`.
+- _Terminale Operationen_, welche am Ende der Verarbeitung einen Wert zurückliefern (und somit den Stream beenden) wie `sum()` oder `average()`.
+
+Folgendes Bild illustriert die Arbeitsweise von Streams
+![Java Streams](../Streams.png "Java Streams")
+
+Nun werden einige Operationen auf Streams vorgestellt:
+* Intermediäre Operationen:
+    * `filter(...)` sortiert alle Elemente aus, die NICHT die übergebenen Bedingung erfüllen.
+    * `map(...)`, `mapToInt(...)` und `mapToDouble(...)` wandeln die einzelnen Stream-Elemente in andere Werte um (bilden diese ab auf andere).
+    * `sorted()` sortiert die einzelnen Werte.
+* Terminale Operationen:
+    * Mit `forEach(...)` kann für jedes Element etwas gemacht werden (wie jedes Element ausgeben).
+    * `collect(...)` und `toArray(...)` füllen die einzelnen Elemente in Listen oder Arrays ab.
+
+### Intermediäre Operationen
+#### Die `filter(...)`-Methode
+Die `filter(...)`-Methode ist eine intermediäre Operation, die Elemente in einem Stream auf diejenigen beschränkt, die einer bestimmten Bedingung entsprechen. Diese Bedingung wird als Lambda-Ausdruck ausgedrückt, der `true` zurückgibt, wenn das Element im Stream bleiben soll. Gibt er `false` zurück, wird das Element aussortiert.
+
+Im folgenden Beispiel werden alle ungeraden Zahlen aus einem Stream entfernt und dann alle verbleibenden Elemente ausgegeben:
+```java
+IntStream.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15)
+        .filter(x -> x % 2 == 0)
+        .forEach(System.out::println);
+```
+
+#### Die `map(...)`- und `mapToInt(...)`-Methode
+Die `map(...)`- und `mapToInt(...)`-Methode gehört zu den intermediären Operationen eines Streams.
+
+Die Methode liefert einen Stream zurück, worin jedes einzelne Element durch den Rückgabewert der übergebenen Funktion ersetzt wurde.
+
+Die `map(...)`-Methode wird oft verwendet, um Daten umzuwandeln oder den Stream auf ein Feld/Methode eines Objekts zu fokussieren.
+
+Hier ein Beispiel, in welchem Zahlen durch ihr Quadrat ersetzt werden:
+
+```java
+Stream.of(1,2,3,4).map(x -> x * x).forEach(System.out::println);
+```
+
+Und hier ein Beispiel, wo uns nur die Länge der Strings interessiert:
+
+```java
+Stream.of("Ein", "Ninja", "bewegt", "sich", "lautlos", "wie", "der", "Wind", "und", "unsichtbar", "wie", "der", "Schatten")
+                .map(word -> word.length())
+                .forEach(System.out::println);
+```
+
+Im zweiten Beispiel könnte unser Ziel sein, die durchschnittliche Länge der Wörter zu berechnen. Wenn man mathematische Operationen mit Streams durchführen möchte, dann ist es oft einfacher, den Stream in einen für den mathematischen Typ spezifischen Stream wie `IntStream` zu "verwandeln", damit Funktionen wie `sum()` und `average()` (Durchschnitt) nicht manuell implementiert werden müssen. Hierfür kannst du statt der `map(...)`- die `mapToInt(...)`-Methode (oder `mapToDouble` und `mapToSingle`) verwenden:
+
+```java
+System.out.println(
+        "Durchschnittliche Länge eines Wortes: " +
+
+
+        Stream.of("Ein", "Ninja", "bewegt", "sich", "lautlos", "wie", "der", "Wind", "und", "unsichtbar", "wie", "der", "Schatten")
+                .mapToInt(word -> word.length())
+                .average()
+);
+```
+
+#### Die sorted() Methode
+Die `sorted()`-Methode gehört zu den intermediären Operationen eines Streams.
+
+Die Methode liefert ein Stream zurück, worin die Elemente im Stream nach ihrer natürlichen Reihenfolge (natural order) sortiert sind.
+
+Die Syntax der Methode ist wie folgt: `Stream<T> sorted()`
+wobei `T` der Typ der Elemente innerhalb des Streams ist
+
+**Beispiel mit einem Array**
+
+```java
+// Erstelle ein Array mit Strings
+String[] greeting = {"C", "A", "B"};
+
+// Sortiere die Strings nach ihrer natürlichen Reihenfolge (alphabetisch) und 
+// gib die sortierten Elementen in der Console wieder aus
+Arrays.stream(greeting)
+      .sorted()
+      .forEach(System.out::println);
+```
+
+**Beispiel mit einer Liste**
+
+```java
+// Erstelle eine Liste mit Zahlen
+List<Integer> list = Arrays.asList(-9, -18, 0, 25, 4);
+
+// Sortiere die Zahlen nach ihrer natürlichen Reihenfolge (numerisch sortiert) und 
+// gib die sortierten Elementen in der Console wieder aus
+list.stream()
+    .sorted()
+    .forEach(System.out::println);
+```
+
+### Terminale Operationen
+#### Die forEach() Methode
 Die *forEach(Consumer action)* Methode gehört zu den terminalen Operationen eines Streams.
 
 Der Parameter `action` ist vom Typ `Consumer` (ist ein `FunctionalInterface`). Dieser Typ repräsentiert eine Operation (eine Funktion),
@@ -273,75 +315,7 @@ greetingList.forEach(System.out::println);
 
 ```
 
-### Die sorted() Methode
-Die `sorted()`-Methode gehört zu den intermediären Operationen eines Streams.
-
-Die Methode liefert ein Stream zurück, worin die Elemente im Stream nach ihrer natürlichen Reihenfolge (natural order) sortiert sind.
-
-Die Syntax der Methode ist wie folgt: `Stream<T> sorted()`
-wobei `T` der Typ der Elemente innerhalb des Streams ist
-
-**Beispiel mit einem Array**
-
-```java
-// Erstelle ein Array mit Strings
-String[] greeting = {"C", "A", "B"};
-
-// Sortiere die Strings nach ihrer natürlichen Reihenfolge (alphabetisch) und 
-// gib die sortierten Elementen in der Console wieder aus
-Arrays.stream(greeting)
-      .sorted()
-      .forEach(System.out::println);
-```
-
-**Beispiel mit einer Liste**
-
-```java
-// Erstelle eine Liste mit Zahlen
-List<Integer> list = Arrays.asList(-9, -18, 0, 25, 4);
-
-// Sortiere die Zahlen nach ihrer natürlichen Reihenfolge (numerisch sortiert) und 
-// gib die sortierten Elementen in der Console wieder aus
-list.stream()
-    .sorted()
-    .forEach(System.out::println);
-```
-
-### Die `map(...)`- und `mapToInt(...)`-Methode
-Die `map(...)`- und `mapToInt(...)`-Methode gehört zu den intermediären Operationen eines Streams.
-
-Die Methode liefert einen Stream zurück, worin jedes einzelne Element durch den Rückgabewert der übergebenen Funktion ersetzt wurde.
-
-Die `map(...)`-Methode wird oft verwendet, um Daten umzuwandeln oder den Stream auf ein Feld/Methode eines Objekts zu fokussieren.
-
-Hier ein Beispiel, in welchem Zahlen durch ihr Quadrat ersetzt werden:
-
-```java
-Stream.of(1,2,3,4).map(x -> x * x).forEach(System.out::println);
-```
-
-Und hier ein Beispiel, wo uns nur die Länge der Strings interessiert:
-
-```java
-Stream.of("Ein", "Ninja", "bewegt", "sich", "lautlos", "wie", "der", "Wind", "und", "unsichtbar", "wie", "der", "Schatten")
-                .map(word -> word.length())
-                .forEach(System.out::println);
-```
-
-Im zweiten Beispiel könnte unser Ziel sein, die durchschnittliche Länge der Wörter zu berechnen. Wenn man mathematische Operationen mit Streams durchführen möchte, dann ist es oft einfacher, den Stream in einen für den mathematischen Typ spezifischen Stream wie `IntStream` zu "verwandeln", damit Funktionen wie `sum()` und `average()` (Durchschnitt) nicht manuell implementiert werden müssen. Hierfür kannst du statt der `map(...)`- die `mapToInt(...)`-Methode (oder `mapToDouble` und `mapToSingle`) verwenden:
-
-```java
-System.out.println(
-        "Durchschnittliche Länge eines Wortes: " +
-
-
-        Stream.of("Ein", "Ninja", "bewegt", "sich", "lautlos", "wie", "der", "Wind", "und", "unsichtbar", "wie", "der", "Schatten")
-                .mapToInt(word -> word.length())
-                .average()
-);
-```
-
-### Die `collect()`-Methode
+#### Die `collect()`-Methode
 Die `collect(Collector collector)`-Methode ist auch eine terminale Operation auf einem Stream.
 Sie ermöglicht es, die Ergebnisse der Bearbeitung des Streams in einer neuen Collection (List, Map usw.) zu speichern.
 Dies ist nötig, da bei der Bearbeitung des Streams die ursprüngliche Elemente nicht geändert werden können.
@@ -371,7 +345,7 @@ unsortedList.forEach(System.out::println);
 sortedList.forEach(System.out::println);
 ```
 
-### Die `toArray(...)`-Methode
+#### Die `toArray(...)`-Methode
 Mit der `collect(...)`-Methode kannst du den Stream in eine Liste umwandeln. Wenn du den Stream aber in ein Array umwandeln möchtest, dann hilft dir die `toArray(...)`-Methode:
 
 ```java
