@@ -2,7 +2,7 @@
 title: "Promises"
 type: docs
 linkTitle: "Promises"
-weight: 15
+weight: 16
 date: 2022-04-19
 description: >
   Modul #F4 - JavaScript - Promises.

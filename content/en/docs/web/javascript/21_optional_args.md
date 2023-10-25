@@ -2,7 +2,7 @@
 title: "ES6: Optionale Argumente in Methoden und Konstruktoren"
 type: docs
 linkTitle: "ES6: Optionale Argumente"
-weight: 20
+weight: 21
 date: 2023-01-09
 description: >
   Modul #F4 - JavaScript - Funktionen mit optionalen Argumenten

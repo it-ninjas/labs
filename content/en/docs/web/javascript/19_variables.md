@@ -2,7 +2,7 @@
 title: "ES6: Variablen deklarieren"
 type: docs
 linkTitle: "ES6: Variablen deklarieren"
-weight: 18
+weight: 19
 date: 2023-01-09
 description: >
   Modul #F4 - JavaScript - Seit ES2015 (ES6) gibt es in JavaScript weitere neue Möglichkeiten, wie Variablen definiert werden können. Hier schauen wir uns einige davon an.

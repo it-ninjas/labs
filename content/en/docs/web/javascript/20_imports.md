@@ -2,7 +2,7 @@
 title: "ES6: Importe"
 type: docs
 linkTitle: "ES6: Importe"
-weight: 19
+weight: 20
 date: 2023-01-09
 description: >
   Modul #F4 - JavaScript - Von anderen JavaScript-Dateien importieren
