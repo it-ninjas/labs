@@ -6,7 +6,7 @@ description: >
   Modul #J11 - Testing von REST-Schnittstellen
 ---
 
-## Warum testet man REST-Schnittstellen
+## Warum werden REST-Schnittstellen getestet?
 Das Testen von REST-Schnittstellen trägt dazu bei, die Qualität, Sicherheit und Leistung von APIs zu gewährleisten, sodass sie zuverlässig und effektiv genutzt werden können.
 
 
