@@ -62,10 +62,10 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 ```
-Falls diese Route so in der Router Konfiguration festgelegt wird, wird der Router den Component `ContactListComponent` rendern, sobald die URL des Browsers `/contacts` beinhaltet.
+Falls diese Route so in der Router Konfiguration festgelegt wird, wird der Router den Component `TriumphsComponent` rendern, sobald die URL des Browsers `/triumph` beinhaltet.
 
 
-### Standart Route
+### Standard Route
 Der Pfad kann auch leer sein. Dies gibt den Standardpfad einer Applikation an und ist normalerweise auch der Start der Applikation.
 
 Wichtig ist das die Route mit dem leeren Pfad vor anderen Routen definiert ist, da Angular die Routen in der Reihenfolge überprüft, in der sie definiert sind. Dadurch wird sichergestellt, dass die Standardroute für den leeren Pfad richtig erkannt wird.

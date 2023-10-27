@@ -97,16 +97,17 @@ Dieser Operator ist besonders nützlich, wenn man sicherstellen muss, dass besti
 Zu beachten gilt jedoch, dass der Operator blockierend ist und erst dann zur nächsten Phase der Verarbeitung übergeht, wenn das vorherige Observable abgeschlossen wurde.
 
 ```typescript
-import { forkJoin, of } from 'rxjs';
+import { concat, of } from 'rxjs';
 
 const source1 = of('Hello');
 const source2 = of('Dragon Warrior!');
 
-forkJoin([source1, source2]).subscribe(([value1, value2]) => {
-  console.log(value1 + ' ' + value2);
+concat(source1, source2).subscribe((value) => {
+    console.log(value);
 });
 
-// "Hello Dragon Warrior!"
+// "Hello" 
+// "Dragon Warrior!"
 ```
 
 ### merge

@@ -36,8 +36,8 @@ Die `Intercept` Methode wandelt jeden Request in Observables um, die später dur
 Für unsere Implementierung ist es also ganz einfach: Wir nehmen den Request entgegen, protokollieren die URL und rufen `next.handle()` auf, um den Request an den Server zu senden, ohne Änderungen daran vorzunehmen.
 
 ## Interceptors Providen
-Da Interceptors Dependencies des HttpClient sind, müssen wir sie den Providern im selben Injektor hinzufügen, der den HttpClient bereitstellt.
-Angenommen, wir haben unser `HttpClientModule` in das AppModule importiert, müssen wir die Interceptors auch dort zu den Providern hinzufügen.
+Da die Interceptors eine Dependency des HttpClients sind, müssen diese als Provider im gleichen Injektor wie der HttpClient bereitgestellt werden.
+Angenommen, wir haben unser `HttpClientModule` in das AppModule importiert, müssen wir die Interceptors hier zu den Providern hinzufügen.
 
 ```typescript
 //...
