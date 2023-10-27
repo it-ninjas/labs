@@ -53,7 +53,7 @@ herausfinden. Teilweise wurde eine Funktion, wie das Bearbeiten einer Note, nur 
 beim Endprodukt aber logischerweise überall umgesetzt sein. Das Design wurde für Desktop, Tablet und Mobile erstellt, 
 die Anwendung sollte sich dementsprechend wie im Design anpassen.
 
-Hier der Link zum Design: [Figma Design - Notenverwaltung](https://www.figma.com/proto/CxwGOD9wyGZ1pDucOdusND/Notenverwaltung?type=design&node-id=1-4&viewport=1176%2C601%2C0.26&t=VG5c1EFhLub1VCVP-1&scaling=contain&starting-point-node-id=1%3A4&show-proto-sidebar=1&mode=design)
+Hier der Link zum Design: [Figma Design - Notenverwaltung](https://www.figma.com/proto/CxwGOD9wyGZ1pDucOdusND/Notenverwaltung?type=design&node-id=1-3&scaling=contain&page-id=0%3A1&starting-point-node-id=1%3A3&show-proto-sidebar=1)
 
 [//]: # (INFO!!!!: Link zum Bearbeiten des Designs, falls eine Änderung nötig ist: https://www.figma.com/community/file/1265244364247644334)
 
