@@ -24,10 +24,9 @@ Bei diesem Lab modellierst du das Turnier von der Fussball-WM 1954 in der Schwei
 Deine Klassen sollen folgendes abbilden:
 
 * In diesem Turnier (Competition) spielen die Mannschaften (Team) gegeneinander. 
-* Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), Play-Off, Viertel- (QUARTER), Halbfinale (SEMI) oder Finale.
+* Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), PLAYOFF, Viertel- (QUARTER_FINAL), Halbfinale (SEMI_FINAL) oder FINAL.
 * Bei jedem Spiel (Game) gibt es immer eine Heim- (home) und Gast-Mannschaft (visiting/away team).
 * Bei jedem Spiel wird festgehalten, wie viele Tore (goals) welche Mannschaft (home oder visiting) geschossen hat. Zudem wird festgehalten, wo (location) das Spiel stattgefunden hat.
-* Über die Mannschaften (Team) wissen wir, wie sie heissen (name), z.B. "Schweiz".
 
 
 ### Was soll die Anwendung können?
@@ -64,4 +63,15 @@ Ziel dieser Aufgabe ist, dass du dich nur aufs Klassen-Design im Code konzentrie
 #### Aufgabe 3 - Methoden umsetzen
 ![task1](/images/task.png) Setze nun die Methoden korrekt um.
 
-Lade hierfür die Daten aus der <a href="../results.txt" download>`results.txt`</a>-Datei. Du sollst die Daten nicht via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine `.java`-Datei hineinschreiben. Wenn dir dein Vorgehen ineffizient vorkommt, dann finde heraus/frage nach, wie du das schneller machen kannst, z.B. indem du mehrere Zeilen gleichzeitig bearbeitest.
+Verwende zur Demonstration die Daten aus der <a href="../results.txt" download>`results.txt`</a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine `.java`-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der `results.txt`-Datei steht
+
+```
+# Gruppe 1				
+Frankreich	    Jugoslawien	        0:1 
+```
+
+dann kannst du das wie folgt direkt in deine Java-Datei schreiben:
+
+```java
+new Game(FRANCE, YUGOSLAVIA, 0, 1)
+```
