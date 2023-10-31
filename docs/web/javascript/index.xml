@@ -3008,7 +3008,68 @@ Der Hoisting-Prozess ist ein Konzept, bei dem Variablen- und Funktions&lt;strong
 &lt;/div>
 &lt;/div>&lt;h3 id="keys-und-entries">keys() und entries()&lt;/h3>
 &lt;p>&lt;code>keys()&lt;/code> gibt einen Iterator zurück, der dieselben Value wie der &lt;code>values()&lt;/code>-Iterator zurück gibt. Der &lt;code>keys()&lt;/code>-Iterator ist jedoch nur aus Gründen der Kompatibilität mit der Map-Datenstruktur verfügbar und existiert für Sets nur, weil Sets auf der gleichen Grundlage wie Maps implementiert sind.&lt;/p>
-&lt;p>Dasselbe gilt auch für die &lt;code>entries()&lt;/code>-Methode.&lt;/p></description></item><item><title>Docs: Web Request</title><link>/docs/web/javascript/14_js_web_request/</link><pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/14_js_web_request/</guid><description>
+&lt;p>Dasselbe gilt auch für die &lt;code>entries()&lt;/code>-Methode.&lt;/p></description></item><item><title>Docs: JSON</title><link>/docs/web/javascript/14_js_json/</link><pubDate>Wed, 25 Oct 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/14_js_json/</guid><description>
+&lt;h1 id="json-javascript-object-notation">JSON (JavaScript Object Notation)&lt;/h1>
+&lt;p>JSON ist ein weit verbreitetes Datenformat zur Repräsentation strukturierter Informationen. Es basiert auf einer
+einfachen Syntax, die sowohl von Menschen als auch von Maschinen leicht verstanden werden kann. JSON-Daten bestehen
+aus Schlüssel-Wert-Paaren und geordneten Listen von Werten. Hier ist eine grundlegende Übersicht der JSON-Syntax:&lt;/p>
+&lt;h2 id="schlüssel-wert-paare">Schlüssel-Wert-Paare&lt;/h2>
+&lt;p>Ein JSON-Objekt besteht aus einer Sammlung von Schlüssel-Wert-Paaren. Ein Schlüssel ist eine Zeichenfolge (String),
+gefolgt von einem Doppelpunkt und einem zugehörigen Wert. Die Paare sind durch Kommas getrennt und in geschweiften
+Klammern eingeschlossen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
+&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;John Doe&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;age&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">30&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;city&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;New York&amp;#34;&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="geordnete-listen">Geordnete Listen&lt;/h2>
+&lt;p>In JSON können auch geordnete Listen von Werten dargestellt werden. Diese Listen sind durch eckige Klammern
+gekennzeichnet und die Werte sind durch Kommas getrennt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
+&lt;span style="color:#f92672">&amp;#34;fruits&amp;#34;&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;apple&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;banana&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;orange&amp;#34;&lt;/span>]
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="beispiel">Beispiel&lt;/h2>
+&lt;p>Hier ist ein einfaches Beispiel, das ein JSON-Objekt darstellt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
+&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Alice&amp;#34;&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;age&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">25&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;isStudent&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;grades&amp;#34;&lt;/span>: [&lt;span style="color:#ae81ff">95&lt;/span>, &lt;span style="color:#ae81ff">89&lt;/span>, &lt;span style="color:#ae81ff">78&lt;/span>]
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>JSON wird häufig in der Webentwicklung, APIs und Datenaustausch verwendet, da es leicht zu verarbeiten ist. Es ist eine
+effektive Möglichkeit, Daten in einer strukturierten Form zu speichern und zwischen verschiedenen Systemen auszutauschen.&lt;/p></description></item><item><title>Docs: Web Request</title><link>/docs/web/javascript/15_js_web_request/</link><pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/15_js_web_request/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst die man Web-Request machen kann und die Antworten weiterverwendet.&lt;/li>
@@ -3276,7 +3337,7 @@ Zu beachten ist, dass &lt;code>body&lt;/code> im unteren Beispiel als &lt;code>R
 &lt;/div>&lt;p>Ganz generell: Bei der Verwendung von &lt;code>fetch()&lt;/code> kann man darüber philosophieren, ob man &lt;code>fetch()&lt;/code> überhaupt in einen &lt;code>try&lt;/code>-&lt;code>catch&lt;/code>-Block schmeissen soll. In den meisten Fällen reicht es vollkommen aus, die &lt;code>response&lt;/code> auf den Status-Code zu überprüfen. In Frameworks wie Angular wird oft auf einen &lt;code>try&lt;/code>-&lt;code>catch&lt;/code>-Block verzichtet, da das Framework einen &amp;ldquo;globalen Exception-Handler&amp;rdquo; besitzt, der den User dann über den Fehler informieren würde.&lt;/p>
 &lt;p>&lt;img src="/images/hint.png" alt="asset"> Hierzu findest du &lt;a href="../../../../labs/web/html_css/03_javascript">zwei Aufgaben im Lab&lt;/a>.&lt;/p>
 &lt;h3 id="früher-war-alles-besser">Früher war alles besser?&lt;/h3>
-&lt;p>Die &lt;code>fetch&lt;/code>-Funktion hat Webrequest stark vereinfacht. Früher durftest du dich mit XML HTTP Requests herumschlagen. Aber siehe selbst: &lt;a href="https://www.w3schools.com/xml/xml_http.asp">https://www.w3schools.com/xml/xml_http.asp&lt;/a>&lt;/p></description></item><item><title>Docs: Promises</title><link>/docs/web/javascript/15_js_async/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/15_js_async/</guid><description>
+&lt;p>Die &lt;code>fetch&lt;/code>-Funktion hat Webrequest stark vereinfacht. Früher durftest du dich mit XML HTTP Requests herumschlagen. Aber siehe selbst: &lt;a href="https://www.w3schools.com/xml/xml_http.asp">https://www.w3schools.com/xml/xml_http.asp&lt;/a>&lt;/p></description></item><item><title>Docs: Promises</title><link>/docs/web/javascript/16_js_async/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/16_js_async/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was Promises sind und wozu sie verwendet werden.&lt;/li>
@@ -3540,7 +3601,7 @@ Zu beachten ist, dass &lt;code>body&lt;/code> im unteren Beispiel als &lt;code>R
 &lt;/span>&lt;span style="color:#75715e">// &amp;#39;success&amp;#39;
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Timeouts und Intervalle</title><link>/docs/web/javascript/16_js_timeout_and_interval/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/16_js_timeout_and_interval/</guid><description>
+&lt;/div></description></item><item><title>Docs: Timeouts und Intervalle</title><link>/docs/web/javascript/17_js_timeout_and_interval/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/17_js_timeout_and_interval/</guid><description>
 &lt;h2 id="code-verzögert-ausführen-settimeout">Code verzögert ausführen: setTimeout(&amp;hellip;)&lt;/h2>
 &lt;p>Manchmal muss eine Aktion verzögert ausgeführt werden. Dies kannst du ganz einfach mit der Funktion &lt;code>setTimeout(callback, time)&lt;/code> realisieren:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -3584,7 +3645,7 @@ Zu beachten ist, dass &lt;code>body&lt;/code> im unteren Beispiel als &lt;code>R
 &lt;span style="color:#a6e22e">clearInterval&lt;/span>(&lt;span style="color:#a6e22e">intervalId&lt;/span>);
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="/images/hint.png" alt="asset"> Hierzu findest du eine &lt;a href="../../../../labs/web/html_css/03_javascript">Aufgabe im Lab&lt;/a>.&lt;/p></description></item><item><title>Docs: Prototyping und Klassen</title><link>/docs/web/javascript/17_js_prototyping_class_in_js/</link><pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/17_js_prototyping_class_in_js/</guid><description>
+&lt;/div>&lt;p>&lt;img src="/images/hint.png" alt="asset"> Hierzu findest du eine &lt;a href="../../../../labs/web/html_css/03_javascript">Aufgabe im Lab&lt;/a>.&lt;/p></description></item><item><title>Docs: Prototyping und Klassen</title><link>/docs/web/javascript/18_js_prototyping_class_in_js/</link><pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/18_js_prototyping_class_in_js/</guid><description>
 &lt;h2 id="javascript-ist-prototyp-basierende-programmiersprache">JavaScript ist Prototyp-basierende Programmiersprache&lt;/h2>
 &lt;p>JavaScript ist eine prototype-basierte Programmiersprache, was bedeutet, dass die Vererbung und die Erstellung von Objekten auf Prototypen basieren.&lt;/p>
 &lt;p>Ein Prototyp ist ein vordefiniertes Objekt, das als Vorlage für die Erstellung neuer Objekte dient. Wenn ein neues Objekt erstellt wird, erbt es automatisch Eigenschaften und Methoden von seinem Prototypen.&lt;/p>
@@ -3848,7 +3909,7 @@ Zu beachten ist, dass &lt;code>body&lt;/code> im unteren Beispiel als &lt;code>R
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person&lt;/span> &lt;span style="color:#66d9ef">instanceof&lt;/span> &lt;span style="color:#a6e22e">Student&lt;/span>) &lt;span style="color:#75715e">// false
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: ES6: Variablen deklarieren</title><link>/docs/web/javascript/18_variables/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/18_variables/</guid><description>
+&lt;/div></description></item><item><title>Docs: ES6: Variablen deklarieren</title><link>/docs/web/javascript/19_variables/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/19_variables/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, wie du Variablen deklarierst.&lt;/li>
@@ -4262,7 +4323,7 @@ In &lt;code>Java&lt;/code> gilt der Block Scope immer.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;/details></description></item><item><title>Docs: ES6: Importe</title><link>/docs/web/javascript/19_imports/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/19_imports/</guid><description>
+&lt;/details></description></item><item><title>Docs: ES6: Importe</title><link>/docs/web/javascript/20_imports/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/20_imports/</guid><description>
 &lt;h2 id="motivation">Motivation&lt;/h2>
 &lt;p>Seit ES2015 (ES6) gibt es in JavaScript die Möglichkeit, Exporte aus anderen JavaScript-Dateien zu importieren.&lt;/p>
 &lt;h2 id="ziele">Ziele&lt;/h2>
@@ -4405,7 +4466,7 @@ In &lt;code>Java&lt;/code> gilt der Block Scope immer.&lt;/p>
 &lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wie du hier sehen kannst, können wir den &lt;code>default&lt;/code>-Export mit irgendeinem Namen importieren, der &lt;strong>nicht&lt;/strong> mit dem Namen in der Export-Datei übereinstimmen muss.&lt;/p></description></item><item><title>Docs: ES6: Optionale Argumente in Methoden und Konstruktoren</title><link>/docs/web/javascript/20_optional_args/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/20_optional_args/</guid><description>
+&lt;/div>&lt;p>Wie du hier sehen kannst, können wir den &lt;code>default&lt;/code>-Export mit irgendeinem Namen importieren, der &lt;strong>nicht&lt;/strong> mit dem Namen in der Export-Datei übereinstimmen muss.&lt;/p></description></item><item><title>Docs: ES6: Optionale Argumente in Methoden und Konstruktoren</title><link>/docs/web/javascript/21_optional_args/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/21_optional_args/</guid><description>
 &lt;h2 id="motivation">Motivation&lt;/h2>
 &lt;p>Seit ES2015 (ES6) gibt es in JavaScript die Möglichkeit, den Parametern von Methoden einen Default-Wert zu geben.&lt;/p>
 &lt;h2 id="ziele">Ziele&lt;/h2>
@@ -4500,7 +4561,7 @@ In &lt;code>Java&lt;/code> gilt der Block Scope immer.&lt;/p>
 &lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Steven Crowder&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>, &lt;span style="color:#a6e22e">gender&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;male&amp;#39;&lt;/span>, &lt;span style="color:#a6e22e">lovesJavaScript&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>}
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: JSDoc</title><link>/docs/web/javascript/21_jsdoc/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/21_jsdoc/</guid><description>
+&lt;/div></description></item><item><title>Docs: JSDoc</title><link>/docs/web/javascript/22_jsdoc/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/22_jsdoc/</guid><description>
 &lt;h2 id="motivation">Motivation&lt;/h2>
 &lt;p>Wenn du existierende Funktionen benutzen möchtest, dann wäre es praktisch, wenn deine IDE dir mitteilt, was die Funktion tut und welche Typen die Parameter haben. Dies kannst du mit JSDoc erreichen.&lt;/p>
 &lt;h2 id="ziele">Ziele&lt;/h2>
@@ -4607,7 +4668,7 @@ In &lt;code>Java&lt;/code> gilt der Block Scope immer.&lt;/p>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Dank dieser Konfiguration würde dir VS Code nun einen Fehler anzeigen, wenn du statt einem &lt;code>string&lt;/code> eine &lt;code>number&lt;/code> übergeben würdest:&lt;/p>
-&lt;p>&lt;img src="../images/vscode-jsdoc-error.jpg" alt="VS Code zeigt nun an, dass du einen string angeben solltest anstatt einer number" title="checkJs in VS Code">&lt;/p></description></item><item><title>Docs: Advanced console.log(...)'s</title><link>/docs/web/javascript/22_console.logs/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/22_console.logs/</guid><description>
+&lt;p>&lt;img src="../images/vscode-jsdoc-error.jpg" alt="VS Code zeigt nun an, dass du einen string angeben solltest anstatt einer number" title="checkJs in VS Code">&lt;/p></description></item><item><title>Docs: Advanced console.log(...)'s</title><link>/docs/web/javascript/23_console.logs/</link><pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/23_console.logs/</guid><description>
 &lt;h2 id="motivation">Motivation&lt;/h2>
 &lt;p>Die JavaScript-Konsole bietet viele hilfreiche Tools an, um Text zu loggen. Diese Möglichkeiten schauen wir uns hier an.&lt;/p>
 &lt;h2 id="ziele">Ziele&lt;/h2>
@@ -4726,7 +4787,7 @@ In &lt;code>Java&lt;/code> gilt der Block Scope immer.&lt;/p>
 }
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Debugging</title><link>/docs/web/javascript/23_debugging/</link><pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/23_debugging/</guid><description>
+&lt;/div></description></item><item><title>Docs: Debugging</title><link>/docs/web/javascript/24_debugging/</link><pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate><guid>/docs/web/javascript/24_debugging/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, wie du in VSCode JavaScript Code debuggen kannst.&lt;/li>

@@ -220,7 +220,7 @@ Der Typ folgt jeweils nach einem Doppelpunkt hinter dem Variablennamen:&lt;/p>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Der Compiler überprüft dann die Typen während des Kompilierens und meldet allfällige Typfehler.&lt;/p>
-&lt;p>Die verschiedenen Grundtypen von TypeScript sind &lt;a href="https://www.typescriptlang.org/docs/handbook/basic-types.html">hier&lt;/a> ersichtlich.&lt;/p>
+&lt;p>Die verschiedenen Grundtypen von TypeScript sind &lt;a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html">hier&lt;/a> ersichtlich.&lt;/p>
 &lt;h3 id="type-any">Type Any&lt;/h3>
 &lt;p>Der Typ &lt;code>any&lt;/code> ein spezieller Typ, der es ermöglicht Variablen, Funktionen und andere Objekte ohne explizite Typisierung zu deklarieren. Wenn eine Variable oder ein Objekt mit &lt;code>any&lt;/code> deklariert wird, bedeutet dies, dass der Typ nicht eingeschränkt ist und dass alle Arten von Werten diesem Typ zugewiesen werden können, ohne dass eine Typenüberprüfung durchgeführt wird. Bedeutet das man so die gesamte Typisierung umgehen kann und dann wie bei JavaScript Typfehler erst während der Laufzeit sehen würde.&lt;/p>
 &lt;p>Beispiel mit &lt;code>any&lt;/code>, welches zu Laufzeitfehler führt:&lt;/p>
@@ -915,126 +915,7 @@ Die Klasse besitzt zwei Funktionen, eine um die email zu validieren (mit dem For
 &lt;h2 id="aufgabe-6">Aufgabe 6&lt;/h2>
 &lt;p>Implementiere eine &lt;code>ShoppingCart&lt;/code> Klasse, welche den ShoppingCart eines Onlineshops repräsentieren soll.
 Die Klasse sollte Funktionen für das hinzufügen von Produkten, dem Errechnen des gesamten Preises und für das Anzeigen der sich im ShoppingCart befindenden Produkten haben.
-Ein Produkt sollte einen &lt;code>name&lt;/code> und &lt;code>price&lt;/code> haben.&lt;/p></description></item><item><title>Labs: Annotationen - Aufgaben</title><link>/labs/java/java-reflection-and-annotations/01_annotations_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-reflection-and-annotations/01_annotations_exercises/</guid><description>
-&lt;p>Die folgenden Aufgaben dienen der Vertiefung der beiden Themen Reflection API und Annotations.&lt;/p>
-&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>Implementiere eine eigene Annotation. Die Annotation soll der Dokumentation einer Klasse dienen und
-die folgenden Eigenschaften aufweisen:&lt;/p>
-&lt;ul>
-&lt;li>Verfügbar zur Compile Time&lt;/li>
-&lt;li>Verfügbar auf Klassen&lt;/li>
-&lt;li>Attribut zur Aufnahme von einem oder mehreren Autoren als String-Array&lt;/li>
-&lt;li>Attribut zur Aufnahme einer Beschreibung als String, der Default-Wert soll ein leerer String sein&lt;/li>
-&lt;li>Attribut zur Aufnahme einer Version als String, der Default-Wert ist 0.0.1&lt;/li>
-&lt;/ul>
-&lt;p>Der Name der Annotation soll anhand ihres Zwecks gewählt werden.&lt;/p>
-&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
-&lt;p>Implementiere eine sinnvolle Modell-Klasse und wende deine neue Annotation an.
-Fülle die Werte für Autor, Beschreibung und Version ab.&lt;/p>
-&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
-&lt;p>Implementiere einen Annotations-Prozessor, welcher die oben geschriebene Annotation auf der
-Modell-Klasse auswertet.
-Die Auswertung soll auf die Kommandozeile erfolgen.&lt;/p>
-&lt;h3 id="schritt-1">Schritt 1&lt;/h3>
-&lt;p>Implementiere eine neue Klasse, welche die folgende Basis hat:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">
-&lt;span style="color:#a6e22e">@SupportedAnnotationTypes&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#75715e">/*1*/&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#a6e22e">@SupportedSourceVersion&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SourceVersion&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">RELEASE_8&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DocumentationProcessor&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> AbstractProcessor &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#a6e22e">@Override&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">process&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Set&lt;span style="color:#f92672">&amp;lt;?&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> TypeElement&lt;span style="color:#f92672">&amp;gt;&lt;/span> annotations&lt;span style="color:#f92672">,&lt;/span> RoundEnvironment roundEnv&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Füge beim Punkt 1 den kompletten Pfad (Package und Name) deiner Annotation ein.&lt;/p>
-&lt;h3 id="schritt-2">Schritt 2&lt;/h3>
-&lt;p>Die beiden Parameter annotations und roundEnv werden durch den Annotations-Prozessor benutzt, um
-während der Kompilierung die entsprechende Annotation zu erhalten.
-Im Set annotations befinden sich alle Annotationen, welche unter Punkt 1 angegeben werden.
-Die Klasse RoundEnvironment erlaubt den Zugriff auf alle Elemente während der Kompilierung.
-Ergänze die Methode des Annotations-Prozessors mit den folgenden Loops:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">for&lt;/span>&lt;span style="color:#f92672">(&lt;/span>TypeElement annotation&lt;span style="color:#f92672">:&lt;/span>annotations&lt;span style="color:#f92672">){&lt;/span>
-Set&lt;span style="color:#f92672">&amp;lt;?&lt;/span>&lt;span style="color:#66d9ef">extends&lt;/span> Element&lt;span style="color:#f92672">&amp;gt;&lt;/span> annotatedElements &lt;span style="color:#f92672">=&lt;/span> roundEnv&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getElementsAnnotatedWith&lt;/span>&lt;span style="color:#f92672">(&lt;/span>annotation&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#66d9ef">for&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Element element&lt;span style="color:#f92672">:&lt;/span>annotatedElements&lt;span style="color:#f92672">){&lt;/span>
-X annotation&lt;span style="color:#f92672">=&lt;/span>element&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getAnnotation&lt;/span>&lt;span style="color:#f92672">(&lt;/span>X&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Klasse X kannst du durch deine Annotation ersetzen. Jetzt hast du Zugriff auf die Elemente
-deiner Annotation.&lt;/p>
-&lt;h3 id="schritt-3">Schritt 3&lt;/h3>
-&lt;p>Ergänze die Implementation, um den Klassennamen der Modell-Klasse und die Werte der Annotation
-auszudrucken. Hier ein Beispiel, wie der Ausdruck in etwa aussehen könnte:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">------
-Person
-------
-Model class representing a person with a name and age
-[u210148 (Claudio Zesiger)]
-0.0.1
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="schritt-4">Schritt 4&lt;/h3>
-&lt;p>Kompiliere die Annotation und den Annotations-Prozessor auf der Kommandozeile (Terminal) mit dem
-Befehl javac.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">cd ./src/main/java &lt;span style="color:#75715e"># Befehle funktionieren ab diesem Verzeichnis.&lt;/span>
-javac ./&amp;lt;path/to/my&amp;gt;/&amp;lt;Annotation&amp;gt;.java &amp;lt;path/to/my&amp;gt;/&amp;lt;AnnotationProcessor&amp;gt;.java
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Ersetze die Pfade und die Namen der Annotation/des Annotations-Prozessors mit deinen Angaben.&lt;/p>
-&lt;h3 id="schritt-5">Schritt 5&lt;/h3>
-&lt;p>Kompiliere die implementierte Modell-Klasse mit dem folgenden Befehl:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">javac -processor &amp;lt;package&amp;gt;.&amp;lt;AnnotationsProcessor&amp;gt; &amp;lt;path/to/my&amp;gt;&amp;lt;ModelKlasse&amp;gt;.java
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Ausgabe auf die Kommandozeile durch den Annotations-Prozessor sollte anschliessend angezeigt werden.&lt;/p></description></item><item><title>Docs: Datenbank 101</title><link>/docs/database/01_db-erklaert/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/01_db-erklaert/</guid><description>
+Ein Produkt sollte einen &lt;code>name&lt;/code> und &lt;code>price&lt;/code> haben.&lt;/p></description></item><item><title>Docs: Datenbank 101</title><link>/docs/database/01_db-erklaert/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/01_db-erklaert/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du kennst den allgemeinen Aufbau einer Datenbank und kannst ihn erklären&lt;/li>
@@ -1266,13 +1147,14 @@ Proxy Authentifizierung:&lt;/p>
 Die Methode liefert die Anzahl dieser Zahlen zurück.&lt;/p>
 &lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
 &lt;p>Schreibe eine Methode, welche aus dem Array alle positiven Zahlen inklusive 0 in ein neues Array schreibt
-Die Reihenfolge der Zahlen im Array muss gleich bleiben. Die Methode liefert das neue Array zurück.&lt;/p>
+die Reihenfolge der Zahlen im Array muss gleich bleiben. Die Methode liefert das neue Array zurück.&lt;/p>
 &lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
 &lt;p>Schreibe eine Methode, welche aus dem Array alle Zahlen sucht, welche nicht mehr als 10 von der Zahl -6 abweichen.
 Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück.&lt;/p>
 &lt;h2 id="aufgabe-4">Aufgabe 4&lt;/h2>
 &lt;p>Schreibe eine Methode, welche alle Zahlen aus dem Array in positive Zahlen verwandelt und diese in ein neues Array schreibt.
 Die Methode liefert das neue Array zurück.&lt;/p>
+&lt;p>&lt;em>&lt;code>Math.abs&lt;/code> darf für diese Aufgabe nicht verwendet werden.&lt;/em>&lt;/p>
 &lt;h2 id="aufgabe-5">Aufgabe 5&lt;/h2>
 &lt;p>Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht mehr als den Wert 5 unterscheiden.
 Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück. Für die erste und die letzte Zahl im Array gibt es nur einen Nachbar.&lt;/p></description></item><item><title>Labs: Exception Handling - Aufgaben</title><link>/labs/java/java-exception-handling/01_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-exception-handling/01_exercises/</guid><description>
@@ -1437,22 +1319,22 @@ Die Seite soll folgende Struktur und Elemente beinhalten:&lt;/p>
 &lt;h3 id="aufgabe-2a---die-if--und-else-bedingungen">Aufgabe 2a - Die &lt;code>if&lt;/code>- und &lt;code>else&lt;/code>-Bedingungen&lt;/h3>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Löse die folgende Aufgaben:&lt;/p>
 &lt;ul>
-&lt;li>Schreibe eine Methode, die feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist.&lt;/li>
-&lt;li>Schreibe eine Methode, die dich begrüsst wenn dein Name als Parameter übergeben wird.&lt;/li>
-&lt;li>Schreibe eine Methode, die feststellt, ob das übergebene Jahr ein Schaltjahr ist. Recherchiere, was die Bedingungen sind.&lt;/li>
-&lt;li>Schreibe eine Methode, die überprüft, ob eine Zahl (als Parameter) gerade oder ungerade ist.&lt;/li>
+&lt;li>Schreibe ein Programm, die feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist.&lt;/li>
+&lt;li>Schreibe ein Programm, die dich begrüsst wenn dein Name als Parameter übergeben wird.&lt;/li>
+&lt;li>Schreibe ein Programm, die feststellt, ob das übergebene Jahr ein Schaltjahr ist. Recherchiere, was die Bedingungen sind.&lt;/li>
+&lt;li>Schreibe ein Programm, die überprüft, ob eine Zahl (als Parameter) gerade oder ungerade ist.&lt;/li>
 &lt;/ul>
 &lt;h3 id="aufgabe-2b---das-switch-statement">Aufgabe 2b - Das &lt;code>switch&lt;/code>-Statement&lt;/h3>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Löse die folgende Aufgaben:&lt;/p>
 &lt;ul>
-&lt;li>Schreibe eine Methode, die eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (für den Wert &lt;code>2&lt;/code> wird dann der String &lt;code>&amp;quot;Februar&amp;quot;&lt;/code> zurückgegeben).&lt;/li>
-&lt;li>Schreibe eine Methode, die einen Wochentag als Parameter übergeben bekommt und dann ausgibt, der wievielte Tag in der Woche er ist: &lt;code>Der &amp;lt;Wochentag&amp;gt; ist der &amp;lt;X&amp;gt;. Tag in der Woche&lt;/code>. Schreibe die Methode so, dass maximal 1 &lt;code>println()&lt;/code> (oder ähnliches) verwendet wird. Hinweis: Hier kann dir ein &lt;code>switch&lt;/code>-Assignment sehr viel Code ersparen.&lt;/li>
+&lt;li>Schreibe ein Programm, die eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (für den Wert &lt;code>2&lt;/code> wird dann der String &lt;code>&amp;quot;Februar&amp;quot;&lt;/code> zurückgegeben).&lt;/li>
+&lt;li>Schreibe ein Programm, die einen Wochentag als Parameter übergeben bekommt und dann ausgibt, der wievielte Tag in der Woche er ist: &lt;code>Der &amp;lt;Wochentag&amp;gt; ist der &amp;lt;X&amp;gt;. Tag in der Woche&lt;/code>. Schreibe die Methode so, dass maximal 1 &lt;code>println()&lt;/code> (oder ähnliches) verwendet wird. Hinweis: Hier kann dir ein &lt;code>switch&lt;/code>-Assignment sehr viel Code ersparen.&lt;/li>
 &lt;li>Debugge mindestens zwei dieser Methoden mit einem Breakpoint.&lt;/li>
 &lt;/ul>
 &lt;h2 id="aufgabe-3---loops">Aufgabe 3 - Loops&lt;/h2>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Löse die folgenden Aufgaben:&lt;/p>
 &lt;ul>
-&lt;li>Schreibe eine Methode, welche eine beliebige Ganzzahl als Parameter übernimmt und die &lt;a href="https://www.studysmarter.de/schule/mathe/algebra/fakultaet/">Fakultät&lt;/a> dieser Zahl berechnet.&lt;/li>
+&lt;li>Schreibe ein Programm, welche eine beliebige Ganzzahl als Parameter übernimmt und die &lt;a href="https://www.studysmarter.de/schule/mathe/algebra/fakultaet/">Fakultät&lt;/a> dieser Zahl berechnet.&lt;/li>
 &lt;li>Schreibe einen Loop, welcher alle Zahlen von 1 bis 100 zusammenzählt, welche durch 8 teilbar sind.
 &lt;ul>
 &lt;li>Erweitere deine Lösung mit einer Methode, welche eine Zahl entgegennimmt und dann die Zahlen zusammenzählt, welche durch diese Zahl teilbar sind.&lt;/li>
@@ -1510,10 +1392,16 @@ Hinweis: Die &lt;code>indexOf()&lt;/code>-Methode bietet ein optionales Argument
 &lt;h2 id="aufgabe-6---strings-und-loops">Aufgabe 6 - Strings und Loops&lt;/h2>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Löse die folgende Aufgaben:&lt;/p>
 &lt;ul>
-&lt;li>Schreibe eine Methode, welche als Parameter einen beliebigen String übernimmt und dessen Zeichenfolge umkehrt&lt;/li>
-&lt;li>Schreibe eine Methode, welche als Parameter einen beliebigen String übernimmt und die Anzahl Wörter darin ausgibt&lt;/li>
+&lt;li>Schreibe ein Programm, welche als Parameter einen beliebigen String übernimmt und dessen Zeichenfolge umkehrt&lt;/li>
+&lt;li>Schreibe ein Programm, welche als Parameter einen beliebigen String übernimmt und die Anzahl Wörter darin ausgibt&lt;/li>
 &lt;/ul>
-&lt;h2 id="aufgabe-7---eingaben-von-der-kommandozeile">Aufgabe 7 - Eingaben von der Kommandozeile&lt;/h2>
+&lt;h2 id="aufgabe-7---methoden">Aufgabe 7 - Methoden&lt;/h2>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Löse die folgende Aufgaben:&lt;/p>
+&lt;ul>
+&lt;li>Schreibe eine Methode, die zwei beliebigen Ganzzahlen als Parameter übernimmt und die Summe der beiden zurückliefert.&lt;/li>
+&lt;li>Schreibe eine eigene Methode, die als Parameter einen Namen übernimmt. Die Methode soll dann die folgenden Daten auf die Kommandozeile ausgeben &lt;code>Hello + &amp;lt;Parameter-Name&amp;gt;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-8---eingaben-von-der-kommandozeile">Aufgabe 8 - Eingaben von der Kommandozeile&lt;/h2>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Lies zuerst deinen Namen und danach dein Alter über einen Scanner von der Kommandozeile ein und gib dann die folgenden Daten auf die Kommandozeile aus&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>Hello + &amp;lt;Dein Name&amp;gt; + you are + &amp;lt;Dein Alter&amp;gt; + years old. Next year, you will be &amp;lt;Dein Alter + 1&amp;gt; years old.&lt;/code>&lt;/li>
@@ -1523,17 +1411,11 @@ Hinweis: Die &lt;code>indexOf()&lt;/code>-Methode bietet ein optionales Argument
 &lt;li>mithilfe eines &lt;code>StringBuilder&lt;/code>s&lt;/li>
 &lt;li>und mithilfe der &lt;code>String.format()&lt;/code>-Methode.&lt;/li>
 &lt;/ul>
-&lt;h2 id="aufgabe-8---arrays">Aufgabe 8 - Arrays&lt;/h2>
+&lt;h2 id="aufgabe-9---arrays">Aufgabe 9 - Arrays&lt;/h2>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Löse die folgenden Aufgaben:&lt;/p>
 &lt;ul>
 &lt;li>Schreibe eine Methode, welche zwei Parametern übernimmt: einen beliebigen Zahlen-Array und eine beliebige Zahl. Die Methode gibt die Position der Zahl im Array aus.&lt;/li>
 &lt;li>Schreibe eine Methode, welche als Parameter einen beliebigen Zahlen-Array übernimmt und die grösste Zahl im Array zurückliefert.&lt;/li>
-&lt;/ul>
-&lt;h2 id="aufgabe-9---methoden">Aufgabe 9 - Methoden&lt;/h2>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Löse die folgende Aufgaben:&lt;/p>
-&lt;ul>
-&lt;li>Schreibe eine Methode, die zwei beliebigen Ganzzahlen als Parameter übernimmt und die Summe der beiden zurückliefert.&lt;/li>
-&lt;li>Schreibe eine eigene Methode, die als Parameter einen Namen übernimmt. Die Methode soll dann die folgenden Daten auf die Kommandozeile ausgeben &lt;code>Hello + &amp;lt;Parameter-Name&amp;gt;&lt;/code>&lt;/li>
 &lt;/ul></description></item><item><title>Challenges: Java Grundlagen Challenge</title><link>/challenges/java/java-grundlagen/01_basicchallenge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/challenges/java/java-grundlagen/01_basicchallenge/</guid><description>
 &lt;p>Die Aufgabe besteht darin ein &amp;ldquo;Vier-Gewinnt&amp;rdquo; Spielfeld in Form eines zweidimensionalen Arrays zu überprüfen.
 Das zweidimensionale Array hat in beiden Dimensionen eine variable Grösse. Die zweite Dimension ist jedoch bei allen Arrays gleich gross.&lt;/p>
@@ -1668,7 +1550,7 @@ Die Uhrzeit soll analog angezeigt werden - also mit Stunden-, Minuten- und Sekun
 &lt;li>&lt;a href="https://www.w3schools.com/html/html5_canvas.asp">Canvas&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h3 id="aufgabe-4---global-scope-function-scope-und-block-scope">Aufgabe 4 - Global Scope, Function Scope und Block-Scope&lt;/h3>
-&lt;p>Im Kapitel &lt;a href="../../../docs/web/javascript/18_variables#global-scope-und-function-scope">ES6: Variablen deklarieren&lt;/a> hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit &lt;code>console.log(...)&lt;/code>s. In diesem Beispiel wurden alle Variablen mit &lt;code>var&lt;/code> deklariert/definiert - also keine &lt;code>let&lt;/code>s oder &lt;code>const&lt;/code>s.&lt;/p>
+&lt;p>Im Kapitel &lt;a href="../../../docs/web/javascript/19_variables#global-scope-und-function-scope">ES6: Variablen deklarieren&lt;/a> hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit &lt;code>console.log(...)&lt;/code>s. In diesem Beispiel wurden alle Variablen mit &lt;code>var&lt;/code> deklariert/definiert - also keine &lt;code>let&lt;/code>s oder &lt;code>const&lt;/code>s.&lt;/p>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Ändere in diesem Code alle &lt;code>var&lt;/code>s zu &lt;code>let&lt;/code>s oder &lt;code>const&lt;/code>s.&lt;/p>
 &lt;p>Beantworte folgende Fragen und dokumentiere deine Antworten:&lt;/p>
 &lt;ul>
@@ -1679,8 +1561,10 @@ Die Uhrzeit soll analog angezeigt werden - also mit Stunden-, Minuten- und Sekun
 &lt;li>Wie kannst du definieren, welche Variable welchen Scope haben soll?&lt;/li>
 &lt;li>Wann könnte die Verwendung von &lt;code>var&lt;/code> sinnvoll sein?&lt;/li>
 &lt;/ul>
-&lt;h3 id="aufgabe-5--">Aufgabe 5 -&lt;/h3>
-&lt;p>Erstelle eine HTML-Seite, auf der ein Benutzer eine Liste von Zahlen eingeben kann (dafür kann man for=&amp;quot;&amp;quot; im HTML benutzen). Die Eingabe soll geprüft werden, damit der Benutzer nur Zahlen eingeben kann. Der Benutzer kann die Liste speichern und dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen gefordert:&lt;/p>
+&lt;h3 id="aufgabe-5---nummern-liste">Aufgabe 5 - Nummern Liste&lt;/h3>
+&lt;p>Erstelle eine HTML-Seite, auf der ein Benutzer eine Liste von Zahlen eingeben kann.
+Die Eingabe soll geprüft werden, damit der Benutzer nur Zahlen eingeben kann. Der Benutzer kann die Liste speichern und
+dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen gefordert:&lt;/p>
 &lt;ul>
 &lt;li>Die grösste Zahl der Liste finden.&lt;/li>
 &lt;li>Die kleinste Zahl der Liste finden.&lt;/li>
@@ -3263,13 +3147,16 @@ matura_arbeit.docx matura_arbeit_fastfertig.docx matura_arbeit_wirklichfertig.do
 &lt;/ul>
 &lt;h3 id="minimaler-workflow">Minimaler Workflow&lt;/h3>
 &lt;p>Hat man ein Repository von einem anderen Rechner &lt;em>geklont&lt;/em>, kann man eine oder mehrere Dateien im Verzeichnisbaum editieren. Anschliessend &lt;em>staged&lt;/em> man diese Änderungen und &lt;em>commited&lt;/em> diese anschliessend.&lt;/p></description></item><item><title>Labs: Zoo</title><link>/labs/java/java-ood/01_zoo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-ood/01_zoo/</guid><description>
-&lt;p>Schreibe eine Anwendung, welche einen Zoo modelliert. Die Anwendung soll folgende Klassen enthalten:&lt;/p>
+&lt;p>Modelliere* einen Klassenaufbau für einen Zoo. Folgende Klassen sollen enthalten sein:&lt;/p>
 &lt;ul>
 &lt;li>Personen&lt;/li>
 &lt;li>Gehege&lt;/li>
 &lt;li>Tiere&lt;/li>
 &lt;/ul>
 &lt;p>Jede dieser Klassen soll mehrere Spezialisierungen enthalten.&lt;/p>
+&lt;blockquote>
+&lt;p>*Modelliere bedeutet in diesem Zusammenhang, dass du nur den Aufbau mittels Klassen darstellen musst. Es wird keine Funktionalität gefordert.&lt;/p>
+&lt;/blockquote>
 &lt;p>Bei den Personen wird zwischen Mitarbeitern und Mitgliedern unterschieden.
 Ein Mitarbeiter hat beispielsweise einen Lohn, welcher ein Mitglied nicht hat.
 Die folgenden Attribute sollen vorhanden sein:&lt;/p>
@@ -3318,7 +3205,8 @@ Die Beziehung zwischen den einzelnen Klassen wie dem Zoo seinen Gehegen und Tier
 &lt;li>Du kennst, die wichtigen special Operators in Angular und kannst diese anwenden.&lt;/li>
 &lt;/ul>
 &lt;h2 id="special-operators">Special Operators&lt;/h2>
-&lt;p>Viele der wichtigen Operatoren wurden bereits beim JavaScript behandelt, diese können auch in TypeScript verwendet werden. Die Operatoren können &lt;a href="../../../docs/web/javascript/06_js_operators">hier&lt;/a> nachgelesen werden.&lt;/p>
+&lt;p>Viele der wichtigen Operatoren wurden bereits beim JavaScript behandelt, diese können auch in TypeScript verwendet
+werden. Die Operatoren können &lt;a href="../../javascript/06_js_operators">hier&lt;/a> nachgelesen werden.&lt;/p>
 &lt;h3 id="-operator">?-Operator&lt;/h3>
 &lt;p>Der &lt;code>?&lt;/code>-Operator ist der optionale Aufruf-Operator (optional chaining operator). Er ermöglicht den Zugriff auf Eigenschaften oder Methoden eines Objekts, wenn das Objekt potenziell &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> sein kann.&lt;/p>
 &lt;p>Er wird verwendet, um sicherzustellen, dass der Code nicht abbricht und einen Fehler auslöst, wenn eine Eigenschaft oder Methode auf einem möglicherweise &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> Objekt aufgerufen wird. Wenn das Objekt &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> ist, gibt er &lt;code>undefined&lt;/code> zurück, anstatt einen Fehler zu werfen.&lt;/p>
@@ -3365,7 +3253,7 @@ Die Beziehung zwischen den einzelnen Klassen wie dem Zoo seinen Gehegen und Tier
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;blockquote>
-&lt;p>Wichtig der hier gezeigte Operator ist nicht das gleiche wie der &lt;a href="../../../docs/web/javascript/06_js_operators/#ternary-operator-">ternary Operator(?:)&lt;/a>! Wenn du unsicher bist, lies dir nochmal die Beschreibung des ternary Operators durch.&lt;/p>
+&lt;p>Wichtig der hier gezeigte Operator ist nicht das gleiche wie der &lt;a href="../..//javascript/06_js_operators/#ternary-operator-">ternary Operator(?:)&lt;/a>! Wenn du unsicher bist, lies dir nochmal die Beschreibung des ternary Operators durch.&lt;/p>
 &lt;/blockquote>
 &lt;h3 id="-operator-1">!-Operator&lt;/h3>
 &lt;p>Der &lt;code>!&lt;/code>-Operator ist ein Non-null-Assertion-Operator. Er wird verwendet, um dem Compiler mitzuteilen und zu garantieren, dass eine Variabel während der Laufzeit nicht &lt;code>null&lt;/code> oder &lt;code>undefiniert&lt;/code> ist und somit einen gültigen Wert hat.&lt;/p>
@@ -4796,6 +4684,7 @@ Die Methode liefert die Anzahl dieser Wörter zurück.&lt;/p>
 &lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
 &lt;p>Schreibe eine Methode, welche die Wörter aus dem Text oben alphabetisch sortiert. Entferne zu diesem Zweck zuerst die Sonderzeichen.
 Die Methode liefert ein Array mit den sortierten Wörtern zurück.&lt;/p>
+&lt;p>&lt;em>Die Verwendung von Arrays.sort() ist &lt;strong>nicht&lt;/strong> erlaubt.&lt;/em>&lt;/p>
 &lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
 &lt;p>Schreibe eine Methode, welche die durchschnittliche Wortlänge berechnet. Entferne zu diesem Zweck zuerst die Sonderzeichen.
 Die Methode liefert die durchschnittliche Wortlänge als Gleitkommazahl zurück.&lt;/p>
@@ -4807,9 +4696,9 @@ Die Methode liefert ein Array mit den sortierten Wörtern zurück.&lt;/p>
 Die Methode liefert das gesuchte Wort zurück.&lt;/p>
 &lt;h2 id="aufgabe-6">Aufgabe 6&lt;/h2>
 &lt;p>Schreibe eine Methode, welche die einzelnen Buchstaben des Textes in ein zweidimensionales Array von Strings überführt.
-Die erste Dimension hat dabei die Grösse der verschiedenen vorkommenden Zeichen im Text in alphabetischer Reihenfolge.
-Sonderzeichen sind ebenfalls Teil dieser alphabetischen Reihenfolge, die Sortierung richtet sich nach dem Integer-Wert der einzelnen Zeichen.
-Die zweite Dimension enthält pro Zeichen ein Array mit den Positionen der Zeichen im Text. An erster Stelle steht dabei das jeweilige Zeichen.
+In der ersten Reihe sollen alle einzigartigen im Text vorhandenen Buchstaben stehen.
+Diese sollen in alphabetischer Reihenfolge sortiert sein. Sonderzeichen sollen auch aufgelistet werden.
+Unter jedem Buchstaben sollen fortlaufend die Positionen(index) im Text dargestellt werden.
 Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden.&lt;/p>
 &lt;p>Beispiel:&lt;/p>
 &lt;p>&lt;code>String text = &amp;quot;Hallo mein Name ist Claudio&amp;quot;&lt;/code>&lt;/p>
@@ -4898,7 +4787,10 @@ Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandel
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Docs: Install Git</title><link>/docs/git/git-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-install/</guid><description>
+&lt;/table>
+&lt;p>Der Tabelle kann folgendes entnommen werden:
+Der Buchstabe &lt;code>a&lt;/code> befindet sich an den Positionen &lt;code>1&lt;/code> und &lt;code>12&lt;/code> im String &lt;code>Hallo mein Name ist Claudio&lt;/code>.
+Das erste Zeichen in der Tabelle ist ein Leerschlag (whitespace).&lt;/p></description></item><item><title>Docs: Install Git</title><link>/docs/git/git-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-install/</guid><description>
 &lt;h2 id="inhalt">Inhalt&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="#git-unter-linux-installieren">Git unter Linux installieren&lt;/a>&lt;/li>
@@ -5472,42 +5364,396 @@ Falls die Schüpercard beim Einkaufen gescannt, so wird dem Konto des Kunden pro
 (Es werden keine halben Punkte verteilt und es wird immer abgerundet).&lt;/p>
 &lt;p>Jeder Mitarbeiter einer CØØP Filiale ist im System hinterlegt.
 Es wird auch jederzeit nachgeführt, welcher Mitarbeiter sich zurzeit in welcher Filiale befindet.
-So kann der Chef die Anwesenheit aller Mitarbeiter sauber überprüfen.&lt;/p></description></item><item><title>Labs: Reflection API - Aufgaben</title><link>/labs/java/java-reflection-and-annotations/02_reflection_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-reflection-and-annotations/02_reflection_exercises/</guid><description>
-&lt;p>Die folgende Aufgabe dient der Vertiefung der beiden Themen Reflection API und Annotations.&lt;/p>
+So kann der Chef die Anwesenheit aller Mitarbeiter sauber überprüfen.&lt;/p></description></item><item><title>Labs: Rollenspiel</title><link>/labs/java/java-ood/02_rollenspiel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-ood/02_rollenspiel/</guid><description>
+&lt;p>In dieser Aufgabe wird ein Fantasy-Rollenspiel mit Vererbung modelliert.
+Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.&lt;/p>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;h3 id="spielfiguren">Spielfiguren&lt;/h3>
+&lt;ul>
+&lt;li>Es gibt verschiedene Spielfiguren:
+&lt;ul>
+&lt;li>Menschen&lt;/li>
+&lt;li>Zwerge&lt;/li>
+&lt;li>Elfen&lt;/li>
+&lt;li>Orks&lt;/li>
+&lt;li>Goblins&lt;/li>
+&lt;li>Trolle&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Jede Spielfigur hat einen Namen und besitzt eine bestimmte Anzahl an Lebenspunkten. Diese Lebenspunkte werden später im Kampf mit anderen Spielfiguren verringert&lt;/li>
+&lt;li>Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)&lt;/li>
+&lt;li>Elfen können zaubern und haben einen Zauberwert&lt;/li>
+&lt;li>Alle Spielfigur-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
+&lt;/ul>
+&lt;h3 id="waffen">Waffen&lt;/h3>
+&lt;ul>
+&lt;li>Es gibt verschiedene Waffenarten
+&lt;ul>
+&lt;li>Nahkampfwaffen (Schwert und Keule)&lt;/li>
+&lt;li>Fernkampfwaffen (Bogen und Wurfmesser)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Alle Waffen haben einen Angriffswert&lt;/li>
+&lt;li>Nahkampfwaffen haben zusätzlich zu ihrem Angriffswert noch einen Verteidigungswert&lt;/li>
+&lt;li>Alle Waffen haben ein Gewicht&lt;/li>
+&lt;li>Alle Waffen-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
+&lt;/ul>
+&lt;h3 id="gegenstände">Gegenstände&lt;/h3>
+&lt;ul>
+&lt;li>Es gibt verschiedene Gegenstände
+&lt;ul>
+&lt;li>Tränke (Heiltrank und Stärketrank)
+&lt;ul>
+&lt;li>Ein Heiltrank kann bei einer Spielfigur eine bestimmte Anzahl an Lebenspunkten wiederherstellen&lt;/li>
+&lt;li>Ein Stärketrank erhöht den Angriffswert einer Spielfigur dauerhaft um einen bestimmten Wert&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Zauberringe (Kraftring, Schutzring)
+&lt;ul>
+&lt;li>Ein Kraftring erhöht die Tragkraft einer Spielfigur dauerhaft um einen bestimmten Wert&lt;/li>
+&lt;li>Ein Schutzring verringert dauerhaft den erlittenen Schaden&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Jeder Gegenstand hat eine Bezeichnung und ein Gewicht&lt;/li>
+&lt;li>Alle Gegenstand-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
+&lt;/ul>
+&lt;hr>
 &lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>Implementiere eine Klasse &lt;em>Person&lt;/em> mit den Attributen Namen und Alter.
-Die Klasse muss einen Konstruktor mit beiden Attributen aufweisen. Für beide Attribute muss eine
-Get-Methode implementiert werden.&lt;br>
-Implementiere zudem eine toString Methode.&lt;/p>
+&lt;p>Implementation&lt;/p>
+&lt;ul>
+&lt;li>der Packages&lt;/li>
+&lt;li>der Klassen&lt;/li>
+&lt;li>der Instanzvariablen in den Klassen&lt;/li>
+&lt;li>der Beziehungen zwischen den einzelnen Klassen&lt;/li>
+&lt;/ul>
+&lt;p>Vergiss nicht, dass es Generalisierungen und Spezalisierungen gibt. Achte auf eine gute Namensgebung bei Klassen und Variablen.&lt;/p>
+&lt;hr>
 &lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
-&lt;p>Implementiere eine eigene Annotation. Die Annotation soll der Auffindung der Klasse zur Erzeugung
-von Instanzen der oben genannten Klasse dienen und die folgenden Eigenschaften aufweisen:&lt;/p>
+&lt;p>Ergänze die Applikation mit den folgenden Möglichkeiten:&lt;/p>
+&lt;h4 id="spielfigur">Spielfigur&lt;/h4>
 &lt;ul>
-&lt;li>Verfügbar zur Laufzeit&lt;/li>
-&lt;li>Verfügbar auf Klassen&lt;/li>
+&lt;li>Jede Spielfigur braucht einen Namen um instanziiert werden zu können&lt;/li>
+&lt;li>Zu Beginn hat eine Spielfigur keine Waffe&lt;/li>
+&lt;li>Jede Spielfigur hat eine Methode, die ihren Kampfwert zurückgibt
+&lt;ul>
+&lt;li>Der Kampfwert der Spielfigur setzt sich aus dem Kampfwert der akitven Waffe und der Multiplikation mit einer Zufallszahl zusammen. Die Zufallszahl liegt zwischen 0.9 und 1.1&lt;/li>
+&lt;li>Wenn eine Spielfigur keine Waffe besitzt, so ist ihr Kampfwert 1&lt;/li>
 &lt;/ul>
-&lt;p>Der Name der Annotation soll anhand ihres Zwecks gewählt werden. Die Annotation hat keine Attribute.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Elfen&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Um einen Elfen instanziieren zu können, muss zusätzlich zum Namen der Zauberwert des Elfen angegeben werden&lt;/li>
+&lt;li>Einem Elfen wird die Hälfte seines Zauberwerts zum Kampfwert addiert&lt;/li>
+&lt;li>Elfen sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Goblins&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Goblins sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Trolle&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Trolle verdoppeln ihren Kampfwert wenn sie eine Keule verwenden&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Orks&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Orks können in einen Kampfrausch verfallen, wenn ihre Lebenspunkte unter 25% fallen. Sie erhalten dann den dreifachen Kampfwert und erleiden nur den halben Schaden&lt;/li>
+&lt;/ul>
+&lt;h4 id="waffen-1">Waffen&lt;/h4>
+&lt;ul>
+&lt;li>Jede Spielfigur kann mit einer Waffe ausgerüstet werden
+&lt;ul>
+&lt;li>Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert&lt;/li>
+&lt;li>Ist die Waffe zu schwer für die verbleibende Tragkraft, so kann die Spielfigur die Waffe nicht aufnehmen&lt;/li>
+&lt;li>Eine Spielfigur kann mehrere Waffen mit sich rumtragen, aber jeweils nur eine Waffe aktiv verwenden&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Spielfiguren können Waffen ablegen, um die verbleibende Tragkraft zu erhöhen&lt;/li>
+&lt;li>Alle Keulen haben den Angriffswert 5 und den Verteidigungswert 5. Die beiden Werte sind also konstant&lt;/li>
+&lt;li>Jede Waffe hat einen Kampfwert
+&lt;ul>
+&lt;li>Waffen geben als Kampfwert ihren Angriffswert zurück&lt;/li>
+&lt;li>Bei Nahkampfwaffen wird zum Angriffswert der halbe Verteidigungswert hinzuaddiert&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="gegenstände-1">Gegenstände&lt;/h4>
+&lt;ul>
+&lt;li>Jede Spielfigur kann Gegenstände bis zur maximalen Tragkraft aufnehmen
+&lt;ul>
+&lt;li>Wird ein Gegenstand aufgenommen, wird die Tragkraft entsprechend reduziert&lt;/li>
+&lt;li>Ist der Gegenstand zu schwer für die verbleibende Tragkraft, so kann die Spielfigur den Gegenstand nicht aufnehmen&lt;/li>
+&lt;li>Eine Spielfigur kann mehrere Gegenstände mit sich rumtragen und diese Gegenstände später im Kampf aktiv einsetzen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="kampf">Kampf&lt;/h4>
+&lt;ul>
+&lt;li>Jede Spielfigur kann gegen eine andere Spielfigur kämpfen
+&lt;ul>
+&lt;li>Der Kampf findet in Runden statt&lt;/li>
+&lt;li>Es wird solange gekämpft, bis eine oder beide Spielfiguren keine Lebenspunkte mehr haben&lt;/li>
+&lt;li>Steht nach 20 Runden noch kein Sieger fest, wird der Kampf abgebrochen&lt;/li>
+&lt;li>Bei jeder Runde wird der Kampfwert der einen Spielfigur den Lebenspunkten des Gegners abgezogen und umgekehrt&lt;/li>
+&lt;li>Diejenige Spielfigur mit den meisten verbliebenen Lebenspunkten gewinnt&lt;/li>
+&lt;li>Jede Spielfigur kann in einem Kampf von ihren Gegenständen Gebrauch machen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
 &lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
-&lt;p>Implementiere eine weitere Annotation. Die Annotation soll der Angabe von Daten für Personen dienen.
-Sie muss die folgenden Eigenschaften aufweisen:&lt;/p>
 &lt;ul>
-&lt;li>Verfügbar zur Laufzeit&lt;/li>
-&lt;li>Verfügbar auf Konstruktoren&lt;/li>
-&lt;li>Attribut für die Namen von Personen als String-Array&lt;/li>
-&lt;li>Attribut für das Alter von Personen als Integer-Array&lt;/li>
+&lt;li>Definiere nun eigene Regeln für deine Spielfiguren, damit das Spiel ein wenig ausgeglichener wird&lt;/li>
+&lt;li>Die Regeln können beliebig geändert werden&lt;/li>
+&lt;li>Es dürfen natürlich auch neue Waffen und Gegenstände eingeführt werden&lt;/li>
+&lt;li>Dein Entwurf soll mindestens eine neue Spielfigur, eine neue Waffe, einen neuen Gegenstand und eine neue Spezialität für eine Spielfigur enthalten&lt;/li>
 &lt;/ul>
+&lt;hr>
 &lt;h2 id="aufgabe-4">Aufgabe 4&lt;/h2>
-&lt;p>Wende die beiden Annotationen auf deine Person-Klasse an. Eine auf der Klasse, die Andere auf dem
-Konstruktor.&lt;br>
-Die Annotation auf dem Konstruktor muss mindestens drei Namen und drei Altersangaben aufweisen.&lt;/p>
-&lt;h2 id="aufgabe-5">Aufgabe 5&lt;/h2>
-&lt;p>Implementiere eine Main-Klasse mit einer Main-Methode und nutze Reflection, um Instanzen anhand der
-Konstruktor-Annotation zu erzeugen. Gehe dabei wie folgt vor:&lt;/p>
 &lt;ul>
-&lt;li>Hol dir eine Klasseninstanz über den Package- und Klassennamen oder über das statische Feld class&lt;/li>
-&lt;li>Hol dir auf der Klasseninstanz den Konstruktor&lt;/li>
-&lt;li>Hol dir vom Konstruktor die Annotation&lt;/li>
-&lt;li>Hol aus der Annotation die Namen und Altersangaben&lt;/li>
-&lt;li>Nutze die Angaben in einem Loop, um entsprechend viele Instanzen der Klasse Person zu erzeugen&lt;/li>
-&lt;li>Drucke die Angaben der Personen auf der Kommandozeile aus&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;li>Die Kämpfe können sehr unausgeglichen sein&lt;/li>
+&lt;li>Das Spiel soll so gestaltet werden, dass nicht immer die gleichen Spielfiguren gewinnen&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="aufgabe-5">Aufgabe 5&lt;/h2>
+&lt;ul>
+&lt;li>Das Spiel soll für alle Aktionen einen übersichtlichen Log generieren&lt;/li>
+&lt;li>Eine Ausgabe für die Kommandozeile genügt, wenn sie sauber formatiert ist&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="aufgabe-6">Aufgabe 6&lt;/h2>
+&lt;p>Die Applikation hat nun aufgrund der vielen Klassen und Möglichkeiten eine gewisse Grösse erreicht und damit auch an Übersichtlichkeit verloren.
+Die Logik der Applikation ist nun, je nach Implementation, in sehr vielen unterschiedlichen Klassen vorhanden.
+In bestimmten Fällen, wie der Spezalisierung einer bestimmten Klasse, ist dies in Ordnung.&lt;/p>
+&lt;p>Wir arbeiten aber wenn immer möglich nach dem Single-Responsibility-Principle. Dieses Prinzip besagt, dass jeder Teil (bspw. Klasse, Methode) einer Applikation
+nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwortlich ist. Kurz gesagt: eine Methode macht beispielsweise niemals zwei verschiedene Dinge gleichzeitig.&lt;/p>
+&lt;ul>
+&lt;li>Erstelle eine Klasse, welche den Kampf zwischen zwei Spielfiguren verwaltet. Diese Klasse enthält diverse Methoden und ist verantwortlich für:
+&lt;ul>
+&lt;li>das Starten eines neuen Kampfes zwischen zwei Spielfiguren&lt;/li>
+&lt;li>das Zählen der Kampfrunden&lt;/li>
+&lt;li>das Verrechnen von Schaden&lt;/li>
+&lt;li>das Ermitteln des Gewinners&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Stelle sicher, dass die spezalisierten Modell-Klassen (Elf, Heiltrank) nur die Logik enthalten, die für eine Spezalisierung gerechtfertigt ist
+&lt;ul>
+&lt;li>Beispiel 1: die Berechnung des Kampfwerts eines Elfen gehört in die Elf-Klasse, die diese die Spezialisierung für einen Elfen enthält&lt;/li>
+&lt;li>Beispiel 2: der Kampf zwischen zwei Spielfiguren gehört NICHT in die Spielfigur-Klasse, da diese generell gültige Informationen zu einer Spielfigur enthält und das eigentliche &amp;ldquo;Spiel&amp;rdquo; mit dem Kampf zweier Spielfiguren nicht die Aufgabe dieser Klasse ist&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="aufgabe-7">Aufgabe 7&lt;/h2>
+&lt;ul>
+&lt;li>Das Spiel soll erweitert werden, dass eine Spielfigur eine Rüstung tragen kann&lt;/li>
+&lt;li>Es gibt leichte und schwere Rüstungen
+&lt;ul>
+&lt;li>Elfen und Goblins dürfen nur leichte Rüstungen tragen&lt;/li>
+&lt;li>Menschen, Zwerge und Orks dürfen schwere Rüstungen tragen&lt;/li>
+&lt;li>Trolle können aufgrund ihrer Grösse keine Rüstung tragen&lt;/li>
+&lt;li>Eine Spielfigur, welche eine schwere Rüstung tragen kann, kann selbstverständlich auch eine leichte Rüstung anziehen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Eine Spielfigur muss nicht zwingend eine Rüstung tragen&lt;/li>
+&lt;li>Jede Rüstung hat ein Gewicht, welches die Tragkraft der Spielfigur entsprechend verringert&lt;/li>
+&lt;li>Eine Spielfigur kann eine Rüstung anziehen oder sie ablegen&lt;/li>
+&lt;li>Mit dem Tragen einer Rüstung ist es einer Spielfigur möglich im Kampf pro Runde den Schaden komplett zu verhindern. Die schwere Rüstung ist dabei erfolgreicher. Das Verhindern von Schaden passiert zufällig&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="aufgabe-8">Aufgabe 8&lt;/h2>
+&lt;ul>
+&lt;li>Verhindere die Instanziierung von Klassen, die keinen Sinn ergeben (Beispiel Waffe, Spielfigur, &amp;hellip;)&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="aufgabe-9">Aufgabe 9&lt;/h2>
+&lt;ul>
+&lt;li>Jede Spielfigur erhält einen Initiative-Wert&lt;/li>
+&lt;li>Je höher der Wert, desto früher darf die Spielfigur im Kampf zuschlagen&lt;/li>
+&lt;li>Tiefere Werte verteilen also ihren Schaden später als höhere Werte&lt;/li>
+&lt;li>Eine Spielfigur mit tiefem Initiative-Wert kann nicht mehr zurückschlagen wenn sie getötet wird&lt;/li>
+&lt;li>Das Tragen von schweren Rüstungen verringert den Initiative-Wert&lt;/li>
+&lt;/ul></description></item><item><title>Labs: Set - Aufgaben</title><link>/labs/java/java-collections/02_set/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/02_set/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Schreibe ein Programm, welches die Personen von vier Vereine auswertet.&lt;/p>
+&lt;ol>
+&lt;li>Pro Verein existiert ein &lt;code>Set&lt;/code> mit allen Vereinsmitlieder (siehe Input).&lt;/li>
+&lt;li>Das Programm analysiert die Vereinsmitglieder und schreibt verschiedene Aussagen in die Konsole (siehe Ausgabe).&lt;/li>
+&lt;li>Die Namen der Personen müssen in alphabetischer Reihenfolge angezeigt werden.&lt;/li>
+&lt;/ol>
+&lt;h3 id="input">Input&lt;/h3>
+&lt;details>
+&lt;summary>4 Sets&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> fussballVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paula&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> schwimmVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Klaus&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anina&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Nicole&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Gerda&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> musikVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Kari&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Karin&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> tanzVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Lara&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Sabine&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="ausgabe">Ausgabe&lt;/h3>
+&lt;p>Die Ausgabe muss das folgende Format aufweisen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">- Wie viele Personen machen min. in einem Verein mit: 2: Maria,Xaver
+- Alle Personen, welche im Fussball und Tanz Verein sind: 2: Maria,Xaver
+- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 2: Maria,Xaver
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ausgabe-überprüfen">Ausgabe überprüfen&lt;/h3>
+&lt;p>Wie können wir die Ausgabe überprüfen, ohne dass ihr die Lösung kennt?
+Wir benützen dazu eine kleine Hilfsklasse &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java">&lt;code>OutputValidation&lt;/code>&lt;/a>.
+Die Klasse erlaubt es eure &lt;code>System.out.println()&lt;/code> Anweisungen mit &lt;code>OutputValidation.logAndPrint()&lt;/code> zu ersetzten.
+Am Schluss des Programmes kann man mit &lt;code>OutputValidation.printControlHash()&lt;/code> den Hash-Wert der eigenen Ausgabe anzeigen, oder mit &lt;code>OutputValidation.verifyControlHash()&lt;/code> einen Hash-Wert zur Überprüfung mit eurer Ausgabe überreichen.&lt;/p>
+&lt;p>Ein Anwendungsbeispiel seht ihr unter &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidationUsage.java">OutputValidationUsage&lt;/a>.&lt;/p>
+&lt;p>Der Hash für diese Aufgabe ist: &lt;strong>&lt;code>-1421274666&lt;/code>&lt;/strong>&lt;/p>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Wir programmieren eine eigene Set-Klasse &lt;code>MySet&lt;/code>, welche noch kein Hash-Code verwendet.&lt;/p>
+&lt;ol>
+&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
+&lt;li>Die Klasse muss das Interface &lt;code>MySetInterfaceSimple&lt;/code> implementieren.&lt;/li>
+&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichern muss. Sie muss die Grösse des Arrays dynamische anpassen.&lt;/li>
+&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MySet&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.&lt;/li>
+&lt;li>Überprüfe deine Implemenation mit dem JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="input-1">Input&lt;/h3>
+&lt;details>
+&lt;summary>Inferface MySetInterfaceSimple&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> com.examples.list&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MySetInterfaceSimple&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Adds the specified element to this set if it is not already present.
+&lt;/span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this set did not already contain the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes the specified element from this set if it is present.
+&lt;/span>&lt;span style="color:#75715e"> * @param object object to be removed from this set, if present
+&lt;/span>&lt;span style="color:#75715e"> * @return true if the set contained the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains the specified element.
+&lt;/span>&lt;span style="color:#75715e"> * @param object element whose presence in this set is to be tested
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains the specified element
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the number of elements in this set.
+&lt;/span>&lt;span style="color:#75715e"> * @return the number of elements in this set
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains no elements.
+&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains no elements
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Removes all the elements from this set. The set will be empty after this call returns.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Wir Kopieren unsere &lt;code>MySet&lt;/code> Klasse zu der Klasse &lt;code>MyHashSet&lt;/code> und erweitern diese, damit sie Hash Funktionalität verwendet:&lt;/p>
+&lt;ol>
+&lt;li>Beim Hinzufügen von neuen Elementen wird deren Hash-Code berechnet und ebenfalls abgespeichert.&lt;/li>
+&lt;li>Die Suche nach bestehenden Elementen wird anschliessend über den gespeicherten Hash-Code durchgeführt statt über die Elemente selbst.&lt;/li>
+&lt;li>Du kannst deine Implemenation mit dem gleichen JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a> überprüfen, da sich die neue Klasse gleich verhalten soll. Erstelle vom Test eine Kopie &lt;code>MyHashSetTest&lt;/code> und ändere &lt;code>MySet&lt;/code> überall zu &lt;code>MyHahsSet&lt;/code>.&lt;/li>
+&lt;/ol></description></item></channel></rss>
