@@ -2,7 +2,7 @@
 title: "Advanced console.log(...)'s"
 type: docs
 linkTitle: "Advanced console.log(...)'s"
-weight: 22
+weight: 23
 date: 2023-01-09
 description: >
   Modul #F4 - JavaScript - Die Browser-Konsole

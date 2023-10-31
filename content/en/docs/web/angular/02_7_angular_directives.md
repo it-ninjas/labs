@@ -61,30 +61,6 @@ export class GreetingComponent {
 }
 ```
 
-## Attribut-Directives
-Attribut-Directives sind Directives, die das Verhalten von HTML-Elementen ändern, ohne sie zu ersetzen. Ein Beispiel für eine Attribut-Direktive ist ngClass, die es ermöglicht, CSS-Klassen basierend auf Bedingungen hinzuzufügen oder zu entfernen.
-
-```html
-<h1 appTriumphs>{{ title }}</h1>
-```
-
-```typescript
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
-
-@Directive({
-    selector: '[appTriumphs]'
-})
-export class TriumphsDirective {
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-        this.renderer.setStyle(this.elementRef.nativeElement, 'padding', '10px');
-        this.renderer.setStyle(this.elementRef.nativeElement, 'font-style', 'italic');
-        this.renderer.setStyle(this.elementRef.nativeElement, 'text-decoration', 'underline');
-    }
-}
-```
-
-Die zwei wichtigsten Attribut-Directives sind `*ngIf` und `*ngFor`, welche folgend genauer erläutert werden.
-
 ### *ngIf
 Die `*ngIf`-Direktive wird verwendet, um im Template eines Components Bedingungen zu überprüfen und den darin enthaltenen HTML-Code nur dann anzuzeigen, wenn die Bedingung erfüllt ist. Wenn die Bedingung nicht erfüllt ist, wird der entsprechende HTML-Code aus der gerenderten View entfernt.
 
@@ -187,6 +163,29 @@ export class WeaponComponent {
         <p>Find your destined weapon and embark on your epic journey.</p>
     </div>
 </div>
+```
+
+
+## Attribut-Directives
+Attribut-Directives sind Directives, die das Verhalten von HTML-Elementen ändern, ohne sie zu ersetzen. Ein Beispiel für eine Attribut-Direktive ist ngClass, die es ermöglicht, CSS-Klassen basierend auf Bedingungen hinzuzufügen oder zu entfernen.
+
+```html
+<h1 appTriumphs>{{ title }}</h1>
+```
+
+```typescript
+import { Directive, ElementRef, Renderer2 } from '@angular/core';
+
+@Directive({
+    selector: '[appTriumphs]'
+})
+export class TriumphsDirective {
+    constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+        this.renderer.setStyle(this.elementRef.nativeElement, 'padding', '10px');
+        this.renderer.setStyle(this.elementRef.nativeElement, 'font-style', 'italic');
+        this.renderer.setStyle(this.elementRef.nativeElement, 'text-decoration', 'underline');
+    }
+}
 ```
 
 ### ngClass

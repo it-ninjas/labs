@@ -2,7 +2,7 @@
 title: "Prototyping und Klassen"
 type: docs
 linkTitle: "Prototyping und Klassen"
-weight: 17
+weight: 18
 date: 2023-04-20
 description: >
   Modul #F4 - JavaScript - Prototypen und Klassen.

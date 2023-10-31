@@ -2,7 +2,7 @@
 title: "Timeouts und Intervalle"
 type: docs
 linkTitle: "Timeouts und Intervalle"
-weight: 16
+weight: 17
 date: 2022-04-19
 description: >
   Modul #F4 - JavaScript - Code verzögert ausführen.

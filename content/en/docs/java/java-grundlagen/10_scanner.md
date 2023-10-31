@@ -1,7 +1,7 @@
 ---
 title: "Scanner"
 linkTitle: "Scanner"
-weight: 9
+weight: 10
 description: >
   Modul #J1
 ---
@@ -58,4 +58,4 @@ Wie du es bereits an der mühsamen Formulierung des letzten Satzes siehst, hat d
 Für die Labs und das Exams im Modul #J1 kannst du diese Methode gut brauchen. Spiele aber trotzdem ein bisschen mit dieser `nextInt()`-Methode, damit du die komischen Eigenheiten dieser Methode einmal kennenlernst.
 
 ---
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 7](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-7---eingaben-von-der-kommandozeile) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 8](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-8---eingaben-von-der-kommandozeile) in den Labs.

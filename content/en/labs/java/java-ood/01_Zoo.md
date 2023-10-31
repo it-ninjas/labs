@@ -6,13 +6,14 @@ weight: 1
 description: >
   Aufgabe zu Modul #J3 - OOD - Zoo
 ---
-
-Schreibe eine Anwendung, welche einen Zoo modelliert. Die Anwendung soll folgende Klassen enthalten:
+Modelliere* einen Klassenaufbau für einen Zoo. Folgende Klassen sollen enthalten sein: 
 - Personen
 - Gehege
 - Tiere
 
 Jede dieser Klassen soll mehrere Spezialisierungen enthalten.
+
+> *Modelliere bedeutet in diesem Zusammenhang, dass du nur den Aufbau mittels Klassen darstellen musst. Es wird keine Funktionalität gefordert.  
 
 Bei den Personen wird zwischen Mitarbeitern und Mitgliedern unterschieden.
 Ein Mitarbeiter hat beispielsweise einen Lohn, welcher ein Mitglied nicht hat.

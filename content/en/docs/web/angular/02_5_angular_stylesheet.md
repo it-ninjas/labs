@@ -142,7 +142,7 @@ $yellow: #ffff00;
 
 
 ## Template Styling
-Es gibt zum einen das [ngClass Directive](../03_7_ts_directives#ngclass), welches verwendet werden kann um CSS/(SCSS)-Klassen dynamisch ins Template einzubinden. 
+Es gibt zum einen das [ngClass Directive](../02_7_angular_directives#ngclass), welches verwendet werden kann um CSS/(SCSS)-Klassen dynamisch ins Template einzubinden. 
 Alternative dazu gibt es noch die `[class.]` Syntax. Man kann diese Syntax verwenden, um eine einzelne CSS/(SCSS)-Klasse basierend auf einer Bedingung hinzuzufügen oder zu entfernen.
 Ob eine Klasse hinzugefügt oder entfernt werden soll, wird meistens anhand eines Boolean aus dem Typescript geprüft. Ist das Boolean `true` so wird die Klasse hinzugefügt, ansonsten wird sie ignoriert.
 
@@ -168,7 +168,7 @@ export class GreetingComponent {
 }
 ```
 
-Alternativ zur prüfung auf ein Boolean kann auch mit Operatoren gearbeitet werden, wie zum Beispiel:
+Alternativ zur prüfung auf ein Boolean kann auch mit einer Bedingung gearbeitet werden, wie zum Beispiel:
 ```typescript
 import { Component } from '@angular/core';
 

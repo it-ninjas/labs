@@ -1,14 +1,14 @@
 ---
-title: "Dependency Injection"
+title: "Errorhandling"
 type: docs
-linkTitle: "Dependency Injection"
-weight: 16
+linkTitle: "Errorhandling"
+weight: 15
 date: 2023-05-04
 description: >
- Was eine Dependency Injection genau ist und wozu man diese verwendet kann man hier nachlesen.
+ Wie Errorhandling in Angular umgesetzt werden kann.
 ---
 ## Ziele
-* Ich weiss, wozu ErrorHandler und verwendet werden und wie ich selbst solche implementieren kann.
+* Ich weiss, wozu ErrorHandler verwendet werden und wie ich selbst solche implementieren kann.
 
 ## ErrorHandler
 Da man ja ein `try-catch` nicht verwenden sollte laut Best-Practises, muss man einen anderen Weg finden Error anzufangen. Zudem wäre es mühsam überall einen solchen `try-catch` Block hinzuzufügen.

@@ -2,7 +2,7 @@
 title: "Debugging"
 type: docs
 linkTitle: "Debugging"
-weight: 23
+weight: 24
 date: 2023-03-31
 description: >
     Modul #F4 - JavaScript - Debuggen ist in jeder Programmiersprache wichtig und die IDE hat dazu viele nützliche Tools, welche hier angeschaut werden.

@@ -47,7 +47,7 @@ Der Typ folgt jeweils nach einem Doppelpunkt hinter dem Variablennamen:
 ```
 Der Compiler überprüft dann die Typen während des Kompilierens und meldet allfällige Typfehler.
 
-Die verschiedenen Grundtypen von TypeScript sind [hier](https://www.typescriptlang.org/docs/handbook/basic-types.html) ersichtlich.
+Die verschiedenen Grundtypen von TypeScript sind [hier](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) ersichtlich.
 
 
 ### Type Any

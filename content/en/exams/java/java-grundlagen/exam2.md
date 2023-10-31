@@ -79,6 +79,8 @@ Die Methode liefert die Anzahl dieser Wörter zurück.
 Schreibe eine Methode, welche die Wörter aus dem Text oben alphabetisch sortiert. Entferne zu diesem Zweck zuerst die Sonderzeichen.
 Die Methode liefert ein Array mit den sortierten Wörtern zurück.
 
+_Die Verwendung von Arrays.sort() ist **nicht** erlaubt._
+
 ## Aufgabe 3
 Schreibe eine Methode, welche die durchschnittliche Wortlänge berechnet. Entferne zu diesem Zweck zuerst die Sonderzeichen.
 Die Methode liefert die durchschnittliche Wortlänge als Gleitkommazahl zurück.
@@ -92,10 +94,17 @@ Schreibe eine Methode, welche das Wort zurückliefert, das im Text oben am häuf
 Die Methode liefert das gesuchte Wort zurück.
 
 ## Aufgabe 6
+[//]: # (Alte Beschreibung)
+[//]: # (Schreibe eine Methode, welche die einzelnen Buchstaben des Textes in ein zweidimensionales Array von Strings überführt.)
+[//]: # (Die erste Dimension hat dabei die Grösse der verschiedenen vorkommenden Zeichen im Text in alphabetischer Reihenfolge.)
+[//]: # (Sonderzeichen sind ebenfalls Teil dieser alphabetischen Reihenfolge, die Sortierung richtet sich nach dem Integer-Wert der einzelnen Zeichen.)
+[//]: # (Die zweite Dimension enthält pro Zeichen ein Array mit den Positionen der Zeichen im Text. An erster Stelle steht dabei das jeweilige Zeichen.)
+[//]: # (Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden.)
+
 Schreibe eine Methode, welche die einzelnen Buchstaben des Textes in ein zweidimensionales Array von Strings überführt.
-Die erste Dimension hat dabei die Grösse der verschiedenen vorkommenden Zeichen im Text in alphabetischer Reihenfolge.
-Sonderzeichen sind ebenfalls Teil dieser alphabetischen Reihenfolge, die Sortierung richtet sich nach dem Integer-Wert der einzelnen Zeichen.
-Die zweite Dimension enthält pro Zeichen ein Array mit den Positionen der Zeichen im Text. An erster Stelle steht dabei das jeweilige Zeichen.
+In der ersten Reihe sollen alle einzigartigen im Text vorhandenen Buchstaben stehen. 
+Diese sollen in alphabetischer Reihenfolge sortiert sein. Sonderzeichen sollen auch aufgelistet werden.
+Unter jedem Buchstaben sollen fortlaufend die Positionen(index) im Text dargestellt werden.
 Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden.
 
 Beispiel:
@@ -108,3 +117,7 @@ Beispiel:
 |  10 |  12 |     |     |  14 |     |  16 |   3 |  13 |  11 |  26 |     |     |     |  
 |  15 |     |     |     |     |     |     |     |     |     |     |     |     |     |
 |  19 |     |     |     |     |     |     |     |     |     |     |     |     |     |
+
+Der Tabelle kann folgendes entnommen werden:
+Der Buchstabe `a` befindet sich an den Positionen `1` und `12` im String `Hallo mein Name ist Claudio`.
+Das erste Zeichen in der Tabelle ist ein Leerschlag (whitespace).

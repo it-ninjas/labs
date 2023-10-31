@@ -14,7 +14,9 @@ description: >
 ## Was ist ein Template?
 In Angular ist das Template der Teil eines Components, der die Benutzeroberfläche definiert. Es ist im Wesentlichen das HTML, das vom Component angezeigt wird und mit der Benutzer interagieren kann.
 
-Das Template kann jedoch mehr als nur HTML enthalten. Es kann auch Angularspezifische Syntax wie [Template Styling](../03_5_ts_stylesheet#template-styling), [Directives](../03_7_ts_directives), [Pipes](../04_2_ts_pipes), [Interpolationen](../04_1_ts_data_binding#interpolation) und [Bindings](../04_1_ts_data_binding) enthalten, die die Funktionalität und das Verhalten des Components bestimmen.
+Das Template kann jedoch mehr als nur HTML enthalten. Es kann auch Angularspezifische Syntax wie 
+[Template Styling](../02_5_angular_stylesheet#template-styling), [Directives](../02_7_angular_directives), [Pipes](../03_2_angular_pipes), 
+[Interpolationen](../03_1_angular_data_binding#interpolation) und [Bindings](../03_1_angular_data_binding) enthalten, die die Funktionalität und das Verhalten des Components bestimmen.
 
 ```html
 <div>
@@ -87,4 +89,5 @@ export class GreetingComponent {
 </div>
 ```
 Wenn der obenstehende Code gerendert wurde, sieht man das im DOM nun nur der div-tag, den h1-tag und die beiden p-tags zusehen sind, das `ng-container` und `ng-template` nicht.
+
 ![DOM](../images/template-dom.png) 
