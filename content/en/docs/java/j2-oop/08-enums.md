@@ -6,9 +6,9 @@ description: >
   Modul #J2
 ---
 ## Ziele
-* Ich weiss, was ein Enum ist und wann es benötigt wird.
-* Ich kann Enums sinnvoll einsetzen.
-* Ich kann Methoden und Konstruktoren in Enums anwenden.
+* Ich kann auswendig in eigenen Worten beschreiben, was Enums sind und wann sie benutzt werden.
+* Ich setze Enums in einem konkreten Code-Beispiel selbständig und korrekt ein.
+* Ich setze Methoden und Konstruktoren in Enums in einem konkreten Code-Beispiel selbständig und korrekt ein.
 
 ## Enums
 Enums (kurz für "enumeration", zu Deutsch "Aufzählung") bieten die Möglichkeit, vordefinierte Konstanten zusammen zu gruppieren.
@@ -56,7 +56,7 @@ public class DailyPlanner {
                 System.out.println("There aren't enough days in the weekend");
                 break;
             default:
-                System.out.println("Some Midweek days feel like Mondays when I wish the were Fridays");
+                System.out.println("Some Midweek days feel like Mondays when I wish they were Fridays");
                 break;
         }
     }

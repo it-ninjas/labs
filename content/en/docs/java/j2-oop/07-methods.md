@@ -7,37 +7,41 @@ description: >
 ---
 
 ## Ziele
-* Ich weiss, welche Regeln ein Methodenname einhalten sollte (Konventionen).
-* Ich kann Getter- und Setter-Methoden schreiben.
-* Ich kenne die Methoden `equals()` und `hashCode()` und weiss, unter welchen Umständen und wie ich diese überschreiben soll.
+* Ich kann alle Komponenten auswendig aufzählen, die zu einer Methodendeklaration dazugehören.
+* Ich kann auswendig die Regeln aufzählen, die ein Methodenname einhalten sollte (Konventionen).
+* Ich schreibe Getter- und Setter-Methoden gemäss Namenskonventionen.
+* Ich kann in eigenen Worten erklären, warum der Zugriffsmodifikator einer Methode so restriktiv wie möglich gewählt werden sollte.
+* Ich kann die Voraussetzungen, um Methoden überladen zu können, vollständig aufzählen.
+* Ich kann in eigenen Worten die Umstände erläutern, wann die `equals`- und die `hashCode`-Methode überschrieben werden sollten.
+* Ich kann in eigenen Worten die Bedingungen beschreiben, welche bei der Überschreibung der Methode `equals` erfüllt werden müssen.
+* Ich kann in eigenen Worten die Bedingungen beschreiben, welche bei der Überschreibung der Methode `hashCode` erfüllt werden müssen.
 
 ## Instanzmethoden
-Methoden werden benutzt, um Funktionen zur Verfügung zu stellen. Diese Funktionalitäten reichen von einfachen Änderungen am Zustand eines Objekts bis zu komplexen Algorithmen zur Berechnung von mathematischen Dingen. Hier passiert also die Magie in einer Applikation.
+Methoden werden benutzt, um Funktionalitäten zur Verfügung zu stellen. Diese Funktionalitäten reichen von einfachen Änderungen am Zustand eines Objekts bis zu komplexen Algorithmen zur Berechnung von mathematischen Dingen. Hier passiert also die Magie in einer Applikation.
 Diese Methoden können also entweder den Inhalt von Datenfelder ändern oder ihre Werte verwenden, um eine bestimmte Berechnung durchzuführen.
-Der Zugriffsmodifizierer einer Methode sollte immer so restriktiv wie möglich gewählt werden.
 
 Eine Methodendeklaration besteht aus bis zu sieben Komponenten:
-1. Zugriffsmodifikator: `public`, `protected`, `private` oder package-private.
+1. Zugriffsmodifikator: `public`, `protected`, `private` oder package-private. Der Zugriffsmodifikator sollte immer so restriktiv wie möglich gewählt werden.
 2. Sonstige Modifikatoren. Beispielsweise `static` oder `synchronized`.
 2. Rückgabewert. Der Datentyp des von der Methode zurückgegebenen Werts oder `void`, wenn die Methode keinen Wert zurückgibt.
 3. Methodenname / Bezeichner.
-4. Parameterliste in Klammern. Eine durch Kommas getrennte Liste von Eingabeparametern (Datentyp + Bezeichner). Wenn keine Parameter vorhanden sind, genügt die Angabe der beiden Klammern.
-5. Exceptions. Dazu mehr später im Modul Exception Handling.
-6. Methodenkörper.
+4. Parameterliste in Klammern. Eine durch Kommas getrennte Liste von Eingabeparametern (Datentyp + Bezeichner). Wenn keine Parameter benötigt werden, genügt die Angabe der beiden Klammern.
+5. Exceptions (also welche Fehler, die die Methode wirft). Dazu mehr später im Modul Exception Handling.
+6. Methodenkörper (der Code in geschweiften Klammern, der die Methode ausführt).
 
 ### Namenskonventionen für Methoden
-Methodennamen sollen folgende Regeln einhalten:
+Methodennamen sollen - per Konvention - folgende Regeln einhalten:
 * Erster Buchstabe ist immer klein.
-* CamelCase: Alle Buchstaben sind klein ausser jeweils der erste Buchstaben ab dem zweiten Wort.
-* Der Methodenname sollte aus einem Verb und einem Nomen zusammengesetzt werden.
+* CamelCase: Alle Buchstaben sind klein. Wenn der Methodenname aus mehreren Worten besteht, wird jeweils der erste Buchstabe ab dem zweiten Wort grossgeschrieben. Beispiele: `equals`, `printThisToConsole`.
+* Der Methodenname ein Verb enthalten, welches die Funktionalität der Methode beschreibt. Wenn es dem Verständnis der Funktionalität dient, wird dieses Verb zusammen mit einem Nomen zusammengesetzt.
 * Der Methodenname soll möglichst aussagekräftig sein.
 * Statt Abkürzungen sollen die einzelnen Wörter möglichst ausgeschrieben werden (ausser es handelt sich um sehr bekannte Abkürzungen).
 
 ### Getter und Setter
-Diese beiden Arten von Methoden sind in der objektorientierten Programmierung unverzichtbar. Eine _get_-Methode (Getter) ruft den Wert eines bestimmten Datenfelds ab, während eine _set_-Methode (Setter) ihren Wert verändert. Dies dient dem Prinzip der Kapselung und kann unter anderem dazu verwendet werden, ein bestimmtes Datenfeld read-only zu gestalten (wenn es keine Setter-Methode dazu gibt).
+Eine `get`-Methode (_Getter_) ruft den Wert eines bestimmten Datenfelds ab und gibt diesen Wert zurück, während eine `set`-Methode (_Setter_) ihren Wert verändert. Dies dient dem _Prinzip der Kapselung_ und kann unter anderem dazu verwendet werden, ein bestimmtes Datenfeld als read-only (nur lesbar) gegen aussen zu gestalten (wenn es keine Setter-Methode dazu gibt).
 
 #### Namenskonventionen
-Für Getter- und Setter-Methoden werden immer die gleichen Methodennamen verwendet. Als Präfix benutzen wir _get_ und _set_ gefolgt vom Namen des Datenfelds worauf sich die Methode bezieht.
+Für Getter- und Setter-Methoden werden immer die gleichen Methodennamen verwendet. Als Präfix benutzen wir `get` und `set` gefolgt vom Namen des Datenfelds worauf sich die Methode bezieht.
 ```java
 public class Car {
 	private int speed;
@@ -110,7 +114,7 @@ Die Default-Umsetzung der Methode in der Object-Klasse definiert, dass zwei Obje
 
 Aufgrund der fachlichen Gegebenheiten kann diese Definition der Gleichheit nicht korrekt sein. In so einem Fall muss die Methode `equals()` überschrieben werden.
 
-Bei der Umsetzung müssen folgende Bedingungen für die Definition der Gleichheit bei nicht-`null` Objekten gemäss [API-Definition für equals()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) erfüllt werden:
+Bei der Umsetzung müssen folgende Bedingungen für die Definition der Gleichheit bei nicht-`null` Objekten gemäss [API-Definition für equals()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) erfüllt werden:
 - **Reflexivität**: Das Objekt liefert beim Vergleich mit sich selbst true.
 - **Symmetrie**: Das Resultat des Vergleichs x mit y ist gleich wie das des Vergleichs y mit x. Es ist also egal wie verglichen wird.
 - **Transivität**: Wenn x gleich y ist und y gleich z, dann ist x gleich z.
@@ -150,7 +154,7 @@ Die Methode `hashCode()` sollte für jedes Objekt einen Hashwert (Fingerabdruck)
 
 Der berechnete Hashwert ermöglicht einen effizienten und schnellen Zugriff auf ein bestimmtes Objekt innerhalb eines Hash-basierten Containers wie z.B. einer `HashMap`.
 
-Auch für diese Methode definiert die [API-Definition für hashCode()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html#hashCode()) Bedingungen, welche erfüllt werden müssen, damit die Methode zweckmässig verwendet werden kann:
+Auch für diese Methode definiert die [API-Definition für hashCode()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#hashCode()) Bedingungen, welche erfüllt werden müssen, damit die Methode zweckmässig verwendet werden kann:
 
 - **Konsistenz**: Egal wie häufig `hashCode()` aufgerufen wird, es kommt stets dasselbe Resultat zurück, sofern der Inhalt des Objekts nicht geändert wurde.
 - **Zusammenhang equals**: Zwei Objekte, die gemäss `equals()` gleich sind, müssen den gleichen Hashwert liefern.
