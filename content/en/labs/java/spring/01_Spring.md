@@ -139,7 +139,7 @@ Du bist mit diesem Schritt fertig erst, wenn folgende Aussagen stimmen:
   ![](../assets/04_projekt_struktur.png)
 * Das Projekt ist in IntelliJ richtig konfiguriert (JDK, Maven, Source-Verzeichnisse, Resource-Verzeichnisse usw.)
 * Du verstehst, wozu wir die Dependencies im pom.xml File brauchen
-* Eine "SpringBootApplication"-Klasse ist vorhanden, ist richtig annotiert und beinhaltet einen "main" Methode, welche die Applikation ausführen lässt. 
+* Eine "SpringBootApplication"-Klasse ist vorhanden, ist richtig annotiert und beinhaltet eine "main" Methode, welche die Applikation ausführt. 
 * Spring Boot Applikation startet fehlerfrei
 * In der Run-Konsole ist eine ähnliche Ausgabe zu sehen:
   ![](../assets/02_application_success_run_console.png)
