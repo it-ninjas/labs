@@ -121,7 +121,7 @@ Du kannst dir ein 2D-Array wie eine Excel vorstellen. Es besteht aus Reihen und 
 mit einem Index/einer Position definiert werden. 
 
 ### Syntax
-Für die Deklaration benötigt eines zweidimensionalen Arrays wird eine Angabe von der Anzahl Reihen und Spalten benötigt.
+Für die Deklaration eines zweidimensionalen Arrays wird eine Angabe von der Anzahl Reihen und Spalten benötigt.
 Bei dieser Art von Array können die gleichen Datentypen wie bei den normalen Arrays verwendet werden. So sieht schliesslich
 die Syntax aus:
 ```java
