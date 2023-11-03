@@ -139,7 +139,7 @@ Du bist mit diesem Schritt fertig erst, wenn folgende Aussagen stimmen:
   ![](../assets/04_projekt_struktur.png)
 * Das Projekt ist in IntelliJ richtig konfiguriert (JDK, Maven, Source-Verzeichnisse, Resource-Verzeichnisse usw.)
 * Du verstehst, wozu wir die Dependencies im pom.xml File brauchen
-* Eine "SpringBootApplication"-Klasse ist vorhanden, ist richtig annotiert und beinhaltet einen "main" Methode, welche die Applikation ausführen lässt. 
+* Eine "SpringBootApplication"-Klasse ist vorhanden, ist richtig annotiert und beinhaltet eine "main" Methode, welche die Applikation ausführt. 
 * Spring Boot Applikation startet fehlerfrei
 * In der Run-Konsole ist eine ähnliche Ausgabe zu sehen:
   ![](../assets/02_application_success_run_console.png)
@@ -182,7 +182,7 @@ TODO: Endpunkt für Profil
 ### Resource-Representation Klassen erstellen
 Unsere Schnittstellendefinition verwendet JSON-Objekte bei bestimmten Requests und Responses.
 Diese JSON-Objekte stellen sog. "Resource" dar.
-Im Beispiel "Neues Schulfach hinzufügen" stellen die JSON-Objekte ein Schulfach dar.
+Im Beispiel "Neues Schulfach hinzufügen" stellt das JSON-Objekt ein Schulfach dar.
 
 In diesem Abschnitt wirst du für alle JSON-Objekte entsprechende Java-Klassen erstellen. 
 Das sind sogenannte Resource-Representation Klassen, auch Modelle genannt.  
@@ -241,7 +241,7 @@ Erstelle Controller und Methoden (mit Mockdaten), um die Umsetzung deiner Schnit
 * Jede API-Methode, welche einen Wert liefert, schreibt diesen Wert direkt in den Response-Body (RestController)
 * Die API-Methoden sind "RESTful" (siehe [HTTP Methods in RESTful Web Services](https://www.javadevjournal.com/spring/restful-methods/))
 * Die API-Methoden, welche einen Wert liefern, liefern zurzeit Mockdaten zurück (alle Aufrufe einer Methode liefern immer die gleiche Mockdaten zurück)
-* Mit Postman oder mit dem HTTP-Browser kann auf jede API-Methode zugegriffen werden
+* Mit Insomnia oder mit dem HTTP-Browser kann auf jede API-Methode zugegriffen werden
 * Für jede API-Methode wurden passende Unit-Tests geschrieben und erfolgreich ausgeführt
 
 ## Schritt 3: Services anlegen
@@ -323,7 +323,7 @@ Die ursprünglich erstellten Test sollten immer noch erfolgreich ausführbar sei
 * Sämtliche Anfragen der Controller (Requests) wurden an die Service-Klassen und deren Methoden weitergeleitet
 * Die Controller- und Service-Klassen sind mittels Constructor-Injection miteinander verbunden
 * Sämtliche Unit-Tests für die Controller funktionieren nach wie vor
-* Für alle Service-Methoden wurden entsprechende Unit-Tests geschrieben
+* Für alle Service-Methoden wurden entsprechende neue Unit-Tests geschrieben
 
 ## Schritt 4: Datenbank-Verbindung herstellen
 
@@ -372,12 +372,12 @@ Wähle für alle Attribute die richtigen Datentypen und gib die richtigen Spalte
 ---
 
 Nun sollen die drei Entitäten miteinander verbunden werden. Die Beziehung zwischen den Tabellen ist wie folgt geregelt:
-* Ein Eintrag in SCHOOL_SUBJECT_GRADE besitzt immer ein SCHOOL_SUBJECT und einen GRADE
-* Der gleiche GRADE kann in mehreren SCHOOL_SUBJECT_GRADE eingesetzt werden
-* Das gleiche SCHOOL_SUBJECT kann in mehreren SCHOOL_SUBJECT_GRADE eingesetzt werden
+* Ein Eintrag in SCHOOL_SUBJECT_GRADE besitzt immer ein SCHOOL_SUBJECT und eine GRADE
+* Eine GRADE kann in mehreren SCHOOL_SUBJECT_GRADE eingesetzt werden
+* Ein SCHOOL_SUBJECT kann in mehreren SCHOOL_SUBJECT_GRADE eingesetzt werden
 
-Damit sind die Beziehungen zwischen den Tabellen jeweils 1:n, dies wird auch One-To-Many genannt.
-Aus Sicht eines SCHOOL_SUBJECT_GRADE ist die Beziehung umgekehrt n:1, dies wird auch Many-To-One genannt.
+Damit sind die Beziehungen zwischen den Tabellen jeweils 1:m, dies wird auch One-To-Many genannt.
+Aus Sicht eines SCHOOL_SUBJECT_GRADE ist die Beziehung umgekehrt m:1, dies wird auch Many-To-One genannt.
 Mit diesen Kenntnissen können nun die entsprechenden Annotationen aus JPA verwendet werden, um die Entitäten zu verbinden.
 
 **Beispiel: Beziehung zwischen Schulfach und Mapping-Tabelle**
@@ -513,7 +513,7 @@ public interface GradeRepository extends JpaRepository<Grade, Integer> {
 Wer nicht mehr genau weiss was JDBC ist kann es [hier](./../../../docs/java/java-jdbc.md ) nachlesen.
 
 #### Dependency
-Damit JDBC verwendet werden kann, muss man zuerst eine neuen Dependency in das `pom.xml` hinzufügen.
+Damit JDBC verwendet werden kann, muss zuerst eine neue Dependency in das `pom.xml` hinzufügen werden.
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -537,7 +537,7 @@ public class Grade {
 }
 ```
 
-Lombok ist eine Java-Bibliothek, die es Entwicklern ermöglicht, boilerplate Code in ihren Java-Klassen zu reduzieren. Die Annotationen `@Getter` und `@Setter` sind zwei der am häufigsten verwendeten Annotationen in Lombok. Sie generieren automatisch Getter- und Setter-Methoden für die Felder einer Klasse.
+Die Annotationen `@Getter` und `@Setter` sind zwei der am häufigsten verwendeten Annotationen in Lombok. Sie generieren automatisch Getter- und Setter-Methoden für die Felder einer Klasse. Lombok ist eine Java-Bibliothek, die es Entwicklern ermöglicht, boilerplate Code in ihren Java-Klassen zu reduzieren. 
 
 Damit man Lombok jedoch verwenden kann, muss man die folgende Dependency im `pom.xml` hinzufügen:
 ```xml
@@ -628,7 +628,7 @@ spring:
 ```
 
 **Aufgabe**  
-Konfiguriere deine Konfigurationsdatei entsprechend deiner Datenbank.
+Erstelle deine Konfigurationsdatei entsprechend deiner Datenbank.
 
 ### Akzeptanzkriterien Schritt 5
 * Die Spring Boot Applikation startet mit der Datenbank.
@@ -778,7 +778,7 @@ public class AdminService {
 ```
 
 #### RowMapper
-In JDBC, RowMapper sind ein Interface, das verwendet wird, um das Mapping von Zeilen aus dem ResultSet auf Objekte zu ermöglichen. Es wird verwendet, um das Ergebnis jedes Datensatzes aus der Abfrage in ein Objekt umzuwandeln.
+In JDBC, ist der RowMapper ein Interface, das verwendet wird, um das Mapping von Zeilen aus dem ResultSet auf Objekte zu ermöglichen. Es wird verwendet, um das Ergebnis jedes Datensatzes aus der Abfrage in ein Objekt umzuwandeln.
 
 Erstelle eine Klasse, die das `RowMapper`-Interface implementiert und die `mapRow`-Methode überschreibt. In dieser Methode wird definiert, wie eine Zeile aus dem ResultSet in ein Objekt gemappt wird.
 ```java
@@ -878,15 +878,14 @@ public class AdminRepositoryImpl implements AdminRepository {
 
 **Aufgabe**
 Ergänze deine Repositories mit den nötigen SQL-Queries (wähle selbst, ob du es auslagern möchtest oder nicht).
-Implementiere die benötigten Mapper und setze sie an den benötigten Orten ei (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
+Implementiere die benötigten Mapper und setze sie an den benötigten Orten ein (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
 
 ### Akzeptanzkriterien Schritt 8
 * Es werden nun nicht mehr mittels Mockdaten verwendet, sondern direkt SQL-Queries benutzt.
-* Die Daten, welche man von der Datenbank erhält, werden korrekt gemappt für die DAOs.
+* Die erhaltenen Daten, aus der Datenbank, werden korrekt für die DAOs gemappt.
 * Die DAOs werden korrekt gemappt bevor sie an die Datenbank gesendet werden.
 
 </details>
-
 
 ## Schritt 9: API testen
 Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
@@ -926,7 +925,7 @@ Weitere Dokumentation zum IntelliJ HTTP-Client findest du [auf dieser IntelliJ I
 Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle ausführt.
 
 ### Akzeptanzkriterien Schritt 9
-* Eine HTTP-Request Datei liegt vor, welche alle öffentliche Schnittstellen-Methoden ausführen kann.
+* Eine HTTP-Request Datei liegt vor, welche alle öffentlichen Schnittstellen-Methoden ausführen kann.
 * Bei Methoden, welche Parameter oder einen Request-Body brauchen, sind diese in den Requests auch so konfiguriert.
 * Jede Methode, welche ausgeführt wird, liefert die erwarteten Ergebnisse (ggf. auch Anpassungen der Daten in der darunterliegenden Datenbank).
 
@@ -968,7 +967,7 @@ Damit man H2 verwenden kann, muss man auch hier noch einen Dependency im `pom.xm
 ```
 
 ### Konfiguration anlegen
-In der Testkonfiguration (z. B. `application-test.properties`), konfiguriert man H2 als Datenbank für die Integrationstests. Es wird die Verbindungs-URL, den Treiber und die Anmeldeinformationen für H2 festgelegt. Diese Datenbank wird in den Tests automatisch erstellt und verwaltet.
+In der Testkonfiguration (z. B. `application-test.properties`), konfiguriert man H2 als Datenbank für die Integrationstests. Es wird die Verbindungs-URL, der Treiber und die Anmeldeinformationen für H2 festgelegt. Diese Datenbank wird in den Tests automatisch erstellt und verwaltet.
 
 application-test.properties:
 ```properties
@@ -995,7 +994,7 @@ jpa:
 ```
 
 ### SQL Files
-Nun erstellt man SQL-Skripte, wie `schema.sql` und `data.sql`, die das Datenbankschema und Testdaten definieren. Diese Skripte werden während der Testausführung automatisch geladen.
+Nun werden SQL-Skripte benötigt, die das Datenbankschema und Testdaten definieren. Diese Skripte werden während der Testausführung automatisch geladen.
 
 #### Schema File
 ```sql
