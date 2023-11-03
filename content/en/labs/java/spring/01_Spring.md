@@ -74,7 +74,7 @@ Füge den "Parent" und folgende Dependencies und Maven-Plugins in deine pom.xml 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.0.5</version>
+    <version>3.1.5</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -175,7 +175,9 @@ Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-
 
 **Aufgabe**  
 Erweitere die obige Tabelle mit den restlichen Funktionen gemäss den funktionalen Anforderungen.
-TODO: Besprechung mit Coach, Endpunkt für Profil
+Sobald du fertig bist ein Review mit einem Coach buchen
+
+TODO: Endpunkt für Profil
 
 ### Resource-Representation Klassen erstellen
 Unsere Schnittstellendefinition verwendet JSON-Objekte bei bestimmten Requests und Responses.
@@ -333,6 +335,9 @@ Repository-Klassen werden grundsätzlich mit der Annotation *@Repository* annoti
 Die Verbindung zu einer Datenbank kann auf verschiedene Arten realisiert werden.
 In diesem Kapitel werden wir JDBCTemplate eingehen. 
 
+<details>
+  <summary>Möglichkeit 1: JPA-Repository mit Spring Data</summary>
+
 #### Möglichkeit 1: JPA-Repository mit Spring Data
 Bei dieser Variante wird die Jakarta Persistence API (JPA) mit Spring Data verwendet.
 Sie ermöglicht die automatische Generierung von Queries durch die Deklaration eines entsprechenden Methodennamens.
@@ -428,12 +433,12 @@ Erstelle die Repository-Klassen für die beiden anderen Entitäten.
 ---
 
 Die folgende Aufzählung der Operationen ist nicht vollständig, zeigt aber welchen Funktionsumfang ein solches Repository nun bereits besitzt:
-* ``` List<T> findAll() ``` liefert alle Einträge der Entität zurück
-* ``` T getReferenceById(ID id) ``` liefert den Eintrag mit der entsprechenden ID zurück
-* ``` Optional<T> findById(ID id) ``` liefert den Eintrag mit der entsprechenden ID als Optional zurück
-* ``` long count() ``` zählt alle Einträge
-* ``` void delete(T entity) ``` löscht die angegebene Entität
-* ``` <S extends T> S save(S entity) ``` speichert die angegebene Entität und liefert sie zur weiteren Bearbeitung zurück
+* ` List<T> findAll() ` liefert alle Einträge der Entität zurück
+* ` T getReferenceById(ID id) ` liefert den Eintrag mit der entsprechenden ID zurück
+* ` Optional<T> findById(ID id) ` liefert den Eintrag mit der entsprechenden ID als Optional zurück
+* ` long count() ` zählt alle Einträge
+* ` void delete(T entity) ` löscht die angegebene Entität
+* ` <S extends T> S save(S entity) ` speichert die angegebene Entität und liefert sie zur weiteren Bearbeitung zurück
 
 Für die Realisierung von Methoden zur Abdeckung der funktionalen Anforderungen dient die folgende Tabelle: 
 
@@ -442,13 +447,13 @@ Für die Realisierung von Methoden zur Abdeckung der funktionalen Anforderungen 
 | Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten) | Nein                          |
 | Alle Fächer und deren Durchschnittsnote auflisten                                   | Nein                          | 
 | Für ein bestimmtes Fach: Alle Noten und die Durchschnittsnote des Fachs auflisten   | Nein                          |
-| Für ein bestimmtes Fach: Eine neue Note hinzufügen                                  | Methode ```save```            |
-| Für ein bestimmtes Fach: Eine bestehende Note ändern                                | Methode ```save```            |
-| Für ein bestimmtes Fach: Eine bestehende Note löschen                               | Methode ```delete```          |
-| Alle Fächer auflisten                                                               | Methode ```findAll```         |
-| Neue Fächer hinzufügen                                                              | Methode ```save```            |
-| Bestehende Fächer bearbeiten                                                        | Methode ```save```            |
-| Bestehende Fächer löschen                                                           | Methode ```delete```          |
+| Für ein bestimmtes Fach: Eine neue Note hinzufügen                                  | Methode `save`                |
+| Für ein bestimmtes Fach: Eine bestehende Note ändern                                | Methode `save`                |
+| Für ein bestimmtes Fach: Eine bestehende Note löschen                               | Methode `delete`              |
+| Alle Fächer auflisten                                                               | Methode `findAll`             |
+| Neue Fächer hinzufügen                                                              | Methode `save`                |
+| Bestehende Fächer bearbeiten                                                        | Methode `save`                |
+| Bestehende Fächer löschen                                                           | Methode `delete`              |
 
 Damit müssen nur die Methoden für die ein wenig komplizierteren Datenbank-Abfragen definiert werden.
 Der einfachste Weg zu schnellen Resultaten führt über die Entitäten und deren Verbindungen untereinander.
@@ -499,9 +504,13 @@ public interface GradeRepository extends JpaRepository<Grade, Integer> {
 
 }
 ```
+</details>
+
+<details>
+<summary>Möglichkeit 2: JDBC-Template</summary>
 
 ### Möglichkeit 2: JDBC-Template
-JDBC steht für "Java Database Connectivity" und ist eine Technologie in Java, die es ermöglicht, auf Datenbanken zuzugreifen und mit ihnen zu interagieren. Mit JDBC können Java-Anwendungen Daten aus einer Datenbank abrufen, in die Datenbank schreiben, Daten aktualisieren und löschen.
+Wer nicht mehr genau weiss was JDBC ist kann es [hier](./../../../docs/java/java-jdbc.md ) nachlesen.
 
 #### Dependency
 Damit JDBC verwendet werden kann, muss man zuerst eine neuen Dependency in das `pom.xml` hinzufügen.
@@ -560,6 +569,8 @@ public class StudentRepository {
     // ...
 }
 ```
+</details>
+
 
 ### Repository-Klassen und Service-Klassen verbinden
 Die Verbindung zwischen Repository- und Service-Klassen in einer Softwareanwendung ist entscheidend für eine saubere Struktur und effiziente Datenverwaltung. Repository-Klassen handhaben den Datenzugriff, während Service-Klassen die Geschäftslogik umsetzen. Service-Klassen nutzen die Methoden der Repository-Klassen, um auf Daten zuzugreifen oder diese zu manipulieren. Diese Trennung ermöglicht eine klare Aufgabenverteilung, verbessert die Wartbarkeit und erleichtert die Integration von Datenzugriff und Geschäftslogik.
@@ -681,6 +692,9 @@ Passe deine Services und Repositories entsprechend der Implementierungs-Methode 
 ### Akzeptanzkriterien Schritt 7
 * Alle Services sind mit der Implementierungs-Methode ausgestattet.
 * Alle Repositories sind mit der Implementierungs-Methode ausgestattet
+
+<details>
+<summary>Schritt 8 Persistenz-Layer fertigstellen (Nur für JDBC)</summary>
 
 ## Schritt 8 Persistenz-Layer fertigstellen (Nur für JDBC)
 
@@ -867,9 +881,12 @@ Ergänze deine Repositories mit den nötigen SQL-Queries (wähle selbst, ob du e
 Implementiere die benötigten Mapper und setze sie an den benötigten Orten ei (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
 
 ### Akzeptanzkriterien Schritt 8
-* Die Datenbank abfragen werden nun nicht mehr mittels Mockdaten erledigt, sondern es werden SQL-Queries benutzt.
+* Es werden nun nicht mehr mittels Mockdaten verwendet, sondern direkt SQL-Queries benutzt.
 * Die Daten, welche man von der Datenbank erhält, werden korrekt gemappt für die DAOs.
 * Die DAOs werden korrekt gemappt bevor sie an die Datenbank gesendet werden.
+
+</details>
+
 
 ## Schritt 9: API testen
 Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
