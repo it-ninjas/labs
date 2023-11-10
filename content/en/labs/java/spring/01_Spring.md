@@ -39,7 +39,7 @@ Genauere Details zu den Anforderungen und den Akzeptanzkriterien werden in den e
   * Neue Fächer hinzufügen
   * Bestehende Fächer bearbeiten
   * Bestehende Fächer löschen
-TODO: Mit welchem Profil wurde das Backend gestartet
+* Es ist bekannt mit welchem Profil die Anwendung gestartet wurde.
 
 ### Nicht funktionale Anforderungen (NFAs)
 * Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Packages aufgesplittet.
@@ -177,7 +177,8 @@ Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-
 Erweitere die obige Tabelle mit den restlichen Funktionen gemäss den funktionalen Anforderungen.
 Sobald du fertig bist ein Review mit einem Coach buchen
 
-TODO: Endpunkt für Profil
+**Wichtig** Endpunkt für Profil:
+Vergiss nicht das du noch einen Endpunkt erstellen musst um herauszufinden mit welchem Profil man die Anwendung gestartet wurde.
 
 ### Resource-Representation Klassen erstellen
 Unsere Schnittstellendefinition verwendet JSON-Objekte bei bestimmten Requests und Responses.
@@ -333,7 +334,7 @@ Dieser Layer wird Persistenz-Layer genannt.
 Repository-Klassen werden grundsätzlich mit der Annotation *@Repository* annotiert.
 
 Die Verbindung zu einer Datenbank kann auf verschiedene Arten realisiert werden.
-In diesem Kapitel werden wir JDBCTemplate eingehen. 
+In diesem Kapitel werden wir JPA oder JDBCTemplate eingehen. 
 
 <details>
   <summary>Möglichkeit 1: JPA-Repository mit Spring Data</summary>
