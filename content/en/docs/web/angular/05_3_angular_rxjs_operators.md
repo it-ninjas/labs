@@ -240,7 +240,7 @@ from([1, 2, 3, 4])
 ### switchAll/switchMap
 `switchMap` ist ähnlich wie das `mergeMap`, es subscribed auch das innere Observable. Auch hier ist `switchMap` eine Kombination, und zwar von `switchAll` und `map`. `switchAll` canceled die vorherige Subscription und subscribed auf die neue, wenn ein neues Observable reinkommt.
 
-Wie [delay](../angular/05_3_angular_rxjs_operators#delay) funktioniert kann man hier nachlesen.
+Wie [delay](../angular/05_3_angular_rxjs_operators/#delay) funktioniert kann man hier nachlesen.
 
 Beispiel mit `switchAll`:
 ```typescript
