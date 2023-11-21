@@ -1,0 +1,506 @@
+:root {
+  --header-bg: rgba(236, 239, 242, 1);
+  --header-text: rgba(119, 119, 119, 1);
+  --header-date-tag: rgba(213, 45, 40, 1);
+  --header-strong-accent: rgba(255, 0, 0, 1);
+  --header-hover-color: rgba(255, 255, 255, 1);
+  --header-hover-opposite-color: rgb(0, 0, 0);
+  --header-dark-color: black;
+
+  --left-background: rgba(0, 158, 195, 1);
+  --left-navbar-width: 180px;
+  --left-profile-status: rgb(211, 47, 47);
+  --left-cockpit-bg: rgba(230, 230, 230, 1);
+  --left-cockpit-color: rgba(115, 115, 115, 1);
+  --left-navbar-logo-width: 16px;
+  --left-navbar-logo-height: 16px;
+  --left-text-color: white;
+  --left-avatar-height: 88px;
+  --left-avatar-width: 88px;
+  --button-left-outline-color: rgb(3, 137, 167);
+  --left-nav-hover-color: rgba(0, 100, 128, 1);
+
+  --right-avatar-height: 35px;
+  --right-avatar-width: 35px;
+  --here-status-color: rgba(66, 159, 70, 1);
+  --out-status-color: rgba(255, 0, 0, 1);
+  --right-clock-height: 28px;
+  --right-clock-width: 28px;
+  --right-background-color: rgba(255, 255, 255, 1);
+  --right-text-color: rgba(33, 33, 33, 1);
+
+  --main-box-background-color: rgba(243, 243, 243, 1);
+  --main-box-text-color: rgba(33, 33, 33, 1);
+  --main-box-avatar-card-background-color: rgba(217, 230, 242, 1);
+  --main-box-header-height: 4vh;
+  --main-box-cockpit-symbols-hover-color: rgba(250, 250, 250, 1);
+  --main-box-cockpit-symbols-color: lightgrey;
+
+  --avatar-large-height: 140px;
+  --avatar-large-width: 140px;
+  --card-person-color: black;
+  --card-visum-color: rgb(16, 85, 192);
+  --card-warn-color: rgb(219, 73, 216);
+  --card-alarm-color: rgb(255, 67, 81);
+  --card-absenz-color: rgb(33, 150, 216);
+
+  --soft-box-shadow-color: rgba(233, 233, 233, 1);
+  --soft-border: 1px solid rgba(233, 233, 233, 1);
+  --soft-box-shadow: 10px rgba(233, 233, 233, 1);
+  --hard-box-shadow: 5px rgba(222, 222, 222, 1);
+}
+
+:root * {
+  /* border: 1px dashed blue; */
+}
+
+#headerBar {
+  max-height: 57.25px;
+}
+
+#loginLogoImg {
+  width: var(--left-navbar-width);
+  height: 45px;
+}
+
+#loginLogo {
+  background-color: white;
+}
+
+#headerBar {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  align-items: stretch;
+}
+.headerItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 50px;
+  min-height: 40px;
+}
+
+#headerCenterTime,
+#headerDateDay {
+  color: var(--header-date-tag);
+  font-weight: 600;
+}
+
+#headerCenterTime {
+  font-size: 1.25rem;
+  padding-left: 30px;
+}
+
+#headerDateDay {
+  font-size: 2.3rem;
+}
+
+#headerDateDay,
+#headerDateInf,
+#headerClock {
+  min-width: 33.3%;
+}
+
+.navbarSymbol {
+  width: 22px;
+  height: 22px;
+}
+
+.navbarSymbol:hover {
+  background-color: var(--left-nav-hover-color);
+  transform: background-color 0.4s;
+  /*  made background instead of fill color change for hover here because i dont want to change each svg manually  */
+}
+
+#headerLanguageDropdown {
+  flex-basis: 2;
+}
+
+#headerRightGroup {
+  justify-self: flex-end;
+}
+
+.headerSpacer {
+  flex-grow: 10;
+}
+
+#headerCenterThingy {
+  border-bottom: 2px solid var(--header-strong-accent);
+}
+
+.leftNavbarContainer {
+  max-width: var(--left-navbar-width);
+  border-right: var(--soft-border);
+  box-shadow: 29px calc(var(--main-box-header-height) + -21px) 3px -23px var(--soft-box-shadow-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.leftNavbarEntryContainer {
+  min-height: 1rem;
+  min-width: 3rem;
+}
+
+.leftNavbarEntryContainer,
+.leftNavbarEntryContainerSecondLevel {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: start;
+  gap: 5px;
+  align-items: center;
+}
+
+img.clip-circle {
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: white;
+}
+
+#avatarLeft {
+  width: var(--left-avatar-width);
+  height: var(--left-avatar-height);
+}
+
+#leftProfileStatus {
+  color: var(--left-profile-status);
+}
+
+#leftNavbar,
+#leftProfile,
+.leftNavbarContainer,
+.leftNavbarDropdownButton {
+  background-color: var(--left-background);
+}
+
+.leftNavbarDropdownButton {
+  border: 1px solid var(--button-left-outline-color);
+  border-radius: 4px;
+  float: right;
+  align-self: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: 1rem;
+  justify-self: flex-end;
+}
+
+.leftNavbarEntryContainer:hover,
+.leftNavbarEntryContainerSecondLevel:hover,
+.leftNavbarDropdownButton:hover {
+  background-color: var(--left-nav-hover-color);
+  transition: background-color 0.3s;
+}
+
+.leftNavbarEntryContainerSecondLevel {
+  margin-left: 4px;
+}
+
+#leftNavbarFooter {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+#leftNavbarFooter > div,
+#leftProfileName,
+.leftNavbarEntryContainer,
+.leftNavbarEntryContainer > svg,
+.leftNavbarEntryContainerSecondLevel,
+.leftNavbarDropdownButton {
+  color: var(--left-text-color);
+}
+
+.leftNavbarEntryContainer,
+.leftNavbarEntryContainerSecondLevel {
+  padding-left: 10px;
+  min-height: 40px;
+}
+
+.leftNavbarEntryContainer,
+.leftNavbarEntryContainerSecondLevel:nth-child(n + 1) {
+  border-top: 1px solid var(--left-nav-hover-color);
+}
+
+.leftNavbarSymbol {
+  height: var(--left-navbar-logo-height);
+  width: var(--left-navbar-logo-width);
+}
+
+.rightProfileContainer {
+  max-height: calc(var(--right-avatar-height) * 1.2);
+}
+#rightSearch button {
+  min-width: 20%;
+  border: none;
+}
+#rightSearch > input {
+  max-width: 80%;
+  border: none;
+  background-color: inherit;
+  opacity: 0.9;
+}
+
+#rightSearch {
+  max-width: 85%;
+  margin: 0.5rem 1rem;
+  border: var(--soft-border);
+  border-radius: 4px;
+  max-height: 3.5vh;
+}
+
+.hereStatus {
+  color: var(--here-status-color);
+}
+
+.outStatus {
+  color: var(--out-status-color);
+}
+
+.rightBarContainer {
+  background-color: var(--right-background-color);
+  color: var(--right-text-color);
+  border-left: var(--soft-border);
+  box-shadow: -27px calc(var(--main-box-header-height) + -22px) 12px -23px var(--soft-box-shadow-color);
+}
+
+.rightProfileContainer {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.rightProfileContainer,
+.smallAvatarContainer,
+.rightNameContainer,
+.rightClockContainer {
+  padding: 3px 5px;
+  justify-items: center;
+  align-items: center;
+}
+
+.rightNameContainer {
+  width: 50%;
+  font-size: small;
+}
+
+.smallAvatar {
+  width: var(--right-avatar-width);
+  height: var(--right-avatar-height);
+}
+
+.largeAvatar {
+  width: var(--avatar-large-width);
+  height: var(--avatar-large-height);
+}
+
+.rightClock {
+  width: var(--right-clock-width);
+  height: var(--right-clock-height);
+}
+
+.timeWorked,
+.rightNameContainer {
+  text-wrap: nowrap;
+}
+
+.overviewMenuContainerWrapper {
+  background-color: var(--main-box-background-color);
+  color: var(--main-box-text-color);
+}
+
+.gridProfileItem {
+  /* grid-area: profile; */
+  /* grid-area: 1 / 1 / 1 / 3; */
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  max-width: 716.5px;
+  min-width: 716.5px;
+  max-height: 180px;
+}
+
+.mainCardContainer {
+  grid-area: 2 / 1 / 4 / 3;
+  justify-self: center;
+  gap: 1rem;
+  padding-bottom: 1.2rem;
+}
+
+.sideCardContainer {
+  grid-area: 1 / 3 / 1 / 4;
+}
+
+.mainContentGridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 354px);
+  grid-template-rows: repeat(4, 181px);
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.regularCard {
+  background-color: var(--right-background-color);
+  padding-right: 0.9rem;
+  padding-left: 0.9rem;
+  padding-top: 0.9rem;
+  max-height: 180px;
+  min-height: 180px;
+  min-width: 353px;
+  max-width: 353px;
+}
+
+.regularCard,
+.gridProfileItem {
+  border: var(--soft-border);
+  border-radius: 6px;
+  flex-basis: 50%;
+}
+
+.cardRefreshSymbol {
+  content: url("../img/refresh.svg");
+  width: 20px;
+  height: 20px;
+}
+
+.cardRefreshContainer {
+  align-self: flex-end;
+}
+
+.cardOptionalUnit,
+.cardAlertCount {
+  align-self: center;
+}
+
+.cardAlertCount {
+  font-size: xx-large;
+  font-weight: 500;
+  justify-content: center;
+}
+
+.cardAlertCount > img,
+.cardAlertCount > svg {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: -4px;
+}
+
+.cardTitle,
+.gridProfileItemTitle {
+  font-size: x-large;
+}
+
+.gridProfileItem {
+  background-color: var(--main-box-avatar-card-background-color);
+}
+
+#cardPerson {
+  color: var(--card-person-color);
+}
+
+#cardAbsenzen,
+#absenzenSymbol > svg {
+  color: var(--card-absenz-color);
+  fill: var(--card-absenz-color);
+}
+
+#cardVisum,
+#visumSymbol > svg {
+  color: var(--card-visum-color);
+}
+#cardWarnung {
+  color: var(--card-warn-color);
+}
+
+#warnSymbol {
+  fill: var(--card-warn-color);
+  color: var(--card-warn-color);
+}
+#cardAlarme {
+  color: var(--card-alarm-color);
+}
+
+#currentMenuBanner {
+  background-color: var(--right-background-color);
+  z-index: 20;
+  height: var(--main-box-header-height);
+  box-shadow: 0px 3px var(--hard-box-shadow);
+}
+
+/* .overviewMenuContainerWrapper{
+    z-index: -1;
+    
+
+} */
+
+.cardTitle {
+  position: relative;
+  top: -20px;
+}
+
+#tileActionGroup {
+  display: flex;
+  gap: 1rem;
+  margin: 0.8rem 5px;
+}
+
+.cockpitTopBarIconContainer {
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.cockpitTopBarIconContainer > img {
+  margin: 3px 3px;
+  color: inherit;
+  background-color: inherit;
+}
+
+.cockpitTopBarIconContainer:disabled {
+  color: lightgrey;
+  opacity: 0.4;
+}
+
+.cockpitTopBarIconContainer:hover {
+  background-color: var(--main-box-cockpit-symbols-hover-color);
+  transition: background-color 0.3s linear;
+}
+
+#cockpitEditSymbol,
+#cockpitPlusSymbol,
+#cockpitArrowDownSymbol,
+.symbolArrowDown,
+#cockpitSaveSymbol,
+#cockpitUndoSymbol {
+  height: 14px;
+}
+
+#cockpitEditSymbol {
+  width: 14px;
+}
+
+#cockpitSaveSymbol,
+#cockpitUndoSymbol {
+  width: 12px;
+}
+
+#cockpitArrowDownSymbol {
+  width: 9px;
+}
+
+#cockpitPlusSymbol {
+  width: 11px;
+}
+
+.btn:hover,
+.navbarSymbol:hover,
+.leftNavbarEntryContainer:hover,
+.symbolArrowDown:hover,
+.regularCard:hover,
+.rightProfileContainer:hover,
+.gridProfileItem:hover,
+.headerItem:not(.headerSpacer):not(.navbar-brand):hover {
+  cursor: crosshair;
+}

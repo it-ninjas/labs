@@ -1,0 +1,14 @@
+<div>
+  <div>
+    <h2>Get Bicycle</h2>
+    <input type="number" [formControl]="bicycleId" />
+    <button (click)="getBicycle()">Get Bicycle</button>
+  </div>
+  <div *ngIf="fullBicycle.name">
+    <p>Name: {{ fullBicycle.name }}</p>
+    <p>Value: {{ fullBicycle.value | currencyFormat : "CHF" }}</p>
+    <p>Types: {{ fullBicycle.types }}</p>
+    <p>Brand: {{ fullBicycle.brand | brandFormat }}</p>
+  </div>
+  <p>{{ error }}</p>
+</div>

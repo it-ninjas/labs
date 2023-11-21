@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <button onclick="notifyMe()">Notify me!</button>
+
+    <script src="https://unpkg.com/rxjs@6.2.0/bundles/rxjs.umd.min.js"></script>
+
+    <script>
+        const { Observable } = rxjs;
+
+        function notifyMe() {
+            // Check if notification permissions have already been granted
+            if (Notification.permission === 'granted') {
+                // Create a notification
+                pushNotification('This is a notification!');
+            }
+            // Otherwise, we need to ask the user for permission
+            else if (Notification.permission !== 'denied') {
+                // Request Permission for notifications
+                Notification.requestPermission().then((permission) => {
+                    // If accepted, create a notification
+                    if (permission === 'granted') {
+                        pushNotification('This is a notification!');
+                    }
+                });
+            }
+        }
+
+        function pushNotification(notification) {
+            // Producer - create a new observable, providing the subscribe function
+            // Use a timeout of 2 seconds to simulate an asynchronous event
+            const observable = new Observable((subscriber) => {
+                setTimeout(() => {
+                    subscriber.next(notification);
+                    subscriber.complete();
+                }, 2000);
+            });
+
+            // Consumer - Subscribe to Notifications
+            const subscription = observable.subscribe({
+                next: (value) => {
+                    // Handle the notification value
+                    new Notification(value);
+                },
+                complete: () => {
+                    console.log('Notification completed');
+                },
+            });
+        }
+    </script>
+</body>
+
+</html>

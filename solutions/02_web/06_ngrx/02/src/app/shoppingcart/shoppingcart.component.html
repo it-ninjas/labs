@@ -1,0 +1,10 @@
+<div>
+  <h2>Shoppingcart</h2>
+  <ul>
+    <li *ngFor="let item of cartItems$ | async">
+      {{ item.name }} - {{ item.price | currency : "CHF" : "symbol" : "1.2-2" }}
+      <button (click)="removeFromCart(item)">Remove from Shoppingcart</button>
+    </li>
+  </ul>
+  <button (click)="buy()">Buy</button>
+</div>

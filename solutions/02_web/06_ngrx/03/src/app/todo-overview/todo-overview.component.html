@@ -1,0 +1,12 @@
+<div>
+    <h2>Todos</h2>
+    <ul>
+      <li *ngFor="let todo of todos$ | async">
+            {{ todo.name }} -
+            <button (click)="completeTodo(todo.id)">Complete Todo</button>
+            <button (click)="removeTodo(todo.id)">Delete Todo</button>
+      </li>
+    </ul>
+    <app-create-todo></app-create-todo>
+  </div>
+  

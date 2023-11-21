@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <script>
+      async function getJoke() {
+        const jokeUrl = "https://api.chucknorris.io/jokes/random";
+        const jokeElement = document.getElementById("joke");
+        const jokeFetch = await fetch(jokeUrl, {
+          method: "get",
+        });
+        const newJoke = await jokeFetch.json();
+        jokeElement.innerHTML = newJoke.value;
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="getJoke()">Get new Joke</button>
+    <p id="joke"></p>
+  </body>
+</html>

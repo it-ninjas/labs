@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="student.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="actions">
+        <div class="action-buttons">
+          <button onclick="getAverage()">Get average</button>
+          <button onclick="getStudentWithBestAndWorstAverage()">
+            Best Worst
+          </button>
+          <button onclick="getStudentsSortedByAverage()">
+            Sort by Average
+          </button>
+        </div>
+      </div>
+
+      <form id="add-student-form">
+        <input
+          type="text"
+          id="nameInput"
+          placeholder="Enter student name"
+          onfocus="resetInvalid(event)"
+        />
+        <input
+          type="text"
+          id="gradesInput"
+          placeholder="Enter grades separated by commas"
+          onfocus="resetInvalid(event)"
+        />
+        <button type="submit">Add Student</button>
+        <p id="error"></p>
+      </form>
+
+      <button onclick="addDefaults()">Add Default Students</button>
+
+      <div id="action-output"></div>
+    </div>
+    <script src="student.js"></script>
+  </body>
+</html>

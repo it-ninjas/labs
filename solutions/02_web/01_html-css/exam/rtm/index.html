@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="" />
+
+        <link rel="manifest" href="site.webmanifest" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <!-- Place favicon.ico in the root directory -->
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/main.css" />
+
+        <meta name="theme-color" content="#fafafa" />
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="headerBar" class="navbar-nav d-flex flex-row">
+                    <div id="loginLogo" class="navbar-brand headerItem">
+                        <img id="loginLogoImg" src="img/login_logo.svg" />
+                    </div>
+                    <div id="headerDateContainer" class="d-flex headerItem">
+                        <div
+                            id="headerDateDay"
+                            class="p-2 text-center align-self-center"
+                        >
+                            24
+                        </div>
+                        <div
+                            id="headerDateInfo"
+                            class="text-center align-self-center"
+                        >
+                            Donnerstag März KW12
+                        </div>
+                        <div
+                            id="headerClock"
+                            class="text-center align-self-center"
+                        >
+                            <span>11:39</span>
+                        </div>
+                    </div>
+                    <div class="headerSpacer headerItem"></div>
+                    <div id="headerLogout" class="align-self-center headerItem">
+                        <img src="img/kommen.svg" class="navbarSymbol" />
+                    </div>
+                    <div
+                        id="headerCenterThingy"
+                        class="align-self-center d-flex headerItem"
+                    >
+                        <div id="headerReasonContainer" class="p-2">
+                            <div id="headerReasonCode">
+                                Grund unbekannt (999)
+                            </div>
+                            <div id="belowHeaderReasonCode">
+                                JBT Informatik Bern 1/1
+                            </div>
+                        </div>
+                        <div
+                            id="headerCenterTime"
+                            class="align-self-center text-center"
+                        >
+                            8:50
+                        </div>
+                    </div>
+                    <div
+                        id="headerClockSymbol"
+                        class="align-self-center headerItem"
+                    >
+                        <img src="img/clock.svg" class="navbarSymbol" />
+                    </div>
+
+                    <div class="headerSpacer"></div>
+                    <div id="headerRightGroup" class="d-flex">
+                        <div
+                            id="headerLanguageDropDown"
+                            class="dropdown align-self-center headerItem"
+                        >
+                            <div>Current Lang</div>
+                            <img
+                                id="headerSymbolArrowDown"
+                                class="symbolArrowDown ps-1"
+                                src="img/pfeil_unten.svg"
+                            />
+                        </div>
+                        <div
+                            id="headerSpinnerSymbol"
+                            class="align-self-center headerItem"
+                        >
+                            <img src="img/refresh.svg" class="navbarSymbol" />
+                        </div>
+                        <div
+                            id="headerPeopleSymbol"
+                            class="align-self-center headerItem"
+                        >
+                            <img src="img/persons.svg" class="navbarSymbol" />
+                        </div>
+                        <div
+                            id="headerPersonSymbol"
+                            class="align-self-center headerItem"
+                        >
+                            <img src="img/profil.svg" class="navbarSymbol" />
+                        </div>
+                        <div
+                            id="headerGetOutSymbol"
+                            class="align-self-center headerItem"
+                        >
+                            <img src="img/logout.svg" class="navbarSymbol" />
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div id="mainContentWindow" class="row">
+                <div class="p-0 col-2 leftNavbarContainer" style="z-index: 1">
+                    <div
+                        id="leftProfile"
+                        class="pt-4 align-items-center d-flex flex-column"
+                    >
+                        <img
+                            id="avatarLeft"
+                            class="clip-circle"
+                            src="img/avatar.svg"
+                        />
+                        <div id="leftProfileName">SBB Crackhead</div>
+                        <div id="leftProfileStatus">Abwesend</div>
+                    </div>
+                    <div
+                        id="leftNavbar"
+                        class="navbar-nav d-flex flex-column pt-5 pb-5"
+                    >
+                        <div class="nav-item leftNavbarEntryContainer">
+                            <img
+                                src="img/cockpit.svg"
+                                class="leftNavbarSymbol"
+                            />
+                            <span class="leftNavbarEntryText">Cockpit</span>
+                        </div>
+                        <div class="nav-item leftNavbarEntryContainer">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+                                width="34px"
+                                height="33px"
+                                viewBox="0 0 34 33"
+                                version="1.1"
+                                class="leftNavbarSymbol"
+                            >
+                                <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+                                <title>personen</title>
+                                <desc>Created with Sketch.</desc>
+                                <defs />
+                                <g
+                                    id="Page-1"
+                                    stroke="none"
+                                    stroke-width="1"
+                                    style="fill: currentColor"
+                                    fill-rule="evenodd"
+                                    sketch:type="MSPage"
+                                >
+                                    <g
+                                        id="personen"
+                                        sketch:type="MSLayerGroup"
+                                        style="fill: currentColor"
+                                    >
+                                        <path
+                                            d="M12.27,32.705 C9.309,32.705 0.298,32.705 0.298,27.876 L0.298,27.074 C0.298,23.676 5.922,21.245 7.96,20.477 C8.085,20.323 8.354,19.906 8.208,19.296 C6.353,17.254 5.209,14.348 5.209,11.636 C5.209,7.254 8.1,4.194 12.239,4.194 C15.684,4.194 19.392,6.523 19.392,11.636 C19.392,14.727 17.841,17.544 16.311,19.249 C16.15,19.914 16.298,20.315 16.396,20.491 C18.568,21.252 24.179,23.563 24.179,27.074 L24.179,27.876 C24.179,32.705 15.215,32.705 12.27,32.705 L12.27,32.705 Z M12.239,6.694 C10.149,6.694 7.709,7.988 7.709,11.636 C7.709,13.792 8.692,16.204 10.214,17.782 C10.333,17.904 10.425,18.05 10.484,18.21 C11.333,20.47 9.968,22.393 9.028,22.747 C5.176,24.16 2.798,26.092 2.798,27.074 L2.798,27.876 C2.798,28.95 5.278,30.205 12.27,30.205 C19.215,30.205 21.679,28.95 21.679,27.876 L21.679,27.074 C21.679,26.029 19.245,24.083 15.312,22.762 C14.434,22.474 13.246,20.767 13.959,18.376 C14.005,18.151 14.112,17.939 14.277,17.766 C15.483,16.506 16.892,14.144 16.892,11.636 C16.892,8.222 14.555,6.694 12.239,6.694 L12.239,6.694 Z"
+                                            id="Fill-6"
+                                            sketch:type="MSShapeGroup"
+                                        />
+                                        <path
+                                            d="M26.777,26.544 C26.15,26.544 25.609,26.073 25.537,25.436 C25.459,24.75 25.952,24.13 26.639,24.052 C29.454,23.733 31.203,23.001 31.203,22.143 L31.203,21.389 C31.203,20.43 28.935,18.635 25.27,17.407 C24.615,17.188 24.263,16.479 24.481,15.825 C24.702,15.17 25.411,14.817 26.065,15.037 C27.856,15.637 33.703,17.87 33.703,21.389 L33.703,22.143 C33.703,24.547 31.421,26.026 26.92,26.537 C26.872,26.542 26.825,26.544 26.777,26.544"
+                                            id="Fill-7"
+                                            sketch:type="MSShapeGroup"
+                                        />
+                                        <path
+                                            d="M25.659,17.471 C25.532,17.471 25.402,17.451 25.273,17.408 C24.553,17.178 24.185,16.707 24.003,16.352 C23.673,15.708 23.654,14.889 23.946,13.915 C23.992,13.691 24.1,13.479 24.265,13.307 C25.594,11.917 26.453,9.676 26.453,7.595 C26.453,4.774 24.901,3.022 22.402,3.022 C21.146,3.022 20.064,3.5 19.359,4.367 C18.923,4.903 18.138,4.983 17.601,4.548 C17.065,4.112 16.984,3.325 17.42,2.79 C18.608,1.327 20.378,0.522 22.402,0.522 C25.663,0.522 28.953,2.709 28.953,7.595 C28.953,10.209 27.942,12.932 26.298,14.789 C26.26,14.94 26.245,15.048 26.24,15.123 C26.751,15.416 27.019,16.04 26.824,16.614 C26.647,17.136 26.176,17.471 25.659,17.471"
+                                            id="Fill-8"
+                                            sketch:type="MSShapeGroup"
+                                        />
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="leftNavbarEntryText">Person</span>
+                        </div>
+                        <div class="nav-item leftNavbarEntryContainer">
+                            <img
+                                src="img/einsatzplan.svg"
+                                class="leftNavbarSymbol"
+                            />
+                            <span class="leftNavbarEntryText">Einsatzplan</span>
+                        </div>
+                        <div class="nav-item leftNavbarEntryContainer">
+                            <img
+                                src="img/abfragen.svg"
+                                class="leftNavbarSymbol"
+                            />
+                            <span class="dropdown leftNavbarEntryText"
+                                >Abfragen</span
+                            >
+                            <button
+                                class="leftNavbarDropdownButton"
+                                type="btn"
+                            >
+                                ^
+                            </button>
+                        </div>
+                        <div id="abfragen-dropdown">
+                            <div
+                                class="nav-item leftNavbarEntryContainerSecondLevel"
+                            >
+                                <img
+                                    src="img/einsatzplan.svg"
+                                    class="leftNavbarSymbol"
+                                />
+                                <span class="dropdown leftNavbarEntryText"
+                                    >Planungsliste</span
+                                >
+                            </div>
+                            <div
+                                class="nav-item leftNavbarEntryContainerSecondLevel"
+                            >
+                                <img
+                                    src="img/buchung.svg"
+                                    class="leftNavbarSymbol"
+                                />
+                                <span class="dropdown leftNavbarEntryText"
+                                    >Tagesübersicht</span
+                                >
+                            </div>
+                            <div
+                                class="nav-item leftNavbarEntryContainerSecondLevel"
+                            >
+                                <img
+                                    src="img/buchung.svg"
+                                    class="leftNavbarSymbol"
+                                />
+                                <span class="dropdown leftNavbarEntryText"
+                                    >Zeitwertliste</span
+                                >
+                            </div>
+                            <div
+                                class="nav-item leftNavbarEntryContainerSecondLevel"
+                            >
+                                <img
+                                    src="img/saldo.svg"
+                                    class="leftNavbarSymbol"
+                                />
+                                <span class="dropdown leftNavbarEntryText"
+                                    >Saldoübersicht</span
+                                >
+                            </div>
+                            <div
+                                class="nav-item leftNavbarEntryContainerSecondLevel"
+                            >
+                                <img
+                                    src="img/saldo.svg"
+                                    class="leftNavbarSymbol"
+                                />
+                                <span class="dropdown leftNavbarEntryText"
+                                    >Spesenauswertung</span
+                                >
+                            </div>
+                            <div
+                                class="nav-item leftNavbarEntryContainerSecondLevel"
+                            >
+                                <img
+                                    src="img/saldo.svg"
+                                    class="leftNavbarSymbol"
+                                />
+                                <span class="dropdown leftNavbarEntryText"
+                                    >Auftragsauswertung</span
+                                >
+                            </div>
+                        </div>
+                        <div class="nav-item leftNavbarEntryContainer">
+                            <img
+                                src="img/drucken.svg"
+                                class="leftNavbarSymbol"
+                            />
+                            <span class="leftNavbarEntryText">Berichte</span>
+                        </div>
+                    </div>
+
+                    <div id="leftNavbarFooter" class="pb-3 ps-1">
+                        <div>RTM Systems AG</div>
+                        <div>Firma:</div>
+                        <div>Gerät: 821912914</div>
+                        <div>Version: 0.0001</div>
+                    </div>
+                </div>
+                <div class="col-10 d-flex flex-grow-1 row" style="z-index: -1">
+                    <div class="col-10 overviewMenuContainerWrapper">
+                        <div id="currentMenuBanner" class="row p-2">
+                            Cockpit
+                        </div>
+                        <div id="overviewMenuContainer">
+                            <div id="tileActionGroup">
+                                <button
+                                    class="cockpitTopBarIconContainer d-flex justify-content-center align-content-center p-1"
+                                >
+                                    <img
+                                        id="cockpitEditSymbol"
+                                        class="cockpitTopBarIcon"
+                                        src="img/edit.svg"
+                                    />
+                                </button>
+                                <button
+                                    class="cockpitTopBarIconContainer d-flex justify-content-center align-content-center p-1"
+                                    disabled
+                                >
+                                    <img
+                                        id="cockpitPlusSymbol"
+                                        class="cockpitTopBarIcon"
+                                        src="img/plus.svg"
+                                    />
+                                    <img
+                                        id="cockpitArrowDownSymbol"
+                                        class="cockpitTopBarIcon disabled symbolArrowDown"
+                                        src="img/pfeil_unten.svg"
+                                    />
+                                </button>
+                                <button
+                                    class="cockpitTopBarIconContainer d-flex justify-content-center align-content-center p-1"
+                                    disabled
+                                >
+                                    <img
+                                        id="cockpitSaveSymbol"
+                                        class="cockpitTopBarIcon disabled"
+                                        src="img/save.svg"
+                                    />
+                                </button>
+                                <button
+                                    class="cockpitTopBarIconContainer d-flex justify-content-center align-content-center p-1"
+                                    disabled
+                                >
+                                    <img
+                                        id="cockpitUndoSymbol"
+                                        class="cockpitTopBarIcon disabled"
+                                        src="img/undo.svg"
+                                    />
+                                </button>
+                            </div>
+                            <div
+                                id="tileContainer"
+                                class="mainContentGridContainer"
+                            >
+                                <div
+                                    class="gridProfileItem p-3 d-flex flex-row"
+                                >
+                                    <div class="cardLeftContent flex-fill">
+                                        <span class="gridProfileItemTitle"
+                                            >SBB Crackhead</span
+                                        >
+                                        <div class="gridProfileItemDescription">
+                                            <div>Abwesend</div>
+                                            <div>Grund unbekannt</div>
+                                            <div>Mi 23.03.2022 00:00</div>
+                                        </div>
+                                        <div class="">. .</div>
+                                    </div>
+                                    <div class="avatarLargeContainer">
+                                        <img
+                                            src="img/avatar.svg"
+                                            class="largeAvatar clip-circle"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="mainCardContainer d-flex flex-wrap">
+                                    <div
+                                        id="cardPerson"
+                                        class="regularCard d-flex flex-column flex-fill pb-4"
+                                    >
+                                        <div class="cardRefreshContainer">
+                                            <img class="cardRefreshSymbol" />
+                                        </div>
+                                        <div class="cardTitle">
+                                            <span>Person</span>
+                                        </div>
+
+                                        <div class="cardAlertCount">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                width="34px"
+                                                height="34px"
+                                                viewBox="0 0 34 34"
+                                                version="1.1"
+                                            >
+                                                <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+                                                <title>request</title>
+                                                <desc>
+                                                    Created with Sketch.
+                                                </desc>
+                                                <defs />
+                                                <g
+                                                    id="Page-1"
+                                                    stroke="none"
+                                                    stroke-width="1"
+                                                    style="fill: currentColor"
+                                                    fill-rule="evenodd"
+                                                >
+                                                    <g
+                                                        id="Light"
+                                                        transform="translate(-83.000000, -352.000000)"
+                                                        style="
+                                                            fill: currentColor;
+                                                        "
+                                                    >
+                                                        <g
+                                                            id="request"
+                                                            transform="translate(83.000000, 352.000000)"
+                                                        >
+                                                            <path
+                                                                d="M16.937,2.5 C8.977,2.5 2.5,8.976 2.5,16.937 C2.5,24.897 8.977,31.373 16.937,31.373 C24.897,31.373 31.373,24.897 31.373,16.937 C31.373,8.976 24.897,2.5 16.937,2.5 M16.937,33.873 C7.598,33.873 0,26.275 0,16.937 C0,7.598 7.598,0 16.937,0 C26.275,0 33.873,7.598 33.873,16.937 C33.873,26.275 26.275,33.873 16.937,33.873"
+                                                                id="Fill-3"
+                                                            />
+                                                            <polygon
+                                                                id="Path"
+                                                                points="15.7864 21.0986 15.3464 6.0001 18.3659 6.0001 17.9254 21.0986"
+                                                            />
+                                                            <path
+                                                                d="M14.9999,25.5966 C14.9999,24.4641 15.7864,23.6466 16.8559,23.6466 C17.9884,23.6466 18.7119,24.4641 18.7119,25.5966 C18.7119,26.6976 17.9884,27.5471 16.8559,27.5471 C15.7554,27.5471 14.9999,26.6976 14.9999,25.5966 L14.9999,25.5966 Z"
+                                                                id="Path"
+                                                            />
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <!-- <img src="img/request.svg" /> 21 -->
+                                            21
+                                        </div>
+
+                                        <div class="cardOptionalUnit"></div>
+                                    </div>
+
+                                    <div
+                                        id="cardAbsenzen"
+                                        class="regularCard d-flex flex-column flex-fill pb-4"
+                                    >
+                                        <div class="cardRefreshContainer">
+                                            <img class="cardRefreshSymbol" />
+                                        </div>
+                                        <div class="cardTitle">
+                                            <span>Absenzen</span>
+                                        </div>
+
+                                        <div
+                                            class="cardAlertCount"
+                                            id="absenzenSymbol"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                width="34px"
+                                                height="34px"
+                                                viewBox="0 0 34 34"
+                                                version="1.1"
+                                            >
+                                                <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+                                                <title>request</title>
+                                                <desc>
+                                                    Created with Sketch.
+                                                </desc>
+                                                <defs />
+                                                <g
+                                                    id="Page-1"
+                                                    stroke="none"
+                                                    stroke-width="1"
+                                                    style="fill: currentColor"
+                                                    fill-rule="evenodd"
+                                                >
+                                                    <g
+                                                        id="Light"
+                                                        transform="translate(-83.000000, -352.000000)"
+                                                        style="
+                                                            fill: currentColor;
+                                                        "
+                                                    >
+                                                        <g
+                                                            id="request"
+                                                            transform="translate(83.000000, 352.000000)"
+                                                        >
+                                                            <path
+                                                                d="M16.937,2.5 C8.977,2.5 2.5,8.976 2.5,16.937 C2.5,24.897 8.977,31.373 16.937,31.373 C24.897,31.373 31.373,24.897 31.373,16.937 C31.373,8.976 24.897,2.5 16.937,2.5 M16.937,33.873 C7.598,33.873 0,26.275 0,16.937 C0,7.598 7.598,0 16.937,0 C26.275,0 33.873,7.598 33.873,16.937 C33.873,26.275 26.275,33.873 16.937,33.873"
+                                                                id="Fill-3"
+                                                            />
+                                                            <polygon
+                                                                id="Path"
+                                                                points="15.7864 21.0986 15.3464 6.0001 18.3659 6.0001 17.9254 21.0986"
+                                                            />
+                                                            <path
+                                                                d="M14.9999,25.5966 C14.9999,24.4641 15.7864,23.6466 16.8559,23.6466 C17.9884,23.6466 18.7119,24.4641 18.7119,25.5966 C18.7119,26.6976 17.9884,27.5471 16.8559,27.5471 C15.7554,27.5471 14.9999,26.6976 14.9999,25.5966 L14.9999,25.5966 Z"
+                                                                id="Path"
+                                                            />
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <!-- <img src="img/request.svg" /> 0 -->
+                                            0
+                                        </div>
+
+                                        <div class="cardOptionalUnit"></div>
+                                    </div>
+
+                                    <div
+                                        id="cardVisum"
+                                        class="regularCard d-flex flex-column flex-fill pb-4"
+                                    >
+                                        <div class="cardRefreshContainer">
+                                            <img class="cardRefreshSymbol" />
+                                        </div>
+                                        <div class="cardTitle">
+                                            <span>Visum</span>
+                                        </div>
+
+                                        <div
+                                            class="cardAlertCount"
+                                            id="visumSymbol"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                width="34px"
+                                                height="34px"
+                                                viewBox="0 0 34 34"
+                                                version="1.1"
+                                            >
+                                                <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+                                                <title>request</title>
+                                                <desc>
+                                                    Created with Sketch.
+                                                </desc>
+                                                <defs />
+                                                <g
+                                                    id="Page-1"
+                                                    stroke="none"
+                                                    stroke-width="1"
+                                                    style="fill: currentColor"
+                                                    fill-rule="evenodd"
+                                                >
+                                                    <g
+                                                        id="Light"
+                                                        transform="translate(-83.000000, -352.000000)"
+                                                        style="
+                                                            fill: currentColor;
+                                                        "
+                                                    >
+                                                        <g
+                                                            id="request"
+                                                            transform="translate(83.000000, 352.000000)"
+                                                        >
+                                                            <path
+                                                                d="M16.937,2.5 C8.977,2.5 2.5,8.976 2.5,16.937 C2.5,24.897 8.977,31.373 16.937,31.373 C24.897,31.373 31.373,24.897 31.373,16.937 C31.373,8.976 24.897,2.5 16.937,2.5 M16.937,33.873 C7.598,33.873 0,26.275 0,16.937 C0,7.598 7.598,0 16.937,0 C26.275,0 33.873,7.598 33.873,16.937 C33.873,26.275 26.275,33.873 16.937,33.873"
+                                                                id="Fill-3"
+                                                            />
+                                                            <polygon
+                                                                id="Path"
+                                                                points="15.7864 21.0986 15.3464 6.0001 18.3659 6.0001 17.9254 21.0986"
+                                                            />
+                                                            <path
+                                                                d="M14.9999,25.5966 C14.9999,24.4641 15.7864,23.6466 16.8559,23.6466 C17.9884,23.6466 18.7119,24.4641 18.7119,25.5966 C18.7119,26.6976 17.9884,27.5471 16.8559,27.5471 C15.7554,27.5471 14.9999,26.6976 14.9999,25.5966 L14.9999,25.5966 Z"
+                                                                id="Path"
+                                                            />
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <!-- <img src="img/request.svg" />  -->
+                                            0
+                                        </div>
+
+                                        <div class="cardOptionalUnit"></div>
+                                    </div>
+
+                                    <div
+                                        id="cardWarnung"
+                                        class="regularCard d-flex flex-column flex-fill pb-4"
+                                    >
+                                        <div class="cardRefreshContainer">
+                                            <img class="cardRefreshSymbol" />
+                                        </div>
+                                        <div class="cardTitle">
+                                            <span>Warnungen</span>
+                                        </div>
+
+                                        <div class="cardAlertCount">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                width="38px"
+                                                height="35px"
+                                                viewBox="0 0 38 35"
+                                                version="1.1"
+                                            >
+                                                <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+                                                <title>warning</title>
+                                                <desc>
+                                                    Created with Sketch.
+                                                </desc>
+                                                <defs />
+                                                <g
+                                                    id="Page-1"
+                                                    stroke="none"
+                                                    stroke-width="1"
+                                                    style="fill: currentColor"
+                                                    fill-rule="evenodd"
+                                                >
+                                                    <g
+                                                        id="Light"
+                                                        transform="translate(-126.000000, -351.000000)"
+                                                        style="
+                                                            fill: currentColor;
+                                                        "
+                                                    >
+                                                        <g
+                                                            id="warning"
+                                                            transform="translate(126.000000, 351.000000)"
+                                                        >
+                                                            <path
+                                                                d="M18.9994448,2.94658508 C18.7858868,2.94658508 18.601257,2.99763479 18.4191797,3.10654084 C18.2319974,3.21885021 18.095014,3.36264023 17.9878096,3.55833079 L3.37057536,30.3551756 C3.14170248,30.7678274 3.14765828,31.0851865 3.38844276,31.4961366 C3.49309467,31.6739598 3.62752558,31.8058382 3.81045371,31.911341 C3.99253102,32.0168437 4.1737575,32.0653409 4.38221049,32.0653409 L33.6175298,32.0653409 C33.825132,32.0653409 34.0063585,32.0168437 34.187585,31.9121918 C34.3713639,31.8058382 34.5066457,31.673109 34.6112976,31.4952858 C34.8512312,31.0851865 34.8580379,30.7669766 34.6334191,30.362833 L20.0127815,3.56003245 C19.9047263,3.36349106 19.7668921,3.21970104 19.5797098,3.10654084 C19.3976325,2.99763479 19.2130027,2.94658508 18.9994448,2.94658508 M33.6175298,34.6178265 L4.38221049,34.6178265 C3.72537086,34.6178265 3.1034152,34.4502133 2.53506174,34.1226443 C1.96840993,33.7959262 1.51491832,33.3458379 1.18734933,32.7876944 C0.486266618,31.5939819 0.467548391,30.3270982 1.13459796,29.1248775 L15.7484289,2.3331377 C16.0734454,1.74011021 16.5294895,1.26364623 17.1046496,0.918209844 C18.2651797,0.222232101 19.7337098,0.222232101 20.8942399,0.918209844 C21.4676983,1.26364623 21.9245933,1.73840855 22.2496098,2.32973439 L22.2513114,2.3331377 L36.8693965,29.1316841 C37.5313411,30.3262474 37.5134737,31.5922803 36.812391,32.7876944 C36.4831204,33.3475395 36.0296288,33.796777 35.4629769,34.1234952 C34.8954743,34.4502133 34.2735187,34.6178265 33.6175298,34.6178265"
+                                                                id="Fill-1"
+                                                            />
+                                                            <g
+                                                                id="Group"
+                                                                transform="translate(17.000000, 8.000000)"
+                                                            >
+                                                                <polygon
+                                                                    id="Path"
+                                                                    points="0.7864 15.0986 0.3464 0.0001 3.3659 0.0001 2.9254 15.0986"
+                                                                />
+                                                                <path
+                                                                    d="M-0.0001,19.5966 C-0.0001,18.4641 0.7864,17.6466 1.8559,17.6466 C2.9884,17.6466 3.7119,18.4641 3.7119,19.5966 C3.7119,20.6976 2.9884,21.5471 1.8559,21.5471 C0.7554,21.5471 -0.0001,20.6976 -0.0001,19.5966 L-0.0001,19.5966 Z"
+                                                                    id="Path"
+                                                                />
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <!-- <img
+                                                id="warnSymbol"
+                                                src="img/warning.svg"
+                                            /> -->
+                                            0
+                                        </div>
+
+                                        <div class="cardOptionalUnit"></div>
+                                    </div>
+
+                                    <div
+                                        id="cardAlarme"
+                                        class="regularCard d-flex flex-column flex-fill pb-4"
+                                    >
+                                        <div class="cardRefreshContainer">
+                                            <img class="cardRefreshSymbol" />
+                                        </div>
+                                        <div class="cardTitle">
+                                            <span>Alarme</span>
+                                        </div>
+
+                                        <div class="cardAlertCount">
+                                            <img src="img/alert.svg" /> 4
+                                        </div>
+
+                                        <div class="cardOptionalUnit"></div>
+                                    </div>
+                                </div>
+                                <div class="sideCardContainer">
+                                    <div
+                                        class="regularCard d-flex flex-column flex-fill pb-4"
+                                    >
+                                        <div class="cardRefreshContainer">
+                                            <img class="cardRefreshSymbol" />
+                                        </div>
+                                        <div class="cardTitle">
+                                            <span>saldo</span>
+                                        </div>
+
+                                        <div class="cardAlertCount">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                width="34px"
+                                                height="34px"
+                                                viewBox="0 0 34 34"
+                                                version="1.1"
+                                            >
+                                                <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+                                                <title>request</title>
+                                                <desc>
+                                                    Created with Sketch.
+                                                </desc>
+                                                <defs />
+                                                <g
+                                                    id="Page-1"
+                                                    stroke="none"
+                                                    stroke-width="1"
+                                                    style="fill: currentColor"
+                                                    fill-rule="evenodd"
+                                                >
+                                                    <g
+                                                        id="Light"
+                                                        transform="translate(-83.000000, -352.000000)"
+                                                        fill="rgba(0,0,0,1)"
+                                                    >
+                                                        <g
+                                                            id="request"
+                                                            transform="translate(83.000000, 352.000000)"
+                                                        >
+                                                            <path
+                                                                d="M16.937,2.5 C8.977,2.5 2.5,8.976 2.5,16.937 C2.5,24.897 8.977,31.373 16.937,31.373 C24.897,31.373 31.373,24.897 31.373,16.937 C31.373,8.976 24.897,2.5 16.937,2.5 M16.937,33.873 C7.598,33.873 0,26.275 0,16.937 C0,7.598 7.598,0 16.937,0 C26.275,0 33.873,7.598 33.873,16.937 C33.873,26.275 26.275,33.873 16.937,33.873"
+                                                                id="Fill-3"
+                                                            />
+                                                            <polygon
+                                                                id="Path"
+                                                                points="15.7864 21.0986 15.3464 6.0001 18.3659 6.0001 17.9254 21.0986"
+                                                            />
+                                                            <path
+                                                                d="M14.9999,25.5966 C14.9999,24.4641 15.7864,23.6466 16.8559,23.6466 C17.9884,23.6466 18.7119,24.4641 18.7119,25.5966 C18.7119,26.6976 17.9884,27.5471 16.8559,27.5471 C15.7554,27.5471 14.9999,26.6976 14.9999,25.5966 L14.9999,25.5966 Z"
+                                                                id="Path"
+                                                            />
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <!-- <img src="img/request.svg" /> -->
+                                            21
+                                        </div>
+
+                                        <div class="cardOptionalUnit"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2 rightBarContainer p-0">
+                        <div id="rightSearch" class="p-1 d-flex">
+                            <input type="search" placeholder="Suche.." />
+                            <button type="submit" class="icon-group">
+                                <img class="" src="img/suchen.svg"></img>
+                            </button>
+                        </div>
+                        <div
+                            id="rightStatusContainer"
+                            class="overflow-y-scroll"
+                        >
+                            <div id="rightHere" class="d-flex flex-column">
+                                <div
+                                    id="rightHereStatus"
+                                    class="hereStatus ps-1 pt-1"
+                                >
+                                    Anwesend
+                                </div>
+                                <div
+                                    class="rightProfileContainer d-flex flex-row p-0"
+                                >
+                                    <div class="smallAvatarContainer">
+                                        <img
+                                            class="clip-circle smallAvatar"
+                                            src="img/avatar.svg"
+                                        />
+                                    </div>
+                                    <div class="rightNameContainer">
+                                        <div class="rightName">Bun</div>
+                                        <div class="timeWorked">
+                                            Arbeitszeit (0)
+                                        </div>
+                                    </div>
+                                    <div class="rightClockContainer">
+                                        <img
+                                            class="rightClock"
+                                            src="img/clock.svg"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                id="rightOut"
+                                class="d-flex flex-column ps-1 pt-1"
+                            >
+                                <div id="rightOutStatus" class="outStatus">
+                                    Abwesend
+                                </div>
+                                <div
+                                    class="rightProfileContainer d-flex flex-row p-0"
+                                >
+                                    <div class="smallAvatarContainer">
+                                        <img
+                                            class="clip-circle smallAvatar"
+                                            src="img/avatar.svg"
+                                        />
+                                    </div>
+                                    <div class="rightNameContainer">
+                                        <div class="rightName">Bun</div>
+                                        <div class="timeWorked">
+                                            Arbeitszeit (0)
+                                        </div>
+                                    </div>
+                                    <div class="rightClockContainer">
+                                        <img
+                                            class="rightClock"
+                                            src="img/clock.svg"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <footer></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</html>

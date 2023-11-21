@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script>
+      async function getJoke() {
+        const jokeElement = document.getElementById("joke");
+        const jokeFetch = await fetch("https://icanhazdadjoke.com/", {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+        const newJoke = await jokeFetch.json();
+        jokeElement.innerHTML = newJoke.joke;
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="getJoke()">Get new Dad Joke</button>
+    <p id="joke"></p>
+  </body>
+</html>

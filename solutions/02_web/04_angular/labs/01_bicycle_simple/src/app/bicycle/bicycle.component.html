@@ -1,0 +1,11 @@
+<div>
+    <div>
+        <button (click)="displayBicycleName()">Wie heisst mein Fahrrad?</button>
+        <button (click)="getFavoriteBicycleImage(this.bicycleName.value)">Mein Lieblingsfahrrad suchen</button>
+    </div>
+    <input id="bicycleName" type="text" [formControl]="bicycleName" style="width: 350px;">
+    <p>Mein Lieblingsfahrad: {{ bicycleName.value }}</p>
+    <div  class="images">
+        <img [src]="image.link" alt="image" [width]="image.image.width" [height]="image.image.height" *ngFor="let image of favoriteBicycle">
+    </div>
+</div>

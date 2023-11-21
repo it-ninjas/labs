@@ -1,0 +1,13 @@
+<div>
+  <h1>All Bicycles</h1>
+  <div *ngFor="let bicycle of bicycles">
+    <p>ID: {{ bicycle.bicycle_id }}</p>
+    <p>Name: {{ bicycle.name }}</p>
+    <p>Value: {{ bicycle.value | currencyFormat : "CHF" }}</p>
+    <p>Type IDs: {{ bicycle.type_ids }}</p>
+    <a [routerLink]="'/brand/' + bicycle.brand_id">Brand ID: {{ bicycle.brand_id }}</a>
+  </div>
+  <p>{{ error }}</p>
+  <button (click)="actived(true)">actived Search</button>
+  <button (click)="actived(false)">deactived Search</button>
+</div>
