@@ -32,90 +32,67 @@ description: >
 
 ### Framework
 
-Ein Framework ist eine Grundlage, auf der Applikationen basieren. Frameworks stellen Funktionen von
-essenzieller Wichtigkeit bereit damit man diese nicht jedes Mal neu schreiben muss.
+Ein Framework bildet das Fundament für Applikationen, um essenzielle Funktionen bereitzustellen und die Notwendigkeit 
+des wiederholten Neuschreibens zu minimieren.
 
 ## Spring Framework
 
-Das Spring Framework gibt uns die Werkzeuge eine einfache Web-Applikation zu erstellen. Mit ihm kann
-man vom Internet zugängliche Schnittstellen machen, mit einer Datenbank verbinden oder Objekte
-Speichern.
+Das Spring Framework ist eine umfassende Plattform, die weit über die Entwicklung einfacher Web-Applikationen 
+hinausgeht. Sie bietet ein breites Spektrum an Funktionalitäten und Unterstützung für die Entwicklung von 
+Enterprise-Anwendungen, einschließlich Webanwendungen, Microservices, und Integrationen.
 
 ### Module
 
-Für das Spring Framework gibt es mehrere Module welche für verschiedene Dinge zuständig sind. Diese
-sind in Gruppen aufgeteilt z.B. Core, Data Access, Web, etc.
+Das Spring Framework besteht aus verschiedenen Modulen, die unterschiedliche Aufgaben erfüllen und in Kategorien wie 
+Core, Data Access, Web usw. organisiert sind.
 
 [comment]: <> (Bildlink funktioniert auf website, nicht in md!)
 
 ![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png)
 
 Quelle: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png
- 
-Das Core Modul enthält alle wichtigen Dinge wie z.B. dependency injection. Im Beans Modul ist alles enthalten, 
-das verwendet wird, um Beans (später mehr) zu erstellen.
 
-Das JDBC Modul bietet eine Art JDBC interface, mit welchem man auf Datenbanken zugreifen kann.
-Das ORM Modul hingegen, bietet Zugriff auf Object-mapping-APIs wie z.B. JPA, JDO, Hibernate. Mit dem OXM Modul wiederum,
-kann man auf Objekt/XML Speicher-Implementationen zugreifen.
+Das Core-Modul umfasst essenzielle Funktionen wie Dependency Injection. Das Beans-Modul beinhaltet alles, was zur 
+Erstellung von Beans benötigt wird.
 
-Das Web Modul ist für die Kommunikation mit der Aussenwelt (Internet) zuständig.
+Das JDBC-Modul bietet ein JDBC-Interface für den Datenbankzugriff. Das ORM-Modul ermöglicht den Zugriff auf 
+Object-Mapping-APIs wie JPA, JDO, Hibernate. Das OXM-Modul ermöglicht den Zugriff auf 
+Objekt/XML-Speicher-Implementierungen.
 
-Weitere Informationen sind in der offiziellen
+Das Web-Modul ist für die Kommunikation mit der Außenwelt (Internet) verantwortlich.
+
+Weitere Informationen finden sich in der offiziellen
 [Dokumentation](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html) zu finden.
 
 ### Spring Projekte
 
-Es gibt verschiedenen Spring Projekte, welche alle auf dem Spring Framework basieren und es einem
-Erlauben noch mehr mit Spring zu machen. Es gibt z.B. spring-security, welches Sicherheitsaspekte
-implementiert, spring-shell, das ein CLI bereitstellt oder spring-boot. Mehr dazu im folgenden
-absatz.
+Es gibt verschiedene Spring-Projekte, die auf dem Spring Framework aufbauen und dessen Anwendungsmöglichkeiten 
+erweitern. Zu diesen gehören z. B. Spring Security, Spring Shell, Spring Boot, die jeweils spezifische 
+Funktionalitäten bereitstellen.
 
-Weitere Projekte und Infos dazu sind hier zu finden: https://github.com/spring-projects
+Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
-[comment]: <> (Link funktioniert auf Website)
 
-#### [Boot](../new-spring-boot-doc#spring-boot)
+#### Spring Boot
 
-Spring Boot ist eine Art Vereinfachung des normalen spring Frameworks. Bei Spring Boot können mithilfe
-des sogenannten Spring Initializers Abhängigkeiten wie z.B. Datenbanktreiber oder Software für
-die Cloud-infrastruktur ausgewählt werden. Somit entfällt die manuelle Konfiguration des Projektes.
-Jedoch ist Spring Boot kein Ersatz für das Spring Framework, denn es ist vor allem dafür zuständig die
-Konfiguration zu vereinfachen.
+[Spring Boot](../new-spring-boot-doc.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie 
+Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des 
+Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die 
+Konfiguration.
 
 ## Design-Pattern
+Design-Patterns sind wiederverwendbare Vorlagen für die Anwendungsentwicklung und sind nicht spezifisch für eine 
+Programmiersprache. Es gibt verschiedene Arten, z. B. Kreationsmuster, Strukturmuster und Verhaltensmuster, die auch in 
+Spring genutzt werden.
 
-Design-Patterns sind wiederverwendbare Vorlagen, die wir beim Erstellen von Anwendungen verwenden
-können. Das Gute an diesen Design-Patterns ist, dass diese meist nicht spezifisch für eine
-Programmiersprache geschaffen sind, sondern bei vielen verschiedenen Programmiersprachen angewendet
-werden können. Es gibt 3 verschiedene Design-Patterns: 1: Kreationsmuster 2: Strukturmuster 3:
-Verhaltensmuster.
-Wir schauen uns nun einige Design-Patterns an, die auch in Spring eingesetzt werden.
+### Inversion of Control (IoC)
+Inversion of Control ist ein Prinzip, das besagt, dass eine Entität nur eine Hauptaufgabe ausführt, wodurch die 
+Zuständigkeiten getrennt werden. Spring nutzt dieses Prinzip.
 
-### Inversion of Control
-
-«Inversion of Control» ist ein Prinzip, das besagt, dass eine Entität nur ihre Hauptaufgabe ausführt, was
-wiederum bedeutet, dass jede Entität nur für etwas zuständig ist. Wenn man
-zum Beispiel mit dem Auto zur Arbeit fährt, ist man für das Fahren und das Arbeiten zuständig. Würde man aber ein
-Taxi bestellen ist der Taxifahrer fürs Fahren und du fürs Arbeiten zuständig. Die Zuständigkeiten
-sind also getrennt.
-
-Das Spring Framework benutzt das «Inversion of Control» Prinzip.
-
-### Dependency Injection
-
-Eine Dependency oder eine Abhängigkeit (Service) wird in ein Objekt (Client) weitergegeben.
-Normalerweise bestimmt ein Objekt, welche Abhängigkeiten es braucht. Das heisst, dass man die
-Abhängigkeit einem Objekt, welches diese benötigt übergeben muss und dass man die Abhängigkeit nicht
-im Objekt importieren kann.
-
-In Spring gibt es einen sogenannten InversionOfControl-Container. In diesem ist z.B. hinterlegt wie und
-wo etwas injected wird.
-
-Man kann diesen Container auf mehrere Arten erstellen. In unserem Fall können wir die Sachen mit Java-Klassen lösen.
-
-In Spring hat man verschiedene Möglichkeiten wie man Abhängigkeiten injected. Zum einen mit Konstruktoren, aber auch mit
-Settern und Feldern.
+### Dependency Injection (DI)
+DI bezeichnet die Weitergabe einer Abhängigkeit an ein Objekt. Spring verwendet einen Inversion-of-Control-Container, 
+um zu bestimmen, wie und wo die Injektion erfolgt. Es gibt verschiedene Möglichkeiten der DI, darunter Konstruktor-, 
+Setter- und Feld-basierte Injection.
 
 ##### Konstruktor Injection
 
@@ -223,10 +200,9 @@ Quelle und weitere Informationen: https://www.baeldung.com/inversion-control-and
 
 ### Singleton
 
-Das Singleton Design-Pattern besagt, dass für Singleton-Klassen nur eine einzige Instanz besteht.
-Das bedeutet, wenn eine "neue" Instanz erstellt wird mit `new Klasse()`, 
-wird die bestehende Singleton-Instanz zurückgegeben.
-Hier ein Beispielbild:
+Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring 
+können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, dass dies innerhalb des Spring-Containers 
+gilt, nicht systemweit.Hier ein Beispielbild:
 
 ![beispielBild](https://www.baeldung.com/wp-content/uploads/2023/02/singleton_design_pattern3.png)
 
@@ -241,42 +217,68 @@ Die HTTP-Standards um auf Ressourcen zuzugreifen:
 * DELETE – Ressource löschen
 * PUT – Ressourcen aktualisieren oder gegebenenfalls neu erstellen
 
-### Bean
+### Beans
 
-Bean Objekte sind das Rückgrat einer Anwendung. Die Bean Objekte werden instanziiert,
-zusammengebaut und von einem Spring IoC-Container (Inversion of Control) verwaltet. Sie werden mit
-Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
+Beans sind Kernkomponenten in der Spring-Welt. Sie repräsentieren die grundlegenden Bausteine, die vom Spring 
+IoC-Container verwaltet werden. Diese Container verwalten die Lebenszyklen der Beans, wodurch ihre Erstellung, 
+Initialisierung, Verwendung und Entsorgung standardisiert werden.
 
-Die Beans können als XML oder Java Config erstellt werden (wie sonst auch). Der Einfachheit halber
-werden wir Java-Beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
-einer Methode, welche in einer `@Configuration` Klasse ist (oder ein Interface welches davon erbt).
-Beans können auch in einer `@Component` Klasse deklariert werden, wenn sie nicht von anderen Beans
-abhängig sind.
-Hier ein Beispiel:
+#### Erstellung von Beans
 
-```Java
-@Configuration
-public class AppConfig {
-    @Bean
-    public TransferServiceImpl transferService() {
-        return new TransferServiceImpl();
-    }
-}
-```
+Beans können auf verschiedene Weisen erstellt werden:
 
-Normalerweise werden Beans nach ihren Methoden benannt. Man kann den Namen auch selber Festlegen mit
-der `@Bean("meinName")` Annotation.
-Hier ein Beispiel:
+- **XML-Konfiguration:** Historisch gesehen wurden Beans oft in XML-Dateien definiert. Hier wird beschrieben, wie der Container diese Instanzen erstellt und verwaltet.
+
+  ```xml
+  <bean id="exampleBean" class="com.example.ExampleClass">
+      <property name="someProperty" value="Wert"/>
+  </bean>
+  ```
+
+- **Java-Konfiguration:** Mit Annotationen und Java-Klassen kann die Konfiguration von Beans lesbarer und flexibler gestaltet werden.
+
+  ```java
+  @Configuration
+  public class AppConfig {
+      @Bean
+      public ExampleClass exampleBean() {
+          return new ExampleClass();
+      }
+  }
+  ```
+
+#### Bean-Scopes
+
+Beans haben verschiedene Scopes, die ihr Lebenszyklus bestimmen:
+
+- **Singleton:** Es wird nur eine Instanz pro Container erzeugt. Dies ist der Standard-Scope in Spring.
+- **Prototype:** Für jeden Aufruf zur Bean-Anforderung wird eine neue Instanz erstellt.
+- **Request, Session, Application:** Spezifische Scopes für Webanwendungen, um den Lebenszyklus der Beans an HTTP-Anforderungen oder Sitzungen zu binden.
+
+#### Verwendung von Beans
+
+Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer 
+Anwendung zu verwalten. Dies geschieht über Annotationen wie `@Autowired` oder `@Inject`:
 
 ```java
-@Configuration
-public class AppConfig {
-    @Bean("myThing")
-    public Thing thing() {
-        return new Thing();
+@Component
+public class ExampleService {
+    private final ExampleRepository repository;
+
+    @Autowired
+    public ExampleService(ExampleRepository repository) {
+        this.repository = repository;
     }
+
+    // ...
 }
 ```
+
+Hier wird `ExampleRepository` als Abhängigkeit von `ExampleService` injiziert.
+
+Beans sind flexibel, wiederverwendbar und ermöglichen die Modularität von Anwendungen. Sie bilden das Rückgrat vieler 
+Spring-Anwendungen und spielen eine entscheidende Rolle in der Komponentenverwaltung und -integration.
+
 
 [Hier ist die offizielle Bean
 Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition)  
