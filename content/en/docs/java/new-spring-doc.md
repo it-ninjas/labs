@@ -90,8 +90,7 @@ können. Das Gute an diesen Design-Patterns ist, dass diese meist nicht spezifis
 Programmiersprache geschaffen sind, sondern bei vielen verschiedenen Programmiersprachen angewendet
 werden können. Es gibt 3 verschiedene Design-Patterns: 1: Kreationsmuster 2: Strukturmuster 3:
 Verhaltensmuster.
-
-[//]: # (TODO: Eventuell hinweis, dass nun einige Design-Patterns folgen)
+Wir schauen uns nun einige Design-Patterns an, die auch in Spring eingesetzt werden.
 
 ### Inversion of Control
 
@@ -445,8 +444,8 @@ public Order update(@PathVariable Long id,@RequestBody Order order){
 }
 ```
 
-[//]: # (TODO: falsche aussage?)
-Mit `@RequestBody` bestimmen wir, dass die Antwort als Body Part der Request kommt.
+Die Annotation `@RequestBody` wird verwendet, um anzugeben, dass der Parameter `order` aus dem Request-Body des 
+HTTP-Requests gelesen werden soll.
 
 ### Control Layer
 
