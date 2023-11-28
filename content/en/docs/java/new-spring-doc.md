@@ -12,7 +12,7 @@ description: >
 * Ich kenne einige Vor- und Nachteile beim Verwenden eines Java-Frameworks.
 * Ich kenne ein paar Module des Spring-Frameworks (z.B. Core, Data-Access, Web usw.) und weiss,
   welche Aufgaben sie erfüllen.
-* Ich kenne die wichtigste Spring-Projekte (z.B. Spring-Boot, Spring-Cloud, Spring-Security usw.)
+* Ich kenne die wichtigsten Spring-Projekte (z.B. Spring-Boot, Spring-Cloud, Spring-Security usw.)
   und weiss wofür ich diese einsetzen kann.
 * Ich weiss, was "Inversion of Control" (IoC) bedeutet und kenne dessen Vorteile.
 * Ich weiss, was "Dependency-Injection" (DI) ist und kenne die verschiedene Möglichkeiten (z.B.
@@ -55,23 +55,23 @@ Quelle: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ima
 Das Core Modul enthält alle wichtigen Dinge wie z.B. dependency injection. Im Beans Modul ist alles enthalten, 
 das verwendet wird, um Beans (später mehr) zu erstellen.
 
-Das JDBC Modul bietet eine art JDBC interface, mit welchem man auf Datenbanken zugreifen kann.
+Das JDBC Modul bietet eine Art JDBC interface, mit welchem man auf Datenbanken zugreifen kann.
 Das ORM Modul hingegen, bietet Zugriff auf Object-mapping-APIs wie z.B. JPA, JDO, Hibernate. Mit dem OXM Modul wiederum,
 kann man auf Objekt/XML Speicher-Implementationen zugreifen.
 
-Das Web Modul ist für die Kommunikation mit der Aussenwelt zuständig.
+Das Web Modul ist für die Kommunikation mit der Aussenwelt (Internet) zuständig.
 
 Weitere Informationen sind in der offiziellen
-Dokumentation zu finden: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html
+[Dokumentation](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html) zu finden.
 
 ### Spring Projekte
 
 Es gibt verschiedenen Spring Projekte, welche alle auf dem Spring Framework basieren und es einem
-Erlauben noch mehr mit Spring zu machen. Es gibt z.B. spring-security welches Sicherheitsaspekte
-implementiert, spring-shell welches ein cli bereitstellt oder spring-boot. Mehr dazu im folgenden
+Erlauben noch mehr mit Spring zu machen. Es gibt z.B. spring-security, welches Sicherheitsaspekte
+implementiert, spring-shell, das ein CLI bereitstellt oder spring-boot. Mehr dazu im folgenden
 absatz.
 
-Weitere Projekte und infos dazu sind hier zu finden: https://github.com/spring-projects
+Weitere Projekte und Infos dazu sind hier zu finden: https://github.com/spring-projects
 
 [comment]: <> (Link funktioniert auf Website)
 
@@ -80,7 +80,7 @@ Weitere Projekte und infos dazu sind hier zu finden: https://github.com/spring-p
 Spring Boot ist eine Art Vereinfachung des normalen spring Frameworks. Bei Spring Boot können mithilfe
 des sogenannten Spring Initializers Abhängigkeiten wie z.B. Datenbanktreiber oder Software für
 die Cloud-infrastruktur ausgewählt werden. Somit entfällt die manuelle Konfiguration des Projektes.
-Jedoch ist Spring Boot kein Ersatz für das Spring Framework, denn es vor allem dafür zuständig die
+Jedoch ist Spring Boot kein Ersatz für das Spring Framework, denn es ist vor allem dafür zuständig die
 Konfiguration zu vereinfachen.
 
 ## Design-Pattern
@@ -89,7 +89,9 @@ Design-Patterns sind wiederverwendbare Vorlagen, die wir beim Erstellen von Anwe
 können. Das Gute an diesen Design-Patterns ist, dass diese meist nicht spezifisch für eine
 Programmiersprache geschaffen sind, sondern bei vielen verschiedenen Programmiersprachen angewendet
 werden können. Es gibt 3 verschiedene Design-Patterns: 1: Kreationsmuster 2: Strukturmuster 3:
-Verhaltensmuster
+Verhaltensmuster.
+
+[//]: # (TODO: Eventuell hinweis, dass nun einige Design-Patterns folgen)
 
 ### Inversion of Control
 
@@ -103,19 +105,18 @@ Das Spring Framework benutzt das «Inversion of Control» Prinzip.
 
 ### Dependency Injection
 
-Eine Dependency oder eine Abhängigkeit (Service) wird in ein Objekt (Client) weitergegeben
-(Normalerweise bestimmt ein Objekt, welche Abhängigkeiten es braucht). Das heisst, dass man die
-Abhängigkeit einem Objekt, welches diese Benötigt übergeben muss und dass man die Abhängigkeit nicht
-in das Objekt importieren kann.
+Eine Dependency oder eine Abhängigkeit (Service) wird in ein Objekt (Client) weitergegeben.
+Normalerweise bestimmt ein Objekt, welche Abhängigkeiten es braucht. Das heisst, dass man die
+Abhängigkeit einem Objekt, welches diese benötigt übergeben muss und dass man die Abhängigkeit nicht
+im Objekt importieren kann.
 
-In Spring gibt es einen sogenannten InversionOfControl container. In diesem ist z.B. hinterlegt wie und
-wo die etwas injected wird.
+In Spring gibt es einen sogenannten InversionOfControl-Container. In diesem ist z.B. hinterlegt wie und
+wo etwas injected wird.
 
-Man kann diesen Container auf mehreren Arten erstellen. In unserem Fall können wir die Sachen mit Java
-Klassen Lösen.
+Man kann diesen Container auf mehrere Arten erstellen. In unserem Fall können wir die Sachen mit Java-Klassen lösen.
 
-In Spring hat man verschiedene Möglichkeiten wie man Abhängigkeiten Injected. Zum einen mit Konstruktoren, aber auch mit
-settern und Feldern.
+In Spring hat man verschiedene Möglichkeiten wie man Abhängigkeiten injected. Zum einen mit Konstruktoren, aber auch mit
+Settern und Feldern.
 
 ##### Konstruktor Injection
 
@@ -223,14 +224,14 @@ Quelle und weitere Informationen: https://www.baeldung.com/inversion-control-and
 
 ### Singleton
 
-Wenn wir über Singleton sprechen, geht es um Objekte, welche die einzige Instanz ihrer Klasse sind.
-Das bedeutet, wenn wir bereits ein Objekt einer bestimmten Klasse benutzen, können wir sicher sein,
-dass es kein weiteres Objekt dieser Klasse hier geben wird.
+Das Singleton Design-Pattern besagt, dass für Singleton-Klassen nur eine einzige Instanz besteht.
+Das bedeutet, wenn eine "neue" Instanz erstellt wird mit `new Klasse()`, 
+wird die bestehende Singleton-Instanz zurückgegeben.
 Hier ein Beispielbild:
 
-![beispielBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/singleton.png)
+![beispielBild](https://www.baeldung.com/wp-content/uploads/2023/02/singleton_design_pattern3.png)
 
-Quelle: https://docs.spring.io/spring-framework/docs/current/reference/html/images/singleton.png
+Quelle: https://www.baeldung.com/wp-content/uploads/2023/02/singleton_design_pattern3.png
 
 ### HTTP Access-Control
 
@@ -247,8 +248,8 @@ Bean Objekte sind das Rückgrat einer Anwendung. Die Bean Objekte werden instanz
 zusammengebaut und von einem Spring IoC-Container (Inversion of Control) verwaltet. Sie werden mit
 Metadaten erstellt, die sie danach auch an dem Container weiterliefern.
 
-Die Beans können als xml oder Java config erstellt werden (wie sonst auch). Der einfachheit halber
-werden wir Java beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
+Die Beans können als XML oder Java Config erstellt werden (wie sonst auch). Der Einfachheit halber
+werden wir Java-Beispiele geben. Um ein Bean zu definieren, benutzt man die `@Bean` Annotation auf
 einer Methode, welche in einer `@Configuration` Klasse ist (oder ein Interface welches davon erbt).
 Beans können auch in einer `@Component` Klasse deklariert werden, wenn sie nicht von anderen Beans
 abhängig sind.
@@ -305,7 +306,7 @@ dazu [hier](#singleton).
 Prototype besagt, dass für jede Abhängigkeit ein neues Bean erstellt wird.  
 Hier ein Bild:
 
-![PrototypeScopeBild](https://docs.spring.io/spring-framework/docs/current/reference/html/images/prototype.png)
+![PrototypeScopeBild](../new-spring-doc/prototype.png)
 
 Quelle: https://docs.spring.io/spring-framework/docs/current/reference/html/images/prototype.png
 
@@ -328,11 +329,9 @@ hier: https://docs.spring.io/spring-framework/docs/current/reference/html/core.h
 
 ## Spring Struktur
 
-[comment]: <> (Bildlink funktioniert auf website, nicht in md!)
-
 ![spring-struktur.png](../new-spring-doc/spring-struktur.png)
 
-Die Meisten modernen Webapplikationen bestehen aus 3 schichten:
+Die Meisten modernen Webapplikationen bestehen aus 3 Schichten:
 
 Boundary (Grenze): Auf dieser Schicht wird die Kommunikation mit der Aussenwelt abgewickelt.
 
@@ -343,17 +342,17 @@ zu tun hat (zb. mit Repositories).
 
 Spring hat verschiedene Annotationen für verschiedene Aufgaben. Mit der `@Component` Annotation wird
 eine generische Spring Komponente dargestellt. Alle anderen Annotationen sind ebenfalls Komponenten.
-Sie grenzen nur ab, was genau sie machen. In der `@Configuration` Annotation werden Komponenten für die
-Konfiguration definiert. In der `@Repository` Annotation werden Komponenten, welche mit der Datenspeicherung zu
-tun haben definiert. In der `@Controler` Annotation werden Komponenten, welche mit der Kommunikation mit
-der Aussenwelt zu tun haben definiert. In der `@Service` Annotation werden Komponenten, welche mit der Controllogik zu
+Sie grenzen nur ab, was sie genau machen. Mit der `@Configuration` Annotation werden Komponenten für die
+Konfiguration definiert. Mit der `@Repository` Annotation werden Komponenten, welche mit der Datenspeicherung zu
+tun haben definiert. Mit der `@Controller` Annotation werden Komponenten, welche mit der Kommunikation mit
+der Aussenwelt zu tun haben definiert. In der `@Service` Annotation werden Komponenten, welche mit der Kontrolllogik zu
 tun haben definiert.
 
 ### Repository
 
 Eines der am häufigsten verwendeten Design-Patterns (siehe oben) ist das Repository Design-Pattern.
 Es ist ein Interface, welches dafür zuständig ist, uns Zugang zu den Daten in der Datenbank zu bereiten.
-Man kann es sich ein wenig, wie einen Bibliothekar vorstellen. Er gibt uns die Bücher, die wir
+Man kann es sich ein wenig, wie einen Bibliothekar vorstellen. Er gibt uns die Bücher zurück, die wir
 wollen, ohne dass wir wissen, wie er sie uns beschafft. Wir kennen nur die API, also die Befehle
 und welche Resultate wir erwarten können.
 
@@ -380,7 +379,7 @@ tun.
 
 ### Boundary Layer
 
-In diesem Layer definieren wir unsere REST Ressourcen. Hier ein Beispiel einer Order Klasse in einem
+In diesem Layer definieren wir unsere REST Ressourcen. Hier ein Beispiel einer Order-Klasse in einem
 Webshop:
 
 ```java
@@ -422,8 +421,8 @@ public class OrderResource {
 }
 ```
 
-Dies ist eine rest resource und sie wird definiert mit der Annotation `@RestController`. Die
-Annotation `@RequestMapping("/orders")` besagt, dass alle calls auf Orders diese Restressource
+Dies ist eine Rest-Resource und sie wird definiert mit der Annotation `@RestController`. Die
+Annotation `@RequestMapping("/orders")` legt fest, dass alle Aufrufe auf Orders diese Rest-Resource
 verwenden sollen.
 
 Schauen wir uns dies doch ein bisschen genauer an:
@@ -435,9 +434,9 @@ public Order findById(@PathVariable Long id){
 }
 ```
 
-Mit der `@GetMapping` annotation bestimmen wir, dass alle Anfragen auf dem orders/id Pfad von der
-annotierten Methode gehandelt werden. `@PathVariable` bestimmt, dass die ID als path Variable
-angegeben wird. Das bedeutet, dass ein call auf `/orders/12` das gleiche Ergebnis hat wie `findByID(12)`.
+Mit der `@GetMapping` Annotation bestimmen wir, dass alle Anfragen auf dem `orders/id` Pfad von der
+annotierten Methode gehandelt werden. `@PathVariable` bestimmt, dass die ID als Path-Variable
+angegeben wird. Das bedeutet, dass ein Aufruf auf `/orders/12` das gleiche Ergebnis hat wie `findByID(12)`.
 
 ```java
 @PutMapping("/{id}")
@@ -446,11 +445,12 @@ public Order update(@PathVariable Long id,@RequestBody Order order){
 }
 ```
 
+[//]: # (TODO: falsche aussage?)
 Mit `@RequestBody` bestimmen wir, dass die Antwort als Body Part der Request kommt.
 
 ### Control Layer
 
-Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäfts-Logiken. Auf der
+Der Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäfts-Logiken. Auf der
 technischen Ebene ist der Control Layer die grundlegendste und die am wenigsten interessante Schicht.
 Die Control Layer könnte wie folgt aussehen:
 
@@ -490,25 +490,25 @@ public class OrderService {
 
 Diese Klasse ist recht einfach aufgebaut, da sie nur zwei Annotationen, nämlich `@Service` und
 `@Transactional`, beinhaltet. Die `@Service` Annotation markiert beans als holder
-der business logic. `@Transactional` sagt einfach, dass alle Funktionen in der Klasse in einer
+der Businesslogik. `@Transactional` sagt einfach, dass alle Funktionen in der Klasse in einer
 einzigen Transaktion ausgeführt werden sollen. Das musst du vorläufig aber noch nicht verstehen.
-Durch die sogenannte constructor injection wird hier auch noch der bean OrderRepository injected.
+Durch die Constructor Injection wird hier auch noch die Bean `OrderRepository` injected.
 
 ### Entity Layer
 
 Der Entity Layer ist für die Datenspeicherung zuständig. Auf diesem Layer gibt es die zwei Hauptbestandteile
-Entity und Repository. Entities sind klassen welche gespeichert werden, Repositorys verwalten
+Entity und Repository. Entities sind Klassen die gespeichert werden, Repositories verwalten
 diese Entities.
 
-Auch hier wird Spring mit Annotationen gesagt was es machen soll. Die `@Entity` sagt, dass es
-bei dieser Klasse um eine Entity geht.
+Auch hier wird mit Annotation gearbeitet, um die Funktionalität umzusetzen. Die `@Entity` Annotation sagt, dass es
+sich bei dieser Klasse um ein Entity handelt.
 
 Die `@Table` Annotation sagt, auf welcher Tabelle in der Datenbank diese Klasse gespeichert wird
 (Schreibweise `@Table(name = "tabelenNamen")`).
 
-Die `@GeneratedValue` Annotation besagt, dass diese Werte in der Tabelle gespeichert werden.
+Die `@GeneratedValue` Annotation besagt, dass dieser Wert in der Tabelle/Datenbank automatisch generiert wird.
 
-Die `@Id` Annotation sagt, dass dieses Feld als ID in der Tabelle fungiert.
+Die `@Id` Annotation sagt, dass dieses Feld als Primärschlüssel in der Tabelle fungiert.
 
 Hier ist ein Beispiel:
 
@@ -572,7 +572,7 @@ Es gibt 5 wichtige Konfigurationen
 Dependency hinzugefügt werden)
 
 `spring.jpa.hibernate.ddl-auto` sagt wie Spring mit der Datenbank umgehen soll. `update` z.B. sorgt
-dafür, dass fehlende Spalten oder dergleichen automatisch erstellt werden und dass nie sachen
+dafür, dass fehlende Spalten oder dergleichen automatisch erstellt werden und dass nie Sachen
 gelöscht werden. `create-drop` erstellt die Datenbank und löscht die Objekte nachher. `none` belässt die
 Datenbank.
 
