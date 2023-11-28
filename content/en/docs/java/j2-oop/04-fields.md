@@ -11,7 +11,6 @@ description: >
 * Ich schreibe eine Definition eines statische Feldes selbstständig und korrekt.
 * Ich kann in eigenen Worten erklären, wozu statische Felder benutzt werden.
 * Ich kann in eigenen Worten den Unterschied zwischen statischen und nicht-statischen Feldern erklären.
-* Ich kann anhand einer Skizze in eigenen Worten den Unterschied zwischen einer Klasse und deren Instanz nennen.
 
 ## Felder
 Wir haben bereits verschiedene Arten von Variablen kennengelernt:
@@ -23,7 +22,7 @@ Wir werden uns nun den Feldern widmen. Felder sind Variablen, die innerhalb eine
 Es gibt zwei verschiedene Typen von Feldern, statische und nicht-statische.
 
 ### Statische Felder - Klassenvariablen / Konstanten
-Manchmal brauchen wir eine Variable, die allen Objekten gemeinsam ist. Dann verwenden wir eine Variable, die mit Schlüsselwort `static` deklariert ist. Diese Variable bezeichnen wir als statisches Feld oder Klassenvariable. Ein statisches Feld ist der Klasse selbst zugeordnet und nicht den Referenzen dieser Klasse. Denn jede Instanz (= jedes Objekt) der Klasse teilt sich diese Klassenvariable, die sich an einem festen Ort im Speicher befindet. Egal wie viele Objekte dieser Klasse existieren, der Wert des statischen Feldes ist für alle exakt gleich. Jedes Objekt kann den Wert einer Klassenvariablen lese und verändern.
+Manchmal brauchen wir eine Variable, die allen Objekten einer Klasse gemeinsam ist. Dann verwenden wir eine Variable, die mit dem Schlüsselwort `static` deklariert ist. Diese Variable bezeichnen wir als statisches Feld oder Klassenvariable. Ein statisches Feld ist der Klasse selbst zugeordnet und nicht den Instanzen (=Objekten) dieser Klasse. Denn jede Instanz (= jedes Objekt) der Klasse teilt sich diese Klassenvariable, die sich an einem festen Ort im Speicher befindet. Egal wie viele Objekte dieser Klasse existieren, der Wert des statischen Feldes ist für alle exakt gleich. Jedes Objekt kann den Wert einer Klassenvariablen lesen und verändern.
 ```java
 public class Counter { 
 	private static int count = 0;
@@ -37,7 +36,9 @@ public class Counter {
     }
 }
 ```
-Angenommen, wir möchten eine Reihe von Bicycle-Objekten erstellen und jedem eine Seriennummer zuweisen, beginnend mit 1 für das erste Objekt. Diese ID-Nummer ist für jedes Objekt eindeutig und daher eine Instanzvariable (was Instanzvariablen sind, dazu kommen wir gleich). Um das zu realisieren, benötigen wir eine Variable, die die Anzahl Fahrräder (Anzahl erzeugter Bicycle-Instanzen) zählt. Vorsicht, diese Art von Implementation ist für mehrere Threads nicht geeignet. Da wir noch nichts von Multithreading wissen, genügt es zu wissen, dass diese Art der Implementation nicht thread-sicher ist.
+
+Angenommen, wir möchten eine Reihe von Bicycle-Objekten erstellen und jedem eine Seriennummer zuweisen, beginnend mit 1 für das erste Objekt. Diese ID-Nummer ist für jedes Objekt eindeutig und daher eine Instanzvariable (was Instanzvariablen sind, dazu kommen wir gleich). Um das zu realisieren, benötigen wir eine Variable, die die Anzahl Fahrräder (Anzahl erzeugter Bicycle-Instanzen) zählt. Vorsicht, diese Art von Implementation ist für mehrere Threads nicht geeignet. Da wir noch nichts von Multithreading wissen, genügt es zu wissen, dass diese Art der Implementation nicht thread-sicher ist (Man spricht von Multithreading bei einem Programm, wenn es mehrere Dinge gleichzeitig parallel ausführt, je nach dem sogar auf mehreren Prozessoren gleichzeitig).
+
 ```java
 public class Bicycle {
     private int cadence;
@@ -47,12 +48,12 @@ public class Bicycle {
 
     private static int numberOfBicycles = 0; // Klassenvariable, die zählt, wieviele Objekte erzeugt werden
 
-	// Diese spezielle Methode, Konstruktor genannt, wird benötigt, um Objekte zu instanzieren --> siehe Kapitel Konstruktoren
+    // Diese spezielle Methode, Konstruktor genannt, wird benötigt, um Objekte zu instanzieren --> siehe Kapitel Konstruktoren
     public Bicycle(int startCadence, int startSpeed, int startGear) {
-        this.gear = startGear;
-        this.cadence = startCadence;
-        this.speed = startSpeed;
-        this.id = ++numberOfBicycles;  // inkrementiere die Anzahl Fahrräder und weise den Wert der Instanzvariablen id zu
+        this.gear = startGear;          // (aktueller Gang)
+        this.cadence = startCadence;    // (Umdrehungen / min bei den Pedalen)
+        this.speed = startSpeed;        // (km/h)
+        this.id = ++numberOfBicycles;   // inkrementiere die Anzahl Fahrräder und weise den Wert der Instanzvariablen id zu
     }
 }
 ```
@@ -63,6 +64,6 @@ static final double PI = 3.141592653589793;
 ```
 
 ### Nicht-statische Felder - Instanzvariablen
-Unter einer Instanzvariablen versteht man eine Variable, die einer Instanz einer Klasse, also einem Objekt, zugeordnet ist. Wenn eine neue Instanz erzeugt wird, werden Kopien der Instanzvariablen angelegt. Im Fall der Bicycle-Klasse sind die Instanzvariablen _cadence_, _gear_, _speed_ und _id_. Jedes Bicycle-Objekt hat seine eigenen Werte für diese Variablen, d.h. sie werden an unterschiedlichen Orten gespeichert.
+Unter einer Instanzvariablen versteht man eine Variable, die einer Instanz einer Klasse, also einem Objekt, zugeordnet ist. Wenn eine neue Instanz erzeugt wird, werden Kopien der Instanzvariablen angelegt. Im Fall der Bicycle-Klasse sind die Instanzvariablen `cadence`, `gear`, `speed` und `id`. Jedes Bicycle-Objekt hat seine eigenen Werte für diese Variablen, d.h. sie werden an unterschiedlichen Orten gespeichert.
 
 ---

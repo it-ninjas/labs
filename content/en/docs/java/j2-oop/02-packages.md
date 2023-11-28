@@ -74,7 +74,7 @@ import java.awt.*;
 Obwohl wir die meisten Pakete importieren müssen, gibt es ein Java-Paket, das immer automatisch importiert wird. Es ist `java.lang`. Dieses Paket enthält viele weit verbreitete Klassen wie `String`, `System`, `Long`, `Integer`, `NullPointerException` und andere.
 
 ### Statischer Import
-Wir können auch statische Elemente (Konstanten) einer Klasse in eine andere Klasse importieren. Wenn wir `*` in die import-Anweisung schreiben, müssen wir den importierten Klassennamen nicht angeben, bevor wir statische Methoden aufrufen oder statische Felder lesen.
+Wir können auch statische Elemente (wie z.B. Konstanten oder auch statische Methoden) einer Klasse in eine andere Klasse importieren. Wenn wir `*` in die import-Anweisung schreiben, müssen wir den importierten Klassennamen nicht angeben, bevor wir statische Methoden aufrufen oder statische Felder lesen.
 Hier ist ein Beispiel für den statischen Import der Klasse `Arrays`, die viele nützliche Methoden zur Verarbeitung von Arrays enthält:
 ```java
 package org.hyperskill.java.packages.theory;

@@ -57,11 +57,11 @@ Wenn eine Klasse, ein Feld oder eine Methode keinen Zugriffsmodifikator hat, so 
 Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese Klasse, Felder und Methoden haben.
 
 ### Zusammenfassung
-| Modifikator      | Eigene Klasse | Klasse im gleichen Package / innere-Klassen | Unterklassen | Sonstige Klassen |
-|------------------|---------------|---------------------------------------------|--------------|------------------|
-| `private`        | ja            | nein                                        | nein         | nein             |
-| `public`         | ja            | ja                                          | ja           | ja               |
-| `protected`      | ja            | ja                                          | ja           | nein             |
-| ohne / package   | ja            | ja                                          | nein         | nein             |
+| Modifikator              | Eigene Klasse | Klasse im gleichen Package / innere-Klassen | Unterklassen | Sonstige Klassen |
+|--------------------------|---------------|---------------------------------------------|--------------|------------------|
+| `private`                | ja            | nein                                        | nein         | nein             |
+| `public`                 | ja            | ja                                          | ja           | ja               |
+| `protected`              | ja            | ja                                          | ja           | nein             |
+| Keinen (package-private) | ja            | ja                                          | nein         | nein             |
 
 ---

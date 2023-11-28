@@ -33,7 +33,7 @@ Eine Methodendeklaration besteht aus bis zu sieben Komponenten:
 Methodennamen sollen - per Konvention - folgende Regeln einhalten:
 * Erster Buchstabe ist immer klein.
 * CamelCase: Alle Buchstaben sind klein. Wenn der Methodenname aus mehreren Worten besteht, wird jeweils der erste Buchstabe ab dem zweiten Wort grossgeschrieben. Beispiele: `equals`, `printThisToConsole`.
-* Der Methodenname ein Verb enthalten, welches die Funktionalität der Methode beschreibt. Wenn es dem Verständnis der Funktionalität dient, wird dieses Verb zusammen mit einem Nomen zusammengesetzt.
+* Der Methodenname soll ein Verb enthalten, welches die Funktionalität der Methode beschreibt. Wenn es dem Verständnis der Funktionalität dient, wird dieses Verb zusammen mit einem Nomen zusammengesetzt.
 * Der Methodenname soll möglichst aussagekräftig sein.
 * Statt Abkürzungen sollen die einzelnen Wörter möglichst ausgeschrieben werden (ausser es handelt sich um sehr bekannte Abkürzungen).
 

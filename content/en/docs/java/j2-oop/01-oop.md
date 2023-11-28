@@ -7,9 +7,10 @@ description: >
 ---
 
 ## Ziele
-* Ich kann ohne Hilfsmittel die Bestandteile einer Klasse auflisten.
+* Ich kann ohne Hilfsmittel die Bestandteile einer Klasse vollständig auflisten.
 * Ich kann den Unterschied zwischen einer Klasse und einem Objekt mit konkreten Beispielen demonstrieren.
 * Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte dazu.
+
 ---
 
 ## Einführung
@@ -28,9 +29,10 @@ Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse 
 #### Methoden
 Methoden dienen dazu, den Zustand eines Objekts zu verändern. Die Methode `refuel()` (siehe Klassendiagramm unten) füllt beispielsweise den Tank, bis dessen Kapazität erreicht wird.
 
+#### Zusammenfassung
 Klassen werden verwendet, um benutzerdefinierte Datentypen darzustellen. Damit werden Attribute und Verhalten, welche zu diesem neuen Datentyp gehören, an einer Stelle im Code zusammengefasst und verwaltet. Diese neuen, benutzerdefinierte Datentypen können dann wie anderen Datentypen (primitive Datentypen oder andere Klassen) verwendet werden.
 
-Beginnen wir mit einem Beispiel einer Auto-Klasse, hier siehst du das UML-Klassendiagramm der Klasse Car:
+Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das UML-Klassendiagramm der Klasse `Car`, die wir selber erfunden haben. Die oberen 4 Einträge sind ihre Instanzvariablen und die untersten 3 sind ihre Methoden. Einträge mit einem `-` sind `private`, Einträge mit einem `+` sind öffentlich (`public`):
 
 | `class Car`               | 
 | ------------------------- |
@@ -47,7 +49,7 @@ Beginnen wir mit einem Beispiel einer Auto-Klasse, hier siehst du das UML-Klasse
 ## Klassen und Objekte im Schnelldurchlauf
 
 ### Klassen deklarieren
-Eine Java Klasse besteht aus zwei Teilen: Dem Klasenkopf und dem Klassenrumpf.
+Eine Java Klasse besteht aus zwei Teilen: Dem Klassenkopf und dem Klassenrumpf.
 
 Im Klassenkopf (auch Klassendeklaration genannt) wird eine neue Klasse mit dem Keyword `class` gefolgt vom Namen der Klasse deklariert. Per Konvention folgt die Benamsung der Klasse dem PascalCase. Das bedeutet, dass der Klassen-Name und jedes neue Wort darin mit einem Grossbuchstaben beginnt, der Rest besteht aus Kleinbuchstaben.
 
@@ -119,22 +121,6 @@ public class PatientDemo {
 ```
 
 Im obigen Code haben wir zwei Patienten erstellt, John und Alice, die Werte ihrer Felder definiert und dann die Informationen über sie ausgedruckt. Wir sehen, dass wir mit dem Punkt-Operator auf die Felder des Objekts zugreifen können (john.name = "John"). Allerdings soll hier erwähnt sein, dass das nur geht, wenn die Instanzvariablen nicht private sind (wir behandeln das Thema Zugriffsmodifikatoren später).
-
-### Veränderungen an Objekten - Immutable & mutable objects
-In der Programmierung gibt es ein wichtiges Konzept, das Unveränderlichkeit (Englisch: Immutability) genannt wird. Unveränderlichkeit bedeutet, dass ein Objekt immer dieselben Werte speichert. Wenn wir diese Werte ändern wollen, müssen wir ein neues Objekt erstellen. Das klassische Beispiel ist die Klasse `String`. Zeichenfolgen sind unveränderliche Objekte, sodass alle String-Operationen einen neuen String erzeugen.
-```java
-String alice = "alice";
-alice.toUpperCase();
-System.out.println(alice); // Output: alice --> unveränderlich!
-String aliceCapitalLetters = alice.toUpperCase();
-System.out.println(aliceCapitalLetters); // Output: ALICE
-```
-Die Klasse Patient ist nicht unveränderlich, da jedes Feld eines Objekts geändert werden kann.
-```java
-Patient patient = new Patient();
-patient.name = "Mary";
-patient.name = "Alice";
-```
 
 ### Referenzen teilen
 Objekte sind Referenztypen. In einer Variable wird also nicht das Objekt selbst, sondern die Speicheradresse hinterlegt, welche auf das Objekt zeigt. Es können sich also mehrere Referenzen auf dasselbe Objekt beziehen.
