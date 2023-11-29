@@ -11,7 +11,9 @@ Das Testen von REST-Schnittstellen trägt dazu bei, die Qualität, Sicherheit un
 
 
 ## Swagger
-Swagger ist ein Open-Source-Framework, das zur Dokumentation von RESTful Webdiensten verwendet wird. Es bietet Werkzeuge und Spezifikationen, die Entwicklern, Architekten und anderen Beteiligten dabei helfen, 
+Swagger ist ein Open-Source-Framework, das zur Dokumentation von RESTful Webdiensten verwendet wird.
+RESTful steht für Representational State Transfer und bezieht sich auf ein Architekturstil für die Entwicklung von Netzwerkanwendungen.
+Es bietet Werkzeuge und Spezifikationen, die Entwicklern, Architekten und anderen Beteiligten dabei helfen, 
 RESTful APIs zu entwerfen, zu erstellen, zu dokumentieren und die Interoperabilität zwischen verschiedenen Tools und Plattformen zu fördern. Es erleichtert die Kommunikation zwischen Frontend- und Backend-Entwicklern, da die API-Spezifikationen in einer einheitlichen, leicht verständlichen Form vorliegen..
 
 Mit Spring Boot 3 kann man neu nur noch einen Dependency hinzufügen damit der Swagger läuft. Diese sieht folgerndermassen aus:
