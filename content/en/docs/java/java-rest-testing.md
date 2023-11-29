@@ -27,26 +27,30 @@ Wenn man nun die Applikation startet, kann man auf die URL http://localhost:8080
 
 [SwaggerOverview](./java-rest-testing/SwaggerOverview.png)
 
-Auf dem untenstehenden Bild kann man die API-Schnittstelle von einem GET sehen. Damit man diese testen kann, muss man rechts auf den `Try it out` Button drücken.
+Auf dem untenstehenden Bild kann man die API-Schnittstelle von einer GET-Anfrage sehen. Mit einem Klick auf den `Try it out`-Button kann man nachher diese Anfrage ausprobieren.
 
 [SwaggerGet](./java-rest-testing/SwaggerGet.png)
 
-Nun erscheint ein grosser blauer Button namens `Execute`. Wenn man diesen betätigt wird die GET Request abgesendet und die Antwort wird angezeigt.
+Nun erscheint ein grosser blauer Button mit der Aufschrift `Execute`. Auf Knopfdruck wird die GET-Anfrage gesendet und die Antwort wird nach Erhalt angezeigt.
 
 [SwaggerGetTryOut](./java-rest-testing/SwaggerGetTryOut.png)
 
-Das genau gleich wie beim GET gilt auch für einen POST. Der Unterschied ist das man hier noch den Request Body angeben muss in JSON Format. Evtl. auch noch eine ID, diesen muss jedoch auch so angegeben werden, wenn man zum Beispiel ein GetById ausführen möchte.
+Was bei den GET-Anfragen galt, gilt auch für POST-Requests. Im Unterschied zur vorherigen Schnittstelle muss bei dieser zusätzlich ein Request Body im JSON-Format angegeben werden.
+
+Möchte man z.B. `GetById` ausführen, dann muss möglicherweise auch noch eine ID angegeben werden.
 
 [SwaggerPost](./java-rest-testing/SwaggerPost.png)
+
+Das Json für den Request-Body kann auch hier erst nach einem Klick auf "Try it out" spezifiziert werden:
 
 [SwaggerPostTryOut](./java-rest-testing/SwaggerPostTryOut.png)
 
 
 ## IntelliJ HTTP Client
 Der IntelliJ HTTP Client ist ein eingebauter HTTP-Client, der Entwicklern ermöglicht, HTTP-Anfragen an Webdienste oder RESTful-APIs zu senden und die Antworten zu überprüfen. 
-Dies ist nützlich, wenn Sie mit Web-APIs arbeiten und diese schnell und effizient testen möchten, ohne eine separate Anwendung oder Werkzeuge von Drittanbietern verwenden zu müssen.
+Dies ist nützlich, um Web-APIs schnell zu testen, ohne eine separate Anwendung von Drittanbietern installieren zu müssen.
 
-Damit man den HTTP Client verwenden kann muss man zuerst ein solches File erstellen. Dies kann wie folgt getan werden:
+Damit man den HTTP Client verwenden kann, muss man zuerst ein solches File erstellen. Dies kann wie folgt getan werden:
 
 [HttpRequestFile](./java-rest-testing/HttpRequestFile.png)
 
@@ -59,7 +63,7 @@ Accept: application/json
 ```
 Das `api/student/subjects` ist das RequestMapping, welchen in den Controllern festgelegt wurden für den API-Schnittpunkt.
 
-Eine Post oder Put, welchen einen Request Body benutzt sie zum Beispiel dann so aus:
+Eine POST- oder PUT-Anfrage, welchen einen Request-Body benötigt, ist wie folgt aufgebaut:
 ```http request
 POST http://localhost:8080/api/admin/subjects
 Content-Type: application/json
@@ -70,4 +74,4 @@ Content-Type: application/json
 }
 ```
 
-Wenn man nun die Applikation startet, kann man diese HTTP Abfrage ausführen und sehen was die Schnittstelle zurückgibt.
+Wenn man nun die Applikation startet, kann man diese HTTP-Anfrage ausführen und sehen, was die Schnittstelle antwortet.
