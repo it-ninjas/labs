@@ -39,7 +39,7 @@ Genauere Details zu den Anforderungen und den Akzeptanzkriterien werden in den e
   * Neue Fächer hinzufügen
   * Bestehende Fächer bearbeiten
   * Bestehende Fächer löschen
-* Es ist bekannt mit welchem Profil die Anwendung gestartet wurde.
+* Die Anwendung bietet die Möglichkeit abzufragen, welches Profil gestartet ist.
 
 ### Nicht funktionale Anforderungen (NFAs)
 * Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Packages aufgesplittet.
@@ -174,10 +174,10 @@ Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-
 
 **Aufgabe**  
 Erweitere die obige Tabelle mit den restlichen Funktionen gemäss den funktionalen Anforderungen.
-Sobald du fertig bist ein Review mit einem Coach buchen
+Buche sobald du fertig bist ein Review mit einem Coach, damit spätere Fehler vermieden werden.
 
 **Wichtig** Endpunkt für Profil:
-Vergiss nicht das du noch einen Endpunkt erstellen musst um herauszufinden mit welchem Profil man die Anwendung gestartet wurde.
+Vergiss nicht das du noch einen Endpunkt erstellen musst, um herauszufinden, mit welchem Profil die Anwendung gestartet wurde.
 
 ### Resource-Representation Klassen erstellen
 Unsere Schnittstellendefinition verwendet JSON-Objekte bei bestimmten Requests und Responses.
