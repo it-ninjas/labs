@@ -56,7 +56,7 @@ Hier stehen dir zwei Möglichkeiten für die Umsetzung zur Verfügung:
 Beide Möglichkeiten werden in dieser Aufgabe aufgeführt.
 
 ### Voraussetzungen (was du brauchst)
-* Java 1.7 oder neuer ist installiert.
+* Java 20 oder neuer ist installiert.
 * Maven 3.5 oder neuer ist installiert.
 * IntelliJ ist installiert und konfiguriert.
 * Ein Bitbucket Repository steht bereit, um den Code des Projektes zu verwalten und ist auf der lokalen Maschine geklont worden.
