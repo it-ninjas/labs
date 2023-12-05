@@ -144,7 +144,6 @@ Du bist mit diesem Schritt fertig erst, wenn folgende Aussagen stimmen:
 * In der Run-Konsole ist eine ähnliche Ausgabe zu sehen:
   ![](../assets/02_application_success_run_console.png)
 * Dein Projekt ist im vorbereiteten Bitbucket-Repository vorhanden
-* Der Stand des Projektes ist im Bitbucket mit dem Tag "INITIAL_MVN_PROJEKT" versehen
 
 ## Schritt 2: Rest Schnittstellen definieren und umsetzen
 In diesem Schritt geht es darum die Schnittstellen (die API) zur Anwendung zu definieren.
