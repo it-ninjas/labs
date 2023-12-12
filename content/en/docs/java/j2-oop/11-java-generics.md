@@ -9,7 +9,7 @@ description: >
 #### Ziele
 
 * Ich kann in eigenen Worten erklären, was mit Generics in Java gemeint ist und wozu diese angewendet werden.
-* Ich kann alle Vorteile, der die Arbeit mit Generics mit sich bringt, vollständig nennen.
+* Ich kann alle Vorteile, die die Arbeit mit Generics mit sich bringt, vollständig nennen.
 * Ich kann in eigenen Worten erklären, was Typsicherheit ist.
 * Ich kann anhand eines Beispiels aufzeigen, wie eine Typverletzung entsteht.
 * Ich kann in eigenen Worten erklären, wozu "bounded types" verwendet werden.

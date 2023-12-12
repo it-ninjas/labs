@@ -9,8 +9,8 @@ description: >
 ## Ziele
 * Ich kann ohne Hilfsmittel mindestens zwei Vorteile für das Verwenden von Packages nennen.
 * Ich kann ohne Hilfsmittel die Namenkonvention für Java-Packages beschreiben.
-* Ich zeige auf, wie mehreren Klassen vom gleichen Packet mit einem `import`-Statement importiert werden.
-* Ich kann korrekt und ohne Hilfsmittel erklären, was ein statischer Import ist und wozu es verwendet wird.
+* Ich zeige auf, wie mehrere Klassen vom gleichen Packet mit einem `import`-Statement importiert werden.
+* Ich kann korrekt und ohne Hilfsmittel erklären, was ein statischer Import ist und wozu er verwendet wird.
 * Ich kann erläutern, warum es keine gute Idee ist, Klassen ohne Package-Anweisung zu schreiben.
 
 ## Packages

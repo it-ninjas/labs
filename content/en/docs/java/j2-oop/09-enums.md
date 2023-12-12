@@ -17,7 +17,7 @@ Enums werden dann verwendet, wenn alle mögliche Werte zur Kompilierzeit bekannt
 In Java sind Aufzählungstypen als Klassen realisiert und die definierten Werte sind als Objekte implementiert. 
 Daraus ergeben sich folgenden nützlichen Eigenschaften:
 - Enums können Konstruktoren, Instanzvariablen und Instanz-Methoden beinhalten
-- Der Name der Enum-Werte kann mithilfe der `toString()`-Methode (oder mit dem Keywort `this`) im Klartext ausgegeben werden.
+- Der Name der Enum-Werte kann mithilfe der `toString()`-Methode (oder mit dem Keywort `this`) im Klartext (String) ausgegeben werden.
 - Mithilfe des `==`-Operators kann auf Gleichheit geprüft werden.
 - Enumerations können in `switch`-Anweisungen verwendet werden.
 - Mithilfe der `values`-Methode wird ein Array zurückgegeben, das alle Elemente der Enumeration enthält. In Verbindung mit der erweiterten `for`-Schleife (for-each) können die Elemente sehr einfach durchlaufen werden.
@@ -81,7 +81,7 @@ public class DailyPlanner {
 ```
 
 ### Enum mit einem Konstruktor
-Ein Enum-Konstruktor wird für jeder Enum-Konstante während dem Klassenladen des Enums ausgeführt.
+Ein Enum-Konstruktor wird für jede Enum-Konstante während dem Klassenladen des Enums ausgeführt.
 Es ist unmöglich, Enum-Objekte explizit zu erzeugen. Darum kann ein Enum-Konstruktor auch nicht direkt aufgerufen werden.
 
 #### Beispiel: Enum mit einem Konstruktor

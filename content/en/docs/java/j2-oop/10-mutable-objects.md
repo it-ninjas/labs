@@ -40,7 +40,7 @@ public class SwissCitizen {
 
         // Hans-Ruedi hat geheiratet :D
         person.name = "Hans-Ruedi Müller";
-        person.socialSecurityNumber = "756.0000.0000.01";
+        person.socialSecurityNumber = "756.0000.0000.01"; // Gibt einen Compiler-Fehler
     }
 }
 ```
@@ -91,7 +91,7 @@ public class Color {
 }
 ```
 
-Da `Color in diesem Beispiel veränderlich ist, kann jedes Feld verändert werden:
+Da `Color` in diesem Beispiel veränderlich ist, kann jedes Feld verändert werden:
 
 ```java
 // print color red:

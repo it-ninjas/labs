@@ -11,7 +11,7 @@ description: >
 
 ## Weltmeisterschaft - OOP Exam
 
-Bei diesem Lab geht es darum, dass du deine Vorgehensweise beim Erstellen eines objekt-orientiertem Modell trainierst.
+Bei diesem Lab geht es darum, dass du deine Vorgehensweise beim Erstellen eines objektorientierten Modells trainierst.
 
 Zentral bei dieser Aufgabe ist also, wie du das Datenmodell erstellst, welches beschreibt, welche Klassen mit welchen Feldern und Methoden du schreibst.
 

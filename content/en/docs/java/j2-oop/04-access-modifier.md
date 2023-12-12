@@ -49,7 +49,7 @@ c.getName();
 UML-Symbol: `+`
 
 ### Protected
-Wenn eine Klasse, ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Mehr über Unterklassen bzw. Vererbung findest du im Modul «Objektorientiertes Design»).
+Wenn eine Klasse, ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul «Objektorientiertes Design»).
 UML-Symbol: `#`.
 
 ### Package-Private

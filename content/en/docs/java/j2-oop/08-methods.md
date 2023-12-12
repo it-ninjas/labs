@@ -23,11 +23,11 @@ Diese Methoden können also entweder den Inhalt von Datenfelder ändern oder ihr
 Eine Methodendeklaration besteht aus bis zu sieben Komponenten:
 1. Zugriffsmodifikator: `public`, `protected`, `private` oder package-private. Der Zugriffsmodifikator sollte immer so restriktiv wie möglich gewählt werden.
 2. Sonstige Modifikatoren. Beispielsweise `static` oder `synchronized`.
-2. Rückgabewert. Der Datentyp des von der Methode zurückgegebenen Werts oder `void`, wenn die Methode keinen Wert zurückgibt.
-3. Methodenname / Bezeichner.
-4. Parameterliste in Klammern. Eine durch Kommas getrennte Liste von Eingabeparametern (Datentyp + Bezeichner). Wenn keine Parameter benötigt werden, genügt die Angabe der beiden Klammern.
-5. Exceptions (also welche Fehler, die die Methode wirft). Dazu mehr später im Modul Exception Handling.
-6. Methodenkörper (der Code in geschweiften Klammern, der die Methode ausführt).
+3. Rückgabewert. Der Datentyp des von der Methode zurückgegebenen Werts oder `void`, wenn die Methode keinen Wert zurückgibt.
+4. Methodenname / Bezeichner.
+5. Parameterliste in Klammern. Eine durch Kommas getrennte Liste von Eingabeparametern (Datentyp + Bezeichner). Wenn keine Parameter benötigt werden, genügt die Angabe der beiden Klammern.
+6. Exceptions (also welche Fehler, die die Methode wirft). Dazu mehr später im Modul Exception Handling.
+7. Methodenkörper (der Code in geschweiften Klammern, der die Methode ausführt).
 
 ### Namenskonventionen für Methoden
 Methodennamen sollen - per Konvention - folgende Regeln einhalten:
@@ -146,6 +146,7 @@ if (carA.equals(carB)){
     System.out.println("Both cars are equal.");
 } else {
     System.out.println("The cars are different.");
+// Output: The cars are different.
 }
 ```
 

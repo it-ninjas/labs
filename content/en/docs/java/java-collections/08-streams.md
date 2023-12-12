@@ -3,7 +3,7 @@ title: "Streams Basics"
 linkTitle: "Streams"
 weight: 8
 description: >
-  Modul #J2
+  Modul #J7
 ---
 
 ## Ziele
@@ -43,7 +43,7 @@ int maxScores = 24;
 
 var averageGrade = Arrays.stream(scores)
         .filter(score -> score > 0)
-        .mapToDouble(score -> score * 5.0 / maxScores + 1.0)
+        .mapToDouble(score -> score * 5f / maxScores + 1f)
         .average();
 
 System.out.println("Average: " + averageGrade.getAsDouble());
@@ -181,12 +181,12 @@ Nun werden einige Operationen auf Streams vorgestellt:
     * `map(...)`, `mapToInt(...)` und `mapToDouble(...)` wandeln die einzelnen Stream-Elemente in andere Werte um (bilden diese ab auf andere).
     * `sorted()` sortiert die einzelnen Werte.
 * Terminale Operationen:
-    * Mit `forEach(...)` kann für jedes Element etwas gemacht werden (wie jedes Element ausgeben).
+    * Mit `forEach(...)` kann für jedes Element etwas gemacht werden (z.B. jedes Element ausgeben).
     * `collect(...)` und `toArray(...)` füllen die einzelnen Elemente in Listen oder Arrays ab.
 
 ### Intermediäre Operationen
 #### Die `filter(...)`-Methode
-Die `filter(...)`-Methode ist eine intermediäre Operation, die Elemente in einem Stream auf diejenigen beschränkt, die einer bestimmten Bedingung entsprechen. Diese Bedingung wird als Lambda-Ausdruck ausgedrückt, der `true` zurückgibt, wenn das Element im Stream bleiben soll. Gibt er `false` zurück, wird das Element aussortiert.
+Die `filter(...)`-Methode ist eine intermediäre Operation, die Elemente in einem Stream auf diejenigen beschränkt, die einer bestimmten Bedingung entsprechen. Diese Bedingung wird als Lambda-Ausdruck angegeben, der `true` zurückgibt, wenn das Element im Stream bleiben soll. Gibt er `false` zurück, wird das Element aussortiert.
 
 Im folgenden Beispiel werden alle ungeraden Zahlen aus einem Stream entfernt und dann alle verbleibenden Elemente ausgegeben:
 ```java
@@ -269,7 +269,7 @@ Die *forEach(Consumer action)* Methode gehört zu den terminalen Operationen ein
 
 Der Parameter `action` ist vom Typ `Consumer` (ist ein `FunctionalInterface`). Dieser Typ repräsentiert eine Operation (eine Funktion),
 welche nur ein einziges Input-Argument akzeptiert und keine Ergebnisse (also `void`) zurückliefert. 
-Ein Beispiel für so ein Consumer ist die Methode `System.out.println(...)`, 
+Ein Beispiel für so einen Consumer ist die Methode `System.out.println(...)`, 
 welche maximal ein einziges Objekt als Parameter akzeptiert, dieses Objekt in den Standard-Output ausgibt und `void` (also kein Ergebnis) zurückliefert.
 Die Methode `System.out.println` erfüllt also die Bedingungen eines Consumers und kann als Parameter für die `forEach()` Methode verwendet werden
 
@@ -308,7 +308,7 @@ greetingList.stream().forEach(word -> System.out.println(word));
 greetingList.stream().forEach(System.out::println);
 
 // Collection, darunter auch Listen, haben selbst eine forEach Methode, 
-// welche die gleiche Ergebnisse liefert, wie diejenige vom Stream-Interface
+// welche die gleichen Ergebnisse liefert, wie diejenige vom Stream-Interface
 greetingList.forEach(System.out::println);
 
 ```

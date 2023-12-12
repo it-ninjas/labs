@@ -99,15 +99,15 @@ Um mit ArrayList arbeiten zu können, muss die Klasse zuerst importiert werden.<
 import java.util.ArrayList;
 ```
 
-Nun kann eine Variable definiert und erzeugt werden. Der Syntax hier wird in späteren Modulen erklärt,
-hier reicht es zu wissen, dass innerhalb der spitzigen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen. 
+Nun kann eine Variable definiert und eine ArrayList erzeugt werden. Die Syntax hier wird in späteren Modulen erklärt,
+hier reicht es zu wissen, dass innerhalb der spitzen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen. 
 ```java
 // Erstellen einer ArrayList für String-Objekte.
 // Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren.
 List<String> words = new ArrayList<>();
 ```
 
-Sobald eine Liste erzeugt wurde, können beliebig viel Objekte dazu hinzugefügt oder daraus entfernt werden.<br>
+Sobald eine Liste erzeugt wurde, können beliebig viel Objekte hinzugefügt oder entfernt werden.<br>
 Über die Liste kann mit einer Schleife iteriert werden oder auch mit einem Index direkt auf ein Element zugegriffen werden.
 ```java
 // Elemente hinzufügen

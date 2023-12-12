@@ -24,7 +24,7 @@ Unter einer Klasse versteht man in der objektorientierten Programmierung ein abs
 Ein Objekt bezeichnet in der objektorientierten Programmierung ein Exemplar eines bestimmten Datentyps oder einer bestimmter Klasse. Objekte sind konkrete Ausprägungen (=Instanzen) einer Klasse und werden zur Laufzeit erzeugt (Instanziierung).
 
 #### Datenfelder
-Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse relevant sind. Ein Auto hat eine Höchstgeschwindigkeit, eine bestimmte Anzahl von Sitzen, usw. Das heisst, ein Feld ist eine Variable, in der Daten gespeichert werden können. Es kann einen beliebigen Typ haben, einschliesslich primitiver Typen (`int`, `float`, `boolean` usw.) und Klassen. Eine Klasse kann auch sich selber als Feld enthalten. Eine Klasse kann beliebig viele Felder haben.
+Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse relevant sind. Beispielsweise hat ein Auto eine Höchstgeschwindigkeit, eine bestimmte Anzahl von Sitzen, usw. Das heisst, ein Feld ist eine Variable, in der Daten gespeichert werden können. Es kann einen beliebigen Typ haben, einschliesslich primitiver Typen (`int`, `float`, `boolean` usw.) und Klassen. Eine Klasse kann auch sich selber als Feld enthalten. Eine Klasse kann beliebig viele Felder haben.
 
 #### Methoden
 Methoden dienen dazu, den Zustand eines Objekts zu verändern. Die Methode `refuel()` (siehe Klassendiagramm unten) füllt beispielsweise den Tank, bis dessen Kapazität erreicht wird.
