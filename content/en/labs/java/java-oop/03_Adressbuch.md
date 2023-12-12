@@ -2,7 +2,7 @@
 title: "Adressbuch"
 linkTitle: "Adressbuch"
 type: docs
-weight: 2
+weight: 3
 description: >
   Aufgabe zu Modul #J2 - OOP - Adressbuch
 ---

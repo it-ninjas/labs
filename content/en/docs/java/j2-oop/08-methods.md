@@ -1,7 +1,7 @@
 ---
 title: "Instanzmethoden"
 linkTitle: "Instanzmethoden"
-weight: 7
+weight: 8
 description: >
   Modul #J2
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Konstruktoren"
 linkTitle: "Konstruktoren"
-weight: 5
+weight: 6
 description: >
   Modul #J2
 ---

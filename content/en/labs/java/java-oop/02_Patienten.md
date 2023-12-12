@@ -2,7 +2,7 @@
 title: "Patienten"
 linkTitle: "Patienten"
 type: docs
-weight: 1
+weight: 2
 description: >
   Aufgabe zu Modul #J2 - OOP - Patienten
 ---

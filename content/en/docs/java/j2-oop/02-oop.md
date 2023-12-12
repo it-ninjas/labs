@@ -1,7 +1,7 @@
 ---
 title: "Objektorientierte Programmierung"
 linkTitle: "Objektorientierte Programmierung"
-weight: 1
+weight: 2
 description: >
   Modul #J2
 ---

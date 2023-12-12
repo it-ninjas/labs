@@ -1,7 +1,7 @@
 ---
 title: "Streams Basics"
 linkTitle: "Streams"
-weight: 3
+weight: 8
 description: >
   Modul #J2
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Veränderbarkeit"
 linkTitle: "Veränderbarkeit"
-weight: 9
+weight: 10
 description: >
   Modul #J2
 ---
@@ -185,4 +185,4 @@ Der Hauptunterschied mit `immutable` Klassen ist daher, dass so viel öfters neu
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Erweitere bitte die [Wassermengen-Aufgaben](../../../../labs/java/java-oop/05_wassermenge) um die Aufgabe 2.
+![task1](/images/task.png) Jetzt bist du dran. Erweitere bitte die [Wassermengen-Aufgaben](../../../../labs/java/java-oop/06_wassermenge) um die Aufgabe 2.

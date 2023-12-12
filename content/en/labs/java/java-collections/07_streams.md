@@ -4,7 +4,7 @@ linkTitle: "Streams Basics - Aufgaben"
 type: docs
 weight: 1
 description: >
-  Aufgaben zu Modul #J2 - Lists Basics
+  Aufgaben zu Modul #J7 - Collections
 ---
 
 ## Aufgabe 1 - User-Eingabe in Liste umwandeln
@@ -32,8 +32,6 @@ Versuche für jede Mahlzeit die Anzahl Kalorien zu ermitteln. Speichere die Geri
 
 
 ##  Aufgabe 4 - Notenschnitt berechnen
-
-![info](/images/hint.png) Löse diese Aufgabe erst nach dem du dich mit OOP vertraut gemacht hast.
 
 ![task1](/images/task.png) Schreibe ein Programm, dass den Notenschnitt über Fächer berechnet.
 

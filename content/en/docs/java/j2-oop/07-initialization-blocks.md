@@ -1,7 +1,7 @@
 ---
 title: "Initialisierungsblöcke"
 linkTitle: "Initialisierungsblöcke"
-weight: 6
+weight: 7
 description: >
   Modul #J2
 ---
