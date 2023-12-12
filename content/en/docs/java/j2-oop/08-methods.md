@@ -162,3 +162,30 @@ Auch für diese Methode definiert die [API-Definition für hashCode()](https://d
 - **Zusammenhang not-equals**: Zwei Objekte die gemäss `equals()` verschieden sind, müssen nicht zwingend unterschiedliche Hashwerte liefern. Grundsätzlich wäre es aber besser für die Performanz, wenn verschiedene Objekte auch verschiedene Hashwerte liefern würden.
 
 In der Regel entscheiden wir uns aufgrund von fachlichen Gegebenheiten für die Überschreibung der Methode `equals()`. Die Überschreibung von `hashCode()` resultiert daraus als Konsequenz der Bedingung "Zusammenhang equals".
+
+Hier ein Beispiel für die Klasse `Car`, wie eine mögliche `hashCode()`-Methode aussehen könnte. Hier haben wir 2 weitere Felder aus Demonstrationsgründen hinzugefügt:
+
+```java
+public class Car {
+    private int speed;
+    private String brand;
+    private float remainingAmountOfFuel;
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(speed, brand, remainingAmountOfFuel);
+    }
+}
+```
+
+Oft sieht man statt `Objects.hash(...)` auch eine eigene Implementation wie die folgende:
+
+```java
+@Override
+public int hashCode() {
+	int result = speed;
+	result = 31 * result + (brand != null ? brand.hashCode() : 0);
+	result = 31 * result + (remainingAmountOfFuel != +0.0f ? Float.floatToIntBits(remainingAmountOfFuel) : 0);
+	return result;
+}
+```

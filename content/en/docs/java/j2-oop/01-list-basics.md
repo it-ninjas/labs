@@ -45,7 +45,8 @@ Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface
 
 ### Die wichtigsten Methoden einer Liste
 
-Das List-Interface stellt mehrere Methoden zur Verfügung, welche von implementierenden Klassen dann - angepasst an ihre Struktur und ihren Zweck - umgesetzt werden.<br>
+Das List-Interface stellt mehrere Methoden zur Verfügung, welche dann von Klassen wie `ArrayList` oder `LinkedList` umgesetzt werden.
+
 Nachfolgend werden einige Methoden und deren Zweck aufgelistet.
 Dort wo "E" steht, geht es um einen generischen Typ, welcher stellvertretend für einen konkreten Objekttyp steht (Generics werden in einem separaten Modul behandelt).
 

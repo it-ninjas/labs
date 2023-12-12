@@ -14,7 +14,16 @@ description: >
 ---
 
 ## Einführung
-In der realen Welt können wir viele Objekte wie Autos, Gebäude und Menschen um uns herum finden. Alle diese Objekte haben einen bestimmten Zustand und ein bestimmtes Verhalten. Wenn wir ein Auto betrachten, so könnte sein Zustand einen Markennamen, eine bestimmte Geschwindigkeit oder den zu tankenden Kraftstoff enthalten. Mögliche Verhaltensweisen eines Autos sind normalerweise fahren und einparken.
+In der realen Welt können wir viele Objekte wie Autos, Gebäude und Menschen um uns herum finden. Alle diese Objekte haben einen bestimmten Zustand/Merkmale und ein bestimmtes Verhalten.
+
+Wenn wir ein Auto betrachten, so könnte sein Zustand/seine Merkmale
+* einen Markennamen,
+* eine bestimmte Geschwindigkeit
+* oder den zu tankenden Kraftstoff enthalten.
+
+Mögliche Verhaltensweisen eines Autos sind normalerweise
+* fahren 
+* und einparken.
 
 ### Definitionen
 #### Klasse

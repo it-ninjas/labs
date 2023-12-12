@@ -216,7 +216,7 @@ Stream.of("Ein", "Ninja", "bewegt", "sich", "lautlos", "wie", "der", "Wind", "un
                 .forEach(System.out::println);
 ```
 
-Im zweiten Beispiel könnte unser Ziel sein, die durchschnittliche Länge der Wörter zu berechnen. Wenn man mathematische Operationen mit Streams durchführen möchte, dann ist es oft einfacher, den Stream in einen für den mathematischen Typ spezifischen Stream wie `IntStream` zu "verwandeln", damit Funktionen wie `sum()` und `average()` (Durchschnitt) nicht manuell implementiert werden müssen. Hierfür kannst du statt der `map(...)`- die `mapToInt(...)`-Methode (oder `mapToDouble` und `mapToSingle`) verwenden:
+Im zweiten Beispiel könnte unser Ziel sein, die durchschnittliche Länge der Wörter zu berechnen. Wenn man mathematische Operationen mit Streams durchführen möchte, dann ist es oft einfacher, den Stream in einen für den mathematischen Typ spezifischen Stream wie `IntStream` zu "verwandeln", damit Funktionen wie `sum()` und `average()` (Durchschnitt) nicht manuell implementiert werden müssen. Hierfür kannst du statt der `map(...)`- die `mapToInt(...)`-Methode (oder `mapToDouble`) verwenden:
 
 ```java
 System.out.println(

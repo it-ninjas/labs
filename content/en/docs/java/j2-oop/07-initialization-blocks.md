@@ -52,15 +52,16 @@ public class Ninja {
     private static String defaultWeapon;
     private static final String[] availableWeapons = {"Shuriken", "Ninjatō", "Kunai"};
 
-    // Instanzblock
-    {
-        // Default-Wert, damit der Wert nicht in jedem Konstruktor gesetzt werden muss:
-        this.weapon = defaultWeapon;
-    }
     static {
         Random random = new Random(System.currentTimeMillis());
         int randomIndex = random.nextInt(availableWeapons.length);
         defaultWeapon = availableWeapons[randomIndex];
+    }
+
+    // Instanzblock
+    {
+        // Default-Wert, damit der Wert nicht in jedem Konstruktor gesetzt werden muss:
+        this.weapon = defaultWeapon;
     }
 
     public Ninja(String name) {

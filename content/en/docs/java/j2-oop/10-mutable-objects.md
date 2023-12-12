@@ -114,6 +114,10 @@ Rot:    Color(255, 255, 255)
 
 Das Problem mit unserem Code ist, dass wir erwarten, dass `Color.RED` dem Wert von `new Color(255, 0, 0)` entspricht, da die statische Variable sogar mit `final` deklariert wurde. Und das würde auch jede(r) andere Entwickler(in) erwarten!
 
+Das Problem war, dass wir immer wieder auf das gleiche Objekt zugegriffen haben, das wir auch bearbeitet haben, was dieses Diagramm verdeutlicht:
+
+![Flow of Variable RED](../immutable-code-snippet-color-red.png)
+
 Möchten wir, dass `Color` diesen Erwartungen gerecht wird, dann müssen wir sie unveränderlich (`immutable`) machen. Dann ist jedes ihrer Felder unveränderlich. Dies geschieht mit dem `final`-Key-Word vor allen Feldern innerhalb der Klasse:
 
 ```java
