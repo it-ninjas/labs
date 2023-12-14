@@ -238,6 +238,22 @@ public class MyConfiguration {
 Weitere Information
 hier: https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes
 
+### REST
+REST (Representational State Transfer) ist ein Designkonzept für das Internet, das Regeln und Standards definiert, 
+wie Webdienste miteinander kommunizieren. Es basiert auf dem Austausch von Daten über das HTTP-Protokoll und verwendet 
+einheitliche Methoden wie GET, POST, PUT und DELETE, um auf Ressourcen zuzugreifen und mit ihnen zu interagieren. 
+REST betont die Verwendung von klaren, eindeutigen URLs und fördert eine zustandslose Kommunikation, was bedeutet, 
+dass jede Anfrage alle benötigten Informationen enthält, um verstanden zu werden, ohne auf vergangene Anfragen 
+zurückgreifen zu müssen.
+
+Hier eine kurze Übersicht der REST-Methoden:
+* GET: Wird genutzt, um Daten von einem bestimmten Ort abzurufen. Beispielsweise das Abrufen von Informationen über Benutzerprofile einer Social-Media-Plattform.
+* POST: Um neue Daten an den Server zu senden, beispielsweise beim Ausfüllen eines Formulars und Absenden der Informationen.
+* PUT: Zum Aktualisieren von bestehenden Ressourcen, indem neue Daten an einen bestimmten Ort gesendet werden.
+* DELETE: Wird genutzt, um eine spezifische Ressource auf dem Server zu entfernen, wie das Löschen eines Benutzerkontos von einer Plattform.
+
+> Hinweis: Eigentlich ist REST _kein_ Designpattern, jedoch hat es Ähnlichkeiten dazu.
+
 ## Spring Struktur
 
 ![spring-struktur.png](../new-spring-doc/spring-struktur.png)
