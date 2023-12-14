@@ -180,7 +180,7 @@ Beans haben verschiedene Scopes, die ihr Lebenszyklus bestimmen:
 #### Verwendung von Beans
 
 Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer 
-Anwendung zu verwalten. Dies geschieht über Annotationen wie `@Autowired` oder `@Inject`:
+Anwendung zu verwalten. Dies geschieht via Dependency Injection:
 
 ```java
 @Component
@@ -195,7 +195,7 @@ public class ExampleService {
 }
 ```
 
-Hier wird `ExampleRepository` als Abhängigkeit von `ExampleService` injiziert.
+Hier wird `ExampleRepository` als Abhängigkeit von `ExampleService` injiziert. Die `@Component`-Annotation wird für dieses Beispiel verwendet, damit die Abhängigkeiten via Dependency Injection eingefügt werden.
 
 Beans sind flexibel, wiederverwendbar und ermöglichen die Modularität von Anwendungen.
 
@@ -349,7 +349,7 @@ HTTP-Requests gelesen werden soll.
 #### Control Layer
 
 Der Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäfts-Logiken. Auf der
-technischen Ebene ist der Control Layer die grundlegendste und die am wenigsten interessante Schicht.
+technischen Ebene ist der Control Layer die grundlegendste Schicht.
 Die Control Layer könnte wie folgt aussehen:
 
 ```java
