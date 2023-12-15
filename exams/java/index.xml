@@ -1,24 +1,63 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Java Exams</title><link>/exams/java/</link><description>Recent content in Java Exams on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/exams/java/index.xml" rel="self" type="application/rss+xml"/><item><title>Exams: Java Grundlagen Exams</title><link>/exams/java/java-grundlagen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-grundlagen/</guid><description/></item><item><title>Exams: Objektorientierte Programmierung Exam</title><link>/exams/java/java-oop/oopexam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-oop/oopexam/</guid><description>
-&lt;p>&lt;em>Für dieses Exam dürfen auch Inhalte der Themen Lists und Generics verwendet werden&lt;/em>&lt;/p>
-&lt;h2 id="cøøp">CØØP&lt;/h2>
-&lt;p>Unsere Supermarkt-Kette heisst CØØP.
-CØØP ist ein Supermarkt welcher an vielen Orten in der Schweiz vertreten ist.
-Der Name einer Filiale ist einzigartig, dies macht es dem ganzen System ein wenig einfacher.&lt;/p>
-&lt;p>Im CØØP findet man verschiedenste Artikel von Lebensmitteln, über Haushaltsgeräte bis zu Baustoffen wie Holz und Metall.
-CØØP ist sehr modern eingerichtet und es ist es dem System genau bekannt wie viele Regale jeder Standort besitzt.
-Das System weiss auch, welcher Artikel sich bei welchem Laden in welchem Regal befindet.&lt;/p>
-&lt;p>Natürlich hat nicht jeder Artikel im CØØP einen Barcode für die Kasse, da ja z.B. ein Gipfeli kein Barcode hat.
-Also muss an der Kasse beim Scannen bemerkt werden, ob der Artikel einen Barcode hat oder nicht.
-Falls dies nicht der Fall ist, muss der Artikel von Hand in die Kasse eingetragen werden.&lt;/p>
-&lt;p>Hab ich schon erwähnt, dass einige Filialen im CØØP auch Self-Service Kassen besitzen?
-Dort kann der Kunde seine Ware selber &amp;ldquo;scannen&amp;rdquo; und anschliessend bezahlen.&lt;/p>
-&lt;p>Um den Kunden den Einkauf zu erleichtern, haben unsere Kunden die Möglichkeit unser System über dedizierte Tablets ansprechen zu können.
-Über das Tablet kann ein Kunde abfragen, ob ein gewünschtes Produkt in einer bestimmten Filiale vorhanden ist.
-Falls dies der Fall ist, soll dem Kunden zusätzlich angezeigt werden, in welchem Regal sich der Artikel befindet.&lt;/p>
-&lt;p>CØØP hat eine eigene Karte namens &lt;em>Schüpercard&lt;/em> (ja mit ü). Diese kann beim Einkaufen gescannt werden.
-Denke daran, dass jede Schüpercard einzigartig ist.
-Falls die Schüpercard beim Einkaufen gescannt, so wird dem Konto des Kunden pro 1.- CHF Einkaufswert 1 Schüperpunkt gutgeschrieben
-(Es werden keine halben Punkte verteilt und es wird immer abgerundet).&lt;/p>
-&lt;p>Jeder Mitarbeiter einer CØØP Filiale ist im System hinterlegt.
-Es wird auch jederzeit nachgeführt, welcher Mitarbeiter sich zurzeit in welcher Filiale befindet.
-So kann der Chef die Anwesenheit aller Mitarbeiter sauber überprüfen.&lt;/p></description></item></channel></rss>
+&lt;p>&lt;em>Für dieses Exam dürfen auch Inhalte der Themen Lists und Generics verwendet werden.&lt;/em>&lt;/p>
+&lt;h2 id="weltmeisterschaft---oop-exam">Weltmeisterschaft - OOP Exam&lt;/h2>
+&lt;p>Bei diesem Lab geht es darum, dass du deine Vorgehensweise beim Erstellen eines objektorientierten Modells trainierst.&lt;/p>
+&lt;p>Zentral bei dieser Aufgabe ist also, wie du das Datenmodell erstellst, welches beschreibt, welche Klassen mit welchen Feldern und Methoden du schreibst.&lt;/p>
+&lt;p>Ziel ist nicht, dass du dich mit &lt;code>Scanner&lt;/code>n oder viel Logik herumschlagen musst.&lt;/p>
+&lt;h3 id="sachverhalt">Sachverhalt&lt;/h3>
+&lt;p>Bei diesem Lab modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der &lt;a href="../results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei gespeichert sind, abbilden.&lt;/p>
+&lt;p>Deine Klassen sollen folgendes abbilden:&lt;/p>
+&lt;ul>
+&lt;li>In diesem Turnier (Competition) spielen die Mannschaften (Team) gegeneinander.&lt;/li>
+&lt;li>Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), PLAYOFF, Viertel- (QUARTER_FINAL), Halbfinale (SEMI_FINAL) oder FINAL.&lt;/li>
+&lt;li>Bei jedem Spiel (Game) gibt es immer eine Heim- (home) und Gast-Mannschaft (visiting/away team).&lt;/li>
+&lt;li>Bei jedem Spiel wird festgehalten, wie viele Tore (goals) welche Mannschaft (home oder visiting) geschossen hat. Zudem wird festgehalten, wo (location) das Spiel stattgefunden hat.&lt;/li>
+&lt;/ul>
+&lt;h3 id="was-soll-die-anwendung-können">Was soll die Anwendung können?&lt;/h3>
+&lt;p>Auf Stufe Spiel (Game)&lt;/p>
+&lt;ul>
+&lt;li>möchten wir erfahren können, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (didTeamPlayThisGame(team)).&lt;/li>
+&lt;li>Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (getPointsFor(team)).&lt;/li>
+&lt;/ul>
+&lt;p>Auf Stufe Turnier (Competition)&lt;/p>
+&lt;ul>
+&lt;li>wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (getScoresDuringGroupStageFor(team)).&lt;/li>
+&lt;li>Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (getGoalsForTeam(team)).&lt;/li>
+&lt;li>Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (getAllGamesForLocation(location)).&lt;/li>
+&lt;/ul>
+&lt;p>Abgesehen von der &lt;code>main(...)&lt;/code>-Methode soll keine weitere Methode statisch sein.&lt;/p>
+&lt;h3 id="aufgaben">Aufgaben&lt;/h3>
+&lt;h4 id="aufgabe-1---entwurf">Aufgabe 1 - Entwurf&lt;/h4>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Erstelle einen Entwurf vom Klassenmodell.&lt;/p>
+&lt;ul>
+&lt;li>Der Entwurf kann auf Papier oder mit einem Tool (z.B. draw.io, Visio, plantUML) erstellt werden.&lt;/li>
+&lt;li>Plane auch schon die Methoden im Entwurf ein.&lt;/li>
+&lt;/ul>
+&lt;p>Zeige den Entwurf zuerst einem Coach, bevor du weiterfährst.&lt;/p>
+&lt;h4 id="aufgabe-2---klassen-umsetzen">Aufgabe 2 - Klassen umsetzen&lt;/h4>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Setzte die Klassen im Code um, inkl. Methoden.&lt;/p>
+&lt;p>Für den Moment müssen die Methoden noch nichts machen und sollen für den Beginn nur einen Default-Wert zurückgeben - der Einfachheit halber.&lt;/p>
+&lt;p>Ziel dieser Aufgabe ist, dass du dich nur aufs Klassen-Design im Code konzentrierst, nicht aber um die konkreten Methoden-Umsetzungen.&lt;/p>
+&lt;h4 id="aufgabe-3---methoden-umsetzen">Aufgabe 3 - Methoden umsetzen&lt;/h4>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Setze nun die Methoden korrekt um.&lt;/p>
+&lt;p>Verwende zur Demonstration die Daten aus der &lt;a href="../results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine &lt;code>.java&lt;/code>-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der &lt;code>results.txt&lt;/code>-Datei steht&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback"># Gruppe 1
+Frankreich Jugoslawien 0:1
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>dann kannst du das wie folgt direkt in deine Java-Datei schreiben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">new&lt;/span> Game&lt;span style="color:#f92672">(&lt;/span>FRANCE&lt;span style="color:#f92672">,&lt;/span> YUGOSLAVIA&lt;span style="color:#f92672">,&lt;/span> 0&lt;span style="color:#f92672">,&lt;/span> 1&lt;span style="color:#f92672">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

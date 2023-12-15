@@ -1714,4 +1714,493 @@ Aufgaben
 &lt;/div>
 &lt;/section>
 &lt;h2 id="aufgaben">Aufgaben&lt;/h2>
-&lt;p>&lt;a href="../../../../labs/java/java-collections/06_linked_list">Aufgaben zu Modul #J7 - Java Collections - LinkedList&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;a href="../../../../labs/java/java-collections/06_linked_list">Aufgaben zu Modul #J7 - Java Collections - LinkedList&lt;/a>&lt;/p></description></item><item><title>Docs: Streams Basics</title><link>/docs/java/java-collections/08-streams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/08-streams/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich kann in eigenen Worten und mit Hilfe von Skizzen erklären, was Streams sind und wofür sie verwendet werden.&lt;/li>
+&lt;li>Ich kann Streams für die Iteration über Listen anwenden.&lt;/li>
+&lt;li>Ich kann mindestens eine intermediäre und eine terminale Stream-Operation aus dem Kopf nennen und beschreiben.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="streams">Streams&lt;/h2>
+&lt;p>Mit Java 8 ist das Stream-API zum &lt;code>java.util&lt;/code>-Package des JDKs hinzugekommen.
+Das API ist eine Erweiterung des Java-Collection-Frameworks mit einer Schnittstelle im Stil der funktionalen Programmierung.
+Mit dem Stream-API wurden mächtige Möglichkeiten zur Durchführung von Operationen auf &lt;code>Array&lt;/code>s und &lt;code>List&lt;/code>en eingeführt.&lt;/p>
+&lt;p>In diesem Teil wird erklärt, was &lt;code>Stream&lt;/code>s sind und wie sie für Operationen auf Arrays und Listen eingesetzt werden können.&lt;/p>
+&lt;h3 id="was-ist-ein-stream">Was ist ein Stream?&lt;/h3>
+&lt;p>Streams stellen Ströme von Referenzen dar, die es erlauben,
+verkettete Operationen auf diesen Referenzen nacheinander oder parallel auszuführen.&lt;/p>
+&lt;p>Ein Stream erhält seinen Input aus Datenstrukturen wie
+Arrays oder Listen und führt die gewünschte Operationen auf diesem Input aus,
+ohne die ursprüngliche Datenstruktur zu verändern.&lt;/p>
+&lt;p>Nachfolgend ist ein Code aufgelistet, der aus einem Array mit den verschiedenen Punktzahlen von verschiedenen Studierenden aus
+einer Prüfung&lt;/p>
+&lt;ol>
+&lt;li>alle Punktzahlen aussortiert, die &lt;code>0&lt;/code> oder kleiner sind (&lt;em>Intermediäre Operation&lt;/em> &lt;code>filter(...)&lt;/code>),&lt;/li>
+&lt;li>dann die Punktzahlen in Noten umrechnet (&lt;em>Intermediäre Operation&lt;/em> &lt;code>mapToDouble(...)&lt;/code>),&lt;/li>
+&lt;li>und dann den Durchschnitt über alle Studierenden berechnet (&lt;em>Terminale Operation&lt;/em> &lt;code>average()&lt;/code>, zu Deutsch &amp;ldquo;Durchschnitt&amp;rdquo;).&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.Arrays&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> scores &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> &lt;span style="color:#f92672">{&lt;/span> 4&lt;span style="color:#f92672">,&lt;/span> 19&lt;span style="color:#f92672">,&lt;/span> 22&lt;span style="color:#f92672">,&lt;/span> 23&lt;span style="color:#f92672">,&lt;/span> 0&lt;span style="color:#f92672">,&lt;/span> 12 &lt;span style="color:#f92672">};&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> maxScores &lt;span style="color:#f92672">=&lt;/span> 24&lt;span style="color:#f92672">;&lt;/span>
+var averageGrade &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>scores&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">filter&lt;/span>&lt;span style="color:#f92672">(&lt;/span>score &lt;span style="color:#f92672">-&amp;gt;&lt;/span> score &lt;span style="color:#f92672">&amp;gt;&lt;/span> 0&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">mapToDouble&lt;/span>&lt;span style="color:#f92672">(&lt;/span>score &lt;span style="color:#f92672">-&amp;gt;&lt;/span> score &lt;span style="color:#f92672">*&lt;/span> 5f &lt;span style="color:#f92672">/&lt;/span> maxScores &lt;span style="color:#f92672">+&lt;/span> 1f&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">average&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Average: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> averageGrade&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getAsDouble&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die einzelnen Bestandteile werden in den weiteren Unterkapitel genauer beleuchtet und die sogenannten Lambda-Ausdrücke &lt;code>score -&amp;gt; score &amp;gt; 0&lt;/code> und &lt;code>score -&amp;gt; score * 5f / maxScores + 1f&lt;/code> werden später erläutert.&lt;/p>
+&lt;h3 id="erzeugung-von-streams">Erzeugung von Streams&lt;/h3>
+&lt;p>Damit überhaupt mit Streams gearbeitet werden kann, muss zuerst ein Stream existieren bzw. erzeugt werden. Streams können aus Arrays, Listen und anderen Collections erzeugt werden.&lt;/p>
+&lt;h4 id="erzeugung-aus-elementes-eines-arrays">Erzeugung aus Elementes eines Arrays&lt;/h4>
+&lt;p>Aus den Elementen eines Arrays kann ein Stream mithilfe der Klasse &lt;code>Arrays&lt;/code> aus dem &lt;code>java.util&lt;/code>-Package wie folgt erzeugt werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> numbers &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>1&lt;span style="color:#f92672">,&lt;/span> 2&lt;span style="color:#f92672">,&lt;/span> 3&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">};&lt;/span>
+IntStream numbersStream &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>numbers&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// IntStream ist eine Spezialisierung von Stream, welche die Verabeitung von primitive int-Werte ermöglicht.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+String&lt;span style="color:#f92672">[]&lt;/span> greeting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Streams&amp;#34;&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
+Stream&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> greetingStream &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Anhand der spitzigen Klammern wird ersichtlich, welche Objekttypen durch den Stream verarbeitet werden.
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="erzeugung-aus-elementen-einer-liste">Erzeugung aus Elementen einer Liste&lt;/h4>
+&lt;p>Wenn eine Liste bereits vorhanden ist, kann die Methode &lt;code>stream()&lt;/code> aufgerufen werden, um einen Stream
+aus den Elementen der Liste zu erzeugen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> stringList &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;List&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Stream&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+Stream&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> stream2 &lt;span style="color:#f92672">=&lt;/span> stringList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="unterschied-zwischen-generischen-streams-und-intstreams">Unterschied zwischen generischen Streams und IntStreams&lt;/h4>
+&lt;p>Wenn du beim Aufruf von &lt;code>Arrays.stream(...)&lt;/code> ein Array vom Typ &lt;code>int[]&lt;/code> oder &lt;code>double[]&lt;/code> übergibst, erhältst du keinen gewöhnlichen Stream vom Typ &lt;code>Stream&lt;/code> sondern einen optimierten Stream-Typ für den entsprechenden Datentyp:&lt;/p>
+&lt;ul>
+&lt;li>ein &lt;code>int&lt;/code>-Array resultiert in einem &lt;code>IntStream&lt;/code>,&lt;/li>
+&lt;li>ein &lt;code>double&lt;/code>-Array in einem &lt;code>DoubleStream&lt;/code>, usw.&lt;/li>
+&lt;/ul>
+&lt;p>An dieser Stelle könnte man sich fragen wieso. Aber die Antwort ist ziemlich klar:&lt;/p>
+&lt;p>Ein &lt;code>IntStream&lt;/code> besitzt mehr Methoden als ein &lt;code>Stream&amp;lt;Integer&amp;gt;&lt;/code>. So kannst du auf dem Stream z.B. direkt eine Summe (&lt;code>.sum()&lt;/code>) oder Durchschnitt (&lt;code>.average()&lt;/code>) berechnen, statt selbst diese Funktionen zu implementieren.&lt;/p>
+&lt;p>Hast du z.B. ein &lt;code>Stream&amp;lt;Integer&amp;gt;&lt;/code> und möchtest aber eine Summe berechnen, dann kannst du z.B. den &lt;code>Stream&amp;lt;Integer&amp;gt;&lt;/code> mit der Methode &lt;code>mapToInt(...)&lt;/code> in einen &lt;code>IntStream&lt;/code> umwandeln:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Stream&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> integerStream &lt;span style="color:#f92672">=&lt;/span> Stream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">,&lt;/span> 2&lt;span style="color:#f92672">,&lt;/span> 3&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">,&lt;/span> 5&lt;span style="color:#f92672">);&lt;/span>
+IntStream intStream &lt;span style="color:#f92672">=&lt;/span> integerStream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">mapToInt&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Integer&lt;span style="color:#f92672">::&lt;/span>intValue&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> summe &lt;span style="color:#f92672">=&lt;/span> intStream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">sum&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Summe der Zahlen 1 bis 5: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> summe&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Lasse dich von der &amp;ldquo;&lt;em>Methodenreferenz&lt;/em>&amp;rdquo; &lt;code>Integer::intValue&lt;/code> nicht verwirren - wird in einem der nächsten Unterkapitel erklärt. Diese wird hier angegeben, damit beim Stream klar ist, wie jeder einzelne &lt;code>Integer&lt;/code> in einen &lt;code>int&lt;/code> umgewandelt wird. In diesem Fall wird ein &lt;code>Integer integer&lt;/code> wie folgt umgewandelt: &lt;code>int neuerWert = integer.intValue()&lt;/code>.&lt;/p>
+&lt;h3 id="lambda-expressions">Lambda Expressions&lt;/h3>
+&lt;p>Streams arbeiten mit sog. Lambda-Expressions oder Methodenreferenzen.
+Lambda Expressions (Lambda-Ausdrücke) wurden in Java 8 eingeführt, damit Funktionen als Argumente bei Methoden übergeben werden können.&lt;/p>
+&lt;p>Da Lambda-Expressions oft in Streams verwendet werden, wird hier aufgezeigt, wie Lambdas aussehen und wie sie verwendet werden können.&lt;/p>
+&lt;p>Lambda-Ausdrücke in Java sind quasi Methoden ohne Namen. Sie bestehen aus folgenden Elementen:&lt;/p>
+&lt;ul>
+&lt;li>einer Liste von Parametern. Mehrere Parameter werden durch ein Komma separiert und mit Klammern umrundet.
+(keine Parameter werden mit leeren Klammern &lt;code>()&lt;/code> dargestellt, einen Parameter muss nicht zwingend mit Klammern umrundet werden)&lt;/li>
+&lt;li>einem Pfeil-Token &lt;code>-&amp;gt;&lt;/code>&lt;/li>
+&lt;li>und einem Funktionsrumpf. Wenn der Funktionsrumpf mehrere Anweisungen lang ist, wird er mit geschweiften Klammern &lt;code>{ ... }&lt;/code> umrundet. Wenn keine geschweiften Klammern verwendet werden, dann ist der Ausdruck nach dem Pfeil-Token automatisch der Rückgabewert der Funktion (das &lt;code>return&lt;/code> entfällt).&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="../lambda-expression.jpg" alt="Lambda Expressions" title="Lambda-Expressions">&lt;/p>
+&lt;p>Im Gegensatz zu Methoden werden der Rückgabetyp und Exceptions nicht spezifiziert, sondern vom Compiler &amp;ldquo;erraten&amp;rdquo;.&lt;/p>
+&lt;p>Im Beispiel mit den Prüfungsnoten haben wir mit &lt;code>.mapToDouble(score -&amp;gt; score * 5.0 / maxScores + 1.0)&lt;/code> die einzelnen Punktzahlen in Noten umgerechnet (&lt;code>map()&lt;/code>-Methoden werden später erklärt). Hierbei wurde der Lambda-Ausdruck &lt;code>score -&amp;gt; score * 5.0 / maxScores + 1.0&lt;/code> verwendet. Dieser Lambda-Ausdruck ist eine Funktion (Methode), die beschreibt, wie jede Punktzahl in eine Note umgerechnet werden soll. Würden wir diesen Lambda-Ausdruck in eine Methode umschreiben, dann könnte diese so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">double&lt;/span> &lt;span style="color:#a6e22e">punkteZuNote&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> score&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> score &lt;span style="color:#f92672">*&lt;/span> 5&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">0&lt;/span> &lt;span style="color:#f92672">/&lt;/span> maxScores &lt;span style="color:#f92672">+&lt;/span> 1&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">0&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Lambda-Ausdruck &lt;code>score -&amp;gt; score &amp;gt; 0&lt;/code> hingegen könnte als Methode so geschrieben werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isScoreGreaterThan0&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> score&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> score &lt;span style="color:#f92672">&amp;gt;&lt;/span> 0&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiele&lt;/strong>&lt;/p>
+&lt;p>Hier noch ein paar Beispiele, wie Lambda-Ausdrücke geschrieben werden können:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// keine Parameter
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Ich habe kein Parameter&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">// ein Parameter
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Ich habe einen Parameter erhalten, nämlich: %s&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> word&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">// zwei oder mehr Parameter
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">,&lt;/span> age&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;My name is &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> name &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; and I am &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> age &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;years old&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">// Funktionsrumpf mehrzeilig
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name&lt;span style="color:#f92672">,&lt;/span> age&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;My name is &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> name&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;I am &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> age &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;years old&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="method-reference">Method Reference&lt;/h3>
+&lt;p>Eine Methoden-Referenz ist die verkürzte Schreibweise einer Lambda-Expression, welche nur einen einzigen Methodenaufruf beinhaltet.
+Die generische Syntax für Methodenreferenz sieht wie folgt aus: Klasse::methode.
+Bei Methoden-Referenzen werden die Argumente für die Methode nicht notiert.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Lambda-Expression mit einem Methodenaufruf
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">// Method-Reference Syntax der obigen Lambda-Expression
+&lt;/span>&lt;span style="color:#75715e">// Das Argument (word) muss nicht mitgegeben werden
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der wesentliche Vorteil von dieser Schreibweise ist, dass er kürzer ist. Lambda-Ausdrücke sind aber oft einfacher zu verstehen.&lt;/p>
+&lt;h2 id="methodenausführung-auf-streams">Methodenausführung auf Streams&lt;/h2>
+&lt;p>Im Beispiel mit den Prüfungsnoten haben wir verschiedene Operationen auf dem Stream durchgeführt, die die einzelnen Werte entweder umrechnen oder am Schluss in einem einzigen Wert zusammenfasst (z.B. &lt;code>average()&lt;/code>).
+Folglich stellen Streams Operationen zur Verfügung, welche in zwei Kategorien unterteilt werden können:&lt;/p>
+&lt;ul>
+&lt;li>&lt;em>Intermediäre Operationen&lt;/em>, welche am Ende der Verarbeitung in einem Stream resultieren (und somit eine weitere, verkettete Verarbeitung ermöglichen) wie z.B. &lt;code>filter(...)&lt;/code> oder &lt;code>map(...)&lt;/code>.&lt;/li>
+&lt;li>&lt;em>Terminale Operationen&lt;/em>, welche am Ende der Verarbeitung einen Wert zurückliefern (und somit den Stream beenden) wie &lt;code>sum()&lt;/code> oder &lt;code>average()&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;p>Folgendes Bild illustriert die Arbeitsweise von Streams
+&lt;img src="../Streams.png" alt="Java Streams" title="Java Streams">&lt;/p>
+&lt;p>Nun werden einige Operationen auf Streams vorgestellt:&lt;/p>
+&lt;ul>
+&lt;li>Intermediäre Operationen:
+&lt;ul>
+&lt;li>&lt;code>filter(...)&lt;/code> sortiert alle Elemente aus, die NICHT die übergebenen Bedingung erfüllen.&lt;/li>
+&lt;li>&lt;code>map(...)&lt;/code>, &lt;code>mapToInt(...)&lt;/code> und &lt;code>mapToDouble(...)&lt;/code> wandeln die einzelnen Stream-Elemente in andere Werte um (bilden diese ab auf andere).&lt;/li>
+&lt;li>&lt;code>sorted()&lt;/code> sortiert die einzelnen Werte.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Terminale Operationen:
+&lt;ul>
+&lt;li>Mit &lt;code>forEach(...)&lt;/code> kann für jedes Element etwas gemacht werden (z.B. jedes Element ausgeben).&lt;/li>
+&lt;li>&lt;code>collect(...)&lt;/code> und &lt;code>toArray(...)&lt;/code> füllen die einzelnen Elemente in Listen oder Arrays ab.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="intermediäre-operationen">Intermediäre Operationen&lt;/h3>
+&lt;h4 id="die-filter-methode">Die &lt;code>filter(...)&lt;/code>-Methode&lt;/h4>
+&lt;p>Die &lt;code>filter(...)&lt;/code>-Methode ist eine intermediäre Operation, die Elemente in einem Stream auf diejenigen beschränkt, die einer bestimmten Bedingung entsprechen. Diese Bedingung wird als Lambda-Ausdruck angegeben, der &lt;code>true&lt;/code> zurückgibt, wenn das Element im Stream bleiben soll. Gibt er &lt;code>false&lt;/code> zurück, wird das Element aussortiert.&lt;/p>
+&lt;p>Im folgenden Beispiel werden alle ungeraden Zahlen aus einem Stream entfernt und dann alle verbleibenden Elemente ausgegeben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">IntStream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>0&lt;span style="color:#f92672">,&lt;/span> 1&lt;span style="color:#f92672">,&lt;/span> 2&lt;span style="color:#f92672">,&lt;/span> 3&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">,&lt;/span> 5&lt;span style="color:#f92672">,&lt;/span> 6&lt;span style="color:#f92672">,&lt;/span> 7&lt;span style="color:#f92672">,&lt;/span> 8&lt;span style="color:#f92672">,&lt;/span> 9&lt;span style="color:#f92672">,&lt;/span> 10&lt;span style="color:#f92672">,&lt;/span> 11&lt;span style="color:#f92672">,&lt;/span> 12&lt;span style="color:#f92672">,&lt;/span> 15&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">filter&lt;/span>&lt;span style="color:#f92672">(&lt;/span>x &lt;span style="color:#f92672">-&amp;gt;&lt;/span> x &lt;span style="color:#f92672">%&lt;/span> 2 &lt;span style="color:#f92672">==&lt;/span> 0&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="die-map--und-maptoint-methode">Die &lt;code>map(...)&lt;/code>- und &lt;code>mapToInt(...)&lt;/code>-Methode&lt;/h4>
+&lt;p>Die &lt;code>map(...)&lt;/code>- und &lt;code>mapToInt(...)&lt;/code>-Methode gehört zu den intermediären Operationen eines Streams.&lt;/p>
+&lt;p>Die Methode liefert einen Stream zurück, worin jedes einzelne Element durch den Rückgabewert der übergebenen Funktion ersetzt wurde.&lt;/p>
+&lt;p>Die &lt;code>map(...)&lt;/code>-Methode wird oft verwendet, um Daten umzuwandeln oder den Stream auf ein Feld/Methode eines Objekts zu fokussieren.&lt;/p>
+&lt;p>Hier ein Beispiel, in welchem Zahlen durch ihr Quadrat ersetzt werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Stream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">,&lt;/span>2&lt;span style="color:#f92672">,&lt;/span>3&lt;span style="color:#f92672">,&lt;/span>4&lt;span style="color:#f92672">).&lt;/span>&lt;span style="color:#a6e22e">map&lt;/span>&lt;span style="color:#f92672">(&lt;/span>x &lt;span style="color:#f92672">-&amp;gt;&lt;/span> x &lt;span style="color:#f92672">*&lt;/span> x&lt;span style="color:#f92672">).&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Und hier ein Beispiel, wo uns nur die Länge der Strings interessiert:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Stream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Ein&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Ninja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;bewegt&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;sich&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;lautlos&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;wie&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;der&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Wind&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;und&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;unsichtbar&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;wie&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;der&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Schatten&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">map&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> word&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">())&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im zweiten Beispiel könnte unser Ziel sein, die durchschnittliche Länge der Wörter zu berechnen. Wenn man mathematische Operationen mit Streams durchführen möchte, dann ist es oft einfacher, den Stream in einen für den mathematischen Typ spezifischen Stream wie &lt;code>IntStream&lt;/code> zu &amp;ldquo;verwandeln&amp;rdquo;, damit Funktionen wie &lt;code>sum()&lt;/code> und &lt;code>average()&lt;/code> (Durchschnitt) nicht manuell implementiert werden müssen. Hierfür kannst du statt der &lt;code>map(...)&lt;/code>- die &lt;code>mapToInt(...)&lt;/code>-Methode (oder &lt;code>mapToDouble&lt;/code>) verwenden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+&lt;span style="color:#e6db74">&amp;#34;Durchschnittliche Länge eines Wortes: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span>
+Stream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Ein&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Ninja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;bewegt&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;sich&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;lautlos&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;wie&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;der&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Wind&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;und&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;unsichtbar&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;wie&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;der&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Schatten&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">mapToInt&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> word&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">length&lt;/span>&lt;span style="color:#f92672">())&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">average&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="die-sorted-methode">Die sorted() Methode&lt;/h4>
+&lt;p>Die &lt;code>sorted()&lt;/code>-Methode gehört zu den intermediären Operationen eines Streams.&lt;/p>
+&lt;p>Die Methode liefert ein Stream zurück, worin die Elemente im Stream nach ihrer natürlichen Reihenfolge (natural order) sortiert sind.&lt;/p>
+&lt;p>Die Syntax der Methode ist wie folgt: &lt;code>Stream&amp;lt;T&amp;gt; sorted()&lt;/code>
+wobei &lt;code>T&lt;/code> der Typ der Elemente innerhalb des Streams ist&lt;/p>
+&lt;p>&lt;strong>Beispiel mit einem Array&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstelle ein Array mit Strings
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> greeting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;C&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
+&lt;span style="color:#75715e">// Sortiere die Strings nach ihrer natürlichen Reihenfolge (alphabetisch) und
+&lt;/span>&lt;span style="color:#75715e">// gib die sortierten Elementen in der Console wieder aus
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">sorted&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel mit einer Liste&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstelle eine Liste mit Zahlen
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> list &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">asList&lt;/span>&lt;span style="color:#f92672">(-&lt;/span>9&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#f92672">-&lt;/span>18&lt;span style="color:#f92672">,&lt;/span> 0&lt;span style="color:#f92672">,&lt;/span> 25&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// Sortiere die Zahlen nach ihrer natürlichen Reihenfolge (numerisch sortiert) und
+&lt;/span>&lt;span style="color:#75715e">// gib die sortierten Elementen in der Console wieder aus
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>list&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">sorted&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="terminale-operationen">Terminale Operationen&lt;/h3>
+&lt;h4 id="die-foreach-methode">Die forEach() Methode&lt;/h4>
+&lt;p>Die &lt;em>forEach(Consumer action)&lt;/em> Methode gehört zu den terminalen Operationen eines Streams.&lt;/p>
+&lt;p>Der Parameter &lt;code>action&lt;/code> ist vom Typ &lt;code>Consumer&lt;/code> (ist ein &lt;code>FunctionalInterface&lt;/code>). Dieser Typ repräsentiert eine Operation (eine Funktion),
+welche nur ein einziges Input-Argument akzeptiert und keine Ergebnisse (also &lt;code>void&lt;/code>) zurückliefert.
+Ein Beispiel für so einen Consumer ist die Methode &lt;code>System.out.println(...)&lt;/code>,
+welche maximal ein einziges Objekt als Parameter akzeptiert, dieses Objekt in den Standard-Output ausgibt und &lt;code>void&lt;/code> (also kein Ergebnis) zurückliefert.
+Die Methode &lt;code>System.out.println&lt;/code> erfüllt also die Bedingungen eines Consumers und kann als Parameter für die &lt;code>forEach()&lt;/code> Methode verwendet werden&lt;/p>
+&lt;p>Die &lt;code>forEach()&lt;/code>-Methode kann als Ersatz für einen &lt;code>for&lt;/code>-Loop verwendet werden.&lt;/p>
+&lt;p>&lt;strong>Beispiel mit einem Array&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">String&lt;span style="color:#f92672">[]&lt;/span> greeting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Streams&amp;#34;&lt;/span>&lt;span style="color:#f92672">};&lt;/span>
+&lt;span style="color:#75715e">// Hier wid jedes Element des Arrays ausgegeben
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String word &lt;span style="color:#f92672">:&lt;/span> greeting&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// Hier wird mithilfe von Streams dasselbe erreicht wie beim for-loop
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#75715e">// Und nun noch kürzer mit der Method-Reference Syntax der obigen Lambda-Expression
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">(&lt;/span>greeting&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel mit einer Liste&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> greetingList &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Stream&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;List&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// Einmal mit der vollen Syntax der Lambda-Expression
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word &lt;span style="color:#f92672">-&amp;gt;&lt;/span> System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#75715e">// Und einmal mit der verkürzte Variante mittels Method-Reference
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// Collection, darunter auch Listen, haben selbst eine forEach Methode,
+&lt;/span>&lt;span style="color:#75715e">// welche die gleichen Ergebnisse liefert, wie diejenige vom Stream-Interface
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>greetingList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="die-collect-methode">Die &lt;code>collect()&lt;/code>-Methode&lt;/h4>
+&lt;p>Die &lt;code>collect(Collector collector)&lt;/code>-Methode ist auch eine terminale Operation auf einem Stream.
+Sie ermöglicht es, die Ergebnisse der Bearbeitung des Streams in einer neuen Collection (List, Map usw.) zu speichern.
+Dies ist nötig, da bei der Bearbeitung des Streams die ursprüngliche Elemente nicht geändert werden können.&lt;/p>
+&lt;p>Der Parameter &lt;em>collector&lt;/em> ist vom Typ &lt;a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Collector.html" title="Collector">Collector&lt;/a>.
+Die Aufgabe eines Collectors besteht darin, mehrere Input-Elemente in einem Result-Container zusammenzufassen.
+Zum Beispiel können die Elemente eines Streams in einer Liste &amp;ldquo;gespeichert&amp;rdquo; und zurückgeliefert werden.&lt;/p>
+&lt;p>Um ein Collector zu erzeugen, wird oft die Klasse &lt;a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/stream/Collectors.html" title="Collectors">Collectors&lt;/a> aus dem &lt;code>java.util.stream&lt;/code>-Package verwendet.
+Diese beinhaltet mehrere öffentliche, statische Methode um Collectors unterschiedlicher Typen (List, Map usw.) erzeugen zu können.&lt;/p>
+&lt;p>&lt;strong>Beispiel&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstelle eine Liste von unsortieren Zahlen
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> unsortedList &lt;span style="color:#f92672">=&lt;/span> Arrays&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">asList&lt;/span>&lt;span style="color:#f92672">(-&lt;/span>9&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#f92672">-&lt;/span>18&lt;span style="color:#f92672">,&lt;/span> 0&lt;span style="color:#f92672">,&lt;/span> 25&lt;span style="color:#f92672">,&lt;/span> 4&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// Aus der unstortierte Liste, erstelle eine NEUE, sortierte Liste
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> sortedList &lt;span style="color:#f92672">=&lt;/span> unsortedList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">stream&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">sorted&lt;/span>&lt;span style="color:#f92672">()&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">collect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Collectors&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">toList&lt;/span>&lt;span style="color:#f92672">());&lt;/span> &lt;span style="color:#75715e">// hier wird aus dem sortierten Stream eine neue Liste erstellt
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">// gib die unsortierte Liste in der Konsole aus (die Original-Liste wurde nicht verändert!)
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>unsortedList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">// gib die sortierte Liste in der Konsole aus
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>sortedList&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">forEach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">::&lt;/span>println&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="die-toarray-methode">Die &lt;code>toArray(...)&lt;/code>-Methode&lt;/h4>
+&lt;p>Mit der &lt;code>collect(...)&lt;/code>-Methode kannst du den Stream in eine Liste umwandeln. Wenn du den Stream aber in ein Array umwandeln möchtest, dann hilft dir die &lt;code>toArray(...)&lt;/code>-Methode:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">String&lt;span style="color:#f92672">[]&lt;/span> strings &lt;span style="color:#f92672">=&lt;/span> Stream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;A&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;B&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;C&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">// String[]::new muss noch angegeben werden, damit ein String-Array (und nicht ein Object[]) zurückgegeben wird:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">toArray&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]::&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> array &lt;span style="color:#f92672">=&lt;/span> Stream&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">,&lt;/span>2&lt;span style="color:#f92672">,&lt;/span>3&lt;span style="color:#f92672">,&lt;/span>4&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#75715e">// Zu einem IntStream umwandeln, weil sonst ein Integer[] statt int[] resultieren müsste:
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">mapToInt&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Integer&lt;span style="color:#f92672">::&lt;/span>intValue&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">toArray&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die &lt;code>toArray(...)&lt;/code>-Methode ist eine terminale Operation auf einem Stream.&lt;/p>
+&lt;hr>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-collections/07_streams/">Aufgabe 1 - 3&lt;/a> in den Stream-Labs.&lt;/p></description></item></channel></rss>
