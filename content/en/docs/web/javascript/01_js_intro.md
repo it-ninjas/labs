@@ -7,6 +7,7 @@ date: 2022-04-19
 description: >
   Modul #F4 - JavaScript - Code im Browser auführen
 ---
+Bevor man mit dem neuen Kapitel JavaScript beginnen kann, sollte man nochmals das Kapitel [Node JS Installation](../../ide_advanced/01_nodejs/#installation-von-nodejs) durcharbeiten und sicherstellen das alles installiert ist.
 
 Jetzt wird es Zeit, dass du auch Programm-Logik auf deiner Website einbauen kannst. Dafür lernst du gleich die Programmiersprache JavaScript kennen, die von praktisch allen bekannten Browsern unterstützt wird.
 
@@ -34,7 +35,7 @@ Versuche zuerst, dieses Beispiel ohne Erläuterung zu verstehen.
 <summary>Erläuterung (click to expand)</summary>
 Zuerst hast du im HTML einen Button erstellt mit dem Text "Klick mich". 
 
-Weiter unten siehts du ein `<script>`-Element. Dort drin ist eine Funktion namens `onClickMeClick()` definiert. Die Funktion ruft `alert(message: string)` auf. Diese `alert`-Funktion öffnet eine MessageBox mit der übergebenen Nachricht.
+Weiter unten siehst du ein `<script>`-Element. Dort drin ist eine Funktion namens `onClickMeClick()` definiert. Die Funktion ruft `alert(message: string)` auf. Diese `alert`-Funktion öffnet eine MessageBox mit der übergebenen Nachricht.
 
 Wie du siehst, wird die selbst definierte Funktion beim Klick auf den Button aufgerufen. Dies passiert, weil du diesen Aufruf im `onclick`-Attribut des `<button>`s definiert hast. Beachte in diesem Beispiel, dass nicht die Funktion sondern deren Aufruf drin steht. Im Prinzip wird beim Button-Klick der Wert des `onclick`-Attributs ausgeführt. Theoretisch könntest du auch direkt `onclick="alert('Klick mich nicht an!!')"` schreiben.
 </details>

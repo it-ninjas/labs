@@ -39,7 +39,7 @@ Entwickle eine Registrierungsseite. Auf dieser Seite soll man mindestens folgend
 * Geschlecht (mittels Radiobuttons)
 * Handynummer
 
-Als Backend kannst du "https://www.w3schools.com/action_page.php" (wie im vorherigen Beispiel) verwenden. Schaue nach dem Klick an, wie die Daten übermittelt worden sind. Wie sieht die URL im Browser aus? Variiere die HTTP Request Method.
+Als Backend kannst du "[https://www.w3schools.com/action_page.php](https://www.w3schools.com/action_page.php)" (wie im vorherigen Beispiel) verwenden. Schaue nach dem Klick an, wie die Daten übermittelt worden sind. Wie sieht die URL im Browser aus? Variiere die HTTP Request Method.
 
 ### Aufgabe 2 - Inspiziere diese Seite
 Suche auf dieser Website (ja, auf dieser IT Ninjas-Seite) mit Hilfe der Entwicklertools ([F12]-Taste) den `<header>`, eine `<nav>` und den `<footer>`.

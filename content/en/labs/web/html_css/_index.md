@@ -1,8 +1,8 @@
 ---
-title: "HTML, CSS und JavaScript - Aufgaben"
-linkTitle: "HTML, CSS und JavaScript"
+title: "HTML und CSS - Aufgaben"
+linkTitle: "HTML und CSS"
 type: docs
 weight: 1
 description: >
-  Exercises zu HTML, CSS und JavaScript
+  Exercises zu HTML und CSS
 ---
