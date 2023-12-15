@@ -44,7 +44,7 @@ public class Person {
 Auf öffentliche Methoden und Felder kann ein Objekt über den Punkt-Operator zugreifen.
 ```java
 Person p = new Person();
-c.getName();
+p.getName();
 ```
 UML-Symbol: `+`
 
