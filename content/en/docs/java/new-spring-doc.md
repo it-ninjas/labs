@@ -1,7 +1,7 @@
 ---
 title: "New Spring Doc"
 linkTitle: "New Spring Doc"
-weight: 16
+weight: 14
 description: >
   Modul #J10 - Spring Framework
 ---
