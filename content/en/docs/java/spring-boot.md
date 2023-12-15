@@ -1,6 +1,6 @@
 ---
-title: "New Spring Boot Doc"
-linkTitle: "New Spring Boot Doc"
+title: "Spring Boot"
+linkTitle: "Spring Boot"
 weight: 15
 description: >
   Modul #J11 - Spring Boot

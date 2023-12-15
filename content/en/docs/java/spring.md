@@ -1,6 +1,6 @@
 ---
-title: "New Spring Doc"
-linkTitle: "New Spring Doc"
+title: "SpringDoc"
+linkTitle: "Spring"
 weight: 14
 description: >
   Modul #J10 - Spring Framework
@@ -256,7 +256,7 @@ Hier eine kurze Übersicht der REST-Methoden:
 
 ## Spring Struktur
 
-![spring-struktur.png](../new-spring-doc/spring-struktur.png)
+![spring-struktur.png](../spring/spring-struktur.png)
 
 Die Meisten modernen Webapplikationen bestehen aus 3 Schichten:
 
