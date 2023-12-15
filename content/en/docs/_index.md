@@ -9,7 +9,7 @@ menu:
 ## Übersicht Ausbildungsprogramm
 [![Ausbildungsprogramm Übersicht](../docs/overview/ausbildungsprogramm_uebersicht.png)](../docs/overview/ausbildungsprogramm_uebersicht.png)
 
-Das Ausbildungsprogramm 2022/2023 besteht aus diversen einzelnen Ausbildungs-Modulen.
+Das Ausbildungsprogramm 2023/2024 besteht aus diversen einzelnen Ausbildungs-Modulen.
 Das Wissen aus jedem Modul wird durch Selbst-Studium erworben und bei Bedarf eigenständig durch zusätzlich gesuchtes Wissen ergänzt.
 Nahezu jedes Modul bringt seine eigenen Übungen (Labs) mit. Einige der Module müssen durch ein Exam abgeschlossen werden.
 Die Resultate deiner Übungen und Exams besprichst du am Besten mit einem Coach oder einem erfahrenen Software-Entwickler.

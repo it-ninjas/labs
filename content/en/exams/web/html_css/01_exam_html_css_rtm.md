@@ -100,4 +100,4 @@ Die Icons sind [hier](../icons/logos-rtm.zip) hinterlegt. <br>
 
 
 ## Sobald du fertig bist...
-Wenn du fertig mit diesem Exam bist, zeige dein Resultat einem Coach. Nach dem Okay des Coaches kannst du mit der Theorie zu [Bootstrap](../../../../docs/web/html_css/19_css_bootstrap) und dann mit [JavaScript](../../../../docs/web/javascript/01_js_intro) beginnen. 
+Wenn du fertig mit diesem Exam bist, zeige dein Resultat einem Coach. Nach dem Okay des Coaches kannst du mit  [JavaScript](../../../../docs/web/javascript/01_js_intro) beginnen. 

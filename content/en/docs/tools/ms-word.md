@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Word"
 linkTitle: "Microsoft Word"
-weight: 2
+weight: 3
 description: >
   Modul #O4 - Microsoft Word
 ---

@@ -33,7 +33,7 @@ Unter einer Klasse versteht man in der objektorientierten Programmierung ein abs
 Ein Objekt bezeichnet in der objektorientierten Programmierung ein Exemplar eines bestimmten Datentyps oder einer bestimmter Klasse. Objekte sind konkrete Ausprägungen (=Instanzen) einer Klasse und werden zur Laufzeit erzeugt (Instanziierung).
 
 #### Datenfelder
-Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse relevant sind. Ein Auto hat eine Höchstgeschwindigkeit, eine bestimmte Anzahl von Sitzen, usw. Das heisst, ein Feld ist eine Variable, in der Daten gespeichert werden können. Es kann einen beliebigen Typ haben, einschließlich primitiver Typen (int, float, boolean usw.) und Klassen. Eine Klasse kann auch sich selber als Feld enthalten. Eine Klasse kann beliebig viele Felder haben
+Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse relevant sind. Ein Auto hat eine Höchstgeschwindigkeit, eine bestimmte Anzahl von Sitzen, usw. Das heisst, ein Feld ist eine Variable, in der Daten gespeichert werden können. Es kann einen beliebigen Typ haben, einschliesslich primitiver Typen (int, float, boolean usw.) und Klassen. Eine Klasse kann auch sich selber als Feld enthalten. Eine Klasse kann beliebig viele Felder haben
 
 #### Methoden
 Methoden dienen dazu, den Zustand eines Objekts zu verändern. Refuel() (siehe Klassendiagramm unten) füllt beispielsweise den Tank, bis dessen Kapazität erreicht wird.
@@ -177,7 +177,7 @@ Ein Package kann beliebig viele andere Packages enthalten. Ein Package wird auf 
 * Zugriffsteuerung. Bestimmte Zugriffsmodifikatoren erlauben den Zugriff auf Klassen im gleichen Package
 
 ### Namenskonventionen
-Gemäß der Namenskonvention werden Package-Namen immer in Kleinbuchstaben geschrieben.
+Gemäss der Namenskonvention werden Package-Namen immer in Kleinbuchstaben geschrieben.
 Die Trennung der verschiedenen Packages erfolgt beim Import-Statement durch einen Punkt.
 
 ### Ordnerstruktur
@@ -290,7 +290,7 @@ Wir haben bereits verschiedene Arten von Variablen kennengelernt:
 * Variablen in Methodendeklarationen oder Konstruktoren - diese werden als _Parameter_ bezeichnet
 * Mitgliedsvariablen (member variables) in einer Klasse - diese werden als _Felder_ oder _Instanzvariablen_ bezeichnet
 
-Wir werden uns nun den Feldern widmen. Felder sind Variablen, die innerhalb einer Klasse, aber außerhalb aller Methoden deklariert werden. Wir definieren sie üblicherweise am Anfang einer Klasse (vor den Methoden).
+Wir werden uns nun den Feldern widmen. Felder sind Variablen, die innerhalb einer Klasse, aber ausserhalb aller Methoden deklariert werden. Wir definieren sie üblicherweise am Anfang einer Klasse (vor den Methoden).
 Es gibt zwei verschiedene Typen von Feldern, statische und nicht-statische.
 
 ### Statische Felder - Klassenvariablen / Konstanten
@@ -347,7 +347,7 @@ Ein Konstruktor unterscheidet sich von anderen Methoden darin, dass:
 Konstruktoren initialisieren Instanzen (Objekte) der Klasse. Sie können beliebige Parameter enthalten, um beispielsweise Instanzvariablen zu initialisieren.
 
 ### Konstruktoren verwenden
-Im folgenden Beispiel benutzen wir eine Klasse mit dem Namen _Patient_. Ein Objekt der Klasse hat einen Namen, ein Alter und eine Größe. Die Klasse verfügt über einen Konstruktor mit drei Parametern, um ein neues Objekt mit bestimmten Werten zu initialisieren.
+Im folgenden Beispiel benutzen wir eine Klasse mit dem Namen _Patient_. Ein Objekt der Klasse hat einen Namen, ein Alter und eine Grösse. Die Klasse verfügt über einen Konstruktor mit drei Parametern, um ein neues Objekt mit bestimmten Werten zu initialisieren.
 ```java
 public class Patient {
     private String name;

@@ -124,6 +124,33 @@ Dieser Code macht folgendes:
 * Als letztes verändern wir das HTML dieses `<div>`s, indem wir das `innerHTML`-Feld neu setzen.
 
 
+Element können jedoch nicht nur mit `querySelector` hinzugefügt werden, sondern auh mit `document.createElement()`. Mit der `document.createElement()`-Methode kann man neue HTML-Elemente dynamisch erstellen und diese im DOM hinzufügen.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Create Element</title>
+</head>
+<body>
+    <h1>JavaScript Create Element</h1>
+
+    <div id="container">
+        <!-- Hier werden die neuen Elemente hinzugefügt -->
+    </div>
+</body>
+</html>
+
+```
+```js
+var container = document.getElementById("container");
+
+// Erstelle ein neues <p>-Element
+var paragraph = document.createElement("p");
+paragraph.textContent = "Dies ist ein neuer Absatz.";
+// Füge das <p>-Element dem <div>-Element hinzu
+container.appendChild(paragraph);
+```
+
 Super, nun hast du schon ein paar Dinge auf deiner Seite mit JavaScript dynamisch verändert. 
 
 Bitte denke daran, dass das Verwenden von `.innerHTML` als eine Art "Holzfäller-Methode" angesehen wird. JavaScript bietet hierfür bereits eine elegantere Möglichkeit, die aber oft viel zu umständlich ist. Bitte schaue dir diese trotzdem kurz an: https://www.w3schools.com/js/js_htmldom_nodes.asp

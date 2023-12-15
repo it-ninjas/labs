@@ -87,26 +87,34 @@ Dort können Plugins gesucht und über einen Klick auf Install einfach und unkom
 Ein sehr hilfreiches Plugin ist der "Key Promoter X". Dieses Plugin ermöglicht das Erlernen der IntelliJ IDEA Tastenkombinationen.
 Jede verfügbare Tastenkombinationen wird dir bei Verwendung eines Menüs oder Kontextmenüs angezeigt.
 
-### Code-Formatierung hinterlegen
+### Code-Formatierung
+Um den Code in IntelliJ IDEA zu formatieren, können die integrierten Funktionen für Codeformatierung verwendet werden. So kann der Code formatiert werden:
 
-Die SBB verwendet den Google Java Code Style und passt ihn nur dort an wo es notwendig ist.
-Der Java Code Styleguide der SBB in der Version 5 ist hier zu finden:
-[Java Code Styleguide SBB](https://confluence.sbb.ch/x/tZQsew)
+1. Den Code auswählen, welcher zu formatieren ist. Es kann sich um eine einzelne Zeile, einen Codeblock oder die gesamte Datei handeln.
 
-Der Import dieses Code Styles in das IntelliJ wird über eine XML-Datei gemacht, welche hier zu finden ist:
-[SbbStyle](https://code.sbb.ch/projects/KD_WZU/repos/eaio/browse/packs/intellij-community/config/codestyles/SbbStyle.xml#1)
+2. Die entsprechende Tastenkombination basierend auf deinem Betriebssystem drücken:
 
-Die XML-Datei kann im IntelliJ als Konfiguration hinterlegt werden. Die folgenden Schritte sind dazu notwendig:
+Windows/Linux: Strg + Alt + L
+macOS: Cmd + Option + L
 
-Code-Formatierung:
-File &rarr; Settings &rarr; Editor &rarr; Code-Style &rarr; Java<br>
-Neben dem Profilnamen auf das Zahnrad-Icon klicken und den Eintrag _Import Scheme_ &rarr; _Intellij IDEA code style XML_ auswählen. Anschliessend die XML-Datei auswählen.
-Das Profil wird importiert und kann anschliessend aus dem Drop-Down ausgewählt und aktiviert werden.
+Alternativ kann mit der rechten Maustaste auf den ausgewählten Code geklickt und "Code neu formatieren" im Kontextmenü ausgewählt werden.
 
-Die Anordnung von Imports muss manuell angepasst werden. Nach der Auswahl des Profils aus dem Drop-Down klickst du auf den Tab Imports.
-Die Einstellungen richten sich nach den beiden folgenden Screenshots:
-![Import-Order #1](../intellij-einrichten/Import-Order_1.png)
-![Import-Order #2](../intellij-einrichten/Import-Order_2.png)
+3. IntelliJ IDEA wird den ausgewählten Code automatisch gemäss den konfigurierten Codeformatierungseinstellungen formatieren.
+
+Wenn die Codeformatierungseinstellungen in IntelliJ  noch nicht konfiguriert wurden, kann das je nach den entsprechend Vorlieben angepasst werden. So kann man die Codeformatierung konfigurieren:
+
+1. Zu "Datei" > "Einstellungen" (Windows/Linux) oder "IntelliJ IDEA" > "Einstellungen" (macOS) gehen.
+
+2. In dem Einstellungsfenster zu "Editor" > "Code-Stil" navigieren.
+
+3. Die gewünschte Programmiersprache auswählen, für die der Code-Stil konfiguriert werden möchte (z.B. Java, JavaScript usw.).
+
+4. Die Codeformatierungseinstellungen nach den Vorlieben anpassen. Man kann Einrückung, Abstände, Platzierung der Klammern und viele andere Formatierungsoptionen festlegen.
+
+5. Auf "Übernehmen" oder "OK" klicken, um die Änderungen zu speichern.
+
+Nachdem der Code-Stil konfiguriert wurde, wird IntelliJ die definierten Formatierungsregeln anwenden, wenn die Tastenkombination für die Codeformatierung verwendet wird oder "Code neu formatieren" im Kontextmenü ausgewählt wird.
+
 
 ### Debugging-Grundlagen
 

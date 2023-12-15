@@ -12,7 +12,7 @@ java.util.ArrayList erbt von der abstrakten Klasse java.util.AbstractList und li
 das Interface java.util.List. Die ArrayList Klasse implementiert alle Methoden des Interface java.util.List. Der
 Implementierung der ArrayList Klasse liegen Arrays zugrunde, weshalb diese konkrete Klasse auch *Array*List heisst.
 Die Klasse ArrayList enthält also ein normales Array. Wenn ein Element hinzugefügt wird, wird es in dieses Array eingefügt.
-Wenn das Array nicht groß genug ist, wird ein neues, größeres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
+Wenn das Array nicht gross genug ist, wird ein neues, grösseres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
 des Arrays wird fortlaufend angepasst.
 
 ### Methodenübersicht

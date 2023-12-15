@@ -615,8 +615,8 @@ Wie bei JUnit, werden auch für die Arbeit mit Mockito die Bibliotheken davon be
 
 #### Abhängigkeiten einbinden ohne Maven
 Dieser Abschnitt kann übersprungen werden, wenn mit einem Maven-Projekt gearbeitet wird.
-Das letzte Release (aktuell 4.6.1) kann hier heruntergeladen werden:
-[Mockito Core 4.6.1 Jar-Datei](https://repo1.maven.org/maven2/org/mockito/mockito-core/4.6.1/mockito-core-4.6.1.jar)
+Das letzte Release (aktuell 5.3.1) kann hier heruntergeladen werden:
+[Mockito Core 5.3.1 Jar-Datei](https://repo1.maven.org/maven2/org/mockito/mockito-core/5.3.1/mockito-core-5.3.1.jar)
 
 Die Heruntergeladene Jar-Datei kann nun genau wie die JUnit-Jar-Dateien eingebunden werden.
 
@@ -626,11 +626,16 @@ Dieser Abschnitt kann übersprungen werden, wenn es sich nicht um ein Maven Proj
 Die entsprechende Abhängigkeit für das Project Object Model (pom.xml) ist:
 ```xml
 <dependencies>
-  <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
   <dependency>
     <groupId>org.mockito</groupId>
     <artifactId>mockito-core</artifactId>
-    <version>4.6.1</version>
+    <version>5.3.1</version>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-junit-jupiter</artifactId>
+    <version>5.3.1</version>
     <scope>test</scope>
   </dependency>
 </dependencies>
@@ -665,9 +670,9 @@ wie beim Mock, der vorgegebene Rückgabewert zurückgeliefert.
 
 ### Mockito Annotationen
 Damit die Mockito-Annotationen innerhalb eines JUnit-Tests verwendet werden könnten, müssen sie zuerst eingeschaltet werden.
-Eine Möglichkeit dies zu tun ist, die Unit-Test-Klasse mit @RunWith zu annotieren und als Parameter den Wert _MockitoJUnitRunner.class_ anzugeben:
+Eine Möglichkeit dies zu tun ist, die Unit-Test-Klasse mit @ExtendWith zu annotieren und als Parameter den Wert _MockitoExtension.class_ anzugeben:
 ```java
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MyUnitTest {
     //TODO write tests
 }
@@ -688,13 +693,18 @@ Wie diese Annotationen verwendet werden, wird in den folgenden Kapiteln gezeigt.
 Diese Annotation wird dazu verwendet, um Mock-Objekte komplett von Mockito erzeugen zu lassen.
 Das heisst, die gesamte Mock-Funktionalität wird von Mockito zur Verfügung gestellt.
 ```java
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MyUnitTest {
     @Mock
     private List<String> mockedList; // hier wird eine Liste von Strings gemockt. 
                                      // Mockito stellt eine rudimentäre Umsetzung für JEDE Methode der Liste zur Verfügung
 
-    //TODO write tests
+    @Test
+    public void testMockedListSize() {
+        mockedList.add("one");
+
+        assertEquals(0, mockedList.size());
+    }
 }
 ```
 
@@ -704,31 +714,65 @@ Was mit einem Mock gemacht werden kann und wie der Mock vorkonfiguriert werden k
 Wenn eine Klasse ein Objekt-Feld beinhaltet, kann Mockito dieses Feld mit einem Mock initiieren.
 Damit es funktioniert, muss das Feld entweder via Konstruktor, via Setter oder via Property-Injection initialisiert werden.
 
-Im folgenden Beispiel, hat die Klasse _Display_ ein Feld vom Typ _ColorSelector_, welches mittels Konstruktor
+Im folgenden Beispiel, hat die Klasse _MyService_ ein Feld vom Typ _DataService_, welches mittels Konstruktor
 initialisiert werden kann:
 ```java
-public class Display {
-    private final ColorSelector colorSelector;
-    
-    public Display(ColorSelector colorSelector) {
-        this.colorSelector = colorSelector;
-    }
+import java.util.List;
+
+public class MyService {
+  private final DataService dataService;
+
+  public MyService(DataService dataService) {
+    this.dataService = dataService;
+  }
+
+  public int processData(List<Integer> numbers) {
+    return dataService.sum(numbers);
+  }
+}
+```
+```java
+import java.util.List;
+
+public interface DataService {
+    int sum(List<Integer> numbers);
 }
 ```
 
-Im Test, wird ein Mock für ein ColorSelector erstellt und mit der Annotation @InjectMocks, via
-Konstruktor-Initialisierung in dem display-Objekt injektiert (der Konstruktor muss also nicht noch dazu aufgerufen werden):
+Im Test, wird ein Mock für ein DataService erstellt und mit der Annotation @InjectMocks, via
+Konstruktor-Initialisierung in dem MyService-Objekt injektiert (der Konstruktor muss also nicht noch dazu aufgerufen werden):
 ```java
-@RunWith(MockitoJUnitRunner.class)
-public class DisplayTest {
-    @Mock
-    ColorSelector mockedColorSelector; // hier wird ein ColorSelector gemockt.
-  
-    @InjectMocks
-    Display display; // der Mock von ColorSelector wird in die Display-Instanz "injiziiert", das heisst
-                     // überall im Display-Objekt, wo der ColorSelector verwendet wird, wird der Mock zum Zug kommen!
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-    //TODO write tests
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@ExtendWith(MockitoExtension.class)
+public class MyServiceTest {
+  @Mock
+  private DataService dataService; // hier wird ein DataService gemockt.
+
+  @InjectMocks
+  private MyService myService;  // der Mock von DataService wird in die MyService-Instanz "injiziiert", das heisst
+                                // überall im DataService-Objekt, wo der DataService verwendet wird, wird der Mock zum Zug kommen!
+
+
+  @Test
+  public void testProcessData() {
+    List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+    Mockito.when(dataService.sum(numbers)).thenReturn(15);
+
+    int result = myService.processData(numbers);
+
+    assertEquals(15, result);
+  }
 }
 ```
 
@@ -736,14 +780,35 @@ public class DisplayTest {
 Ein Spy wird auf einem "echten" Objekt erzeugt. Dieser Spy leitet, sofern nichts anderes konfiguriert wurde, alle Methodenaufrufe an das echte Objekt weiter.
 Mit Hilfe der Mockito-Methoden, kann jedoch definiert werden, dass bestimmte Methoden "umgeleitet" werden und eine andere Umsetzung dafür angewendet wird.
 ```java
-@RunWith(MockitoJUnitRunner.class)
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+@ExtendWith(MockitoExtension.class)
 public class MyUnitTest {
-    @Spy
-    private List<String> spiedList; // Ein Spy über eine Liste. Wenn nichts anders konfiguriert wird
-                            // werden die "echte" Listen-Methoden aufgerufen, wenn der Spy verwendet wird.
-    
-    
-    //TODO write tests
+  @Spy
+  private List<String> spiedList;  // Ein Spy über eine Liste. Wenn nichts anders konfiguriert wird
+                                    // werden die "echte" Listen-Methoden aufgerufen, wenn der Spy verwendet wird.
+
+  @Captor
+  private ArgumentCaptor<String> stringCaptor; // stringCaptor wird ein Argument vom Typ String "fangen"
+
+  @Test
+  public void testMockedList() {
+    spiedList.add("one");
+    Mockito.verify(spiedList).add(stringCaptor.capture()); // während der Prüfung wird das Argument
+    // für die Methode add() gefangen
+    // und im stringCaptor aufbewahrt
+
+    assertEquals("one", stringCaptor.getValue()); // mit getValue() kann das gefangene Argument inspiziert werden
+  }
 }
 ```
 Wie ein Spy verwendet werden kann, um nur einige Methoden umzuleiten, wird in einem späteren Kapitel erklärt.
@@ -752,22 +817,34 @@ Wie ein Spy verwendet werden kann, um nur einige Methoden umzuleiten, wird in ei
 Ein ArgumentCaptor kann Argumente einer Methode "fangen" damit diese danach inspiziert werden könnten.
 
 ```java
-@RunWith(MockitoJUnitRunner.class)
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+@ExtendWith(MockitoExtension.class)
 public class MyUnitTest {
-    @Mock
-    private List<String> mockedList;
-    
-    @Captor
-    private ArgumentCaptor<String> stringCaptor; // stringCaptor wird ein Argument vom Typ String "fangen"
-  
-    public void testMockedList() {
-        mockedList.add("one");
-        Mockito.verify(mockedList).add(stringCaptor.capture); // während der Prüfung wird das Argument 
-                                                              // für die Methode add() gefangen
-                                                              // und im stringCaptor aufbewahrt
-      
-        assertEquals("one", stringCaptor.getValue()); // mit getValue() kann das gefangene Argument inspiziert werden 
-    }
+  @Mock
+  private List<String> mockedList;
+
+  @Captor
+  private ArgumentCaptor<String> stringCaptor; // stringCaptor wird ein Argument vom Typ String "fangen"
+
+  @Test
+  public void testMockedList() {
+    mockedList.add("one");
+    Mockito.verify(mockedList).add(stringCaptor.capture()); // während der Prüfung wird das Argument
+                                                            // für die Methode add() gefangen
+                                                            // und im stringCaptor aufbewahrt
+
+    assertEquals("one", stringCaptor.getValue()); // mit getValue() kann das gefangene Argument inspiziert werden
+  }
 }
 ```
 
@@ -781,11 +858,12 @@ Die _Mockito.when_ Methode kombiniert mit der Methode _Mockito.thenReturn_ ermö
 Dasselbe kann auch mit der Kombination _Mockito.doReturn_ und danach _when_ erreicht werden.
 
 ```java
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MyUnitTest {
     @Mock
     private List<String> mockedList; // eine Mock-Liste, mit Mockitos-Standardimplementierung für alle Methoden
   
+    @Test
     public void testMockedList() {
         assertEquals(0, mockedList.size()); // die Mockito-Standardimplementierung für "size()" 
                                             // liefert immer 0 zurück
@@ -815,36 +893,48 @@ Geprüft werden kann unter anderem folgendes (weitere Prüfungen werden [hier](h
 Interaktion in diesem Sinn kann entweder eine Interaktion mit dem Objekt oder mit einer seiner Methoden sein.
 
 ```java
-@RunWith(MockitoJUnitRunner.class)
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
+
+import static org.mockito.Mockito.*;
+
+
+@ExtendWith(MockitoExtension.class)
 public class MyUnitTest {
-    @Mock
-    private List<String> mockedList; // eine Mock-Liste, mit Mockitos-Standardimplementierung für alle Methoden
+  @Mock
+  private List<String> mockedList; // eine Mock-Liste, mit Mockitos-Standardimplementierung für alle Methoden
 
-    @Spy
-    private List<String> spiedList; // ein Spy über eine Liste.
+  @Spy
+  private List<String> spiedList; // ein Spy über eine Liste.
 
-    public void testSpiedList() {
-        spiedList.add("one"); // hier wird die "echte" add Methode einer Liste aufgerufen!
+  @Test
+  public void testSpiedList() {
+    spiedList.add("one"); // hier wird die "echte" add Methode einer Liste aufgerufen!
 
-        Mockito.verify(spyList).add("one"); // prüfe, ob die "add" Methode mit dem Parameter "one" auf dem spyList aufgerufen wurde
-        Mockito.verify(spiedList, never()).size(); // prüfe, ob die size() Methode nie aufgerufen wurde
-        
-        spiedList.clear();
-        spiedList.clear();
-        Mockito.verify(spiedList, times(2)).clear(); // prüfe, ob die clear() Methode genau 2 Mal aufgerufen wurde
-    }
-    
-    public void testMockedList() {
-      Mockito.verifyNoInteractions(mockedList); // bis hier gab es keine Interaktionen mit dem mockedList Objekt
+    verify(spiedList).add("one"); // prüfe, ob die "add" Methode mit dem Parameter "one" auf dem spyList aufgerufen wurde
+    verify(spiedList, never()).size(); // prüfe, ob die size() Methode nie aufgerufen wurde
 
-      mockedList.size();
-      mockedList.size();
-      mockedList.size();
-      mockedList.size();
+    spiedList.clear();
+    spiedList.clear();
+    verify(spiedList, times(2)).clear(); // prüfe, ob die clear() Methode genau 2 Mal aufgerufen wurde
+  }
 
-      verify(mockedList, atLeast(1)).size(); // prüfe, ob die size() Methode mindestens einmal aufgerufen wurde
-      verify(mockedList, atMost(5)).size(); // prüfe, ob die size() Methode nicht mehr als 5 Mal aufgerufen wurde
-    }
+  @Test
+  public void testMockedList() {
+    Mockito.verifyNoInteractions(mockedList); // bis hier gab es keine Interaktionen mit dem mockedList Objekt
+
+    mockedList.size();
+    mockedList.size();
+    mockedList.size();
+    mockedList.size();
+
+    verify(mockedList, atLeast(1)).size(); // prüfe, ob die size() Methode mindestens einmal aufgerufen wurde
+    verify(mockedList, atMost(5)).size(); // prüfe, ob die size() Methode nicht mehr als 5 Mal aufgerufen wurde
+  }
 }
 ```
 

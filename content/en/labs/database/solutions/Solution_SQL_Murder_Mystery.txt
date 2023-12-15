@@ -1,0 +1,39 @@
+Correct way to the final solution:
+
+Security footage shows that there were 2 witnesses. The first witness lives at the last house on "Northwestern Dr". The second witness, named Annabel, lives somewhere on "Franklin Ave".
+
+
+Person:
+witness 1:
+14887	Morty Schapiro	118009	4919	Northwestern Dr	111564949
+witness 2:
+16371	Annabel Miller	490173	103	Franklin Ave	318771143
+
+Interview:
+witness 1:
+I heard a gunshot and then saw a man run out. He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags. The man got into a car with a plate that included "H42W".
+witness 2:
+I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.
+
+Members with ids from witness 1:
+48Z7A	28819	Joe Germuska	20160305	gold
+48Z55	67318	Jeremy Bowers	20160101	gold
+
+Murderer:
+48Z55	67318	Jeremy Bowers	20160101	gold
+
+Interview murderer:
+I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Final Query and hitmans client
+
+SELECT distinct p.* FROM drivers_license AS dl
+	JOIN person AS p ON dl.id = p.license_id
+	JOIN facebook_event_checkin AS fec ON p.id = fec.person_id WHERE
+		dl.height >= 65 AND dl.height <= 67 AND dl.hair_color = "red"
+		AND dl.gender = "female"AND dl.car_make = "Tesla" AND dl.car_model = "Model S";
+
+Hitmans client:
+99716	Miranda Priestly	202298	1883	Golden Ave	987756388

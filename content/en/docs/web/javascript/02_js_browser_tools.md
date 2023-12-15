@@ -39,3 +39,41 @@ for (let i = 0; i < 10; i++){
 Nun sollten in deiner Konsole die Zahlen 0 - 9 geloggt worden sein. Den Code solltest du bereits seit deiner Einführung in Java verstehen. Das einzig neue hier ist, dass du hier die Nummer-Variable mit `let` deklariert hast.
 
 Du hast gesehen, wie einfach du Code auf der Website mit Hilfe der Konsole ausführen kannst. Die Konsole ist ein sehr mächtiges Tool, das die Entwicklung mit JavaScript extrem vereinfachen kann. Bevor du Code in der IDE (also deiner Entwicklungsumgebung) eingibst, kannst du vorher in der Konsole ausprobieren, ob dein Code zum gewünschten Resultat führt. 
+
+
+## JavaScript in HTML einbinden
+
+1. Inline-Script: JavaScript-Code kann direkt innerhalb einer HTML-Datei mit dem `<script>`-Tag eingebettet werden. Der `<script>`-Tag sollte entweder im `<head>`-Bereich oder am Ende des `<body>`-Bereichs platziert werden.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript in HTML</title>
+</head>
+<body>
+    <h1>JavaScript in HTML</h1>
+
+    <script>
+        // Hier kannst du deinen JavaScript-Code schreiben
+        alert("Hallo, Welt!");
+    </script>
+</body>
+</html>
+```
+
+2. Externes Skript: Man kann JavaScript-Code in einer separaten Datei speichern und diese Datei mit dem `<script>`-Tag in die HTML-Datei einbinden. Dazu eine neue JavaScript-Datei mit der Erweiterung .js erstellen und dann im Tag auf diese Datei mit dem `src`-Attribut verweisen. 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript in HTML</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>JavaScript in HTML</h1>
+</body>
+</html>
+```
+
+Es ist auch möglich, mehrere externe JavaScript-Dateien einzubinden, indem mehrere `<script>`-Tags mit unterschiedlichen `src`-Attributen verwendet werden.
+

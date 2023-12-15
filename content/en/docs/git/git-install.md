@@ -6,7 +6,15 @@ weight: 2
 
 ## Inhalt
 
+* [Git unter Linux installieren](#git-unter-linux-installieren)
 * [Git unter Windows installieren](#git-unter-windows-installieren)
+
+## Git unter Linux installieren
+
+1. Ist Git schon installiert? `git --version`
+2. Falls nicht:
+    * Debian basierte Linux (Ubuntu): `sudo apt install git`
+    * Redhat basierte Linux (Fedora, Rocky Linux): `sudo dnf install git`
 
 ## Git unter Windows installieren
 

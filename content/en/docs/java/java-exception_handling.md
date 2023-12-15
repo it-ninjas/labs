@@ -6,18 +6,16 @@ description: >
   Modul #J5 - Exception Handling
 ---
 
-#### Ziele
-* Ich kenne die Schlüsselwörter try, catch, finally, throw und throws
+## Ziele
+* Ich kenne die Schlüsselwörter `try`, `catch`, `finally`, `throw` und `throws`
 * Ich weiss was "Unchecked" und "Checked" Exceptions sind
 * Ich kann auftretende Exceptions abhandeln
 * Ich kann eigene Exceptions definieren und anwenden
 * Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden
-* Ich kenne die beiden Interfaces AutoCloseable und Closeable
+* Ich kenne die beiden Interfaces AutoCloseable und Closeable.
+* Ich kenne eine Möglichkeit, um klar zu machen, dass bestimmte Werte "nullable" bzw. nicht "nullable" sind.
+* Ich weiss, inwiefern `Optionals` meinen Code `null`-safer machen.
 
-#### Voraussetzungen
-* Gute Grundlagenkenntnisse von Java-Anwendungen
-
----
 
 ## Theorie / Einleitung
 In jeder Applikation kann es zu erwarteten oder unerwarteten Fehlern kommen.
@@ -347,3 +345,181 @@ Das Schliessen der Ressourcen hat stets die Reihenfolge von hinten nach vorne.
 In unserem Beispiel wird also zuerst der BufferedReader geschlossen und danach der FileReader.  
 Die Verkettung von Ressourcen innerhalb eines try-with-resources Statements ist zu vermeiden.
 Besser sind separate Deklarationen wie oben gezeigt.
+
+---
+
+## Null-Safety
+Der häufigsten Laufzeitfehler in Java ist die `NullPointerException`. Diese Exception tritt auf, wenn
+* eine Methode auf einem `null`-Objekt aufgerufen wird,
+* oder wenn versucht wird, auf ein Feld (Variable) eines `null`-Objektes zuzugreifen.
+
+Häufig wird einfach vergessen, dass eine bestimmte Variable `null` sein kann:
+
+```java
+public static void main(String[] args) {
+    method(null);
+}
+
+private static void method(String parameter) {
+    System.out.println("Länge des Wortes: " + parameter.length());
+}
+```
+
+Im letzten Beispiel wird versucht, die Methode `length()` auf dem Objekt mit Wert `null` aufzurufen. Aus diesem Grund wird die `NullPointerException` geworfen.
+
+In diesem Beispiel sieht man ziemlich gut, wie `NullPointerException`s auftreten können:
+* Einer Variable (hier `parameter`) wird `null` zugewiesen/übergeben, was aber nicht erlaubt sein sollte.
+* Oder es wird vergessen, dass eine Variable auch den Wert `null` haben kann.
+
+Diese beide Fälle können in Java auf verschiedene Arten abgedeckt werden.
+
+### `null` durch Check abfangen
+Die offensichtlichste Möglichkeiten, `NullPointerException`s zu umgehen ist die Verwendung von `null`-Checks.
+Im folgenden Beispiel verbieten wir den Wert `null`, indem wir zu Beginn der Methode die Variable auf `null` überprüfen und eine `Exception` werfen (und somit die Methode abbrechen), falls die Variable dem Wert `null` entspricht.
+
+```java
+private static void method(String parameter) throws IllegalArgumentException {
+    if (parameter == null) {
+        throw new IllegalArgumentException("Parameter parameter must not be null.");
+    }
+    System.out.println("Länge des Wortes: " + parameter.length());
+}
+```
+
+In diesem Beispiel haben wir den Fall abgedeckt, in welchem für das Argument der Wert `null` verbietet wird. Dieser Code hat neben den 3 zusätzlichen Zeilen Code den Nachteil, dass der/die Entwickler:in nicht direkt von aussen sieht, dass `null`-Werte verboten sind. Diesen Fall wird besser mit einer anderen Technik angegangen, die später vorgestellt wird (`@NotNull`-Annotation).
+
+Sprechen wir aber nun über den Fall, in welchem der Wert `null` eigentlich auch unterstützt werden müsste. Statt einem Fehler zu werfen, benutzen wir Bedingungen, um den richtigen Code auszuführen:
+
+```java
+private static void method(String parameter) {
+    if (parameter != null) {
+        System.out.println("Länge des Wortes: " + parameter.length());
+    } else {
+        System.out.println("Länge fes Wortes: ist nicht definiert bzw. 0.");
+    }
+}
+```
+
+Um hier `null`-Sicherheit zu garantieren, haben wir nun 3 Zeilen hinzugefügt, was relativ viel für diesen Zweck ist.
+In solchen Fällen lohnt es sich oft, nur den problematischen Teil durch eine Bedingung zu ersetzen.
+In Java hilft der "Ternary-Operator" weiter:
+
+```java
+private static void method(String parameter) {
+    System.out.println("Länge des Wortes: "
+            + (parameter != null ? parameter.length() : "ist nicht definiert bzw. 0."));
+}
+```
+
+Der Ternary-Ausdruck ist hierbei der folgende:
+```java
+parameter != null ? parameter.length() : "ist nicht definiert bzw. 0."
+```
+
+Dieser Ausdruck gibt `parameter.length()` zurück, wenn `parameter != null` ist. Ansonsten gibt er den String `"ist nicht definiert bzw. 0."` zurück.
+
+Ganz allgemein ist der Ternary-Ausdruck wie folgt aufgebaut:
+```
+Bedingung ? Wert-wenn-Bedingung-true : Wert-wenn-Bedingung-false
+```
+
+### Annotationen wie `@NotNull` und `@Nullable`
+Sicherlich ist dir schon einmal die Angabe `@Nullable` bei einem Argument von einer Methode aus einer externen Library aufgefallen.
+
+Solche Annotationen teilen mit,
+* dass bei einer Variable erwartet wird, dass sie unter Umständen auch den Wert `null` haben kann (`@Nullable`)
+* bzw. dass eine Variable nicht den Wert `null` aufweisen darf (`@NotNull` bzw. `@NonNull`).
+
+Für die folgenden Beispiele haben wir die Library `org.jetbrains.annotations` verwendet, es gibt aber weitere bekannte mit ähnlichen Annotationen.
+Da zu diesem Zeitpunkt noch nicht erklärt wurde, wie du Dependencies hinzufügen kannst (Maven-Teil), halten wir dies rein theoretisch.
+
+Hier ein Beispiel, wie Annotationen zu mehr `null`-Sicherheit führen können:
+
+
+```java
+public static void main(String[] args) {
+    method("Lightning Moon", new String[]{"Lightning", "Moon"});
+    method(null, null);
+}
+
+private static void method(@Nullable String fullName, @NotNull String[] names) {
+    System.out.println(fullName.length());
+
+    if (names != null) {
+        System.out.println(Arrays.toString(names));
+    }
+}
+```
+
+In diesem Beispiel wird
+* die Annotation `@Nullable` verwendet, um mitzuteilen, dass bei der Variable `fullName` der Wert `null` möglich ist. In IntelliJ Idea (von Jetbrains) wird dadurch die Methode `length()` gelb unterstrichen, weil für die Variable `fullName` der `null`-Check fehlt.
+* die Annotation `@NotNull` verwendet, um mitzuteilen, dass die Variable `names` <ins>**nicht**</ins> den Wert `null` haben darf. Leider fügt diese Möglichkeit kein Warning beim Aufruf von `method(..., null)` hinzu. Dafür aber wird eine `IllegalArgumentException` zur Laufzeit geworfen, falls ihr `null` beim Methodenaufruf zugewiesen wird.
+
+### Optionals
+In Java gibt es auch ohne externe Dependency eine Möglichkeit anzugeben, dass eine Variable den Wert `null` "repräsentieren" kann.
+
+Hierfür wurde die generische Klasse `Optional<T>` ins Leben gerufen.
+
+Die Idee ist, dass Variablen, die den Wert `null` haben können, den Typ `Optional<...>` bekommen. Für ein nullable `String` wird also z.B. der Typ `Optional<String>` gewählt:
+
+```java
+import java.util.Optional;
+
+
+public static void main(String[] args) {
+    // Richtige Verwendung von Optionals:
+    method(Optional.of("Hello World"));     // Repräsentiert den Wert "Hello World".
+    method(Optional.empty());               // Repräsentiert den Wert null.
+    
+    // Falsche Verwendung von Optionals:
+    method(Optional.of(null));              // Null-Pointer, weil `Optional.of()` beim Wert `null` einen Fehler wirft.
+    method(null);                           // Null-Pointer, weil `isPresent()` nicht auf `null` aufgerufen werden kann.
+}
+
+private static void method(Optional<String> parameter) {
+    System.out.println("Länge des Wortes: "
+            + (parameter.isPresent() ? parameter.get().length() : "ist nicht definiert bzw. 0."));
+}
+```
+
+Der Nutzen von `Optional`s ist, dass man als Entwickler:in gezwungen wird, einen `null`-Check zu machen:
+```java
+if (optional.isPresent()) {
+    System.out.println("Wert ist: " + optional.get());
+}
+```
+
+Denn
+* wenn kein `null`-Check vor dem Aufrufen von `.get()` (was den eigentlichen Wert zurückgibt) gemacht wird , dann reklamiert deine Entwicklungsumgebung (IntelliJ/VS Code) automatisch mit einer Warnung.
+* wenn `.get()` aufgerufen wird, und der Wert `null` repräsentiert, dann wird bereits an dieser Stelle eine `NullPointerException` geworfen.
+
+`Optionals` sind daher eine der gängigsten Möglichkeiten, Entwickler:innen zu zwingen, Werte auf `null` zu prüfen.
+
+Diese Technik wird z.B. bei Streams häufig eingesetzt:
+
+```java
+Optional<Integer> firstResult = Stream
+        .of(1, 2, 3, 4, 5)
+        .filter(x -> x % 6 == 0)
+        .findFirst();
+
+// Die Verwendung des Optionals zwingt einen dazu, den `.isPresent()`-Check zu machen, da es vorkommen könnte,
+// dass kein solches Element vorhanden ist, welches die Bedingung erfüllt:
+
+if (firstResult.isPresent()) {
+    System.out.println("Erste Zahl aus der 6er-Reihe: " + firstResult.get());
+} else {
+    System.out.println("Keine Zahl aus der 6er-Reihe präsent.");
+}
+```
+
+### Zusammenfassung zu Null-Safety
+Die `NullPointerException` ist eine der häufigsten Exceptions in Java-Programmen. Deswegen lohnt es sich, besser mit `null`-Werten umzugehen bzw. besser sichtbar zu machen, dass Werte `null` sein können.
+
+Drei der häufigsten Möglichkeiten, um mehr Null-Sicherheit in deinen Code zu bringen, sind:
+* `null`-Checks
+* Annotationen wie `@NotNull` und `@Nullable`
+* und `Optional<...>`-Typen zu verwenden.
+
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Exception Handling](../../../labs/java/java-exception-handling/01_exercises) in den Labs.
