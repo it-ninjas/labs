@@ -24,20 +24,20 @@ Die Icons sind [hier](../icons/logos-rtm.zip) hinterlegt. <br>
 
 ### Header
 ![asset](../rtm_header.png)   
-|Was|Farbe|Logo|Grösse|Hover Farbe|
-|--------|--------|--------|--------|--------|
-|Hintergrundfarbe in Header|rgba(236,239,242,1);|-|height: 57.25px;|-|
-|login Logo|-|login_logo.svg|width: 180px;|-|
-|Text in Header|rgba(119,119,119,1);|-|-|-|
-|Datum(Tag)|rgba(213,45,40,1);|-|-|-|
-|Kommen Logo|-|kommen.svg|width: 22px; height: 22px;|rgba(255,255,255,1);|
-|Farbe untere Zeile Logo|rgba(255,0,0,1);|-|width: 250px;|rgba(255,255,255,1);|
-|Uhr Logo|-|uhr.svg|width: 22px; height: 22px;|rgba(255,255,255,1);|
-|Pfeil (Menu Sprache) Logo|-|pfeil_unten.svg|-|rgba(255,255,255,1);|
-|Refresh Logo|-|refresh.svg|width: 22px; height: 22px;|rgba(255,255,255,1);|
-|Personen Logo|-|persons.svg|width: 22px; height: 22px;|rgba(255,255,255,1);|
-|Profil Logo|-|profil.svg|width: 22px; height: 22px;|rgba(255,255,255,1);|
-|Logout Logo|-|logout.svg|width: 22px; height: 22px;|rgba(255,255,255,1);|
+|Was                        |Farbe                  |Logo               |Grösse                     |Hover Farbe            |
+|---------------------------|-----------------------|-------------------|---------------------------|-----------------------|
+|Hintergrundfarbe in Header |rgba(236,239,242,1);   |-                  |height: 57.25px;           |-                      |
+|login Logo                 |-                      |login_logo.svg     |width: 180px;              |-                      |
+|Text in Header             |rgba(119,119,119,1);   |-                  |-                          |-                      |
+|Datum(Tag)                 |rgba(213,45,40,1);     |-                  |-                          |-                      |
+|Kommen Logo                |-                      |kommen.svg         |width: 22px; height: 22px; |rgba(255,255,255,1);   |
+|Farbe untere Zeile Logo    |rgba(255,0,0,1);       |-                  |width: 250px;              |rgba(255,255,255,1);   |
+|Uhr Logo                   |-                      |uhr.svg            |width: 22px; height: 22px; |rgba(255,255,255,1);   |
+|Pfeil (Menu Sprache) Logo  |-                      |pfeil_unten.svg    |-                          |rgba(255,255,255,1);   |
+|Refresh Logo               |-                      |refresh.svg        |width: 22px; height: 22px; |rgba(255,255,255,1);   |
+|Personen Logo              |-                      |persons.svg        |width: 22px; height: 22px; |rgba(255,255,255,1);   |
+|Profil Logo                |-                      |profil.svg         |width: 22px; height: 22px; |rgba(255,255,255,1);   |
+|Logout Logo                |-                      |logout.svg         |width: 22px; height: 22px; |rgba(255,255,255,1);   |
 
 ### Linke Sidenav
 ![asset](../rtm_left_sidenav.png)

@@ -28,8 +28,8 @@ Schreibe eine Methode, welche alle Zahlen im Array zählt, welche zwischen 0 und
 Die Methode liefert die Anzahl dieser Zahlen zurück.
 
 ## Aufgabe 2
-Schreibe eine Methode, welche aus dem Array alle positiven Zahlen inklusive 0 in ein neues Array schreibt
-die Reihenfolge der Zahlen im Array muss gleich bleiben. Die Methode liefert das neue Array zurück.
+Schreibe eine Methode, welche aus dem Array alle positiven Zahlen inklusive 0 in ein neues Array schreibt.
+Die Reihenfolge der Zahlen im Array muss gleich bleiben. Die Methode liefert das neue Array zurück.
 
 ## Aufgabe 3
 Schreibe eine Methode, welche aus dem Array alle Zahlen sucht, welche nicht mehr als 10 von der Zahl -6 abweichen.

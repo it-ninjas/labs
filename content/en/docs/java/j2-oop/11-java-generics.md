@@ -1,21 +1,21 @@
 ---
 title: "Java Generics Grundlagen"
 linkTitle: "Java Generics Grundlagen"
-weight: 6
+weight: 11
 description: >
-  Modul #J2 - Generics I
+  Modul #J2
 ---
 
 #### Ziele
-* Ich weiss, was generische Programmierung ist
-* Ich weiss, was Typsicherheit ist und wie Typverletzung entsteht
-* Ich kenne die Vorteile von Generics
-* Ich weiss, wann Generics angewendet werden sollen
-* Ich weiss, was "bounded types" sind und warum sie angewendet werden
-* Ich weiss, was Wildcards im Kontext von Generics sind und wie sie verwendet werden
-* Ich weiss, was mit Generics nach der Kompilierung passiert ("type erasure")
-* Ich kann generische Klassen und Methoden definieren
-* Ich kann generische Klassen und Methoden in meinem Code anwenden
+
+* Ich kann in eigenen Worten erklären, was mit Generics in Java gemeint ist und wozu diese angewendet werden.
+* Ich kann alle Vorteile, die die Arbeit mit Generics mit sich bringt, vollständig nennen.
+* Ich kann in eigenen Worten erklären, was Typsicherheit ist.
+* Ich kann anhand eines Beispiels aufzeigen, wie eine Typverletzung entsteht.
+* Ich kann in eigenen Worten erklären, wozu "bounded types" verwendet werden.
+* Ich kann in eigenen Worten erklären, was Wildcards im Kontext von Generics sind und wie sie verwendet werden.
+* Ich kann in eigenen Worten erklären, was "type erasure" ist und wann dieses Vorgang stattfindet.
+* Ich setzte generische Klassen und Methoden in Code-Aufgaben korrekt ein.
 
 ---
 
@@ -355,3 +355,7 @@ Das Entfernen der generischen Informationen heisst "type erasure" und der Compil
 * Alle Typparameter in generischen Typen mit ihren "bound"-Typen (falls definiert) oder mit Object umzutauschen. Der prduzierte Bytecode beinhaltet dann nur "normale" Klassen, Interfaces und Methoden.
 * Type-Casting dort wo nötig hinzuzufügen, um die Typsicherheit bewahren zu können
 * Sog. Bridge-Methoden zu generieren, um Polymorphismus in erweiterte generische Typen zu bewahren
+
+---
+
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/java-generics) in den Generics-Labs.

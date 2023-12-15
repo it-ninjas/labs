@@ -1,7 +1,7 @@
 ---
 title: "Exception Handling"
 linkTitle: "Exception Handling"
-weight: 10
+weight: 8
 description: >
   Modul #J5 - Exception Handling
 ---
