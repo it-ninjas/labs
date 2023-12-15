@@ -245,7 +245,7 @@ wird `git diff` bei folgenden Situationen gebraucht:
 - Wenn du keine 'schweren' externen Tools starten möchtest, sondern so schnell wie möglich zum Ergebnis kommen willst.
 
 `git diff-tool` kann man dann überall dort einsetzen, bei denen die oben erwähnten Situationen nicht zutreffen. Zu Beachten ist aber, dass es noch viele weitere Situationen gibt, in welchen man auf `git diff-tool` verzichten kann.
-Zur genaueren Einsicht ist Googel immer eine gute Anhaltestelle.
+Zur genaueren Einsicht ist Google immer eine gute Anlaufstelle.
 
 ### Commiten
 
