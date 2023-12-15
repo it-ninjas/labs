@@ -1,7 +1,7 @@
 ---
 title: "Exam zu Angular"
 type: docs
-linkTitle: "Angular Exam Notenverwaltung"
+linkTitle: "Angular Exam - Notenverwaltung"
 weight: 2
 date: 2023-05-24
 description: >
@@ -9,7 +9,7 @@ description: >
 ---
 
 ## Inhalt
-In den Labs/Exams von Spring Boot / Java hast du bereits ein Backend für eine Notenverwaltung geschrieben.
+Im Lab von Spring Boot hast du bereits ein Backend für eine Notenverwaltung geschrieben.
 In diesem Exam sollst du zusätzlich ein Frontend schreiben, welches dieses Backend verwendet. Schlussendlich 
 solltest du eine komplett selbst erstellte Fullstack Applikation haben, die einwandfrei funktioniert.
 
@@ -42,10 +42,9 @@ Bedingungen erfüllt sind, kannst du mit den Aufgaben beginnen.
 #### Nicht-Funktional
 * Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Components/Services aufgesplittet.
 * Ein Component/Service hat eine einzige Aufgabe (Single Responsibility Prinzip).
-* Jeder Component/Service ist getestet.
 
 ## Design
-Die Notenverwaltung sollte ungefähr einem vorgegebenen Design entsprechen. Farben und Schriftarten können frei gewählt
+Die Notenverwaltung sollte ungefähr dem vorgegebenen Design entsprechen. Farben und Schriftarten können frei gewählt
 werden, jedoch sollte das vorgegebene Design immer noch erkennbar sein. 
 
 Das Design wurde mit Figma erstellt und ist navigierbar. Also kannst du die benötigten Verlinkungen so selbst 
@@ -64,7 +63,7 @@ wird. So können bereits erstellte Komponenten inklusive Design verwendet werden
 Um alle Daten der Notenverwaltung anzeigen, erstellen, löschen und bearbeiten zu können, werden verschiedene Components
 benötigt. In dieser Aufgabe solltest du diese Punkte abarbeiten:
 * Überlege dir anhand der [Anforderungen](#anforderungen), wofür du alles einen Component benötigst. Die Unterscheidung
-zwischen Admin und Student profil kann aktuell ignoriert werden. Erstelle bereits jetzt alle Components dazu.
+zwischen Admin und Student Profil kann aktuell ignoriert werden. Erstelle bereits jetzt alle Components dazu.
 * Entwickle ein einfaches und benutzerfreundliches Design für die einzelnen Seiten.
 * Verwende aktuell feste Daten, diese werden in einer späteren Aufgabe ersetzt.
 
@@ -72,15 +71,14 @@ zwischen Admin und Student profil kann aktuell ignoriert werden. Erstelle bereit
 Aktuell werden in deiner Applikation feste Daten angezeigt, die im HTML angegeben sind. Da die Daten später jedoch
 aus dem Backend kommen sollten, ist es von Vorteil, wenn du Models hast, die den benötigten Daten entsprechen. Diese
 Punkte sollten in dieser Aufgabe erledigt werden:
-* Erstelle alle deiner Meinung nach benötigten Models
-* Entferne deine aktuell festen Daten und ersetze sie mit Daten, die du im Typescript mit deinen Models erstellst
+* Erstelle alle deiner Meinung nach benötigten Models.
+* Ändere deine festen Daten und setze deine erstellten Models ein.
 * Versuche, wo nötig, Forms zu verwenden, um diese Später verwenden zu können.
 > Tipp: Wenn du dir unsicher bist welche Daten du benötigst, kannst du im Backend etwas spicken und so die richtige
 Struktur finden.
 
 ## Aufgabe 3 - Services erstellen und verwenden
-Da wir bald schon das Backend anbinden solltest du noch die benötigten Services erstellen. Dazu solltest du folgende 
-Dinge machen:
+Da wir bald schon das Backend anbinden, solltest du noch die benötigten Services erstellen. Erledige dazu folgende Aufgaben:
 * Erstelle alle deiner Meinung nach benötigten Services
 * Lass alle Daten aus einem Service laden und erstelle dazu Mockdaten
 
@@ -94,9 +92,6 @@ In dieser Aufgabe verbindest du jetzt das Frontend mit dem Backend. Erledige daz
 Ab diesem Zeitpunkt sollten alle grundlegenden Funktionen deiner Applikation umgesetzt sein, Glückwunsch! Jetzt möchten
 wir noch die Admin- und Student-Funktionen trennen. Dazu besteht im Backend ein Endpunkt, welcher das gestartete Profil 
 im Backend an das Frontend sendet. Darüber soll das Frontend die verschiedenen freischalten oder verstecken.
+Dazu hast du im Backend einen oder mehrere Endpunkte erstellt, die du jetzt einsetzen kannst.
+Deine Applikation soll auch selbständig erkennen, welche Funktionen verfügbar sind und welche nicht.
 
-[//]: # (TODO: name des Endpoints ergänzen)
-
-## Aufgabe 6 - Testing
-Wie in den Anforderungen bereits erwähnt, ist das Ziel alle Components und Services zu testen. Dazu werden die normalen
-`spec.ts` Dateien verwendet. Schlussendlich solltest du eine Coverage von mindestens 90% haben.
