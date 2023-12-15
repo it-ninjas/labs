@@ -34,7 +34,8 @@ Bedingungen erfüllt sind, kannst du mit den Aufgaben beginnen.
     * Neue Fächer hinzufügen
     * Bestehende Fächer bearbeiten
     * Bestehende Fächer löschen
-* Die Anwendung ist Responsive gestaltet und ist auf Desktop, Tablet und Mobile verwendbar 
+* Die Anwendung ist Responsive gestaltet und ist auf Desktop, Tablet und Mobile verwendbar
+  * Die Verwendung von Bootstrap ist nicht erlaubt
 
 * Zusätzliche Anforderungen
   * Die Anwendung ist in den Sprachen Deutsch, Französisch und Englisch verfügbar
@@ -74,8 +75,8 @@ Punkte sollten in dieser Aufgabe erledigt werden:
 * Erstelle alle deiner Meinung nach benötigten Models.
 * Ändere deine festen Daten und setze deine erstellten Models ein.
 * Versuche, wo nötig, Forms zu verwenden, um diese Später verwenden zu können.
-> Tipp: Wenn du dir unsicher bist welche Daten du benötigst, kannst du im Backend etwas spicken und so die richtige
-Struktur finden.
+> Tipp: Wenn du dir unsicher bist welche Daten du benötigst, kannst du im Backend bei den DAOs etwas spicken und so die 
+richtige Struktur finden.
 
 ## Aufgabe 3 - Services erstellen und verwenden
 Da wir bald schon das Backend anbinden, solltest du noch die benötigten Services erstellen. Erledige dazu folgende Aufgaben:
