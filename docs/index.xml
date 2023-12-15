@@ -2836,7 +2836,1522 @@ wie folgt verbinden:&lt;/p>
 &lt;li>Vom SQL-Editor aus kannst du alle gelernten SQL-Statements anwenden. Zuerst solltest du jedoch eine Datenbank mit
 &lt;code>CREATE DATABASE name&lt;/code> erstellen. Dort kannst du wie in den Docs gelernt Tabellen usw. erstellen.&lt;/li>
 &lt;/ol>
-&lt;p>Wenn diese Schritte funktioniert haben, bist du für die Labs bereit.&lt;/p></description></item><item><title>Labs: Streams Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/02_streamexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/02_streamexercises/</guid><description>
+&lt;p>Wenn diese Schritte funktioniert haben, bist du für die Labs bereit.&lt;/p></description></item><item><title>Labs: Spring und Spring Boot - Aufgaben</title><link>/labs/java/spring/01_spring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/spring/01_spring/</guid><description>
+&lt;h1 id="aufträge">Aufträge&lt;/h1>
+&lt;h2 id="voraussetzungen">Voraussetzungen&lt;/h2>
+&lt;p>Im &lt;a href="../../java-jdbc/01_jdbc_exercises/">Lab zu Modul #J8 (JDBC)&lt;/a> hast du ein persistentes Notenverwaltungssystem umgesetzt.
+Zu diesem Zweck hast du eine MariaDB-Instanz mit folgenden Tabellen aufgesetzt:&lt;/p>
+&lt;ul>
+&lt;li>SCHOOL_SUBJECT&lt;/li>
+&lt;li>GRADE&lt;/li>
+&lt;li>SCHOOL_SUBJECT_GRADE&lt;/li>
+&lt;/ul>
+&lt;p>Mehr Details dazu findest du im obenerwähnten Lab. Diese Datenbank und das dazu gehörende Datenbankmodel wirst du für unsere Spring-Aufgabe benötigen.&lt;br>
+Bei Bedarf kannst du das Model erweitern.&lt;/p>
+&lt;h2 id="auftrag">Auftrag&lt;/h2>
+&lt;p>Die Aufgaben in diesem Lab führen dich Schritt für Schritt durch die Umsetzung einer Webanwendung mit Spring Boot, welche einem Notenverwaltungssystem entspricht.
+Die folgenden Abschnitte listen die groben Funktionalen (was soll die Anwendung können) und die nicht-funktionalen (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung auf.
+Genauere Details zu den Anforderungen und den Akzeptanzkriterien werden in den entsprechenden Kapiteln aufgeführt.&lt;/p>
+&lt;h3 id="funktionale-anforderungen">Funktionale Anforderungen&lt;/h3>
+&lt;ul>
+&lt;li>Die Anwendung unterstützt zwei unterschiedliche Profile: &amp;ldquo;student&amp;rdquo; und &amp;ldquo;admin&amp;rdquo;&lt;/li>
+&lt;li>Wenn die Anwendung mit dem Profil &amp;ldquo;student&amp;rdquo; gestartet wird, stehen die folgenden Funktionalitäten zur Verfügung:
+&lt;ul>
+&lt;li>Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)&lt;/li>
+&lt;li>Alle Fächer und deren Durchschnittsnote auflisten&lt;/li>
+&lt;li>Für ein bestimmtes Fach:
+&lt;ul>
+&lt;li>Alle Noten und die Durchschnittsnote des Fachs auflisten&lt;/li>
+&lt;li>Eine neue Note hinzufügen&lt;/li>
+&lt;li>Eine bestehende Note ändern&lt;/li>
+&lt;li>Eine bestehende Note löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Wenn die Anwendung mit dem Profil &amp;ldquo;admin&amp;rdquo; gestartet wird, stehen zusätzlich auch folgende Funktionalitäten zur Verfügung:
+&lt;ul>
+&lt;li>Alle Fächer auflisten&lt;/li>
+&lt;li>Neue Fächer hinzufügen&lt;/li>
+&lt;li>Bestehende Fächer bearbeiten&lt;/li>
+&lt;li>Bestehende Fächer löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Die Anwendung bietet die Möglichkeit abzufragen, welches Profil gestartet ist.&lt;/li>
+&lt;/ul>
+&lt;h3 id="nicht-funktionale-anforderungen-nfas">Nicht funktionale Anforderungen (NFAs)&lt;/h3>
+&lt;ul>
+&lt;li>Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Packages aufgesplittet.&lt;/li>
+&lt;li>Eine Klasse hat eine einzige Aufgabe (Single Responsibility Principle).&lt;/li>
+&lt;li>Direkter Zugriff auf der internen Struktur einer Klasse ist verboten (Encapsulation / Information Hiding).&lt;/li>
+&lt;li>Jede Klasse ist getestet.&lt;/li>
+&lt;/ul>
+&lt;h2 id="schritt-1-maven-projekt-erstellen--pomxml">Schritt 1: Maven-Projekt erstellen / pom.xml&lt;/h2>
+&lt;p>In diesem ersten Schritt wirst du eine Spring Boot Anwendung erstellen und ausführen.
+Hier stehen dir zwei Möglichkeiten für die Umsetzung zur Verfügung:&lt;/p>
+&lt;ul>
+&lt;li>Die Projektstruktur manuell anzulegen (#Hard-Core-Variante)&lt;/li>
+&lt;li>Die Projektstruktur mit Spring-Initializr anlegen (#Easy-Going-Variante)&lt;/li>
+&lt;/ul>
+&lt;p>Beide Möglichkeiten werden in dieser Aufgabe aufgeführt.&lt;/p>
+&lt;h3 id="voraussetzungen-was-du-brauchst">Voraussetzungen (was du brauchst)&lt;/h3>
+&lt;ul>
+&lt;li>Java 20 oder neuer ist installiert.&lt;/li>
+&lt;li>Maven 3.5 oder neuer ist installiert.&lt;/li>
+&lt;li>IntelliJ ist installiert und konfiguriert.&lt;/li>
+&lt;li>Ein Bitbucket Repository steht bereit, um den Code des Projektes zu verwalten und ist auf der lokalen Maschine geklont worden.&lt;/li>
+&lt;/ul>
+&lt;h3 id="variante-i-projekt-manuell-anlegen">Variante I: Projekt manuell anlegen&lt;/h3>
+&lt;h4 id="erstelle-ein-maven-projekt-in-intellij">Erstelle ein Maven-Projekt in IntelliJ&lt;/h4>
+&lt;p>Öffne IntelliJ und erstelle ein neues Maven-Projekt (File → New → Project):
+&lt;img src="../assets/03_create_project_with_intellij.png" alt="">
+Ersetze &lt;strong>GroupId&lt;/strong>, &lt;strong>ArtifactId&lt;/strong>, &lt;strong>Name&lt;/strong> und &lt;strong>Location&lt;/strong> durch passende Werte.&lt;/p>
+&lt;h4 id="passe-dein-pomxml-file-an">Passe dein pom.xml File an&lt;/h4>
+&lt;p>Füge den &amp;ldquo;Parent&amp;rdquo; und folgende Dependencies und Maven-Plugins in deine pom.xml Datei hinzu:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml"> &lt;span style="color:#75715e">&amp;lt;!-- Parent kommt normalerweise nach der modelVersion --&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;parent&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.boot&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>spring-boot-starter-parent&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>3.1.5&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;relativePath/&amp;gt;&lt;/span> &lt;span style="color:#75715e">&amp;lt;!-- lookup parent from repository --&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/parent&amp;gt;&lt;/span>
+&lt;span style="color:#75715e">&amp;lt;!-- Dependencies kommen normalerweise nach den Properties --&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;dependencies&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.boot&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>spring-boot-starter-web&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.boot&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>spring-boot-starter-test&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependencies&amp;gt;&lt;/span>
+&lt;span style="color:#75715e">&amp;lt;!-- Build kommen normalerweise nach den Dependencies --&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;build&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;plugins&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;plugin&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.boot&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>spring-boot-maven-plugin&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/plugin&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/plugins&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/build&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Lade alle Dependencies erneut (Maven-View -&amp;gt; Reload all maven projects).&lt;/p>
+&lt;h4 id="ersetze-die-main-klasse-mit-einer-springbootapplikation-klasse">Ersetze die Main Klasse mit einer SpringBootApplikation Klasse&lt;/h4>
+&lt;p>Wenn du beim Erstellen des Projektes &amp;ldquo;add sample code&amp;rdquo; angekreuzt hast, beinhaltet dein Projekt nun eine Main-Klasse in deinem Source-Folder (im richtigen Package selbstverständlich).
+Diese Main Klasse werden wir nun in einer SpringBootApplication-Klasse umwandeln:&lt;/p>
+&lt;ul>
+&lt;li>Benenne die Main Klasse um, so dass sie &amp;lt;&lt;em>name-deines-artefaktes&lt;/em>&amp;gt;Application heisst (z.B. wenn dein Artefakt &amp;ldquo;demo&amp;rdquo; heisst, wird die Klasse nun &amp;ldquo;DemoApplication&amp;rdquo; heissen).&lt;/li>
+&lt;li>Füge die Annotation &lt;strong>@SpringBootApplication&lt;/strong> auf der Klassenebene hinzu&lt;/li>
+&lt;li>Passe deine &lt;strong>main&lt;/strong> Methode an, so dass sie wie folgt aussieht (Ersetzte DemoApplication mit deinem Application-Klassennamen):&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java"> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+SpringApplication&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">run&lt;/span>&lt;span style="color:#f92672">(&lt;/span>DemoApplication&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">,&lt;/span> args&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Gratuliere! Du hast nun dein Projekt angelegt, und zwar Hard-Core. Bravo!
+Fahre nun mit dem Schritt &amp;ldquo;Führe deine Anwendung aus&amp;rdquo; fort.&lt;/p>
+&lt;h3 id="variante-ii-projekt-mit-spring-initializr-anlegen">Variante II: Projekt mit Spring-Initializr anlegen&lt;/h3>
+&lt;p>Öffne die Seite: &lt;a href="https://start.spring.io/">https://start.spring.io/&lt;/a> und ersetzte die Angaben zu Group, Artifact (der Name wird sich automatisch ändern) und Description durch passende Werte.
+Achte das bei Project &amp;ldquo;Maven&amp;rdquo; ausgewählt ist und nicht Gradle.
+Füge die Abhängigkeit für &amp;ldquo;Spring Web&amp;rdquo; hinzu und drücke den &amp;ldquo;GENERATE&amp;rdquo; Knopf.
+&lt;img src="../assets/01_spring-initializr.png" alt="">&lt;/p>
+&lt;p>Entpacke das heruntergeladene Zip-File in deinem Repository-Verzeichnis und öffne die Anwendung als Maven-Projekt in IntelliJ:
+File → New → Project from existing sources → Zum Root-Folder des Projektes navigieren und pom.xml auswählen.&lt;/p>
+&lt;h3 id="führe-deine-anwendung-aus">Führe deine Anwendung aus&lt;/h3>
+&lt;p>Öffne deine Application-Klasse (normalerweise heist sie &lt;name-des-artefaktes>Application).
+Wenn du Spring-Initializr benutzt hast, wurde diese Klasse für dich automatisch erstellt.
+Starte deine Anwendung mit der Default-Run-Konfiguration. Zu diesem Zweck kannst du die Application-Klasse öffnen und die Main-Methode ausführen.&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-1">Akzeptanzkriterien Schritt 1&lt;/h3>
+&lt;p>Du bist mit diesem Schritt fertig erst, wenn folgende Aussagen stimmen:&lt;/p>
+&lt;ul>
+&lt;li>Dein Projekt weist eine richtige Maven Projektstruktur aus:&lt;br>
+&lt;img src="../assets/04_projekt_struktur.png" alt="">&lt;/li>
+&lt;li>Das Projekt ist in IntelliJ richtig konfiguriert (JDK, Maven, Source-Verzeichnisse, Resource-Verzeichnisse usw.)&lt;/li>
+&lt;li>Du verstehst, wozu wir die Dependencies im pom.xml File brauchen&lt;/li>
+&lt;li>Eine &amp;ldquo;SpringBootApplication&amp;rdquo;-Klasse ist vorhanden, ist richtig annotiert und beinhaltet eine &amp;ldquo;main&amp;rdquo; Methode, welche die Applikation ausführt.&lt;/li>
+&lt;li>Spring Boot Applikation startet fehlerfrei&lt;/li>
+&lt;li>In der Run-Konsole ist eine ähnliche Ausgabe zu sehen:
+&lt;img src="../assets/02_application_success_run_console.png" alt="">&lt;/li>
+&lt;li>Dein Projekt ist im vorbereiteten Bitbucket-Repository vorhanden&lt;/li>
+&lt;/ul>
+&lt;h2 id="schritt-2-rest-schnittstellen-definieren-und-umsetzen">Schritt 2: Rest Schnittstellen definieren und umsetzen&lt;/h2>
+&lt;p>In diesem Schritt geht es darum die Schnittstellen (die API) zur Anwendung zu definieren.
+Über diese Schnittstellen können die Benutzer:innen die gewünschten Aktionen ausführen&lt;/p>
+&lt;h3 id="system-design-erstellen-und-code-struktur-anlegen">System-Design erstellen und Code Struktur anlegen&lt;/h3>
+&lt;p>Damit, du den Code gemäss den nicht-funktionalen Anforderungen (NFA) aufbauen kannst, überlege dir zuerst, wie du deine Anwendung zerlegen möchtest.&lt;br>
+Dazu kannst du die Schritte der Methodik &amp;ldquo;functional decomposition&amp;rdquo; anwenden (mehr Information zur Methode findest du &lt;a href="https://www.baeldung.com/cs/functional-decomposition">in diesem Artikel&lt;/a>).&lt;br>
+Bei der Zerlegung des Systems beachte auch Prinzipien wie Kohäsion (starke Kohäsion ist gewünscht) und Kopplung (lose Kopplung sollte das Ziel sein).&lt;/p>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Sobald du die Zerlegung deiner Anwendung gemacht hast, kannst du die passende Java-Packages erstellen, welche diese Zerlegung dann abbildet.
+Dein Code fügst du später an den richtigen Stellen hinzu.&lt;/p>
+&lt;h3 id="rest-schnittstelle-definieren">REST-Schnittstelle definieren&lt;/h3>
+&lt;p>Die Struktur für deine Anwendung steht. Nun definierst du die Schnittstellen, womit die Benutzer:innen mit der Anwendung interagieren werden.
+Die nötige Funktionalität entnimmst du aus den funktionalen Anforderungen.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Anforderung - ein neues Schulfach hinzufügen&lt;/strong>&lt;br>
+Die entsprechende Schnittstelle könnte entsprechend so aussehen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Beschreibung&lt;/th>
+&lt;th>Http-Methode&lt;/th>
+&lt;th>URL&lt;/th>
+&lt;th>Request-Body Beispiel&lt;/th>
+&lt;th>Path-Variable&lt;/th>
+&lt;th>Response-Body Beispiel&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Neues Schulfach hinzufügen&lt;/td>
+&lt;td>POST&lt;/td>
+&lt;td>/admin/schulfaecher&lt;/td>
+&lt;td>{&amp;ldquo;name&amp;rdquo;: &amp;ldquo;Physik&amp;rdquo;}&lt;/td>
+&lt;td>keine&lt;/td>
+&lt;td>{&amp;ldquo;id&amp;rdquo;: 3, &amp;ldquo;name&amp;rdquo;: &amp;ldquo;Physik&amp;rdquo;}&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Dort wo ein Request-Body und/oder ein Response-Body benötigt wird, wird mit JSON-Objekten gearbeitet.
+Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-Representation Klassen zu erzeugen.&lt;/p>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erweitere die obige Tabelle mit den restlichen Funktionen gemäss den funktionalen Anforderungen.
+Buche sobald du fertig bist ein Review mit einem Coach, damit spätere Fehler vermieden werden.&lt;/p>
+&lt;p>&lt;strong>Wichtig&lt;/strong> Endpunkt für Profil:
+Vergiss nicht das du noch einen Endpunkt erstellen musst, um herauszufinden, mit welchem Profil die Anwendung gestartet wurde.&lt;/p>
+&lt;h3 id="resource-representation-klassen-erstellen">Resource-Representation Klassen erstellen&lt;/h3>
+&lt;p>Unsere Schnittstellendefinition verwendet JSON-Objekte bei bestimmten Requests und Responses.
+Diese JSON-Objekte stellen sog. &amp;ldquo;Resource&amp;rdquo; dar.
+Im Beispiel &amp;ldquo;Neues Schulfach hinzufügen&amp;rdquo; stellt das JSON-Objekt ein Schulfach dar.&lt;/p>
+&lt;p>In diesem Abschnitt wirst du für alle JSON-Objekte entsprechende Java-Klassen erstellen.
+Das sind sogenannte Resource-Representation Klassen, auch Modelle genannt.&lt;br>
+In unserer Anwendung werden wir die Resource-Representation Klassen als sog. DTOs (Data Transfer Objects) umsetzen.
+Diese Klassen wirst du später in deinen Controllern verwenden.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Schulfach Resource-Representation&lt;/strong>&lt;br>
+Das folgende JSON-Objekt stellt ein Schulfach dar:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">{
+&lt;span style="color:#f92672">&amp;#34;id&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">1&lt;/span>,
+&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Deutsch&amp;#34;&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Daraus können wir unsere DTO-Klasse erstellen (vorerst nur mit Feldern und noch keine weitere Funktionalität):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SchulfachDto&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> Long id&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> String name&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle für jedes JSON-Objekt aus dem vorherigen Abschnitt eine DTO-Klasse.
+Denke daran, die Klassen in die richtigen Packages zu setzen.&lt;/p>
+&lt;h3 id="controller-erstellen">Controller erstellen&lt;/h3>
+&lt;p>In Spring werden HTTP Requests an REST-Services von Controllern behandelt.
+Das ist eine Java-Klasse, welche mit &lt;em>@RestController&lt;/em> annotiert wird.
+Controller sind also die Umsetzung unserer Schnittstellendefinition.
+Da wir noch keine persistierten Daten haben, wirst du vorerst Mockdaten aus den Schnittstellenmethoden liefern müssen.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Controller für die Schulfachverwaltung&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@RestController&lt;/span>
+&lt;span style="color:#a6e22e">@RequestMapping&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/api/admin&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SchulfachAdminController&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@PostMapping&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/schulfaecher&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> SchulfachDto &lt;span style="color:#a6e22e">createNewSchulfach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#a6e22e">@RequestBody&lt;/span> SchulfachDto newSchulfach&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// TODO: Das sind Mockdaten und sollten zu einem späteren Zeitpunkt mit &amp;#34;echtem&amp;#34; Code ersetzt werden
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SchulfachDto&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Physik&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// hier können weitere Methoden der Schnittstelle umgesetzt werden
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle Controller und Methoden (mit Mockdaten), um die Umsetzung deiner Schnittstellen abzuschliessen.&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-2">Akzeptanzkriterien Schritt 2&lt;/h3>
+&lt;ul>
+&lt;li>Ein grobes System-Design ist vorhanden (z.B. mit der Hilfe des Functional-Decomposition-Diagramm).&lt;/li>
+&lt;li>Die Codestruktur entspricht dem Design.&lt;/li>
+&lt;li>Die REST Schnittstellen sind für jede relevante Funktion (gemäss funktionalen Anforderungen) dokumentiert und mit Controllern umgesetzt.&lt;/li>
+&lt;li>Jede API-Methode, welche einen Wert liefert, schreibt diesen Wert direkt in den Response-Body (RestController)&lt;/li>
+&lt;li>Die API-Methoden sind &amp;ldquo;RESTful&amp;rdquo; (siehe &lt;a href="https://www.javadevjournal.com/spring/restful-methods/">HTTP Methods in RESTful Web Services&lt;/a>)&lt;/li>
+&lt;li>Die API-Methoden, welche einen Wert liefern, liefern zurzeit Mockdaten zurück (alle Aufrufe einer Methode liefern immer die gleiche Mockdaten zurück)&lt;/li>
+&lt;li>Mit Insomnia oder mit dem HTTP-Browser kann auf jede API-Methode zugegriffen werden&lt;/li>
+&lt;li>Für jede API-Methode wurden passende Unit-Tests geschrieben und erfolgreich ausgeführt&lt;/li>
+&lt;/ul>
+&lt;h2 id="schritt-3-services-anlegen">Schritt 3: Services anlegen&lt;/h2>
+&lt;h3 id="service-klassen-erstellen">Service-Klassen erstellen&lt;/h3>
+&lt;p>In diesem Schritt wird ein komplett neuer Layer angelegt, welcher die Business-Logik der Applikation enthalten wird.
+Er ist zuständig für Aufgaben wie Exception-Handling und Validierung. Dieser Layer wird Service-Layer genannt.
+Service-Klassen werden grundsätzlich mit der Annotation &lt;em>@Service&lt;/em> annotiert.
+Diese Annotation ist eine von drei möglichen Spezialisierungen eines Spring Components.&lt;/p>
+&lt;p>Die möglichen Annotationen für einen Spring Component sind die folgenden:&lt;/p>
+&lt;ul>
+&lt;li>&lt;em>@Component&lt;/em>&lt;/li>
+&lt;li>&lt;em>@Controller&lt;/em>&lt;/li>
+&lt;li>&lt;em>@Service&lt;/em>&lt;/li>
+&lt;li>&lt;em>@Repository&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;p>Im folgenden Beispiel wird nun eine Service-Klasse angelegt, welche den vom Controller empfangenen Request-Body als Parameter entgegennimmt
+und diesen dann später weiter verarbeiten wird. Im Moment begnügen wir uns damit die Mock-Daten aus dem Controller hierher zu verschieben.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Service für die Schulfachverwaltung&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Service&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SchulfachAdminService&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> SchulfachDto &lt;span style="color:#a6e22e">createNewSchulfach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SchulfachDto newSchulfach&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// TODO: Dies sind die Mock-Daten aus dem Controller, sie werden später durch richtige Daten ersetzt
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SchulfachDto&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Physik&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// hier können weitere Methoden des Services umgesetzt werden
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="denke-daran-die-service-klassen-in-das-richtige-package-zu-setzen">&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle die nötigen Service-Klassen mit entsprechenden Methoden und verschiebe die Mock-Daten aus den Controllern in die Service-Methoden.
+Versuche die Methoden, welche das gleiche fachliche Thema behandeln im gleichen Service unterzubringen.
+Denke daran, die Service-Klassen in das richtige Package zu setzen.&lt;/h2>
+&lt;h3 id="service-klassen-und-controller-verbinden">Service-Klassen und Controller verbinden&lt;/h3>
+&lt;p>Nun ist es an der Zeit, die erstellten Controller- und Service-Klassen miteinander zu verbinden. Dazu nutzen wir die Dependency Injection.
+Controller- und Service-Klassen werden durch ihre Annotationen als Spring-Components erkannt und durch den Spring Container instanziiert.
+Die Injection eines Service in einen Controller kann beispielsweise durch eine Constructor-Injection erfolgen. Durch diese Art von Implementation
+holt sich der Controller den Service aus dem Container selbst.
+Die Methoden der Controller leiten nun ihre Anfragen an die entsprechenden Service-Klassen weiter.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Constructor-Injection&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@RestController&lt;/span>
+&lt;span style="color:#a6e22e">@RequestMapping&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/api/admin&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SchulfachAdminController&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> SchulfachAdminService schulfachAdminService&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">SchulfachAdminController&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SchulfachAdminService schulfachAdminService&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">schulfachAdminService&lt;/span> &lt;span style="color:#f92672">=&lt;/span> schulfachAdminService&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#a6e22e">@PostMapping&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/schulfaecher&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> SchulfachDto &lt;span style="color:#a6e22e">createNewSchulfach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#a6e22e">@RequestBody&lt;/span> SchulfachDto newSchulfach&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">schulfachAdminService&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">createNewSchulfach&lt;/span>&lt;span style="color:#f92672">(&lt;/span>newSchulfach&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="die-ursprünglich-erstellten-test-sollten-immer-noch-erfolgreich-ausführbar-sein">&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Verbinde die erstellten Controller-Klassen mit den entsprechenden Services.
+Leite sämtliche Anfragen aus den Controllern an die Service-Methoden weiter.
+Die ursprünglich erstellten Test sollten immer noch erfolgreich ausführbar sein.&lt;/h2>
+&lt;h3 id="akzeptanzkriterien-schritt-3">Akzeptanzkriterien Schritt 3&lt;/h3>
+&lt;ul>
+&lt;li>Die Mock-Daten wurden in Methoden auf dem Service-Layer ausgelagert&lt;/li>
+&lt;li>Die Service-Klassen sind nach Thema aufgebaut&lt;/li>
+&lt;li>Sämtliche Anfragen der Controller (Requests) wurden an die Service-Klassen und deren Methoden weitergeleitet&lt;/li>
+&lt;li>Die Controller- und Service-Klassen sind mittels Constructor-Injection miteinander verbunden&lt;/li>
+&lt;li>Sämtliche Unit-Tests für die Controller funktionieren nach wie vor&lt;/li>
+&lt;li>Für alle Service-Methoden wurden entsprechende neue Unit-Tests geschrieben&lt;/li>
+&lt;/ul>
+&lt;h2 id="schritt-4-datenbank-verbindung-herstellen">Schritt 4: Datenbank-Verbindung herstellen&lt;/h2>
+&lt;h3 id="repository-klassen-erstellen">Repository-Klassen erstellen&lt;/h3>
+&lt;p>In diesem Schritt wird erneut ein komplett neuer Layer angelegt, welcher die Verbindung der Applikation zu einer Datenbank aufbauen wird.
+Dieser Layer wird Persistenz-Layer genannt.
+Repository-Klassen werden grundsätzlich mit der Annotation &lt;em>@Repository&lt;/em> annotiert.&lt;/p>
+&lt;p>Die Verbindung zu einer Datenbank kann auf verschiedene Arten realisiert werden.
+In diesem Kapitel werden wir JPA oder JDBCTemplate eingehen.&lt;/p>
+&lt;details>
+&lt;summary>Möglichkeit 1: JPA-Repository mit Spring Data&lt;/summary>
+&lt;h4 id="möglichkeit-1-jpa-repository-mit-spring-data">Möglichkeit 1: JPA-Repository mit Spring Data&lt;/h4>
+&lt;p>Bei dieser Variante wird die Jakarta Persistence API (JPA) mit Spring Data verwendet.
+Sie ermöglicht die automatische Generierung von Queries durch die Deklaration eines entsprechenden Methodennamens.
+Dies bedeutet, dass der Methodenname zugleich ein Datenbank-Query darstellt.&lt;/p>
+&lt;p>Damit diese Möglichkeit der Implementation überhaupt besteht, müssen zuerst sogenannte Entitäten angelegt werden.
+Eine Entität ist in Java das Abbild einer Datenbank-Tabelle. Jede Zeile in einer Datenbank-Tabelle führt zu einem neuen Objekt der Entität.
+Entitäten können untereinander, genauso wie Datenbank-Tabellen, Beziehungen eingehen.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Entität für ein Schulfach&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Entity&lt;/span>
+&lt;span style="color:#a6e22e">@Table&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SCHOOL_SUBJECT&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Schulfach&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@Id&lt;/span>
+&lt;span style="color:#a6e22e">@Column&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;description&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String bezeichnung&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die gezeigte Entität wird mit &lt;code>@Entity&lt;/code> annotiert, damit sie generell als solche erkannt wird. Die Annotation &lt;code>@Table&lt;/code> verbindet die Entität
+mit der entsprechenden Tabelle. Für jede Kolonne in der Datenbank wird eine Instanzvariable angelegt, welche diese mit &lt;code>@Column&lt;/code> und
+der Angabe des Spaltennamens mit der entsprechenden Spalten aus der Datenbank verbindet.
+Die Annotation &lt;code>@Id&lt;/code> dient der Markierung des Primärschlüssels.&lt;/p>
+&lt;hr>
+&lt;h2 id="wähle-für-alle-attribute-die-richtigen-datentypen-und-gib-die-richtigen-spaltennamen-an">&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle die Entitäten für die anderen beiden Tabellen &lt;em>GRADE&lt;/em> und &lt;em>SCHOOL_SUBJECT_GRADE&lt;/em>.
+Wähle für alle Attribute die richtigen Datentypen und gib die richtigen Spaltennamen an.&lt;/h2>
+&lt;p>Nun sollen die drei Entitäten miteinander verbunden werden. Die Beziehung zwischen den Tabellen ist wie folgt geregelt:&lt;/p>
+&lt;ul>
+&lt;li>Ein Eintrag in SCHOOL_SUBJECT_GRADE besitzt immer ein SCHOOL_SUBJECT und eine GRADE&lt;/li>
+&lt;li>Eine GRADE kann in mehreren SCHOOL_SUBJECT_GRADE eingesetzt werden&lt;/li>
+&lt;li>Ein SCHOOL_SUBJECT kann in mehreren SCHOOL_SUBJECT_GRADE eingesetzt werden&lt;/li>
+&lt;/ul>
+&lt;p>Damit sind die Beziehungen zwischen den Tabellen jeweils 1:m, dies wird auch One-To-Many genannt.
+Aus Sicht eines SCHOOL_SUBJECT_GRADE ist die Beziehung umgekehrt m:1, dies wird auch Many-To-One genannt.
+Mit diesen Kenntnissen können nun die entsprechenden Annotationen aus JPA verwendet werden, um die Entitäten zu verbinden.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Beziehung zwischen Schulfach und Mapping-Tabelle&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Entity&lt;/span>
+&lt;span style="color:#a6e22e">@Table&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SCHOOL_SUBJECT&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Schulfach&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@OneToMany&lt;/span>&lt;span style="color:#f92672">(&lt;/span>mappedBy &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;schulfach&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchulfachNote&lt;span style="color:#f92672">&amp;gt;&lt;/span> noten&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#a6e22e">@Entity&lt;/span>
+&lt;span style="color:#a6e22e">@Table&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SCHOOL_SUBJECT_GRADE&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SchulfachNote&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@ManyToOne&lt;/span>
+&lt;span style="color:#a6e22e">@JoinColumn&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;FK_SCHOOL_SUBJECT_ID&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> nullable &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> Schulfach schulfach&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Bei der Klasse &lt;em>Schulfach&lt;/em> sehen wir die Verbindung zu allen Schulfach-Noten über ein Set und die Annotation &lt;code>@OneToMany&lt;/code>
+unter Angabe des Namens der Instanzvariable aus der Klasse &lt;code>SchulfachNote&lt;/code>.
+Bei der Klasse &lt;code>SchulfachNote&lt;/code> sehen wir die Verbindung zu einem Schulfach über die Annotation &lt;code>@ManyToOne&lt;/code> und der Angabe
+der Kolonne, welche den Fremdschlüssel enthält. Die Angabe von &lt;code>nullable = false&lt;/code> dient der Angabe, dass die Kolonne des
+Fremdschlüssels keine &lt;code>null&lt;/code>-Werte zulässt.&lt;/p>
+&lt;hr>
+&lt;h2 id="verbinde-die-anderen-beiden-entitäten-grade-und-school_subject_grade-mit-den-richtigen-beziehungen">&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Verbinde die anderen beiden Entitäten &lt;code>GRADE&lt;/code> und &lt;code>SCHOOL_SUBJECT_GRADE&lt;/code> mit den richtigen Beziehungen.&lt;/h2>
+&lt;p>Im nächsten Schritt werden nun die Repository-Interfaces angelegt.&lt;/p>
+&lt;p>&lt;strong>Beispiel: JPA-Repository für die Schulfachverwaltung&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Repository&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">SchulfachAdminRepository&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> JpaRepository&lt;span style="color:#f92672">&amp;lt;&lt;/span>Schulfach&lt;span style="color:#f92672">,&lt;/span> String&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Bei diesem Repository sehen wir die Definition eines Interfaces, welches ein &lt;code>JpaRepository&lt;/code> erweitert.
+Die generischen Angaben stehen für die Klasse der Entität und dessen Primärschlüssel-Typ.
+Durch dieses Repository stehen bereits die wichtigsten CRUD-Operationen zur Verfügung.&lt;/p>
+&lt;hr>
+&lt;h2 id="erstelle-die-repository-klassen-für-die-beiden-anderen-entitäten">&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle die Repository-Klassen für die beiden anderen Entitäten.&lt;/h2>
+&lt;p>Die folgende Aufzählung der Operationen ist nicht vollständig, zeigt aber welchen Funktionsumfang ein solches Repository nun bereits besitzt:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>List&amp;lt;T&amp;gt; findAll()&lt;/code> liefert alle Einträge der Entität zurück&lt;/li>
+&lt;li>&lt;code>T getReferenceById(ID id)&lt;/code> liefert den Eintrag mit der entsprechenden ID zurück&lt;/li>
+&lt;li>&lt;code>Optional&amp;lt;T&amp;gt; findById(ID id)&lt;/code> liefert den Eintrag mit der entsprechenden ID als Optional zurück&lt;/li>
+&lt;li>&lt;code>long count()&lt;/code> zählt alle Einträge&lt;/li>
+&lt;li>&lt;code>void delete(T entity)&lt;/code> löscht die angegebene Entität&lt;/li>
+&lt;li>&lt;code>&amp;lt;S extends T&amp;gt; S save(S entity)&lt;/code> speichert die angegebene Entität und liefert sie zur weiteren Bearbeitung zurück&lt;/li>
+&lt;/ul>
+&lt;p>Für die Realisierung von Methoden zur Abdeckung der funktionalen Anforderungen dient die folgende Tabelle:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Funktionale Anforderung&lt;/th>
+&lt;th>Abdeckung durch JpaRepository&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)&lt;/td>
+&lt;td>Nein&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Alle Fächer und deren Durchschnittsnote auflisten&lt;/td>
+&lt;td>Nein&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Für ein bestimmtes Fach: Alle Noten und die Durchschnittsnote des Fachs auflisten&lt;/td>
+&lt;td>Nein&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Für ein bestimmtes Fach: Eine neue Note hinzufügen&lt;/td>
+&lt;td>Methode &lt;code>save&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Für ein bestimmtes Fach: Eine bestehende Note ändern&lt;/td>
+&lt;td>Methode &lt;code>save&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Für ein bestimmtes Fach: Eine bestehende Note löschen&lt;/td>
+&lt;td>Methode &lt;code>delete&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Alle Fächer auflisten&lt;/td>
+&lt;td>Methode &lt;code>findAll&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Neue Fächer hinzufügen&lt;/td>
+&lt;td>Methode &lt;code>save&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Bestehende Fächer bearbeiten&lt;/td>
+&lt;td>Methode &lt;code>save&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Bestehende Fächer löschen&lt;/td>
+&lt;td>Methode &lt;code>delete&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Damit müssen nur die Methoden für die ein wenig komplizierteren Datenbank-Abfragen definiert werden.
+Der einfachste Weg zu schnellen Resultaten führt über die Entitäten und deren Verbindungen untereinander.&lt;/p>
+&lt;p>Eine Note (GRADE) und ein Schulfach (SCHOOL_SUBJECT) sind jeweils über die letzte Tabelle (SCHOOL_SUBJECT_GRADE) miteinander verbunden.
+Diese Verbindung kann ebenfalls über JPA in den Entitäten abgebildet werden.&lt;/p>
+&lt;p>&lt;strong>Beispiel: Many-To-Many Verbindung zwischen Noten und Schulfächern&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Entity&lt;/span>
+&lt;span style="color:#a6e22e">@Table&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SCHOOL_SUBJECT&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Schulfach&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@ManyToMany&lt;/span>
+&lt;span style="color:#a6e22e">@JoinTable&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SCHOOL_SUBJECT_GRADE&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+joinColumns &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">@JoinColumn&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;FK_SCHOOL_SUBJECT_ID&amp;#34;&lt;/span>&lt;span style="color:#f92672">),&lt;/span>
+inverseJoinColumns &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">@JoinColumn&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;FK_GRADE_ID&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Note&lt;span style="color:#f92672">&amp;gt;&lt;/span> noten&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#a6e22e">@Entity&lt;/span>
+&lt;span style="color:#a6e22e">@Table&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;GRADE&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Note&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@ManyToMany&lt;/span>
+&lt;span style="color:#a6e22e">@JoinTable&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
+name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SCHOOL_SUBJECT_GRADE&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
+joinColumns &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">@JoinColumn&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;FK_GRADE_ID&amp;#34;&lt;/span>&lt;span style="color:#f92672">),&lt;/span>
+inverseJoinColumns &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">@JoinColumn&lt;/span>&lt;span style="color:#f92672">(&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;FK_SCHOOL_SUBJECT_ID&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubject&lt;span style="color:#f92672">&amp;gt;&lt;/span> subjects&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Es reicht also die &amp;ldquo;Mapping&amp;rdquo;-Tabelle und die gerichteten Verbindungen in Form der Kolonnen-Namen anzugeben.&lt;/p>
+&lt;p>Damit für ein bestimmtes Fach nun alle Noten abgeholt werden können, ist die folgende Implementation notwendig:
+&lt;strong>Beispiel: Laden aller Noten für ein bestimmtes Fach&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Repository&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">GradeRepository&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> JpaRepository&lt;span style="color:#f92672">&amp;lt;&lt;/span>Grade&lt;span style="color:#f92672">,&lt;/span> Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Grade&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">findGradesBySubjectsSubject&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String subject&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;details>
+&lt;summary>Möglichkeit 2: JDBC-Template&lt;/summary>
+&lt;h3 id="möglichkeit-2-jdbc-template">Möglichkeit 2: JDBC-Template&lt;/h3>
+&lt;p>Wer nicht mehr genau weiss was JDBC ist kann es &lt;a href="./../../../docs/java/java-jdbc.md">hier&lt;/a> nachlesen.&lt;/p>
+&lt;h4 id="dependency">Dependency&lt;/h4>
+&lt;p>Damit JDBC verwendet werden kann, muss zuerst eine neue Dependency in das &lt;code>pom.xml&lt;/code> hinzufügen werden.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.boot&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>spring-boot-starter-data-jdbc&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.mariadb.jdbc&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>mariadb-java-client&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>3.1.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="entity-klasse">Entity-Klasse&lt;/h4>
+&lt;p>Eine Entity-Klasse ist eine normale Java-Klasse, die als Modell für eine Tabelle in der Datenbank dient. Jedes Objekt dieser Klasse entspricht einer Zeile in der Tabelle.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Getter&lt;/span>
+&lt;span style="color:#a6e22e">@Setter&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Grade&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> Long gradeId&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> Double gradeValue&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Annotationen &lt;code>@Getter&lt;/code> und &lt;code>@Setter&lt;/code> sind zwei der am häufigsten verwendeten Annotationen in Lombok. Sie generieren automatisch Getter- und Setter-Methoden für die Felder einer Klasse. Lombok ist eine Java-Bibliothek, die es Entwicklern ermöglicht, boilerplate Code in ihren Java-Klassen zu reduzieren.&lt;/p>
+&lt;p>Damit man Lombok jedoch verwenden kann, muss man die folgende Dependency im &lt;code>pom.xml&lt;/code> hinzufügen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.projectlombok&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>lombok&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.18.22&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>provided&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="repository">Repository&lt;/h4>
+&lt;p>Ein Repository ein Designmuster oder eine Klasse, die den Datenbankzugriff für eine bestimmte Entität oder ein bestimmtes Objektmodell verwaltet. Es hilft, den Code zu organisieren und zentrale Methoden für den Zugriff auf die Datenbank bereitzustellen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">
+&lt;span style="color:#a6e22e">@Repository&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StudentRepository&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">StudentRepositoryImpl&lt;/span>&lt;span style="color:#f92672">(&lt;/span>JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">jdbcTemplate&lt;/span> &lt;span style="color:#f92672">=&lt;/span> jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubject&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">getAllSubjectsAndGrades&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="repository-klassen-und-service-klassen-verbinden">Repository-Klassen und Service-Klassen verbinden&lt;/h3>
+&lt;p>Die Verbindung zwischen Repository- und Service-Klassen in einer Softwareanwendung ist entscheidend für eine saubere Struktur und effiziente Datenverwaltung. Repository-Klassen handhaben den Datenzugriff, während Service-Klassen die Geschäftslogik umsetzen. Service-Klassen nutzen die Methoden der Repository-Klassen, um auf Daten zuzugreifen oder diese zu manipulieren. Diese Trennung ermöglicht eine klare Aufgabenverteilung, verbessert die Wartbarkeit und erleichtert die Integration von Datenzugriff und Geschäftslogik.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Service&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StudentService&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> StudentRepository studentRepository&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">StudentService&lt;/span>&lt;span style="color:#f92672">(&lt;/span>StudentRepository studentRepository&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">studentRepository&lt;/span> &lt;span style="color:#f92672">=&lt;/span> studentRepository&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectGradeDto&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">getAllSubjectsAndGrades&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> studentRepository&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getAllSubjectsAndGrades&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>
+Füge die benötigte Dependency in dein Projekt ein und erstelle die nötigen Entity-Klassen. Zudem erstelle die benötigten Services und Repositories in der korrekten packages Struktur.&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-4">Akzeptanzkriterien Schritt 4&lt;/h3>
+&lt;ul>
+&lt;li>Dependency wurde im &lt;code>pom.xml&lt;/code> hinzugefügt.&lt;/li>
+&lt;li>Alle nötigen Entities wurden erstellt.&lt;/li>
+&lt;li>Alle benötigten Services wurden erstellt und in einen Ordner für alle Services abgelegt.&lt;/li>
+&lt;li>Alle benötigten Repositories wurden erstellt und in einen Ordner für alle Repositories abgelegt.&lt;/li>
+&lt;/ul>
+&lt;h2 id="schritt-5-konfiguration-anlegen">Schritt 5: Konfiguration anlegen&lt;/h2>
+&lt;p>In der Konfigurationsdatei können Einstellungen für die Datenbankverbindung, Log-Ebene, Profile, Spring-Profile, Webserver-Port, Sicherheitskonfigurationen und viele andere Aspekte der Anwendung angegeben werden.&lt;/p>
+&lt;p>Die zwei häufigsten Arten eine Konfigurationsdatei anzulegen sind in &lt;code>application.yml&lt;/code> oder die &lt;code>application.properties&lt;/code>. Der Unterschied der beiden besteht darin das die &lt;code>application.yml&lt;/code>-Datei, in YAML-Syntax geschrieben ist, und die &lt;code>application.properties&lt;/code>-Datei eine einfache Key-Value-Paar-Syntax verwendet.&lt;/p>
+&lt;p>application.properties:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">spring.datasource.url=jdbc:mariadb://localhost:3306/[your_database]
+spring.datasource.username=[your_username]
+spring.datasource.password=[your_password]
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>application.yml:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">spring&lt;/span>:
+&lt;span style="color:#f92672">datasource&lt;/span>:
+&lt;span style="color:#f92672">url&lt;/span>: &lt;span style="color:#ae81ff">jdbc:mariadb://localhost:3306/[your_database]&lt;/span>
+&lt;span style="color:#f92672">username&lt;/span>: [&lt;span style="color:#ae81ff">your_username]&lt;/span>
+&lt;span style="color:#f92672">password&lt;/span>: [&lt;span style="color:#ae81ff">your_password]&lt;/span>
+&lt;span style="color:#f92672">driver-class-name&lt;/span>: &lt;span style="color:#ae81ff">org.mariadb.jdbc.Driver&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle deine Konfigurationsdatei entsprechend deiner Datenbank.&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-5">Akzeptanzkriterien Schritt 5&lt;/h3>
+&lt;ul>
+&lt;li>Die Spring Boot Applikation startet mit der Datenbank.&lt;/li>
+&lt;/ul>
+&lt;h2 id="schritt-6-profile-anlegen">Schritt 6: Profile anlegen&lt;/h2>
+&lt;p>In diesem Schritt erstellst du die gewünschten Spring Boot Profile: &amp;ldquo;student&amp;rdquo; und &amp;ldquo;admin&amp;rdquo;.
+Diese Profile werden benutzt, um die verfügbare Funktionalität einzuschränken bzw. zu erweitern.
+Welche Funktionalität mit welchem Profil zur Verfügung stehen darf, entnimmst du aus den funktionalen Anforderungen.&lt;/p>
+&lt;p>Mit der &lt;em>@Profile&lt;/em> Annotation, kannst du bestimmte Beans für das gegebene Profil aktivieren bzw. deaktivieren.&lt;/p>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem aktiven Profil&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-6">Akzeptanzkriterien Schritt 6&lt;/h3>
+&lt;ul>
+&lt;li>Wenn die Anwendung mit dem Profil &amp;ldquo;student&amp;rdquo; gestartet wird, darf die Admin-Funktionalität nicht zur Verfügung stehen. Direkter Zugriff auf Admin-URLs liefert den HTTP Status-Code: 404 (Not Found)&lt;/li>
+&lt;li>Wenn die Anwendung mit dem Profil &amp;ldquo;admin&amp;rdquo; gestartet wird, steht die gesamte Funktionalität zur Verfügung.&lt;/li>
+&lt;li>Wenn die Anwendung mit dem Default-Profil gestartet wird, muss sie sich genauso verhalten, wie mit dem &amp;ldquo;student&amp;rdquo; Profil.&lt;/li>
+&lt;/ul>
+&lt;h2 id="schritt-7-business-logik--und-persistenz-layer-anpassen">Schritt 7 Business-Logik- und Persistenz-Layer anpassen&lt;/h2>
+&lt;h3 id="repository--und-service-implementierungen">Repository- und Service-Implementierungen&lt;/h3>
+&lt;p>In Spring Boot ist die Verwendung von Repository- und Service-Implementierungen eine bewährte Methode, um eine saubere Trennung von Geschäftslogik, Datenzugriff und Präsentation sicherzustellen. Diese Trennung hilft, den Code übersichtlich, wartbar und testbar zu machen.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Repository-Interface: Definiert die Methoden für den Datenzugriff.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Repository-Implementierung (RepositoryImpl): Implementiert die Methoden des Repository-Interfaces und führt die tatsächlichen Datenbankoperationen aus.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Service-Interface: Definiert die Methoden für die Geschäftslogik.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Service-Implementierung (ServiceImpl): Implementiert die Methoden des Service-Interfaces und ruft bei Bedarf das Repository auf, um auf Daten zuzugreifen.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">StudentRepository&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubject&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">getAllSubjectsAndGrades&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Repository&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StudentRepositoryImpl&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> StudentRepository &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">StudentRepositoryImpl&lt;/span>&lt;span style="color:#f92672">(&lt;/span>JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">jdbcTemplate&lt;/span> &lt;span style="color:#f92672">=&lt;/span> jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubject&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">getAllSubjectsAndGrades&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Passe deine Services und Repositories entsprechend der Implementierungs-Methode an.&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-7">Akzeptanzkriterien Schritt 7&lt;/h3>
+&lt;ul>
+&lt;li>Alle Services sind mit der Implementierungs-Methode ausgestattet.&lt;/li>
+&lt;li>Alle Repositories sind mit der Implementierungs-Methode ausgestattet&lt;/li>
+&lt;/ul>
+&lt;details>
+&lt;summary>Schritt 8 Persistenz-Layer fertigstellen (Nur für JDBC)&lt;/summary>
+&lt;h2 id="schritt-8-persistenz-layer-fertigstellen-nur-für-jdbc">Schritt 8 Persistenz-Layer fertigstellen (Nur für JDBC)&lt;/h2>
+&lt;h3 id="queries">Queries&lt;/h3>
+&lt;p>Typischerweise implementieren JDBC-Repositories benutzerdefinierte Methoden für spezielle Datenbankabfragen. Diese Methoden nutzen das JdbcTemplate (Teil des Spring-Frameworks), um SQL-Queries auszuführen. Dabei können Platzhalter oder Named Parameters verwendet werden, um dynamische Werte in die Abfragen einzufügen.&lt;/p>
+&lt;p>&lt;code>PreparedStatementSetter&lt;/code> ist ein funktionales Interface in Spring JDBC. Es wird verwendet, um Parameter für parametrisierte Abfragen auf einem PreparedStatement festzulegen.
+Die Verwendung von &lt;code>PreparedStatementSetter&lt;/code> hilft, die Logik zum Setzen von Parametern zu kapseln, was den Code modularer und leichter wartbar macht.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sql" data-lang="sql">&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> SCHOOL_SUBJECT (subject_name) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#f92672">?&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Repository&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StudentRepositoryImpl&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> StudentRepository &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">StudentRepositoryImpl&lt;/span>&lt;span style="color:#f92672">(&lt;/span>JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">jdbcTemplate&lt;/span> &lt;span style="color:#f92672">=&lt;/span> jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">addSubject&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SchoolSubjectDto schoolSubjectDto&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String sql &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;INSERT INTO SCHOOL_SUBJECT (subject_name) VALUES (?)&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+PreparedStatementSetter preparedStatementSetter &lt;span style="color:#f92672">=&lt;/span> preparedStatement &lt;span style="color:#f92672">-&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+preparedStatement&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">setString&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">,&lt;/span> schoolSubjectDto&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getSubjectName&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">};&lt;/span>
+jdbcTemplate&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">update&lt;/span>&lt;span style="color:#f92672">(&lt;/span>sql&lt;span style="color:#f92672">,&lt;/span> preparedStatementSetter&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="mapping">Mapping&lt;/h3>
+&lt;p>In der Softwareentwicklung stellt sich oft die Frage, wie man das Mapping zwischen verschiedenen Ebenen der Anwendung am besten handhabt. Insbesondere geht es darum, wie man Daten zwischen der Datenbank, der Geschäftslogik (Services) und der Benutzerschnittstelle (DTOs - Data Transfer Objects) hin- und herbewegt.&lt;/p>
+&lt;p>Eine Möglichkeit ist, das Mapping nicht im Service durchzuführen. Dies wird zwar nicht zwingend empfohlen, aber es ähnelt dem Ansatz von JPA (Java Persistence API) und kann daher vorteilhaft sein. Hierbei wird das Mapping eher in den Repositories durchgeführt. Dies verringert die Belastung des Service mit zusätzlichem Mapping und spezifischen Abfragen (Queries). Allerdings kann dies zu einer unübersichtlichen Repository-Schicht führen, da sie dann sowohl für das Mapping als auch für die Abfragen verantwortlich ist.&lt;/p>
+&lt;p>Wenn das Mapping im Service durchgeführt wird, bedeutet dies ein zusätzliches Mapping von der Abfrage (Query) zu den Entity-Objekten und dann zu den DTOs. Dies kann ineffizient erscheinen, da man ein Objekt erstellt, das später vom Garbage Collector aufgeräumt werden muss.&lt;/p>
+&lt;p>Der JPA-Ansatz könnte mehr Daten zurückholen, als tatsächlich benötigt werden, da alle Eigenschaften in das Entity-Objekt geladen werden, selbst wenn sie im DTO nicht benötigt werden. Dies könnte ineffizient sein, insbesondere wenn nur ein Teil der Daten benötigt wird.&lt;/p>
+&lt;p>Im Kontext von JDBC (Java Database Connectivity) gibt es viele verschiedene Ansätze und keinen &amp;ldquo;einen&amp;rdquo; richtigen Weg. Es ist möglich, JPA und JDBC zu mischen, um das Beste aus beiden Welten zu nutzen.&lt;/p>
+&lt;p>Insgesamt ist die Wahl des richtigen Ansatzes abhängig von den Anforderungen des Projekts, der Skalierbarkeit, der Performance und den individuellen Vorlieben des Entwicklungsteams. Es ist wichtig, die Vor- und Nachteile der verschiedenen Ansätze abzuwägen und den am besten geeigneten Ansatz für das spezifische Projekt zu wählen.&lt;/p>
+&lt;h4 id="dto-zu-entity">DTO zu Entity&lt;/h4>
+&lt;p>Durch das Mappen der Entity-Objekte auf DTOs können wir die Datenstruktur an die spezifischen Anforderungen anpassen. DTOs enthalten nur die relevanten Daten, die zwischen verschiedenen Teilen der Anwendung oder sogar zu externen Systemen übertragen werden müssen. Dies ermöglicht eine effizientere Datenübertragung und verhindert die Offenlegung von sensiblen oder unnötigen Informationen.&lt;/p>
+&lt;p>Des Weiteren schafft die Verwendung von DTOs eine klare Trennung der Verantwortlichkeiten. Die Entity-Objekte kümmern sich um die Interaktion mit der Datenbank, während die DTOs die übertragenen Daten in geeigneter Form halten. Somit wird eine saubere Architektur gefördert, die gut skalierbar und wartbar ist.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> SchoolSubject &lt;span style="color:#a6e22e">mapDtoToEntity&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SchoolSubjectDto dto&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>dto &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+SchoolSubject entity &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SchoolSubject&lt;span style="color:#f92672">();&lt;/span>
+entity&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">setSubjectId&lt;/span>&lt;span style="color:#f92672">(&lt;/span>dto&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getSubjectId&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+entity&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">setSubjectName&lt;/span>&lt;span style="color:#f92672">(&lt;/span>dto&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getSubjectName&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> entity&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java"> &lt;span style="color:#a6e22e">@Service&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AdminService&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> AdminRepository adminRepository&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">AdminService&lt;/span>&lt;span style="color:#f92672">(&lt;/span>AdminRepository adminRepository&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">adminRepository&lt;/span> &lt;span style="color:#f92672">=&lt;/span> adminRepository&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">addSubject&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SchoolSubjectDto schoolSubjectDto&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+adminRepository&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">addSubject&lt;/span>&lt;span style="color:#f92672">(&lt;/span>mapDtoToEntity&lt;span style="color:#f92672">(&lt;/span>schoolSubjectDto&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="rowmapper">RowMapper&lt;/h4>
+&lt;p>In JDBC, ist der RowMapper ein Interface, das verwendet wird, um das Mapping von Zeilen aus dem ResultSet auf Objekte zu ermöglichen. Es wird verwendet, um das Ergebnis jedes Datensatzes aus der Abfrage in ein Objekt umzuwandeln.&lt;/p>
+&lt;p>Erstelle eine Klasse, die das &lt;code>RowMapper&lt;/code>-Interface implementiert und die &lt;code>mapRow&lt;/code>-Methode überschreibt. In dieser Methode wird definiert, wie eine Zeile aus dem ResultSet in ein Objekt gemappt wird.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> org.springframework.jdbc.core.RowMapper&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">import&lt;/span> java.sql.ResultSet&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">import&lt;/span> java.sql.SQLException&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SchoolSubjectDtoRowMapper&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> RowMapper&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectDto&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> SchoolSubjectDto &lt;span style="color:#a6e22e">mapRow&lt;/span>&lt;span style="color:#f92672">(&lt;/span>ResultSet resultSet&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> rowNum&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> SQLException &lt;span style="color:#f92672">{&lt;/span>
+Long subjectId &lt;span style="color:#f92672">=&lt;/span> resultSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getLong&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;subject_id&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+String subjectName &lt;span style="color:#f92672">=&lt;/span> resultSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getString&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;subject_name&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SchoolSubjectDto&lt;span style="color:#f92672">(&lt;/span>subjectId&lt;span style="color:#f92672">,&lt;/span> subjectName&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im RepositoryImpl kann man nun die erstellte Mapper-Methode verwenden, um das Ergebnis der JDBC-Operation zu mappen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Repository&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">StudentRepositoryImpl&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> StudentRepository &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> NamedParameterJdbcTemplate namedParameterJdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> CommonDeclarableProperties declarableProperties&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">StudentRepositoryImpl&lt;/span>&lt;span style="color:#f92672">(&lt;/span>NamedParameterJdbcTemplate namedParameterJdbcTemplate&lt;span style="color:#f92672">,&lt;/span> CommonDeclarableProperties declarableProperties&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">namedParameterJdbcTemplate&lt;/span> &lt;span style="color:#f92672">=&lt;/span> namedParameterJdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">declarableProperties&lt;/span> &lt;span style="color:#f92672">=&lt;/span> declarableProperties&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectDto&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">getAllSubjects&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String sql &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SELECT * FROM SCHOOL_SUBJECT&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> namedParameterJdbcTemplate&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">query&lt;/span>&lt;span style="color:#f92672">(&lt;/span>sql&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SchoolSubjectDtoRowMapper&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="resultsetextractor">ResultSetExtractor&lt;/h4>
+&lt;p>Auch der ResultSetExtractor ist ein funktionales Interface, das verwendet wird, um das Mapping von ResultSet auf ein Objekt oder eine Liste von Objekten zu ermöglichen. Es ermöglicht eine benutzerdefinierte Verarbeitung der ResultSet-Daten.&lt;/p>
+&lt;p>Erstelle eine Klasse und verwende das &lt;code>ResultSetExtractor&lt;/code>-Interface, um zu definieren, wie das ResultSet in ein Objekt oder eine Liste von Objekten umgewandelt werden soll.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">SchoolSubjectDtoResultSetExtractor&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> ResultSetExtractor&lt;span style="color:#f92672">&amp;lt;&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectDto&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectDto&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">extractData&lt;/span>&lt;span style="color:#f92672">(&lt;/span>ResultSet resultSet&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> SQLException &lt;span style="color:#f92672">{&lt;/span>
+List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectDto&lt;span style="color:#f92672">&amp;gt;&lt;/span> schoolSubjectDtos &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+&lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#f92672">(&lt;/span>resultSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">next&lt;/span>&lt;span style="color:#f92672">())&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+Long gradeId &lt;span style="color:#f92672">=&lt;/span> resultSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getLong&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;subject_id&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+String subjectName &lt;span style="color:#f92672">=&lt;/span> resultSet&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getString&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;subject_name&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+SchoolSubjectDto schoolSubjectDto &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SchoolSubjectDto&lt;span style="color:#f92672">(&lt;/span>gradeId&lt;span style="color:#f92672">,&lt;/span> subjectName&lt;span style="color:#f92672">);&lt;/span>
+schoolSubjectDtos&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>schoolSubjectDto&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> schoolSubjectDtos&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im RepositoryImpl kann man nun die erstellte Extractor-Methode verwenden um das Ergebnis der JDBC Operation zu mappen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@Repository&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AdminRepositoryImpl&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> AdminRepository &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> NamedParameterJdbcTemplate namedParameterJdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">AdminRepositoryImpl&lt;/span>&lt;span style="color:#f92672">(&lt;/span>NamedParameterJdbcTemplate namedParameterJdbcTemplate&lt;span style="color:#f92672">,&lt;/span> JdbcTemplate jdbcTemplate&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">namedParameterJdbcTemplate&lt;/span> &lt;span style="color:#f92672">=&lt;/span> namedParameterJdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">jdbcTemplate&lt;/span> &lt;span style="color:#f92672">=&lt;/span> jdbcTemplate&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#a6e22e">@Override&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectDto&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">getAllSubjects&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String sql &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;SELECT * FROM SCHOOL_SUBJECT&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> namedParameterJdbcTemplate&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">query&lt;/span>&lt;span style="color:#f92672">(&lt;/span>sql&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> SchoolSubjectDtoResultSetExtractor&lt;span style="color:#f92672">());&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>
+Ergänze deine Repositories mit den nötigen SQL-Queries (wähle selbst, ob du es auslagern möchtest oder nicht).
+Implementiere die benötigten Mapper und setze sie an den benötigten Orten ein (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-8">Akzeptanzkriterien Schritt 8&lt;/h3>
+&lt;ul>
+&lt;li>Es werden nun nicht mehr mittels Mockdaten verwendet, sondern direkt SQL-Queries benutzt.&lt;/li>
+&lt;li>Die erhaltenen Daten, aus der Datenbank, werden korrekt für die DAOs gemappt.&lt;/li>
+&lt;li>Die DAOs werden korrekt gemappt bevor sie an die Datenbank gesendet werden.&lt;/li>
+&lt;/ul>
+&lt;/details>
+&lt;h2 id="schritt-9-api-testen">Schritt 9: API testen&lt;/h2>
+&lt;p>Sobald deine Schnittstelle umgesetzt wird bzw. bereits ab dem zweiten Schritt in diesem Auftrag, kann die Schnittstelle von HTTP-Clients angesprochen und getestet werden.
+In diesem Schritt wirst du deine Schnittstelle mit dem &lt;em>IntelliJ HTTP-Client&lt;/em> testen.&lt;/p>
+&lt;p>Eine Alternative zum &lt;em>IntelliJ HTTP-Client&lt;/em> bietet &lt;code>Swagger&lt;/code> an.
+Swagger ist ein Open-Source-Framework, das in erster Linie dazu dient, APIs zu entwerfen, zu dokumentieren und zu testen. Es ermöglicht eine einfache und strukturierte Beschreibung von Webdiensten, um deren Funktionalitäten, Parameter und Endpunkte zu verstehen.&lt;/p>
+&lt;p>Mit Spring Boot 3 kann man neu nur noch einen Dependency hinzufügen damit der Swagger läuft. Diese sieht folgerndermassen aus:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.springdoc&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>springdoc-openapi-starter-webmvc-ui&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>2.2.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Für unsere Test-Zwecke reicht der IntelliJ HTTP-Client völlig aus.&lt;/p>
+&lt;h3 id="testen-mit-intellij-http-client">Testen mit IntelliJ HTTP Client&lt;/h3>
+&lt;p>Wenn du eine RestController-Klasse in IntelliJ offen hast, wird an einigen Stellen ein Symbol dargestellt wie hier mit Rot unterstrichen:
+&lt;img src="../assets/05_intellij_http_client_symbol.png" alt="">&lt;/p>
+&lt;p>Wenn man den Pfeil neben dem Symbol drückt, kann man die Option &amp;ldquo;Generate Request in HTTP Client&amp;rdquo; auswählen:
+&lt;img src="../assets/06_intellij_http_client_dropdown.png" alt="">&lt;/p>
+&lt;p>Somit wird der HTTP-Client Editor geöffnet, mit dem entsprechenden HTTP-Method und Pfad:
+&lt;img src="../assets/07_intellij_http_client_editor.png" alt="">&lt;/p>
+&lt;p>Mit einem Klick auf dem grünen Pfeil, wird die HTTP Request ausgeführt.
+Wenn du ein Beispiel brauchst, um zu wissen, wie du Requests erstellst (z.B. solche mit einem Request-Body)
+kannst du auf dem &lt;em>Examples&lt;/em> Pfeil (oben rechts) klicken und die entsprechende Beispiel-Datei öffnen.&lt;/p>
+&lt;p>Weitere Dokumentation zum IntelliJ HTTP-Client findest du &lt;a href="https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html">auf dieser IntelliJ IDEA Seite&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle ausführt.&lt;/p>
+&lt;h3 id="akzeptanzkriterien-schritt-9">Akzeptanzkriterien Schritt 9&lt;/h3>
+&lt;ul>
+&lt;li>Eine HTTP-Request Datei liegt vor, welche alle öffentlichen Schnittstellen-Methoden ausführen kann.&lt;/li>
+&lt;li>Bei Methoden, welche Parameter oder einen Request-Body brauchen, sind diese in den Requests auch so konfiguriert.&lt;/li>
+&lt;li>Jede Methode, welche ausgeführt wird, liefert die erwarteten Ergebnisse (ggf. auch Anpassungen der Daten in der darunterliegenden Datenbank).&lt;/li>
+&lt;/ul>
+&lt;h2 id="integrationstests-mit-h2-umsetzen">Integrationstests mit H2 umsetzen&lt;/h2>
+&lt;p>Integrationstests mit H2 in einem Spring-Boot-Projekt umzusetzen ist eine bewährte Methode, um die Interaktion zwischen verschiedenen Komponenten einer Anwendung zu testen, ohne auf eine reale Datenbank angewiesen zu sein.
+In diesem Kontext dient H2, eine In-Memory-Datenbank, als Ersatz für die eigentliche Datenbank und erlaubt es, Tests zu schreiben, welche die Anwendungslogik unter simulierten Bedingungen überprüft.&lt;/p>
+&lt;h3 id="struktur">Struktur&lt;/h3>
+&lt;p>Es wird folgende Ordnerstruktur empfohlen, damit das gesamte Testing wie gewollt funktioniert:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">src/
+|-- main/
+| |-- java/
+| | |-- com/
+| | |-- example/
+| | |-- myapp/
+| | |-- YourProductionCode.java
+|-- test/
+| |-- java/
+| | |-- com/
+| | |-- example/
+| | |-- myapp/
+| | |-- integration/
+| | |-- YourIntegrationTests.java
+| |-- resources/
+| |-- application-test.properties
+| |-- schema.sql
+| |-- data.sql
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="dependencies">Dependencies&lt;/h3>
+&lt;p>Damit man H2 verwenden kann, muss man auch hier noch einen Dependency im &lt;code>pom.xml&lt;/code> hinzufügen. Diese ist folgende:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-xml" data-lang="xml">&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>com.h2database&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>h2&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="konfiguration-anlegen">Konfiguration anlegen&lt;/h3>
+&lt;p>In der Testkonfiguration (z. B. &lt;code>application-test.properties&lt;/code>), konfiguriert man H2 als Datenbank für die Integrationstests. Es wird die Verbindungs-URL, der Treiber und die Anmeldeinformationen für H2 festgelegt. Diese Datenbank wird in den Tests automatisch erstellt und verwaltet.&lt;/p>
+&lt;p>application-test.properties:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.datasource.platform=h2
+spring.jpa.hibernate.ddl-auto=update
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>application-test.yml:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">spring&lt;/span>:
+&lt;span style="color:#f92672">datasource&lt;/span>:
+&lt;span style="color:#f92672">url&lt;/span>: &lt;span style="color:#ae81ff">jdbc:h2:mem:testdb&lt;/span>
+&lt;span style="color:#f92672">username&lt;/span>: &lt;span style="color:#ae81ff">sa&lt;/span>
+&lt;span style="color:#f92672">password&lt;/span>: &lt;span style="color:#ae81ff">password&lt;/span>
+&lt;span style="color:#f92672">platform&lt;/span>: &lt;span style="color:#ae81ff">h2&lt;/span>
+&lt;span style="color:#f92672">driver-class-name&lt;/span>: &lt;span style="color:#ae81ff">org.h2.Driver&lt;/span>
+&lt;span style="color:#f92672">jpa&lt;/span>:
+&lt;span style="color:#f92672">hibernate&lt;/span>:
+&lt;span style="color:#f92672">ddl-auto&lt;/span>: &lt;span style="color:#ae81ff">update&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="sql-files">SQL Files&lt;/h3>
+&lt;p>Nun werden SQL-Skripte benötigt, die das Datenbankschema und Testdaten definieren. Diese Skripte werden während der Testausführung automatisch geladen.&lt;/p>
+&lt;h4 id="schema-file">Schema File&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sql" data-lang="sql">&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> SCHOOL_SUBJECT (
+subject_id INT AUTO_INCREMENT &lt;span style="color:#66d9ef">PRIMARY&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span>,
+subject_name VARCHAR(&lt;span style="color:#ae81ff">255&lt;/span>) &lt;span style="color:#66d9ef">NOT&lt;/span> &lt;span style="color:#66d9ef">NULL&lt;/span>
+);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="data-file">Data File&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sql" data-lang="sql">&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> SCHOOL_SUBJECT (subject_name) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#39;Mathematics&amp;#39;&lt;/span>);
+&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> SCHOOL_SUBJECT (subject_name) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#39;History&amp;#39;&lt;/span>);
+&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> SCHOOL_SUBJECT (subject_name) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#39;Science&amp;#39;&lt;/span>);
+&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> SCHOOL_SUBJECT (subject_name) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#39;English&amp;#39;&lt;/span>);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="integration-test">Integration Test&lt;/h3>
+&lt;p>Integrationstests sind wichtig, um sicherzustellen, dass verschiedene Komponenten einer Anwendung (z. B. Klassen, Module, Services, REST-Endpunkte) ordnungsgemäss miteinander interagieren und Daten korrekt austauschen. Sie helfen dabei, potenzielle Fehler und Inkompatibilitäten zwischen den Komponenten frühzeitig zu erkennen und zu beheben.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#a6e22e">@SpringBootTest&lt;/span>
+&lt;span style="color:#a6e22e">@AutoConfigureMockMvc&lt;/span>
+&lt;span style="color:#a6e22e">@ActiveProfiles&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;admin&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#a6e22e">@ExtendWith&lt;/span>&lt;span style="color:#f92672">(&lt;/span>SpringExtension&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AdminControllerIntegrationTest&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#a6e22e">@Autowired&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> MockMvc mockMvc&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#a6e22e">@MockBean&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> AdminService adminService&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#a6e22e">@Test&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testGetAllSubjects&lt;/span>&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> Exception &lt;span style="color:#f92672">{&lt;/span>
+List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubjectDto&lt;span style="color:#f92672">&amp;gt;&lt;/span> subjects &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+subjects&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> SchoolSubjectDto&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Mathematics&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span>
+subjects&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> SchoolSubjectDto&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;History&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span>
+when&lt;span style="color:#f92672">(&lt;/span>adminService&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getAllSubjects&lt;/span>&lt;span style="color:#f92672">()).&lt;/span>&lt;span style="color:#a6e22e">thenReturn&lt;/span>&lt;span style="color:#f92672">(&lt;/span>subjects&lt;span style="color:#f92672">);&lt;/span>
+mockMvc&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">perform&lt;/span>&lt;span style="color:#f92672">(&lt;/span>get&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/api/admin/subjects&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contentType&lt;/span>&lt;span style="color:#f92672">(&lt;/span>MediaType&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">APPLICATION_JSON&lt;/span>&lt;span style="color:#f92672">))&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">andExpect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>status&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">isOk&lt;/span>&lt;span style="color:#f92672">())&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">andExpect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>content&lt;span style="color:#f92672">().&lt;/span>&lt;span style="color:#a6e22e">contentType&lt;/span>&lt;span style="color:#f92672">(&lt;/span>MediaType&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">APPLICATION_JSON&lt;/span>&lt;span style="color:#f92672">))&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">andExpect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>jsonPath&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;$[0].subjectId&amp;#34;&lt;/span>&lt;span style="color:#f92672">).&lt;/span>&lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">))&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">andExpect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>jsonPath&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;$[0].subjectName&amp;#34;&lt;/span>&lt;span style="color:#f92672">).&lt;/span>&lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Mathematics&amp;#34;&lt;/span>&lt;span style="color:#f92672">))&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">andExpect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>jsonPath&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;$[1].subjectId&amp;#34;&lt;/span>&lt;span style="color:#f92672">).&lt;/span>&lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">))&lt;/span>
+&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">andExpect&lt;/span>&lt;span style="color:#f92672">(&lt;/span>jsonPath&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;$[1].subjectName&amp;#34;&lt;/span>&lt;span style="color:#f92672">).&lt;/span>&lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;History&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e">// ...
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Labs: Streams Basics - Aufgaben</title><link>/labs/java/java-lists-and-streams-basics/02_streamexercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-lists-and-streams-basics/02_streamexercises/</guid><description>
 &lt;h3 id="aufgabe-1">Aufgabe 1&lt;/h3>
 &lt;p>Schreibe ein Programm, welches aus der Kommandozeile eine Reihe von Zahlen in einer beliebigen Reihenfolge
 liest und die unsortierte wie auch die sortierte Liste in der Konsole ausgibt.&lt;/p>
@@ -5575,185 +7090,4 @@ nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwo
 &lt;li>Tiefere Werte verteilen also ihren Schaden später als höhere Werte&lt;/li>
 &lt;li>Eine Spielfigur mit tiefem Initiative-Wert kann nicht mehr zurückschlagen wenn sie getötet wird&lt;/li>
 &lt;li>Das Tragen von schweren Rüstungen verringert den Initiative-Wert&lt;/li>
-&lt;/ul></description></item><item><title>Labs: Set - Aufgaben</title><link>/labs/java/java-collections/02_set/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/02_set/</guid><description>
-&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>Schreibe ein Programm, welches die Personen von vier Vereine auswertet.&lt;/p>
-&lt;ol>
-&lt;li>Pro Verein existiert ein &lt;code>Set&lt;/code> mit allen Vereinsmitlieder (siehe Input).&lt;/li>
-&lt;li>Das Programm analysiert die Vereinsmitglieder und schreibt verschiedene Aussagen in die Konsole (siehe Ausgabe).&lt;/li>
-&lt;li>Die Namen der Personen müssen in alphabetischer Reihenfolge angezeigt werden.&lt;/li>
-&lt;/ol>
-&lt;h3 id="input">Input&lt;/h3>
-&lt;details>
-&lt;summary>4 Sets&lt;/summary>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> fussballVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paula&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> schwimmVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Klaus&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anina&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Nicole&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Gerda&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> musikVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Kari&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Karin&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> tanzVerein &lt;span style="color:#f92672">=&lt;/span> Set&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">of&lt;/span>&lt;span style="color:#f92672">(&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span>
-&lt;span style="color:#e6db74">&amp;#34;Lara&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Sabine&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/details>
-&lt;h3 id="ausgabe">Ausgabe&lt;/h3>
-&lt;p>Die Ausgabe muss das folgende Format aufweisen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">- Wie viele Personen machen min. in einem Verein mit: 2: Maria,Xaver
-- Alle Personen, welche im Fussball und Tanz Verein sind: 2: Maria,Xaver
-- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 2: Maria,Xaver
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="ausgabe-überprüfen">Ausgabe überprüfen&lt;/h3>
-&lt;p>Wie können wir die Ausgabe überprüfen, ohne dass ihr die Lösung kennt?
-Wir benützen dazu eine kleine Hilfsklasse &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java">&lt;code>OutputValidation&lt;/code>&lt;/a>.
-Die Klasse erlaubt es eure &lt;code>System.out.println()&lt;/code> Anweisungen mit &lt;code>OutputValidation.logAndPrint()&lt;/code> zu ersetzten.
-Am Schluss des Programmes kann man mit &lt;code>OutputValidation.printControlHash()&lt;/code> den Hash-Wert der eigenen Ausgabe anzeigen, oder mit &lt;code>OutputValidation.verifyControlHash()&lt;/code> einen Hash-Wert zur Überprüfung mit eurer Ausgabe überreichen.&lt;/p>
-&lt;p>Ein Anwendungsbeispiel seht ihr unter &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidationUsage.java">OutputValidationUsage&lt;/a>.&lt;/p>
-&lt;p>Der Hash für diese Aufgabe ist: &lt;strong>&lt;code>-1421274666&lt;/code>&lt;/strong>&lt;/p>
-&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
-&lt;p>Wir programmieren eine eigene Set-Klasse &lt;code>MySet&lt;/code>, welche noch kein Hash-Code verwendet.&lt;/p>
-&lt;ol>
-&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
-&lt;li>Die Klasse muss das Interface &lt;code>MySetInterfaceSimple&lt;/code> implementieren.&lt;/li>
-&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichern muss. Sie muss die Grösse des Arrays dynamische anpassen.&lt;/li>
-&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MySet&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.&lt;/li>
-&lt;li>Überprüfe deine Implemenation mit dem JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a>&lt;/li>
-&lt;/ol>
-&lt;h3 id="input-1">Input&lt;/h3>
-&lt;details>
-&lt;summary>Inferface MySetInterfaceSimple&lt;/summary>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">package&lt;/span> com.examples.list&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MySetInterfaceSimple&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Adds the specified element to this set if it is not already present.
-&lt;/span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
-&lt;/span>&lt;span style="color:#75715e"> * @return true if this set did not already contain the specified element
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E element&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Removes the specified element from this set if it is present.
-&lt;/span>&lt;span style="color:#75715e"> * @param object object to be removed from this set, if present
-&lt;/span>&lt;span style="color:#75715e"> * @return true if the set contained the specified element
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains the specified element.
-&lt;/span>&lt;span style="color:#75715e"> * @param object element whose presence in this set is to be tested
-&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains the specified element
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object object&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns the number of elements in this set.
-&lt;/span>&lt;span style="color:#75715e"> * @return the number of elements in this set
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns true if this set contains no elements.
-&lt;/span>&lt;span style="color:#75715e"> * @return true if this set contains no elements
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Removes all the elements from this set. The set will be empty after this call returns.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/details>
-&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
-&lt;p>Wir Kopieren unsere &lt;code>MySet&lt;/code> Klasse zu der Klasse &lt;code>MyHashSet&lt;/code> und erweitern diese, damit sie Hash Funktionalität verwendet:&lt;/p>
-&lt;ol>
-&lt;li>Beim Hinzufügen von neuen Elementen wird deren Hash-Code berechnet und ebenfalls abgespeichert.&lt;/li>
-&lt;li>Die Suche nach bestehenden Elementen wird anschliessend über den gespeicherten Hash-Code durchgeführt statt über die Elemente selbst.&lt;/li>
-&lt;li>Du kannst deine Implemenation mit dem gleichen JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a> überprüfen, da sich die neue Klasse gleich verhalten soll. Erstelle vom Test eine Kopie &lt;code>MyHashSetTest&lt;/code> und ändere &lt;code>MySet&lt;/code> überall zu &lt;code>MyHahsSet&lt;/code>.&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/ul></description></item></channel></rss>
