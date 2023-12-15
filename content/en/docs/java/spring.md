@@ -1,5 +1,5 @@
 ---
-title: "SpringDoc"
+title: "Spring"
 linkTitle: "Spring"
 weight: 14
 description: >
