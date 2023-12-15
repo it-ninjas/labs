@@ -4714,7 +4714,115 @@ Falls ihr keine Ideen habt, gibt es hier ein paar Beispiele:&lt;/p>
 &lt;li>Aufteilung nach Ernährung (Fleischfresser, Pflanzenfresser, Allesfresser :-))&lt;/li>
 &lt;/ul>
 &lt;p>Der Zoo hat also Mitarbeiter und Mitglieder und verschiedene Tiere, die in verschiedenen Gehegen leben.
-Die Beziehung zwischen den einzelnen Klassen wie dem Zoo seinen Gehegen und Tieren soll sich an der realen Welt orientieren.&lt;/p></description></item><item><title>Docs: Special Typescript Operators</title><link>/docs/web/typescript/02_ts_special_operators/</link><pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/typescript/02_ts_special_operators/</guid><description>
+Die Beziehung zwischen den einzelnen Klassen wie dem Zoo seinen Gehegen und Tieren soll sich an der realen Welt orientieren.&lt;/p></description></item><item><title>Exams: Exam zu Angular</title><link>/exams/web/angular/01_notenverwaltung/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/exams/web/angular/01_notenverwaltung/</guid><description>
+&lt;h2 id="inhalt">Inhalt&lt;/h2>
+&lt;p>Im Lab von &lt;a href="../../../../labs/java/spring/01_spring">Spring Boot&lt;/a> hast du bereits ein Backend für eine Notenverwaltung geschrieben.
+In diesem Exam sollst du zusätzlich ein Frontend schreiben, welches dieses Backend verwendet. Schlussendlich
+solltest du eine komplett selbst erstellte Fullstack Applikation haben, die einwandfrei funktioniert.&lt;/p>
+&lt;h3 id="setup">Setup&lt;/h3>
+&lt;p>Bevor du mit den Aufgaben beginnst, solltest du ein neues Angular Projekt wie gelernt aufsetzen. Du kannst beim Setup
+bereits das Routing integrieren und wähle als stylesheet SCSS aus. Den Namen kannst du frei wählen. Wenn diese
+Bedingungen erfüllt sind, kannst du mit den Aufgaben beginnen.&lt;/p>
+&lt;h3 id="anforderungen">Anforderungen&lt;/h3>
+&lt;h4 id="funktional">Funktional&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>Die Anwendung unterstützt zwei unterschiedliche Profile: &amp;ldquo;student&amp;rdquo; und &amp;ldquo;admin&amp;rdquo;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Wenn die Anwendung mit dem Profil &amp;ldquo;student&amp;rdquo; gestartet wird, steht folgende Funktionalität zur Verfügung:&lt;/p>
+&lt;ul>
+&lt;li>Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)&lt;/li>
+&lt;li>Alle Fächer und deren Durchschnittsnote auflisten&lt;/li>
+&lt;li>Für ein bestimmtes Fach:
+&lt;ul>
+&lt;li>Alle Noten und die Durchschnittsnote des Fachs auflisten&lt;/li>
+&lt;li>Eine neue Note hinzufügen&lt;/li>
+&lt;li>Eine bestehende Note ändern&lt;/li>
+&lt;li>Eine bestehende Note löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Wenn die Anwendung mit dem Profil &amp;ldquo;admin&amp;rdquo; gestartet wird, steht zusätzlich auch folgende Funktionalität zur Verfügung:&lt;/p>
+&lt;ul>
+&lt;li>Alle Fächer auflisten&lt;/li>
+&lt;li>Neue Fächer hinzufügen&lt;/li>
+&lt;li>Bestehende Fächer bearbeiten&lt;/li>
+&lt;li>Bestehende Fächer löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Die Anwendung ist Responsive gestaltet und ist auf Desktop, Tablet und Mobile verwendbar&lt;/p>
+&lt;ul>
+&lt;li>Die Verwendung von Bootstrap ist nicht erlaubt&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Zusätzliche Anforderungen&lt;/p>
+&lt;ul>
+&lt;li>Die Anwendung ist in den Sprachen Deutsch, Französisch und Englisch verfügbar&lt;/li>
+&lt;li>Die Sprache kann direkt in der Applikation gewechselt werden&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="nicht-funktional">Nicht-Funktional&lt;/h4>
+&lt;ul>
+&lt;li>Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Components/Services aufgesplittet.&lt;/li>
+&lt;li>Ein Component/Service hat eine einzige Aufgabe (Single Responsibility Prinzip).&lt;/li>
+&lt;/ul>
+&lt;h2 id="design">Design&lt;/h2>
+&lt;p>Die Notenverwaltung sollte ungefähr dem vorgegebenen Design entsprechen. Farben und Schriftarten können frei gewählt
+werden, jedoch sollte das vorgegebene Design immer noch erkennbar sein.&lt;/p>
+&lt;p>Das Design wurde mit Figma erstellt und ist navigierbar. Also kannst du die benötigten Verlinkungen so selbst
+herausfinden. Teilweise wurde eine Funktion, wie das Bearbeiten einer Note, nur einmal umgesetzt. Die Funktion soll
+beim Endprodukt aber logischerweise überall umgesetzt sein. Das Design wurde für Desktop, Tablet und Mobile erstellt,
+die Anwendung sollte sich dementsprechend wie im Design anpassen.&lt;/p>
+&lt;p>Hier der Link zum Design: &lt;a href="https://www.figma.com/proto/CxwGOD9wyGZ1pDucOdusND/Notenverwaltung?type=design&amp;amp;node-id=1-3&amp;amp;scaling=contain&amp;amp;page-id=0%3A1&amp;amp;starting-point-node-id=1%3A3&amp;amp;show-proto-sidebar=1">Figma Design - Notenverwaltung&lt;/a>&lt;/p>
+&lt;p>Es ist zu empfehlen, dass zum Erstellen der Applikation &lt;a href="https://material.angular.io/">Angular Material&lt;/a> eingesetzt
+wird. So können bereits erstellte Komponenten inklusive Design verwendet werden.&lt;/p>
+&lt;h2 id="aufgabe-1---erstellen-der-components">Aufgabe 1 - Erstellen der Components&lt;/h2>
+&lt;p>Um alle Daten der Notenverwaltung anzeigen, erstellen, löschen und bearbeiten zu können, werden verschiedene Components
+benötigt. In dieser Aufgabe solltest du diese Punkte abarbeiten:&lt;/p>
+&lt;ul>
+&lt;li>Überlege dir anhand der &lt;a href="#anforderungen">Anforderungen&lt;/a>, wofür du alles einen Component benötigst. Die Unterscheidung
+zwischen Admin und Student Profil kann aktuell ignoriert werden. Erstelle bereits jetzt alle Components dazu.&lt;/li>
+&lt;li>Entwickle ein einfaches und benutzerfreundliches Design für die einzelnen Seiten.&lt;/li>
+&lt;li>Verwende aktuell feste Daten, diese werden in einer späteren Aufgabe ersetzt.&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-2---models-erstellen-und-verwenden">Aufgabe 2 - Models erstellen und verwenden&lt;/h2>
+&lt;p>Aktuell werden in deiner Applikation feste Daten angezeigt, die im HTML angegeben sind. Da die Daten später jedoch
+aus dem Backend kommen sollten, ist es von Vorteil, wenn du Models hast, die den benötigten Daten entsprechen. Diese
+Punkte sollten in dieser Aufgabe erledigt werden:&lt;/p>
+&lt;ul>
+&lt;li>Erstelle alle deiner Meinung nach benötigten Models.&lt;/li>
+&lt;li>Ändere deine festen Daten und setze deine erstellten Models ein.&lt;/li>
+&lt;li>Versuche, wo nötig, Forms zu verwenden, um diese Später verwenden zu können.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Tipp: Wenn du dir unsicher bist welche Daten du benötigst, kannst du im Backend bei den DAOs etwas spicken und so die
+richtige Struktur finden.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="aufgabe-3---services-erstellen-und-verwenden">Aufgabe 3 - Services erstellen und verwenden&lt;/h2>
+&lt;p>Da wir bald schon das Backend anbinden, solltest du noch die benötigten Services erstellen. Erledige dazu folgende Aufgaben:&lt;/p>
+&lt;ul>
+&lt;li>Erstelle alle deiner Meinung nach benötigten Services&lt;/li>
+&lt;li>Lass alle Daten aus einem Service laden und erstelle dazu Mockdaten&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-4---backend-anbinden">Aufgabe 4 - Backend anbinden&lt;/h2>
+&lt;p>In dieser Aufgabe verbindest du jetzt das Frontend mit dem Backend. Erledige dazu diese Aufgaben:&lt;/p>
+&lt;ul>
+&lt;li>Verwende die korrekten Endpoints aus dem Backend&lt;/li>
+&lt;li>Hole die Daten Asynchron aus dem Backend&lt;/li>
+&lt;li>Entferne alle Mockdaten&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-5---admin-und-student">Aufgabe 5 - Admin und Student&lt;/h2>
+&lt;p>Ab diesem Zeitpunkt sollten alle grundlegenden Funktionen deiner Applikation umgesetzt sein, Glückwunsch! Jetzt möchten
+wir noch die Admin- und Student-Funktionen trennen. Dazu besteht im Backend ein Endpunkt, welcher das gestartete Profil
+im Backend an das Frontend sendet. Darüber soll das Frontend die verschiedenen freischalten oder verstecken.
+Dazu hast du im Backend einen oder mehrere Endpunkte erstellt, die du jetzt einsetzen kannst.
+Deine Applikation soll auch selbständig erkennen, welche Funktionen verfügbar sind und welche nicht.&lt;/p></description></item><item><title>Docs: Special Typescript Operators</title><link>/docs/web/typescript/02_ts_special_operators/</link><pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/typescript/02_ts_special_operators/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du kennst, die wichtigen special Operators in Angular und kannst diese anwenden.&lt;/li>
@@ -6879,215 +6987,4 @@ Falls die Schüpercard beim Einkaufen gescannt, so wird dem Konto des Kunden pro
 (Es werden keine halben Punkte verteilt und es wird immer abgerundet).&lt;/p>
 &lt;p>Jeder Mitarbeiter einer CØØP Filiale ist im System hinterlegt.
 Es wird auch jederzeit nachgeführt, welcher Mitarbeiter sich zurzeit in welcher Filiale befindet.
-So kann der Chef die Anwesenheit aller Mitarbeiter sauber überprüfen.&lt;/p></description></item><item><title>Labs: Rollenspiel</title><link>/labs/java/java-ood/02_rollenspiel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-ood/02_rollenspiel/</guid><description>
-&lt;p>In dieser Aufgabe wird ein Fantasy-Rollenspiel mit Vererbung modelliert.
-Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.&lt;/p>
-&lt;h2 id="einführung">Einführung&lt;/h2>
-&lt;h3 id="spielfiguren">Spielfiguren&lt;/h3>
-&lt;ul>
-&lt;li>Es gibt verschiedene Spielfiguren:
-&lt;ul>
-&lt;li>Menschen&lt;/li>
-&lt;li>Zwerge&lt;/li>
-&lt;li>Elfen&lt;/li>
-&lt;li>Orks&lt;/li>
-&lt;li>Goblins&lt;/li>
-&lt;li>Trolle&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Jede Spielfigur hat einen Namen und besitzt eine bestimmte Anzahl an Lebenspunkten. Diese Lebenspunkte werden später im Kampf mit anderen Spielfiguren verringert&lt;/li>
-&lt;li>Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)&lt;/li>
-&lt;li>Elfen können zaubern und haben einen Zauberwert&lt;/li>
-&lt;li>Alle Spielfigur-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
-&lt;/ul>
-&lt;h3 id="waffen">Waffen&lt;/h3>
-&lt;ul>
-&lt;li>Es gibt verschiedene Waffenarten
-&lt;ul>
-&lt;li>Nahkampfwaffen (Schwert und Keule)&lt;/li>
-&lt;li>Fernkampfwaffen (Bogen und Wurfmesser)&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Alle Waffen haben einen Angriffswert&lt;/li>
-&lt;li>Nahkampfwaffen haben zusätzlich zu ihrem Angriffswert noch einen Verteidigungswert&lt;/li>
-&lt;li>Alle Waffen haben ein Gewicht&lt;/li>
-&lt;li>Alle Waffen-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
-&lt;/ul>
-&lt;h3 id="gegenstände">Gegenstände&lt;/h3>
-&lt;ul>
-&lt;li>Es gibt verschiedene Gegenstände
-&lt;ul>
-&lt;li>Tränke (Heiltrank und Stärketrank)
-&lt;ul>
-&lt;li>Ein Heiltrank kann bei einer Spielfigur eine bestimmte Anzahl an Lebenspunkten wiederherstellen&lt;/li>
-&lt;li>Ein Stärketrank erhöht den Angriffswert einer Spielfigur dauerhaft um einen bestimmten Wert&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Zauberringe (Kraftring, Schutzring)
-&lt;ul>
-&lt;li>Ein Kraftring erhöht die Tragkraft einer Spielfigur dauerhaft um einen bestimmten Wert&lt;/li>
-&lt;li>Ein Schutzring verringert dauerhaft den erlittenen Schaden&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Jeder Gegenstand hat eine Bezeichnung und ein Gewicht&lt;/li>
-&lt;li>Alle Gegenstand-Klassen sollen in einem entsprechenden Package angelegt werden&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>Implementation&lt;/p>
-&lt;ul>
-&lt;li>der Packages&lt;/li>
-&lt;li>der Klassen&lt;/li>
-&lt;li>der Instanzvariablen in den Klassen&lt;/li>
-&lt;li>der Beziehungen zwischen den einzelnen Klassen&lt;/li>
-&lt;/ul>
-&lt;p>Vergiss nicht, dass es Generalisierungen und Spezalisierungen gibt. Achte auf eine gute Namensgebung bei Klassen und Variablen.&lt;/p>
-&lt;hr>
-&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
-&lt;p>Ergänze die Applikation mit den folgenden Möglichkeiten:&lt;/p>
-&lt;h4 id="spielfigur">Spielfigur&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur braucht einen Namen um instanziiert werden zu können&lt;/li>
-&lt;li>Zu Beginn hat eine Spielfigur keine Waffe&lt;/li>
-&lt;li>Jede Spielfigur hat eine Methode, die ihren Kampfwert zurückgibt
-&lt;ul>
-&lt;li>Der Kampfwert der Spielfigur setzt sich aus dem Kampfwert der akitven Waffe und der Multiplikation mit einer Zufallszahl zusammen. Die Zufallszahl liegt zwischen 0.9 und 1.1&lt;/li>
-&lt;li>Wenn eine Spielfigur keine Waffe besitzt, so ist ihr Kampfwert 1&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Elfen&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Um einen Elfen instanziieren zu können, muss zusätzlich zum Namen der Zauberwert des Elfen angegeben werden&lt;/li>
-&lt;li>Einem Elfen wird die Hälfte seines Zauberwerts zum Kampfwert addiert&lt;/li>
-&lt;li>Elfen sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Goblins&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Goblins sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Trolle&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Trolle verdoppeln ihren Kampfwert wenn sie eine Keule verwenden&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Orks&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Orks können in einen Kampfrausch verfallen, wenn ihre Lebenspunkte unter 25% fallen. Sie erhalten dann den dreifachen Kampfwert und erleiden nur den halben Schaden&lt;/li>
-&lt;/ul>
-&lt;h4 id="waffen-1">Waffen&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur kann mit einer Waffe ausgerüstet werden
-&lt;ul>
-&lt;li>Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert&lt;/li>
-&lt;li>Ist die Waffe zu schwer für die verbleibende Tragkraft, so kann die Spielfigur die Waffe nicht aufnehmen&lt;/li>
-&lt;li>Eine Spielfigur kann mehrere Waffen mit sich rumtragen, aber jeweils nur eine Waffe aktiv verwenden&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Spielfiguren können Waffen ablegen, um die verbleibende Tragkraft zu erhöhen&lt;/li>
-&lt;li>Alle Keulen haben den Angriffswert 5 und den Verteidigungswert 5. Die beiden Werte sind also konstant&lt;/li>
-&lt;li>Jede Waffe hat einen Kampfwert
-&lt;ul>
-&lt;li>Waffen geben als Kampfwert ihren Angriffswert zurück&lt;/li>
-&lt;li>Bei Nahkampfwaffen wird zum Angriffswert der halbe Verteidigungswert hinzuaddiert&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h4 id="gegenstände-1">Gegenstände&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur kann Gegenstände bis zur maximalen Tragkraft aufnehmen
-&lt;ul>
-&lt;li>Wird ein Gegenstand aufgenommen, wird die Tragkraft entsprechend reduziert&lt;/li>
-&lt;li>Ist der Gegenstand zu schwer für die verbleibende Tragkraft, so kann die Spielfigur den Gegenstand nicht aufnehmen&lt;/li>
-&lt;li>Eine Spielfigur kann mehrere Gegenstände mit sich rumtragen und diese Gegenstände später im Kampf aktiv einsetzen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h4 id="kampf">Kampf&lt;/h4>
-&lt;ul>
-&lt;li>Jede Spielfigur kann gegen eine andere Spielfigur kämpfen
-&lt;ul>
-&lt;li>Der Kampf findet in Runden statt&lt;/li>
-&lt;li>Es wird solange gekämpft, bis eine oder beide Spielfiguren keine Lebenspunkte mehr haben&lt;/li>
-&lt;li>Steht nach 20 Runden noch kein Sieger fest, wird der Kampf abgebrochen&lt;/li>
-&lt;li>Bei jeder Runde wird der Kampfwert der einen Spielfigur den Lebenspunkten des Gegners abgezogen und umgekehrt&lt;/li>
-&lt;li>Diejenige Spielfigur mit den meisten verbliebenen Lebenspunkten gewinnt&lt;/li>
-&lt;li>Jede Spielfigur kann in einem Kampf von ihren Gegenständen Gebrauch machen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
-&lt;ul>
-&lt;li>Definiere nun eigene Regeln für deine Spielfiguren, damit das Spiel ein wenig ausgeglichener wird&lt;/li>
-&lt;li>Die Regeln können beliebig geändert werden&lt;/li>
-&lt;li>Es dürfen natürlich auch neue Waffen und Gegenstände eingeführt werden&lt;/li>
-&lt;li>Dein Entwurf soll mindestens eine neue Spielfigur, eine neue Waffe, einen neuen Gegenstand und eine neue Spezialität für eine Spielfigur enthalten&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-4">Aufgabe 4&lt;/h2>
-&lt;ul>
-&lt;li>Die Kämpfe können sehr unausgeglichen sein&lt;/li>
-&lt;li>Das Spiel soll so gestaltet werden, dass nicht immer die gleichen Spielfiguren gewinnen&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-5">Aufgabe 5&lt;/h2>
-&lt;ul>
-&lt;li>Das Spiel soll für alle Aktionen einen übersichtlichen Log generieren&lt;/li>
-&lt;li>Eine Ausgabe für die Kommandozeile genügt, wenn sie sauber formatiert ist&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-6">Aufgabe 6&lt;/h2>
-&lt;p>Die Applikation hat nun aufgrund der vielen Klassen und Möglichkeiten eine gewisse Grösse erreicht und damit auch an Übersichtlichkeit verloren.
-Die Logik der Applikation ist nun, je nach Implementation, in sehr vielen unterschiedlichen Klassen vorhanden.
-In bestimmten Fällen, wie der Spezalisierung einer bestimmten Klasse, ist dies in Ordnung.&lt;/p>
-&lt;p>Wir arbeiten aber wenn immer möglich nach dem Single-Responsibility-Principle. Dieses Prinzip besagt, dass jeder Teil (bspw. Klasse, Methode) einer Applikation
-nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwortlich ist. Kurz gesagt: eine Methode macht beispielsweise niemals zwei verschiedene Dinge gleichzeitig.&lt;/p>
-&lt;ul>
-&lt;li>Erstelle eine Klasse, welche den Kampf zwischen zwei Spielfiguren verwaltet. Diese Klasse enthält diverse Methoden und ist verantwortlich für:
-&lt;ul>
-&lt;li>das Starten eines neuen Kampfes zwischen zwei Spielfiguren&lt;/li>
-&lt;li>das Zählen der Kampfrunden&lt;/li>
-&lt;li>das Verrechnen von Schaden&lt;/li>
-&lt;li>das Ermitteln des Gewinners&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Stelle sicher, dass die spezalisierten Modell-Klassen (Elf, Heiltrank) nur die Logik enthalten, die für eine Spezalisierung gerechtfertigt ist
-&lt;ul>
-&lt;li>Beispiel 1: die Berechnung des Kampfwerts eines Elfen gehört in die Elf-Klasse, die diese die Spezialisierung für einen Elfen enthält&lt;/li>
-&lt;li>Beispiel 2: der Kampf zwischen zwei Spielfiguren gehört NICHT in die Spielfigur-Klasse, da diese generell gültige Informationen zu einer Spielfigur enthält und das eigentliche &amp;ldquo;Spiel&amp;rdquo; mit dem Kampf zweier Spielfiguren nicht die Aufgabe dieser Klasse ist&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-7">Aufgabe 7&lt;/h2>
-&lt;ul>
-&lt;li>Das Spiel soll erweitert werden, dass eine Spielfigur eine Rüstung tragen kann&lt;/li>
-&lt;li>Es gibt leichte und schwere Rüstungen
-&lt;ul>
-&lt;li>Elfen und Goblins dürfen nur leichte Rüstungen tragen&lt;/li>
-&lt;li>Menschen, Zwerge und Orks dürfen schwere Rüstungen tragen&lt;/li>
-&lt;li>Trolle können aufgrund ihrer Grösse keine Rüstung tragen&lt;/li>
-&lt;li>Eine Spielfigur, welche eine schwere Rüstung tragen kann, kann selbstverständlich auch eine leichte Rüstung anziehen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Eine Spielfigur muss nicht zwingend eine Rüstung tragen&lt;/li>
-&lt;li>Jede Rüstung hat ein Gewicht, welches die Tragkraft der Spielfigur entsprechend verringert&lt;/li>
-&lt;li>Eine Spielfigur kann eine Rüstung anziehen oder sie ablegen&lt;/li>
-&lt;li>Mit dem Tragen einer Rüstung ist es einer Spielfigur möglich im Kampf pro Runde den Schaden komplett zu verhindern. Die schwere Rüstung ist dabei erfolgreicher. Das Verhindern von Schaden passiert zufällig&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-8">Aufgabe 8&lt;/h2>
-&lt;ul>
-&lt;li>Verhindere die Instanziierung von Klassen, die keinen Sinn ergeben (Beispiel Waffe, Spielfigur, &amp;hellip;)&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="aufgabe-9">Aufgabe 9&lt;/h2>
-&lt;ul>
-&lt;li>Jede Spielfigur erhält einen Initiative-Wert&lt;/li>
-&lt;li>Je höher der Wert, desto früher darf die Spielfigur im Kampf zuschlagen&lt;/li>
-&lt;li>Tiefere Werte verteilen also ihren Schaden später als höhere Werte&lt;/li>
-&lt;li>Eine Spielfigur mit tiefem Initiative-Wert kann nicht mehr zurückschlagen wenn sie getötet wird&lt;/li>
-&lt;li>Das Tragen von schweren Rüstungen verringert den Initiative-Wert&lt;/li>
-&lt;/ul></description></item></channel></rss>
+So kann der Chef die Anwesenheit aller Mitarbeiter sauber überprüfen.&lt;/p></description></item></channel></rss>
