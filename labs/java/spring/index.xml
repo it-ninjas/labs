@@ -219,11 +219,12 @@ Die entsprechende Schnittstelle könnte entsprechend so aussehen:&lt;/p>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>Dort wo ein Request-Body und/oder ein Response-Body benötigt wird, wird mit JSON-Objekten gearbeitet.
-Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-Representation Klassen zu erzeugen.&lt;/p>
+&lt;h2 id="diese-json-objekte-werden-wir-im-nächsten-abschnitt-verwenden-um-die-resource-representation-klassen-zu-erzeugen">Dort wo ein Request-Body und/oder ein Response-Body benötigt wird, wird mit JSON-Objekten gearbeitet.
+Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-Representation Klassen zu erzeugen.&lt;/h2>
 &lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Erweitere die obige Tabelle mit den restlichen Funktionen gemäss den funktionalen Anforderungen.
 Buche sobald du fertig bist ein Review mit einem Coach, damit spätere Fehler vermieden werden.&lt;/p>
+&lt;hr>
 &lt;p>&lt;strong>Wichtig&lt;/strong> Endpunkt für Profil:
 Vergiss nicht das du noch einen Endpunkt erstellen musst, um herauszufinden, mit welchem Profil die Anwendung gestartet wurde.&lt;/p>
 &lt;h3 id="resource-representation-klassen-erstellen">Resource-Representation Klassen erstellen&lt;/h3>
@@ -265,9 +266,11 @@ Das folgende JSON-Objekt stellt ein Schulfach dar:&lt;/p>
 &lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+&lt;/div>&lt;hr>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Erstelle für jedes JSON-Objekt aus dem vorherigen Abschnitt eine DTO-Klasse.
 Denke daran, die Klassen in die richtigen Packages zu setzen.&lt;/p>
+&lt;hr>
 &lt;h3 id="controller-erstellen">Controller erstellen&lt;/h3>
 &lt;p>In Spring werden HTTP Requests an REST-Services von Controllern behandelt.
 Das ist eine Java-Klasse, welche mit &lt;em>@RestController&lt;/em> annotiert wird.
@@ -302,8 +305,10 @@ Da wir noch keine persistierten Daten haben, wirst du vorerst Mockdaten aus den 
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+&lt;/div>&lt;hr>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Erstelle Controller und Methoden (mit Mockdaten), um die Umsetzung deiner Schnittstellen abzuschliessen.&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-2">Akzeptanzkriterien Schritt 2&lt;/h3>
 &lt;ul>
 &lt;li>Ein grobes System-Design ist vorhanden (z.B. mit der Hilfe des Functional-Decomposition-Diagramm).&lt;/li>
@@ -405,10 +410,11 @@ Die Methoden der Controller leiten nun ihre Anfragen an die entsprechenden Servi
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;hr>
-&lt;h2 id="die-ursprünglich-erstellten-test-sollten-immer-noch-erfolgreich-ausführbar-sein">&lt;strong>Aufgabe&lt;/strong>&lt;br>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Verbinde die erstellten Controller-Klassen mit den entsprechenden Services.
 Leite sämtliche Anfragen aus den Controllern an die Service-Methoden weiter.
-Die ursprünglich erstellten Test sollten immer noch erfolgreich ausführbar sein.&lt;/h2>
+Die ursprünglich erstellten Test sollten immer noch erfolgreich ausführbar sein.&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-3">Akzeptanzkriterien Schritt 3&lt;/h3>
 &lt;ul>
 &lt;li>Die Mock-Daten wurden in Methoden auf dem Service-Layer ausgelagert&lt;/li>
@@ -462,9 +468,10 @@ mit der entsprechenden Tabelle. Für jede Kolonne in der Datenbank wird eine Ins
 der Angabe des Spaltennamens mit der entsprechenden Spalten aus der Datenbank verbindet.
 Die Annotation &lt;code>@Id&lt;/code> dient der Markierung des Primärschlüssels.&lt;/p>
 &lt;hr>
-&lt;h2 id="wähle-für-alle-attribute-die-richtigen-datentypen-und-gib-die-richtigen-spaltennamen-an">&lt;strong>Aufgabe&lt;/strong>&lt;br>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Erstelle die Entitäten für die anderen beiden Tabellen &lt;em>GRADE&lt;/em> und &lt;em>SCHOOL_SUBJECT_GRADE&lt;/em>.
-Wähle für alle Attribute die richtigen Datentypen und gib die richtigen Spaltennamen an.&lt;/h2>
+Wähle für alle Attribute die richtigen Datentypen und gib die richtigen Spaltennamen an.&lt;/p>
+&lt;hr>
 &lt;p>Nun sollen die drei Entitäten miteinander verbunden werden. Die Beziehung zwischen den Tabellen ist wie folgt geregelt:&lt;/p>
 &lt;ul>
 &lt;li>Ein Eintrag in SCHOOL_SUBJECT_GRADE besitzt immer ein SCHOOL_SUBJECT und eine GRADE&lt;/li>
@@ -518,8 +525,9 @@ Bei der Klasse &lt;code>SchulfachNote&lt;/code> sehen wir die Verbindung zu eine
 der Kolonne, welche den Fremdschlüssel enthält. Die Angabe von &lt;code>nullable = false&lt;/code> dient der Angabe, dass die Kolonne des
 Fremdschlüssels keine &lt;code>null&lt;/code>-Werte zulässt.&lt;/p>
 &lt;hr>
-&lt;h2 id="verbinde-die-anderen-beiden-entitäten-grade-und-school_subject_grade-mit-den-richtigen-beziehungen">&lt;strong>Aufgabe&lt;/strong>&lt;br>
-Verbinde die anderen beiden Entitäten &lt;code>GRADE&lt;/code> und &lt;code>SCHOOL_SUBJECT_GRADE&lt;/code> mit den richtigen Beziehungen.&lt;/h2>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Verbinde die anderen beiden Entitäten &lt;code>GRADE&lt;/code> und &lt;code>SCHOOL_SUBJECT_GRADE&lt;/code> mit den richtigen Beziehungen.&lt;/p>
+&lt;hr>
 &lt;p>Im nächsten Schritt werden nun die Repository-Interfaces angelegt.&lt;/p>
 &lt;p>&lt;strong>Beispiel: JPA-Repository für die Schulfachverwaltung&lt;/strong>&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -539,8 +547,9 @@ Verbinde die anderen beiden Entitäten &lt;code>GRADE&lt;/code> und &lt;code>SCH
 Die generischen Angaben stehen für die Klasse der Entität und dessen Primärschlüssel-Typ.
 Durch dieses Repository stehen bereits die wichtigsten CRUD-Operationen zur Verfügung.&lt;/p>
 &lt;hr>
-&lt;h2 id="erstelle-die-repository-klassen-für-die-beiden-anderen-entitäten">&lt;strong>Aufgabe&lt;/strong>&lt;br>
-Erstelle die Repository-Klassen für die beiden anderen Entitäten.&lt;/h2>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+Erstelle die Repository-Klassen für die beiden anderen Entitäten.&lt;/p>
+&lt;hr>
 &lt;p>Die folgende Aufzählung der Operationen ist nicht vollständig, zeigt aber welchen Funktionsumfang ein solches Repository nun bereits besitzt:&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>List&amp;lt;T&amp;gt; findAll()&lt;/code> liefert alle Einträge der Entität zurück&lt;/li>
@@ -821,8 +830,10 @@ List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Grade&lt;span style="color:
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>
+&lt;/div>&lt;hr>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>
 Füge die benötigte Dependency in dein Projekt ein und erstelle die nötigen Entity-Klassen. Zudem erstelle die benötigten Services und Repositories in der korrekten packages Struktur.&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-4">Akzeptanzkriterien Schritt 4&lt;/h3>
 &lt;ul>
 &lt;li>Dependency wurde im &lt;code>pom.xml&lt;/code> hinzugefügt.&lt;/li>
@@ -867,8 +878,10 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 &lt;span style="color:#f92672">driver-class-name&lt;/span>: &lt;span style="color:#ae81ff">org.mariadb.jdbc.Driver&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+&lt;/div>&lt;hr>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Erstelle deine Konfigurationsdatei entsprechend deiner Datenbank.&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-5">Akzeptanzkriterien Schritt 5&lt;/h3>
 &lt;ul>
 &lt;li>Die Spring Boot Applikation startet mit der Datenbank.&lt;/li>
@@ -878,8 +891,10 @@ Erstelle deine Konfigurationsdatei entsprechend deiner Datenbank.&lt;/p>
 Diese Profile werden benutzt, um die verfügbare Funktionalität einzuschränken bzw. zu erweitern.
 Welche Funktionalität mit welchem Profil zur Verfügung stehen darf, entnimmst du aus den funktionalen Anforderungen.&lt;/p>
 &lt;p>Mit der &lt;em>@Profile&lt;/em> Annotation, kannst du bestimmte Beans für das gegebene Profil aktivieren bzw. deaktivieren.&lt;/p>
+&lt;hr>
 &lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem aktiven Profil&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-6">Akzeptanzkriterien Schritt 6&lt;/h3>
 &lt;ul>
 &lt;li>Wenn die Anwendung mit dem Profil &amp;ldquo;student&amp;rdquo; gestartet wird, darf die Admin-Funktionalität nicht zur Verfügung stehen. Direkter Zugriff auf Admin-URLs liefert den HTTP Status-Code: 404 (Not Found)&lt;/li>
@@ -951,8 +966,10 @@ List&lt;span style="color:#f92672">&amp;lt;&lt;/span>SchoolSubject&lt;span style
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
+&lt;/div>&lt;hr>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Passe deine Services und Repositories entsprechend der Implementierungs-Methode an.&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-7">Akzeptanzkriterien Schritt 7&lt;/h3>
 &lt;ul>
 &lt;li>Alle Services sind mit der Implementierungs-Methode ausgestattet.&lt;/li>
@@ -1251,9 +1268,11 @@ String sql &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6d
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>Aufgabe&lt;/strong>
+&lt;/div>&lt;hr>
+&lt;p>&lt;strong>Aufgabe&lt;/strong>
 Ergänze deine Repositories mit den nötigen SQL-Queries (wähle selbst, ob du es auslagern möchtest oder nicht).
 Implementiere die benötigten Mapper und setze sie an den benötigten Orten ein (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-8">Akzeptanzkriterien Schritt 8&lt;/h3>
 &lt;ul>
 &lt;li>Es werden nun nicht mehr mittels Mockdaten verwendet, sondern direkt SQL-Queries benutzt.&lt;/li>
@@ -1295,8 +1314,10 @@ Swagger ist ein Open-Source-Framework, das in erster Linie dazu dient, APIs zu e
 Wenn du ein Beispiel brauchst, um zu wissen, wie du Requests erstellst (z.B. solche mit einem Request-Body)
 kannst du auf dem &lt;em>Examples&lt;/em> Pfeil (oben rechts) klicken und die entsprechende Beispiel-Datei öffnen.&lt;/p>
 &lt;p>Weitere Dokumentation zum IntelliJ HTTP-Client findest du &lt;a href="https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html">auf dieser IntelliJ IDEA Seite&lt;/a>&lt;/p>
+&lt;hr>
 &lt;p>&lt;strong>Aufgabe&lt;/strong>&lt;br>
 Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle ausführt.&lt;/p>
+&lt;hr>
 &lt;h3 id="akzeptanzkriterien-schritt-9">Akzeptanzkriterien Schritt 9&lt;/h3>
 &lt;ul>
 &lt;li>Eine HTTP-Request Datei liegt vor, welche alle öffentlichen Schnittstellen-Methoden ausführen kann.&lt;/li>
