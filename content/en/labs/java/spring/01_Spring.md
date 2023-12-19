@@ -171,10 +171,13 @@ Die entsprechende Schnittstelle könnte entsprechend so aussehen:
 
 Dort wo ein Request-Body und/oder ein Response-Body benötigt wird, wird mit JSON-Objekten gearbeitet.
 Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-Representation Klassen zu erzeugen.
+---
 
 **Aufgabe**  
 Erweitere die obige Tabelle mit den restlichen Funktionen gemäss den funktionalen Anforderungen.
 Buche sobald du fertig bist ein Review mit einem Coach, damit spätere Fehler vermieden werden.
+
+---
 
 **Wichtig** Endpunkt für Profil:
 Vergiss nicht das du noch einen Endpunkt erstellen musst, um herauszufinden, mit welchem Profil die Anwendung gestartet wurde.
@@ -204,10 +207,13 @@ public class SchulfachDto {
     private final String name;
 }
 ```
+---
 
 **Aufgabe**  
 Erstelle für jedes JSON-Objekt aus dem vorherigen Abschnitt eine DTO-Klasse.
 Denke daran, die Klassen in die richtigen Packages zu setzen.
+
+---
 
 ### Controller erstellen
 In Spring werden HTTP Requests an REST-Services von Controllern behandelt.
@@ -231,8 +237,12 @@ public class SchulfachAdminController {
 }
 ```
 
+---
+
 **Aufgabe**  
 Erstelle Controller und Methoden (mit Mockdaten), um die Umsetzung deiner Schnittstellen abzuschliessen.
+
+---
 
 ### Akzeptanzkriterien Schritt 2
 * Ein grobes System-Design ist vorhanden (z.B. mit der Hilfe des Functional-Decomposition-Diagramm).
@@ -275,7 +285,7 @@ public class SchulfachAdminService {
 }
 ```
 
-----
+---
 
 **Aufgabe**  
 Erstelle die nötigen Service-Klassen mit entsprechenden Methoden und verschiebe die Mock-Daten aus den Controllern in die Service-Methoden.
@@ -313,10 +323,12 @@ public class SchulfachAdminController {
 ```
 
 ---
+
 **Aufgabe**  
 Verbinde die erstellten Controller-Klassen mit den entsprechenden Services.
 Leite sämtliche Anfragen aus den Controllern an die Service-Methoden weiter.
 Die ursprünglich erstellten Test sollten immer noch erfolgreich ausführbar sein.
+
 ---
 
 ### Akzeptanzkriterien Schritt 3
@@ -368,9 +380,11 @@ der Angabe des Spaltennamens mit der entsprechenden Spalten aus der Datenbank ve
 Die Annotation `@Id` dient der Markierung des Primärschlüssels.
 
 ---
+
 **Aufgabe**  
 Erstelle die Entitäten für die anderen beiden Tabellen *GRADE* und *SCHOOL_SUBJECT_GRADE*.
 Wähle für alle Attribute die richtigen Datentypen und gib die richtigen Spaltennamen an.
+
 ---
 
 Nun sollen die drei Entitäten miteinander verbunden werden. Die Beziehung zwischen den Tabellen ist wie folgt geregelt:
@@ -411,8 +425,10 @@ der Kolonne, welche den Fremdschlüssel enthält. Die Angabe von `nullable = fal
 Fremdschlüssels keine `null`-Werte zulässt.
 
 ---
+
 **Aufgabe**  
 Verbinde die anderen beiden Entitäten `GRADE` und `SCHOOL_SUBJECT_GRADE` mit den richtigen Beziehungen.
+
 ---
 
 Im nächsten Schritt werden nun die Repository-Interfaces angelegt.
@@ -430,8 +446,10 @@ Die generischen Angaben stehen für die Klasse der Entität und dessen Primärsc
 Durch dieses Repository stehen bereits die wichtigsten CRUD-Operationen zur Verfügung.
 
 ---
+
 **Aufgabe**  
 Erstelle die Repository-Klassen für die beiden anderen Entitäten.
+
 ---
 
 Die folgende Aufzählung der Operationen ist nicht vollständig, zeigt aber welchen Funktionsumfang ein solches Repository nun bereits besitzt:
@@ -595,9 +613,12 @@ public class StudentService {
 }
 ```
 
+---
 
 **Aufgabe** 
 Füge die benötigte Dependency in dein Projekt ein und erstelle die nötigen Entity-Klassen. Zudem erstelle die benötigten Services und Repositories in der korrekten packages Struktur.
+
+---
 
 ### Akzeptanzkriterien Schritt 4
 * Dependency wurde im `pom.xml` hinzugefügt.
@@ -629,8 +650,12 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
 ```
 
+---
+
 **Aufgabe**  
 Erstelle deine Konfigurationsdatei entsprechend deiner Datenbank.
+
+---
 
 ### Akzeptanzkriterien Schritt 5
 * Die Spring Boot Applikation startet mit der Datenbank.
@@ -642,8 +667,12 @@ Welche Funktionalität mit welchem Profil zur Verfügung stehen darf, entnimmst 
 
 Mit der *@Profile* Annotation, kannst du bestimmte Beans für das gegebene Profil aktivieren bzw. deaktivieren.
 
+---
+
 **Aufgabe**  
 Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem aktiven Profil
+
+---
 
 ### Akzeptanzkriterien Schritt 6
 * Wenn die Anwendung mit dem Profil "student" gestartet wird, darf die Admin-Funktionalität nicht zur Verfügung stehen. Direkter Zugriff auf Admin-URLs liefert den HTTP Status-Code: 404 (Not Found)
@@ -688,8 +717,12 @@ public class StudentRepositoryImpl implements StudentRepository {
 }
 ```
 
+---
+
 **Aufgabe**  
 Passe deine Services und Repositories entsprechend der Implementierungs-Methode an.
+
+---
 
 ### Akzeptanzkriterien Schritt 7
 * Alle Services sind mit der Implementierungs-Methode ausgestattet.
@@ -878,9 +911,13 @@ public class AdminRepositoryImpl implements AdminRepository {
 }
 ```
 
+---
+
 **Aufgabe**
 Ergänze deine Repositories mit den nötigen SQL-Queries (wähle selbst, ob du es auslagern möchtest oder nicht).
 Implementiere die benötigten Mapper und setze sie an den benötigten Orten ein (wähle selbst, ob du es mit einem Mapper oder Extractor machen willst).
+
+---
 
 ### Akzeptanzkriterien Schritt 8
 * Es werden nun nicht mehr mittels Mockdaten verwendet, sondern direkt SQL-Queries benutzt.
@@ -923,8 +960,12 @@ kannst du auf dem *Examples* Pfeil (oben rechts) klicken und die entsprechende B
 
 Weitere Dokumentation zum IntelliJ HTTP-Client findest du [auf dieser IntelliJ IDEA Seite](https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html)
 
+---
+
 **Aufgabe**  
 Erstelle eine HTTP-Request Datei, welche alle Methoden in deiner Schnittstelle ausführt.
+
+---
 
 ### Akzeptanzkriterien Schritt 9
 * Eine HTTP-Request Datei liegt vor, welche alle öffentlichen Schnittstellen-Methoden ausführen kann.
