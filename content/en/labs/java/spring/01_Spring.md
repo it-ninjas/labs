@@ -171,6 +171,7 @@ Die entsprechende Schnittstelle könnte entsprechend so aussehen:
 
 Dort wo ein Request-Body und/oder ein Response-Body benötigt wird, wird mit JSON-Objekten gearbeitet.
 Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-Representation Klassen zu erzeugen.
+
 ---
 
 **Aufgabe**  
