@@ -275,7 +275,7 @@ public class SchulfachAdminService {
 }
 ```
 
----
+----
 **Aufgabe**  
 Erstelle die nötigen Service-Klassen mit entsprechenden Methoden und verschiebe die Mock-Daten aus den Controllern in die Service-Methoden.
 Versuche die Methoden, welche das gleiche fachliche Thema behandeln im gleichen Service unterzubringen.
