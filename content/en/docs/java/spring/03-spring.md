@@ -1,7 +1,7 @@
 ---
 title: "Spring"
 linkTitle: "Spring"
-weight: 1
+weight: 3
 description: >
   Modul #J10 - Spring Framework
 ---

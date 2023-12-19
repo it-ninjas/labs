@@ -1,7 +1,7 @@
 ---
 title: "Testing von REST-Schnittstellen"
 linkTitle: "Testing von REST-Schnittstellen"
-weight: 3
+weight: 5
 description: >
   Modul #J11 - Spring Boot
 ---
