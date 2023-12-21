@@ -77,6 +77,10 @@ if (dollars < 1000) {
 }
 ```
 
+### Lernvideo
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+[Video](https://www.youtube.com/watch?v=BBNrEkv_Sw4).
+
 ---
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2a zu den if-else-Bedingungen](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-2a---die-if--und-else-bedingungen) in den Labs.
 
@@ -143,6 +147,38 @@ System.out.println("You're on the " + place + suffix + " place.");
 ### Schleifen (Loops)
 Manchmal müssen wir einen Codeblock für eine bestimmte Anzahl wiederholen. Zu diesem Zweck stellt Java die Schleife bereit. Diese Schleife wird häufig verwendet, um über einen Wertebereich oder durch ein Array zu iterieren. For-Loops arbeiten mit einem Schleifenzähler, welcher sehr gut für Indizes von Arrays verwendet werden kann. Bei allen Schleifen ist Vorsicht geboten, da es rasch zu einer unendlichen Anzahl von Ausführungen kommen kann.
 
+#### While-Loop
+Die while- Schleife besteht aus einem Codeblock und einer Bedingung (einem booleschen Ausdruck). Wenn die Bedingung erfüllt ist, wird der Code innerhalb des Blocks ausgeführt. Dieser Code wird solange wiederholt, bis die Bedingung nicht mehr erfüllt ist.
+```java
+        while (condition) {
+        // body: do something
+        }
+```
+Innerhalb des Schleifenkörpers kann das Programm wiederum alle möglichen Java-Anweisungen ausführen. Es kann sogar andere Schleifen enthalten.
+
+Beispiel: Die folgende Schleife gibt Ganzzahlen aus, während eine Variable kleiner als 5 ist.
+```java
+        int i = 0;
+
+        while (i < 5) {
+        System.out.print(i + " ");
+        i++;
+        }
+// Output: 0 1 2 3 4
+```
+
+#### Do-While Loop
+Die Do-While-Schleife besteht aus einem Codeblock und einer Bedingung (einem boolschen Ausdruck) am Ende. Im Gegensatz zur While-Schleife wird die Do-While-Schleife mindestens einmal ausgeführt, da die Bedingung am Ende steht.
+```java
+do {
+    // body: do something
+} while (condition);
+```
+
+#### Lernvideo
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+[Video](https://www.youtube.com/watch?v=0dWbm-vb21Y).
+
 #### For-Loop
 ```java
 for (initialization; condition; modification) {
@@ -183,39 +219,15 @@ Der For-Each-Loop durchläuft alle Elemente eines Arrays oder einer Collection. 
 ```java
 int[] numbers = { 125, 381, 98, 12, 235 };
 for (int number: numbers) {
-    System.out.print(number + " ");
-}
+        System.out.print(number + " ");
+        }
 // Output: 125 381 98 12 235
 ```
 Der gezeigte Loop wird also fünfmal ausgeführt und der Wert der Variable _number_ nimmt bei jedem Durchlauf den jeweils nächsten Wert aus dem Array an.
 
-#### While-Loop
-Die while- Schleife besteht aus einem Codeblock und einer Bedingung (einem booleschen Ausdruck). Wenn die Bedingung erfüllt ist, wird der Code innerhalb des Blocks ausgeführt. Dieser Code wird solange wiederholt, bis die Bedingung nicht mehr erfüllt ist.
-```java
-while (condition) {
-    // body: do something
-}
-```
-Innerhalb des Schleifenkörpers kann das Programm wiederum alle möglichen Java-Anweisungen ausführen. Es kann sogar andere Schleifen enthalten.
-
-Beispiel: Die folgende Schleife gibt Ganzzahlen aus, während eine Variable kleiner als 5 ist.
-```java
-int i = 0;
-
-while (i < 5) {
-    System.out.print(i + " ");
-    i++;
-}
-// Output: 0 1 2 3 4
-```
-
-#### Do-While Loop
-Die Do-While-Schleife besteht aus einem Codeblock und einer Bedingung (einem boolschen Ausdruck) am Ende. Im Gegensatz zur While-Schleife wird die Do-While-Schleife mindestens einmal ausgeführt, da die Bedingung am Ende steht.
-```java
-do {
-    // body: do something
-} while (condition);
-```
+#### Lernvideo
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+[Video](https://www.youtube.com/watch?v=_y5lnzRZeko).
 
 ---
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 3](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-3---loops) in den Labs.

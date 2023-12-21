@@ -28,7 +28,7 @@ Schreibe eine Methode, welche alle Zahlen im Array zählt, welche zwischen 0 und
 Die Methode liefert die Anzahl dieser Zahlen zurück.
 
 ## Aufgabe 2
-Schreibe eine Methode, welche aus dem Array alle positiven Zahlen inklusive 0 in ein neues Array schreibt
+Schreibe eine Methode, welche aus dem Array alle positiven Zahlen inklusive 0 in ein neues Array schreibt.
 Die Reihenfolge der Zahlen im Array muss gleich bleiben. Die Methode liefert das neue Array zurück.
 
 ## Aufgabe 3
@@ -38,6 +38,8 @@ Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zur
 ## Aufgabe 4
 Schreibe eine Methode, welche alle Zahlen aus dem Array in positive Zahlen verwandelt und diese in ein neues Array schreibt.
 Die Methode liefert das neue Array zurück.
+
+_`Math.abs` darf für diese Aufgabe nicht verwendet werden._
 
 ## Aufgabe 5
 Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht mehr als den Wert 5 unterscheiden.

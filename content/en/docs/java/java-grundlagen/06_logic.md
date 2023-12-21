@@ -84,5 +84,34 @@ Diese Operatoren basieren auf der boolschen Algebra. Daher arbeiten boolsche Ope
 | & | Logisches UND (AND) | Im Unterschied zum obigen _AND_ wertet dieses immer beide Ausdrücke aus |
 | \|  | Logisches ODER (OR) | Im Unterschied zum obigen _OR_ wertet dieses immer beide Ausdrücke aus. |
 
+### Ternary Operator
+Mit dem Ternary Operator kann eine bedingte Zuweisung eines Werts durchgeführt werden. Dies kann nützlich sein, wenn es
+im Code zwei mögliche Werte gibt. Der Ternary Operator wird mit einem `?` dargestellt. Der Aufbau ist folgendermassen:
+`bedingung ? wert wenn Bedingung wahr : wert wenn Bedingung falsch`
+
+Schauen wir uns noch ein Beispiel in Java an:
+```java
+int alter = 17;
+String zuJung = "Du bist zu jung";
+String genugAlt = "Du bist alt genug :)";
+
+System.out.println(alter >= 18 ? genugAlt : zuJung); // Ausgabe: "Du bist zu jung", da das Alter kleiner als 18 ist.
+
+alter = 26;
+
+System.out.println(alter >= 18 ? genugAlt : zuJung); // Ausgabe: "Du bist alt genug :)", da das Alter grösser als 18 ist.
+```
+
+Ausserdem können mehrere Ternary hintereinander platziert werden:
+```java
+int ausbildungsjahre = 5;
+
+System.out.println("Dein aktueller Rang ist " 
+        + ausbildungsjahre >= 20 ? "Kage" : 
+            ausbildungsjahre >= 10 ? "Chunin" :
+            ausbildungsjahre >= 5 ? "Akademieschüler" : "Anwärter"); 
+        // Ausgabe: "Dein aktueller Rang ist Akademieschüler", da Ausbildungs Jahre >= 5
+```
+
 ---
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 4](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-4---einfache-berechnungen) in den Labs.

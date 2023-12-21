@@ -33,7 +33,7 @@ Hilfestellungen zu
 * [Canvas](https://www.w3schools.com/html/html5_canvas.asp)
 
 ### Aufgabe 4 - Global Scope, Function Scope und Block-Scope
-Im Kapitel [ES6: Variablen deklarieren](../../../docs/web/javascript/18_variables#global-scope-und-function-scope) hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit `console.log(...)`s. In diesem Beispiel wurden alle Variablen  mit `var` deklariert/definiert - also keine `let`s oder `const`s.
+Im Kapitel [ES6: Variablen deklarieren](../../../docs/web/javascript/19_variables#global-scope-und-function-scope) hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit `console.log(...)`s. In diesem Beispiel wurden alle Variablen  mit `var` deklariert/definiert - also keine `let`s oder `const`s.
 
 ![task1](/images/task.png) Ändere in diesem Code alle `var`s zu `let`s oder `const`s.
 
@@ -45,8 +45,11 @@ Beantworte folgende Fragen und dokumentiere deine Antworten:
 * Wie kannst du definieren, welche Variable welchen Scope haben soll?
 * Wann könnte die Verwendung von `var` sinnvoll sein?
 
-### Aufgabe 5 - 
-Erstelle eine HTML-Seite, auf der ein Benutzer eine Liste von Zahlen eingeben kann (dafür kann man for="" im HTML benutzen). Die Eingabe soll geprüft werden, damit der Benutzer nur Zahlen eingeben kann. Der Benutzer kann die Liste speichern und dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen gefordert:
+### Aufgabe 5 - Nummern Liste
+Erstelle eine HTML-Seite, auf der ein Benutzer eine Liste von Zahlen eingeben kann. 
+Die Eingabe soll geprüft werden, damit der Benutzer nur Zahlen eingeben kann. Der Benutzer kann die Liste speichern und 
+dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen gefordert:
+
 * Die grösste Zahl der Liste finden.
 * Die kleinste Zahl der Liste finden.
 * Die Summe aller geraden Zahlen der Liste finden. 
