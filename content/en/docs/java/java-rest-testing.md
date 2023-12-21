@@ -31,21 +31,59 @@ Wenn man nun die Applikation startet, kann man auf die URL http://localhost:8080
 
 Auf dem untenstehenden Bild kann man die API-Schnittstelle von einer GET-Anfrage sehen. Mit einem Klick auf den `Try it out`-Button kann man nachher diese Anfrage ausprobieren.
 
-[SwaggerGet](./java-rest-testing/SwaggerGet.png)
+![SwaggerGet](./java-rest-testing/SwaggerGet.png)
 
 Nun erscheint ein grosser blauer Button mit der Aufschrift `Execute`. Auf Knopfdruck wird die GET-Anfrage gesendet und die Antwort wird nach Erhalt angezeigt.
 
-[SwaggerGetTryOut](./java-rest-testing/SwaggerGetTryOut.png)
+![SwaggerGetTryOut](./java-rest-testing/SwaggerGetTryOut.png)
 
 Was bei den GET-Anfragen galt, gilt auch für POST-Requests. Im Unterschied zur vorherigen Schnittstelle muss bei dieser zusätzlich ein Request Body im JSON-Format angegeben werden.
 
 Möchte man z.B. `GetById` ausführen, dann muss möglicherweise auch noch eine ID angegeben werden.
 
-[SwaggerPost](./java-rest-testing/SwaggerPost.png)
+![SwaggerPost](./java-rest-testing/SwaggerPost.png)
 
 Das Json für den Request-Body kann auch hier erst nach einem Klick auf "Try it out" spezifiziert werden:
 
-[SwaggerPostTryOut](./java-rest-testing/SwaggerPostTryOut.png)
+![SwaggerPostTryOut](./java-rest-testing/SwaggerPostTryOut.png)
+
+Wenn deine API Zugriffsbeschränkungen oder Authentifizierungsschichten implementiert, ist eine Anpassung der Swagger-Konfiguration notwendig, um diese Sicherheitsmechanismen zu berücksichtigen.
+
+Konfigurationen von Swagger können in verschiedenen Aspekten angepasst werden. Hier sind einige allgemeine Anpassungen:
+* Paketfilter für die API-Endpunkte festlegen  `.apis()`
+* API-Endpunkt-Pfade filtern `.paths()`
+* Allgemeine API-Informationen konfigurieren `.apiInfo()`
+* Globale Sicherheitsdefinitionen hinzufügen `.securitySchemes()`, `.securityContexts()`
+
+
+```java
+@Configuration
+public class SwaggerConfig {
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(apiInfo());
+    }
+
+    private ApiInfo apiInfo() {
+        ApiInfo apiInfo = new ApiInfo(
+                "Song API",
+                "Swagger API for self project",
+                "1.0",
+                "",
+                "Cédric rohrbach",
+                "",
+                ""
+        );
+        return apiInfo;
+    }
+}
+```
 
 
 ## IntelliJ HTTP Client
