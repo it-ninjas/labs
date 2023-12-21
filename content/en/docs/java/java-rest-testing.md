@@ -34,25 +34,25 @@ Mit Spring Boot 3 wird neu nur noch einen Dependency benötigt, damit der Swagge
 
 Wenn man nun die Applikation startet, kann man auf die URL http://localhost:8080/swagger-ui/index.html# zugreifen. Dort sieht man dan folgendes:
 
-[SwaggerOverview](./java-rest-testing/SwaggerOverview.png)
+[SwaggerOverview](../java-rest-testing/SwaggerOverview.png)
 
 Auf dem untenstehenden Bild kann man die API-Schnittstelle von einer GET-Anfrage sehen. Mit einem Klick auf den `Try it out`-Button kann man nachher diese Anfrage ausprobieren.
 
-![SwaggerGet](./java-rest-testing/SwaggerGet.png)
+![SwaggerGet](../java-rest-testing/SwaggerGet.png)
 
 Nun erscheint ein grosser blauer Button mit der Aufschrift `Execute`. Auf Knopfdruck wird die GET-Anfrage gesendet und die Antwort wird nach Erhalt angezeigt.
 
-![SwaggerGetTryOut](./java-rest-testing/SwaggerGetTryOut.png)
+![SwaggerGetTryOut](../java-rest-testing/SwaggerGetTryOut.png)
 
 Was bei den GET-Anfragen galt, gilt auch für POST-Requests. Im Unterschied zur vorherigen Schnittstelle muss bei dieser zusätzlich ein Request Body im JSON-Format angegeben werden.
 
 Möchte man z.B. `GetById` ausführen, dann muss möglicherweise auch noch eine ID angegeben werden.
 
-![SwaggerPost](./java-rest-testing/SwaggerPost.png)
+![SwaggerPost](../java-rest-testing/SwaggerPost.png)
 
 Das Json für den Request-Body kann auch hier erst nach einem Klick auf "Try it out" spezifiziert werden:
 
-![SwaggerPostTryOut](./java-rest-testing/SwaggerPostTryOut.png)
+![SwaggerPostTryOut](../java-rest-testing/SwaggerPostTryOut.png)
 
 Wenn deine API Zugriffsbeschränkungen oder Authentifizierungsschichten implementiert, ist eine Anpassung der Swagger-Konfiguration notwendig, um diese Sicherheitsmechanismen zu berücksichtigen.
 
@@ -104,7 +104,6 @@ Damit man den HTTP Client verwenden kann, muss man zuerst ein solches File erste
 Einige Entwickler legen die HTTP-Dateien in einem separaten Ordner wie "http" oder "requests" im Hauptverzeichnis ihres Projekts ab. Andere bevorzugen es, die HTTP-Dateien im Verzeichnis des Moduls zu speichern, das sie verwenden.
 
 Im File kann man zum Beispiel eine Get Abfrage nach folgenden Schema erstellen.
-```http request
 ```
 GET http://localhost:8080/api/student/subjects
 Accept: application/json
