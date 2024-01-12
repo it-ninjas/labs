@@ -565,7 +565,7 @@ Damit man Lombok jedoch verwenden kann, muss man die folgende Dependency im `pom
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
-    <version>1.18.22</version>
+    <version>1.18.30</version>
     <scope>provided</scope>
 </dependency>
 ```
