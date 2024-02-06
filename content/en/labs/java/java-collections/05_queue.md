@@ -7,7 +7,7 @@ description: >
     Aufgaben zu [Java Collections - Queue + Deque](../../../../docs/java/java-collections/06_queue)
 ---
 
-## Aufgabe 1
+## Aufgabe 1 (Optional)
 
 Wir implementieren eine einfache `Job`-Verarbeitung.
 Zwei `InputWorker` erstellen neue `Job`'s, welche parallel von einem `OutputWorker` abgearbeitet werden.
@@ -110,7 +110,7 @@ Ihr müsst das Interface `ProcessingInterface` implementieren.
 > Ihr findet den Programmcode im **work Repo**:  
 > https://github.com/it-ninjas/work/tree/main/labs/src/main/java/ch/itninjas/labs/j7/queue/lab1
 
-### Aufgabe 1.1
+### Aufgabe 1.1 (Optional)
 
 1. Implementiert das `ProcessingInterface` mit einer Queue, damit die Jobs im **FIFO-Prinzip** (First-In-First-Out) verarbeitet werden.
 2. Kontrolliert die Konsole-Ausgabe:
@@ -118,7 +118,7 @@ Ihr müsst das Interface `ProcessingInterface` implementieren.
    2. Ob die Jobs in der gewünschten Reihenfolge verarbeitet wurden.
 3. Verändert die Pausen und Verarbeitungszeit der Worker und schaut euch der Einfluss in der Konsole an.
 
-### Aufgabe 1.2
+### Aufgabe 1.2 (Optional)
 
 1. Implementiert das `ProcessingInterface` mit einer Queue, damit die Jobs im **LIFO-Prinzip** (Last-In-First-Out) verarbeitet werden.
 2. Kontrolliert die Konsole-Ausgabe:
@@ -126,7 +126,7 @@ Ihr müsst das Interface `ProcessingInterface` implementieren.
     2. Ob die Jobs in der gewünschten Reihenfolge (Last-In-First-Out) verarbeitet wurden.
 3. Verändert die Pausen und Verarbeitungszeit der Worker und schaut euch der Einfluss in der Konsole an.
 
-## Aufgabe 2
+## Aufgabe 2 (Optional)
 Erweitert den `OutputWorker` so, dass er vor der Verarbeitung eines Jobs die Anzahl offener Jobs anzeigt.
 
 ## Aufgabe 3 (Optional)

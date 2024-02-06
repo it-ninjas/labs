@@ -32,7 +32,7 @@ Wie nun zu sehen ist, befindet sich im Verzeichnis eine gleichnamige JS Datei.
 
 Diese kann nun mit Node ausgeführt werden: 
 ``` shell
-node hello-word.js
+node hello-world.js
 ```
 
 Falls alles funktioniert hat, gibt die Konsole `Hello World` aus.
