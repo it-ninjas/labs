@@ -5,7 +5,7 @@ linkTitle: "Routing"
 weight: 12
 date: 2023-05-09
 description: >
-    Wie Routing in Angular funktioniert findet man hier.
+  Modul #F6 - Angular - Routing
 ---
 ## Ziele
 * Du weisst, was Routing in Angular ist.

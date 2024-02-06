@@ -5,7 +5,7 @@ linkTitle: "RxJS"
 weight: 24
 date: 2023-04-20
 description: >
-  RxJS Übersicht
+  Modul #F6 - Angular - RxJS
 ---
 ## Ziele
 * Du weisst, was RxJS ist und welches Konzept es besitzt.

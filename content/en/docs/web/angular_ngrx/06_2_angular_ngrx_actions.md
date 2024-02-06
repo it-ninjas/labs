@@ -5,7 +5,7 @@ linkTitle: "NgRx Actions"
 weight: 28
 date: 2023-05-26
 description: >
-  Hier findet man was NgRx Actions sind.
+  Modul #F7 - Angular NgRx - Actions
 ---
 ## Ziele
 * Du weisst, was NgRx Actions sind und kannst diese anwenden.

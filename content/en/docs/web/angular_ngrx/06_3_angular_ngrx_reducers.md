@@ -5,7 +5,7 @@ linkTitle: "NgRx Reducers"
 weight: 29
 date: 2023-05-26
 description: >
-  Hier findet man was NgRx Reducers sind.
+  Modul #F7 - Angular NgRx - Reducers sind
 ---
 ## Ziele
 * Du weisst, was NgRx Reducers sind und kannst diese anwenden.

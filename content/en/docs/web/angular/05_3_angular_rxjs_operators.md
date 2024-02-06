@@ -5,7 +5,7 @@ linkTitle: "RxJS Operators"
 weight: 26
 date: 2023-04-21
 description: >
-  RxJS Operators
+  Modul #F6 - Angular - RxJS Operators
 ---
 ## Ziele
 * Du kennst, die viele verschiedenen RxJS-Operatoren und kannst diese auch anwenden.

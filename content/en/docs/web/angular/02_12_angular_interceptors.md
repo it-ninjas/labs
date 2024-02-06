@@ -5,7 +5,7 @@ linkTitle: "Interceptors"
 weight: 14
 date: 2022-03-14
 description: >
-    Was Interceptors genau sind kann in diesem Kapitel nachgelesen werden.
+  Modul #F6 - Angular - Interceptors
 ---
 ## Ziele
 * Du weisst, was Interceptors in Angular sind und kannst diese anwenden.

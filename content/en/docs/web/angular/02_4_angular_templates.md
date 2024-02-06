@@ -5,7 +5,7 @@ linkTitle: "Templates"
 weight: 6
 date: 2023-05-04
 description: >
-    In diesem Kapitel wird beschrieben wa genau das Template in Angular ist.
+  Modul #F6 - Angular - Templates
 ---
 ## Ziele
 * Du weisst, was ein Template ist.

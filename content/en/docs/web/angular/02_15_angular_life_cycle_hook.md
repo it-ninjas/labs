@@ -5,7 +5,7 @@ linkTitle: "Angular Life Cycle Hook"
 weight: 17
 date: 2023-05-05
 description: >
-    Wie der Angular Life Cycle Hook genau aussieht findet man hier.
+  Modul #F6 - Angular - Life Cycle Hook
 ---
 ## Ziele
 * Du weisst, was der Angular Life Cycle Hook ist und wozu dieser ist.

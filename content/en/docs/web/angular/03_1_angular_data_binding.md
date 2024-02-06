@@ -5,7 +5,7 @@ linkTitle: "Data Bindings in Angular"
 weight: 18
 date: 2022-03-14
 description: >
-  Data Bindings in Angular.
+  Modul #F6 - Angular - Data Bindings
 ---
 ## Ziele
 * Du kennst, die verschiedenen Angular Data Bindings und kannst diese umsetzen.

@@ -5,7 +5,7 @@ linkTitle: "Services"
 weight: 10
 date: 2023-05-04
 description: >
-    Wie Services in Angular genau aussehen und für was sie sind wird in diesem Kapitel erläutert.
+  Modul #F6 - Angular - Services
 ---
 ## Ziele
 * Du weisst, wozu Services in Angular sind und kannst dies erläutern.

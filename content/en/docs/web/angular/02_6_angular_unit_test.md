@@ -5,7 +5,7 @@ linkTitle: "Testfiles"
 weight: 8
 date: 2023-05-04
 description: >
-  In diesem Kapitel wird beschrieben wa genau das Unit Test File in Angular ist.
+  Modul #F6 - Angular - Testing
 ---
 ## Ziele
 * Du weisst, was Unit-Tests in Angular sind.

@@ -5,7 +5,7 @@ linkTitle: "NgRx Selectors"
 weight: 30
 date: 2023-05-26
 description: >
-  Hier findet man was NgRx Selectors sind.
+  Modul #F7 - Angular NgRx - Selectors
 ---
 ## Ziele
 * Du weisst, was NgRx Selectors sind und kannst diese anwenden.

@@ -5,7 +5,7 @@ linkTitle: "(Zusatz) NgRx"
 weight: 27
 date: 2023-04-20
 description: >
-  NgRx Übersicht, welcher jedoch ein Zusatz ist.
+  Modul #F7 - Angular NgRx - Übersicht
 ---
 ## Ziele
 * Du weisst, was und wozu NgRx ist, und kennst das Kernkonzept davon.

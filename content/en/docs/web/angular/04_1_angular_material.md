@@ -5,18 +5,21 @@ linkTitle: "Angular Material"
 weight: 23
 date: 2022-03-14
 description: >
-    Material Design ist eine Designsprache, die für das neue Betriebssystem von Google Android entwickelt wurde, das im Sommer 2014 angekündigt wurde.
-    Obwohl sich die Material Design hauptsächlich auf das Touch-Based-Design mobiler Apps konzentriert, ist es möglich, dieselben Ideen in das Webdesign zu übertragen.
+  Modul #F6 - Angular - Angular Material
 ---
 ## Ziele
 * Du weisst, das es Material in Angular gibt und wie du es verwendest.
+
+## Was ist Material
+Material Design ist eine Designsprache, die für das neue Betriebssystem von Google Android entwickelt wurde, das im Sommer 2014 angekündigt wurde.
+Obwohl sich die Material Design hauptsächlich auf das Touch-Based-Design mobiler Apps konzentriert, ist es möglich, dieselben Ideen in das Webdesign zu übertragen.
 
 ## Material in Angular
 Für Angular gibt es eine spezifische Version von Material Design.
 
 Auf der offiziellen Website von Angular Material sehen wir welche Components uns zur Verfügung gestellt werden.
 
-Wenn wir zum Beispiel den "Slider" in unsere Applikation implementieren möchten, gibt es einige Schritte welche wir beachten müssen.
+Wenn wir zum Beispiel den "Slider" in unsere Applikation implementieren möchten, gibt es einige Schritte, welche wir beachten müssen.
 Jeder Component wird auf der Website wie folgt beschrieben:
 
 * **Overview**: Auf der Übersicht wird beschrieben, wie und wozu man den Component anwenden kann.

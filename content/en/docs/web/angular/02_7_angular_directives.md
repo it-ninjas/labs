@@ -5,7 +5,7 @@ linkTitle: "Directives"
 weight: 9
 date: 2023-05-05
 description: >
-    Was Directives genau sind findet man in diesem Kapitel.
+  Modul #F6 - Angular - Directives
 ---
 ## Ziele
 * Du weisst, was ein Directive ist und wozu es verwendet wird.

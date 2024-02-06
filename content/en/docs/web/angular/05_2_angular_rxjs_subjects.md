@@ -5,7 +5,7 @@ linkTitle: "RxJS Subjects"
 weight: 25
 date: 2023-04-21
 description: >
-  RxJS Subjects
+  Modul #F6 - Angular - RxJS Subjects
 ---
 ## Ziele
 * Du weisst, was RxJS-Subjects sind.

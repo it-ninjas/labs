@@ -5,7 +5,7 @@ linkTitle: "Angular Reactive Forms"
 weight: 21
 date: 2023-04-20
 description: >
-  In diesem Kapitel wird erklärt wozu das Angular Reactive Forms sind.
+  Modul #F6 - Angular - Reactive Forms
 ---
 ## Ziele
 * Du weisst was Angular Reactive Forms sind.

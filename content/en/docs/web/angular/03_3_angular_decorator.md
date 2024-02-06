@@ -5,7 +5,7 @@ linkTitle: "Decorators"
 weight: 20
 date: 2023-05-17
 description: >
-    In disem Kapitel findet man die wichtigsten Informationen u Angular Decorators.
+  Modul #F6 - Angular - Decorators.
 ---
 ## Ziele
 * Du weisst, was Decorators in Angular sind.

@@ -5,7 +5,7 @@ linkTitle: "Lazy Loading"
 weight: 13
 date: 2022-03-14
 description: >
-    Hier wird das Lazy Loading angeschaut.
+  Modul #F6 - Angular - Lazy Loading
 ---
 ## Zeile
 * Du weisst, was Lazy-Loading ist und kannst es erklären.

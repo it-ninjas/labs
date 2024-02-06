@@ -5,7 +5,7 @@ linkTitle: "Errorhandling"
 weight: 15
 date: 2023-05-04
 description: >
- Wie Errorhandling in Angular umgesetzt werden kann.
+  Modul #F6 - Angular - Errorhandling
 ---
 ## Ziele
 * Ich weiss, wozu ErrorHandler verwendet werden und wie ich selbst solche implementieren kann.

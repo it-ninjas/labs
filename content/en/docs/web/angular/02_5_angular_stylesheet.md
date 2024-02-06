@@ -5,7 +5,7 @@ linkTitle: "Stylesheet"
 weight: 7
 date: 2023-05-04
 description: >
-    In diesem Kapitel wird erläutert, wie Angular das Styling von HTML-Elementen vorsieht.
+  Modul #F6 - Angular - Stylesheet
 ---
 ## Ziele
 * Du weisst, was SCSS ist und kennst dessen Vorteile gegenüber CSS.
