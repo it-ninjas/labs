@@ -170,15 +170,3 @@ public void addLast(E e)
 
 
 ```
-
-### Beispiele
-
-Beispiele kommen noch
-
-{{% blocks/lead color="orange" %}}
-Aufgaben
-{{% /blocks/lead %}}
-
-## Aufgaben
-
-[Aufgaben zu Modul #J7 - Java Collections - LinkedList](../../../../labs/java/java-collections/06_linked_list)
