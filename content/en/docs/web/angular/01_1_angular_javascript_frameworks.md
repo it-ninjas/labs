@@ -7,7 +7,7 @@ date: 2022-02-16
 description: >
     Modul #F6 - Angular - Was sind JavaScript Frameworks?
 ---
-## was ist das Frontend?
+## Was ist das Frontend?
 Das Wort Frontend deutet schon darauf hin, worum es sich handelt. Es ist das, was der Nutzer sieht.
 Bei einer Webapplikation ist es das, was dem Besucher im Browser angezeigt wird: die Benutzeroberfläche.
 
