@@ -115,3 +115,6 @@ Inhalte werden erst geladen, wenn sich das Expansion-Panel öffnet.
 In den meisten Fällen ist das Anwenden von Lazy Loading in Angular Material Components auch kein grosser Aufwand.
 
 Schaut also auf der Angular Material Website in "Overview" des Components immer **gut** nach, ob der Component Lazy Loading unterstützt.
+
+
+[//]: # (TODO: @defer/deferrable views hinzufügen )

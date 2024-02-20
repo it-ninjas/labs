@@ -41,21 +41,69 @@ The user is not logged in
 Auch durch dieses Update möglich ist ein `@else if`, was mit den alten directives nur sehr schwer und unschön möglich war.
 
 ### @switch
+Der neue @switch Control Flow in Angular 17 bietet eine verbesserte und vereinfachte Möglichkeit, mehrere Bedingungen in einem Template zu überprüfen. 
+Hier ist ein Vergleich zwischen dem alten und dem neuen Ansatz:
 
+Angular 16:
 ```angular2html
+
 <div [ngSwitch]="accessLevel">
-  <admin-dashboard *ngSwitchCase="admin"/>
-  <moderator-dashboard *ngSwitchCase="moderator"/>
-  <user-dashboard *ngSwitchDefault/>
+    <admin-dashboard *ngSwitchCase="admin"/>
+    <moderator-dashboard *ngSwitchCase="moderator"/>
+    <user-dashboard *ngSwitchDefault/>
 </div>
 ```
 
+Angular 17:
 ```angular2html
 @switch (accessLevel) {
-  @case ('admin') { <admin-dashboard/> }
-  @case ('moderator') { <moderator-dashboard/> }
-  @default { <user-dashboard/> }
+    @case ('admin') { <admin-dashboard/> }
+    @case ('moderator') { <moderator-dashboard/> }
+    @default { <user-dashboard/> }
 }
 ```
 
+Wie du siehst, ist der neue @switch Control Flow viel lesbarer und einfacher zu verwenden als der alte ngSwitch. 
+Es ermöglicht eine klare und direkte Art, verschiedene Fälle in deinem Code zu behandeln.
+
 ### @for
+
+Der `@for` Control Flow in Angular 17 bietet eine verbesserte und vereinfachte Möglichkeit, über eine Sammlung von Elementen zu iterieren. 
+Hier ist ein Vergleich zwischen dem alten und dem neuen Ansatz:
+
+Angular 16:
+```angular2html
+<div *ngFor="let item of items">
+  {{item}}
+</div>
+```
+
+Angular 17:
+```angular2html
+@for (let item of items; track item) {
+    {{item}}
+}
+```
+
+Wie du siehst, ist der neue `@for` Control Flow viel lesbarer und einfacher zu verwenden als der alte `*ngFor`. 
+Es ermöglicht eine klare und direkte Art, über eine Sammlung von Elementen in deinem Code zu iterieren.
+
+Es ist auch möglich, den Index des aktuellen Elements zu erhalten, aber das wird jetzt mit `track` gemacht. Hier ist ein Beispiel:
+```angular2html
+@for (let item of items; track $index) {
+    {{$index}}: {{item}}
+}
+```
+
+In diesem Beispiel gibt `{{$index}}` den Index des aktuellen Elements in der Sammlung zurück und `{{item}}` gibt den Wert des aktuellen Elements zurück.
+Dies ist besonders nützlich, wenn du sowohl den Index als auch den Wert des Elements in deinem Template benötigst.
+
+Passend zum `@for` gibt es das `@empty`, welches einen Standardwert oder Ansicht bereitstellt. Hier ein Beispiel dazu:
+
+```angular2html
+@for (user of users; track user.id) {
+  {{ user.name }}
+} @empty {
+  Empty list of users
+}
+```
