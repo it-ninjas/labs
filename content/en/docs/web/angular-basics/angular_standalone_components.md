@@ -28,6 +28,20 @@ Im Gegensatz zu Standalone-Komponenten sind reguläre Komponenten modulabhängig
 Verwendung: Seit Angular 17 sind Standalone-Komponenten per Default aktiviert und eingesetzt, was ihre Verwendung fördert. Reguläre Komponenten hingegen erfordern eine spezifische Deklaration in ihrem Modul, um verwendet werden zu können.
 Insgesamt bieten Standalone-Komponenten eine größere Flexibilität und Wiederverwendbarkeit im Vergleich zu regulären Komponenten, was sie zu einer attraktiven Option für die Strukturierung von Angular-Anwendungen macht.
 
+### appConfig
+Seit Angular 17 git es das [AppModule](../angular/02_9_angular_modules.md) nicht mehr, da nun die Components default mässig Standalone sind. 
+Jedoch wird trotzdem noch eine Datei benötigt um externe Abhängigkeiten anzugeben. Die ist dann die Datei `app.config.ts`, dort werden zum Beispiel die Abhängigkeiten wie die Angular Routes angegeben. 
+Diese kann man einrichten, indem man `provideRouter(routes)` im `providers`-Array aufruft.
 
+```typescript
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)]
+};
+```
 
 
