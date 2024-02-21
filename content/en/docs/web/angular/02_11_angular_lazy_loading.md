@@ -116,5 +116,208 @@ In den meisten Fällen ist das Anwenden von Lazy Loading in Angular Material Com
 
 Schaut also auf der Angular Material Website in "Overview" des Components immer **gut** nach, ob der Component Lazy Loading unterstützt.
 
+## Deferrable Views
+Mit dem Update von Angular 17 wurde eine neue Art des Lazy Loadings hinzugefügt, nämlich die `Deferrable Views`. 
+Mit der neuen Syntax `@defer` können Components oder andere Inhalte innerhalb eines spezifischen Component dynamisch geladen werden.
+Beispielsweise kann ein Component erst geladen werden, sobald er bereitsteht (Alle Dependencies würde aufgelöst).
+Das würde dann so aussehen:
 
-[//]: # (TODO: @defer/deferrable views hinzufügen )
+``` angular17html
+@defer {
+    <shopping-cart />
+}
+```
+
+Zum `@defer`-Block gibt es noch einige zusätzliche erweiternden Blöcke, die das Laden und Anzeigen verschönern. Hier eine kurze Übersicht:
+
+### `@placeholder`
+Standardmässig lädt der `@defer`-Block keinen Inhalt, was meist unschön ist. Dazu gibt es den `@placeholder`-Block.
+Dieser kann als normales Div verwendet werden und beliebigen Inhalt haben. 
+Logischerweise sollte hier kein Inhalt platziert werden, der auch mit Lazy Loading geladen werden muss/soll.
+
+``` angular17html
+@defer {
+    <shopping-cart />
+} @placeholder {
+    I'm a placeholder :D
+}
+```
+
+Der Placeholder bleibt so lange stehen, bis der Inhalt des `@defer` geladen hat. 
+Wenn es gewünscht ist kann eine Mindestzeit bestimmt werden, in der der Placeholder angezeigt werden muss:
+
+``` angular17html
+@defer {
+    <shopping-cart />
+} @placeholder (minimum 500ms){
+    I'm a placeholder :D I will stay here atleast 500ms ;)
+}
+```
+
+### `@loading`
+Der `@loading`-Block ähnelt sehr dem `@placeholder`-Block, jedoch ist im `@loading` noch eine zusätzliche Option verfügbar.
+Mit `after` kann definiert werden, wann der `@loading`-Block zusehen sein soll. 
+Dieser überschreibt somit ab diesem Zeitpunkt auch den `@placeholder`-Block.
+
+```angular17html
+@defer {
+    <shopping-cart />
+} @placeholder {
+    I'm a placeholder :D I will be overwritten in 100ms :'(
+} @loading (after 100ms; minimum 1s) {
+  <img alt="loading..." src="loading.gif" />
+}
+```
+
+Der `@loading`-Block ist vor allem in Kombination mit den [triggers](#defer-mit-trigger) sinnvoll. 
+
+### `@error`
+Auch der `@error`-Block macht das, was man sich unter dem Namen vorstellt, wenn das Laden des Inhalts fehlschlägt wird der Inhalt des `@error`-Blocks angezeigt.
+
+``` angular17html
+@defer {
+    <shopping-cart />
+} @error {
+    <p>Failed to load shopping cart :( </p>
+}
+```
+<br>
+Alle erwähnten Blöcke können natürlich auch aneinander gereiht werden und so eine klare Struktur abbilden:
+
+```angular17html
+@defer {
+  <comment-list/>
+} @loading {
+  Loading…
+} @error {
+  Loading failed :(
+} @placeholder {
+  <img src="shopping-placeholder.png">
+}
+```
+
+### Defer mit Trigger
+In einigen Fällen ist es hilfreich, wenn selbst bestimmt werden kann, wann das Lazy Loading beginnt. 
+Dazu wurden den Deferrable Views zusätzlich `Triggers` hinzugefügt, die den Zeitpunkt des Ladens einschränken.
+
+#### Viewport
+Einer dieser `Trigger` ist der `Viewport`. Dieser Trigger wird ausgelöst, wenn ein `@placeholder` im Viewport sichtbar ist.
+Der Code dazu würde dann ungefähr so aussehen:
+
+```angular17html
+@defer (on viewport) {
+    <shopping-cart />
+} @placeholder {
+  <!-- A placeholder content to show until the shopping-cart loads -->
+  <img src="shopping-placeholder.png">
+}
+```
+
+#### Idle
+Der `Trigger` `idle` teilt Angular mit, dass der Inhalt erst geladen werden soll, wenn der Browser keine wichtigen Aufgaben mehr zu erledigen hat.
+```angular17html
+@defer (on idle) {
+    <unimportant-info />
+} @placeholder {
+  <!-- A placeholder content to show until the unimportant-info loads -->
+  <img src="unimportant-info-placeholder.png">
+}
+```
+
+#### Interaction
+Der Name `interaction` verrät bereits, dass der Inhalt hier erst geladen wird, wenn eine Aktion (Klick oder Keydown) auf einem bestimmten Element durchgeführt wird.
+Standardmässig ist dieses Element der Placeholder.
+
+```angular17html
+@defer (on interaction) {
+    <shopping-cart />
+} @placeholder {
+  <!-- A placeholder content to show until the shopping-cart loads -->
+  <img src="shopping-placeholder.png">
+}
+```
+
+Ein anderes Element kannst du so bestimmen:
+```angular17html
+<button type="button" #greeting>Hello!</button>
+@defer (on interaction(greeting)) {
+    <shopping-cart />
+} @placeholder {
+    <div>Shopping Cart placeholder</div>
+}
+```
+Hier wird also das `shopping-cart` erst geladen, wenn der Button geklickt wird.
+
+#### Hover
+Gleich wie beim `Trigger` `interaction` wird hier der Inhalt geladen, wenn über ein Element gehovert wird. 
+Auch hier ist Standardmässig der Placeholder dieses Element.
+```angular17html
+@defer (on hover) {
+    <shopping-cart />
+} @placeholder {
+  <!-- A placeholder content to show until the shopping-cart loads -->
+  <img src="shopping-placeholder.png">
+}
+```
+
+Ein anderes Element kannst du so bestimmen:
+```angular17html
+<div #greeting>Hello!</div>
+@defer (on hover(greeting)) {
+    <shopping-cart />
+} @placeholder {
+    <div>Shopping Cart placeholder</div>
+}
+```
+Hier wird also das `shopping-cart` erst geladen, wenn der über das `Hello!` gehovert wird.
+
+#### Timer
+Mit dem `Timer` Trigger kann eine bestimmte Zeit in Millisekunden angegeben werden, die gewartet werden soll, bis das Laden beginnt.
+
+```angular17html
+@defer (on timer(500ms)) {
+    <shopping-cart />
+} @placeholder {
+  <!-- A placeholder content to show until the shopping-cart loads -->
+  <img src="shopping-placeholder.png">
+}
+```
+
+#### Immediate
+Anders als die anderen Trigger wird `Immediate` nicht verzögert durchgeführt, jedoch wird der Inhalt immer noch mit Lazy Loading geladen.
+`Immediate` kann hilfreich sein, wenn es Inhalte gibt, die priorität vor anderen Inhalten haben.
+
+```angular17html
+@defer (on immediate) {
+    <shopping-cart />
+} @placeholder {
+  <!-- A placeholder content to show until the shopping-cart loads -->
+  <img src="shopping-placeholder.png">
+}
+```
+
+#### When
+Mit dem Trigger `When` kann selbst definiert werden unter welchen Bedingungen ein Inhalt geladen wird. 
+Das `When` funktioniert grundsätzlich wie ein normales if.
+
+```angular17html
+@defer (when bedingung) {
+<shopping-cart />
+}
+```
+
+### Prefetching
+In einigen Anwendungsfällen kann es Sinn machen, wenn der Inhalt eines `@defer`s bereits bei Möglichkeit vorgeladen wird.
+Wenn beispielsweise ein `interaction`-Trigger eingesetzt wird und dieser lange nicht ausgelöst wird. 
+Dazu kann das Preloading wie folgt aktiviert werden: 
+
+```angular17html
+@defer (on interaction(greeting); prefetch on idle) {
+    <shopping-cart />
+} @placeholder {
+    <div>Shopping Cart placeholder</div>
+}
+```
+
+Hier wird zusätzlich zum Trigger noch ein zweiter Trigger für das `prefetch` eingesetzt. 
+Alle verfügbaren Trigger (inkl. `when`) sind hier zulässig, jedoch macht z.B. `interaction` meist wenig Sinn.

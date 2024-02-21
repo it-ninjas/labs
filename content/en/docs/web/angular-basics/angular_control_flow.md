@@ -19,7 +19,7 @@ Wie bereits erwähnt können die Control Flows direkt in jedem HTML eingesetzt w
 ### @if & @else
 Mit den beiden neuen `@if` und `@else` wird die Verwendung vereinfacht, so dass beim Lesen des Codes auch das else klar sichtbar ist. Aktuell musste ein if und also so gemacht werden:
 
-```angular2html
+```angular17html
 <div *ngIf="loggedIn; else anonymousUser">
   The user is logged in
 </div>
@@ -30,11 +30,11 @@ Mit den beiden neuen `@if` und `@else` wird die Verwendung vereinfacht, so dass 
 
 Mit dem neuen Control Flow vereinfacht sich der Code zu:
 
-```angular2html
+```angular17html
 @if (loggedIn) {
-The user is logged in
+    The user is logged in
 } @else {
-The user is not logged in
+    The user is not logged in
 }
 ```
 
@@ -45,7 +45,7 @@ Der neue @switch Control Flow in Angular 17 bietet eine verbesserte und vereinfa
 Hier ist ein Vergleich zwischen dem alten und dem neuen Ansatz:
 
 Angular 16:
-```angular2html
+```angular17html
 
 <div [ngSwitch]="accessLevel">
     <admin-dashboard *ngSwitchCase="admin"/>
@@ -55,7 +55,7 @@ Angular 16:
 ```
 
 Angular 17:
-```angular2html
+```angular17html
 @switch (accessLevel) {
     @case ('admin') { <admin-dashboard/> }
     @case ('moderator') { <moderator-dashboard/> }
@@ -72,14 +72,14 @@ Der `@for` Control Flow in Angular 17 bietet eine verbesserte und vereinfachte M
 Hier ist ein Vergleich zwischen dem alten und dem neuen Ansatz:
 
 Angular 16:
-```angular2html
+```angular17html
 <div *ngFor="let item of items">
   {{item}}
 </div>
 ```
 
 Angular 17:
-```angular2html
+```angular17html
 @for (let item of items; track item) {
     {{item}}
 }
@@ -89,7 +89,7 @@ Wie du siehst, ist der neue `@for` Control Flow viel lesbarer und einfacher zu v
 Es ermöglicht eine klare und direkte Art, über eine Sammlung von Elementen in deinem Code zu iterieren.
 
 Es ist auch möglich, den Index des aktuellen Elements zu erhalten, aber das wird jetzt mit `track` gemacht. Hier ist ein Beispiel:
-```angular2html
+```angular17html
 @for (let item of items; track $index) {
     {{$index}}: {{item}}
 }
@@ -100,7 +100,7 @@ Dies ist besonders nützlich, wenn du sowohl den Index als auch den Wert des Ele
 
 Passend zum `@for` gibt es das `@empty`, welches einen Standardwert oder Ansicht bereitstellt. Hier ein Beispiel dazu:
 
-```angular2html
+```angular17html
 @for (user of users; track user.id) {
   {{ user.name }}
 } @empty {
