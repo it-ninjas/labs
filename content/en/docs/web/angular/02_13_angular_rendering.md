@@ -64,3 +64,48 @@ Sobald SSR hinzugefügt wurde, kann man die statischen Seiten generieren, indem 
 ```shell
 ng build
 ```
+
+## Hydration
+Die Hydration ist der Vorgang, der die serverseitig gerenderte Anwendung auf dem Client wiederherstellt. Dazu gehört das Wiederverwenden der serverseitig gerenderten DOM-Strukturen, das Beibehalten des Anwendungszustands, das Übertragen von bereits vom Server abgerufenen Anwendungsdaten und andere Prozesse.
+
+Die Hydration verbessert die Leistung der Anwendung, indem zusätzliche Arbeit zur Neuerstellung von DOM-Knoten vermieden wird. Stattdessen versucht Angular, vorhandene DOM-Elemente zur Laufzeit mit der Anwendungsstruktur abzugleichen und wiederverwendet DOM-Knoten, wenn möglich.
+Dies führt zu einer Leistungsverbesserung, die anhand von Core Web Vitals (CWV)-Statistiken gemessen werden kann, z.B. der Reduzierung der First Input Delay (FID) und Largest Contentful Paint (LCP) sowie des Cumulative Layout Shift (CLS). Eine Verbesserung dieser Kennzahlen wirkt sich auch auf Dinge wie die SEO-Leistung aus.
+
+Ohne aktiviert Hydration werden serverseitig gerenderte Angular-Anwendungen die DOM der Anwendung zerstören und erneut rendern, was zu einem sichtbaren Flackern der Benutzeroberfläche führen kann. Dieses erneute Rendern kann sich negativ auf Core Web Vitals wie LCP auswirken und zu einem Layout-Shift führen.
+Durch Aktivieren der Hydration können die vorhandenen DOM-Elemente wiederverwendet werden und ein Flackern wird verhindert.
+
+### Wie aktiviert man die Hydratisierung in Angular
+Bevor man mit der Hydration beginnen kann, muss man eine serverseitig gerenderte (SSR) Anwendung besitzen. Sobald die Anwendung mit SSR zum Laufen gebracht wurde, können die Hydration aktiviert werden. Indem die Hauptanwendungskomponente oder das Hauptmodul besucht wird und `provideClientHydration` von `@angular/platform-browser` importiert wird.
+Anschliessend fügt man diesen Provider zur Liste der Bootstrapping-Provider in der App hinzu.
+
+```ts
+import {
+  bootstrapApplication,
+  provideClientHydration,
+} from '@angular/platform-browser';
+
+...
+
+bootstrapApplication(AppComponent, {
+  providers: [provideClientHydration()]
+});
+```
+
+Alternativ, wenn man `NgModules` verwendet, fügt man `provideClientHydration` zur Provider-Liste im Root-App-Moduls hinzu.
+
+```ts
+import {provideClientHydration} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+
+@NgModule({
+  declarations: [AppComponent],
+  exports: [AppComponent],
+  bootstrap: [AppComponent],
+  providers: [provideClientHydration()],
+})
+export class AppModule {}
+```
+
+**WICHTIG:** Es muss sichergestellt werden, dass der Aufruf von `provideClientHydration()` auch in einer Liste von Providern enthalten ist, die zum Bootstrappen einer Anwendung auf dem Server verwendet wird. In Anwendungen mit der standardmässigen Projektstruktur (generiert durch den Befehl `ng new`), sollte es ausreichen, den Aufruf im Root-App-Modul hinzuzufügen, da dieser vom Servermodul importiert wird.
+Wenn man eine benutzerdefinierte Konfiguration verwendet, sollte man den Aufruf von `provideClientHydration()` zur Provider-Liste in der Konfiguration zum Server-Bootstrapping hinzufügen.
+
