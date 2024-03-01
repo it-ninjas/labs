@@ -2,7 +2,7 @@
 title: "Dependency Injection"
 type: docs
 linkTitle: "Dependency Injection"
-weight: 16
+weight: 18
 date: 2023-05-04
 description: >
   Modul #F6 - Angular - Dependency Injection

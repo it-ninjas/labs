@@ -2,7 +2,7 @@
 title: "Routing"
 type: docs
 linkTitle: "Routing"
-weight: 12
+weight: 13
 date: 2023-05-09
 description: >
   Modul #F6 - Angular - Routing

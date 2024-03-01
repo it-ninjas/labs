@@ -1,8 +1,8 @@
 ---
-title: "Angular Life Cycle Hook"
+title: "Life Cycle Hook"
 type: docs
-linkTitle: "Angular Life Cycle Hook"
-weight: 17
+linkTitle: "Life Cycle Hook"
+weight: 19
 date: 2023-05-05
 description: >
   Modul #F6 - Angular - Life Cycle Hook
@@ -28,6 +28,16 @@ Lifecycle-Hooks ermöglichen es Entwicklern, Code zu spezifischen Zeitpunkten im
 
 * **ngAfterViewChecked**: Wird nach jedem Angular-Change-Detection-Durchlauf aufgerufen, nachdem die View überprüft wurde. Hier kann man Aktionen ausführen, die nach der Überprüfung der View erforderlich sind.
 
+* **afterNextRender**: Wird einmal ausgeführt, sobald alle Komponenten das nächste Mal im DOM gerendert wurden. Diese kann man verwenden, um manuelle DOM-Operationen durchzuführen.
+
+* **afterRender**: Wird jedes Mal ausgeführt, wenn alle Komponenten im DOM gerendert wurden. Diese kann man verwenden, um manuelle DOM-Operationen durchzuführen.
+
 * **ngOnDestroy:** Wird aufgerufen, bevor ein Component zerstört wird. Hier kann man bereinigende Aktionen durchführen, Subscriptions beenden oder Ressourcen freigeben.
 
-![Lifecycle-Hooks ](../images/angular-lifecycle.png)
+### afterNextRender & afterRender
+Diese Funktionen unterscheiden sich von den anderen beschriebenen Lebenszyklus-Hooks. Anstatt einer Klassenmethode handelt es sich um eigenständige Funktionen, die einen Callback akzeptieren. 
+Die Ausführung von Render-Callbacks ist nicht an eine bestimmte Komponenteninstanz gebunden, sondern erfolgt stattdessen über einen anwendungsweiten Hook.
+
+![Lifecycle-Hooks ](../images/angular-lifecycle-init.png)
+
+![Lifecycle-Hooks ](../images/angular-lifecycle-update.png)

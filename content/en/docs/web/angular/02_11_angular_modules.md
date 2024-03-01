@@ -2,7 +2,7 @@
 title: "Modules"
 type: docs
 linkTitle: "Modules"
-weight: 11
+weight: 12
 date: 2023-05-04
 description: >
   Modul #F6 - Angular - Module

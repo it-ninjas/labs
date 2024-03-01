@@ -2,7 +2,7 @@
 title: "Interceptors"
 type: docs
 linkTitle: "Interceptors"
-weight: 14
+weight: 16
 date: 2022-03-14
 description: >
   Modul #F6 - Angular - Interceptors

@@ -2,7 +2,7 @@
 title: "Angular Material, Responsive Web Design und Accessibility"
 type: docs
 linkTitle: "Angular Material"
-weight: 23
+weight: 25
 date: 2022-03-14
 description: >
   Modul #F6 - Angular - Angular Material

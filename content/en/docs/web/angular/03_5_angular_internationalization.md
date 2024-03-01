@@ -2,7 +2,7 @@
 title: "Internationalization (i18n)"
 type: docs
 linkTitle: "Internationalization (i18n)"
-weight: 22
+weight: 24
 date: 2023-04-20
 description: >
   Modul #F6 - Angular - Internationalization

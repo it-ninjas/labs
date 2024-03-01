@@ -2,7 +2,7 @@
 title: "Components"
 type: docs
 linkTitle: "Components"
-weight: 5
+weight: 4
 date: 2023-05-04
 description: >
   Modul #F6 - Angular - Components
