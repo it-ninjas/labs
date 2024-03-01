@@ -2,7 +2,7 @@
 title: "Errorhandling"
 type: docs
 linkTitle: "Errorhandling"
-weight: 15
+weight: 17
 date: 2023-05-04
 description: >
   Modul #F6 - Angular - Errorhandling

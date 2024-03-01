@@ -2,7 +2,7 @@
 title: "Angular Strukturen"
 type: docs
 linkTitle: "Angular Strukturen"
-weight: 4
+weight: 3
 date: 2023-05-04
 description: >
   Modul #F6 - Angular - Angular Strukturen

@@ -1,8 +1,8 @@
 ---
-title: "Angular Control Flow"
+title: "Control Flow"
 type: docs
-linkTitle: "Angular Control Flow"
-weight: 1
+linkTitle: "Control Flow"
+weight: 10
 date: 2024-02-16
 description: >
     Modul #F6 - Angular - Neuer Control Flow in Angular

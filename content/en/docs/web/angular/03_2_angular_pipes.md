@@ -2,7 +2,7 @@
 title: "Pipes"
 type: docs
 linkTitle: "Pipes"
-weight: 19
+weight: 21
 date: 2022-03-14
 description: >
   Modul #F6 - Angular - Pipes

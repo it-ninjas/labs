@@ -1,8 +1,8 @@
 ---
-title: "Angular Data Bindings"
+title: "Data Bindings"
 type: docs
-linkTitle: "Data Bindings in Angular"
-weight: 18
+linkTitle: "Data Bindings"
+weight: 20
 date: 2022-03-14
 description: >
   Modul #F6 - Angular - Data Bindings

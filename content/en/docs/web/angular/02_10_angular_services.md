@@ -2,7 +2,7 @@
 title: "Services"
 type: docs
 linkTitle: "Services"
-weight: 10
+weight: 11
 date: 2023-05-04
 description: >
   Modul #F6 - Angular - Services

@@ -1,8 +1,8 @@
 ---
-title: "Angular Reactive Forms"
+title: "Reactive Forms"
 type: docs
-linkTitle: "Angular Reactive Forms"
-weight: 21
+linkTitle: "Reactive Forms"
+weight: 23
 date: 2023-04-20
 description: >
   Modul #F6 - Angular - Reactive Forms

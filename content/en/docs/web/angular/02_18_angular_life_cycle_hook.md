@@ -1,8 +1,8 @@
 ---
-title: "Angular Life Cycle Hook"
+title: "Life Cycle Hook"
 type: docs
-linkTitle: "Angular Life Cycle Hook"
-weight: 17
+linkTitle: "Life Cycle Hook"
+weight: 19
 date: 2023-05-05
 description: >
   Modul #F6 - Angular - Life Cycle Hook

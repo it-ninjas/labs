@@ -1,8 +1,8 @@
 ---
-title: "Angular Rendering"
+title: "Rendering"
 type: docs
-linkTitle: "Angular Rendering"
-weight: 2
+linkTitle: "Rendering"
+weight: 14
 date: 2024-03-01
 description: >
     Modul #F6 - Angular - Rendering in Angular

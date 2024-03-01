@@ -2,7 +2,7 @@
 title: "Decorators"
 type: docs
 linkTitle: "Decorators"
-weight: 20
+weight: 22
 date: 2023-05-17
 description: >
   Modul #F6 - Angular - Decorators.

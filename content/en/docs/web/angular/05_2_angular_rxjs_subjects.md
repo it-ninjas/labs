@@ -2,7 +2,7 @@
 title: "RxJS Subjects"
 type: docs
 linkTitle: "RxJS Subjects"
-weight: 25
+weight: 27
 date: 2023-04-21
 description: >
   Modul #F6 - Angular - RxJS Subjects

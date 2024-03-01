@@ -1,8 +1,8 @@
 ---
-title: "Angular Standalone Components"
+title: "Standalone Components"
 type: docs
-linkTitle: "Angular Standalone Components"
-weight: 1
+linkTitle: "Standalone Components"
+weight: 5
 date: 2024-02-16
 description: >
     Modul #F6 - Angular - Was sind Standalone Components?
@@ -29,7 +29,7 @@ Verwendung: Seit Angular 17 sind Standalone-Komponenten per Default aktiviert un
 Insgesamt bieten Standalone-Komponenten eine größere Flexibilität und Wiederverwendbarkeit im Vergleich zu regulären Komponenten, was sie zu einer attraktiven Option für die Strukturierung von Angular-Anwendungen macht.
 
 ### appConfig
-Seit Angular 17 git es das [AppModule](../angular/02_9_angular_modules.md) nicht mehr, da nun die Components default mässig Standalone sind. 
+Seit Angular 17 git es das [AppModule](02_11_angular_modules) nicht mehr, da nun die Components default mässig Standalone sind. 
 Jedoch wird trotzdem noch eine Datei benötigt um externe Abhängigkeiten anzugeben. Die ist dann die Datei `app.config.ts`, dort werden zum Beispiel die Abhängigkeiten wie die Angular Routes angegeben. 
 Diese kann man einrichten, indem man `provideRouter(routes)` im `providers`-Array aufruft.
 

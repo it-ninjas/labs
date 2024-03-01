@@ -1,8 +1,8 @@
 ---
-title: "Angular Signals"
+title: "Signals"
 type: docs
-linkTitle: "Angular Signals"
-weight: 1
+linkTitle: "Signals"
+weight: 29
 date: 2024-02-27
 description: >
     Modul #F6 - Angular - Signals in Angular

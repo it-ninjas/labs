@@ -2,7 +2,7 @@
 title: "Lazy Loading"
 type: docs
 linkTitle: "Lazy Loading"
-weight: 13
+weight: 15
 date: 2022-03-14
 description: >
   Modul #F6 - Angular - Lazy Loading
