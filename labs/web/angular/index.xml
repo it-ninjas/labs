@@ -295,16 +295,6 @@ Sofern nichts angegeben wird, wähle Standardmässig &lt;code>CHF&lt;/code>.&lt;
 Hier kannst du selbst auswählen welche Components du verwenden möchtest. Du musst jedoch mindestens 5 verschiedene Components in deiner Anwendung verwendet haben.&lt;/p></description></item><item><title>Labs: Labs zu RxJS</title><link>/labs/web/angular/02_rxjs/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/labs/web/angular/02_rxjs/</guid><description>
 &lt;h1 id="aufgaben">Aufgaben&lt;/h1>
 &lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> - Einzelarbeit&lt;/p>
-&lt;p>Erstelle eine Website, welche anhand von Observables eine Browsernotification ausgibt.
-Dazu soll sich auf der Website ein Button befinden, welcher das Event auslöst, um die Notification im Browser anzuzeigen.&lt;/p>
-&lt;p>Vorgehen:
-Lade die &lt;a href="/files/exams/angular/uebung1.html">Datei&lt;/a> herunter und öffne sie in VS Code. (Wenn sie im Browser geöffnet ist, mittels rechtsklick und dann &amp;ldquo;Speichern unter&amp;rdquo;.)
-Die Datei enthält lediglich das Grundgerüst der Übung, füge an den auskommentierten Stellen den entsprechenden Code ein.
-Am Grundgerüst der Datei soll nichts verändert werden.&lt;/p>
-&lt;p>&lt;img src="/images/hint.png" alt="asset"> &lt;br>
-Damit die Notifications fehlerfrei funktionieren, muss die Extension &amp;ldquo;Live Server&amp;rdquo; in VS Code hinzugefügt und angewendet werden.&lt;/p>
-&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
 &lt;p>Im folgenden Code befindet sich eine Funktion für das Erhalten einer zufälligen Zahl zwischen dem min und max. Zudem befindet sich bereits ein Observable im Code, welches in zufälligen Intervallen einen Wert zurückgeben soll.&lt;/p>
 &lt;p>Die Aufgabe ist nun das Observable so anzupassen, dass in der Subscription jeweils in zufälligen Abständen ein Wert zurückgegeben wird.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -336,7 +326,7 @@ Damit die Notifications fehlerfrei funktionieren, muss die Extension &amp;ldquo;
 });
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;/div>&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
 &lt;p>Auch bei dieser Aufgabe ist bereits ein wenig Code schon gegeben. Und zwar erneut eine Funktion zum Erhalten einer zufälligen Zahl für die Celsiusgrade.
 Auch das Observable ist hier bereits gegeben, dieses emitted alle zwei Sekunden eine neue Random Celsiusgrad Zahl.&lt;/p>
 &lt;p>Die Aufgabe ist nun beim subscriben auf das Observable, die kommende Celsius Zahl in Fahreinheiten umzuwandeln und dann beide zu loggen.&lt;/p>
@@ -373,4 +363,86 @@ Auch das Observable ist hier bereits gegeben, dieses emitted alle zwei Sekunden 
 });
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item></channel></rss>
+&lt;/div>&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;p>In den Docs wurden dir verschiedene Versionen von Subjects vorgestellt. Jede davon hat ihre speziellen Eigenschaften.
+Diese sollst du in dieser Aufgabe vertiefen. In der nachfolgenden Vorlage befindet sich ein grober Aufbau, den du erweitern sollt.
+Du sollst anhand dieser Vorlage eine Art Chat erstellen, der eine Nachricht an ein Subject schickt. Jede Nachricht soll ausserdem einen Zeitstempel haben.
+Ziel ist es, dass du alle bekannten Subjects verwendest. Schlussendlich soll jeweils die Ausgabe der Subjects im &lt;code>&amp;lt;div class=&amp;quot;output&amp;quot;&amp;gt;&lt;/code> zu sehen sein.
+Schreibe dazu die benötigten Funktionen &lt;code>submit&lt;/code>, &lt;code>addSubscriptions&lt;/code> und &lt;code>complete&lt;/code>.&lt;/p>
+&lt;details>
+&lt;summary>Vorlage&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&lt;span style="color:#75715e">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">html&lt;/span> &lt;span style="color:#a6e22e">lang&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;en&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">charset&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;UTF-8&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">title&lt;/span>&amp;gt;Subject Lab&amp;lt;/&lt;span style="color:#f92672">title&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://unpkg.com/rxjs@6.2.0/bundles/rxjs.umd.min.js&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">submit&lt;/span>() {
+&lt;span style="color:#75715e">// TODO: Nachricht zu Subject senden
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">addSubscriptions&lt;/span>() {
+&lt;span style="color:#75715e">// TODO: Subscription starten
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">complete&lt;/span>() {
+&lt;span style="color:#75715e">// TODO: Subject complete
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> }
+&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">body&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;wrapper&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;actions&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;chat&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">placeholder&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Please enter your message&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;submit&amp;#34;&lt;/span>&amp;gt;Send&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;add-subscriptions&amp;#34;&lt;/span>&amp;gt;Subscriptions&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;complete&amp;#34;&lt;/span>&amp;gt;Complete&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;output&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- TODO: Für jeden Typ von Subject einen separaten Output--&amp;gt;&lt;/span>
+&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">body&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">html&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details></description></item></channel></rss>

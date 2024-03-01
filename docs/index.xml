@@ -501,7 +501,7 @@ winget install --id Git.Git -e --source winget
 2. Ansonsten lade es unter folgendem Link herunter: https://git-scm.com/.
 Bei der Installation sind keine Anpassungen zwingend. Vielleicht helfen dir in Zukunft die &amp;quot;Components&amp;quot; &amp;quot;Windows Explorer integration - Git Bash Here&amp;quot; und &amp;quot;Add a Git Bash Profile to Windows Terminal&amp;quot;. Ansonsten kannst du dich einfach durchklicken.
 &lt;/code>&lt;/pre></description></item><item><title>Docs: Javascript Frameworks</title><link>/docs/web/angular/01_1_angular_javascript_frameworks/</link><pubDate>Wed, 16 Feb 2022 00:00:00 +0000</pubDate><guid>/docs/web/angular/01_1_angular_javascript_frameworks/</guid><description>
-&lt;h2 id="was-ist-das-frontend">was ist das Frontend?&lt;/h2>
+&lt;h2 id="was-ist-das-frontend">Was ist das Frontend?&lt;/h2>
 &lt;p>Das Wort Frontend deutet schon darauf hin, worum es sich handelt. Es ist das, was der Nutzer sieht.
 Bei einer Webapplikation ist es das, was dem Besucher im Browser angezeigt wird: die Benutzeroberfläche.&lt;/p>
 &lt;h2 id="was-ist-ein-framework">Was ist ein Framework?&lt;/h2>
@@ -5104,19 +5104,236 @@ Die Konfiguration erfolgt über eine &lt;code>.eslintrc&lt;/code>-Datei, in der 
 - git --version
 - npm -v
 &lt;/code>&lt;/pre>
-&lt;p>Sofern alle Versionen angezeigt werden, war die Installation erfolgreich. Anderweitig solltest du einen Coach konsultieren.&lt;/p></description></item><item><title>Labs: Labs zu RxJS</title><link>/labs/web/angular/02_rxjs/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/labs/web/angular/02_rxjs/</guid><description>
+&lt;p>Sofern alle Versionen angezeigt werden, war die Installation erfolgreich. Anderweitig solltest du einen Coach konsultieren.&lt;/p></description></item><item><title>Docs: Einführung in Angular</title><link>/docs/web/angular/02_1_angular_einf%C3%BChrung/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_1_angular_einf%C3%BChrung/</guid><description>
+&lt;h2 id="was-ist-angular">Was ist Angular&lt;/h2>
+&lt;p>Angular ist ein Framework um SPA’s (Single Page Applications) mittels HTML und JavaScript zu erstellen und besteht aus verschiedenen core und optionalen JavaScript Bibliotheken
+Angular wird für Frontend-Applikationen verwendet. Oft wird ein Backend via HTTP(s) angebunden.
+&lt;img src="../images/angular_einf%C3%BChrung.png" alt="Angular">&lt;/p>
+&lt;h3 id="vorteile-von-angular">Vorteile von Angular&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Umfangreiche Funktionalität&lt;/strong>: Angular bietet eine Vielzahl von Funktionen und Features, die für die Entwicklung von komplexen Webanwendungen erforderlich sind. Es enthält ein leistungsfähiges Template-System, Datenbindung, Routing, Formularvalidierung, Dependency Injection und vieles mehr.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Strukturierte Architektur&lt;/strong>: Angular basiert auf dem Konzept der Components-Based Architektur. Die Anwendung wird in unabhängige, wiederverwendbare Components strukturiert, was die Wartbarkeit und Testbarkeit erleichtert.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Produktivität&lt;/strong>: Angular bietet viele Hilfsmittel, die die Entwicklungszeit verkürzen. Dazu gehören die Angular CLI (Command Line Interface) zur Projektgenerierung und automatisierten Aufgaben, ein reichhaltiges Ökosystem von Libraries und Extensions sowie eine umfangreiche Dokumentation.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>TypeScript-Unterstützung&lt;/strong>: Angular ist in TypeScript geschrieben, einer statisch typisierten Variante von JavaScript. TypeScript bietet statische Typisierung, verbesserte IDE-Unterstützung und ermöglicht eine bessere Fehlererkennung zur Entwicklungszeit.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="nachteile-von-angular">Nachteile von Angular&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Lernkurve&lt;/strong>: Angular ist ein umfangreiches Framework und erfordert eine gewisse Einarbeitungszeit. Die Konzepte wie Dependency Injection, TypeScript und das Componentmodel können für Entwickler mit wenig Erfahrung zunächst herausfordernd sein.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Grösse&lt;/strong>: Angular ist ein umfangreiches Framework, was zu einer grösseren Dateigrösse der Anwendung führen kann. Dies kann die Ladezeit beeinflussen, insbesondere für mobile Geräte mit langsamer Internetverbindung.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Komplexität&lt;/strong>: Aufgrund der vielen Funktionen und Konzepte kann die Komplexität von Angular zunehmen, insbesondere für kleinere Projekte, bei denen nicht alle Funktionen benötigt werden.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Abhängigkeit von Google&lt;/strong>: Angular wurde von Google entwickelt und ist stark mit dem Unternehmen verbunden. Einige Entwickler haben Bedenken hinsichtlich der langfristigen Unterstützung und der Unabhängigkeit von Google.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="angular-projekt-aufsetzen">Angular Projekt aufsetzen&lt;/h2>
+&lt;p>Um ein neues Angular-Projekt zu erstellen, kann man das Angular CLI (Command Line Interface) verwenden. Dazu muss es aber zuerst installiert werden.&lt;/p>
+&lt;h3 id="angular-cli-installieren">Angular CLI installieren&lt;/h3>
+&lt;p>Man muss als Vorarbeit sicherstellen, dass Node.js auf dem Computer installiert ist (&lt;code>npm -v&lt;/code> im Terminal eingeben). Im Terminal muss man danach den folgenden Befehl ausführen, um die Angular CLI global zu installieren:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">npm install -g @angular/cli
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="projekt-erstellen">Projekt erstellen&lt;/h3>
+&lt;p>Nun muss in das Verzeichnis wechseln, in dem das Angular-Projekt erstellen werden möchten, und nun muss man den folgenden Befehl ausführen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">ng new new-angular-project
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Als Nächstes in das Projektverzeichnis wechseln, indem man den folgenden Befehl ausführen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">cd new-angular-project
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="projekt-starten">Projekt starten&lt;/h3>
+&lt;p>Mit dem folgenden Befehl, kann man den Entwicklungsserver starten und das Angular-Projekt im Browser anzuzeigen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">ng serve
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Entwicklungsserver wird gestartet und die Anwendung wird auf http://localhost:4200 bereitgestellt. Man kann diese URL in einem Webbrowser öffnen, um die Angular-Anwendung zu sehen.&lt;/p>
+&lt;h2 id="angular-cli">Angular CLI&lt;/h2>
+&lt;p>Das Angular CLI (Command Line Interface) ist ein Befehlszeilenwerkzeug, das von Angular bereitgestellt wird. Es ermöglicht Entwicklern, effizienter mit Angular zu arbeiten, indem es verschiedene Funktionen und Befehle zur Verfügung stellt, um die Erstellung, Entwicklung, Bereitstellung und Wartung von Angular-Projekten zu unterstützen.&lt;/p>
+&lt;h3 id="commands">Commands&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>ng new &lt;projektname>: Erstellt ein neues Angular-Projekt mit der angegebenen Projektstruktur und Konfiguration.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng serve: Startet den Entwicklungsserver und stellt Ihre Angular-Anwendung auf http://localhost:4200 bereit. Änderungen werden in Echtzeit reflektiert.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng serve &amp;ndash;open: Startet den Entwicklungsserver und öffnet automatisch Ihren Standardwebbrowser, um Ihre Anwendung anzuzeigen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng generate &lt;art> &lt;name> (oder ng g &lt;art> &lt;name>): Generiert eine neue Datei oder Komponente basierend auf einer vorgegebenen Vorlage.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Component&lt;/strong>: ng generate component &lt;name> oder ng g c &lt;name>
+Erzeugt eine neue Component mit einer Componentdatei, einer Template-Datei, einer Stylesheet-Datei und einem Testfile.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Module&lt;/strong>: ng generate module &lt;name> oder ng g m &lt;name>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Service&lt;/strong>: ng generate service &lt;name> oder ng g s &lt;name>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Directive&lt;/strong>: ng generate directive &lt;name> oder ng g d &lt;name>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Klassen&lt;/strong>: ng generate class &lt;name> oder ng g cl &lt;name>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Enum&lt;/strong>: ng generate enum &lt;name> oder ng g e &lt;name>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Interface&lt;/strong>: ng generate interface &lt;name> oder ng g i &lt;name>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Pipe&lt;/strong>: ng generate pipe &lt;name> oder ng g p &lt;name>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Guard&lt;/strong>: ng generate guard &lt;name>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>ng build: Kompiliert und baut Ihre Angular-Anwendung für die Produktion. Erzeugt optimierten JavaScript-Code, der für die Bereitstellung auf einem Webserver verwendet werden kann.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng test: Führt Ihre Unit-Tests aus, um sicherzustellen, dass Ihre Anwendung ordnungsgemäß funktioniert.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng lint: Überprüft Ihren Code auf Einhaltung der definierten Linting-Regeln.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng update: Aktualisiert Ihre Angular-Abhängigkeiten und -Pakete auf die neuesten Versionen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng add &lt;paketname>: Fügt ein externes Paket oder eine Bibliothek zu Ihrem Angular-Projekt hinzu. Installiert und konfiguriert das Paket automatisch.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ng help: Zeigt eine Liste der verfügbaren Befehle und Optionen der Angular CLI an.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="konfigurationsdatei-für-eine-angular-anwendung">Konfigurationsdatei für eine Angular-Anwendung&lt;/h2>
+&lt;p>Die &lt;code>angular.json&lt;/code>-Datei ist die Konfigurationsdatei für ein Angular-Projekt. Sie enthält verschiedene Einstellungen und Konfigurationen für das Build-System, die Erstellung des Projekts, den Asset-Manager und vieles mehr. Die Datei wird automatisch generiert, wenn ein neues Angular-Projekt mit der Angular CLI erstellt wird.&lt;/p>
+&lt;h2 id="einstiegspunkt-einer-angular-anwendung">Einstiegspunkt einer Angular-Anwendung&lt;/h2>
+&lt;h3 id="typescript">Typescript&lt;/h3>
+&lt;p>Der Einstiegspunkt einer Angular-Anwendung ist die Datei main.ts. Diese Datei ist das Hauptmodul der Anwendung, in dem der Bootstrap-Prozess gestartet wird.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">platformBrowserDynamic&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/platform-browser-dynamic&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./app/app.module&amp;#39;&lt;/span>;
+&lt;span style="color:#a6e22e">platformBrowserDynamic&lt;/span>().&lt;span style="color:#a6e22e">bootstrapModule&lt;/span>(&lt;span style="color:#a6e22e">AppModule&lt;/span>)&lt;span style="color:#a6e22e">$&lt;/span>
+.&lt;span style="color:#66d9ef">catch&lt;/span>(&lt;span style="color:#a6e22e">err&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">error&lt;/span>(&lt;span style="color:#a6e22e">err&lt;/span>));
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das AppModule selbst ist das Root-Modul der Angular-Anwendung. Es wird in der Regel in einer separaten Datei (&lt;code>app.module.ts&lt;/code>) definiert und enthält die erforderlichen Importe und Konfigurationen für die Anwendung, einschliesslich der Components, Services, Modules und anderer Funktionen, welche d Anwendung benötigt.&lt;/p>
+&lt;p>Die &lt;code>main.ts&lt;/code>-Datei wird beim Starten der Angular-Anwendung vom Build-System oder von der Angular CLI aufgerufen. Sie ist der erste Punkt, an dem der Angular-Bootstrap-Prozess beginnt und die erforderlichen Ressourcen und Module geladen werden.&lt;/p>
+&lt;p>Es ist wichtig zu beachten, dass die &lt;code>main.ts&lt;/code>-Datei normalerweise nicht manuell bearbeitet werden muss, es sei denn, man hat spezifische Anpassungen oder Erweiterungen für den Bootstrap-Prozess vorzunehmen. Die meisten Änderungen und Konfigurationen sollten im AppModule und den anderen Modulen der Anwendung vorgenommen werden.&lt;/p>
+&lt;h3 id="html">HTML&lt;/h3>
+&lt;p>Das Einstiegs-HTML-Dokument einer Angular-Anwendung ist die &lt;code>index.html&lt;/code>-Datei. Diese Datei wird automatisch generiert, wenn die Anwendung kompiliert.&lt;/p>
+&lt;p>In der &lt;code>index.html&lt;/code>-Datei befindet sich das grundlegende HTML-Markup für die Anwendung. Hier werden die erforderlichen Skripte und Stylesheets eingebunden und der Ort definiert, an dem die Angular-Anwendung in das DOM eingefügt wird.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&lt;span style="color:#75715e">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">html&lt;/span> &lt;span style="color:#a6e22e">lang&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;en&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">charset&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;utf-8&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">title&lt;/span>&amp;gt;Angular App&amp;lt;/&lt;span style="color:#f92672">title&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">base&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;/&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;viewport&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">content&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;width=device-width, initial-scale=1&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">link&lt;/span> &lt;span style="color:#a6e22e">rel&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;icon&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;image/x-icon&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;favicon.ico&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">body&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">app-root&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">app-root&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">body&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">html&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im &lt;code>&amp;lt;head&amp;gt;&lt;/code>-tag befindet sich der &lt;code>&amp;lt;title&amp;gt;&lt;/code>-tag, dieser definiert den Titel der Webseite, der normalerweise im Browser-Tab angezeigt wird.
+Das &lt;code>&amp;lt;link rel=&amp;quot;icon&amp;quot; type=&amp;quot;image/x-icon&amp;quot; href=&amp;quot;...&amp;quot;&amp;gt;&lt;/code> bindet das Favicon (Favoriten-Symbol) der Webseite ein, das normalerweise im Browser-Tab und in Lesezeichen angezeigt wird.
+Diese zwei kann man auch nach Belieben ändern.&lt;/p>
+&lt;p>Beim Starten der Angular-Anwendung wird der Inhalt der &lt;code>index.html&lt;/code>-Datei vom Webbrowser geladen. Der Angular-Bootstrap-Prozess findet das &lt;code>&amp;lt;app-root&amp;gt;&lt;/code>-Element und ersetzt es durch den gerenderten Inhalt der Angular-Komponenten.&lt;/p>
+&lt;h2 id="app-component">App Component&lt;/h2>
+&lt;p>Der &amp;ldquo;AppComponent&amp;rdquo; ist der Hauptcomponent einer Angular-Anwendung. Es handelt sich um die Wurzelcomponent, von der aus alle anderen Components und Elemente der Anwendung hierarchisch aufgebaut sind.&lt;/p>
+&lt;p>Er wird automatisch während der Initialisierung der Anwendung erstellt und gerendert. Er dient als Container für das gesamte Anwendungslayout und ist der erste Component, die in der &lt;code>index.html&lt;/code>-Datei der Anwendung geladen wird mittels dem &lt;code>&amp;lt;app-root&amp;gt;&lt;/code>-Tag.&lt;/p>
+&lt;h2 id="angular-bestgood-practices">Angular Best(Good)-Practices&lt;/h2>
+&lt;p>Angular bietet eine Reihe von Best Practices, die helfen können, die Angular-Anwendungen effizienter, wartbarer und skalierbarer zu gestalten. Hier sind einige wichtige Angular Best Practices:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Verwendung der Angular CLI&lt;/strong>: Die Angular CLI erstellt automatisch eine standardisierte Projektstruktur, die bewährte Praktiken und Konventionen folgt. Dies erleichtert die Organisation und Wartung des Codes, da Entwickler eine einheitliche Struktur erwarten können. Daher sollte zum Erstellen von neuen Dateien sollte auch immer die CLI verwendet werden.&lt;/li>
+&lt;li>&lt;strong>Eine Aufgabe pro Component&lt;/strong>: Den Code sollte in kleine, wiederverwendbare Komponenten aufgeteilt werden. Jeder Component sollte eine klare Verantwortung haben und nur für eine spezifische Aufgabe zuständig sein. Um im Typescript Code Konventionen und Best Practices zu befolgen sollte man zudem einen Linter verwenden, um dies zu prüfen.&lt;/li>
+&lt;li>&lt;strong>Nutzung der Angular Template-Syntax&lt;/strong>: Es sollte die Angular-spezifische Template-Syntax verwendet werden, um Data-Bindung, Ereignisbehandlung und Strukturierung des DOMs im Templates zu erleichtern. Komplexe Logik in den Templates sollte vermieden werden, es sollte möglichst lesbar sein. Dazu kann man den Formatter wie Prettier am besten verwenden, um das gesamte zu vereinfachen.&lt;/li>
+&lt;li>&lt;strong>Nutzung von Lazy Loading für Module&lt;/strong>: Das Lazy Loading-Feature von Angular sollte verwendet werden, um die Ladezeit der Anwendung zu verbessern. Man sollte Module nur dann laden, wenn sie benötigt werden, anstatt die gesamte Anwendung auf einmal zu laden.&lt;/li>
+&lt;/ul>
+&lt;h2 id="angular-dokumentation">Angular Dokumentation&lt;/h2>
+&lt;p>Die offiziellen Dokumentationen bietet den Entwicklern eine umfassende und verlässliche Informationsquelle für das entsprechende Framework oder die entsprechende Technologie bereitzustellen.
+Diese Dokumentationen bieten eine strukturierte Anleitung und Erklärungen zu den verschiedenen Funktionen, Konzepten, APIs, Best Practices und Verwendungsmöglichkeiten.
+Angular hat mit dem Update auf die Version 17 auch eine neue &lt;a href="https://angular.dev/">Dokumentationsseite&lt;/a> veröffentlicht. In dieser findet man alle Informationen zu den neuen Standards und Funktionen.&lt;/p>
+&lt;p>Ein wichtiger Teil einer Dokumentation ist die detaillierte API-Referenz. Hier werden alle verfügbaren Klassen, Methoden, Parameter und Rückgabewerte beschrieben.
+Dies erleichtert es Entwicklern, die verfügbaren Funktionen zu verstehen und effektiv zu nutzen.&lt;/p>
+&lt;p>Abgesehen von reinen Codebeispielen bieten Dokumentationen auch konzeptionelle Erklärungen. Diese beschreiben die zugrunde liegenden Prinzipien, Architekturkonzepte und Entscheidungen, die beim Design der Technologie getroffen wurden.&lt;/p>
+&lt;p>Auf der Angular Dokumentation sind zudem auch &lt;a href="https://angular.dev/tutorials">Tutorial&lt;/a> zu finden, welche absolviert werden können, um das Verständnis in Angular zu stärken.&lt;/p>
+&lt;p>Zudem ist nun auch ein sogenannter &lt;a href="https://angular.dev/playground">Playground&lt;/a> von Angular selbst hinzugefügt worden, diesen kann man auch über die Dokumentation erreichen.
+Der Playground hat die Aufgabe, das Entwickler bereits ihren Code im Browser testen können, ohne dafür ein neues Angular-Projekt aufsetzen zu müssen.
+Vor dem offiziellen Playground musste man dies immer auf der Seite &lt;a href="https://stackblitz.com/">Stackblitz&lt;/a> erledigen. Diese ist jedoch auch heutzutage immer noch sehr hilfreich, da man dort in verschiedensten Sprachen Code im Browser testen kann.&lt;/p></description></item><item><title>Labs: Labs zu RxJS</title><link>/labs/web/angular/02_rxjs/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/labs/web/angular/02_rxjs/</guid><description>
 &lt;h1 id="aufgaben">Aufgaben&lt;/h1>
 &lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> - Einzelarbeit&lt;/p>
-&lt;p>Erstelle eine Website, welche anhand von Observables eine Browsernotification ausgibt.
-Dazu soll sich auf der Website ein Button befinden, welcher das Event auslöst, um die Notification im Browser anzuzeigen.&lt;/p>
-&lt;p>Vorgehen:
-Lade die &lt;a href="/files/exams/angular/uebung1.html">Datei&lt;/a> herunter und öffne sie in VS Code. (Wenn sie im Browser geöffnet ist, mittels rechtsklick und dann &amp;ldquo;Speichern unter&amp;rdquo;.)
-Die Datei enthält lediglich das Grundgerüst der Übung, füge an den auskommentierten Stellen den entsprechenden Code ein.
-Am Grundgerüst der Datei soll nichts verändert werden.&lt;/p>
-&lt;p>&lt;img src="/images/hint.png" alt="asset"> &lt;br>
-Damit die Notifications fehlerfrei funktionieren, muss die Extension &amp;ldquo;Live Server&amp;rdquo; in VS Code hinzugefügt und angewendet werden.&lt;/p>
-&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
 &lt;p>Im folgenden Code befindet sich eine Funktion für das Erhalten einer zufälligen Zahl zwischen dem min und max. Zudem befindet sich bereits ein Observable im Code, welches in zufälligen Intervallen einen Wert zurückgeben soll.&lt;/p>
 &lt;p>Die Aufgabe ist nun das Observable so anzupassen, dass in der Subscription jeweils in zufälligen Abständen ein Wert zurückgegeben wird.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -5148,7 +5365,7 @@ Damit die Notifications fehlerfrei funktionieren, muss die Extension &amp;ldquo;
 });
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;/div>&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
 &lt;p>Auch bei dieser Aufgabe ist bereits ein wenig Code schon gegeben. Und zwar erneut eine Funktion zum Erhalten einer zufälligen Zahl für die Celsiusgrade.
 Auch das Observable ist hier bereits gegeben, dieses emitted alle zwei Sekunden eine neue Random Celsiusgrad Zahl.&lt;/p>
 &lt;p>Die Aufgabe ist nun beim subscriben auf das Observable, die kommende Celsius Zahl in Fahreinheiten umzuwandeln und dann beide zu loggen.&lt;/p>
@@ -5185,7 +5402,89 @@ Auch das Observable ist hier bereits gegeben, dieses emitted alle zwei Sekunden 
 });
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: JavaScript: Konsole</title><link>/docs/web/javascript/02_js_browser_tools/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/02_js_browser_tools/</guid><description>
+&lt;/div>&lt;h2 id="aufgabe-3">Aufgabe 3&lt;/h2>
+&lt;p>In den Docs wurden dir verschiedene Versionen von Subjects vorgestellt. Jede davon hat ihre speziellen Eigenschaften.
+Diese sollst du in dieser Aufgabe vertiefen. In der nachfolgenden Vorlage befindet sich ein grober Aufbau, den du erweitern sollt.
+Du sollst anhand dieser Vorlage eine Art Chat erstellen, der eine Nachricht an ein Subject schickt. Jede Nachricht soll ausserdem einen Zeitstempel haben.
+Ziel ist es, dass du alle bekannten Subjects verwendest. Schlussendlich soll jeweils die Ausgabe der Subjects im &lt;code>&amp;lt;div class=&amp;quot;output&amp;quot;&amp;gt;&lt;/code> zu sehen sein.
+Schreibe dazu die benötigten Funktionen &lt;code>submit&lt;/code>, &lt;code>addSubscriptions&lt;/code> und &lt;code>complete&lt;/code>.&lt;/p>
+&lt;details>
+&lt;summary>Vorlage&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&lt;span style="color:#75715e">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#f92672">html&lt;/span> &lt;span style="color:#a6e22e">lang&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;en&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">charset&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;UTF-8&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">title&lt;/span>&amp;gt;Subject Lab&amp;lt;/&lt;span style="color:#f92672">title&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://unpkg.com/rxjs@6.2.0/bundles/rxjs.umd.min.js&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">submit&lt;/span>() {
+&lt;span style="color:#75715e">// TODO: Nachricht zu Subject senden
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">addSubscriptions&lt;/span>() {
+&lt;span style="color:#75715e">// TODO: Subscription starten
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">complete&lt;/span>() {
+&lt;span style="color:#75715e">// TODO: Subject complete
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> }
+&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">body&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;wrapper&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;actions&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">input&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;chat&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">placeholder&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Please enter your message&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;submit&amp;#34;&lt;/span>&amp;gt;Send&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;add-subscriptions&amp;#34;&lt;/span>&amp;gt;Subscriptions&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">button&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;complete&amp;#34;&lt;/span>&amp;gt;Complete&amp;lt;/&lt;span style="color:#f92672">button&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;output&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#75715e">&amp;lt;!-- TODO: Für jeden Typ von Subject einen separaten Output--&amp;gt;&lt;/span>
+&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">body&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#f92672">html&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details></description></item><item><title>Docs: JavaScript: Konsole</title><link>/docs/web/javascript/02_js_browser_tools/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>/docs/web/javascript/02_js_browser_tools/</guid><description>
 &lt;h2 id="eine-nachricht-loggen">Eine Nachricht loggen&lt;/h2>
 &lt;p>In Java hast du Text mit &lt;code>System.out.println(...)&lt;/code>, in C# mit &lt;code>Console.WriteLine(...)&lt;/code> und in Python vielleicht mit &lt;code>print(...)&lt;/code> geloggt. Genau das gibt es auch in JavaScript.&lt;/p>
 &lt;p>In einer HTML-Datei kannst du folgendes hinzufügen:&lt;/p>
@@ -7352,66 +7651,4 @@ Gesamtbeurteilung aber nur wenn der/die Benutzer:in auch eine der Hausfarben die
 &lt;li>Füge ein Einteilungskriterium hinzu&lt;/li>
 &lt;/ul>
 &lt;p>&lt;em>Wenn du an der Challenge teilnehmen willst, dann musst du die Aufgabe alleine lösen.
-Die Lösung vom Pult-Nachbar interessiert uns also nicht.&lt;/em>&lt;/p></description></item><item><title>Exams: Objektorientierte Programmierung Exam</title><link>/exams/java/java-oop/oopexam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-oop/oopexam/</guid><description>
-&lt;p>&lt;em>Für dieses Exam dürfen auch Inhalte der Themen Lists und Generics verwendet werden.&lt;/em>&lt;/p>
-&lt;h2 id="weltmeisterschaft---oop-exam">Weltmeisterschaft - OOP Exam&lt;/h2>
-&lt;p>Bei diesem Lab geht es darum, dass du deine Vorgehensweise beim Erstellen eines objektorientierten Modells trainierst.&lt;/p>
-&lt;p>Zentral bei dieser Aufgabe ist also, wie du das Datenmodell erstellst, welches beschreibt, welche Klassen mit welchen Feldern und Methoden du schreibst.&lt;/p>
-&lt;p>Ziel ist nicht, dass du dich mit &lt;code>Scanner&lt;/code>n oder viel Logik herumschlagen musst.&lt;/p>
-&lt;h3 id="sachverhalt">Sachverhalt&lt;/h3>
-&lt;p>Bei diesem Lab modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der &lt;a href="../results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei gespeichert sind, abbilden.&lt;/p>
-&lt;p>Deine Klassen sollen folgendes abbilden:&lt;/p>
-&lt;ul>
-&lt;li>In diesem Turnier (Competition) spielen die Mannschaften (Team) gegeneinander.&lt;/li>
-&lt;li>Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), PLAYOFF, Viertel- (QUARTER_FINAL), Halbfinale (SEMI_FINAL) oder FINAL.&lt;/li>
-&lt;li>Bei jedem Spiel (Game) gibt es immer eine Heim- (home) und Gast-Mannschaft (visiting/away team).&lt;/li>
-&lt;li>Bei jedem Spiel wird festgehalten, wie viele Tore (goals) welche Mannschaft (home oder visiting) geschossen hat. Zudem wird festgehalten, wo (location) das Spiel stattgefunden hat.&lt;/li>
-&lt;/ul>
-&lt;h3 id="was-soll-die-anwendung-können">Was soll die Anwendung können?&lt;/h3>
-&lt;p>Auf Stufe Spiel (Game)&lt;/p>
-&lt;ul>
-&lt;li>möchten wir erfahren können, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (didTeamPlayThisGame(team)).&lt;/li>
-&lt;li>Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (getPointsFor(team)).&lt;/li>
-&lt;/ul>
-&lt;p>Auf Stufe Turnier (Competition)&lt;/p>
-&lt;ul>
-&lt;li>wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (getScoresDuringGroupStageFor(team)).&lt;/li>
-&lt;li>Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (getGoalsForTeam(team)).&lt;/li>
-&lt;li>Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (getAllGamesForLocation(location)).&lt;/li>
-&lt;/ul>
-&lt;p>Abgesehen von der &lt;code>main(...)&lt;/code>-Methode soll keine weitere Methode statisch sein.&lt;/p>
-&lt;h3 id="aufgaben">Aufgaben&lt;/h3>
-&lt;h4 id="aufgabe-1---entwurf">Aufgabe 1 - Entwurf&lt;/h4>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Erstelle einen Entwurf vom Klassenmodell.&lt;/p>
-&lt;ul>
-&lt;li>Der Entwurf kann auf Papier oder mit einem Tool (z.B. draw.io, Visio, plantUML) erstellt werden.&lt;/li>
-&lt;li>Plane auch schon die Methoden im Entwurf ein.&lt;/li>
-&lt;/ul>
-&lt;p>Zeige den Entwurf zuerst einem Coach, bevor du weiterfährst.&lt;/p>
-&lt;h4 id="aufgabe-2---klassen-umsetzen">Aufgabe 2 - Klassen umsetzen&lt;/h4>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Setzte die Klassen im Code um, inkl. Methoden.&lt;/p>
-&lt;p>Für den Moment müssen die Methoden noch nichts machen und sollen für den Beginn nur einen Default-Wert zurückgeben - der Einfachheit halber.&lt;/p>
-&lt;p>Ziel dieser Aufgabe ist, dass du dich nur aufs Klassen-Design im Code konzentrierst, nicht aber um die konkreten Methoden-Umsetzungen.&lt;/p>
-&lt;h4 id="aufgabe-3---methoden-umsetzen">Aufgabe 3 - Methoden umsetzen&lt;/h4>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Setze nun die Methoden korrekt um.&lt;/p>
-&lt;p>Verwende zur Demonstration die Daten aus der &lt;a href="../results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine &lt;code>.java&lt;/code>-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der &lt;code>results.txt&lt;/code>-Datei steht&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback"># Gruppe 1
-Frankreich Jugoslawien 0:1
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>dann kannst du das wie folgt direkt in deine Java-Datei schreiben:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">new&lt;/span> Game&lt;span style="color:#f92672">(&lt;/span>FRANCE&lt;span style="color:#f92672">,&lt;/span> YUGOSLAVIA&lt;span style="color:#f92672">,&lt;/span> 0&lt;span style="color:#f92672">,&lt;/span> 1&lt;span style="color:#f92672">)&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+Die Lösung vom Pult-Nachbar interessiert uns also nicht.&lt;/em>&lt;/p></description></item></channel></rss>
