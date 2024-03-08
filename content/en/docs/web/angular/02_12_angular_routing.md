@@ -120,26 +120,24 @@ Ein Route Guard ist ein Feature des Angular Routers, mit der wir Logik ausführe
 Es wird häufig verwendet, um zu überprüfen, ob ein Benutzer angemeldet ist und über die Berechtigung verfügt, bevor er zugreifen kann.
 Somit können wir also dem Benutzer den Zugriff auf die Route ermöglichen oder verweigern.
 
-Für den Route Guard müssen wir das CanActivate-Interface implementieren, welches im `@angular/router` Paket verfügbar ist.
-Die `canActivate()` Methode des Interfaces enthält die Logik, um den Zugriff auf die Route zuzulassen oder zu verweigern.
+Für den Route Guard müssen wir das CanActivateFn-Interface implementieren, welches im `@angular/router` Paket verfügbar ist.
+Die `canActivateFn()` Methode des Interfaces enthält die Logik, um den Zugriff auf die Route zuzulassen oder zu verweigern.
 
-Beispielsweise ermöglicht folgender `Guard` immer den Zugriff auf eine Route wenn der Name im `GreetingComponent` 'Dragon Warrior' ist:
+Beispielsweise ermöglicht folgender `Guard` immer den Zugriff auf eine Route, wenn im `WeaponService` die Methode `getWeapons()` keine Waffe zurückliefert:
 ```typescript
-import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
-import { GreetingComponent } from '../components/greeting/greeting.component';
+import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot} from '@angular/router';
+import {inject} from "@angular/core";
+import {WeaponService} from "../services/weapon.service";
 
-@Injectable({
-    providedIn: 'root',
-})
-export class WeaponGuard implements CanActivate {
-    constructor(private component: GreetingComponent) {}
-
-    canActivate(): boolean {
-        return this.component.name === 'Dragon Warrior';
-    }
+export const WeaponGuard: CanActivateFn = (
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+): boolean {
+    return inject(WeaponService).getWeapons().length === 0;
 }
 ```
+`return inject(WeaponService)` in Angular bedeutet, dass die Instanz des `WeaponService` mithilfe der `inject`-Funktion abgerufen wird. Diese Vorgehensweise wird typischerweise in Szenarien angewendet, in denen die Dependency Injection nicht direkt im Konstruktor verfügbar ist.
+
 Eine Route können wir nun anhand dieses Guards schützen, indem wir das "canActivate"-Attribut des Pfades benutzen:
 ```typescript
 { path: "weapon", canActivate: [WeaponGuard], component: WeaponComponent }
