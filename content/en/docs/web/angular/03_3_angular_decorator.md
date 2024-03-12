@@ -71,8 +71,44 @@ export class TriumphsComponent {
 ```
 
 Um die Eingabeeigenschaft zu verwenden und Daten vom Parent zu erhalten, verwendet man die Property-Bindingsyntax im Parent.
-```html
+```angular17html
 <app-triumphs *ngIf="hasTriumphs" [title]="'Triumphs'" [triumphs]="triumphs"></app-triumphs>
+```
+
+#### required
+Seit Angular 17 bietet `@Input` die Möglichkeit ein Input als benötigt zu markieren. 
+Der Required-Status wird dadurch dann durch den Compiler geprüft und ein Fehler geworfen, falls der Input nicht angegeben wird.
+
+```typescript
+import { Component, Input } from '@angular/core';
+
+@Component({
+    // ..
+})
+export class TriumphsComponent {
+    @Input({ required: true }) title: string;
+    @Input() triumphs: string[] | null;
+}
+```
+
+Somit wäre hier der Input `triumphs` nicht nötig, `title` hingegen schon.
+```angular17html
+<app-triumphs *ngIf="hasTriumphs" [title]="'Triumphs'"></app-triumphs>
+```
+
+#### transform
+Auch mit Angular 17 wurde auch `transform` hinzugefügt, diese Option kann den eingegebenen Wert ähnlich wie eine Pipe umwandeln.
+Ein gutes Beispiel dafür ist, wenn eine Grössenangabe gemacht werden muss. 
+Hier kann einfach die Zahl angegeben werden und der Input wird automatisch in Pixel umgewandelt.
+
+```typescript
+@Component({...})
+export class CustomSlider {
+  @Input({transform: appendPx}) widthPx: string = '';
+}
+function appendPx(value: number) {
+  return `${value}px`;
+}
 ```
 
 ### @Output
