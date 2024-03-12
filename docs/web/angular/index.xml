@@ -2104,9 +2104,9 @@ Wenn keine Übereinstimmung gefunden wird, kann man dies zum Anzeigen einer &amp
 &lt;p>Ein Route Guard ist ein Feature des Angular Routers, mit der wir Logik ausführen können, wenn eine Route angefordert wird.
 Es wird häufig verwendet, um zu überprüfen, ob ein Benutzer angemeldet ist und über die Berechtigung verfügt, bevor er zugreifen kann.
 Somit können wir also dem Benutzer den Zugriff auf die Route ermöglichen oder verweigern.&lt;/p>
-&lt;p>Für den Route Guard müssen wir das CanActivate-Interface implementieren, welches im &lt;code>@angular/router&lt;/code> Paket verfügbar ist.
-Die &lt;code>canActivate()&lt;/code> Methode des Interfaces enthält die Logik, um den Zugriff auf die Route zuzulassen oder zu verweigern.&lt;/p>
-&lt;p>Beispielsweise ermöglicht folgender &lt;code>Guard&lt;/code> immer den Zugriff auf eine Route wenn der Name im &lt;code>GreetingComponent&lt;/code> &amp;lsquo;Dragon Warrior&amp;rsquo; ist:&lt;/p>
+&lt;p>Für den Route Guard müssen wir das CanActivateFn-Interface implementieren, welches im &lt;code>@angular/router&lt;/code> Paket verfügbar ist.
+Die &lt;code>canActivateFn()&lt;/code> Methode des Interfaces enthält die Logik, um den Zugriff auf die Route zuzulassen oder zu verweigern.&lt;/p>
+&lt;p>Beispielsweise ermöglicht folgender &lt;code>Guard&lt;/code> immer den Zugriff auf eine Route, wenn im &lt;code>WeaponService&lt;/code> die Methode &lt;code>getWeapons()&lt;/code> keine Waffe zurückliefert:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -2119,27 +2119,21 @@ Die &lt;code>canActivate()&lt;/code> Methode des Interfaces enthält die Logik, 
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Injectable&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">CanActivate&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/router&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">GreetingComponent&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;../components/greeting/greeting.component&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">@Injectable&lt;/span>({
-&lt;span style="color:#a6e22e">providedIn&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;root&amp;#39;&lt;/span>,
-})
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">WeaponGuard&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> &lt;span style="color:#a6e22e">CanActivate&lt;/span> {
-&lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">component&lt;/span>: &lt;span style="color:#66d9ef">GreetingComponent&lt;/span>) {}
-&lt;span style="color:#a6e22e">canActivate&lt;/span>()&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> {
-&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">component&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Dragon Warrior&amp;#39;&lt;/span>;
-}
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">ActivatedRouteSnapshot&lt;/span>, &lt;span style="color:#a6e22e">CanActivateFn&lt;/span>, &lt;span style="color:#a6e22e">RouterStateSnapshot&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/router&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">inject&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@angular/core&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">WeaponService&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;../services/weapon.service&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">WeaponGuard&lt;/span>: &lt;span style="color:#66d9ef">CanActivateFn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (
+&lt;span style="color:#a6e22e">route&lt;/span>: &lt;span style="color:#66d9ef">ActivatedRouteSnapshot&lt;/span>,
+&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">RouterStateSnapshot&lt;/span>
+)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> {
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">inject&lt;/span>(&lt;span style="color:#a6e22e">WeaponService&lt;/span>).&lt;span style="color:#a6e22e">getWeapons&lt;/span>().&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
 }
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Eine Route können wir nun anhand dieses Guards schützen, indem wir das &amp;ldquo;canActivate&amp;rdquo;-Attribut des Pfades benutzen:&lt;/p>
+&lt;/div>&lt;p>&lt;code>return inject(WeaponService)&lt;/code> in Angular bedeutet, dass die Instanz des &lt;code>WeaponService&lt;/code> mithilfe der &lt;code>inject&lt;/code>-Funktion abgerufen wird. Diese Vorgehensweise wird typischerweise in Szenarien angewendet, in denen die Dependency Injection nicht direkt im Konstruktor verfügbar ist.&lt;/p>
+&lt;p>Eine Route können wir nun anhand dieses Guards schützen, indem wir das &amp;ldquo;canActivate&amp;rdquo;-Attribut des Pfades benutzen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -2294,7 +2288,67 @@ Anstatt Seiten dynamisch für jede Benutzeranfrage zu rendern, geht das Prerende
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">ng build
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Lazy Loading</title><link>/docs/web/angular/02_14_angular_lazy_loading/</link><pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_14_angular_lazy_loading/</guid><description>
+&lt;/div>&lt;h2 id="hydration">Hydration&lt;/h2>
+&lt;p>Die Hydration ist der Vorgang, der die serverseitig gerenderte Anwendung auf dem Client wiederherstellt. Dazu gehört das Wiederverwenden der serverseitig gerenderten DOM-Strukturen, das Beibehalten des Anwendungszustands, das Übertragen von bereits vom Server abgerufenen Anwendungsdaten und andere Prozesse.&lt;/p>
+&lt;p>Die Hydration verbessert die Leistung der Anwendung, indem zusätzliche Arbeit zur Neuerstellung von DOM-Knoten vermieden wird. Stattdessen versucht Angular, vorhandene DOM-Elemente zur Laufzeit mit der Anwendungsstruktur abzugleichen und wiederverwendet DOM-Knoten, wenn möglich.
+Dies führt zu einer Leistungsverbesserung, die anhand von Core Web Vitals (CWV)-Statistiken gemessen werden kann, z.B. der Reduzierung der First Input Delay (FID) und Largest Contentful Paint (LCP) sowie des Cumulative Layout Shift (CLS). Eine Verbesserung dieser Kennzahlen wirkt sich auch auf Dinge wie die SEO-Leistung aus.&lt;/p>
+&lt;p>Ohne aktiviert Hydration werden serverseitig gerenderte Angular-Anwendungen die DOM der Anwendung zerstören und erneut rendern, was zu einem sichtbaren Flackern der Benutzeroberfläche führen kann. Dieses erneute Rendern kann sich negativ auf Core Web Vitals wie LCP auswirken und zu einem Layout-Shift führen.
+Durch Aktivieren der Hydration können die vorhandenen DOM-Elemente wiederverwendet werden und ein Flackern wird verhindert.&lt;/p>
+&lt;h3 id="wie-aktiviert-man-die-hydratisierung-in-angular">Wie aktiviert man die Hydratisierung in Angular&lt;/h3>
+&lt;p>Bevor man mit der Hydration beginnen kann, muss man eine serverseitig gerenderte (SSR) Anwendung besitzen. Sobald die Anwendung mit SSR zum Laufen gebracht wurde, können die Hydration aktiviert werden. Indem die Hauptanwendungskomponente oder das Hauptmodul besucht wird und &lt;code>provideClientHydration&lt;/code> von &lt;code>@angular/platform-browser&lt;/code> importiert wird.
+Anschliessend fügt man diesen Provider zur Liste der Bootstrapping-Provider in der App hinzu.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">import&lt;/span> {
+&lt;span style="color:#a6e22e">bootstrapApplication&lt;/span>,
+&lt;span style="color:#a6e22e">provideClientHydration&lt;/span>,
+} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/platform-browser&amp;#39;&lt;/span>;
+...
+&lt;span style="color:#a6e22e">bootstrapApplication&lt;/span>(&lt;span style="color:#a6e22e">AppComponent&lt;/span>, {
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideClientHydration&lt;/span>()]
+});
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Alternativ, wenn man &lt;code>NgModules&lt;/code> verwendet, fügt man &lt;code>provideClientHydration&lt;/code> zur Provider-Liste im Root-App-Moduls hinzu.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">provideClientHydration&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/platform-browser&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">NgModule&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">@NgModule&lt;/span>({
+&lt;span style="color:#a6e22e">declarations&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">AppComponent&lt;/span>],
+&lt;span style="color:#a6e22e">exports&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">AppComponent&lt;/span>],
+&lt;span style="color:#a6e22e">bootstrap&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">AppComponent&lt;/span>],
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideClientHydration&lt;/span>()],
+})
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> {}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>WICHTIG:&lt;/strong> Es muss sichergestellt werden, dass der Aufruf von &lt;code>provideClientHydration()&lt;/code> auch in einer Liste von Providern enthalten ist, die zum Bootstrappen einer Anwendung auf dem Server verwendet wird. In Anwendungen mit der standardmässigen Projektstruktur (generiert durch den Befehl &lt;code>ng new&lt;/code>), sollte es ausreichen, den Aufruf im Root-App-Modul hinzuzufügen, da dieser vom Servermodul importiert wird.
+Wenn man eine benutzerdefinierte Konfiguration verwendet, sollte man den Aufruf von &lt;code>provideClientHydration()&lt;/code> zur Provider-Liste in der Konfiguration zum Server-Bootstrapping hinzufügen.&lt;/p></description></item><item><title>Docs: Lazy Loading</title><link>/docs/web/angular/02_14_angular_lazy_loading/</link><pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_14_angular_lazy_loading/</guid><description>
 &lt;h2 id="zeile">Zeile&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was Lazy-Loading ist und kannst es erklären.&lt;/li>
@@ -2805,12 +2859,14 @@ Dies ist sehr praktisch, wenn wir Authentifizierungs-Token konfigurieren, Protok
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">@Injectable&lt;/span>()
 &lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">RequestLogInterceptor&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> &lt;span style="color:#a6e22e">HttpInterceptor&lt;/span> {
 &lt;span style="color:#a6e22e">intercept&lt;/span>(
-&lt;span style="color:#a6e22e">request&lt;/span>: &lt;span style="color:#66d9ef">HttpRequest&lt;/span>&amp;lt;&lt;span style="color:#f92672">any&lt;/span>&amp;gt;, &lt;span style="color:#a6e22e">next&lt;/span>: &lt;span style="color:#66d9ef">HttpHandler&lt;/span>
+&lt;span style="color:#a6e22e">request&lt;/span>: &lt;span style="color:#66d9ef">HttpRequest&lt;/span>&amp;lt;&lt;span style="color:#f92672">any&lt;/span>&amp;gt;,
+&lt;span style="color:#a6e22e">next&lt;/span>: &lt;span style="color:#66d9ef">HttpHandler&lt;/span>
 ) &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">HttpEvent&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">any&lt;/span>&amp;gt;&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
 &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">request&lt;/span>.&lt;span style="color:#a6e22e">url&lt;/span>);
 &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">next&lt;/span>.&lt;span style="color:#a6e22e">handle&lt;/span>(&lt;span style="color:#a6e22e">request&lt;/span>);
@@ -2872,7 +2928,106 @@ Angenommen, wir haben unser &lt;code>HttpClientModule&lt;/code> in das AppModule
 &lt;/div>
 &lt;/div>&lt;p>Die Option &lt;code>multi: true&lt;/code> teilt Angular mit, dass Wir mehrere Interceptors bereitstellen, und ist erforderlich, wenn dies das Szenario ist.
 In unserem Beispielszenario wäre dies nicht erforderlich, da wir nur einen Interceptor implementiert haben.&lt;/p>
-&lt;p>Es ist auch wichtig zu berücksichtigen, dass Angular Interceptors in der Reihenfolge anwendet, in der sie bei den Providers des Moduls angegeben sind.&lt;/p></description></item><item><title>Docs: Errorhandling</title><link>/docs/web/angular/02_16_angular_errorhandler/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_16_angular_errorhandler/</guid><description>
+&lt;p>Es ist auch wichtig zu berücksichtigen, dass Angular Interceptors in der Reihenfolge anwendet, in der sie bei den Providers des Moduls angegeben sind.&lt;/p>
+&lt;details>
+&lt;summary>Interceptors in Angular 17&lt;/summary>
+&lt;p>Angular 17 bringt auch bei den Interceptors einigen Änderungen, da man ja nun nicht mehr mit den &lt;code>modules&lt;/code> arbeitet müssen sie anders angegeben werden.
+Das wird jetzt auch von der &lt;code>app.config.ts&lt;/code> übernommen.&lt;/p>
+&lt;p>In der &lt;code>app.config.ts&lt;/code> muss man nun das &lt;code>provideHttpClient(withInterceptors([AuthInterceptor]))&lt;/code>angeben. in den eckigen klammern von dem &lt;code>withInterceptors&lt;/code> gibt man die definierten Konstanten an.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">ApplicationConfig&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">provideRouter&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/router&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">routes&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./app.routes&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">provideHttpClient&lt;/span>, &lt;span style="color:#a6e22e">withInterceptors&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@angular/common/http&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">AuthInterceptor&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./interceptors/auth.interceptor&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">appConfig&lt;/span>: &lt;span style="color:#66d9ef">ApplicationConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideRouter&lt;/span>(&lt;span style="color:#a6e22e">routes&lt;/span>), &lt;span style="color:#a6e22e">provideHttpClient&lt;/span>(&lt;span style="color:#a6e22e">withInterceptors&lt;/span>([&lt;span style="color:#a6e22e">AuthInterceptor&lt;/span>]))]
+};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Zudem ist der Interceptor keine &lt;code>class&lt;/code> mehr mit &lt;code>implements&lt;/code>. Er ist nun einfach eine Konstante mit dem Typ eines Interceptors. Ansonsten funktioniert noch alles genau gleich.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">HttpRequest&lt;/span>, &lt;span style="color:#a6e22e">HttpEvent&lt;/span>, &lt;span style="color:#a6e22e">HttpInterceptorFn&lt;/span>, &lt;span style="color:#a6e22e">HttpHandlerFn&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/common/http&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Observable&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;rxjs&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">AuthInterceptor&lt;/span>: &lt;span style="color:#66d9ef">HttpInterceptorFn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (
+&lt;span style="color:#a6e22e">req&lt;/span>: &lt;span style="color:#66d9ef">HttpRequest&lt;/span>&amp;lt;&lt;span style="color:#f92672">any&lt;/span>&amp;gt;,
+&lt;span style="color:#a6e22e">next&lt;/span>: &lt;span style="color:#66d9ef">HttpHandlerFn&lt;/span>
+)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">HttpEvent&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">any&lt;/span>&amp;gt;&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">request&lt;/span>.&lt;span style="color:#a6e22e">url&lt;/span>);
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">next&lt;/span>.&lt;span style="color:#a6e22e">handle&lt;/span>(&lt;span style="color:#a6e22e">request&lt;/span>);
+};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beispiel für eine Authentifizierung wo das Passwort und der Benutzer, welche mit Base64 verschlüsselt wurden (&lt;code>btoa&lt;/code>), im Header versendet werden. Jedoch, nur wenn es keine &lt;code>GET&lt;/code>-Request ist.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">HttpRequest&lt;/span>, &lt;span style="color:#a6e22e">HttpEvent&lt;/span>, &lt;span style="color:#a6e22e">HttpInterceptorFn&lt;/span>, &lt;span style="color:#a6e22e">HttpHandlerFn&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/common/http&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Observable&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;rxjs&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">AuthInterceptor&lt;/span>: &lt;span style="color:#66d9ef">HttpInterceptorFn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (
+&lt;span style="color:#a6e22e">req&lt;/span>: &lt;span style="color:#66d9ef">HttpRequest&lt;/span>&amp;lt;&lt;span style="color:#f92672">any&lt;/span>&amp;gt;,
+&lt;span style="color:#a6e22e">next&lt;/span>: &lt;span style="color:#66d9ef">HttpHandlerFn&lt;/span>
+)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">HttpEvent&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">any&lt;/span>&amp;gt;&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">req&lt;/span>.&lt;span style="color:#a6e22e">method&lt;/span> &lt;span style="color:#f92672">!==&lt;/span> &lt;span style="color:#e6db74">&amp;#39;GET&amp;#39;&lt;/span>) {
+&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">authRequest&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">req&lt;/span>.&lt;span style="color:#a6e22e">clone&lt;/span>({
+&lt;span style="color:#a6e22e">setHeaders&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {
+&lt;span style="color:#e6db74">&amp;#39;Content-Type&amp;#39;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;application/json&amp;#39;&lt;/span>,
+&lt;span style="color:#e6db74">&amp;#39;Authorization&amp;#39;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Basic &amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">btoa&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;admin:admin&amp;#39;&lt;/span>)
+},
+});
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">next&lt;/span>(&lt;span style="color:#a6e22e">authRequest&lt;/span>);
+}
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">next&lt;/span>(&lt;span style="color:#a6e22e">req&lt;/span>);
+};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details></description></item><item><title>Docs: Errorhandling</title><link>/docs/web/angular/02_16_angular_errorhandler/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_16_angular_errorhandler/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich weiss, wozu ErrorHandler verwendet werden und wie ich selbst solche implementieren kann.&lt;/li>
@@ -3626,7 +3781,66 @@ Somit wird die Kommunikation zwischen den Components erleichtern&lt;/p>
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#f92672">app-triumphs&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">*&lt;/span>&lt;span style="color:#a6e22e">ngIf&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;hasTriumphs&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">[&lt;/span>&lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">]=&amp;#34;&amp;#39;&lt;/span>&lt;span style="color:#a6e22e">Triumphs&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;#39;&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">[&lt;/span>&lt;span style="color:#a6e22e">triumphs&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">]=&amp;#34;&lt;/span>&lt;span style="color:#a6e22e">triumphs&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">app-triumphs&lt;/span>&amp;gt;
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;lt;app-triumphs *ngIf=&amp;#34;hasTriumphs&amp;#34; [title]=&amp;#34;&amp;#39;Triumphs&amp;#39;&amp;#34; [triumphs]=&amp;#34;triumphs&amp;#34;&amp;gt;&amp;lt;/app-triumphs&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="required">required&lt;/h4>
+&lt;p>Seit Angular 17 bietet &lt;code>@Input&lt;/code> die Möglichkeit ein Input als benötigt zu markieren.
+Der Required-Status wird dadurch dann durch den Compiler geprüft und ein Fehler geworfen, falls der Input nicht angegeben wird.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span>, &lt;span style="color:#a6e22e">Input&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">@Component&lt;/span>({
+&lt;span style="color:#75715e">// ..
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>})
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TriumphsComponent&lt;/span> {
+&lt;span style="color:#66d9ef">@Input&lt;/span>({ &lt;span style="color:#a6e22e">required&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span> }) &lt;span style="color:#a6e22e">title&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;span style="color:#66d9ef">@Input&lt;/span>() &lt;span style="color:#a6e22e">triumphs&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[] &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Somit wäre hier der Input &lt;code>triumphs&lt;/code> nicht nötig, &lt;code>title&lt;/code> hingegen schon.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;lt;app-triumphs *ngIf=&amp;#34;hasTriumphs&amp;#34; [title]=&amp;#34;&amp;#39;Triumphs&amp;#39;&amp;#34;&amp;gt;&amp;lt;/app-triumphs&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="transform">transform&lt;/h4>
+&lt;p>Auch mit Angular 17 wurde auch &lt;code>transform&lt;/code> hinzugefügt, diese Option kann den eingegebenen Wert ähnlich wie eine Pipe umwandeln.
+Ein gutes Beispiel dafür ist, wenn eine Grössenangabe gemacht werden muss.
+Hier kann einfach die Zahl angegeben werden und der Input wird automatisch in Pixel umgewandelt.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">@Component&lt;/span>({...})
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">CustomSlider&lt;/span> {
+&lt;span style="color:#66d9ef">@Input&lt;/span>({&lt;span style="color:#a6e22e">transform&lt;/span>: &lt;span style="color:#66d9ef">appendPx&lt;/span>}) &lt;span style="color:#a6e22e">widthPx&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>;
+}
+&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">appendPx&lt;/span>(&lt;span style="color:#a6e22e">value&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>) {
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">`&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">px`&lt;/span>;
+}
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="output">@Output&lt;/h3>
