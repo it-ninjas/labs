@@ -30,7 +30,7 @@ description: >
 
 ## Aufgabe 4
 1. Erstelle einen Service namens `DatenService` mit einem Signal `dataSignal`, das ein Array von Daten emittiert.
-2. Injiziere den DatenService in die bestehen3.de Komponente der vorherigen Aufgaben.
+2. Injiziere den DatenService in die bestehende Komponente der vorherigen Aufgaben.
 3. Verwende `dataSignal, um eine Liste von Daten im Komponenten-Template anzuzeigen
 
 
