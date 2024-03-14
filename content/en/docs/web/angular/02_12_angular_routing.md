@@ -132,7 +132,7 @@ import {WeaponService} from "../services/weapon.service";
 export const WeaponGuard: CanActivateFn = (
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-): boolean {
+): boolean => {
     return inject(WeaponService).getWeapons().length === 0;
 }
 ```
