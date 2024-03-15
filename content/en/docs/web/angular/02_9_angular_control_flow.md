@@ -80,7 +80,7 @@ Angular 16:
 
 Angular 17:
 ```angular17html
-@for (let item of items; track item) {
+@for (item of items; track item) {
     {{item}}
 }
 ```
@@ -90,7 +90,7 @@ Es ermöglicht eine klare und direkte Art, über eine Sammlung von Elementen in 
 
 Es ist auch möglich, den Index des aktuellen Elements zu erhalten, aber das wird jetzt mit `track` gemacht. Hier ist ein Beispiel:
 ```angular17html
-@for (let item of items; track $index) {
+@for (item of items; track $index) {
     {{$index}}: {{item}}
 }
 ```
