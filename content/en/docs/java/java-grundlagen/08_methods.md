@@ -40,12 +40,12 @@ Rückgabetyp methodName(Parameterliste) {
 Methoden können auch Parameter akzeptieren, die beim Aufruf übergeben werden. Hier ist ein Beispiel:
 
 ```java
-void begrüßeBenutzer(String name) {
+void greetUser(String name) {
 System.out.println("Hallo, " + name + "!");
 }
 ```
 
-In diesem Fall erwartet die Methode `begrüßeBenutzer` einen `String`-Parameter, der den Namen des Benutzers enthält.
+In diesem Fall erwartet die Methode `greetUser` einen `String`-Parameter, der den Namen des Benutzers enthält.
 
 ### Lernvideo
 Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
