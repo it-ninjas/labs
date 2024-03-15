@@ -37,7 +37,9 @@ Referenzvariable die Adresse des Objekts speichert, auf welches sie sich bezieht
 
 Dies hat mit dem Java Memory Modell zu tun. Das nachfolgende Bild zeigt das Java Memory Modell als einfache Darstellung:
 
-Es besteht grundsätzlich aus dem Stack Memory und dem Heap Space. Primitive Datentypen werden nur auf dem Stack angelegt.
+![Java Memory Modell](../Datentypen.png)
+
+Es besteht grundsätzlich aus dem Stack Memory und dem Heap Space. Primitive Datentypen (wird im nächsten Kapitel erklärt) werden nur auf dem Stack angelegt.
 Objekte, wie das im Bild gezeigte Auto (Car), sind im Heap abgelegt. Die Referenz auf das Objekt wird auf dem Stack 
 angelegt. Die Referenz "zeigt" also auf das Objekt im Heap.
 
