@@ -1,7 +1,7 @@
 ---
 title: "String"
 linkTitle: "String"
-weight: 8
+weight: 9
 description: >
   Modul #J1
 ---
@@ -302,4 +302,4 @@ Auf diese Art und Weise können wir z.B. alle Wörter aus einem String ermitteln
 Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten "Regulären Ausdruck" (RegEx) handelt. Eine RegEx ist eine Folge von Zeichen, die ein Suchmuster bilden. Eine Regex wird dafür verwendet, um einen Text anhand eines Musters (einer Regel) abzugleichen. RegEx ist im Moment kein Thema im Modul #J1. Wichtig ist für dich im Moment nur, dass du weisst, dass sich bei diesem Suchbegriff von `split(...)` nicht um einen gewöhnlichen String handelt, sondern um eine RegEx. Möglicherweise können dir RegEx' viel Arbeit abnehmen. Bitte melde dich bei Interesse für RegEx.
 
 ---
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben 5 und 6](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-5---strings) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben 6 und 7](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-6---strings) in den Labs.
