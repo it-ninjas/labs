@@ -34,3 +34,6 @@ Folgende Arten von Items können sich in der Bibliothek befinden:
 - Auskunft zu den vorhandenen Items im Inventar geben
 
 *Verwende Generics überall wo es Sinn macht!*
+
+*Es soll kein Scanner eingesetzt werden.*
+

@@ -23,3 +23,6 @@ Das Adressbuch soll
 - einen Kontakt aus dem Adressbuch über die E-Mail-Adresse entfernen
 
 *Generell gilt die Regel, dass jede E-Mail-Adresse einzigartig sein muss*
+
+*Es soll kein Scanner eingesetzt werden.*
+
