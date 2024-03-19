@@ -1,7 +1,7 @@
 ---
 title: "Java Generics Grundlagen"
 linkTitle: "Java Generics Grundlagen"
-weight: 11
+weight: 12
 description: >
   Modul #J2
 ---

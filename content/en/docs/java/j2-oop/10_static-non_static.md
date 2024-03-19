@@ -1,9 +1,9 @@
 ---
 title: "Statische und nicht-statische Elemente"
 linkTitle: "Static / Non-Static"
-weight: 12
+weight: 10
 description: >
-  Modul #J1
+  Modul #J2
 ---
 
 
@@ -86,7 +86,7 @@ public static returnType methodName() {
 ```
 Wir sehen, dass in der Methodendeklaration angeben werden muss, welcher Typ zurückgegeben wird.
 
-Wenn eine Methode keinen Wert zurückgegeben soll, verwenden wir das Keyword _void_:
+Wenn eine Methode keinen Wert zurückgeben soll, verwenden wir das Keyword _void_:
 ```java
 public static void methodName() {
     
@@ -118,7 +118,7 @@ ClassName.methodName();
 ```
 
 ### Utility-Klassen
-Eine Klasse, welche ausschliesslich statische Elemente besitzt nennt man Utility-Klasse. Ein gutes Beispiel dafür ist die Klasse `Math`.
+Eine Klasse, welche ausschliesslich statische Elemente besitzt, nennt man Utility-Klasse. Ein gutes Beispiel dafür ist die Klasse `Math`.
 Eine solche Klasse sollte einen privaten Konstruktor aufweisen, da es keinen Sinn macht von ihr eine Referenz zu erstellen.
 Zudem sollte die Klasse als `final` deklariert werden, da eine Vererbung aufgrund des statischen Kontextes ebenfalls keinen Sinn ergibt.
 
@@ -140,4 +140,4 @@ public final class SpeedConverter {
 ```
 
 ---
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 9](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-9---methoden) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [NinjaCups](../../../../labs/java/java-oop/07_ninjacups) in den Labs.
