@@ -1,7 +1,7 @@
 ---
 title: "Zugriffsmodifikatoren"
 linkTitle: "Zugriffsmodifikatoren"
-weight: 4
+weight: 3
 description: >
   Modul #J2
 ---
