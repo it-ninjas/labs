@@ -13,6 +13,7 @@ Schreibe ein Programm, welches die Personen von vier Vereine auswertet.
 1. Pro Verein existiert ein `Set` mit allen Vereinsmitlieder (siehe Input).
 2. Das Programm analysiert die Vereinsmitglieder und schreibt verschiedene Aussagen in die Konsole (siehe Ausgabe).
 3. Die Namen der Personen müssen in alphabetischer Reihenfolge angezeigt werden.
+4. Ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) soll umgesetzt werden.
 
 ### Input
 

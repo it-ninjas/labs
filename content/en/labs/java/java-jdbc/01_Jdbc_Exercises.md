@@ -24,3 +24,6 @@ Die Datenbank muss mindestens die folgenden Tabellen beinhalten:
 - SCHOOL_SUBJECT_GRADE - beinhaltet die Relation zwischen Schulfächern und Noten. Jede Zeile stellt eine Note für ein Fach an einem bestimmten Tag dar.
 
 Achte auf korrektes Exception-Handling (denke an "try with resources") und sauberen Code.
+
+Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+
