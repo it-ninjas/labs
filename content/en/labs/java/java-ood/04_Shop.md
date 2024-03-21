@@ -25,7 +25,7 @@ Kunde:
 - Namen
 - E-Mail-Adresse
 - Lieferadresse.
-- 
+
 Kunden können Produkte kaufen, indem sie Bestellungen aufgeben.
 
 Bestellung:

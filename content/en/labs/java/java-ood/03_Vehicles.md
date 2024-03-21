@@ -24,7 +24,7 @@ Jedes Fahrzeug verfügt über folgende Eigenschaften:
 Das Auto hat zudem:
 - Type (Familienauto, Sportauto etc.)
 - Anzahl Sitze
-- Stauraum
+- Stauraum im Kofferraum in m^2
 
 Der Lastwagen hat zudem:
 - mit Anhänger
