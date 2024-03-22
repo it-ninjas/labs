@@ -25,5 +25,5 @@ Die Datenbank muss mindestens die folgenden Tabellen beinhalten:
 
 Achte auf korrektes Exception-Handling (denke an "try with resources") und sauberen Code.
 
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
 
