@@ -224,6 +224,53 @@ Im Windows muss also der Pfad zur Built-In Version des IntelliJ hinterlegt werde
 
 ---
 
+### Beispiel einer Abhängigkeit (Lombok)
+
+Eine der meistverwendeten Abhängigkeiten ist Lombok. Lombok ist eine Java-Bibliothek, die es Entwicklern ermöglicht, die Entwicklung zu beschleunigen, indem sie Boilerplate-Code reduziert.
+
+{{% details title="Definition Boilerplate-Code" %}}
+
+Boilerplate-Code bezieht sich auf Codefragmente, die in vielen Teilen eines Programms wiederholt werden müssen, ohne wesentliche Änderungen vorzunehmen. Diese Codefragmente sind oft erforderlich, um bestimmte Aufgaben zu erledigen, wie das Definieren von Getter- und Setter-Methoden, das Erstellen von Konstruktoren oder das Überschreiben von Standardmethoden wie `toString()`, `equals()` und `hashCode()`.
+
+Das Schreiben von Boilerplate-Code ist zeitaufwändig und kann zu einer erhöhten Codekomplexität führen, da Entwickler oft denselben Code wiederholt schreiben müssen. Darüber hinaus erhöht Boilerplate-Code das Risiko von Fehlern und macht den Code schwerer zu lesen und zu warten.
+
+Um die Produktivität zu steigern und die Codequalität zu verbessern, können Tools wie Lombok eingesetzt werden, um Boilerplate-Code automatisch zu generieren. Durch die Verwendung von Annotationen und Codegenerierungstechniken reduziert Lombok die Menge an wiederholtem Code, den Entwickler schreiben müssen, und ermöglicht es ihnen, sich auf die Implementierung der eigentlichen Geschäftslogik zu konzentrieren, anstatt Zeit mit mechanischen Aufgaben zu verschwenden.
+
+{{% /details %}}
+
+
+#### Funktionalität von Lombok:
+
+Lombok bietet eine Reihe von Annotationen, die während des Kompilierungsprozesses verwendet werden, um automatisch Code zu generieren, der normalerweise manuell geschrieben werden müsste. Diese Annotationen helfen, den Code sauberer und lesbarer zu machen, indem sie redundante Getter, Setter, Konstruktoren und andere wiederholte Codefragmente eliminieren.
+
+Einige häufig verwendete Annotationen von Lombok sind:
+
+- `@Getter`: Generiert automatisch Getter-Methoden für Felder.
+- `@Setter`: Generiert automatisch Setter-Methoden für Felder.
+- `@NoArgsConstructor`: Generiert einen Standardkonstruktor ohne Argumente.
+- `@AllArgsConstructor`: Generiert einen Konstruktor, der alle Felder der Klasse als Argumente annimmt.
+
+Durch die Verwendung von Lombok können Entwickler effizienter arbeiten und sich auf die eigentliche Geschäftslogik konzentrieren, anstatt Zeit mit dem Schreiben repetitiver Codefragmente zu verschwenden.
+
+Ein einfaches Beispiel, wie Lombok verwendet wird, zeigt den Einsatz von `@Getter` und `@Setter`:
+
+```java
+import lombok.Getter;
+import lombok.Setter;
+
+public class Person {
+    @Getter @Setter
+    private String name;
+    
+    @Getter @Setter
+    private int age;
+}
+```
+
+In diesem Beispiel werden automatisch Getter- und Setter-Methoden für die Felder `name` und `age` generiert, wodurch der Code sauberer und lesbarer wird.
+
+---
+
 ### Commands
 Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt könnt ihr das Terminal öffnen und den folgenden Befehl eingeben:
 
