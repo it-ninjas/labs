@@ -27,7 +27,7 @@ Implementiere die folgenden Methoden:
 Beachte, dass du die `toString()` Methode anpasst, sodass die MyStack-Stacks beim printen übersichtlich dargestellt
 werden, wie im Beispiel oben: [blue, yellow, green, orange]
 
-Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) zu der Umsetzung gehört.
 
 ## Aufgabe 2 (Optional)
 

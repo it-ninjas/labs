@@ -1095,4 +1095,4 @@ public class AdminControllerIntegrationTest {
 ```
 
 ## Unittests
-Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 Testing](./../java-testing) bereits kennen.
+Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 Testing](../../../../docs/java/java-testing) bereits kennen.

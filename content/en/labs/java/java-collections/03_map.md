@@ -13,7 +13,7 @@ Postleitzahlen einlesen und verarbeiten:
 1. Schreibe ein Programm, welches Postleitzahlen aus einer CSV-Datei herausliest und in einer HashMap speichert.
 2. Nach dem Speichern schreibt das Programm verschiedene Informationen zu den Daten in die Konsole (siehe Ausgabe).
 3. Verwendet wieder die kleine Hilfsklasse [`OutputValidation`](https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java) zum Verifizieren von eurem Konsole-Output. 
-4. Ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) soll umgesetzt werden.
+4. Ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) soll umgesetzt werden.
 
 
 ### Input
@@ -45,7 +45,7 @@ Wir programmieren eine eigene Map-Klasse `MyMap`, welche noch keinen Hash-Code v
 2. Die Klasse muss das Interface `MyMapInterface` implementieren.
 3. Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse internen Datenstruktur dynamische anpassen.
 4. Die `toString()` der `java.lang.Object` Klasse soll von der `MyMap` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.
-5. Ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) soll umgesetzt werden.
+5. Ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) soll umgesetzt werden.
 
 
 {{% details title="Inferface MyMapInterface" %}}
@@ -121,5 +121,5 @@ Wir Kopieren unsere `MyMap` Klasse zu der Klasse `MyHashMap` und erweitern diese
 
 1. Beim Hinzufügen von Zuweisungen wird der Hash-Code vom Schlüssel berechnet und ebenfalls abgespeichert.
 2. Die Schlüsselsuche wird anschliessend über die gespeicherten Hash-Code der Schlüssel durchgeführt statt über die Schlüssel selbst.
-3. Ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) soll umgesetzt werden.
+3. Ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) soll umgesetzt werden.
 
