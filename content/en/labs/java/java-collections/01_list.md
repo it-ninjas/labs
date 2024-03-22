@@ -216,5 +216,5 @@ Anforderungen an die `Modul`-Klasse:
 - Die Methode `printReportEntry()` soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format *<
   MODUL_NAME>* : *<MODUL_SCHLUSSNOTE>* auszugeben.
 
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
 
