@@ -26,7 +26,7 @@ Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-tes
 
 Verwende hierfür Streams.
 
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
 
 
 ## Aufgabe 3 - Kalorien berechnen
