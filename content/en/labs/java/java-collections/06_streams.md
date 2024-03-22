@@ -36,7 +36,7 @@ Versuche für jede Mahlzeit die Anzahl Kalorien zu ermitteln. Speichere die Geri
 
 ![task1](/images/task.png) Schreibe ein Programm, das mit Hilfe von Streams die Kalorien-Anzahl aus den Strings zusammenzählt.
 
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
 
 
 ##  Aufgabe 4 - Notenschnitt berechnen
@@ -45,4 +45,4 @@ Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-test
 
 Erstelle hierfür eine Klasse, die eine Note und ein Fach speichert. Erstelle einen Stream, der Objekte dieser Klasse beinhaltet.
 
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
