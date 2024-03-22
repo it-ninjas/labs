@@ -1,9 +1,9 @@
 ---
 title: "Spring Boot"
 linkTitle: "Spring Boot"
-weight: 15
+weight: 2
 description: >
-  Modul #J11 - Spring Boot
+  Modul #J10 - Spring Boot
 ---
 
 #### Ziele
