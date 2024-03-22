@@ -65,41 +65,13 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
     <!-- (4) Properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>1.21</java.version>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
         <timestamp>${maven.build.timestamp}</timestamp>
     </properties>
 
     <!-- (5) Abhängigkeiten -->
     <dependencies>
-        <!-- Spring Boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web-services</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -107,32 +79,10 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
             <version>1.18.6</version>
         </dependency>
 
-        <!-- Datenbank -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.20</version>
-        </dependency>
-
         <!-- Unit- und Integrationstests -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -148,27 +98,15 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <compilerVersion>1.8</compilerVersion>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <compilerVersion>1.21</compilerVersion>
+                    <source>1.21</source>
+                    <target>1.21</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <!-- (7) Auslieferung -->
-    <distributionManagement>
-        <repository>
-            <id>mvn</id>
-            <url>https://bin.sbb.ch/artifactory/cca.mvn/</url>
-        </repository>
-        <snapshotRepository>
-            <id>mvn</id>
-            <url>https://bin.sbb.ch/artifactory/cca.mvn/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <!-- (8) Entwickler-Informationen -->
+    <!-- (7) Entwickler-Informationen -->
     <developers>
         <developer>
             <id>U000000</id>
@@ -236,7 +174,7 @@ auf die Einstellung (Tag) und damit auf deren Wert (Value) zugegriffen werden.
 
 #### Abschnitt 5
 Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
-Mögliche Typen sind hier zu finden: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html)
+Mögliche Typen sind hier zu finden: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html).
 Vielfach wird auch noch der Scope verwendet, er gibt an in welchem Umfang die Fremdbibliothek miteinbezogen wird.
 Mögliche Scopes sind:
 * compile - Das ist der Default-Scope. Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath)
@@ -250,9 +188,6 @@ Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins k
 Es ist auch möglich eigene Maven-Plugins zu entwickeln. Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es [hier](https://maven.apache.org/plugins/index.html).
 
 #### Abschnitt 7
-Die Auslieferungs-Sektion bestimmt, wo die Artefakte nach dem Build abgelegt werden sollen.
-
-#### Abschnitt 8
 Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.
 
 ---
