@@ -84,68 +84,22 @@ Design-Patterns sind wiederverwendbare Vorlagen für die Anwendungsentwicklung u
 Programmiersprache. Es gibt verschiedene Arten, z. B. Kreationsmuster, Strukturmuster und Verhaltensmuster, die auch in 
 Spring genutzt werden.
 
-### Inversion of Control (IoC)
-Inversion of Control (IoC) bedeutet, dass die Steuerung der Erstellung und Verwaltung von Objekten an ein Framework oder eine Bibliothek delegiert wird,
-anstatt dass die Anwendung selbst diese Kontrolle hat. 
-Im Fall von Spring übernimmt der Spring-Container die Kontrolle über die Erstellung und Verwaltung von Objekten (Beans),
-anstatt dass die Anwendung diese Aufgaben selbst durchführt. 
-Dies ermöglicht eine lose Kopplung zwischen den Komponenten einer Anwendung und erleichtert die Testbarkeit, 
-Wartbarkeit und Erweiterbarkeit des Codes.
-
-### Dependency Injection (DI)
-Dependency Injection (DI) ist ein Designmuster, das verwendet wird, um Abhängigkeiten zwischen Objekten zu verwalten. 
-Anstatt dass ein Objekt seine eigenen Abhängigkeiten erstellt oder findet, werden diese von einer externen Entität bereitgestellt. 
-Spring verwendet Dependency Injection, um die Abhängigkeiten von Beans zu verwalten.
-
-Es gibt zwei Hauptmethoden der Dependency Injection in Spring:
-
-#### Konstruktorinjektion (Constructor Injection):
-Bei der Konstruktorinjektion werden die Abhängigkeiten über den Konstruktor einer Klasse eingeführt. 
-Das bedeutet, dass die erforderlichen Abhängigkeiten als Parameter im Konstruktor einer Klasse übergeben werden. 
-Beim Erstellen einer Bean im Spring-Container wird der passende Konstruktor aufgerufen und die benötigten Abhängigkeiten werden automatisch injiziert.
-
-Beispiel in Java:
-```java
-   public class MyClass {
-       private MyDependency dependency;
-
-       public MyClass(MyDependency dependency) {
-           this.dependency = dependency;
-       }
-   }
-```
-
-#### Feldinjektion (Field Injection):
-Bei der Feldinjektion werden die Abhängigkeiten direkt in die Felder einer Klasse injiziert. 
-Dies geschieht durch die Verwendung von Annotations wie `@Autowired` in Spring. 
-Der Spring-Container erkennt die annotierten Felder und injiziert automatisch die entsprechenden Abhängigkeiten.
-
-Beispiel in Java:
-```java
-   public class MyClass {
-       @Autowired
-       private MyDependency dependency;
-   }
-```
-
-Beide Methoden haben ihre Vor- und Nachteile. Konstruktorinjektion wird oft als bevorzugte Methode betrachtet, da sie die Abhängigkeiten klarer macht und die Klasse in einen konsistenten Zustand bringt, bevor sie verwendet wird. Field Injection ist jedoch kürzer und kann in bestimmten Fällen praktisch sein, insbesondere wenn es sich um einfache Abhängigkeiten handelt.
-
 ### Singleton
 
-Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring 
-können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, dass dies innerhalb des Spring-Containers 
+Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring
+können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, dass dies innerhalb des Spring-Containers
 gilt, nicht systemweit.
 
 
 ### Beans
 
-Beans sind Kernkomponenten in der Spring-Welt. Sie repräsentieren die grundlegenden Bausteine, die vom Spring 
-IoC-Container verwaltet werden. Eine Bean ist ein von Spring verwaltetes und instanziiertes Objekt, 
+Beans sind Kernkomponenten in der Spring-Welt. Sie repräsentieren die grundlegenden Bausteine, die vom Spring
+IoC-Container verwaltet werden. Eine Bean ist ein von Spring verwaltetes und instanziiertes Objekt,
 das in einem Spring-Container erstellt wird. Beans werden in der Regel durch Konfigurationsmetadaten definiert,
-z. B. durch XML-Dateien, Annotationen oder Java-basierte Konfiguration. 
-Diese Beans werden dann vom Spring-Framework erstellt, verwaltet und bereitgestellt. 
-Sie können verschiedene Aufgaben erfüllen, wie die Datenbankkonnektivität, 
-die Geschäftslogik oder die Präsentationsschicht einer Anwendung. 
+z. B. durch XML-Dateien, Annotationen oder Java-basierte Konfiguration.
+Diese Beans werden dann vom Spring-Framework erstellt, verwaltet und bereitgestellt.
+Sie können verschiedene Aufgaben erfüllen, wie die Datenbankkonnektivität,
+die Geschäftslogik oder die Präsentationsschicht einer Anwendung.
 Der Spring-Container verwaltet den Lebenszyklus der Beans und bietet Funktionen wie Abhängigkeitsinjektion,
 Transaktionsmanagement und Aspektorientierte Programmierung.
 
@@ -183,7 +137,7 @@ Beans haben verschiedene Scopes, die ihr Lebenszyklus bestimmen:
 
 #### Verwendung von Beans
 
-Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer 
+Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer
 Anwendung zu verwalten. Dies geschieht via Dependency Injection:
 
 ```java
@@ -241,6 +195,52 @@ public class MyConfiguration {
 
 Weitere Information
 hier: https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes
+
+### Inversion of Control (IoC)
+Inversion of Control (IoC) bedeutet, dass die Steuerung der Erstellung und Verwaltung von Objekten an ein Framework oder eine Bibliothek delegiert wird,
+anstatt dass die Anwendung selbst diese Kontrolle hat. 
+Im Fall von Spring übernimmt der Spring-Container die Kontrolle über die Erstellung und Verwaltung von Objekten (Beans),
+anstatt dass die Anwendung diese Aufgaben selbst durchführt. 
+Dies ermöglicht eine lose Kopplung zwischen den Komponenten einer Anwendung und erleichtert die Testbarkeit, 
+Wartbarkeit und Erweiterbarkeit des Codes.
+
+### Dependency Injection (DI)
+Dependency Injection (DI) ist ein Designmuster, das verwendet wird, um Abhängigkeiten zwischen Objekten zu verwalten. 
+Anstatt dass ein Objekt seine eigenen Abhängigkeiten erstellt oder findet, werden diese von einer externen Entität bereitgestellt. 
+Spring verwendet Dependency Injection, um die Abhängigkeiten von Beans zu verwalten.
+
+Es gibt zwei Hauptmethoden der Dependency Injection in Spring:
+
+#### Konstruktorinjektion (Constructor Injection):
+Bei der Konstruktorinjektion werden die Abhängigkeiten über den Konstruktor einer Klasse eingeführt. 
+Das bedeutet, dass die erforderlichen Abhängigkeiten als Parameter im Konstruktor einer Klasse übergeben werden. 
+Beim Erstellen einer Bean im Spring-Container wird der passende Konstruktor aufgerufen und die benötigten Abhängigkeiten werden automatisch injiziert.
+
+Beispiel in Java:
+```java
+   public class MyClass {
+       private MyDependency dependency;
+
+       public MyClass(MyDependency dependency) {
+           this.dependency = dependency;
+       }
+   }
+```
+
+#### Feldinjektion (Field Injection):
+Bei der Feldinjektion werden die Abhängigkeiten direkt in die Felder einer Klasse injiziert. 
+Dies geschieht durch die Verwendung von Annotations wie `@Autowired` in Spring. 
+Der Spring-Container erkennt die annotierten Felder und injiziert automatisch die entsprechenden Abhängigkeiten.
+
+Beispiel in Java:
+```java
+   public class MyClass {
+       @Autowired
+       private MyDependency dependency;
+   }
+```
+
+Beide Methoden haben ihre Vor- und Nachteile. Konstruktorinjektion wird oft als bevorzugte Methode betrachtet, da sie die Abhängigkeiten klarer macht und die Klasse in einen konsistenten Zustand bringt, bevor sie verwendet wird. Field Injection ist jedoch kürzer und kann in bestimmten Fällen praktisch sein, insbesondere wenn es sich um einfache Abhängigkeiten handelt.
 
 ### REST
 REST (Representational State Transfer) ist ein Designkonzept für das Internet, das Regeln und Standards definiert, 
