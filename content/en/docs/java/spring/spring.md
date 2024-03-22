@@ -85,52 +85,50 @@ Programmiersprache. Es gibt verschiedene Arten, z. B. Kreationsmuster, Strukturm
 Spring genutzt werden.
 
 ### Inversion of Control (IoC)
-Inversion of Control (IoC) ist ein Prinzip, das vereinfacht gesagt den Kontroll-Fluss umkehrt. Das Ziel dabei ist es, eine lose Kopplung zu erreichen, wodurch der Code einfacher testbar, wartbarer und erweiterbarer wird.
-
-IoC wird in Spring durch "Dependency Injection" erreicht, was im nächsten Kapitel vorgestellt wird. Dabei werden Abhängigkeiten wie Variablen von einer anderen Klasse durch Spring automatisch erstellt und "injektiert" (eingefügt), statt dass man sich selbst darum kümmern und Objekte selbst erstellen muss.
-Zuständigkeiten getrennt werden. Spring nutzt dieses Prinzip.
+Inversion of Control (IoC) bedeutet, dass die Steuerung der Erstellung und Verwaltung von Objekten an ein Framework oder eine Bibliothek delegiert wird,
+anstatt dass die Anwendung selbst diese Kontrolle hat. 
+Im Fall von Spring übernimmt der Spring-Container die Kontrolle über die Erstellung und Verwaltung von Objekten (Beans),
+anstatt dass die Anwendung diese Aufgaben selbst durchführt. 
+Dies ermöglicht eine lose Kopplung zwischen den Komponenten einer Anwendung und erleichtert die Testbarkeit, 
+Wartbarkeit und Erweiterbarkeit des Codes.
 
 ### Dependency Injection (DI)
-DI bezeichnet die Weitergabe einer Abhängigkeit an ein Objekt. Spring verwendet einen Inversion-of-Control-Container, 
-um zu bestimmen, wie und wo die Injektion erfolgt. Es gibt verschiedene Orte im Code, wo DI eingesetzt werden kann. Es gibt die Konstruktor-, 
-Setter- und Feld-basierte Injection.
+Dependency Injection (DI) ist ein Designmuster, das verwendet wird, um Abhängigkeiten zwischen Objekten zu verwalten. 
+Anstatt dass ein Objekt seine eigenen Abhängigkeiten erstellt oder findet, werden diese von einer externen Entität bereitgestellt. 
+Spring verwendet Dependency Injection, um die Abhängigkeiten von Beans zu verwalten.
 
-##### Konstruktor Injection
+Es gibt zwei Hauptmethoden der Dependency Injection in Spring:
 
-Bei einer Konstruktor-Injection fungiert jedes Argument als eine Abhängigkeit.  
-Ein Beispiel sieht so aus:
+#### Konstruktorinjektion (Constructor Injection):
+Bei der Konstruktorinjektion werden die Abhängigkeiten über den Konstruktor einer Klasse eingeführt. 
+Das bedeutet, dass die erforderlichen Abhängigkeiten als Parameter im Konstruktor einer Klasse übergeben werden. 
+Beim Erstellen einer Bean im Spring-Container wird der passende Konstruktor aufgerufen und die benötigten Abhängigkeiten werden automatisch injiziert.
 
+Beispiel in Java:
 ```java
+   public class MyClass {
+       private MyDependency dependency;
 
-@Component
-public class Store {
-    private final Item item;
-
-    public Store(Item item1) {
-        this.item = item1;
-    }
-}
+       public MyClass(MyDependency dependency) {
+           this.dependency = dependency;
+       }
+   }
 ```
 
-In diesem Beispiel wird die Bean `item1` injektiert.
+#### Feldinjektion (Field Injection):
+Bei der Feldinjektion werden die Abhängigkeiten direkt in die Felder einer Klasse injiziert. 
+Dies geschieht durch die Verwendung von Annotations wie `@Autowired` in Spring. 
+Der Spring-Container erkennt die annotierten Felder und injiziert automatisch die entsprechenden Abhängigkeiten.
 
-Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu [hier](#bean).
-
-
-##### Felder Injection
-
-Bei der Felder Injection werden die Abhängigkeiten direkt in die Felder Injected.
-Hier ein Beispiel:
-
+Beispiel in Java:
 ```java
-public class Store {
-    @Autowired
-    private Item item;
-}
+   public class MyClass {
+       @Autowired
+       private MyDependency dependency;
+   }
 ```
 
-Ein Nachteil der Field-Injection ist, dass es im Gegensatz zur Konstruktor-Injection nicht möglich ist, alle Instanzvariablen mit `final` zu deklarieren.
-
+Beide Methoden haben ihre Vor- und Nachteile. Konstruktorinjektion wird oft als bevorzugte Methode betrachtet, da sie die Abhängigkeiten klarer macht und die Klasse in einen konsistenten Zustand bringt, bevor sie verwendet wird. Field Injection ist jedoch kürzer und kann in bestimmten Fällen praktisch sein, insbesondere wenn es sich um einfache Abhängigkeiten handelt.
 
 ### Singleton
 
@@ -142,8 +140,14 @@ gilt, nicht systemweit.
 ### Beans
 
 Beans sind Kernkomponenten in der Spring-Welt. Sie repräsentieren die grundlegenden Bausteine, die vom Spring 
-IoC-Container verwaltet werden. Diese Container verwalten die Lebenszyklen der Beans, wodurch ihre Erstellung, 
-Initialisierung, Verwendung und Entsorgung standardisiert werden.
+IoC-Container verwaltet werden. Eine Bean ist ein von Spring verwaltetes und instanziiertes Objekt, 
+das in einem Spring-Container erstellt wird. Beans werden in der Regel durch Konfigurationsmetadaten definiert,
+z. B. durch XML-Dateien, Annotationen oder Java-basierte Konfiguration. 
+Diese Beans werden dann vom Spring-Framework erstellt, verwaltet und bereitgestellt. 
+Sie können verschiedene Aufgaben erfüllen, wie die Datenbankkonnektivität, 
+die Geschäftslogik oder die Präsentationsschicht einer Anwendung. 
+Der Spring-Container verwaltet den Lebenszyklus der Beans und bietet Funktionen wie Abhängigkeitsinjektion,
+Transaktionsmanagement und Aspektorientierte Programmierung.
 
 #### Erstellung von Beans
 
