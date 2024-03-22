@@ -4,7 +4,7 @@ linkTitle: "Bibliothek"
 type: docs
 weight: 2
 description: >
- Aufgabe zu Modul #J2 - Generics I - Bibliothek
+ Aufgabe zu Modul #J3 - OOD - Bibliothek
 ---
 
 Schreibe eine Anwendung, welche eine Bibliothek modelliert.
