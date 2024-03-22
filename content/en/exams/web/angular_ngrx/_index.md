@@ -1,0 +1,9 @@
+---
+title: "Angular NgRx Exams"
+linkTitle: "Angular NgRx"
+type: docs
+weight: 3
+date: 2024-03-22
+description: >
+  Exams zu NgRx
+---
