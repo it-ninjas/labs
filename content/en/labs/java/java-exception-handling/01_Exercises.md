@@ -30,4 +30,4 @@ Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-tes
 Wenn wir Zahlen von einem User über die Konsole entgegennehmen wollen, kann man `scanner.nextLine()` brauchen. Wir können aber nie sicher sein, ob es sich bei der Eingabe wirklich um eine Zahl handelt. Darum müssen wir mit einem Exception Handling die Programmlogik vor einem solchen Fall schützen.
 
 Schreibe eine Anwendung, welche den User einzeln für zwei Zahlen fragt und diese dann entweder addiert, subtrahiert, multipliziert, oder dividiert. Die Auswahl der Rechnungsmethode kann zufällig oder durch den Benutzer erfolgen.
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
