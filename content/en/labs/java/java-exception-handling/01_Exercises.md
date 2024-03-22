@@ -23,7 +23,7 @@ Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-tes
 ## Aufgabe 2: File Writing
 Die Verwendung von `System.out.println()` hat das Problem, dass nach einem Neustart der Applikation alle Logs aus der Konsole verschwinden, dies kann mit der Zeit mühsam werden.
 Schreibe eine Klasse mit mindestens einer öffentlichen Methode, welcher man einen Text als Parameter gibt. Die Methode soll diesen Text zuerst in eine Datei mit dem Namen application.log speichern und nachher mit `System.out.println()` in die Konsole schreiben. Achte auch hier wieder auf ein entsprechendes Exception Handling.
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
 
 
 ## Aufgabe 3: ParseInt
