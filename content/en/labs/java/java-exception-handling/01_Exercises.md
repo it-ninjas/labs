@@ -18,7 +18,7 @@ Schreibe eine Anwendung, welche diese Wörter einlesen kann, und schreibe jeweil
 - 2 weitere Methoden deiner Wahl
 
 Implementiere vorher ein Interface, um deine Methoden zu definieren.
-Zudem wir erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](./../java-testing) gelernt) zu der Umsetzung gehört.
 
 ## Aufgabe 2: File Writing
 Die Verwendung von `System.out.println()` hat das Problem, dass nach einem Neustart der Applikation alle Logs aus der Konsole verschwinden, dies kann mit der Zeit mühsam werden.
