@@ -2,7 +2,7 @@
 title: "(Zusatz) NgRx"
 type: docs
 linkTitle: "(Zusatz) NgRx"
-weight: 27
+weight: 1
 date: 2023-04-20
 description: >
   Modul #F7 - Angular NgRx - Übersicht
@@ -43,48 +43,23 @@ npm install @ngrx/entity        // Für die Verwendung von Entity State
 npm install @ngrx/router-store  // Für die Integration von Router-Status mit dem Store
 ```
 
-5. Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwenden werden, indem die entsprechenden Module importiert und konfiguriert werden:
-* NgRx Store: Um den NgRx Store zu verwenden, muss das `StoreModule` importiert und im `app.module.ts` konfiguriert werden.
+5. Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwenden werden, indem die entsprechenden Provides angegeben und konfiguriert werden:
+* NgRx Store: Um den NgRx Store zu verwenden, muss das `provideStore` importiert und im `app.config.ts` konfiguriert werden.
+(Das `reducers`ist aus dem `index.ts` im `reducers`-Ordner)
 ```typescript
-import { StoreModule } from '@ngrx/store';
+import { provideStore } from '@ngrx/store';
+import { reducers } from './reducers';
 
-@NgModule({
-  imports: [
-    // ...
-    StoreModule.forRoot(reducers)  // Hier 'reducers' durch den eigenen Reducer ersetzen
-  ],
-  // ...
-})
-export class AppModule { }
+export const appConfig: ApplicationConfig = {
+    providers: [provideStore(reducers)]
+};
 ```
 
-* **Optional** NgRx Effects: Um den NgRx Effects zu verwenden, muss das `EffectsModule` importiert und im `app.module.ts` konfiguriert werden.
+* **Optional** NgRx Effects: Um den NgRx Effects zu verwenden, muss das `provideEffects` importiert und im `app.config.ts` konfiguriert werden.
 ```typescript
-import { EffectsModule } from '@ngrx/effects';
-import { MyEffects } from './my-effects';  // Hier die eigenen Effects importieren
-
-@NgModule({
-  imports: [
-    // ...
-    EffectsModule.forRoot([MyEffects])  // Hier die eigenen Effects registrieren
-  ],
-  // ...
-})
-export class AppModule { }
-```
-
-* **Optional** NgRx Entity State: Um den NgRx Entity State zu verwenden, muss das `EntityStateModule` importiert und im `app.module.ts` konfiguriert werden.
-```typescript
-import { EntityStateModule } from '@ngrx/entity';
-
-@NgModule({
-  imports: [
-    // ...
-    EntityStateModule.forRoot(entityConfig)  // Hier 'entityConfig' durch die eigene Konfiguration ersetzen
-  ],
-  // ...
-})
-export class AppModule { }
+export const appConfig: ApplicationConfig = {
+    providers: [provideEffects(RouterEffects)]
+};
 ```
 
 ## Debugging Tool

@@ -2,7 +2,7 @@
 title: "NgRx Actions"
 type: docs
 linkTitle: "NgRx Actions"
-weight: 28
+weight: 2
 date: 2023-05-26
 description: >
   Modul #F7 - Angular NgRx - Actions
@@ -47,7 +47,7 @@ export const deleteAbility = createAction(
 
 Diese Action-Creator-Funktionen kann man nun in den Components verwenden und sie auslösen.
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -58,11 +58,12 @@ import { addAbility, deleteAbility } from 'src/app/actions/ability.actions';
 })
 export class AbilityComponent implements OnInit {
     ability$: Observable<{ abilities: string[]; }> = new Observable<{ abilities: string[]; }>();
-    abilities$: Observable<string[]> = new Observable<string[]>();
-
+    abilities$: Observable<string[]> = new Observable<string[]>()
     abilityForm: FormControl = new FormControl('');
 
-    constructor(private store: Store<{ ability: {abilities: string[]} }>) {}
+    private store = inject(Store<{ability: {abilities: string[] }}>);
+
+    constructor() {}
 
     ngOnInit(): void {
         this.ability$ = this.store.select('ability');
