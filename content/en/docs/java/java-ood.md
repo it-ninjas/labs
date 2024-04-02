@@ -784,7 +784,7 @@ Danach können die Annotationen von Lombok verwendet werden, um den generierten 
 Einige häufig verwendete Annotationen sind `@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, usw.
 
 
-In folgendem Beispiel werden `Getter` und `Setter` automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Feldern `name` und `age` verwendet werden.
+In folgendem Beispiel werden `Getter` und `Setter` automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Klassenattributen `name` und `age` verwendet werden.
 
 ```java
 import lombok.Getter;
@@ -797,6 +797,21 @@ public class Person {
     
     @Getter 
     @Setter 
+    private int age;
+}
+```
+
+Oder wenn es alle Klassenattribute betrifft, kann man es auch folgendermassen schreiben.
+```java
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Person { 
+
+    private String name;
+ 
     private int age;
 }
 ```
