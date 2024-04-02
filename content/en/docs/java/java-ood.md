@@ -784,7 +784,7 @@ Danach können die Annotationen von Lombok verwendet werden, um den generierten 
 Einige häufig verwendete Annotationen sind `@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, usw.
 
 
-In folgendem Beispiel werden `Getter` und `Setter` automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Klassenattributen `name` und `age` verwendet werden.
+In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Klassenattributen `firstname` und `lastname` verwendet werden. Jedoch für `age` werden sie nicht generiert.
 
 ```java
 import lombok.Getter;
@@ -793,15 +793,17 @@ import lombok.Setter;
 public class Person { 
     @Getter 
     @Setter 
-    private String name;
-    
-    @Getter 
-    @Setter 
+    private String firstname;
+
+    @Getter
+    @Setter
+    private String lastname;
+
     private int age;
 }
 ```
 
-Oder wenn es alle Klassenattribute betrifft, kann man es auch folgendermassen schreiben.
+Wenn es jedoch alle Klassenattribute betrifft, muss man nicht über jedem Klassenattribut die Annotationen hinzufügen, sondern man kann es auch folgendermassen schreiben.
 ```java
 import lombok.Getter;
 import lombok.Setter;
@@ -810,13 +812,15 @@ import lombok.Setter;
 @Setter
 public class Person { 
 
-    private String name;
- 
+    private String firstname;
+
+    private String lastname;
+
     private int age;
 }
 ```
 
-`@NoArgsConstructor`: Diese Annotation wird verwendet, um einen parameterlosen Konstruktor automatisch zu generieren. Sie ist besonders nützlich, wenn Klassen benötigt werden, welche von Frameworks wie Hibernate oder Jackson instanziiert werden müssen.
+`@NoArgsConstructor`: Diese Annotation wird verwendet, um einen parameterlosen Konstruktor automatisch zu generieren. Sie ist besonders nützlich, wenn Klassen benötigt werden, welche von Frameworks instanziiert werden müssen.
 
 ```java
 import lombok.NoArgsConstructor;
