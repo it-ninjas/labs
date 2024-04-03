@@ -225,49 +225,105 @@ Im Windows muss also der Pfad zur Built-In Version des IntelliJ hinterlegt werde
 ---
 
 ### Beispiel einer Abhängigkeit (Lombok)
+Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
+Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.
 
-Eine der meistverwendeten Abhängigkeiten ist Lombok. Lombok ist eine Java-Bibliothek, die es Entwicklern ermöglicht, die Entwicklung zu beschleunigen, indem sie Boilerplate-Code reduziert.
+**(*) Info:**
+Boilerplate-Code ist wiederkehrender Code, der in verschiedenen Teilen einer Softwareanwendung benötigt wird, aber wenig zur eigentlichen Funktionalität beiträgt.
 
-{{% details title="Definition Boilerplate-Code" %}}
+### Wofür wird Lombok verwendet?
+1. **Reduzierung des Boilerplate-Codes:**
+   Lombok eliminiert die Notwendigkeit, viele standardmässige Java-Boilerplate-Codezeilen wie Getter, Setter, Konstruktoren und toString-Methoden manuell zu schreiben.
 
-Boilerplate-Code bezieht sich auf Codefragmente, die in vielen Teilen eines Programms wiederholt werden müssen, ohne wesentliche Änderungen vorzunehmen. Diese Codefragmente sind oft erforderlich, um bestimmte Aufgaben zu erledigen, wie das Definieren von Getter- und Setter-Methoden, das Erstellen von Konstruktoren oder das Überschreiben von Standardmethoden wie `toString()`, `equals()` und `hashCode()`.
+2. **Verbesserte Lesbarkeit:**
+   Durch die Reduzierung von Boilerplate-Code wird der Quellcode klarer und lesbarer, da unnötige Details ausgeblendet werden.
 
-Das Schreiben von Boilerplate-Code ist zeitaufwändig und kann zu einer erhöhten Codekomplexität führen, da Entwickler oft denselben Code wiederholt schreiben müssen. Darüber hinaus erhöht Boilerplate-Code das Risiko von Fehlern und macht den Code schwerer zu lesen und zu warten.
-
-Um die Produktivität zu steigern und die Codequalität zu verbessern, können Tools wie Lombok eingesetzt werden, um Boilerplate-Code automatisch zu generieren. Durch die Verwendung von Annotationen und Codegenerierungstechniken reduziert Lombok die Menge an wiederholtem Code, den Entwickler schreiben müssen, und ermöglicht es ihnen, sich auf die Implementierung der eigentlichen Geschäftslogik zu konzentrieren, anstatt Zeit mit mechanischen Aufgaben zu verschwenden.
-
-{{% /details %}}
+3. **Kompakte Klassen:**
+   Lombok ermöglicht es, Klassen mit weniger Code zu erstellen, was die Wartung und das Verständnis des Codes erleichtert.
 
 
-#### Funktionalität von Lombok:
+Einige häufig verwendete Annotationen sind `@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, usw.
 
-Lombok bietet eine Reihe von Annotationen, die während des Kompilierungsprozesses verwendet werden, um automatisch Code zu generieren, der normalerweise manuell geschrieben werden müsste. Diese Annotationen helfen, den Code sauberer und lesbarer zu machen, indem sie redundante Getter, Setter, Konstruktoren und andere wiederholte Codefragmente eliminieren.
 
-Einige häufig verwendete Annotationen von Lombok sind:
-
-- `@Getter`: Generiert automatisch Getter-Methoden für Felder.
-- `@Setter`: Generiert automatisch Setter-Methoden für Felder.
-- `@NoArgsConstructor`: Generiert einen Standardkonstruktor ohne Argumente.
-- `@AllArgsConstructor`: Generiert einen Konstruktor, der alle Felder der Klasse als Argumente annimmt.
-
-Durch die Verwendung von Lombok können Entwickler effizienter arbeiten und sich auf die eigentliche Geschäftslogik konzentrieren, anstatt Zeit mit dem Schreiben repetitiver Codefragmente zu verschwenden.
-
-Ein einfaches Beispiel, wie Lombok verwendet wird, zeigt den Einsatz von `@Getter` und `@Setter`:
+In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Klassenattributen `firstname` und `lastname` verwendet werden. Jedoch für `age` werden sie nicht generiert.
 
 ```java
 import lombok.Getter;
 import lombok.Setter;
 
-public class Person {
-    @Getter @Setter
-    private String name;
-    
-    @Getter @Setter
+public class Person { 
+    @Getter 
+    @Setter 
+    private String firstname;
+
+    @Getter
+    @Setter
+    private String lastname;
+
     private int age;
 }
 ```
 
-In diesem Beispiel werden automatisch Getter- und Setter-Methoden für die Felder `name` und `age` generiert, wodurch der Code sauberer und lesbarer wird.
+Wenn es jedoch alle Klassenattribute betrifft, muss man nicht über jedem Klassenattribut die Annotationen hinzufügen, sondern man kann es auch folgendermassen schreiben.
+```java
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Person { 
+
+    private String firstname;
+
+    private String lastname;
+
+    private int age;
+}
+```
+
+`@NoArgsConstructor`: Diese Annotation wird verwendet, um einen parameterlosen Konstruktor automatisch zu generieren. Sie ist besonders nützlich, wenn Klassen benötigt werden, welche von Frameworks instanziiert werden müssen.
+
+```java
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class Person { 
+    private String name;
+    private int age;
+}
+```
+
+`@AllArgsConstructor`: Diese Annotation wird verwendet, um einen Konstruktor automatisch zu generieren, der alle Felder der Klasse als Parameter akzeptiert. Dieser Konstruktor ist besonders nützlich, wenn eine Klasse erstellt werden soll, bei welcher man den gesamten Zustand über den Konstruktor initialisieren möchte.
+
+```java
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class Person { 
+    private String name;
+    private int age;
+}
+```
+
+### Vorteile von Lombok:
+1. **Kompaktheit:**
+   Lombok reduziert die Menge an Code, welcher geschrieben werden muss, um Getter und Setter etc. zu implementieren. Dadurch wird der Quellcode kompakter und einfacher zu lesen.
+
+2. **Zeitersparnis:**
+   Lombok automatisiert die Generierung von Boilerplate-Code, was Entwicklern Zeit spart, die sie sonst mit dem manuellen Schreiben dieser Methoden verbringen würden.
+
+3. **Wartbarkeit:**
+   Durch die Reduzierung von Boilerplate-Code minimiert Lombok die Möglichkeit von Fehlern und erleichtert die Wartung des Codes.
+
+### Nachteile von Lombok:
+1. **Transparenz:**
+   Für Entwickler, die nicht mit Lombok vertraut sind, kann der automatisch generierte Code möglicherweise undurchsichtig sein, da er nicht explizit im Quellcode angezeigt wird.
+
+2. **Abhängigkeit:**
+   Die Verwendung von Lombok bedeutet, dass ein Projekt von der Lombok-Library abhängig ist. Wenn man Library-Dependencies minimieren möchten, kann dies als Nachteil angesehen werden.
+
+3. **Weniger Kontrolle:**
+   Bei der Verwendung von Lombok hat man möglicherweise weniger Kontrolle über den generierten Code im Vergleich zur manuellen Implementierung.
 
 ---
 
