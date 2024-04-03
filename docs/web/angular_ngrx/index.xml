@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Angular NgRx</title><link>/docs/web/angular_ngrx/</link><description>Recent content in Angular NgRx on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 06 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="/docs/web/angular_ngrx/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: (Zusatz) NgRx</title><link>/docs/web/angular_ngrx/06_1_angular_ngrx/</link><pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/06_1_angular_ngrx/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Angular NgRx</title><link>/docs/web/angular_ngrx/</link><description>Recent content in Angular NgRx on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 06 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="/docs/web/angular_ngrx/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: (Zusatz) NgRx</title><link>/docs/web/angular_ngrx/01_angular_ngrx/</link><pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/01_angular_ngrx/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was und wozu NgRx ist, und kennst das Kernkonzept davon.&lt;/li>
@@ -55,98 +55,47 @@ npm install @ngrx/router-store // Für die Integration von Router-Status mit dem
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;ol start="5">
-&lt;li>Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwenden werden, indem die entsprechenden Module importiert und konfiguriert werden:&lt;/li>
+&lt;li>Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwenden werden, indem die entsprechenden Provides angegeben und konfiguriert werden:&lt;/li>
 &lt;/ol>
 &lt;ul>
-&lt;li>NgRx Store: Um den NgRx Store zu verwenden, muss das &lt;code>StoreModule&lt;/code> importiert und im &lt;code>app.module.ts&lt;/code> konfiguriert werden.&lt;/li>
+&lt;li>NgRx Store: Um den NgRx Store zu verwenden, muss das &lt;code>provideStore&lt;/code> importiert und im &lt;code>app.config.ts&lt;/code> konfiguriert werden.
+(Das &lt;code>reducers&lt;/code>ist aus dem &lt;code>index.ts&lt;/code> im &lt;code>reducers&lt;/code>-Ordner)&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">StoreModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">@NgModule&lt;/span>({
-&lt;span style="color:#a6e22e">imports&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
-&lt;span style="color:#75715e">// ...
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">StoreModule&lt;/span>.&lt;span style="color:#a6e22e">forRoot&lt;/span>(&lt;span style="color:#a6e22e">reducers&lt;/span>) &lt;span style="color:#75715e">// Hier &amp;#39;reducers&amp;#39; durch den eigenen Reducer ersetzen
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> ],
-&lt;span style="color:#75715e">// ...
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>})
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> { }
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">provideStore&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">reducers&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./reducers&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">appConfig&lt;/span>: &lt;span style="color:#66d9ef">ApplicationConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideStore&lt;/span>(&lt;span style="color:#a6e22e">reducers&lt;/span>)]
+};
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;ul>
-&lt;li>&lt;strong>Optional&lt;/strong> NgRx Effects: Um den NgRx Effects zu verwenden, muss das &lt;code>EffectsModule&lt;/code> importiert und im &lt;code>app.module.ts&lt;/code> konfiguriert werden.&lt;/li>
+&lt;li>&lt;strong>Optional&lt;/strong> NgRx Effects: Um den NgRx Effects zu verwenden, muss das &lt;code>provideEffects&lt;/code> importiert und im &lt;code>app.config.ts&lt;/code> konfiguriert werden.&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">EffectsModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/effects&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">MyEffects&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./my-effects&amp;#39;&lt;/span>; &lt;span style="color:#75715e">// Hier die eigenen Effects importieren
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;span style="color:#66d9ef">@NgModule&lt;/span>({
-&lt;span style="color:#a6e22e">imports&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
-&lt;span style="color:#75715e">// ...
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">EffectsModule&lt;/span>.&lt;span style="color:#a6e22e">forRoot&lt;/span>([&lt;span style="color:#a6e22e">MyEffects&lt;/span>]) &lt;span style="color:#75715e">// Hier die eigenen Effects registrieren
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> ],
-&lt;span style="color:#75715e">// ...
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>})
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> { }
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>&lt;strong>Optional&lt;/strong> NgRx Entity State: Um den NgRx Entity State zu verwenden, muss das &lt;code>EntityStateModule&lt;/code> importiert und im &lt;code>app.module.ts&lt;/code> konfiguriert werden.&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">EntityStateModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/entity&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">@NgModule&lt;/span>({
-&lt;span style="color:#a6e22e">imports&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
-&lt;span style="color:#75715e">// ...
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">EntityStateModule&lt;/span>.&lt;span style="color:#a6e22e">forRoot&lt;/span>(&lt;span style="color:#a6e22e">entityConfig&lt;/span>) &lt;span style="color:#75715e">// Hier &amp;#39;entityConfig&amp;#39; durch die eigene Konfiguration ersetzen
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> ],
-&lt;span style="color:#75715e">// ...
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>})
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> { }
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">appConfig&lt;/span>: &lt;span style="color:#66d9ef">ApplicationConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideEffects&lt;/span>(&lt;span style="color:#a6e22e">RouterEffects&lt;/span>)]
+};
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="debugging-tool">Debugging Tool&lt;/h2>
 &lt;p>Damit man das gesamte auch gut debuggen kann, gibt es eine &lt;a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related">Chrome Extension&lt;/a>, welche dabei hilft.
-Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stores zu überwachen, Aktionen zu verfolgen und den Ablauf der Anwendung besser zu verstehen.&lt;/p></description></item><item><title>Docs: NgRx Actions</title><link>/docs/web/angular_ngrx/06_2_angular_ngrx_actions/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/06_2_angular_ngrx_actions/</guid><description>
+Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stores zu überwachen, Aktionen zu verfolgen und den Ablauf der Anwendung besser zu verstehen.&lt;/p></description></item><item><title>Docs: NgRx Actions</title><link>/docs/web/angular_ngrx/02_angular_ngrx_actions/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/02_angular_ngrx_actions/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was NgRx Actions sind und kannst diese anwenden.&lt;/li>
@@ -242,9 +191,10 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span>, &lt;span style="color:#a6e22e">OnInit&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span>, &lt;span style="color:#a6e22e">inject&lt;/span>, &lt;span style="color:#a6e22e">OnInit&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">FormControl&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/forms&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">select&lt;/span>, &lt;span style="color:#a6e22e">Store&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Observable&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;rxjs&amp;#39;&lt;/span>;
@@ -254,9 +204,10 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>})
 &lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AbilityComponent&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> &lt;span style="color:#a6e22e">OnInit&lt;/span> {
 &lt;span style="color:#a6e22e">ability$&lt;/span>: &lt;span style="color:#66d9ef">Observable&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>{ &lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[]; }&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>{ &lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[]; }&lt;span style="color:#f92672">&amp;gt;&lt;/span>();
-&lt;span style="color:#a6e22e">abilities$&lt;/span>: &lt;span style="color:#66d9ef">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt; &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt;();
+&lt;span style="color:#a6e22e">abilities$&lt;/span>: &lt;span style="color:#66d9ef">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt; &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt;()
 &lt;span style="color:#a6e22e">abilityForm&lt;/span>: &lt;span style="color:#66d9ef">FormControl&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">FormControl&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>);
-&lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>: &lt;span style="color:#66d9ef">Store&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>{ &lt;span style="color:#a6e22e">ability&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {&lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[]} }&lt;span style="color:#f92672">&amp;gt;&lt;/span>) {}
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">inject&lt;/span>(&lt;span style="color:#a6e22e">Store&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>{&lt;span style="color:#a6e22e">ability&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {&lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[] }}&lt;span style="color:#f92672">&amp;gt;&lt;/span>);
+&lt;span style="color:#66d9ef">constructor&lt;/span>() {}
 &lt;span style="color:#a6e22e">ngOnInit&lt;/span>()&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> {
 &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">ability$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">select&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;ability&amp;#39;&lt;/span>);
 &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">abilities$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">ability$&lt;/span>.&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">map&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
@@ -272,7 +223,7 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 }
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Die Actions werden dann von den Reducer-Funktionen behandelt, um den Zustand zu aktualisieren und auf die Aktionen zu reagieren.&lt;/p></description></item><item><title>Docs: NgRx Reducers</title><link>/docs/web/angular_ngrx/06_3_angular_ngrx_reducers/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/06_3_angular_ngrx_reducers/</guid><description>
+&lt;/div>&lt;p>Die Actions werden dann von den Reducer-Funktionen behandelt, um den Zustand zu aktualisieren und auf die Aktionen zu reagieren.&lt;/p></description></item><item><title>Docs: NgRx Reducers</title><link>/docs/web/angular_ngrx/03_angular_ngrx_reducers/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/03_angular_ngrx_reducers/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was NgRx Reducers sind und kannst diese anwenden.&lt;/li>
@@ -283,7 +234,54 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 &lt;p>Reducers in NgRx folgen dem Redux-Muster und sollten immer eine rein funktionale Programmierung befolgen. Das bedeutet, dass sie den aktuellen Zustand nicht verändern, sondern einen neuen Zustand erstellen und zurückgeben.&lt;/p>
 &lt;p>Für jeden State, der in der Applikation verwendet werden soll, wird ein Interface erstellt. Diese Interfaces werden dazu verwendet mindestens einen weiteren State zu definieren, nämlich den Initialen State. Mit dem Initialen State wird vermieden, dass der State &lt;code>undefined&lt;/code> sein kann.&lt;/p>
 &lt;p>Da meistens mehrere Actions vorhanden sind, müssen diese auch unterschieden werden. Dazu ist die &lt;code>on&lt;/code>-Funktion da, diese kann einen Fallunterschied zwischen den Actions erstellen. Durch die Verwendung der props in den Action-Creator-Funktionen kann man die relevanten Daten an die Reducer-Funktion übergeben und im Reducer-Zustand verwenden.&lt;/p>
+&lt;p>Seit Angular 17 ist es so das es ein &lt;code>index.ts&lt;/code>, innerhalb des reducer-Ordner gibt. In diese werden alle Reducers registriert, damit diese dann in die &lt;code>app.config.ts&lt;/code> exportiert werden können. Es dient der neuen Struktur, welche für eine besser Übersicht sorgen soll.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#75715e">// index.ts
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">isDevMode&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {
+&lt;span style="color:#a6e22e">ActionReducerMap&lt;/span>,
+&lt;span style="color:#a6e22e">MetaReducer&lt;/span>
+} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">abilityReducer&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./abilityReducer.reducer&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AbilityState&lt;/span> {
+&lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[]
+}
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AppState&lt;/span> {
+&lt;span style="color:#a6e22e">ability&lt;/span>: &lt;span style="color:#66d9ef">AbilityState&lt;/span>;
+}
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">reducers&lt;/span>: &lt;span style="color:#66d9ef">ActionReducerMap&lt;/span>&amp;lt;&lt;span style="color:#f92672">AppState&lt;/span>&amp;gt; &lt;span style="color:#f92672">=&lt;/span> {
+&lt;span style="color:#a6e22e">ability&lt;/span>: &lt;span style="color:#66d9ef">abilityReducer&lt;/span>,
+};
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">metaReducers&lt;/span>: &lt;span style="color:#66d9ef">MetaReducer&lt;/span>&amp;lt;&lt;span style="color:#f92672">AppState&lt;/span>&amp;gt;[] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">isDevMode&lt;/span>() &lt;span style="color:#f92672">?&lt;/span> [] &lt;span style="color:#f92672">:&lt;/span> [];
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
@@ -307,11 +305,11 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createReducer&lt;/span>, &lt;span style="color:#a6e22e">on&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#75715e">// abilityReducer.reducer.ts
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createReducer&lt;/span>, &lt;span style="color:#a6e22e">on&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">addAbility&lt;/span>, &lt;span style="color:#a6e22e">deleteAbility&lt;/span>, &lt;span style="color:#a6e22e">getAbilities&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;../actions/ability.actions&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AbilityState&lt;/span> {
-&lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[]
-}
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AbilityState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;../reducer/index.ts&amp;#34;&lt;/span>;
 &lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">initialState&lt;/span>: &lt;span style="color:#66d9ef">AbilityState&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
 &lt;span style="color:#a6e22e">abilities&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [],
 };
@@ -326,112 +324,31 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 );
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="root-state-registrieren">Root State Registrieren&lt;/h2>
-&lt;p>Der State muss registriert werden, damit er im NgRx Store verwaltet und von den Komponenten deiner Angular-Anwendung genutzt werden kann.&lt;/p>
-&lt;p>Besitzt man nur einen Reducer in der Anwendung so kann man diesen einfach im &lt;code>app.module.ts&lt;/code> angeben.&lt;/p>
-&lt;p>&lt;strong>Wichtig&lt;/strong> ist das der Key im &lt;code>forRoot()&lt;/code> gleich ist wie der Key vom Reducername (z.B. auth: authReducer oder userProfile: userProfileReducer).&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">NgModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">StoreModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">@NgModule&lt;/span>({
-&lt;span style="color:#75715e">// ..
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">imports&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
-&lt;span style="color:#a6e22e">StoreModule&lt;/span>.&lt;span style="color:#a6e22e">forRoot&lt;/span>({ &lt;span style="color:#a6e22e">ability&lt;/span>: &lt;span style="color:#66d9ef">abilityReducer&lt;/span> })
-&lt;span style="color:#75715e">// ..
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> ],
-&lt;span style="color:#75715e">// ..
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>})
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> {}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wenn man mehr als einen Reducer besitzt, muss man eine Root-Reducer erstellen. Dieser kombiniert alle Reducer und definiert den Gesamtzustand einer Anwendung.
-Durch die Registrierung des States im &lt;code>app.module.ts&lt;/code> mit &lt;code>StoreModule.forRoot(rootReducer)&lt;/code> wird der Root-Reducer als zentrale Instanz für das Verwalten des Zustands festgelegt.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">ActionReducerMap&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./app-state&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">reducer1&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./reducer1&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">reducer2&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./reducer2&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">rootReducer&lt;/span>: &lt;span style="color:#66d9ef">ActionReducerMap&lt;/span>&amp;lt;&lt;span style="color:#f92672">AppState&lt;/span>&amp;gt; &lt;span style="color:#f92672">=&lt;/span> {
-&lt;span style="color:#a6e22e">prop1&lt;/span>: &lt;span style="color:#66d9ef">reducer1&lt;/span>,
-&lt;span style="color:#a6e22e">prop2&lt;/span>: &lt;span style="color:#66d9ef">reducer2&lt;/span>,
-&lt;span style="color:#75715e">// Weitere Reducer für andere Zustandseigenschaften
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>};
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">NgModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">StoreModule&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">rootReducer&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;./reducers&amp;#39;&lt;/span>; &lt;span style="color:#75715e">// Hier muss man den Root-Reducer importieren
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;span style="color:#66d9ef">@NgModule&lt;/span>({
-&lt;span style="color:#a6e22e">imports&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
-&lt;span style="color:#a6e22e">StoreModule&lt;/span>.&lt;span style="color:#a6e22e">forRoot&lt;/span>({ &lt;span style="color:#a6e22e">root&lt;/span>: &lt;span style="color:#66d9ef">rootReducer&lt;/span> })
-&lt;span style="color:#75715e">// ..
-&lt;/span>&lt;span style="color:#75715e">&lt;/span> ],
-&lt;span style="color:#75715e">// ..
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>})
-&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> {}
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Docs: NgRx Selectors</title><link>/docs/web/angular_ngrx/06_4_angular_ngrx_selectors/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/06_4_angular_ngrx_selectors/</guid><description>
+&lt;/div>&lt;h2 id="reducers-registrieren">Reducers Registrieren&lt;/h2>
+&lt;p>&lt;strong>Wichtig:&lt;/strong> die Reducers müssen im &lt;code>index.ts&lt;/code> in der Konstante &lt;code>export const reducers&lt;/code> angegeben werden. Diese Konstante wird dann wie bereits erwähnt im &lt;code>app.config.ts&lt;/code> innerhalb der Rundenklammern des &lt;code>provideStore()&lt;/code> angegeben.&lt;/p></description></item><item><title>Docs: NgRx Selectors</title><link>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was NgRx Selectors sind und kannst diese anwenden.&lt;/li>
 &lt;li>Du weisst, was das AppState ist.&lt;/li>
 &lt;/ul>
 &lt;h2 id="appstate">AppState&lt;/h2>
-&lt;p>In einer typischen NgRx-Anwendung kann die AppState-Datei verwendet werden, um den gesamten Anwendungsstatus zu definieren und zu typisieren. Sie enthält normalerweise eine Schnittstelle oder ein Interface, das alle Teilzustände oder Slices des Anwendungsstatus definiert und zu einem Gesamtzustand kombiniert.&lt;/p>
+&lt;p>In einer typischen NgRx-Anwendung kann die AppState-Datei verwendet werden, um den gesamten Anwendungsstatus zu definieren und zu typisieren. Sie enthält normalerweise eine Schnittstelle oder ein Interface, das alle Teilzustände oder Slices des Anwendungsstatus definiert und zu einem Gesamtzustand kombiniert.
+Dies findet man im &lt;code>index.ts&lt;/code> und kann sie dort erweitern.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AppState&lt;/span> {
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AbilityState&lt;/span> {
+&lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[]
+}
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AppState&lt;/span> {
 &lt;span style="color:#a6e22e">ability&lt;/span>: &lt;span style="color:#66d9ef">AbilityState&lt;/span>;
 }
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
@@ -449,13 +366,15 @@ Durch die Registrierung des States im &lt;code>app.module.ts&lt;/code> mit &lt;c
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createSelector&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@ngrx/store&amp;#34;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AbilityState&lt;/span>, &lt;span style="color:#a6e22e">AppState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;../reducer/ability.reducer&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;../reducer/index.ts&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">selectAbilityState&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">AppState&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span>.&lt;span style="color:#a6e22e">ability&lt;/span>;
 &lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">getAbilities&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createSelector&lt;/span>(
-(&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">AppState&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span>.&lt;span style="color:#a6e22e">ability&lt;/span>,
-(&lt;span style="color:#a6e22e">abilityState&lt;/span>: &lt;span style="color:#66d9ef">AbilityState&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">abilityState&lt;/span>.&lt;span style="color:#a6e22e">abilities&lt;/span>
+&lt;span style="color:#a6e22e">selectAbilityState&lt;/span>,
+&lt;span style="color:#a6e22e">state&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span>.&lt;span style="color:#a6e22e">abilities&lt;/span>
 );
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
@@ -481,21 +400,24 @@ Durch die Registrierung des States im &lt;code>app.module.ts&lt;/code> mit &lt;c
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span>, &lt;span style="color:#a6e22e">OnInit&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/core&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Store&lt;/span>, &lt;span style="color:#a6e22e">select&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@ngrx/store&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">addAbility&lt;/span>, &lt;span style="color:#a6e22e">deleteAbility&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;src/app/actions/ability.actions&amp;#39;&lt;/span>;
-&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;src/app/reducer/ability.reducer&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;src/app/reducer/index.ts&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">getAbilities&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;src/app/selectors/ability.selectors&amp;#39;&lt;/span>;
 &lt;span style="color:#66d9ef">@Component&lt;/span>({
 &lt;span style="color:#75715e">// ..
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>})
 &lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AbilityComponent&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> &lt;span style="color:#a6e22e">OnInit&lt;/span> {
 &lt;span style="color:#a6e22e">abilities$&lt;/span>: &lt;span style="color:#66d9ef">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt; &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt;();
-&lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span>: &lt;span style="color:#66d9ef">Store&lt;/span>&amp;lt;&lt;span style="color:#f92672">AppState&lt;/span>&amp;gt;) {}
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">inject&lt;/span>(&lt;span style="color:#a6e22e">Store&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>{&lt;span style="color:#a6e22e">ability&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {&lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[] }}&lt;span style="color:#f92672">&amp;gt;&lt;/span>);
+&lt;span style="color:#66d9ef">constructor&lt;/span>() {}
 &lt;span style="color:#a6e22e">ngOnInit&lt;/span>()&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> {
-&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">abilities$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">select&lt;/span>(&lt;span style="color:#a6e22e">getAbilities&lt;/span>));
+&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">abilities$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">select&lt;/span>(&lt;span style="color:#a6e22e">getAbilities&lt;/span>);
 }
 &lt;span style="color:#75715e">// ..
 &lt;/span>&lt;span style="color:#75715e">&lt;/span>}
