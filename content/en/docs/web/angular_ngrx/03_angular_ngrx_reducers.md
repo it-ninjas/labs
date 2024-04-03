@@ -2,7 +2,7 @@
 title: "NgRx Reducers"
 type: docs
 linkTitle: "NgRx Reducers"
-weight: 29
+weight: 3
 date: 2023-05-26
 description: >
   Modul #F7 - Angular NgRx - Reducers sind
@@ -20,14 +20,39 @@ Für jeden State, der in der Applikation verwendet werden soll, wird ein Interfa
 
 Da meistens mehrere Actions vorhanden sind, müssen diese auch unterschieden werden. Dazu ist die `on`-Funktion da, diese kann einen Fallunterschied zwischen den Actions erstellen. Durch die Verwendung der props in den Action-Creator-Funktionen kann man die relevanten Daten an die Reducer-Funktion übergeben und im Reducer-Zustand verwenden.
 
-
+Seit Angular 17 ist es so das es ein `index.ts`, innerhalb des reducer-Ordner gibt. In diese werden alle Reducers registriert, damit diese dann in die `app.config.ts` exportiert werden können. Es dient der neuen Struktur, welche für eine besser Übersicht sorgen soll.
 ```typescript
-import { createReducer, on } from '@ngrx/store';
-import { addAbility, deleteAbility, getAbilities } from '../actions/ability.actions';
+// index.ts
+
+import { isDevMode } from '@angular/core';
+import {
+  ActionReducerMap,
+  MetaReducer
+} from '@ngrx/store';
+import {abilityReducer} from "./abilityReducer.reducer";
 
 export interface AbilityState {
     abilities: string[]
 }
+
+export interface AppState {
+    ability: AbilityState;
+}
+
+export const reducers: ActionReducerMap<AppState> = {
+    ability: abilityReducer,
+};
+
+export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [] : [];
+```
+
+```typescript
+// abilityReducer.reducer.ts
+
+import { createReducer, on } from '@ngrx/store';
+import { addAbility, deleteAbility, getAbilities } from '../actions/ability.actions';
+import { AbilityState } from "../reducer/index.ts";
+
 
 export const initialState: AbilityState = {
     abilities: [],
@@ -44,54 +69,6 @@ export const abilityReducer = createReducer(
 );
 ```
 
-## Root State Registrieren
-Der State muss registriert werden, damit er im NgRx Store verwaltet und von den Komponenten deiner Angular-Anwendung genutzt werden kann.
+## Reducers Registrieren
+**Wichtig:** die Reducers müssen im `index.ts` in der Konstante `export const reducers` angegeben werden. Diese Konstante wird dann wie bereits erwähnt im `app.config.ts` innerhalb der Rundenklammern des `provideStore()` angegeben.
 
-Besitzt man nur einen Reducer in der Anwendung so kann man diesen einfach im `app.module.ts` angeben.
-
-**Wichtig** ist das der Key im `forRoot()` gleich ist wie der Key vom Reducername (z.B. auth: authReducer oder userProfile: userProfileReducer).
-
-```typescript
-import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-
-@NgModule({
-    // ..
-    imports: [
-        StoreModule.forRoot({ ability: abilityReducer })
-        // ..
-    ],
-    // ..
-})
-export class AppModule {}
-```
-
-Wenn man mehr als einen Reducer besitzt, muss man eine Root-Reducer erstellen. Dieser kombiniert alle Reducer und definiert den Gesamtzustand einer Anwendung.
-Durch die Registrierung des States im `app.module.ts` mit `StoreModule.forRoot(rootReducer)` wird der Root-Reducer als zentrale Instanz für das Verwalten des Zustands festgelegt.
-
-```typescript
-import { ActionReducerMap } from '@ngrx/store';
-import { AppState } from './app-state';
-import { reducer1 } from './reducer1';
-import { reducer2 } from './reducer2';
-
-export const rootReducer: ActionReducerMap<AppState> = {
-    prop1: reducer1, 
-    prop2: reducer2, 
-    // Weitere Reducer für andere Zustandseigenschaften
-};
-```
-```typescript
-import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-import { rootReducer } from './reducers'; // Hier muss man den Root-Reducer importieren
-
-@NgModule({
-    imports: [
-        StoreModule.forRoot({ root: rootReducer })
-        // ..
-    ],
-    // ..
-})
-export class AppModule {}
-```
