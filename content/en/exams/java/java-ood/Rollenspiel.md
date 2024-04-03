@@ -2,9 +2,9 @@
 title: "Rollenspiel"
 linkTitle: "Rollenspiel"
 type: docs
-weight: 2
+weight: 3
 description: >
-  Aufgabe zu Modul #J3 - OOD - Rollenspiel
+  Exam zu Modul #J3 - OOD - Rollenspiel
 ---
 
 In dieser Aufgabe wird ein Fantasy-Rollenspiel mit Vererbung modelliert.
