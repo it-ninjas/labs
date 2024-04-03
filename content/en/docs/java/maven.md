@@ -65,41 +65,13 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
     <!-- (4) Properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>1.21</java.version>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
         <timestamp>${maven.build.timestamp}</timestamp>
     </properties>
 
     <!-- (5) Abhängigkeiten -->
     <dependencies>
-        <!-- Spring Boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web-services</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -107,32 +79,10 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
             <version>1.18.6</version>
         </dependency>
 
-        <!-- Datenbank -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.20</version>
-        </dependency>
-
         <!-- Unit- und Integrationstests -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -148,27 +98,15 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <compilerVersion>1.8</compilerVersion>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <compilerVersion>1.21</compilerVersion>
+                    <source>1.21</source>
+                    <target>1.21</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <!-- (7) Auslieferung -->
-    <distributionManagement>
-        <repository>
-            <id>mvn</id>
-            <url>https://bin.sbb.ch/artifactory/cca.mvn/</url>
-        </repository>
-        <snapshotRepository>
-            <id>mvn</id>
-            <url>https://bin.sbb.ch/artifactory/cca.mvn/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <!-- (8) Entwickler-Informationen -->
+    <!-- (7) Entwickler-Informationen -->
     <developers>
         <developer>
             <id>U000000</id>
@@ -236,7 +174,7 @@ auf die Einstellung (Tag) und damit auf deren Wert (Value) zugegriffen werden.
 
 #### Abschnitt 5
 Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
-Mögliche Typen sind hier zu finden: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html)
+Mögliche Typen sind hier zu finden: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html).
 Vielfach wird auch noch der Scope verwendet, er gibt an in welchem Umfang die Fremdbibliothek miteinbezogen wird.
 Mögliche Scopes sind:
 * compile - Das ist der Default-Scope. Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath)
@@ -250,9 +188,6 @@ Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins k
 Es ist auch möglich eigene Maven-Plugins zu entwickeln. Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es [hier](https://maven.apache.org/plugins/index.html).
 
 #### Abschnitt 7
-Die Auslieferungs-Sektion bestimmt, wo die Artefakte nach dem Build abgelegt werden sollen.
-
-#### Abschnitt 8
 Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.
 
 ---
@@ -286,6 +221,109 @@ Im Windows muss also der Pfad zur Built-In Version des IntelliJ hinterlegt werde
 | 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten                                               |
 | 6   | Den Pfad zum Built-In Maven einfügen. Dieser ist normalerweise "\<Installationsort IntelliJ IDEA>\plugins\maven\lib\maven3\bin" |
 | 7   | Alle offenen Windows-Fenster mit "OK" schliessen                                                                                |
+
+---
+
+### Beispiel einer Abhängigkeit (Lombok)
+Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
+Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.
+
+**(*) Info:**
+Boilerplate-Code ist wiederkehrender Code, der in verschiedenen Teilen einer Softwareanwendung benötigt wird, aber wenig zur eigentlichen Funktionalität beiträgt.
+
+### Wofür wird Lombok verwendet?
+1. **Reduzierung des Boilerplate-Codes:**
+   Lombok eliminiert die Notwendigkeit, viele standardmässige Java-Boilerplate-Codezeilen wie Getter, Setter, Konstruktoren und toString-Methoden manuell zu schreiben.
+
+2. **Verbesserte Lesbarkeit:**
+   Durch die Reduzierung von Boilerplate-Code wird der Quellcode klarer und lesbarer, da unnötige Details ausgeblendet werden.
+
+3. **Kompakte Klassen:**
+   Lombok ermöglicht es, Klassen mit weniger Code zu erstellen, was die Wartung und das Verständnis des Codes erleichtert.
+
+
+Einige häufig verwendete Annotationen sind `@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, usw.
+
+
+In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Klassenattributen `firstname` und `lastname` verwendet werden. Jedoch für `age` werden sie nicht generiert.
+
+```java
+import lombok.Getter;
+import lombok.Setter;
+
+public class Person { 
+    @Getter 
+    @Setter 
+    private String firstname;
+
+    @Getter
+    @Setter
+    private String lastname;
+
+    private int age;
+}
+```
+
+Wenn es jedoch alle Klassenattribute betrifft, muss man nicht über jedem Klassenattribut die Annotationen hinzufügen, sondern man kann es auch folgendermassen schreiben.
+```java
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Person { 
+
+    private String firstname;
+
+    private String lastname;
+
+    private int age;
+}
+```
+
+`@NoArgsConstructor`: Diese Annotation wird verwendet, um einen parameterlosen Konstruktor automatisch zu generieren. Sie ist besonders nützlich, wenn Klassen benötigt werden, welche von Frameworks instanziiert werden müssen.
+
+```java
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class Person { 
+    private String name;
+    private int age;
+}
+```
+
+`@AllArgsConstructor`: Diese Annotation wird verwendet, um einen Konstruktor automatisch zu generieren, der alle Felder der Klasse als Parameter akzeptiert. Dieser Konstruktor ist besonders nützlich, wenn eine Klasse erstellt werden soll, bei welcher man den gesamten Zustand über den Konstruktor initialisieren möchte.
+
+```java
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class Person { 
+    private String name;
+    private int age;
+}
+```
+
+### Vorteile von Lombok:
+1. **Kompaktheit:**
+   Lombok reduziert die Menge an Code, welcher geschrieben werden muss, um Getter und Setter etc. zu implementieren. Dadurch wird der Quellcode kompakter und einfacher zu lesen.
+
+2. **Zeitersparnis:**
+   Lombok automatisiert die Generierung von Boilerplate-Code, was Entwicklern Zeit spart, die sie sonst mit dem manuellen Schreiben dieser Methoden verbringen würden.
+
+3. **Wartbarkeit:**
+   Durch die Reduzierung von Boilerplate-Code minimiert Lombok die Möglichkeit von Fehlern und erleichtert die Wartung des Codes.
+
+### Nachteile von Lombok:
+1. **Transparenz:**
+   Für Entwickler, die nicht mit Lombok vertraut sind, kann der automatisch generierte Code möglicherweise undurchsichtig sein, da er nicht explizit im Quellcode angezeigt wird.
+
+2. **Abhängigkeit:**
+   Die Verwendung von Lombok bedeutet, dass ein Projekt von der Lombok-Library abhängig ist. Wenn man Library-Dependencies minimieren möchten, kann dies als Nachteil angesehen werden.
+
+3. **Weniger Kontrolle:**
+   Bei der Verwendung von Lombok hat man möglicherweise weniger Kontrolle über den generierten Code im Vergleich zur manuellen Implementierung.
 
 ---
 

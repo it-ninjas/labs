@@ -750,3 +750,5 @@ Das Befolgen des Kapselung-Prinzips führt zu einem Design, welches folgende Vor
 * Die Attribute und damit der Zustand einer Klasse bzw. eines Objektes sind vor "fremden" Zugriff geschützt (Data-Hiding)
 * Die Klasse hat eine öffentliche API, welche von Benutzer der Klasse verwendet werden können. Somit ist auch klar definiert, was die Aufgabe dieser Klasse ist.
 * Die öffentliche API einer Klasse ermöglicht das Verbergen von Umsetzungsdetails. Somit haben interne Strukturänderungen dieser Klasse keinen Einfluss auf den Code des Benutzers
+
+   
