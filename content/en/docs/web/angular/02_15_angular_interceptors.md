@@ -128,7 +128,7 @@ export const AuthInterceptor: HttpInterceptorFn = (
 ```
 
 Man kann den Interceptors auch Parameter mitgeben, wenn man möchte. In folgendem Beispiel kann man den Interceptor verwenden, um die Rollen eines Benutzers zu prüfen.
-Wenn man einen Service verwenden möchte, wie hier den AuthService, dann wird dieser nicht wie normal über den constructor injected, sondern mit dem `inject()`.
+Wenn man einen Service verwenden möchte, wie hier den AuthService, dann wird dieser nicht wie normal über den Constructor injected, sondern mit dem `inject()`.
 ```ts
 export function isRoleGuard(...roles: Role[]): CanActivateFn {
   return (
