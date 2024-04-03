@@ -3027,6 +3027,30 @@ Das wird jetzt auch von der &lt;code>app.config.ts&lt;/code> übernommen.&lt;/p>
 };
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
+&lt;/div>&lt;p>Man kann den Interceptors auch Parameter mitgeben, wenn man möchte. In folgendem Beispiel kann man den Interceptor verwenden, um die Rollen eines Benutzers zu prüfen.
+Wenn man einen Service verwenden möchte, wie hier den AuthService, dann wird dieser nicht wie normal über den Constructor injected, sondern mit dem &lt;code>inject()&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">isRoleGuard&lt;/span>(...&lt;span style="color:#a6e22e">roles&lt;/span>: &lt;span style="color:#66d9ef">Role&lt;/span>[])&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">CanActivateFn&lt;/span> {
+&lt;span style="color:#66d9ef">return&lt;/span> (
+&lt;span style="color:#a6e22e">route&lt;/span>: &lt;span style="color:#66d9ef">ActivatedRouteSnapshot&lt;/span>,
+&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">RouterStateSnapshot&lt;/span>
+)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">roles&lt;/span>.&lt;span style="color:#a6e22e">some&lt;/span>(&lt;span style="color:#a6e22e">role&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">inject&lt;/span>(&lt;span style="color:#a6e22e">AuthService&lt;/span>).&lt;span style="color:#a6e22e">currentUser$&lt;/span>.&lt;span style="color:#a6e22e">subscribe&lt;/span>(&lt;span style="color:#a6e22e">user&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">user&lt;/span>.&lt;span style="color:#a6e22e">role&lt;/span> .&lt;span style="color:#a6e22e">toLowerCase&lt;/span>() &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#a6e22e">role&lt;/span>));
+}
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
 &lt;/div>&lt;/details></description></item><item><title>Docs: Errorhandling</title><link>/docs/web/angular/02_16_angular_errorhandler/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_16_angular_errorhandler/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
@@ -3054,7 +3078,7 @@ Praktischer wäre doch ein globales Behandeln von Fehlern. Da kommt dann der &lt
 &lt;span style="color:#66d9ef">@Injectable&lt;/span>()
 &lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">GlobalErrorHandler&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> &lt;span style="color:#a6e22e">ErrorHandler&lt;/span> {
 &lt;span style="color:#a6e22e">override&lt;/span> &lt;span style="color:#a6e22e">handleError&lt;/span>(&lt;span style="color:#a6e22e">error&lt;/span>: &lt;span style="color:#66d9ef">any&lt;/span>)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> {
-&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;test&amp;#34;&lt;/span>)
+&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;test&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">error&lt;/span>.&lt;span style="color:#a6e22e">message&lt;/span>)
 &lt;span style="color:#75715e">// Weitere Aktionen ausführen, z.B. Fehlermeldung anzeigen oder Logging durchführen
 &lt;/span>&lt;span style="color:#75715e">&lt;/span> }
 }
@@ -3083,7 +3107,78 @@ Praktischer wäre doch ein globales Behandeln von Fehlern. Da kommt dann der &lt
 &lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AppModule&lt;/span> { }
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Dependency Injection</title><link>/docs/web/angular/02_17_angular_dependency_injection/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_17_angular_dependency_injection/</guid><description>
+&lt;/div>&lt;details>
+&lt;summary>Error-Handler in Angular 17&lt;/summary>
+&lt;p>Der Error-Handler beleibt in Angular 17 gleich zum erstellen, nur das verwenden ist anders.&lt;/p>
+&lt;p>Man muss ihn neu im &lt;code>app.config.ts&lt;/code> angeben, das sieht dann wie folgt aus:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">appConfig&lt;/span>: &lt;span style="color:#66d9ef">ApplicationConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideRouter&lt;/span>(&lt;span style="color:#a6e22e">routes&lt;/span>), &lt;span style="color:#a6e22e">provideHttpClient&lt;/span>(&lt;span style="color:#a6e22e">withInterceptors&lt;/span>(
+[&lt;span style="color:#a6e22e">authInterceptor&lt;/span>]
+)), {
+&lt;span style="color:#a6e22e">provide&lt;/span>: &lt;span style="color:#66d9ef">ErrorHandler&lt;/span>,
+&lt;span style="color:#a6e22e">useClass&lt;/span>: &lt;span style="color:#66d9ef">GlobalErrorHandler&lt;/span>
+}]
+};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wenn man den Error-Handler auch bei Service-Subscription verwenden möchte. Muss man einen Interceptor dafür verwenden, dieser fängt dann die Error ab, welche vom Service kommen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">HttpInterceptorFn&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#39;@angular/common/http&amp;#39;&lt;/span>;
+&lt;span style="color:#66d9ef">import&lt;/span> {&lt;span style="color:#a6e22e">catchError&lt;/span>, &lt;span style="color:#a6e22e">throwError&lt;/span>} &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;rxjs&amp;#34;&lt;/span>;
+&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">errorInterceptor&lt;/span>: &lt;span style="color:#66d9ef">HttpInterceptorFn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#a6e22e">req&lt;/span>, &lt;span style="color:#a6e22e">next&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">next&lt;/span>(&lt;span style="color:#a6e22e">req&lt;/span>).&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">catchError&lt;/span>(&lt;span style="color:#a6e22e">error&lt;/span> &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">throwError&lt;/span>(() &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">error&lt;/span>)
+}));
+};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Diesen Interceptor muss man dann, wie andere auch, im &lt;code>app.config.ts&lt;/code> angeben.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">appConfig&lt;/span>: &lt;span style="color:#66d9ef">ApplicationConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideRouter&lt;/span>(&lt;span style="color:#a6e22e">routes&lt;/span>), &lt;span style="color:#a6e22e">provideHttpClient&lt;/span>(&lt;span style="color:#a6e22e">withInterceptors&lt;/span>(
+[&lt;span style="color:#a6e22e">authInterceptor&lt;/span>, &lt;span style="color:#a6e22e">errorInterceptor&lt;/span>]
+)), {
+&lt;span style="color:#a6e22e">provide&lt;/span>: &lt;span style="color:#66d9ef">ErrorHandler&lt;/span>,
+&lt;span style="color:#a6e22e">useClass&lt;/span>: &lt;span style="color:#66d9ef">GlobalErrorHandler&lt;/span>
+}]
+};
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details></description></item><item><title>Docs: Dependency Injection</title><link>/docs/web/angular/02_17_angular_dependency_injection/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_17_angular_dependency_injection/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was eine Dependency Injection ist und was es in Angular ist.&lt;/li>
