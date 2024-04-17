@@ -40,3 +40,5 @@ Das Fahrzeugverwaltungssystem soll die folgenden Funktionen unterstützen:
 - Anzeigen einer Liste aller verfügbaren Fahrzeuge zum Verkauf.
 - Reservierung eines Fahrzeugs für einen Kunden, bevor der endgültige Kauf abgeschlossen ist.
 - Verkauf eines reservierten Fahrzeugs und Aktualisierung des Bestands.
+
+**Info:** Ab diesem Lab darf, für alles folgenden Labs/Exams, Lombok verwendet werden, wenn man möchte.
