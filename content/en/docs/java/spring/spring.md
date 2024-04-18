@@ -6,7 +6,7 @@ description: >
   Modul #J10 - Spring Framework
 ---
 
-#### Ziele
+### Ziele
 
 * Ich kann am Beispiel Spring erklären, was ein "Framework" ausmacht, indem ich Unterschiede zu einer gewöhnlichen externen Library aufzählen kann.
 * Ich kenne einige Vor- und Nachteile aufzählen, wenn ein Frameworks im Projekt eingesetzt wird.
@@ -29,18 +29,18 @@ description: >
 
 ---
 
-### Framework
+## Framework
 
 Ein Framework kann die Grundstruktur für Applikationen vorgeben.
 Es stellt Funktionen, Bibliotheken und Regeln bereit, um den Entwicklungsprozess zu erleichtern und zu beschleunigen. Häufig gibt es eine standartisierte Struktur und Methodik vor, um eine gewisse Konsistenz und Qualität des Codes und der Software sicherzustellen.
 
-## Spring Framework
+# Spring Framework
 
 Das Spring Framework ist eine umfassende Plattform, die weit über die Entwicklung einfacher Web-Applikationen 
 hinausgeht. Sie bietet ein breites Spektrum an Funktionalitäten und Unterstützung für die Entwicklung von 
 Enterprise-Anwendungen, Webanwendungen und Microservices.
 
-### Module
+## Module
 
 Das Spring-Framework besteht aus verschiedenen Modulen, die unterschiedliche Aufgaben erfüllen und in Kategorien wie 
 Core, Data Access, Web usw. organisiert sind.
@@ -63,7 +63,7 @@ Das Web-Modul ist für die Kommunikation mit der Außenwelt (Internet) verantwor
 Weitere Informationen finden sich in der offiziellen
 [Dokumentation](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html).
 
-### Spring Projekte
+## Spring Projekte
 
 Es gibt verschiedene Spring-Projekte, die auf dem Spring Framework aufbauen und dessen Anwendungsmöglichkeiten 
 erweitern. Zu diesen gehören z. B. Spring Security, Spring Shell, Spring Boot, die jeweils spezifische 
@@ -72,26 +72,26 @@ Funktionalitäten bereitstellen.
 Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
 
-#### Spring Boot
+### Spring Boot
 
 [Spring Boot](../new-spring-boot-doc.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie 
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des 
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die 
 Konfiguration.
 
-## Design-Pattern
+# Design-Pattern
 Design-Patterns sind wiederverwendbare Vorlagen für die Anwendungsentwicklung und sind nicht spezifisch für eine 
 Programmiersprache. Es gibt verschiedene Arten, z. B. Kreationsmuster, Strukturmuster und Verhaltensmuster, die auch in 
 Spring genutzt werden.
 
-### Singleton
+## Singleton
 
 Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring
 können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, dass dies innerhalb des Spring-Containers
 gilt, nicht systemweit.
 
 
-### Beans
+## Beans
 
 Beans sind Kernkomponenten in der Spring-Welt. Sie repräsentieren die grundlegenden Bausteine, die vom Spring
 IoC-Container verwaltet werden. Eine Bean ist ein von Spring verwaltetes und instanziiertes Objekt,
@@ -103,17 +103,9 @@ die Geschäftslogik oder die Präsentationsschicht einer Anwendung.
 Der Spring-Container verwaltet den Lebenszyklus der Beans und bietet Funktionen wie Abhängigkeitsinjektion,
 Transaktionsmanagement und Aspektorientierte Programmierung.
 
-#### Erstellung von Beans
+### Erstellung von Beans
 
 Beans können auf verschiedene Weisen erstellt werden:
-
-- **XML-Konfiguration:** Historisch gesehen wurden Beans oft in XML-Dateien definiert. Hier wird beschrieben, wie der Container diese Instanzen erstellt und verwaltet.
-
-  ```xml
-  <bean id="exampleBean" class="com.example.ExampleClass">
-      <property name="someProperty" value="Wert"/>
-  </bean>
-  ```
 
 - **Java-Konfiguration:** Mit Annotationen und Java-Klassen kann die Konfiguration von Beans lesbarer und flexibler gestaltet werden.
 
@@ -127,7 +119,15 @@ Beans können auf verschiedene Weisen erstellt werden:
   }
   ```
 
-#### Bean-Scopes
+- **XML-Konfiguration:** Historisch gesehen wurden Beans oft in XML-Dateien definiert. Hier wird beschrieben, wie der Container diese Instanzen erstellt und verwaltet.
+
+  ```xml
+  <bean id="exampleBean" class="com.example.ExampleClass">
+      <property name="someProperty" value="Wert"/>
+  </bean>
+  ```
+
+### Bean-Scopes
 
 Beans haben verschiedene Scopes, die ihr Lebenszyklus bestimmen:
 
@@ -135,7 +135,7 @@ Beans haben verschiedene Scopes, die ihr Lebenszyklus bestimmen:
 - **Prototype:** Für jeden Aufruf zur Bean-Anforderung wird eine neue Instanz erstellt.
 - **Request, Session, Application:** Spezifische Scopes für Webanwendungen, um den Lebenszyklus der Beans an HTTP-Anforderungen oder Sitzungen zu binden.
 
-#### Verwendung von Beans
+### Verwendung von Beans
 
 Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer
 Anwendung zu verwalten. Dies geschieht via Dependency Injection:
@@ -161,20 +161,20 @@ Beans sind flexibel, wiederverwendbar und ermöglichen die Modularität von Anwe
 In der folgenden offiziellen Dokumentation zu der `@Bean`-Annotation findest du weitere Beispiele, wie Beans verwendet werden:
 * [Using the Bean Annotation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation)
 
-##### Scope
+#### Scope
 
 Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird.
 
 Hier eine Liste der Scopes:
 
-| Scope       | Beschreibung                                                                                   |
-|-------------|------------------------------------------------------------------------------------------------|
+| Scope                | Beschreibung                                                                                                                                                                           |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | singleton (Standard) | Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur **eine** Bean-Instanz in jedem IoC-Container.  Mehr [hier](#singleton). |
-| prototype   | Erstellt bei jeder Abhängigkeit eine neue Bean-Instanzen.                                            |
-| request     | Erstellt für jeden HTTP Request eine Bean Instanz.                                             |
-| session     | Erstellt für jede HTTP `Session` eine Bean Instanz.                                            |
-| application | Erstellt für jeden `ServetContext` eine Bean Instanz.                                          |
-| websocket   | Erstellt für jeden `WebSocket` eine Bean Instanz.                                              |
+| prototype            | Erstellt bei jeder Abhängigkeit eine neue Bean-Instanzen.                                                                                                                              |
+| request              | Erstellt für jeden HTTP Request eine Bean Instanz.                                                                                                                                     |
+| session              | Erstellt für jede HTTP `Session` eine Bean Instanz.                                                                                                                                    |
+| application          | Erstellt für jeden `ServetContext` eine Bean Instanz.                                                                                                                                  |
+| websocket            | Erstellt für jeden `WebSocket` eine Bean Instanz.                                                                                                                                      |
 
 Die beiden wichtigsten Scopes sind `singleton` und `prototype`.
 
@@ -196,7 +196,7 @@ public class MyConfiguration {
 Weitere Information
 hier: https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes
 
-### Inversion of Control (IoC)
+## Inversion of Control (IoC)
 Inversion of Control (IoC) bedeutet, dass die Steuerung der Erstellung und Verwaltung von Objekten an ein Framework oder eine Bibliothek delegiert wird,
 anstatt dass die Anwendung selbst diese Kontrolle hat. 
 Im Fall von Spring übernimmt der Spring-Container die Kontrolle über die Erstellung und Verwaltung von Objekten (Beans),
@@ -204,14 +204,14 @@ anstatt dass die Anwendung diese Aufgaben selbst durchführt.
 Dies ermöglicht eine lose Kopplung zwischen den Komponenten einer Anwendung und erleichtert die Testbarkeit, 
 Wartbarkeit und Erweiterbarkeit des Codes.
 
-### Dependency Injection (DI)
+## Dependency Injection (DI)
 Dependency Injection (DI) ist ein Designmuster, das verwendet wird, um Abhängigkeiten zwischen Objekten zu verwalten. 
 Anstatt dass ein Objekt seine eigenen Abhängigkeiten erstellt oder findet, werden diese von einer externen Entität bereitgestellt. 
 Spring verwendet Dependency Injection, um die Abhängigkeiten von Beans zu verwalten.
 
 Es gibt zwei Hauptmethoden der Dependency Injection in Spring:
 
-#### Konstruktorinjektion (Constructor Injection):
+### Konstruktorinjektion (Constructor Injection):
 Bei der Konstruktorinjektion werden die Abhängigkeiten über den Konstruktor einer Klasse eingeführt. 
 Das bedeutet, dass die erforderlichen Abhängigkeiten als Parameter im Konstruktor einer Klasse übergeben werden. 
 Beim Erstellen einer Bean im Spring-Container wird der passende Konstruktor aufgerufen und die benötigten Abhängigkeiten werden automatisch injiziert.
@@ -227,7 +227,7 @@ Beispiel in Java:
    }
 ```
 
-#### Feldinjektion (Field Injection):
+### Feldinjektion (Field Injection):
 Bei der Feldinjektion werden die Abhängigkeiten direkt in die Felder einer Klasse injiziert. 
 Dies geschieht durch die Verwendung von Annotations wie `@Autowired` in Spring. 
 Der Spring-Container erkennt die annotierten Felder und injiziert automatisch die entsprechenden Abhängigkeiten.
@@ -242,7 +242,7 @@ Beispiel in Java:
 
 Beide Methoden haben ihre Vor- und Nachteile. Konstruktorinjektion wird oft als bevorzugte Methode betrachtet, da sie die Abhängigkeiten klarer macht und die Klasse in einen konsistenten Zustand bringt, bevor sie verwendet wird. Field Injection ist jedoch kürzer und kann in bestimmten Fällen praktisch sein, insbesondere wenn es sich um einfache Abhängigkeiten handelt.
 
-### REST
+## REST
 REST (Representational State Transfer) ist ein Designkonzept für das Internet, das Regeln und Standards definiert, 
 wie Webdienste miteinander kommunizieren. Es basiert auf dem Austausch von Daten über das HTTP-Protokoll und verwendet 
 einheitliche Methoden wie GET, POST, PUT und DELETE, um auf Ressourcen zuzugreifen und mit ihnen zu interagieren. 
@@ -258,11 +258,11 @@ Hier eine kurze Übersicht der REST-Methoden:
 
 > Hinweis: Eigentlich ist REST _kein_ Designpattern, jedoch hat es Ähnlichkeiten dazu.
 
-## Spring Struktur
+# Spring Struktur
 
 ![spring-struktur.png](../spring/spring-struktur.png)
 
-Die Meisten modernen Webapplikationen bestehen aus 3 Schichten:
+Die Meisten modernen Backendapplikationen bestehen aus 3 Schichten:
 
 | Layer                 | Beschreibung                                                                                                          |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -278,8 +278,8 @@ tun haben definiert. Mit der `@Controller` Annotation werden Komponenten, welche
 der Aussenwelt zu tun haben definiert. In der `@Service` Annotation werden Komponenten, welche mit der Kontrolllogik zu
 tun haben definiert.
 
-### Die Schichten (Layer) in Spring
-#### Boundary Layer
+## Die Schichten (Layer) in Spring
+### Boundary Layer
 
 In diesem Layer definieren wir unsere REST Ressourcen. Hier ein Beispiel einer Order-Klasse in einem
 Webshop:
@@ -350,7 +350,7 @@ public Order update(@PathVariable Long id,@RequestBody Order order){
 Die Annotation `@RequestBody` wird verwendet, um anzugeben, dass der Parameter `order` aus dem Request-Body des 
 HTTP-Requests gelesen werden soll.
 
-#### Control Layer
+### Control Layer
 
 Der Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäfts-Logiken. Auf der
 technischen Ebene ist der Control Layer die grundlegendste Schicht.
@@ -396,7 +396,7 @@ der Businesslogik. `@Transactional` sagt einfach, dass alle Funktionen in der Kl
 einzigen Transaktion ausgeführt werden sollen. Das musst du vorläufig aber noch nicht verstehen.
 Durch die Constructor Injection wird hier auch noch die Bean `OrderRepository` injected.
 
-#### Entity Layer
+### Entity Layer
 
 Der Entity Layer ist für die Datenspeicherung zuständig. Auf diesem Layer gibt es die zwei Hauptbestandteile
 Entity und Repository. Entities sind Klassen, die eine Datenbank-Tabelle repräsentieren. Die Repositories hingegen verwalten
@@ -481,7 +481,7 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-##### Repository
+#### Repository
 
 Eines der am häufigsten verwendeten Design-Patterns (siehe oben) ist das Repository Design-Pattern.
 Es ist ein Interface, welches dafür zuständig ist, uns Zugang zu den Daten in der Datenbank zu bereiten.
@@ -509,77 +509,3 @@ public interface ArticleRepository {
 
 Meistens wird das Interface im Hintergrund vom Framework implementiert und wir müssen nichts dafür
 tun, ausser den richtigen Methodennamen und Rückgabewert zu wählen, damit Spring weiss, was es implementieren soll.
-
-### Profile
-
-In Spring kann man verschiedene Profile erstellen. Damit kann man sicherstellen, dass bestimmte `@Bean`s
-nur entsprechend gesetzt werden, wenn eine bestimmte Bedingung zutrifft. Die Datenbank soll zum Beispiel nur Beispieldaten
-laden, wenn das `Dev`-Profil aktiv ist, ansonsten soll eine richtige Datenbank verwendet werden.
-
-Mit der `@Profile` Annotation kann man einer Klasse oder Methode (Beans) sagen, ob sie bei einem
-Profil läuft. Das standard Profil ist `default`, wenn irgendein Profil aktiv ist, wird das `default`
-Profil deaktiviert.
-Hier ist ein Beispiel:
-
-```java
-@Component
-@Profile("test")
-public class TestString {
-    @Bean
-    public String test() {
-        return "test";
-    }
-}
-```
-
-Im Beispiel lädt die Komponente `TestString` nur, wenn das Profil `test` aktiv ist.  
-Bei der `@Profile`-Annotation kann man auch logische Operatoren wie "Und" (`&`) , "Oder" (`|`) und "Nicht" (`!`) benutzen.
-Hier ein Beispiel:
-
-```java
-@Component
-public class Demo {
-    @Bean
-    @Profile("default")
-    public String defaultString() {
-        return "Standard Profil";
-    }
-    
-    @Bean
-    @Profile("test | test2")
-    public String testString() {
-        return "Test Test";
-    }
-    
-    @Bean
-    @Profile("!(default | test | test2)")
-    public String rewoltString() {
-        return "None of the above";
-    }
-}
-```
-
-In diesem Beispiel werden die Methoden angesteuert. Wenn das Profil `default` aktiv ist, wird
-die `defaultString` Methode geladen, wenn das Profil `test` oder `test2` aktiv ist, wird
-die `testString` Methode geladen, wenn keines der obengenannten Profile aktiv ist, wird
-die `rewoltString`-Methode geladen.
-
-In Spring kann man Mehrere Profile aktivieren. Die Profile können mit dem Program gesetzt werden.  
-Beispiel hier:
-
-```java
-AnnotationConfigApplicationContext ctx=new AnnotationConfigApplicationContext();
-        ctx.getEnvironment().setActiveProfiles("test");
-        ctx.register(SomeConfig.class,StandaloneDataConfig.class,JndiDataConfig.class);
-        ctx.refresh();
-```
-
-Die Profile können auch über die `spring.profiles.active` Property aktiviert werden.
-Beispiel hier:
-
-```properties
-spring.profiles.active="test"
-```
-
-Bei beiden Möglichkeiten wurde das Profil `test` aktiviert. Weitere Informationen in
-der [offiziellen Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition-profiles).

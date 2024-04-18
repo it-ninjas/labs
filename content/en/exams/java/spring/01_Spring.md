@@ -51,6 +51,10 @@ Genauere Details zu den Anforderungen und den Akzeptanzkriterien werden in den e
 
 ---
 
+### Akzeptanzkriterien Schritt 1
+* Es besteht eine leere Spring Boot Applikation
+* Die Applikation ist lauffähig
+
 ## Schritt 2: Rest Schnittstellen definieren und umsetzen
 In diesem Schritt geht es darum die Schnittstellen (die API) zur Anwendung zu definieren.
 Über diese Schnittstellen können die Benutzer:innen die gewünschten Aktionen ausführen
@@ -68,7 +72,8 @@ Dein Code fügst du später an den richtigen Stellen hinzu.
 Die Struktur für deine Anwendung steht. Nun definierst du die Schnittstellen, womit die Benutzer:innen mit der Anwendung interagieren werden.
 Die nötige Funktionalität entnimmst du aus den funktionalen Anforderungen.
 
-**Beispiel: Anforderung - ein neues Schulfach hinzufügen**  
+**Beispiel: Anforderung - ein neues Schulfach hinzufügen**
+
 Die entsprechende Schnittstelle könnte entsprechend so aussehen:
 
 | Beschreibung               | Http-Methode | URL                 | Request-Body Beispiel      | Path-Variable | Response-Body Beispiel                                       |
@@ -93,47 +98,44 @@ Vergiss nicht das du noch einen Endpunkt erstellen musst, um herauszufinden, mit
 * Ein grobes System-Design ist vorhanden (z.B. mit der Hilfe des Functional-Decomposition-Diagramm).
 * Die Codestruktur entspricht dem Design.
 * Die REST Schnittstellen sind für jede relevante Funktion (gemäss funktionalen Anforderungen) dokumentiert und mit Controllern umgesetzt.
+* Bei jeder REST Schnittstelle ist markiert, welches Profil diese verwenden kann.
 * Jede API-Methode, welche einen Wert liefert, schreibt diesen Wert direkt in den Response-Body (RestController)
 * Die API-Methoden sind "RESTful" (siehe [HTTP Methods in RESTful Web Services](https://www.javadevjournal.com/spring/restful-methods/))
 * Die API-Methoden, welche einen Wert liefern, liefern zurzeit Mockdaten zurück (alle Aufrufe einer Methode liefern immer die gleiche Mockdaten zurück)
 * Mit Insomnia oder mit dem HTTP-Browser kann auf jede API-Methode zugegriffen werden
 * Für jede API-Methode wurden passende Unit-Tests geschrieben und erfolgreich ausgeführt
 
-## Schritt 3: Services anlegen
-
+## Schritt 3: Datenbank-Verbindung herstellen
 
 ---
 
 ### Akzeptanzkriterien Schritt 3
-* Die Mock-Daten wurden in Methoden auf dem Service-Layer ausgelagert
-* Die Service-Klassen sind nach Thema aufgebaut
-* Sämtliche Anfragen der Controller (Requests) wurden an die Service-Klassen und deren Methoden weitergeleitet
-* Die Controller- und Service-Klassen sind mittels Constructor-Injection miteinander verbunden
-* Sämtliche Unit-Tests für die Controller funktionieren nach wie vor
-* Für alle Service-Methoden wurden entsprechende neue Unit-Tests geschrieben
+* Dependency wurde im `pom.xml` hinzugefügt.
+* Alle nötigen Entities wurden erstellt.
+* Alle benötigten Repositories wurden erstellt und in einen Ordner für alle Repositories abgelegt.
 
-## Schritt 4: Datenbank-Verbindung herstellen
+## Schritt 4: Services anlegen
 
 ---
 
 ### Akzeptanzkriterien Schritt 4
-* Dependency wurde im `pom.xml` hinzugefügt.
-* Alle nötigen Entities wurden erstellt.
-* Alle benötigten Services wurden erstellt und in einen Ordner für alle Services abgelegt. 
-* Alle benötigten Repositories wurden erstellt und in einen Ordner für alle Repositories abgelegt.
+* Die Services verwenden die Methoden aus den Repositories 
+* Die Service-Klassen sind nach Thema aufgebaut
 
-
-## Schritt 5: Konfiguration anlegen
+## Schritt 5: Controller anlegen
 
 ---
 
 ### Akzeptanzkriterien Schritt 5
-* Die Spring Boot Applikation startet mit der Datenbank.
+* Die Controller-Klassen sind nach Thema aufgebaut
+* Sämtliche Anfragen der Controller (Requests) wurden an die Service-Klassen und deren Methoden weitergeleitet
+* Die Controller- und Service-Klassen sind mittels Constructor-Injection miteinander verbunden
+
 
 ## Schritt 6: Profile anlegen
 In diesem Schritt erstellst du die gewünschten Spring Boot Profile: "student" und "admin".
 Diese Profile werden benutzt, um die verfügbare Funktionalität einzuschränken bzw. zu erweitern.
-Welche Funktionalität mit welchem Profil zur Verfügung stehen darf, entnimmst du aus den funktionalen Anforderungen.
+Welche Funktionalität mit welchem Profil zur Verfügung stehen darf, entnimmst du deiner Endpunktplanung.
 
 Mit der *@Profile* Annotation, kannst du bestimmte Beans für das gegebene Profil aktivieren bzw. deaktivieren.
 
@@ -151,27 +153,16 @@ Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem a
 
 ## Schritt 7 Business-Logik- und Persistenz-Layer anpassen
 
+[//]: # (TODO Entfernen?)
+
 ---
 
 ### Akzeptanzkriterien Schritt 7
 * Alle Services sind mit der Implementierungs-Methode ausgestattet.
 * Alle Repositories sind mit der Implementierungs-Methode ausgestattet
 
-<details>
-<summary>Schritt 8 Persistenz-Layer fertigstellen (Nur für JDBC)</summary>
 
-## Schritt 8 Persistenz-Layer fertigstellen (Nur für JDBC)
-
----
-
-### Akzeptanzkriterien Schritt 8
-* Es werden nun nicht mehr mittels Mockdaten verwendet, sondern direkt SQL-Queries benutzt.
-* Die erhaltenen Daten, aus der Datenbank, werden korrekt für die DAOs gemappt.
-* Die DAOs werden korrekt gemappt bevor sie an die Datenbank gesendet werden.
-
-</details>
-
-## Schritt 9: API testen
+## Schritt 8: API testen
 
 ---
 
@@ -179,7 +170,7 @@ Aktiviere bzw. deaktiviere die Schnittstellen-Funktionalität entsprechend dem a
 Integrationstests mit H2 in einem Spring-Boot-Projekt umzusetzen ist eine bewährte Methode, um die Interaktion zwischen verschiedenen Komponenten einer Anwendung zu testen, ohne auf eine reale Datenbank angewiesen zu sein. 
 In diesem Kontext dient H2, eine In-Memory-Datenbank, als Ersatz für die eigentliche Datenbank und erlaubt es, Tests zu schreiben, welche die Anwendungslogik unter simulierten Bedingungen überprüft.
 
-### Akzeptanzkriterien Schritt 9
+### Akzeptanzkriterien Schritt 8
 * Eine HTTP-Request Datei liegt vor, welche alle öffentlichen Schnittstellen-Methoden ausführen kann.
 * Bei Methoden, welche Parameter oder einen Request-Body brauchen, sind diese in den Requests auch so konfiguriert.
 * Jede Methode, welche ausgeführt wird, liefert die erwarteten Ergebnisse (ggf. auch Anpassungen der Daten in der darunterliegenden Datenbank).
