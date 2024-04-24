@@ -5,7 +5,7 @@ weight: 7
 ---
 
 ## Was ist ein SSH-Key
-Ein SSH-Schlüssel (Secure Shell Key) ist eine kryptografische Identifikation, die in Git verwendet wird, um die sichere Kommunikation zwischen Ihrem lokalen Computer und einem Remote-Repository zu ermöglichen. 
+Ein SSH-Schlüssel (Secure Shell Key) ist eine kryptographische Identifikation, die in Git verwendet wird, um die sichere Kommunikation zwischen Ihrem lokalen Computer und einem Remote-Repository zu ermöglichen. 
 Es besteht aus einem öffentlichen und einem privaten Schlüssel.
 
 Der öffentliche SSH-Schlüssel wird auf dem Git-Server gespeichert, während der private Schlüssel lokal auf dem Computer gespeichert ist. 
@@ -16,12 +16,12 @@ Der SSH-Schlüssel wird für mehrere Zwecke verwendet:
 
 1. **Authentifizierung**: Statt jedes Mal Benutzername und Passwort eingeben zu müssen, wenn auf ein Repository zugreifen möchten, wird der SSH-Schlüssel verwendet, um die Identität zu bestätigen. 
 Dies ist sicherer und bequemer als die Verwendung von Benutzername und Passwort.
-2. **Sicherheit**: SSH-Schlüssel bieten eine robuste Sicherheit, da sie auf Public-Key-Kryptografie basieren. Dadurch ist es schwieriger für Angreifer, die Verbindung zu kompromittieren.
+2. **Sicherheit**: SSH-Schlüssel bieten eine robuste Sicherheit, da sie auf Public-Key-Kryptographie basieren. Dadurch ist es schwieriger für Angreifer, die Verbindung zu kompromittieren.
 3. **Automatisierung**: Wenn man Skripte oder automatisierte Prozesse verwenden, um auf Git zuzugreifen, können SSH-Schlüssel verwendet werden, um den Zugriff ohne Benutzereingriff zu ermöglichen.
 
 
 ### SSH-Key erstellen
-Um einen SSH-Schlüssel zu erhalten, können die folgenden Schritte befolgt werden:
+Um einen SSH-Schlüssel zu erhalten, müssen die folgenden Schritte befolgt werden:
 
 1. Öffnen von Git Bash oder dem Terminal.
 2. Den Befehl `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"` eingeben und die Eingabetaste drücken. Ersetze `your_email@example.com` durch die E-Mail-Adresse, mit dem das Git-Konto verknüpft ist.
