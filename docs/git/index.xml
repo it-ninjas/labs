@@ -1455,4 +1455,28 @@ echo &lt;span style="color:#e6db74">&amp;#39;Hello World Feature&amp;#39;&lt;/sp
 &lt;li>Pull Request mergen.&lt;/li>
 &lt;li>Merge Request auf &lt;a href="https://github.com/SylivanKenobi/hello-world">Original Repo&lt;/a> erstellen&lt;/li>
 &lt;li>Ende&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/ol></description></item><item><title>Docs: SSH-Key in Git</title><link>/docs/git/git-ssh/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-ssh/</guid><description>
+&lt;h2 id="was-ist-ein-ssh-key">Was ist ein SSH-Key&lt;/h2>
+&lt;p>Ein SSH-Schlüssel (Secure Shell Key) ist eine kryptographische Identifikation, die in Git verwendet wird, um die sichere Kommunikation zwischen Ihrem lokalen Computer und einem Remote-Repository zu ermöglichen.
+Es besteht aus einem öffentlichen und einem privaten Schlüssel.&lt;/p>
+&lt;p>Der öffentliche SSH-Schlüssel wird auf dem Git-Server gespeichert, während der private Schlüssel lokal auf dem Computer gespeichert ist.
+Wenn man auf ein Remote-Repository zugreifen möchten, übermittelt der Computer den öffentlichen Schlüssel an den Server. Der Server verwendet dann diesen Schlüssel, um zu überprüfen, ob man tatsächlich berechtigt ist, auf das Repository zuzugreifen.
+Der private Schlüssel bleibt auf dem Computer und wird verwendet, um die Identität zu bestätigen, wenn man auf das Repository zugreift.&lt;/p>
+&lt;p>Der SSH-Schlüssel wird für mehrere Zwecke verwendet:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Authentifizierung&lt;/strong>: Statt jedes Mal Benutzername und Passwort eingeben zu müssen, wenn auf ein Repository zugreifen möchten, wird der SSH-Schlüssel verwendet, um die Identität zu bestätigen.
+Dies ist sicherer und bequemer als die Verwendung von Benutzername und Passwort.&lt;/li>
+&lt;li>&lt;strong>Sicherheit&lt;/strong>: SSH-Schlüssel bieten eine robuste Sicherheit, da sie auf Public-Key-Kryptographie basieren. Dadurch ist es schwieriger für Angreifer, die Verbindung zu kompromittieren.&lt;/li>
+&lt;li>&lt;strong>Automatisierung&lt;/strong>: Wenn man Skripte oder automatisierte Prozesse verwenden, um auf Git zuzugreifen, können SSH-Schlüssel verwendet werden, um den Zugriff ohne Benutzereingriff zu ermöglichen.&lt;/li>
+&lt;/ol>
+&lt;h3 id="ssh-key-erstellen">SSH-Key erstellen&lt;/h3>
+&lt;p>Um einen SSH-Schlüssel zu erhalten, müssen die folgenden Schritte befolgt werden:&lt;/p>
+&lt;ol>
+&lt;li>Öffnen von Git Bash oder dem Terminal.&lt;/li>
+&lt;li>Den Befehl &lt;code>ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot;&lt;/code> eingeben und die Eingabetaste drücken. Ersetze &lt;code>your_email@example.com&lt;/code> durch die E-Mail-Adresse, mit dem das Git-Konto verknüpft ist.&lt;/li>
+&lt;li>Man wird aufgefordert, den Speicherort für den SSH-Schlüssel anzugeben. Einfach die Eingabetaste drücken, um den Standardpfad zu akzeptieren.&lt;/li>
+&lt;li>Man wird auch aufgefordert, ein Passwort für den SSH-Schlüssel einzugeben. Es kann ein Passwort festgelegt werden oder einfach die Eingabetaste drücken, um ohne Passwort fortzufahren (nicht empfohlen, da dies die Sicherheit verringert).&lt;/li>
+&lt;li>Sobald der Schlüssel generiert ist, wird der Pfad zum öffentlichen und privaten Schlüssel angezeigt. Der öffentliche Schlüssel (&lt;code>id_rsa.pub&lt;/code>) wird standardmäßig im Verzeichnis &lt;code>~/.ssh/&lt;/code> erstellt.&lt;/li>
+&lt;/ol>
+&lt;p>Sobald der SSH-Schlüssel generiert wurde, muss der öffentlichen Schlüssel auf BitBucket hinzugefügt werden. Dort muss man auf &amp;ldquo;Konto verwalten&amp;rdquo; -&amp;gt; &amp;ldquo;SSH-Key&amp;rdquo; gehen, danach auf hinzufügen klicken.
+In das Textfeld für den Schlüssel wird der Inhalt der Datei &lt;code>id_rsa.pub&lt;/code> eingefügt.&lt;/p></description></item></channel></rss>
