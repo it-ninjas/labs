@@ -4,7 +4,7 @@ linkTitle: "Bibliothek"
 type: docs
 weight: 2
 description: >
- Aufgabe zu Modul #J2 - Generics I - Bibliothek
+ Aufgabe zu Modul #J3 - OOD - Bibliothek
 ---
 
 Schreibe eine Anwendung, welche eine Bibliothek modelliert.
@@ -33,7 +33,7 @@ Folgende Arten von Items können sich in der Bibliothek befinden:
 - es ermöglichen ein Item zurückzugeben
 - Auskunft zu den vorhandenen Items im Inventar geben
 
-*Verwende Generics überall wo es Sinn macht!*
+**Info:** Bei dieser Aufgabe darf man **NICHT** gebrauch von Lombok machen.
 
 *Es soll kein Scanner eingesetzt werden.*
 

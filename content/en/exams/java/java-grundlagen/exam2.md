@@ -8,7 +8,7 @@ description: >
 ---
 
 ## Gegeben
-Gegegeben ist der folgende String:
+Gegeben ist der folgende String:
 ```java
 String endOfTheWorld =
     "That's great, it starts with an earthquake " +

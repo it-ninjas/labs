@@ -22,7 +22,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 @Injectable()
 export class GlobalErrorHandler extends ErrorHandler {
     override handleError(error: any): void {
-      console.log("test")
+      console.log("test", error.message)
         
       // Weitere Aktionen ausführen, z.B. Fehlermeldung anzeigen oder Logging durchführen
     }
@@ -40,3 +40,48 @@ Indem du den `GlobalErrorHandler` in der `providers`-Eigenschaft der AppModule-K
 })
 export class AppModule { }
 ```
+
+<details>
+<summary>Error-Handler in Angular 17</summary>
+
+Der Error-Handler beleibt in Angular 17 gleich zum erstellen, nur das verwenden ist anders.
+
+Man muss ihn neu im `app.config.ts` angeben, das sieht dann wie folgt aus:
+
+```ts
+export const appConfig: ApplicationConfig = {
+    providers: [provideRouter(routes), provideHttpClient(withInterceptors(
+        [authInterceptor]
+)), {
+        provide: ErrorHandler, 
+        useClass: GlobalErrorHandler
+    }]
+};
+```
+
+Wenn man den Error-Handler auch bei Service-Subscription verwenden möchte. Muss man einen Interceptor dafür verwenden, dieser fängt dann die Error ab, welche vom Service kommen.
+
+```ts
+import { HttpInterceptorFn } from '@angular/common/http';
+import {catchError, throwError} from "rxjs";
+
+export const errorInterceptor: HttpInterceptorFn = (req, next) => {
+  return next(req).pipe(catchError(error => {
+    return throwError(() => error)
+  }));
+};
+```
+
+Diesen Interceptor muss man dann, wie andere auch, im `app.config.ts` angeben.
+```ts
+export const appConfig: ApplicationConfig = {
+    providers: [provideRouter(routes), provideHttpClient(withInterceptors(
+        [authInterceptor, errorInterceptor]
+)), {
+        provide: ErrorHandler, 
+        useClass: GlobalErrorHandler
+}]
+};
+```
+
+</details>
