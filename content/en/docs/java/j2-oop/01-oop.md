@@ -27,7 +27,7 @@ Mögliche Verhaltensweisen eines Autos sind normalerweise
 
 ### Definitionen
 #### Objektorientierte Programmierung
-Das Konzept der objektorientierten soll helfen eine Struktur in eine Anwendung zu bringen. 
+Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu bringen. 
 Das Ziel ist es, Daten und Methoden, die zusammengehören, in einer Klasse zusammenzufassen.
 Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue Instanzen/Objekte dieser Klasse erstellt werden können.
 
