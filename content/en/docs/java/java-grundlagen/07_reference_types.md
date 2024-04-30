@@ -12,4 +12,4 @@ Nebst primitiven Datentypen gibt es Referenzdatentypen. Eine Variable von diesem
 
 Es gibt zwei Unterarten von Referenztypen:
 1. Objektdatentyp, repräsentiert ein beliebiges Objekt einer Klasse wie z.B. `String` (wird im nächsten Kapitel präsentiert)
-2. Array: Eine Datenstruktur fester Grösse, die dazu dient, mehrere Elemente gleichen Typs zu speichern (wird später im Kapitel Arrays behandelt)
+2. Array: Eine Datenstruktur fester Grösse, die dazu dient, mehrere Elemente des gleichen Typs zu speichern (wird später im Kapitel Arrays behandelt)

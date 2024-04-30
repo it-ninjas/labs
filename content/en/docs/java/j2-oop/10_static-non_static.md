@@ -119,7 +119,7 @@ ClassName.methodName();
 
 ### Utility-Klassen
 Eine Klasse, welche ausschliesslich statische Elemente besitzt, nennt man Utility-Klasse. Ein gutes Beispiel dafür ist die Klasse `Math`.
-Eine solche Klasse sollte einen privaten Konstruktor aufweisen, da es keinen Sinn macht von ihr eine Referenz zu erstellen.
+Eine solche Klasse sollte einen privaten Konstruktor aufweisen, da es keinen Sinn macht, von ihr eine Referenz zu erstellen.
 Zudem sollte die Klasse als `final` deklariert werden, da eine Vererbung aufgrund des statischen Kontextes ebenfalls keinen Sinn ergibt.
 
 ```java

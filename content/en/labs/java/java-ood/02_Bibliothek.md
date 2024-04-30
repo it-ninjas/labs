@@ -33,7 +33,7 @@ Folgende Arten von Items können sich in der Bibliothek befinden:
 - es ermöglichen ein Item zurückzugeben
 - Auskunft zu den vorhandenen Items im Inventar geben
 
-**Info:** Bei dieser Aufgabe darf man **NICHT** gebrauch von Lombok machen.
+**Info:** Bei dieser Aufgabe darf man **NICHT** Gebrauch von Lombok machen.
 
 *Es soll kein Scanner eingesetzt werden.*
 
