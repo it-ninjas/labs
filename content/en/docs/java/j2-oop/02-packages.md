@@ -1,7 +1,7 @@
 ---
 title: "Packages"
 linkTitle: "Packages"
-weight: 3
+weight: 2
 description: >
   Modul #J2
 ---

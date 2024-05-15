@@ -14,7 +14,7 @@ description: >
 * Ich kann anhand eines Beispiels aufzeigen, wie eine Typverletzung entsteht.
 * Ich kann in eigenen Worten erklären, wozu "bounded types" verwendet werden.
 * Ich kann in eigenen Worten erklären, was Wildcards im Kontext von Generics sind und wie sie verwendet werden.
-* Ich kann in eigenen Worten erklären, was "type erasure" ist und wann dieses Vorgang stattfindet.
+* Ich kann in eigenen Worten erklären, was "type erasure" ist und wann dieser Vorgang stattfindet.
 * Ich setzte generische Klassen und Methoden in Code-Aufgaben korrekt ein.
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Java Lists Basics"
 linkTitle: "Lists"
-weight: 2
+weight: 5
 description: >
   Modul #J2
 ---

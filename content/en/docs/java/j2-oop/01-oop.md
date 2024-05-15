@@ -1,7 +1,7 @@
 ---
 title: "Objektorientierte Programmierung"
 linkTitle: "Objektorientierte Programmierung"
-weight: 2
+weight: 1
 description: >
   Modul #J2
 ---
@@ -26,6 +26,11 @@ Mögliche Verhaltensweisen eines Autos sind normalerweise
 * und einparken.
 
 ### Definitionen
+#### Objektorientierte Programmierung
+Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu bringen. 
+Das Ziel ist es, Daten und Methoden, die zusammengehören, in einer Klasse zusammenzufassen.
+Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue Instanzen/Objekte dieser Klasse erstellt werden können.
+
 #### Klasse
 Unter einer Klasse versteht man in der objektorientierten Programmierung ein abstraktes Modell bzw. einen Bauplan für eine Reihe von ähnlichen Objekten. Die Klasse dient als Bauplan für die Abbildung von realen Objekten in Softwareobjekte und beschreibt Attribute (Eigenschaften) und Methoden (Verhaltensweisen) der Objekte.
 
