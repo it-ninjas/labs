@@ -2564,7 +2564,229 @@ Aus der Liste dann entweder &amp;ldquo;Add as Maven Project&amp;rdquo; oder &amp
 Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss das pom.xml noch ausgewählt werden&lt;/li>
 &lt;li>Auf der rechten Seite im IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.&lt;/li>
 &lt;/ol>
-&lt;p>Wenn alles geklappt hat, dann werden die definierten Abhängigkeiten aus dem POM in das lokale Repository heruntergeladen.&lt;/p></description></item><item><title>Docs: Persönliches Git-Repository einrichten</title><link>/docs/tools/personal_bitbucket_repo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/tools/personal_bitbucket_repo/</guid><description>
+&lt;p>Wenn alles geklappt hat, dann werden die definierten Abhängigkeiten aus dem POM in das lokale Repository heruntergeladen.&lt;/p></description></item><item><title>Docs: Objektorientierte Programmierung</title><link>/docs/java/j2-oop/01-oop/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/01-oop/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich kann ohne Hilfsmittel die Bestandteile einer Klasse vollständig auflisten.&lt;/li>
+&lt;li>Ich kann den Unterschied zwischen einer Klasse und einem Objekt mit konkreten Beispielen demonstrieren.&lt;/li>
+&lt;li>Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte dazu.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>In der realen Welt können wir viele Objekte wie Autos, Gebäude und Menschen um uns herum finden. Alle diese Objekte haben einen bestimmten Zustand/Merkmale und ein bestimmtes Verhalten.&lt;/p>
+&lt;p>Wenn wir ein Auto betrachten, so könnte sein Zustand/seine Merkmale&lt;/p>
+&lt;ul>
+&lt;li>einen Markennamen,&lt;/li>
+&lt;li>eine bestimmte Geschwindigkeit&lt;/li>
+&lt;li>oder den zu tankenden Kraftstoff enthalten.&lt;/li>
+&lt;/ul>
+&lt;p>Mögliche Verhaltensweisen eines Autos sind normalerweise&lt;/p>
+&lt;ul>
+&lt;li>fahren&lt;/li>
+&lt;li>und einparken.&lt;/li>
+&lt;/ul>
+&lt;h3 id="definitionen">Definitionen&lt;/h3>
+&lt;h4 id="objektorientierte-programmierung">Objektorientierte Programmierung&lt;/h4>
+&lt;p>Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu bringen.
+Das Ziel ist es, Daten und Methoden, die zusammengehören, in einer Klasse zusammenzufassen.
+Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue Instanzen/Objekte dieser Klasse erstellt werden können.&lt;/p>
+&lt;h4 id="klasse">Klasse&lt;/h4>
+&lt;p>Unter einer Klasse versteht man in der objektorientierten Programmierung ein abstraktes Modell bzw. einen Bauplan für eine Reihe von ähnlichen Objekten. Die Klasse dient als Bauplan für die Abbildung von realen Objekten in Softwareobjekte und beschreibt Attribute (Eigenschaften) und Methoden (Verhaltensweisen) der Objekte.&lt;/p>
+&lt;h4 id="objekt">Objekt&lt;/h4>
+&lt;p>Ein Objekt bezeichnet in der objektorientierten Programmierung ein Exemplar eines bestimmten Datentyps oder einer bestimmter Klasse. Objekte sind konkrete Ausprägungen (=Instanzen) einer Klasse und werden zur Laufzeit erzeugt (Instanziierung).&lt;/p>
+&lt;h4 id="datenfelder">Datenfelder&lt;/h4>
+&lt;p>Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse relevant sind. Beispielsweise hat ein Auto eine Höchstgeschwindigkeit, eine bestimmte Anzahl von Sitzen, usw. Das heisst, ein Feld ist eine Variable, in der Daten gespeichert werden können. Es kann einen beliebigen Typ haben, einschliesslich primitiver Typen (&lt;code>int&lt;/code>, &lt;code>float&lt;/code>, &lt;code>boolean&lt;/code> usw.) und Klassen. Eine Klasse kann auch sich selber als Feld enthalten. Eine Klasse kann beliebig viele Felder haben.&lt;/p>
+&lt;h4 id="methoden">Methoden&lt;/h4>
+&lt;p>Methoden dienen dazu, den Zustand eines Objekts zu verändern. Die Methode &lt;code>refuel()&lt;/code> (siehe Klassendiagramm unten) füllt beispielsweise den Tank, bis dessen Kapazität erreicht wird.&lt;/p>
+&lt;h4 id="zusammenfassung">Zusammenfassung&lt;/h4>
+&lt;p>Klassen werden verwendet, um benutzerdefinierte Datentypen darzustellen. Damit werden Attribute und Verhalten, welche zu diesem neuen Datentyp gehören, an einer Stelle im Code zusammengefasst und verwaltet. Diese neuen, benutzerdefinierte Datentypen können dann wie anderen Datentypen (primitive Datentypen oder andere Klassen) verwendet werden.&lt;/p>
+&lt;p>Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das UML-Klassendiagramm der Klasse &lt;code>Car&lt;/code>, die wir selber erfunden haben. Die oberen 4 Einträge sind ihre Instanzvariablen und die untersten 3 sind ihre Methoden. Einträge mit einem &lt;code>-&lt;/code> sind &lt;code>private&lt;/code>, Einträge mit einem &lt;code>+&lt;/code> sind öffentlich (&lt;code>public&lt;/code>):&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;code>class Car&lt;/code>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>- topSpeed: &lt;code>int&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>- totalSeats: &lt;code>int&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>- fuelCapacity: &lt;code>int&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>- manufacturer: &lt;code>String&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>+ refuel(): &lt;code>void&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>+ park(): &lt;code>void&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>+ drive(): &lt;code>void&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="klassen-und-objekte-im-schnelldurchlauf">Klassen und Objekte im Schnelldurchlauf&lt;/h2>
+&lt;h3 id="klassen-deklarieren">Klassen deklarieren&lt;/h3>
+&lt;p>Eine Java Klasse besteht aus zwei Teilen: Dem Klassenkopf und dem Klassenrumpf.&lt;/p>
+&lt;p>Im Klassenkopf (auch Klassendeklaration genannt) wird eine neue Klasse mit dem Keyword &lt;code>class&lt;/code> gefolgt vom Namen der Klasse deklariert. Per Konvention folgt die Benamsung der Klasse dem PascalCase. Das bedeutet, dass der Klassen-Name und jedes neue Wort darin mit einem Grossbuchstaben beginnt, der Rest besteht aus Kleinbuchstaben.&lt;/p>
+&lt;p>Wie folgt kannst du eine Klasse mit dem Namen &lt;em>Nothing&lt;/em> erstellen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Nothing&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der &amp;ldquo;Klassenrumpf&amp;rdquo; besteht aus einer öffnender &lt;code>{&lt;/code> und schliessenden geschweiften Klammer &lt;code>}&lt;/code>. Diese Klammern bilden die Grenzen der Klasse. Der Klassenrumpf kann Felder, Methoden und Konstruktoren enthalten. Felder speichern Daten, Methoden definieren das Verhalten und Konstruktoren ermöglichen es uns, neue Objekte der Klasse zu erstellen und zu initialisieren. Felder und Methoden gelten als Klassenmitglieder (&lt;em>class members&lt;/em>).&lt;/p>
+&lt;p>Der Quellcode einer Klasse wird in eine .java-Datei eingefügt. Normalerweise enthält eine Quellcodedatei nur eine Klasse und hat denselben Namen wie diese Klasse. Manchmal kann eine Datei jedoch auch mehrere Klassen enthalten, jedoch darf es nur eine öffentliche (public) Klasse pro Datei geben. Deren Name muss mit dem Dateinamen übereinstimmen.&lt;/p>
+&lt;p>Nachfolgend die Klasse &lt;code>Patient&lt;/code> in der Datei &lt;code>Patient.java&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Patient&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String name&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp String mit dem Bezeichner &amp;#39;name&amp;#39;
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp int mit dem Bezeichner &amp;#39;age&amp;#39;
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">float&lt;/span> size&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp float mit dem Bezeichner &amp;#39;size&amp;#39;
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> String&lt;span style="color:#f92672">[]&lt;/span> complaints&lt;span style="color:#f92672">;&lt;/span> &lt;span style="color:#75715e">// ein Feld kann auch ein Array sein
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Diese Klasse repräsentiert einen Patienten in einem Krankenhausinformationssystem. Sie verfügt über vier Felder: &lt;code>name&lt;/code>, &lt;code>age&lt;/code>, &lt;code>size&lt;/code> und &lt;code>complaints&lt;/code>. Alle Objekte der Klasse Patient haben dieselben Felder, aber ihre Werte können für jedes Objekt unterschiedlich sein.&lt;/p>
+&lt;h3 id="objekte-erstellen">Objekte erstellen&lt;/h3>
+&lt;p>Wir können ein Objekt (auch &amp;ldquo;eine Instanz&amp;rdquo; genannt) der Klasse &lt;code>Patient&lt;/code> mit dem Operator &lt;code>new&lt;/code> erstellen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Patient patient &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Patient&lt;span style="color:#f92672">();&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wenn du ein neues Objekt erstellst, wird jedes Feld mit dem Standardwert des entsprechenden Typs initialisiert (insofern du keinen Konstruktor mit Argumenten verwendest, dazu aber später mehr). Wenn die Instanzvariablen eines Objektes nicht mit einem Zugriffsmodifikator wie &lt;code>private&lt;/code> versehen sind (dazu unten mehr), können wir mittels Punkt-Operator auf die Variablen des Objekts zugreifen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>patient&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// es wird null ausgeben
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>patient&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// es wird 0 ausgeben
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das folgende Programm erstellt zwei Objekte der Klasse Patient und druckt die Informationen der Objekte aus.&lt;/p>
+&lt;p>&lt;strong>Patient.java&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Patient&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+String name&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> age&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">float&lt;/span> height&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>PatientDemo.java&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PatientDemo&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Wir erstellen einen neuen Patienten, alle Variablen werden mit ihren Standardwerten initialisiert
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> Patient john &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Patient&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">// Wir greifen über den Punkt-Operator auf die Variablen zu und speichern Werte darin
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> john&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;John&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+john&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 30&lt;span style="color:#f92672">;&lt;/span>
+john&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">height&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 180f&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>john&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> john&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> john&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">height&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+Patient alice &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Patient&lt;span style="color:#f92672">();&lt;/span>
+alice&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Alice&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+alice&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 22&lt;span style="color:#f92672">;&lt;/span>
+alice&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">height&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 165f&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>alice&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> alice&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> alice&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">height&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im obigen Code haben wir zwei Patienten erstellt, John und Alice, die Werte ihrer Felder definiert und dann die Informationen über sie ausgedruckt. Wir sehen, dass wir mit dem Punkt-Operator auf die Felder des Objekts zugreifen können (john.name = &amp;ldquo;John&amp;rdquo;). Allerdings soll hier erwähnt sein, dass das nur geht, wenn die Instanzvariablen nicht private sind (wir behandeln das Thema Zugriffsmodifikatoren später).&lt;/p>
+&lt;h3 id="referenzen-teilen">Referenzen teilen&lt;/h3>
+&lt;p>Objekte sind Referenztypen. In einer Variable wird also nicht das Objekt selbst, sondern die Speicheradresse hinterlegt, welche auf das Objekt zeigt. Es können sich also mehrere Referenzen auf dasselbe Objekt beziehen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Patient patient &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Patient&lt;span style="color:#f92672">();&lt;/span>
+patient&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Mary&amp;#34;&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+patient&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 24&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>patient&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> patient&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Mary 24
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#75715e">// Wir weisen der Variablen patient2 die Speicheradresse der Variablen patient zu
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>Patient patient2 &lt;span style="color:#f92672">=&lt;/span> patient&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>patient2&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> patient2&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Mary 24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Es ist wichtig zu verstehen, dass sich die zwei Referenzen oben auf das gleiche Objekt im Speicher beziehen und nicht auf zwei unabhängige Kopien. Da unsere Klasse veränderbar ist, können wir das Objekt mit Hilfe beider Referenzen ändern.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">patient&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 25&lt;span style="color:#f92672">;&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>patient2&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// 25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr></description></item><item><title>Docs: Persönliches Git-Repository einrichten</title><link>/docs/tools/personal_bitbucket_repo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/tools/personal_bitbucket_repo/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich erkläre anhand von Beispielen, wozu Git verwendet werden kann&lt;/li>
@@ -7140,178 +7362,7 @@ macOS: Cmd + Option + L&lt;/p>
 &lt;h3 id="debugging-grundlagen">Debugging-Grundlagen&lt;/h3>
 &lt;p>Der Debugger wird benutzt, um mithilfe von Breakpoints den Code während der Ausführung anzuhalten, zu analysieren und Fehler im Code zu finden.
 Mehr Informationen dazu gibt es unter dem folgenden Link:
-&lt;a href="https://www.jetbrains.com/help/idea/debugging-code.html">Debug Code&lt;/a>&lt;/p></description></item><item><title>Docs: Java Lists Basics</title><link>/docs/java/j2-oop/01-list-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/01-list-basics/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kann ohne Hilfsmittel die Unterschiede zwischen Listen und Arrays in Java nennen.&lt;/li>
-&lt;li>Ich kann mindestens drei der wichtigsten Merkmale einer Java-Liste auflisten.&lt;/li>
-&lt;li>Ich kann mindestens 5 Methoden einer Liste korrekt und ohne Hilfsmittel nennen.&lt;/li>
-&lt;li>Ich kann erklären, wozu die &lt;code>ArrayList&lt;/code>-Klasse verwendet wird, und was sie für Vorteile mitbringt.&lt;/li>
-&lt;li>Ich kann eine neue Liste erstellen und bei ihr Elemente hinzufügen, lesen und entfernen.&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="einführung-listen">Einführung Listen&lt;/h2>
-&lt;p>Für die Aufgaben des OOP-Modules #J2 wirst du effizienter arbeiten können, wenn du statt Arrays sogenannte Listen verwendest.&lt;/p>
-&lt;p>Aus diesem Grund schieben wir einen kleinen Crash-Kurs zu Listen vor den Einstieg ins OOP.&lt;/p>
-&lt;h3 id="was-ist-eine-liste">Was ist eine Liste?&lt;/h3>
-&lt;p>Eine Liste ist in Java ein Behälter (Container), der Objekte in einer festen Abfolge enthält.&lt;br>
-Im Gegensatz zu Arrays, deren Elemente im Speicher in fortlaufender Reihenfolge abgelegt werden und
-deren Grösse aus diesem Grund ohne Neuinitialisierung unveränderbar ist,
-können Listen flexible Mengen an Objekten enthalten.&lt;/p>
-&lt;p>Das &lt;a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html">List-Interface&lt;/a> ist ein Teil des Java-Collections-Frameworks.
-Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface umsetzen (mehr dazu in einem späteren Modul).&lt;/p>
-&lt;h3 id="die-wichtigsten-merkmale-einer-liste">Die wichtigsten Merkmale einer Liste&lt;/h3>
-&lt;ul>
-&lt;li>Eine Liste kann nur Objekte beinhalten (es gibt also keine Liste mit primitiven Datentypen)&lt;/li>
-&lt;li>Eine Liste kann nur Objekte eines Typs beinhalten. Dieser Typ wird zur Zeit der Definition der Liste bestimmt.&lt;/li>
-&lt;li>Die Elemente innerhalb einer Liste haben eine feste Reihenfolge. Dies bedeutet, dass eine Iteration über eine Liste immer zu einem gleichen Ergebnis mit der gleichen Reihenfolge führt.&lt;/li>
-&lt;li>Duplikate innerhalb einer Liste sind erlaubt (dasselbe Objekt darf mehrmals in einer Liste vorkommen)&lt;/li>
-&lt;li>Eine Liste kann auch &lt;code>null&lt;/code>-Elemente beinhalten.&lt;/li>
-&lt;li>Die Indizes in einer Liste reichen immer von 0 bis Anzahl Elemente in der Liste minus 1.&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="die-wichtigsten-methoden-einer-liste">Die wichtigsten Methoden einer Liste&lt;/h3>
-&lt;p>Das List-Interface stellt mehrere Methoden zur Verfügung, welche dann von Klassen wie &lt;code>ArrayList&lt;/code> oder &lt;code>LinkedList&lt;/code> umgesetzt werden.&lt;/p>
-&lt;p>Nachfolgend werden einige Methoden und deren Zweck aufgelistet.
-Der Rückgabetyp &amp;ldquo;E&amp;rdquo; seht hier für einen generischen (universellen) Typ, der stellvertretend für einen spezifischen Objekttyp steht. Dieses Vorgehen wird genauer im Modul &amp;ldquo;Generics&amp;rdquo; behandelt.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e">* Returns: the number of elements in this list.
-&lt;/span>&lt;span style="color:#75715e">*/&lt;/span>
-&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E e&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns the element at the specified position in this list.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-E &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Removes the first occurrence of the specified element from
-&lt;/span>&lt;span style="color:#75715e"> * this list, if it is present.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Returns: true if this list contains the specified element.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="die-klasse-arraylist">Die Klasse ArrayList&lt;/h2>
-&lt;p>ArrayList gehört zu der Liste der Standardsammelklassen und ist im java.util-Packet definiert.&lt;br>
-Die ArrayList ist eine Klasse, die zum Erstellen eines dynamischen Arrays verwendet wird. Dieses Array beinhaltet Objektreferenzen und kann bei Bedarf grösser werden.&lt;br>
-Die ArrayList kombiniert die Vorteile eines Arrays (z.B. schneller Zugriff auf einem bestimmten Element) mit den Vorteilen einer Liste (kann dynamisch wachsen) und ist deswegen sehr nützlich um eine Sammlung von Objekten, derer Grösse nicht bekannt ist, zu bearbeiten.
-Die ArrayList setzt alle Methoden (obligatorische wie auch optionale) des List-Interfaces um.&lt;/p>
-&lt;h3 id="arbeiten-mit-einer-arraylist---beispiel">Arbeiten mit einer ArrayList - Beispiel&lt;/h3>
-&lt;p>Um mit ArrayList arbeiten zu können, muss die Klasse zuerst importiert werden.&lt;br>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.ArrayList&lt;span style="color:#f92672">;&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Nun kann eine Variable definiert und eine ArrayList erzeugt werden. Die Syntax hier wird in späteren Modulen erklärt,
-hier reicht es zu wissen, dass innerhalb der spitzen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstellen einer ArrayList für String-Objekte.
-&lt;/span>&lt;span style="color:#75715e">// Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Sobald eine Liste erzeugt wurde, können beliebig viel Objekte hinzugefügt oder entfernt werden.&lt;br>
-Über die Liste kann mit einer Schleife iteriert werden oder auch mit einem Index direkt auf ein Element zugegriffen werden.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Elemente hinzufügen
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;World&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World, !]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;There are %d words in our list\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? true
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;The second word is: %s\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: World
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String word&lt;span style="color:#f92672">:&lt;/span> words&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Entfernt das dritte Element aus der Liste
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? false
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-oop/01_lists">Aufgabe 1 und 2&lt;/a> in den OOP-Labs.&lt;/p></description></item><item><title>Docs: Markdown</title><link>/docs/tools/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/tools/markdown/</guid><description>
+&lt;a href="https://www.jetbrains.com/help/idea/debugging-code.html">Debug Code&lt;/a>&lt;/p></description></item><item><title>Docs: Markdown</title><link>/docs/tools/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/tools/markdown/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss, was Markdown ist und welche Vorteile es hat&lt;/li>

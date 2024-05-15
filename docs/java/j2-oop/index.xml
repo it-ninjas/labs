@@ -1,175 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Objektorientierte Programmierung in Java</title><link>/docs/java/j2-oop/</link><description>Recent content in Objektorientierte Programmierung in Java on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="/docs/java/j2-oop/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Java Lists Basics</title><link>/docs/java/j2-oop/01-list-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/01-list-basics/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kann ohne Hilfsmittel die Unterschiede zwischen Listen und Arrays in Java nennen.&lt;/li>
-&lt;li>Ich kann mindestens drei der wichtigsten Merkmale einer Java-Liste auflisten.&lt;/li>
-&lt;li>Ich kann mindestens 5 Methoden einer Liste korrekt und ohne Hilfsmittel nennen.&lt;/li>
-&lt;li>Ich kann erklären, wozu die &lt;code>ArrayList&lt;/code>-Klasse verwendet wird, und was sie für Vorteile mitbringt.&lt;/li>
-&lt;li>Ich kann eine neue Liste erstellen und bei ihr Elemente hinzufügen, lesen und entfernen.&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="einführung-listen">Einführung Listen&lt;/h2>
-&lt;p>Für die Aufgaben des OOP-Modules #J2 wirst du effizienter arbeiten können, wenn du statt Arrays sogenannte Listen verwendest.&lt;/p>
-&lt;p>Aus diesem Grund schieben wir einen kleinen Crash-Kurs zu Listen vor den Einstieg ins OOP.&lt;/p>
-&lt;h3 id="was-ist-eine-liste">Was ist eine Liste?&lt;/h3>
-&lt;p>Eine Liste ist in Java ein Behälter (Container), der Objekte in einer festen Abfolge enthält.&lt;br>
-Im Gegensatz zu Arrays, deren Elemente im Speicher in fortlaufender Reihenfolge abgelegt werden und
-deren Grösse aus diesem Grund ohne Neuinitialisierung unveränderbar ist,
-können Listen flexible Mengen an Objekten enthalten.&lt;/p>
-&lt;p>Das &lt;a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html">List-Interface&lt;/a> ist ein Teil des Java-Collections-Frameworks.
-Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface umsetzen (mehr dazu in einem späteren Modul).&lt;/p>
-&lt;h3 id="die-wichtigsten-merkmale-einer-liste">Die wichtigsten Merkmale einer Liste&lt;/h3>
-&lt;ul>
-&lt;li>Eine Liste kann nur Objekte beinhalten (es gibt also keine Liste mit primitiven Datentypen)&lt;/li>
-&lt;li>Eine Liste kann nur Objekte eines Typs beinhalten. Dieser Typ wird zur Zeit der Definition der Liste bestimmt.&lt;/li>
-&lt;li>Die Elemente innerhalb einer Liste haben eine feste Reihenfolge. Dies bedeutet, dass eine Iteration über eine Liste immer zu einem gleichen Ergebnis mit der gleichen Reihenfolge führt.&lt;/li>
-&lt;li>Duplikate innerhalb einer Liste sind erlaubt (dasselbe Objekt darf mehrmals in einer Liste vorkommen)&lt;/li>
-&lt;li>Eine Liste kann auch &lt;code>null&lt;/code>-Elemente beinhalten.&lt;/li>
-&lt;li>Die Indizes in einer Liste reichen immer von 0 bis Anzahl Elemente in der Liste minus 1.&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="die-wichtigsten-methoden-einer-liste">Die wichtigsten Methoden einer Liste&lt;/h3>
-&lt;p>Das List-Interface stellt mehrere Methoden zur Verfügung, welche dann von Klassen wie &lt;code>ArrayList&lt;/code> oder &lt;code>LinkedList&lt;/code> umgesetzt werden.&lt;/p>
-&lt;p>Nachfolgend werden einige Methoden und deren Zweck aufgelistet.
-Der Rückgabetyp &amp;ldquo;E&amp;rdquo; seht hier für einen generischen (universellen) Typ, der stellvertretend für einen spezifischen Objekttyp steht. Dieses Vorgehen wird genauer im Modul &amp;ldquo;Generics&amp;rdquo; behandelt.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e">* Returns: the number of elements in this list.
-&lt;/span>&lt;span style="color:#75715e">*/&lt;/span>
-&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E e&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/**
-&lt;/span>&lt;span style="color:#75715e"> * Returns the element at the specified position in this list.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-E &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Removes the first occurrence of the specified element from
-&lt;/span>&lt;span style="color:#75715e"> * this list, if it is present.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#75715e">/*
-&lt;/span>&lt;span style="color:#75715e"> * Returns: true if this list contains the specified element.
-&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="die-klasse-arraylist">Die Klasse ArrayList&lt;/h2>
-&lt;p>ArrayList gehört zu der Liste der Standardsammelklassen und ist im java.util-Packet definiert.&lt;br>
-Die ArrayList ist eine Klasse, die zum Erstellen eines dynamischen Arrays verwendet wird. Dieses Array beinhaltet Objektreferenzen und kann bei Bedarf grösser werden.&lt;br>
-Die ArrayList kombiniert die Vorteile eines Arrays (z.B. schneller Zugriff auf einem bestimmten Element) mit den Vorteilen einer Liste (kann dynamisch wachsen) und ist deswegen sehr nützlich um eine Sammlung von Objekten, derer Grösse nicht bekannt ist, zu bearbeiten.
-Die ArrayList setzt alle Methoden (obligatorische wie auch optionale) des List-Interfaces um.&lt;/p>
-&lt;h3 id="arbeiten-mit-einer-arraylist---beispiel">Arbeiten mit einer ArrayList - Beispiel&lt;/h3>
-&lt;p>Um mit ArrayList arbeiten zu können, muss die Klasse zuerst importiert werden.&lt;br>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.ArrayList&lt;span style="color:#f92672">;&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Nun kann eine Variable definiert und eine ArrayList erzeugt werden. Die Syntax hier wird in späteren Modulen erklärt,
-hier reicht es zu wissen, dass innerhalb der spitzen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstellen einer ArrayList für String-Objekte.
-&lt;/span>&lt;span style="color:#75715e">// Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Sobald eine Liste erzeugt wurde, können beliebig viel Objekte hinzugefügt oder entfernt werden.&lt;br>
-Über die Liste kann mit einer Schleife iteriert werden oder auch mit einem Index direkt auf ein Element zugegriffen werden.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Elemente hinzufügen
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;World&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World, !]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;There are %d words in our list\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? true
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;The second word is: %s\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: World
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String word&lt;span style="color:#f92672">:&lt;/span> words&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Entfernt das dritte Element aus der Liste
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World]
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? false
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-oop/01_lists">Aufgabe 1 und 2&lt;/a> in den OOP-Labs.&lt;/p></description></item><item><title>Docs: Objektorientierte Programmierung</title><link>/docs/java/j2-oop/02-oop/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/02-oop/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Objektorientierte Programmierung in Java</title><link>/docs/java/j2-oop/</link><description>Recent content in Objektorientierte Programmierung in Java on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="/docs/java/j2-oop/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Objektorientierte Programmierung</title><link>/docs/java/j2-oop/01-oop/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/01-oop/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann ohne Hilfsmittel die Bestandteile einer Klasse vollständig auflisten.&lt;/li>
@@ -191,6 +20,10 @@ words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">re
 &lt;li>und einparken.&lt;/li>
 &lt;/ul>
 &lt;h3 id="definitionen">Definitionen&lt;/h3>
+&lt;h4 id="objektorientierte-programmierung">Objektorientierte Programmierung&lt;/h4>
+&lt;p>Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu bringen.
+Das Ziel ist es, Daten und Methoden, die zusammengehören, in einer Klasse zusammenzufassen.
+Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue Instanzen/Objekte dieser Klasse erstellt werden können.&lt;/p>
 &lt;h4 id="klasse">Klasse&lt;/h4>
 &lt;p>Unter einer Klasse versteht man in der objektorientierten Programmierung ein abstraktes Modell bzw. einen Bauplan für eine Reihe von ähnlichen Objekten. Die Klasse dient als Bauplan für die Abbildung von realen Objekten in Softwareobjekte und beschreibt Attribute (Eigenschaften) und Methoden (Verhaltensweisen) der Objekte.&lt;/p>
 &lt;h4 id="objekt">Objekt&lt;/h4>
@@ -387,7 +220,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>patient2&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// 25
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;hr></description></item><item><title>Docs: Packages</title><link>/docs/java/j2-oop/03-packages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/03-packages/</guid><description>
+&lt;/div>&lt;hr></description></item><item><title>Docs: Packages</title><link>/docs/java/j2-oop/02-packages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/02-packages/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann ohne Hilfsmittel mindestens zwei Vorteile für das Verwenden von Packages nennen.&lt;/li>
@@ -507,7 +340,7 @@ Hier ist ein Beispiel für den statischen Import der Klasse &lt;code>Arrays&lt;/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Wenn wir bei der Implementation von Klassen keine Package-Anweisung schreiben, wird die Klasse ins Default-Package eingefügt. Dies sollte vermieden werden, da Klassen aus dem Default-Package nicht in andere Klasse importiert werden können, welche sich nicht auch im Default-Package befinden.&lt;/p>
-&lt;hr></description></item><item><title>Docs: Zugriffsmodifikatoren</title><link>/docs/java/j2-oop/04-access-modifier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/04-access-modifier/</guid><description>
+&lt;hr></description></item><item><title>Docs: Zugriffsmodifikatoren</title><link>/docs/java/j2-oop/03-access-modifier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/03-access-modifier/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann ohne Hilfsmittel alle Zugriffsmodifikatoren beschreiben.&lt;/li>
@@ -617,7 +450,7 @@ Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;hr></description></item><item><title>Docs: Felder</title><link>/docs/java/j2-oop/05-fields/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/05-fields/</guid><description>
+&lt;hr></description></item><item><title>Docs: Felder</title><link>/docs/java/j2-oop/04-fields/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/04-fields/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann ohne Hilfsmittel die 3 verschiedenen Arten von Variablen auflisten (in welchem Kontext werden die Variablen wie genannt?).&lt;/li>
@@ -713,7 +546,178 @@ Zum Beispiel definiert die folgende Variablendeklaration eine Konstante mit dem 
 &lt;/div>
 &lt;/div>&lt;h3 id="nicht-statische-felder---instanzvariablen">Nicht-statische Felder - Instanzvariablen&lt;/h3>
 &lt;p>Unter einer Instanzvariablen versteht man eine Variable, die einer Instanz einer Klasse, also einem Objekt, zugeordnet ist. Wenn eine neue Instanz erzeugt wird, werden Kopien der Instanzvariablen angelegt. Im Fall der Bicycle-Klasse sind die Instanzvariablen &lt;code>cadence&lt;/code>, &lt;code>gear&lt;/code>, &lt;code>speed&lt;/code> und &lt;code>id&lt;/code>. Jedes Bicycle-Objekt hat seine eigenen Werte für diese Variablen, d.h. sie werden an unterschiedlichen Orten gespeichert.&lt;/p>
-&lt;hr></description></item><item><title>Docs: Konstruktoren</title><link>/docs/java/j2-oop/06-constructors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/06-constructors/</guid><description>
+&lt;hr></description></item><item><title>Docs: Java Lists Basics</title><link>/docs/java/j2-oop/05-list-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/05-list-basics/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann ohne Hilfsmittel die Unterschiede zwischen Listen und Arrays in Java nennen.&lt;/li>
+&lt;li>Ich kann mindestens drei der wichtigsten Merkmale einer Java-Liste auflisten.&lt;/li>
+&lt;li>Ich kann mindestens 5 Methoden einer Liste korrekt und ohne Hilfsmittel nennen.&lt;/li>
+&lt;li>Ich kann erklären, wozu die &lt;code>ArrayList&lt;/code>-Klasse verwendet wird, und was sie für Vorteile mitbringt.&lt;/li>
+&lt;li>Ich kann eine neue Liste erstellen und bei ihr Elemente hinzufügen, lesen und entfernen.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="einführung-listen">Einführung Listen&lt;/h2>
+&lt;p>Für die Aufgaben des OOP-Modules #J2 wirst du effizienter arbeiten können, wenn du statt Arrays sogenannte Listen verwendest.&lt;/p>
+&lt;p>Aus diesem Grund schieben wir einen kleinen Crash-Kurs zu Listen vor den Einstieg ins OOP.&lt;/p>
+&lt;h3 id="was-ist-eine-liste">Was ist eine Liste?&lt;/h3>
+&lt;p>Eine Liste ist in Java ein Behälter (Container), der Objekte in einer festen Abfolge enthält.&lt;br>
+Im Gegensatz zu Arrays, deren Elemente im Speicher in fortlaufender Reihenfolge abgelegt werden und
+deren Grösse aus diesem Grund ohne Neuinitialisierung unveränderbar ist,
+können Listen flexible Mengen an Objekten enthalten.&lt;/p>
+&lt;p>Das &lt;a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html">List-Interface&lt;/a> ist ein Teil des Java-Collections-Frameworks.
+Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface umsetzen (mehr dazu in einem späteren Modul).&lt;/p>
+&lt;h3 id="die-wichtigsten-merkmale-einer-liste">Die wichtigsten Merkmale einer Liste&lt;/h3>
+&lt;ul>
+&lt;li>Eine Liste kann nur Objekte beinhalten (es gibt also keine Liste mit primitiven Datentypen)&lt;/li>
+&lt;li>Eine Liste kann nur Objekte eines Typs beinhalten. Dieser Typ wird zur Zeit der Definition der Liste bestimmt.&lt;/li>
+&lt;li>Die Elemente innerhalb einer Liste haben eine feste Reihenfolge. Dies bedeutet, dass eine Iteration über eine Liste immer zu einem gleichen Ergebnis mit der gleichen Reihenfolge führt.&lt;/li>
+&lt;li>Duplikate innerhalb einer Liste sind erlaubt (dasselbe Objekt darf mehrmals in einer Liste vorkommen)&lt;/li>
+&lt;li>Eine Liste kann auch &lt;code>null&lt;/code>-Elemente beinhalten.&lt;/li>
+&lt;li>Die Indizes in einer Liste reichen immer von 0 bis Anzahl Elemente in der Liste minus 1.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="die-wichtigsten-methoden-einer-liste">Die wichtigsten Methoden einer Liste&lt;/h3>
+&lt;p>Das List-Interface stellt mehrere Methoden zur Verfügung, welche dann von Klassen wie &lt;code>ArrayList&lt;/code> oder &lt;code>LinkedList&lt;/code> umgesetzt werden.&lt;/p>
+&lt;p>Nachfolgend werden einige Methoden und deren Zweck aufgelistet.
+Der Rückgabetyp &amp;ldquo;E&amp;rdquo; seht hier für einen generischen (universellen) Typ, der stellvertretend für einen spezifischen Objekttyp steht. Dieses Vorgehen wird genauer im Modul &amp;ldquo;Generics&amp;rdquo; behandelt.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e">* Returns: the number of elements in this list.
+&lt;/span>&lt;span style="color:#75715e">*/&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">();&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>E e&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/**
+&lt;/span>&lt;span style="color:#75715e"> * Returns the element at the specified position in this list.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+E &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> index&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Removes the first occurrence of the specified element from
+&lt;/span>&lt;span style="color:#75715e"> * this list, if it is present.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#75715e">/*
+&lt;/span>&lt;span style="color:#75715e"> * Returns: true if this list contains the specified element.
+&lt;/span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object o&lt;span style="color:#f92672">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="die-klasse-arraylist">Die Klasse ArrayList&lt;/h2>
+&lt;p>ArrayList gehört zu der Liste der Standardsammelklassen und ist im java.util-Packet definiert.&lt;br>
+Die ArrayList ist eine Klasse, die zum Erstellen eines dynamischen Arrays verwendet wird. Dieses Array beinhaltet Objektreferenzen und kann bei Bedarf grösser werden.&lt;br>
+Die ArrayList kombiniert die Vorteile eines Arrays (z.B. schneller Zugriff auf einem bestimmten Element) mit den Vorteilen einer Liste (kann dynamisch wachsen) und ist deswegen sehr nützlich um eine Sammlung von Objekten, derer Grösse nicht bekannt ist, zu bearbeiten.
+Die ArrayList setzt alle Methoden (obligatorische wie auch optionale) des List-Interfaces um.&lt;/p>
+&lt;h3 id="arbeiten-mit-einer-arraylist---beispiel">Arbeiten mit einer ArrayList - Beispiel&lt;/h3>
+&lt;p>Um mit ArrayList arbeiten zu können, muss die Klasse zuerst importiert werden.&lt;br>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#f92672">import&lt;/span> java.util.ArrayList&lt;span style="color:#f92672">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nun kann eine Variable definiert und eine ArrayList erzeugt werden. Die Syntax hier wird in späteren Modulen erklärt,
+hier reicht es zu wissen, dass innerhalb der spitzen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Erstellen einer ArrayList für String-Objekte.
+&lt;/span>&lt;span style="color:#75715e">// Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren.
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;();&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Sobald eine Liste erzeugt wurde, können beliebig viel Objekte hinzugefügt oder entfernt werden.&lt;br>
+Über die Liste kann mit einer Schleife iteriert werden oder auch mit einem Index direkt auf ein Element zugegriffen werden.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Elemente hinzufügen
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hello&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;World&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">add&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World, !]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;There are %d words in our list\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">());&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? true
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;The second word is: %s\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">(&lt;/span>1&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: World
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String word&lt;span style="color:#f92672">:&lt;/span> words&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>word&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">remove&lt;/span>&lt;span style="color:#f92672">(&lt;/span>2&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Entfernt das dritte Element aus der Liste
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span> &lt;span style="color:#75715e">// Output: [Hello, World]
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">printf&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Our list contains \&amp;#34;!\&amp;#34;. True or false? %b\n&amp;#34;&lt;/span>&lt;span style="color:#f92672">,&lt;/span> words&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">contains&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">));&lt;/span> &lt;span style="color:#75715e">// Output: Our list contains &amp;#34;!&amp;#34;. True or false? false
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-oop/01_lists">Aufgabe 1 und 2&lt;/a> in den OOP-Labs.&lt;/p></description></item><item><title>Docs: Konstruktoren</title><link>/docs/java/j2-oop/06-constructors/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/06-constructors/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann die zwei Hauptunterschiede von einem Konstruktor und einer gewöhnlichen Methode nennen.&lt;/li>
@@ -1774,7 +1778,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;li>Ich kann anhand eines Beispiels aufzeigen, wie eine Typverletzung entsteht.&lt;/li>
 &lt;li>Ich kann in eigenen Worten erklären, wozu &amp;ldquo;bounded types&amp;rdquo; verwendet werden.&lt;/li>
 &lt;li>Ich kann in eigenen Worten erklären, was Wildcards im Kontext von Generics sind und wie sie verwendet werden.&lt;/li>
-&lt;li>Ich kann in eigenen Worten erklären, was &amp;ldquo;type erasure&amp;rdquo; ist und wann dieses Vorgang stattfindet.&lt;/li>
+&lt;li>Ich kann in eigenen Worten erklären, was &amp;ldquo;type erasure&amp;rdquo; ist und wann dieser Vorgang stattfindet.&lt;/li>
 &lt;li>Ich setzte generische Klassen und Methoden in Code-Aufgaben korrekt ein.&lt;/li>
 &lt;/ul>
 &lt;hr>
