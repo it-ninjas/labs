@@ -27,3 +27,5 @@ Der Checkup nimmt
 - Überprüfen ob der Patient geimpft ist
 
 *Es sollen keine Set Methoden für das Einfügen der Werte verwendet werden!*
+
+*Es soll kein Scanner eingesetzt werden.*

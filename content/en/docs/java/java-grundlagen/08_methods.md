@@ -1,7 +1,7 @@
 ---
 title: "Methoden"
 linkTitle: "Methoden"
-weight: 9
+weight: 8
 description: >
   Modul #J1
 ---
@@ -40,12 +40,12 @@ Rückgabetyp methodName(Parameterliste) {
 Methoden können auch Parameter akzeptieren, die beim Aufruf übergeben werden. Hier ist ein Beispiel:
 
 ```java
-void begrüßeBenutzer(String name) {
+void greetUser(String name) {
 System.out.println("Hallo, " + name + "!");
 }
 ```
 
-In diesem Fall erwartet die Methode `begrüßeBenutzer` einen `String`-Parameter, der den Namen des Benutzers enthält.
+In diesem Fall erwartet die Methode `greetUser` einen `String`-Parameter, der den Namen des Benutzers enthält.
 
 ### Lernvideo
 Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
@@ -69,5 +69,5 @@ Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, emp
 [Video](https://www.youtube.com/watch?v=qQ79aq7HZ-U).
 
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 7](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-7---methoden) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 5](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-5---methoden) in den Labs.
 

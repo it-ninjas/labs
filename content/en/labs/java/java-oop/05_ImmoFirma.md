@@ -43,3 +43,6 @@ Erstelle für die Firma die folgenden Funktionen:
 - Ermittle alle Verträge sortiert nach Personen (eine Person kann mehrere Wohnungen mieten)
 - Ermittle das monatliche Einkommen pro Immobilie
 - Ermittle das jährliche Einkommen der Firma (ein Vertrag kann während dem Jahr ablaufen)
+
+*Es soll kein Scanner eingesetzt werden.*
+

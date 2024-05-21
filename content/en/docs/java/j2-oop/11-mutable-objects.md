@@ -1,7 +1,7 @@
 ---
 title: "Veränderbarkeit"
 linkTitle: "Veränderbarkeit"
-weight: 10
+weight: 12
 description: >
   Modul #J2
 ---

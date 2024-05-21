@@ -26,7 +26,7 @@ Schreibe ein Programm, dass die Anforderungen auf eine objekt-orientierte Art un
 
 Simuliere einen Damm zu drei verschiedenen Zeitpunkten mit unterschiedlichen hinein- und hinausfliessenden Wassermengen.
 
-Eine Methode `status()` soll einen Wert zurück geben, der aussagt, ob der Damm zum gegebenen Zeitpunkt offen oder geschlossen ist.
+Eine Methode `status()` soll einen Wert zurückgeben, der aussagt, ob der Damm zum gegebenen Zeitpunkt offen oder geschlossen ist.
 
 ## Aufgabe 2 - Zustände speichern
 (Erst nach dem Kapitel "Veränderbarkeit" lösen.)

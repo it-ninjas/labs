@@ -50,3 +50,6 @@ Dies ist eine Liste aller europäischen Sprachen:
 
 Ein Film soll um den Wert *Sprachen* erweitert werden. Darin wird gepseichert, in welchen Sprachen der Film verfügbar ist.
 **Speichert die Sprache nicht in Form eines Strings!!!** 
+
+*Es soll kein Scanner eingesetzt werden.*
+

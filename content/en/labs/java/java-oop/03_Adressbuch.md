@@ -24,3 +24,6 @@ Das Adressbuch soll
 
 Generell gilt die Regel, dass jeder Kontakt einzigartig sein muss. 
 Schreibe dazu eine eigene `equals()` Methode und verwende diese für die Überprüfung.
+
+*Es soll kein Scanner eingesetzt werden.*
+

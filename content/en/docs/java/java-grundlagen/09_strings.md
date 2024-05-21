@@ -1,7 +1,7 @@
 ---
 title: "String"
 linkTitle: "String"
-weight: 8
+weight: 9
 description: >
   Modul #J1
 ---
@@ -156,6 +156,9 @@ String myString = "Hello";
 myString.toUpperCase();
 
 System.out.println(myString);
+
+// Ausgabe:
+// Hello
 ```
 
 Damit dieses Beispiel wie gewollt funktioniert, müsste es so geschrieben werden:
@@ -166,6 +169,9 @@ String myString = "Hello";
 myString = myString.toUpperCase();
 
 System.out.println(myString);
+
+// Ausgabe:
+// HELLO
 ```
 
 #### Buchstaben an bestimmter Position ermitteln (`String.charAt(int)`)
@@ -180,6 +186,9 @@ String word = "Hello";
 char firstLetter = word.charAt(0);
 
 System.out.println("Erster Buchstabe: '" + firstLetter + "'");
+
+// Ausgabe:
+// Erster Buchstabe: 'H'
 ```
 
 Beachte, dass die Nummerierung in Java generell bei 0 beginnt. Für das erste Element übergibst du 0, für das zweite 1, für das vierte 3, für `n` das `(n-1)`-te, usw. Für `charAt(...)` bedeutet das, dass du wie folgt Buchstaben an bestimmten Positionen ermittelst:
@@ -242,6 +251,9 @@ String systemInfo = "power: on";
 String status = systemInfo.substring(7);
 
 System.out.println("The system is " + status + ".");
+
+// Ausgabe:
+// The system is on.
 ```
 
 In diesem Beispiel haben wir mit dem Schneiden an 7. Stelle begonnen. Wir können aber auch angeben, wie viele Zeichen, das ausgeschnitten werden sollen:
@@ -252,6 +264,9 @@ String sentence = "Today is Wed, 9th August 2023";
 String dayOfWeek = sentence.substring(9, 12);
 
 System.out.println("Day of Week: " + dayOfWeek);
+
+// Ausgabe:
+// Day of Week: Wed
 ```
 
 In diesem Beispiel beginnt das Ausschneiden bei Index 9 und hört 1 Zeichen **VOR** Index 12 auf.
@@ -263,6 +278,9 @@ String dadJoke = "Warum dürfen Geister keine Lügen erzählen? Weil man durch s
 
 String punchline = dadJoke.substring(dadJoke.indexOf("Weil "));
 System.out.println("Pointe: " + punchline);
+
+// Ausgabe:
+// Weil man durch sie hindurchsieht!
 ```
 
 #### Teile eines Strings ersetzen (`String.replace()`)
@@ -271,6 +289,9 @@ Ein bestimmter Teil eines Strings kannst du mit `replace` ersetzen:
 ```java
 String classicPhrase = "To be or not to be, that's the question.";
 System.out.println(classicPhrase.replace("o be", "o beer"));
+
+// Ausgabe:
+// To beer or not to beer, that's the question
 ```
 
 Beachte auch hier, dass `replace` den ursprünglichen String nicht verändert, sondern einen neuen zurückgibt.
@@ -290,7 +311,7 @@ for (String item : items)
     System.out.println(item);
 ```
 
-Die `for`-Schlaufe musst du zu diesem Zeitpunkt noch nicht verstehen. Wichtig ist, dass die Variable `items` eine Auflistung (nicht ein String) ist von folgenden Werten:
+Die `for`-Schlaufe gibt schlussendlich folgende Werte aus:
 * Käse
 * Brot
 * Speck
@@ -302,4 +323,4 @@ Auf diese Art und Weise können wir z.B. alle Wörter aus einem String ermitteln
 Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten "Regulären Ausdruck" (RegEx) handelt. Eine RegEx ist eine Folge von Zeichen, die ein Suchmuster bilden. Eine Regex wird dafür verwendet, um einen Text anhand eines Musters (einer Regel) abzugleichen. RegEx ist im Moment kein Thema im Modul #J1. Wichtig ist für dich im Moment nur, dass du weisst, dass sich bei diesem Suchbegriff von `split(...)` nicht um einen gewöhnlichen String handelt, sondern um eine RegEx. Möglicherweise können dir RegEx' viel Arbeit abnehmen. Bitte melde dich bei Interesse für RegEx.
 
 ---
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben 5 und 6](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-5---strings) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben 6 und 7](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-6---strings) in den Labs.
