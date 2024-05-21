@@ -50,4 +50,4 @@ Port: <br>
 Kein Proxy für: <br>
 Proxy Authentifizierung: 
 
-Diese Einstellungen können in Applikationen wie IntelliJ hinterlegt werden.
+Diese Einstellungen können in Applikationen wie IntelliJ oder Insomnia hinterlegt werden.
