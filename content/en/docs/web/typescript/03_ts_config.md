@@ -5,7 +5,7 @@ linkTitle: "tsconfig Datei"
 weight: 3
 date: 2023-06-02
 description: >
-    Was die tsconfig Datei in Typescript ist, kann in diesem Kapitel nachgelesen werden.
+  Modul #F5 - TypeScript - TsConfig
 ---
 
 ## Konfigurationsdatei für TypeScript-Projekte

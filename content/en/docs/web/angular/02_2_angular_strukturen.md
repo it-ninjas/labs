@@ -2,10 +2,10 @@
 title: "Angular Strukturen"
 type: docs
 linkTitle: "Angular Strukturen"
-weight: 4
+weight: 3
 date: 2023-05-04
 description: >
-    Angular hat eine bestimmte vorgegebene Struktur, wie die aussieht findet man in diesem Kapitel.
+  Modul #F6 - Angular - Angular Strukturen
 ---
 ## Ziele
 * Du kennst, die grundlegende Struktur von Angular und kannst diese erläutern.

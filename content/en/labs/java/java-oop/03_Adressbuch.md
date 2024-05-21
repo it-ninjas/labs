@@ -22,4 +22,8 @@ Das Adressbuch soll
 - einen Kontakt im Adressbuch durch den Namen finden
 - einen Kontakt aus dem Adressbuch über die E-Mail-Adresse entfernen
 
-*Generell gilt die Regel, dass jede E-Mail-Adresse einzigartig sein muss*
+Generell gilt die Regel, dass jeder Kontakt einzigartig sein muss. 
+Schreibe dazu eine eigene `equals()` Methode und verwende diese für die Überprüfung.
+
+*Es soll kein Scanner eingesetzt werden.*
+

@@ -15,7 +15,7 @@ description: >
   `@EnableAutoConfiguration`) und deren Bedeutung.
 * Ich weiss, was ein Spring-Boot-Starter ist und kenne die am häufigsten verwendeten
   Spring-Boot-Starter (z.B. Web-Starter, Test-Starter usw.) und deren Zweck.
-* Ich kann, eine Rest-Schnittstelle mit Spring-Boot erstellen und diese mit Postman (o.ä)
+* Ich kann, eine Rest-Schnittstelle mit Spring-Boot erstellen und diese mit Insomnia (o.ä)
   ausführen/testen
 
 ---

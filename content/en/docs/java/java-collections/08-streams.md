@@ -363,4 +363,4 @@ Die `toArray(...)`-Methode ist eine terminale Operation auf einem Stream.
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1 - 3](../../../../labs/java/java-collections/07_streams/) in den Stream-Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1 - 3](../../../../labs/java/java-collections/06_streams/) in den Stream-Labs.

@@ -215,3 +215,6 @@ Anforderungen an die `Modul`-Klasse:
   eine `ModulNotGradeableException` geworfen werden.
 - Die Methode `printReportEntry()` soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format *<
   MODUL_NAME>* : *<MODUL_SCHLUSSNOTE>* auszugeben.
+
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) zu der Umsetzung gehört.
+

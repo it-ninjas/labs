@@ -5,7 +5,7 @@ linkTitle: "Einführung in TypeScript"
 weight: 1
 date: 2022-02-16
 description: >
-    JavaScript mit Typen.
+    Modul #F5 - TypeScript - JavaScript mit Typen.
 ---
 
 ## Was ist TypeScript

@@ -2,13 +2,14 @@
 title: "Einführung in Angular"
 type: docs
 linkTitle: "Einführung in Angular"
-weight: 3
+weight: 2
 date: 2023-05-04
 description: >
-  Angular ist ein Framework um SPA’s (Single Page Applications) mittels HTML und JavaScript zu erstellen und besteht aus verschiedenen core und optionalen JavaScript Bibliotheken
+  Modul #F6 - Angular - Was ist Angular?
 ---
 
 ## Was ist Angular
+Angular ist ein Framework um SPA’s (Single Page Applications) mittels HTML und JavaScript zu erstellen und besteht aus verschiedenen core und optionalen JavaScript Bibliotheken
 Angular wird für Frontend-Applikationen verwendet. Oft wird ein Backend via HTTP(s) angebunden.
 ![Angular](../images/angular_einführung.png)  
 
@@ -169,3 +170,18 @@ Angular bietet eine Reihe von Best Practices, die helfen können, die Angular-An
 * **Nutzung der Angular Template-Syntax**: Es sollte die Angular-spezifische Template-Syntax verwendet werden, um Data-Bindung, Ereignisbehandlung und Strukturierung des DOMs im Templates zu erleichtern. Komplexe Logik in den Templates sollte vermieden werden, es sollte möglichst lesbar sein. Dazu kann man den Formatter wie Prettier am besten verwenden, um das gesamte zu vereinfachen.
 * **Nutzung von Lazy Loading für Module**: Das Lazy Loading-Feature von Angular sollte verwendet werden, um die Ladezeit der Anwendung zu verbessern. Man sollte Module nur dann laden, wenn sie benötigt werden, anstatt die gesamte Anwendung auf einmal zu laden.
 
+## Angular Dokumentation
+Die offiziellen Dokumentationen bietet den Entwicklern eine umfassende und verlässliche Informationsquelle für das entsprechende Framework oder die entsprechende Technologie bereitzustellen.
+Diese Dokumentationen bieten eine strukturierte Anleitung und Erklärungen zu den verschiedenen Funktionen, Konzepten, APIs, Best Practices und Verwendungsmöglichkeiten.
+Angular hat mit dem Update auf die Version 17 auch eine neue [Dokumentationsseite](https://angular.dev/) veröffentlicht. In dieser findet man alle Informationen zu den neuen Standards und Funktionen.
+
+Ein wichtiger Teil einer Dokumentation ist die detaillierte API-Referenz. Hier werden alle verfügbaren Klassen, Methoden, Parameter und Rückgabewerte beschrieben.
+Dies erleichtert es Entwicklern, die verfügbaren Funktionen zu verstehen und effektiv zu nutzen.
+
+Abgesehen von reinen Codebeispielen bieten Dokumentationen auch konzeptionelle Erklärungen. Diese beschreiben die zugrunde liegenden Prinzipien, Architekturkonzepte und Entscheidungen, die beim Design der Technologie getroffen wurden.
+
+Auf der Angular Dokumentation sind zudem auch [Tutorial](https://angular.dev/tutorials) zu finden, welche absolviert werden können, um das Verständnis in Angular zu stärken.
+
+Zudem ist nun auch ein sogenannter [Playground](https://angular.dev/playground) von Angular selbst hinzugefügt worden, diesen kann man auch über die Dokumentation erreichen.
+Der Playground hat die Aufgabe, das Entwickler bereits ihren Code im Browser testen können, ohne dafür ein neues Angular-Projekt aufsetzen zu müssen.
+Vor dem offiziellen Playground musste man dies immer auf der Seite [Stackblitz](https://stackblitz.com/) erledigen. Diese ist jedoch auch heutzutage immer noch sehr hilfreich, da man dort in verschiedensten Sprachen Code im Browser testen kann.

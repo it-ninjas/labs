@@ -33,7 +33,7 @@ Hilfestellungen zu
 * [Canvas](https://www.w3schools.com/html/html5_canvas.asp)
 
 ### Aufgabe 4 - Global Scope, Function Scope und Block-Scope
-Im Kapitel [ES6: Variablen deklarieren](../../../docs/web/javascript/19_variables#global-scope-und-function-scope) hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit `console.log(...)`s. In diesem Beispiel wurden alle Variablen  mit `var` deklariert/definiert - also keine `let`s oder `const`s.
+Im Kapitel [ES6: Variablen deklarieren](../../../../docs/web/javascript/19_variables#global-scope-und-function-scope) hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit `console.log(...)`s. In diesem Beispiel wurden alle Variablen  mit `var` deklariert/definiert - also keine `let`s oder `const`s.
 
 ![task1](/images/task.png) Ändere in diesem Code alle `var`s zu `let`s oder `const`s.
 

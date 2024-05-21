@@ -2,10 +2,10 @@
 title: "Pipes"
 type: docs
 linkTitle: "Pipes"
-weight: 19
+weight: 21
 date: 2022-03-14
 description: >
-    In diesem Kapitel findet man relevante Informationen zu Pipes.
+  Modul #F6 - Angular - Pipes
 ---
 ## Ziele
 * Du weisst, was Pipes sind und wozu man sie benötigt.

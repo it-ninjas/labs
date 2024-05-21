@@ -60,8 +60,13 @@ description: >
 * Berechne dein Alter am heutigen Tag in Jahren, Monaten und Tagen
 * Schreibe eine Methode, welche eine beliebige Ganzzahl als Parameter übernimmt und die [Vielfache](https://www.studysmarter.de/schule/mathe/algebra/vielfaches/) von 3 zusammen mit der Vielfache von 5 dieser Zahl summiert.
 
+## Aufgabe 5 - Methoden
+![task1](/images/task.png) Löse die folgende Aufgaben:
+* Schreibe eine Methode, die zwei beliebigen Ganzzahlen als Parameter übernimmt und die Summe der beiden zurückliefert.
+* Schreibe eine eigene Methode, die als Parameter einen Namen übernimmt. Die Methode soll dann die folgenden Daten auf die Kommandozeile ausgeben ```Hello + <Parameter-Name>```
 
-## Aufgabe 5 - Strings
+
+## Aufgabe 6 - Strings
 Du hast den folgenden String:
 
 ```java
@@ -85,15 +90,10 @@ String poem = """
 4. Schneide das Wort "Shurikens" aus. Ermittle hierfür die Position des Wortes anhand des `"`-Zeichens.
     Hinweis: Die `indexOf()`-Methode bietet ein optionales Argument `fromIndex` an. Übergibst du die `Position des ersten Anführungszeichen + 1`, dann wird die Position des zweiten zurückgegeben.
 
-## Aufgabe 6 - Strings und Loops
+## Aufgabe 7 - Strings und Loops
 ![task1](/images/task.png) Löse die folgende Aufgaben:
 * Schreibe ein Programm, welche als Parameter einen beliebigen String übernimmt und dessen Zeichenfolge umkehrt
 * Schreibe ein Programm, welche als Parameter einen beliebigen String übernimmt und die Anzahl Wörter darin ausgibt
-
-## Aufgabe 7 - Methoden
-![task1](/images/task.png) Löse die folgende Aufgaben:
-* Schreibe eine Methode, die zwei beliebigen Ganzzahlen als Parameter übernimmt und die Summe der beiden zurückliefert.
-* Schreibe eine eigene Methode, die als Parameter einen Namen übernimmt. Die Methode soll dann die folgenden Daten auf die Kommandozeile ausgeben ```Hello + <Parameter-Name>```
 
 ## Aufgabe 8 - Eingaben von der Kommandozeile
 ![task1](/images/task.png) Lies zuerst deinen Namen und danach dein Alter über einen Scanner von der Kommandozeile ein und gib dann die folgenden Daten auf die Kommandozeile aus

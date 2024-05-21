@@ -5,7 +5,7 @@ linkTitle: "Special Typescript Operators"
 weight: 2
 date: 2023-05-19
 description: >
-    Welche speziellen Operatoren es noch in Typescript gibt kann man hier nachlesen.
+  Modul #F5 - TypeScript - Special Operators
 ---
 ## Ziele
 * Du kennst, die wichtigen special Operators in Angular und kannst diese anwenden.

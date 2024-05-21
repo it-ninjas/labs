@@ -2,10 +2,10 @@
 title: "Internationalization (i18n)"
 type: docs
 linkTitle: "Internationalization (i18n)"
-weight: 22
+weight: 24
 date: 2023-04-20
 description: >
-  In diesem Kapitel wird erläutert was Internationalization ist.
+  Modul #F6 - Angular - Internationalization
 ---
 ## Ziele
 * Du weisst, wofür Internationalisierung ist.

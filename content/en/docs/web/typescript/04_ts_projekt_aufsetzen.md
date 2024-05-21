@@ -5,7 +5,7 @@ linkTitle: "Projekt aufsetzen in TypeScript"
 weight: 4
 date: 2023-06-02
 description: >
-    In diesem Kapitel wird beschrieben, wie man in Typescript ein Projekt aufsetzt und startet.
+  Modul #F5 - TypeScript - TypeScript in Projekten
 ---
 ## Hello World
 Da Node.js bereits installiert wurde, kann nun anhand des Node Package Manager mühelos typescript installiert werden.
@@ -32,7 +32,7 @@ Wie nun zu sehen ist, befindet sich im Verzeichnis eine gleichnamige JS Datei.
 
 Diese kann nun mit Node ausgeführt werden: 
 ``` shell
-node hello-word.js
+node hello-world.js
 ```
 
 Falls alles funktioniert hat, gibt die Konsole `Hello World` aus.

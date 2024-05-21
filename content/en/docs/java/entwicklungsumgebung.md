@@ -26,6 +26,7 @@ Die folgenden Programme sollten heruntergeladen und installiert werden, sie werd
 | GIT                          | [https://git-scm.com/download/win](https://git-scm.com/download/win)                                                                           | Zugriff auf das Versionsverwaltungssystem GIT                                                 |
 | Apache Maven                 | [https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi)                                                                 | Build Management Tool von Apache, beim Herunterladen das Binary auswählen (nicht die Source)  |
 | JDK                          | [https://www.oracle.com/java/technologies/javase-jdk14-downloads.html](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html)   | Java Development Kit zur Herstellung von Java-Anwendungen                                     |
+| Insomnia                     | [https://insomnia.rest/](https://insomnia.rest/)                                                                                               | Anwendung zum Absetzen von Requests an REST-Schnittstellen                                    |
 
 ---
 

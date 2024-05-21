@@ -2,10 +2,10 @@
 title: "Components"
 type: docs
 linkTitle: "Components"
-weight: 5
+weight: 4
 date: 2023-05-04
 description: >
-  Components sind wie Grundbausteine in einer Angular-Applikation
+  Modul #F6 - Angular - Components
 ---
 ## Ziele
 * Du weisst, was ein Angular Component ist.
