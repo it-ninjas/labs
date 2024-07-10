@@ -114,10 +114,3 @@ Wenn die Codeformatierungseinstellungen in IntelliJ  noch nicht konfiguriert wur
 5. Auf "Übernehmen" oder "OK" klicken, um die Änderungen zu speichern.
 
 Nachdem der Code-Stil konfiguriert wurde, wird IntelliJ die definierten Formatierungsregeln anwenden, wenn die Tastenkombination für die Codeformatierung verwendet wird oder "Code neu formatieren" im Kontextmenü ausgewählt wird.
-
-
-### Debugging-Grundlagen
-
-Der Debugger wird benutzt, um mithilfe von Breakpoints den Code während der Ausführung anzuhalten, zu analysieren und Fehler im Code zu finden.
-Mehr Informationen dazu gibt es unter dem folgenden Link:
-[Debug Code](https://www.jetbrains.com/help/idea/debugging-code.html)

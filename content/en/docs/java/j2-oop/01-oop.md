@@ -92,6 +92,15 @@ Diese Klasse repräsentiert einen Patienten in einem Krankenhausinformationssyst
 
 
 ### Objekte erstellen
+**Patient.java**
+```java
+class Patient {
+    String name;
+    int age;
+    float height;
+}
+```
+
 Wir können ein Objekt (auch "eine Instanz" genannt) der Klasse `Patient` mit dem Operator `new` erstellen:
 ```java
 Patient patient = new Patient();
@@ -103,14 +112,7 @@ System.out.println(patient.age);  // es wird 0 ausgeben
 ```
 Das folgende Programm erstellt zwei Objekte der Klasse Patient und druckt die Informationen der Objekte aus.
 
-**Patient.java**
-```java
-class Patient {
-    String name;
-    int age;
-    float height;
-}
-```
+
 
 **PatientDemo.java**
 ```java

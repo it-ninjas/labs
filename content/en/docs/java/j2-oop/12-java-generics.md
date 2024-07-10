@@ -358,4 +358,4 @@ Das Entfernen der generischen Informationen heisst "type erasure" und der Compil
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/java-generics) in den Generics-Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/java-oop/08_generics) in den Generics-Labs.

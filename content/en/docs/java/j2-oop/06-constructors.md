@@ -74,6 +74,38 @@ public class Patient {
     }
 }
 ```
+### Überladen von Konstruktor
+Das Überladen von Konstruktoren bedeutet, dass eine Java-Klasse mehrere Konstruktoren hat, welche sich in der Anzahl der Parameter unterscheiden. Das folgende Beispiel veranschaulicht wie das aussehen könnte:
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    // Konstruktor ohne Parameter
+    public Person() {
+        this("Unknown", 0);  // Ruft den 2-Parameter-Konstruktor mit Standardwerten auf
+    }
+
+    // Konstruktor mit 2 Parametern
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Konstruktor mit nur einem Parameter (name)
+    public Person(String name) {
+        this(name, 0);  // Ruft den 2-Parameter-Konstruktor auf, setzt age auf 0
+    }
+
+    // Konstruktor mit nur einem Parameter (age)
+    public Person(int age) {
+        this("Unknown", age);  // Ruft den 2-Parameter-Konstruktor auf, setzt name auf "Unknown"
+    }
+}
+
+```
+Im Beispiel fällt auf, dass die Konstruktoren jeweils `this()` aufrufen. Mit `this()` kann man in Java aus einem Konstuktor einen Aufruf auf einen anderern Konstruktor innerhalb derselben Klasse machen. Im Beispiel wird dies verwendet, um die Logik nur in einem Konstruktor definieren zu müssen.
+
 
 ### Zusammenfassung
 * Jede Java-Klasse verfügt über mindestens einen Konstruktor zum Initialisieren von Objekten.

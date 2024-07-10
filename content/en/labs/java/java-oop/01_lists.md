@@ -36,3 +36,6 @@ Schreibe ein Programm, welche einen Text mit einer beliebigen Anzahl Wörter aus
 - Alle gelesene Wörter in umgekehrte Reihenfolge ausgeben
 
 *Bei der Umsetzung dürfen keine Streams verwendet werden!*
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop/01_lists).

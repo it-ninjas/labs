@@ -69,7 +69,7 @@ Es ist auch möglich, alle Klassen aus dem Paket zu importieren. Dazu müssen wi
 ```java
 import java.awt.*;
 ```
-
+Alle Klassen eines Packages, wie in diesem Beispiel, zu importieren ist schlechter Style und soll vermieden werden. Es soll immer explizit importiert werden.
 ### Package java.lang
 Obwohl wir die meisten Pakete importieren müssen, gibt es ein Java-Paket, das immer automatisch importiert wird. Es ist `java.lang`. Dieses Paket enthält viele weit verbreitete Klassen wie `String`, `System`, `Long`, `Integer`, `NullPointerException` und andere.
 
@@ -92,3 +92,41 @@ public class Main {
 Wenn wir bei der Implementation von Klassen keine Package-Anweisung schreiben, wird die Klasse ins Default-Package eingefügt. Dies sollte vermieden werden, da Klassen aus dem Default-Package nicht in andere Klasse importiert werden können, welche sich nicht auch im Default-Package befinden.
 
 ---
+
+### Eigenes Package definieren
+Ein eigenes Package zu definieren ist gar nicht so schwer. Im Grunde muss nur eine Package-Definition zu einer Klasse hinzugefügt werden.
+Wir haben als Beispiel die Klasse `Beispiel.java`, welche sich in der folgenden Verzeichnisstruktur befindet:
+```
+/src
+  └── ch
+      └── sbb
+          └── examplepackage
+              └── Beispiel.java
+```
+
+Um diese Klasse nun einem Package hinzuzufügen, wird auf der ersten Zeile mit `package com.sbb.examplepackage` der Name des Packages definiert. Der Name entspricht zugleich der Verzeichnisstruktur.
+
+```java
+package ch.sbb.examplepackage;
+
+public class Beispiel {
+    public void sagHallo() {
+        System.out.println("Hallo, Welt!");
+    }
+}
+```
+In einer anderen Klasse kann das Package wie zuvor beschrieben importiert und verwendet werden. Ein Beispiel für eine Klasse welche das Package importiert und verwendet könnte wie folgt aussehen:
+
+```java
+package ch.sbb.main;
+
+import ch.sbb.examplepackage.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Beispiel b = new Beispiel();
+        
+        b.sagHallo();
+    }
+}
+```

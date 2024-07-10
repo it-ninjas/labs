@@ -1,10 +1,10 @@
 ---
-title: "Generics I - Aufgaben"
-linkTitle: "Generics I - Aufgaben"
+title: "Generics"
+linkTitle: "Generics"
 type: docs
-weight: 1
+weight: 8
 description: >
-  Aufgaben zu Modul #J2 - Generics I
+  Aufgabe zu Modul #J2 - OOP - Generics I
 ---
 
 ### Aufgabe 1 - generische Methode um alle Elemente in einem Array auszugeben
@@ -20,3 +20,5 @@ Operationen auf diesen Zahlen ausführen kann:
 
 *Die Typen der Input-Zahlen können unterschiedlich sein (Ganzzahlen, Kommazahlen...)*
 
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop/12-java-generics).
