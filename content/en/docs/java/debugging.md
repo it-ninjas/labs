@@ -9,7 +9,7 @@ description: >
 ## Ziele
 * Du weisst, wie du in IntelliJ Java Code debuggen kannst.
 
-## Wieso ist debuggen wichtig?
+## Wieso ist Debuggen wichtig?
 Es gibt eine Vielzahl von Gründen, warum Java-Anwendungen Fehler enthalten können. Typische Fehler sind zum Beispiel unerwartete Exceptions oder auch eine fehlerhafte Logik innerhalb des Codes. Mit Debugging kann man das Program systematisch analysieren und so die entsprechenden Fehler identifizieren und beheben.
 
 

@@ -25,3 +25,15 @@ Das Ziel des Ausbildungsprogramms ist
 - das Erlernen der Programmiersprache Typescript/Angular
 
 im begleiteten Selbst-Studium innerhalb des ersten Lehr-/Studienjahres
+
+---
+
+### Absprung zu den Debugging-Seiten
+
+- [Debugging von Java Code in IntelliJ](../../../../docs/java/debugging).
+- [Frontend-Debugging](../../../../docs/web/javascript/24_debugging/).
+
+### Absprung zu den Testing-Seiten
+
+- [Rest-Schnittstellen testen](../../../../docs/java/java-rest-testing/).
+- [Angular Testfiles](../../../../docs/web/angular/02_7_angular_unit_test/).
