@@ -14,8 +14,8 @@ Wir programmieren eine eigene ArrayList-Klasse `MyArrayList`:
 1. Die Elemente sollen in einem Array gespeichert werden.
 2. Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.
 3. Die Klasse muss das Interface `MyListInterfaceSimple` implementieren.
-4. Die Klasse weiss nicht, wie viele Element man speichert. Sie muss die Grösse der internen Datenstruktur dynamische anpassen.
-5. Die `toString()` der `java.lang.Object` Klasse soll von der `MyArrayList` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: `[Cat, Hamster, Dog, Goldfish]`
+4. Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse der internen Datenstruktur dynamische anpassen.
+5. Die `toString()` Methode der `java.lang.Object` Klasse soll von der `MyArrayList` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: `[Cat, Hamster, Dog, Goldfish]`
 6. Überprüfe deine Implemenation mit dem JUnitTest [MyArrayListSimpleTest](https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/list/lab1/MyArrayListSimpleTest.java)
 
 
@@ -217,4 +217,3 @@ Anforderungen an die `Modul`-Klasse:
   MODUL_NAME>* : *<MODUL_SCHLUSSNOTE>* auszugeben.
 
 Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) zu der Umsetzung gehört.
-

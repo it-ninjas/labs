@@ -259,34 +259,43 @@ Seit Java 7 gibt es die Möglichkeit für einen sogenannten Multi-Catch.
 Schauen wir uns das folgende Beispiel an:
 #### Ohne Multi-Catch
 ```java
-public static void main(String[] args) {
-    Scanner scn = new Scanner(System.in);
-    try {
-        int n = Integer.parseInt(scn.nextLine());
-        if (99%n == 0) {
-            System.out.println(n + " is a factor of 99");
+ public static void main(String[] args) {
+        String filename = "example.txt";
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Ein-/Ausgabefehler beim Lesen der Datei: " + e.getMessage());
+        } catch (ParseException e) {
+            System.err.println("Fehler beim Parsen der Daten: " + e.getMessage());
+        } finally {
+            reader.close()
         }
-    } catch (ArithmeticException ex) {
-        System.out.println("Arithmetic Exception " + ex);
-    } catch (NumberFormatException ex) {
-        System.out.println("Number Format Exception " + ex);
-    }
-}
 ```
 
 #### Mit Multi-Catch
 ```java
-public static void main(String[] args) {
-    Scanner scn = new Scanner(System.in);
-    try {
-        int n = Integer.parseInt(scn.nextLine());
-        if (99%n == 0) {
-            System.out.println(n + " is a factor of 99");
+     public static void main(String[] args) {
+        String filename = "example.txt";
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException | ParseException e) {
+            System.err.println("Ein-/Ausgabefehler oder Fehler beim Parsen der Daten: " + e.getMessage());
+        } finally {
+            reader.close()
         }
-    } catch (ArithmeticException | NumberFormatException ex) {
-        System.out.println("Exception " + ex);
     }
-}
 ```
 
 Die beiden Exceptions werden in einem catch-Block zusammengefasst.

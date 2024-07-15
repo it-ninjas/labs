@@ -93,9 +93,18 @@ Wenn wir bei der Implementation von Klassen keine Package-Anweisung schreiben, w
 
 ---
 
-### Eigenes Package definieren
-Ein eigenes Package zu definieren ist gar nicht so schwer. Im Grunde muss nur eine Package-Definition zu einer Klasse hinzugefügt werden.
-Wir haben als Beispiel die Klasse `Beispiel.java`, welche sich in der folgenden Verzeichnisstruktur befindet:
+### Eigene Packages definieren
+Packages können auch selber definiert werden. Die Package-Struktur entspricht hierbei der Verzeichnisstruktur des Projekts. Packages erstellt man primär um den Code zu strukturieren.
+
+In einem Spring Boot Projekt wird der Code typischerweise in folgende Packages unterteilt:
+- Controller-Package (ch.sbb.demo.controller): Beinhaltet die Controller-Klassen, die HTTP-Anfragen verarbeiten.
+- Service-Package (ch.sbb.demo.service): Enthält die Service-Klassen, die die Geschäftslogik implementieren.
+- Repository-Package (ch.sbb.demo.repository): Beinhaltet die Repository-Klassen für die Datenbankinteraktionen
+- Model-Package (ch.sbb.demo.model): Enthält die Datenmodellklassen (Entities), die die Datenbanktabellen repräsentieren.
+
+Ein eigene Package-Struktur zu definieren ist also gar nicht so schwer, im Grunde muss man dafür nur Verzeichnise erstellen.
+
+Wie der Import von eigen definierten Packages erfolgt, ist dem folgenden Beispiel zu entnehmen. Im Beispiel gehen wir von dieser Verzeichnisstruktur aus:
 ```
 /src
   └── ch
@@ -103,8 +112,8 @@ Wir haben als Beispiel die Klasse `Beispiel.java`, welche sich in der folgenden 
           └── examplepackage
               └── Beispiel.java
 ```
-
-Um diese Klasse nun einem Package hinzuzufügen, wird auf der ersten Zeile mit `package com.sbb.examplepackage` der Name des Packages definiert. Der Name entspricht zugleich der Verzeichnisstruktur.
+Die Ordner `ch`, `sbb` `examplepackage` wurden von Hand erstellt.
+Das Package enthält die Klasse `Beispiel.java`.
 
 ```java
 package ch.sbb.examplepackage;
