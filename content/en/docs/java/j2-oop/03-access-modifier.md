@@ -49,12 +49,25 @@ p.getName();
 UML-Symbol: `+`
 
 ### Protected
-Wenn eine Klasse, ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul «Objektorientiertes Design»).
+Wenn eine Klasse, ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul [«Objektorientiertes Design»](../java-ood)).
+
+
+Wichtig zu beachten ist, dass Subpackages von Java wie separate Packages behandelt werden. Dementsprechend kann die Klasse `AccessClass.java` wenn die Struktur wie folgt aussieht nicht auf Protected Members der Klasse `ParentClass.java` zugreifen.
+```
+src
+└── ch
+    └── sbb
+        ├── ParentClass.java
+        └── subpackage
+            └── AccessClass.java
+```
+
+
 UML-Symbol: `#`.
 
 ### Package-Private
 Wenn eine Klasse, ein Feld oder eine Methode keinen Zugriffsmodifikator hat, so besitzt sie trotzdem einen. Dieser wird Package-Private genannt. Die Sichtbarkeit ist grundsätzlich private, wird aber auf Klasse im gleichen Package ausgeweitet.
-Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese Klasse, Felder und Methoden haben.
+Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese Klasse, Felder und Methoden haben. Für Subpackages gilt das Gleiche wie bei Protected.
 
 ### Zusammenfassung
 | Modifikator              | Eigene Klasse | Klasse im gleichen Package / innere-Klassen | Unterklassen | Sonstige Klassen |
@@ -62,6 +75,6 @@ Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese
 | `private`                | ja            | nein                                        | nein         | nein             |
 | `public`                 | ja            | ja                                          | ja           | ja               |
 | `protected`              | ja            | ja                                          | ja           | nein             |
-| Keinen (package-private) | ja            | ja                                          | nein         | nein             |
+| Keinen (package-private) | ja            | ja                                          | ja           | nein             |
 
 ---

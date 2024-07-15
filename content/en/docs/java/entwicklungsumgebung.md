@@ -9,7 +9,6 @@ description: >
 #### Ziele
 * Ich habe die Ersteinrichtung des Laptops vollständig durchgeführt
 * Ich habe die notwendigen Programme heruntergeladen und installiert
-* Ich verstehe was ein Proxy ist und wie ich ihn einstellen muss
 
 ---
 
@@ -38,16 +37,3 @@ Gleichzeitig verfügt das SBB-Netzwerk selbstverständlich über entsprechende S
 Im Intranet der SBB ist der Besuch von diversen Webseiten eingeschränkt. Dein Browser informiert dich sofort, wenn du auf eine nicht zugelassene Seite navigierst.
 
 Lies den folgenden Artikel im Intranet betreffend Weisungen über Datensicherheit und Datenschutz: [https://sbb.sharepoint.com/sites/intranet_servicessupport/SitePages/datensicherheit-und-datenschutz.aspx](https://sbb.sharepoint.com/sites/intranet_servicessupport/SitePages/datensicherheit-und-datenschutz.aspx)
-
----
-
-### Proxy
-
-Ein Proxy ist eine Kommunikationsstelle in einem Netzwerk. Je nachdem, in welchem Netzwerk du dich befindest ist die Konfiguration eines Proxys unumgänglich.
-Typ: <br>
-Hostname: <br>
-Port: <br>
-Kein Proxy für: <br>
-Proxy Authentifizierung: 
-
-Diese Einstellungen können in Applikationen wie IntelliJ oder Insomnia hinterlegt werden.

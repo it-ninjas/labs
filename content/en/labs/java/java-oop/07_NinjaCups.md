@@ -12,3 +12,6 @@ description: >
 von Kaffees. Deine Aufgabe ist es, eine Java-Klasse zu schreiben, die den Gesamtverkauf von Kaffee über alle Standorte 
 von NinjaCups verfolgt. Eine Instanz dieser Klasse soll somit ein Standort des Unternehmens darstellen. Über die Klasse
 soll schlussendlich ersichtlich sein, wie viele Kaffees über das gesamte Unternehmen verkauft wurden.
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop/10_static-non_static).

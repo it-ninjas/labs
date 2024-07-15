@@ -69,7 +69,7 @@ Es ist auch möglich, alle Klassen aus dem Paket zu importieren. Dazu müssen wi
 ```java
 import java.awt.*;
 ```
-
+Alle Klassen eines Packages, wie in diesem Beispiel, zu importieren ist schlechter Style und soll vermieden werden. Es soll immer explizit importiert werden.
 ### Package java.lang
 Obwohl wir die meisten Pakete importieren müssen, gibt es ein Java-Paket, das immer automatisch importiert wird. Es ist `java.lang`. Dieses Paket enthält viele weit verbreitete Klassen wie `String`, `System`, `Long`, `Integer`, `NullPointerException` und andere.
 
@@ -92,3 +92,50 @@ public class Main {
 Wenn wir bei der Implementation von Klassen keine Package-Anweisung schreiben, wird die Klasse ins Default-Package eingefügt. Dies sollte vermieden werden, da Klassen aus dem Default-Package nicht in andere Klasse importiert werden können, welche sich nicht auch im Default-Package befinden.
 
 ---
+
+### Eigene Packages definieren
+Packages können auch selber definiert werden. Die Package-Struktur entspricht hierbei der Verzeichnisstruktur des Projekts. Packages erstellt man primär um den Code zu strukturieren.
+
+In einem Spring Boot Projekt wird der Code typischerweise in folgende Packages unterteilt:
+- Controller-Package (ch.sbb.demo.controller): Beinhaltet die Controller-Klassen, die HTTP-Anfragen verarbeiten.
+- Service-Package (ch.sbb.demo.service): Enthält die Service-Klassen, die die Geschäftslogik implementieren.
+- Repository-Package (ch.sbb.demo.repository): Beinhaltet die Repository-Klassen für die Datenbankinteraktionen
+- Model-Package (ch.sbb.demo.model): Enthält die Datenmodellklassen (Entities), die die Datenbanktabellen repräsentieren.
+
+Ein eigene Package-Struktur zu definieren ist also gar nicht so schwer, im Grunde muss man dafür nur Verzeichnise erstellen.
+
+Wie der Import von eigen definierten Packages erfolgt, ist dem folgenden Beispiel zu entnehmen. Im Beispiel gehen wir von dieser Verzeichnisstruktur aus:
+```
+/src
+  └── ch
+      └── sbb
+          └── examplepackage
+              └── Beispiel.java
+```
+Die Ordner `ch`, `sbb` `examplepackage` wurden von Hand erstellt.
+Das Package enthält die Klasse `Beispiel.java`.
+
+```java
+package ch.sbb.examplepackage;
+
+public class Beispiel {
+    public void sagHallo() {
+        System.out.println("Hallo, Welt!");
+    }
+}
+```
+In einer anderen Klasse kann das Package wie zuvor beschrieben importiert und verwendet werden. Ein Beispiel für eine Klasse welche das Package importiert und verwendet könnte wie folgt aussehen:
+
+```java
+package ch.sbb.main;
+
+import ch.sbb.examplepackage.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Beispiel b = new Beispiel();
+        
+        b.sagHallo();
+    }
+}
+```
