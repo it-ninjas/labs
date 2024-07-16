@@ -34,3 +34,6 @@ Eine Methode `status()` soll einen Wert zurückgeben, der aussagt, ob der Damm z
 Erweitere die `status()`-Methode so, dass bei jeder Status-Abfrage (also beim Aufruf der Methode) die Mengen in einer Liste gespeichert werden - und zwar als Objekte eurer Klasse für die Wassermenge.
 
 Am Ende des Programms sollen alle Mengen inkl. Einheiten dann in der Konsole ausgegeben werden.
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop).

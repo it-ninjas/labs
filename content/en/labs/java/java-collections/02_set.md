@@ -11,7 +11,10 @@ description: >
 Schreibe ein Programm, welches die Personen von vier Vereine auswertet.
 
 1. Pro Verein existiert ein `Set` mit allen Vereinsmitliedern (siehe Input).
-2. Das Programm analysiert die Vereinsmitglieder und schreibt verschiedene Aussagen in die Konsole (siehe Ausgabe).
+2. Das Programm analysiert die Vereinsmitglieder und schreibt die folgenden Aussagen in die Konsole (siehe Beispiel-Ausgabe unten):
+   - Wie viele Personen machen min. in einem Verein mit: Anzahl: Namen
+   - Alle Personen, welche im Fussball und Tanz Verein sind: Anzahl: Namen
+   - Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: Anzahl: Namen
 3. Die Namen der Personen müssen in alphabetischer Reihenfolge angezeigt werden.
 4. Ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) soll umgesetzt werden.
 
@@ -43,16 +46,16 @@ Set<String> tanzVerein = Set.of(
 {{% /details %}}
 
 ### Ausgabe  
-Die Ausgabe muss das folgende Format aufweisen:
+Die Ausgabe muss so aussehen:
 ```text
-- Wie viele Personen machen min. in einem Verein mit: 2: Maria,Xaver
-- Alle Personen, welche im Fussball und Tanz Verein sind: 2: Maria,Xaver
-- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 2: Maria,Xaver
+- Wie viele Personen machen min. in einem Verein mit: 20: Anina,Anja,Anna,Emil,Felix,Fritz,Gerda,Hanne,Hans,Kari,Karin,Klaus,Lara,Max,Nicole,Patrick,Paul,Paula,Petra,Sabine
+- Alle Personen, welche im Fussball und Tanz Verein sind: 5: Anja,Anna,Emil,Felix,Hans
+- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 1: Paula
 
 ```
 
 ### Ausgabe überprüfen
-Wie können wir die Ausgabe überprüfen, ohne dass ihr die Lösung kennt? 
+Wie können ihr die Ausgabe überprüfen?
 Wir benützen dazu eine kleine Hilfsklasse [`OutputValidation`](https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java).
 Die Klasse erlaubt es eure `System.out.println()` Anweisungen mit `OutputValidation.logAndPrint()` zu ersetzten.
 Am Schluss des Programmes kann man mit `OutputValidation.printControlHash()` den Hash-Wert der eigenen Ausgabe anzeigen, oder mit `OutputValidation.verifyControlHash()` einen Hash-Wert zur Überprüfung mit eurer Ausgabe überreichen.

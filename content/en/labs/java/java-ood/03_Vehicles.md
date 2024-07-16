@@ -42,3 +42,6 @@ Das Fahrzeugverwaltungssystem soll die folgenden Funktionen unterstützen:
 - Verkauf eines reservierten Fahrzeugs und Aktualisierung des Bestands.
 
 **Info:** Ab diesem Lab darf, für alles folgenden Labs/Exams, Lombok verwendet werden, wenn man möchte.
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-ood).

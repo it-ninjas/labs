@@ -31,3 +31,6 @@ Wenn wir Zahlen von einem User über die Konsole entgegennehmen wollen, kann man
 
 Schreibe eine Anwendung, welche den User einzeln für zwei Zahlen fragt und diese dann entweder addiert, subtrahiert, multipliziert, oder dividiert. Die Auswahl der Rechnungsmethode kann zufällig oder durch den Benutzer erfolgen.
 Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) zu der Umsetzung gehört.
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-exception_handling/).
