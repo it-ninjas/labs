@@ -751,4 +751,5 @@ Das Befolgen des Kapselung-Prinzips führt zu einem Design, welches folgende Vor
 * Die Klasse hat eine öffentliche API, welche von Benutzer der Klasse verwendet werden können. Somit ist auch klar definiert, was die Aufgabe dieser Klasse ist.
 * Die öffentliche API einer Klasse ermöglicht das Verbergen von Umsetzungsdetails. Somit haben interne Strukturänderungen dieser Klasse keinen Einfluss auf den Code des Benutzers
 
-   
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/java-ood) in den Labs.

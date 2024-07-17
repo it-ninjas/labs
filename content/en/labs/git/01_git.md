@@ -4,7 +4,7 @@ linkTitle: "Git"
 type: docs
 weight: 3
 description: >
-  Hands On Aufgabe für Git
+  Hands On Aufgabe für [Git](../../../../docs/git/)
 ---
 
 ### Schritt 1: Initialisiere das Git-Repository

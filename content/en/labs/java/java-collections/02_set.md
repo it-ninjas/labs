@@ -46,13 +46,21 @@ Set<String> tanzVerein = Set.of(
 {{% /details %}}
 
 ### Ausgabe  
-Die Ausgabe muss so aussehen:
+Die Ausgabe von Format her so aussehen:
 ```text
-- Wie viele Personen machen min. in einem Verein mit: 20: Anina,Anja,Anna,Emil,Felix,Fritz,Gerda,Hanne,Hans,Kari,Karin,Klaus,Lara,Max,Nicole,Patrick,Paul,Paula,Petra,Sabine
-- Alle Personen, welche im Fussball und Tanz Verein sind: 5: Anja,Anna,Emil,Felix,Hans
-- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 1: Paula
+- Wie viele Personen machen min. in einem Verein mit: [anzahl]: [namen]
+- Alle Personen, welche im Fussball und Tanz Verein sind: [anzahl]: [namen]
+- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: [anzahl]: [namen]
 
 ```
+Achte auf Details wie, dass die Namen ohne Lücken aufgeführt werden ansonsten stimmt der Hash nicht. Die Ausgabe könnte beispielsweise so aussehen:
+```text
+- Wie viele Personen machen min. in einem Verein mit: 19: Anja,Anna,Emil,Fritz,Gerda,Hanne,Hans,Karin,Klaus,Lara,Max,Nicole,Patrick,Paul,Paula,Petra,Sabine
+- Alle Personen, welche im Fussball und Tanz Verein sind: 4: Anna,Emil,Felix,Hans,Gerda
+- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 3: Anja,Emil,Hanne
+
+```
+
 
 ### Ausgabe überprüfen
 Wie können ihr die Ausgabe überprüfen?

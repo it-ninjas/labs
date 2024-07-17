@@ -120,3 +120,6 @@ Web Starter
   <version>2.2.2.RELEASE</version>
 </dependency>  
 ```
+
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/spring) in den Labs.

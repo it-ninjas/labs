@@ -36,4 +36,5 @@ Achte auf korrektes Exception-Handling (denke an "try with resources") und saube
 
 Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) zu der Umsetzung gehört.
 
+---
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-jdbc).

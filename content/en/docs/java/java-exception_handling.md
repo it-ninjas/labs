@@ -533,7 +533,7 @@ Drei der häufigsten Möglichkeiten, um mehr Null-Sicherheit in deinen Code zu b
 
 
 
-## Ecxeptions testen
+## Exceptions testen
 Wie regulären Java Code kann man natürlich auch Exceptions mit JUnit testen. Eine ausführliche Erklärung dazu ist [hier](https://www.baeldung.com/junit-assert-exception) zu finden.
 Das folgende Beispiel testet anhand `assertThrows()` dass die Methode `testCheckAge()` mit einem Alter unter 18 eine `EntryForbiddenException` wirft.
 

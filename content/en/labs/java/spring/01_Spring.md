@@ -1096,3 +1096,6 @@ public class AdminControllerIntegrationTest {
 
 ## Unittests
 Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 Testing](../../../../docs/java/java-testing) bereits kennen.
+
+---
+Zurück zur [Spring](../../../../docs/java/spring/) und [Spring Boot](../../../../docs/java/spring/) Theorie.
