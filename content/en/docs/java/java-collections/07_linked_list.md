@@ -170,3 +170,11 @@ public void addLast(E e)
 
 
 ```
+
+{{% blocks/lead color="orange" %}}
+Aufgaben
+{{% /blocks/lead %}}
+
+## Aufgaben
+
+[Aufgaben zu Modul #J7 - Java Collections - LinkedList](../../../../labs/java/java-collections/07_linkedlist)

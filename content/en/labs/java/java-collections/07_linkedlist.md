@@ -8,7 +8,7 @@ description: >
 ---
 
 ## Aufgabe 1
-Du hast eine Playlist mit 5 Liedern, die in einer LinkedList gespeichert ist und wiefolgt vordefiniert ist:
+Du hast eine Playlist mit 5 Liedern, die in einer LinkedList gespeichert ist und wie folgt vordefiniert ist:
 ```java
  LinkedList<String> songList = new LinkedList<>(Arrays.asList(
             "Bohemian Rhapsody",
@@ -19,7 +19,7 @@ Du hast eine Playlist mit 5 Liedern, die in einer LinkedList gespeichert ist und
         ));
 ```
 Nun sollen verschiedene Aktionen mit der Playlist vorgenommen werden.
-1. Entfehrne den ersten Song in der Playlist.
+1. Entferne den ersten Song in der Playlist.
 2. Füge den Song "Blinding Lights" in der Mitte der Playlist ein.
 2. Ersetze den letzten Song mit "Smells Like Teen Spirit".
 
@@ -30,5 +30,6 @@ Schreibe anschliessend die Playlist in die Konsole. Vom Format her sollte die Au
 ```
 Um dieses Format zu erhalten, kannst du die Methode `toString()` auf deiner LinkedList aufrufen.
 
-> **Ausgabe überprüfen**  
+> **Ausgabe überprüfen**
+> Verwende wieder die kleine Hilfsklasse [`OutputValidation`](https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java) zum Verifizieren des Konsolen-Outputs.
 > Der Konsole-Output Hash für diese Aufgabe ist: **`-642408310`**
