@@ -1120,78 +1120,7 @@ ausbildungsjahre &lt;span style="color:#f92672">&amp;gt;=&lt;/span> 5 &lt;span s
 &lt;ol>
 &lt;li>Objektdatentyp, repräsentiert ein beliebiges Objekt einer Klasse wie z.B. &lt;code>String&lt;/code> (wird im nächsten Kapitel präsentiert)&lt;/li>
 &lt;li>Array: Eine Datenstruktur fester Grösse, die dazu dient, mehrere Elemente des gleichen Typs zu speichern (wird später im Kapitel Arrays behandelt)&lt;/li>
-&lt;/ol></description></item><item><title>Docs: Methoden</title><link>/docs/java/java-grundlagen/08_methods/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/08_methods/</guid><description>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Ich weiss, wofür Methoden sind.&lt;/li>
-&lt;li>Ich weiss, wie eine Methode aufgebaut ist.&lt;/li>
-&lt;li>Ich weiss, wie eine Methode mit Parameter aufgebaut ist.&lt;/li>
-&lt;li>Ich weiss, wie eine Methode mit Rückgabewert aufgebaut ist.&lt;/li>
-&lt;li>Ich kann Methoden gezielt in meinem Programm Methoden einsetzen.&lt;/li>
-&lt;/ul>
-&lt;h2 id="was-sind-methoden">Was sind Methoden?&lt;/h2>
-&lt;p>In Java sind Methoden Blöcke von Code, die spezifische Aufgaben ausführen. Sie dienen zur Organisation und
-Wiederverwendung von Code. Methoden ermöglichen es, eine Gruppe von Anweisungen in einem eigenen Codeblock zu kapseln
-und diesen Codeblock durch einen Funktionsaufruf auszuführen.&lt;/p>
-&lt;h2 id="aufbau-einer-methode">Aufbau einer Methode&lt;/h2>
-&lt;p>Eine Methode in Java ist wie folgt aufgebaut:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Rückgabetyp &lt;span style="color:#a6e22e">methodName&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Parameterliste&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#75715e">// Methoden Code
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>&lt;code>Rückgabetyp&lt;/code>: Dieser Typ gibt an, welchen Datentyp die Methode zurückgibt. Wenn die Methode keinen Rückgabewert hat, wird &lt;code>void&lt;/code> verwendet.&lt;/li>
-&lt;li>&lt;code>methodName&lt;/code>: Der Name der Methode, über den sie aufgerufen wird.&lt;/li>
-&lt;li>&lt;code>Parameterliste&lt;/code>: Hier werden die Parameter aufgelistet, die die Methode erwartet.&lt;/li>
-&lt;li>&lt;code>Methoden Code&lt;/code>: Dies ist der Codeblock, der die spezifische Aufgabe der Methode ausführt.&lt;/li>
-&lt;/ul>
-&lt;h2 id="methoden-mit-parametern">Methoden mit Parametern&lt;/h2>
-&lt;p>Methoden können auch Parameter akzeptieren, die beim Aufruf übergeben werden. Hier ist ein Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">greetUser&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String name&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hallo, &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> name &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>In diesem Fall erwartet die Methode &lt;code>greetUser&lt;/code> einen &lt;code>String&lt;/code>-Parameter, der den Namen des Benutzers enthält.&lt;/p>
-&lt;h3 id="lernvideo">Lernvideo&lt;/h3>
-&lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
-&lt;a href="https://www.youtube.com/watch?v=oSDtCcDXcTM">Video&lt;/a>.&lt;/p>
-&lt;h2 id="methoden-mit-rückgabewert">Methoden mit Rückgabewert&lt;/h2>
-&lt;p>Methoden können einen Wert zurückgeben. Hier ist ein Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">addiere&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> a&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> b&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-&lt;span style="color:#66d9ef">int&lt;/span> summe &lt;span style="color:#f92672">=&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">return&lt;/span> summe&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>In diesem Fall gibt die Methode &lt;code>addiere&lt;/code> die Summe der beiden übergebenen Zahlen als &lt;code>int&lt;/code> zurück.&lt;/p>
-&lt;h3 id="lernvideo-1">Lernvideo&lt;/h3>
-&lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
-&lt;a href="https://www.youtube.com/watch?v=qQ79aq7HZ-U">Video&lt;/a>.&lt;/p>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-5---methoden">Aufgabe 5&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: String</title><link>/docs/java/java-grundlagen/09_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/09_strings/</guid><description>
+&lt;/ol></description></item><item><title>Docs: String</title><link>/docs/java/java-grundlagen/08_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/08_strings/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann &lt;code>String&lt;/code>-Variablen deklarieren und initialisieren.&lt;/li>
@@ -1618,9 +1547,81 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;li>Surströmming&lt;/li>
 &lt;/ul>
 &lt;p>Auf diese Art und Weise können wir z.B. alle Wörter aus einem String ermitteln.&lt;/p>
-&lt;p>Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten &amp;ldquo;Regulären Ausdruck&amp;rdquo; (RegEx) handelt. Eine RegEx ist eine Folge von Zeichen, die ein Suchmuster bilden. Eine Regex wird dafür verwendet, um einen Text anhand eines Musters (einer Regel) abzugleichen. RegEx ist im Moment kein Thema im Modul #J1. Wichtig ist für dich im Moment nur, dass du weisst, dass sich bei diesem Suchbegriff von &lt;code>split(...)&lt;/code> nicht um einen gewöhnlichen String handelt, sondern um eine RegEx. Möglicherweise können dir RegEx' viel Arbeit abnehmen. Bitte melde dich bei Interesse für RegEx.&lt;/p>
+&lt;p>Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten &amp;ldquo;Regulären Ausdruck&amp;rdquo; (RegEx) handelt. Eine RegEx ist eine Folge von Zeichen, die ein Suchmuster bilden. Eine Regex wird dafür verwendet, um einen Text anhand eines Musters (einer Regel) abzugleichen. RegEx ist im Moment kein Thema im Modul #J1. Wichtig ist für dich im Moment nur, dass du weisst, dass sich bei diesem Suchbegriff von &lt;code>split(...)&lt;/code> nicht um einen gewöhnlichen String handelt, sondern um eine RegEx. Möglicherweise können dir RegEx' viel Arbeit abnehmen.&lt;/p>
+&lt;p>Falls du mehr über RegEx lernen möchtest empfehlen wir &lt;a href="https://www.geeksforgeeks.org/regular-expressions-in-java/">dieses Tutorial&lt;/a>. Das Gelernte kannst du anschliessend gleich in &lt;a href="https://regex101.com/">dieser Sandbox&lt;/a> challengen. Achte bei der Sandbox darauf, dass du das richtige Flavor (Java 8) auswählst.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-6---strings">Aufgaben 6 und 7&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Scanner</title><link>/docs/java/java-grundlagen/10_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/10_scanner/</guid><description>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-6---strings">Aufgaben 6 und 7&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Methoden</title><link>/docs/java/java-grundlagen/09_methods/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/09_methods/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, wofür Methoden sind.&lt;/li>
+&lt;li>Ich weiss, wie eine Methode aufgebaut ist.&lt;/li>
+&lt;li>Ich weiss, wie eine Methode mit Parameter aufgebaut ist.&lt;/li>
+&lt;li>Ich weiss, wie eine Methode mit Rückgabewert aufgebaut ist.&lt;/li>
+&lt;li>Ich kann Methoden gezielt in meinem Programm Methoden einsetzen.&lt;/li>
+&lt;/ul>
+&lt;h2 id="was-sind-methoden">Was sind Methoden?&lt;/h2>
+&lt;p>In Java sind Methoden Blöcke von Code, die spezifische Aufgaben ausführen. Sie dienen zur Organisation und
+Wiederverwendung von Code. Methoden ermöglichen es, eine Gruppe von Anweisungen in einem eigenen Codeblock zu kapseln
+und diesen Codeblock durch einen Funktionsaufruf auszuführen.&lt;/p>
+&lt;h2 id="aufbau-einer-methode">Aufbau einer Methode&lt;/h2>
+&lt;p>Eine Methode in Java ist wie folgt aufgebaut:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Rückgabetyp &lt;span style="color:#a6e22e">methodName&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Parameterliste&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Methoden Code
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>Rückgabetyp&lt;/code>: Dieser Typ gibt an, welchen Datentyp die Methode zurückgibt. Wenn die Methode keinen Rückgabewert hat, wird &lt;code>void&lt;/code> verwendet.&lt;/li>
+&lt;li>&lt;code>methodName&lt;/code>: Der Name der Methode, über den sie aufgerufen wird.&lt;/li>
+&lt;li>&lt;code>Parameterliste&lt;/code>: Hier werden die Parameter aufgelistet, die die Methode erwartet.&lt;/li>
+&lt;li>&lt;code>Methoden Code&lt;/code>: Dies ist der Codeblock, der die spezifische Aufgabe der Methode ausführt.&lt;/li>
+&lt;/ul>
+&lt;h2 id="methoden-mit-parametern">Methoden mit Parametern&lt;/h2>
+&lt;p>Methoden können auch Parameter akzeptieren, die beim Aufruf übergeben werden. Hier ist ein Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">greetUser&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String name&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Hallo, &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> name &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;!&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Fall erwartet die Methode &lt;code>greetUser&lt;/code> einen &lt;code>String&lt;/code>-Parameter, der den Namen des Benutzers enthält.&lt;/p>
+&lt;h3 id="lernvideo">Lernvideo&lt;/h3>
+&lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+&lt;a href="https://www.youtube.com/watch?v=oSDtCcDXcTM">Video&lt;/a>.&lt;/p>
+&lt;h2 id="methoden-mit-rückgabewert">Methoden mit Rückgabewert&lt;/h2>
+&lt;p>Methoden können einen Wert zurückgeben. Hier ist ein Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">addiere&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> a&lt;span style="color:#f92672">,&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> b&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">int&lt;/span> summe &lt;span style="color:#f92672">=&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> summe&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Fall gibt die Methode &lt;code>addiere&lt;/code> die Summe der beiden übergebenen Zahlen als &lt;code>int&lt;/code> zurück.&lt;/p>
+&lt;h3 id="lernvideo-1">Lernvideo&lt;/h3>
+&lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+&lt;a href="https://www.youtube.com/watch?v=qQ79aq7HZ-U">Video&lt;/a>.&lt;/p>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-5---methoden">Aufgabe 5&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Scanner</title><link>/docs/java/java-grundlagen/10_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/10_scanner/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.&lt;/li>
