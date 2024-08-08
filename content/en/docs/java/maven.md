@@ -409,3 +409,4 @@ mvn clean install
 Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen Maven-Befehle.
 
 ---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/maven) in den Labs.

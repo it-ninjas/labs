@@ -185,3 +185,6 @@ Die Arbeit mit try-with-resources ist immer vorzuziehen, wenn es um Closable-Res
 Die folgende Beispiel-Methode fasst die oben erwähnten Arbeitsschritte mit JDBC (aktuelle Version) zusammen:
 
 ![](../java-jdbc/jdbc_complete_code_example.png)
+
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte diese [Aufgabe](../../../../labs/java/java-jdbc/01_jdbc_exercises/) in den Labs.

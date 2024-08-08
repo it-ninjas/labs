@@ -33,3 +33,5 @@ Um einen SSH-Schlüssel zu erhalten, müssen die folgenden Schritte befolgt werd
 Sobald der SSH-Schlüssel generiert wurde, muss der öffentlichen Schlüssel auf BitBucket hinzugefügt werden. Dort muss man auf "Konto verwalten" -> "SSH-Key" gehen, danach auf hinzufügen klicken. 
 In das Textfeld für den Schlüssel wird der Inhalt der Datei `id_rsa.pub` eingefügt.
 
+---
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Git Hands On Aufgabe](../../../../labs/git/01_git/) in den Labs.

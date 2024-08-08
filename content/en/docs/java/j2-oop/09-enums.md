@@ -154,6 +154,3 @@ public class Test {
     }
 }
 ```
-
----
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/java-oop) in den OOP-Labs.

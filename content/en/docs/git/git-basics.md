@@ -18,7 +18,7 @@ Git kann auf unterschiedliche Arten eingesetzt werden, es gibt graphische Oberfl
 
 ## Konfiguration von Git
 
-Git kann, wie die viele Software unter Linux, auf unterschiedlichen Level konfiguriert werden:
+Git kann, wie viele Softwares unter Linux, auf unterschiedlichen Levels konfiguriert werden:
 
 * `/etc/gitconfig` enthält die Werte, welche für alle Benutzer auf dem System gelten. Die Datei kann mit `git config --system` gelesen oder editiert werden. Man braucht Administrator- oder Superuser-Rechte um die Datei zu editieren.
 * `~/.gitconfig` oder `~/.config/git/config` enthält die Werte, welche für den aktuellen Benutzer konfiguriert sind. Mit `git config --global` können Werte gesetzt oder ausgelesen werden.

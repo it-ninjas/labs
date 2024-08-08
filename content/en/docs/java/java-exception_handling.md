@@ -120,12 +120,13 @@ try {
 Ein solches Statement kann beliebig viele catch-Blöcke aufweisen:
 ```java
 try {
-    int[] array = new int[2];
-    array[3] = 30 / 0;
-} catch (ArithmeticException e) {
-    // Code für die Abhandlung der ArithmeticException
-} catch (ArrayIndexOutOfBoundsException e) {
-    // Code für die Abhandlung der ArrayIndexOutOfBoundsException
+    FileReader fileReader = new FileReader("nonexistent.txt");
+    // Hier würde noch Code kommen, welcher vom File lesen würde.
+} catch (FileNotFoundException e) {
+    // Hier wird nun die FileNotFoundException gehandhabt
+    System.err.println("File not found: " + e.getMessage());
+} catch (IOException e) {
+    System.err.println("Error reading from file: " + e.getMessage());
 }
 ```
 
@@ -258,34 +259,43 @@ Seit Java 7 gibt es die Möglichkeit für einen sogenannten Multi-Catch.
 Schauen wir uns das folgende Beispiel an:
 #### Ohne Multi-Catch
 ```java
-public static void main(String[] args) {
-    Scanner scn = new Scanner(System.in);
-    try {
-        int n = Integer.parseInt(scn.nextLine());
-        if (99%n == 0) {
-            System.out.println(n + " is a factor of 99");
+ public static void main(String[] args) {
+        String filename = "example.txt";
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Ein-/Ausgabefehler beim Lesen der Datei: " + e.getMessage());
+        } catch (ParseException e) {
+            System.err.println("Fehler beim Parsen der Daten: " + e.getMessage());
+        } finally {
+            reader.close()
         }
-    } catch (ArithmeticException ex) {
-        System.out.println("Arithmetic Exception " + ex);
-    } catch (NumberFormatException ex) {
-        System.out.println("Number Format Exception " + ex);
-    }
-}
 ```
 
 #### Mit Multi-Catch
 ```java
-public static void main(String[] args) {
-    Scanner scn = new Scanner(System.in);
-    try {
-        int n = Integer.parseInt(scn.nextLine());
-        if (99%n == 0) {
-            System.out.println(n + " is a factor of 99");
+     public static void main(String[] args) {
+        String filename = "example.txt";
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException | ParseException e) {
+            System.err.println("Ein-/Ausgabefehler oder Fehler beim Parsen der Daten: " + e.getMessage());
+        } finally {
+            reader.close()
         }
-    } catch (ArithmeticException | NumberFormatException ex) {
-        System.out.println("Exception " + ex);
     }
-}
 ```
 
 Die beiden Exceptions werden in einem catch-Block zusammengefasst.
@@ -520,6 +530,36 @@ Drei der häufigsten Möglichkeiten, um mehr Null-Sicherheit in deinen Code zu b
 * `null`-Checks
 * Annotationen wie `@NotNull` und `@Nullable`
 * und `Optional<...>`-Typen zu verwenden.
+
+
+
+## Exceptions testen
+Wie regulären Java Code kann man natürlich auch Exceptions mit JUnit testen. Eine ausführliche Erklärung dazu ist [hier](https://www.baeldung.com/junit-assert-exception) zu finden.
+Das folgende Beispiel testet anhand `assertThrows()` dass die Methode `testCheckAge()` mit einem Alter unter 18 eine `EntryForbiddenException` wirft.
+
+```java
+public class SaloonTest {
+
+    @Test
+    public void testCheckAge() {
+        Saloon saloon = new Saloon();
+
+        // Testet mit einem Alter unter 18
+        int age = 17;
+        assertThrows(EntryForbiddenException.class, () -> {
+            saloon.checkAge(age);
+        });
+
+        // Testet mit dem Alter 18 (sollt keine Exception werfen)
+        age = 18;
+        try {
+            saloon.checkAge(age);
+        } catch (EntryForbiddenException e) {
+            fail("Unexpected EntryForbiddenException thrown");
+        }
+    }
+}
+```
 
 ---
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Exception Handling](../../../labs/java/java-exception-handling/01_exercises) in den Labs.

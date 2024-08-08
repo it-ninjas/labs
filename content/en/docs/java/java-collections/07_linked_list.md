@@ -8,15 +8,15 @@ description: >
 
 ## java.util.LinkedList
 
-LinkedLists sind verkettete Listen. D.h. die Elemnte der Listen sind zu einander verkettet
+LinkedLists sind verkettete Listen. D.h. die Elemente der Listen sind zueinander verkettet
 und nicht wie bei einer ArrayList an bestimmten Positionen platziert.
 
 java.util.LinkedList implementiert zwei Collection-Interfaces: java.util.List und java.util.Deque.
 Das bedeutet grundsätzlich, dass sie sowohl die Methoden des List-Interfaces implementiert, als auch die des Deque-Interfaces.
 
 Grundsätzlich gibt es zwei Arten von verketteten Listen: Einfach verkettete Listen und doppelt verkettete Liste.
-Wir werden beide anschauen, wie sie im Allgeimeinen aussehen.
-Die java.util.LinkedList ist die Implementierung einer doppelt verketteten Liste..
+Wir werden beide anschauen, wie sie im Allgemeinen aussehen.
+Die java.util.LinkedList ist die Implementierung einer doppelt verketteten Liste.
 
 ### Einfach verkettete Listen
 
@@ -37,7 +37,7 @@ So wird ein neuer Knoten zwischen zwei Knoten eingeschoben.
 
 ![linkedlist2](../../java-collections/linkedlist2.png)
 
-#### Element zu aus einer einfach verketten Liste löschen
+#### Element aus einer einfach verketten Liste löschen
 
 Wird ein Knoten aus einer einfach verketteten Liste gelöscht, dann muss die Referenz des Knotens davor
 auf das zu löschende Element gelöscht werden und ersetzt werden mit der Referenz auf das nächste Element.
@@ -49,7 +49,7 @@ So wird ein bestehender Knoten zwischen zwei Knoten entfernt.
 ### Doppelt verkettete Listen
 
 In einer doppelt verketteten Liste haben die Knoten nicht nur eine Referenz auf den nächsten Knoten, sondern
-auch eine Referenzen auf den vorherigen Knoten.
+auch eine Referenz auf den vorherigen Knoten.
 Eine mögliche Implementierung einder doppelt verketteten Liste könnte sein, dass der letzte Knoten,
 wie auch schon bei einer einfach verketteten Liste eine Referenz auf `null` hat als nächsten Knoten
 und der erste Knoten in einer doppelt verketteten Liste eine Referenz auf `null` hat als vorherigen Knoten.
@@ -63,7 +63,7 @@ Das Einfügen und Entfernen funktioniert analog zu einer einfach verketteten Lis
 #### Ein Element aus einer (einfach oder doppelt) verketteten Liste auslesen
 Wenn man ein Element in einer einfach verketteten Liste auslesen möchte, dann muss man vom ersten Knoten
 anfangen und ein Knoten nach dem anderen die Liste durchlaufen bis zu diesem Element. Im "schlimmsten" Fall
-muss über alle Knoten iteriert werden, wenn das Element, das mun sucht, im letzten Knoten ist.
+muss über alle Knoten iteriert werden, wenn das Element, das man sucht, im letzten Knoten ist.
 
 #### ArrayList vs. LinkedList
 
@@ -74,7 +74,7 @@ einfügen oder löschen möchte.
 Der Nachteil jedoch besteht darin, dass der Zugriff auf Elementen der Liste an einer bestimmten Position
 im Vergleich zu ArrayLists langsamer ist, da in diesem Fall die Liste bis zu dem entsprechenden Element
 durchlaufen werden muss.
-Die Entscheidung für einen bestimmten Listen-Typ ist also  abhängig von der Art und Anzahl
+Die Entscheidung für einen bestimmten Listen-Typ ist also abhängig von der Art und Anzahl
 der Zugriffe.
 
 ### LinkedList-Klasse im Java
@@ -170,3 +170,11 @@ public void addLast(E e)
 
 
 ```
+
+{{% blocks/lead color="orange" %}}
+Aufgaben
+{{% /blocks/lead %}}
+
+## Aufgaben
+
+[Aufgaben zu Modul #J7 - Java Collections - LinkedList](../../../../labs/java/java-collections/07_linkedlist)

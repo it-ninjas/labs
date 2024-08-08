@@ -1,7 +1,7 @@
 ---
 title: "Methoden"
 linkTitle: "Methoden"
-weight: 8
+weight: 9
 description: >
   Modul #J1
 ---
@@ -70,4 +70,3 @@ Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, emp
 
 
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 5](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-5---methoden) in den Labs.
-

@@ -27,3 +27,5 @@ Schreibe dazu eine eigene `equals()` Methode und verwende diese für die Überpr
 
 *Es soll kein Scanner eingesetzt werden.*
 
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop).

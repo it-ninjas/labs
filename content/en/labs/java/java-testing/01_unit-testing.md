@@ -150,3 +150,6 @@ public class PasswordValidator {
 ```
 
 Wenn du eine Lösung gefunden hast, dann kannst du diese noch aufräumen (Refactoring).
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-testing/#junit).

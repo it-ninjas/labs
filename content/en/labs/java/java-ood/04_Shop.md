@@ -44,3 +44,6 @@ Das System sollte folgende Funktionen unterstützen:
 - Anzeigen aller Bestellungen eines bestimmten Kunden.
 - Aufgeben einer neuen Bestellung für einen Kunden.
 - Aktualisieren des Bestellstatus für eine Bestellung.
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-ood).

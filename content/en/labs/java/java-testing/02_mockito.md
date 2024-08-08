@@ -116,3 +116,6 @@ Schreibe eine Test-Klasse für _Dictionary_, welche folgende Tests beinhaltet:
   * **then** ist das Ergebnis, welche erwartet wird
 * Jede Test-Methode prüft, dass alle Methoden eines Mocks/Spy's welche aufgerufen werden müssen, auch aufgerufen wurden.
 * Jede Test-Methode prüft, dass alle Methoden eines Mocks/Spy's welche NICHT aufgerufen werden sollen, auch nicht aufgerufen wurden.
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-testing/#mockito).

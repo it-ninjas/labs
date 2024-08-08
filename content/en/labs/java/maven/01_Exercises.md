@@ -136,3 +136,6 @@ Erstellen eines neuen Projektes, welches wir später für das Modul Unit-Testing
 7. Auf der rechten Seite im IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.
 
 Wenn alles geklappt hat, dann werden die definierten Abhängigkeiten aus dem POM in das lokale Repository heruntergeladen. 
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/maven).

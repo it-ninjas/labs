@@ -37,3 +37,5 @@ Folgende Arten von Items können sich in der Bibliothek befinden:
 
 *Es soll kein Scanner eingesetzt werden.*
 
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-ood).

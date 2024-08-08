@@ -57,3 +57,6 @@ Der Zoo hat also Mitarbeiter und Mitglieder und verschiedene Tiere, die in versc
 Die Beziehung zwischen den einzelnen Klassen wie dem Zoo seinen Gehegen und Tieren soll sich an der realen Welt orientieren.
 
 **Info:** Bei dieser Aufgabe darf man **NICHT** gebrauch von Lombok machen.
+
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-ood).

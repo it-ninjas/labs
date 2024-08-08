@@ -53,3 +53,5 @@ Ein Film soll um den Wert *Sprachen* erweitert werden. Darin wird gepseichert, i
 
 *Es soll kein Scanner eingesetzt werden.*
 
+---
+Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop).

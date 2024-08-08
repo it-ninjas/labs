@@ -21,19 +21,33 @@ Postleitzahlen einlesen und verarbeiten:
 - <a href="/files/csv/Postleitzahlen_ISO-8859-1.csv">PLZ (ISO-8859-1 Format)</a>
 
 ### Ausgabe  
-Die Ausgabe muss das folgende Format aufweisen. Beachte, dass die Aufzählungen der Ortschaften sortiert sind.
+Die Ausgabe muss das folgende Format aufweisen:
 ```text
-- Anzahl PLZ: 42
-- Kleinste PLZ der Gemeinde Bern: 4444 Bern
-- Grösste PLZ der Gemeinde Bern: 4444 Bern
-- Anzahl Gemeinden mit mehr als 10 Buchstaben: 42
-- Anzahl Gemeinden mit 7 Buchstaben: 42
-- Anzahl Gemeinden mit der Buchstabenfolge 'ent': 42
-- Gemeinden mit 3 Buchstaben: Abc, Def, Xzz
-- Anzahl Buchstaben der kleinsten Gemeinden: 2
-- Kleinsten Gemeinden: di, ri, ru
-- Anzahl Buchstaben der grössten Gemeinden: 5
-- Grössten Gemeinden: diwil, riwil, ruwil
+- Anzahl PLZ: [anzahl]
+- Kleinste PLZ der Gemeinde Bern: [PLZ] [Ort]
+- Grösste PLZ der Gemeinde Bern: [PLZ] [Ort]
+- Anzahl Gemeinden mit mehr als 10 Buchstaben: [anzahl]
+- Anzahl Gemeinden mit 7 Buchstaben: [anzahl]
+- Anzahl Gemeinden mit der Buchstabenfolge 'ent': [anzahl]
+- Gemeinden mit 3 Buchstaben: [Ort], [Ort], [Ort]
+- Anzahl Buchstaben der kleinsten Gemeinden: [anzahl]
+- Kleinsten Gemeinden: [Ort], [Ort], [Ort]
+- Anzahl Buchstaben der grössten Gemeinden: [anzahl]
+- Grössten Gemeinden: [Ort], [Ort], [Ort]
+```
+Beachte, dass die Aufzählungen der Ortschaften sortiert sind. Die Ausgabe könnte Beispielsweise so aussehen:
+```text
+- Anzahl PLZ: 3197
+- Kleinste PLZ der Gemeinde Bern: 3000 Bern
+- Grösste PLZ der Gemeinde Bern: 3032 Bern
+- Anzahl Gemeinden mit mehr als 10 Buchstaben: 1986
+- Anzahl Gemeinden mit 7 Buchstaben: 232
+- Anzahl Gemeinden mit der Buchstabenfolge 'ent': 45
+- Gemeinden mit 3 Buchstaben: Auw, Ins, Vex, Vex, Zug, Zug
+- Anzahl Buchstaben der kleinsten Gemeinden: 3
+- Kleinsten Gemeinden: Ins
+- Anzahl Buchstaben der grössten Gemeinden: 89
+- Grössten Gemeinden: Deisswil bei Münchenbuchsee, Rapperswil (BE), Wiggiswil
 ```
 > **Ausgabe überprüfen**  
 > Der Konsole-Output Hash für diese Aufgabe ist: **`1768988137`**
@@ -122,4 +136,3 @@ Wir Kopieren unsere `MyMap` Klasse zu der Klasse `MyHashMap` und erweitern diese
 1. Beim Hinzufügen von Zuweisungen wird der Hash-Code vom Schlüssel berechnet und ebenfalls abgespeichert.
 2. Die Schlüsselsuche wird anschliessend über die gespeicherten Hash-Code der Schlüssel durchgeführt statt über die Schlüssel selbst.
 3. Ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) soll umgesetzt werden.
-
