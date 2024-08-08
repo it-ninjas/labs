@@ -46,7 +46,7 @@ Set<String> tanzVerein = Set.of(
 {{% /details %}}
 
 ### Ausgabe  
-Die Ausgabe von Format her so aussehen:
+Die Ausgabe soll vom Format her so aussehen
 ```text
 - Wie viele Personen machen min. in einem Verein mit: [anzahl]: [namen]
 - Alle Personen, welche im Fussball und Tanz Verein sind: [anzahl]: [namen]
@@ -63,7 +63,7 @@ Achte auf Details wie, dass die Namen ohne Lücken aufgeführt werden ansonsten 
 
 
 ### Ausgabe überprüfen
-Wie können ihr die Ausgabe überprüfen?
+Wie könnt ihr die Ausgabe überprüfen?
 Wir benützen dazu eine kleine Hilfsklasse [`OutputValidation`](https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java).
 Die Klasse erlaubt es eure `System.out.println()` Anweisungen mit `OutputValidation.logAndPrint()` zu ersetzten.
 Am Schluss des Programmes kann man mit `OutputValidation.printControlHash()` den Hash-Wert der eigenen Ausgabe anzeigen, oder mit `OutputValidation.verifyControlHash()` einen Hash-Wert zur Überprüfung mit eurer Ausgabe überreichen.
