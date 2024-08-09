@@ -13,7 +13,7 @@ description: >
 * Ich kann ein HTML-Formular erstellen und die Werte aus dem Formulare an einem Backend verschicken.
 
 ## Wieso HTML-Formulare?
-Die Benutzer deiner Webseite möchten oder sollen Daten eingeben können, z.B. für ein Kontakt-Formular oder eine Login-Seite. HTML-Formulare ermöglichen genau das, auch ohne JavaScript.
+Die Benutzer deiner Webseite möchten oder sollen Daten eingeben können, z.B. für ein Kontakt-Formular, eine Login-Seite oder für Bestellungen. HTML-Formulare ermöglichen genau das, auch ohne JavaScript.
 
 ## HTML-Input-Element
 Bevor wir uns HTML-Formulare genauer anschauen, wollen wir zuerst einen Blick auf Input-Elemente werfen, die das Eingeben von Daten überhaupt ermöglichen.
@@ -94,7 +94,43 @@ Folgender Code zeigt ein Formular, das eine E-Mail und ein Boolean beim Klick au
 
 Entscheidend ist hier das `<form>`-Tag. Das `action`-Attribut legt fest, wo die Daten hingeschickt werden. Die `method` legt fest, welche HTTP Request Method verwendet wird (GET oder POST). Bist du dir bei den Methoden nicht mehr so sicher, dann schaue bitte das "REST"-Kapitel hier noch einmal an: https://labs.it-ninjas.ch/docs/java/spring_introduction/#625-rest 
 
-Bei Formularen verwendet man meistens entweder GET oder POST. Der grosse Unterschied zwischen beiden Methoden ist, dass bei GET die Daten in der URL mitgegeben wird, wobei bei POST die Daten ein bisschen besser versteckt im HTTP Request Body mitgeschickt werden. Verschickst du ein Passwort, solltest du lieber POST verwenden, weil sonst das Passwort womöglich im Browser in der URL-Box einsehbar sein könnte. Die zu verwendende Methode wird meistens vom Backend festgelegt. Unser Backend unterstützt beide Methoden.
+Bei Formularen verwendet man meistens entweder GET oder POST. Obwohl beide zum selben Resultat führen, unterscheiden sie sich trotzdem grundlegend voneinander. Die zu verwendende Methode wird meistens vom Backend festgelegt. Unser Backend unterstützt beide Methoden.
+
+### GET
+
+Bei der GET-Methode werden die Daten, die an den Server gesendet werden sollen, direkt in die URL geschrieben. Sie können in der Adresszeile des Browsers im Klartext angesehen werden.
+
+https://www.w3schools.com/action_page.php?email=hello@world.com&interested=on
+
+**Vorteile**
+
+Da die Parameter zusammen mit der URL gespeichert werden können, lassen sich für bestimmte Abfragen auch Lesezeichen (Bookmarks) anlegen und die Seite kann über den Browserverlauf "zurückgeholt" werden.
+
+**Nachteile**
+
+Hauptnachteil ist der fehlende Datenschutz.. Die mtgesendeten URL-Parameter werden nicht nur unverschlüsselt übertragen, sondern auch im Klartext im Cache, im Browserverlauf und im Logfile des Servers abgelegt. Deshlb sollten die Login-Daten, alsio insbesondere ein Passwort, besser mit POST übertragen werden.
+Ein weiterer Nachteil besteht in der beschränkten Kapazität, je nach Webserver und Browser ist die maximale Länge der URL auf 2.000 Zeichen begrenzt. URL-Parameter können ausserdem nur ASCII-Zeichen aufnehmen, d.h. Bilder, Videos oder Audiodaten können mit dieser Methode nicht übertragen werden.
+
+
+
+
+### POST
+
+Die POST-Methode schreibt die URL-Parameter in den HTTP-Request. Sie sind damit für Benutzer nicht sichtbar. Der Umfang der POST-Anfragen ist unbeschränkt.
+
+**Vorteile**
+
+Wenn sensible Daten an den Server übermittelt werden sollen – z. B. das Loginformular mit Benutzername und Passwort –, bietet die POST-Methode die erforderliche Diskretion. Die Daten werden weder im Cache gespeichert, noch erscheinen sie im Browserverlauf.  Mit der POST-Methode können nicht nur kurze Texte, sondern Daten jeglichen Umfangs und Typs übermittelt werden, etwa Fotos oder Videos.
+
+**Nachteile**
+
+Wenn eine Webseite mit einem Formular im Browser aktualisiert wird, müssen die Formulardaten nochmals übermittelt werden. Dabei besteht die Gefahr, dass die Daten versehentlich mehrmals gesendet werden, was etwa bei einem Bestellformular unerwünschte Doppelaufträge auslösen kann. Ebenso können die Daten, die mit der POST-Methode übermittelt werden, nicht zusammen mit der URL als Lesezeichen gespeichert werden.
+
+### Wann sollte welche Methode verwendet werden?
+
+POST wird fast durchwegs bevorzugt, wenn der Anwender Daten oder Dateien an den Server übermitteln muss, beispielsweise bei Formularen mit vielen Daten oder beim Hochladen von Bildern.
+
+GET eignet sich besonders gut für das Personalisieren von Websites: Die Sucheingaben, Filter-Einstellungen und Listensortierungen des Anwenders können zusammen mit der URL als Lesezeichen gespeichert werden, sodass beim nächsten Aufruf die Website exakt so aussieht, wie man es sich wünscht.
 
 Wichtig für das Formular ist, dass es einen `submit`-Button besitzt. Dieser Submit-Button löst das Senden der Daten an die angegebene Url (`action`) mit der entsprechenden HTTP Request Method (`method`) aus. Probiere dieses Formular einmal aus. Du wirst sehen, dass etwas wie Folgendes an den Server übermittelt wird:
 

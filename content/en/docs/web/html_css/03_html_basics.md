@@ -22,13 +22,13 @@ um eine Glühbirne auszuwechseln?</p>
 <p>Keinen, das ist ein Hardware-Problem!</p>
 ```
 
-Du hast gesehen, dass das zwischen `<h1>` und `</h1>` wie ein Titel formatiert wurde, und dass der Text zwischen `<p>` und `</p>` in eigenen Abschnitten dargestellt wurde.
+Du hast gesehen, dass das zwischen `<h1>` und `</h1>` wie eine Überschrift formatiert wurde, und dass der Text zwischen `<p>` und `</p>` in eigenen Abschnitten dargestellt wurde.
 
 ## HTML Tags
 
-Du hast schon die ersten "HTML Tags" kennengelernt: `<h1>` und `<p>`. `<h1>` wird für Titel und `<p>` wird für Paragrafen verwendet.
+Du hast schon die ersten "HTML Tags" kennengelernt: `<h1>` und `<p>`. `<h1>` wird für Überschriften und `<p>` wird für Absätze verwendet.
 
-HTML Tags sind wie Keywords (Schlüsselbegriffe), die beschreiben, wie der Browser deren Inhalt (Content) formatiert bzw. darstellt.
+HTML Tags sind wie Keywords (Schlüsselbegriffe), die beschreiben, wie der Browser deren Inhalt (Content) interpretiert.
 
 Die Tags inklusiv deren Inhalt nennen wir "Element". Das Element ist wie folgt aufgebaut:
 

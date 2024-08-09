@@ -18,7 +18,7 @@ Genau das wird mit HTML erreicht. Jeder Browser versteht HTML.
 ## Was ist HTML?
 Beginnen wir mit der Definition der Abkürzung "HTML". Diese steht für "HyperText Markup Language". Okay, was aber bedeutet das?
 
-Mit HyperText ist ein Dokument gemeint, das nicht dafür gemacht ist, um von oben nach unten gelesen zu werden. HyperText enthält also z.B. Links, die auf andere Dokumente führen. Unter Markup ist zu verstehen, dass das Dokument strukturiert (Kopfzeilen, Hauptteil, Fusszeilen) und formatiert (z.B. kursiver/fetter Text) ist.
+Mit HyperText ist ein Dokument gemeint, das in der Regel nicht dafür gemacht ist, um von oben nach unten gelesen zu werden. HyperText enthält also z.B. Links, die auf andere Dokumente oder zu anderen Stellen auf der gleichen Seite führen. Unter Markup ist zu verstehen, dass das Dokument strukturiert (Kopfzeilen, Hauptteil, Fusszeilen) und formatiert (z.B. kursiver/fetter Text) ist.
 
 Somit ist HTML also eine Sprache, die alle Elemente auf einer Webseite **BESCHREIBT**. Die Betonung liegt hier auf "beschreibt". Das bedeutet, dass HTML keine Programmiersprache ist. Code, der auf der Webseite ausgeführt wird, ist in JavaScript geschrieben.
 

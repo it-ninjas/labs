@@ -12,7 +12,7 @@ description: >
 
 Um CSS anwenden zu können, müssen wir das Grundprinzip verstehen:
 
-Mit CSS werden selektiv HTML-Elemente ausgewählt und deren Styling angepasst. Hierfür gibt es verschiedene Möglichkeiten, welche wir im Verlaufe des Kurses kennenlernen werden.
+Mit CSS wird das Aussehen (und z.T. auch Verhalten) von HTML-Elementen definiert. Diese Styledefinition wird nur auf passende HTML-elemente angewendet, wenn kein passendes HTML-Element vorhanden ist, bleibt die Definition wirkungslos. Hierfür gibt es verschiedene Möglichkeiten, welche wir im Verlaufe des Kurses kennenlernen werden.
 
 CSS verfolgt dabei die folgende Syntax:
 

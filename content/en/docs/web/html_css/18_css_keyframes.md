@@ -13,6 +13,8 @@ description: >
 * Du weisst, wie du wiederholende Animationen erstellen kannst mit Keyframes.
 
 ## Übergänge
+Übergänge werden häufig eingesetzt, um zu visualisieren, dass eine Schaltfläche den Fokus erhalten oder verloren hat oder um Grössenänderungen (z.B. von Navigationsleisten) weniger abrupt und damit für das Auge angenehmer zu gestalten.
+
 In CSS kannst du sehr einfach Übergänge erstellen. Zum Beispiel kannst du ungefähr so die Form eines `<div>`s verändern:
 
 ```html
