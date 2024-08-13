@@ -117,7 +117,7 @@ Die Watcher werden dann über den Variablen aufgelistet:
 Genau wie beim Hinzufügen kann man einen Watcher entfernen, indem man einem rechten Mausklick auf die Variabel tätigt und "Remove Watch" anklickt.
 
 ## Debuggen von Spring Boot
-Spring Boot Code ist in Java geschrien, dementsprechend bleibt das Debuggen grundsätzlich gleich. Jedoch musst du die Interaktionen zwischen Repositorys, Services und Controllern gut verstehen und wissen, wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step Into behilflich sein.
+Spring Boot Code ist in Java geschrieben, dementsprechend bleibt das Debuggen grundsätzlich gleich. Jedoch musst du die Interaktionen zwischen Repositorys, Services und Controllern gut verstehen und wissen, wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step Into behilflich sein.
 
 ---
 Mehr Informationen bezüglich Debuggen in IntelliJ findest du unter folgenden Link:
