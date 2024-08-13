@@ -24,7 +24,7 @@ description: >
 Java ist eine objektorientierte Programmiersprache, die schon seit ca. zwei Jahrzehnten grosse Popularität geniesst.
 Die Entwicklung von Java begann Anfang der 1990er-Jahre beim US-amerikanischen Hard- und Softwarehersteller Sun Microsystems.
 1995 wurde die erste Version veröffentlicht. 2010 wurde Sun Microsystems von Oracle übernommen.
-Gegenwärtig erscheinen im Halbjahrestakt neue Java-Versionen; die nächste Version, Java 21, wird im September 2023 veröffentlicht.
+Gegenwärtig erscheinen im Halbjahrestakt neue Java-Versionen; die nächste Version, Java 23, wird im September 2024 veröffentlicht.
 
 ---
 
