@@ -185,3 +185,6 @@ Auf der Angular Dokumentation sind zudem auch [Tutorial](https://angular.dev/tut
 Zudem ist nun auch ein sogenannter [Playground](https://angular.dev/playground) von Angular selbst hinzugefügt worden, diesen kann man auch über die Dokumentation erreichen.
 Der Playground hat die Aufgabe, das Entwickler bereits ihren Code im Browser testen können, ohne dafür ein neues Angular-Projekt aufsetzen zu müssen.
 Vor dem offiziellen Playground musste man dies immer auf der Seite [Stackblitz](https://stackblitz.com/) erledigen. Diese ist jedoch auch heutzutage immer noch sehr hilfreich, da man dort in verschiedensten Sprachen Code im Browser testen kann.
+
+## Debugging
+Auch bei Angular bleibt Debugging ein wichtiges Thema. Grundsätzlich bleibt alles gleich wie bei JavaScript, wenn du dein Wissen nochmals auffrischen möchtest, kannst du [hier klicken](../javascript/24_debugging.md).
