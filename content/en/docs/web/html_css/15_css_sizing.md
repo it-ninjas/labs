@@ -9,6 +9,10 @@ description: >
   
   Auf dieser Seite erfährst du, wie du die Grössen von Elementen definierst.
 ---
+#### Ziele
+* Ich verstehe den Unterschied zwischen Block- und Inline-Elementen und kann diese in HTML erkennen.
+* Ich kann sowohl relative als auch absolute Einheiten in CSS verwenden, um die Größe von Elementen zu bestimmen.
+* Ich kann Abstände zwischen und innerhalb von Elementen mithilfe von Margin und Padding in CSS gezielt einstellen.
 
 ## Block- und Inline-Elemente
 Bevor wir Elemente dimensionieren, müssen wir wissen, welche Elemente wir überhaupt dimensionieren können.

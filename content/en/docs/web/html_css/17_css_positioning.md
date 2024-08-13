@@ -7,6 +7,11 @@ date: 2022-04-19
 description: >
   Modul #F3 - HTML und CSS - HTML-Elemente auf der Seite positionieren.
 ---
+#### Ziele
+* Ich weiss, wie man mit position: relative HTML-Elemente verschieben kann, ohne den Textfluss zu beeinflussen.
+* Ich weiss, wie man mit position: absolute Elemente auf einer festen Position innerhalb eines Containers platziert.
+* Ich kann position: fixed anwenden, um Elemente unabhängig vom Scrollen an einer festen Position zu halten.
+
 
 Der Tag wird kommen, an dem du ein HTML-Element an einer bestimmten Position haben willst.
 

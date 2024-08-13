@@ -11,8 +11,14 @@ description: >
 * Ich weiss, was semantische Tags sind und wofür sie verwendet werden.
 * Ich kann, HTML-5 semantische Elemente anwenden.
 
+## Einführung
+Semantik, auch Bedeutungslehre genannt, ist die wissenschaftliche Beschäftigung mit Bedeutung und mit den verschiedenen Beziehungen zwischen einem Zeichen und dem Bezeichneten.
+
+In HTML – ganz besonders seit HTML 5 – gibt es semantische Tags, bei denen die Elemente eine ganz bestimmte Bedeutung haben (z.B. `<h1>` oder `<label>`) und nicht-semantische Tags (z.B. `<span>` oder `<div>`)
+
+
 ## Nicht-semantische Tags
-Oft kommst du in die Situation, wo du mehrere Elemente in einem anderen Element gruppieren willst. In den aller meisten Fällen verwendet man dafür `div`-Elemente.
+Oft kommst du in die Situation, wo du mehrere Elemente in einem anderen Element gruppieren willst. In den meisten Fällen verwendet man dafür `div`-Elemente.
 
 `<div>`-Tags werden oft als Container für HTML-Elemente verwendet. Dieser Container kann dann mit CSS gestylt oder mit JavaScript manipuliert werden. Probiere das nächste Beispiel einmal aus, ohne das Styling zu verstehen (ignoriere das, was im `<style>`-Element drinsteht):
 
@@ -34,7 +40,7 @@ Other Text
 </style>
 ```
 
-Das ist ein typisches Beispiel für die Verwendung von `<div>`s. 
+Das ist ein typisches Beispiel für die Verwendung von `<div>` Elementen. 
 
 Möchtest du hingegen ein paar Wörter (aber nicht einen ganzen Block/Paragrafen) speziell stylen, wird oft ein `<span>`-Element verwendet. Möchtest du z.B. das Datum in einem Text hervorheben, dann könnte das z.B. so aussehen:
 

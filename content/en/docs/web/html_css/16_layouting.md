@@ -7,6 +7,10 @@ date: 2022-04-19
 description: >
   Modul #F3 - HTML und CSS - Block-Elemente layouten.
 ---
+#### Ziele
+* Ich weiss, was Floating ist und wie es verwendet wird, um Elemente nebeneinander anzuordnen.
+* Ich weiss, was Flexbox ist und wie man display: flex anwendet, um flexible Layouts zu erstellen.
+* Ich kann Media Queries nutzen, um Flexbox-Layouts für unterschiedliche Bildschirmgrößen anzupassen.
 
 Du hast dich sicherlich schon gefragt, wie du mehrere Elemente nebeneinander haben kannst. Hierfür müssen wir ein paar Worte über Layouting verlieren.
 
@@ -215,6 +219,7 @@ Theoretisch reicht das Wissen über Flex-Boxen bereits, um eine ganze Seite zu l
 ### Hilfestellung
 Hier kriegst du eine gute visuelle Übersicht über die einzelnen Flex-Properties: https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties
 Hier sind von w3schools die wichtigsten Eigenschaften von Flex-Boxen beschrieben: https://www.w3schools.com/css/css3_flexbox.asp
+Die Definition von Dimensionen - bes. auch der Höhe von elementen -, sowie Flexlayout und Gridlayout sind komplexe Themen, bei denen viele Missverständnisse auftreten können. Hier wird die Dokumentation von https://wiki.selfhtml.org/wiki/CSS/Tutorials/Flexbox (deutsch) als Ergänzung empfohlen.
 
 ### Display-Flex-Properties üben
 Auf [Flexbox Froggy](https://flexboxfroggy.com/#de) kannst du dein Flexbox-Wissen auf lustige Art und Weise trainieren. Nimm dir rasch Zeit dafür.

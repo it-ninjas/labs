@@ -14,8 +14,8 @@ description: >
 * Ich weiss, wie ich ungeordnete/unsortierte Listen erstellen kann.
 * Ich weiss, was Definitionslisten sind und wie und wozu ich sie einsetzen kann.
 
-## Titel (Heading)
-Du hast bereits erfahren, dass du mit `<h1>` für Titel verwenden kannst. Oft hast du aber einen Titel für die Seite und dann Titel, die diesem Titel untergeordnet sind. Wie in einem Word-Dokument kannst du auch in HTML Titel hierarchisch verschachteln. Das geht so:
+## Überschrift (Heading)
+Du hast bereits erfahren, dass du mit `<h1>` für Überschriften verwenden kannst. Oft hast du aber eine Überschrift für die Seite und dann Überschriften, die diesem Titel untergeordnet sind. Wie in einem Word-Dokument kannst du auch in HTML Überschriften hierarchisch verschachteln. Das geht so:
 
 ```html
 <h1>Heading 1</h1>
@@ -32,9 +32,9 @@ Dies führt zu folgendem Ergebnis:
 
 ![headings](../headings.jpg "(Bild, das zeigt, wie Headings dargestellt werden.)")
 
-Es gibt also Tags für Titel erster bis sechste Stufe. Grundsätzlich gilt, je kleiner die Zahl der Stufe, je grösser wird der Titel dargestellt. Das obrige Ergebnis zeigt, wie Titel per Default gestylt werden. Du kannst das Styling dieser Titel selbstverständlich anpassen (kommt im CSS-Teil).
+Es gibt also Tags für Überschriften erster bis sechste Stufe. Grundsätzlich gilt, je kleiner die Zahl der Stufe, je grösser wird die Überschrift dargestellt. Das obige Ergebnis zeigt, wie Überschriften per Default formatiert werden. Du kannst das Styling dieser Überschriften selbstverständlich anpassen (kommt im CSS-Teil).
 
-## Paragrafen
+## Absätze (Paragraf)
 Du hast bereits erfahren, dass Zeilenumbrüche in HTML keine Wirkung haben. Möchtest du eine neue Zeile einfügen, könnte dir das `<br/>`-Tag weiterhelfen. Besser ist aber, wenn du den Text, der zusammengehört, auch entsprechend markierst: Das kannst du mit dem `<p>`-Tag erreichen. Der Text, der innerhalb dieses Tags steht, wird in einem gleichen Abschnitt dargestellt. Ausserdem trennt es diesen Inhalt mit Leerschlag zum nächsten Element. Das wird im folgenden Beispiel verdeutlicht:
 
 ```html
@@ -76,7 +76,7 @@ Das kannst du mit HTML sehr einfach erreichen, denn dafür gibt es spezielle Tag
 
 ```
 
-Um also einen bestimmten Text fett darzustellen, kannst du es in ein `<strong>`- oder `<b>`-Element schmeissen. Beide Tags BEZWECKEN im Prinzip genau das Gleiche, MEINEN aber nicht zwingend das Gleiche: `<b>`-Elemente sind einfach fett-gedruckt, während `<strong>`-Elemente betont sein sollen. `<strong>` soll dem fett-gedruckten Wort also mehr Ausdruck verleihen. Mit einem eigenen Styling (kommt im CSS-Teil) könntest du `<strong>`-Elemente z.B. auch grösser oder rot darstellen. Mit einem `<b>`-Element sagt man im Prinzip nur, dass der Text fett-gedruckt sein soll.
+Um also einen bestimmten Text fett darzustellen, kannst du es in ein `<strong>`- oder `<b>`-Element verwenden. Beide Tags BEZWECKEN im Prinzip genau das Gleiche, MEINEN aber nicht zwingend das Gleiche: `<b>`-Elemente sind einfach fett-gedruckt, während `<strong>`-Elemente betont sein sollen. `<strong>` soll dem fett-gedruckten Wort also mehr Ausdruck verleihen. Dieser Unterschied ist vor allem für den Einsatz von Screenreadern wichtig. Mit einem eigenen Styling (kommt im CSS-Teil) könntest du `<strong>`-Elemente z.B. auch grösser oder rot darstellen. Mit einem `<b>`-Element sagt man im Prinzip nur, dass der Text fett-gedruckt sein soll.
 
 Einen Text kursiv darstellen kannst du mit `<i>` bzw. `<em>`. Das Pendant zu `<b>` ist `<i>` (italic), und dasjenige zu `<strong>` das `<em>` (emphasis = Betonung).
 
@@ -96,7 +96,7 @@ Das obige Beispiel wird so gerendert:
 Text zu formatieren ist Styling. Styling wiederum ist normalerweise die Aufgabe von CSS und nicht von HTML.
 
 ## Links und Bilder
-Eines der wichtigsten Elemente in HTML sind Links auf andere Seiten. Links werden mit `a`-Elementen (anchor) realisiert. Einen Link kann wie folgt erstellt werden:
+Eines der wichtigsten Elemente in HTML sind Links auf andere Seiten. Links werden mit `a`-Elementen (anchor) realisiert. Ein Link kann wie folgt erstellt werden:
 
 ```html
 <a href="https://labs.it-ninjas.ch/">Home</a>
@@ -116,7 +116,7 @@ Ziemlich ähnlich kannst du auch ein Bild aus dem Internet einbinden:
      width="300" />
 ```
 
-Ganz offensichtlich wird das `<img/>`-Tag (Image) für Bilder verwendet. Das `<img/>`-Tag ist ein Tag, welches keinen Inhalt zwischen Opening- und Closing-Tag hat. Mit dem `/` im Opening-Tag kann man symbolisieren, dass das Tag ohne Closing-Tag geschlossen wird.
+Ganz offensichtlich wird das `<img/>`-Tag (Image) für Bilder verwendet. Das `<img/>`-Tag ist ein Tag, welches keinen Inhalt zwischen Opening- und Closing-Tag hat. HTML bietet auch die Möglichkeit einer verkürzten Schreibweise: Statt <img src="..."></img> kann man auch <img src="..."/> schreiben. Das gilt für alle Elemente, die per default keinen Inhalt haben.
 
 Das wichtigste Attribut im `img`-Tag ist `src` (source = Quelle). Als `src` wird eine URL zu einem Bild erwartet. Vergiss nicht, bei absoluten Pfaden das Protokoll (also https://) anzugeben. Nicht zwingend aber erwartet wird das `alt`-Attribut (alternative). Dieser Text wird angezeigt, wenn das Bild nicht geladen werden konnte. Völlig optional sind hingegen Attribute wie `width` oder `height`, welche die Breite und Höhe des Bildes festlegen. Diese Grössen werden aber besser mit CSS spezifiziert, da CSS genauere Spezifikationen zulässt (also nicht nur in 'Pixel' sondern auch anderen Einheiten).
 
@@ -129,7 +129,12 @@ Wenn du willst, dass man beim Klick auf ein Bild weitergeleitet wird, kannst du 
 ```
 
 ## Listen
-In HTML gibt es verschiedene Arten, um Aufzählungen darzustellen. Wir schauen uns Bullet-Point-Listen, Nummerierte-Listen und Definitions-Listen an.
+In HTML gibt es verschiedene Arten, um Aufzählungen darzustellen. Wir schauen uns
+- ungeordnete Liste (unordered lists, Bullet Point-Listen),
+- geordnete Listen (ordered lists, nummerierte Listen)
+- und Definitionslisten (definition list)
+
+an.
 
 Eine Bullet-Point-Liste kann man mit einer unsortierten Liste (unordered list) kreieren:
 

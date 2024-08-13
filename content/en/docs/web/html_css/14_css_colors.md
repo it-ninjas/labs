@@ -7,6 +7,10 @@ date: 2022-04-19
 description: >
   Modul #F3 - HTML und CSS - Arten, um Farben anzugeben.
 ---
+#### Ziele
+* Ich kenne die verschiedenen Möglichkeiten, Farben in CSS zu definieren.
+* Ich verstehe die Unterschiede zwischen der Farbangabe über Namen, RGB und HEX in CSS.
+* Ich kann Farben in CSS korrekt und gezielt einsetzen.
 
 ## Zuweisen von Farben
 Um einem Text eine Schriftfarbe zuzuweisen, ist folgendes eine Option:
@@ -64,7 +68,7 @@ Am lesbarsten ist die Angabe der Farben via Namen. Es werden mindestens 140 Farb
 Hier findest du eine Liste der Farben: https://www.w3schools.com/colors/colors_names.asp
 
 ### via RGB
-RGB steht für Rot-Grün-Blau. Wenn man die Farben via RGB angibt, so gibt man an, wie intensiv jede dieser 3 Farben in der gewünschten Farbe vorkommt. 0 bedeutet, dass die Farbe nicht vorkommt, 255 bedeutet hingegen, dass die Farbe zu 100% gebraucht wird.
+RGB steht für Rot-Grün-Blau. Wenn man die Farben via RGB angibt, so gibt man an, wie intensiv jede dieser 3 Farben in der gewünschten Farbe vorkommt. 0 bedeutet, dass die Farbe nicht vorkommt, 255 bedeutet hingegen, dass die Farbe zu 100% gebraucht wird. Zusätzlich kann auch noch ein 4. Wert der sogenannte Alpha-Wert, angegeben werden. Dieser legt die Transparenz der Farbe fest, wobei 0 für komplett transparent und 255 für unduchsichtig steht.
 
 Folgende RGB-Werte solltest du als Informatiker:in kennen:
 
@@ -86,6 +90,12 @@ Name  | RGB              | HEX
 ----- | ---------------- | -------
 amber | rgb(255, 191, 0) | #ffbf00
 
+Das folgende Beispiel definiert einen schwarzen Hintergrund, der halbtransparent ist, d.h. das darunter liegende Element ist sichtbar, wirkt aber dunkler.
+
+```css
+background-color: rgb(0, 0, 0, 128);
+```
+
 ### via HEX color
 Am häufigsten werden im Web die Farben via Hex color angegeben.
 
@@ -104,3 +114,7 @@ Kennen solltest du sicher:
 | gray   | #808080
 
 Wenn bei allen Farben die beiden Ziffern gleich sind, dann kann bei jeder Farbe die zweite Ziffer weggelassen werden (siehe Tabelle).
+
+```css
+background-color: #B2222280;   /*dunkles Rot, zur Hälfte transparent*/
+```

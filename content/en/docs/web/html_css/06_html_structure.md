@@ -78,7 +78,7 @@ Wichtig für dich zum Wissen ist auch, dass deine HTML-Seite bestimmte Meta-Tags
 ```
 
 * Der `title` ist der Text, der im Tab angezeigt wird.
-* `charset` beschreibt, welche Zeichensatz im Dokument vorkommt. Damit du alle gängigen Zeichen brauchen kannst, wird "UTF-8" empfohlen. Das Fehlen dieser Zeile führt oft dazu, dass bestimmte Zeichen falsch dargestellt werden.
+* `charset` beschreibt, welche Zeichensatz im Dokument verwendet wird, d.h. als welches Zeichen der Browser den Zeichencode interpretieren soll. Damit du alle gängigen Zeichen brauchen kannst, wird "UTF-8" empfohlen. Das Fehlen dieser Zeile führt oft dazu, dass bestimmte Zeichen falsch dargestellt werden.
 * Die `description` wird zum Beispiel von Suchmaschinen verwendet. Wie z.B. Google solche Tags auswertet, erfährst du hier: https://developers.google.com/search/docs/advanced/crawling/special-tags?hl=de. `keywords` geht in eine ähnliche Richtung.
 * Die Zeile für den `viewport` kann praktisch immer 1-zu-1 übernommen werden. Dieser Wert führt dazu, dass die Seite auf mobilen Endgeräten nicht wie eine Desktop-Seite aussieht. Mit diesem Element wird der Text auf Smartphones meistens grösser. Dieses Meta-Tag wird empfohlen, wenn die Seite auf Smartphones gut aussehen soll.
 

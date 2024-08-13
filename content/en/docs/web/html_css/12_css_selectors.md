@@ -7,6 +7,11 @@ date: 2022-04-14
 description: >
   Modul #F3 - HTML und CSS - Die verschiedenen CSS-Selektoren.
 ---
+#### Ziele
+* Ich weiss, was CSS-Selektoren sind und wofür sie verwendet werden.
+* Ich kenne die verschiedenen Arten von CSS-Selektoren und ihre spezifischen Anwendungsfälle.
+* Ich kann CSS-Selektoren gezielt in HTML-Dokumenten anwenden.
+
 
 ## Was gibt es für CSS-Selektoren?
 

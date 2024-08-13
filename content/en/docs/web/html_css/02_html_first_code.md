@@ -11,19 +11,19 @@ description: >
 * Ich weiss, wie ich meine erstellte HTML-Seite im Browser anschauen kann.
 
 ## Eine HTML-Seite mit formatiertem Text erstellen
-Wir beginnen ganz unkompliziert. Erstellen wir zuerst eine Text-Datei. Dafür erstellen wir zuerst ein Ordner, in dem wir später unsere Projekt-Dateien speichern. Anschliessend kannst du diesen Ordner mit der IDE (Entwicklungsumgebung) deiner Wahl öffnen (hier VS Code). Erstelle nun eine neue HTML-Datei im soeben erstellten Ordner. In VS Code kannst du das z.B. wie folgt machen:
+Wir beginnen ganz unkompliziert. Erstellen wir zuerst eine Text-Datei. Dafür erstellen wir zuerst ein Ordner, in dem wir später unsere Projekt-Dateien speichern. Anschliessend kannst du diesen Ordner mit der IDE (Integrated Development Environment = Entwicklungsumgebung) deiner Wahl öffnen (hier VS Code). Erstelle nun eine neue HTML-Datei im soeben erstellten Ordner. In VS Code kannst du das z.B. wie folgt machen:
 
 ![createFile](../vs-code-create-file.png "Erstelle eine neue Datei, indem du im Explorer von VS Code mit deiner Maus über deinen Ordner bewegst. Klicke dann auf das Datei-Symbol und gib einen Dateinamen an, der mit .html endet.")
 
-Fülle diese Datei nun mit irgendeinem Text. Speichere diese Datei. Kopiere nun den Pfad zu dieser Datei. In VS Code kannst du den Pfad mit einem Rechtsklick auf die Datei kopieren:
+Fülle diese Datei nun mit einem beliebigen Text. Speichere diese Datei. Kopiere nun den Pfad zu dieser Datei. In VS Code kannst du den Pfad mit einem Rechtsklick auf die Datei kopieren:
 
 ![copyPath](../vs-code-copy-path.png " ")
 
-Gib diesen Pfad nun im Browser deiner Wahl ein. Du solltest nun einen unformatierten Text im Browser sehen:
+Gib diesen Pfad im Browser deiner Wahl ein. Du solltest nun einen unformatierten Text im Browser sehen:
 
 ![unformatedHtmlFile](../unformated-html-file.png " ")
 
-Abwohl du vorher evtl. Zeilenumbrüche und mehrer Leerschläge hattest, verschwinden diese im Browser nun. Dies kannst du umgehen, indem den Text mit Hilfe von HTML-Tags formatierst. Den HTML-Code könnte z.B. dann so aussehen:
+Obwohl du vorher evtl. Zeilenumbrüche und mehrere Leerschläge hattest, sind diese im Browser verschwunden. Willst du deinen Text strukturieren, kannst du den Text mit Hilfe von HTML-Tags formatieren. Der HTML-Code könnte dann z.B. dann so aussehen:
 
 ```html
 <h1>Kleiner Witz</h1>
