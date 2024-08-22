@@ -6,7 +6,7 @@ date: 2021-10-28
 description: Verteilte Versionsverwaltung mit Git
 ---
 
-Hallo Ninja! 🥷
+Hallo Ninja!
 
 Es freut uns das du **git** kennen lernen willst!
 
@@ -43,6 +43,7 @@ Dieses Lab unterteilt sich in folgende Themenbereiche:
 * [GitHub](git-hub)
 * [Git Erweitert](git-extended)
 
+Nachdem du die Docs gelesen hast, solltest du in der Lage sein die [Labs](../../../../labs/git/) zu lösen.
 ## Let's play!
 
 Meisterst du diese Challenges?
@@ -50,7 +51,3 @@ Meisterst du diese Challenges?
 * [oh my git!](https://ohmygit.org/)
 * [learn git branching](https://learngitbranching.js.org/)
 * [git immersion](https://gitimmersion.com)
-
-## Voraussetzungen
-
-* [git](https://git-scm.com/book/de/v2/Erste-Schritte-Git-installieren) installiert

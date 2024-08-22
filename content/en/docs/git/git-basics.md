@@ -145,7 +145,7 @@ $ git commit -m 'Initial Commit'
 Um ein Repository zu klonen wird der Befehl `git clone` verwendet:
 
 ```bash
-$ git clone https://github.com/libgit2/libgit2
+$ git clone git@github.com:libgit2/libgit2.git
 $ ls
 libgit2
 ```
@@ -327,7 +327,6 @@ origin
 $ git remote -v
 origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (fetch)
 origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (push)
-$ git remote add private git remote add private git@github.com:Lehrling/training-sbb-puzzle.git
 $ git remote -v
 origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (fetch)
 origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (push)
@@ -345,6 +344,10 @@ Es gibt zwei Arten, wie man Daten von einem Remote abholen kann, nach dem man da
 
 - `git pull`: Wenn der lokale Branch mit einem remote Branch verknüpft ist, holt `git pull` die Änderungen dieses remotes und fügt sie gleich mit den Änderungen im lokalen Branch zusammen (merge). Was Branches sind und wie ein Merge funktioniert schauen wir uns in kürze an, nur soviel, wird ein Repo gecloned, wird der lokale sogenannte `master` Branch mit dem `master` Branch des `origin` Remotes verknüpft.
 
+Falls korrekt gecloned wurde, muss bei Fetch der remote nicht angegeben werden. Das Gleiche gilt für die Angabe des Branches bei einem Pull, sie kann weggelassen werden.
+
 ### Pushen
 
 Wenn man seine Änderungen soweit hat, dass man sie mit dem Rest vom Team teilen will, dann kann man diese mit `git push <remote> <branch>` auf den Server laden. Dies funktioniert jedoch nur, wenn man auf dem Server auch Schreibrechte hat und niemand anderes vor einem gepusht hat.
+
+Auch hier muss, falls korrekt gecloned wurde, der remote nicht angegeben werden.

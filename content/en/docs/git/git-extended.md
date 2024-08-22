@@ -86,12 +86,22 @@ Danach muss noch ein Titel festgelegt werden. Es besteht ebenfalls die Möglichk
 Im Anschluss besteht die Möglichkeit einen Reviewer hinzuzufügen.
 Jetzt kann der Pull Request erstellt werden.
 
+Funktioniert nur für GitHub, um Pull Requests in Bitbucket zu erstellen ist die folgende Anleitung zu beachten.
+
 ### Wie kann eine Pull Request erstellt werden (Github)
 Um einen Pull Request direkt von GitHub aus zu erstellen, muss zuerst der Reiter Pull Request ausgewählt werden,
 Jetzt stehen verschiedene Möglichkeiten zu Auswahl, in unserem Fall wollen wir aber nur einen neuen Pull Request erstellen.
 Im Anschluss erscheint ein neues Panel, das Wichtigste dabei ist die Wahl der richtigen Source und Target Branches.
 Danach kann noch ein Name und eine Beschreibung für den Pull Request gesetzt werden.
 Wie in IntelliJ besteht auch hier die Möglichkeit einen Reviewer hinzuzufügen, der Button dazu befindet sich mittig auf der linken Seite.
+Da nun alle Einstellungen vorgenommen wurden, kann der Pull Request erstellt werden.
+
+### Wie kann eine Pull Request erstellt werden (Github)
+Um einen Pull Request in BitBucket zu erstellen, muss im Web in der linken Navigationsleiste unter ``actions`` die Option ``Create pull request`` ausgewählt werden.
+Hier hat man nun die Möglichkeit einen Branch welcher Änderungen hat (Source Branch) und den Ziel Branch (Destination Branch), dort wo die Änderungen hinzugefügt werden sollen, auszuwählen.
+<img style="padding-bottom: 30px;" src="../img/PullRequestBitBucket.png">
+
+Auf der folgenden Seite kann ein Titel und eine Beschreibung für den Pull Request gesetzt werden. Ebenfalls können hier Reviewers hinzugefügt werden. 
 Da nun alle Einstellungen vorgenommen wurden, kann der Pull Request erstellt werden.
 
 
@@ -168,35 +178,6 @@ Stichwort [alias]. Das könnte in etwa so aussehen:
 Die Aliasse können beliebig definiert werden, Ziel davon soll nur sein, die Schreibarbeit zu
 minimieren und das eigene Programmieren praktischer zu machen.
 
-## Gitg
-### Was ist Gitg
-Gitg ist eine grafische Benutzeroberfläche für git. Es zielt darauf ab, ein kleines,
-schnelles und bequemes Werkzeug zu sein, um Git-Repositories zu visualisieren.
-Neben der Visualisierung bietet Gitg auch einfache Möglichkeiten zur Verwaltung eines Repository.
-Jedoch bietet IntelliJ standardmässig die dieselben Möglichkeiten, sollte man jedoch eine IDE ohne Git integration verwenden ist gitg ein praktisches Tool.
-
-
-### Installationsanleitung
-Unter Linux kann gitg mit folgendem Befehl installieren:
-<br>```sudo apt install gitg```<br>
-Leider ist gitg unter Windows nicht verfügbar.
-Eine empfehlenswerte Alternative dazu ist der offizielle GitHub Client.
-
-## Github Client
-### Was ist der GitHub Client
-Der GitHub Client ist ein Windows Programm für die Verwaltung von Git Repositories.
-Der GitHub Client funktioniert am besten mit GitHub Repositories,
-das bedeutet aber nicht das dieser keine Repositories von anderen Quellen unterstützt.
-Es ist lediglich ein wenig aufwändiger Repositories aus anderen Quellen einzubinden.
-
-
-### Installationsanleitung
-Unter Windows kann der GitHub Client auf der folgenden Seite heruntergeladen werden:
-```https://desktop.github.com/``` 
-
-Unter Linux der Client mithilfe des folgenden Scripts heruntergeladen werden:
-```https://gist.github.com/berkorbay/6feda478a00b0432d13f1fc0a50467f1```
-
 ## Git Blame
 ### Was ist Git-Blame?
 Ist ein Befehl, welcher dazu dient den Author der letzten Änderung anzuzeigen. Deswegen auch
@@ -229,24 +210,4 @@ git blame -w <filename>
 Dieser Befehl ignoriert wenn ein Author nur Leerschläge geändert hat. Das hat den Vorteil, dass
 wir nur die Authoren bekommen, welche auch wirklich etwas am Code selbst geändert und ihn
 nicht nur formatiert haben.
-
-## Blobs und Trees
-### Was sind Blobs und Trees show?
-Zuerst zu den Blobs: Blobs werden benutzt, um die Inhalte einzelner Dateien zu speichern.
-Trees wiederum beinhalten Referenzen zu anderen Blobs oder Unterbäumen. 
-
-### Wozu braucht es sie?
-Wenn man eine Datei staged wird eine Blob-Datei erstellt. Dieser Blob hat den
-Inhalt der Datei und hat den Typ "blob". Ein Blob eigentlich der Inhalt der Datei
-an einer bestimmten Instanz. Die verschiedenen Blobs fallen danach unter einen
-Tree. 
-
-Nun bildet sich hier eine Kette: Das Commit-Objekt greift auf die Tree-Objekte zu.
-Diese wiederum geben uns die Blob-Objekte zurück. Deshalb brauchen wir diese Konstellation also.
-Ohne die Trees und Blobs hätten wir keinen Zugriff auf die Inhalte unserer Dateien mehr.
-
-<img src="https://miro.medium.com/max/541/1*ZGVkiRbMErfng2CqpU3YQQ.png">
-Im Diagramm kann die Abhängigkeit dementsprechend besichtigt werden.
-
-
 

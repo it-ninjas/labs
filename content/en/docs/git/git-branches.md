@@ -272,7 +272,7 @@ Git fügt automatisch eine Markierung in die Dateien ein, welche gmerged werden 
 first line from master
 =======
 first line from testing
->>>>>>> testing
+>>>>>>> bugfix
 ```
 
 Das bedeutet, dass der HEAD (also der Masterbranch, weil auf den haben wir vor dem Mergen gewechselt) den oberen Teil (also immer alles auf Grün) und unsere neuen Änderungen den unteren Teil auf dieser Zeile hatten. Man kann den Konflikt nun lösen, indem man den ganzen Block, mit der gewünschten Änderung ersetzt. Ist der Konflikt gelöst, können wir die Datei ganz normal stagen und commiten. Gerade bei grösseren Mergekonflikten kann es praktisch sein mit tools zu Arbeiten, welche einem die Unterschiede zwischen den beiden Branches Grafisch darstellen, dafür gibt es den Befehl `git mergetool`.
@@ -284,6 +284,25 @@ In der Regel können viele Merge-Konflikte verhindert oder minimiert werden, ind
 - Regelmässige Rebases mit dem Merge-Zielbranch.
 
 - Erstellen kleiner und atomarer Commits.
+
+## Flows
+### Feature Branch Flow
+Der Feature Branch Flow besagt, dass man für jede neue Funktion oder Verbesserung (Feature) einen eigenen Branch erstellt. Auf diesem Branch kann die Funktion entwickelt werden, ohne den Main-Branch zu beeinflussen. Sobald die Arbeit abgeschlossen und getestet ist, wird der Feature-Branch wieder in den Hauptbranch (main) integriert.
+
+
+<img style="padding-bottom: 30px; width: 50%" src="../img/featureBranchFlow.png">
+
+Vertiefende Informationen zum Feature Branch Flow können auf [dieser Seite](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) gelesen werden.
+
+### Gitflow
+Der Gitflow unterscheidet sich primär vom Feature Branch Flow indem, dass zwei Hauptbranches, main für den stabilen Code und develop für die laufende Entwicklung verwendet werden. So werden Feature-Branches nicht direkt vom Main, sondern vom Development-Branch (Name kann abweichen) abzweigen. So werden fertiggestellte Änderungen auch nicht gleich in den Main integriert, sondern zurück in den Development-Branch.
+Zudem wird ein release-Branch verwendet, auf welchen Änderungen vom Development-Branch gepusht werden, um dort vor einem Release getestet zu werden. Anschließend wird der release-Branch, und nur dieser, in den main gemerged.
+Nebst Feature Branches können auch Branches für Releases und Hotfixes erstellt werden. Der Flow ermöglicht eine strukturierte Vorgehensweise für die Entwicklung und Veröffentlichung von Software, indem Entwicklungs- und Produktionscode getrennt werden.
+
+<img style="padding-bottom: 30px; width: 40%" src="../img/Gitflow.png">
+
+Vertiefende Informationen zum Gitflow können auf [dieser Seite](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) gelesen werden.
+
 
 ### Hands On
 
