@@ -96,8 +96,8 @@ Danach kann noch ein Name und eine Beschreibung für den Pull Request gesetzt we
 Wie in IntelliJ besteht auch hier die Möglichkeit einen Reviewer hinzuzufügen, der Button dazu befindet sich mittig auf der linken Seite.
 Da nun alle Einstellungen vorgenommen wurden, kann der Pull Request erstellt werden.
 
-### Wie kann eine Pull Request erstellt werden (Github)
-Um einen Pull Request in BitBucket zu erstellen, muss im Web in der linken Navigationsleiste unter ``actions`` die Option ``Create pull request`` ausgewählt werden.
+### Wie kann eine Pull Request erstellt werden (Bitbucket)
+Um einen Pull Request in BitBucket zu erstellen, muss im Web in der linken Navigationsleiste unter ``ACTIONS`` die Option ``Create pull request`` ausgewählt werden.
 Hier hat man nun die Möglichkeit einen Branch welcher Änderungen hat (Source Branch) und den Ziel Branch (Destination Branch), dort wo die Änderungen hinzugefügt werden sollen, auszuwählen.
 <img style="padding-bottom: 30px;" src="../img/PullRequestBitBucket.png">
 

@@ -1,7 +1,7 @@
 ---
 title: "SSH-Key in Git"
 linkTitle: "SSH-Key in Git"
-weight: 7
+weight: 8
 ---
 
 ## Was ist ein SSH-Key

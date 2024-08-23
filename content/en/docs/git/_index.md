@@ -41,6 +41,7 @@ Dieses Lab unterteilt sich in folgende Themenbereiche:
 * [Git Basics](git-basics)
 * [Git Branches](git-branches)
 * [GitHub](git-hub)
+* [Bitbucket](bitbucket)
 * [Git Erweitert](git-extended)
 
 Nachdem du die Docs gelesen hast, solltest du in der Lage sein die [Labs](../../../../labs/git/) zu lösen.
