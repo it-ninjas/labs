@@ -36,11 +36,15 @@ Es öffnet sich ein Dialog-Fenster, in welchem man den Titel und die Beschreibun
 
 <img style="padding-bottom: 30px;" src="../img/merge_PR.png">
 
-Man kann noch weitere Einstellungen vornehmen. Beispielsweise kann man festlegen, dass der Branch anschliessend gelöscht wird. 
+Man kann noch weitere Einstellungen vornehmen. Beispielsweise kann man festlegen, dass der Branch anschliessend gelöscht wird.
 
 Empfohlen ist die Option Squash, welche links neben dem blauen Knopf per dropdown ausgewählt werden kann zu nutzen. Diese kombiniert alle Commits des Branches zu einem einzelnen Commit, welcher anschliessend in den Target-Branch gemerged wird.
 ## Commit History
-Wenn man links in der Navigationsleiste auf ``Commits`` klickt, kann man sich die History des Projektes anhand der vergangenen commits anzeigen lassen. Hier sind alle merged Pull Requests aber auch Commits welche direkt auf Master gemacht wurden ersichtlich.   
+Wenn man links in der Navigationsleiste auf ``Commits`` klickt, kann man sich die History des Projektes anhand der vergangenen Commits anzeigen lassen. Hier sind alle merged Pull Requests aber auch Commits welche direkt auf Master gemacht wurden ersichtlich.   
+
+<img style="padding-bottom: 30px;" src="../img/Commit_History.png">
+
+Von jeder Änderung ist der Autor, der Commit Hash, die Commit Message und das Datum ersichtlich. Die History ermöglicht es den Nutzern, den Verlauf von Änderungen nachzuverfolgen und auf frühere Versionen des Repositorys zurückzugreifen.
 
 
 ## Fork
