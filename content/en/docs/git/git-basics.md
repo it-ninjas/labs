@@ -16,6 +16,11 @@ Git kann auf unterschiedliche Arten eingesetzt werden, es gibt graphische Oberfl
 * [Änderungen rückgängig machen](#änderungen-rückgängig-machen)
 * [Mit Remotes arbeiten](#mit-remotes-arbeiten)
 
+## Ziele
+- Ich weiss wie ich ein eigenes Git-Repository anlege
+- Ich verstehe wie und warum eine .gitignore Datei genutzt wird
+- Ich kann git commit, push, fetch und pull in den richtigen Situationen anwenden.
+
 ## Konfiguration von Git
 
 Git kann, wie viele Softwares unter Linux, auf unterschiedlichen Levels konfiguriert werden:

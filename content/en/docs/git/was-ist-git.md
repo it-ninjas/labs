@@ -13,6 +13,11 @@ weight: 1
 * [Name](#name)
 * [Wie funktioniert Git](#wie-funktioniert-git)
 
+## Ziele
+- Ich weiss was eine Versionsverwaltung ist und kann erklären, wofür sie verwendet wird.
+- Ich kenne die Unterschiede zwischen lokaler, zentraler und verteilter Versionsverwaltung.
+- Ich kann anhand der drei Zustände einer Datei grob beschreiben wie Git funktioniert.
+
 ## Was ist Versionsverwaltung
 
 Eine Versionsverwaltung ist ein System, welches Änderungen an einer oder mehreren Dateien über die Zeit protokolliert, um die Entwicklung nachvollziehbar zu machen und womit man jederzeit auf bestimmte vorherige Versionen zugreifen kann.

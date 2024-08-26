@@ -5,6 +5,10 @@ weight: 7
 ---
 In der SBB wird primär das eigen gehostete Bitbucket verwendet. Dieses Modul widmet sich dem Bitbucket der SBB.
 
+## Ziele
+- Ich kenne das von der SBB gehostete Bitbucket
+- Ich kann im Bitbucket einen Pull Request erstellen und mir dessen Diff anzeigen
+
 ## Pull Request (PR) erstellen
 Um einen Pull Request in BitBucket zu erstellen, muss im Web in der linken Navigationsleiste unter ``ACTIONS`` die Option ``Create pull request`` ausgewählt werden.
 

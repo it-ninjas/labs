@@ -9,6 +9,9 @@ weight: 2
 * [Git unter Linux installieren](#git-unter-linux-installieren)
 * [Git unter Windows installieren](#git-unter-windows-installieren)
 
+## Ziele
+- Ich weiss wie ich Git in meinem Betriebssystem installiere
+
 ## Git unter Linux installieren
 
 1. Ist Git schon installiert? `git --version`

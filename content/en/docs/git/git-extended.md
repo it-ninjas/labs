@@ -13,6 +13,12 @@ Nachdem du die Basics von git gelernt hast, ist es Zeit dich weiter zu vertiefen
 * [Tag](#Tag)
 * [Alias](#Alias)
 
+### Ziele
+- Ich verstehe was ein Stash ist und wie er funktioniert
+- Ich weiss wie ich einen Pull-Request in meiner IDE, wie auch im Web erstelle
+- Ich kenne Tags und kann sie über die Kommando-Zeile erstellen
+- Ich kann Git-Blame in der Kommando-Zeile anwenden.
+
 ## Stash
 #### Was ist stash?
 Mit git stash ist es möglich Änderungen zwischenzuspeichern und diese später abzurufen.

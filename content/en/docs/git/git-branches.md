@@ -9,6 +9,11 @@ weight: 5
 * [Beispiel für Branching, Merging und Rebasing](#beispiel-für-branching-merging-und-rebasing)
 * [Einfache Mergekonflikte](#einfache-mergekonflikte)
 
+## Ziele
+- Ich kann mit Mergekonflikten umgehen
+- Ich kann ein Rebase eines Branches vornehmen
+- Ich kenne die zwei verschiedenen Flows und kann sie voneinander unterscheiden 
+
 Im vorherigen Kapitel haben wir gelernt, dass man nur dann seine Änderungen pushen kann, wenn einem niemand anders zuvorkam. Um diesem Problem aus dem Weg zu gehen, kann ein Branch (engl. für Ast/Zweig) verwendet werden, welcher zu einem späteren Zeitpunkt wieder auf den Hauptpfad gemerged wird.
 
 Im ersten Kapitel haben wir gelernt, dass Git mit jedem Commit ein Snapshot der Daten und eine Referenz auf den vorgehenden Commit speichert. Ein Branch ist nichts anderes als ein Zeiger auf einen spezifischen Snapshot.
