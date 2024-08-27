@@ -318,28 +318,22 @@ Um mit anderen an einem Git-Projekt mitarbeiten zu können, braucht es Remotes, 
 Nachdem man ein Repo gecloned hat sieht man ein Remote, man kann jedoch auch weitere definieren:
 
 ```bash
-$ git clone git@github.com:puzzle-bbt/training-sbb-puzzle.git
-Cloning into 'training-sbb-puzzle'...
+$ git clone https://code.sbb.ch/scm/~u245517/ausbildungsprogramm.git
+Cloning into 'ausbildungsprogramm'...
 remote: Enumerating objects: 8485, done.
 remote: Counting objects: 100% (8485/8485), done.
 remote: Compressing objects: 100% (5276/5276), done.
 remote: Total 8485 (delta 3095), reused 8456 (delta 3079), pack-reused 0
 Receiving objects: 100% (8485/8485), 17.06 MiB | 5.11 MiB/s, done.
 Resolving deltas: 100% (3095/3095), done.
-$ cd training-sbb-puzzle
+$ cd ausbildungsprogramm
 $ git remote
 origin
 $ git remote -v
-origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (fetch)
-origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (push)
-$ git remote -v
-origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (fetch)
-origin	git@github.com:puzzle-bbt/training-sbb-puzzle.git (push)
-private	git@github.com:Lehrling/training-sbb-puzzle.git (fetch)
-private	git@github.com:Lehrling/training-sbb-puzzle.git (push)
-```
+origin https://code.sbb.ch/scm/~u245517/ausbildungsprogramm.git (fetch)
+origin https://code.sbb.ch/scm/~u245517/ausbildungsprogramm.git (push)
 
-Wollen wir nun alle Information holen, welches der Lehrling hat, jedoch noch nicht im Repo sind kann man dies mit `git fetch private` ausführen.
+```
 
 ### Fetching und Pulling
 
