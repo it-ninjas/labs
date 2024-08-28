@@ -32,16 +32,16 @@ Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/01_ja
 ## Aufgabe 2 - Conditional Statements
 
 ### Aufgabe 2a - Die `if`- und `else`-Bedingungen
-![task1](/images/task.png) Löse die folgende Aufgaben:
-* Schreibe ein Programm, die feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist.
-* Schreibe ein Programm, die dich begrüsst wenn dein Name als Parameter übergeben wird.
+![task1](/images/task.png) Löse die folgenden Aufgaben:
+* Schreibe ein Programm, die feststellen kann, ob eine Zahl grösser, kleiner oder gleich 0 ist.
+* Schreibe ein Programm, die dich begrüsst wenn dein Name übergeben wird.
 * Schreibe ein Programm, die feststellt, ob das übergebene Jahr ein Schaltjahr ist. Recherchiere, was die Bedingungen sind.
-* Schreibe ein Programm, die überprüft, ob eine Zahl (als Parameter) gerade oder ungerade ist.
+* Schreibe ein Programm, die überprüft, ob eine Zahl gerade oder ungerade ist.
 
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/05_control_structures/#if-statement).
 
 ### Aufgabe 2b - Das `switch`-Statement
-![task1](/images/task.png) Löse die folgende Aufgaben:
+![task1](/images/task.png) Löse die folgenden Aufgaben:
 * Schreibe ein Programm, die eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (für den Wert `2` wird dann der String `"Februar"` zurückgegeben).
 * Schreibe ein Programm, die einen Wochentag als Parameter übergeben bekommt und dann ausgibt, der wievielte Tag in der Woche er ist: `Der <Wochentag> ist der <X>. Tag in der Woche`. Schreibe die Methode so, dass maximal 1 `println()` (oder ähnliches) verwendet wird. Hinweis: Hier kann dir ein `switch`-Assignment sehr viel Code ersparen.
 * Debugge mindestens zwei dieser Methoden mit einem Breakpoint.
@@ -50,7 +50,7 @@ Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/05_co
 
 ## Aufgabe 3 - Loops
 ![task1](/images/task.png) Löse die folgenden Aufgaben:
-* Schreibe ein Programm, welche eine beliebige Ganzzahl als Parameter übernimmt und die [Fakultät](https://www.studysmarter.de/schule/mathe/algebra/fakultaet/) dieser Zahl berechnet.
+* Schreibe ein Programm, welche eine beliebige Ganzzahl übernimmt und die [Fakultät](https://www.studysmarter.de/schule/mathe/algebra/fakultaet/) dieser Zahl berechnet.
 * Schreibe einen Loop, welcher alle Zahlen von 1 bis 100 zusammenzählt, welche durch 8 teilbar sind.
     * Erweitere deine Lösung mit einer Methode, welche eine Zahl entgegennimmt und dann die Zahlen zusammenzählt, welche durch diese Zahl teilbar sind.
 
