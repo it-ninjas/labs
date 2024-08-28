@@ -7,16 +7,16 @@ description: >
 ---
 
 #### Ziele
-* Ich kann die Konzepte der Generalisierung und Spezialisierung im Kontext der Vererbung erklären und anwenden
-* Ich weiss, wie ich Unterklassen von einer Oberklasse ableiten kann (extends)
-* Ich kann vererbte Methoden und Attribute einer Klasse von lokalen Methoden und Attributen unterscheiden
-* Ich kann in UML die Vererbungsbeziehung zweier Klassen erkennen
-* Ich weiss, wie ich das Schlüsselwort _super_ nutze, um den Konstruktor der Oberklasse zu verwenden
-* Ich weiss, wie ich das Schlüsselwort _super_ nutze, um eine Methode aus der Oberklasse aufzurufen
-* Ich kann das Konzept des "Überschreibens" (Overriding) von Methoden und Attributen erklären, erkennen und nutzen
-* Ich weiss, was Interfaces sind und wann es angebracht ist ein Interface zu verwenden
-* Ich weiss, welche Methoden und Felder in einem Interface vorhanden sind und wie sie geschrieben werden bzw. über welche Eigenschaften sie verfügen
-* Ich kann eine Klasse schreiben, die ein Interface implementiert
+* Ich kann die Konzepte der Generalisierung und Spezialisierung im Kontext der Vererbung erklären und anwenden.
+* Ich weiss, wie ich Unterklassen von einer Oberklasse ableiten kann (extends).
+* Ich kann vererbte Methoden und Attribute einer Klasse von lokalen Methoden und Attributen unterscheiden.
+* Ich kann in UML die Vererbungsbeziehung zweier Klassen erkennen.
+* Ich weiss, wie ich das Schlüsselwort _super_ nutze, um den Konstruktor der Oberklasse zu verwenden.
+* Ich weiss, wie ich das Schlüsselwort _super_ nutze, um eine Methode aus der Oberklasse aufzurufen.
+* Ich kann das Konzept des "Überschreibens" (Overriding) von Methoden und Attributen erklären, erkennen und nutzen.
+* Ich weiss, was Interfaces sind und wann es angebracht ist ein Interface zu verwenden.
+* Ich weiss, welche Methoden und Felder in einem Interface vorhanden sind und wie sie geschrieben werden bzw. über welche Eigenschaften sie verfügen.
+* Ich kann eine Klasse schreiben, die ein Interface implementiert.
 
 ---
 
@@ -257,9 +257,9 @@ Die Aggregation ist
 * in ihrer Lebensdauer nicht an die Lebensdauer des Ganzen gebunden
 
 Beispiel 1:
-"Eine Taskforce hat Experten und -innen". Das bedeutet, dass es die Experten und -innen immer noch gibt wenn die Taskforce aufgelöst wird.
+"Eine Taskforce hat Experten und -innen". Das bedeutet, dass es die Experten und -innen immer noch gibt, wenn die Taskforce aufgelöst wird.
 Beispiel 2:
-"Ein Auto hat einen Fahrer oder eine Fahrerin". Die Existenz des Autos ist nicht an die Existenz des Fahrers / der Fahrerin gebunden.
+"Ein Auto hat einen Fahrer oder eine Fahrerin". Die Existenz des Fahrers / der Fahrerin ist nicht an die Existenz des Autos gebunden.
 
 Darstellung der Aggregation mit UML:
 ![](../java-ood/Aggregation.png)
@@ -271,7 +271,7 @@ Die Komposition ist
 * in ihrer Lebensdauer an die Lebensdauer des Ganzen gebunden
 
 Beispiel 1:
-"Eine Labyrinth hat Wände". Eine Labyrinth ohne Wände ist kein Labyrinth mehr.
+"Eine Labyrinth hat Wände". Eine Wand kann nur als Teil eines Labyrinths existieren.
 Beispiel 2:
 "Ein Mensch hat ein Herz". Ein Mensch kann ohne Herz nicht existieren.
 
@@ -290,6 +290,14 @@ Beispiel:
 
 Darstellung der Assoziation in UML:
 ![](../java-ood/Association.png)
+
+#### Gerichtete Assoziation
+Eine gerichtete Assoziation ist eine Verbindung zwischen zwei Klassen, bei der die Beziehung eine klare Richtung hat.
+
+Beispiel:
+Du hast zwei Klassen, Kunde und Bestellung. Es besteht eine gerichtete Assoziation von Kunde zu Bestellung. Das bedeutet, dass der Kunde eine oder mehrere Bestellungen kennt, Bestellung weiss aber nichts über den Kunden.
+
+![](../java-ood/gerichtete_Assoziation.png)
 
 ### Abhängigkeit (USES Beziehung)
 Eine Abhängigkeit ist
