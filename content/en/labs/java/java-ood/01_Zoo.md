@@ -4,7 +4,7 @@ linkTitle: "Zoo"
 type: docs
 weight: 1
 description: >
-  Aufgabe zu Modul #J3 - OOD - Zoo
+  Aufgabe zu Modul #J3 - [OOD](../../../../docs/java/java-ood) - Zoo
 ---
 Modelliere* einen Klassenaufbau für einen Zoo. Folgende Klassen sollen enthalten sein: 
 - Personen
