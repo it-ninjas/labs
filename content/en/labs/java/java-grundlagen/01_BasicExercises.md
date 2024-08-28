@@ -52,7 +52,7 @@ Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/05_co
 ![task1](/images/task.png) Löse die folgenden Aufgaben:
 * Schreibe ein Programm, welche eine beliebige Ganzzahl als Parameter übernimmt und die [Fakultät](https://www.studysmarter.de/schule/mathe/algebra/fakultaet/) dieser Zahl berechnet.
 * Schreibe einen Loop, welcher alle Zahlen von 1 bis 100 zusammenzählt, welche durch 8 teilbar sind.
-  * Erweitere deine Lösung mit einer Methode, welche eine Zahl entgegennimmt und dann die Zahlen zusammenzählt, welche durch diese Zahl teilbar sind.
+    * Erweitere deine Lösung mit einer Methode, welche eine Zahl entgegennimmt und dann die Zahlen zusammenzählt, welche durch diese Zahl teilbar sind.
 
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/05_control_structures/#schleifen-loops).
 
@@ -97,7 +97,7 @@ String poem = """
 2. Gib den Text in Grossbuchstaben aus.
 3. Gib den Text so aus, dass jedes Leerzeichen mit einem Punkt ersetzt wurde.
 4. Schneide das Wort "Shurikens" aus. Ermittle hierfür die Position des Wortes anhand des `"`-Zeichens.
-    Hinweis: Die `indexOf()`-Methode bietet ein optionales Argument `fromIndex` an. Übergibst du die `Position des ersten Anführungszeichen + 1`, dann wird die Position des zweiten zurückgegeben.
+   Hinweis: Die `indexOf()`-Methode bietet ein optionales Argument `fromIndex` an. Übergibst du die `Position des ersten Anführungszeichen + 1`, dann wird die Position des zweiten zurückgegeben.
 
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/08_strings).
 
