@@ -4,7 +4,7 @@ linkTitle: "Maven und Continuous Integration - Aufgaben"
 type: docs
 weight: 1
 description: >
-  Aufgaben zu Modul #S2 - Maven
+  Aufgaben zu Modul #S2 - [Maven](../../../../docs/java/maven)
 ---
 
 ## Auftrag
