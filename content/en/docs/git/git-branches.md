@@ -199,50 +199,38 @@ Nachdem die Fehlerkorrektur in den Branch `master` eingebracht wurde, ist der n�
 
 #### git rebase
 
-Rebase bedeutet, dass der übergeordnete Commit der ersten Änderung im Branch verschoben und an den aktuellen Zeiger des Branches oder Commits angehängt wird, der in der Befehlszeile als Argument angegeben wird. Im folgenden Beispiel wechseln wir als erstes in den Branch, der rebase werden soll, und geben dann den Befehl `rebase` gegen `master` aus.
+Beim Rebase wird der Basis-Commit eines Branches verschoben und dessen Änderungen an den aktuellen Stand eines anderen Branches oder Commits angehängt, der als Argument in der Befehlszeile angegeben wird.
+
+In unserem Beispilsszenario entwickeln wir kurz vor den Ferien ein neues Feature. Dazu erstellen wir einen Branch welcher sich vom Master abzweigt und commiten unsere Änderungen. Die Ausgnagslage vor den Ferien würde also wiefolgt aussehen:
+
+<img style="width: 35%; padding-bottom: 30px;" src="../img/GitRebase_vorFerien.png">
+
+Nun kommen wir zwei Wochen später, nach unseren Ferien, wieder ins Office und die Situation sieht wie folgt aus:
+
+<img style="width: 50%; padding-bottom: 30px;" src="../img/GitRebase_nachFerien.png">
+
+Wie wir sehen hat sich einiges auf `master` getan und unser Branch ist nicht mehr auf dem aktuellen Stand. Wir wollen das `feature` aktuell ist, wollen aber nicht `git merge` nutzen, da wir die Änderungen nicht im Branch haben möchten, deswegen entscheiden wir uns für einen rebase.
+
+Als Erstes stellen wir also sicher, dass wir auf dem korrekten Branch sind und machen anschliessend ein `git rebase master`. Hierbei sollte angemerkt werden, dass man auf `master` niemals ein rebase machen sollte, wenn man `master` updaten möchte, sollte dies über ein `git merge` erfolgen.
 ```bash
 $ git branch 
    * master
-     testing
-$ git checkout testing 
-Switched to branch 'testing'
+     feature
+$ git checkout feature 
+Switched to branch 'feature'
 $ git rebase master 
-Successfully rebased and updated refs/heads/testing. 
+Successfully rebased and updated refs/heads/feature. 
 ```
-- Derzeit auf dem Branch `master`, muss vor dem rebase auf `testing` wechseln.
+Nun ist der letzte Commit auf Master die neue Base des Branches `feature` und alle Änderungen wurden nachgespielt. 
 
-- Wechseln Sie zum Branch `testing`, der mit `master` rebased wird.
+Die Situation sieht also wie folgt aus:
 
-- Erteilen Sie den Befehl rebase mit dem Argument `master`, dem Branch oder Zeiger, der für den rebase verwendet wird.
-
-- Die Meldung ist knapp und bezieht sich auf die git-interne Dateistruktur unter dem Verzeichnis `.git`.
+<img style="width: 70%; padding-bottom: 30px;" src="../img/GitRebase_nachFerienRebase.png">
 
 > **Hinweis**
 >
 > Die Durchführung eines rebase zwischen zwei Branches erfordert einen gemeinsamen Vorfahren im Tree.
 
-Nach dem Rebase sind "Master" und "Testing" wieder synchronisiert.
-
-```txt
-                                                            +----+-----+
-                                                            |  master  |
-                                                            +----+-----+
-                                                                 |
-                                                                 v
-+----------+        +----------+        +----------+        +----------+        +----------+
-| Commit 1 +<-------| Commit 2 +<-------+ Commit 3 +<-------+ Commit 5 |<-------+ Commit 4 |
-+----------+        +----------+        +----------+        +----------+        +----------+
-                                                                                     ^
-                                                                                     |
-                                                                                +----------+
-                                                                                | testing  |  
-                                                                                +----+-----+
-                                                                                     ^
-                                                                                     |
-                                                                                +----------+
-                                                                                |   HEAD   |  
-                                                                                +----+-----+ 
-```
 
 ## Einfache Mergekonflikte
 
