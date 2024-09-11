@@ -101,6 +101,9 @@ public class LinkedList<E>  extends AbstractSequentialList<E>  implements List<E
 
 ```
 
+Das Java-Schlüsselwort `transient` wird verwendet, um ein Feld in einer Klasse von der Serialisierung auszuschließen. **Serialisierung** ist der Prozess, ein Objekt in einen Byte-Stream umzuwandeln, um es zu speichern oder über ein Netzwerk zu übertragen. Transiente Felder werden dabei nicht gespeichert und erhalten nach der Deserialisierung ihre **Standardwerte** (z. B. `null` für Objekte, `0` für Zahlen).
+
+
 Ein Knoten, also das Objekt des Typs `Node`, enthält 
 * das Element, welches einen generischen Typ hat (deshalb `Node<E>`),
 * die Referenz auf den vorherigen Knoten, also auf ein Node-Objekt 
@@ -170,11 +173,34 @@ public void addLast(E e)
 
 
 ```
+### Beispiel
+Hier ein kurzes Beispiel wie LinkedList verwendet werden könnte:
+```java
+import java.util.LinkedList;
 
-{{% blocks/lead color="orange" %}}
-Aufgaben
-{{% /blocks/lead %}}
+public class Main {
+    public static void main(String[] args) {
+        LinkedList<String> fruits = new LinkedList<>();  // LinkedList erstellen
+
+        // Elemente hinzufügen
+        fruits.add("Apfel");
+        fruits.add("Banane");
+        
+        fruits.addFirst("Erdbeere");  // Element am Anfang hinzufügen
+
+        // Elemente anzeigen
+        System.out.println("Früchte: " + fruits);  // [Erdbeere, Apfel, Banane]
+
+        // Elemente entfernen
+        fruits.remove("Apfel");  // Spezifisches Element entfernen
+        System.out.println("Nach Entfernen: " + fruits);  // [Erdbeere, Banane]
+
+        // Auf ein Element zugreifen
+        System.out.println("Erstes Element: " + fruits.get(0));  // Erdbeere
+    }
+}
+```
+
 
 ## Aufgaben
-
-[Aufgaben zu Modul #J7 - Java Collections - LinkedList](../../../../labs/java/java-collections/07_linkedlist)
+Löse nun die [Aufgaben](../../../../labs/java/java-collections/07_linkedlist) zur LinkedList.

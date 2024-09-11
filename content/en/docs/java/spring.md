@@ -47,9 +47,9 @@ Core, Data Access, Web usw. organisiert sind.
 
 [comment]: <> (Bildlink funktioniert auf website, nicht in md!)
 
-![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png)
+![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png)
 
-Quelle: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png
+Quelle: https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png
 
 Das Core-Modul umfasst essenzielle Funktionen wie Dependency Injection. Das Beans-Modul beinhaltet alles, was zur 
 Erstellung von Beans benötigt wird.
@@ -61,7 +61,7 @@ Objekt/XML-Speicher-Implementierungen.
 Das Web-Modul ist für die Kommunikation mit der Außenwelt (Internet) verantwortlich.
 
 Weitere Informationen finden sich in der offiziellen
-[Dokumentation](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html).
+[Dokumentation](https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/index.html).
 
 ### Spring Projekte
 
@@ -74,7 +74,7 @@ Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
 #### Spring Boot
 
-[Spring Boot](../new-spring-boot-doc.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie 
+[Spring Boot](./spring-boot.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie 
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des 
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die 
 Konfiguration.

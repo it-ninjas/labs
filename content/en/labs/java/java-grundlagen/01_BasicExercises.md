@@ -27,30 +27,29 @@ description: >
 * `Zeichne ein Haus, nutze dazu beliebige Zeichen`
 * `Zeichne eine Schweizerfahne`
 
-Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/01_java_intro).
+Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/01_java_intro/#hello-world).
 
 ## Aufgabe 2 - Conditional Statements
 
 ### Aufgabe 2a - Die `if`- und `else`-Bedingungen
-![task1](/images/task.png) Löse die folgende Aufgaben:
-* Schreibe ein Programm, die feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist.
-* Schreibe ein Programm, die dich begrüsst wenn dein Name als Parameter übergeben wird.
+![task1](/images/task.png) Löse die folgenden Aufgaben:
+* Schreibe ein Programm, welches feststellen kann, ob eine Zahl (als Parameter) grösser, kleiner oder gleich 0 ist.
+* Schreibe ein Programm, welches dich begrüsst, wenn dein Name als Parameter übergeben wird.
 * Schreibe ein Programm, die feststellt, ob das übergebene Jahr ein Schaltjahr ist. Recherchiere, was die Bedingungen sind.
 * Schreibe ein Programm, die überprüft, ob eine Zahl (als Parameter) gerade oder ungerade ist.
 
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/05_control_structures/#if-statement).
 
 ### Aufgabe 2b - Das `switch`-Statement
-![task1](/images/task.png) Löse die folgende Aufgaben:
-* Schreibe ein Programm, die eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (für den Wert `2` wird dann der String `"Februar"` zurückgegeben).
-* Schreibe ein Programm, die einen Wochentag als Parameter übergeben bekommt und dann ausgibt, der wievielte Tag in der Woche er ist: `Der <Wochentag> ist der <X>. Tag in der Woche`. Schreibe die Methode so, dass maximal 1 `println()` (oder ähnliches) verwendet wird. Hinweis: Hier kann dir ein `switch`-Assignment sehr viel Code ersparen.
-* Debugge mindestens zwei dieser Methoden mit einem Breakpoint.
+![task1](/images/task.png) Löse die folgenden Aufgaben:
+* Schreibe ein Programm, welches eine Zahl zwischen 1 und 12 als Parameter erhält und dann den entsprechenden Monat ausgibt (für den Wert `2` wird dann der String `"Februar"` zurückgegeben).
+* Schreibe ein Programm, welches einen Wochentag als Parameter übergeben bekommt und dann ausgibt, der wievielte Tag in der Woche er ist: `Der <Wochentag> ist der <X>. Tag in der Woche`. Schreibe die Methode so, dass maximal 1 `println()` (oder ähnliches) verwendet wird. Hinweis: Hier kann dir ein `switch`-Assignment sehr viel Code ersparen.
 
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/05_control_structures/#switch-statement).
 
 ## Aufgabe 3 - Loops
 ![task1](/images/task.png) Löse die folgenden Aufgaben:
-* Schreibe ein Programm, welche eine beliebige Ganzzahl als Parameter übernimmt und die [Fakultät](https://www.studysmarter.de/schule/mathe/algebra/fakultaet/) dieser Zahl berechnet.
+* Schreibe ein Programm, welches eine beliebige Ganzzahl als Parameter übernimmt und die [Fakultät](https://www.studysmarter.de/schule/mathe/algebra/fakultaet/) dieser Zahl berechnet.
 * Schreibe einen Loop, welcher alle Zahlen von 1 bis 100 zusammenzählt, welche durch 8 teilbar sind.
   * Erweitere deine Lösung mit einer Methode, welche eine Zahl entgegennimmt und dann die Zahlen zusammenzählt, welche durch diese Zahl teilbar sind.
 
@@ -68,8 +67,8 @@ Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/05_co
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/06_logic).
 
 ## Aufgabe 5 - Methoden
-![task1](/images/task.png) Löse die folgende Aufgaben:
-* Schreibe eine Methode, die zwei beliebigen Ganzzahlen als Parameter übernimmt und die Summe der beiden zurückliefert.
+![task1](/images/task.png) Löse die folgenden Aufgaben:
+* Schreibe eine Methode, die zwei beliebige Ganzzahlen als Parameter übernimmt und die Summe der beiden zurückliefert.
 * Schreibe eine eigene Methode, die als Parameter einen Namen übernimmt. Die Methode soll dann die folgenden Daten auf die Kommandozeile ausgeben ```Hello + <Parameter-Name>```
 
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/09_methods).
@@ -102,9 +101,9 @@ String poem = """
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/08_strings).
 
 ## Aufgabe 7 - Strings und Loops
-![task1](/images/task.png) Löse die folgende Aufgaben:
-* Schreibe ein Programm, welche als Parameter einen beliebigen String übernimmt und dessen Zeichenfolge umkehrt
-* Schreibe ein Programm, welche als Parameter einen beliebigen String übernimmt und die Anzahl Wörter darin ausgibt
+![task1](/images/task.png) Löse die folgenden Aufgaben:
+* Schreibe ein Programm, welches als Parameter einen beliebigen String übernimmt und dessen Zeichenfolge umkehrt
+* Schreibe ein Programm, welches als Parameter einen beliebigen String übernimmt und die Anzahl Wörter darin ausgibt
 
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/08_strings).
 
