@@ -9,6 +9,12 @@
 &lt;li>&lt;a href="#name">Name&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#wie-funktioniert-git">Wie funktioniert Git&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, was eine Versionsverwaltung ist und kann erklären, wofür sie verwendet wird.&lt;/li>
+&lt;li>Ich kenne die Unterschiede zwischen lokaler, zentraler und verteilter Versionsverwaltung.&lt;/li>
+&lt;li>Ich kann anhand der drei Zustände einer Datei grob beschreiben wie Git funktioniert.&lt;/li>
+&lt;/ul>
 &lt;h2 id="was-ist-versionsverwaltung">Was ist Versionsverwaltung&lt;/h2>
 &lt;p>Eine Versionsverwaltung ist ein System, welches Änderungen an einer oder mehreren Dateien über die Zeit protokolliert, um die Entwicklung nachvollziehbar zu machen und womit man jederzeit auf bestimmte vorherige Versionen zugreifen kann.&lt;/p>
 &lt;h3 id="lokale-versionsverwaltung">Lokale Versionsverwaltung&lt;/h3>
@@ -23,11 +29,11 @@
 matura_arbeit.docx matura_arbeit_fastfertig.docx matura_arbeit_wirklichfertig.docx matura_arbeit_wirklichfertig_formatiert.docx matura_final.docx
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Dies ist jedoch sehr Fehleranfällig, da man schnell die falsche Datei erwischt. Aus diesem Grund, haben Programmierer bereits vor langer Zeit, lokale Versionsverwaltungssysteme entwickelt, die alle Änderungen an allen relevanten Dateien in einer Datenbank verwalten. Ein Beispiel dafür ist &lt;a href="https://www.gnu.org/software/rcs/">RCS&lt;/a>&lt;/p>
+&lt;/div>&lt;p>Dies ist jedoch sehr fehleranfällig, da man schnell die falsche Datei erwischt. Aus diesem Grund, haben Programmierer bereits vor langer Zeit, lokale Versionsverwaltungssysteme entwickelt, die alle Änderungen an allen relevanten Dateien in einer Datenbank verwalten. Ein Beispiel dafür ist &lt;a href="https://www.gnu.org/software/rcs/">RCS&lt;/a>&lt;/p>
 &lt;h3 id="zentrale-versionsverwaltung">Zentrale Versionsverwaltung&lt;/h3>
 &lt;p>Um die Zusammenarbeit von mehreren Personen zu vereinfachen wurden zentrale Versionsverwaltungssysteme entwickelt. Diese Systeme basieren auf einem zentralen Server der alle Dateien verwaltet. User holen eine Datei ab (Auschecken oder engl. to check out) editieren sie und nur berechtigte User dürfen die Datei anschliessend wieder auf den Server stellen. Ein Beispiel dafür ist &lt;a href="https://subversion.apache.org/">SVN&lt;/a>&lt;/p>
 &lt;h3 id="verteilte-versionsverwaltung">Verteilte Versionsverwaltung&lt;/h3>
-&lt;p>Im Gegensatz zu zentralen Systeme wo der Benutzer nur den letzten Stand zur Verfügung hat, kopiert er bei verteilten Versionsverwaltungen eine vollständiger Klon des Repositories auf sein System und hat somit auch die komplette Geschichte lokal. Dies vereinfacht dem Entwickler das lokale arbeiten und erhöht die Ausfallsicherheit. Zusätzlich können solche System gut mit verschiedenen externen Repositories (Remotes) umgehen was die Zusammenarbeit weiter vereinfacht. Ein Beispiel dafür ist &lt;a href="https://git-scm.com">GIT&lt;/a>&lt;/p>
+&lt;p>Im Gegensatz zu zentralen Systemen, wo der Benutzer nur den letzten Stand zur Verfügung hat, kopiert er bei verteilten Versionsverwaltungen einen vollständigen Klon des Repositories auf sein System und hat somit auch die komplette Geschichte lokal. Dies vereinfacht dem Entwickler das lokale arbeiten und erhöht die Ausfallsicherheit. Zusätzlich können solche Systeme gut mit verschiedenen externen Repositories (Remotes) umgehen, was die Zusammenarbeit weiter vereinfacht. Ein Beispiel dafür ist &lt;a href="https://git-scm.com">GIT&lt;/a>&lt;/p>
 &lt;h2 id="geschichte">Geschichte&lt;/h2>
 &lt;p>Git entstand aufgrund einer Lizenzänderung von &lt;code>BitKeeper&lt;/code>, der Versionsverwaltung welche vom Linux Kernel bis 2005 verwendet wurde. Da die Kernel Entwickler die Software nicht mehr kostenlos nutzen konnten, entwickelten sie selber eine Lösung. Ziele der neuen Software waren Geschwindigkeit, einfaches Design, gute Unterstützung von nicht linearer Entwicklung, dezentrale Struktur und die Fähigkeit grosse Projekte effektiv zu verwalten. Git wird seit 2005 kontinuierlich weiterentwickelt.&lt;/p>
 &lt;h2 id="name">Name&lt;/h2>
@@ -38,7 +44,7 @@ matura_arbeit.docx matura_arbeit_fastfertig.docx matura_arbeit_wirklichfertig.do
 &lt;p>– Linus Torvalds&lt;/p>
 &lt;p>Dazu muss man anmerken, dass Linus den Namen Linux nur widerwillig akzeptierte.&lt;/p>
 &lt;h2 id="wie-funktioniert-git">Wie funktioniert Git&lt;/h2>
-&lt;p>Git funktioniert im Gegensatz zu den meisten anderen Versionsverwaltungen nicht indem es eine Liste von Änderungen an einer Datei abspeichert, sondern eher wie ein Dateisystem, welches bei jedem Commit ein Snapshot aller Dateien anlegt. Um effizient zu bleiben, werden unveränderte Dateien nicht kopiert sondern nur verknüpft. Weiter stellt Git die Integrität aller verwalteten Dateien sicher, indem es eine Prüfsumme jeder Datei anlegt. Dies verunmöglicht Änderungen an Dateien, ohne dass es Git mitbekommen würde.&lt;/p>
+&lt;p>Git funktioniert im Gegensatz zu den meisten anderen Versionsverwaltungen nicht, indem es eine Liste von Änderungen an einer Datei abspeichert, sondern eher wie ein Dateisystem, welches bei jedem Commit ein Snapshot aller Dateien anlegt. Um effizient zu bleiben, werden unveränderte Dateien nicht kopiert sondern nur verknüpft. Weiter stellt Git die Integrität aller verwalteten Dateien sicher, indem es eine Prüfsumme jeder Datei anlegt. Dies verunmöglicht Änderungen an Dateien, ohne dass es Git mitbekommen würde.&lt;/p>
 &lt;h3 id="drei-zustände-einer-datei">Drei Zustände einer Datei&lt;/h3>
 &lt;p>Eine Datei in einem Git Repository kann drei (Haupt-) Zustände haben:&lt;/p>
 &lt;ul>
@@ -47,11 +53,15 @@ matura_arbeit.docx matura_arbeit_fastfertig.docx matura_arbeit_wirklichfertig.do
 &lt;li>&lt;strong>Commited&lt;/strong>: Die Datei ist im aktuellen Zustand in die lokale Datenbank eingecheckt.&lt;/li>
 &lt;/ul>
 &lt;h3 id="minimaler-workflow">Minimaler Workflow&lt;/h3>
-&lt;p>Hat man ein Repository von einem anderen Rechner &lt;em>geklont&lt;/em>, kann man eine oder mehrere Dateien im Verzeichnisbaum editieren. Anschliessend &lt;em>staged&lt;/em> man diese Änderungen und &lt;em>commited&lt;/em> diese anschliessend.&lt;/p></description></item><item><title>Docs: Install Git</title><link>/docs/git/git-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-install/</guid><description>
+&lt;p>Hat man ein Repository von einem anderen Rechner &lt;em>geklont&lt;/em>, kann man eine oder mehrere Dateien im Verzeichnisbaum editieren. Anschliessend &lt;em>staged&lt;/em> man diese Änderungen und &lt;em>commited&lt;/em> diese zum Schluss.&lt;/p></description></item><item><title>Docs: Install Git</title><link>/docs/git/git-install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-install/</guid><description>
 &lt;h2 id="inhalt">Inhalt&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="#git-unter-linux-installieren">Git unter Linux installieren&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#git-unter-windows-installieren">Git unter Windows installieren&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, wie ich Git in meinem Betriebssystem installiere.&lt;/li>
 &lt;/ul>
 &lt;h2 id="git-unter-linux-installieren">Git unter Linux installieren&lt;/h2>
 &lt;ol>
@@ -88,6 +98,12 @@ matura_arbeit.docx matura_arbeit_fastfertig.docx matura_arbeit_wirklichfertig.do
 &lt;li>&lt;a href="#%C3%A4nderungen-r%C3%BCckg%C3%A4ngig-machen">Änderungen rückgängig machen&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#mit-remotes-arbeiten">Mit Remotes arbeiten&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss wie ich ein eigenes Git-Repository anlege.&lt;/li>
+&lt;li>Ich verstehe wie und warum eine .gitignore Datei genutzt wird.&lt;/li>
+&lt;li>Ich kann git commit, push, fetch und pull in den richtigen Situationen anwenden.&lt;/li>
+&lt;/ul>
 &lt;h2 id="konfiguration-von-git">Konfiguration von Git&lt;/h2>
 &lt;p>Git kann, wie viele Softwares unter Linux, auf unterschiedlichen Levels konfiguriert werden:&lt;/p>
 &lt;ul>
@@ -95,7 +111,7 @@ matura_arbeit.docx matura_arbeit_fastfertig.docx matura_arbeit_wirklichfertig.do
 &lt;li>&lt;code>~/.gitconfig&lt;/code> oder &lt;code>~/.config/git/config&lt;/code> enthält die Werte, welche für den aktuellen Benutzer konfiguriert sind. Mit &lt;code>git config --global&lt;/code> können Werte gesetzt oder ausgelesen werden.&lt;/li>
 &lt;li>Die Datei &lt;code>config&lt;/code> im &lt;code>.git&lt;/code> Verzeichnis innerhalb eines Repositories enthält die Konfiguration, welche nur für dieses Repository zählt. Das Flag für &lt;code>git config&lt;/code> ist in diesem Fall &lt;code>--local&lt;/code>, ist jedoch in der Regel die Standardoption und kann weggelassen werden.&lt;/li>
 &lt;/ul>
-&lt;p>Jede dieser Konfiguration wird von der nächsten überschrieben, sodass die Repository bezogene Konfiguration den höchsten Wert hat. Um zu die aktuelle Konfiguration und ihren Ursprung anzusehen kann folgender Befehl ausgeführt werden:&lt;/p>
+&lt;p>Jede dieser Konfiguration wird von der nächsten überschrieben, sodass die Repository-bezogene Konfiguration den höchsten Wert hat. Um die aktuelle Konfiguration und ihren Ursprung anzusehen kann folgender Befehl ausgeführt werden:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -140,10 +156,10 @@ file:.git/config branch.master.merge&lt;span style="color:#f92672">=&lt;/span>re
 $ git config --global user.email johndoe@example.com
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wie wir bereits gelernt haben, schreiben wir mit dem &lt;code>--global&lt;/code> Flag in die Konfiguration in unserem &lt;code>home&lt;/code> Verzeichnis und sie gilt somit für alle Repositories, welche wir mit unserem User bearbeiten. Wollen wir dies fur ein bestimmtes Repo übersteuern, haben wir immer noch die Möglichkeit dies mit &lt;code>--local&lt;/code> zu machen.&lt;/p>
-&lt;p>Eine weitere Konfiguration die evtl. hilfreich sein kann ist &lt;code>core.editor&lt;/code> mit welcher, der Texteditor definiert werden kann. Git benutzt, falls hier nichts definiert ist, den standard Editor des Systems.&lt;/p>
+&lt;/div>&lt;p>Wie wir bereits gelernt haben, schreiben wir mit dem &lt;code>--global&lt;/code> Flag in die Konfiguration in unserem &lt;code>home&lt;/code> Verzeichnis und sie gilt somit für alle Repositories, welche wir mit unserem User bearbeiten. Wollen wir dies für ein bestimmtes Repo übersteuern, haben wir immer noch die Möglichkeit dies mit &lt;code>--local&lt;/code> zu machen.&lt;/p>
+&lt;p>Eine weitere Konfiguration, die evtl. hilfreich sein kann, ist &lt;code>core.editor&lt;/code>. Mit dieser kann der Texteditor konfiguriert werden kann. Git benutzt, falls hier nichts definiert ist, den standard Editor des Systems.&lt;/p>
 &lt;h2 id="hilfe">Hilfe&lt;/h2>
-&lt;p>Git bietet mehrere Möglichkeit, wie man an Hilfe gelangt, wenn mal einmal nicht weiter weiss:&lt;/p>
+&lt;p>Git bietet mehrere Möglichkeiten, wie man an Hilfe gelangt, wenn mal einmal nicht weiter weiss:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -254,8 +270,8 @@ Other
 &lt;/div>&lt;h2 id="ein-git-repository-anlegen">Ein Git Repository anlegen&lt;/h2>
 &lt;p>Um lokal ein neues Git Repository anzulegen gibt es zwei Varianten:&lt;/p>
 &lt;ul>
-&lt;li>Umwandeln eines Verzeichnis, welches (noch) nicht mit Git verwaltet wird zu einem Git Repository&lt;/li>
-&lt;li>Klonen eines existierenden Repositories von einem anderen Ort&lt;/li>
+&lt;li>Umwandeln eines Verzeichnis, welches (noch) nicht mit Git verwaltet wird zu einem Git Repository.&lt;/li>
+&lt;li>Klonen eines existierenden Repositories von einem anderen Ort.&lt;/li>
 &lt;/ul>
 &lt;h3 id="ein-verzeichnis-zu-einem-git-repository-verwandeln">Ein Verzeichnis zu einem Git Repository verwandeln&lt;/h3>
 &lt;p>Um aus einem Ordner ein Git Repository zu erstellen, muss man zuerst in den Ordner wechseln und anschliessend das Repository initialisieren:&lt;/p>
@@ -269,7 +285,7 @@ Other
 $ git init
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Der zweite Befehl erzeugt ein &lt;code>.git&lt;/code> Unterverzeichnis, welches die Repository Daten beinhaltet. Im Moment werden noch keine Dateien von Git verwaltet, sondern die müssen zuerst hinzugefügt (&lt;code>git add&lt;/code>) werden und committed werden (&lt;code>git commit&lt;/code>). Wenn wir von einem leeren Ordner aus gehen, müssen die Dateien natürlich zuerst noch erstellt werden:&lt;/p>
+&lt;/div>&lt;p>Der zweite Befehl erzeugt ein &lt;code>.git&lt;/code> Unterverzeichnis, welches die Repository-Daten beinhaltet. Im Moment werden noch keine Dateien von Git verwaltet, sondern die müssen zuerst hinzugefügt werden (&lt;code>git add&lt;/code>) und committed werden (&lt;code>git commit&lt;/code>). Wenn wir von einem leeren Ordner ausgehen, müssen die Dateien natürlich zuerst noch erstellt werden:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -291,7 +307,7 @@ $ git commit -m &lt;span style="color:#e6db74">&amp;#39;Initial Commit&amp;#39;&
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git clone https://github.com/libgit2/libgit2
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git clone git@github.com:libgit2/libgit2.git
 $ ls
 libgit2
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
@@ -312,12 +328,12 @@ mylibgit
 &lt;/div>&lt;h2 id="änderungen-verfolgen-und-im-repository-speichern">Änderungen verfolgen und im Repository speichern&lt;/h2>
 &lt;p>Zur Erinnerung, eine Datei in einem Git Folder kann vier Zustände haben:&lt;/p>
 &lt;ul>
-&lt;li>Untracked: Die Datei liegt im Ordner, wird aber nicht von Git versioniert&lt;/li>
+&lt;li>Untracked: Die Datei liegt im Ordner, wird aber nicht von Git versioniert.&lt;/li>
 &lt;li>Unmodified: Die Datei wird von Git versioniert, sie ist seit dem letzten Commit unverändert.&lt;/li>
-&lt;li>Modified: Die Datei wurde seit dem letzten Commit verändert&lt;/li>
+&lt;li>Modified: Die Datei wurde seit dem letzten Commit verändert.&lt;/li>
 &lt;li>Staged: eine neue oder editierte Datei wurde für den nächsten Commit vorgemerkt.&lt;/li>
 &lt;/ul>
-&lt;p>Der Befehl zum überprüfen, ob man Dateien in einem anderen Zustand als &lt;code>unmodified&lt;/code> hat ist &lt;code>git status&lt;/code>:&lt;/p>
+&lt;p>Der Befehl zum Überprüfen, ob man Dateien in einem anderen Zustand als &lt;code>unmodified&lt;/code> hat, ist &lt;code>git status&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -353,9 +369,9 @@ Untracked files:
 .gitignore
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wollen wir nun die Änderungen der Datei &lt;code>content/en/docs/02.0/02.md&lt;/code> (oder die Datei &lt;code>.gitignore&lt;/code>) zum nächsten Commit hinzufügen können wir dies mit &lt;code>git add &amp;lt;pfad/zur/datei&amp;gt;&lt;/code>. Im Beispiel oben sehen wir, dass die Datei &lt;code>content/en/docs/02.0/02.md&lt;/code> bereits gestaged ist. Ändern wir diese Datei erneut, wird die Datei sowohl bei &lt;em>Changes to be committed:&lt;/em> wie auch bei &lt;em>Changes not staged for commit:&lt;/em> auftauchen. Einmal mit den Änderungen, welche wir bereits gestaged haben und einmal mit den Änderungen, welche wir nach dem Stagen (&lt;code>git add&lt;/code>) gemacht haben. Wollen wir beide Änderungen im gleichen Commit, können wir die Datei einfach wieder mit &lt;code>git add&lt;/code> stagen und anschliessend commiten, wollen wir die Änderungen in separaten Commit, commiten wir zuerst die gestagten Änderungen und stagen anschliessend die zweite Änderungen und commiten erneut.&lt;/p>
+&lt;/div>&lt;p>Wollen wir nun die Änderungen der Datei &lt;code>content/en/docs/02.0/02.md&lt;/code> (oder die Datei &lt;code>.gitignore&lt;/code>) zum nächsten Commit hinzufügen, können wir dies mit &lt;code>git add &amp;lt;pfad/zur/datei&amp;gt;&lt;/code>. Im Beispiel oben sehen wir, dass die Datei &lt;code>content/en/docs/02.0/02.md&lt;/code> bereits gestaged ist. Ändern wir diese Datei erneut, wird die Datei sowohl bei &lt;em>Changes to be committed:&lt;/em> wie auch bei &lt;em>Changes not staged for commit:&lt;/em> auftauchen. Einmal mit den Änderungen, welche wir bereits gestaged haben und einmal mit den Änderungen, welche wir nach dem Stagen (&lt;code>git add&lt;/code>) gemacht haben. Wollen wir beide Änderungen im gleichen Commit, können wir die Datei einfach wieder mit &lt;code>git add&lt;/code> stagen und anschliessend commiten, wollen wir die Änderungen in separaten Commit, commiten wir zuerst die gestagten Änderungen und stagen anschliessend die zweite Änderungen und commiten erneut.&lt;/p>
 &lt;h3 id="gitignore">.gitignore&lt;/h3>
-&lt;p>Bevor wir lernen, wie man seine Änderungen commited wollen wir noch kurz die spezielle Datei &lt;code>.gitignore&lt;/code> anschauen. In dieser Datei können Dateien erfasst werden, welche Git nicht als untracked aufzählen soll, respektive ignorieren soll. Die Datei wird ganz normal wie jede andere auch ins Repo eingecheckt.&lt;/p>
+&lt;p>Bevor wir lernen, wie man seine Änderungen committed, wollen wir noch kurz die spezielle Datei &lt;code>.gitignore&lt;/code> anschauen. In dieser Datei können Dateien erfasst werden, welche Git nicht als untracked aufzählen soll, respektive ignorieren soll. Die Datei wird ganz normal wie jede andere auch ins Repo eingecheckt.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -421,7 +437,7 @@ index 1e6db46..dd7161b 100644
 &lt;/span>&lt;span style="color:#a6e22e">&lt;/span>&lt;span style="color:#f92672">-Zur Erinnerung, eine Datei in einem Git Folder kann vier Zustaende haben
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;code>git diff&lt;/code> vergleicht die Änderungen welche noch nicht gestaged wurden, will man bereits gestagte Änderungen überprüfen braucht es zusätzlich das Flag &lt;code>--staged&lt;/code> oder &lt;code>--cached&lt;/code> (die beiden Flags sind Synonyme).&lt;/p>
+&lt;/div>&lt;p>&lt;code>git diff&lt;/code> vergleicht die Änderungen, welche noch nicht gestaged wurden, will man bereits gestagte Änderungen überprüfen braucht es zusätzlich das Flag &lt;code>--staged&lt;/code> oder &lt;code>--cached&lt;/code> (die beiden Flags sind Synonyme).&lt;/p>
 &lt;p>Anders als &lt;code>git diff&lt;/code> funktioniert &lt;code>git diff-tool&lt;/code> mit einem externen Tool, welches dir die Änderungen anzeigt. Beispiele dafür sind &amp;lsquo;P4Merge&amp;rsquo; oder auch &amp;lsquo;Beyond Compare&amp;rsquo;. Sie versuchen die Bearbeitungen besser zu visualisieren
 und es dem Benutzer einfacher zu machen, diese in einer Datei / im Code einzusehen.
 Jetzt bleibt die Frage: Wann brauchen wir was? Grundsätzlich
@@ -433,9 +449,9 @@ wird &lt;code>git diff&lt;/code> bei folgenden Situationen gebraucht:&lt;/p>
 &lt;/ul>
 &lt;p>&lt;code>git diff-tool&lt;/code> kann man dann überall dort einsetzen, bei denen die oben erwähnten Situationen nicht zutreffen. Zu Beachten ist aber, dass es noch viele weitere Situationen gibt, in welchen man auf &lt;code>git diff-tool&lt;/code> verzichten kann.
 Zur genaueren Einsicht ist Google immer eine gute Anlaufstelle.&lt;/p>
-&lt;h3 id="commiten">Commiten&lt;/h3>
-&lt;p>Ist man sicher, dass man nur die Änderungen gestaged hat, welche man auch commiten will, kann man dies mit dem Befehl &lt;code>git commit&lt;/code> bewerkstelligen. Dadurch wird ein Editor geöffnet und man wird gebeten eine Beschreibung für die Änderungen anzugeben. Wie solche Beschreibungen gestaltet werden sollen und was alles in eine &amp;ldquo;Commit Message&amp;rdquo; gehört, darüber gibt es ganz unterschiedliche Meinungen. Idealerweise probiert man sich vorzustellen, was man an Zusätzlichen Informationen braucht, wenn man die Änderungen in zwei Jahren wieder anschaut, um zu verstehen, was und warum das geändert wurde.&lt;/p>
-&lt;p>Oft gibt es pro Projekt Konventionen wie eine Commit Message aussehen soll. Falls dies nicht existiert gibt es ein paar wenige Punkte welche die Messages einiges lesbarer und verständlicher machen:&lt;/p>
+&lt;h3 id="committen">Committen&lt;/h3>
+&lt;p>Ist man sicher, dass man nur die Änderungen gestaged hat, welche man auch committen will, kann man dies mit dem Befehl &lt;code>git commit&lt;/code> bewerkstelligen. Dadurch wird ein Editor geöffnet und man wird gebeten eine Beschreibung für die Änderungen anzugeben. Wie solche Beschreibungen gestaltet werden sollen und was alles in eine &amp;ldquo;Commit Message&amp;rdquo; gehört, darüber gibt es ganz unterschiedliche Meinungen. Idealerweise probiert man sich vorzustellen, was man an zusätzlichen Informationen braucht, wenn man die Änderungen in zwei Jahren wieder anschaut, um zu verstehen, was und warum das geändert wurde.&lt;/p>
+&lt;p>Oft gibt es pro Projekt Konventionen, wie eine Commit-Message aussehen soll. Falls dies nicht existiert gibt es ein paar wenige Punkte welche die Messages einiges lesbarer und verständlicher machen:&lt;/p>
 &lt;ul>
 &lt;li>Sprache: Englisch&lt;/li>
 &lt;li>Kurze und prägnante Message, idealerweise unter 50 Zeichen &lt;a href="https://chris.beams.io/posts/git-commit/#limit-50">Details&lt;/a>&lt;/li>
@@ -448,7 +464,6 @@ Zur genaueren Einsicht ist Google immer eine gute Anlaufstelle.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>(&lt;a href="https://docs.puzzle.ch/qm-guide/latest/source-code-management/index.html#_konvention_commit_message">Puzzle Docs&lt;/a>)&lt;/p>
 &lt;p>Weitere Quellen dazu:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/&lt;/a>&lt;/li>
@@ -480,21 +495,21 @@ create mode &lt;span style="color:#ae81ff">100644&lt;/span> README
 &lt;p>&lt;code>-v&lt;/code> um ein &lt;code>git diff --staged&lt;/code> im Editor angezeigt zu bekommen. So muss man sich nicht merken, was man eigentlich geändert hat und bekommt es beim schreiben der Commit Message noch einmal präsentiert.&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>WICHTIG:&lt;/strong> Es ist einiges einfacher Fehler vor dem Commiten als nach dem Commiten zu beheben, ein zweites mal über die Änderungen schauen ist sehr empfehlenswert!&lt;/p>
+&lt;p>&lt;strong>WICHTIG:&lt;/strong> Es ist einiges einfacher, Fehler vor dem Committen als nach dem Committen zu beheben. Ein zweites Mal über die Änderungen schauen ist sehr empfehlenswert!&lt;/p>
 &lt;h3 id="dateien-löschen">Dateien löschen&lt;/h3>
-&lt;p>Um eine Datei zu löschen muss diese zuerst entfernt und dann gestaged werden, damit dies in der Git Datenbank ankommt. Um nicht zuerst &lt;code>rm foo&lt;/code> und dann &lt;code>git add foo&lt;/code> eingeben zu müssen, gibt es den Befehl &lt;code>git rm foo&lt;/code>. Will man eine bereits gestagte Datei aus der Versionsverwaltung jedoch nicht vom Filesystem löschen, weil man diese zum Beispiel im &lt;code>.gitignore&lt;/code> ergänzen möchte, dann kann man dies mit &lt;code>git rm --cached foo&lt;/code> erledigen.&lt;/p>
-&lt;p>&lt;strong>WICHTIG:&lt;/strong> Jede Datei die irgendwann mal commited wurde ist für immer in der Git Geschichte und kann nur durch neu schreiben der selbigen wieder entfernt werden. Wer also zum Beispiel sein Passwort commited weil dies in einer &lt;code>secret.yml&lt;/code> Datei steht, der sollte sich sofort bei einem 10x-Git-Profi-Engineer Hilfe holen.&lt;/p>
+&lt;p>Um eine Datei zu löschen, muss diese zuerst entfernt und dann gestaged werden, damit dies in der Git Datenbank ankommt. Um nicht zuerst &lt;code>rm foo&lt;/code> und dann &lt;code>git add foo&lt;/code> eingeben zu müssen, gibt es den Befehl &lt;code>git rm foo&lt;/code>. Will man eine bereits gestagte Datei aus der Versionsverwaltung jedoch nicht vom Filesystem löschen, weil man diese zum Beispiel im &lt;code>.gitignore&lt;/code> ergänzen möchte, dann kann man dies mit &lt;code>git rm --cached foo&lt;/code> erledigen.&lt;/p>
+&lt;p>&lt;strong>WICHTIG:&lt;/strong> Jede Datei, die irgendwann mal committed wurde, ist für immer in der Git-Geschichte und kann nur durch neu schreiben der selbigen wieder entfernt werden. Wer also zum Beispiel sein Passwort committed, weil dies in einer &lt;code>secret.yml&lt;/code> Datei steht, der sollte sich sofort bei einem 10x-Git-Profi-Engineer Hilfe holen.&lt;/p>
 &lt;h3 id="dateien-verschieben">Dateien Verschieben&lt;/h3>
-&lt;p>Genauso wie löschen, muss auch beim Verschieben die Änderung Git mitgeteilt werden: &lt;code>mv README.md README &amp;amp;&amp;amp; git rm README.md &amp;amp;&amp;amp; git add README&lt;/code> oder in kurz und hübsch: &lt;code>git mv README.md README&lt;/code>.&lt;/p>
+&lt;p>Genauso wie das Löschen, muss auch beim Verschieben die Änderung Git mitgeteilt werden: &lt;code>mv README.md README &amp;amp;&amp;amp; git rm README.md &amp;amp;&amp;amp; git add README&lt;/code> oder in kurz und hübsch: &lt;code>git mv README.md README&lt;/code>.&lt;/p>
 &lt;h2 id="anzeigen-der-commit-historie">Anzeigen der Commit Historie&lt;/h2>
-&lt;p>Um die Geschichte eines Git Repositories anzuzeigen gibt es den Befehl &lt;code>git log&lt;/code>. Ohne Argumente zeigt &lt;code>git log&lt;/code> die Commits in umgekehrter chronologischer Reihenfolge, sprich jüngster Commit zuoberst. Pro Commit wird jeweils der Commit-Hash, der Name und Email Adresse des Authors, das Datum und die Commit-Message angezeigt. Um die effektiven Änderungen anzuzeigen gibt es das &lt;code>-p&lt;/code> oder &lt;code>--patch&lt;/code> Flag verwendet werden. Da der Output schnell gross wird und man wahrscheinlich auch nicht bis an den Ursprung der Geschichte zurück will empfiehlt es sich die Anzahl Commits anzugeben, will man zum Beispiel die letzten drei Commits anschauen macht man dies mit &lt;code>-3&lt;/code>. Oder man schränkt die Änderungen basierend auf die Zeit ein mit &lt;code>--since=&lt;/code> und &lt;code>--until=&lt;/code> ein (es werden die unterschiedlichsten Zeitangaben akzeptiert, am besten probiert man etwas aus. Bsp: &lt;code>--since=2.weeks&lt;/code> oder &lt;code>--until=&amp;quot;2020-06-03&amp;quot;&lt;/code>). Auch mit &lt;code>--grep&lt;/code> oder &lt;code>--author&lt;/code> kann man die Resultate einschränken. Weitere Information liefert die Manpage &lt;code>man git log&lt;/code> und die Hilfefunktion &lt;code>git log -h&lt;/code>.&lt;/p>
+&lt;p>Um die Geschichte eines Git Repositories anzuzeigen, gibt es den Befehl &lt;code>git log&lt;/code>. Ohne Argumente zeigt &lt;code>git log&lt;/code> die Commits in umgekehrter chronologischer Reihenfolge, sprich jüngster Commit zuoberst. Pro Commit wird jeweils der Commit-Hash, der Name und die Email-Adresse des Autors, das Datum und die Commit-Message angezeigt. Um die effektiven Änderungen anzuzeigen, gibt es das &lt;code>-p&lt;/code> oder &lt;code>--patch&lt;/code> Flag verwendet werden. Da der Output schnell gross wird und man wahrscheinlich auch nicht bis an den Ursprung der Geschichte zurück will, empfiehlt es sich die Anzahl Commits anzugeben. Will man zum Beispiel die letzten drei Commits anschauen, macht man dies mit &lt;code>-3&lt;/code>. Oder man schränkt die Änderungen basierend auf der Zeit ein mit &lt;code>--since=&lt;/code> und &lt;code>--until=&lt;/code> ein (es werden die unterschiedlichsten Zeitangaben akzeptiert, am besten probiert man etwas aus. Bsp: &lt;code>--since=2.weeks&lt;/code> oder &lt;code>--until=&amp;quot;2020-06-03&amp;quot;&lt;/code>). Auch mit &lt;code>--grep&lt;/code> oder &lt;code>--author&lt;/code> kann man die Resultate einschränken. Weitere Information liefert die Manpage &lt;code>man git log&lt;/code> und die Hilfefunktion &lt;code>git log -h&lt;/code>.&lt;/p>
 &lt;h2 id="änderungen-rückgängig-machen">Änderungen rückgängig machen&lt;/h2>
 &lt;p>Wo gehobelt wird fallen Späne. Die meisten Schnitzer kann man jedoch selber wieder ausglätten. Am häufigsten committed man wohl zu schnell, hat eine Datei vergessen dazuzufügen oder hat sich bei der Commit Message vertan. Hier kann man ganz einfach die Änderungen noch vornehmen und an den letzten Commit berichtigen mit &lt;code>git commit --amend&lt;/code> (Wichtig, man editiert nicht den letzten Commit, sondern man löscht ihn und erstellt eine korrigierte neue Version davon. Dies kann dazuführen, dass ein Remote den Commit nicht mehr annimmt, da die History nicht mehr übereinstimmt. Aber mehr dazu später.)&lt;/p>
 &lt;p>Um eine gestagte Datei wieder zu modified (aber eben nicht gestaged) zu verschieben kann man &lt;code>git reset HEAD &amp;lt;file&amp;gt;&lt;/code> verwenden. Um die Änderungen einer Datei rückgängig zu machen (also modified zu unmodified)
-kann sie neu ausgecheckt werden mit &lt;code>git checkout -- &amp;lt;file&amp;gt;&lt;/code>. &lt;strong>Achtung&lt;/strong> Alle Änderungen seit dem letzte Commit gehen damit verloren!!! Wenn man sich an die beiden Befehle gerade mal nicht erinnern kann, dann kann man einfach ein &lt;code>git status&lt;/code> eingeben und den Hilfetext studieren 😉.&lt;/p>
+kann sie neu ausgecheckt werden mit &lt;code>git checkout -- &amp;lt;file&amp;gt;&lt;/code>. &lt;strong>Achtung&lt;/strong>: Alle Änderungen seit dem letzte Commit gehen damit verloren!!! Wenn man sich an die beiden Befehle gerade mal nicht erinnern kann, dann kann man einfach ein &lt;code>git status&lt;/code> eingeben und den Hilfetext studieren 😉.&lt;/p>
 &lt;h2 id="mit-remotes-arbeiten">Mit Remotes arbeiten&lt;/h2>
-&lt;p>Um mit anderen an einem Git-Projekt mitarbeiten zu können, braucht es Remotes, sprich eine Version des Projekts im Netzwerk, wo alle Beteiligten ihre Änderungen hin pushen und die Änderungen der Anderen pullen können.&lt;/p>
-&lt;p>Nachdem man ein Repo gecloned hat sieht man ein Remote, man kann jedoch auch weitere definieren:&lt;/p>
+&lt;p>Um mit anderen an einem Git-Projekt mitarbeiten zu können, braucht es Remotes, sprich eine Version des Projekts im Netzwerk, wo alle Beteiligten ihre Änderungen hin pushen und die Änderungen der anderen pullen können.&lt;/p>
+&lt;p>Nachdem man ein Repo gecloned hat, sieht man ein Remote, der verbunden ist. Man kann jedoch auch weitere definieren:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -512,48 +527,38 @@ kann sie neu ausgecheckt werden mit &lt;code>git checkout -- &amp;lt;file&amp;gt
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git clone git@github.com:puzzle-bbt/training-sbb-puzzle.git
-Cloning into &lt;span style="color:#e6db74">&amp;#39;training-sbb-puzzle&amp;#39;&lt;/span>...
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git clone https://code.sbb.ch/scm/~u245517/ausbildungsprogramm.git
+Cloning into &lt;span style="color:#e6db74">&amp;#39;ausbildungsprogramm&amp;#39;&lt;/span>...
 remote: Enumerating objects: 8485, &lt;span style="color:#66d9ef">done&lt;/span>.
 remote: Counting objects: 100% &lt;span style="color:#f92672">(&lt;/span>8485/8485&lt;span style="color:#f92672">)&lt;/span>, &lt;span style="color:#66d9ef">done&lt;/span>.
 remote: Compressing objects: 100% &lt;span style="color:#f92672">(&lt;/span>5276/5276&lt;span style="color:#f92672">)&lt;/span>, &lt;span style="color:#66d9ef">done&lt;/span>.
 remote: Total &lt;span style="color:#ae81ff">8485&lt;/span> &lt;span style="color:#f92672">(&lt;/span>delta 3095&lt;span style="color:#f92672">)&lt;/span>, reused &lt;span style="color:#ae81ff">8456&lt;/span> &lt;span style="color:#f92672">(&lt;/span>delta 3079&lt;span style="color:#f92672">)&lt;/span>, pack-reused &lt;span style="color:#ae81ff">0&lt;/span>
 Receiving objects: 100% &lt;span style="color:#f92672">(&lt;/span>8485/8485&lt;span style="color:#f92672">)&lt;/span>, 17.06 MiB | 5.11 MiB/s, &lt;span style="color:#66d9ef">done&lt;/span>.
 Resolving deltas: 100% &lt;span style="color:#f92672">(&lt;/span>3095/3095&lt;span style="color:#f92672">)&lt;/span>, &lt;span style="color:#66d9ef">done&lt;/span>.
-$ cd training-sbb-puzzle
+$ cd ausbildungsprogramm
 $ git remote
 origin
 $ git remote -v
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>fetch&lt;span style="color:#f92672">)&lt;/span>
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>push&lt;span style="color:#f92672">)&lt;/span>
-$ git remote add private git remote add private git@github.com:Lehrling/training-sbb-puzzle.git
-$ git remote -v
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>fetch&lt;span style="color:#f92672">)&lt;/span>
-origin git@github.com:puzzle-bbt/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>push&lt;span style="color:#f92672">)&lt;/span>
-private git@github.com:Lehrling/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>fetch&lt;span style="color:#f92672">)&lt;/span>
-private git@github.com:Lehrling/training-sbb-puzzle.git &lt;span style="color:#f92672">(&lt;/span>push&lt;span style="color:#f92672">)&lt;/span>
+origin https://code.sbb.ch/scm/~u245517/ausbildungsprogramm.git &lt;span style="color:#f92672">(&lt;/span>fetch&lt;span style="color:#f92672">)&lt;/span>
+origin https://code.sbb.ch/scm/~u245517/ausbildungsprogramm.git &lt;span style="color:#f92672">(&lt;/span>push&lt;span style="color:#f92672">)&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wollen wir nun alle Information holen, welches der Lehrling hat, jedoch noch nicht im Repo sind kann man dies mit &lt;code>git fetch private&lt;/code> ausführen.&lt;/p>
-&lt;h3 id="fetching-und-pulling">Fetching und Pulling&lt;/h3>
-&lt;p>Es gibt zwei Arten, wie man Daten von einem Remote abholen kann, nach dem man das Repo gecloned hat.&lt;/p>
+&lt;/div>&lt;h3 id="fetching-und-pulling">Fetching und Pulling&lt;/h3>
+&lt;p>Es gibt zwei Arten, wie man Daten von einem Remote abholen kann, nachdem man das Repo gecloned hat.&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;code>git fetch &amp;lt;remote&amp;gt;&lt;/code>: holt alle Änderungen vom Remote seit dem letzten abholen und speichert die lokal. Wichtig zu beachten ist, dass &lt;code>git fetch&lt;/code> die Änderungen nicht mit den lokalen Änderungen zusammenfügt, sondern dies manuell ausgeführt werden muss.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>&lt;code>git pull&lt;/code>: Wenn der lokale Branch mit einem remote Branch verknüpft ist, holt &lt;code>git pull&lt;/code> die Änderungen dieses remotes und fügt sie gleich mit den Änderungen im lokalen Branch zusammen (merge). Was Branches sind und wie ein Merge funktioniert schauen wir uns in kürze an, nur soviel, wird ein Repo gecloned, wird der lokale sogenannte &lt;code>master&lt;/code> Branch mit dem &lt;code>master&lt;/code> Branch des &lt;code>origin&lt;/code> Remotes verknüpft.&lt;/p>
+&lt;p>&lt;code>git pull&lt;/code>: Wenn der lokale Branch mit einem remote Branch verknüpft ist, holt &lt;code>git pull&lt;/code> die Änderungen dieses Remotes und fügt sie gleich mit den Änderungen im lokalen Branch zusammen (merge). Was Branches sind und wie ein Merge funktioniert, schauen wir uns in Kürze an. Nur soviel: Wird ein Repo gecloned, wird der lokale sogenannte &lt;code>master&lt;/code> (oder auch &lt;code>main&lt;/code> genannt) Branch mit dem &lt;code>master&lt;/code> Branch des &lt;code>origin&lt;/code> Remotes verknüpft.&lt;/p>
 &lt;/li>
 &lt;/ul>
+&lt;p>Falls korrekt gecloned wurde, muss bei `git fetch der remote nicht angegeben werden. Das Gleiche gilt für die Angabe des Branches bei einem Pull, sie kann weggelassen werden.&lt;/p>
 &lt;h3 id="pushen">Pushen&lt;/h3>
-&lt;p>Wenn man seine Änderungen soweit hat, dass man sie mit dem Rest vom Team teilen will, dann kann man diese mit &lt;code>git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code> auf den Server laden. Dies funktioniert jedoch nur, wenn man auf dem Server auch Schreibrechte hat und niemand anderes vor einem gepusht hat.&lt;/p></description></item><item><title>Docs: Git Erweitert</title><link>/docs/git/git-extended/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-extended/</guid><description>
+&lt;p>Wenn man seine Änderungen soweit hat, dass man sie mit dem Rest vom Team teilen will, dann kann man diese mit &lt;code>git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code> auf den Server laden. Dies funktioniert jedoch nur, wenn man auf dem Server auch Schreibrechte hat und niemand anderes vor einem gepusht hat (Merge-Konflikte!).&lt;/p>
+&lt;p>Auch hier muss, falls korrekt gecloned wurde, der remote nicht angegeben werden.&lt;/p></description></item><item><title>Docs: Git Erweitert</title><link>/docs/git/git-extended/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-extended/</guid><description>
 &lt;p>Nachdem du die Basics von git gelernt hast, ist es Zeit dich weiter zu vertiefen.&lt;/p>
 &lt;h2 id="inhalt">Inhalt&lt;/h2>
 &lt;ul>
@@ -562,10 +567,17 @@ private git@github.com:Lehrling/training-sbb-puzzle.git &lt;span style="color:#f
 &lt;li>&lt;a href="#Tag">Tag&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#Alias">Alias&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;h3 id="ziele">Ziele&lt;/h3>
+&lt;ul>
+&lt;li>Ich verstehe, was ein Stash ist und wie er funktioniert.&lt;/li>
+&lt;li>Ich weiss, wie ich einen Pull-Request in meiner IDE, wie auch im Web erstelle.&lt;/li>
+&lt;li>Ich kenne Tags und kann sie über die Kommando-Zeile erstellen.&lt;/li>
+&lt;li>Ich kann Git-Blame in der Kommando-Zeile anwenden.&lt;/li>
+&lt;/ul>
 &lt;h2 id="stash">Stash&lt;/h2>
 &lt;h4 id="was-ist-stash">Was ist stash?&lt;/h4>
 &lt;p>Mit git stash ist es möglich Änderungen zwischenzuspeichern und diese später abzurufen.
-Nach dem Stash-Vorgang kannst du an anderen Dateien arbeiten, bis du die zwischengespeicherten Daten wieder abrufen kannst.&lt;/p>
+Nach dem Stash-Vorgang kannst du an anderen Dateien (auch in anderen Branches) arbeiten, bis du die zwischengespeicherten Daten wieder abrufen kannst.&lt;/p>
 &lt;h4 id="wie-funktioniert-stash">Wie funktioniert stash?&lt;/h4>
 &lt;p>Um Dateien zu stashen wird der folgende Befehl verwendet:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -600,11 +612,11 @@ der Unterschied zu &lt;code>git stash pop&lt;/code> liegt darin das stash apply 
 dies kann nützlich sein, wenn dieselbe Änderung mehreren Branches hinzugefügt werden soll.&lt;/p>
 &lt;h2 id="squash">Squash&lt;/h2>
 &lt;h4 id="was-ist-squash">Was ist Squash&lt;/h4>
-&lt;p>squash in Git meint mehrere Commits zu vereinen.
+&lt;p>&lt;code>squash&lt;/code> in Git meint, mehrere Commits zu vereinen.
 Squash wird meistens benutzt, wenn Branches gemerged werden.
 An dieser Stelle ist es jedoch wichtig zu erwähnen das es keinen &lt;code>git squash&lt;/code> Befehl gibt.&lt;/p>
 &lt;h4 id="wie-funktioniert-squash">Wie funktioniert squash?&lt;/h4>
-&lt;p>Es gibt verschiedene Wege um Commits zu squashen.
+&lt;p>Es gibt verschiedene Wege, um Commits zu squashen.
 Zum Beispiel gibt es die Methode des manuellen Squashens, dazu wird das Interactive Rebase Feature von Git genutzt.
 Um die Interactive Rebase Session zu starten wird der folgende Befehl verwendet:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -619,43 +631,50 @@ Um die Interactive Rebase Session zu starten wird der folgende Befehl verwendet:
 Um jetzt die Commits zu squashen muss das Pick zu Beginn der Zeile mit squash ersetzt werden.
 Jetzt werden alle Commits mit dem squash Schlüsselwort an den obersten Commit hinzugefügt.&lt;/p>
 &lt;h5 id="wieso-sollte-man-squashen">Wieso sollte man Squashen:&lt;/h5>
-&lt;p>Angenommen du beendest die Arbeit an einem Feature-Branch und willst diese in den Main-Branch mergen.
+&lt;p>Angenommen, du beendest die Arbeit an einem Feature-Branch und willst diese in den Main-Branch mergen.
 Der Feature-Branch enthält aber viele Commits, die nicht zwingend im Main-Branch aufgeführt werden sollen,
-in diesem Fall eignet sich das squashen, um diese Commits zusammenzufassen.&lt;/p>
+in diesem Fall eignet sich das Squashen, um diese Commits zusammenzufassen.&lt;/p>
 &lt;h2 id="mergepull-requests">Merge/Pull Requests&lt;/h2>
 &lt;h3 id="was-ist-der-unterschied-zwischen-einer-merge-request-und-einer-pull-request">Was ist der Unterschied zwischen einer Merge Request und einer Pull Request?&lt;/h3>
 &lt;p>Beide Begriffe meinen dasselbe, werden jedoch mit einer anderen Plattform assoziiert.
 Der Begriff Merge Request wird im Zusammenhang mit GitLab verwendet.
-Im Zusammenhang mit GitHub wird jedoch der Begriff Pull Request verwendet.
+Im Zusammenhang mit GitHub oder Bitbucket wird jedoch der Begriff Pull Request verwendet.
 Der Einfachheit halber wird im folgenden Text nur von Pull Request gesprochen.&lt;/p>
 &lt;h3 id="was-ist-ein-pull-request-bzw-ein-merge-request">Was ist ein Pull Request bzw. ein Merge Request?&lt;/h3>
-&lt;p>In ihrer einfachsten Form sind Pull-Requests eine Funktion für Entwickler
+&lt;p>In ihrer einfachsten Form sind Pull-Requests eine Funktion für Entwickler,
 die andere Teammitglieder darüber informiert, dass ein Feature fertiggestellt wurde.
 Dies lässt alle Beteiligten wissen, dass der Code bereit für eine Überprüfung ist und danach in einen anderen Zweig gemerged werden kann.&lt;/p>
 &lt;h3 id="wie-kann-ein-pull-request-erstellt-werden-intellij">Wie kann ein Pull Request erstellt werden (IntelliJ)&lt;/h3>
-&lt;p>Um einen Pull Request direkt aus IntelliJ zu erstellen, muss zuerst sichergestellt werden das man selbst berechtigt ist einen Pull Request zu erstellen.
+&lt;p>Um einen Pull Request direkt aus IntelliJ zu erstellen, muss zuerst sichergestellt werden, dass man selbst berechtigt ist, einen Pull Request zu erstellen.
 Sind diese Berechtigungen vorhanden, kann der Pull Request in wenigen Schritten erstellt werden.
 Oben Links in IntelliJ befindet sich einen Button der mit Pull Request beschriftet ist.
 Danach öffnet sich ein Fenster in dem ausgewählt werden kann, welchen der lokalen Branches in das Ziel Repo gemerged werden soll.
-Danach muss noch ein Titel festgelegt werden. Es besteht ebenfalls die Möglichkeit eine Beschreibung hinzuzufügen, dies ist jedoch nur optional.
+Danach muss noch ein Titel festgelegt werden. Es besteht ebenfalls die Möglichkeit, eine Beschreibung hinzuzufügen, dies ist jedoch optional.
 Im Anschluss besteht die Möglichkeit einen Reviewer hinzuzufügen.
 Jetzt kann der Pull Request erstellt werden.&lt;/p>
+&lt;p>Funktioniert nur für GitHub, um Pull Requests in Bitbucket zu erstellen ist die folgende Anleitung zu beachten.&lt;/p>
 &lt;h3 id="wie-kann-eine-pull-request-erstellt-werden-github">Wie kann eine Pull Request erstellt werden (Github)&lt;/h3>
-&lt;p>Um einen Pull Request direkt von GitHub aus zu erstellen, muss zuerst der Reiter Pull Request ausgewählt werden,
+&lt;p>Um einen Pull Request direkt von GitHub aus zu erstellen, muss zuerst der Reiter Pull Request ausgewählt werden.
 Jetzt stehen verschiedene Möglichkeiten zu Auswahl, in unserem Fall wollen wir aber nur einen neuen Pull Request erstellen.
 Im Anschluss erscheint ein neues Panel, das Wichtigste dabei ist die Wahl der richtigen Source und Target Branches.
 Danach kann noch ein Name und eine Beschreibung für den Pull Request gesetzt werden.
-Wie in IntelliJ besteht auch hier die Möglichkeit einen Reviewer hinzuzufügen, der Button dazu befindet sich mittig auf der linken Seite.
+Wie in IntelliJ besteht auch hier die Möglichkeit einen Reviewer hinzuzufügen. Der Button dazu befindet sich mittig auf der linken Seite.
+Da nun alle Einstellungen vorgenommen wurden, kann der Pull Request erstellt werden.&lt;/p>
+&lt;h3 id="wie-kann-eine-pull-request-erstellt-werden-bitbucket">Wie kann eine Pull Request erstellt werden (Bitbucket)&lt;/h3>
+&lt;p>Um einen Pull Request in Bitbucket zu erstellen, muss im Web in der linken Navigationsleiste unter &lt;code>ACTIONS&lt;/code> die Option &lt;code>Create pull request&lt;/code> ausgewählt werden.
+Hier hat man nun die Möglichkeit einen Branch welcher Änderungen hat (Source Branch) und den Ziel Branch (Destination Branch), dort wo die Änderungen hinzugefügt werden sollen, auszuwählen.
+&lt;img style="padding-bottom: 30px;" src="../img/PullRequestBitBucket.png">&lt;/p>
+&lt;p>Auf der folgenden Seite kann ein Titel und eine Beschreibung für den Pull Request gesetzt werden. Ebenfalls können hier Reviewers hinzugefügt werden.
 Da nun alle Einstellungen vorgenommen wurden, kann der Pull Request erstellt werden.&lt;/p>
 &lt;h2 id="cherry-pick">Cherry Pick&lt;/h2>
-&lt;h3 id="was-ist-cherry-pick-">Was ist Cherry-Pick ?&lt;/h3>
-&lt;p>git cherry-pick ist ein Befehl welcher es ermöglicht beliebige Git-Commits per Referenz
+&lt;h3 id="was-ist-cherry-pick">Was ist Cherry-Pick?&lt;/h3>
+&lt;p>git cherry-pick ist ein Befehl, welcher es ermöglicht, beliebige Git-Commits (auch von anderen Branches) per Referenz
 anzusprechen und diese an den momentanen Arbeitskopf (HEAD) anzuheften.
 git cherry-pick kann sehr nützlich sein, um Änderungen rückgängig zu machen.&lt;/p>
 &lt;p>Zum Beispiel: Ein Commit wurde aus Versehen im falschen Branch durchgeführt. Nun kannst du zum korrekten
 Branch wechseln und git cherry-pick nutzen, um den Commit am richtigen Ort zu befestigen.&lt;/p>
-&lt;h3 id="wie-funktioniert-cherry-pick-">Wie funktioniert Cherry-Pick ?&lt;/h3>
-&lt;p>Um Cherry Pick anzuwenden gibt man folgenden Befehl ein:&lt;/p>
+&lt;h3 id="wie-funktioniert-cherry-pick">Wie funktioniert Cherry-Pick?&lt;/h3>
+&lt;p>Um Cherry Pick anzuwenden, gibt man folgenden Befehl ein:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -666,17 +685,17 @@ Branch wechseln und git cherry-pick nutzen, um den Commit am richtigen Ort zu be
 &lt;/div>
 &lt;/div>&lt;p>Der &lt;commit-hash> muss natürlich noch mit dem korrekten Hash des Commits ersetzt werden, welchen
 man verschieben will. Anschliessend wird der Commit an den Branch angeheftet, auf dem man sich gerade
-befindet. Darum Achtung!: Immer zuerst kontrollieren ob man derzeit auch wirklich auf dem korrekten
+befindet. Darum Achtung!: Immer zuerst kontrollieren, ob man derzeit auch wirklich auf dem korrekten
 Branch ist.&lt;/p>
 &lt;h2 id="tag">Tag&lt;/h2>
-&lt;h3 id="was-sind-tags-">Was sind Tags ?&lt;/h3>
+&lt;h3 id="was-sind-tags">Was sind Tags?&lt;/h3>
 &lt;p>Tags sind Referenzen, welche an einen bestimmten Punkt der History
-zeigen. Tagging wird üblicherweise benutzt um wichtige Ereignisse wie z.B.
+zeigen. Tagging wird üblicherweise benutzt, um wichtige Ereignisse wie z.B.
 den Release einer Applikation festzuhalten. Ein Tag ist etwas ähnliches
 wie ein Branch, nur das ein Tag sich nicht verändert. Anders als ein Branch,
 kann ein Tag nach dem Erstellen keine weiteren Commits
 beinhalten.&lt;/p>
-&lt;h3 id="wie-funktionieren-tags-">Wie funktionieren Tags ?&lt;/h3>
+&lt;h3 id="wie-funktionieren-tags">Wie funktionieren Tags?&lt;/h3>
 &lt;p>Um ein Tag zu erstellen wird folgender Befehl benötigt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -718,8 +737,8 @@ nicht standardmässig mitgepusht. Dazu brauchst du dann:&lt;/p>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="alias">Alias&lt;/h2>
-&lt;h3 id="was-sind-aliasse-">Was sind Aliasse ?&lt;/h3>
-&lt;p>Ein Git-Alias ist zu vergleichen mit einem Shortcut. Aliase werden z.b.
+&lt;h3 id="was-sind-aliasse">Was sind Aliasse?&lt;/h3>
+&lt;p>Ein Git-Alias ist zu vergleichen mit einem Shortcut. Aliase werden z.B.
 auch beim Arbeiten mit der Bash-Konsole eingesetzt. Aliase werden gebraucht um kürzere Befehle
 zu realisieren. Sie ermöglichen effizienteres Programmieren.&lt;/p>
 &lt;p>Nehmen wir zum Beispiel den git-checkout Befehl.
@@ -743,31 +762,9 @@ ci = commit -v
 &lt;/div>
 &lt;/div>&lt;p>Die Aliasse können beliebig definiert werden, Ziel davon soll nur sein, die Schreibarbeit zu
 minimieren und das eigene Programmieren praktischer zu machen.&lt;/p>
-&lt;h2 id="gitg">Gitg&lt;/h2>
-&lt;h3 id="was-ist-gitg">Was ist Gitg&lt;/h3>
-&lt;p>Gitg ist eine grafische Benutzeroberfläche für git. Es zielt darauf ab, ein kleines,
-schnelles und bequemes Werkzeug zu sein, um Git-Repositories zu visualisieren.
-Neben der Visualisierung bietet Gitg auch einfache Möglichkeiten zur Verwaltung eines Repository.
-Jedoch bietet IntelliJ standardmässig die dieselben Möglichkeiten, sollte man jedoch eine IDE ohne Git integration verwenden ist gitg ein praktisches Tool.&lt;/p>
-&lt;h3 id="installationsanleitung">Installationsanleitung&lt;/h3>
-&lt;p>Unter Linux kann gitg mit folgendem Befehl installieren:
-&lt;br>&lt;code>sudo apt install gitg&lt;/code>&lt;br>
-Leider ist gitg unter Windows nicht verfügbar.
-Eine empfehlenswerte Alternative dazu ist der offizielle GitHub Client.&lt;/p>
-&lt;h2 id="github-client">Github Client&lt;/h2>
-&lt;h3 id="was-ist-der-github-client">Was ist der GitHub Client&lt;/h3>
-&lt;p>Der GitHub Client ist ein Windows Programm für die Verwaltung von Git Repositories.
-Der GitHub Client funktioniert am besten mit GitHub Repositories,
-das bedeutet aber nicht das dieser keine Repositories von anderen Quellen unterstützt.
-Es ist lediglich ein wenig aufwändiger Repositories aus anderen Quellen einzubinden.&lt;/p>
-&lt;h3 id="installationsanleitung-1">Installationsanleitung&lt;/h3>
-&lt;p>Unter Windows kann der GitHub Client auf der folgenden Seite heruntergeladen werden:
-&lt;code>https://desktop.github.com/&lt;/code>&lt;/p>
-&lt;p>Unter Linux der Client mithilfe des folgenden Scripts heruntergeladen werden:
-&lt;code>https://gist.github.com/berkorbay/6feda478a00b0432d13f1fc0a50467f1&lt;/code>&lt;/p>
 &lt;h2 id="git-blame">Git Blame&lt;/h2>
 &lt;h3 id="was-ist-git-blame">Was ist Git-Blame?&lt;/h3>
-&lt;p>Ist ein Befehl, welcher dazu dient den Author der letzten Änderung anzuzeigen. Deswegen auch
+&lt;p>Ist ein Befehl, welcher dazu dient den Autor der letzten Änderung anzuzeigen. Deswegen auch
 git &amp;ldquo;blame&amp;rdquo;. Man &amp;ldquo;blamed&amp;rdquo; den Verfasser der letzten Änderung für seinen Fehler (falls er
 einen gemacht hat).&lt;/p>
 &lt;h3 id="wie-funktioniert-git-blame">Wie funktioniert Git-Blame?&lt;/h3>
@@ -800,7 +797,7 @@ eine weitere Variante:&lt;/p>
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git blame -e &amp;lt;filename&amp;gt;
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Die Option -e zeigt uns anstatt des Benutzernamen des Authors, direkt die E-mail Adresse von
+&lt;/div>&lt;p>Die Option -e zeigt uns anstatt des Benutzernamen des Autors, direkt die E-Mail-Adresse von
 ihm, so dass wir gerade Kontakt aufnehmen können.&lt;/p>
 &lt;p>Zum Schluss haben wir noch die -w Option&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -811,31 +808,23 @@ ihm, so dass wir gerade Kontakt aufnehmen können.&lt;/p>
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">git blame -w &amp;lt;filename&amp;gt;
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Dieser Befehl ignoriert wenn ein Author nur Leerschläge geändert hat. Das hat den Vorteil, dass
-wir nur die Authoren bekommen, welche auch wirklich etwas am Code selbst geändert und ihn
-nicht nur formatiert haben.&lt;/p>
-&lt;h2 id="blobs-und-trees">Blobs und Trees&lt;/h2>
-&lt;h3 id="was-sind-blobs-und-trees-show">Was sind Blobs und Trees show?&lt;/h3>
-&lt;p>Zuerst zu den Blobs: Blobs werden benutzt, um die Inhalte einzelner Dateien zu speichern.
-Trees wiederum beinhalten Referenzen zu anderen Blobs oder Unterbäumen.&lt;/p>
-&lt;h3 id="wozu-braucht-es-sie">Wozu braucht es sie?&lt;/h3>
-&lt;p>Wenn man eine Datei staged wird eine Blob-Datei erstellt. Dieser Blob hat den
-Inhalt der Datei und hat den Typ &amp;ldquo;blob&amp;rdquo;. Ein Blob eigentlich der Inhalt der Datei
-an einer bestimmten Instanz. Die verschiedenen Blobs fallen danach unter einen
-Tree.&lt;/p>
-&lt;p>Nun bildet sich hier eine Kette: Das Commit-Objekt greift auf die Tree-Objekte zu.
-Diese wiederum geben uns die Blob-Objekte zurück. Deshalb brauchen wir diese Konstellation also.
-Ohne die Trees und Blobs hätten wir keinen Zugriff auf die Inhalte unserer Dateien mehr.&lt;/p>
-&lt;img src="https://miro.medium.com/max/541/1*ZGVkiRbMErfng2CqpU3YQQ.png">
-Im Diagramm kann die Abhängigkeit dementsprechend besichtigt werden.</description></item><item><title>Docs: Git Branches</title><link>/docs/git/git-branches/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-branches/</guid><description>
+&lt;/div>&lt;p>Dieser Befehl ignoriert, wenn ein Autor nur Leerschläge geändert hat. Das hat den Vorteil, dass
+wir nur die Autoren bekommen, welche auch wirklich etwas am Code selbst geändert und ihn
+nicht nur formatiert haben.&lt;/p></description></item><item><title>Docs: Git Branches</title><link>/docs/git/git-branches/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-branches/</guid><description>
 &lt;h2 id="inhalt">Inhalt&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="#beispiel-f%C3%BCr-branching-merging-und-rebasing">Beispiel für Branching, Merging und Rebasing&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#einfache-mergekonflikte">Einfache Mergekonflikte&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich kann mit Mergekonflikten umgehen.&lt;/li>
+&lt;li>Ich kann ein Rebase eines Branches vornehmen.&lt;/li>
+&lt;li>Ich kenne die zwei wichtigsten Flows und kann sie voneinander unterscheiden.&lt;/li>
+&lt;/ul>
 &lt;p>Im vorherigen Kapitel haben wir gelernt, dass man nur dann seine Änderungen pushen kann, wenn einem niemand anders zuvorkam. Um diesem Problem aus dem Weg zu gehen, kann ein Branch (engl. für Ast/Zweig) verwendet werden, welcher zu einem späteren Zeitpunkt wieder auf den Hauptpfad gemerged wird.&lt;/p>
 &lt;p>Im ersten Kapitel haben wir gelernt, dass Git mit jedem Commit ein Snapshot der Daten und eine Referenz auf den vorgehenden Commit speichert. Ein Branch ist nichts anderes als ein Zeiger auf einen spezifischen Snapshot.&lt;/p>
-&lt;p>Erzeugen wir mit &lt;code>git branch testing&lt;/code> einen neuen Branch namens &amp;ldquo;testing&amp;rdquo; so wird ein Zeiger erstellt, welcher auf den selben Commit zeigt auf dem man sich im Moment befindet. Damit Git weiss, wo man sich im Moment gerade befindet gibt es einen speziellen Zeiger namens &lt;code>HEAD&lt;/code>:&lt;/p>
+&lt;p>Erzeugen wir mit &lt;code>git branch testing&lt;/code> einen neuen Branch namens &amp;ldquo;testing&amp;rdquo; so wird ein Zeiger erstellt, welcher auf denselben Commit zeigt, auf dem man sich im Moment befindet. Damit Git weiss, wo man sich im Moment gerade befindet gibt es einen speziellen Zeiger namens &lt;code>HEAD&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -971,7 +960,7 @@ $ git commit -a -m &lt;span style="color:#e6db74">&amp;#34;Bugfix for first file
 &lt;/div>&lt;ul>
 &lt;li>Die erste Zeile in &lt;code>first-file.txt&lt;/code> wurde geändert, indem &lt;code>with bugfix&lt;/code> zur ersten Zeile hinzugefügt wurde.&lt;/li>
 &lt;/ul>
-&lt;p>Mit der neuen Übergabe an &lt;code>bugfix&lt;/code> fangen die Branches an, auseinanderzulaufen.&lt;/p>
+&lt;p>Mit der neuen Übergabe an &lt;code>bugfix&lt;/code> fangen die Branches an auseinanderzulaufen.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -1059,13 +1048,13 @@ first-file.txt | &lt;span style="color:#ae81ff">2&lt;/span> +-
 &lt;/div>
 &lt;/div>&lt;ul>
 &lt;li>
-&lt;p>Wechseln Sie zum Zielbranch (&lt;code>master&lt;/code>).&lt;/p>
+&lt;p>Wechsle zum Zielbranch (&lt;code>master&lt;/code>).&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Bestätigen Sie, dass Sie sich im Zielbranch befinden. Dieser Schritt ist optional.&lt;/p>
+&lt;p>Bestätige, dass du dich im Zielbranch befindest. Dieser Schritt ist optional.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Wiederholen Sie die Änderungen von &lt;code>bugfix&lt;/code> in &lt;code>master&lt;/code>.&lt;/p>
+&lt;p>Führe die Änderungen von &lt;code>bugfix&lt;/code> mit &lt;code>master&lt;/code> zusammen.&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;p>Nach der Zusammenführung zeigen &lt;code>bugfix&lt;/code> und &lt;code>master&lt;/code> auf dieselbe Revision.!&lt;/p>
@@ -1150,7 +1139,14 @@ a27a927 &lt;span style="color:#f92672">(&lt;/span>HEAD -&amp;gt; master&lt;span 
 &lt;h3 id="rebasing-branches">Rebasing Branches&lt;/h3>
 &lt;p>Nachdem die Fehlerkorrektur in den Branch &lt;code>master&lt;/code> eingebracht wurde, ist der nächste logische Schritt, die Änderungen in den Branch &lt;code>testing&lt;/code> einzubringen, um sicherzustellen, dass der nächste Release die korrigierte Version enthält. Wenn man mit mehreren Branches arbeitet, ist diese Operation notwendig, um nicht zu weit in den &lt;code>master&lt;/code> zurückzufallen und viele Merge-Konflikte zu vermeiden.&lt;/p>
 &lt;h4 id="git-rebase">git rebase&lt;/h4>
-&lt;p>Rebase bedeutet, dass der übergeordnete Commit der ersten Änderung im Branch verschoben und an den aktuellen Zeiger des Branches oder Commits angehängt wird, der in der Befehlszeile als Argument angegeben wird. Im folgenden Beispiel wechseln wir als erstes in den Branch, der rebase werden soll, und geben dann den Befehl &lt;code>rebase&lt;/code> gegen &lt;code>master&lt;/code> aus.&lt;/p>
+&lt;p>Beim Rebase wird der Basis-Commit eines Branches verschoben und dessen Änderungen an den aktuellen Stand eines anderen Branches oder Commits angehängt, der als Argument in der Befehlszeile angegeben wird.&lt;/p>
+&lt;p>In unserem Beispielszenario entwickeln wir kurz vor den Ferien ein neues Feature. Dazu erstellen wir einen Branch, welcher sich vom Master abzweigt und commiten unsere Änderungen. Die Ausgangslage vor den Ferien würde also wie folgt aussehen:&lt;/p>
+&lt;img style="width: 35%; padding-bottom: 30px;" src="../img/GitRebase_vorFerien.png">
+&lt;p>Nun kommen wir zwei Wochen später - nach unseren Ferien - wieder ins Office und die Situation sieht wie folgt aus:&lt;/p>
+&lt;img style="width: 50%; padding-bottom: 30px;" src="../img/GitRebase_nachFerien.png">
+&lt;p>Wie wir sehen, hat sich einiges auf &lt;code>master&lt;/code> getan und unser Branch ist nicht mehr auf dem aktuellen Stand. Wir wollen, dass &lt;code>feature&lt;/code> aktuell ist, wollen aber nicht &lt;code>git merge&lt;/code> nutzen, da wir keinen Merge-Commit im Branch haben möchten, sondern jeden einzelnen Commit aus &lt;code>master&lt;/code> auch auf unserem Feature-Branch appliziert haben möchten. So sind alle Änderungen Schritt für Schritt nachvolliehbar. Deswegen entscheiden wir uns für einen rebase.&lt;/p>
+&lt;p>Als Erstes stellen wir also sicher, dass wir auf dem korrekten Branch sind und machen anschliessend ein &lt;code>git rebase master&lt;/code>. Hierbei sollte angemerkt werden, dass man auf &lt;code>master&lt;/code> niemals ein rebase machen sollte, da dies die History verändert mit zusätzlichen Commits und andere Entwickler:innen dadurch verwirrt werden könnten.&lt;/p>
+&lt;p>Wenn man &lt;code>master&lt;/code> updaten möchte, sollte dies über ein &lt;code>git merge&lt;/code> erfolgen.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1164,75 +1160,21 @@ a27a927 &lt;span style="color:#f92672">(&lt;/span>HEAD -&amp;gt; master&lt;span 
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ git branch
 * master
-testing
-$ git checkout testing
-Switched to branch &lt;span style="color:#e6db74">&amp;#39;testing&amp;#39;&lt;/span>
+feature
+$ git checkout feature
+Switched to branch &lt;span style="color:#e6db74">&amp;#39;feature&amp;#39;&lt;/span>
 $ git rebase master
-Successfully rebased and updated refs/heads/testing.
+Successfully rebased and updated refs/heads/feature.
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>
-&lt;p>Derzeit auf dem Branch &lt;code>master&lt;/code>, muss vor dem rebase auf &lt;code>testing&lt;/code> wechseln.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Wechseln Sie zum Branch &lt;code>testing&lt;/code>, der mit &lt;code>master&lt;/code> rebased wird.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Erteilen Sie den Befehl rebase mit dem Argument &lt;code>master&lt;/code>, dem Branch oder Zeiger, der für den rebase verwendet wird.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Die Meldung ist knapp und bezieht sich auf die git-interne Dateistruktur unter dem Verzeichnis &lt;code>.git&lt;/code>.&lt;/p>
-&lt;/li>
-&lt;/ul>
+&lt;/div>&lt;p>Nun ist der letzte Commit auf Master die neue Base des Branches &lt;code>feature&lt;/code> und alle Änderungen wurden nachgespielt.&lt;/p>
+&lt;p>Die Situation sieht also wie folgt aus:&lt;/p>
+&lt;img style="width: 70%; padding-bottom: 30px;" src="../img/GitRebase_nachFerienRebase.png">
 &lt;blockquote>
 &lt;p>&lt;strong>Hinweis&lt;/strong>&lt;/p>
 &lt;p>Die Durchführung eines rebase zwischen zwei Branches erfordert einen gemeinsamen Vorfahren im Tree.&lt;/p>
 &lt;/blockquote>
-&lt;p>Nach dem Rebase sind &amp;ldquo;Master&amp;rdquo; und &amp;ldquo;Testing&amp;rdquo; wieder synchronisiert.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-txt" data-lang="txt"> +----+-----+
-| master |
-+----+-----+
-|
-v
-+----------+ +----------+ +----------+ +----------+ +----------+
-| Commit 1 +&amp;lt;-------| Commit 2 +&amp;lt;-------+ Commit 3 +&amp;lt;-------+ Commit 5 |&amp;lt;-------+ Commit 4 |
-+----------+ +----------+ +----------+ +----------+ +----------+
-^
-|
-+----------+
-| testing |
-+----+-----+
-^
-|
-+----------+
-| HEAD |
-+----+-----+
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="einfache-mergekonflikte">Einfache Mergekonflikte&lt;/h2>
+&lt;h2 id="einfache-mergekonflikte">Einfache Mergekonflikte&lt;/h2>
 &lt;p>Im oben erwähnten Beispiel ist alles automatisch gegangen beim Mergen, es gibt jedoch Fälle, bei denen Git nicht mehr in der Lage ist automatisch die Dateien Zusammenzuführen, wenn zum Beispiel eine Änderung an der gleichen Stelle einer Datei in beiden Branches vorgenommen wird. Gehen wir vom Beispiel oben aus, die Story die man da umsetzt macht auch etwas mit dem Dashboard welches wir kurzum anpassen mussten:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -1288,8 +1230,8 @@ no changes added to commit &lt;span style="color:#f92672">(&lt;/span>use &lt;spa
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-diff" data-lang="diff">&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
 first line from master
 =======
-first line from testing
-&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; testing
+first line from bugfix
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; bugfix
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Das bedeutet, dass der HEAD (also der Masterbranch, weil auf den haben wir vor dem Mergen gewechselt) den oberen Teil (also immer alles auf Grün) und unsere neuen Änderungen den unteren Teil auf dieser Zeile hatten. Man kann den Konflikt nun lösen, indem man den ganzen Block, mit der gewünschten Änderung ersetzt. Ist der Konflikt gelöst, können wir die Datei ganz normal stagen und commiten. Gerade bei grösseren Mergekonflikten kann es praktisch sein mit tools zu Arbeiten, welche einem die Unterschiede zwischen den beiden Branches Grafisch darstellen, dafür gibt es den Befehl &lt;code>git mergetool&lt;/code>.&lt;/p>
@@ -1305,8 +1247,22 @@ first line from testing
 &lt;p>Erstellen kleiner und atomarer Commits.&lt;/p>
 &lt;/li>
 &lt;/ul>
+&lt;h2 id="flows">Flows&lt;/h2>
+&lt;p>Flows sind standardisierte Abläufe, wie Branches erzeugt und später Releases erstellt werden. Wir zeigen hier die zwei am weitesten verbreiteten Flows.&lt;/p>
+&lt;h3 id="feature-branch-flow">Feature Branch Flow&lt;/h3>
+&lt;p>Der Feature Branch Flow besagt, dass man für jede neue Funktion oder Verbesserung (Feature) einen eigenen Branch erstellt. Auf diesem Branch kann die Funktion entwickelt werden, ohne den Main-Branch zu beeinflussen. Sobald die Arbeit abgeschlossen und getestet ist, wird der Feature-Branch wieder in den Hauptbranch (&lt;code>main&lt;/code>) integriert.&lt;/p>
+&lt;img style="padding-bottom: 30px; width: 50%" src="../img/featureBranchFlow.png">
+&lt;p>Vertiefende Informationen zum Feature Branch Flow können auf &lt;a href="https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow">dieser Seite&lt;/a> gelesen werden.&lt;/p>
+&lt;h3 id="gitflow">Gitflow&lt;/h3>
+&lt;p>Der Gitflow unterscheidet sich primär vom Feature Branch Flow indem, dass zwei Hauptbranches verwendet werden: &lt;code>main&lt;/code> für den stabilen Code und &lt;code>development&lt;/code> für die laufende Entwicklung. So werden Feature-Branches nicht direkt vom &lt;code>main&lt;/code>-, sondern vom &lt;code>development&lt;/code>-Branch (Name kann abweichen) abzweigen. So werden fertiggestellte Änderungen auch nicht gleich in den Main integriert, sondern zurück in den Development-Branch.
+Zudem wird ein release-Branch verwendet, auf welchen Änderungen vom Development-Branch gepusht werden, um dort vor einem Release getestet zu werden. Anschließend wird der release-Branch, und nur dieser, in den main gemerged.
+Nebst Feature Branches können auch Branches für Releases und Hotfixes (hier nicht abgebildet) erstellt werden.&lt;/p>
+&lt;p>Der Flow ermöglicht eine strukturierte Vorgehensweise für die Entwicklung und Veröffentlichung von Software, indem Entwicklungs- und Produktionscode getrennt werden. Änderungen sind einfach und schnell nachvollziehbar und es ist jederzeit möglich, schnell auf eine releaste-Version zurückzugreifen.&lt;/p>
+&lt;img style="padding-bottom: 30px; width: 40%" src="../img/Gitflow.png">
+&lt;p>Vertiefende Informationen zum Gitflow können auf &lt;a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">dieser Seite&lt;/a> gelesen werden.&lt;/p>
 &lt;h3 id="hands-on">Hands On&lt;/h3>
 &lt;p>&lt;a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/&lt;/a>&lt;/p></description></item><item><title>Docs: GitHub</title><link>/docs/git/git-hub/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-hub/</guid><description>
+&lt;p>&lt;em>(Dieses Modul ist optional)&lt;/em>&lt;/p>
 &lt;p>GitHub ist ein Webservice für das Verwalten von Software Code via Git. Darüber hinaus bietet GitHub viele weitere Funktionen, von Projektmanagement mit Taskverwaltung, über Wikis bis zum Buildserver. GitHub ist die Plattform für Opensource Projekte.&lt;/p>
 &lt;p>Weitere Infos:&lt;/p>
 &lt;ul>
@@ -1390,7 +1346,7 @@ first line from testing
 &lt;/tr>
 &lt;tr>
 &lt;td>Pull Requests&lt;/td>
-&lt;td>Ein Pull Request ermöglicht es, Changes zu Reviewen und zu besprechen, bevor sie in einen Branch gemerged werden.&lt;/td>
+&lt;td>Ein Pull Request ermöglicht es, Changes zu reviewen und zu besprechen, bevor sie in einen Branch gemerged werden.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>Forks&lt;/td>
@@ -1448,37 +1404,50 @@ echo &lt;span style="color:#e6db74">&amp;#39;Hello World Feature&amp;#39;&lt;/sp
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;li>Pull Request erstellen&lt;/li>
-&lt;li>Da auf beiden Branches die gleich Zeile bearbeitet wurde, kann GitHub die Branches nicht automatisch Mergen. Aus diesem Grund müssen zuerst die Konflikte gelöst werden
+&lt;li>Da auf beiden Branches die gleiche Zeile bearbeitet wurde, kann GitHub die Branches nicht automatisch Mergen. Aus diesem Grund müssen zuerst die Konflikte gelöst werden
 &lt;img src="../github/fix-merge.png" alt="Fix Merge" title="Fix Merge">&lt;/li>
 &lt;li>Teamkollege als Reviewer zuweisen.&lt;/li>
 &lt;li>Review Changes umsetzen.&lt;/li>
 &lt;li>Pull Request mergen.&lt;/li>
 &lt;li>Merge Request auf &lt;a href="https://github.com/SylivanKenobi/hello-world">Original Repo&lt;/a> erstellen&lt;/li>
 &lt;li>Ende&lt;/li>
-&lt;/ol></description></item><item><title>Docs: SSH-Key in Git</title><link>/docs/git/git-ssh/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-ssh/</guid><description>
-&lt;h2 id="was-ist-ein-ssh-key">Was ist ein SSH-Key&lt;/h2>
-&lt;p>Ein SSH-Schlüssel (Secure Shell Key) ist eine kryptographische Identifikation, die in Git verwendet wird, um die sichere Kommunikation zwischen Ihrem lokalen Computer und einem Remote-Repository zu ermöglichen.
-Es besteht aus einem öffentlichen und einem privaten Schlüssel.&lt;/p>
-&lt;p>Der öffentliche SSH-Schlüssel wird auf dem Git-Server gespeichert, während der private Schlüssel lokal auf dem Computer gespeichert ist.
-Wenn man auf ein Remote-Repository zugreifen möchten, übermittelt der Computer den öffentlichen Schlüssel an den Server. Der Server verwendet dann diesen Schlüssel, um zu überprüfen, ob man tatsächlich berechtigt ist, auf das Repository zuzugreifen.
-Der private Schlüssel bleibt auf dem Computer und wird verwendet, um die Identität zu bestätigen, wenn man auf das Repository zugreift.&lt;/p>
-&lt;p>Der SSH-Schlüssel wird für mehrere Zwecke verwendet:&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>Authentifizierung&lt;/strong>: Statt jedes Mal Benutzername und Passwort eingeben zu müssen, wenn auf ein Repository zugreifen möchten, wird der SSH-Schlüssel verwendet, um die Identität zu bestätigen.
-Dies ist sicherer und bequemer als die Verwendung von Benutzername und Passwort.&lt;/li>
-&lt;li>&lt;strong>Sicherheit&lt;/strong>: SSH-Schlüssel bieten eine robuste Sicherheit, da sie auf Public-Key-Kryptographie basieren. Dadurch ist es schwieriger für Angreifer, die Verbindung zu kompromittieren.&lt;/li>
-&lt;li>&lt;strong>Automatisierung&lt;/strong>: Wenn man Skripte oder automatisierte Prozesse verwenden, um auf Git zuzugreifen, können SSH-Schlüssel verwendet werden, um den Zugriff ohne Benutzereingriff zu ermöglichen.&lt;/li>
-&lt;/ol>
-&lt;h3 id="ssh-key-erstellen">SSH-Key erstellen&lt;/h3>
-&lt;p>Um einen SSH-Schlüssel zu erhalten, müssen die folgenden Schritte befolgt werden:&lt;/p>
-&lt;ol>
-&lt;li>Öffnen von Git Bash oder dem Terminal.&lt;/li>
-&lt;li>Den Befehl &lt;code>ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot;&lt;/code> eingeben und die Eingabetaste drücken. Ersetze &lt;code>your_email@example.com&lt;/code> durch die E-Mail-Adresse, mit dem das Git-Konto verknüpft ist.&lt;/li>
-&lt;li>Man wird aufgefordert, den Speicherort für den SSH-Schlüssel anzugeben. Einfach die Eingabetaste drücken, um den Standardpfad zu akzeptieren.&lt;/li>
-&lt;li>Man wird auch aufgefordert, ein Passwort für den SSH-Schlüssel einzugeben. Es kann ein Passwort festgelegt werden oder einfach die Eingabetaste drücken, um ohne Passwort fortzufahren (nicht empfohlen, da dies die Sicherheit verringert).&lt;/li>
-&lt;li>Sobald der Schlüssel generiert ist, wird der Pfad zum öffentlichen und privaten Schlüssel angezeigt. Der öffentliche Schlüssel (&lt;code>id_rsa.pub&lt;/code>) wird standardmäßig im Verzeichnis &lt;code>~/.ssh/&lt;/code> erstellt.&lt;/li>
-&lt;/ol>
-&lt;p>Sobald der SSH-Schlüssel generiert wurde, muss der öffentlichen Schlüssel auf BitBucket hinzugefügt werden. Dort muss man auf &amp;ldquo;Konto verwalten&amp;rdquo; -&amp;gt; &amp;ldquo;SSH-Key&amp;rdquo; gehen, danach auf hinzufügen klicken.
-In das Textfeld für den Schlüssel wird der Inhalt der Datei &lt;code>id_rsa.pub&lt;/code> eingefügt.&lt;/p>
+&lt;/ol></description></item><item><title>Docs: Bitbucket</title><link>/docs/git/bitbucket/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/bitbucket/</guid><description>
+&lt;p>In der SBB wird primär das intern gehostete Bitbucket verwendet. Dieses Modul widmet sich dem Bitbucket der SBB.&lt;/p>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich kenne das von der SBB gehostete Bitbucket.&lt;/li>
+&lt;li>Ich kann im Bitbucket einen Pull Request erstellen und mir dessen Diff anzeigen.&lt;/li>
+&lt;/ul>
+&lt;h2 id="pull-request-pr-erstellen-und-mergen">Pull Request (PR) erstellen und mergen&lt;/h2>
+&lt;p>Um einen Pull Request in BitBucket zu erstellen, muss im Web in der linken Navigationsleiste unter &lt;code>ACTIONS&lt;/code> die Option &lt;code>Create pull request&lt;/code> ausgewählt werden.&lt;/p>
+&lt;img style="padding-bottom: 30px;" src="../img/Bitbucket_sidenav.png">
+&lt;p>Hier hat man nun die Möglichkeit einen Branch auszuwählen, welcher Änderungen hat (Source Branch), und den Ziel Branch (Destination Branch) festzulegen, dort wo die Änderungen hinzugefügt werden sollen.
+&lt;img style="padding-bottom: 30px;" src="../img/PullRequestBitBucket.png">&lt;/p>
+&lt;p>Auf der folgenden Seite kann ein Titel und eine Beschreibung für den Pull Request gesetzt werden. Ebenfalls können hier Reviewers hinzugefügt werden.&lt;/p>
+&lt;img style="padding-bottom: 30px;" src="../img/PullRequestBitBucket2.png">
+&lt;p>Da nun alle Einstellungen vorgenommen wurden, kann der Pull Request erstellt werden.&lt;/p>
+&lt;h3 id="diff">Diff&lt;/h3>
+&lt;p>Wenn nun eine andere Person diesen PR öffnet und verstehen möchte was geändert wurde, öffnet sie diesen und geht in der oberen Navigation auf die Option &lt;code>Diff&lt;/code>.&lt;/p>
+&lt;img style="padding-bottom: 30px;" src="../img/PullRequest_Overview.png">
+&lt;p>Der hier angezeigte Vergleich wird Diff (kommt von Difference) genannt. Er zeigt dir zwei Versionen von Dateien eines Git-Repository an. Dabei werden links die modifizierten(Blauer Stift), neuen (grünes Plus-Zeichen), gelöschten (rotes Minus-Zeichen) und verschobenen (oranger Pfeil) Dateien angezeigt.
+Bei einer modifizierten Datei werden die geänderte Zeilen wie folgt hervorgehoben:&lt;/p>
+&lt;ul>
+&lt;li>Grün markiert neue Zeilen, die hinzugefügt wurden.&lt;/li>
+&lt;li>Rot zeigt gelöschte Zeilen.&lt;/li>
+&lt;/ul>
+&lt;h3 id="pull-request-mergen">Pull Request mergen&lt;/h3>
+&lt;p>Wenn man einen Pull Request schliessen möchte, kann man das über den oben rechts angezeigten Knopf &lt;code>Merge&lt;/code>.
+Es öffnet sich ein Dialog-Fenster, in welchem man den Titel und die Beschreibung des Commits definieren kann.&lt;/p>
+&lt;img style="padding-bottom: 30px;" src="../img/merge_PR.png">
+&lt;p>Man kann noch weitere Einstellungen vornehmen. Beispielsweise kann man festlegen, dass der Branch anschliessend gelöscht wird.&lt;/p>
+&lt;p>Empfohlen ist die Option &lt;code>Squash&lt;/code> zu nutzen, welche links neben dem blauen Knopf per Dropdown ausgewählt werden. Diese kombiniert alle Commits des Branches zu einem einzelnen Commit, welcher anschliessend in den Target-Branch gemerged wird.&lt;/p>
+&lt;h2 id="commit-history">Commit History&lt;/h2>
+&lt;p>Wenn man links in der Navigationsleiste auf &lt;code>Commits&lt;/code> klickt, kann man sich die History des Projektes anhand der vergangenen Commits anzeigen lassen. Hier sind alle merged Pull Requests aber auch Commits welche direkt auf Master gemacht wurden ersichtlich.&lt;/p>
+&lt;img style="padding-bottom: 30px;" src="../img/Commit_History.png">
+&lt;p>Von jeder Änderung ist der Autor, der Commit Hash, die Commit Message und das Datum ersichtlich. Die History ermöglicht es den Nutzern, den Verlauf von Änderungen nachzuverfolgen und auf frühere Versionen des Repositorys zurückzugreifen.&lt;/p>
+&lt;h2 id="forking">Forking&lt;/h2>
+&lt;p>Ein Fork ist eine Kopie eines bestehenden Git-Repositories. Wenn du ein Repository forkst, erstellst du eine eigene Version davon, die unabhängig vom Original ist. Diese Kopie befindet sich in deinem eigenen Account und ermöglicht es dir Änderungen vorzunehmen, ohne das ursprüngliche Projekt zu beeinflussen.&lt;/p>
+&lt;p>In Bitbucket findest du die Möglichkeit zum Forken in der linken Navigationsleiste, wenn du dich in einem Repository befindest.&lt;/p></description></item><item><title>Docs: SSH-Key in Git</title><link>/docs/git/git-ssh/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/git-ssh/</guid><description>
+&lt;p>Du findest die Anleitung zur Einrichtung eines SSH-Keys &lt;a href="../tools/personal_bitbucket_repo/">hier.&lt;/a>&lt;/p>
 &lt;hr>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="../../../../labs/git/01_git/">Git Hands On Aufgabe&lt;/a> in den Labs.&lt;/p></description></item></channel></rss>
