@@ -3,18 +3,18 @@ title: "Bitbucket"
 linkTitle: "Bitbucket"
 weight: 7
 ---
-In der SBB wird primär das eigen gehostete Bitbucket verwendet. Dieses Modul widmet sich dem Bitbucket der SBB.
+In der SBB wird primär das intern gehostete Bitbucket verwendet. Dieses Modul widmet sich dem Bitbucket der SBB.
 
 ## Ziele
-- Ich kenne das von der SBB gehostete Bitbucket
-- Ich kann im Bitbucket einen Pull Request erstellen und mir dessen Diff anzeigen
+- Ich kenne das von der SBB gehostete Bitbucket.
+- Ich kann im Bitbucket einen Pull Request erstellen und mir dessen Diff anzeigen.
 
-## Pull Request (PR) erstellen
+## Pull Request (PR) erstellen und mergen
 Um einen Pull Request in BitBucket zu erstellen, muss im Web in der linken Navigationsleiste unter ``ACTIONS`` die Option ``Create pull request`` ausgewählt werden.
 
 <img style="padding-bottom: 30px;" src="../img/Bitbucket_sidenav.png">
 
-Hier hat man nun die Möglichkeit einen Branch welcher Änderungen hat (Source Branch) und den Ziel Branch (Destination Branch), dort wo die Änderungen hinzugefügt werden sollen, auszuwählen.
+Hier hat man nun die Möglichkeit einen Branch auszuwählen, welcher Änderungen hat (Source Branch), und den Ziel Branch (Destination Branch) festzulegen, dort wo die Änderungen hinzugefügt werden sollen.
 <img style="padding-bottom: 30px;" src="../img/PullRequestBitBucket.png">
 
 Auf der folgenden Seite kann ein Titel und eine Beschreibung für den Pull Request gesetzt werden. Ebenfalls können hier Reviewers hinzugefügt werden.
@@ -24,7 +24,7 @@ Auf der folgenden Seite kann ein Titel und eine Beschreibung für den Pull Reque
 Da nun alle Einstellungen vorgenommen wurden, kann der Pull Request erstellt werden.
 
 ### Diff
-Wenn nun eine andere Person diesen PR öffnet und verstehen möchte, was geändert wurde, öffnet sie diesen und geht in der oberen Navigation auf die Option ``Diff``.
+Wenn nun eine andere Person diesen PR öffnet und verstehen möchte was geändert wurde, öffnet sie diesen und geht in der oberen Navigation auf die Option ``Diff``.
 
 <img style="padding-bottom: 30px;" src="../img/PullRequest_Overview.png">
 
@@ -42,7 +42,8 @@ Es öffnet sich ein Dialog-Fenster, in welchem man den Titel und die Beschreibun
 
 Man kann noch weitere Einstellungen vornehmen. Beispielsweise kann man festlegen, dass der Branch anschliessend gelöscht wird.
 
-Empfohlen ist die Option Squash, welche links neben dem blauen Knopf per dropdown ausgewählt werden kann zu nutzen. Diese kombiniert alle Commits des Branches zu einem einzelnen Commit, welcher anschliessend in den Target-Branch gemerged wird.
+Empfohlen ist die Option ``Squash`` zu nutzen, welche links neben dem blauen Knopf per Dropdown ausgewählt werden. Diese kombiniert alle Commits des Branches zu einem einzelnen Commit, welcher anschliessend in den Target-Branch gemerged wird.
+
 ## Commit History
 Wenn man links in der Navigationsleiste auf ``Commits`` klickt, kann man sich die History des Projektes anhand der vergangenen Commits anzeigen lassen. Hier sind alle merged Pull Requests aber auch Commits welche direkt auf Master gemacht wurden ersichtlich.   
 
@@ -51,6 +52,7 @@ Wenn man links in der Navigationsleiste auf ``Commits`` klickt, kann man sich di
 Von jeder Änderung ist der Autor, der Commit Hash, die Commit Message und das Datum ersichtlich. Die History ermöglicht es den Nutzern, den Verlauf von Änderungen nachzuverfolgen und auf frühere Versionen des Repositorys zurückzugreifen.
 
 
-## Fork
-Ein Fork ist eine Kopie eines bestehenden Git-Repositories. Wenn du ein Repository forkt, erstellst du eine eigene Version davon, die unabhängig vom Original ist. Diese Kopie befindet sich in deinem eigenen Account und ermöglicht es dir, Änderungen vorzunehmen, ohne das ursprüngliche Projekt zu beeinflussen.
-In Bitbucket findest du, wenn du dich in einem Repository befindest, die Option in der linken Navigationsleiste.
+## Forking
+Ein Fork ist eine Kopie eines bestehenden Git-Repositories. Wenn du ein Repository forkst, erstellst du eine eigene Version davon, die unabhängig vom Original ist. Diese Kopie befindet sich in deinem eigenen Account und ermöglicht es dir Änderungen vorzunehmen, ohne das ursprüngliche Projekt zu beeinflussen.
+
+In Bitbucket findest du die Möglichkeit zum Forken in der linken Navigationsleiste, wenn du dich in einem Repository befindest.

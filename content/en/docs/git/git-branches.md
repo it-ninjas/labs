@@ -10,15 +10,15 @@ weight: 5
 * [Einfache Mergekonflikte](#einfache-mergekonflikte)
 
 ## Ziele
-- Ich kann mit Mergekonflikten umgehen
-- Ich kann ein Rebase eines Branches vornehmen
-- Ich kenne die zwei verschiedenen Flows und kann sie voneinander unterscheiden 
+- Ich kann mit Mergekonflikten umgehen.
+- Ich kann ein Rebase eines Branches vornehmen.
+- Ich kenne die zwei wichtigsten Flows und kann sie voneinander unterscheiden.
 
 Im vorherigen Kapitel haben wir gelernt, dass man nur dann seine Änderungen pushen kann, wenn einem niemand anders zuvorkam. Um diesem Problem aus dem Weg zu gehen, kann ein Branch (engl. für Ast/Zweig) verwendet werden, welcher zu einem späteren Zeitpunkt wieder auf den Hauptpfad gemerged wird.
 
 Im ersten Kapitel haben wir gelernt, dass Git mit jedem Commit ein Snapshot der Daten und eine Referenz auf den vorgehenden Commit speichert. Ein Branch ist nichts anderes als ein Zeiger auf einen spezifischen Snapshot.
 
-Erzeugen wir mit `git branch testing` einen neuen Branch namens "testing" so wird ein Zeiger erstellt, welcher auf den selben Commit zeigt auf dem man sich im Moment befindet. Damit Git weiss, wo man sich im Moment gerade befindet gibt es einen speziellen Zeiger namens `HEAD`:
+Erzeugen wir mit `git branch testing` einen neuen Branch namens "testing" so wird ein Zeiger erstellt, welcher auf denselben Commit zeigt, auf dem man sich im Moment befindet. Damit Git weiss, wo man sich im Moment gerade befindet gibt es einen speziellen Zeiger namens `HEAD`:
 
 ```txt
                                         +----------+
@@ -93,7 +93,7 @@ $ git commit -a -m "Bugfix for first file"
 ```
 - Die erste Zeile in `first-file.txt` wurde geändert, indem `with bugfix` zur ersten Zeile hinzugefügt wurde.
 
-Mit der neuen Übergabe an `bugfix` fangen die Branches an, auseinanderzulaufen.
+Mit der neuen Übergabe an `bugfix` fangen die Branches an auseinanderzulaufen.
 
 ```txt
                                                     
@@ -143,11 +143,11 @@ Fast-forward
 first-file.txt | 2 +-
 1 file changed, 1 insertion(+), 1 deletion(-)
 ```
-- Wechseln Sie zum Zielbranch (`master`).
+- Wechsle zum Zielbranch (`master`).
 
-- Bestätigen Sie, dass Sie sich im Zielbranch befinden. Dieser Schritt ist optional.
+- Bestätige, dass du dich im Zielbranch befindest. Dieser Schritt ist optional.
 
-- Wiederholen Sie die Änderungen von `bugfix` in `master`.
+- Führe die Änderungen von `bugfix` mit `master` zusammen.
 
 Nach der Zusammenführung zeigen `bugfix` und `master` auf dieselbe Revision.!
 
@@ -201,17 +201,19 @@ Nachdem die Fehlerkorrektur in den Branch `master` eingebracht wurde, ist der n�
 
 Beim Rebase wird der Basis-Commit eines Branches verschoben und dessen Änderungen an den aktuellen Stand eines anderen Branches oder Commits angehängt, der als Argument in der Befehlszeile angegeben wird.
 
-In unserem Beispilsszenario entwickeln wir kurz vor den Ferien ein neues Feature. Dazu erstellen wir einen Branch welcher sich vom Master abzweigt und commiten unsere Änderungen. Die Ausgnagslage vor den Ferien würde also wiefolgt aussehen:
+In unserem Beispielszenario entwickeln wir kurz vor den Ferien ein neues Feature. Dazu erstellen wir einen Branch, welcher sich vom Master abzweigt und commiten unsere Änderungen. Die Ausgangslage vor den Ferien würde also wie folgt aussehen:
 
 <img style="width: 35%; padding-bottom: 30px;" src="../img/GitRebase_vorFerien.png">
 
-Nun kommen wir zwei Wochen später, nach unseren Ferien, wieder ins Office und die Situation sieht wie folgt aus:
+Nun kommen wir zwei Wochen später - nach unseren Ferien - wieder ins Office und die Situation sieht wie folgt aus:
 
 <img style="width: 50%; padding-bottom: 30px;" src="../img/GitRebase_nachFerien.png">
 
-Wie wir sehen hat sich einiges auf `master` getan und unser Branch ist nicht mehr auf dem aktuellen Stand. Wir wollen das `feature` aktuell ist, wollen aber nicht `git merge` nutzen, da wir die Änderungen nicht im Branch haben möchten, deswegen entscheiden wir uns für einen rebase.
+Wie wir sehen, hat sich einiges auf `master` getan und unser Branch ist nicht mehr auf dem aktuellen Stand. Wir wollen, dass `feature` aktuell ist, wollen aber nicht `git merge` nutzen, da wir keinen Merge-Commit im Branch haben möchten, sondern jeden einzelnen Commit aus `master` auch auf unserem Feature-Branch appliziert haben möchten. So sind alle Änderungen Schritt für Schritt nachvolliehbar. Deswegen entscheiden wir uns für einen rebase.
 
-Als Erstes stellen wir also sicher, dass wir auf dem korrekten Branch sind und machen anschliessend ein `git rebase master`. Hierbei sollte angemerkt werden, dass man auf `master` niemals ein rebase machen sollte, wenn man `master` updaten möchte, sollte dies über ein `git merge` erfolgen.
+Als Erstes stellen wir also sicher, dass wir auf dem korrekten Branch sind und machen anschliessend ein `git rebase master`. Hierbei sollte angemerkt werden, dass man auf `master` niemals ein rebase machen sollte, da dies die History verändert mit zusätzlichen Commits und andere Entwickler:innen dadurch verwirrt werden könnten. 
+
+Wenn man `master` updaten möchte, sollte dies über ein `git merge` erfolgen.
 ```bash
 $ git branch 
    * master
@@ -264,7 +266,7 @@ Git fügt automatisch eine Markierung in die Dateien ein, welche gmerged werden 
 <<<<<<< HEAD
 first line from master
 =======
-first line from testing
+first line from bugfix
 >>>>>>> bugfix
 ```
 
@@ -279,8 +281,11 @@ In der Regel können viele Merge-Konflikte verhindert oder minimiert werden, ind
 - Erstellen kleiner und atomarer Commits.
 
 ## Flows
+
+Flows sind standardisierte Abläufe, wie Branches erzeugt und später Releases erstellt werden. Wir zeigen hier die zwei am weitesten verbreiteten Flows. 
+
 ### Feature Branch Flow
-Der Feature Branch Flow besagt, dass man für jede neue Funktion oder Verbesserung (Feature) einen eigenen Branch erstellt. Auf diesem Branch kann die Funktion entwickelt werden, ohne den Main-Branch zu beeinflussen. Sobald die Arbeit abgeschlossen und getestet ist, wird der Feature-Branch wieder in den Hauptbranch (main) integriert.
+Der Feature Branch Flow besagt, dass man für jede neue Funktion oder Verbesserung (Feature) einen eigenen Branch erstellt. Auf diesem Branch kann die Funktion entwickelt werden, ohne den Main-Branch zu beeinflussen. Sobald die Arbeit abgeschlossen und getestet ist, wird der Feature-Branch wieder in den Hauptbranch (`main`) integriert.
 
 
 <img style="padding-bottom: 30px; width: 50%" src="../img/featureBranchFlow.png">
@@ -288,9 +293,11 @@ Der Feature Branch Flow besagt, dass man für jede neue Funktion oder Verbesseru
 Vertiefende Informationen zum Feature Branch Flow können auf [dieser Seite](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) gelesen werden.
 
 ### Gitflow
-Der Gitflow unterscheidet sich primär vom Feature Branch Flow indem, dass zwei Hauptbranches, main für den stabilen Code und develop für die laufende Entwicklung verwendet werden. So werden Feature-Branches nicht direkt vom Main, sondern vom Development-Branch (Name kann abweichen) abzweigen. So werden fertiggestellte Änderungen auch nicht gleich in den Main integriert, sondern zurück in den Development-Branch.
+Der Gitflow unterscheidet sich primär vom Feature Branch Flow indem, dass zwei Hauptbranches verwendet werden: `main` für den stabilen Code und `development` für die laufende Entwicklung. So werden Feature-Branches nicht direkt vom `main`-, sondern vom `development`-Branch (Name kann abweichen) abzweigen. So werden fertiggestellte Änderungen auch nicht gleich in den Main integriert, sondern zurück in den Development-Branch.
 Zudem wird ein release-Branch verwendet, auf welchen Änderungen vom Development-Branch gepusht werden, um dort vor einem Release getestet zu werden. Anschließend wird der release-Branch, und nur dieser, in den main gemerged.
-Nebst Feature Branches können auch Branches für Releases und Hotfixes erstellt werden. Der Flow ermöglicht eine strukturierte Vorgehensweise für die Entwicklung und Veröffentlichung von Software, indem Entwicklungs- und Produktionscode getrennt werden.
+Nebst Feature Branches können auch Branches für Releases und Hotfixes (hier nicht abgebildet) erstellt werden. 
+
+Der Flow ermöglicht eine strukturierte Vorgehensweise für die Entwicklung und Veröffentlichung von Software, indem Entwicklungs- und Produktionscode getrennt werden. Änderungen sind einfach und schnell nachvollziehbar und es ist jederzeit möglich, schnell auf eine releaste-Version zurückzugreifen.
 
 <img style="padding-bottom: 30px; width: 40%" src="../img/Gitflow.png">
 

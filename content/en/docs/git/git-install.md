@@ -10,7 +10,7 @@ weight: 2
 * [Git unter Windows installieren](#git-unter-windows-installieren)
 
 ## Ziele
-- Ich weiss wie ich Git in meinem Betriebssystem installiere
+- Ich weiss, wie ich Git in meinem Betriebssystem installiere.
 
 ## Git unter Linux installieren
 

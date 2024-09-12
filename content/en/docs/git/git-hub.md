@@ -78,13 +78,13 @@ Nachteile:
 
 ## GitHub Features
 
-| Feature | Funktion |
-| --- | --- |
-| Issues | Ermöglichen es, Tasks in einem Repo zu erstellen und zu tracken.  |
-| Pull Requests | Ein Pull Request ermöglicht es, Changes zu Reviewen und zu besprechen, bevor sie in einen Branch gemerged werden. |
+| Feature | Funktion                                                                                                                                           |
+| --- |----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Issues | Ermöglichen es, Tasks in einem Repo zu erstellen und zu tracken.                                                                                   |
+| Pull Requests | Ein Pull Request ermöglicht es, Changes zu reviewen und zu besprechen, bevor sie in einen Branch gemerged werden.                                  |
 | Forks | Eine Fork ist eine Kopie von einem Git-Repo. Die Fork kann dann bearbeitet und angepasst werden, ohne dass das originale Repo davon betroffen ist. |
-| GitHub Pages | Basic Webseiten welche auf GitHub gehostet werden |
-| GitHub Actions | CI/CD Integration von GitHub |
+| GitHub Pages | Basic Webseiten welche auf GitHub gehostet werden                                                                                                  |
+| GitHub Actions | CI/CD Integration von GitHub                                                                                                                       |
 
 
 ## Hands On
@@ -113,7 +113,7 @@ Für dieses Hands-On werden wir alles via Webinterface von GitHub machen. Ein Gr
     echo 'Hello World Feature'
     ```
 1. Pull Request erstellen
-1. Da auf beiden Branches die gleich Zeile bearbeitet wurde, kann GitHub die Branches nicht automatisch Mergen. Aus diesem Grund müssen zuerst die Konflikte gelöst werden
+1. Da auf beiden Branches die gleiche Zeile bearbeitet wurde, kann GitHub die Branches nicht automatisch Mergen. Aus diesem Grund müssen zuerst die Konflikte gelöst werden
 ![Fix Merge](../github/fix-merge.png "Fix Merge")
 1. Teamkollege als Reviewer zuweisen.
 1. Review Changes umsetzen.
