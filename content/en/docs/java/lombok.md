@@ -96,7 +96,7 @@ Im POM.xml muss folgende Dependency hinzugefügt werden.
 </dependency>
 ```
 
-### Vorteile von Lombok:
+### Vorteile von Lombok
 1. **Kompaktheit:**
    Lombok reduziert die Menge an Code, welcher geschrieben werden muss, um Getter und Setter etc. zu implementieren. Dadurch wird der Quellcode kompakter und einfacher zu lesen.
 
@@ -106,7 +106,7 @@ Im POM.xml muss folgende Dependency hinzugefügt werden.
 3. **Wartbarkeit:**
    Durch die Reduzierung von Boilerplate-Code minimiert Lombok die Möglichkeit von Fehlern und erleichtert die Wartung des Codes.
 
-### Nachteile von Lombok:
+### Nachteile von Lombok
 1. **Transparenz:**
    Für Entwickler, die nicht mit Lombok vertraut sind, kann der automatisch generierte Code möglicherweise undurchsichtig sein, da er nicht explizit im Quellcode angezeigt wird.
 
@@ -116,4 +116,9 @@ Im POM.xml muss folgende Dependency hinzugefügt werden.
 3. **Weniger Kontrolle:**
    Bei der Verwendung von Lombok hat man möglicherweise weniger Kontrolle über den generierten Code im Vergleich zur manuellen Implementierung.
 
+### Lombok mit IntelliJ
+
+Falls du in IntelliJ Probleme mit Lombok hast, kann es sein, dass das Annotation-Processing abgestellt ist. Helfen kann der der folgende Artikel: [Baeldung: Setting up Lombok with Eclipse and Intellij](https://www.baeldung.com/lombok-ide).
+
 ---
+![hint1](/images/hint.png) Optional: Finde mehr Informationen zu Lombok und was es kann unter: [Lombok Features](https://projectlombok.org/features/)
