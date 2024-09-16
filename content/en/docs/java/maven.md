@@ -7,24 +7,24 @@ description: >
 ---
 
 #### Ziele
-* Ich kenne die Grundlagen von Maven
-* Ich kann Maven lokal konfigurieren
-* Ich kann im Artifactory Abhängigkeiten suchen und diese verwenden
-* Ich kenne die Grundlagen von Project Object Models (pom)
-* Ich kenne die wichtigsten Maven Befehle und kann diese auf der Kommandozeile anwenden
-* Ich kann die Abhängigkeiten meiner Applikationen mit Maven verwalten
-* Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern
-* Ich kann den Begriff Continuous Integration erklären
-* Ich kenne die Komponenten der Deployment-Pipeline und deren Aufgaben
+* Ich kenne die Grundlagen von Maven.
+* Ich kann Maven lokal konfigurieren.
+* Ich kann im Artifactory Abhängigkeiten suchen und diese verwenden.
+* Ich kenne die Grundlagen von Project Object Models (POM).
+* Ich kenne die wichtigsten Maven Befehle und kann diese auf der Kommandozeile anwenden.
+* Ich kann die Abhängigkeiten meiner Applikationen mit Maven verwalten.
+* Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern.
+* Ich kann den Begriff Continuous Integration erklären.
+* Ich kenne die Komponenten der Deployment-Pipeline und deren Aufgaben.
 
 ## Maven
 ### Allgemeine Informationen
-Apache Maven ist ein Build-Management Tool. Von einer einzelnen Datei aus, kann Maven den Build eines Projektes steuern.
+Apache Maven ist ein Build-Management Tool. Von einer einzelnen Datei aus kann Maven den Build eines Projektes steuern.
 Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Der Build eines Projektes kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte Plattform reichen.
 
 Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:
 * Eine Maven-Installation, entweder separat oder Built-In wie beispielsweise mit IntelliJ
-* Eine POM-Datei pro Projekt oder Modul (es handelt sich um eine XML-Datei)
+* Eine Project Object Model Datei pro Projekt oder Modul (es handelt sich um eine XML-Datei)
 * Ein zentrales Maven-Repository
 * Ein lokales Maven-Repository
 * Eine Konfigurationsdatei mit dem Namen settings.xml
@@ -38,8 +38,8 @@ Die Installation von Apache Maven wurde idealerweise bereits durchgeführt. Fall
 ---
 
 ### pom.xml
-Der Aufbau eines POM kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem umfangreichen Beispiel.
-Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses POM nicht alle Inhalte erklären kann, es dient nur als erstes Beispiel.
+Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem umfangreichen Beispiel.
+Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses Project Object Model nicht alle Inhalte erklären kann, es dient nur als erstes Beispiel.
 
 ```xmlmarkdown.md
 <!-- (1) Header -->
@@ -124,14 +124,14 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
 ```
 
 #### Abschnitt 1
-Der Header einer POM-Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.
+Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.
 
 #### Abschnitt 2
 Die Angaben zum Artefakt enthalten die folgenden Informationen:
-* Gruppen-ID: Normalerweise eine umgekehrte URL, also beispielsweise ch.sbb.interviewtool. Darin sollte der Projektname enthalten sein
-* Artefakt-ID: Der Name des Projekts oder der Komponente
-* Version: Die momentane Version des Projekts, diese wird später durch Releases verändert
-* Paketierung: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR)
+* Gruppen-ID: Normalerweise eine umgekehrte URL, also beispielsweise _ch.sbb.interviewtool_. Darin sollte der Projektname enthalten sein.
+* Artefakt-ID: Der Name des Projekts oder der Komponente.
+* Version: Die momentane Version des Projekts, diese wird später durch Releases verändert.
+* Paketierung: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR).
 
 Bei der Versionierung nutzt Maven die folgenden Standards:
 - Major-Version
@@ -157,7 +157,7 @@ Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den Vergleich di
 Der SNAPSHOT Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version **0.1.2-SNAPSHOT** sehr wahrscheinlich als Version **0.1.2** ausgeliefert werden.
 
 #### Abschnitt 3
-Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vorallem bei Spring-Boot Projekten wichtig.
+Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](./spring-boot.md) Projekten wichtig.
 
 #### Abschnitt 4
 Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine Version definiert werden.
@@ -166,26 +166,26 @@ Beispiel:
 ```xml
 <special.setting>Value</special.setting>
 ```
-Innerhalb der POM-Datei kann dann mit
+Innerhalb der Project Object Model Datei kann dann mit
 ```
 ${special.setting}
 ```
-auf die Einstellung (Tag) und damit auf deren Wert (Value) zugegriffen werden.
+auf die Einstellung (Tag) und damit auf dessen Wert (Value) zugegriffen werden.
 
 #### Abschnitt 5
 Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
 Mögliche Typen sind hier zu finden: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html).
-Vielfach wird auch noch der Scope verwendet, er gibt an in welchem Umfang die Fremdbibliothek miteinbezogen wird.
+Vielfach wird auch noch der Scope verwendet. Er gibt an in welchem Umfang die Fremdbibliothek miteinbezogen wird.
 Mögliche Scopes sind:
-* compile - Das ist der Default-Scope. Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath)
-* provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und bereitgestellt wird
-* runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur Verfügung
-* test - Die Bibliothek steht nur für Tests zur Verfügung
-* system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss
+* compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also mitausgeliefert.
+* provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und bereitgestellt wird.
+* runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur Verfügung.
+* test - Die Bibliothek steht nur für Tests zur Verfügung und wird nur fürs Testing benötigt.
+* system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss.
 
 #### Abschnitt 6
 Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische Erweiterungen beliebig angepasst werden.
-Es ist auch möglich eigene Maven-Plugins zu entwickeln. Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es [hier](https://maven.apache.org/plugins/index.html).
+Es ist auch möglich, eigene Maven-Plugins zu entwickeln. Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es [hier](https://maven.apache.org/plugins/index.html).
 
 #### Abschnitt 7
 Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.
@@ -198,11 +198,11 @@ Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen f
 
 Die wichtigsten Einstellungen sind:
 
-| Einstellung          | Beschreibung                                                                                                                                       |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Maven home directory | Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als "Bundled" bezeichnet |
-| User settings file   | Die XML-Datei, welche weiter oben angelegt wurde                                                                                                   |
-| Local repository     | Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\\\<Personalnummer>\\.m2.\\repository zu finden                    |
+| Einstellung          | Beschreibung                                                                                                                                        |
+|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Maven home directory | Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als "Bundled" bezeichnet. |
+| User settings file   | Die XML-Datei, welche bei der Installation angelegt wurde.                                                                                          |
+| Local repository     | Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\\\<Personalnummer>\\.m2.\\repository zu finden.                    |
 
 Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository korrekt sind.
 
@@ -212,123 +212,25 @@ Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die
 Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
 Im Windows muss also der Pfad zur Built-In Version des IntelliJ hinterlegt werden. Die folgenden Schritte sind dazu notwendig:
 
-| #   | Beschreibung                                                                                                                    |
-|-----|---------------------------------------------------------------------------------------------------------------------------------|
-| 1   | Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten                                                 |
-| 2   | Unten rechts auf den Button "Umgebungsvariablen" klicken                                                                        |
-| 3   | Im unteren Teil "Systemvariablen" die Variable "Path" suchen und anklicken                                                      |
-| 4   | Auf den Button "Bearbeiten..." klicken                                                                                          |
-| 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten                                               |
-| 6   | Den Pfad zum Built-In Maven einfügen. Dieser ist normalerweise "\<Installationsort IntelliJ IDEA>\plugins\maven\lib\maven3\bin" |
-| 7   | Alle offenen Windows-Fenster mit "OK" schliessen                                                                                |
+| #   | Beschreibung                                                                                                                                                   |
+|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten. Falls das nicht geht, musst du dir (temporär) lokale Admin-Rechte aktivieren. |
+| 2   | Unten rechts auf den Button "Umgebungsvariablen" klicken.                                                                                                      |
+| 3   | Im unteren Teil "Systemvariablen" die Variable "Path" suchen und anklicken.                                                                                    |
+| 4   | Auf den Button "Bearbeiten..." klicken.                                                                                                                        |
+| 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten.                                                                             |
+| 6   | Den Pfad zum Built-In Maven einfügen. Dieser ist normalerweise "\<Installationsort IntelliJ IDEA>\plugins\maven\lib\maven3\bin"                                |
+| 7   | Alle offenen Windows-Fenster mit "OK" schliessen.                                                                                                              |
 
 ---
 
-### Beispiel einer Abhängigkeit (Lombok)
-Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
-Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.
+### Beispiel einer Abhängigkeit (spring-boot-starter)
+Die Dependency `spring-boot-starter` ist eine grundlegende Bibliothek für Spring-Boot Projekte, die automatisch alle benötigten Abhängigkeiten einbindet, um die Anwendung zu starten und auszuführen. Dies vereinfacht den Aufbau von Spring-Anwendungen, indem häufig verwendete Bibliotheken in einem einzigen Package zusammengefasst werden.
 
-**(*) Info:**
-Boilerplate-Code ist wiederkehrender Code, der in verschiedenen Teilen einer Softwareanwendung benötigt wird, aber wenig zur eigentlichen Funktionalität beiträgt.
-
-### Wofür wird Lombok verwendet?
-1. **Reduzierung des Boilerplate-Codes:**
-   Lombok eliminiert die Notwendigkeit, viele standardmässige Java-Boilerplate-Codezeilen wie Getter, Setter, Konstruktoren und toString-Methoden manuell zu schreiben.
-
-2. **Verbesserte Lesbarkeit:**
-   Durch die Reduzierung von Boilerplate-Code wird der Quellcode klarer und lesbarer, da unnötige Details ausgeblendet werden.
-
-3. **Kompakte Klassen:**
-   Lombok ermöglicht es, Klassen mit weniger Code zu erstellen, was die Wartung und das Verständnis des Codes erleichtert.
-
-
-Einige häufig verwendete Annotationen sind `@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, usw.
-
-
-In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Klassenattributen `firstname` und `lastname` verwendet werden. Jedoch für `age` werden sie nicht generiert.
-
-```java
-import lombok.Getter;
-import lombok.Setter;
-
-public class Person { 
-    @Getter 
-    @Setter 
-    private String firstname;
-
-    @Getter
-    @Setter
-    private String lastname;
-
-    private int age;
-}
-```
-
-Wenn es jedoch alle Klassenattribute betrifft, muss man nicht über jedem Klassenattribut die Annotationen hinzufügen, sondern man kann es auch folgendermassen schreiben.
-```java
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-public class Person { 
-
-    private String firstname;
-
-    private String lastname;
-
-    private int age;
-}
-```
-
-`@NoArgsConstructor`: Diese Annotation wird verwendet, um einen parameterlosen Konstruktor automatisch zu generieren. Sie ist besonders nützlich, wenn Klassen benötigt werden, welche von Frameworks instanziiert werden müssen.
-
-```java
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-public class Person { 
-    private String name;
-    private int age;
-}
-```
-
-`@AllArgsConstructor`: Diese Annotation wird verwendet, um einen Konstruktor automatisch zu generieren, der alle Felder der Klasse als Parameter akzeptiert. Dieser Konstruktor ist besonders nützlich, wenn eine Klasse erstellt werden soll, bei welcher man den gesamten Zustand über den Konstruktor initialisieren möchte.
-
-```java
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
-public class Person { 
-    private String name;
-    private int age;
-}
-```
-
-### Vorteile von Lombok:
-1. **Kompaktheit:**
-   Lombok reduziert die Menge an Code, welcher geschrieben werden muss, um Getter und Setter etc. zu implementieren. Dadurch wird der Quellcode kompakter und einfacher zu lesen.
-
-2. **Zeitersparnis:**
-   Lombok automatisiert die Generierung von Boilerplate-Code, was Entwicklern Zeit spart, die sie sonst mit dem manuellen Schreiben dieser Methoden verbringen würden.
-
-3. **Wartbarkeit:**
-   Durch die Reduzierung von Boilerplate-Code minimiert Lombok die Möglichkeit von Fehlern und erleichtert die Wartung des Codes.
-
-### Nachteile von Lombok:
-1. **Transparenz:**
-   Für Entwickler, die nicht mit Lombok vertraut sind, kann der automatisch generierte Code möglicherweise undurchsichtig sein, da er nicht explizit im Quellcode angezeigt wird.
-
-2. **Abhängigkeit:**
-   Die Verwendung von Lombok bedeutet, dass ein Projekt von der Lombok-Library abhängig ist. Wenn man Library-Dependencies minimieren möchten, kann dies als Nachteil angesehen werden.
-
-3. **Weniger Kontrolle:**
-   Bei der Verwendung von Lombok hat man möglicherweise weniger Kontrolle über den generierten Code im Vergleich zur manuellen Implementierung.
-
----
+Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](./lombok.md). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
 
 ### Commands
-Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt könnt ihr das Terminal öffnen und den folgenden Befehl eingeben:
+Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt, könnt ihr das Terminal öffnen und den folgenden Befehl eingeben:
 
 ```console
 mvn -version
@@ -338,11 +240,13 @@ Das sollte nun in etwa so aussehen:
 
 ![](../maven/1657700535.png)
 
-Bevor wir die einzelnen Befehle kurz anschauen werfen wir einen Blick auf die einzelnen Phasen des Maven-Lebenszyklus.
+#### Maven Lifecycle
+
+Bevor wir die einzelnen Befehle kurz anschauen, werfen wir einen Blick auf die einzelnen Phasen des Maven-Lebenszyklus.
 
 ![](../maven/1657700671.png)
 
-Jeder der in der Grafik genannten Befehle wird zusätzlich die vorangehenden Befehle ausführen.
+Jeder in der Grafik genannte Befehl wird zusätzlich die vorangehenden Befehle ausführen.
 Die Ausführung von "mvn package" wird also die Phasen _validate_, _compile_, _test_ und _package_ ausführen.
 
 #### help
@@ -377,6 +281,7 @@ mvn test
 ```
 Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-Tests mit jUnit.
 
+
 #### package
 ```console
 mvn package
@@ -393,13 +298,19 @@ Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise w
 ```console
 mvn install
 ```
-"Installiert" den Artefakt im lokalen Maven-Repository.
+"Installiert" das Artefakt im lokalen Maven-Repository.
+
+#### skip tests
+```console
+mvn install -DskipTests
+```
+Der Parameter `-DskipTests` überspringt die Ausführung von Tests während der Installation, um Zeit zu sparen. Der Parameter kann auch bei anderen Aktionen wie `compile`, `package` usw. verwendet werden.
 
 #### deploy
 ```console
 mvn deploy
 ```
-"Installiert" den Artefakt im Remote-Repository (Artifactory).
+"Installiert" das Artefakt im Remote-Repository (Artifactory).
 
 Die Maven-Befehle lassen sich kombinieren. Sehr nützlich ist zum Beispiel:
 ```console
