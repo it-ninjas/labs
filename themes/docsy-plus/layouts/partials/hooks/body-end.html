@@ -7,7 +7,7 @@
 {{ else }}
 {{ $jsSite = $jsCodeCopy | js.Build "js/site.js" }}
 {{ end }}
-{{ if .Site.IsServer }}
+{{ if hugo.IsServer }}
 <script src="{{ $jsSite.RelPermalink }}"></script>
 {{ else }}
 {{ $jsSite := $jsSite | minify | fingerprint }}
