@@ -261,7 +261,7 @@ Erstelle Controller und Methoden (mit Mockdaten), um die Umsetzung deiner Schnit
 In diesem Schritt wird ein komplett neuer Layer angelegt, welcher die Business-Logik der Applikation enthalten wird.
 Er ist zuständig für Aufgaben wie Exception-Handling und Validierung. Dieser Layer wird Service-Layer genannt.
 Service-Klassen werden grundsätzlich mit der Annotation *@Service* annotiert.
-Diese Annotation ist eine von drei möglichen Spezialisierungen eines Spring Components.
+Diese Annotation ist eine der möglichen Spezialisierungen eines Spring Components.
 
 Die möglichen Annotationen für einen Spring Component sind die folgenden:
 * *@Component*
