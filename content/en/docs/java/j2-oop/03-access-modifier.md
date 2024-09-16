@@ -26,7 +26,7 @@ class Person {
 }
 ```
 
-Klassen, welche als `private` deklariert werden sind immer sog. _innere_ oder _nested_ Klassen. Auf diese Klassen kann nur innerhalb der umhüllende Klasse zugegriffen werden.
+Klassen, welche als `private` deklariert werden sind immer sog. _innere_ oder _nested_ Klassen. Auf diese Klassen kann nur innerhalb der umhüllenden Klasse zugegriffen werden.
 
 ```java
 class Person {
@@ -63,7 +63,7 @@ UML-Symbol: `+`
 Wenn ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul [Objektorientiertes Design](../java-ood)).
 
 
-Wichtig zu beachten ist, dass Subpackages von Java wie separate Packages behandelt werden. Dementsprechend kann die Klasse `AccessClass.java` wenn die Struktur wie folgt aussieht nicht auf Protected Members der Klasse `ParentClass.java` zugreifen.
+Wichtig zu beachten ist, dass Subpackages von Java wie separate Packages behandelt werden. Dementsprechend kann die Klasse `AccessClass.java`, wenn die Struktur wie folgt aussieht, nicht auf Protected Members der Klasse `ParentClass.java` zugreifen.
 ```
 src
 └── ch
@@ -74,7 +74,7 @@ src
 ```
 
 
-UML-Symbol: `#`.
+UML-Symbol: `#`
 
 ### Package-Private
 Wenn eine Klasse, ein Feld oder eine Methode keinen Zugriffsmodifikator hat, so besitzt sie trotzdem einen. Dieser wird Package-Private genannt. Die Sichtbarkeit ist grundsätzlich private, wird aber auf Klasse im gleichen Package ausgeweitet.
