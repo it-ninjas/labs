@@ -4,7 +4,8 @@ linkTitle: "Vehicles"
 type: docs
 weight: 3
 description: >
- Aufgabe zu Modul #J3 - OOD - Vehicles
+ Aufgabe zu Modul #J3 - [OOD](../../../../docs/java/java-ood) - Vehicles
+
 ---
 
 Entwirf ein Fahrzeugverwaltungssystem für ein Autohaus.
