@@ -430,7 +430,6 @@ Es gibt vier Zugriffsmodifikatoren.&lt;/p>
 &lt;h3 id="private">Private&lt;/h3>
 &lt;p>Auf eine private Instanzvariable oder -methode kann von ausserhalb der Klasse nicht zugegriffen werden.
 Es ist eine gängige Praxis, Instanzvariablen privat zu halten. Wir möchten schliesslich nicht, dass jemand unsere Daten direkt manipuliert. Dieses Prinzip nennt man auch Kapselung.&lt;/p>
-&lt;p>Klassen, welche als &lt;code>private&lt;/code> deklariert werden sind immer sog. &lt;em>innere&lt;/em> oder &lt;em>nested&lt;/em> Klassen. Auf diese Klassen kann nur innerhalb der umhüllende Klasse zugegriffen werden.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -439,6 +438,26 @@ Es ist eine gängige Praxis, Instanzvariablen privat zu halten. Wir möchten sch
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> String name&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Klassen, welche als &lt;code>private&lt;/code> deklariert werden sind immer sog. &lt;em>innere&lt;/em> oder &lt;em>nested&lt;/em> Klassen. Auf diese Klassen kann nur innerhalb der umhüllende Klasse zugegriffen werden.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">NestedPerson&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">//NestedPerson ist nur für die Klasse Person sichtbar
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">}&lt;/span>
 &lt;span style="color:#66d9ef">private&lt;/span> String name&lt;span style="color:#f92672">;&lt;/span>
 &lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
@@ -479,7 +498,7 @@ p&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getNam
 &lt;/div>
 &lt;/div>&lt;p>UML-Symbol: &lt;code>+&lt;/code>&lt;/p>
 &lt;h3 id="protected">Protected&lt;/h3>
-&lt;p>Wenn eine Klasse, ein Feld oder eine Methode mit &lt;code>protected&lt;/code> deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul &lt;a href="../java-ood">Objektorientiertes Design&lt;/a>).&lt;/p>
+&lt;p>Wenn ein Feld oder eine Methode mit &lt;code>protected&lt;/code> deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul &lt;a href="../java-ood">Objektorientiertes Design&lt;/a>).&lt;/p>
 &lt;p>Wichtig zu beachten ist, dass Subpackages von Java wie separate Packages behandelt werden. Dementsprechend kann die Klasse &lt;code>AccessClass.java&lt;/code> wenn die Struktur wie folgt aussieht nicht auf Protected Members der Klasse &lt;code>ParentClass.java&lt;/code> zugreifen.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -540,7 +559,7 @@ Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese
 &lt;td>Keinen (package-private)&lt;/td>
 &lt;td>ja&lt;/td>
 &lt;td>ja&lt;/td>
-&lt;td>ja&lt;/td>
+&lt;td>nur im gleichen Package&lt;/td>
 &lt;td>nein&lt;/td>
 &lt;/tr>
 &lt;/tbody>
