@@ -60,7 +60,7 @@ p.getName();
 UML-Symbol: `+`
 
 ### Protected
-Wenn ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul [Objektorientiertes Design](../java-ood)).
+Wenn ein Feld oder eine Methode mit `protected` deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul [Objektorientiertes Design](../../java-ood)).
 
 
 Wichtig zu beachten ist, dass Subpackages von Java wie separate Packages behandelt werden. Dementsprechend kann die Klasse `AccessClass.java`, wenn die Struktur wie folgt aussieht, nicht auf Protected Members der Klasse `ParentClass.java` zugreifen.
