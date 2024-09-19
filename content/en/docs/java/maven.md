@@ -16,6 +16,7 @@ description: >
 * Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern.
 * Ich kann den Begriff Continuous Integration erklären.
 * Ich kenne die Komponenten der Deployment-Pipeline und deren Aufgaben.
+* (Optional): Ich habe erste Erfahrungen gesammelt mit dem alternativen Build-Tool Gradle. 
 
 ## Maven
 ### Allgemeine Informationen
@@ -321,3 +322,6 @@ Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen 
 
 ---
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/maven) in den Labs.
+
+---
+![hint-gradle](/images/hint.png) (Optional) __Gradle__: Als Alternative zu Maven wird oft auch das Build-System [Gradle](https://docs.gradle.org/) eingesetzt. Unter [Building Java Applications Sample](https://docs.gradle.org/current/samples/sample_building_java_applications.html) kannst du dir einen ersten Eindruck verschaffen. 
