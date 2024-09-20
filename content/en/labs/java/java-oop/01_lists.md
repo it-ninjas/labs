@@ -38,4 +38,4 @@ Schreibe ein Programm, welche einen Text mit einer beliebigen Anzahl Wörter aus
 *Bei der Umsetzung dürfen keine Streams verwendet werden!*
 
 ---
-Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop/01_lists).
+Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop/05-list-basics).
