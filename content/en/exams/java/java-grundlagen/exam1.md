@@ -45,3 +45,18 @@ _`Math.abs` darf für diese Aufgabe nicht verwendet werden._
 Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht mehr als den Wert 5 unterscheiden.
 Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück. Für die erste und die letzte Zahl im Array gibt es nur einen Nachbar.
 
+Ein Beispiel:
+```java
+int[] beispiel = { 2, 5, 19, 15, 12, 18 };
+```
+Hier würde die Methode folgenden Array zurückgeben:
+```java
+int[] result = { 2, 15 };
+```
+Erklärung:
+- **2**: &nbsp; Kein Nachbar links, Nachbar rechts (5) mit Unterschied <span style="color:green">3</span>.
+- **5**: &nbsp; Nachbar links (2) mit Unterschied <span style="color:green">3</span>, Nachbar rechts (19) mit Unterschied <span style="color:red">14</span>.
+- **19**: Nachbar links (5) mit Unterschied <span style="color:red">14</span>, Nachbar rechts (15) mit Unterschied <span style="color:green">4</span>.
+- **15**: Nachbar links (19) mit Unterschied <span style="color:green">4</span>, Nachbar rechts (12) mit Unterschied <span style="color:green">3</span>.
+- **12**: Nachbar links (15) mit Unterschied <span style="color:green">3</span>, Nachbar rechts (18) mit Unterschied <span style="color:red">6</span>.
+- **18**: Nachbar links (12) mit Unterschied <span style="color:red">6</span>, kein Nachbar rechts.
