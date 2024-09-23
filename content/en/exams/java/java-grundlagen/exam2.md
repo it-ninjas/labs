@@ -79,7 +79,7 @@ Die Methode liefert die Anzahl dieser Wörter zurück.
 Schreibe eine Methode, welche die Wörter aus dem obigen Text alphabetisch sortiert. Entferne zu diesem Zweck zuerst die Sonderzeichen.
 Die Methode liefert ein Array mit den sortierten Wörtern zurück.
 
-_Die Verwendung von Arrays.sort() ist **nicht** erlaubt._
+_Die Verwendung von Arrays.sort() und Collections.sort() ist **nicht** erlaubt._
 
 Du kannst allerdings [String.compareTo](https://www.w3schools.com/java/ref_string_compareto.asp) verwenden. Sieh dir zudem diese [Visualisierung](https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/visualize/) zu Bubble Sort an. Neben Bubble Sort gibt es noch weitere Sortieralgorithmen, die du anwenden kannst.
 
