@@ -211,7 +211,7 @@ Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den Vergleich di
 Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version **0.1.2-SNAPSHOT** sehr wahrscheinlich als Version **0.1.2** ausgeliefert werden.
 
 #### Abschnitt 3
-Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](./spring-boot.md) Projekten wichtig.
+Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](../spring-boot) Projekten wichtig.
 
 #### Abschnitt 4
 Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine Version definiert werden.
@@ -249,7 +249,7 @@ Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen
 ### Beispiel einer Abhängigkeit (spring-boot-starter)
 Die Dependency `spring-boot-starter` ist eine grundlegende Bibliothek für Spring-Boot Projekte, die automatisch alle benötigten Abhängigkeiten einbindet, um die Anwendung zu starten und auszuführen. Dadurch wird der Aufbau von Spring-Anwendungen vereinfacht, da häufig verwendete Bibliotheken in einem einzigen Package zusammengefasst sind.
 
-Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](./lombok.md). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
+Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](../lombok). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
 
 ### Commands
 Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt, kannst du das Terminal öffnen und den folgenden Befehl eingeben:
