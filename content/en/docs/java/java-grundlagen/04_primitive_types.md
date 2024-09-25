@@ -11,9 +11,10 @@ description: >
 
 
 ## Primitive Datentypen
-Bei Variablen primitiver Datentypen werden die Werte der Variable direkt in der Variable (auf dem Stack) gespeichert. Aus diesem Grund wird dann der Wert der Variable auch dann gelöscht, wenn die Variable gelöscht wird.
+Bei Variablen primitiver Datentypen werden die Werte der Variable direkt in der Variable gespeichert. Aus diesem Grund wird dann der Wert der Variable auch dann gelöscht, wenn die Variable gelöscht wird.
+Du erkennst primitive Datentypen auch daran, dass sie klein geschrieben werden. Ein `String` ist daher kein primitiver Datentyp.
 
-Die wichtigsten primitiven Datentypen sind die folgenden:
+Die primitiven Datentypen sind die folgenden:
 
 * `byte` (Ganzzahl)
 * `short` (Ganzzahl)
@@ -26,7 +27,7 @@ Die wichtigsten primitiven Datentypen sind die folgenden:
 
 ### Integraler Datentyp
 Integrale Datentypen sind ganze Zahlen, sie besitzen also keine Nachkommastellen.
-Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur in ihrer Grösse:
+Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur in ihrem Speicherbedarf:
 
 | Datentyp  | Speicherbedarf  | Bereich                                               |
 | --------- | --------------- | ----------------------------------------------------- |
@@ -44,14 +45,14 @@ int million = 1_000_000;
 ```
 
 ### Gleitkomma-Datentyp
-Gleitkomma-Datentypen speichern wie der Name bereits sagt, Zahlen mit Nachkommastellen. Diese Zahlen besitzen nur eine bestimmte Genauigkeit, sie dürfen also nicht als unendlich genau betrachtet werden.
+Gleitkomma-Datentypen speichern wie der Name bereits sagt, Zahlen mit Nachkommastellen. Diese Zahlen besitzen nur eine bestimmte Genauigkeit, sie dürfen nicht als völlig exakt betrachtet werden.
 
-Die folgenden Datentypen speichern Zahlen mit Nachkommastellen, sie unterscheiden sich in ihrer Grösse und der Art und Weise wie sie innerhalb von Java abgelegt werden:
+Die folgenden Datentypen speichern Zahlen mit Nachkommastellen, sie unterscheiden sich in ihrem Speicherbedarf und der Art und Weise wie sie innerhalb von Java abgelegt werden:
 
-| Datentyp  | Speicherbedarf  | Bereich                     | Interne Ablage  |
-| --------- | --------------- | --------------------------- | --------------- |
-| float     | 32 Bit          | +/-1,4E-45 ... +/-3,4E+38   | Dezimalbruch    |
-| double    | 64 Bit          | +/-4,9E-324 ... +/-1,7E+308 | Gleitkommazahl  |
+| Datentyp  | Speicherbedarf  | Bereich                     | Interne Ablage          |
+| --------- | --------------- | --------------------------- |-------------------------|
+| float     | 32 Bit          | +/-1,4E-45 ... +/-3,4E+38   | Gleitkommazahl (32 Bit) |
+| double    | 64 Bit          | +/-4,9E-324 ... +/-1,7E+308 | Gleitkommazahl (64 Bit) |
 
 Wie folgt können Gleitkommazahlen initialisiert werden:
 
@@ -61,9 +62,10 @@ double area = 16.48739d;
 double pi = 3.141592653589793;
 ```
 
-Beachte, dass bei `float`-Zahlen ein `f` folgt, weil es sonst als `double` betrachtet wird.
+Beachte, dass bei `float`-Zahlen ein `f` am Ende steht, da die Zahl sonst als `double` interpretiert wird.
 
-Trotz Nachkommastellen dürfen Fliesskommzahlen des Typs `float` niemals zur Berechnung von Währungen verwendet werden. Innerhalb von Java wird ein `float` stets als Dezimalbruch geführt und die Ungenauigkeit ist der Grund, warum der Datentyp `float` NICHT für Währungsrechnungen verwendet werden soll.
+Trotz Nachkommastellen dürfen Gleitkommazahlen des Typs `float` und `double` niemals zur Berechnung von Währungen verwendet werden. 
+Der Grund dafür sind Rundungsfehler, wenn mit diesen Datentypen gerechnet wird. Falls du exakte Berechnungen mit Gleitkommazahlen durchführen möchtest, musst du die Klasse `BigDecimal` verwenden. `BigDecimal` ist kein primitiver Datentyp.
 
 ### Zeichen-Datentyp
 
@@ -74,15 +76,17 @@ Ein einzelnes Zeichen kann eine Ziffer, einen Buchstaben oder ein anderes Symbol
 'A', 'B', 'C', 'x', 'y', 'z', '0', '1', '2', '9'
 ```
 
-Zeichenliterale können Symbole eines Alphabets, Ziffern von '0' bis '9', Whitespaces (' ') oder andere Zeichen oder Symbole ('$') darstellen. Verwechsle nicht die Zeichen, die Zahlen ('9') darstellen mit den Zahlen selbst (9).
+Zeichenliterale können Symbole eines Alphabets, Ziffern von '0' bis '9', Leerzeichen (' ') oder andere Zeichen oder Symbole ('$') darstellen. Verwechsle nicht Zeichen, die Ziffern darstellen ('9'), mit den tatsächlichen Zahlenwerten (9).
 Ein Zeichen kann nicht zwei und mehr Ziffern oder Buchstaben enthalten, da es nur ein einziges Symbol darstellt.
 
 Wir können Zeichen auf verschiedene Arten initialisieren:
 | Beschreibung | Code |
 | --- | --- |
 | Einfache Anführungszeichen | ```char A = 'A';``` |
-| Wir können ein Char-Literal als Integral-Literal angeben, das den Unicode-Wert des Zeichens darstellt, und Integral-Literale können entweder in Dezimal-, Oktal- oder Hexadezimalform angegeben werden. Der zulässige Bereich liegt zwischen 0 und 65535. | ```char A = 65;``` |
+| Wir können ein Char-Literal als Integral-Literal angeben, das den Unicode-Wert des Zeichens darstellt, und Integral-Literale können entweder in Dezimal-, Oktal- oder Hexadezimalform angegeben werden. Der zulässige Unicode-Bereich liegt zwischen 0 und 65535. | ```char A = 65;``` |
 | In der Unicode-Darstellung ```'\\uxxxx'``` können Zeichenliterale angegeben werden. Hier steht xxxx für 4 Hexadezimalzahlen. | ```char A = '\u0041';``` |
+
+Auf der [Unicode Zeichentabelle](https://symbl.cc/de/unicode-table/#latin-extended-a) kannst du sehen, welche Zahl welchem Zeichen entspricht.
 
 Beispiele:
 ```java
@@ -91,10 +95,14 @@ char point = '.';
 letter++; // 'b'
 ```
 
+`letter++` ist das gleiche wie `letter = letter + 1`. Man nennt das auch inkrementieren.
+
 #### _Don’t get confused:_
 * 123 ist ein Integer, "123" ist ein String;
 * 'A' ein Zeichen (char), "A" ist ein String;
 * '1' ist ein Zeichen (char), 1 ist ein Integer;
+
+Der Unterschied liegt in den verwendeten Anführungszeichen.
 
 ### Logischer Datentyp
 
@@ -102,7 +110,7 @@ Ein `boolean` kann nur zwei verschiedene Werte haben:
 * `true` wie wahr (bzw. zutreffend)
 * `false` wie falsch/unwahr (bzw. nicht zutreffend)
 
-Ein `boolean` wird oft verwendet, um zu speichern, ob etwas zutrifft bzw. etwas aktiv ist. Dieser Wert wird dann oft in Bedingungen (folgen später) verwendet.
+Ein `boolean` speichert, ob eine Bedingung wahr (`true`) oder falsch (`false`) ist. Dieser Wert wird häufig in Bedingungen verwendet, die wir später behandeln werden.
 
 ```java
 boolean done = false;
@@ -114,11 +122,14 @@ Eine mögliche Verwendung von `boolean`s sind Bedingungen, wenn bestimmter Code 
 ```java
 boolean done = false;
 
-if (done)
+if (done) {
   System.out.println("You're done");
+}
 ```
 
 Damit etwas ausgegeben werden würde, müsste die Variable `done` den Wert `true` haben.
+
+---
 
 ### Lernvideo
 Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
