@@ -72,14 +72,18 @@ String endOfTheWorld =
 ```
 
 ## Aufgabe 1
-Schreibe eine Methode, welche die Anzahl Wörter zählt, welche mindestens zweimal im Text vorkommen. Entferne zu diesem Zweck zuerst die Sonderzeichen.
+Schreibe eine Methode, welche die Anzahl der Wörter zählt, die mindestens zweimal im Text vorkommen. Entferne zu diesem Zweck zuerst die Sonderzeichen.
 Die Methode liefert die Anzahl dieser Wörter zurück.
 
 ## Aufgabe 2
-Schreibe eine Methode, welche die Wörter aus dem Text oben alphabetisch sortiert. Entferne zu diesem Zweck zuerst die Sonderzeichen.
+Schreibe eine Methode, welche die Wörter aus dem obigen Text alphabetisch sortiert. Entferne zu diesem Zweck zuerst die Sonderzeichen.
 Die Methode liefert ein Array mit den sortierten Wörtern zurück.
 
-_Die Verwendung von Arrays.sort() ist **nicht** erlaubt._
+_Die Verwendung von Arrays.sort() und Collections.sort() ist **nicht** erlaubt._
+
+Du kannst allerdings [String.compareTo](https://www.w3schools.com/java/ref_string_compareto.asp) verwenden. Sieh dir zudem diese [Visualisierung](https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/visualize/) zu Bubble Sort an. Neben Bubble Sort gibt es noch weitere Sortieralgorithmen, die du anwenden kannst.
+
+
 
 ## Aufgabe 3
 Schreibe eine Methode, welche die durchschnittliche Wortlänge berechnet. Entferne zu diesem Zweck zuerst die Sonderzeichen.
@@ -128,3 +132,6 @@ String text = "H<span style="color: blue">a</span>ll<span style="color: red">o</
 Der Tabelle kann folgendes entnommen werden:
 Der Buchstabe `a` befindet sich an den Positionen `1` und `12` im String `Hallo mein Name ist Claudio`.
 Das erste Zeichen in der Tabelle ist ein Leerschlag (whitespace).
+
+Um die Tabelle formattiert auszugeben, kannst du `String.format("%-10s", deineZahl)` verwenden.
+Dabei wird der Text immer mit Leerzeichen aufgefüllt und sichergestellt, dass der Text immer 10 Zeichen lang ist, auch wenn die Zahlen unterschiedlich lang sind.
