@@ -47,9 +47,9 @@ Core, Data Access, Web usw. organisiert sind.
 
 [comment]: <> (Bildlink funktioniert auf website, nicht in md!)
 
-![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png)
+![spring-module-overview.png](https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png)
 
-Quelle: https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/images/spring-overview.png
+Quelle: https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png
 
 Das Core-Modul umfasst essenzielle Funktionen wie Dependency Injection. Das Beans-Modul beinhaltet alles, was zur 
 Erstellung von Beans benötigt wird.
@@ -61,7 +61,7 @@ Objekt/XML-Speicher-Implementierungen.
 Das Web-Modul ist für die Kommunikation mit der Außenwelt (Internet) verantwortlich.
 
 Weitere Informationen finden sich in der offiziellen
-[Dokumentation](https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch01s02.html).
+[Dokumentation](https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/index.html).
 
 ### Spring Projekte
 
@@ -74,7 +74,7 @@ Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
 #### Spring Boot
 
-[Spring Boot](../new-spring-boot-doc.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie 
+[Spring Boot](./spring-boot.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie 
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des 
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die 
 Konfiguration.
@@ -239,14 +239,9 @@ Weitere Information
 hier: https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes
 
 ### REST
-REST (Representational State Transfer) ist ein Designkonzept für das Internet, das Regeln und Standards definiert, 
-wie Webdienste miteinander kommunizieren. Es basiert auf dem Austausch von Daten über das HTTP-Protokoll und verwendet 
-einheitliche Methoden wie GET, POST, PUT und DELETE, um auf Ressourcen zuzugreifen und mit ihnen zu interagieren. 
-REST betont die Verwendung von klaren, eindeutigen URLs und fördert eine zustandslose Kommunikation, was bedeutet, 
-dass jede Anfrage alle benötigten Informationen enthält, um verstanden zu werden, ohne auf vergangene Anfragen 
-zurückgreifen zu müssen.
+REST hat neu ein eigenes ausführliches Kapitel, welches [hier](rest-endpoints.md) zu finden ist.
 
-Hier eine kurze Übersicht der REST-Methoden:
+Hier jedoch eine kurze Übersicht der REST-Methoden:
 * GET: Wird genutzt, um Daten von einem bestimmten Ort abzurufen. Beispielsweise das Abrufen von Informationen über Benutzerprofile einer Social-Media-Plattform.
 * POST: Um neue Daten an den Server zu senden, beispielsweise beim Ausfüllen eines Formulars und Absenden der Informationen.
 * PUT: Zum Aktualisieren von bestehenden Ressourcen, indem neue Daten an einen bestimmten Ort gesendet werden.
@@ -322,29 +317,6 @@ public class OrderResource {
 Dies ist eine Rest-Resource und sie wird definiert mit der Annotation `@RestController`. Die
 Annotation `@RequestMapping("/orders")` legt fest, dass alle Aufrufe, wessen URL mit `"/orders"` beginnen, diesen Rest-Controller
 verwenden sollen.
-
-Schauen wir uns dies doch ein bisschen genauer an:
-
-```java
-@GetMapping("/{id}")
-public Order findById(@PathVariable Long id){
-    return orderService.findById(id).orElseThrow(EntityNotFoundException::new);
-}
-```
-
-Mit der `@GetMapping` Annotation bestimmen wir, dass alle Anfragen auf dem `orders/id` Pfad von der
-annotierten Methode gehandelt werden, wenn die HTTP-Methode `GET` verwendet wurde. `@PathVariable` bestimmt, dass die ID als Path-Variable (also in der URL)
-angegeben wird. Das bedeutet, dass ein Aufruf auf `/orders/12` das gleiche Ergebnis hat wie `findByID(12)`.
-
-```java
-@PutMapping("/{id}")
-public Order update(@PathVariable Long id,@RequestBody Order order){
-    return orderService.update(id,order);
-}
-```
-
-Die Annotation `@RequestBody` wird verwendet, um anzugeben, dass der Parameter `order` aus dem Request-Body des 
-HTTP-Requests gelesen werden soll.
 
 #### Control Layer
 
@@ -578,4 +550,4 @@ spring.profiles.active="test"
 ```
 
 Bei beiden Möglichkeiten wurde das Profil `test` aktiviert. Weitere Informationen in
-der [offiziellen Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition-profiles).
+der [offiziellen Dokumentation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition-profiles) oder in dieser [Erklärung](https://www.baeldung.com/spring-profiles).
