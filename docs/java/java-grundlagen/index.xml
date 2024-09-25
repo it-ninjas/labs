@@ -326,8 +326,9 @@ ob sie auf dasselbe Objekt zeigen. Wenn der Inhalt von Objekten verglichen werde
 &lt;li>Ich kenne die primitiven Datentypen in Java: &lt;code>boolean&lt;/code>, &lt;code>byte&lt;/code>, &lt;code>short&lt;/code>, &lt;code>int&lt;/code>, &lt;code>long&lt;/code>, &lt;code>double&lt;/code>, &lt;code>float&lt;/code>, &lt;code>char&lt;/code>.&lt;/li>
 &lt;/ul>
 &lt;h2 id="primitive-datentypen">Primitive Datentypen&lt;/h2>
-&lt;p>Bei Variablen primitiver Datentypen werden die Werte der Variable direkt in der Variable (auf dem Stack) gespeichert. Aus diesem Grund wird dann der Wert der Variable auch dann gelöscht, wenn die Variable gelöscht wird.&lt;/p>
-&lt;p>Die wichtigsten primitiven Datentypen sind die folgenden:&lt;/p>
+&lt;p>Bei Variablen primitiver Datentypen werden die Werte der Variable direkt in der Variable gespeichert. Aus diesem Grund wird dann der Wert der Variable auch dann gelöscht, wenn die Variable gelöscht wird.
+Du erkennst primitive Datentypen auch daran, dass sie klein geschrieben werden. Ein &lt;code>String&lt;/code> ist daher kein primitiver Datentyp.&lt;/p>
+&lt;p>Die primitiven Datentypen sind die folgenden:&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>byte&lt;/code> (Ganzzahl)&lt;/li>
 &lt;li>&lt;code>short&lt;/code> (Ganzzahl)&lt;/li>
@@ -340,7 +341,7 @@ ob sie auf dasselbe Objekt zeigen. Wenn der Inhalt von Objekten verglichen werde
 &lt;/ul>
 &lt;h3 id="integraler-datentyp">Integraler Datentyp&lt;/h3>
 &lt;p>Integrale Datentypen sind ganze Zahlen, sie besitzen also keine Nachkommastellen.
-Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur in ihrer Grösse:&lt;/p>
+Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur in ihrem Speicherbedarf:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -385,8 +386,8 @@ Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="gleitkomma-datentyp">Gleitkomma-Datentyp&lt;/h3>
-&lt;p>Gleitkomma-Datentypen speichern wie der Name bereits sagt, Zahlen mit Nachkommastellen. Diese Zahlen besitzen nur eine bestimmte Genauigkeit, sie dürfen also nicht als unendlich genau betrachtet werden.&lt;/p>
-&lt;p>Die folgenden Datentypen speichern Zahlen mit Nachkommastellen, sie unterscheiden sich in ihrer Grösse und der Art und Weise wie sie innerhalb von Java abgelegt werden:&lt;/p>
+&lt;p>Gleitkomma-Datentypen speichern wie der Name bereits sagt, Zahlen mit Nachkommastellen. Diese Zahlen besitzen nur eine bestimmte Genauigkeit, sie dürfen nicht als völlig exakt betrachtet werden.&lt;/p>
+&lt;p>Die folgenden Datentypen speichern Zahlen mit Nachkommastellen, sie unterscheiden sich in ihrem Speicherbedarf und der Art und Weise wie sie innerhalb von Java abgelegt werden:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -401,13 +402,13 @@ Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur
 &lt;td>float&lt;/td>
 &lt;td>32 Bit&lt;/td>
 &lt;td>+/-1,4E-45 &amp;hellip; +/-3,4E+38&lt;/td>
-&lt;td>Dezimalbruch&lt;/td>
+&lt;td>Gleitkommazahl (32 Bit)&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>double&lt;/td>
 &lt;td>64 Bit&lt;/td>
 &lt;td>+/-4,9E-324 &amp;hellip; +/-1,7E+308&lt;/td>
-&lt;td>Gleitkommazahl&lt;/td>
+&lt;td>Gleitkommazahl (64 Bit)&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -424,8 +425,9 @@ Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur
 &lt;span style="color:#66d9ef">double&lt;/span> pi &lt;span style="color:#f92672">=&lt;/span> 3&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">141592653589793&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Beachte, dass bei &lt;code>float&lt;/code>-Zahlen ein &lt;code>f&lt;/code> folgt, weil es sonst als &lt;code>double&lt;/code> betrachtet wird.&lt;/p>
-&lt;p>Trotz Nachkommastellen dürfen Fliesskommzahlen des Typs &lt;code>float&lt;/code> niemals zur Berechnung von Währungen verwendet werden. Innerhalb von Java wird ein &lt;code>float&lt;/code> stets als Dezimalbruch geführt und die Ungenauigkeit ist der Grund, warum der Datentyp &lt;code>float&lt;/code> NICHT für Währungsrechnungen verwendet werden soll.&lt;/p>
+&lt;/div>&lt;p>Beachte, dass bei &lt;code>float&lt;/code>-Zahlen ein &lt;code>f&lt;/code> am Ende steht, da die Zahl sonst als &lt;code>double&lt;/code> interpretiert wird.&lt;/p>
+&lt;p>Trotz Nachkommastellen dürfen Gleitkommazahlen des Typs &lt;code>float&lt;/code> und &lt;code>double&lt;/code> niemals zur Berechnung von Währungen verwendet werden.
+Der Grund dafür sind Rundungsfehler, wenn mit diesen Datentypen gerechnet wird. Falls du exakte Berechnungen mit Gleitkommazahlen durchführen möchtest, musst du die Klasse &lt;code>BigDecimal&lt;/code> verwenden. &lt;code>BigDecimal&lt;/code> ist kein primitiver Datentyp.&lt;/p>
 &lt;h3 id="zeichen-datentyp">Zeichen-Datentyp&lt;/h3>
 &lt;p>Ein &lt;strong>char&lt;/strong> ist ein Datentyp, der ein einzelnes Zeichen darstellt.&lt;/p>
 &lt;p>Ein einzelnes Zeichen kann eine Ziffer, einen Buchstaben oder ein anderes Symbol sein. Um ein Zeichen zu schreiben, verwenden wir einfache Anführungszeichen wie folgt:&lt;/p>
@@ -437,7 +439,7 @@ Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-fallback" data-lang="fallback">&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;x&amp;#39;, &amp;#39;y&amp;#39;, &amp;#39;z&amp;#39;, &amp;#39;0&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;9&amp;#39;
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Zeichenliterale können Symbole eines Alphabets, Ziffern von &amp;lsquo;0&amp;rsquo; bis &amp;lsquo;9&amp;rsquo;, Whitespaces (' &amp;lsquo;) oder andere Zeichen oder Symbole ('$') darstellen. Verwechsle nicht die Zeichen, die Zahlen (&amp;lsquo;9&amp;rsquo;) darstellen mit den Zahlen selbst (9).
+&lt;/div>&lt;p>Zeichenliterale können Symbole eines Alphabets, Ziffern von &amp;lsquo;0&amp;rsquo; bis &amp;lsquo;9&amp;rsquo;, Leerzeichen (' &amp;lsquo;) oder andere Zeichen oder Symbole ('$') darstellen. Verwechsle nicht Zeichen, die Ziffern darstellen (&amp;lsquo;9&amp;rsquo;), mit den tatsächlichen Zahlenwerten (9).
 Ein Zeichen kann nicht zwei und mehr Ziffern oder Buchstaben enthalten, da es nur ein einziges Symbol darstellt.&lt;/p>
 &lt;p>Wir können Zeichen auf verschiedene Arten initialisieren:&lt;/p>
 &lt;table>
@@ -453,7 +455,7 @@ Ein Zeichen kann nicht zwei und mehr Ziffern oder Buchstaben enthalten, da es nu
 &lt;td>&lt;code>char A = 'A';&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>Wir können ein Char-Literal als Integral-Literal angeben, das den Unicode-Wert des Zeichens darstellt, und Integral-Literale können entweder in Dezimal-, Oktal- oder Hexadezimalform angegeben werden. Der zulässige Bereich liegt zwischen 0 und 65535.&lt;/td>
+&lt;td>Wir können ein Char-Literal als Integral-Literal angeben, das den Unicode-Wert des Zeichens darstellt, und Integral-Literale können entweder in Dezimal-, Oktal- oder Hexadezimalform angegeben werden. Der zulässige Unicode-Bereich liegt zwischen 0 und 65535.&lt;/td>
 &lt;td>&lt;code>char A = 65;&lt;/code>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -462,6 +464,7 @@ Ein Zeichen kann nicht zwei und mehr Ziffern oder Buchstaben enthalten, da es nu
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
+&lt;p>Auf der &lt;a href="https://symbl.cc/de/unicode-table/#latin-extended-a">Unicode Zeichentabelle&lt;/a> kannst du sehen, welche Zahl welchem Zeichen entspricht.&lt;/p>
 &lt;p>Beispiele:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -475,19 +478,21 @@ Ein Zeichen kann nicht zwei und mehr Ziffern oder Buchstaben enthalten, da es nu
 letter&lt;span style="color:#f92672">++;&lt;/span> &lt;span style="color:#75715e">// &amp;#39;b&amp;#39;
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="_dont-get-confused_">&lt;em>Don’t get confused:&lt;/em>&lt;/h4>
+&lt;/div>&lt;p>&lt;code>letter++&lt;/code> ist das gleiche wie &lt;code>letter = letter + 1&lt;/code>. Man nennt das auch inkrementieren.&lt;/p>
+&lt;h4 id="_dont-get-confused_">&lt;em>Don’t get confused:&lt;/em>&lt;/h4>
 &lt;ul>
 &lt;li>123 ist ein Integer, &amp;ldquo;123&amp;rdquo; ist ein String;&lt;/li>
 &lt;li>&amp;lsquo;A&amp;rsquo; ein Zeichen (char), &amp;ldquo;A&amp;rdquo; ist ein String;&lt;/li>
 &lt;li>&amp;lsquo;1&amp;rsquo; ist ein Zeichen (char), 1 ist ein Integer;&lt;/li>
 &lt;/ul>
+&lt;p>Der Unterschied liegt in den verwendeten Anführungszeichen.&lt;/p>
 &lt;h3 id="logischer-datentyp">Logischer Datentyp&lt;/h3>
 &lt;p>Ein &lt;code>boolean&lt;/code> kann nur zwei verschiedene Werte haben:&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>true&lt;/code> wie wahr (bzw. zutreffend)&lt;/li>
 &lt;li>&lt;code>false&lt;/code> wie falsch/unwahr (bzw. nicht zutreffend)&lt;/li>
 &lt;/ul>
-&lt;p>Ein &lt;code>boolean&lt;/code> wird oft verwendet, um zu speichern, ob etwas zutrifft bzw. etwas aktiv ist. Dieser Wert wird dann oft in Bedingungen (folgen später) verwendet.&lt;/p>
+&lt;p>Ein &lt;code>boolean&lt;/code> speichert, ob eine Bedingung wahr (&lt;code>true&lt;/code>) oder falsch (&lt;code>false&lt;/code>) ist. Dieser Wert wird häufig in Bedingungen verwendet, die wir später behandeln werden.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -505,14 +510,17 @@ letter&lt;span style="color:#f92672">++;&lt;/span> &lt;span style="color:#75715e
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">boolean&lt;/span> done &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>done&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>done&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
 System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;You&amp;#39;re done&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Damit etwas ausgegeben werden würde, müsste die Variable &lt;code>done&lt;/code> den Wert &lt;code>true&lt;/code> haben.&lt;/p>
+&lt;hr>
 &lt;h3 id="lernvideo">Lernvideo&lt;/h3>
 &lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
 &lt;a href="https://www.youtube.com/watch?v=NSeJhsah-hE">Video&lt;/a>.&lt;/p></description></item><item><title>Docs: Kontrollstrukturen</title><link>/docs/java/java-grundlagen/05_control_structures/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/05_control_structures/</guid><description>
