@@ -16,10 +16,10 @@ Kontrollstrukturen dienen dazu, den Ablauf eines Programms zu steuern.
 Damit bietet eine Kontrollstruktur die Möglichkeit, Programmteile nur unter gewissen Bedingungen ( → bedingte Anweisungen) auszuführen oder Programmteile zu wiederholen ( → Schleifen).
 
 ### Bedingte Anweisungen
-Eine bedingte Anweisung ist eine Konstruktion, mit der ein Programm abhängig vom Wert eines boolschen Ausdrucks (true oder false) unterschiedliche Wege geht.
+Eine bedingte Anweisung ist eine Konstruktion, mit der ein Programm abhängig vom Wert eines boolschen Ausdrucks (`true` oder `false`) unterschiedliche Wege geht.
 
 #### If-Statement
-Die einfachste Form der bedingten Anweisung besteht aus dem Schlüsselwort if, einem boolschen Ausdruck und einem Block.
+Die einfachste Form der bedingten Anweisung besteht aus dem Schlüsselwort `if`, einem boolschen Ausdruck und einem Block.
 ```java
 if (expression) {
     
@@ -28,7 +28,7 @@ if (expression) {
 Wenn der Ausdruck true ist, werden die Anweisungen im Codeblock ausgeführt. Andernfalls werden sie übersprungen.
 
 #### If-Else Statement
-Der obige if-Fall kann mit dem Schlüsselwort else erweitert werden, um alternative Aktionen auszuführen, wenn der Ausdruck false ist.
+Der obige if-Fall kann mit dem Schlüsselwort `else` erweitert werden, um alternative Aktionen auszuführen, wenn der Ausdruck false ist.
 ```java
 if (expression) {
     // do something
@@ -98,7 +98,7 @@ switch (variable) {
     case value2:
         // do something here
         break;
-    //... other cases
+        //... other cases
     case valueN:
         // do something here
         break;
@@ -150,20 +150,20 @@ Manchmal müssen wir einen Codeblock für eine bestimmte Anzahl wiederholen. Zu 
 #### While-Loop
 Die while- Schleife besteht aus einem Codeblock und einer Bedingung (einem booleschen Ausdruck). Wenn die Bedingung erfüllt ist, wird der Code innerhalb des Blocks ausgeführt. Dieser Code wird solange wiederholt, bis die Bedingung nicht mehr erfüllt ist.
 ```java
-        while (condition) {
-        // body: do something
-        }
+while (condition) {
+    // body: do something
+}
 ```
 Innerhalb des Schleifenkörpers kann das Programm wiederum alle möglichen Java-Anweisungen ausführen. Es kann sogar andere Schleifen enthalten.
 
 Beispiel: Die folgende Schleife gibt Ganzzahlen aus, während eine Variable kleiner als 5 ist.
 ```java
-        int i = 0;
+int i = 0;
 
-        while (i < 5) {
-        System.out.print(i + " ");
-        i++;
-        }
+while (i < 5) {
+    System.out.print(i + " ");
+    i++;
+}
 // Output: 0 1 2 3 4
 ```
 
@@ -203,12 +203,12 @@ Die Schleifenvariable wird meistens mit einfachen Variablennamen wie i, j, k ode
 
 Hier ist ein weiteres Beispiel. Berechnen wir die Summe der Ganzzahlen von 1 bis 10 mit der for-Schleife.
 ```java
-int startIncl = 1;
-int endExcl = 11;
+int startInclude = 1;
+int endExclude = 11;
 int sum = 0;
 
-for (int i = startIncl; i < endExcl; i++) {
-    sum += i;
+for (int i = startInclude; i < endExclude; i++) {
+    sum += i; //ist das gleiche wie sum = sum + i
 }
 
 System.out.println(sum); // Output: 55
@@ -219,8 +219,8 @@ Der For-Each-Loop durchläuft alle Elemente eines Arrays oder einer Collection. 
 ```java
 int[] numbers = { 125, 381, 98, 12, 235 };
 for (int number: numbers) {
-        System.out.print(number + " ");
-        }
+    System.out.print(number + " ");
+}
 // Output: 125 381 98 12 235
 ```
 Der gezeigte Loop wird also fünfmal ausgeführt und der Wert der Variable _number_ nimmt bei jedem Durchlauf den jeweils nächsten Wert aus dem Array an.
