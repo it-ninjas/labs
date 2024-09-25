@@ -7,13 +7,14 @@ description: >
 ---
 
 #### Ziele
-* Ich weiss, warum das Testen in der Softwareentwicklung eine zentrale Bedeutung hat
-* Ich kenne die gängigen Testarten in der Software-Entwicklung und deren Zweck
-* Ich kenne die wichtigsten Funktionen des Frameworks JUnit 5
-* Ich kann für einfache Anwendungen selber Unit-Tests implementieren
-* Ich kenne die wichtigsten Funktionen des Frameworks Mockito
-* Ich weiss was Mocks und Spies sind und kenne den Unterschied dazwischen
-* Ich weiss, was Test-Driven-Development ist und wie ich die Methodik anwenden kann
+* Ich weiss, warum das Testen in der Softwareentwicklung eine zentrale Bedeutung hat.
+* Ich kenne die relevantesten gängigen Testarten in der Software-Entwicklung und deren Zweck.
+* Ich weiss, was Testmanagement ist und was es dabei zu beachten gilt. 
+* Ich kenne die wichtigsten Funktionen des Frameworks JUnit 5.
+* Ich kann für einfache Anwendungen selber Unit-Tests implementieren.
+* Ich kenne die wichtigsten Funktionen des Frameworks Mockito.
+* Ich weiss, was Mocks und Spies sind und kenne den Unterschied dazwischen.
+* Ich weiss, was Test-Driven-Development ist und wie ich diese Methodik anwenden kann.
 
 ## Einführung
 Tests in den unterschiedlichen Phasen der Softwareentwicklung dienen dazu festzustellen, 
@@ -23,10 +24,10 @@ produktiv geschaltet wird und stellen damit sicher, dass das Endprodukt fehlerfr
 
 Tests sind vor allem aus folgenden Gründen sehr wichtig und sollen entsprechend sehr früh (dazu später) 
 in den Entwicklungsprozess integriert werden:
-* **Testing erhöht die Qualität des entwickelten Produkts** da damit Mängel frühzeitig entdeckt und beseitigt werden können
-* **Testing gibt mehr Sicherheit bei Änderungen am Code** da damit sichergestellt werden kann, dass die Änderung nicht zu unerwünschten Nebenwirkungen geführt haben.
+* **Testing erhöht die Qualität des entwickelten Produkts,** da damit Mängel frühzeitig entdeckt und beseitigt werden können.
+* **Testing gibt mehr Sicherheit bei Änderungen am Code,** da damit sichergestellt werden kann, dass die Änderung nicht zu unerwünschten Nebenwirkungen geführt haben.
 * **Testing spart Geld** da damit weniger Nachbearbeitungsaufwand in Form von Bug/Hot-Fixes betrieben werden muss.
-* **Testing führt zu höherer Kundenzufriedenheit** da damit weniger Fehler den Kunden davor hindern, fehlerfrei mit dem Produkt zu arbeiten
+* **Testing führt zu höherer Kundenzufriedenheit** da damit weniger Fehler den Kunden davor hindern, fehlerfrei mit dem Produkt zu arbeiten.
 
 ## Testarten
 Es gibt viele verschiedene Softwaretestverfahren und Methoden, mit denen sichergestellt werden kann, 
@@ -40,46 +41,159 @@ Hier werden wir uns auf das automatisierte Testen konzentrieren, da dieses im So
 essenziell ist.
 
 ### Unit-Tests
-Unit-Tests sind sehr einfach und erfolgen nah an der Quelle der Anwendung.<br> 
+Unit-Tests sind inhaltlich sehr simpel und erfolgen nah an der Quelle der Anwendung.<br> 
 Sie dienen zum Testen einzelner Methoden und Funktionen der von der Software verwendeten Klassen, 
-Komponenten oder Module.
+Komponenten oder Module. 
 
-Mit Unit-Tests stellen wir sicher, dass eine Applikation mit ihren Funktionen genau das macht, 
-was eigentlich beabsichtigt war. Dazu genügt es nicht nur die "guten" Fälle zu testen, 
-es sollten auch Tests für Grenzwerte durchgeführt werden. 
+Mit Unit-Tests stellen wir sicher, dass einzelne Funktionsblöcke einer Applikation genau das machen, 
+was sie sollen. Vielen passiert es am Anfang, dass nur "Positiv-Fälle" getestet werden. Konkret heisst das,
+dass der getestete Teil nur im Rahmen des korrekten, erwarteten Verhaltens geprüft wird. Es ist aber genauso wichtig, 
+Negativ-Tests und Rahmentests durchzuführen, wo der geprüfte Teil konkret auf das Verhalten in einem Grenz- oder
+Fehlerfall geprüft wird. So kann bereits vielen Fehlern in der Zukunft mit wenig Aufwand vorgebeugt werden.
+
 Ein Unit-Test ist immer ein sog. "White-Box" Test, da der Entwickler bei der Implementation 
 von Unit-Tests den Sourcecode kennt oder ihn einsehen kann.
 
-Bei Unit-Tests in Java ist der Testumfang eines Unit-Tests normalerweise in der Grössenordnung einer Methode.
+Bei Unit-Tests in Java ist der Testumfang eines Unit-Tests normalerweise in der Grössenordnung einer Methode oder Funktion.
 
-In der Regel lassen sich Unit-Tests automatisieren und können einzeln oder auch in Gruppen (sog. Test-Suites) 
+In der Regel lassen sich Unit-Tests automatisieren und können einzeln oder auch in Gruppen (in sog. Test-Suites) 
 lokal (an der eigenen Maschine) oder von einem Continuous-Integration-Server (eine externe Maschine, der dafür sorgt, dass Programmteile sofort 
 getestet und zusammengeführt werden können) sehr schnell durchgeführt werden.
 
-### Integrations-Tests
-Mit Integrationstests wird sichergestellt, dass verschiedene Programmteile der Anwendung
-problemlos ineinandergreifen. So kann beispielsweise die Interaktion mit einer Datenbank oder das 
-Zusammenspiel von Mikroservices getestet werden.
+### Integration-Tests
+Mit Integration-Tests wird sichergestellt, dass verschiedene Programmteile der Anwendung
+problemlos ineinandergreifen und miteinander harmonieren. So kann beispielsweise die Interaktion mit einer Datenbank oder das 
+Zusammenspiel von verschiedenen Mikroservices getestet werden. Im Gegensatz zu Unit-Tests beschränkt sich diese Test-Art also nicht
+auf einzelne Methoden oder Funktionen, sondern auf verschiedene Module oder Klassen und deren Zusammenspiel. 
 
 Tests dieser Art sind kostspieliger und können auch länger dauern als Unit-Tests, weil dafür mehrere 
-Teile der Anwendung funktionsfähig sein müssen.
+Teile der Anwendung funktionsfähig sein müssen. Dafür können konkretere Aussagen über den generellen Zustand einzelner, ineinandergreifende
+Funktionalitäten aufgrund der Testergebnisse getätigt werden.
 
-### End-to-End-Tests
-Bei End-to-End-Tests wird der Umgang des Benutzers (oder auch andere, externe Programme) mit der Software 
+### System-Tests
+System-Tests gehen noch einmal eine Stufe höher als Integrations-Tests und prüfen eine gesamte Applikation auf spezifische Business-Anforderungen.
+Zumeist werden diese mithilfe von Tools automatisch ausgeführt und sind im Vergleich zu Integrations-Tests und vor allem Unit-Tests
+ziemlich aufwändig. 
+
+System-Tests bieten, wenn sie richtig geschrieben und gepflegt werden, einen grossen Mehrwert für das Team. Da nicht nur einzelne Funktionen,
+sondern ganze Anwendungsfälle geprüft werden und die Tests automatisch ausführbar sind, bieten sie einen starken Rückhalt bei der 
+Pflege der Applikation und der Kommunikation bei Erreichung einer Anforderung. 
+
+### Akzeptanz-Tests
+Bei Akzeptanz-Tests wird der Umgang des Benutzers (oder auch andere, externe Programme) mit der Software 
 in einer vollständigen Anwendungsumgebung repliziert.
 Auf diese Weise wird das ordnungsgemässe Funktionieren von Benutzerabläufen überprüft.
 Die Szenarien können ganz einfach sein (z.B. Laden einer Website, Anmeldevorgang) oder auch sehr komplex 
 (z.B. E-Mail-Benachrichtigungen, Onlinezahlungen).
 
-End-to-End-Tests sind sehr nützlich, aber auch aufwändiger zu erstellen und in automatisierter Form unter Umständen schwer zu verwalten.
-Es empfiehlt sich deshalb, eher weniger End-to-End-Tests zu implementieren und stattdessen eher auf 
-weniger aufwändigen Testarten (Unit- und Integrationstests) zu setzen, um riskante Änderungen schnell erkennen zu können.
+Akzeptanz-Tests sind sehr nützlich, aber auch aufwändiger zu erstellen und in automatisierter Form unter Umständen schwer zu verwalten.
+Daher empfiehlt es sich grundsätzlich, Akzeptanz-Tests manuell auf Basis der Use-Cases, die man für eine Applikation hat, zu testen.
+Viele Teams oder Organisations-Einheiten haben ein dediziertes Testing-Team, welches sich ausschliesslich um das Testen von Applikationen
+und den Umgang mit gefundenen Fehlern kümmert.
+
+Wichtig anzumerken ist ebenfalls, dass Akzeptanz-Tests auch nicht-funktionale Anforderungen abdecken. Während Unit-Tests
+hauptsächlich funktionale Anforderungen wie beispielsweise eine Anmeldefunktion geprüft werden, werden mit Akzeptanz-Tests auch 
+nicht-funktionale Anforderungen wie bspw. die Latenz von Anfragen geprüft.
 
 ---
 
-## Junit
+## Testmanagement
+Unter Testmanagement versteht man die geplante und effiziente Koordination aller Testprozesse, die die Qualität von Software optimieren und langfristig gewährleisten. 
+Grundsätzlich wird so die Identifizierung von und Reduzierung teilweise versteckter Qualitätsrisiken ermöglicht, womit potenzielle zukünftig auftretende finanzielle und aufwandstechnische
+Belastungen in der Zukunft minimiert werden können. Hauptsächlich verfolgt das Testmanagement also 2 Ziele: 
+
+- Möglichst früh Software-Fehler aufdecken.
+- Die Unsicherheit bezüglich der Qualität der Software minimieren. 
+
+Diese beiden Punkte sollen nachfolgend noch ein Stück ausformuliert werden. 
+
+### Möglichst früh Software-Fehler aufdecken
+Oft ist es so, dass in der Entwicklung, Anpassungen oder Installation von Software erst recht spät getestet wird, was dazu führt, dass eine entsprechende Reaktion auf einen Fehler 
+meist erst verspätet ermöglicht wird. Grundsätzlich ist es so, dass die aus einem Fehler entstehenden Kosten exponentiell ansteigen, je später ein solcher gefunden und behandelt wird. 
+Die untenstehende Grafik veranschaulicht das relativ gut. Während das Beheben eines gefundenen Fehlers beim Erstellen und Prüfen der Anforderungen (Reqs) kaum etwas kostet, sind die 
+Kosten im PROD-Kontext schon um einiges höher. 
+
+![Kostenverlauf für Fehler je nach Zeitpunkt](../java-testing/kosten_fehler.png)
+
+Da die meisten Fehler schon sehr früh im Umsetzungs-Ablauf passieren, lohnt es sich enorm, in ein sinnvolles Test-Management zu investieren, da so enorm viele Ressourcen gespart 
+werden können. 
+
+### Die Unsicherheit bezüglich der Qualität der Software minimieren
+Es ist oft schwierig, einen guten Ausgleich zwischen einer guten Testabdeckung und einer lohnenswerten Wirtschaftlichkeit für das Unternehmen zu finden, da beispielsweise eine Testabdeckung
+von 100% bei einer App schon sehr teuer werden kann. Daher ist es auch ein Fehlschluss, dass man mit genügend Tests sicherstellen könne, dass eine Software **fehlerfrei** ist. Testmanagement 
+hat daher zum Ziel, die Unsicherheit, dass eine Software **kritische** Fehler enthält, soweit zu minimieren, dass eine Produktivsetzung der App ohne schlechtes Gewissen durchgeführt werden kann. 
+Testmanagement hat daher **nicht** zum Ziel, dass eine Software absolut fehlerfrei ist. 
+
+### Vorteile von Testmanagement
+Ein strukturiertes Testmanagement mit klar verteilten Rollen, Verantwortlichkeiten und Aufgaben resultiert zumeist in einigen Vorteilen, beispielsweise den folgenden:
+- **Kostenreduktion**: Da Fehler oft zu einem früheren Zeitpunkt gefunden werden, wenn ein sinnvolles Testmanagement umgesetzt wird, können viele sonst entstehende Mehrkosten vermieden werden.
+Zudem bestehen in diesem Fall auch geringe Wartungsaufwände durch wiederholbare Tests und Klarheit in Bezug auf die zu testenden Anforderungen. Auch so kann stellenweise viel Geld gespart werden. 
+- **Bessere Planbarkeit** der Testphasen durch bekannte Testumfänge. 
+- **Personenunabhängige Tests** durch ausreichende Testfalldefinitionen und -dokumentation, was je nachdem sogar ein Outsourcing des Testings erlaubt. 
+- Stetige **Verbesserung der Softwarequalität** durch das Leben und durchgehende Verbessern des Testmanagements.
+- Potenzielle Ressourcen- und Zeiteinsparung durch automatisierte Tests. 
+
+### Der Testprozess nach ISTQB
+Ein offizieller Testprozess, nachdem man sich grundsätzlich ausrichten kann, ist der des International Software Testing Qualitications Board. (ISTQB)
+Das ISTQB hat gängige, bewährte Praktiken und Terminologien zu einem prinzipiell universell anwendbaren Standard gebündelt, auf den nachfolgend etwas genauer eingegangen werden soll. 
+
+Der ISTQB-Prozess besteht grundsätzlich aus 4 Testphasen:
+- Incident Management
+- Problem Management
+- Change Management
+- Release Management
+
+![ISTQB-Prozess](../java-testing/testprozess_ISTQB.png)
+
+Zu den jeweiligen Phasen gehören jeweils noch die entsprechenden Aktivitäten, namentlich die Planung, Spezifikation, Durchführung, Protokollierung und Auswertung der Tests. Diese Aktvitäten werden per
+ISTQB jeweils in die folgenden Gruppen eingerodnet: 
+- Testplanung und -steuerung
+- Testanalyse und -design
+- Testrealisierung und -durchführung
+- Testauswertung und -bericht
+- Abschluss
+
+
+### Rollen im Testmanagement
+Es gibt innerhalb des Testmanagements viele verschiedene Rollen, die jeweils verschiedene Tätigkeiten verfolgen. Wie man diese unterscheidet, ist jeweils abhängig von der Tiefe der Betrachtung pro Fall,
+der Einfachheit nehmen wir hier aber die einfachste Unterscheidung mit 2 Rollen; einmal der des Testmanagers und einmal der des Testers. 
+
+#### Testmanager 
+Der Testmanager ist für den gesamten, übergreifenden Testprozess und die erfolgreiche Durchführung der Testaktivitäten zu verantworten. Da es sich hier um eine rein koordinative Arbeit handelt, kann diese Rolle
+von verschiedenen Personen übernommen werden. Wenn es der technische Prozess fordert, kann das ein professioneller Testmanager sein, in anderen Fällen kann es aber genau so gut ein Projektleiter ohne grossen technischen 
+Hintergrund sein. 
+
+Typische Aufgaben eines Testmanagers umfassen: 
+- Das Festlegen der Testrategie und -vorgaben für das Unternehmen
+- Das Erstellen und Aktualisieren von Testplänen
+- Das Koordinieren der Testpläne zwischen verschiedenen Stakeholdern
+- Das Einplanen und Anstossen der verschiedenen Testaktivitäten wie der Testanalyse, dem Testdesign, der Testimplementierung und der Testdurchführung. 
+- Das Monitoring (Überwachen) der Testfortschritte und -ergebnisse
+- Das Berichten über die Testfortschritte und -ergebnisse
+
+Diese Aufgaben sind nicht als fixe Beschreibung der Rolle eines Testmanagers zu verstehen, sondern mehr als Beispiele. Je nach Grösse des Unternehmens, Anforderungen an das Testmanagement und das Produkt selbst und gegebener Zeit
+können andere Aufgaben dazukommen oder genannte Aufgaben wegfallen. Eine Priorisierung dieser Aufgaben ist somit für jeden Fall unterschiedlich. 
+
+#### Tester
+Ein Tester übernimmt grundsätzlich alle operativen Aufgaben innerhalb des Testprozesses, wobei das Durchführen der Tests nur eine Aufgabe darstellt, die der Tester übernimmt. 
+Je nachdem, welches Rollenmodell verfolgt wird, wird innerhalb der Rolle des Testers noch weiter zwischen einzelnen rollen unterschieden. Das können beispielsweise die folgenden sein:
+- Testdesigner
+- Testautomatisierer
+- Testarchitekt
+- etc. 
+
+Im Rahmen dieser Dokumentation nehmen wir aber alle diese Teilrollen unter einen Hut als "Tester". Typische Aufgaben in dieser Rolle können das Folgende umfassen:
+- Prüfen der Anforderungen, Spezifikationen und Akzeptanzkriterien in Bezug auf die Testbarkeit
+- Identifizieren und Dokumentieren der Testvoraussetzungen
+- Erstellung und Implementation von Testfällen und Testprozeduren
+- Erstellung des detaillierten Testausführungsplans
+- Testautomatisierung
+- (Bereitstellung der Testumgebung mit geeigneten Testdaten)
+---
+
+## JUnit
 Zur Implementation von Unit-Tests steht in Java das Framework JUnit zur Verfügung. 
-Die aktuellste Version ist 5.9.0. Dies ändert aber stetig, da das Produkt weiterentwickelt wird. 
+Die aktuellste Version ist 5.9.0. Dies ändert aber stetig, da das Produkt laufend weiterentwickelt wird. 
 Vielfach ist in Produkten und Projekten auch JUnit 4 im Einsatz. 
 In diesem Modul wird jedoch nur die aktuellste Version von JUnit behandelt. 
 Wir schreiben Unit-Tests also mit JUnit 5.
@@ -286,7 +400,7 @@ public class Rectangle {
 Damit keine Verwirrung entsteht, hier das verwendete Koordinatensystem.
 ![Koordinatensystem](../java-testing/1623657498.png)
 
-Wie wir in der Implementation sehen können gibt es hier vier verschiedene Bedingungen. Das Ziel des Tests muss es also sein, dass wir alle diese Bedingungen überprüfen. Wenn immer möglich, sollten alle möglichen Kombinationen getestet werden. Nur so kann sichergestellt werden, dass die Methode wie gewünscht funktioniert. Aufgrund der AND-Verknüpfung werden die zweiten Bedingungen der jeweiligen Statements nicht mehr ausgewertet. Damit müssen die folgenden Kombinationen durch einen Unit-Test abgedeckt werden
+Wie wir in der Implementation sehen können, gibt es hier vier verschiedene Bedingungen. Das Ziel des Tests muss es also sein, dass wir alle diese Bedingungen überprüfen. Wenn immer möglich, sollten alle möglichen Kombinationen getestet werden. Nur so kann sichergestellt werden, dass die Methode wie gewünscht funktioniert. Aufgrund der AND-Verknüpfung werden die zweiten Bedingungen der jeweiligen Statements nicht mehr ausgewertet. Damit müssen die folgenden Kombinationen durch einen Unit-Test abgedeckt werden
 
 | Bedingung  | x > left | x < left + width | y > top | y < top + height | Resultat |
 |------------|----------|------------------|---------|------------------|----------|
@@ -464,7 +578,7 @@ public class CalculatorTest {
 ```
 
 ### Reihenfolge der Ausführung
-Die Reihenfolge von Tests bei der Ausführung kann durch die Verwendung von @TestExecutionOrder und @Order bestimmt werden.
+Die Reihenfolge von Tests bei der Ausführung kann durch die Verwendung von @TestMethodOrder und @Order bestimmt werden.
 
 ```java
 package ch.sbb.talentfactory.calculator;
@@ -472,7 +586,7 @@ package ch.sbb.talentfactory.calculator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestExecutionOrder(OrderAnnotation.class)
+@TestMethodOrder(OrderAnnotation.class)
 public class CalculatorTest {
     private Calculator uut = new Calculator();
 
