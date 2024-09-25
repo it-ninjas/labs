@@ -20,8 +20,10 @@ description: >
 
 ## Maven
 ### Allgemeine Informationen
-Apache Maven ist ein Build-Management Tool. Von einer einzelnen Datei aus kann Maven den Build eines Projektes steuern.
-Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Der Build eines Projektes kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte Plattform reichen.
+Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus steuern. 
+Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt.
+Ein Build ist der Prozess, bei dem der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch Kompilieren und Paketieren.
+Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte Plattform reichen.
 
 Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:
 * Eine Maven-Installation, entweder separat oder Built-In wie beispielsweise mit IntelliJ
@@ -32,15 +34,66 @@ Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:
 
 ---
 
-### Installation
-Die Installation von Apache Maven wurde idealerweise bereits durchgeführt. Falls nicht, kann Maven hier heruntergeladen werden:
-[https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi), beim Herunterladen das Binary auswählen (nicht die Source).
+
+### Manuelle Installation
+Idealerweise wurde Apache Maven bereits mit IntelliJ installiert. Damit du Maven auch auf der Kommandozeile ausführen kannst, kannst du Maven hier herunterladen:
+[https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi). Verwende die Binary anstelle der Source, und zwar am besten die Datei im `Binary zip archive` Format.
+
+Klicke dazu auf den folgenden Link, wie hier im Beispiel:
+![Apache Maven Project Download (Stand: 22.09.2024)](../maven/maven_download.png)
+
+Nachdem du die Datei heruntergeladen hast, kannst du den folgenden Ordner erstellen:\
+`C:\Program Files\Apache\Maven\`.
+
+Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariablen auf dieses Verzeichnis setzen.
 
 ---
 
+### Umgebungsvariablen setzen
+Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
+Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:
+
+| #   | Beschreibung                                                                                                                                                                                                                                                                                                |
+|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten. Falls das nicht geht, musst du dir (temporär) lokale Admin-Rechte aktivieren.                                                                                                                                              |
+| 2   | Unten rechts auf den Button "Umgebungsvariablen" klicken.                                                                                                                                                                                                                                                   |
+| 3   | Im unteren Teil "Systemvariablen" die Variable "Path" suchen und anklicken.                                                                                                                                                                                                                                 |
+| 4   | Auf den Button "Bearbeiten..." klicken.                                                                                                                                                                                                                                                                     |
+| 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten.                                                                                                                                                                                                                          |
+| 6   | Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte auf bin zeigen, also zum Beispiel: **C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin**. Du musst sicherstellen, dass die Version mit deiner heruntergeladenen Version übereinstimmt. |
+| 7   | Alle offenen Windows-Fenster mit "OK" schliessen.                                                                                                                                                                                                                                                           
+
+
+Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal aus:\
+`mvn -version`
+
+Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:\
+`Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)`
+
+---
+
+### IntelliJ IDEA einrichten
+Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise sind diese Einstellungen bereits korrekt.
+
+
+![Intellij Maven settings](../maven/intellij_maven_settings.png)
+
+Die wichtigsten Einstellungen sind:
+
+| Einstellung          | Beschreibung                                                                                                                                        |
+|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Maven home directory | Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als "Bundled" bezeichnet. |
+| User settings file   | Die XML-Datei, welche bei der Installation angelegt wurde.                                                                                          |
+| Local repository     | Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\\\<Personalnummer>\\.m2.\\repository zu finden.                    |
+
+Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository korrekt sind.
+
+---
+
+
 ### pom.xml
 Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem umfangreichen Beispiel.
-Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses Project Object Model nicht alle Inhalte erklären kann, es dient nur als erstes Beispiel.
+Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses Project Object Model nicht alle Inhalte vollständig erklärt, sondern nur als erstes Beispiel dient.
 
 ```xmlmarkdown.md
 <!-- (1) Header -->
@@ -129,10 +182,10 @@ Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargest
 
 #### Abschnitt 2
 Die Angaben zum Artefakt enthalten die folgenden Informationen:
-* Gruppen-ID: Normalerweise eine umgekehrte URL, also beispielsweise _ch.sbb.interviewtool_. Darin sollte der Projektname enthalten sein.
-* Artefakt-ID: Der Name des Projekts oder der Komponente.
-* Version: Die momentane Version des Projekts, diese wird später durch Releases verändert.
-* Paketierung: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR).
+* **Gruppen-ID**: Die Gruppen-ID ist in Maven normalerweise als umgekehrte Domain-Name-Notation (Reverse Domain Name Notation) aufgebaut, ähnlich wie bei Java-Paketen. Diese Struktur dient dazu, Konflikte zwischen Artefakten von verschiedenen Organisationen zu vermeiden. Zum Beispiel wird die Gruppen-ID für ein Projekt der SBB oft in der Form ch.sbb beginnen, da sbb.ch die Domain der Schweizerischen Bundesbahnen ist. Beispiel: ch.sbb.interviewtool
+* **Artefakt-ID**: Die Artefakt-ID ist der eindeutige Name eines Projekts oder einer Komponente, der zusammen mit der Gruppen-ID und der Version verwendet wird, um ein Artefakt im Repository eindeutig zu identifizieren. Beispiel: interviewtool-backend, mit der Gruppen-ID: ch.sbb.interviewtool:interviewtool-backend.
+* **Version**: Die momentane Version des Projekts, diese wird später durch Releases verändert.
+* **Paketierung**: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR).
 
 Bei der Versionierung nutzt Maven die folgenden Standards:
 - Major-Version
@@ -155,10 +208,10 @@ Dazu ein paar Beispiele:
 Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version **1.2-beta-2** älter als die Version **1.2**.
 Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den Vergleich dieser als String verglichen. So ist die Version **1.2-beta-2** neuer als die Version **1.2-alpha-6**.
 
-Der SNAPSHOT Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version **0.1.2-SNAPSHOT** sehr wahrscheinlich als Version **0.1.2** ausgeliefert werden.
+Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version **0.1.2-SNAPSHOT** sehr wahrscheinlich als Version **0.1.2** ausgeliefert werden.
 
 #### Abschnitt 3
-Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](./spring-boot.md) Projekten wichtig.
+Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](../spring-boot) Projekten wichtig.
 
 #### Abschnitt 4
 Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine Version definiert werden.
@@ -175,9 +228,9 @@ auf die Einstellung (Tag) und damit auf dessen Wert (Value) zugegriffen werden.
 
 #### Abschnitt 5
 Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
-Mögliche Typen sind hier zu finden: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html).
-Vielfach wird auch noch der Scope verwendet. Er gibt an in welchem Umfang die Fremdbibliothek miteinbezogen wird.
-Mögliche Scopes sind:
+Eine Liste der möglichen Typen findest du hier: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html).
+Vielfach wird auch der Scope verwendet, der angibt, in welchem Umfang die Fremdbibliothek einbezogen wird.
+Mögliche Scopes sind unter anderem:
 * compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also mitausgeliefert.
 * provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und bereitgestellt wird.
 * runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur Verfügung.
@@ -193,45 +246,13 @@ Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen
 
 ---
 
-### IntelliJ IDEA einrichten
-Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven.
-![](../maven/1657700434.png)
-
-Die wichtigsten Einstellungen sind:
-
-| Einstellung          | Beschreibung                                                                                                                                        |
-|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Maven home directory | Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als "Bundled" bezeichnet. |
-| User settings file   | Die XML-Datei, welche bei der Installation angelegt wurde.                                                                                          |
-| Local repository     | Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\\\<Personalnummer>\\.m2.\\repository zu finden.                    |
-
-Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository korrekt sind.
-
----
-
-### Umgebungsvariable aufsetzen
-Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
-Im Windows muss also der Pfad zur Built-In Version des IntelliJ hinterlegt werden. Die folgenden Schritte sind dazu notwendig:
-
-| #   | Beschreibung                                                                                                                                                   |
-|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1   | Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten. Falls das nicht geht, musst du dir (temporär) lokale Admin-Rechte aktivieren. |
-| 2   | Unten rechts auf den Button "Umgebungsvariablen" klicken.                                                                                                      |
-| 3   | Im unteren Teil "Systemvariablen" die Variable "Path" suchen und anklicken.                                                                                    |
-| 4   | Auf den Button "Bearbeiten..." klicken.                                                                                                                        |
-| 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten.                                                                             |
-| 6   | Den Pfad zum Built-In Maven einfügen. Dieser ist normalerweise "\<Installationsort IntelliJ IDEA>\plugins\maven\lib\maven3\bin"                                |
-| 7   | Alle offenen Windows-Fenster mit "OK" schliessen.                                                                                                              |
-
----
-
 ### Beispiel einer Abhängigkeit (spring-boot-starter)
-Die Dependency `spring-boot-starter` ist eine grundlegende Bibliothek für Spring-Boot Projekte, die automatisch alle benötigten Abhängigkeiten einbindet, um die Anwendung zu starten und auszuführen. Dies vereinfacht den Aufbau von Spring-Anwendungen, indem häufig verwendete Bibliotheken in einem einzigen Package zusammengefasst werden.
+Die Dependency `spring-boot-starter` ist eine grundlegende Bibliothek für Spring-Boot Projekte, die automatisch alle benötigten Abhängigkeiten einbindet, um die Anwendung zu starten und auszuführen. Dadurch wird der Aufbau von Spring-Anwendungen vereinfacht, da häufig verwendete Bibliotheken in einem einzigen Package zusammengefasst sind.
 
-Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](./lombok.md). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
+Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](../lombok). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
 
 ### Commands
-Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt, könnt ihr das Terminal öffnen und den folgenden Befehl eingeben:
+Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt, kannst du das Terminal öffnen und den folgenden Befehl eingeben:
 
 ```console
 mvn -version
@@ -247,8 +268,8 @@ Bevor wir die einzelnen Befehle kurz anschauen, werfen wir einen Blick auf die e
 
 ![](../maven/1657700671.png)
 
-Jeder in der Grafik genannte Befehl wird zusätzlich die vorangehenden Befehle ausführen.
-Die Ausführung von "mvn package" wird also die Phasen _validate_, _compile_, _test_ und _package_ ausführen.
+Jeder in der Grafik genannte Befehl wird zusätzlich die vorangehenden Phasen ausführen.
+Die Ausführung des Befehls `mvn package` führt somit die Phasen _validate_, _compile_, _test_ und _package_ aus.
 
 #### help
 ```console
@@ -261,13 +282,13 @@ Das Ergebnis dürfte klar sein. Maven listet alle möglichen Befehle auf.
 mvn dependency:tree
 ```
 Dieser Befehl listet alle Abhängigkeiten zu Fremdbibliotheken als Baum auf.
-Das ist grundsätzlich sehr praktisch wenn man doppelte Abhängigkeiten erkennen/vermeiden will.
+Das ist grundsätzlich sehr praktisch, wenn man doppelte Abhängigkeiten erkennen oder vermeiden will.
 
 #### clean
 ```console
 mvn clean
 ```
-Dieser Befehl löscht alle vorherigen lokale Maven-Build-Artefakte, indem er das Verzeichnis "target" löscht.
+Dieser Befehl löscht alle vorherigen lokalen Maven-Build-Artefakte, indem er das Verzeichnis 'target' entfernt.
 
 #### compile
 ```console
@@ -280,7 +301,7 @@ Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird diese
 ```console
 mvn test
 ```
-Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-Tests mit jUnit.
+Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-Tests mit JUnit.
 
 
 #### package
@@ -299,19 +320,19 @@ Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise w
 ```console
 mvn install
 ```
-"Installiert" das Artefakt im lokalen Maven-Repository.
+Lädt das Artefakt in dein lokales Maven-Repository (dies findest du typischerweise unter %UserProfile%\.m2).
 
 #### skip tests
 ```console
 mvn install -DskipTests
 ```
-Der Parameter `-DskipTests` überspringt die Ausführung von Tests während der Installation, um Zeit zu sparen. Der Parameter kann auch bei anderen Aktionen wie `compile`, `package` usw. verwendet werden.
+Mit dem Parameter `-DskipTests` kannst du die Ausführung der Tests während der Installation überspringen, um Zeit zu sparen. Der Parameter kann auch bei anderen Aktionen wie `compile`, `package` usw. verwendet werden.
 
 #### deploy
 ```console
 mvn deploy
 ```
-"Installiert" das Artefakt im Remote-Repository (Artifactory).
+Lädt das Artefakt in das Remote-Repository (Artifactory) hoch.
 
 Die Maven-Befehle lassen sich kombinieren. Sehr nützlich ist zum Beispiel:
 ```console
