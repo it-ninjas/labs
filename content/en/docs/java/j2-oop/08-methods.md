@@ -41,7 +41,7 @@ public class Auto{
     private int speedInKmh;
 
     // Eine Methode, um die Zeit zu berechnen, die benötigt wird, um eine bestimmte Distanz (distance) zu überwinden
-    public double calculateTimeToDistance(int distance) throws ArithmeticException  {
+    public double calculateTimeToDistance(int distanceInKm) throws ArithmeticException  {
         return (double) distance / this.speed;
     }
 }
