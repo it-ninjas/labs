@@ -24,6 +24,7 @@ Ein Film
 - eine Dauer
 - ein Genre
 - einen Produzenten
+- eine oder mehrere Sprachen
 
 
 Eine Person kann
@@ -43,13 +44,9 @@ Der Streaming Dienst kann
 
 *Generell gilt die Regel, dass jede E-Mail-Adresse und jeder Film-Name einzigartig sein muss*
 
+Für die Sprachen soll folgende Auswahl vorhanden sein: `BULGARIAN,CROATIAN,CZECH,DANISH,DUTCH,ENGLISH,ESTONIAN,FINNISH,FRENCH,GERMAN,GREEK,HUNGARIAN,IRISH,ITALIAN,SLOVENIA,LATVIAN,LITHUANIAN,MALTESE,POLISH,PORTUGUESE,ROMANIAN,SLOVAK,SLOVENE,SPANISH,SWEDISH`
 
-## Zusatzaufgabe (muss nicht gelöst werden):
-Dies ist eine Liste aller europäischen Sprachen:
-`BULGARIAN,CROATIAN,CZECH,DANISH,DUTCH,ENGLISH,ESTONIAN,FINNISH,FRENCH,GERMAN,GREEK,HUNGARIAN,IRISH,ITALIAN,SLOVENIA,LATVIAN,LITHUANIAN,MALTESE,POLISH,PORTUGUESE,ROMANIAN,SLOVAK,SLOVENE,SPANISH,SWEDISH`
-
-Ein Film soll um den Wert *Sprachen* erweitert werden. Darin wird gepseichert, in welchen Sprachen der Film verfügbar ist.
-**Speichert die Sprache nicht in Form eines Strings!!!** 
+Die Sprachen sollen **nicht in Form eines Strings gespeichert werden!**
 
 *Es soll kein Scanner eingesetzt werden.*
 
