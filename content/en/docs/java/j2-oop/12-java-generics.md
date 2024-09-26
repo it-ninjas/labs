@@ -63,6 +63,42 @@ Programme, welche Generics verwenden, haben mehrere Vorteile gegenüber Programm
 * **Typsicherheit:** Generics lösen Fehler während der Kompilierung aus, welche ansonsten erst zur Laufzeit ausgelöst wären.
 * **Individuelle Typ-Casting ist nicht nötig:** Wenn bei der Anwendung von Generics der konkrete Typ angegeben wird, muss danach kein Typ-Casting stattfinden.
 
+### Wiederverwendbarkeit
+Generics helfen uns wiederverwendbaren Code zu schreiben. Das gefällt uns als Informatiker natürlich sehr, da wir so weniger zu tun haben.
+
+Angenommen wir haben eine Methode um das erste Element aus einem Array zu extrahieren:
+```java
+public String getFirstElement(String[] array){
+    if(array == null || array.length == 0){
+        throw new ArrayIndexOutOfBoundsException("Array cant be empty");
+    }
+    return array[0];
+}
+```
+Diese Funktion kann aber nur mit `String`-Arrays umgehen. Wollen wir noch eine für `Integer`-Arrays haben brauchen wir eine Methode `Integer getFirstElement(Integer[] array)`, für `Double`-Arrays eine Methode `Double getFirstElement(Double[] array)` und so weiter und so fort ...  
+```java
+getFirstElement(new String[]{"Uno", "Due"}) //Funktioniert
+getFirstElement(new Integer[]{1,2,3}) //Führt zu einem Compiler-Fehler
+```
+
+
+Stattdessen können wir aber auch eine Funktion mit Generics schreiben. Diese funktioniert dann für alle, nicht-primitiven, Typen. Wie genau so eine Methode aufgebaut ist und wofür `T` steht, erfährst du weiter unten.
+
+```java
+public static <T> T getFirstElement(T[] array) {//T is hier der Ersatz von String/Double/Integer/...
+    if (array == null || array.length == 0) {
+        throw new ArrayIndexOutOfBoundsException("Array cant be empty");
+    }
+    return array[0];
+}
+
+getFirstElement(new String[]{"Uno", "Due"}) //Funktioniert
+getFirstElement(new Integer[]{1,2,3}) //Funktioniert ebenfalls
+```
+
+*Wir könnten natürlich auch eine Methode schreiben, die einfach ein `Object`-Array als Argument hat und ein `Object` zurückgibt. Weshalb das nicht so eine gute Idee ist, erfährts du im nächsten Kapitel."*
+
+### Typsicherheit
 Schauen wir wie die Typsicherheit eines Programms mit Generics verbessert werden kann.
 
 Die Object-Klasse in Java ist die Super-Klasse aller anderen Klassen und eine Object-Referenz kann beliebige Objekte referenzieren.
