@@ -48,8 +48,14 @@ public class Test {
 }
 ```
 
-Beim Versuch, die Klasse zu kompilieren erscheint folgende Fehlermeldung:
-![](../java-generics/typverletzung-compile-time.png)
+Beim Versuch, die Klasse zu kompilieren erscheint folgende Fehlermeldung:  
+```console
+PS: C\devsbb\source\examples> javac Test.java
+Test.java:4: error: incompatible types: String cannot be converted to Integer
+    myInteger = "this is not an integer...";
+                ^
+1 error
+```
 
 ## Warum Generics?
 Programme, welche Generics verwenden, haben mehrere Vorteile gegenüber Programmen ohne Generics:
