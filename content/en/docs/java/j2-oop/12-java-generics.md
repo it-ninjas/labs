@@ -192,11 +192,12 @@ Um generische Klassen zu verwenden, wird zunächst die Klasse mit einem Typparam
 und bei der Anwendung dieser Klasse (bei der Instanziierung) wird innerhalb der spitzigen Klammern 
 der konkrete Datentyp geschrieben.
 
-**Beispiel einer benutzer-definierten, generischen Klasse**
+**Beispiel einer benutzer-definierten, generischen Klasse**  
+In diesem Beispiel haben wir eine Klasse, welche ein Kartonbox darstellt. Jede Box kann einen Typ von Objekt aufnehmen. Es gibt also z.B. eine Box für `String`, eine Box für `Integer`. Natürlich können auch mehrere Boxen für z.B. `Integer` exisiteren, jede Box kann aber nur einen Typ an Objekt enthalten.
 
 ```java
 // <T> definiert einen Typparameter
-class Test<T> {
+class Box<T> {
     // Deklaration einer Member-Variable vom Typ T
     T obj;
     
@@ -204,7 +205,7 @@ class Test<T> {
     Test(T obj) {
         this.obj = obj;
     }
-    
+
     // die Getter-Methode liefert ein Objekt vom Typ T zurück
     public T getObject() {
       return this.obj;
@@ -216,11 +217,11 @@ Sofern sich die obige Klasse auf dem Klassenpfad befindet, kann sie nun wie folg
 class MyProgram {
     public static void main(String[] args) {
         // Instanziieren der generischen Klasse und setzen den Typ auf Integer
-        Test<Integer> integerObject = new Test<Integer>(42);
+        Box<Integer> integerObject = new Box<Integer>(42);
         System.out.println(integerObject.getObject()); // Output: 42
   
         // instance of String type
-        Test<String> stringObject = new Test<String>("Generics are great!");
+        Box<String> stringObject = new Box<String>("Generics are great!");
         System.out.println(stringObject.getObject()); // Output: Generics are great!
     }
 }
