@@ -24,7 +24,7 @@ Zum Beispiel kann eine Methode den Wert eines Datenfeldes ändern (wie die Gesch
 Eine Methodendeklaration besteht aus bis zu sieben Komponenten
 1. **Zugriffsmodifikator**: `public`, `protected`, `private` oder package-private. Er bestimmt, wer auf die Methode zugreifen kann. Wichtig: Wähle immer den Modifikator, der den Zugriff so eingeschränkt wie möglich hält.
 2. **Andere Modifikatoren**: Beispielsweise `static` oder `synchronized`.
-   - `static`: Wenn eine Methode als `static` deklariert wird, gehört sie zur Klasse und nicht zu einer Instanz der Klasse. Das bedeutet, dass du die Methode aufrufen kannst, ohne ein Objekt der Klasse zu erstellen. Zum Beispiel: `Math.abs()`.
+   - `static`: Wenn eine Methode als `static` deklariert wird, gehört sie zur Klasse und nicht zu einer Instanz der Klasse. Das bedeutet, dass du die Methode aufrufen kannst, ohne ein Objekt der Klasse zu erstellen. Zum Beispiel: `Math.abs()`. Das wird später in der objektorientierten Programmierung wichtig, musst du jetzt aber noch nicht verstehen.
    - `synchronized`: Dieser Modifikator sorgt dafür, dass die Methode nur von einem Thread gleichzeitig ausgeführt werden kann. Das ist wichtig, wenn mehrere Threads gleichzeitig auf dieselben Daten zugreifen und diese ändern, um Fehler zu vermeiden.
 3. **Rückgabewert**: Das ist der Datentyp, den die Methode zurückgibt. Wenn nichts zurückgegeben wird, verwendet man `void`.
 4. **Methodenname**: Der Name der Methode, zum Beispiel `calculateTimeToDistance`.
