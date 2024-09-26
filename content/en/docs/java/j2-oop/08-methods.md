@@ -38,7 +38,7 @@ Schauen wir uns eine Methode (`calculateTimeToDistance`) für ein Auto an:
 ```java
 public class Auto{
     // Ein Datenfeld für die Geschwindigkeit des Autos (in km/h)
-    private int speed;
+    private int speedInKmh;
 
     // Eine Methode, um die Zeit zu berechnen, die benötigt wird, um eine bestimmte Distanz (distance) zu überwinden
     public double calculateTimeToDistance(int distance) throws ArithmeticException  {
