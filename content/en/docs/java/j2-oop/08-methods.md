@@ -59,7 +59,7 @@ Erklärung der Methode:
 ### Namenskonventionen für Methoden
 Methodennamen sollen - per Konvention - folgende Regeln einhalten:
 * Der erste Buchstabe ist immer klein.
-* Verwende CamelCase: Das bedeutet, dass alle Buchstaben klein sind. Wenn der Methodenname aus mehreren Wörtern besteht, wird der erste Buchstabe jedes weiteren Wortes grossgeschrieben. Beispiele: `equals`, `printThisToConsole`.
+* Verwende CamelCase: Das bedeutet, dass alle Buchstaben des ersten Worts klein geschrieben werden. Ab dann wird jeweils der erste Buchstaben von jedem Wort gross geschrieben. Beispiele: `equals`, `printThisToConsole`.
 * Der Methodenname soll ein Verb enthalten, welches die Funktionalität der Methode beschreibt. Wenn es dem Verständnis der Funktionalität dient, wird dieses Verb zusammen mit einem Nomen zusammengesetzt.
 * Der Name sollte möglichst klar und verständlich sein, damit man sofort weiss, was die Methode macht.
 * Vermeide Abkürzungen, schreibe die Wörter lieber aus (ausser es sind sehr bekannte Abkürzungen).
