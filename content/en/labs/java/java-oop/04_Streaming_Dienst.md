@@ -46,7 +46,7 @@ Der Streaming Dienst kann
 
 Für die Sprachen soll folgende Auswahl vorhanden sein: `BULGARIAN,CROATIAN,CZECH,DANISH,DUTCH,ENGLISH,ESTONIAN,FINNISH,FRENCH,GERMAN,GREEK,HUNGARIAN,IRISH,ITALIAN,SLOVENIA,LATVIAN,LITHUANIAN,MALTESE,POLISH,PORTUGUESE,ROMANIAN,SLOVAK,SLOVENE,SPANISH,SWEDISH`
 
-Die Sprachen sollen **nicht in Form eines Strings gespeichert werden!**
+**Die Sprachen sollen nicht in Form eines Strings gespeichert werden!**
 
 *Es soll kein Scanner eingesetzt werden.*
 
