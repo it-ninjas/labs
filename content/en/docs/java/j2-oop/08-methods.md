@@ -52,7 +52,7 @@ Erklärung der Methode:
 - **Andere Modifikatoren**: Keine.
 - **Rückgabewert**: `double` - Die Methode gibt die benötigte Zeit in Stunden zurück, daher der Datentyp double.
 - **Methodenname**: `calculateTimeToDistance` - Der Name sagt klar aus, was die Methode macht.
-- **Parameterliste**: `int distanz` - Die Methode braucht die Distanz (in Kilometern) als Eingabewert.
+- **Parameterliste**: `int distanceInKm` - Die Methode braucht die Distanz  als Eingabewert.
 - **Ausnahmen (Exceptions)**: `throws ArithmeticException`  - Falls die Geschwindigkeit 0 ist, könnte es zu einer Exception kommen, weil eine Division durch 0 nicht möglich ist. Dies wird in einem späteren Kapitel genauer erklärt.
 - **Methodenkörper**: Die Berechnung wird durchgeführt, indem die Distanz durch die Geschwindigkeit geteilt wird.
 
