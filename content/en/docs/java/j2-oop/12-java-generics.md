@@ -128,7 +128,15 @@ Diese Klasse kompiliert ohne Fehler. Der Compiler warnt zwar, dass hier eine uns
 durchgeführt wird, aber er erlaubt diese Operation und die Kompilation ist erfolgreich. 
 Beim Ausführen des Programms kommt es jedoch zu einem Laufzeitfehler vom Typ ClassCastException, weil versucht wird
 ein Integer in einen String umzuwandeln (Typ-Casting):
-![](../java-generics/typverletzung-run-time.png)
+```console
+PS C:\devsbb\sources\examples> java Test.java
+Note: Test.java uses unchecked or unsafe operations.
+Note: recompile with -Xlint:unchecked for details.
+PS:\devsbb\sources\examples> java Test
+Douglas
+Adams
+Exception in thread "main" java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap' at Test.main(Test.java:13))
+```
 
 Generics helfen solche Laufzeitfehler mit sog. Typvariablen zu vermeiden.
 Diese Typvariablen werden zur Zeit der Implementierung zunächst durch Platzhalter repräsentiert 
@@ -142,7 +150,15 @@ eine Liste von Strings definiert hätten:
     hitchhikersInfo.add(42); // Der Compiler erlaubt diese Zuweisung nicht mehr
 ```
 Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl:
-![](../java-generics/typverletzung-arraylist-compile-time.png)
+```console
+PS C:\devsbb\sources\examples> javac Test.java
+Test.java:10: error: incompatible types: int cannot be converted to String hitchhikersInfo.add(42); //Der Compiler erlaubt diese Zuweisung nicht!
+                                                                                               ^
+Note: Test.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some messages have been simplieied; recompile with X-diags:verbose to get full output
+1 error
+```
 
 ## Generics in der Praxis
 In Java gibt es zwei Typen von Generics: generische Methoden und generische Klassen.
