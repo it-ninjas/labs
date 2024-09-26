@@ -99,7 +99,7 @@ getFirstElement(new Integer[]{1,2,3}) //Funktioniert ebenfalls
 *Wir könnten natürlich auch eine Methode schreiben, die einfach ein `Object`-Array als Argument hat und ein `Object` zurückgibt. Weshalb das nicht so eine gute Idee ist, erfährts du im nächsten Kapitel."*
 
 ### Typsicherheit
-Schauen wir wie die Typsicherheit eines Programms mit Generics verbessert werden kann.
+Auch die Typsicherheit eines Programms kann mit Generics verbessert werden.
 
 Die Object-Klasse in Java ist die Super-Klasse aller anderen Klassen und eine Object-Referenz kann beliebige Objekte referenzieren.
 Diese Features sind nicht typsicher. Auch durch das Verwenden von Polymorphismus können Typverletzungen entstehen.
@@ -172,9 +172,9 @@ Der Unterschied liegt darin, dass die generische Klasse einen oder mehrere Typpa
 
 ### Typparameter definieren
 In generischen Klassen wie auch in generischen Methoden, werden Typparameter mittels eines Grossbuchstabens definiert, 
-welcher innerhalb spitziger Klammern geschrieben wird z.B: &lt;T&gt; oder &lt;I&gt;.
+welcher innerhalb spitziger Klammern geschrieben wird z.B: `<T>` oder `<I>`.
 
-Multiple Typparameter werden durch ein Komma getrennt:  &lt;T, V&gt;
+Multiple Typparameter werden durch ein Komma getrennt:  `<T,V>`
 
 #### Typparameter Namenskonvention
 Die Buchstaben, welche für die Definition von Typparametern verwendet werden, nutzen die folgende Namenskonvention: 
