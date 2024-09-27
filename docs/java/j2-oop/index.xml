@@ -1146,7 +1146,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;/div></description></item><item><title>Docs: Instanzmethoden</title><link>/docs/java/j2-oop/08-methods/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/j2-oop/08-methods/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
-&lt;li>Ich kann alle Komponenten auswendig aufzählen, die zu einer Methodendeklaration dazugehören.&lt;/li>
+&lt;li>Ich kann alle Komponenten auswendig aufzählen, die zu einer Methodendeklaration gehören.&lt;/li>
 &lt;li>Ich kann auswendig die Regeln aufzählen, die ein Methodenname einhalten sollte (Konventionen).&lt;/li>
 &lt;li>Ich schreibe Getter- und Setter-Methoden gemäss Namenskonventionen.&lt;/li>
 &lt;li>Ich kann in eigenen Worten erklären, warum der Zugriffsmodifikator einer Methode so restriktiv wie möglich gewählt werden sollte.&lt;/li>
@@ -1156,29 +1156,75 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;li>Ich kann in eigenen Worten die Bedingungen beschreiben, welche bei der Überschreibung der Methode &lt;code>hashCode&lt;/code> erfüllt werden müssen.&lt;/li>
 &lt;/ul>
 &lt;h2 id="instanzmethoden">Instanzmethoden&lt;/h2>
-&lt;p>Methoden werden benutzt, um Funktionalitäten zur Verfügung zu stellen. Diese Funktionalitäten reichen von einfachen Änderungen am Zustand eines Objekts bis zu komplexen Algorithmen zur Berechnung von mathematischen Dingen. Hier passiert also die Magie in einer Applikation.
-Diese Methoden können also entweder den Inhalt von Datenfelder ändern oder ihre Werte verwenden, um eine bestimmte Berechnung durchzuführen.&lt;/p>
-&lt;p>Eine Methodendeklaration besteht aus bis zu sieben Komponenten:&lt;/p>
+&lt;p>Methoden sind dafür da, bestimmte Aufgaben auszuführen. Sie können den Zustand eines Objekts ändern oder Berechnungen durchführen. Kurz gesagt, hier passiert die &amp;ldquo;Magie&amp;rdquo; in einer Anwendung.
+Zum Beispiel kann eine Methode den Wert eines Datenfeldes ändern (wie die Geschwindigkeit eines Autos) oder eine Berechnung durchführen (wie das Berechnen der benötigten Zeit, um eine bestimmte Strecke zurückzulegen).&lt;/p>
+&lt;p>Eine Methodendeklaration besteht aus bis zu sieben Komponenten&lt;/p>
 &lt;ol>
-&lt;li>Zugriffsmodifikator: &lt;code>public&lt;/code>, &lt;code>protected&lt;/code>, &lt;code>private&lt;/code> oder package-private. Der Zugriffsmodifikator sollte immer so restriktiv wie möglich gewählt werden.&lt;/li>
-&lt;li>Sonstige Modifikatoren. Beispielsweise &lt;code>static&lt;/code> oder &lt;code>synchronized&lt;/code>.&lt;/li>
-&lt;li>Rückgabewert. Der Datentyp des von der Methode zurückgegebenen Werts oder &lt;code>void&lt;/code>, wenn die Methode keinen Wert zurückgibt.&lt;/li>
-&lt;li>Methodenname / Bezeichner.&lt;/li>
-&lt;li>Parameterliste in Klammern. Eine durch Kommas getrennte Liste von Eingabeparametern (Datentyp + Bezeichner). Wenn keine Parameter benötigt werden, genügt die Angabe der beiden Klammern.&lt;/li>
-&lt;li>Exceptions (also welche Fehler, die die Methode wirft). Dazu mehr später im Modul Exception Handling.&lt;/li>
-&lt;li>Methodenkörper (der Code in geschweiften Klammern, der die Methode ausführt).&lt;/li>
+&lt;li>&lt;strong>Zugriffsmodifikator&lt;/strong>: &lt;code>public&lt;/code>, &lt;code>protected&lt;/code>, &lt;code>private&lt;/code> oder package-private. Er bestimmt, wer auf die Methode zugreifen kann. Wichtig: Wähle immer den Modifikator, der den Zugriff so eingeschränkt wie möglich hält.&lt;/li>
+&lt;li>&lt;strong>Andere Modifikatoren&lt;/strong>: Beispielsweise &lt;code>static&lt;/code> oder &lt;code>synchronized&lt;/code>.
+&lt;ul>
+&lt;li>&lt;code>static&lt;/code>: Wenn eine Methode als &lt;code>static&lt;/code> deklariert wird, gehört sie zur Klasse und nicht zu einer Instanz der Klasse. Das bedeutet, dass du die Methode aufrufen kannst, ohne ein Objekt der Klasse zu erstellen. Zum Beispiel: &lt;code>Math.abs()&lt;/code>. Das wird später in der objektorientierten Programmierung wichtig, musst du jetzt aber noch nicht verstehen.&lt;/li>
+&lt;li>&lt;code>synchronized&lt;/code>: Dieser Modifikator sorgt dafür, dass die Methode nur von einem Thread gleichzeitig ausgeführt werden kann. Das ist wichtig, wenn mehrere Threads gleichzeitig auf dieselben Daten zugreifen und diese ändern, um Fehler zu vermeiden.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Rückgabewert&lt;/strong>: Das ist der Datentyp, den die Methode zurückgibt. Wenn nichts zurückgegeben wird, verwendet man &lt;code>void&lt;/code>.&lt;/li>
+&lt;li>&lt;strong>Methodenname&lt;/strong>: Der Name der Methode, zum Beispiel &lt;code>calculateTimeToDistance&lt;/code>.&lt;/li>
+&lt;li>&lt;strong>Parameterliste&lt;/strong>: Die Werte, die die Methode als Eingabe bekommt. Das ist eine Liste in Klammern, wie zum Beispiel &lt;code>(int distance)&lt;/code>, wobei auch mehrere Parameter erlaubt sind. Wenn keine Parameter gebraucht werden, lässt man die Klammern leer.&lt;/li>
+&lt;li>&lt;strong>Ausnahmen (Exceptions)&lt;/strong>: Hier wird festgelegt, welche Fehler die Methode auslösen kann. Mehr dazu gibt es später im Modul &amp;ldquo;Exception Handling&amp;rdquo;.&lt;/li>
+&lt;li>&lt;strong>Methodenkörper&lt;/strong>: Der Code in geschweiften Klammern {}, der die Methode ausführt.&lt;/li>
 &lt;/ol>
+&lt;h3 id="beispiel-methode-für-ein-auto">Beispiel: Methode für ein Auto&lt;/h3>
+&lt;p>Schauen wir uns eine Methode (&lt;code>calculateTimeToDistance&lt;/code>) für ein Auto an:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Auto&lt;/span>&lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#75715e">// Ein Datenfeld für die Geschwindigkeit des Autos (in km/h)
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> speedInKmh&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#75715e">// Eine Methode, um die Zeit zu berechnen, die benötigt wird, um eine bestimmte Distanz (distance) zu überwinden
+&lt;/span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">double&lt;/span> &lt;span style="color:#a6e22e">calculateTimeToDistance&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> distanceInKm&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#66d9ef">throws&lt;/span> ArithmeticException &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">double&lt;/span>&lt;span style="color:#f92672">)&lt;/span> distance &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">speed&lt;/span>&lt;span style="color:#f92672">;&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Erklärung der Methode:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Zugriffsmodifikator&lt;/strong>: &lt;code>public&lt;/code> - Die Methode kann von aussen aufgerufen werden.&lt;/li>
+&lt;li>&lt;strong>Andere Modifikatoren&lt;/strong>: Keine.&lt;/li>
+&lt;li>&lt;strong>Rückgabewert&lt;/strong>: &lt;code>double&lt;/code> - Die Methode gibt die benötigte Zeit in Stunden zurück, daher der Datentyp double.&lt;/li>
+&lt;li>&lt;strong>Methodenname&lt;/strong>: &lt;code>calculateTimeToDistance&lt;/code> - Der Name sagt klar aus, was die Methode macht.&lt;/li>
+&lt;li>&lt;strong>Parameterliste&lt;/strong>: &lt;code>int distanceInKm&lt;/code> - Die Methode braucht die Distanz als Eingabewert.&lt;/li>
+&lt;li>&lt;strong>Ausnahmen (Exceptions)&lt;/strong>: &lt;code>throws ArithmeticException&lt;/code> - Falls die Geschwindigkeit 0 ist, könnte es zu einer Exception kommen, weil eine Division durch 0 nicht möglich ist. Dies wird in einem späteren Kapitel genauer erklärt.&lt;/li>
+&lt;li>&lt;strong>Methodenkörper&lt;/strong>: Die Berechnung wird durchgeführt, indem die Distanz durch die Geschwindigkeit geteilt wird.&lt;/li>
+&lt;/ul>
 &lt;h3 id="namenskonventionen-für-methoden">Namenskonventionen für Methoden&lt;/h3>
 &lt;p>Methodennamen sollen - per Konvention - folgende Regeln einhalten:&lt;/p>
 &lt;ul>
-&lt;li>Erster Buchstabe ist immer klein.&lt;/li>
-&lt;li>CamelCase: Alle Buchstaben sind klein. Wenn der Methodenname aus mehreren Worten besteht, wird jeweils der erste Buchstabe ab dem zweiten Wort grossgeschrieben. Beispiele: &lt;code>equals&lt;/code>, &lt;code>printThisToConsole&lt;/code>.&lt;/li>
+&lt;li>Der erste Buchstabe ist immer klein.&lt;/li>
+&lt;li>Verwende CamelCase: Das bedeutet, dass alle Buchstaben des ersten Worts klein geschrieben werden. Ab dann wird jeweils der erste Buchstaben von jedem Wort gross geschrieben. Beispiele: &lt;code>equals&lt;/code>, &lt;code>printThisToConsole&lt;/code>.&lt;/li>
 &lt;li>Der Methodenname soll ein Verb enthalten, welches die Funktionalität der Methode beschreibt. Wenn es dem Verständnis der Funktionalität dient, wird dieses Verb zusammen mit einem Nomen zusammengesetzt.&lt;/li>
-&lt;li>Der Methodenname soll möglichst aussagekräftig sein.&lt;/li>
-&lt;li>Statt Abkürzungen sollen die einzelnen Wörter möglichst ausgeschrieben werden (ausser es handelt sich um sehr bekannte Abkürzungen).&lt;/li>
+&lt;li>Der Name sollte möglichst klar und verständlich sein, damit man sofort weiss, was die Methode macht.&lt;/li>
+&lt;li>Vermeide Abkürzungen, schreibe die Wörter lieber aus (ausser es sind sehr bekannte Abkürzungen).&lt;/li>
 &lt;/ul>
 &lt;h3 id="getter-und-setter">Getter und Setter&lt;/h3>
-&lt;p>Eine &lt;code>get&lt;/code>-Methode (&lt;em>Getter&lt;/em>) ruft den Wert eines bestimmten Datenfelds ab und gibt diesen Wert zurück, während eine &lt;code>set&lt;/code>-Methode (&lt;em>Setter&lt;/em>) ihren Wert verändert. Dies dient dem &lt;em>Prinzip der Kapselung&lt;/em> und kann unter anderem dazu verwendet werden, ein bestimmtes Datenfeld als read-only (nur lesbar) gegen aussen zu gestalten (wenn es keine Setter-Methode dazu gibt).&lt;/p>
+&lt;p>Eine &lt;code>get&lt;/code>-Methode (auch &lt;strong>Getter&lt;/strong> genannt) holt den Wert eines bestimmten Datenfelds und gibt ihn zurück.
+Eine &lt;code>set&lt;/code>-Methode (auch &lt;strong>Setter&lt;/strong> genannt) ändert den Wert dieses Datenfelds.
+Das Ganze gehört zum &lt;strong>Prinzip der Kapselung&lt;/strong>, was bedeutet, dass Daten sicher verwaltet werden.&lt;/p>
+&lt;p>Du fragst dich vielleicht: &lt;strong>Warum nicht einfach alle meine Variablen als &lt;code>public&lt;/code> deklarieren?&lt;/strong>
+Das klingt doch einfacher, oder? Aber das Problem ist, dass jeder Teil deines Programms dann direkt auf die Daten zugreifen und sie ändern könnte – auch unbeabsichtigt.
+Mit &lt;code>get&lt;/code>- und &lt;code>set&lt;/code>-Methoden kannst du kontrollieren, wer auf die Daten zugreifen oder sie verändern darf. Zum Beispiel auch, wenn andere Entwickler auf deinem Code arbeiten.
+Zum Beispiel: Wenn du nur eine &lt;code>get&lt;/code>-Methode ohne &lt;code>set&lt;/code>-Methode erstellst, machst du das Datenfeld von ausserhalb nur lesbar – man kann es also nicht ändern.&lt;/p>
 &lt;h4 id="namenskonventionen">Namenskonventionen&lt;/h4>
 &lt;p>Für Getter- und Setter-Methoden werden immer die gleichen Methodennamen verwendet. Als Präfix benutzen wir &lt;code>get&lt;/code> und &lt;code>set&lt;/code> gefolgt vom Namen des Datenfelds worauf sich die Methode bezieht.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -1228,7 +1274,9 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="methoden-überladen">Methoden überladen&lt;/h3>
-&lt;p>In Java können wir Methoden überladen. Das heisst, wir können mehrere Methoden mit demselben Namen definieren, solange die Anzahl an Parametern oder die Datentypen der Parameter variieren. Beim Aufruf der Methode wird vom Compiler die entsprechende Definition ausgewählt.&lt;/p>
+&lt;p>In Java können wir Methoden überladen.
+Das heisst, wir können mehrere Methoden mit demselben Namen definieren, solange die Anzahl an Parametern oder die Datentypen der Parameter variieren.
+Beim Aufruf der Methode wird vom Compiler die entsprechende Definition ausgewählt.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -1286,7 +1334,7 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 Calculator cal &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Calculator&lt;span style="color:#f92672">();&lt;/span>
 &lt;span style="color:#66d9ef">double&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> 10&lt;span style="color:#f92672">;&lt;/span>
 &lt;span style="color:#66d9ef">double&lt;/span> y &lt;span style="color:#f92672">=&lt;/span> 20&lt;span style="color:#f92672">;&lt;/span>
-&lt;span style="color:#66d9ef">double&lt;/span> z &lt;span style="color:#f92672">=&lt;/span> 5
+&lt;span style="color:#66d9ef">double&lt;/span> z &lt;span style="color:#f92672">=&lt;/span> 5&lt;span style="color:#f92672">;&lt;/span>
 &lt;span style="color:#66d9ef">int&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> 12&lt;span style="color:#f92672">;&lt;/span>
 &lt;span style="color:#66d9ef">int&lt;/span> b &lt;span style="color:#f92672">=&lt;/span> 4&lt;span style="color:#f92672">;&lt;/span>
 System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>cal&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">product&lt;/span>&lt;span style="color:#f92672">(&lt;/span>x&lt;span style="color:#f92672">,&lt;/span> y&lt;span style="color:#f92672">));&lt;/span>
@@ -1298,17 +1346,37 @@ System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">o
 &lt;/div>
 &lt;/div>&lt;p>Methoden, deren Parameter gleich sind (gleiche Anzahl, gleiche Datentypen) und sich lediglich in ihren Rückgabetypen unterscheiden, können nicht überladen werden, da der Compiler nicht in der Lage ist, zwischen ihren Aufrufen zu unterscheiden.&lt;/p>
 &lt;h3 id="die-methoden-equals-und-hashcode">Die Methoden equals() und hashCode()&lt;/h3>
-&lt;p>Die Methoden &lt;code>equals()&lt;/code> und &lt;code>hashCode()&lt;/code> gehören zu den grundlegenden Java APIs.
-Beide Methoden gehören automatisch zur öffentlichen Schnittstelle jeder Klasse, da sie durch die implizite Ableitung von der Object-Klasse geerbt werden (mehr dazu im Modul &amp;ldquo;Objektorientiertes Design (OOD)&amp;quot;).&lt;/p>
+&lt;p>Die Methoden &lt;code>equals()&lt;/code> und &lt;code>hashCode()&lt;/code> sind wichtige Bestandteile der Java-APIs. Sie sind automatisch in jeder Klasse vorhanden, weil sie von der &lt;strong>Object-Klasse&lt;/strong> geerbt werden.
+Das bedeutet, dass jede Klasse in Java diese beiden Methoden hat, auch wenn du sie nicht selbst hinzufügst.
+Mehr darüber erfährst du im Modul &amp;ldquo;Objektorientiertes Design (OOD)&amp;rdquo;.&lt;/p>
 &lt;h4 id="equals">equals()&lt;/h4>
-&lt;p>Möchtest du überprüfen, ob zwei Objekte den gleichen Wert repräsentieren, dann verwendest du die Methode &lt;code>equals()&lt;/code>.&lt;/p>
-&lt;p>Die Default-Umsetzung der Methode in der Object-Klasse definiert, dass zwei Objekte nur dann gleich sind, wenn sie die gleiche Identität haben. Das heisst, zwei unterschiedliche Instanzen (also zwei Objekte) einer Klasse sind gemäss dieser Umsetzung nicht gleich auch wenn alle Felder der beiden Objekten mit den gleichen Werte befüllt werden.&lt;/p>
-&lt;p>Aufgrund der fachlichen Gegebenheiten kann diese Definition der Gleichheit nicht korrekt sein. In so einem Fall muss die Methode &lt;code>equals()&lt;/code> überschrieben werden.&lt;/p>
+&lt;p>Du hast bereits im Thema String gesehen, dass man mit &lt;code>equals()&lt;/code> überprüft, ob zwei Objekte denselben Wert haben.
+Der Unterschied zu &lt;code>==&lt;/code> ist, dass &lt;code>==&lt;/code> nur prüft, ob beide Objekte exakt dasselbe sind, also die gleiche Speicheradresse haben.
+Mit &lt;code>equals()&lt;/code> hingegen vergleichst du den Inhalt der Objekte.&lt;/p>
+&lt;p>Standardmässig definiert die &lt;code>equals()&lt;/code>-Methode in der &lt;strong>Object-Klasse&lt;/strong>, dass zwei Objekte nur dann gleich sind, wenn sie exakt die gleiche Identität haben.
+Das bedeutet, dass zwei unterschiedliche Objekte derselben Klasse als nicht gleich angesehen werden, selbst wenn alle ihre Felder die gleichen Werte enthalten.
+Es wird also die Speicheradresse mit &lt;code>==&lt;/code> verlgichen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#75715e">// Der Code aus der Klasse Object in Java
+&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">equals&lt;/span>&lt;span style="color:#f92672">(&lt;/span>Object obj&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#66d9ef">this&lt;/span> &lt;span style="color:#f92672">==&lt;/span> obj&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das passt aber nicht immer, besonders wenn du den Inhalt der Objekte vergleichen möchtest oder du nur spezifische Eigenschaften, wie zum Beispiel eine ID vergleichen möchtest.
+In diesem Fall musst du die &lt;code>equals()&lt;/code>-Methode überschreiben, um die Gleichheit richtig zu definieren.&lt;/p>
 &lt;p>Bei der Umsetzung müssen folgende Bedingungen für die Definition der Gleichheit bei nicht-&lt;code>null&lt;/code> Objekten gemäss &lt;a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)">API-Definition für equals()&lt;/a> erfüllt werden:&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Reflexivität&lt;/strong>: Das Objekt liefert beim Vergleich mit sich selbst true.&lt;/li>
-&lt;li>&lt;strong>Symmetrie&lt;/strong>: Das Resultat des Vergleichs x mit y ist gleich wie das des Vergleichs y mit x. Es ist also egal wie verglichen wird.&lt;/li>
-&lt;li>&lt;strong>Transivität&lt;/strong>: Wenn x gleich y ist und y gleich z, dann ist x gleich z.&lt;/li>
+&lt;li>&lt;strong>Symmetrie&lt;/strong>: Wenn Objekt x gleich Objekt y ist, dann muss y auch gleich x sein.&lt;/li>
+&lt;li>&lt;strong>Transivität&lt;/strong>: Wenn x gleich y ist und y gleich z, dann muss auch x gleich z sein.&lt;/li>
 &lt;li>&lt;strong>Konsistenz&lt;/strong>: Egal wie häufig der Vergleich durchgeführt wird, es kommt immer dasselbe heraus, sofern sich der Inhalt der Objekte nicht verändert.&lt;/li>
 &lt;li>&lt;strong>Behandlung von &lt;code>null&lt;/code>&lt;/strong>: Der Vergleich mit &lt;code>null&lt;/code> liefert immer false.&lt;/li>
 &lt;/ul>
@@ -1347,29 +1415,33 @@ Car car &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
 &lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">Car carA &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Car&lt;span style="color:#f92672">();&lt;/span>
 carA&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">setSpeed&lt;/span>&lt;span style="color:#f92672">(&lt;/span>3&lt;span style="color:#f92672">);&lt;/span>
 Car carB &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Car&lt;span style="color:#f92672">();&lt;/span>
+carA&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">setSpeed&lt;/span>&lt;span style="color:#f92672">(&lt;/span>4&lt;span style="color:#f92672">);&lt;/span>
 &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">(&lt;/span>carA&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">equals&lt;/span>&lt;span style="color:#f92672">(&lt;/span>carB&lt;span style="color:#f92672">)){&lt;/span>
 System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Both cars are equal.&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
 &lt;span style="color:#f92672">}&lt;/span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
 System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;The cars are different.&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
 &lt;span style="color:#75715e">// Output: The cars are different.
-&lt;/span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">}&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h4 id="hashcode">hashCode()&lt;/h4>
-&lt;p>Die Methode &lt;code>hashCode()&lt;/code> sollte für jedes Objekt einen Hashwert (Fingerabdruck) liefern, der das Objekt möglichst eindeutig identifiziert.&lt;/p>
-&lt;p>Der berechnete Hashwert ermöglicht einen effizienten und schnellen Zugriff auf ein bestimmtes Objekt innerhalb eines Hash-basierten Containers wie z.B. einer &lt;code>HashMap&lt;/code>.&lt;/p>
+&lt;p>Die Methode &lt;code>hashCode()&lt;/code> erstellt für jedes Objekt einen &lt;strong>Hashwert&lt;/strong> – das ist wie ein Fingerabdruck, der das Objekt möglichst eindeutig beschreibt.
+Dieser Hashwert wird aus den Feldern des Objekts berechnet. Der Hashwert ist eine Zahl, der Rückgabetyp von &lt;code>hashCode&lt;/code> ist also ein &lt;code>int&lt;/code>.&lt;/p>
+&lt;p>Falls du genauer erfahren möchtest, wie Hashing funktioniert, kannst du diesen &lt;a href="https://www.tessa-dam.com/de/wiki-de-reader/hash">Beitrag&lt;/a> lesen.&lt;/p>
+&lt;p>Der Hashwert ermöglicht es Java, Objekte effizient zu vergleichen und zu verwalten. Wichtig ist, dass der Hashwert immer dieselbe Zahl liefert, solange sich das Objekt nicht ändert.&lt;/p>
 &lt;p>Auch für diese Methode definiert die &lt;a href="https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#hashCode()">API-Definition für hashCode()&lt;/a> Bedingungen, welche erfüllt werden müssen, damit die Methode zweckmässig verwendet werden kann:&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>Konsistenz&lt;/strong>: Egal wie häufig &lt;code>hashCode()&lt;/code> aufgerufen wird, es kommt stets dasselbe Resultat zurück, sofern der Inhalt des Objekts nicht geändert wurde.&lt;/li>
-&lt;li>&lt;strong>Zusammenhang equals&lt;/strong>: Zwei Objekte, die gemäss &lt;code>equals()&lt;/code> gleich sind, müssen den gleichen Hashwert liefern.&lt;/li>
-&lt;li>&lt;strong>Zusammenhang not-equals&lt;/strong>: Zwei Objekte die gemäss &lt;code>equals()&lt;/code> verschieden sind, müssen nicht zwingend unterschiedliche Hashwerte liefern. Grundsätzlich wäre es aber besser für die Performanz, wenn verschiedene Objekte auch verschiedene Hashwerte liefern würden.&lt;/li>
+&lt;li>&lt;strong>Konsistenz&lt;/strong>: Jedes Mal, wenn &lt;code>hashCode()&lt;/code> aufgerufen wird, muss derselbe Wert zurückgegeben werden, solange das Objekt unverändert bleibt.&lt;/li>
+&lt;li>&lt;strong>Zusammenhang mit &lt;code>equals()&lt;/code>&lt;/strong>: Zwei Objekte, die gemäss &lt;code>equals()&lt;/code> gleich sind, müssen den gleichen Hashwert liefern.&lt;/li>
+&lt;li>&lt;strong>Zusammenhang bei ungleichen Objekten&lt;/strong>: Zwei Objekte die gemäss &lt;code>equals()&lt;/code> verschieden sind, müssen nicht zwingend unterschiedliche Hashwerte liefern. Grundsätzlich wäre es aber besser für die Performanz, wenn verschiedene Objekte auch verschiedene Hashwerte liefern würden.&lt;/li>
 &lt;/ul>
-&lt;p>In der Regel entscheiden wir uns aufgrund von fachlichen Gegebenheiten für die Überschreibung der Methode &lt;code>equals()&lt;/code>. Die Überschreibung von &lt;code>hashCode()&lt;/code> resultiert daraus als Konsequenz der Bedingung &amp;ldquo;Zusammenhang equals&amp;rdquo;.&lt;/p>
+&lt;p>Wenn du die Methode &lt;code>equals()&lt;/code> überschreibst, solltest du auch &lt;code>hashCode()&lt;/code> überschreiben, damit beide zusammen korrekt funktionieren.&lt;/p>
 &lt;p>Hier ein Beispiel für die Klasse &lt;code>Car&lt;/code>, wie eine mögliche &lt;code>hashCode()&lt;/code>-Methode aussehen könnte. Hier haben wir 2 weitere Felder aus Demonstrationsgründen hinzugefügt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
