@@ -54,7 +54,7 @@ Fehlerfall geprüft wird. So kann bereits vielen Fehlern in der Zukunft mit weni
 Ein Unit-Test ist immer ein sog. "White-Box" Test, da der Entwickler bei der Implementation 
 von Unit-Tests den Sourcecode kennt oder ihn einsehen kann.
 
-Bei Unit-Tests in Java ist der Testumfang eines Unit-Tests normalerweise in der Grössenordnung einer Methode oder Funktion.
+Bei Unit-Tests in Java ist der Testumfang eines Unit-Tests normalerweise in der Grössenordnung einer Methode oder Funktionalität.
 
 In der Regel lassen sich Unit-Tests automatisieren und können einzeln oder auch in Gruppen (in sog. Test-Suites) 
 lokal (an der eigenen Maschine) oder von einem Continuous-Integration-Server (eine externe Maschine, der dafür sorgt, dass Programmteile sofort 
