@@ -111,7 +111,7 @@ Diese beiden Punkte sollen nachfolgend noch ein Stück ausformuliert werden.
 Oft ist es so, dass in der Entwicklung, Anpassungen oder Installation von Software erst recht spät getestet wird, was dazu führt, dass eine entsprechende Reaktion auf einen Fehler 
 meist erst verspätet ermöglicht wird. Grundsätzlich ist es so, dass die aus einem Fehler entstehenden Kosten exponentiell ansteigen, je später ein solcher gefunden und behandelt wird. 
 Die untenstehende Grafik veranschaulicht das relativ gut. Während das Beheben eines gefundenen Fehlers beim Erstellen und Prüfen der Anforderungen (Reqs) kaum etwas kostet, sind die 
-Kosten im PROD-Kontext schon um einiges höher. 
+Kosten im Produktiven-Kontext (PROD) schon um einiges höher. 
 
 ![Kostenverlauf für Fehler je nach Zeitpunkt](../java-testing/kosten_fehler.png)
 
