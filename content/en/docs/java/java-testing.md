@@ -355,7 +355,7 @@ public class CalculatorTest {
         int i1 = 5;
         int i2 = 9;
         // call method
-        int result = this.uut.plus(i1, i2);
+        int result = this.uut.add(i1, i2);
         // verify
         assertEquals(14, result);
     }
@@ -510,7 +510,7 @@ public class CalculatorTest {
         int i2 = random.nextInt(100);
 
         // call method
-        int result = this.uut.plus(i1, i2);
+        int result = this.uut.add(i1, i2);
 
         // verify
         assertEquals(i1 + i2, result);
@@ -540,7 +540,7 @@ public class CalculatorTest {
         int i2 = 9;
 
         // call method
-        int result = this.uut.plus(i1, i2);
+        int result = this.uut.add(i1, i2);
 
         // verify
         assertEquals(14, result);
@@ -569,7 +569,7 @@ public class CalculatorTest {
         int i2 = 9;
 
         // call method
-        int result = this.uut.plus(i1, i2);
+        int result = this.uut.add(i1, i2);
 
         // verify
         assertEquals(14, result);
@@ -598,7 +598,7 @@ public class CalculatorTest {
         int i2 = 9;
 
         // call method
-        int result = this.uut.plus(i1, i2);
+        int result = this.uut.add(i1, i2);
 
         // verify
         assertEquals(14, result);
@@ -612,7 +612,7 @@ public class CalculatorTest {
         int i2 = 3;
 
         // call method
-        int result = this.uut.plus(i1, i2);
+        int result = this.uut.add(i1, i2);
 
         // verify
         assertEquals(2, result);
@@ -651,7 +651,7 @@ public class CalculatorTest {
         int i2 = 9;
 
         // call method
-        int result = this.uut.plus(i1, i2);
+        int result = this.uut.add(i1, i2);
 
         // verify
         assertEquals(14, result);
