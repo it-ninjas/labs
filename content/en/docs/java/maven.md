@@ -53,22 +53,26 @@ Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariable
 Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
 Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:
 
-| #   | Beschreibung                                                                                                                                                                                                                                                                                                |
-|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1   | Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten. Falls das nicht geht, musst du dir (temporär) lokale Admin-Rechte aktivieren.                                                                                                                                              |
-| 2   | Unten rechts auf den Button "Umgebungsvariablen" klicken.                                                                                                                                                                                                                                                   |
-| 3   | Im unteren Teil "Systemvariablen" die Variable "Path" suchen und anklicken.                                                                                                                                                                                                                                 |
-| 4   | Auf den Button "Bearbeiten..." klicken.                                                                                                                                                                                                                                                                     |
-| 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten.                                                                                                                                                                                                                          |
+| #   | Beschreibung                                                                                                                                                                                                                                                                                                   |
+|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten. Falls das nicht geht, musst du dir (temporär) lokale Admin-Rechte aktivieren.                                                                                                                                                 |
+| 2   | Unten rechts auf den Button "Umgebungsvariablen" klicken.                                                                                                                                                                                                                                                      |
+| 3   | Im unteren Teil "Benutzervariablen" die Variable "Path" suchen und anklicken.                                                                                                                                                                                                                                  |
+| 4   | Auf den Button "Bearbeiten..." klicken.                                                                                                                                                                                                                                                                        |
+| 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten.                                                                                                                                                                                                                             |
 | 6   | Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte auf bin zeigen, also zum Beispiel: **C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin**. Du musst sicherstellen, dass die Version mit deiner heruntergeladenen Version übereinstimmt. |
-| 7   | Alle offenen Windows-Fenster mit "OK" schliessen.                                                                                                                                                                                                                                                           
+| 7   | Alle offenen Windows-Fenster mit "OK" schliessen.                                                                                                                                                                                                                                                              
 
 
-Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal aus:\
+Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter _Eingabeaufforderung_ oder _cmd_ in der Windows Suche) aus:\
 `mvn -version`
 
 Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:\
 `Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)`
+
+![img.png](../maven/cmd_maven_version.png)
+
+Die Version muss nicht mit deiner übereinstimmen.
 
 ---
 
