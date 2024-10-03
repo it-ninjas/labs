@@ -102,7 +102,7 @@ docker run \
 
 ### Test
 
-The [test action](.github/workflows/test.yml) is fired on each push to a feature branch and does the following.
+The [test action](.github/workflows/test.yml) is fired on each push to a feature branch and does the following:
 
 * builds the Hugo site
 
