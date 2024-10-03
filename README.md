@@ -97,20 +97,6 @@ docker run \
   server -p 8080 --bind 0.0.0.0
 ```
 
-
-### Linting of Markdown content
-
-Markdown files are linted with [markdownlint](https://github.com/DavidAnson/markdownlint).
-Custom rules are in [markdownlint.json](markdownlint.json).
-There's a GitHub Action [github/workflows/markdownlint.yaml](github/workflows/markdownlint.yaml) for CI.
-For local checks, you can either use Visual Studio Code with the corresponding extension, or the command line like this:
-
-```bash
-npm install
-node_modules/.bin/markdownlint content
-```
-
-
 ## Github Actions
 
 
@@ -118,11 +104,7 @@ node_modules/.bin/markdownlint content
 
 The [test action](.github/workflows/test.yml) is fired on each push to a feature branch and does the following.
 
-* builds all PR Versions (Linting and Docker build)
-* deploys the built container images to the container registry
-* Deploys a PR environment in a k8s test namespace with helm
-* Triggers a redeployment
-* Comments in the PR where the PR Environments can be found
+* builds the Hugo site
 
 
 ### Push Main
