@@ -10,14 +10,13 @@ description: >
 Schreibe eine Anwendung, in welcher Patienten einen medizinischen Check-Up durchgehen,
 um ihre Daten für das Spital zu erfassen.
 
-Ein Patient
+Ein Patient 
 - hat einen Namen
+- hat eine Grösse
+- hat eine Temperatur
+- ist geimpft oder nicht
 
-Der Checkup nimmt
-- die Grösse, 
-- das Gewicht, 
-- die Temperatur und 
-- ob der Patient geimpft ist
+Der Check-Up soll eine Methode auf dem Patienten sein, welche alle aktuellen Werte ausgibt.
 
 #### Die Anwendung soll
 - mit einem Patienten einen Check-Up durchführen
@@ -26,7 +25,7 @@ Der Checkup nimmt
 - die Temperatur eines Patienten zurückgeben
 - Überprüfen ob der Patient geimpft ist
 
-*Es sollen keine Set Methoden für das Einfügen der Werte verwendet werden!*
+*Es sollen keine Set Methoden für das Einfügen der Werte verwendet werden! Verwende jedoch Get Methoden für das zurückgeben der Eigenschaften.*
 
 *Es soll kein Scanner eingesetzt werden.*
 
