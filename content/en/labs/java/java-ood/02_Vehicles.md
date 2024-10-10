@@ -2,7 +2,7 @@
 title: "Vehicles"
 linkTitle: "Vehicles"
 type: docs
-weight: 3
+weight: 2
 description: >
  Aufgabe zu Modul #J3 - [OOD](../../../../docs/java/java-ood) - Vehicles
 
