@@ -25,7 +25,7 @@ Der Check-Up soll eine Methode auf dem Patienten sein, welche alle aktuellen Wer
 - die Temperatur eines Patienten zurückgeben
 - Überprüfen ob der Patient geimpft ist
 
-*Es sollen keine Set Methoden für das Einfügen der Werte verwendet werden! Verwende jedoch Get Methoden für das zurückgeben der Eigenschaften.*
+*Es sollen keine Set-Methoden für das Einfügen der Werte verwendet werden! Verwende jedoch Get-Methoden für das zurückgeben der Eigenschaften.*
 
 *Es soll kein Scanner eingesetzt werden.*
 
