@@ -31,7 +31,10 @@ public interface MyListInterfaceSimple<E> {
      * Appends the specified element to the end of this list .
      * @param element element to be appended to this list
      */
-    void add(E element);
+    void add(E
+      element
+      )
+      ;
 
     /**
      * Returns the element at the specified position in this list.

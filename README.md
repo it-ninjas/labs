@@ -87,27 +87,17 @@ If you have docker-compose installed simply run:
 docker-compose up
 ```
 
-```bash
-export HUGO_VERSION=$(grep "FROM klakegg/hugo" Dockerfile | sed 's/FROM klakegg\/hugo://g' | sed 's/ AS builder//g')
-docker run \
-  --rm --interactive \
-  --publish 8080:8080 \
-  -v $(pwd):/src \
-  klakegg/hugo:${HUGO_VERSION} \
-  server -p 8080 --bind 0.0.0.0
-```
-
-
 ### Linting of Markdown content
 
-Markdown files are linted with [markdownlint](https://github.com/DavidAnson/markdownlint).
-Custom rules are in [markdownlint.json](markdownlint.json).
-There's a GitHub Action [github/workflows/markdownlint.yaml](github/workflows/markdownlint.yaml) for CI.
-For local checks, you can either use Visual Studio Code with the corresponding extension, or the command line like this:
+Markdown files are linted with [prettier](https://prettier.io/docs/en/options).
+It can be configured with [.prettierrc](.prettierrc) and [.prettierignore](.prettierignore).
+
+Locally it should be executed before each commit with a pre-commit hook, managed by [husky](https://typicode.github.io/husky/).
+If you want to run it manually, you can do so from the commandline:
 
 ```bash
 npm install
-node_modules/.bin/markdownlint content
+npm run format
 ```
 
 
