@@ -3,21 +3,24 @@ title: "Basics zu HTML"
 linkTitle: "Basics zu HTML"
 weight: 3
 description: >
-    Modul #F3 - HTML und CSS - Der Aufbau eines HTML-Tags
+  Modul #F3 - HTML und CSS - Der Aufbau eines HTML-Tags
 ---
 
 #### Ziele
-* Ich kenne die HTML-Tags `<h1>` und `<p>` und weiss, was ihre Aufgaben sind.
-* Ich kenne die allgemeine Struktur von HTML-Tags.
+
+- Ich kenne die HTML-Tags `<h1>` und `<p>` und weiss, was ihre Aufgaben sind.
+- Ich kenne die allgemeine Struktur von HTML-Tags.
 
 ## Erklärung zum vorherigen Beispiel
+
 Im vorherigen Beispiel hatten wir diesen Code:
 
 ```html
 <h1>Kleiner Witz</h1>
 
-<p>Wie viele Softwareentwickler braucht man, 
-um eine Glühbirne auszuwechseln?</p>
+<p>
+  Wie viele Softwareentwickler braucht man, um eine Glühbirne auszuwechseln?
+</p>
 
 <p>Keinen, das ist ein Hardware-Problem!</p>
 ```

@@ -6,6 +6,7 @@ description: >
 ---
 
 ## Was ist REST
+
 REST (Representational State Transfer) ist ein Designkonzept für das Internet, das Regeln und Standards definiert,
 wie Webdienste miteinander kommunizieren. Es basiert auf dem Austausch von Daten über das HTTP-Protokoll und verwendet
 einheitliche Methoden wie GET, POST, PUT und DELETE, um auf Ressourcen zuzugreifen und mit ihnen zu interagieren.
@@ -14,6 +15,7 @@ dass jede Anfrage alle benötigten Informationen enthält, um verstanden zu werd
 zurückgreifen zu müssen.
 
 ## Verschiedene Request-Arten
+
 Wir schauen uns ein Beispiel eines Controllers an, welcher verschiedene Endpoints definiert.
 
 ```java
@@ -22,31 +24,31 @@ Wir schauen uns ein Beispiel eines Controllers an, welcher verschiedene Endpoint
 @RequestMapping("/orders")
 public class OrderResource {
     private final OrderService orderService;
-    
+
     public OrderResource(OrderService orderService) {
         this.orderService = orderService;
     }
-    
+
     @GetMapping
     public List<Order> findAll() {
         return orderService.findAll();
     }
-    
+
     @GetMapping("/{id}")
     public Order findById(@PathVariable Long id) {
         return orderService.findById(id).orElseThrow(EntityNotFoundException::new);
     }
-    
+
     @PostMapping
     public Order save(@RequestBody Order order) {
         return orderService.save(order);
     }
-    
+
     @PutMapping("/{id}")
     public Order update(@PathVariable Long id, @RequestBody Order order) {
         return orderService.update(id, order);
     }
-    
+
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         orderService.delete(id);
@@ -62,7 +64,9 @@ verwenden sollen.
 Schauen wir uns die verschiedenen, in diesem File definierten, Endpoints doch gleich ein bisschen genauer an.
 
 ### Get
+
 Get wird generell genutzt, um Daten von einem bestimmten Ort abzurufen. Beispielsweise das Abrufen von Informationen über Benutzerprofile einer Social-Media-Plattform.
+
 ```java
 @GetMapping("/{id}")
 public Order findById(@PathVariable Long id){
@@ -75,7 +79,9 @@ annotierten Methode gehandelt werden, wenn die HTTP-Methode `GET` verwendet wurd
 angegeben wird. Das bedeutet, dass ein Aufruf auf `/orders/12` das gleiche Ergebnis hat wie der Methodenaufruf `findByID(12)`.
 
 ### Put
+
 Put wird fürs Aktualisieren von bestehenden Ressourcen verwendet, indem neue Daten an einen bestimmten Ort gesendet werden.
+
 ```java
 @PutMapping("/{id}")
 public Order update(@PathVariable Long id,@RequestBody Order order){
@@ -88,7 +94,9 @@ Die Annotation `@RequestBody` wird verwendet, um anzugeben, dass der Parameter `
 HTTP-Requests gelesen werden soll.
 
 ### Post
+
 Post wird verwendet, um neue Daten an den Server zu senden, beispielsweise beim Ausfüllen eines Formulars und Absenden der Informationen.
+
 ```java
 @PostMapping
 public Order save(@RequestBody Order order) {
@@ -102,7 +110,9 @@ annotierten Methode behandelt werden. Mithilfe der Annotation `@RequestBody` wer
 Services gespeichert und das Ergebnis zurückgegeben.
 
 ### Delete
+
 Delete wird genutzt, um eine spezifische Ressource auf dem Server zu entfernen. Wie beispielsweise das Löschen eines Benutzerkontos von einer Plattform.
+
 ```java
 @DeleteMapping("/{id}")
 public ResponseEntity delete(@PathVariable Long id) {
@@ -111,7 +121,7 @@ public ResponseEntity delete(@PathVariable Long id) {
 }
 ```
 
-Mit der `@DeleteMapping` Annotation bestimmen wir, dass alle Anfragen auf dem `orders/id` Pfad von diesem Endpoint behandelt werden, 
+Mit der `@DeleteMapping` Annotation bestimmen wir, dass alle Anfragen auf dem `orders/id` Pfad von diesem Endpoint behandelt werden,
 wenn die HTTP-Methode `Delete` verwendet wurde. Dank der `@PathVariable` Annotation wird die ID des zu löschenden Objektes aus der URL genommen und als Long-Wert gespeichert.
 Anschliessend wird im Body mithilfe des Services die `Order` mit der entsprechenden ID gelöscht.
 Nach dem Löschen wird eine erfolgreiche Antwort (HTTP 200 OK) zurückgegeben.

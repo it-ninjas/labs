@@ -28,11 +28,15 @@ vereinfacht komplexes Styling teilweise extrem. Z.B. kannst du komplett mühelos
 Accordions (bzw. Tabs) erstellen, die dann beim Klick auf deren Titel ihren Inhalt dann anzeigen/verstecken inkl. Animation.
 
 ## Bootstrap
+
 Bootstrap wird in sehr vielen Projekten bereits benutzt. Und so einfach kannst du es auch in deine HTML-Dateien einbinden:
 
 ```html
 <!-- Latest compiled and minified CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -43,33 +47,35 @@ Eine grosse Stärke von Bootstrap ist es, dass sich deine Seite 'responsive' ver
 Da wir vermehrt Bootstrap einsetzen möchten, empfehlen wir dir, Bootstrap anzuschauen. Hier findest du ein Tutorial zur aktuellen Version: https://www.w3schools.com/bootstrap5/index.php.
 
 Bitte probiere folgendes so aus, dass du es anwenden kannst:
-* GET Started
-* Containers
-* Grid Basic
-* Tables
-* Buttons
-* Collapse
-* Flex
+
+- GET Started
+- Containers
+- Grid Basic
+- Tables
+- Buttons
+- Collapse
+- Flex
 
 Bei den folgenden solltest du einfach wissen, dass Bootstrap hierfür auch eine Lösung bereitstellt:
-* Colors
-* Images
-* Alerts
-* Button Groups
-* Badges
-* Progress Bars & Spinners
-* Pagination
-* List Groups
-* Cards
-* Dropdowns
-* Navbar
-* Carousel
-* Modal
-* Tooltip
-* Popover
-* Toast
-* Scrollspy
-* Utilities
-* alles unter Forms
+
+- Colors
+- Images
+- Alerts
+- Button Groups
+- Badges
+- Progress Bars & Spinners
+- Pagination
+- List Groups
+- Cards
+- Dropdowns
+- Navbar
+- Carousel
+- Modal
+- Tooltip
+- Popover
+- Toast
+- Scrollspy
+- Utilities
+- alles unter Forms
 
 ![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../../labs/web/html_css/02_css).

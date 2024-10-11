@@ -8,12 +8,14 @@ description: >
 ---
 
 #### Ziele
-* Ich kann Namen für Objekte in einem Text identifizieren
-* Ich kann gute Namen für Attribute und Methoden wählen
-* Ich kann Objekte erstellen und ihnen entsprechende Eigenschaften geben
-* Ich kann Objekte untereinander verknüpfen
+
+- Ich kann Namen für Objekte in einem Text identifizieren
+- Ich kann gute Namen für Attribute und Methoden wählen
+- Ich kann Objekte erstellen und ihnen entsprechende Eigenschaften geben
+- Ich kann Objekte untereinander verknüpfen
 
 ### Immobilienfirma
+
 In dieser Aufgabe soll eine Immobilienfirma mit Objekten abgebildet werden.
 Eine solche Firma besitzt beliebige Immobilien und hat einen Firmensitz an einer bestimmten Adresse.
 Die Firma hat diverse Angestellte und einen Namen.
@@ -26,15 +28,19 @@ Jeder Vertrag hat ein Start- und ein End-Datum, zudem regelt der Vertrag den mon
 Die Standardangaben für eine Person werden durch ein Geburtsdatum und ein Geschlecht ergänzt.
 
 #### Teil 1
+
 Ermittle aus dem Text oben die verschiedenen Objekte und ihre Eigenschaften.
 Verknüpfe dann die Objekte miteinander, zum Beispiel hat eine Immobilienfirma eine Adresse als Firmensitz.
 
 #### Teil 2
+
 Erstelle für deine Firma mindestens zwei Immobilien mit unterschiedlichen Wohnungen.
 Definiere Angestellte und Abwarte. Erstelle Mieter und Verträge.
 
 #### Teil 3
+
 Erstelle für die Firma die folgenden Funktionen:
+
 - Ermittle die total Anzahl an Wohnungen von allen Immobilien
 - Ermittle den Abwart für eine bestimmte Wohnung
 - Ermittle die Verträge für eine bestimmte Immobilie
@@ -44,7 +50,8 @@ Erstelle für die Firma die folgenden Funktionen:
 - Ermittle das monatliche Einkommen pro Immobilie
 - Ermittle das jährliche Einkommen der Firma (ein Vertrag kann während dem Jahr ablaufen)
 
-*Es soll kein Scanner eingesetzt werden.*
+_Es soll kein Scanner eingesetzt werden._
 
 ---
+
 Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop).

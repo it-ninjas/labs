@@ -9,10 +9,12 @@ description: >
 ---
 
 ## Ziele
-* Du weisst, wie du bei Elementen Übergänge auf CSS-Property-Änderungen hinzufügen kannst.
-* Du weisst, wie du wiederholende Animationen erstellen kannst mit Keyframes.
+
+- Du weisst, wie du bei Elementen Übergänge auf CSS-Property-Änderungen hinzufügen kannst.
+- Du weisst, wie du wiederholende Animationen erstellen kannst mit Keyframes.
 
 ## Übergänge
+
 Übergänge werden häufig eingesetzt, um zu visualisieren, dass eine Schaltfläche den Fokus erhalten oder verloren hat oder um Grössenänderungen (z.B. von Navigationsleisten) weniger abrupt und damit für das Auge angenehmer zu gestalten.
 
 In CSS kannst du sehr einfach Übergänge erstellen. Zum Beispiel kannst du ungefähr so die Form eines `<div>`s verändern:
@@ -21,24 +23,27 @@ In CSS kannst du sehr einfach Übergänge erstellen. Zum Beispiel kannst du unge
 <div class="box"></div>
 
 <style>
-    .box {
-        /* Initialzustand: */
-        width: 10em;
-        height: 10em;
-        background-color: lightgrey;
-        border: 5px solid black;
-        border-radius: 50%;
+  .box {
+    /* Initialzustand: */
+    width: 10em;
+    height: 10em;
+    background-color: lightgrey;
+    border: 5px solid black;
+    border-radius: 50%;
 
-        /* Übergang wird mittels `transition` angegeben: */
-        transition: width 1s, background-color 2s, border-radius 3s;
-    }
+    /* Übergang wird mittels `transition` angegeben: */
+    transition:
+      width 1s,
+      background-color 2s,
+      border-radius 3s;
+  }
 
-    .box:hover {
-        /* Zustand, wenn sich die Maus über dem Element befindet: */
-        width: 20em;
-        background-color: #FFBF00;
-        border-radius: 0;
-    }
+  .box:hover {
+    /* Zustand, wenn sich die Maus über dem Element befindet: */
+    width: 20em;
+    background-color: #ffbf00;
+    border-radius: 0;
+  }
 </style>
 ```
 
@@ -53,16 +58,18 @@ transition: width 1s ease;
 ```
 
 Das Keyword `ease` beschreibt, wie die Animation beschleunigt wird: `ease`-Animationen beginnen langsam, sind dann schneller und am Schluss wird sie "gebremst". `ease` ist der Default-Wert (musst du also nicht angeben). Es gibt viele weitere:
-* ease
-* linear
-* ease-in
-* ease-out
-* ease-in-out
-* cubic-bezier(n,n,n,n)
+
+- ease
+- linear
+- ease-in
+- ease-out
+- ease-in-out
+- cubic-bezier(n,n,n,n)
 
 Weitere Informationen zu Transitions erhältst du hier: https://www.w3schools.com/css/css3_transitions.asp
 
 ## Animationen
+
 In CSS sind auch Animationen sehr einfach realisierbar - auch ohne JavaScript.
 
 Im folgenden Beispiel lassen wir eine Hand winken:
@@ -97,8 +104,9 @@ Das Zentrale an diesem Code-Beispiel ist der `@keyframes`-Block. Das erste Wort 
 Das `0%` steht für den Anfang der Animation, diese Prozentangaben beschreiben also eine Zeitangabe: Zu welchem Zeitpunkt soll das Element wie gestylt werden?
 
 Damit du die Animation (hier mit dem Namen `wave`) verwenden kannst, musst du diese referenzieren: Das hast du mit `animation-name: wave` gemacht. Anschliessen haben wir die Animation weiter konfiguriert:
-* Mit `animation-direction: alternate` haben wir eingestellt, dass die Animation wieder rückwärtsläuft, nachdem sie fertig ist. Hierfür war folgendes auch notwendig:
-* `animation-iteration-count: infinite` bewirkt, dass die Animation immer wieder wiederholt wird.
+
+- Mit `animation-direction: alternate` haben wir eingestellt, dass die Animation wieder rückwärtsläuft, nachdem sie fertig ist. Hierfür war folgendes auch notwendig:
+- `animation-iteration-count: infinite` bewirkt, dass die Animation immer wieder wiederholt wird.
 
 Das ist bereits das Basis-Wissen zu Animationen in CSS. Interessierst du dich weiter für Animationen, dann kannst du dich gerne hier vertiefen: https://www.w3schools.com/css/css3_animations.asp
 

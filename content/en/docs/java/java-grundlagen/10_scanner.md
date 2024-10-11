@@ -7,12 +7,13 @@ description: >
 ---
 
 ## Ziele
-* Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.
 
+- Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.
 
 ## Scanner
 
 Eine Möglichkeit, Benutzereingaben in Java vorzunehmen, besteht in der Verwendung der Scanner-Klasse, die verwendet wird, indem zuerst die Definition der Klasse wie in Zeile 1 importiert und dann ein Objekt dieser Klasse wie in Zeile 6 erstellt wird.
+
 ```java
 import java.util.Scanner;
 
@@ -33,14 +34,14 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 
 **Zeile 6**
 
-* Wir deklarieren den Datentyp als _Scanner_ und geben ihm den Bezeichner _scanner_
-* Wir weisen der Variable scanner ein neues Objekt zu, welches den System-Eingabestream enthält ([System.in](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#in))
+- Wir deklarieren den Datentyp als _Scanner_ und geben ihm den Bezeichner _scanner_
+- Wir weisen der Variable scanner ein neues Objekt zu, welches den System-Eingabestream enthält ([System.in](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#in))
 
 **Zeile 8**
 
-* Wir deklarieren eine Variable vom Datentyp String mit dem Bezeichner name
-* Wir weisen der Variable name das Resultat der Methode _scanner.nextLine()_ zu
-* Diese Methode nimmt die Tastatureingabe vom Benutzer auf der Kommandozeile entgegen. Sie wird beendet, wenn der Benutzer die Enter-Taste drückt.
+- Wir deklarieren eine Variable vom Datentyp String mit dem Bezeichner name
+- Wir weisen der Variable name das Resultat der Methode _scanner.nextLine()_ zu
+- Diese Methode nimmt die Tastatureingabe vom Benutzer auf der Kommandozeile entgegen. Sie wird beendet, wenn der Benutzer die Enter-Taste drückt.
 
 ### Zahlen einlesen
 
@@ -58,4 +59,5 @@ Wie du es bereits an der mühsamen Formulierung des letzten Satzes siehst, hat d
 Für die Labs und das Exams im Modul #J1 kannst du diese Methode gut brauchen. Spiele aber trotzdem ein bisschen mit dieser `nextInt()`-Methode, damit du die komischen Eigenheiten dieser Methode einmal kennenlernst.
 
 ---
+
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 8](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-8---eingaben-von-der-kommandozeile) in den Labs.

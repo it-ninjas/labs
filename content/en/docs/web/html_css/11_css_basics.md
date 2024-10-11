@@ -18,8 +18,8 @@ CSS verfolgt dabei die folgende Syntax:
 
 ```css
 p {
-    color: blue;
-    background-color: red;
+  color: blue;
+  background-color: red;
 }
 ```
 
@@ -35,7 +35,9 @@ Als nächstes schauen wir an, wie man CSS in eine Webseite (bzw. in ein HTML Fil
 Die wohl schnellste Möglichkeit CSS auf ein HTML-Element anzuwenden, ist, das "style"-Attribut des HTML-Elements anzupassen. Dies würde wie folgt ausschauen:
 
 ```html
-<p style="color: blue; background-color: red">Hier steht blauer Text auf rotem Hintergrund</p>
+<p style="color: blue; background-color: red">
+  Hier steht blauer Text auf rotem Hintergrund
+</p>
 ```
 
 Dabei ist anzumerken, dass sich die Syntax gegenüber der herkömmlichen Syntax (siehe erstes Beispiel) etwas unterscheidet. Einerseits müssen wir den Selektor nicht angeben und andererseits gibt es keine geschweiften Klammern mehr.
@@ -46,14 +48,14 @@ Man kann CSS aber auch über einen sogenannten "Style" Tag ins HTML einbinden. D
 
 ```html
 <head>
-    ...
-    <style>
-        p {
-            color: blue;
-            background-color: red;
-        }
-    </style>
-    ...
+  ...
+  <style>
+    p {
+      color: blue;
+      background-color: red;
+    }
+  </style>
+  ...
 </head>
 ```
 
@@ -68,7 +70,7 @@ Dies kann man wie folgt machen:
 Datei: index.html
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -87,8 +89,8 @@ Datei: styles.css
 
 ```css
 p {
-    color: blue;
-    background-color: red
+  color: blue;
+  background-color: red;
 }
 ```
 
