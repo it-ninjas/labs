@@ -139,7 +139,7 @@ Wenn du ein Repository klonst, erstellst du eine Verbindung zwischen dem Bitbuck
 Bevor du dein Repository klonen wirst, erstellst du nun ein Ordner, welcher dieses Repository (und später auch weitere Repositories) beinhalten wird.
 
 **Aufgabe**  
-Erstelle den Ordner "local_repos" unter deinem Startverzeichnis (bei Windows unter _"C:\\Users\\\<dein Benutzername\>"_)
+Erstelle den Ordner "local*repos" unter deinem Startverzeichnis (bei Windows unter *"C:\\Users\\\<dein Benutzername\>"\_)
 
 {{% details title="Falls du Hilfe brauchst.." %}}
 
