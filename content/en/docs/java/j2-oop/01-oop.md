@@ -110,7 +110,7 @@ Vorteile dieser Lösung:
 Klassen können noch viel mehr als nur Behälter für mehrere Variablen sein. Das wirst du in den folgenden Kapiteln lernen.
 
 ### Definitionen
-
+Um die nachfolgenden Kapitel besser zu verstehen, ist es hilfreich zuerst einige Basisdefinitionen zu etablieren.
 #### Objektorientierte Programmierung
 
 Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu
