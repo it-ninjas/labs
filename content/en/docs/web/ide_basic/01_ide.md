@@ -8,13 +8,20 @@ description: >
 ---
 
 # IDE
-In den folgenden Kapiteln ist alles aufgeführt was man für das Programmieren mit HTML und CSS benötigt.
+In den folgenden Kapiteln ist alles aufgeführt, was man für die Programmierung mit HTML und CSS benötigt.
 
 ## VS Code
-Die Beispiele in diesem Modul werden mit Visual Studio Code erklärt. Visual Studio Code ist ein kostenloser Codierungseditor, mit welchem du schnell mit dem Coden beginnen kannst. Du kannst Visual Studio Code verwenden, um in beinahe jeder Programmiersprache zu programmieren, ohne den Editor zu wechseln. Es werden viele Sprachen unterstützt, darunter sind JavaScript, Angular, Vue und viele mehr.
+Die Beispiele in diesem Modul werden unter Verwendung von Visual Studio Code erklärt. Visual Studio Code ist eine kostenlose Entwicklungsumgebung, welche sich gut zum Start in die Frontend-Entwicklung eignet. Du kannst Visual Studio Code verwenden, um in beinahe jeder Programmiersprache zu programmieren, ohne den Editor zu wechseln. Es werden viele Sprachen unterstützt, darunter JavaScript, Angular, Vue und viele mehr.
 https://code.visualstudio.com/
 
 ### Extensions
+Es ist in VS Code möglich, sogenannte Extensions hinzuzufügen. Diese sind quasi als "Erweiterung" der Entwicklungsumgebung an sich zu verstehen, die einem beispielsweise das Schreiben
+von Code erleichtern können. Die Extension "Auto Close Tag" erstellt zum Beispiel für jedes neu erstellte HTML-Tag automatisch ein Closing-Tag, was einem auf Langzeit viel Schreibaufwand einsparen kann.
+Eine weitere wichtige Extension ist der "Live Server", auf welchen in einem späteren Abschnitt genauer eingegangen wird. 
+
+Um eine Extension in VS Code hinzuzufügen, kann mit "Ctrl + Shift + X" der Extension Marketplace geöffnet werden. Dort kannst du dann im Suchfeld die gewünschte Extension suchen und diese schlussendlich mit einem Klick auf "install"
+zu VS Code hinzufügen. Je nach Extension musst du die Applikation neu starten, damit die Änderungen auch übernommen werden. 
+
 Folgende Extensions sind praktisch für die Entwicklung von Webapps mit VS Code:
 
     VS-Code:
@@ -31,9 +38,9 @@ Folgende Extensions sind praktisch für die Entwicklung von Webapps mit VS Code:
     - Live Server
 
 ## IntelliJ
-IntelliJ IDEA ist eine IDE für Softwareentwicklung, die von JetBrains entwickelt wurde. Es ist eine der beliebtesten IDEs für die Entwicklung von Java-Anwendungen, bietet jedoch auch Unterstützung für viele andere Programmiersprachen und Technologien wie Kotlin, Scala, Groovy, JavaScript, TypeScript, HTML, CSS, SQL etc.
+IntelliJ IDEA ist eine IDE für Softwareentwicklung, die von JetBrains entwickelt wurde. IntelliJ ist aufgrund seiner Versatilität eine der beliebtesten IDEs für die Entwicklung von Java-Anwendungen, bietet jedoch auch Unterstützung für viele andere Programmiersprachen und Technologien wie Kotlin, Scala, Groovy, JavaScript, TypeScript, HTML, CSS, SQL etc.
 
-IntelliJ kann man am besten über die JetBrains Toolbox herunterladen. https://www.jetbrains.com/lp/toolbox/
+IntelliJ kann man am besten über die JetBrains Toolbox herunterladen: https://www.jetbrains.com/lp/toolbox/
 
 ### Extensions (Plugins)
 Folgende Extensions sind praktisch für die Entwicklung von Webapps mit IntelliJ:
@@ -48,7 +55,7 @@ Folgende Extensions sind praktisch für die Entwicklung von Webapps mit IntelliJ
 ## Vim
 Vim steht für "**V**i **IM**proved" und ist ein erweiterter Texteditor, der auf dem älteren vi-Editor basiert. Es ist ein beliebter Texteditor unter Entwicklern und Systemadministratoren, der auf verschiedenen Betriebssystemen wie Linux, macOS und Windows verwendet werden kann. Vim zeichnet sich durch seine Effizienz, Flexibilität und Erweiterbarkeit aus.
 
-Für VS-Code muss man das Plugin `Vim` und für IntelliJ das Plugin `IdeaVim` installieren, damit man diesen Editor verwenden kann.
+Für VS-Code muss das Plugin `Vim` und für IntelliJ das Plugin `IdeaVim` installiert werden, damit dieser Editor verwendet werden kann.
 
 
 ## Live-Server
@@ -64,13 +71,15 @@ Live-Server erstellt einen einfachen Entwicklungsserver auf dem lokalen Rechner,
 
 Neben der Bereitstellung von HTML-, CSS- und JavaScript-Dateien unterstützt Live-Server auch das Laden von statischen Dateien wie Bildern, Schriftarten und anderen Ressourcen. Dadurch kann man die gesamte Webanwendung über den Entwicklungsserver verfügbar machen.
 
-Um eine Datei (z.B. eine HTML-Datei) via Live Server im Browser zu öffnen, tätige einen Rechtsklick auf die gewünschte Datei und klicke auf "Open with Live Server". Nun geht die gewünschte Seite im Browser auf und ist erreichbar via die URL "http://localhost:5500".
+Um eine Datei (z.B. eine HTML-Datei) via Live-Server im Browser zu öffnen, tätige einen Rechtsklick auf die gewünschte Datei und klicke auf "Open with Live Server". Nun geht die gewünschte Seite im Browser auf und ist erreichbar via die URL "http://localhost:5500".
 
-Ganz unten in VS Code siehst du nun einen versteckten Button mit der Aufschrift "Port 5500". Wenn du darauf klickst, beendest du den Live Server wieder. [Besser noch ein Bild hinzufügen]
+Ganz unten in VS Code siehst du nun einen versteckten Button mit der Aufschrift "Port 5500". Wenn du darauf klickst, beendest du den Live Server wieder.
+![live-server-button](./images/live-server-button.png)
+
 
 
 ### Live-Server in IntelliJ
-Wenn man jedoch IntelliJ als seine IDE wählt, kann man ähnlich wie bei VS Code einen Liv Server mittels Extension erhalten. Dazu muss mah jedoch die Extension LiveEdit installieren. Nach dem man es installiert hat muss man es noch ein wenig konfigurieren, dafür einfach in den Einstellungen auf "Build, Execution, Deployment" -> Debugger -> Live Edit.
+Wenn man jedoch IntelliJ als seine IDE wählt, kann man ähnlich wie bei VS Code einen Liv Server mittels Extension erhalten. Dazu muss jedoch die Extension "LiveEdit" installiert werden. Nachdem diese installiert wurde, müssen noch kleinere Konfigurationen vorgenommen werden, dazu muss auf die folgende Einstellung navigiert werden: "Build, Execution, Deployment" -> Debugger -> Live Edit.
 Dort muss man folgendes anpassen:
 * "Update Node.js application on changes in" Checkbox anwählen und Millisekunden auf 300ms ändern.
 * "Update application in Chrome on changes in" Checkbox anwählen und Millisekunden auf 300ms ändern.
@@ -78,24 +87,24 @@ Dort muss man folgendes anpassen:
 * "Track changes in files compiled to JavaScript, HTML or CSS" Checkbox anwählen.
 * "Restart if hotswap fails" Checkbox anwählen.
 
-Das gesamte nun sichern und danach kann es verwendet werden. Dazu muss man einfach den Debugger starten und ein Chromefernster öffnet sich. Man kann nun im Code Änderungen vornhemen solange man im Debugger ist und es wird live im Chromefenster aktualisiert.
+Diese Einstellungen müssen nun gespeichert werden, woraufhin der Live-Server wie gewünscht funktionieren sollte. Dazu muss man einfach den Debugger starten und ein Chrome-Fernster sollte sich öffnen. Man kann nun im Code Änderungen vornehmen, welche automatisch geupdated werden sollten.
 
 ![task1](/images/task.png) 15' - Einzelarbeit
 
-    Installiere die IDE, die genannten Extensions, und richte sie entsprechend deiner Präferenz ein.
+    Installiere die IDE und die genannten Extensions. Richte sie entsprechend deiner Präferenz ein.
 
 ## Git
-Git ist dir bereits bekannt ein Codeversionierungssystem, welches bei diesem Modul genutzt wird.
+Git ist dir bereits bekannt. Git ist ein Codeversionierungssystem, welches auch in diesem Modul genutzt wird.
 
 ![task2](/images/task.png) 5' - Einzelarbeit
     
     Installiere Git. Hierfür gibt es zwei Möglichkeiten:
     
-    1. Vielleicht klappt es unter Windows direkt mit diesem Kommandozeilenbefehl:
+    1. Eventuell klappt es unter Windows direkt mit diesem Kommandozeilenbefehl:
         
         winget install --id Git.Git -e --source winget
 
-    2. Ansonsten lade es unter folgendem Link herunter: https://git-scm.com/.
+    2. Ansonsten musst du Git unter folgendem Link herunterladen: https://git-scm.com/.
     
         Bei der Installation sind keine Anpassungen zwingend. Vielleicht helfen dir in Zukunft die "Components" "Windows Explorer integration - Git Bash Here" und "Add a Git Bash Profile to Windows Terminal". Ansonsten kannst du dich einfach durchklicken.
 
