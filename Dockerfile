@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.81.0-ext-ubuntu AS builder
+FROM hugomods/hugo:0.135.0 AS builder
 
 ARG HUGO_ENV=default
 
