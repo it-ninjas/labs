@@ -370,7 +370,7 @@ public class Auto {
 Die Umsetzung beider Beziehungen wird durch Instanzvariablen abgebildet, welche die entsprechenden
 Objekte aufnehmen.
 Ist bei einer Aggregation das verbundene Objekt nicht vorhanden, so wird der Instanzvariable der
-Wert null zugewiesen.
+Wert `null` zugewiesen.
 Wenn die Beziehung zwischen den Objekten mehrfach (1 zu n) vorhanden ist, so kann dafür ein Array
 oder auch eine Liste verwendet werden.
 
@@ -609,7 +609,7 @@ class Benutzer {
 
 In diesem Beispiel benötigt der Benutzer einen Drucker, um ein Dokument zu drucken, aber es gibt
 keine dauerhafte Beziehung, nur eine temporäre Verwendung.
-Es gibt also keine Instanzvariable des Typs `Drucker` in `Benutze`, sondern nur eine Methode mit
+Es gibt also keine Instanzvariable des Typs `Drucker` in `Benutzer`, sondern nur eine Methode mit
 einem Parameter `drucker`, welcher nur temporär existiert.
 
 ## Polymorphismus
@@ -1086,7 +1086,7 @@ Die Vererbung kann jedoch einige Probleme verursachen:
 - **Starre Hierarchie**: Vererbung schafft eine strenge Hierarchie, die oft unflexibel ist. Es wird schwieriger, neue Funktionalitäten hinzuzufügen, ohne bestehende Strukturen zu ändern. Dies kann gegen das Open-Closed-Prinzip (OCP) des SOLID-Designs verstossen.
 - **Übernutzung führt zu Zerbrechlichkeit**: Zu viel Vererbung kann zu fragilen und schwer wartbaren Codebasen führen. Änderungen in einer Oberklasse können unvorhergesehene Konsequenzen für alle abgeleiteten Klassen haben.
 
-Komposition
+**Komposition**
 
 Komposition hingegen bezieht sich auf die Praxis, eine Klasse durch den Einsatz anderer Klassen zu "
 komponieren", anstatt Vererbung zu verwenden. Das bedeutet, dass eine Klasse Objekte von anderen
