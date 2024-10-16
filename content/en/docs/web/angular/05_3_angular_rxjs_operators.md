@@ -19,7 +19,7 @@ RxJS bietet eine Vielzahl von Operatoren, die auf Observables angewendet werden 
 ## Piping
 
 Piping ist ein wichtiger Operator, der es ermöglicht, eine Observable-Kette zu erstellen, indem verschiedene Operatoren nacheinander angewendet werden. Der Piping-Operator wird verwendet, um die Lesbarkeit und Wartbarkeit von Observable-Ketten zu verbessern, indem man sie in kleinere und leichter zu verstehende Abschnitte unterteilt.
-Wie [map](../angular/05_3_angular_rxjs_operators#map) funktioniert kann man hier nachlesen.
+Wie [map](./05_3_angular_rxjs_operators#map) funktioniert kann man hier nachlesen.
 
 ```typescript
 import { of, map } from "rxjs";
@@ -411,7 +411,7 @@ source.pipe(first((x) => x > 3, null)).subscribe((value) => console.log(value));
 
 ### last
 
-Der `last` Operator funktioniert genau gleich wie der [first](../07_3_ts_operators#first) Operator. Nur das hier immer das letzte Element zurückgegeben wird.
+Der `last` Operator funktioniert genau gleich wie der [first](./07_3_ts_operators#first) Operator. Nur das hier immer das letzte Element zurückgegeben wird.
 
 ```typescript
 import { of } from "rxjs";
@@ -680,7 +680,7 @@ numbers.pipe(find((x) => x > 10)).subscribe(
 
 ### findIndex
 
-Der `findIndex` Operator gibt den Index des ersten Elements in eines Observables zurück, das die angegebene Bedingung erfüllt. Sie funktioniert ähnlich wie [find](../07_3_ts_operators#find), aber gibt den Index des Elements statt des Elements selbst zurück.
+Der `findIndex` Operator gibt den Index des ersten Elements in eines Observables zurück, das die angegebene Bedingung erfüllt. Sie funktioniert ähnlich wie [find](./07_3_ts_operators#find), aber gibt den Index des Elements statt des Elements selbst zurück.
 
 ```typescript
 import { findIndex, from } from "rxjs";

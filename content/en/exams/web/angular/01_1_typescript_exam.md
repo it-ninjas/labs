@@ -13,5 +13,4 @@ description: >
 TODO: Exam zu Typescript erstellen.
 
 # Zurück zur Theorie
-
-[Hier](../../../../docs/web/angular/03_1_intro_typescript) gelangst du zurück zur Theorie.
+[Hier](../../../docs/web/typescript/01_ts_intro_typescript.md) gelangst du zurück zur Theorie.

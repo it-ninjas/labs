@@ -10,7 +10,7 @@ description: >
 
 ## Control Flow
 
-Im Doc [Directives](../../angular/02_7_angular_directives) hast du die Directives `*ngIf`, `*ngFor`, usw. kennengelernt.
+Im Doc [Directives](./02_8_angular_directives) hast du die Directives `*ngIf`, `*ngFor`, usw. kennengelernt.
 In Angular 17 wurde nun ein Built-in Control Flow hinzugefügt, was bedeutet, dass Angular eine eigene Struktur für diese Operationen erstellt hat.
 Diese Control Flows können in jedem Template (HTML) eingesetzt werden und lösen ab sofort die bisherigen Directives ab.
 

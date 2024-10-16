@@ -21,9 +21,9 @@ Folgende sieben Decorators sind in Angular die meistverwendeten:
 
 - `@Component`: Der @Component-Decorator wird verwendet, um den Component zu definieren.
 
-- `@Directive`: Der @Directive-Decorator wird verwendet, um eine [Directives](../02_7_angular_directives) zu definieren.
+- `@Directive`: Der @Directive-Decorator wird verwendet, um eine [Directives](./02_8_angular_directives) zu definieren.
 
-- `@Injectable`: Der @Injectable-Decorator wird verwendet, um einen [Service](../02_8_angular_services) zu definieren, er wird aber auch bei [Dependency Injection](../02_14_angular_dependency_injection) verwendet.
+- `@Injectable`: Der @Injectable-Decorator wird verwendet, um einen [Service](./02_10_angular_services) zu definieren, er wird aber auch bei [Dependency Injection](./02_17_angular_dependency_injection) verwendet.
 
 - `@Input`: Der @Input-Decorator wird verwendet, um eine Eingabeeigenschaft in eines Components oder Directive zu definieren.
 
