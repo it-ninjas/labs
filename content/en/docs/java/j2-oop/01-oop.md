@@ -241,9 +241,7 @@ sind (dazu unten mehr), können wir mittels Punkt-Operator auf die Variablen des
 
 ```java
 System.out.println(patient.name); // es wird null ausgeben
-System.out.
-
-println(patient.age);  // es wird 0 ausgeben
+System.out.println(patient.age);  // es wird 0 ausgeben
 ```
 
 Das folgende Programm erstellt zwei Objekte der Klasse Patient und druckt die Informationen der
