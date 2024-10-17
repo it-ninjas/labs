@@ -6,24 +6,8 @@ on:
       - feature/*  # Set a branch to deploy
 
 jobs:
-  test:
-    name: 'Test Compilation'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive  # Fetch the Docsy theme
-          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.135.0'
-          extended: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
-
-      - run: npm ci
-      - run: npm -g install postcss-cli
-      - run: hugo --minify --environment production
+  test-compilation:
+    uses: ./.github/workflows/build.yml
+    with: 
+      upload-artifact: true
+      artifact-name: quality-check-build
