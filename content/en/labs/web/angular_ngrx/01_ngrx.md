@@ -15,10 +15,10 @@ description: >
 Als Beispiel zur Verwendung von NgRx, setzen wir ein neues Angular-projekt auf und schreiben eine Anwendung mit einem Counter, der Inkrementier, Dekrementiert und Resettet werden kann.
 
 ### Einrichten
-Als Erstes muss man ein neues Angular Projekt [aufsetzen](../../../docs/web/angular/03_1_ts_einführung_angular#angular-projekt-aufsetzen).
-Als Erstes muss man ein neues Angular Projekt [aufsetzen](../../../docs/web/angular/03_1_ts_einführung_angular#angular-projekt-aufsetzen).
 
-Danach NgRx [installieren](../../../docs/web/angular/08_1_ts_ngrx#installation).
+Als Erstes muss man ein neues Angular Projekt [aufsetzen](../../../docs/web/angular/02_1_angular_einführung.md#angular-projekt-aufsetzen).
+
+Danach NgRx [installieren](../../../docs/web/angular_ngrx/01_angular_ngrx.md#installation).
 
 Nun erstellt man der Übersicht halber noch zwei Ordner names actions und reducers. Darin werden dann alle Actions und Reducer erstellt.
 

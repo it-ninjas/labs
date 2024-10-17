@@ -116,7 +116,7 @@ public class Store {
 
 In diesem Beispiel wird die Bean `item1` injektiert.
 
-Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu [hier](#bean).
+Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu [hier](#beans).
 
 ##### Felder Injection
 

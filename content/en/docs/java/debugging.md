@@ -39,11 +39,11 @@ Die Optionen zeigen folgende zwei Breakpoints:
 
 Um weitere Arten von Breakpoints zu definieren, muss man in der Auswahl den Conditional Breakpoint auswählen und anschliessend auf `more` klicken.
 
-![IntelliJ zeigt nun mehr Optionen](../debugging/debugging-breakpoint-more-options.png "Conditional Breakpoint Optionen VS Code")
+![IntelliJ zeigt nun mehr Optionen](../debugging/debugging-conditional-breakpoint-intelliJ.png "Conditional Breakpoint Optionen IntelliJ Code")
 
 Es öffnet sich ein Pop-Up, in welchem man weitere Möglichkeiten hat um Breakpoints zu definieren.
 
-![IntelliJ öffnet ein erweitertes Breakpoint Menü](../debugging/debugging-log-breakpoint.png "Conditional Breakpoint Optionen VS Code")
+![IntelliJ öffnet ein erweitertes Breakpoint Menü](../debugging/debugging-conditional-breakpoint-extend-intelliJ.png "Conditional Breakpoint Optionen IntelliJ Code")
 
 Hier kann beispielsweise, wie im Bild ersichtlich, einen Log definieren, so fungiert der Breakpoint zusätzlich als System.out.println(). Man kann auch einstellen, dass der Breakpoint entfernt werden soll, sobald er einmal aufgerufen wurde. Oder dass er solang inaktiv sein soll bis ein anderer Breakpoint ausgelöst wurde.
 

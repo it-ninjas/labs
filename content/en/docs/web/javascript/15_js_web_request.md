@@ -208,7 +208,7 @@ function fetchJoke() {
 
 Ganz generell: Bei der Verwendung von `fetch()` kann man darüber philosophieren, ob man `fetch()` überhaupt in einen `try`-`catch`-Block schmeissen soll. In den meisten Fällen reicht es vollkommen aus, die `response` auf den Status-Code zu überprüfen. In Frameworks wie Angular wird oft auf einen `try`-`catch`-Block verzichtet, da das Framework einen "globalen Exception-Handler" besitzt, der den User dann über den Fehler informieren würde.
 
-![asset](/images/hint.png) Hierzu findest du [zwei Aufgaben im Lab](../../../../labs/web/html_css/03_javascript).
+![asset](/images/hint.png) Hierzu findest du [zwei Aufgaben im Lab](../../../labs/web/javascript/01_javascript.md).
 
 ### Früher war alles besser?
 

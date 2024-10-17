@@ -8,10 +8,10 @@ Nachdem du die Basics von git gelernt hast, ist es Zeit dich weiter zu vertiefen
 
 ## Inhalt
 
-- [Stash](#Stash)
-- [Cherry Pick](#CherryPick)
-- [Tag](#Tag)
-- [Alias](#Alias)
+- [Stash](#stash)
+- [Cherry Pick](#cherry-pick)
+- [Tag](#tag)
+- [Alias](#alias)
 
 ### Ziele
 
