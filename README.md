@@ -97,14 +97,44 @@ docker run \
   server -p 8080 --bind 0.0.0.0
 ```
 
+### Linting of Markdown content
+
+Markdown files are linted with [prettier](https://prettier.io/docs/en/options).
+It can be configured with [.prettierrc](.prettierrc) and [.prettierignore](.prettierignore).
+
+Locally it should be executed before each commit with a pre-commit hook, managed by [husky](https://typicode.github.io/husky/).
+If you want to run it manually, you can do so from the commandline:
+
+```bash
+npm install
+npm run format
+```
+
+### Test for broken links
+
+The fully builded Hugo site (meaning the generated `./public` directory) can automatically scanned for broken links. The tool used is [htmltest](https://github.com/wjdp/htmltest). To check manually install htmltest and then run:
+
+```bash
+htmltest
+```
+
+The test is configured with the options in [.htmltest.yml](./.htmltest.yml). All the config options are available [here](https://github.com/wjdp/htmltest#wrench-configuration). 
+
 ## Github Actions
 
+### Quality
+The [quality action](.github/workflows/quality.yml) is fired on each push. It does the following:
+* build the Hugo site
+* test if the linting is OK
+* test if any broken links are present in the generated HTML
 
 ### Test
 
 The [test action](.github/workflows/test.yml) is fired on each push to a feature branch and does the following:
 
 * builds the Hugo site
+
+
 
 
 ### Push Main

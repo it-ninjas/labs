@@ -7,6 +7,7 @@ menu:
 ---
 
 ## Übersicht Ausbildungsprogramm
+
 [![Ausbildungsprogramm Übersicht](../docs/overview/ausbildungsprogramm_uebersicht.png)](../docs/overview/ausbildungsprogramm_uebersicht.png)
 
 Das Ausbildungsprogramm 2024/2025 besteht aus diversen einzelnen Ausbildungs-Modulen.
@@ -18,6 +19,7 @@ Er wird dir Feedback geben und dir idealerweise die Freigabe für das nächste M
 Gewisse Module bieten freiwillige Challenges an, bei denen du dein Wissen mit anderen messen kannst.
 
 Das Ziel des technischne Ausbildungsprogramms ist
+
 - das Erlernen der Programmiersprache Java
 - das Erwerben von Kenntnissen zu Maven und Testing
 - das Erwerben von Kenntnissen zum Spring Framework und zu Spring Boot

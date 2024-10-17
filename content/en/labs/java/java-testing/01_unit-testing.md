@@ -6,10 +6,13 @@ weight: 1
 description: >
   Aufgaben zu Modul #J4 - Unit Testing / JUnit
 ---
+
 Die folgenden Aufgaben bestehen darin für bestehende Programmlogik entsprechende Unit-Tests zu schreiben.
 
 ### Aufgabe 1: Tageszeit
+
 Schreibe Unit-Tests, um die Logik der folgenden Methode zu testen:
+
 ```java
 import java.time.LocalDateTime;
 
@@ -29,8 +32,10 @@ public class TimeOfDay {
 }
 ```
 
-### Aufgabe 2 
+### Aufgabe 2
+
 Schreibe Unit-Tests, um die Methode **move** zu testen:
+
 ```java
 public class Mover {
     private LocalDateTime lastMovingTime;
@@ -56,7 +61,7 @@ public class Mover {
         EAST,
         SOUTH,
         WEST;
-        
+
         public static Direction getOpposite(Direction direction) {
             switch (direction) {
                 case NORTH -> {
@@ -77,9 +82,11 @@ public class Mover {
     }
 }
 ```
+
 Falls du meinst, dass es unmöglich ist diese Methode genau zu testen. Schreibe die Methode um, damit sie einfacher zu testen ist. Benutze dazu ein Clock-Objekt. Weitere Informationen findest du [hier](https://www.baeldung.com/java-override-system-time).
 
 ### Aufgabe 3
+
 In dieser Aufgabe geht es darum, dass die Unit-Tests für eine bestimmte Methode schon geschrieben wurden. Die Methode muss nun implementiert werden, so dass sie alle Unit-Tests erfüllt. Arbeite dich von Test zu Test durch.
 
 **Test Source**
@@ -140,6 +147,7 @@ public class PasswordValidatorTest {
 ```
 
 **Source**
+
 ```java
 public class PasswordValidator {
     public boolean isPasswordValid(String password) {
@@ -152,4 +160,5 @@ public class PasswordValidator {
 Wenn du eine Lösung gefunden hast, dann kannst du diese noch aufräumen (Refactoring).
 
 ---
+
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-testing/#junit).

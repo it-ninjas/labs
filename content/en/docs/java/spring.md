@@ -8,24 +8,24 @@ description: >
 
 #### Ziele
 
-* Ich kann am Beispiel Spring erklären, was ein "Framework" ausmacht, indem ich Unterschiede zu einer gewöhnlichen externen Library aufzählen kann.
-* Ich kenne einige Vor- und Nachteile aufzählen, wenn ein Frameworks im Projekt eingesetzt wird.
-* Ich kann erläutern, welche Zuständigkeiten die folgenden Module im Spring-Framework haben: Core, Data-Access, Web.
+- Ich kann am Beispiel Spring erklären, was ein "Framework" ausmacht, indem ich Unterschiede zu einer gewöhnlichen externen Library aufzählen kann.
+- Ich kenne einige Vor- und Nachteile aufzählen, wenn ein Frameworks im Projekt eingesetzt wird.
+- Ich kann erläutern, welche Zuständigkeiten die folgenden Module im Spring-Framework haben: Core, Data-Access, Web.
   welche Aufgaben sie erfüllen.
-* Ich bin mit den bedeutendsten Spring-Projekten (Spring-Boot, Spring-Cloud, Spring-Security) vertraut, und kann erklären, wann welche eingesetzt werden. 
+- Ich bin mit den bedeutendsten Spring-Projekten (Spring-Boot, Spring-Cloud, Spring-Security) vertraut, und kann erklären, wann welche eingesetzt werden.
   und weiss wofür ich diese einsetzen kann.
-* Ich verstehe das Konzept hinter "Inversion of Control" (IoC), indem ich erklären kann, auf welche Art und Weise es in Spring eingesetzt wird.
-* Ich kann mind. 2 Arten auflisten, wie "Dependency-Injection" (DI) dazu verwendet werden kann, um Variablen automatisch einen Wert zuzuweisen.```
+- Ich verstehe das Konzept hinter "Inversion of Control" (IoC), indem ich erklären kann, auf welche Art und Weise es in Spring eingesetzt wird.
+- Ich kann mind. 2 Arten auflisten, wie "Dependency-Injection" (DI) dazu verwendet werden kann, um Variablen automatisch einen Wert zuzuweisen.```
   Constructor-Based, Setter-Based, Field-Based) um DI in Spring zu benutzen.
-* Ich kann das Konzept hinter `@Bean`s in Spring skizzieren und ich kann erläutern, wie `@Bean`s definiert und verwendet werden können.
-* Ich kann den Scopes einer "Spring-Beans" ändern. (z.B. Singleton, Session, Application
+- Ich kann das Konzept hinter `@Bean`s in Spring skizzieren und ich kann erläutern, wie `@Bean`s definiert und verwendet werden können.
+- Ich kann den Scopes einer "Spring-Beans" ändern. (z.B. Singleton, Session, Application
   usw.).
-* Ich kenne die am häufigsten verwendeten Spring-Bean-Annotationen `@Service`, `@Configuration`,
+- Ich kenne die am häufigsten verwendeten Spring-Bean-Annotationen `@Service`, `@Configuration`,
   `@Component`, `@Repository`, `@Controller` und weiss, wie ich diese einsetze und welchem Zweck sie
   dienen.
-* Ich weiss, was "Wiring" ist und wie es in Spring gemacht wird.
-* Ich kann in Spring-Projekten sogenannte Properties setzen und abfragen.
-* Ich kenne Anwendungsfälle, in welchen Spring-Profiles verwendet werden und wie ich sie setzen kann.
+- Ich weiss, was "Wiring" ist und wie es in Spring gemacht wird.
+- Ich kann in Spring-Projekten sogenannte Properties setzen und abfragen.
+- Ich kenne Anwendungsfälle, in welchen Spring-Profiles verwendet werden und wie ich sie setzen kann.
 
 ---
 
@@ -36,13 +36,13 @@ Es stellt Funktionen, Bibliotheken und Regeln bereit, um den Entwicklungsprozess
 
 ## Spring Framework
 
-Das Spring Framework ist eine umfassende Plattform, die weit über die Entwicklung einfacher Web-Applikationen 
-hinausgeht. Sie bietet ein breites Spektrum an Funktionalitäten und Unterstützung für die Entwicklung von 
+Das Spring Framework ist eine umfassende Plattform, die weit über die Entwicklung einfacher Web-Applikationen
+hinausgeht. Sie bietet ein breites Spektrum an Funktionalitäten und Unterstützung für die Entwicklung von
 Enterprise-Anwendungen, Webanwendungen und Microservices.
 
 ### Module
 
-Das Spring-Framework besteht aus verschiedenen Modulen, die unterschiedliche Aufgaben erfüllen und in Kategorien wie 
+Das Spring-Framework besteht aus verschiedenen Modulen, die unterschiedliche Aufgaben erfüllen und in Kategorien wie
 Core, Data Access, Web usw. organisiert sind.
 
 [comment]: <> (Bildlink funktioniert auf website, nicht in md!)
@@ -51,11 +51,11 @@ Core, Data Access, Web usw. organisiert sind.
 
 Quelle: https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png
 
-Das Core-Modul umfasst essenzielle Funktionen wie Dependency Injection. Das Beans-Modul beinhaltet alles, was zur 
+Das Core-Modul umfasst essenzielle Funktionen wie Dependency Injection. Das Beans-Modul beinhaltet alles, was zur
 Erstellung von Beans benötigt wird.
 
-Das JDBC-Modul bietet ein JDBC-Interface für den Datenbankzugriff. Das ORM-Modul ermöglicht den Zugriff auf 
-Object-Mapping-APIs wie JPA, JDO, Hibernate. Das OXM-Modul ermöglicht den Zugriff auf 
+Das JDBC-Modul bietet ein JDBC-Interface für den Datenbankzugriff. Das ORM-Modul ermöglicht den Zugriff auf
+Object-Mapping-APIs wie JPA, JDO, Hibernate. Das OXM-Modul ermöglicht den Zugriff auf
 Objekt/XML-Speicher-Implementierungen.
 
 Das Web-Modul ist für die Kommunikation mit der Außenwelt (Internet) verantwortlich.
@@ -65,34 +65,36 @@ Weitere Informationen finden sich in der offiziellen
 
 ### Spring Projekte
 
-Es gibt verschiedene Spring-Projekte, die auf dem Spring Framework aufbauen und dessen Anwendungsmöglichkeiten 
-erweitern. Zu diesen gehören z. B. Spring Security, Spring Shell, Spring Boot, die jeweils spezifische 
+Es gibt verschiedene Spring-Projekte, die auf dem Spring Framework aufbauen und dessen Anwendungsmöglichkeiten
+erweitern. Zu diesen gehören z. B. Spring Security, Spring Shell, Spring Boot, die jeweils spezifische
 Funktionalitäten bereitstellen.
 
 Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
-
 #### Spring Boot
 
-[Spring Boot](./spring-boot.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie 
-Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des 
-Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die 
+[Spring Boot](./spring-boot.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
+Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des
+Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die
 Konfiguration.
 
 ## Design-Pattern
-Design-Patterns sind wiederverwendbare Vorlagen für die Anwendungsentwicklung und sind nicht spezifisch für eine 
-Programmiersprache. Es gibt verschiedene Arten, z. B. Kreationsmuster, Strukturmuster und Verhaltensmuster, die auch in 
+
+Design-Patterns sind wiederverwendbare Vorlagen für die Anwendungsentwicklung und sind nicht spezifisch für eine
+Programmiersprache. Es gibt verschiedene Arten, z. B. Kreationsmuster, Strukturmuster und Verhaltensmuster, die auch in
 Spring genutzt werden.
 
 ### Inversion of Control (IoC)
+
 Inversion of Control (IoC) ist ein Prinzip, das vereinfacht gesagt den Kontroll-Fluss umkehrt. Das Ziel dabei ist es, eine lose Kopplung zu erreichen, wodurch der Code einfacher testbar, wartbarer und erweiterbarer wird.
 
 IoC wird in Spring durch "Dependency Injection" erreicht, was im nächsten Kapitel vorgestellt wird. Dabei werden Abhängigkeiten wie Variablen von einer anderen Klasse durch Spring automatisch erstellt und "injektiert" (eingefügt), statt dass man sich selbst darum kümmern und Objekte selbst erstellen muss.
 Zuständigkeiten getrennt werden. Spring nutzt dieses Prinzip.
 
 ### Dependency Injection (DI)
-DI bezeichnet die Weitergabe einer Abhängigkeit an ein Objekt. Spring verwendet einen Inversion-of-Control-Container, 
-um zu bestimmen, wie und wo die Injektion erfolgt. Es gibt verschiedene Orte im Code, wo DI eingesetzt werden kann. Es gibt die Konstruktor-, 
+
+DI bezeichnet die Weitergabe einer Abhängigkeit an ein Objekt. Spring verwendet einen Inversion-of-Control-Container,
+um zu bestimmen, wie und wo die Injektion erfolgt. Es gibt verschiedene Orte im Code, wo DI eingesetzt werden kann. Es gibt die Konstruktor-,
 Setter- und Feld-basierte Injection.
 
 ##### Konstruktor Injection
@@ -114,8 +116,7 @@ public class Store {
 
 In diesem Beispiel wird die Bean `item1` injektiert.
 
-Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu [hier](#bean).
-
+Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu [hier](#beans).
 
 ##### Felder Injection
 
@@ -131,18 +132,16 @@ public class Store {
 
 Ein Nachteil der Field-Injection ist, dass es im Gegensatz zur Konstruktor-Injection nicht möglich ist, alle Instanzvariablen mit `final` zu deklarieren.
 
-
 ### Singleton
 
-Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring 
-können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, dass dies innerhalb des Spring-Containers 
+Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring
+können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, dass dies innerhalb des Spring-Containers
 gilt, nicht systemweit.
-
 
 ### Beans
 
-Beans sind Kernkomponenten in der Spring-Welt. Sie repräsentieren die grundlegenden Bausteine, die vom Spring 
-IoC-Container verwaltet werden. Diese Container verwalten die Lebenszyklen der Beans, wodurch ihre Erstellung, 
+Beans sind Kernkomponenten in der Spring-Welt. Sie repräsentieren die grundlegenden Bausteine, die vom Spring
+IoC-Container verwaltet werden. Diese Container verwalten die Lebenszyklen der Beans, wodurch ihre Erstellung,
 Initialisierung, Verwendung und Entsorgung standardisiert werden.
 
 #### Erstellung von Beans
@@ -179,7 +178,7 @@ Beans haben verschiedene Scopes, die ihr Lebenszyklus bestimmen:
 
 #### Verwendung von Beans
 
-Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer 
+Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer
 Anwendung zu verwalten. Dies geschieht via Dependency Injection:
 
 ```java
@@ -199,9 +198,9 @@ Hier wird `ExampleRepository` als Abhängigkeit von `ExampleService` injiziert. 
 
 Beans sind flexibel, wiederverwendbar und ermöglichen die Modularität von Anwendungen.
 
-
 In der folgenden offiziellen Dokumentation zu der `@Bean`-Annotation findest du weitere Beispiele, wie Beans verwendet werden:
-* [Using the Bean Annotation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation)
+
+- [Using the Bean Annotation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation)
 
 ##### Scope
 
@@ -209,17 +208,16 @@ Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird.
 
 Hier eine Liste der Scopes:
 
-| Scope       | Beschreibung                                                                                   |
-|-------------|------------------------------------------------------------------------------------------------|
-| singleton (Standard) | Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur **eine** Bean-Instanz in jedem IoC-Container.  Mehr [hier](#singleton). |
-| prototype   | Erstellt bei jeder Abhängigkeit eine neue Bean-Instanzen.                                            |
-| request     | Erstellt für jeden HTTP Request eine Bean Instanz.                                             |
-| session     | Erstellt für jede HTTP `Session` eine Bean Instanz.                                            |
-| application | Erstellt für jeden `ServetContext` eine Bean Instanz.                                          |
-| websocket   | Erstellt für jeden `WebSocket` eine Bean Instanz.                                              |
+| Scope                | Beschreibung                                                                                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| singleton (Standard) | Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur **eine** Bean-Instanz in jedem IoC-Container. Mehr [hier](#singleton). |
+| prototype            | Erstellt bei jeder Abhängigkeit eine neue Bean-Instanzen.                                                                                                                             |
+| request              | Erstellt für jeden HTTP Request eine Bean Instanz.                                                                                                                                    |
+| session              | Erstellt für jede HTTP `Session` eine Bean Instanz.                                                                                                                                   |
+| application          | Erstellt für jeden `ServetContext` eine Bean Instanz.                                                                                                                                 |
+| websocket            | Erstellt für jeden `WebSocket` eine Bean Instanz.                                                                                                                                     |
 
 Die beiden wichtigsten Scopes sind `singleton` und `prototype`.
-
 
 Der Scope wird durch die `@Scope` Annotation festgelegt.  
 Hier ein Beispiel:
@@ -239,13 +237,15 @@ Weitere Information
 hier: https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes
 
 ### REST
+
 REST hat neu ein eigenes ausführliches Kapitel, welches [hier](rest-endpoints.md) zu finden ist.
 
 Hier jedoch eine kurze Übersicht der REST-Methoden:
-* GET: Wird genutzt, um Daten von einem bestimmten Ort abzurufen. Beispielsweise das Abrufen von Informationen über Benutzerprofile einer Social-Media-Plattform.
-* POST: Um neue Daten an den Server zu senden, beispielsweise beim Ausfüllen eines Formulars und Absenden der Informationen.
-* PUT: Zum Aktualisieren von bestehenden Ressourcen, indem neue Daten an einen bestimmten Ort gesendet werden.
-* DELETE: Wird genutzt, um eine spezifische Ressource auf dem Server zu entfernen, wie das Löschen eines Benutzerkontos von einer Plattform.
+
+- GET: Wird genutzt, um Daten von einem bestimmten Ort abzurufen. Beispielsweise das Abrufen von Informationen über Benutzerprofile einer Social-Media-Plattform.
+- POST: Um neue Daten an den Server zu senden, beispielsweise beim Ausfüllen eines Formulars und Absenden der Informationen.
+- PUT: Zum Aktualisieren von bestehenden Ressourcen, indem neue Daten an einen bestimmten Ort gesendet werden.
+- DELETE: Wird genutzt, um eine spezifische Ressource auf dem Server zu entfernen, wie das Löschen eines Benutzerkontos von einer Plattform.
 
 > Hinweis: Eigentlich ist REST _kein_ Designpattern, jedoch hat es Ähnlichkeiten dazu.
 
@@ -255,11 +255,11 @@ Hier jedoch eine kurze Übersicht der REST-Methoden:
 
 Die Meisten modernen Webapplikationen bestehen aus 3 Schichten:
 
-| Layer                 | Beschreibung                                                                                                          |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Boundary (Grenze)     | Auf dieser Schicht wird die Kommunikation mit der Aussenwelt abgewickelt.                                             |
-| Control (Verwaltung)  | Auf dieser Schicht sind alle Klassen und deren Logik.                                                                 |
-| Entity (Speicher)     | Auf dieser Schicht wird alles abgewickelt, was mit Datenspeicherung und Auslesung zu tun hat (z.B. mit Repositories). |
+| Layer                | Beschreibung                                                                                                          |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Boundary (Grenze)    | Auf dieser Schicht wird die Kommunikation mit der Aussenwelt abgewickelt.                                             |
+| Control (Verwaltung) | Auf dieser Schicht sind alle Klassen und deren Logik.                                                                 |
+| Entity (Speicher)    | Auf dieser Schicht wird alles abgewickelt, was mit Datenspeicherung und Auslesung zu tun hat (z.B. mit Repositories). |
 
 Spring hat verschiedene Annotationen für verschiedene Aufgaben. Mit der `@Component` Annotation wird
 eine generische Spring Komponente dargestellt. Alle anderen Annotationen sind ebenfalls Komponenten.
@@ -270,6 +270,7 @@ der Aussenwelt zu tun haben definiert. In der `@Service` Annotation werden Kompo
 tun haben definiert.
 
 ### Die Schichten (Layer) in Spring
+
 #### Boundary Layer
 
 In diesem Layer definieren wir unsere REST Ressourcen. Hier ein Beispiel einer Order-Klasse in einem
@@ -281,31 +282,31 @@ Webshop:
 @RequestMapping("/orders")
 public class OrderResource {
     private final OrderService orderService;
-    
+
     public OrderResource(OrderService orderService) {
         this.orderService = orderService;
     }
-    
+
     @GetMapping
     public List<Order> findAll() {
         return orderService.findAll();
     }
-    
+
     @GetMapping("/{id}")
     public Order findById(@PathVariable Long id) {
         return orderService.findById(id).orElseThrow(EntityNotFoundException::new);
     }
-    
+
     @PostMapping
     public Order save(@RequestBody Order order) {
         return orderService.save(order);
     }
-    
+
     @PutMapping("/{id}")
     public Order update(@PathVariable Long id, @RequestBody Order order) {
         return orderService.update(id, order);
     }
-    
+
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         orderService.delete(id);
@@ -431,12 +432,12 @@ Spring lädt die Konfiguration von einer Datei mit dem Namen `application.proper
 
 Folgende 5 Konfigurationen werden oft im Zusammenhang mit Datenbanken benötigt:
 
-| Konfiguration                         | Beschreibung                                                                                      |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `spring.datasource.url`               | gibt die URL der Datenbank an (Format:`jdbc:[datenbanktyp]://[server]:[port]/[datenbank]`)        |
-| `spring.datasource.username`          | gibt den Benutzername an, mit dem die Verbindung zur Datenbank aufgebaut werden soll.             |
-| `spring.datasource.password`          | gibt das Passwort der Datenbank an.                                                               |
-| `spring.datasource.driver-class-name` | gibt an, welcher Datenbanktreiber verwendet wird (muss als Maven-Dependency hinzugefügt werden)   |
+| Konfiguration                         | Beschreibung                                                                                                                                                                                                                                                                                 |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `spring.datasource.url`               | gibt die URL der Datenbank an (Format:`jdbc:[datenbanktyp]://[server]:[port]/[datenbank]`)                                                                                                                                                                                                   |
+| `spring.datasource.username`          | gibt den Benutzername an, mit dem die Verbindung zur Datenbank aufgebaut werden soll.                                                                                                                                                                                                        |
+| `spring.datasource.password`          | gibt das Passwort der Datenbank an.                                                                                                                                                                                                                                                          |
+| `spring.datasource.driver-class-name` | gibt an, welcher Datenbanktreiber verwendet wird (muss als Maven-Dependency hinzugefügt werden)                                                                                                                                                                                              |
 | `spring.jpa.hibernate.ddl-auto`       | beschreibt, wie Spring mit der Datenbank umgehen soll. `update` z.B. sorgt dafür, dass fehlende Spalten oder dergleichen automatisch erstellt werden und dass nie Sachen gelöscht werden. `create-drop` erstellt die Datenbank und löscht die Objekte nachher. `none` belässt die Datenbank. |
 
 Hier ist eine beispiel Konfiguration mit einer Mariadb Datenbank:
@@ -460,17 +461,17 @@ und welche Resultate wir erwarten können.
 ```java
 public interface ArticleRepository {
     List<Article> readAll();
-    
+
     List<Article> readLatest();
-    
+
     List<Article> readByTags(Tag... tags);
-    
+
     Article readById(long id);
-    
+
     Article create(Article article);
-    
+
     Article update(Article article);
-    
+
     Article delete(Article article);
 }
 ```
@@ -512,13 +513,13 @@ public class Demo {
     public String defaultString() {
         return "Standard Profil";
     }
-    
+
     @Bean
     @Profile("test | test2")
     public String testString() {
         return "Test Test";
     }
-    
+
     @Bean
     @Profile("!(default | test | test2)")
     public String rewoltString() {

@@ -6,6 +6,7 @@ description: >
 ---
 
 ## Inhalt
+
 Dieser Bereich ermöglicht dir das Erlernen der Java-Programmiersprache von Grund auf.
 Nach der Einrichtung der Entwicklungsumgebung lernst du die Basics von Java kennen.
 Die objektorienterte Programmierung bringt dich tiefer in die Möglichkeiten von Java hinein.

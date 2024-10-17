@@ -4,19 +4,20 @@ linkTitle: "Git Basics"
 weight: 3
 ---
 
-Git kann auf unterschiedliche Arten eingesetzt werden, es gibt graphische Oberflächen und die meisten Git-Server Software bieten Weboberflächen, welche das interagieren mit Git Repositories kinderleicht gestalten. Da diese Oberflächen meist sehr Produktspezifisch sind und oft auch nicht alle Funktionen beinhaltet werden hier nur die Kommandozeilen Befehle angeschaut. Ausserdem empfiehlt es sich mit git auf der Kommandozeile zu starten da es so viel verständlicher ist. 
+Git kann auf unterschiedliche Arten eingesetzt werden, es gibt graphische Oberflächen und die meisten Git-Server Software bieten Weboberflächen, welche das interagieren mit Git Repositories kinderleicht gestalten. Da diese Oberflächen meist sehr Produktspezifisch sind und oft auch nicht alle Funktionen beinhaltet werden hier nur die Kommandozeilen Befehle angeschaut. Ausserdem empfiehlt es sich mit git auf der Kommandozeile zu starten da es so viel verständlicher ist.
 
 ## Inhalt
 
-* [Konfiguration von Git](#konfiguration-von-git)
-* [Hilfe](#hilfe)
-* [Ein Git Repository anlegen](#ein-git-repository-anlegen)
-* [Änderungen verfolgen und im Repository speichern](#änderungen-verfolgen-und-im-repository-speichern)
-* [Anzeigen der Commit Historie](#anzeigen-der-commit-historie)
-* [Änderungen rückgängig machen](#änderungen-rückgängig-machen)
-* [Mit Remotes arbeiten](#mit-remotes-arbeiten)
+- [Konfiguration von Git](#konfiguration-von-git)
+- [Hilfe](#hilfe)
+- [Ein Git Repository anlegen](#ein-git-repository-anlegen)
+- [Änderungen verfolgen und im Repository speichern](#änderungen-verfolgen-und-im-repository-speichern)
+- [Anzeigen der Commit Historie](#anzeigen-der-commit-historie)
+- [Änderungen rückgängig machen](#änderungen-rückgängig-machen)
+- [Mit Remotes arbeiten](#mit-remotes-arbeiten)
 
 ## Ziele
+
 - Ich weiss wie ich ein eigenes Git-Repository anlege.
 - Ich verstehe wie und warum eine .gitignore Datei genutzt wird.
 - Ich kann git commit, push, fetch und pull in den richtigen Situationen anwenden.
@@ -25,9 +26,9 @@ Git kann auf unterschiedliche Arten eingesetzt werden, es gibt graphische Oberfl
 
 Git kann, wie viele Softwares unter Linux, auf unterschiedlichen Levels konfiguriert werden:
 
-* `/etc/gitconfig` enthält die Werte, welche für alle Benutzer auf dem System gelten. Die Datei kann mit `git config --system` gelesen oder editiert werden. Man braucht Administrator- oder Superuser-Rechte um die Datei zu editieren.
-* `~/.gitconfig` oder `~/.config/git/config` enthält die Werte, welche für den aktuellen Benutzer konfiguriert sind. Mit `git config --global` können Werte gesetzt oder ausgelesen werden.
-* Die Datei `config` im `.git` Verzeichnis innerhalb eines Repositories enthält die Konfiguration, welche nur für dieses Repository zählt. Das Flag für `git config` ist in diesem Fall `--local`, ist jedoch in der Regel die Standardoption und kann weggelassen werden.
+- `/etc/gitconfig` enthält die Werte, welche für alle Benutzer auf dem System gelten. Die Datei kann mit `git config --system` gelesen oder editiert werden. Man braucht Administrator- oder Superuser-Rechte um die Datei zu editieren.
+- `~/.gitconfig` oder `~/.config/git/config` enthält die Werte, welche für den aktuellen Benutzer konfiguriert sind. Mit `git config --global` können Werte gesetzt oder ausgelesen werden.
+- Die Datei `config` im `.git` Verzeichnis innerhalb eines Repositories enthält die Konfiguration, welche nur für dieses Repository zählt. Das Flag für `git config` ist in diesem Fall `--local`, ist jedoch in der Regel die Standardoption und kann weggelassen werden.
 
 Jede dieser Konfiguration wird von der nächsten überschrieben, sodass die Repository-bezogene Konfiguration den höchsten Wert hat. Um die aktuelle Konfiguration und ihren Ursprung anzusehen kann folgender Befehl ausgeführt werden:
 
@@ -125,8 +126,8 @@ Other
 
 Um lokal ein neues Git Repository anzulegen gibt es zwei Varianten:
 
-* Umwandeln eines Verzeichnis, welches (noch) nicht mit Git verwaltet wird zu einem Git Repository.
-* Klonen eines existierenden Repositories von einem anderen Ort.
+- Umwandeln eines Verzeichnis, welches (noch) nicht mit Git verwaltet wird zu einem Git Repository.
+- Klonen eines existierenden Repositories von einem anderen Ort.
 
 ### Ein Verzeichnis zu einem Git Repository verwandeln
 
@@ -167,10 +168,10 @@ mylibgit
 
 Zur Erinnerung, eine Datei in einem Git Folder kann vier Zustände haben:
 
-* Untracked: Die Datei liegt im Ordner, wird aber nicht von Git versioniert.
-* Unmodified: Die Datei wird von Git versioniert, sie ist seit dem letzten Commit unverändert.
-* Modified: Die Datei wurde seit dem letzten Commit verändert.
-* Staged: eine neue oder editierte Datei wurde für den nächsten Commit vorgemerkt.
+- Untracked: Die Datei liegt im Ordner, wird aber nicht von Git versioniert.
+- Unmodified: Die Datei wird von Git versioniert, sie ist seit dem letzten Commit unverändert.
+- Modified: Die Datei wurde seit dem letzten Commit verändert.
+- Staged: eine neue oder editierte Datei wurde für den nächsten Commit vorgemerkt.
 
 Der Befehl zum Überprüfen, ob man Dateien in einem anderen Zustand als `unmodified` hat, ist `git status`:
 
@@ -193,7 +194,7 @@ Untracked files:
 	.gitignore
 ```
 
-Wollen wir nun die Änderungen der Datei `content/en/docs/02.0/02.md` (oder die Datei `.gitignore`) zum nächsten Commit hinzufügen, können wir dies mit `git add <pfad/zur/datei>`. Im Beispiel oben sehen wir, dass die Datei `content/en/docs/02.0/02.md` bereits gestaged ist. Ändern wir diese Datei erneut, wird die Datei sowohl bei *Changes to be committed:* wie auch bei *Changes not staged for commit:* auftauchen. Einmal mit den Änderungen, welche wir bereits gestaged haben und einmal mit den Änderungen, welche wir nach dem Stagen (`git add`) gemacht haben. Wollen wir beide Änderungen im gleichen Commit, können wir die Datei einfach wieder mit `git add` stagen und anschliessend commiten, wollen wir die Änderungen in separaten Commit, commiten wir zuerst die gestagten Änderungen und stagen anschliessend die zweite Änderungen und commiten erneut.
+Wollen wir nun die Änderungen der Datei `content/en/docs/02.0/02.md` (oder die Datei `.gitignore`) zum nächsten Commit hinzufügen, können wir dies mit `git add <pfad/zur/datei>`. Im Beispiel oben sehen wir, dass die Datei `content/en/docs/02.0/02.md` bereits gestaged ist. Ändern wir diese Datei erneut, wird die Datei sowohl bei _Changes to be committed:_ wie auch bei _Changes not staged for commit:_ auftauchen. Einmal mit den Änderungen, welche wir bereits gestaged haben und einmal mit den Änderungen, welche wir nach dem Stagen (`git add`) gemacht haben. Wollen wir beide Änderungen im gleichen Commit, können wir die Datei einfach wieder mit `git add` stagen und anschliessend commiten, wollen wir die Änderungen in separaten Commit, commiten wir zuerst die gestagten Änderungen und stagen anschliessend die zweite Änderungen und commiten erneut.
 
 ### .gitignore
 
@@ -240,11 +241,12 @@ index 1e6db46..dd7161b 100644
 ```
 
 `git diff` vergleicht die Änderungen, welche noch nicht gestaged wurden, will man bereits gestagte Änderungen überprüfen braucht es zusätzlich das Flag `--staged` oder `--cached` (die beiden Flags sind Synonyme).
- 
+
 Anders als `git diff` funktioniert `git diff-tool` mit einem externen Tool, welches dir die Änderungen anzeigt. Beispiele dafür sind 'P4Merge' oder auch 'Beyond Compare'. Sie versuchen die Bearbeitungen besser zu visualisieren
 und es dem Benutzer einfacher zu machen, diese in einer Datei / im Code einzusehen.
 Jetzt bleibt die Frage: Wann brauchen wir was? Grundsätzlich
 wird `git diff` bei folgenden Situationen gebraucht:
+
 - Wenn wir kein GUI haben und nur mit dem Output des Terminals arbeiten
 - Falls wir gar kein externes Tool zur Verfügung haben
 - Wenn du keine 'schweren' externen Tools starten möchtest, sondern so schnell wie möglich zum Ergebnis kommen willst.
@@ -258,33 +260,33 @@ Ist man sicher, dass man nur die Änderungen gestaged hat, welche man auch commi
 
 Oft gibt es pro Projekt Konventionen, wie eine Commit-Message aussehen soll. Falls dies nicht existiert gibt es ein paar wenige Punkte welche die Messages einiges lesbarer und verständlicher machen:
 
-* Sprache: Englisch
-* Kurze und prägnante Message, idealerweise unter 50 Zeichen [Details](https://chris.beams.io/posts/git-commit/#limit-50)
-* Mit Grossbuchstaben beginnen [Details](https://chris.beams.io/posts/git-commit/#capitalize)
-* Kein Punkt am Schluss [Details](https://chris.beams.io/posts/git-commit/#end)
-* Den *imperative mood* (Befehlsform) verwenden, also «Fix bug with X» statt «Fixed bug with X» oder «More fixes for broken stuff» [Details](https://chris.beams.io/posts/git-commit/#imperative)
-* Wenn vorhanden das Ticket referenzieren:
-   * Bei Gitlab/Github Issues: «Add X #12345»
+- Sprache: Englisch
+- Kurze und prägnante Message, idealerweise unter 50 Zeichen [Details](https://chris.beams.io/posts/git-commit/#limit-50)
+- Mit Grossbuchstaben beginnen [Details](https://chris.beams.io/posts/git-commit/#capitalize)
+- Kein Punkt am Schluss [Details](https://chris.beams.io/posts/git-commit/#end)
+- Den _imperative mood_ (Befehlsform) verwenden, also «Fix bug with X» statt «Fixed bug with X» oder «More fixes for broken stuff» [Details](https://chris.beams.io/posts/git-commit/#imperative)
+- Wenn vorhanden das Ticket referenzieren:
+  - Bei Gitlab/Github Issues: «Add X #12345»
 
 Weitere Quellen dazu:
-* https://chris.beams.io/posts/git-commit/
-* https://www.conventionalcommits.org/en/v1.0.0/
 
+- https://chris.beams.io/posts/git-commit/
+- https://www.conventionalcommits.org/en/v1.0.0/
 
 Ein paar hilfreiche Flags zu `git commit`:
 
-* `-m` um eine Message gleich anzugeben und nicht den Editor zu öffnen (kann je nach Commit Message Guideline hinderlich sein, da es keine Multiline Kommentare erlaubt):
+- `-m` um eine Message gleich anzugeben und nicht den Editor zu öffnen (kann je nach Commit Message Guideline hinderlich sein, da es keine Multiline Kommentare erlaubt):
 
 ```bash
 git commit -m "Story 182: added important Information to Readme"
 [master 463dc4f] Story 182: added important Information to Readme
  2 files changed, 2 insertions(+)
  create mode 100644 README
- ```
+```
 
-* `-a` um alle editierten Dateien gleich mitzustagen. (Kurzform von `git add --all && git commit`) **!ACHTUNG!** kann gefährlich sein da so schnell Änderungen in einen Commit rutschen die nicht rein gehören!
+- `-a` um alle editierten Dateien gleich mitzustagen. (Kurzform von `git add --all && git commit`) **!ACHTUNG!** kann gefährlich sein da so schnell Änderungen in einen Commit rutschen die nicht rein gehören!
 
-* `-v` um ein `git diff --staged` im Editor angezeigt zu bekommen. So muss man sich nicht merken, was man eigentlich geändert hat und bekommt es beim schreiben der Commit Message noch einmal präsentiert.
+- `-v` um ein `git diff --staged` im Editor angezeigt zu bekommen. So muss man sich nicht merken, was man eigentlich geändert hat und bekommt es beim schreiben der Commit Message noch einmal präsentiert.
 
 **WICHTIG:** Es ist einiges einfacher, Fehler vor dem Committen als nach dem Committen zu beheben. Ein zweites Mal über die Änderungen schauen ist sehr empfehlenswert!
 

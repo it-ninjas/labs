@@ -9,7 +9,7 @@ description: >
 ## java.util.HashMap
 
 Eine [`Map`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html) verwendet man, um Zuweisungen zu speichern.
-Die [`java.util.HashMap`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html) ist die gebräuchlichste Map. 
+Die [`java.util.HashMap`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html) ist die gebräuchlichste Map.
 Man könnte zum Beispiel ein Register mit Postleitzahlen (PLZ) und den dazugehörigen Orten speichern.
 Die PLZ ist der Schlüssel und der Ort ist der zugewiesene Wert.
 
@@ -48,8 +48,7 @@ Die `Map` offeriert drei Collection Ansichten auf den gespeicherten Inhalt:
 - **entrySet()**: Set auf alle Schlüssel-Werte Zuweisungen
 - **forEach()**: Führt eine bestimmte Aktion über alle Elemente aus
 
-Die Reihenfolge des Inhalts hängt von der Implementierung der Iteratoren ab, welche eine konkrete Map Klasse für die einzelnen Collection-Ansichten verwendet. Manche Implementation wie die `TreeMap` garantiert eine bestimmte Reihenfolge, andere wie die `HashMap` keine. 
-
+Die Reihenfolge des Inhalts hängt von der Implementierung der Iteratoren ab, welche eine konkrete Map Klasse für die einzelnen Collection-Ansichten verwendet. Manche Implementation wie die `TreeMap` garantiert eine bestimmte Reihenfolge, andere wie die `HashMap` keine.
 
 {{% blocks/lead color="orange" %}}
 Beispiel
@@ -84,8 +83,8 @@ while(plzIterator.hasNext()) {
 // Abfrage der Schlüssel mit einer FOR Schleife:
 for (Integer plz : plzToCityMap.keySet()) {
         System.out.println(plz);
-}        
-        
+}
+
 // Abfrage der Schlüssel mit einem Stream:
 plzToCityMap.keySet().stream()
         .forEach(plz -> System.out.println(plz));
@@ -106,7 +105,7 @@ while(nameIterator.hasNext()) {
 // Abfrage der Werte mit einer FOR Schleife:
 for (String name : plzToCityMap.values()){
         System.out.println(name);
-}        
+}
 
 // Abfrage der Werte mit einem Stream:
 plzToCityMap.values().stream()

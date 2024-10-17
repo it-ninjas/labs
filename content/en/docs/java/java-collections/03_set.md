@@ -3,14 +3,14 @@ title: "HashSet"
 linkTitle: "HashSet"
 weight: 3
 description: >
-    Die gebräuchlichste Umsetzung eines Set: HashSet.
+  Die gebräuchlichste Umsetzung eines Set: HashSet.
 ---
 
 ## java.util.Set
 
 Eine [`Set`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html) verwendet man, um eine Menge von Elemente zu speichern.
 Dabei werden keine Duplikate gespeichert.
-Die [`java.util.HashSet`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html) ist die gebräuchlichste Implementierung eines Sets. 
+Die [`java.util.HashSet`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html) ist die gebräuchlichste Implementierung eines Sets.
 Man könnte zum Beispiel in einem Set alle Wörter eines Texts speichern.
 Tritt ein Wort mehrmals auf, so wird dieses Wort nur bei ersten Male gespeichert.
 Im Set sind so alle auftretenden Wörter gespeichert und die `size()` Methode liefert die Anzahl unterschiedlicher Wörter zurück.
@@ -24,6 +24,7 @@ Dabei ist der Schlüssel immer eindeutig. Speichert man zwei Zuweisungen mit dem
 
 Die Benennung eines Sets sollte der Inhalt beschreiben.  
 Zum Beispiel:
+
 - `nameSet` --> ein **Set** mit **Namen**
 - `names` --> mehrere Namen
 
@@ -84,10 +85,9 @@ nameSet.add("Emil");
 
 // mit statischer of() Methode
 Set<String> nameSet = Set.of("Peter", "Emil");
-// of() liefert ein unmodifizierbares Set zurück. Kein HashSet! 
+// of() liefert ein unmodifizierbares Set zurück. Kein HashSet!
 
 ```
-
 
 ### Beispiel 2 - Auslesen der Elemente
 

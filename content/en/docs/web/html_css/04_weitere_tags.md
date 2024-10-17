@@ -3,18 +3,20 @@ title: "Weitere HTML-Tags"
 linkTitle: "Weitere HTML-Tags"
 weight: 4
 description: >
-    Modul #F3 - HTML und CSS - Nützliche HTML Tags
+  Modul #F3 - HTML und CSS - Nützliche HTML Tags
 ---
 
 #### Ziele
-* Ich weiss, wie ich HTML-Dokumente strukturieren kann.
-* Ich weiss, wie ich mit HTML Texte formatieren kann.
-* Ich weiss, wie ich Links und Bilder in einer Webseite hinzufügen kann.
-* Ich weiss, wie ich geordnete/sortierte Listen erstellen kann.
-* Ich weiss, wie ich ungeordnete/unsortierte Listen erstellen kann.
-* Ich weiss, was Definitionslisten sind und wie und wozu ich sie einsetzen kann.
+
+- Ich weiss, wie ich HTML-Dokumente strukturieren kann.
+- Ich weiss, wie ich mit HTML Texte formatieren kann.
+- Ich weiss, wie ich Links und Bilder in einer Webseite hinzufügen kann.
+- Ich weiss, wie ich geordnete/sortierte Listen erstellen kann.
+- Ich weiss, wie ich ungeordnete/unsortierte Listen erstellen kann.
+- Ich weiss, was Definitionslisten sind und wie und wozu ich sie einsetzen kann.
 
 ## Überschrift (Heading)
+
 Du hast bereits erfahren, dass du mit `<h1>` für Überschriften verwenden kannst. Oft hast du aber eine Überschrift für die Seite und dann Überschriften, die diesem Titel untergeordnet sind. Wie in einem Word-Dokument kannst du auch in HTML Überschriften hierarchisch verschachteln. Das geht so:
 
 ```html
@@ -35,12 +37,13 @@ Dies führt zu folgendem Ergebnis:
 Es gibt also Tags für Überschriften erster bis sechste Stufe. Grundsätzlich gilt, je kleiner die Zahl der Stufe, je grösser wird die Überschrift dargestellt. Das obige Ergebnis zeigt, wie Überschriften per Default formatiert werden. Du kannst das Styling dieser Überschriften selbstverständlich anpassen (kommt im CSS-Teil).
 
 ## Absätze (Paragraf)
+
 Du hast bereits erfahren, dass Zeilenumbrüche in HTML keine Wirkung haben. Möchtest du eine neue Zeile einfügen, könnte dir das `<br/>`-Tag weiterhelfen. Besser ist aber, wenn du den Text, der zusammengehört, auch entsprechend markierst: Das kannst du mit dem `<p>`-Tag erreichen. Der Text, der innerhalb dieses Tags steht, wird in einem gleichen Abschnitt dargestellt. Ausserdem trennt es diesen Inhalt mit Leerschlag zum nächsten Element. Das wird im folgenden Beispiel verdeutlicht:
 
 ```html
 <h2>Title</h2>
-This is one line. 
-This the second one. <br/> And the third one.
+This is one line. This the second one. <br />
+And the third one.
 <p>And this is inside a paragraph.</p>
 <p>This too.</p>
 ```
@@ -56,24 +59,18 @@ This the second one. <br/> And the third one.
 
 Beachte hier, dass `<p>`-Tags mehr Leerraum erzeugen als `<br/>`.
 
-
-
 ## Text formatieren
+
 Du wirst in die Situation kommen, wo du einen bestimmten Teil eines Textes z.B. fett oder kursiv formatieren musst.
 
 Das kannst du mit HTML sehr einfach erreichen, denn dafür gibt es spezielle Tags:
 
 ```html
 <p>
-    <strong>Heared</strong> about
-    the new restaurant called
-    <em>Karma?</em>
+      <strong>Heared</strong> about the new restaurant called
+  <em>Karma?</em>
 </p>
-<p>
-    There's <b>no menu</b>:
-    You get what you <i>deserve</i>.
-</p>
-
+<p>    There's <b>no menu</b>:     You get what you <i>deserve</i>.</p>
 ```
 
 Um also einen bestimmten Text fett darzustellen, kannst du es in ein `<strong>`- oder `<b>`-Element verwenden. Beide Tags BEZWECKEN im Prinzip genau das Gleiche, MEINEN aber nicht zwingend das Gleiche: `<b>`-Elemente sind einfach fett-gedruckt, während `<strong>`-Elemente betont sein sollen. `<strong>` soll dem fett-gedruckten Wort also mehr Ausdruck verleihen. Dieser Unterschied ist vor allem für den Einsatz von Screenreadern wichtig. Mit einem eigenen Styling (kommt im CSS-Teil) könntest du `<strong>`-Elemente z.B. auch grösser oder rot darstellen. Mit einem `<b>`-Element sagt man im Prinzip nur, dass der Text fett-gedruckt sein soll.
@@ -81,6 +78,7 @@ Um also einen bestimmten Text fett darzustellen, kannst du es in ein `<strong>`-
 Einen Text kursiv darstellen kannst du mit `<i>` bzw. `<em>`. Das Pendant zu `<b>` ist `<i>` (italic), und dasjenige zu `<strong>` das `<em>` (emphasis = Betonung).
 
 Das obige Beispiel wird so gerendert:
+
 <div style="border: 2px solid black; padding: 2em">
     <p>
         <strong>Heared</strong> about
@@ -96,6 +94,7 @@ Das obige Beispiel wird so gerendert:
 Text zu formatieren ist Styling. Styling wiederum ist normalerweise die Aufgabe von CSS und nicht von HTML.
 
 ## Links und Bilder
+
 Eines der wichtigsten Elemente in HTML sind Links auf andere Seiten. Links werden mit `a`-Elementen (anchor) realisiert. Ein Link kann wie folgt erstellt werden:
 
 ```html
@@ -107,13 +106,14 @@ Probiere das einmal aus.
 Du wirst einen blauen und unterstrichenen Text "Home" sehen. `<a>` ist der Tag, der generell für Hyperlinks verwendet wird. `href` ist ein Attribut des `a`-Tags,
 mit dem die URL des Links spezifiziert wird. In unserem Fall ist `https://labs.it-ninjas.ch/` die URL, die beim Klick aufgerufen wird. `Home` ist der Text, der dem User angezeigt wird.
 
-
 Ziemlich ähnlich kannst du auch ein Bild aus dem Internet einbinden:
 
 ```html
-<img src="https://it-ninjas.ch/img/png/Ninja%20Elements_ninja_phone.png" 
-     alt="IT Ninjas"
-     width="300" />
+<img
+  src="https://it-ninjas.ch/img/png/Ninja%20Elements_ninja_phone.png"
+  alt="IT Ninjas"
+  width="300"
+/>
 ```
 
 Ganz offensichtlich wird das `<img/>`-Tag (Image) für Bilder verwendet. Das `<img/>`-Tag ist ein Tag, welches keinen Inhalt zwischen Opening- und Closing-Tag hat. HTML bietet auch die Möglichkeit einer verkürzten Schreibweise: Statt <img src="..."></img> kann man auch <img src="..."/> schreiben. Das gilt für alle Elemente, die per default keinen Inhalt haben.
@@ -124,12 +124,17 @@ Wenn du willst, dass man beim Klick auf ein Bild weitergeleitet wird, kannst du 
 
 ```html
 <a href="https://it-ninjas.ch/">
-    <img src="https://it-ninjas.ch/img/png/Ninja%20Elements_ninja_phone.png" alt="IT Ninjas" />
+  <img
+    src="https://it-ninjas.ch/img/png/Ninja%20Elements_ninja_phone.png"
+    alt="IT Ninjas"
+  />
 </a>
 ```
 
 ## Listen
+
 In HTML gibt es verschiedene Arten, um Aufzählungen darzustellen. Wir schauen uns
+
 - ungeordnete Liste (unordered lists, Bullet Point-Listen),
 - geordnete Listen (ordered lists, nummerierte Listen)
 - und Definitionslisten (definition list)
@@ -141,9 +146,12 @@ Eine Bullet-Point-Liste kann man mit einer unsortierten Liste (unordered list) k
 ```html
 <h4>What do you do in case of emergency?</h4>
 <ul>
-    <li>git commit -m "message"</li>
-    <li>git push</li>
-    <li>Leave the building.</li>
+     
+  <li>git commit -m "message"</li>
+     
+  <li>git push</li>
+     
+  <li>Leave the building.</li>
 </ul>
 ```
 
@@ -152,11 +160,16 @@ Möchtest du hingegen eine Nummerierung, dann verwende eine sortierte Liste (ord
 ```html
 <h4>Most Difficult Programming Languages</h4>
 <ol>
-    <li>Brainf*ck</li>
-    <li>Cow</li>
-    <li>Intercal</li>
-    <li>Malbolge</li>
-    <li>Whitespace</li>
+     
+  <li>Brainf*ck</li>
+     
+  <li>Cow</li>
+     
+  <li>Intercal</li>
+     
+  <li>Malbolge</li>
+     
+  <li>Whitespace</li>
 </ol>
 ```
 
@@ -165,12 +178,14 @@ Das Ganze sieht dann ungefähr so aus:
 <div style="border: 2px solid black; padding: 2em">
 
 #### What do you do in case of emergency?</h4>
-* git commit -m "message"
-* git push
-* Leave the building
+
+- git commit -m "message"
+- git push
+- Leave the building
 
 #### Most Difficult Programming Languages
-1. Brainf*ck
+
+1. Brainf\*ck
 2. Cow
 3. Intercal
 4. Malbolge
@@ -184,12 +199,13 @@ Eine 3. Art von Listen sind Definitionslisten. Diese Art von Liste wird zwar nic
 <dl>
     <dt>buffoonish</dt>
     <dd>like a clown </dd>
-    
+   
     <dt>heyday</dt>
     <dd>the period of greatest prosperity or productivity</dd>
 </dl>
 
 ```
+
 <div style="border: 2px solid black; padding: 2em">
 
 #### Glossary

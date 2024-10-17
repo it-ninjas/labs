@@ -15,9 +15,10 @@ Die Gewinnkombination in Form von vier aufeinanderfolgenden gleichen Feldern kan
 Im Spielfeld kommen drei Zeichen vor: "X" für Spielsteine von Spieler 1, "O" für Spielsteine von Spieler 2 und " " für ein Feld, wo noch kein Spielstein liegt.
 
 Die Methode, welche das Spielfeld überprüft liefert einen String als Rückgabewert zurück.
-Der Rückgabewert ist "X" falls Spieler 1 gewonnen hat, "O" wenn Spieler 2 gewonnen hat und " " wenn noch keiner der Spieler eine Gewinnkombination hat. 
+Der Rückgabewert ist "X" falls Spieler 1 gewonnen hat, "O" wenn Spieler 2 gewonnen hat und " " wenn noch keiner der Spieler eine Gewinnkombination hat.
 
 Die Implementation muss in der folgenden Klasse gemacht werden:
+
 ```java
 public class ConnectFourExtra implements ConnectFourCheck {
     @Override
@@ -31,6 +32,7 @@ public class ConnectFourExtra implements ConnectFourCheck {
 ```
 
 Das dazugehörige Interface kann einfach als neue Klasse im gleichen Package angelegt werden:
+
 ```java
 interface ConnectFourCheck {
     String checkWin(String[][] board);

@@ -8,7 +8,9 @@ description: >
 ---
 
 ## Gegeben
+
 Gegeben ist das folgende Array mit Zahlen:
+
 ```java
 int[] numbers = {
     -8, 0, 13, 0, -8, 23, -22, 18, -6, -1,
@@ -24,36 +26,46 @@ int[] numbers = {
 ```
 
 ## Aufgabe 1
+
 Schreibe eine Methode, welche alle Zahlen im Array zählt, welche zwischen 0 und 10 liegen und keine 5 sind.
 Die Methode liefert die Anzahl dieser Zahlen zurück.
 
 ## Aufgabe 2
+
 Schreibe eine Methode, welche aus dem Array alle positiven Zahlen inklusive 0 in ein neues Array schreibt.
 Die Reihenfolge der Zahlen im Array muss gleich bleiben. Die Methode liefert das neue Array zurück.
 
 ## Aufgabe 3
+
 Schreibe eine Methode, welche aus dem Array alle Zahlen sucht, welche nicht mehr als 10 von der Zahl -6 abweichen.
 Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück.
 
 ## Aufgabe 4
+
 Schreibe eine Methode, welche alle Zahlen aus dem Array in positive Zahlen verwandelt und diese in ein neues Array schreibt.
 Die Methode liefert das neue Array zurück.
 
 _`Math.abs` darf für diese Aufgabe nicht verwendet werden._
 
 ## Aufgabe 5
+
 Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht mehr als den Wert 5 unterscheiden.
 Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück. Für die erste und die letzte Zahl im Array gibt es nur einen Nachbar.
 
 Ein Beispiel:
+
 ```java
 int[] beispiel = { 2, 5, 19, 15, 12, 18 };
 ```
+
 Hier würde die Methode folgenden Array zurückgeben:
+
 ```java
 int[] result = { 2, 15 };
 ```
+
 Erklärung:
+
 - **2**: &nbsp; Kein Nachbar links, Nachbar rechts (5) mit Unterschied <span style="color:green">3</span>.
 - **5**: &nbsp; Nachbar links (2) mit Unterschied <span style="color:green">3</span>, Nachbar rechts (19) mit Unterschied <span style="color:red">14</span>.
 - **19**: Nachbar links (5) mit Unterschied <span style="color:red">14</span>, Nachbar rechts (15) mit Unterschied <span style="color:green">4</span>.

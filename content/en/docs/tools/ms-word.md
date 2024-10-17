@@ -7,19 +7,20 @@ description: >
 ---
 
 #### Ziele
-* Ich weiss, wie man mit Microsoft Word eine einfache Dokumentation erstellt
-* Ich weiss, wie man ein Deckblatt einfügt
-* Ich weiss, wie man eine Kopf- und Fusszeile einfügt und bearbeitet
-* Ich weiss, wie man Bilder einfügt und bearbeitet
-* Ich weiss, wie man die Formatvorlagen benutzt
-* Ich weiss, wie man ein Inhaltsverzeichnis generieren und aktualisieren kann
+
+- Ich weiss, wie man mit Microsoft Word eine einfache Dokumentation erstellt
+- Ich weiss, wie man ein Deckblatt einfügt
+- Ich weiss, wie man eine Kopf- und Fusszeile einfügt und bearbeitet
+- Ich weiss, wie man Bilder einfügt und bearbeitet
+- Ich weiss, wie man die Formatvorlagen benutzt
+- Ich weiss, wie man ein Inhaltsverzeichnis generieren und aktualisieren kann
 
 ---
 
 ### Deckblatt einfügen
 
 Um einen guten Einstieg in eine Dokumentation zu erhalten, kann man ein Deckblatt einfügen. Dies geht ganz simpel über
-das Register **Einfügen** und dann die Option Deckblatt auswählen. Dort gibt es einige Vorlagen, welche man aber auch 
+das Register **Einfügen** und dann die Option Deckblatt auswählen. Dort gibt es einige Vorlagen, welche man aber auch
 anpassen kann. Es dient als gute Vorlage um wichtige Informationen wie den Autor oder den Titel des Dokuments darzustellen.
 
 ---
@@ -33,7 +34,7 @@ und die Seitenzahl oder der Dateiname in der Fusszeile.
 Um für das Dokument Kopf- und Fusszeile zu erstellen kann man in der Menüleiste auf das Register **Einfügen** wechseln.
 Im Abschnitt **Kopfzeile** oder **Fusszeile** können wir nun diese einfügen. Word hat schon einige Vorlagen, die wir benutzen können, aber es
 ist auch möglich eigene Formatvorlagen zu erstellen. Sobald man eine Kopf- oder Fusszeile erstellt hat, wechselt Word
-automatisch das Register. Nun können wir einige Einstellungen anpassen. 
+automatisch das Register. Nun können wir einige Einstellungen anpassen.
 
 Die wichtigsten Anpassungen sind folgende:
 

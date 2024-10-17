@@ -13,6 +13,7 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
 ## Einführung
 
 ### Spielfiguren
+
 - Es gibt verschiedene Spielfiguren:
   - Menschen
   - Zwerge
@@ -26,6 +27,7 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
 - Alle Spielfigur-Klassen sollen in einem entsprechenden Package angelegt werden
 
 ### Waffen
+
 - Es gibt verschiedene Waffenarten
   - Nahkampfwaffen (Schwert und Keule)
   - Fernkampfwaffen (Bogen und Wurfmesser)
@@ -35,6 +37,7 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
 - Alle Waffen-Klassen sollen in einem entsprechenden Package angelegt werden
 
 ### Gegenstände
+
 - Es gibt verschiedene Gegenstände
   - Tränke (Heiltrank und Stärketrank)
     - Ein Heiltrank kann bei einer Spielfigur eine bestimmte Anzahl an Lebenspunkten wiederherstellen
@@ -48,7 +51,9 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
 ---
 
 ## Aufgabe 1
+
 Implementation
+
 - der Packages
 - der Klassen
 - der Instanzvariablen in den Klassen
@@ -59,9 +64,11 @@ Vergiss nicht, dass es Generalisierungen und Spezalisierungen gibt. Achte auf ei
 ---
 
 ## Aufgabe 2
+
 Ergänze die Applikation mit den folgenden Möglichkeiten:
 
 #### Spielfigur
+
 - Jede Spielfigur braucht einen Namen um instanziiert werden zu können
 - Zu Beginn hat eine Spielfigur keine Waffe
 - Jede Spielfigur hat eine Methode, die ihren Kampfwert zurückgibt
@@ -69,20 +76,25 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
   - Wenn eine Spielfigur keine Waffe besitzt, so ist ihr Kampfwert 1
 
 **Elfen**
+
 - Um einen Elfen instanziieren zu können, muss zusätzlich zum Namen der Zauberwert des Elfen angegeben werden
 - Einem Elfen wird die Hälfte seines Zauberwerts zum Kampfwert addiert
 - Elfen sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen
 
 **Goblins**
+
 - Goblins sind gute Bogenschützen, ihr Kampfwert erhöht sich um 50%, wenn sie einen Bogen als aktive Waffe benutzen
 
 **Trolle**
+
 - Trolle verdoppeln ihren Kampfwert wenn sie eine Keule verwenden
 
 **Orks**
+
 - Orks können in einen Kampfrausch verfallen, wenn ihre Lebenspunkte unter 25% fallen. Sie erhalten dann den dreifachen Kampfwert und erleiden nur den halben Schaden
 
 #### Waffen
+
 - Jede Spielfigur kann mit einer Waffe ausgerüstet werden
   - Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert
   - Ist die Waffe zu schwer für die verbleibende Tragkraft, so kann die Spielfigur die Waffe nicht aufnehmen
@@ -94,12 +106,14 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
   - Bei Nahkampfwaffen wird zum Angriffswert der halbe Verteidigungswert hinzuaddiert
 
 #### Gegenstände
+
 - Jede Spielfigur kann Gegenstände bis zur maximalen Tragkraft aufnehmen
   - Wird ein Gegenstand aufgenommen, wird die Tragkraft entsprechend reduziert
   - Ist der Gegenstand zu schwer für die verbleibende Tragkraft, so kann die Spielfigur den Gegenstand nicht aufnehmen
   - Eine Spielfigur kann mehrere Gegenstände mit sich rumtragen und diese Gegenstände später im Kampf aktiv einsetzen
 
 #### Kampf
+
 - Jede Spielfigur kann gegen eine andere Spielfigur kämpfen
   - Der Kampf findet in Runden statt
   - Es wird solange gekämpft, bis eine oder beide Spielfiguren keine Lebenspunkte mehr haben
@@ -111,6 +125,7 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
 ---
 
 ## Aufgabe 3
+
 - Definiere nun eigene Regeln für deine Spielfiguren, damit das Spiel ein wenig ausgeglichener wird
 - Die Regeln können beliebig geändert werden
 - Es dürfen natürlich auch neue Waffen und Gegenstände eingeführt werden
@@ -119,18 +134,21 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
 ---
 
 ## Aufgabe 4
+
 - Die Kämpfe können sehr unausgeglichen sein
 - Das Spiel soll so gestaltet werden, dass nicht immer die gleichen Spielfiguren gewinnen
 
 ---
 
 ## Aufgabe 5
+
 - Das Spiel soll für alle Aktionen einen übersichtlichen Log generieren
 - Eine Ausgabe für die Kommandozeile genügt, wenn sie sauber formatiert ist
 
 ---
 
 ## Aufgabe 6
+
 Die Applikation hat nun aufgrund der vielen Klassen und Möglichkeiten eine gewisse Grösse erreicht und damit auch an Übersichtlichkeit verloren.
 Die Logik der Applikation ist nun, je nach Implementation, in sehr vielen unterschiedlichen Klassen vorhanden.
 In bestimmten Fällen, wie der Spezalisierung einer bestimmten Klasse, ist dies in Ordnung.
@@ -150,6 +168,7 @@ nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwo
 ---
 
 ## Aufgabe 7
+
 - Das Spiel soll erweitert werden, dass eine Spielfigur eine Rüstung tragen kann
 - Es gibt leichte und schwere Rüstungen
   - Elfen und Goblins dürfen nur leichte Rüstungen tragen
@@ -164,11 +183,13 @@ nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwo
 ---
 
 ## Aufgabe 8
+
 - Verhindere die Instanziierung von Klassen, die keinen Sinn ergeben (Beispiel Waffe, Spielfigur, ...)
 
 ---
 
 ## Aufgabe 9
+
 - Jede Spielfigur erhält einen Initiative-Wert
 - Je höher der Wert, desto früher darf die Spielfigur im Kampf zuschlagen
 - Tiefere Werte verteilen also ihren Schaden später als höhere Werte

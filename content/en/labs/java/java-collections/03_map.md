@@ -8,20 +8,23 @@ description: >
 ---
 
 ## Aufgabe 1
+
 Postleitzahlen einlesen und verarbeiten:
 
 1. Schreibe ein Programm, welches Postleitzahlen aus einer CSV-Datei herausliest und in einer HashMap speichert.
 2. Nach dem Speichern schreibt das Programm verschiedene Informationen zu den Daten in die Konsole (siehe Ausgabe).
-3. Verwendet wieder die kleine Hilfsklasse [`OutputValidation`](https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java) zum Verifizieren von eurem Konsole-Output. 
+3. Verwendet wieder die kleine Hilfsklasse [`OutputValidation`](https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java) zum Verifizieren von eurem Konsole-Output.
 4. Ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) soll umgesetzt werden.
 
-
 ### Input
+
 - <a href="/files/csv/Postleitzahlen_UTF8.csv">PLZ (UTF8 Format)</a>
 - <a href="/files/csv/Postleitzahlen_ISO-8859-1.csv">PLZ (ISO-8859-1 Format)</a>
 
-### Ausgabe  
+### Ausgabe
+
 Die Ausgabe muss das folgende Format aufweisen:
+
 ```text
 - Anzahl PLZ: [anzahl]
 - Kleinste PLZ der Gemeinde Bern: [PLZ] [Ort]
@@ -35,7 +38,9 @@ Die Ausgabe muss das folgende Format aufweisen:
 - Anzahl Buchstaben der grössten Gemeinden: [anzahl]
 - Grössten Gemeinden: [Ort], [Ort], [Ort]
 ```
+
 Beachte, dass die Aufzählungen der Ortschaften sortiert sind. Die Ausgabe könnte Beispielsweise so aussehen:
+
 ```text
 - Anzahl PLZ: 3197
 - Kleinste PLZ der Gemeinde Bern: 3000 Bern
@@ -49,10 +54,12 @@ Beachte, dass die Aufzählungen der Ortschaften sortiert sind. Die Ausgabe könn
 - Anzahl Buchstaben der grössten Gemeinden: 89
 - Grössten Gemeinden: Deisswil bei Münchenbuchsee, Rapperswil (BE), Wiggiswil
 ```
+
 > **Ausgabe überprüfen**  
 > Der Konsole-Output Hash für diese Aufgabe ist: **`1768988137`**
 
 ## Aufgabe 2 (Optional)
+
 Wir programmieren eine eigene Map-Klasse `MyMap`, welche noch keinen Hash-Code verwendet:
 
 1. Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.
@@ -60,7 +67,6 @@ Wir programmieren eine eigene Map-Klasse `MyMap`, welche noch keinen Hash-Code v
 3. Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse internen Datenstruktur dynamische anpassen.
 4. Die `toString()` der `java.lang.Object` Klasse soll von der `MyMap` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.
 5. Ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) soll umgesetzt werden.
-
 
 {{% details title="Inferface MyMapInterface" %}}
 
@@ -131,6 +137,7 @@ public interface MyMapInterface<K, V> {
 {{% /details %}}
 
 ## Aufgabe 3 (Optional)
+
 Wir Kopieren unsere `MyMap` Klasse zu der Klasse `MyHashMap` und erweitern diese, damit sie Hash Funktionalität verwendet:
 
 1. Beim Hinzufügen von Zuweisungen wird der Hash-Code vom Schlüssel berechnet und ebenfalls abgespeichert.

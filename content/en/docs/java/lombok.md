@@ -3,16 +3,17 @@ title: "Lombok"
 linkTitle: "Lombok"
 weight: 6
 description: >
-   Vor- und Nachteile von Lombok
+  Vor- und Nachteile von Lombok
 ---
 
 Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
-Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.
+Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (\*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.
 
-**(*) Info:**
+**(\*) Info:**
 Boilerplate-Code ist wiederkehrender Code, der in verschiedenen Teilen einer Softwareanwendung benötigt wird, aber wenig zur eigentlichen Funktionalität beiträgt.
 
 ### Wofür wird Lombok verwendet?
+
 1. **Reduzierung des Boilerplate-Codes:**
    Lombok eliminiert die Notwendigkeit, viele standardmässige Java-Boilerplate-Codezeilen wie Getter, Setter, Konstruktoren und toString-Methoden manuell zu schreiben.
 
@@ -22,9 +23,7 @@ Boilerplate-Code ist wiederkehrender Code, der in verschiedenen Teilen einer Sof
 3. **Kompakte Klassen:**
    Lombok ermöglicht es, Klassen mit weniger Code zu erstellen, was die Wartung und das Verständnis des Codes erleichtert.
 
-
 Einige häufig verwendete Annotationen sind `@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, usw.
-
 
 In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert, sobald die Annotationen `@Getter` und `@Setter` über den Klassenattributen `firstname` und `lastname` verwendet werden. Jedoch für `age` werden sie nicht generiert.
 
@@ -32,9 +31,9 @@ In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert,
 import lombok.Getter;
 import lombok.Setter;
 
-public class Person { 
-    @Getter 
-    @Setter 
+public class Person {
+    @Getter
+    @Setter
     private String firstname;
 
     @Getter
@@ -46,13 +45,14 @@ public class Person {
 ```
 
 Wenn es jedoch alle Klassenattribute betrifft, muss man nicht über jedem Klassenattribut die Annotationen hinzufügen, sondern man kann es auch folgendermassen schreiben.
+
 ```java
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Person { 
+public class Person {
 
     private String firstname;
 
@@ -68,7 +68,7 @@ public class Person {
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class Person { 
+public class Person {
     private String name;
     private int age;
 }
@@ -80,14 +80,16 @@ public class Person {
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class Person { 
+public class Person {
     private String name;
     private int age;
 }
 ```
 
 ### Maven Dependency
+
 Im POM.xml muss folgende Dependency hinzugefügt werden.
+
 ```xml
 <dependency>
     <groupId>org.projectlombok</groupId>
@@ -97,6 +99,7 @@ Im POM.xml muss folgende Dependency hinzugefügt werden.
 ```
 
 ### Vorteile von Lombok
+
 1. **Kompaktheit:**
    Lombok reduziert die Menge an Code, welcher geschrieben werden muss, um Getter und Setter etc. zu implementieren. Dadurch wird der Quellcode kompakter und einfacher zu lesen.
 
@@ -107,6 +110,7 @@ Im POM.xml muss folgende Dependency hinzugefügt werden.
    Durch die Reduzierung von Boilerplate-Code minimiert Lombok die Möglichkeit von Fehlern und erleichtert die Wartung des Codes.
 
 ### Nachteile von Lombok
+
 1. **Transparenz:**
    Für Entwickler, die nicht mit Lombok vertraut sind, kann der automatisch generierte Code möglicherweise undurchsichtig sein, da er nicht explizit im Quellcode angezeigt wird.
 
@@ -121,4 +125,5 @@ Im POM.xml muss folgende Dependency hinzugefügt werden.
 Falls du in IntelliJ Probleme mit Lombok hast, kann es sein, dass das Annotation-Processing abgestellt ist. Helfen kann der der folgende Artikel: [Baeldung: Setting up Lombok with Eclipse and Intellij](https://www.baeldung.com/lombok-ide).
 
 ---
+
 ![hint1](/images/hint.png) Optional: Finde mehr Informationen zu Lombok und was es kann unter: [Lombok Features](https://projectlombok.org/features/)

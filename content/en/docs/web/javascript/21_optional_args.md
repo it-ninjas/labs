@@ -9,12 +9,13 @@ description: >
 ---
 
 ## Motivation
+
 Seit ES2015 (ES6) gibt es in JavaScript die Möglichkeit, den Parametern von Methoden einen Default-Wert zu geben.
 
 ## Ziele
-* Du weisst, wie du in JavaScript optionale Argumente in einem Parameter einen Default-Wert zuweisen kannst.
-* Du weisst, wie du Named Arguments in Parameter verwenden kannst.
 
+- Du weisst, wie du in JavaScript optionale Argumente in einem Parameter einen Default-Wert zuweisen kannst.
+- Du weisst, wie du Named Arguments in Parameter verwenden kannst.
 
 ## Basics
 
@@ -54,8 +55,8 @@ Mit dieser Lösung hast du zwar eine Lösung, das die Präferenz einer Person be
 
 Hierfür bieten sich dann Named Parameters an:
 
-
 ## Named Parameters
+
 Dank dem Object Destructuring aus ES6 kannst du alle optionale Argument einzeln zuweisen bzw. überspringen. Das könnte wie folgt aussehen:
 
 ```javascript

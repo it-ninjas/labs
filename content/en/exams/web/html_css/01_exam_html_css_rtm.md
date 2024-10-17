@@ -5,10 +5,11 @@ linkTitle: "HTML- und CSS-Basics"
 weight: 2
 date: 2021-11-01
 description: >
-    Erstelle dein eigenes Zeiterfassungs-Dashboard - zumindest das Layout dafür ;).
+  Erstelle dein eigenes Zeiterfassungs-Dashboard - zumindest das Layout dafür ;).
 ---
 
 # Exam 1 - HTML5 & CSS3
+
 ![task1](/images/task.png) - Einzelarbeit<br>
 Erstelle mit Hilfe deines aktuellen Wissen eine neue Webseite. <br>
 Sie soll nur die HTML-Elemente und das CSS-Styling besitzen. <br>
@@ -16,30 +17,33 @@ Die logischen Instrumente sind nicht nötig, da wir uns im nächsten Kurs mit Ja
 Verwende die HTML5 konformen Tags.
 
 ## RTM
+
 Nachzubauen ist die neue Webseite vom RTM(login).<br>
 Nachfolgend werden die einzelnen Komponenten erklärt. Es werden nur diverse Stylings gegeben, den Rest müsst ihr selber versuchen zu definieren. <br>
 Zu unterst im File findet ihr noch diverse Hints, welche euch helfen könnten.<br>
 Die Icons sind [hier](../icons/logos-rtm.zip) hinterlegt. <br>
-![asset](../rtm_home_page.png)   
+![asset](../rtm_home_page.png)
 
 ### Header
-![asset](../rtm_header.png)   
-|Was                        |Farbe                  |Logo               |Grösse                     |Hover Farbe            |
+
+![asset](../rtm_header.png)  
+|Was |Farbe |Logo |Grösse |Hover Farbe |
 |---------------------------|-----------------------|-------------------|---------------------------|-----------------------|
-|Hintergrundfarbe in Header |rgba(236,239,242,1);   |-                  |height: 57.25px;           |-                      |
-|login Logo                 |-                      |login_logo.svg     |width: 180px;              |-                      |
-|Text in Header             |rgba(119,119,119,1);   |-                  |-                          |-                      |
-|Datum(Tag)                 |rgba(213,45,40,1);     |-                  |-                          |-                      |
-|Kommen Logo                |-                      |kommen.svg         |width: 22px; height: 22px; |rgba(255,255,255,1);   |
-|Farbe untere Zeile Logo    |rgba(255,0,0,1);       |-                  |width: 250px;              |rgba(255,255,255,1);   |
-|Uhr Logo                   |-                      |uhr.svg            |width: 22px; height: 22px; |rgba(255,255,255,1);   |
-|Pfeil (Menu Sprache) Logo  |-                      |pfeil_unten.svg    |-                          |rgba(255,255,255,1);   |
-|Refresh Logo               |-                      |refresh.svg        |width: 22px; height: 22px; |rgba(255,255,255,1);   |
-|Personen Logo              |-                      |persons.svg        |width: 22px; height: 22px; |rgba(255,255,255,1);   |
-|Profil Logo                |-                      |profil.svg         |width: 22px; height: 22px; |rgba(255,255,255,1);   |
-|Logout Logo                |-                      |logout.svg         |width: 22px; height: 22px; |rgba(255,255,255,1);   |
+|Hintergrundfarbe in Header |rgba(236,239,242,1); |- |height: 57.25px; |- |
+|login Logo |- |login_logo.svg |width: 180px; |- |
+|Text in Header |rgba(119,119,119,1); |- |- |- |
+|Datum(Tag) |rgba(213,45,40,1); |- |- |- |
+|Kommen Logo |- |kommen.svg |width: 22px; height: 22px; |rgba(255,255,255,1); |
+|Farbe untere Zeile Logo |rgba(255,0,0,1); |- |width: 250px; |rgba(255,255,255,1); |
+|Uhr Logo |- |uhr.svg |width: 22px; height: 22px; |rgba(255,255,255,1); |
+|Pfeil (Menu Sprache) Logo |- |pfeil_unten.svg |- |rgba(255,255,255,1); |
+|Refresh Logo |- |refresh.svg |width: 22px; height: 22px; |rgba(255,255,255,1); |
+|Personen Logo |- |persons.svg |width: 22px; height: 22px; |rgba(255,255,255,1); |
+|Profil Logo |- |profil.svg |width: 22px; height: 22px; |rgba(255,255,255,1); |
+|Logout Logo |- |logout.svg |width: 22px; height: 22px; |rgba(255,255,255,1); |
 
 ### Linke Sidenav
+
 ![asset](../rtm_left_sidenav.png)
 |Was|Farbe|Logo|Grösse|Hover Farbe|
 |--------|--------|--------|--------|--------|
@@ -61,6 +65,7 @@ Die Icons sind [hier](../icons/logos-rtm.zip) hinterlegt. <br>
 |Berichte Logo|-|drucken.svg|width: 16px; height: 16px;|rgba(0,100,128,1);|
 
 ### Rechte Sidenav
+
 ![asset](../rtm_right_sidenav.png)
 |Was|Farbe|Logo|Grösse|Hover Farbe|
 |--------|--------|--------|--------|--------|
@@ -72,6 +77,7 @@ Die Icons sind [hier](../icons/logos-rtm.zip) hinterlegt. <br>
 |Text allgemein|rgba(33,33,33,1);|-|-|-|
 
 ### Content
+
 ![asset](../rtm_content.png)
 |Was|Farbe|Logo|Grösse|Hover Farbe|
 |--------|--------|--------|--------|--------|
@@ -91,13 +97,11 @@ Die Icons sind [hier](../icons/logos-rtm.zip) hinterlegt. <br>
 |Alarm Logo|-|alert.svg|width: 24px; height: 24px;|-|
 |Alart Text|rgb(255, 67, 81);|-|width: 352.75px; height: 180px;|-|
 
-
-![task1](/images/hint.png)    
-    Hint: über allen hover-Elementen pointer<br>
-    Schatten: box-shadow<br>
-    Scrollleiste: overflow-y oder overflow-x<br>
-
-
+![task1](/images/hint.png)  
+ Hint: über allen hover-Elementen pointer<br>
+Schatten: box-shadow<br>
+Scrollleiste: overflow-y oder overflow-x<br>
 
 ## Sobald du fertig bist...
-Wenn du fertig mit diesem Exam bist, zeige dein Resultat einem Coach. Nach dem Okay des Coaches kannst du mit  [JavaScript](../../../../docs/web/javascript/01_js_intro) beginnen. 
+
+Wenn du fertig mit diesem Exam bist, zeige dein Resultat einem Coach. Nach dem Okay des Coaches kannst du mit [JavaScript](../../../../docs/web/javascript/01_js_intro) beginnen.

@@ -4,10 +4,11 @@ linkTitle: "Set"
 type: docs
 weight: 2
 description: >
-  Aufgaben zu [Java Collections - Set](../../../../docs/java/java-collections/03_set)  
+  Aufgaben zu [Java Collections - Set](../../../../docs/java/java-collections/03_set)
 ---
 
 ## Aufgabe 1
+
 Schreibe ein Programm, welches die Personen von vier Vereine auswertet.
 
 1. Pro Verein existiert ein `Set` mit allen Vereinsmitliedern (siehe Input).
@@ -21,6 +22,7 @@ Schreibe ein Programm, welches die Personen von vier Vereine auswertet.
 ### Input
 
 {{% details title="4 Sets" %}}
+
 ```java
 Set<String> fussballVerein = Set.of(
     "Emil", "Hans", "Felix", "Fritz", "Patrick",
@@ -43,17 +45,22 @@ Set<String> tanzVerein = Set.of(
 );
 
 ```
+
 {{% /details %}}
 
-### Ausgabe  
+### Ausgabe
+
 Die Ausgabe soll vom Format her so aussehen
+
 ```text
 - Wie viele Personen machen min. in einem Verein mit: [anzahl]: [namen]
 - Alle Personen, welche im Fussball und Tanz Verein sind: [anzahl]: [namen]
 - Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: [anzahl]: [namen]
 
 ```
+
 Achte auf Details wie, dass die Namen ohne Lücken aufgeführt werden ansonsten stimmt der Hash nicht. Die Ausgabe könnte beispielsweise so aussehen:
+
 ```text
 - Wie viele Personen machen min. in einem Verein mit: 19: Anja,Anna,Emil,Fritz,Gerda,Hanne,Hans,Karin,Klaus,Lara,Max,Nicole,Patrick,Paul,Paula,Petra,Sabine
 - Alle Personen, welche im Fussball und Tanz Verein sind: 4: Anna,Emil,Felix,Hans,Gerda
@@ -61,8 +68,8 @@ Achte auf Details wie, dass die Namen ohne Lücken aufgeführt werden ansonsten 
 
 ```
 
-
 ### Ausgabe überprüfen
+
 Wie könnt ihr die Ausgabe überprüfen?
 Wir benützen dazu eine kleine Hilfsklasse [`OutputValidation`](https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java).
 Die Klasse erlaubt es eure `System.out.println()` Anweisungen mit `OutputValidation.logAndPrint()` zu ersetzten.
@@ -73,6 +80,7 @@ Ein Anwendungsbeispiel seht ihr unter [OutputValidationUsage](https://github.com
 Der Hash für diese Aufgabe ist: **`-1421274666`**
 
 ## Aufgabe 2
+
 Wir programmieren eine eigene Set-Klasse `MySet`, welche noch kein Hash-Code verwendet.
 
 1. Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.
@@ -82,6 +90,7 @@ Wir programmieren eine eigene Set-Klasse `MySet`, welche noch kein Hash-Code ver
 5. Überprüfe deine Implemenation mit dem JUnitTest [MySetTest](https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java)
 
 ### Input
+
 {{% details title="Inferface MySetInterfaceSimple" %}}
 
 ```java
@@ -135,6 +144,7 @@ public interface MySetInterfaceSimple<E> {
 {{% /details %}}
 
 ## Aufgabe 3 (Optional)
+
 Wir Kopieren unsere `MySet` Klasse zu der Klasse `MyHashSet` und erweitern diese, damit sie Hash Funktionalität verwendet:
 
 1. Beim Hinzufügen von neuen Elementen wird deren Hash-Code berechnet und ebenfalls abgespeichert.

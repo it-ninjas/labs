@@ -8,11 +8,11 @@ description: >
 
 #### Ziele
 
-* Ich kann ohne Hilfsmittel die Unterschiede zwischen Listen und Arrays in Java nennen.
-* Ich kann mindestens drei der wichtigsten Merkmale einer Java-Liste auflisten.
-* Ich kann mindestens 5 Methoden einer Liste korrekt und ohne Hilfsmittel nennen.
-* Ich kann erklären, wozu die `ArrayList`-Klasse verwendet wird, und was sie für Vorteile mitbringt.
-* Ich kann eine neue Liste erstellen und bei ihr Elemente hinzufügen, lesen und entfernen.
+- Ich kann ohne Hilfsmittel die Unterschiede zwischen Listen und Arrays in Java nennen.
+- Ich kann mindestens drei der wichtigsten Merkmale einer Java-Liste auflisten.
+- Ich kann mindestens 5 Methoden einer Liste korrekt und ohne Hilfsmittel nennen.
+- Ich kann erklären, wozu die `ArrayList`-Klasse verwendet wird, und was sie für Vorteile mitbringt.
+- Ich kann eine neue Liste erstellen und bei ihr Elemente hinzufügen, lesen und entfernen.
 
 ---
 
@@ -25,8 +25,8 @@ Aus diesem Grund schieben wir einen kleinen Crash-Kurs zu Listen vor den Einstie
 ### Was ist eine Liste?
 
 Eine Liste ist in Java ein Behälter (Container), der Objekte in einer festen Abfolge enthält.<br>
-Im Gegensatz zu Arrays, deren Elemente im Speicher in fortlaufender Reihenfolge abgelegt werden und 
-deren Grösse aus diesem Grund ohne Neuinitialisierung unveränderbar ist, 
+Im Gegensatz zu Arrays, deren Elemente im Speicher in fortlaufender Reihenfolge abgelegt werden und
+deren Grösse aus diesem Grund ohne Neuinitialisierung unveränderbar ist,
 können Listen flexible Mengen an Objekten enthalten.
 
 Das [List-Interface](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html) ist ein Teil des Java-Collections-Frameworks.
@@ -35,8 +35,8 @@ Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface
 ### Die wichtigsten Merkmale einer Liste
 
 - Eine Liste kann nur Objekte beinhalten (es gibt also keine Liste mit primitiven Datentypen)
-- Eine Liste kann nur Objekte eines Typs beinhalten. Dieser Typ wird zur Zeit der Definition der Liste bestimmt. 
-- Die Elemente innerhalb einer Liste haben eine feste Reihenfolge. Dies bedeutet, dass eine Iteration über eine Liste immer zu einem gleichen Ergebnis mit der gleichen Reihenfolge führt. 
+- Eine Liste kann nur Objekte eines Typs beinhalten. Dieser Typ wird zur Zeit der Definition der Liste bestimmt.
+- Die Elemente innerhalb einer Liste haben eine feste Reihenfolge. Dies bedeutet, dass eine Iteration über eine Liste immer zu einem gleichen Ergebnis mit der gleichen Reihenfolge führt.
 - Duplikate innerhalb einer Liste sind erlaubt (dasselbe Objekt darf mehrmals in einer Liste vorkommen)
 - Eine Liste kann auch `null`-Elemente beinhalten.
 - Die Indizes in einer Liste reichen immer von 0 bis Anzahl Elemente in der Liste minus 1.
@@ -72,7 +72,7 @@ E get(int index);
 E remove(int index);
 
 /*
- * Removes the first occurrence of the specified element from 
+ * Removes the first occurrence of the specified element from
  * this list, if it is present.
  */
 boolean remove(Object o);
@@ -96,12 +96,14 @@ Die ArrayList setzt alle Methoden (obligatorische wie auch optionale) des List-I
 ### Arbeiten mit einer ArrayList - Beispiel
 
 Um mit ArrayList arbeiten zu können, muss die Klasse zuerst importiert werden.<br>
+
 ```java
 import java.util.ArrayList;
 ```
 
 Nun kann eine Variable definiert und eine ArrayList erzeugt werden. Die Syntax hier wird in späteren Modulen erklärt,
-hier reicht es zu wissen, dass innerhalb der spitzen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen. 
+hier reicht es zu wissen, dass innerhalb der spitzen Klammern - auf der linken Seite der Definition - der Typ der Objekte angegeben wird, welche dann in der Liste hinzugefügt werden dürfen.
+
 ```java
 // Erstellen einer ArrayList für String-Objekte.
 // Ein Versuch, Objekte anderer Typ in der Liste hinzuzufügen wird in einem Kompilierfehler resultieren.
@@ -110,6 +112,7 @@ List<String> words = new ArrayList<>();
 
 Sobald eine Liste erzeugt wurde, können beliebig viel Objekte hinzugefügt oder entfernt werden.<br>
 Über die Liste kann mit einer Schleife iteriert werden oder auch mit einem Index direkt auf ein Element zugegriffen werden.
+
 ```java
 // Elemente hinzufügen
 words.add("Hello");

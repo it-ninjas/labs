@@ -7,31 +7,35 @@ date: 2022-04-19
 description: >
   Modul #F3 - HTML und CSS - HTML-Elemente auf der Seite positionieren.
 ---
-#### Ziele
-* Ich weiss, wie man mit position: relative HTML-Elemente verschieben kann, ohne den Textfluss zu beeinflussen.
-* Ich weiss, wie man mit position: absolute Elemente auf einer festen Position innerhalb eines Containers platziert.
-* Ich kann position: fixed anwenden, um Elemente unabhängig vom Scrollen an einer festen Position zu halten.
 
+#### Ziele
+
+- Ich weiss, wie man mit position: relative HTML-Elemente verschieben kann, ohne den Textfluss zu beeinflussen.
+- Ich weiss, wie man mit position: absolute Elemente auf einer festen Position innerhalb eines Containers platziert.
+- Ich kann position: fixed anwenden, um Elemente unabhängig vom Scrollen an einer festen Position zu halten.
 
 Der Tag wird kommen, an dem du ein HTML-Element an einer bestimmten Position haben willst.
 
 ## relative Positionierung: Element ein bisschen verschieben
+
 Angenommen, du hast z.B. ein Bild in einem Text:
+
 ```html
 Are you a
 <img src="	https://it-ninjas.ch/img/svg/Ninja%20Elements_kopf.svg" alt="" />?
 
 <style>
-    body {
-        font-size: 5em;
-    }
-    img {
-        height: 1em;
-    }
+  body {
+    font-size: 5em;
+  }
+  img {
+    height: 1em;
+  }
 </style>
 ```
 
 Dann wird das Bild wahrscheinlich nicht perfekt im Text ausgerichtet sein. In diesem Beispiel wollen wir das Bild ein bisschen nach unten verschieben. Dann kannst du das wie folgt machen:
+
 ```css
 img {
     position: relative;
@@ -44,8 +48,8 @@ Mit `position: relative` bewirken wir, dass CSS-Properties wie `top`, `bottom`, 
 
 ![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../../labs/web/html_css/02_css).
 
-
 ## absolute Positionierung
+
 Möchtest du ein Element auf einer bestimmten Position haben, dann hilft dir womöglich `position: absolute` weiter:
 
 ```html
@@ -53,13 +57,13 @@ Are you a
 <img src="	https://it-ninjas.ch/img/svg/Ninja%20Elements_kopf.svg" alt="" />?
 
 <style>
-    img {
-        position: absolute;
-        top: 20em;
-        right: 10em;
+  img {
+    position: absolute;
+    top: 20em;
+    right: 10em;
 
-        height: 150px;
-    }
+    height: 150px;
+  }
 </style>
 ```
 

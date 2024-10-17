@@ -4,7 +4,7 @@ linkTitle: "Stack"
 type: docs
 weight: 4
 description: >
-    Aufgaben zu [Java Collections - Stack](../../../../docs/java/java-collections/05_stack)
+  Aufgaben zu [Java Collections - Stack](../../../../docs/java/java-collections/05_stack)
 ---
 
 ## Aufgabe 1 (Optional)
@@ -18,11 +18,11 @@ werden.
 
 Implementiere die folgenden Methoden:
 
-* `public E push(E item)`
-* `public E pop( )` (soll EmptyStackException werfen)
-* `public E peek() ` (soll EmptyStackException werfen)
-* `int size()`
-* `public boolean empty()`
+- `public E push(E item)`
+- `public E pop( )` (soll EmptyStackException werfen)
+- `public E peek() ` (soll EmptyStackException werfen)
+- `int size()`
+- `public boolean empty()`
 
 Beachte, dass du die `toString()` Methode anpasst, sodass die MyStack-Stacks beim printen übersichtlich dargestellt
 werden, wie im Beispiel oben: [blue, yellow, green, orange]
@@ -33,6 +33,4 @@ Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../d
 
 Erweitere deine MyStack Klasse. Implementiere zusätzlich die folgende Methode:
 
-* `public int search(Object o)`
-
-
+- `public int search(Object o)`
