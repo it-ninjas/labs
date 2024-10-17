@@ -27,7 +27,15 @@ Das Adressbuch soll
 Generell gilt die Regel, dass jeder Kontakt einzigartig sein muss.
 Schreibe dazu eine eigene `equals()` Methode und verwende diese für die Überprüfung.
 
-_Es soll kein Scanner eingesetzt werden._
+**Wichtiger Hinweis** \
+In den OOP-Aufgaben sollen in den `main`-Methoden nur noch Objekte instanziert werden. 
+Sämtliche Logik wie oben beschieben muss in den Klassen definiert werden. Du brauchst also eine Klasse **Person** und eine Klasse **Adressbuch**, welche alle Funktionen anbietet.
+
+**Wichtiger Hinweis** \
+In den OOP-Aufgaben sollen in den `main`-Methoden nur noch Objekte instanziert werden. 
+Sämtliche Logik wie oben beschieben muss in den Klassen definiert werden. Du brauchst also eine Klasse **Person** und eine Klasse **Adressbuch**, welche alle Funktionen anbietet.
+
+*Es soll kein Scanner eingesetzt werden.*
 
 ---
 
