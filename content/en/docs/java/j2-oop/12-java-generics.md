@@ -99,7 +99,7 @@ Diese Klasse kompiliert ohne Fehler. Der Compiler warnt zwar, dass hier eine uns
 durchgeführt wird, aber er erlaubt diese Operation und die Kompilation ist erfolgreich.
 Beim Ausführen des Programms kommt es jedoch zu einem Laufzeitfehler vom Typ ClassCastException, weil versucht wird
 ein Integer in einen String umzuwandeln (Typ-Casting):
-![](../java-generics/typverletzung-run-time.png)
+![](../../java-generics/typverletzung-run-time.png)
 
 Generics helfen solche Laufzeitfehler mit sog. Typvariablen zu vermeiden.
 Diese Typvariablen werden zur Zeit der Implementierung zunächst durch Platzhalter repräsentiert
@@ -115,7 +115,7 @@ eine Liste von Strings definiert hätten:
 ```
 
 Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl:
-![](../java-generics/typverletzung-arraylist-compile-time.png)
+![](../../java-generics/typverletzung-arraylist-compile-time.png)
 
 ## Generics in der Praxis
 
