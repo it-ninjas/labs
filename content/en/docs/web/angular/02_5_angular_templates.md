@@ -18,7 +18,7 @@ description: >
 In Angular ist das Template der Teil eines Components, der die Benutzeroberfläche definiert. Es ist im Wesentlichen das HTML, das vom Component angezeigt wird und mit der Benutzer interagieren kann.
 
 Das Template kann jedoch mehr als nur HTML enthalten. Es kann auch Angularspezifische Syntax wie
-[Template Styling](../02_5_angular_stylesheet#template-styling), [Directives](../02_7_angular_directives), [Pipes](../03_2_angular_pipes),
+[Template Styling](../02_6_angular_stylesheet#template-styling), [Directives](../02_8_angular_directives), [Pipes](../03_2_angular_pipes),
 [Interpolationen](../03_1_angular_data_binding#interpolation) und [Bindings](../03_1_angular_data_binding) enthalten, die die Funktionalität und das Verhalten des Components bestimmen.
 
 ```html

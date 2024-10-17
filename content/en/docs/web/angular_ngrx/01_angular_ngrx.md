@@ -29,8 +29,6 @@ NgRx besteht aus verschiedenen Kernkonzepten:
 
 - **Effects**: Effects ermöglichen die asynchrone Datenverarbeitung und die Interaktion mit externen APIs. Sie reagieren auf bestimmte Aktionen und führen Nebenwirkungen aus, wie z.B. das Abrufen von Daten von einem Server oder das Auslösen weiterer Aktionen.
 
-![NgRx Statemanagement](../images/ngrx-statemanagement.png)
-
 ## Installation
 
 Um NgRx in einem Angular-Projekt zu verwenden, werden folgende Schritte benötigt:

@@ -44,7 +44,7 @@ Die Abfrage kannst du wie folgt durchführen:
 fetch("https://api.chucknorris.io/jokes/random", { method: "get" });
 ```
 
-Du wirst sehen, dass dieser Funktionsaufruf ein `Promise {<pending>}` zurückgibt (Promises sind im Kapitel [JS_Async](../../../../docs/web/javascript/15_js_async) zu finden). Wir sehen, dass die Anfrage noch nicht vorbei ist (pending = anstehend). Dieses `Promise`-Objekt wird die Antwort enthalten, sobald die Antwort verfügbar ist. Da wir sowieso erst weiterfahren möchten, wenn die Antwort bereit ist, interessieren wir uns nicht für das `Promise`. Daher können wir einfach mit der Fortsetzung des Scriptes solange warten, bis wir die Antwort hätten. Das können wir wie folgt machen:
+Du wirst sehen, dass dieser Funktionsaufruf ein `Promise {<pending>}` zurückgibt (Promises sind im Kapitel [JS_Async](../../../docs/web/javascript/16_js_async.md) zu finden). Wir sehen, dass die Anfrage noch nicht vorbei ist (pending = anstehend). Dieses `Promise`-Objekt wird die Antwort enthalten, sobald die Antwort verfügbar ist. Da wir sowieso erst weiterfahren möchten, wenn die Antwort bereit ist, interessieren wir uns nicht für das `Promise`. Daher können wir einfach mit der Fortsetzung des Scriptes solange warten, bis wir die Antwort hätten. Das können wir wie folgt machen:
 
 ```javascript
 await fetch("https://api.chucknorris.io/jokes/random", { method: "get" });

@@ -39,4 +39,4 @@ const intervalId = setInterval(function(){}, 1000);
 clearInterval(intervalId);
 ```
 
-![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../../labs/web/html_css/03_javascript).
+![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../labs/web/javascript/01_javascript.md).

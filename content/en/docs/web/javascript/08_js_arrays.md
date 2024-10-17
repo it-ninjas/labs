@@ -148,7 +148,7 @@ array.forEach(function (element) {
 // 5
 ```
 
-Wie in Kapitel [Functions](../../../../en/docs/web/javascript/10_js_functions.md#arrow-functions) beschrieben, kann auch eine Arrow-Function verwendet werden:
+Wie in Kapitel [Functions](../../../docs/web/javascript/07_js_functions.md#arrow-functions) beschrieben, kann auch eine Arrow-Function verwendet werden:
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
