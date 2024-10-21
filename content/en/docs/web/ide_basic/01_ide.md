@@ -17,9 +17,10 @@ Die Beispiele in diesem Modul werden anhand der Nutzung von Visual Studio Code e
 https://code.visualstudio.com/
 
 ### Extensions
+
 Extensions sind, einfach gesagt, eine Möglichkeit, die Entwicklungsumgebung, welche man verwendet, zu erweitern. Es ist möglich, dass bestehende Funktionalitäten der Umgebung verbessert oder ausgearbeitet werden,
 es ist aber ebenfalls möglich, dass komplett neue Funktionalitäten dazukommen. Um in VS Code eine Extension hinzuzufügen, musst du links auf den Tab "Extensions" klicken, im sich öffnenden Suchfeld nach der gewünschten
-Extension suchen und diese zu installieren. Je nach Art der Extension musst du VS Code neu starten, damit die Anpassungen übernommen werden. 
+Extension suchen und diese zu installieren. Je nach Art der Extension musst du VS Code neu starten, damit die Anpassungen übernommen werden.
 
 Folgende Extensions sind praktisch für die Entwicklung von Webapps mit VS Code (Auf die Extension "Live Server" wird nachfolgend noch genauer eingegangen):
 
@@ -91,7 +92,7 @@ Dort musst du die folgenden Einstellungen tätigen:
 - "Track changes in files compiled to JavaScript, HTML or CSS" Checkbox anwählen.
 - "Restart if hotswap fails" Checkbox anwählen.
 
-Diese Einstellungen musst du nun sichern, woraufhin du die Extension verwenden kannst. Dazu muss die Applikation über den Debugger gestartet werden, woraufhin sich ein Chromefenster öffnet. Die nun im Code getätigten Anpassungen werden direkt entsprechend im Browser angezeigt. 
+Diese Einstellungen musst du nun sichern, woraufhin du die Extension verwenden kannst. Dazu muss die Applikation über den Debugger gestartet werden, woraufhin sich ein Chromefenster öffnet. Die nun im Code getätigten Anpassungen werden direkt entsprechend im Browser angezeigt.
 
 ![task1](/images/task.png) 15' - Einzelarbeit
 
@@ -99,7 +100,7 @@ Diese Einstellungen musst du nun sichern, woraufhin du die Extension verwenden k
 
 ## Git
 
-Git ist dir bereits bekannt. Git ist ein Versionierungs-Tool für Code. 
+Git ist dir bereits bekannt. Git ist ein Versionierungs-Tool für Code.
 
 ![task2](/images/task.png) 5' - Einzelarbeit
 
