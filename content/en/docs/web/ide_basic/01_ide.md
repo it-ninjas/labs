@@ -79,7 +79,7 @@ Neben der Bereitstellung von HTML-, CSS- und JavaScript-Dateien unterstützt Liv
 Um eine Datei (z.B. eine HTML-Datei) via Live Server im Browser zu öffnen, tätige einen Rechtsklick auf die gewünschte Datei und klicke auf "Open with Live Server". Nun geht die gewünschte Seite im Browser auf und ist im Browser erreichbar via "http://localhost:5500".
 
 Ganz unten in VS Code siehst du nun einen Button mit der Aufschrift "Port 5500". Wenn du darauf klickst, beendest du den Live Server wieder.
-![Live Server](./images/live_server.PNG)
+![Live Server](/images/live_server.PNG)
 
 ### Live-Server in IntelliJ
 
