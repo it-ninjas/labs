@@ -17,7 +17,7 @@ In dieser Aufgabe werden wir eine Liste von Wörtern analysieren. Die Liste enth
 
 Die Liste, die du verwenden sollst, lautet:
 ```java
-ArrayList<String> words = new ArrayList<>(List.of(
+List<String> words = new ArrayList<>(List.of(
     "Abstraktion", "API", "Annotation", "ArrayList", "Bedingung", "Bibliothek",
     "Bytecode", "Collection", "Compiler", "Debugging", "Deployment", "entwickeln",
     "Exception", "Framework", "GarbageCollector", "generisch", "HashMap",
