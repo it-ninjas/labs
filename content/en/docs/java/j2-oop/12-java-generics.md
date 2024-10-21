@@ -63,7 +63,43 @@ Programme, welche Generics verwenden, haben mehrere Vorteile gegenüber Programm
 * **Typsicherheit:** Generics lösen Fehler während der Kompilierung aus, welche ansonsten erst zur Laufzeit ausgelöst wären.
 * **Individuelle Typ-Casting ist nicht nötig:** Wenn bei der Anwendung von Generics der konkrete Typ angegeben wird, muss danach kein Typ-Casting stattfinden.
 
-Schauen wir wie die Typsicherheit eines Programms mit Generics verbessert werden kann.
+### Wiederverwendbarkeit
+Generics helfen uns wiederverwendbaren Code zu schreiben. Das gefällt uns als Informatiker natürlich sehr, da wir so weniger zu tun haben.
+
+Angenommen wir haben eine Methode um das erste Element aus einem Array zu extrahieren:
+```java
+public String getFirstElement(String[] array){
+    if(array == null || array.length == 0){
+        throw new ArrayIndexOutOfBoundsException("Array cant be empty");
+    }
+    return array[0];
+}
+```
+Diese Funktion kann aber nur mit `String`-Arrays umgehen. Wollen wir noch eine für `Integer`-Arrays haben brauchen wir eine Methode `Integer getFirstElement(Integer[] array)`, für `Double`-Arrays eine Methode `Double getFirstElement(Double[] array)` und so weiter und so fort ...  
+```java
+getFirstElement(new String[]{"Uno", "Due"}) //Funktioniert
+getFirstElement(new Integer[]{1,2,3}) //Führt zu einem Compiler-Fehler
+```
+
+
+Stattdessen können wir aber auch eine Funktion mit Generics schreiben. Diese funktioniert dann für alle nicht-primitiven Typen. Wie genau so eine Methode aufgebaut ist und wofür `T` steht, erfährst du weiter unten.
+
+```java
+public static <T> T getFirstElement(T[] array) {//T is hier der Ersatz von String/Double/Integer/...
+    if (array == null || array.length == 0) {
+        throw new ArrayIndexOutOfBoundsException("Array cant be empty");
+    }
+    return array[0];
+}
+
+getFirstElement(new String[]{"Uno", "Due"}) //Funktioniert
+getFirstElement(new Integer[]{1,2,3}) //Funktioniert ebenfalls
+```
+
+*Wir könnten natürlich auch eine Methode schreiben, die einfach ein `Object`-Array als Argument hat und ein `Object` zurückgibt. Weshalb das nicht so eine gute Idee ist, erfährts du im nächsten Kapitel."*
+
+### Typsicherheit
+Auch die Typsicherheit eines Programms kann mit Generics verbessert werden.
 
 Die Object-Klasse in Java ist die Super-Klasse aller anderen Klassen und eine Object-Referenz kann beliebige Objekte referenzieren.
 Diese Features sind nicht typsicher. Auch durch das Verwenden von Polymorphismus können Typverletzungen entstehen.
@@ -92,7 +128,15 @@ Diese Klasse kompiliert ohne Fehler. Der Compiler warnt zwar, dass hier eine uns
 durchgeführt wird, aber er erlaubt diese Operation und die Kompilation ist erfolgreich. 
 Beim Ausführen des Programms kommt es jedoch zu einem Laufzeitfehler vom Typ ClassCastException, weil versucht wird
 ein Integer in einen String umzuwandeln (Typ-Casting):
-![](../java-generics/typverletzung-run-time.png)
+```console
+PS C:\devsbb\sources\examples> java Test.java
+Note: Test.java uses unchecked or unsafe operations.
+Note: recompile with -Xlint:unchecked for details.
+PS:\devsbb\sources\examples> java Test
+Douglas
+Adams
+Exception in thread "main" java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap' at Test.main(Test.java:13))
+```
 
 Generics helfen solche Laufzeitfehler mit sog. Typvariablen zu vermeiden.
 Diese Typvariablen werden zur Zeit der Implementierung zunächst durch Platzhalter repräsentiert 
@@ -105,8 +149,17 @@ eine Liste von Strings definiert hätten:
     ...
     hitchhikersInfo.add(42); // Der Compiler erlaubt diese Zuweisung nicht mehr
 ```
-Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl:
-![](../java-generics/typverletzung-arraylist-compile-time.png)
+
+Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl. Mit `javac` kann der Java Compiler aus der Kommandozeile ausgeführt werden:
+```console
+PS C:\devsbb\sources\examples> javac Test.java
+Test.java:10: error: incompatible types: int cannot be converted to String hitchhikersInfo.add(42); //Der Compiler erlaubt diese Zuweisung nicht!
+                                                                                               ^
+Note: Test.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some messages have been simplieied; recompile with X-diags:verbose to get full output
+1 error
+```
 
 ## Generics in der Praxis
 In Java gibt es zwei Typen von Generics: generische Methoden und generische Klassen.
@@ -120,9 +173,9 @@ Der Unterschied liegt darin, dass die generische Klasse einen oder mehrere Typpa
 
 ### Typparameter definieren
 In generischen Klassen wie auch in generischen Methoden, werden Typparameter mittels eines Grossbuchstabens definiert, 
-welcher innerhalb spitziger Klammern geschrieben wird z.B: &lt;T&gt; oder &lt;I&gt;.
+welcher innerhalb spitziger Klammern geschrieben wird z.B: `<T>` oder `<I>`.
 
-Multiple Typparameter werden durch ein Komma getrennt:  &lt;T, V&gt;
+Multiple Typparameter werden durch ein Komma getrennt:  `<T,V>`
 
 #### Typparameter Namenskonvention
 Die Buchstaben, welche für die Definition von Typparametern verwendet werden, nutzen die folgende Namenskonvention: 
@@ -140,11 +193,12 @@ Um generische Klassen zu verwenden, wird zunächst die Klasse mit einem Typparam
 und bei der Anwendung dieser Klasse (bei der Instanziierung) wird innerhalb der spitzigen Klammern 
 der konkrete Datentyp geschrieben.
 
-**Beispiel einer benutzer-definierten, generischen Klasse**
+**Beispiel einer benutzer-definierten, generischen Klasse**  
+In diesem Beispiel haben wir eine Klasse, welche ein Kartonbox darstellt. Jede Box kann einen Typ von Objekt aufnehmen. Es gibt also z.B. eine Box für `String`, eine Box für `Integer`. Natürlich können auch mehrere Boxen für z.B. `Integer` exisiteren, jede Box kann aber nur einen Typ an Objekt enthalten.
 
 ```java
 // <T> definiert einen Typparameter
-class Test<T> {
+class Box<T> {
     // Deklaration einer Member-Variable vom Typ T
     T obj;
     
@@ -152,7 +206,7 @@ class Test<T> {
     Test(T obj) {
         this.obj = obj;
     }
-    
+
     // die Getter-Methode liefert ein Objekt vom Typ T zurück
     public T getObject() {
       return this.obj;
@@ -164,11 +218,11 @@ Sofern sich die obige Klasse auf dem Klassenpfad befindet, kann sie nun wie folg
 class MyProgram {
     public static void main(String[] args) {
         // Instanziieren der generischen Klasse und setzen den Typ auf Integer
-        Test<Integer> integerObject = new Test<Integer>(42);
+        Box<Integer> integerObject = new Box<Integer>(42);
         System.out.println(integerObject.getObject()); // Output: 42
   
         // instance of String type
-        Test<String> stringObject = new Test<String>("Generics are great!");
+        Box<String> stringObject = new Box<String>("Generics are great!");
         System.out.println(stringObject.getObject()); // Output: Generics are great!
     }
 }
