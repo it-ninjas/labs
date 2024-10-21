@@ -82,7 +82,7 @@ getFirstElement(new Integer[]{1,2,3}) //Führt zu einem Compiler-Fehler
 ```
 
 
-Stattdessen können wir aber auch eine Funktion mit Generics schreiben. Diese funktioniert dann für alle, nicht-primitiven, Typen. Wie genau so eine Methode aufgebaut ist und wofür `T` steht, erfährst du weiter unten.
+Stattdessen können wir aber auch eine Funktion mit Generics schreiben. Diese funktioniert dann für alle nicht-primitiven Typen. Wie genau so eine Methode aufgebaut ist und wofür `T` steht, erfährst du weiter unten.
 
 ```java
 public static <T> T getFirstElement(T[] array) {//T is hier der Ersatz von String/Double/Integer/...
@@ -149,7 +149,8 @@ eine Liste von Strings definiert hätten:
     ...
     hitchhikersInfo.add(42); // Der Compiler erlaubt diese Zuweisung nicht mehr
 ```
-Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl:
+
+Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl. Mit `javac` kann der Java Compiler aus der Kommandozeile ausgeführt werden:
 ```console
 PS C:\devsbb\sources\examples> javac Test.java
 Test.java:10: error: incompatible types: int cannot be converted to String hitchhikersInfo.add(42); //Der Compiler erlaubt diese Zuweisung nicht!
