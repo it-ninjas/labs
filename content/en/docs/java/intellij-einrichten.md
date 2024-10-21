@@ -7,17 +7,19 @@ description: >
 ---
 
 #### Ziele
-* Ich kenne die wichtigsten Funktionen der IntelliJ IDEA
-* Ich kann Projekte innerhalb IntelliJ IDEA neu anlegen, konfigurieren und verwalten
-* Ich kann IntelliJ IDEA zusammen mit einem GIT-Repository verwenden
-* Ich kann Plugins suchen und installieren
-* Ich verstehe das Grundprinzip von Debugging
+
+- Ich kenne die wichtigsten Funktionen der IntelliJ IDEA
+- Ich kann Projekte innerhalb IntelliJ IDEA neu anlegen, konfigurieren und verwalten
+- Ich kann IntelliJ IDEA zusammen mit einem GIT-Repository verwenden
+- Ich kann Plugins suchen und installieren
+- Ich verstehe das Grundprinzip von Debugging
 
 ---
 
 ### Einführung in IntelliJ IDEA
 
 Besuche die folgenden Links und lies die Informationen durch:
+
 - [Navigation und Suche](https://www.jetbrains.com/help/idea/discover-intellij-idea.html#navigation-and-search)
 - [Benutzer Interface](https://www.jetbrains.com/help/idea/guided-tour-around-the-user-interface.html)
 
@@ -40,7 +42,7 @@ Falls Du die Tastenkombinationen deinen Bedürfnissen angepasst hast, kannst du 
 #### Wichtige Kombinationen für den Anfang
 
 | Funktion                                           | Shortcut          |
-|----------------------------------------------------|-------------------|
+| -------------------------------------------------- | ----------------- |
 | Einstellungen öffnen                               | Ctrl + Alt + S    |
 | Überall suchen                                     | 2x Shift          |
 | Smart Code Completion                              | Ctr + Alt + Space |
@@ -52,9 +54,9 @@ Falls Du die Tastenkombinationen deinen Bedürfnissen angepasst hast, kannst du 
 
 IntelliJ bietet nicht nur Tastenkombinationen, um die Produktivität zu verbessern, sondern auch vordefinierte Wörter, Kürzel oder Buchstaben, welche automatisch Code generieren.
 Mit der Tastenkombination Ctrl + J kannst du diese anzeigen lassen.
-  
+
 | Code                                                             | Shortcut |
-|------------------------------------------------------------------|----------|
+| ---------------------------------------------------------------- | -------- |
 | eine main()-Methode                                              | psvm     |
 | eine forEach-Schleife                                            | foreach  |
 | eine for-Schleife mit "i" als Zähler                             | fori     |
@@ -74,10 +76,10 @@ Um einen ersten Einblick in die Erstellung eines neuen Projektes zu erhalten kan
 
 Plugins erweitern die Kernfunktionalität von IntelliJ IDEA.
 
-* Plugins ermöglichen die Integration mit Versionskontrollsystemen, Anwendungsservern und anderen externen Applikationen
-* Plugins fügen Unterstützung bei der Kodierungshilfe für verschiedene Sprachen und Frameworks hinzu
-* Plugins steigern die Produktivität mit Shortcut-Hinweisen, Live-Vorschauen, File Watchers etc.
-* Plugins helfen dir beim Erlernen einer neuen Programmiersprache mit Programmierübungen und Verifizierung
+- Plugins ermöglichen die Integration mit Versionskontrollsystemen, Anwendungsservern und anderen externen Applikationen
+- Plugins fügen Unterstützung bei der Kodierungshilfe für verschiedene Sprachen und Frameworks hinzu
+- Plugins steigern die Produktivität mit Shortcut-Hinweisen, Live-Vorschauen, File Watchers etc.
+- Plugins helfen dir beim Erlernen einer neuen Programmiersprache mit Programmierübungen und Verifizierung
 
 Plugins müssen über den Marktplatz von IntelliJ installiert werden. Dieser ist über die Einstellungen unter Plugins verfügbar.
 Dort können Plugins gesucht und über einen Klick auf Install einfach und unkompliziert installiert werden.
@@ -88,6 +90,7 @@ Ein sehr hilfreiches Plugin ist der "Key Promoter X". Dieses Plugin ermöglicht 
 Jede verfügbare Tastenkombinationen wird dir bei Verwendung eines Menüs oder Kontextmenüs angezeigt.
 
 ### Code-Formatierung
+
 Um den Code in IntelliJ IDEA zu formatieren, können die integrierten Funktionen für Codeformatierung verwendet werden. So kann der Code formatiert werden:
 
 1. Den Code auswählen, welcher zu formatieren ist. Es kann sich um eine einzelne Zeile, einen Codeblock oder die gesamte Datei handeln.
@@ -101,7 +104,7 @@ Alternativ kann mit der rechten Maustaste auf den ausgewählten Code geklickt un
 
 3. IntelliJ IDEA wird den ausgewählten Code automatisch gemäss den konfigurierten Codeformatierungseinstellungen formatieren.
 
-Wenn die Codeformatierungseinstellungen in IntelliJ  noch nicht konfiguriert wurden, kann das je nach den entsprechend Vorlieben angepasst werden. So kann man die Codeformatierung konfigurieren:
+Wenn die Codeformatierungseinstellungen in IntelliJ noch nicht konfiguriert wurden, kann das je nach den entsprechend Vorlieben angepasst werden. So kann man die Codeformatierung konfigurieren:
 
 1. Zu "Datei" > "Einstellungen" (Windows/Linux) oder "IntelliJ IDEA" > "Einstellungen" (macOS) gehen.
 

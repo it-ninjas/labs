@@ -1,0 +1,55 @@
+on:
+  workflow_call:
+    inputs:
+      upload-artifact:
+        type: boolean
+        default: false
+      artifact-retention-days:
+        type: number
+        default: 1
+      artifact-name:
+        type: string
+        default: build
+      deploy:
+        type: boolean
+        default: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive  # Fetch the Docsy theme
+          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.135.0'
+          extended: true
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - run: npm ci
+      - run: npm -g install postcss-cli
+      - run: hugo --minify --environment production
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ inputs.upload-artifact }}
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: ./public
+          retention-days: ${{ inputs.artifact-retention-days }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ inputs.deploy }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check
+        uses: jtalk/url-health-check-action@v4
+        if: ${{ inputs.deploy }}
+        with:
+          url: https://labs.it-ninjas.ch/ 
+          follow-redirect: true
+          max-attempts: 3 
+          retry-delay: 10s

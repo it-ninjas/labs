@@ -6,6 +6,7 @@ description: >
 ---
 
 ## Inhalt
+
 Diese Seite soll als Landing Page dienen und den Absprung zu den verschiedenen Testing-Seiten erleichtern.
 
 - [Testing Konzepte / JUnit / Mockito](../../../../docs/java/java-testing/)

@@ -8,10 +8,10 @@ description: >
 
 ## Ziele
 
-* Ich kann ohne Hilfsmittel die Bestandteile einer Klasse vollständig auflisten.
-* Ich kann den Unterschied zwischen einer Klasse und einem Objekt mit konkreten Beispielen
+- Ich kann ohne Hilfsmittel die Bestandteile einer Klasse vollständig auflisten.
+- Ich kann den Unterschied zwischen einer Klasse und einem Objekt mit konkreten Beispielen
   demonstrieren.
-* Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte
+- Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte
   dazu.
 
 ---
@@ -23,18 +23,19 @@ Alle diese Objekte haben einen bestimmten Zustand/Merkmale und ein bestimmtes Ve
 
 Wenn wir ein Auto betrachten, so könnte sein Zustand/seine Merkmale
 
-* einen Markennamen,
-* eine bestimmte Geschwindigkeit
-* oder den zu tankenden Kraftstoff enthalten.
+- einen Markennamen,
+- eine bestimmte Geschwindigkeit
+- oder den zu tankenden Kraftstoff enthalten.
 
 Mögliche Verhaltensweisen eines Autos sind normalerweise
 
-* fahren
-* und einparken.
+- fahren
+- und einparken.
 
 ## Problemstellung
 
 Stell dir vor, du möchtest ein Auto in Java programmieren. Dazu könnten wir für jedes Auto einfach drei separate Variablen verwenden:
+
 ```java
 public class AutoProblemOhneOOP {
 
@@ -50,6 +51,7 @@ public class AutoProblemOhneOOP {
     }
 }
 ```
+
 Das funktioniert für ein oder zwei Autos, aber was passiert, wenn wir viele Autos haben? Was passiert, wenn wir viele Autos haben? Es wird schwierig, jedes Auto mit seinen individuellen Merkmalen zu verwalten, und der Code wird unübersichtlich. Wir müssten
 mehrere Variablen für jeden Zustand eines Autos pflegen. Eine Lösung wäre die Verwendung von Arrays:
 
@@ -63,6 +65,7 @@ public class AutoProblemMitArrays {
     }
 }
 ```
+
 Probleme mit dieser Lösung:
 
 - Wir müssen immer sicherstellen, dass die Daten für jedes Auto an der gleichen Position in allen
@@ -72,6 +75,7 @@ Probleme mit dieser Lösung:
 Wäre es nicht cool, wenn wir diese Eigenschaften zusammenfassen könnten?
 Eine bessere Lösung besteht darin, eine **Klasse** zu erstellen, die alle Merkmale eines Autos
 beschreibt. Dadurch können wir sowohl den Zustand als auch das Verhalten eines Autos kapseln.
+
 ```java
 public class Auto {
     String marke;
@@ -82,6 +86,7 @@ public class Auto {
 
 Nun können wir **Objekte** dieser Klasse erstellen. Ein Objekt hat diese Eigenschaften zur Verfügung
 und kann sie entsprechend setzen:
+
 ```java
 public class AutoBeispiel {
 
@@ -102,7 +107,9 @@ public class AutoBeispiel {
   }
 }
 ```
+
 Vorteile dieser Lösung:
+
 - Die Eigenschaften eines Autos sind in einer einzigen Einheit (Klasse) zusammengefasst.
 - Es ist einfach, neue Autos zu erstellen und zu verwalten, da wir nicht mehr mehrere Arrays benötigen. Wir können einfach einen Array von unserem Typ Auto erstellen: `Auto[] autos`.
 - Der Code wird klarer und wartbarer.
@@ -110,7 +117,9 @@ Vorteile dieser Lösung:
 Klassen können noch viel mehr als nur Behälter für mehrere Variablen sein. Das wirst du in den folgenden Kapiteln lernen.
 
 ### Definitionen
+
 Um die nachfolgenden Kapitel besser zu verstehen, ist es hilfreich zuerst einige Basisdefinitionen zu etablieren.
+
 #### Objektorientierte Programmierung
 
 Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu
@@ -156,8 +165,8 @@ Klasse `Car`, die wir selber erfunden haben. Die oberen 4 Einträge sind ihre In
 die untersten 3 sind ihre Methoden. Einträge mit einem `-` sind `private`, Einträge mit einem `+`
 sind öffentlich (`public`):
 
-| `class Car`              | 
-|--------------------------|
+| `class Car`              |
+| ------------------------ |
 | - topSpeed: `int`        |
 | - totalSeats: `int`      |
 | - fuelCapacity: `int`    |

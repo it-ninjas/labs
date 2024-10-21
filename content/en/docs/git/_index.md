@@ -36,19 +36,20 @@ Vielleicht sogar ...
 
 Dieses Lab unterteilt sich in folgende Themenbereiche:
 
-* [Was ist dieses Git?](was-ist-git)
-* [Git installieren](git-install)
-* [Git Basics](git-basics)
-* [Git Branches](git-branches)
-* [GitHub](git-hub)
-* [Bitbucket](bitbucket)
-* [Git Erweitert](git-extended)
+- [Was ist dieses Git?](was-ist-git)
+- [Git installieren](git-install)
+- [Git Basics](git-basics)
+- [Git Branches](git-branches)
+- [GitHub](git-hub)
+- [Bitbucket](bitbucket)
+- [Git Erweitert](git-extended)
 
 Nachdem du die Docs gelesen hast, solltest du in der Lage sein die [Labs](../../../../labs/git/) zu lösen.
+
 ## Let's play!
 
 Meisterst du diese Challenges?
 
-* [oh my git!](https://ohmygit.org/)
-* [learn git branching](https://learngitbranching.js.org/)
-* [git immersion](https://gitimmersion.com)
+- [oh my git!](https://ohmygit.org/)
+- [learn git branching](https://learngitbranching.js.org/)
+- [git immersion](https://gitimmersion.com)

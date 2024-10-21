@@ -4,17 +4,17 @@ linkTitle: "Shop"
 type: docs
 weight: 4
 description: >
- Aufgabe zu Modul #J3 - [OOD](../../../../docs/java/java-ood) - Shop
-
+  Aufgabe zu Modul #J3 - [OOD](../../../../docs/java/java-ood) - Shop
 ---
 
-Erstelle ein System für ein Online-Handelshaus, das Produkte aus verschiedenen Kategorien verkauft. 
+Erstelle ein System für ein Online-Handelshaus, das Produkte aus verschiedenen Kategorien verkauft.
 Das System soll die Verwaltung von Produkten, Kunden und Bestellungen ermöglichen.
 
 Produkt:
+
 - eindeutige Produkt-ID
 - Namen
-- Preis 
+- Preis
 - Kategorie
 - Verfügbarkeitsstatus.
 
@@ -22,6 +22,7 @@ Produkte können verschiedenen Kategorien angehören, z.B. Elektronik, Kleidung,
 Das System sollte in der Lage sein, verschiedene Arten von Produkten zu verwalten, z.B. Elektronikprodukte (Handys, Laptops), Kleidungsstücke (T-Shirts, Hosen), Bücher (Romane, Fachbücher) usw.
 
 Kunde:
+
 - eindeutige Kunden-ID
 - Namen
 - E-Mail-Adresse
@@ -30,15 +31,17 @@ Kunde:
 Kunden können Produkte kaufen, indem sie Bestellungen aufgeben.
 
 Bestellung:
+
 - eindeutige Bestellnummer
-- die Produkte, welche gekauft wurden 
-- Gesamtpreis 
+- die Produkte, welche gekauft wurden
+- Gesamtpreis
 - Kunden, welcher die Bestellung aufgegeben hat
 - Bestellstatus.
 
 Kunden können mehrere Produkte in einer Bestellung kaufen.
 
 Das System sollte folgende Funktionen unterstützen:
+
 - Hinzufügen, Aktualisieren und Entfernen von Produkten.
 - Anzeigen aller Produkte in einer bestimmten Kategorie.
 - Hinzufügen, Aktualisieren und Entfernen von Kunden.
@@ -47,4 +50,5 @@ Das System sollte folgende Funktionen unterstützen:
 - Aktualisieren des Bestellstatus für eine Bestellung.
 
 ---
+
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-ood).

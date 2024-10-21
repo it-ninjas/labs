@@ -8,12 +8,13 @@ weight: 1
 
 ## Inhalt
 
-* [Was ist Versionsverwaltung](#was-ist-versionsverwaltung)
-* [Geschichte](#geschichte)
-* [Name](#name)
-* [Wie funktioniert Git](#wie-funktioniert-git)
+- [Was ist Versionsverwaltung](#was-ist-versionsverwaltung)
+- [Geschichte](#geschichte)
+- [Name](#name)
+- [Wie funktioniert Git](#wie-funktioniert-git)
 
 ## Ziele
+
 - Ich weiss, was eine Versionsverwaltung ist und kann erklären, wofür sie verwendet wird.
 - Ich kenne die Unterschiede zwischen lokaler, zentraler und verteilter Versionsverwaltung.
 - Ich kann anhand der drei Zustände einer Datei grob beschreiben wie Git funktioniert.
@@ -35,7 +36,7 @@ Dies ist jedoch sehr fehleranfällig, da man schnell die falsche Datei erwischt.
 
 ### Zentrale Versionsverwaltung
 
-Um die Zusammenarbeit von mehreren Personen zu vereinfachen wurden zentrale Versionsverwaltungssysteme entwickelt. Diese Systeme basieren auf einem zentralen Server der alle Dateien verwaltet. User holen eine Datei ab (Auschecken oder engl. to check out) editieren sie und nur berechtigte User dürfen  die Datei anschliessend wieder auf den Server stellen. Ein Beispiel dafür ist [SVN](https://subversion.apache.org/)
+Um die Zusammenarbeit von mehreren Personen zu vereinfachen wurden zentrale Versionsverwaltungssysteme entwickelt. Diese Systeme basieren auf einem zentralen Server der alle Dateien verwaltet. User holen eine Datei ab (Auschecken oder engl. to check out) editieren sie und nur berechtigte User dürfen die Datei anschliessend wieder auf den Server stellen. Ein Beispiel dafür ist [SVN](https://subversion.apache.org/)
 
 ### Verteilte Versionsverwaltung
 
@@ -63,11 +64,10 @@ Git funktioniert im Gegensatz zu den meisten anderen Versionsverwaltungen nicht,
 
 Eine Datei in einem Git Repository kann drei (Haupt-) Zustände haben:
 
-* **Modified**: Die Datei wurde geändert aber noch nicht in die lokale Datenbank eingecheckt.
-* **Staged**: Die Datei wurde im aktuellen Zustand für den nächsten Commit vorgemerkt.
-* **Commited**: Die Datei ist im aktuellen Zustand in die lokale Datenbank eingecheckt.
+- **Modified**: Die Datei wurde geändert aber noch nicht in die lokale Datenbank eingecheckt.
+- **Staged**: Die Datei wurde im aktuellen Zustand für den nächsten Commit vorgemerkt.
+- **Commited**: Die Datei ist im aktuellen Zustand in die lokale Datenbank eingecheckt.
 
 ### Minimaler Workflow
 
-Hat man ein Repository von einem anderen Rechner *geklont*, kann man eine oder mehrere Dateien im Verzeichnisbaum editieren. Anschliessend *staged* man diese Änderungen und *commited* diese zum Schluss.
-
+Hat man ein Repository von einem anderen Rechner _geklont_, kann man eine oder mehrere Dateien im Verzeichnisbaum editieren. Anschliessend _staged_ man diese Änderungen und _commited_ diese zum Schluss.

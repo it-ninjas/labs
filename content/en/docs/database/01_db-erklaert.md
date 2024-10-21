@@ -5,12 +5,14 @@ weight: 1
 ---
 
 ## Ziele
-* Du kennst den allgemeinen Aufbau einer Datenbank und kannst ihn erklären
-* Du kennst den Unterschied zwischen raltionalen und No-SQL Datenbanken
-* Du weisst wann welcher Datenbank-typ sinn macht
-* Du kennst die wichtigsten Datentypen und ihren Nutzen
+
+- Du kennst den allgemeinen Aufbau einer Datenbank und kannst ihn erklären
+- Du kennst den Unterschied zwischen raltionalen und No-SQL Datenbanken
+- Du weisst wann welcher Datenbank-typ sinn macht
+- Du kennst die wichtigsten Datentypen und ihren Nutzen
 
 ## Was ist eine Datenbank?
+
 Eine Datenbank ist ein System zur elektronischen Verwaltung von Daten.
 Grundsätzlich sagt der Name "Datenbank" bereits was sie ist: In einer Datenbank werden Daten in einer bestimmten Ordnung abgelegt.
 Ähnlich wie bei einer normalen Bank werden die Daten an einem klar definierten Ort abgespeichert.
@@ -27,11 +29,12 @@ Aktenschränke beinhaltet.
 Diese Aktenschränke wären in einer Datenbank die Tabellen. Die Tabellen beinhalten schlussendlich
 die verschiedenen Daten, wie zum Beispiel dein erwähntes Bankkonto mit deinem Kontostand.
 
-Schlussendlich sieht der Aufbau also so aus: 
+Schlussendlich sieht der Aufbau also so aus:
 
 ![](../images/Beispiel_Bank.png)
 
 ### Schema und Tabelle
+
 Ein Schema ist eine strukturierte Art und Weise, wie Daten organisiert werden. Es legt fest, wie die Datenbank aufgebaut
 ist und wie die Daten gespeichert und abgerufen werden können. Eine Tabelle ist ein Tabellenblatt mit Spalten und
 Zeilen, in dem die eigentlichen Daten gespeichert werden. Schemata und Tabellen helfen dabei, Daten organisiert und
@@ -40,43 +43,48 @@ Schemata und Tabellen sind auch wichtig, um die Sicherheit und Integrität der D
 Zugriffsrechte und Einschränkungen festlegen.
 
 ## Arten von Datenbanken
-In diesem Kapitel soll ein kleiner Überblick der verschiedenen Arten von Datenbanken und deren 
+
+In diesem Kapitel soll ein kleiner Überblick der verschiedenen Arten von Datenbanken und deren
 Vor- und Nachteile geklärt werden.
 
-Die am meisten verwendeten Datenbank Arten sind Relationale *(SQL)* und NO-SQL Datenbanken.
-Relationale *(SQL)* Datenbanken werden klar am häufigsten eingesetzt und sind auch am bekanntesten
-> Bei den Übungen, sowie Exams werden ausschliesslich Relationale *(SQL)* Datenbanken verwendet.
+Die am meisten verwendeten Datenbank Arten sind Relationale _(SQL)_ und NO-SQL Datenbanken.
+Relationale _(SQL)_ Datenbanken werden klar am häufigsten eingesetzt und sind auch am bekanntesten
 
-### Relational *(SQL)*
+> Bei den Übungen, sowie Exams werden ausschliesslich Relationale _(SQL)_ Datenbanken verwendet.
+
+### Relational _(SQL)_
+
 Relationale Datenbanken sind ähnlich wie Excel Tabellen aufgebaut. Der Name kommt vom Konzept der Relationen (Tabellen)
-, die es ermöglichen, Daten logisch und strukturiert zu speichern und abzurufen. Sie verwenden Tabellen, die jeweils 
-Zeilen und Spalten beinhalten *(auch Rows und Columns genannt)*. Pro Spalte *(Column)*, auch **Attribut** genannt, 
-muss ein Datentyp festgelegt werden. Dieser Datentyp definiert, welche Art von Daten in dieser Spalte gespeichert 
+, die es ermöglichen, Daten logisch und strukturiert zu speichern und abzurufen. Sie verwenden Tabellen, die jeweils
+Zeilen und Spalten beinhalten _(auch Rows und Columns genannt)_. Pro Spalte _(Column)_, auch **Attribut** genannt,
+muss ein Datentyp festgelegt werden. Dieser Datentyp definiert, welche Art von Daten in dieser Spalte gespeichert
 werden kann. Beispiel: Eine Spalte mit dem Namen "Alter" hat einen nummerischen Datentyp. Also können
-ausschliesslich Zahlen in dieser Spalte eingegeben werden. 
+ausschliesslich Zahlen in dieser Spalte eingegeben werden.
 
-Eine Zeile *(Row)*, auch **Tupel** genannt, beinhaltet jeweils einen ganzen Datensatz, wie beispielsweise alle 
+Eine Zeile _(Row)_, auch **Tupel** genannt, beinhaltet jeweils einen ganzen Datensatz, wie beispielsweise alle
 Benutzerdaten.
 
 ![](../images/Begriffe_relationaler_Datenbanken.png)
 
-*Quelle: https://de.wikipedia.org/wiki/Datenbanktabelle*
+_Quelle: https://de.wikipedia.org/wiki/Datenbanktabelle_
 
 ### NO-SQL
-Im Gegensatz zu relationalen Datenbanken speichern NoSQL-Datenbanken Daten in Formaten wie Dokumenten, 
-Schlüssel-Wert-Paaren, Spalten oder Graphen. Dies ermöglicht es, unstrukturierte Daten effektiver zu speichern und 
-abzurufen. Außerdem sind NoSQL-Datenbanken horizontal skalierbar, was bedeutet, dass sie auf mehrere Server verteilt 
+
+Im Gegensatz zu relationalen Datenbanken speichern NoSQL-Datenbanken Daten in Formaten wie Dokumenten,
+Schlüssel-Wert-Paaren, Spalten oder Graphen. Dies ermöglicht es, unstrukturierte Daten effektiver zu speichern und
+abzurufen. Außerdem sind NoSQL-Datenbanken horizontal skalierbar, was bedeutet, dass sie auf mehrere Server verteilt
 werden können, um die Leistung zu verbessern und die Belastung auf mehrere Maschinen zu verteilen.
 
 Wie erklärt gibt es viele verschiedene Ansätze bei NO-SQL, deshalb gibt es auch keine gemeinsame Syntax wie es sie bei
-SQL gibt. Bei den verschiedenen Anbietern kann also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen 
+SQL gibt. Bei den verschiedenen Anbietern kann also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen
 Speicherarten ist keine NO-SQL Datenbank wie die andere.
 
 ![](../images/NoSQLDatabases.jpg)
 
-*Quelle: https://www.geeksforgeeks.org/types-of-nosql-databases/*
+_Quelle: https://www.geeksforgeeks.org/types-of-nosql-databases/_
 
 ### Wann verwende ich welche Datenbank?
+
 Eine relationale Datenbank eignet sich gut für Anwendungsfälle, bei denen eine komplexe Datenstruktur mit starken
 Beziehungen zwischen den Daten besteht, z. B. in Unternehmenssystemen oder Finanzanwendungen, da sie eine konsistente
 und sichere Datenhaltung gewährleistet.
@@ -86,12 +94,13 @@ geändert werden muss oder es viele unstrukturierte oder semistrukturierte Daten
 Data-Anwendungen, sozialen Netzwerken oder Echtzeit-Analysen.
 
 ## Datentypen
+
 In diesem Teil werden kurz die wichtigsten Datentypen aufgelistet. Je nach Datenbank können die Namen der Datentypen
 abweichen, sollten jedoch von der Funktionalität gleich sein. In dieser Auflistung wurden die PostgreSQL Datentypen
 verwendet:
 
 | Typ-Name   | Beschreibung                                                                                                            | Beispiel              |
-|------------|-------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------- |
 | INTEGER    | Ganze Zahlen ohne Nachkommastellen im Bereich von -2.147.483.648 bis 2.147.483.647.                                     | 123                   |
 | NUMERIC    | Genaue Dezimalzahlen mit beliebiger Anzahl von Dezimalstellen, häufig in der Finanz- und Buchhaltungsbranche verwendet. | 1234.567              |
 | CHAR(n)    | Zeichenkette mit fester Länge von n Zeichen, aufgefüllt mit Leerzeichen, falls kürzer.                                  | 'ABC'                 |
@@ -101,7 +110,5 @@ verwendet:
 | TIMESTAMP  | Datum und Uhrzeit kombiniert, häufig für Zeitstempel in Anwendungen verwendet.                                          | '2023-05-31 14:30:00' |
 | BOOLEAN    | Wahrheitswerte (TRUE oder FALSE), oft für Ja/Nein-Entscheidungen verwendet.                                             | TRUE                  |
 
-
 Wenn du noch mehr über die einzelnen Datentypen erfahren möchtest, findest du unter diesem Link alle verfügbaren
-Datentypen in PostgreSQL: [Liste aller Datentypen (PostgreSQL)](https://www.postgresql.org/docs/current/datatype.html#:~:text=The%20following%20types%20(or%20spellings,without%20time%20zone)%2C%20xml%20.)
-
+Datentypen in PostgreSQL: [Liste aller Datentypen (PostgreSQL)](<https://www.postgresql.org/docs/current/datatype.html#:~:text=The%20following%20types%20(or%20spellings,without%20time%20zone)%2C%20xml%20.>)

@@ -7,24 +7,29 @@ description: >
 ---
 
 ## Ziele
-* Ich kann ohne Hilfsmittel die 3 verschiedenen Arten von Variablen auflisten (in welchem Kontext werden die Variablen wie genannt?).
-* Ich schreibe eine Definition eines statische Feldes selbstständig und korrekt.
-* Ich kann in eigenen Worten erklären, wozu statische Felder benutzt werden.
-* Ich kann in eigenen Worten den Unterschied zwischen statischen und nicht-statischen Feldern erklären.
+
+- Ich kann ohne Hilfsmittel die 3 verschiedenen Arten von Variablen auflisten (in welchem Kontext werden die Variablen wie genannt?).
+- Ich schreibe eine Definition eines statische Feldes selbstständig und korrekt.
+- Ich kann in eigenen Worten erklären, wozu statische Felder benutzt werden.
+- Ich kann in eigenen Worten den Unterschied zwischen statischen und nicht-statischen Feldern erklären.
 
 ## Felder
+
 Wir haben bereits verschiedene Arten von Variablen kennengelernt:
-* Variablen in einer Methode oder einem Codeblock - diese werden als _lokale Variablen_ bezeichnet
-* Variablen in Methodendeklarationen oder Konstruktoren - diese werden als _Parameter_ bezeichnet
-* Mitgliedsvariablen (member variables) in einer Klasse - diese werden als _Felder_ oder _Instanzvariablen_ bezeichnet
+
+- Variablen in einer Methode oder einem Codeblock - diese werden als _lokale Variablen_ bezeichnet
+- Variablen in Methodendeklarationen oder Konstruktoren - diese werden als _Parameter_ bezeichnet
+- Mitgliedsvariablen (member variables) in einer Klasse - diese werden als _Felder_ oder _Instanzvariablen_ bezeichnet
 
 Wir werden uns nun den Feldern widmen. Felder sind Variablen, die innerhalb einer Klasse, aber ausserhalb aller Methoden deklariert werden. Wir definieren sie üblicherweise am Anfang einer Klasse (vor den Methoden).
 Es gibt zwei verschiedene Typen von Feldern, statische und nicht-statische.
 
 ### Statische Felder - Klassenvariablen / Konstanten
+
 Manchmal brauchen wir eine Variable, die allen Objekten einer Klasse gemeinsam ist. Dann verwenden wir eine Variable, die mit dem Schlüsselwort `static` deklariert ist. Diese Variable bezeichnen wir als statisches Feld oder Klassenvariable. Ein statisches Feld ist der Klasse selbst zugeordnet und nicht den Instanzen (=Objekten) dieser Klasse. Denn jede Instanz (= jedes Objekt) der Klasse teilt sich diese Klassenvariable, die sich an einem festen Ort im Speicher befindet. Egal wie viele Objekte dieser Klasse existieren, der Wert des statischen Feldes ist für alle exakt gleich. Jedes Objekt kann den Wert einer Klassenvariablen lesen und verändern.
+
 ```java
-public class Counter { 
+public class Counter {
 	private static int count = 0;
 
     public static void main(String[] args) {
@@ -57,13 +62,16 @@ public class Bicycle {
     }
 }
 ```
+
 Manchmal verwenden wir statische Felder, um Konstanten zu definieren. Eine _Konstante_ ist eine Variable, deren Wert nicht mehr verändert werden kann, sobald man ihr einmal einen Wert zugewiesen hat. Um eine Variable als Konstante zu kennzeichnen, verwenden wir zusätzlich das Keyword `final`. Der Name der Konstante wird zudem per Konvention immer in Grossbuchstaben geschrieben. Um mehrere Wörter abzutrennen verwenden wir Underscores `_`.
 Zum Beispiel definiert die folgende Variablendeklaration eine Konstante mit dem Namen PI:
+
 ```java
 static final double PI = 3.141592653589793;
 ```
 
 ### Nicht-statische Felder - Instanzvariablen
+
 Unter einer Instanzvariablen versteht man eine Variable, die einer Instanz einer Klasse, also einem Objekt, zugeordnet ist. Wenn eine neue Instanz erzeugt wird, werden Kopien der Instanzvariablen angelegt. Im Fall der Bicycle-Klasse sind die Instanzvariablen `cadence`, `gear`, `speed` und `id`. Jedes Bicycle-Objekt hat seine eigenen Werte für diese Variablen, d.h. sie werden an unterschiedlichen Orten gespeichert.
 
 ---
