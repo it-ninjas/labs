@@ -97,64 +97,22 @@ docker run \
   server -p 8080 --bind 0.0.0.0
 ```
 
-
-### Linting of Markdown content
-
-Markdown files are linted with [markdownlint](https://github.com/DavidAnson/markdownlint).
-Custom rules are in [markdownlint.json](markdownlint.json).
-There's a GitHub Action [github/workflows/markdownlint.yaml](github/workflows/markdownlint.yaml) for CI.
-For local checks, you can either use Visual Studio Code with the corresponding extension, or the command line like this:
-
-```bash
-npm install
-node_modules/.bin/markdownlint content
-```
-
-
 ## Github Actions
 
 
-### Build
+### Test
 
-The [build action](.github/workflows/build.yaml) is fired on Pull Requests does the following
+The [test action](.github/workflows/test.yml) is fired on each push to a feature branch and does the following:
 
-* builds all PR Versions (Linting and Docker build)
-* deploys the built container images to the container registry
-* Deploys a PR environment in a k8s test namespace with helm
-* Triggers a redeployment
-* Comments in the PR where the PR Environments can be found
-
-
-### PR Cleanup
-
-The [pr-cleanup action](.github/workflows/pr-cleanup.yaml) is fired when Pull Requests are closed and does the following
-
-* Uninstalls PR Helm Release
+* builds the Hugo site
 
 
 ### Push Main
 
-The [push main action](.github/workflows/push-main.yaml) is fired when a commit is pushed to the main branch (eg. a PR is merged) and does the following, it's very similar to the Build Action
+The [push main action](.github/workflows/main.yml) is fired when a commit is pushed to the main branch (eg. a PR is merged) and does the following:
 
-* builds main Versions (Linting and Docker build)
-* deploys the built container images to the container registry
-* Deploys the main Version on k8s using helm
-* Triggers a redeployment
-
-
-## Helm
-
-Manually deploy the training Release using the following command:
-
-```bash
-helm install --repo https://acend.github.io/helm-charts/  <release> acend-training-chart --values helm-chart/values.yaml -n <namespace>
-```
-
-For debugging purposes use the `--dry-run` parameter
-
-```bash
-helm install --dry-run --repo https://acend.github.io/helm-charts/  <release> acend-training-chart --values helm-chart/values.yaml -n <namespace>
-```
+* builds the Hugo site
+* deploys it to GitHub pages
 
 
 ## Contributions

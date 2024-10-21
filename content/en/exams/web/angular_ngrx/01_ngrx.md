@@ -3,7 +3,7 @@ title: "Exam zu NgRx"
 type: docs
 linkTitle: "NgRx"
 weight: 2
-date: 2024-03-2
+date: 2024-03-02
 description: >
     Eine Aufgaben zu NgRx.
 ---

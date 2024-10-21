@@ -16,11 +16,11 @@ description: >
 - Umgebungsvariable einstellen
 
 ### Maven-Projekt aufsetzen
-Erstellen eines neuen Projektes, welches wir später für das Modul Unit-Testing verwenden werden.
+Erstellen eines neuen Projekts, welches wir später für das Modul Unit-Testing verwenden werden.
 
 1. Erstellen eines neuen persönlichen Repositories auf code.sbb.ch, der Name kann frei gewählt werden
 2. Klonen des neuen Repositories mit IntelliJ IDEA
-3. Repository aufsetzen wie unter code.sbb.ch beschrieben (nachdem man das Repo erstellt hat)
+3. Repository einrichten, wie auf code.sbb.ch beschrieben (nachdem man das Repo erstellt hat)
 4. Im IntelliJ die für Maven erforderliche Ordnerstruktur erstellen
    * Ordner src erstellen
    * Im Ordner src zwei Ordner erstellen: main und test
@@ -130,10 +130,11 @@ Erstellen eines neuen Projektes, welches wir später für das Modul Unit-Testing
         </developers>
     </project>
     ```
-6. Das Projekt im IntelliJ als Maven-Projekt hinterlegen, zu diesem Zweck Ctrl+Shift+A drücken und als Aktion "Maven" eintragen.<br>
+6. Passe die GroupID und ArtifactID gemäss der Theorie an. Dabei könntest du für die GroupID ch.sbb.{dein_name} und für die ArtifactID die aktuelle Aufgabe wählen, also zum Beispiel `ch.sbb.johncarmack:J5`.
+7. Das Projekt im IntelliJ als Maven-Projekt hinterlegen, zu diesem Zweck Ctrl+Shift+A drücken und als Aktion "Maven" eintragen.<br>
    Aus der Liste dann entweder "Add as Maven Project" oder "Add Maven Projects" wählen.<br>
    Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss das pom.xml noch ausgewählt werden
-7. Auf der rechten Seite im IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.
+8. Auf der rechten Seite in IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.
 
 Wenn alles geklappt hat, dann werden die definierten Abhängigkeiten aus dem POM in das lokale Repository heruntergeladen. 
 

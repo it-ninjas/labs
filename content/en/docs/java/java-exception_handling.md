@@ -1,9 +1,9 @@
 ---
 title: "Exception Handling"
-linkTitle: "Exception Handling"
+linkTitle: "Exception Handling (und Optionals)"
 weight: 8
 description: >
-  Modul #J5 - Exception Handling
+  Modul #J5 - Exception Handling und Optionals
 ---
 
 ## Ziele
@@ -245,6 +245,7 @@ public static void main(String[] args) {
         System.out.println(person.getName());
     } catch (PersonNotFoundException e) {
         System.out.println("Es wurde keine Person mit dieser Nummer gefunden!");
+        throw new RuntimeException();
     }
 }
 ```
@@ -562,4 +563,4 @@ public class SaloonTest {
 ```
 
 ---
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Exception Handling](../../../labs/java/java-exception-handling/01_exercises) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Exception Handling](../../../labs/java/java-exception-handling) in den Labs.

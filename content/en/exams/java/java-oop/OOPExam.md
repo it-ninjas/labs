@@ -11,15 +11,16 @@ description: >
 
 ## Weltmeisterschaft - OOP Exam
 
-Bei diesem Lab geht es darum, dass du deine Vorgehensweise beim Erstellen eines objektorientierten Modells trainierst.
+Bei diesem Exam geht es darum, dass du deine Vorgehensweise beim Erstellen eines objektorientierten Modells trainierst.
 
 Zentral bei dieser Aufgabe ist also, wie du das Datenmodell erstellst, welches beschreibt, welche Klassen mit welchen Feldern und Methoden du schreibst.
 
-Ziel ist nicht, dass du dich mit `Scanner`n oder viel Logik herumschlagen musst.
+Ziel ist nicht, dass du dich mit `Scanner` oder viel Logik herumschlagen musst.
 
 ### Sachverhalt
 
-Bei diesem Lab modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der <a href="../results.txt" download>`results.txt`</a>-Datei gespeichert sind, abbilden.
+Bei diesem Exam modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der <a href="../results.txt" download>`results.txt`</a>-Datei gespeichert sind, im Code abbilden.
+Die Idee ist nicht, dass du diese Datei im Programm ausliest oder diese Information mit `System.out.print()` direkt ausgibst, sondern dass dein Code die Informationen repräsentiert. Mehr dazu in Aufgabe 3.
 
 Deine Klassen sollen folgendes abbilden:
 
@@ -32,13 +33,13 @@ Deine Klassen sollen folgendes abbilden:
 ### Was soll die Anwendung können?
 
 Auf Stufe Spiel (Game)
-* möchten wir erfahren können, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (didTeamPlayThisGame(team)).
-* Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (getPointsFor(team)).
+* möchten wir wissen, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (`didTeamPlayThisGame(team)`).
+* Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (`getPointsFor(team)`).
 
 Auf Stufe Turnier (Competition)
-* wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (getScoresDuringGroupStageFor(team)).
-* Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (getGoalsForTeam(team)).
-* Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (getAllGamesForLocation(location)).
+* wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (`getScoresDuringGroupStageFor(team)`).
+* Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (`getGoalsForTeam(team)`).
+* Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (`getAllGamesForLocation(location)`).
 
 Abgesehen von der `main(...)`-Methode soll keine weitere Methode statisch sein.
 
@@ -54,7 +55,7 @@ Zeige den Entwurf zuerst einem Coach, bevor du weiterfährst.
 
 
 #### Aufgabe 2 - Klassen umsetzen
-![task1](/images/task.png) Setzte die Klassen im Code um, inkl. Methoden.
+![task1](/images/task.png) Setze die Klassen im Code um, inkl. Methoden.
 
 Für den Moment müssen die Methoden noch nichts machen und sollen für den Beginn nur einen Default-Wert zurückgeben - der Einfachheit halber.
 
@@ -73,5 +74,5 @@ Frankreich	    Jugoslawien	        0:1
 dann kannst du das wie folgt direkt in deine Java-Datei schreiben:
 
 ```java
-new Game(FRANCE, YUGOSLAVIA, 0, 1)
+new Game(FRANCE, YUGOSLAVIA, 0, 1);
 ```

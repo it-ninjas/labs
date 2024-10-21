@@ -137,6 +137,8 @@ Hier noch ein paar Beispiele, wie Lambda-Ausdrücke geschrieben werden können:
 // keine Parameter
 () -> System.out.println("Ich habe kein Parameter")
 
+() -> return 1
+
 // ein Parameter
 word -> System.out.printf("Ich habe einen Parameter erhalten, nämlich: %s", word)
 
@@ -159,12 +161,28 @@ Bei Methoden-Referenzen werden die Argumente für die Methode nicht notiert.
 // Lambda-Expression mit einem Methodenaufruf
 (word) -> System.out.println(word)
 
-// Method-Reference Syntax der obigen Lambda-Expression
+// Method-Reference Syntax der obigen Lambda-Expression. Funktioniert sowohl für statische als auch instance Methoden
 // Das Argument (word) muss nicht mitgegeben werden
 System.out::println
 ```
 
 Der wesentliche Vorteil von dieser Schreibweise ist, dass er kürzer ist. Lambda-Ausdrücke sind aber oft einfacher zu verstehen.
+
+### Parallele Streams
+Anders als beim sequentiellen Stream werden beim `ParallelStream` mehrere Elemente gleichzeitig verarbeitet, um die Geschwindigkeit zu erhöhen.
+
+Als Beispiel haben wir eine Liste von Zahlen wollen diese summieren. Mit einem normalen Stream würdest du nun jede Zahl nacheinander verarbeiten. Mit einem ParallelStream hingegen werden die Zahlen auf mehrere Threads verteilt und gleichzeitig verarbeitet.
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+// normaler Stream
+int sum = numbers.stream().reduce(0, Integer::sum);
+
+//paralleler Stream
+int sum = numbers.parallelStream().reduce(0, Integer::sum);
+```
+`ParallelStream` kann bei großen Datenmengen schneller sein, muss aber nicht immer der Fall sein.
 
 ## Methodenausführung auf Streams
 Im Beispiel mit den Prüfungsnoten haben wir verschiedene Operationen auf dem Stream durchgeführt, die die einzelnen Werte entweder umrechnen oder am Schluss in einem einzigen Wert zusammenfasst (z.B. `average()`).
@@ -359,6 +377,21 @@ String[] strings = Stream.of("A", "B", "C")
 ```
 
 Die `toArray(...)`-Methode ist eine terminale Operation auf einem Stream.
+
+#### Die `reduce(...)`-Methode
+
+
+Die `reduce()`-Methode in Java Streams wird verwendet, um mehrere Werte in einen einzelnen Wert zu kombinieren. Man gibt eine Funktion an, die zwei Werte zusammenfügt, und kann einen Startwert angeben, um auch bei einem leeren Stream ein Ergebnis zu erhalten.
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+// Summe berechnen
+int sum = numbers.stream()
+                 .reduce(0, (a, b) -> a + b);
+
+System.out.println("Summe: " + sum);  // Ausgabe: Summe: 15
+```
 
 
 ---
