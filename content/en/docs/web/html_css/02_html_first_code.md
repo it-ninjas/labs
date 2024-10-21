@@ -41,4 +41,4 @@ Nun hast du eine Seite mit formatiertem Text:
 
 ![formatedHtmlFile](../formated-html.png " ")
 
-Was wir hier genau gemacht haben, erfährst du auf der nächsten Seite. 
+Was wir hier genau gemacht haben, erfährst du auf der nächsten Seite.

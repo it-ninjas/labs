@@ -66,12 +66,8 @@ Du wirst in die Situation kommen, in der du einen bestimmten Teil eines Textes f
 Das kannst du mit HTML sehr einfach bewerkstelligen, dafür gibt es nämlich spezielle Tags:
 
 ```html
-<p>
-    <strong>Heard</strong> about the new restaurant called<em>Karma?</em>
-</p>
-<p>
-    There's <b>no menu</b>: You get what you <i>deserve</i>.
-</p>
+<p><strong>Heard</strong> about the new restaurant called<em>Karma?</em></p>
+<p>There's <b>no menu</b>: You get what you <i>deserve</i>.</p>
 ```
 
 Um also einen bestimmten Text fett darzustellen, kannst du diesen in ein `<strong>`- oder `<b>`-Element einbinden. Beide Tags **bezwecken** im Prinzip genau das Gleiche, **bedeuten** aber nicht das Gleiche: `<b>`-Elemente sind einfach fett-gedruckt, während `<strong>`-Elemente betont sein sollen. `<strong>` soll dem fett-gedruckten Wort also mehr Ausdruck verleihen. Dieser Unterschied ist vor allem für den Einsatz von Screenreadern wichtig. Mit einem eigenen Styling (kommt im CSS-Teil) könntest du `<strong>`-Elemente z.B. auch grösser oder rot darstellen. Mit einem `<b>`-Element sagt man im Prinzip nur, dass der Text fett-gedruckt sein soll.
@@ -134,7 +130,7 @@ Wenn du möchtest, dass man beim Klick auf ein Bild weitergeleitet wird, kannst 
 
 ## Listen
 
-In HTML gibt es verschiedene Arten, um Aufzählungen darzustellen. Wir schauen uns die folgenden Listenarten an: 
+In HTML gibt es verschiedene Arten, um Aufzählungen darzustellen. Wir schauen uns die folgenden Listenarten an:
 
 - ungeordnete Liste (unordered lists, Bullet Point-Listen),
 - geordnete Listen (ordered lists, nummerierte Listen)
@@ -172,7 +168,8 @@ Möchtest du hingegen eine Nummerierung, musst du eine sortierte Liste (ordered 
 </ol>
 ```
 
-Die obigen Beispiele würden in der Praxis aussehen wie folgt: 
+Die obigen Beispiele würden in der Praxis aussehen wie folgt:
+
 <div style="border: 2px solid black; padding: 2em">
 
 #### What do you do in case of emergency?</h4>
