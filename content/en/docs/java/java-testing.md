@@ -998,6 +998,7 @@ public class MyUnitTest {
 ```
 
 **⚠️ ACHTUNG ⚠️**
+
 > Für Stubbing in @Spy muss immer die Notation Mockito.doReturn().when().size(); verwendet werden. Mit Mockito.when().thenReturn() wird es nicht funktionieren.
 
 \
