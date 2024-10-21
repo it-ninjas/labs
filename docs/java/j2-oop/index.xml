@@ -2256,7 +2256,66 @@ Wenn eine Typverletzung unentdeckt bleibt, können zur Laufzeit des Programms sc
 &lt;li>&lt;strong>Typsicherheit:&lt;/strong> Generics lösen Fehler während der Kompilierung aus, welche ansonsten erst zur Laufzeit ausgelöst wären.&lt;/li>
 &lt;li>&lt;strong>Individuelle Typ-Casting ist nicht nötig:&lt;/strong> Wenn bei der Anwendung von Generics der konkrete Typ angegeben wird, muss danach kein Typ-Casting stattfinden.&lt;/li>
 &lt;/ul>
-&lt;p>Schauen wir wie die Typsicherheit eines Programms mit Generics verbessert werden kann.&lt;/p>
+&lt;h3 id="wiederverwendbarkeit">Wiederverwendbarkeit&lt;/h3>
+&lt;p>Generics helfen uns wiederverwendbaren Code zu schreiben. Das gefällt uns als Informatiker natürlich sehr, da wir so weniger zu tun haben.&lt;/p>
+&lt;p>Angenommen wir haben eine Methode um das erste Element aus einem Array zu extrahieren:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> String &lt;span style="color:#a6e22e">getFirstElement&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> array){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(array &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">||&lt;/span> array.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">==&lt;/span> 0){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayIndexOutOfBoundsException(&lt;span style="color:#e6db74">&amp;#34;Array cant be empty&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> array&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Diese Funktion kann aber nur mit &lt;code>String&lt;/code>-Arrays umgehen. Wollen wir noch eine für &lt;code>Integer&lt;/code>-Arrays haben brauchen wir eine Methode &lt;code>Integer getFirstElement(Integer[] array)&lt;/code>, für &lt;code>Double&lt;/code>-Arrays eine Methode &lt;code>Double getFirstElement(Double[] array)&lt;/code> und so weiter und so fort &amp;hellip;&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>getFirstElement(&lt;span style="color:#66d9ef">new&lt;/span> String&lt;span style="color:#f92672">[]&lt;/span>{&lt;span style="color:#e6db74">&amp;#34;Uno&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Due&amp;#34;&lt;/span>}) &lt;span style="color:#75715e">//Funktioniert&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getFirstElement(&lt;span style="color:#66d9ef">new&lt;/span> Integer&lt;span style="color:#f92672">[]&lt;/span>{1,2,3}) &lt;span style="color:#75715e">//Führt zu einem Compiler-Fehler&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Stattdessen können wir aber auch eine Funktion mit Generics schreiben. Diese funktioniert dann für alle nicht-primitiven Typen. Wie genau so eine Methode aufgebaut ist und wofür &lt;code>T&lt;/code> steht, erfährst du weiter unten.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>T&lt;span style="color:#f92672">&amp;gt;&lt;/span> T &lt;span style="color:#a6e22e">getFirstElement&lt;/span>(T&lt;span style="color:#f92672">[]&lt;/span> array) {&lt;span style="color:#75715e">//T is hier der Ersatz von String/Double/Integer/...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (array &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">||&lt;/span> array.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">==&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayIndexOutOfBoundsException(&lt;span style="color:#e6db74">&amp;#34;Array cant be empty&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> array&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getFirstElement(&lt;span style="color:#66d9ef">new&lt;/span> String&lt;span style="color:#f92672">[]&lt;/span>{&lt;span style="color:#e6db74">&amp;#34;Uno&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Due&amp;#34;&lt;/span>}) &lt;span style="color:#75715e">//Funktioniert&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>getFirstElement(&lt;span style="color:#66d9ef">new&lt;/span> Integer&lt;span style="color:#f92672">[]&lt;/span>{1,2,3}) &lt;span style="color:#75715e">//Funktioniert ebenfalls&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;em>Wir könnten natürlich auch eine Methode schreiben, die einfach ein &lt;code>Object&lt;/code>-Array als Argument hat und ein &lt;code>Object&lt;/code> zurückgibt. Weshalb das nicht so eine gute Idee ist, erfährts du im nächsten Kapitel.&amp;quot;&lt;/em>&lt;/p>
+&lt;h3 id="typsicherheit-1">Typsicherheit&lt;/h3>
+&lt;p>Auch die Typsicherheit eines Programms kann mit Generics verbessert werden.&lt;/p>
 &lt;p>Die Object-Klasse in Java ist die Super-Klasse aller anderen Klassen und eine Object-Referenz kann beliebige Objekte referenzieren.
 Diese Features sind nicht typsicher. Auch durch das Verwenden von Polymorphismus können Typverletzungen entstehen.&lt;/p>
 &lt;p>&lt;strong>Beispiel Typverletzung, welche nicht zu einem Compiler-Fehler führt&lt;/strong>&lt;/p>
@@ -2301,9 +2360,28 @@ Diese Features sind nicht typsicher. Auch durch das Verwenden von Polymorphismus
 &lt;/div>&lt;p>Diese Klasse kompiliert ohne Fehler. Der Compiler warnt zwar, dass hier eine unsichere Operation
 durchgeführt wird, aber er erlaubt diese Operation und die Kompilation ist erfolgreich.
 Beim Ausführen des Programms kommt es jedoch zu einem Laufzeitfehler vom Typ ClassCastException, weil versucht wird
-ein Integer in einen String umzuwandeln (Typ-Casting):
-&lt;img src="../java-generics/typverletzung-run-time.png">&lt;/p>
-&lt;p>Generics helfen solche Laufzeitfehler mit sog. Typvariablen zu vermeiden.
+ein Integer in einen String umzuwandeln (Typ-Casting):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>PS C:\devsbb\sources\examples&amp;gt; java Test.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Note: Test.java uses unchecked or unsafe operations.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Note: recompile with -Xlint:unchecked for details.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PS:\devsbb\sources\examples&amp;gt; java Test
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Douglas
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Adams
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Exception in thread &amp;#34;main&amp;#34; java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader &amp;#39;bootstrap&amp;#39; at Test.main(Test.java:13))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Generics helfen solche Laufzeitfehler mit sog. Typvariablen zu vermeiden.
 Diese Typvariablen werden zur Zeit der Implementierung zunächst durch Platzhalter repräsentiert
 und dann zum Zeitpunkt der Anwendung konkretisiert.
 Im obigen Beispiel hätte der Laufzeitfehler vermieden werden können, in dem wir die ArrayList als
@@ -2322,9 +2400,28 @@ eine Liste von Strings definiert hätten:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> hitchhikersInfo.&lt;span style="color:#a6e22e">add&lt;/span>(42); &lt;span style="color:#75715e">// Der Compiler erlaubt diese Zuweisung nicht mehr&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl:
-&lt;img src="../java-generics/typverletzung-arraylist-compile-time.png">&lt;/p>
-&lt;h2 id="generics-in-der-praxis">Generics in der Praxis&lt;/h2>
+&lt;/div>&lt;p>Beim Versuch, die Klasse erneut zu kompilieren, kommt es zum folgenden Fehler und die Kompilierung schlägt fehl. Mit &lt;code>javac&lt;/code> kann der Java Compiler aus der Kommandozeile ausgeführt werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>PS C:\devsbb\sources\examples&amp;gt; javac Test.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Test.java:10: error: incompatible types: int cannot be converted to String hitchhikersInfo.add(42); //Der Compiler erlaubt diese Zuweisung nicht!
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ^
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Note: Test.java uses unchecked or unsafe operations.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Note: Recompile with -Xlint:unchecked for details.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Note: Some messages have been simplieied; recompile with X-diags:verbose to get full output
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>1 error
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="generics-in-der-praxis">Generics in der Praxis&lt;/h2>
 &lt;p>In Java gibt es zwei Typen von Generics: generische Methoden und generische Klassen.&lt;/p>
 &lt;p>Eine &lt;strong>generische Methode&lt;/strong> kann - wie andere &amp;ldquo;normale&amp;rdquo; Methoden auch - Parameter und einen Rückgabewert enthalten.
 Der Unterschied zu einer &amp;ldquo;normalen&amp;rdquo; Methode liegt darin, dass eine generische Methode sog. Typparameter bearbeitet.
@@ -2333,8 +2430,8 @@ Somit kann eine generische Methode mit unterschiedlichen Datentypen benutzt werd
 Der Unterschied liegt darin, dass die generische Klasse einen oder mehrere Typparameter definiert.&lt;/p>
 &lt;h3 id="typparameter-definieren">Typparameter definieren&lt;/h3>
 &lt;p>In generischen Klassen wie auch in generischen Methoden, werden Typparameter mittels eines Grossbuchstabens definiert,
-welcher innerhalb spitziger Klammern geschrieben wird z.B: &amp;lt;T&amp;gt; oder &amp;lt;I&amp;gt;.&lt;/p>
-&lt;p>Multiple Typparameter werden durch ein Komma getrennt: &amp;lt;T, V&amp;gt;&lt;/p>
+welcher innerhalb spitziger Klammern geschrieben wird z.B: &lt;code>&amp;lt;T&amp;gt;&lt;/code> oder &lt;code>&amp;lt;I&amp;gt;&lt;/code>.&lt;/p>
+&lt;p>Multiple Typparameter werden durch ein Komma getrennt: &lt;code>&amp;lt;T,V&amp;gt;&lt;/code>&lt;/p>
 &lt;h4 id="typparameter-namenskonvention">Typparameter Namenskonvention&lt;/h4>
 &lt;p>Die Buchstaben, welche für die Definition von Typparametern verwendet werden, nutzen die folgende Namenskonvention:&lt;/p>
 &lt;table>
@@ -2371,7 +2468,8 @@ welcher innerhalb spitziger Klammern geschrieben wird z.B: &amp;lt;T&amp;gt; ode
 &lt;p>Um generische Klassen zu verwenden, wird zunächst die Klasse mit einem Typparameter definiert
 und bei der Anwendung dieser Klasse (bei der Instanziierung) wird innerhalb der spitzigen Klammern
 der konkrete Datentyp geschrieben.&lt;/p>
-&lt;p>&lt;strong>Beispiel einer benutzer-definierten, generischen Klasse&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>Beispiel einer benutzer-definierten, generischen Klasse&lt;/strong>&lt;br>
+In diesem Beispiel haben wir eine Klasse, welche ein Kartonbox darstellt. Jede Box kann einen Typ von Objekt aufnehmen. Es gibt also z.B. eine Box für &lt;code>String&lt;/code>, eine Box für &lt;code>Integer&lt;/code>. Natürlich können auch mehrere Boxen für z.B. &lt;code>Integer&lt;/code> exisiteren, jede Box kann aber nur einen Typ an Objekt enthalten.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -2392,7 +2490,7 @@ der konkrete Datentyp geschrieben.&lt;/p>
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// &amp;lt;T&amp;gt; definiert einen Typparameter&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Test&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>T&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Box&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>T&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Deklaration einer Member-Variable vom Typ T&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> T obj;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -2427,11 +2525,11 @@ der konkrete Datentyp geschrieben.&lt;/p>
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MyProgram&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Instanziieren der generischen Klasse und setzen den Typ auf Integer&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Test&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> integerObject &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Test&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span>(42);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Box&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> integerObject &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Box&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span>(42);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(integerObject.&lt;span style="color:#a6e22e">getObject&lt;/span>()); &lt;span style="color:#75715e">// Output: 42&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// instance of String type&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Test&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> stringObject &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Test&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Generics are great!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Box&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> stringObject &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Box&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Generics are great!&amp;#34;&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(stringObject.&lt;span style="color:#a6e22e">getObject&lt;/span>()); &lt;span style="color:#75715e">// Output: Generics are great!&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
