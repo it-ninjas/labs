@@ -72,7 +72,7 @@ Es ist also vor der Berechnung unklar, wie lange die Liste werden kann.
 
 Methodensignatur:
 ```java
-ArrayList<Integer> fibonacci(int n);
+List<Integer> fibonacci(int n);
 ```
 
 Wenn wir also zum Beispiel **n** auf 20 setzen, wäre das Resultat eine ArrayList mit den folgenden Einträgen:
