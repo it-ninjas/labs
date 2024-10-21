@@ -9,7 +9,7 @@ description: >
 
 # IDE
 
-In den folgenden Kapiteln ist alles aufgeführt was man für das Programmieren mit HTML und CSS benötigt.
+In den folgenden Kapiteln sind alle Vorkehrungen aufgeführt, die man für das Entwickeln mit HTML und CSS durchführen muss.
 
 ## VS Code
 
