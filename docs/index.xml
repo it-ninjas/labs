@@ -2681,12 +2681,15 @@ Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann ohne Hilfsmittel die Bestandteile einer Klasse vollständig auflisten.&lt;/li>
-&lt;li>Ich kann den Unterschied zwischen einer Klasse und einem Objekt mit konkreten Beispielen demonstrieren.&lt;/li>
-&lt;li>Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte dazu.&lt;/li>
+&lt;li>Ich kann den Unterschied zwischen einer Klasse und einem Objekt mit konkreten Beispielen
+demonstrieren.&lt;/li>
+&lt;li>Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte
+dazu.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="einführung">Einführung&lt;/h2>
-&lt;p>In der realen Welt können wir viele Objekte wie Autos, Gebäude und Menschen um uns herum finden. Alle diese Objekte haben einen bestimmten Zustand/Merkmale und ein bestimmtes Verhalten.&lt;/p>
+&lt;p>In der realen Welt können wir viele Objekte wie Autos, Gebäude und Menschen um uns herum finden.
+Alle diese Objekte haben einen bestimmten Zustand/Merkmale und ein bestimmtes Verhalten.&lt;/p>
 &lt;p>Wenn wir ein Auto betrachten, so könnte sein Zustand/seine Merkmale&lt;/p>
 &lt;ul>
 &lt;li>einen Markennamen,&lt;/li>
@@ -2698,22 +2701,174 @@ Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss
 &lt;li>fahren&lt;/li>
 &lt;li>und einparken.&lt;/li>
 &lt;/ul>
+&lt;h2 id="problemstellung">Problemstellung&lt;/h2>
+&lt;p>Stell dir vor, du möchtest ein Auto in Java programmieren. Dazu könnten wir für jedes Auto einfach drei separate Variablen verwenden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AutoProblemOhneOOP&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String autoName &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;BMW&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> geschwindigkeit &lt;span style="color:#f92672">=&lt;/span> 120;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String kraftstoff &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Benzin&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Weitere Autos&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String autoName2 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Audi&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> geschwindigkeit2 &lt;span style="color:#f92672">=&lt;/span> 100;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String kraftstoff2 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Diesel&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das funktioniert für ein oder zwei Autos, aber was passiert, wenn wir viele Autos haben? Was passiert, wenn wir viele Autos haben? Es wird schwierig, jedes Auto mit seinen individuellen Merkmalen zu verwalten, und der Code wird unübersichtlich. Wir müssten
+mehrere Variablen für jeden Zustand eines Autos pflegen. Eine Lösung wäre die Verwendung von Arrays:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AutoProblemMitArrays&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> autoName &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;BMW&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Audi&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> geschwindigkeit &lt;span style="color:#f92672">=&lt;/span> {120, 100};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> kraftstoff &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;Benzin&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Diesel&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Probleme mit dieser Lösung:&lt;/p>
+&lt;ul>
+&lt;li>Wir müssen immer sicherstellen, dass die Daten für jedes Auto an der gleichen Position in allen
+Arrays stehen. Das erhöht die Komplexität.&lt;/li>
+&lt;li>Es ist schwer, weitere Funktionen für jedes Auto hinzuzufügen oder das Verhalten zu modellieren.&lt;/li>
+&lt;/ul>
+&lt;p>Wäre es nicht cool, wenn wir diese Eigenschaften zusammenfassen könnten?
+Eine bessere Lösung besteht darin, eine &lt;strong>Klasse&lt;/strong> zu erstellen, die alle Merkmale eines Autos
+beschreibt. Dadurch können wir sowohl den Zustand als auch das Verhalten eines Autos kapseln.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Auto&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String marke;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> geschwindigkeit;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String kraftstoff;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nun können wir &lt;strong>Objekte&lt;/strong> dieser Klasse erstellen. Ein Objekt hat diese Eigenschaften zur Verfügung
+und kann sie entsprechend setzen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AutoBeispiel&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Auto auto1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Auto(); &lt;span style="color:#75715e">//mit new wird ein neues Objekt von dieser Klasse erstellt&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auto1.&lt;span style="color:#a6e22e">marke&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;BMW&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auto1.&lt;span style="color:#a6e22e">geschwindigkeit&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 120;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auto1.&lt;span style="color:#a6e22e">kraftstoff&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Benzin&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Auto auto2 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Auto();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auto2.&lt;span style="color:#a6e22e">marke&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Audi&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auto2.&lt;span style="color:#a6e22e">geschwindigkeit&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 100;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auto2.&lt;span style="color:#a6e22e">kraftstoff&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Diesel&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(auto1.&lt;span style="color:#a6e22e">marke&lt;/span>); &lt;span style="color:#75715e">// Output: BMW&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(auto2.&lt;span style="color:#a6e22e">marke&lt;/span>); &lt;span style="color:#75715e">//Output: Audi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Vorteile dieser Lösung:&lt;/p>
+&lt;ul>
+&lt;li>Die Eigenschaften eines Autos sind in einer einzigen Einheit (Klasse) zusammengefasst.&lt;/li>
+&lt;li>Es ist einfach, neue Autos zu erstellen und zu verwalten, da wir nicht mehr mehrere Arrays benötigen. Wir können einfach einen Array von unserem Typ Auto erstellen: &lt;code>Auto[] autos&lt;/code>.&lt;/li>
+&lt;li>Der Code wird klarer und wartbarer.&lt;/li>
+&lt;/ul>
+&lt;p>Klassen können noch viel mehr als nur Behälter für mehrere Variablen sein. Das wirst du in den folgenden Kapiteln lernen.&lt;/p>
 &lt;h3 id="definitionen">Definitionen&lt;/h3>
+&lt;p>Um die nachfolgenden Kapitel besser zu verstehen, ist es hilfreich zuerst einige Basisdefinitionen zu etablieren.&lt;/p>
 &lt;h4 id="objektorientierte-programmierung">Objektorientierte Programmierung&lt;/h4>
-&lt;p>Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu bringen.
+&lt;p>Das Konzept der objektorientierten Programmierung soll helfen eine Struktur in eine Anwendung zu
+bringen.
 Das Ziel ist es, Daten und Methoden, die zusammengehören, in einer Klasse zusammenzufassen.
-Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue Instanzen/Objekte dieser Klasse erstellt werden können.&lt;/p>
+Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue Instanzen/Objekte
+dieser Klasse erstellt werden können.&lt;/p>
 &lt;h4 id="klasse">Klasse&lt;/h4>
-&lt;p>Unter einer Klasse versteht man in der objektorientierten Programmierung ein abstraktes Modell bzw. einen Bauplan für eine Reihe von ähnlichen Objekten. Die Klasse dient als Bauplan für die Abbildung von realen Objekten in Softwareobjekte und beschreibt Attribute (Eigenschaften) und Methoden (Verhaltensweisen) der Objekte.&lt;/p>
+&lt;p>Eine Klasse ist eine Vorlage, die die gemeinsamen Eigenschaften und das Verhalten von Objekten desselben Typs beschreibt Die Klasse dient als Bauplan für die Abbildung
+von realen Objekten in Softwareobjekte und beschreibt Attribute (Eigenschaften) und Methoden (
+Verhaltensweisen) der Objekte.&lt;/p>
 &lt;h4 id="objekt">Objekt&lt;/h4>
-&lt;p>Ein Objekt bezeichnet in der objektorientierten Programmierung ein Exemplar eines bestimmten Datentyps oder einer bestimmter Klasse. Objekte sind konkrete Ausprägungen (=Instanzen) einer Klasse und werden zur Laufzeit erzeugt (Instanziierung).&lt;/p>
+&lt;p>Ein Objekt bezeichnet in der objektorientierten Programmierung ein Exemplar eines bestimmten
+Datentyps oder einer bestimmter Klasse. Objekte sind konkrete Ausprägungen (=Instanzen) einer Klasse
+und werden zur Laufzeit erzeugt (Instanziierung).&lt;/p>
 &lt;h4 id="datenfelder">Datenfelder&lt;/h4>
-&lt;p>Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse relevant sind. Beispielsweise hat ein Auto eine Höchstgeschwindigkeit, eine bestimmte Anzahl von Sitzen, usw. Das heisst, ein Feld ist eine Variable, in der Daten gespeichert werden können. Es kann einen beliebigen Typ haben, einschliesslich primitiver Typen (&lt;code>int&lt;/code>, &lt;code>float&lt;/code>, &lt;code>boolean&lt;/code> usw.) und Klassen. Eine Klasse kann auch sich selber als Feld enthalten. Eine Klasse kann beliebig viele Felder haben.&lt;/p>
+&lt;p>Datenfelder (Attribute) enthalten Informationen, die für Objekte dieser Klasse relevant sind.
+Beispielsweise hat ein Auto eine Höchstgeschwindigkeit, eine bestimmte Anzahl von Sitzen, usw. Das
+heisst, ein Feld ist eine Variable, in der Daten gespeichert werden können. Es kann einen beliebigen
+Typ haben, einschliesslich primitiver Typen (&lt;code>int&lt;/code>, &lt;code>float&lt;/code>, &lt;code>boolean&lt;/code> usw.) und Klassen. Eine
+Klasse kann auch sich selber als Feld enthalten. Eine Klasse kann beliebig viele Felder haben.&lt;/p>
 &lt;h4 id="methoden">Methoden&lt;/h4>
-&lt;p>Methoden dienen dazu, den Zustand eines Objekts zu verändern. Die Methode &lt;code>refuel()&lt;/code> (siehe Klassendiagramm unten) füllt beispielsweise den Tank, bis dessen Kapazität erreicht wird.&lt;/p>
+&lt;p>Methoden dienen dazu, den Zustand eines Objekts zu verändern. Die Methode &lt;code>refuel()&lt;/code> (siehe
+Klassendiagramm unten) füllt beispielsweise den Tank, bis dessen Kapazität erreicht wird.&lt;/p>
 &lt;h4 id="zusammenfassung">Zusammenfassung&lt;/h4>
-&lt;p>Klassen werden verwendet, um benutzerdefinierte Datentypen darzustellen. Damit werden Attribute und Verhalten, welche zu diesem neuen Datentyp gehören, an einer Stelle im Code zusammengefasst und verwaltet. Diese neuen, benutzerdefinierte Datentypen können dann wie anderen Datentypen (primitive Datentypen oder andere Klassen) verwendet werden.&lt;/p>
-&lt;p>Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das UML-Klassendiagramm der Klasse &lt;code>Car&lt;/code>, die wir selber erfunden haben. Die oberen 4 Einträge sind ihre Instanzvariablen und die untersten 3 sind ihre Methoden. Einträge mit einem &lt;code>-&lt;/code> sind &lt;code>private&lt;/code>, Einträge mit einem &lt;code>+&lt;/code> sind öffentlich (&lt;code>public&lt;/code>):&lt;/p>
+&lt;p>Klassen werden verwendet, um benutzerdefinierte Datentypen darzustellen. Damit werden Attribute und
+Verhalten, welche zu diesem neuen Datentyp gehören, an einer Stelle im Code zusammengefasst und
+verwaltet. Diese neuen, benutzerdefinierte Datentypen können dann wie anderen Datentypen (primitive
+Datentypen oder andere Klassen) verwendet werden.&lt;/p>
+&lt;p>Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das UML-Klassendiagramm der
+Klasse &lt;code>Car&lt;/code>, die wir selber erfunden haben. Die oberen 4 Einträge sind ihre Instanzvariablen und
+die untersten 3 sind ihre Methoden. Einträge mit einem &lt;code>-&lt;/code> sind &lt;code>private&lt;/code>, Einträge mit einem &lt;code>+&lt;/code>
+sind öffentlich (&lt;code>public&lt;/code>):&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -2748,7 +2903,10 @@ Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue In
 &lt;h2 id="klassen-und-objekte-im-schnelldurchlauf">Klassen und Objekte im Schnelldurchlauf&lt;/h2>
 &lt;h3 id="klassen-deklarieren">Klassen deklarieren&lt;/h3>
 &lt;p>Eine Java Klasse besteht aus zwei Teilen: Dem Klassenkopf und dem Klassenrumpf.&lt;/p>
-&lt;p>Im Klassenkopf (auch Klassendeklaration genannt) wird eine neue Klasse mit dem Keyword &lt;code>class&lt;/code> gefolgt vom Namen der Klasse deklariert. Per Konvention folgt die Benamsung der Klasse dem PascalCase. Das bedeutet, dass der Klassen-Name und jedes neue Wort darin mit einem Grossbuchstaben beginnt, der Rest besteht aus Kleinbuchstaben.&lt;/p>
+&lt;p>Im Klassenkopf (auch Klassendeklaration genannt) wird eine neue Klasse mit dem Keyword &lt;code>class&lt;/code>
+gefolgt vom Namen der Klasse deklariert. Per Konvention folgt die Benamsung der Klasse dem
+PascalCase. Das bedeutet, dass der Klassen-Name und jedes neue Wort darin mit einem Grossbuchstaben
+beginnt, der Rest besteht aus Kleinbuchstaben.&lt;/p>
 &lt;p>Wie folgt kannst du eine Klasse mit dem Namen &lt;em>Nothing&lt;/em> erstellen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -2762,9 +2920,41 @@ Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue In
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Der &amp;ldquo;Klassenrumpf&amp;rdquo; besteht aus einer öffnender &lt;code>{&lt;/code> und schliessenden geschweiften Klammer &lt;code>}&lt;/code>. Diese Klammern bilden die Grenzen der Klasse. Der Klassenrumpf kann Felder, Methoden und Konstruktoren enthalten. Felder speichern Daten, Methoden definieren das Verhalten und Konstruktoren ermöglichen es uns, neue Objekte der Klasse zu erstellen und zu initialisieren. Felder und Methoden gelten als Klassenmitglieder (&lt;em>class members&lt;/em>).&lt;/p>
-&lt;p>Der Quellcode einer Klasse wird in eine .java-Datei eingefügt. Normalerweise enthält eine Quellcodedatei nur eine Klasse und hat denselben Namen wie diese Klasse. Manchmal kann eine Datei jedoch auch mehrere Klassen enthalten, jedoch darf es nur eine öffentliche (public) Klasse pro Datei geben. Deren Name muss mit dem Dateinamen übereinstimmen.&lt;/p>
+&lt;/div>&lt;p>Der &amp;ldquo;Klassenrumpf&amp;rdquo; besteht aus einer öffnender &lt;code>{&lt;/code> und schliessenden geschweiften Klammer &lt;code>}&lt;/code>. Diese
+Klammern bilden die Grenzen der Klasse. Der Klassenrumpf kann Felder, Methoden und Konstruktoren
+enthalten. Felder speichern Daten, Methoden definieren das Verhalten und Konstruktoren ermöglichen
+es uns, neue Objekte der Klasse zu erstellen und zu initialisieren. Felder und Methoden gelten als
+Klassenmitglieder (&lt;em>class members&lt;/em>).&lt;/p>
+&lt;p>Der Quellcode einer Klasse wird in eine .java-Datei eingefügt. Normalerweise enthält eine
+Quellcodedatei nur eine Klasse und hat denselben Namen wie diese Klasse. Manchmal kann eine Datei
+jedoch auch mehrere Klassen enthalten, jedoch darf es nur eine öffentliche (public) Klasse pro Datei
+geben. Deren Name muss mit dem Dateinamen übereinstimmen.&lt;/p>
 &lt;p>Nachfolgend die Klasse &lt;code>Patient&lt;/code> in der Datei &lt;code>Patient.java&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Patient&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String name; &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp String mit dem Bezeichner &amp;#39;name&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> age; &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp int mit dem Bezeichner &amp;#39;age&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> size; &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp float mit dem Bezeichner &amp;#39;size&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> complaints; &lt;span style="color:#75715e">// ein Feld kann auch ein Array sein&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Diese Klasse repräsentiert einen Patienten in einem Krankenhausinformationssystem. Sie verfügt über
+vier Felder: &lt;code>name&lt;/code>, &lt;code>age&lt;/code>, &lt;code>size&lt;/code> und &lt;code>complaints&lt;/code>. Alle Objekte der Klasse Patient haben dieselben
+Felder, aber ihre Werte können für jedes Objekt unterschiedlich sein.&lt;/p>
+&lt;h3 id="objekte-erstellen">Objekte erstellen&lt;/h3>
+&lt;p>&lt;strong>Patient.java&lt;/strong>&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -2775,34 +2965,16 @@ Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue In
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Patient&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String name; &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp String mit dem Bezeichner &amp;#39;name&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> age; &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp int mit dem Bezeichner &amp;#39;age&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> size; &lt;span style="color:#75715e">// Feld bzw. Instanzvariable vom Datentyp float mit dem Bezeichner &amp;#39;size&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String&lt;span style="color:#f92672">[]&lt;/span> complaints; &lt;span style="color:#75715e">// ein Feld kann auch ein Array sein&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Diese Klasse repräsentiert einen Patienten in einem Krankenhausinformationssystem. Sie verfügt über vier Felder: &lt;code>name&lt;/code>, &lt;code>age&lt;/code>, &lt;code>size&lt;/code> und &lt;code>complaints&lt;/code>. Alle Objekte der Klasse Patient haben dieselben Felder, aber ihre Werte können für jedes Objekt unterschiedlich sein.&lt;/p>
-&lt;h3 id="objekte-erstellen">Objekte erstellen&lt;/h3>
-&lt;p>&lt;strong>Patient.java&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Patient&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String name;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> age;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">float&lt;/span> height;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wir können ein Objekt (auch &amp;ldquo;eine Instanz&amp;rdquo; genannt) der Klasse &lt;code>Patient&lt;/code> mit dem Operator &lt;code>new&lt;/code> erstellen:&lt;/p>
+&lt;/div>&lt;p>Wir können ein Objekt (auch &amp;ldquo;eine Instanz&amp;rdquo; genannt) der Klasse &lt;code>Patient&lt;/code> mit dem Operator &lt;code>new&lt;/code>
+erstellen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -2811,7 +2983,10 @@ Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue In
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>Patient patient &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Patient();
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wenn du ein neues Objekt erstellst, wird jedes Feld mit dem Standardwert des entsprechenden Typs initialisiert (insofern du keinen Konstruktor mit Argumenten verwendest, dazu aber später mehr). Wenn die Instanzvariablen eines Objektes nicht mit einem Zugriffsmodifikator wie &lt;code>private&lt;/code> versehen sind (dazu unten mehr), können wir mittels Punkt-Operator auf die Variablen des Objekts zugreifen:&lt;/p>
+&lt;/div>&lt;p>Wenn du ein neues Objekt erstellst, wird jedes Feld mit dem Standardwert des entsprechenden Typs
+initialisiert (insofern du keinen Konstruktor mit Argumenten verwendest, dazu aber später mehr).
+Wenn die Instanzvariablen eines Objektes nicht mit einem Zugriffsmodifikator wie &lt;code>private&lt;/code> versehen
+sind (dazu unten mehr), können wir mittels Punkt-Operator auf die Variablen des Objekts zugreifen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -2822,7 +2997,8 @@ Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue In
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(patient.&lt;span style="color:#a6e22e">age&lt;/span>); &lt;span style="color:#75715e">// es wird 0 ausgeben&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Das folgende Programm erstellt zwei Objekte der Klasse Patient und druckt die Informationen der Objekte aus.&lt;/p>
+&lt;/div>&lt;p>Das folgende Programm erstellt zwei Objekte der Klasse Patient und druckt die Informationen der
+Objekte aus.&lt;/p>
 &lt;p>&lt;strong>PatientDemo.java&lt;/strong>&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -2866,9 +3042,15 @@ Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue In
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Im obigen Code haben wir zwei Patienten erstellt, John und Alice, die Werte ihrer Felder definiert und dann die Informationen über sie ausgedruckt. Wir sehen, dass wir mit dem Punkt-Operator auf die Felder des Objekts zugreifen können (john.name = &amp;ldquo;John&amp;rdquo;). Allerdings soll hier erwähnt sein, dass das nur geht, wenn die Instanzvariablen nicht private sind (wir behandeln das Thema Zugriffsmodifikatoren später).&lt;/p>
+&lt;/div>&lt;p>Im obigen Code haben wir zwei Patienten erstellt, John und Alice, die Werte ihrer Felder definiert
+und dann die Informationen über sie ausgedruckt. Wir sehen, dass wir mit dem Punkt-Operator auf die
+Felder des Objekts zugreifen können (john.name = &amp;ldquo;John&amp;rdquo;). Allerdings soll hier erwähnt sein, dass
+das nur geht, wenn die Instanzvariablen nicht private sind (wir behandeln das Thema
+Zugriffsmodifikatoren später).&lt;/p>
 &lt;h3 id="referenzen-teilen">Referenzen teilen&lt;/h3>
-&lt;p>Objekte sind Referenztypen. In einer Variable wird also nicht das Objekt selbst, sondern die Speicheradresse hinterlegt, welche auf das Objekt zeigt. Es können sich also mehrere Referenzen auf dasselbe Objekt beziehen.&lt;/p>
+&lt;p>Objekte sind Referenztypen. In einer Variable wird also nicht das Objekt selbst, sondern die
+Speicheradresse hinterlegt, welche auf das Objekt zeigt. Es können sich also mehrere Referenzen auf
+dasselbe Objekt beziehen.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -2891,7 +3073,9 @@ Dies führt auch dazu, dass der Code wiederverwendbarer wird, da einfach neue In
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(patient2.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> patient2.&lt;span style="color:#a6e22e">age&lt;/span>); &lt;span style="color:#75715e">// Mary 24&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Es ist wichtig zu verstehen, dass sich die zwei Referenzen oben auf das gleiche Objekt im Speicher beziehen und nicht auf zwei unabhängige Kopien. Da unsere Klasse veränderbar ist, können wir das Objekt mit Hilfe beider Referenzen ändern.&lt;/p>
+&lt;/div>&lt;p>Es ist wichtig zu verstehen, dass sich die zwei Referenzen oben auf das gleiche Objekt im Speicher
+beziehen und nicht auf zwei unabhängige Kopien. Da unsere Klasse veränderbar ist, können wir das
+Objekt mit Hilfe beider Referenzen ändern.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
