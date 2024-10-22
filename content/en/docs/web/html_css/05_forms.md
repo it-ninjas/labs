@@ -9,7 +9,7 @@ description: >
 #### Ziele
 
 - Ich weiss, wozu HTML-Formulare benutzt werden.
-- Ich kenne die folgenden HTML-Formular-Elemente und weiss wie ich sie benutzen kann:  
+- Ich kenne die folgenden HTML-Formular-Elemente und weiss wie ich sie benutzen kann:
   - input
   - label
   - button
@@ -96,7 +96,7 @@ Nun solltest du imstande sein, UI-Elemente (UI = User Interface -> Benutzerschni
 
 Theoretisch könntest du mit der Programmiersprache JavaScript direkt darauf zugreifen. Im Moment wollen wir aber bei HTML bleiben. Was mit reinem HTML möglich ist, ist, die Werte an ein Backend (=Server) zu schicken.
 
-Als Backend verwenden wir die folgende URL: https://www.w3schools.com/action_page.php. Das ist eine spezielle von w3schools gehostete Seite, welche die Daten, die wir ihr senden, anzeigen kann. 
+Als Backend verwenden wir die folgende URL: https://www.w3schools.com/action_page.php. Das ist eine spezielle von w3schools gehostete Seite, welche die Daten, die wir ihr senden, anzeigen kann.
 
 Folgender Code erzeugt ein Formular, welches eine E-Mail und einen Boolean-Wert beim Klick auf "Übermitteln" an das Backend schickt
 
@@ -118,7 +118,7 @@ Bei Formularen verwendet man meistens entweder GET oder POST. Obwohl beide zum s
 
 ### GET
 
-Unter Verwendung der GET-Methode werden die Daten, die an den Server gesendet werden sollen, direkt in die URL geschrieben. Sie können in der Adresszeile des Browsers als Klartext angesehen werden. Das könnte für unser Beispiel aussehen wie folgt: 
+Unter Verwendung der GET-Methode werden die Daten, die an den Server gesendet werden sollen, direkt in die URL geschrieben. Sie können in der Adresszeile des Browsers als Klartext angesehen werden. Das könnte für unser Beispiel aussehen wie folgt:
 
 https://www.w3schools.com/action_page.php?email=hello@world.com&interested=on
 
@@ -175,20 +175,22 @@ Um zu zeigen, wie einfach Input-Elemente verwendet werden können, kannst du fol
 ```html
 <h2>Login</h2>
 <form action="https://www.w3schools.com/action_page.php" method="get">
-    <label>email: <input type="email" name="your-email" /></label>
-    <br/>
-    <label for="pw">password:</label>
-    <input type="password" name="your-password" id="pw"/> 
-    <br/>
+  <label>email: <input type="email" name="your-email" /></label>
+  <br />
+  <label for="pw">password:</label>
+  <input type="password" name="your-password" id="pw" />
+  <br />
      
-    <label><input type="checkbox" name="stay" value="yes" />Stay logged in.</label>
-    <h4>Favorite Language?</h4>
-    <p>
-        <input type="radio" id="html" name="fav_language" value="HTML" />  
-        <label for="html">HTML</label><br />
-        <input type="radio" id="css" name="fav_language" value="CSS" />    
-        <label for="css">CSS</label><br />
-    </p>
+  <label
+    ><input type="checkbox" name="stay" value="yes" />Stay logged in.</label
+  >
+  <h4>Favorite Language?</h4>
+  <p>
+    <input type="radio" id="html" name="fav_language" value="HTML" />  
+    <label for="html">HTML</label><br />
+    <input type="radio" id="css" name="fav_language" value="CSS" />    
+    <label for="css">CSS</label><br />
+  </p>
   <input type="submit" />
 </form>
 ```
