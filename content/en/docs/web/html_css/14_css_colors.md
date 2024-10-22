@@ -5,7 +5,7 @@ linkTitle: "Farben"
 weight: 14
 date: 2022-04-19
 description: >
-  Modul #F3 - HTML und CSS - Arten, um Farben anzugeben.
+  Modul #F3 - HTML und CSS - Arten, Farben anzugeben.
 ---
 
 #### Ziele
@@ -16,7 +16,7 @@ description: >
 
 ## Zuweisen von Farben
 
-Um einem Text eine Schriftfarbe zuzuweisen, ist folgendes eine Option:
+Um einem Text eine Schriftfarbe zuzuweisen, kannst du das `color`-Attribut verwenden.
 
 ```css
 span {
@@ -25,7 +25,7 @@ span {
 }
 ```
 
-Den Hintergrund von einem Element kann mit dem `background-color`-Property bestimmt werden:
+Den Hintergrund von einem Element kann mit dem `background-color`-Attribut bestimmt werden.
 
 ```css
 div {
@@ -38,13 +38,13 @@ div {
 
 In den oberen Beispielen wurde die Farbe mit dem Wort `orange` bestimmt. Es gibt aber viele Arten, diese Farbe zu übergeben:
 
-- via Color-Name: `orange`
-- via RGB-Angaben (red green blue): `rgb(255,165,0)`
+- via (vordefiniertem) Color-Name: `orange`
+- via RGB-Angaben (Red-Green-Blue-Wert): `rgb(255,165,0)`
 - via hexadezimalen Wert (HEX color): `#ffa500`
 
-Es gibt noch weitere Möglichkeiten. Du findest diese hier: https://www.w3schools.com/colors/default.asp
+Es gibt noch weitere Möglichkeiten, Farben in CSS anzugeben. Diese findest du auf dieser Seite: https://www.w3schools.com/colors/default.asp
 
-Die folgende CSS-Regel setzt die Schriftfarbe auf Orange. Nur eine dieser 3 Regeln wird benötigt:
+Jede dieser CSS-Zeilen setzt die Schriftfarbe jeweils auf Orange:
 
 ```css
 .orange {
@@ -54,15 +54,15 @@ Die folgende CSS-Regel setzt die Schriftfarbe auf Orange. Nur eine dieser 3 Rege
 }
 ```
 
-Da diese Farbe in CSS bereits einen Namen hat ("`orange`"), wird hier die Angabe via Farbnamen empfohlen.
+Da diese Farbe in CSS bereits einen Namen hat ("`orange`"), wäre in diesem Fall die Angabe via Farbnamen empfehlenswert.
 
-Obwohl die Angabe mit RGB in CSS möglich ist, sieht man in der Webentwicklung häufiger die hexadezimale Schreibweise.
+Obwohl die Angabe mit RGB in CSS ebenfalls möglich ist, sieht man in der Webentwicklung häufiger die hexadezimale Schreibweise.
 
 Nachfolgend sind diese 3 Varianten genauer beschrieben.
 
 ### Via Color-Name
 
-Am lesbarsten ist die Angabe der Farben via Namen. Es werden mindestens 140 Farben mit Namen unterstützt. Häufig verwendete Farben sind z.B.:
+Am besten lesbar ist die Angabe der Farben via Namen. Es werden mindestens 140 Farben mit Namen unterstützt. Diese Art der Farbangabe ist aber stark eingeschränkt, da man im Gegensatz zu RGB oder HEX keine Anpassungen an der Farbe vornehmen kann. Häufig verwendete Farben sind z.B.:
 
 - black
 - white
@@ -77,7 +77,7 @@ Hier findest du eine Liste der Farben: https://www.w3schools.com/colors/colors_n
 
 ### via RGB
 
-RGB steht für Rot-Grün-Blau. Wenn man die Farben via RGB angibt, so gibt man an, wie intensiv jede dieser 3 Farben in der gewünschten Farbe vorkommt. 0 bedeutet, dass die Farbe nicht vorkommt, 255 bedeutet hingegen, dass die Farbe zu 100% gebraucht wird. Zusätzlich kann auch noch ein 4. Wert der sogenannte Alpha-Wert, angegeben werden. Dieser legt die Transparenz der Farbe fest, wobei 0 für komplett transparent und 255 für unduchsichtig steht.
+RGB steht für Rot-Grün-Blau. Wenn man die Farben via RGB angibt, so gibt man an, wie intensiv jede dieser 3 Farben in der gewünschten Farbe teilhaben soll. 0 bedeutet, dass die Farbe nicht vorkommt, 255 bedeutet hingegen, dass die Farbe zu 100% gebraucht wird. Zusätzlich kann auch noch ein 4. Wert der sogenannte Alpha-Wert, angegeben werden. Dieser legt die Transparenz der Farbe fest, wobei 0 für komplette Transparenz und 255 für Undurchsichtigkeit steht.
 
 Folgende RGB-Werte solltest du als Informatiker:in kennen:
 
@@ -90,15 +90,15 @@ Folgende RGB-Werte solltest du als Informatiker:in kennen:
 | white  | rgb(255, 255, 255) |
 | black  | rgb(0, 0, 0)       |
 
-In RGB (oder HEX) gibts du Farben an, die der Browser nicht per Namen kennt. Ein Beispiel hierfür wäre die Farbe 'amber', die es leider noch nicht in die offizielle Liste geschafft hat.
+In RGB (oder HEX) gibst du Farben an, die der Browser nicht per Namen kennt. Ein Beispiel hierfür wäre die Farbe 'amber', die es leider noch nicht in die offizielle Liste geschafft hat.
 
-Möchtest du herausfinden, wie der RGB- oder HEX-Wert einer Farbe ist, so kannst du dafür Online-Tools wie https://www.color-hex.com/color-names.html verwenden. Dort kannst du den Namen der Farbe eingeben und dann kannst du nachschauen, wie diese Werte für diese Farben sind. Im Beispiel der Farbe 'amber' erhälst du folgende Werte:
+Möchtest du herausfinden, wie der RGB- oder HEX-Wert einer Farbe ist, so kannst du dafür Online-Tools wie https://www.color-hex.com/color-names.html verwenden. Dort kannst du den Namen der Farbe eingeben und dann nachschauen, wie die Werte für diese Farben sind. Im Beispiel der Farbe 'amber' erhältst du folgende Werte:
 
 | Name  | RGB              | HEX     |
 | ----- | ---------------- | ------- |
 | amber | rgb(255, 191, 0) | #ffbf00 |
 
-Das folgende Beispiel definiert einen schwarzen Hintergrund, der halbtransparent ist, d.h. das darunter liegende Element ist sichtbar, wirkt aber dunkler.
+Das folgende Beispiel definiert einen schwarzen Hintergrund, der halbtransparent ist. Das hat den effekt, dass der darüberliegende Inhalt zwar noch sichtbar ist, aber verdunkelt wirkt.
 
 ```css
 background-color: rgb(0, 0, 0, 128);
@@ -106,9 +106,9 @@ background-color: rgb(0, 0, 0, 128);
 
 ### via HEX color
 
-Am häufigsten werden im Web die Farben via Hex color angegeben.
+Am häufigsten werden in der Web-Entwicklung die Farben via Hex-Code angegeben.
 
-Farben in hexadezimale sind auch in RGB angegeben, wobei jeder dieser 3 Farben 2 Stellen in diesem Code ausmachen.
+Farben in Hexadezimalen sind auch nach dem RGB-Konzept aufgebaut, wobei jeweils 2 Stellen des Codes eine Farbe ausmachen.
 
 Kennen solltest du sicher:
 
@@ -122,7 +122,7 @@ Kennen solltest du sicher:
 | black  | #000000 oder #000 |
 | gray   | #808080           |
 
-Wenn bei allen Farben die beiden Ziffern gleich sind, dann kann bei jeder Farbe die zweite Ziffer weggelassen werden (siehe Tabelle).
+Wenn bei allen Farben die beiden Ziffern gleich sind, dann kann bei jeder Farbe jeweils die zweite Ziffer weggelassen werden (siehe Tabelle).
 
 ```css
 background-color: #b2222280; /*dunkles Rot, zur Hälfte transparent*/
