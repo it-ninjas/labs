@@ -76,8 +76,10 @@ Möchtest du alle `label`-Elemente stylen, die sich in einem `form`-Element befi
 Ist es hingegen relevant, dass das `label` direkt als erste weitere Stufe in der `form` vorkommt (also keinen anderen Parent hat als `form`), dann benutze folgende Regel: `form > label {...}`. Bei diesem Selektor bedeutet das `>`, dass das erste Element der Parent vom zweiten Element sein muss.
 
 ### Pseudoklassen
+
 Mithilfe von Pseudoklassen kann ein besonderer Zustand abgefragt werden. Mit `:hover` können CSS-Regeln beispielsweise auf Elemente beschränkt werden, über welchen sich derzeit der Mauszeiger befindet.
 Dazu nachfolgend ein Beispiel:
+
 ```css
 input[type="submit"]:hover {
   background-color: orange;
