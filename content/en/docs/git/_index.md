@@ -1,6 +1,6 @@
 ---
 title: "Git"
-weight: 4
+weight: 2
 sectionnumber: 1
 date: 2021-10-28
 description: Verteilte Versionsverwaltung mit Git
