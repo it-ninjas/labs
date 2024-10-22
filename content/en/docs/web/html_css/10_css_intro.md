@@ -5,7 +5,7 @@ linkTitle: "CSS"
 weight: 10
 date: 2022-04-14
 description: >
-  Modul #F3 - HTML und CSS - Einführung ins CSS.
+  Modul #F3 - HTML und CSS - Einführung in CSS.
 ---
 
 ## Was ist CSS?

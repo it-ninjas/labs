@@ -3,7 +3,7 @@ title: "Weitere HTML-Tags"
 linkTitle: "Weitere HTML-Tags"
 weight: 4
 description: >
-  Modul #F3 - HTML und CSS - Nützliche HTML Tags
+  Modul #F3 - HTML und CSS - Nützliche HTML-Tags
 ---
 
 #### Ziele

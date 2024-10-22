@@ -5,7 +5,7 @@ linkTitle: "CSS-Grundlagen"
 weight: 11
 date: 2022-04-14
 description: >
-  Modul #F3 - HTML und CSS - Grundlagen der CSS-Sprache.
+  Modul #F3 - HTML und CSS - Grundlagen von CSS.
 ---
 
 ## Wie funktioniert CSS?

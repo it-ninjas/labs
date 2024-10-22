@@ -3,7 +3,7 @@ title: "HTML5 Semantic Tags"
 linkTitle: "HTML5 Semantic Tags"
 weight: 7
 description: >
-  Modul #F3 - HTML und CSS - Tags, die ihre Bedeutung dem Browser und dem Entwickler beschreiben.
+  Modul #F3 - HTML- und CSS-Tags, welche ihre Bedeutung dem Browser und dem Entwickler beschreiben.
 ---
 
 #### Ziele

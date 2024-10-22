@@ -3,7 +3,7 @@ title: "Erste Seite erstellen"
 linkTitle: "Erste Seite erstellen"
 weight: 2
 description: >
-  Modul #F3 - HTML und CSS - Erste HTML Seite erstellen
+  Modul #F3 - HTML und CSS - Erste HTML-Seite erstellen
 ---
 
 #### Ziele
