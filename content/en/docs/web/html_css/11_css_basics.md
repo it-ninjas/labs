@@ -75,7 +75,7 @@ Datei: index.html
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-      /* Verweis auf das CSS-File */ 
+    /* Verweis auf das CSS-File */
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>

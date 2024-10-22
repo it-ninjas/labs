@@ -24,7 +24,7 @@ Die Selektoren bestimmen, für welche HTML-Elemente die definierten CSS-Regeln g
 Es gibt verschiedenste Selektoren, welche alle ihren eigenen Nutzen erfüllen. In der folgenden Tabelle werden die gängigsten aufgezählt und erklärt:
 
 | Name    | Anwendung in HTML               | Anwendung in CSS     | Beschreibung                                                                                                                                                                                                                                                                                                                                                              |
-| ------- | ------------------------------- | -------------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------- | ------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Klasse  | `class="demo-class"`            | `.demo-class {...}`  | CSS-Klassen können mit dem "class"-Attribut auf jedes beliebige HTML-Element angewendet und dann in CSS referenziert werden. Klassen können dabei auf mehrere Elemente angewandt werden, was das Wiederverwenden der CSS-Regeln ermöglicht. Ein HTML-Element kann auch mehrere Klassen haben.                                                                             |
 | ID      | `id="demo-id"`                  | `#demo-class {...}`  | IDs können mit dem "id"-Attribut auf jedes beliebige HTML-Element angewendet werden. Grundsätzlich sollten IDs eindeutig sein, also nicht an mehreren Orten verwendet werden.                                                                                                                                                                                             |
 | Element | `<element-name></element-name>` | `element-name {...}` | Um alle HTML-Elemente eines Types auszuwählen, muss man nichts Spezielles in HTML anpassen. Es muss lediglich der Umstand gegeben sein, dass die angesprochenen Elemente auch tatsächlich vorhanden sind. Im CSS muss man dann nur noch den Element-Namen angeben (im Beispiel zu ersetzen mit z.B. `a`, `p`, `input`, `body` etc.), wobei keine Prefixes notwendig sind. |
@@ -85,7 +85,7 @@ input[type="submit"]:hover {
 }
 ```
 
-Für `<input>`-Elemente sind Pseudoklassen wie `:disabled` oder `:checked` (für Checkboxen) relevant, welche den Zustand des `<input>`-Elements als Kondition haben. 
+Für `<input>`-Elemente sind Pseudoklassen wie `:disabled` oder `:checked` (für Checkboxen) relevant, welche den Zustand des `<input>`-Elements als Kondition haben.
 
 Du hast des Weiteren aber auch Zugriff auf völlig andere Aspekte! Du kannst zum Beispiel auch den ersten Buchstaben einem Paragrafen automatisch grossschreiben lassen:
 
