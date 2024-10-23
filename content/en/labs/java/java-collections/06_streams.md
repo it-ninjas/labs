@@ -4,7 +4,7 @@ linkTitle: "Streams Basics - Aufgaben"
 type: docs
 weight: 1
 description: >
-  Aufgaben zu Modul #J7 - Collections
+  Aufgaben zu Modul #J6 - Collections
 ---
 
 ## Aufgabe 1 - User-Eingabe in Liste umwandeln

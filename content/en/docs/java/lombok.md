@@ -127,3 +127,12 @@ Falls du in IntelliJ Probleme mit Lombok hast, kann es sein, dass das Annotation
 ---
 
 ![hint1](/images/hint.png) Optional: Finde mehr Informationen zu Lombok und was es kann unter: [Lombok Features](https://projectlombok.org/features/)
+
+---
+
+{{% alert title="Git ready?!" color="warning" %}}
+
+Falls du dich noch nicht intensiver mit Git auseinandergesetzt hast, ist jetzt die Zeit dafür: Erarbeite [**Git**](../git)!
+
+Bitte kehre nach Abschluss des Git-Moduls hierhin zurück und fahre mit der nächsten Seite fort.
+{{% /alert %}}

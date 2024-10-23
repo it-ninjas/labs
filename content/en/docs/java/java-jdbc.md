@@ -3,7 +3,7 @@ title: "JDBC (Java Database connection)"
 linkTitle: "JDBC (Java Database connection)"
 weight: 11
 description: >
-  Modul #J8 - JDBC
+  Modul #J7 - JDBC
 ---
 
 #### Ziele

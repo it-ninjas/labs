@@ -1,6 +1,6 @@
 ---
 title: "Java"
-weight: 3
+weight: 2
 description: >
   Grundlagen von Java
 ---
