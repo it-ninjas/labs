@@ -4123,7 +4123,7 @@ Das heisst, die gesamte Mock-Funktionalität wird von Mockito zur Verfügung ges
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@ExtendWith&lt;/span>(MockitoExtension.&lt;span style="color:#a6e22e">class&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MyUnitTest&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Mock&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> mockedList; &lt;span style="color:#75715e">// hier wird eine Liste von Strings gemockt. &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> mockedList; &lt;span style="color:#75715e">// hier wird eine Liste von Strings gemockt.&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Mockito stellt eine rudimentäre Umsetzung für JEDE Methode der Liste zur Verfügung&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
@@ -4436,16 +4436,16 @@ Dasselbe kann auch mit der Kombination &lt;em>Mockito.doReturn&lt;/em> und danac
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testMockedList&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertEquals(0, mockedList.&lt;span style="color:#a6e22e">size&lt;/span>()); &lt;span style="color:#75715e">// die Mockito-Standardimplementierung für &amp;#34;size()&amp;#34; &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertEquals(0, mockedList.&lt;span style="color:#a6e22e">size&lt;/span>()); &lt;span style="color:#75715e">// die Mockito-Standardimplementierung für &amp;#34;size()&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// liefert immer 0 zurück&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Mockito.&lt;span style="color:#a6e22e">when&lt;/span>(mockedList.&lt;span style="color:#a6e22e">size&lt;/span>()).&lt;span style="color:#a6e22e">thenReturn&lt;/span>(10); &lt;span style="color:#75715e">// hier wird die Standardimplementierung der Methode &lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// size() auf dem Mock-Objekt überschrieben, &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Mockito.&lt;span style="color:#a6e22e">when&lt;/span>(mockedList.&lt;span style="color:#a6e22e">size&lt;/span>()).&lt;span style="color:#a6e22e">thenReturn&lt;/span>(10); &lt;span style="color:#75715e">// hier wird die Standardimplementierung der Methode&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// size() auf dem Mock-Objekt überschrieben,&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// sodass immer der Wert 10 zurückgeliefert wird.&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertEquals(10, mockedList.&lt;span style="color:#a6e22e">size&lt;/span>());
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Mockito.&lt;span style="color:#a6e22e">doReturn&lt;/span>(20).&lt;span style="color:#a6e22e">when&lt;/span>(mockedList).&lt;span style="color:#a6e22e">size&lt;/span>(); &lt;span style="color:#75715e">// auch hier wird die Standardimplementierung der Methode &lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// size() auf dem Mock-Objekt überschrieben, &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Mockito.&lt;span style="color:#a6e22e">doReturn&lt;/span>(20).&lt;span style="color:#a6e22e">when&lt;/span>(mockedList).&lt;span style="color:#a6e22e">size&lt;/span>(); &lt;span style="color:#75715e">// auch hier wird die Standardimplementierung der Methode&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// size() auf dem Mock-Objekt überschrieben,&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// diesmal mit dem Wert 20.&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertEquals(20, mockedList.&lt;span style="color:#a6e22e">size&lt;/span>());
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
@@ -5750,7 +5750,7 @@ trotzdem Datenstrukturen zur Darstellung von Sammlungen von Objekten als eine Ei
 &lt;h3 id="list">List&lt;/h3>
 &lt;p>Eine &lt;a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html">List&lt;/a> ist eine geordnete Sequenz, welche duplizierte Elemente erlaubt.
 Zusätzlich zu den vererbten Methoden der &lt;code>Collection&lt;/code> bietet die &lt;code>List&lt;/code> folgende an:&lt;/p>
-&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong> &lt;br>
+&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong>&lt;br>
 &lt;code>get&lt;/code>, &lt;code>set&lt;/code>, &lt;code>addAll&lt;/code>&lt;/p>
 &lt;p>&lt;strong>Suche nach einem bestimmten Element in der Liste:&lt;/strong>&lt;br>
 &lt;code>indexOf&lt;/code>, &lt;code>lastIndexOf&lt;/code>&lt;/p>
@@ -5770,11 +5770,11 @@ Zusätzlich zu den vererbten Methoden der &lt;code>Collection&lt;/code> bietet d
 Das Set enthält die Funktionen der Collection, stellt aber sicher, dass Kopien von Elementen verhindert werden.
 Die &lt;code>equals&lt;/code> und &lt;code>hashCode&lt;/code> Funktionen spielen dabei eine wichtige Rolle.
 Sie definieren, wann zwei Elemente gleich sind.&lt;/p>
-&lt;p>&lt;strong>Elemente hinzufügen, löschen und Infos abfragen:&lt;/strong> &lt;br>
+&lt;p>&lt;strong>Elemente hinzufügen, löschen und Infos abfragen:&lt;/strong>&lt;br>
 &lt;code>add()&lt;/code>, &lt;code>contains()&lt;/code>, &lt;code>remove()&lt;/code>, &lt;code>clear()&lt;/code>, &lt;code>size()&lt;/code>, &lt;code>isEmpty()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Sammelmethoden:&lt;/strong> &lt;br>
+&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
 &lt;code>addAll()&lt;/code>, &lt;code>removeAll()&lt;/code>, &lt;code>containsAll()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong> &lt;br>
+&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong>&lt;br>
 &lt;code>iterator()&lt;/code>&lt;/p>
 &lt;blockquote>
 &lt;p>Es existieren drei allgemeine Set Implementierungen:&lt;/p>
@@ -5790,11 +5790,11 @@ Eine Map kann nicht zwei gleiche Schlüssel enthalten.
 Jeder Schlüssel zeigt genau auf einen Wert.
 Das Interface Map definiert Grundfunktionen für das Einfügen, Lesen, Löschen, Abfragen von Schlüsseln usw.&lt;/p>
 &lt;p>Zusätzlich zu den vererbten Methoden der &lt;code>Collection&lt;/code> bietet die &lt;code>List&lt;/code> folgende an:&lt;/p>
-&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong> &lt;br>
+&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong>&lt;br>
 &lt;code>put()&lt;/code>, &lt;code>get()&lt;/code>, &lt;code>containsKey()&lt;/code>, &lt;code>containsValue()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Sammelmethoden:&lt;/strong> &lt;br>
+&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
 &lt;code>putAll()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong> &lt;br>
+&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong>&lt;br>
 &lt;code>keySet()&lt;/code>, &lt;code>entrySet()&lt;/code>, &lt;code>values()&lt;/code>&lt;/p>
 &lt;blockquote>
 &lt;p>Es existieren drei allgemeine Map Implementierungen, deren Verhalten analog den drei Set Implementierungen (HashSet, TreeSet, and LinkedHashSet) entspricht:&lt;/p>
@@ -6073,7 +6073,7 @@ Ein Beispiel sieht so aus:&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>In diesem Beispiel wird die Bean &lt;code>item1&lt;/code> injektiert.&lt;/p>
-&lt;p>Die &lt;code>@Bean&lt;/code> Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu &lt;a href="/docs/java/spring/#bean">hier&lt;/a>.&lt;/p>
+&lt;p>Die &lt;code>@Bean&lt;/code> Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu &lt;a href="/docs/java/spring/#beans">hier&lt;/a>.&lt;/p>
 &lt;h5 id="felder-injection">Felder Injection&lt;/h5>
 &lt;p>Bei der Felder Injection werden die Abhängigkeiten direkt in die Felder Injected.
 Hier ein Beispiel:&lt;/p>
@@ -7230,9 +7230,9 @@ Dafür kann man, links neben der Zeilenzahl mittels Links-Klick einen normalen B
 &lt;li>Conditional Breakpoints: Conditional Breakpoints ermöglichen es, einen Breakpoint zu setzen, der nur unter bestimmten Bedingungen ausgelöst wird.&lt;/li>
 &lt;/ul>
 &lt;p>Um weitere Arten von Breakpoints zu definieren, muss man in der Auswahl den Conditional Breakpoint auswählen und anschliessend auf &lt;code>more&lt;/code> klicken.&lt;/p>
-&lt;p>&lt;img alt="IntelliJ zeigt nun mehr Optionen" src="../debugging/debugging-breakpoint-more-options.png" title="Conditional Breakpoint Optionen VS Code">&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun mehr Optionen" src="../debugging/debugging-conditional-breakpoint-intelliJ.png" title="Conditional Breakpoint Optionen IntelliJ Code">&lt;/p>
 &lt;p>Es öffnet sich ein Pop-Up, in welchem man weitere Möglichkeiten hat um Breakpoints zu definieren.&lt;/p>
-&lt;p>&lt;img alt="IntelliJ öffnet ein erweitertes Breakpoint Menü" src="../debugging/debugging-log-breakpoint.png" title="Conditional Breakpoint Optionen VS Code">&lt;/p>
+&lt;p>&lt;img alt="IntelliJ öffnet ein erweitertes Breakpoint Menü" src="../debugging/debugging-conditional-breakpoint-extend-intelliJ.png" title="Conditional Breakpoint Optionen IntelliJ Code">&lt;/p>
 &lt;p>Hier kann beispielsweise, wie im Bild ersichtlich, einen Log definieren, so fungiert der Breakpoint zusätzlich als System.out.println(). Man kann auch einstellen, dass der Breakpoint entfernt werden soll, sobald er einmal aufgerufen wurde. Oder dass er solang inaktiv sein soll bis ein anderer Breakpoint ausgelöst wurde.&lt;/p>
 &lt;p>Um den Debug-Modus zu starten, kann man in IntelliJ oben rechts das Icon das wie ein Käfer aussieht verwenden:&lt;/p>
 &lt;p>&lt;img alt="IntelliJ zeigt nun, den Debuggstartbutton" src="../debugging/debugging-starten-intelliJ.png" title="Startbutton zum Debuggen in IntelliJ">&lt;/p>
