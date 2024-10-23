@@ -255,7 +255,7 @@ margin-bottom: 3em;
 margin-left: 4px;
 ```
 
-Beachte bei der kurzen Schreibweise, dass die Angabe der Werte oben beginnt und im Uhrzeigersinn weitergeht. 
+Beachte bei der kurzen Schreibweise, dass die Angabe der Werte oben beginnt und im Uhrzeigersinn weitergeht.
 
 Eine gute Eselsbrücke, um sich das zu merken, ist das Wort *TR*ou*BL*e. Anhand der Reihenfolge der Buchstaben lässt sich die Reihenfolge gut merken. (Top, Right, Bottom, Left)
 
