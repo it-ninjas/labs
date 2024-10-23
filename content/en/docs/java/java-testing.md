@@ -997,6 +997,12 @@ public class MyUnitTest {
 }
 ```
 
+**⚠️ ACHTUNG ⚠️**
+
+> Für Stubbing in @Spy muss immer die Notation `Mockito.doReturn().when().size();` verwendet werden. Mit `Mockito.when().thenReturn()` wird es nicht funktionieren.
+> Grund dafür ist, dass wenn `Mockito.doReturn().when().size();` verwendet wird, in jedem Fall das gegebene Return durchgeführt wird.
+> Wenn bei `Mockito.when().thenReturn()` zum Beispiel eine Exception auftritt, wird nicht das richtige Resultat zurück gegeben.
+
 Wie ein Spy verwendet werden kann, um nur einige Methoden umzuleiten, wird in einem späteren Kapitel erklärt.
 
 #### @Captor Annotation
