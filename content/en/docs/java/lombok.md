@@ -3,7 +3,7 @@ title: "Lombok"
 linkTitle: "Lombok"
 weight: 6
 description: >
-  Vor- und Nachteile von Lombok
+  Module J#3 - Vor- und Nachteile von Lombok
 ---
 
 Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.

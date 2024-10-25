@@ -3,6 +3,7 @@ title: "REST-Endpoints"
 linkTitle: "REST-Endpoints"
 weight: 15
 description: >
+  Modul #J8 - REST-Endpoints
 ---
 
 ## Was ist REST
