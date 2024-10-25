@@ -3,7 +3,7 @@ title: "IntelliJ IDEA einrichten"
 linkTitle: "IntelliJ IDEA - einrichten"
 weight: 2
 description: >
-  Modul - IntelliJ IEAD einrichten
+  Modul - IntelliJ IDEA einrichten
 ---
 
 #### Ziele
