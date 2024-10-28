@@ -200,7 +200,7 @@ Wir haben bereits CSS-Properties wie `width`, `height` und `border` verwendet. N
 
 Du wirst sehen, dass das weisse Feld mit "Halbe Breite" die halbe Breite der übergeordneten Box beansprucht. Zusammen mit dem Rand macht das aber mehr als die Hälfte aus! Somit schauen wir uns das Box-Modell in CSS an:
 
-![boxModel](./boxen_css.PNG)
+![boxModel](../boxen_css.PNG)
 
 Die "Content Box" ist sozusagen der Inhalt des Block-Elements. Die "Border Box" ist der Rahmen des Elements. Als wir die `width` gesetzt hatten, haben wir die Breite der _Content Box_ gesetzt. Oft wollen wir aber, dass die Box inklusive Rand 50% der Breite einnimmt. Hierfür gibt es mehrere Möglichkeiten:
 
