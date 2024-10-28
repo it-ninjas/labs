@@ -42,7 +42,7 @@ img {
 }
 ```
 
-Mit `position: relative` bewirken wir, dass CSS-Properties wie `top`, `bottom`, `left` und `right` beachtet werden. Mithilfe der relativen Positionierung können wir dann das Element verschieben, ohne dass es andere Elemente bzw. den Textfluss verändert. Wir haben hier `top` verwendet, um **oben** einen Abstand einzufügen. Würdest du `left` verwenden, so würde sich das Element entsprechend nach rechts verschieben. Wichtig zu beachten ist hierbei, dass unter Verwendung von `top`, `bottom`, `left` und `right` der Abstand relativ zum Objekt selbst eingefügt wird.  
+Mit `position: relative` bewirken wir, dass CSS-Properties wie `top`, `bottom`, `left` und `right` beachtet werden. Mithilfe der relativen Positionierung können wir dann das Element verschieben, ohne dass es andere Elemente bzw. den Textfluss verändert. Wir haben hier `top` verwendet, um **oben** einen Abstand einzufügen. Würdest du `left` verwenden, so würde sich das Element entsprechend nach rechts verschieben. Wichtig zu beachten ist hierbei, dass unter Verwendung von `top`, `bottom`, `left` und `right` der Abstand relativ zum Objekt selbst eingefügt wird.
 
 ![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../../labs/web/html_css/02_css).
 
@@ -65,7 +65,7 @@ Are you a
 </style>
 ```
 
-Bei der Verwendung von `position: absolute` wird das Element relativ vom nächsten **ebenfalls positionierten** Parent-Element positioniert. Gibt es kein solches, wird das Element relativ zum `html`-Element positioniert. 
+Bei der Verwendung von `position: absolute` wird das Element relativ vom nächsten **ebenfalls positionierten** Parent-Element positioniert. Gibt es kein solches, wird das Element relativ zum `html`-Element positioniert.
 
 Mache deinen Browser mal ein wenig kleiner und beobachte, wie sich die Positionierung verhält, wenn du scrollst.
 

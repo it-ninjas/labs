@@ -17,7 +17,7 @@ Das führt oft dazu, dass im Code viele "CSS-Leichen" zu finden sind.
 Um diesem Problem entgegenzuwirken, verwendet man oft eine CSS-Datei, die für das
 ganze Projekt gelten soll. (styles.css)
 
-Wenn du aber oft das Projekt wechselst, wirst du nicht den Überblick behalten können, 
+Wenn du aber oft das Projekt wechselst, wirst du nicht den Überblick behalten können,
 welche Konzepte vorgehend mit CSS umgesetzt wurden.
 
 Aus diesem Grund kann es Sinn machen, projektübergreifend ein standardisiertes CSS-Framework
