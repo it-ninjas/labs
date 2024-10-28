@@ -44,7 +44,7 @@ Die einzige Möglichkeit, Laufzeitfehler abzuhandeln, ist "Safe Programming". Da
 Prüfungen und sog. "Guards" im Code einbauen (z.B. prüfen, ob eine Referenz nicht `null` ist bevor wir darauf zugreifen) um sicherzustellen,
 dass solche Situationen zur Laufzeit nicht auftreten.
 
-**Checked Exceptions** müssen entweder am Ort des Auftretens abgefangen oder an den Aufrufer der Methode weitergegeben werden. 
+**Checked Exceptions** müssen entweder am Ort des Auftretens abgefangen oder an den Aufrufer der Methode weitergegeben werden.
 Dadurch wird die Verantwortung zur Behandlung der Exception an den Aufrufer weitergegeben.
 
 Dazu ein kleines Beispiel:
@@ -57,7 +57,7 @@ public static void main(String[] args) {
 }
 ```
 
-Ohne die Implementierung der Methode `findByPhoneNumber` zu kennen, muss ein Softwareentwickler das zurückgelieferte Objekt vom Typ `Person` zunächst auf `null` prüfen. 
+Ohne die Implementierung der Methode `findByPhoneNumber` zu kennen, muss ein Softwareentwickler das zurückgelieferte Objekt vom Typ `Person` zunächst auf `null` prüfen.
 Schauen wir uns daher die Implementierung dieser Methode genauer an:
 
 ```java
@@ -76,7 +76,7 @@ public class PhoneBook {
 ```
 
 Wie (vielleicht) erwartet, liefert die Methode `null` zurück, falls kein Eintrag mit der gesuchten Nummer gefunden wird.
-Dies führt in der Main-Methode im obigen Code auf der letzten Zeile zu einer `NullPointerException`, da die Referenz `person` auf `null` zeigt. 
+Dies führt in der Main-Methode im obigen Code auf der letzten Zeile zu einer `NullPointerException`, da die Referenz `person` auf `null` zeigt.
 Ein einfaches `if`-Statement kann hier Abhilfe schaffen:
 
 ```java
@@ -90,7 +90,7 @@ public static void main(String[] args) {
 ```
 
 Der Laufzeitfehler kann nun nicht mehr auftreten. Es stellt sich jedoch die Frage, ob diese Lösung zufriedenstellend ist.
-Prinzipiell sollten wir zumindest informiert werden, wenn keine Person mit dieser Nummer gefunden wird. 
+Prinzipiell sollten wir zumindest informiert werden, wenn keine Person mit dieser Nummer gefunden wird.
 Eine Möglichkeit besteht darin, ein `else`-Statement hinzuzufügen:
 
 ```java
@@ -112,7 +112,7 @@ Eine alternative Lösung könnte darin bestehen, das Null-Object-Pattern oder ei
 
 ## try / catch / finally
 
-Um eine **Checked Exception** zu behandeln, muss der Codeblock, der die Exception erzeugen könnte, innerhalb eines `try`-Blocks stehen. 
+Um eine **Checked Exception** zu behandeln, muss der Codeblock, der die Exception erzeugen könnte, innerhalb eines `try`-Blocks stehen.
 Der Exception-Typ, der abgefangen werden soll, wird in den zugehörigen `catch`-Block geschrieben:
 
 ```java
@@ -137,10 +137,11 @@ try {
 }
 ```
 
-Bei mehreren `catch`-Blöcken muss die spezifischste Exception stets zuerst stehen. 
-Je weiter unten der `catch`-Block steht, desto allgemeiner ist die Exception, die abgefangen wird. 
-Der Grund dafür ist, dass alle Checked Exceptions von der Klasse `Exception` abgeleitet sind. 
+Bei mehreren `catch`-Blöcken muss die spezifischste Exception stets zuerst stehen.
+Je weiter unten der `catch`-Block steht, desto allgemeiner ist die Exception, die abgefangen wird.
+Der Grund dafür ist, dass alle Checked Exceptions von der Klasse `Exception` abgeleitet sind.
 Befindet sich eine allgemeinere Exception weiter oben, wird der `catch`-Block der spezifischeren Exception weiter unten nicht mehr erreichbar sein.
+
 ```java
 try {
     // Code, der eine Ausnahme auslösen könnte
@@ -153,7 +154,7 @@ try {
 }
 ```
 
-Ein `try`-Block (ob mit oder ohne `catch`-Block) kann zusätzlich einen `finally`-Block haben. 
+Ein `try`-Block (ob mit oder ohne `catch`-Block) kann zusätzlich einen `finally`-Block haben.
 Der `finally`-Block wird nach der Bearbeitung der Exception ausgeführt.
 Falls keine Exception aufgetreten ist, wird der Code im `finally`-Block direkt nach dem `try`-Block ausgeführt.
 
@@ -183,7 +184,7 @@ Vorsicht bei `return`-Anweisungen innerhalb von `catch`- oder `finally`-Blöcken
 
 ## throw / throws
 
-Eine Exception muss nicht immer dort behandelt werden, wo sie auftritt. 
+Eine Exception muss nicht immer dort behandelt werden, wo sie auftritt.
 Falls die Behandlung in andere Klassen verlagert werden soll, kann mit dem Schlüsselwort `throws` angegeben werden, dass die aufrufende Komponente die Exception abfangen und behandeln muss.
 
 Dazu ein kurzes Beispiel:
@@ -218,8 +219,8 @@ public class Main {
 }
 ```
 
-In diesem Beispiel wird die Behandlung in die `main`-Methode verlagert. 
-Exceptions können über beliebig viele Stufen weitergegeben werden. 
+In diesem Beispiel wird die Behandlung in die `main`-Methode verlagert.
+Exceptions können über beliebig viele Stufen weitergegeben werden.
 Wenn jedoch die "oberste" Stufe (hier die `main`-Methode) die Exception nicht behandelt, wird die Anwendung mit einer entsprechenden Fehlermeldung beendet, da die Exception unbehandelt bleibt.
 
 ---
@@ -229,7 +230,7 @@ Wenn jedoch die "oberste" Stufe (hier die `main`-Methode) die Exception nicht be
 Mit der Lösung aus dem vorherigen Beispiel können wir noch nicht vollständig zufrieden sein.
 Anstatt den Rückgabewert der Methode `findByPhoneNumber` auf `null` zu prüfen, wählen wir nun einen anderen Ansatz:
 
-Wir erweitern die Anwendung so, dass die Methode keine `null`-Werte mehr als Rückgabewert liefert. 
+Wir erweitern die Anwendung so, dass die Methode keine `null`-Werte mehr als Rückgabewert liefert.
 Da der Compiler jedoch einen Rückgabewert erzwingt, bleibt uns nur die Möglichkeit, eine Exception zu werfen, wenn kein Ergebnis gefunden wird.
 
 Zu diesem Zweck definieren wir zuerst eine entsprechende Exception:
@@ -240,7 +241,7 @@ public class PersonNotFoundException extends Exception {
 }
 ```
 
-Diese Exception wird nun an der entsprechenden Stelle im Code geworfen. 
+Diese Exception wird nun an der entsprechenden Stelle im Code geworfen.
 Die Methode wird zusätzlich mit dem Schlüsselwort `throws` versehen:
 
 ```java
@@ -273,7 +274,7 @@ public static void main(String[] args) {
 }
 ```
 
-Aus dem ursprünglichen Laufzeitfehler ist nun eine behandelte Exception geworden. 
+Aus dem ursprünglichen Laufzeitfehler ist nun eine behandelte Exception geworden.
 Diese Implementierung vermeidet, wo immer möglich, die Rückgabe von `null`-Werten.
 
 ---
@@ -327,8 +328,8 @@ public static void main(String[] args) {
 }
 ```
 
-Die beiden Exceptions werden hier in einem einzigen `catch`-Block zusammengefasst. 
-Zu beachten ist, dass die Exceptions innerhalb eines Multi-Catch nicht in einer Vererbungsbeziehung zueinander stehen dürfen. 
+Die beiden Exceptions werden hier in einem einzigen `catch`-Block zusammengefasst.
+Zu beachten ist, dass die Exceptions innerhalb eines Multi-Catch nicht in einer Vererbungsbeziehung zueinander stehen dürfen.
 Das bedeutet, dass ihre Basistypen unterschiedlich sein müssen.
 
 ---
@@ -360,7 +361,7 @@ public static String readFirstLine(String path) {
 ```
 
 Der `finally`-Block ist notwendig, um die verwendete Ressource des `BufferedReaders` zu schliessen.  
-Da beim Schliessen  eine `IOException` auftreten kann, benötigen wir im `finally`-Blocks
+Da beim Schliessen eine `IOException` auftreten kann, benötigen wir im `finally`-Blocks
 einen zusätzlichen `try-catch`-Block.
 
 Betrachten wir nun das gleiche Beispiel mit automatischem Ressourcen-Management:
@@ -377,7 +378,7 @@ public static String readFirstLine(String path) {
 ```
 
 Wie wir sehen, entfällt der `finally`-Block zum Schliessen der Ressourcen vollständig.
-Die Ressourcen `FileReader` und `BufferedReader` werden automatisch geschlossen. 
+Die Ressourcen `FileReader` und `BufferedReader` werden automatisch geschlossen.
 Dies geschieht im Hintergrund über die Methode `close`, die vom Interface `AutoCloseable` bereitgestellt wird.
 In einem `try-with-resources`-Statement dürfen daher nur Objekte verwendet werden, die das genannte Interface implementieren.
 Das `Closeable`-Interface stellt dabei die Abwärtskompatibilität zu älteren Java-Versionen sicher, da es ebenfalls die `close`-Methode definiert.
@@ -411,6 +412,7 @@ private static void method(String parameter) {
 Im obigen Beispiel führt der Versuch, die Methode `length()` auf einem null-Objekt aufzurufen, zur `NullPointerException`.
 
 Hier werden zwei typische Ursachen für das Auftreten einer `NullPointerException` deutlich:
+
 - Einer Variable (hier `parameter`) wird `null` zugewiesen/übergeben, was in manchen Fällen unerwartet ist.
 - Es wird vergessen zu prüfen, dass eine Variable den Wert `null` haben könnte.
 
@@ -431,8 +433,8 @@ private static void method(String parameter) throws IllegalArgumentException {
 }
 ```
 
-In diesem Beispiel ist sichergestellt, dass der Wert `null` für das Argument `parameter` nicht erlaubt ist. 
-Ein Nachteil dieser Lösung ist, dass Entwickler von aussen nicht direkt erkennen können, dass `n`ull-Werte unzulässig sind. 
+In diesem Beispiel ist sichergestellt, dass der Wert `null` für das Argument `parameter` nicht erlaubt ist.
+Ein Nachteil dieser Lösung ist, dass Entwickler von aussen nicht direkt erkennen können, dass `n`ull-Werte unzulässig sind.
 Diesen Fall könnte man stattdessen besser mit einer `@NotNull`-Annotation abdecken, wie später beschrieben.
 
 Manchmal jedoch sollen `null`-Werte zulässig sein. In solchen Fällen verwenden wir Bedingungen, um den richtigen Code auszuführen:
@@ -479,8 +481,8 @@ Solche Annotationen teilen mit,
 - dass bei einer Variable erwartet wird, dass sie unter Umständen auch den Wert `null` haben kann (`@Nullable`)
 - bzw. dass eine Variable nicht den Wert `null` aufweisen darf (`@NotNull` bzw. `@NonNull`).
 
-In den folgenden Beispielen verwenden wir die Bibliothek `org.jetbrains.annotations`. 
-Es gibt jedoch auch andere Bibliotheken mit ähnlichen Annotationen. 
+In den folgenden Beispielen verwenden wir die Bibliothek `org.jetbrains.annotations`.
+Es gibt jedoch auch andere Bibliotheken mit ähnlichen Annotationen.
 Da die Verwendung von Dependencies hier noch nicht behandelt wurde (Maven-Teil), bleibt dies ein theoretischer Hinweis.
 
 Hier ein Beispiel, wie Annotationen zu mehr `null`-Sicherheit führen können:
@@ -507,7 +509,7 @@ In diesem Beispiel wird
 
 ### Optionals
 
-In Java gibt es auch ohne externe Bibliothek eine Möglichkeit anzugeben, dass eine Variable den Wert `null` „repräsentieren“ kann. 
+In Java gibt es auch ohne externe Bibliothek eine Möglichkeit anzugeben, dass eine Variable den Wert `null` „repräsentieren“ kann.
 Hierfür wurde die generische Klasse `Optional<T>` eingeführt.
 
 Die Idee dabei ist, dass Variablen, die den Wert `null` haben könnten, den Typ `Optional<...>` erhalten. Ein `nullable` String hätte zum Beispiel den Typ `Optional<String>`:
@@ -607,8 +609,9 @@ public class SaloonTest {
 ---
 
 ## Exceptions: Keine Kontrollstrukturen, sondern Fehlerbehandlung
-Nach den Prinzipien von Clean Code sollten Ausnahmen (Exceptions) nicht als normaler Programmfluss eingesetzt werden. 
-Exceptions dienen dazu, **Ausnahmesituationen** zu behandeln, die unerwartet auftreten und oft nicht durch reguläre Überprüfungen abgefangen werden können, wie z. B. Netzwerk- oder Datenbankfehler. 
+
+Nach den Prinzipien von Clean Code sollten Ausnahmen (Exceptions) nicht als normaler Programmfluss eingesetzt werden.
+Exceptions dienen dazu, **Ausnahmesituationen** zu behandeln, die unerwartet auftreten und oft nicht durch reguläre Überprüfungen abgefangen werden können, wie z. B. Netzwerk- oder Datenbankfehler.
 Wenn Exceptions jedoch als Ersatz für reguläre Kontrollstrukturen (wie if-Abfragen) verwendet werden, wird der Code schwerer lesbar, schlechter wartbar und häufig ineffizienter.
 
 **Warum sollten Exceptions nicht für den Programmfluss genutzt werden?**
@@ -621,6 +624,7 @@ Wenn Exceptions jedoch als Ersatz für reguläre Kontrollstrukturen (wie if-Abfr
 **Beispiel für falsche Verwendung:**
 
 In diesem Beispiel wird eine Exception missbräuchlich zur Kontrolle des Programmflusses verwendet:
+
 ```java
 try {
     int value = Integer.parseInt("abc"); // Wirft NumberFormatException
@@ -631,6 +635,7 @@ try {
 
 **Richtige Verwendung:**
 Besser ist es, die Eingabe vor der Verarbeitung zu validieren und Exceptions nur für unerwartete Fehler zu nutzen:
+
 ```java
 String input = "abc";
 int value;
