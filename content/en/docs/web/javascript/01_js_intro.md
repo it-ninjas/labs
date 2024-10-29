@@ -42,29 +42,3 @@ Weiter unten siehst du ein `<script>`-Element. In diesem ist eine Funktion namen
 Wie du siehst, wird die selbst definierte Funktion beim Klick auf den Button aufgerufen. Dies passiert, weil du diesen Aufruf im `onclick`-Attribut des `<button>`-Elements definiert hast. Beachte in diesem Beispiel, dass nicht die Funktion, sondern deren Aufruf darin steht. Im Prinzip wird beim Button-Klick der Wert des `onclick`-Attributs ausgeführt. Theoretisch könntest du auch direkt `onclick="alert('Klick mich nicht an!!')"` schreiben.
 
 </details>
-
-## JavaScript einbinden
-
-Wie du im obenstehenden Beispiel gesehen hast, wird Javascript mittels eines `<script>`-Tags eingebunden. Dein Code kann direkt im `<script>`-Tag geschrieben werden:
-
-```html
-<script>
-  console.log("my Js Code");
-</script>
-```
-
-Du kannst deinen Code aber auch in einem separatem .js File ablagern und via Script-Tag auf dieses referenzieren:
-
-**index.html**
-
-```html
-<script src="mycode.js"></script>
-```
-
-**mycode.js**
-
-```js
-console.log("my Js Code");
-```
-
-Die zweite Variante ist meist sauberer und wird in der Praxis am meisten genutzt, da Code und HTML so sauber aufgeteilt sind. Bei unseren Übungen wirst du aber meistens direkt im `<script>`-Tag arbeiten können, ohne ein separates JS File erstellen zu müssen.
