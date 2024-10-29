@@ -5,14 +5,14 @@ linkTitle: "DOM-Manipulation"
 weight: 3
 date: 2022-04-19
 description: >
-  Modul #F4 - JavaScript - Website mit Hilfe von JavaScript verändern.
+  Modul #F4 - JavaScript - Website mithilfe von JavaScript manipulieren.
 ---
 
 ## Auf DOM-Elemente zugreifen
 
-Eines der häufigsten Anwendungszwecke von JavaScript ist es, mit Elementen auf einer Website zu interagieren.
+Eines der häufigsten Anwendungszwecke von JavaScript ist, mit Elementen auf einer Website zu interagieren.
 
-Nehmen wir folgendes Code-schnipsel als Beispiel:
+Nehmen wir folgenden Codeausschnitt als Beispiel:
 
 ```html
 <div id="message-div"></div>
@@ -21,38 +21,38 @@ Nehmen wir folgendes Code-schnipsel als Beispiel:
 <button type="button">+1</button>
 ```
 
-Mit JavaScript möchten wir, dass sich die Zahl im `<span>` erhöht. In einem ersten Schritt versuchen wir, auf das `<span>`-Element zuzugreifen und eine andere Zahl reinzuschreiben. Das probieren wir direkt in der Konsole des Browsers aus:
+Wir möchten mit Javascript bewerkstelligen, dass sich die Zahl im `<span>` erhöht. In einem ersten Schritt versuchen wir, direkt auf das `<span>`-Element selbst zuzugreifen und eine andere Zahl als Wert zu übergeben. Probiere das direkt in der Konsole deines Browsers aus:
 
 ```javascript
 let span = document.getElementById("likes-count");
 span.textContent = 999;
 ```
 
-Du wirst sehen, dass sich die Zahl im `<span>` tatsächlich verändert hat. Probieren wir aber zuerst, den Code zu verstehen!
+Du wirst sehen, dass sich die Zahl im `<span>`-Element tatsächlich verändert hat. Probieren wir mal zu verstehen, was im Code passiert:
 
 <details>
 
 <summary>Erläuterung (click to expand)</summary>
 
-- `document` ist ein Objekt, das uns im Browser zur Verfügung steht. Dieses Objekt repräsentiert das DOM. Mit diesem `document`-Objekt können wir auf die Elemente im Browser zugreifen.
-- `getElementById(...)` ist eine Methode auf diesem `document`-Objekt. Diese Methode sucht auf der aktuellen Seite ein Element, das die übergebene `id` besitzt.
-- Das gefundene Element möchten wir in einer Variablen namens `span` zwischenspeichern.
-- `textContent` ist ein Feld (= ein Attribut) auf diesem Element, das den Inhalt des Elements (als Text) repräsentiert. Diesen Wert können wir einfach so kopieren.
+- `document` ist ein Objekt, welches uns im Browser zur Verfügung steht. Dieses Objekt repräsentiert das DOM. Mit diesem `document`-Objekt können wir in Javascript auf die einzelnen Elemente im Browser zugreifen.
+- `getElementById(...)` ist eine Methode dieses `document`-Objekts. Diese Methode sucht auf der aktuellen Seite das Element, welches die als Parameter übergebene `id` besitzt.
+- Das gefundene Element möchten wir in einer Variable namens `span` zwischenspeichern.
+- `textContent` ist ein Attribut auf dem gesuchten `<span>`-Element, welches den Inhalt des Elements in textform repräsentiert.
 
 </details>
 
-Mit diesem Code konnten wir die Anzahl Likes auf eine andere Zahl setzen. Nun möchten wir aber, dass sich diese Anzahl um genau 1 erhöht. Dafür benötigen wir noch zwei Zwischenschritte:
+Mithilfe dieses Codeausschnitts konnten wir die Anzahl Likes auf einen anderen Zahlenwert setzen. Nun möchten wir aber, dass sich diese Anzahl um genau 1 erhöht. Dazu müssen wir die folgenden Schritte durchführen:
 
 1. Die aktuelle Zahl auslesen
 2. Diese Zahl von einem String in eine Nummer konvertieren
-3. Und die erhöhte Zahl ins `<span>` schreiben.
+3. Die inkrementierte Zahl ins `<span>` schreiben.
 
-Versuche dies zu implementieren, bevor du dir die Lösung ansiehst.
+Versuch einmal, das selbst zu implementieren, bevor du dir die Lösung dazu ansiehst.
 
 <details>
 
 <summary>Lösung (click to expand)</summary>
-Das könnte ungefähr so aussehen:
+Eine Lösung für die gegebenen Anforderungen könnte wie folgt aussehen:
 
 ```javascript
 let span = document.getElementById("likes-count");
@@ -61,14 +61,14 @@ likes++;
 span.textContent = likes;
 ```
 
-Neu dazugekommen ist
+In diesem Codeausschnitt kannst du einige neue Kontrollstrukturen erkennen: 
 
-- der Aufruf von `parseInt(...)`. Diese Methode ist standartmässig Global verfügbar und kann somit ohne imports verwendet werden. Diese Methode versucht, den übergeben Wert in eine Ganzzahl (Integer) zu konvertieren.
-- `likes++` bedeutet gleich viel wie `likes = likes + 1`. Damit erhöhen wir die `likes`-Variable also um 1.
-- Mit `span.textContent = likes` setzen wir den Text des `span`s neu. Eine Umwandlung in String ist nicht notwendig.
+- Der Aufruf von `parseInt(...)`. Diese Methode ist standardmässig global verfügbar und kann somit ohne zusätzliche Imports verwendet werden. Diese Methode wird verwendet, um den als Parameter übergebenen Wert in eine Ganzzahl (Integer) zu konvertieren.
+- `likes++` ist gleichzusetzen mit dem Ausdruck  `likes = likes + 1`. Damit erhöhen wir die `likes`-Variable also um 1. Diesen Vorgang beschreibt man meistens als Inkrementierung. 
+- Mit der Zeile `span.textContent = likes` setzen wir den Text des `span`s neu. Eine explizite Umwandlung des Werts in einen String ist nicht notwendig.
 
-Versuche das ganze nun mal ohne die parseInt Methode.
-Du wirst sehen, dass es trotzdem funktioniert. Das liegt daran, dass JS keine "starke" typen (strong types) kennt. Sprich der JS-Interpreter versucht auch einen String als Zahl zu verwenden und wenn es sich wirklich um eine Zahl handelt, funktioniert das auch:
+Versuche jetzt den obenstehenden Codeausschnitt mal aus, ohne die `parseInt`-Methode zu verwenden.
+Du wirst sehen, dass der Code trotzdem funktioniert. Das liegt daran, dass JS keine "starken" typen (strong types) kennt. Das heisst konkret, dass der JS-Interpreter versucht, den String auch als Zahl zu verwenden. Wenn es sich wirklich um eine Zahl handelt, funktioniert das auch:
 
 ```js
 function onLikeClick() {
@@ -79,14 +79,13 @@ function onLikeClick() {
 }
 ```
 
-Dies ist aber sehr fragil, daher ist es good practice, die Variablen trotzdem in die korrekten typen umzuwandeln.
-Gut zu wissen, ist das sich JavaScript teilweise etwas unerwartet verhält.
+Dieses Vorgehen ist aber ziemlich fragil, weshalb es grundsätzlich immer empfehlenswert ist, die verwendeten Werten dennoch immer in die korrekten Typen umzuwandeln.
 
 </details>
 
 ### Manipulation beim Button-Klick ausführen lassen
 
-Nun wollen wir noch, dass das, was wir vorher programmiert haben, dann passiert, wenn der User auf den Button klickt. Ändere die HTML-Seite wie folgt ab:
+Als Letztes wollen wir jetzt noch, dass die Funktionalität, welche  wir vorher programmiert haben, dann ausgeführt wird, wenn der User auf den Button klickt. Ändere das HTML-Dokument daher wie folgt ab:
 
 ```html
 ...
@@ -103,13 +102,16 @@ Nun wollen wir noch, dass das, was wir vorher programmiert haben, dann passiert,
 ...
 ```
 
+Was passiert hier genau? Im `button`-Element haben wir das Attribut `onclick=` hinzugefügt, welches jeweils darauf wartet, dass auf dem Knopf aus ein Klick-Event passiert.
+Wenn also der Nutzer auf den Knopf drückt und somit das `onclick`-Event getriggert wird, wird der Teil innerhalb von `onclick` ausgeführt, in diesem Fall ein Aufruf auf die `onLikeClick()`-Funktion.
+Indem wir innerhalb des `<script>`-Tags unseren Code als Funktion `onLikeClick` zusammengefasst haben, wird nun bei jedem Klick auf den Knopf diese ausgeführt und somit der Wert von `likes` um 1 erhöht.
 ## Ein neues Element hinzufügen
 
-Manchmal möchtest du ein neues Element auf der Website generieren lassen.
+Manchmal möchtest du über Javascript ein neues Element auf deiner Website generieren lassen.
 
-Im kommenden Beispiel möchten wir so viele Bilder von "Thumbs Ups" (also 👍) wie Likes anzeigen.
+Im kommenden Beispiel möchten wir eine der Anzahl Likes entsprechende Anzahl Instanzen eines "ThumbsUp"-Bilds (also 👍) anzeigen.
 
-Um das zu erzielen, kannst du die `onLikeClick`-Funktion wie folgt erweitern:
+Um das zu erzielen, kannst du die `onLikeClick`-Funktion mit dem folgenden Codeausschnitt erweitern:
 
 ```javascript
 // draw a thumb up for every like:
@@ -123,16 +125,16 @@ const messageDiv = document.querySelector("div#message-div");
 messageDiv.innerHTML = insertHtml;
 ```
 
-Dieser Code macht folgendes:
+In diesem Abschnitt passiert das Folgende:
 
-- für jedes Like, wird im `<div id="message-div">` folgendes Element/Bild hinzugefügt: `<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Emoji_u1f44d.svg" alt="like" height="25">`
-- Das HTML für dieses Bild haben wir zuerst in einer Konstante (`const`) gespeichert. `const` ist das Gleiche wie `let` mit dem Unterschied, dass sich dieser Wert nie verändern darf innerhalb dieser Methode. Wenn sich eine Variable nie im definierten Block verändert, so wird empfohlen, `const` statt `let` zu verwenden.
-- Die String-Variable `insertHtml` brauchen wir als Zwischenspeicher, in welcher wir den HTML-String zusammensetzen, welche wir später im HTML/DOM haben möchten.
-- Die `for`-Schlaufe wird so oft durchlaufen, wie es Likes gab. Das bedeutet, dass pro Like ein Bild ins `insertHtml` kopiert wird.
-- Anschliessend holen wir uns das `<div id="message-div">` via JavaScript. Wir hätten hier auch `document.getElementById('message-div')` verwenden können. Aber `querySelector` funktioniert hier auch. Die `querySelector`-Methode akzeptiert ein CSS-Selektor und gibt dann das Element zurück, das damit angesprochen wird. In diesem Beispiel war `div#message-div` ein möglicher CSS-Selektor (wie `#message-div` eigentlich auch), der das `<div id="message-div"` anspricht.
-- Als letztes verändern wir das HTML dieses `<div>`s, indem wir das `innerHTML`-Feld neu setzen.
+- für jeden Like wird im `<div id="message-div">` folgendes `<img>`-Element hinzugefügt: `<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Emoji_u1f44d.svg" alt="like" height="25">`
+- Das HTML-Element dieses Bilds haben wir zuerst in einer Konstante (`const`) gespeichert. `const` ist prinzipiell dasselbe wie `let`, nur mit dem Unterschied, dass sich dieser Wert innerhalb der Funktion nie verändern darf.
+- Die String-Variable `insertHtml` brauchen wir als Zwischenspeicher, in welcher wir den HTML-String zusammensetzen, welchen wir später in das DOM einspeisen möchten.
+- Die Anzahl der Durchläufe der `for`-Schlaufe entspricht der Anzahl Likes. Das bedeutet, dass pro Like ein Bild in `insertHtml` kopiert wird.
+- Anschliessend holen wir uns das `<div id="message-div">`-Element via JavaScript. Wir hätten hier auch `document.getElementById('message-div')` verwenden können, `querySelector` funktioniert hier aber auch. Die `querySelector`-Funktion akzeptiert als Argument einen CSS-Selektor und gibt dann das entsprechende Element zurück, das damit angesprochen wird. In diesem Beispiel war `div#message-div` ein möglicher CSS-Selektor (wie `#message-div` auch), der das `<div id="message-div"` anspricht.
+- Als Letztes verändern wir das HTML dieses `<div>`-Elements, indem wir das `innerHTML`-Feld neu populieren.
 
-Element können jedoch nicht nur mit `querySelector` hinzugefügt werden, sondern auh mit `document.createElement()`. Mit der `document.createElement()`-Methode kann man neue HTML-Elemente dynamisch erstellen und diese im DOM hinzufügen.
+Elemente können nicht nur mit dem `querySelector` hinzugefügt werden, sondern auch mit `document.createElement()`. Mit der `document.createElement()`-Methode kann man neue HTML-Elemente dynamisch erstellen und diese im DOM hinzufügen.
 
 ```html
 <!doctype html>
@@ -160,6 +162,6 @@ paragraph.textContent = "Dies ist ein neuer Absatz.";
 container.appendChild(paragraph);
 ```
 
-Super, nun hast du schon ein paar Dinge auf deiner Seite mit JavaScript dynamisch verändert.
+Nun hast du schon ein paar Dinge auf deiner Seite mit JavaScript dynamisch verändert.
 
-Bitte denke daran, dass das Verwenden von `.innerHTML` als eine Art "Holzfäller-Methode" angesehen wird. JavaScript bietet hierfür bereits eine elegantere Möglichkeit, die aber oft viel zu umständlich ist. Bitte schaue dir diese trotzdem kurz an: https://www.w3schools.com/js/js_htmldom_nodes.asp
+Bitte denke dran, dass das Verwenden von `.innerHTML` als eine Art "Holzfäller-Methode" angesehen wird. JavaScript bietet hierfür elegantere Möglichkeiten, die aber oft umständlicher sind. Schaue dir diese trotzdem kurz an: https://www.w3schools.com/js/js_htmldom_nodes.asp
