@@ -61,10 +61,10 @@ likes++;
 span.textContent = likes;
 ```
 
-In diesem Codeausschnitt kannst du einige neue Kontrollstrukturen erkennen: 
+In diesem Codeausschnitt kannst du einige neue Kontrollstrukturen erkennen:
 
 - Der Aufruf von `parseInt(...)`. Diese Methode ist standardmässig global verfügbar und kann somit ohne zusätzliche Imports verwendet werden. Diese Methode wird verwendet, um den als Parameter übergebenen Wert in eine Ganzzahl (Integer) zu konvertieren.
-- `likes++` ist gleichzusetzen mit dem Ausdruck  `likes = likes + 1`. Damit erhöhen wir die `likes`-Variable also um 1. Diesen Vorgang beschreibt man meistens als Inkrementierung. 
+- `likes++` ist gleichzusetzen mit dem Ausdruck `likes = likes + 1`. Damit erhöhen wir die `likes`-Variable also um 1. Diesen Vorgang beschreibt man meistens als Inkrementierung.
 - Mit der Zeile `span.textContent = likes` setzen wir den Text des `span`s neu. Eine explizite Umwandlung des Werts in einen String ist nicht notwendig.
 
 Versuche jetzt den obenstehenden Codeausschnitt mal aus, ohne die `parseInt`-Methode zu verwenden.
@@ -85,7 +85,7 @@ Dieses Vorgehen ist aber ziemlich fragil, weshalb es grundsätzlich immer empfeh
 
 ### Manipulation beim Button-Klick ausführen lassen
 
-Als Letztes wollen wir jetzt noch, dass die Funktionalität, welche  wir vorher programmiert haben, dann ausgeführt wird, wenn der User auf den Button klickt. Ändere das HTML-Dokument daher wie folgt ab:
+Als Letztes wollen wir jetzt noch, dass die Funktionalität, welche wir vorher programmiert haben, dann ausgeführt wird, wenn der User auf den Button klickt. Ändere das HTML-Dokument daher wie folgt ab:
 
 ```html
 ...
@@ -105,6 +105,7 @@ Als Letztes wollen wir jetzt noch, dass die Funktionalität, welche  wir vorher 
 Was passiert hier genau? Im `button`-Element haben wir das Attribut `onclick=` hinzugefügt, welches jeweils darauf wartet, dass auf dem Knopf aus ein Klick-Event passiert.
 Wenn also der Nutzer auf den Knopf drückt und somit das `onclick`-Event getriggert wird, wird der Teil innerhalb von `onclick` ausgeführt, in diesem Fall ein Aufruf auf die `onLikeClick()`-Funktion.
 Indem wir innerhalb des `<script>`-Tags unseren Code als Funktion `onLikeClick` zusammengefasst haben, wird nun bei jedem Klick auf den Knopf diese ausgeführt und somit der Wert von `likes` um 1 erhöht.
+
 ## Ein neues Element hinzufügen
 
 Manchmal möchtest du über Javascript ein neues Element auf deiner Website generieren lassen.
