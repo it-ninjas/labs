@@ -11,13 +11,13 @@ description: >
 ## Ziele
 
 - Du kennst den Unterschied zwischen Vergleichs-Operatoren und logischen Operatoren.
-- Du kennst spezielle Operatoren wie `!!`, `??`, `??=` und kannst diesen anwenden.
+- Du kennst spezielle Operatoren wie `!!`, `??`, `??=` und kannst diese anwenden.
 
-## Vergleiches und Logische Operatoren
+## Vergleiches und logische Operatoren
 
 ### Vergleichsoperatoren (comparison operators)
 
-Vergleichsoperatoren werden verwendet, um den Wert zweier Variablen oder Ausdrücke miteinander zu vergleichen. Es gibt folgende:
+Vergleichsoperatoren werden verwendet, um den Wert zweier Variablen oder Ausdrücke miteinander zu vergleichen. Es existieren die folgenden Vergleichsoperatoren:
 
 - Gleichheit (`==`)
 - Ungleichheit (`!=`)
@@ -63,18 +63,18 @@ console.log(a <= b); // true
 console.log(b <= d); // true
 ```
 
-#### Unterschiede von Gleichheit und strikte Gleichheit
+#### Unterschiede von Gleichheit und strikter Gleichheit
 
-- Das doppelte Gleichheitszeichen `==` führt einen schwachen Vergleich durch. Das bedeutet, dass JavaScript bei der Verwendung des doppelten Gleichheitszeichens versucht, den Wert beider Operanden zu vergleichen, indem es sie in einen gemeinsamen Typ konvertiert. Wenn die Operanden unterschiedliche Datentypen haben, führt JavaScript implizite Typumwandlungen durch, um sie zu vergleichen.
-- Das dreifache Gleichheitszeichen `===` führt einen starken Vergleich durch. Das bedeutet, dass JavaScript bei der Verwendung des dreifachen Gleichheitszeichens nicht nur den Wert der Operanden vergleicht, sondern auch ihren Datentyp berücksichtigt. Wenn die Operanden unterschiedliche Datentypen haben, gibt der dreifachen Gleichheitszeichen immer `false` zurück.
+- Das doppelte Gleichheitszeichen `==` führt einen "schwachen" Vergleich durch. Das bedeutet konkret, dass JavaScript bei der Verwendung des doppelten Gleichheitszeichens versucht, den Wert beider Operanden zu vergleichen, indem es sie in einen gemeinsamen Typen konvertiert. Wenn die Operanden unterschiedliche Datentypen haben, führt JavaScript implizite Typumwandlungen durch, um sie zu vergleichen.
+- Das dreifache Gleichheitszeichen `===` führt einen "starken" Vergleich durch. Das bedeutet konkret, dass JavaScript bei der Verwendung des dreifachen Gleichheitszeichens nicht nur den Wert der Operanden vergleicht, sondern auch ihren Datentyp im Vergleich berücksichtigt. Sollten die Operanden unterschiedliche Datentypen haben, wird als Ergebnis eines Vergleichs mit dem dreifachen Gleichheitszeichen immer `false` resultieren.
 
-Hier sind einige Beispiele, die den Unterschied zwischen `==` und `=== veranschaulichen:
+Hier sind einige Beispiele, die den Unterschied zwischen `==` und `===` genauer veranschaulichen:
 
 ```javascript
 console.log(5 == "5"); // true
 console.log(5 === "5"); // false
 
-console.log(true == 1); // true, weil Binär 0 für false ist und alles über 0 als true
+console.log(true == 1); // true, weil Binär die 0 für `false` steht und alles über 0 als `true` validiert wird
 console.log(true === 1); // false
 
 console.log(null == undefined); // true
@@ -83,7 +83,7 @@ console.log(null === undefined); // false
 
 ### Logische Operatoren (logical operators)
 
-Logische Operatoren werden verwendet, um mehrere Bedingungen zu kombinieren und Ausdrücke zu evaluieren. Hier gibt es folgende:
+Logische Operatoren werden verwendet, um mehrere Bedingungen miteinander zu kombinieren und Ausdrücke zu evaluieren. Hierbei gibt es folgende Operatoren:
 
 - Bitwise AND (`&`)
 - AND (`&&`)
@@ -93,7 +93,7 @@ Logische Operatoren werden verwendet, um mehrere Bedingungen zu kombinieren und 
 
 #### Bitwise AND
 
-Der bitweise AND-Operator vergleicht jedes Bit in den beiden Operanden und gibt für jede Bitposition im Ergebnis eine 1 zurück, wenn sowohl der linke als auch der rechte Operand an dieser Bitposition eine 1 haben. Wenn entweder der linke oder der rechte Operand eine 0 an dieser Bitposition hat, gibt der bitweise AND-Operator eine 0 zurück.
+Der bitwise AND-Operator vergleicht jedes Bit in den beiden Operanden und gibt für jede Bitposition im Ergebnis eine 1 zurück, wenn sowohl der linke als auch der rechte Operand an dieser Bitposition eine 1 haben. Wenn der linke oder der rechte Operand eine 0 an dieser Bitposition hat, gibt der bitweise AND-Operator auch eine 0 zurück.
 
 Beispiel:
 
@@ -107,7 +107,7 @@ console.log(a & b); // 00000000000000000000000000000001
 
 #### AND (logisches AND)
 
-Der Operator wird verwendet, um zu überprüfen, ob alle Operanden, auf die er angewendet wird, wahr sind. Wenn ja, gibt er den Wert "true" zurück, andernfalls gibt er "false" zurück. Der Operator wird häufig in Bedingungen verwendet, um zu überprüfen, ob mehrere Bedingungen erfüllt sind, bevor eine Aktion ausgeführt wird.
+Der AND-Operator wird verwendet, um zu überprüfen, ob alle Operanden, auf die er angewandt wird, `true` sind. Wenn ja, gibt er den Wert `true` zurück, andernfalls gibt er `false` zurück. Der Operator wird häufig in Bedingungen verwendet, um zu überprüfen, ob mehrere Bedingungen erfüllt sind, bevor eine Aktion ausgeführt wird.
 
 Beispiel:
 
@@ -130,7 +130,7 @@ if (a > 0 && b == 15) {
 
 #### Bitwise OR
 
-Der bitweise OR-Operator vergleicht jedes Bit in den beiden Operanden und gibt für jede Bitposition im Ergebnis eine 1 zurück, wenn entweder der linke oder der rechte Operand oder beide Operanden an dieser Bitposition eine 1 haben. Wenn sowohl der linke als auch der rechte Operand an dieser Bitposition eine 0 haben, gibt der bitweise OR-Operator eine 0 zurück.
+Der bitweise OR-Operator vergleicht jedes Bit innerhalb der beiden Operanden und gibt für jede Bitposition im Ergebnis eine 1 zurück, wenn entweder der linke oder der rechte Operand oder beide Operanden an dieser Bitposition eine 1 haben. Wenn sowohl der linke als auch der rechte Operand an dieser Bitposition eine 0 haben, gibt der bitweise OR-Operator eine 0 zurück.
 
 Beispiel:
 
@@ -144,7 +144,7 @@ console.log(a | b); // 00000000000000000000000000000111
 
 #### OR (logisches OR)
 
-Der Operator wird verwendet, um zu überprüfen, ob mindestens einer der Operanden, auf die er angewendet wird, wahr ist. Wenn ja, gibt er den Wert "true" zurück, andernfalls gibt er "false" zurück. Der Operator wird häufig in Bedingungen verwendet, um alternative Bedingungen zu überprüfen und eine Aktion auszuführen, wenn mindestens eine der Bedingungen erfüllt ist.
+Der OR-Operator wird verwendet, um zu überprüfen, ob mindestens einer der Operanden, auf die er angewendet wird, wahr ist. Wenn ja, gibt er den Wert `true` zurück, andernfalls gibt er `false` zurück. Der Operator wird häufig in Bedingungen verwendet, um alternative Bedingungen zu überprüfen und eine Aktion auszuführen, wenn mindestens eine der Bedingungen erfüllt ist.
 
 Beispiel:
 
@@ -167,7 +167,7 @@ if (a < 0 || b == 15) {
 
 #### NOT (logisches NOT)
 
-Der Operator wird verwendet, um einen booleschen Wert umzukehren, dh. aus "true" wird "false" und aus "false" wird "true". Wenn ein Operand true ist, gibt der Operator false zurück, und wenn der Operand false ist, gibt er true zurück. Der Operator wird häufig in Bedingungen verwendet, um die Aussage einer Bedingung umzukehren.
+Der NOT-Operator wird verwendet, um einen booleschen Wert umzukehren, was heisst, dass `true` zu `false` und `false` zu `true` wird. Wenn ein Operand `true` ist, gibt der Operator `false` zurück, und wenn der Operand `false` ist, gibt er `true` zurück. Der Operator wird häufig in Bedingungen verwendet, um die Aussage einer Bedingung umzukehren.
 
 Beispiel:
 
@@ -189,7 +189,7 @@ if (!(a > 0 && b == 10)) {
 
 ### doppeltes NOT (`!!`)
 
-Der Operator wird verwendet, um einen Wert in einen booleschen Wert umzuwandeln. Die erste Negation kehrt den Wert um und die zweite Negation kehrt ihn wieder zurück, so dass der resultierende Wert immer ein boolescher Wert ist. Wenn der ursprüngliche Wert truthy, wird das Ergebnis true sein, andernfalls false. Der doppelte Negationsoperator wird häufig verwendet, um sicherzustellen, dass ein Wert wirklich einen booleschen Wert hat.
+Der doppelte NOT-Operator wird verwendet, um einen Wert in einen booleschen Wert umzuwandeln. Die erste Negation kehrt den Wert um und die zweite Negation kehrt ihn wieder zurück, sodass der resultierende Wert immer ein boolescher Ausdruck ist. War der ursprüngliche Wert truthy, so wird das Ergebnis `true` sein, andernfalls `false`. Der doppelte Negationsoperator wird häufig verwendet, um sicherzustellen, dass ein Wert wirklich einem booleschen Ausdruck entspricht.
 
 ```javascript
 console.log(0); // 0
@@ -232,7 +232,7 @@ console.log([]); // []
 console.log(!![]); // true
 ```
 
-### Logische OR Assignment Operator (`||=`)
+### Logischer OR Assignment Operator (`||=`)
 
 Der Operator `||=` prüft, ob die linke Seite des Operators falsy ist. Wenn die linke Seite falsy ist, wird der rechte Operand ausgewertet und der Wert diesem zugewiesen. Wenn die linke Seite truthy ist, wird der linke Wert beibehalten und kein weiterer Ausdruck ausgewertet.
 
@@ -246,10 +246,10 @@ falsyVariable ||= "Hallo";
 truthyVariable ||= "Mensch";
 
 console.log(falsyVariable); // 'Hallo'
-console.log(truthyVariable); // 'Welt'
+console.log(truthyVariable); // 'Welt!'
 ```
 
-### Logische AND Assignment Operator (`&&=`)
+### Logischer AND Assignment Operator (`&&=`)
 
 Der Operator `&&=` prüft, ob die linke Seite des Operators truthy ist. Wenn die linke Seite truthy ist, wird der rechte Operand ausgewertet und der Wert diesem zugewiesen. Wenn die linke Seite falsy ist, wird der linke Wert beibehalten und kein weiterer Ausdruck ausgewertet.
 
@@ -279,8 +279,8 @@ let falsyVariable = "";
 nullVariable ??= "hello";
 falsyVariable ??= "world";
 
-console.log(nullVariable); // 'hello'
-console.log(falsyVariable); // ''
+console.log(nullVariable); // "hello"
+console.log(falsyVariable); // ""
 ```
 
 ### nullish coalescing Operator (`??`)
@@ -307,7 +307,7 @@ console.log(emptyStringCheck); // '' weil ein leerer String zwar falsy aber nich
 
 Der Ternary-Operator (`?:`) ermöglicht es, eine Zuweisung kombiniert mit einer Bedingung (`if`/`else`) auf eine einzige Anweisung zu reduzieren.
 
-Schauen wir uns hierfür folgendes Beispiel an, das ansonsten mit einem `if`/`else` geschrieben wird, an:
+Schauen wir uns hierfür folgendes Beispiel an, für das eine  `if`/`else`-Struktur umgesetzt wird:
 
 ```javascript
 const age = 18;
@@ -322,7 +322,7 @@ if (age >= 18) {
 console.log(canVote); // 'yes'
 ```
 
-Hier haben wir 6 Zeilen Code gebraucht, um eine Variable zu setzen. Mit dem ternary-Operator geht das in einer (und wir können direkt `const` verwenden):
+Hier haben wir 6 Zeilen Code gebraucht, um bedingt eine Variable zu setzen. Mit dem ternary-Operator können wir das Ganze auf eine Zeile reduzieren (und wir können direkt das Ergebnis per `const` zuweisen):
 
 ```javascript
 const age = 18;
@@ -332,7 +332,7 @@ const canVote = age >= 18 ? "yes" : "no";
 console.log(canVote); // 'yes'
 ```
 
-Oft wird diese Syntax bei Zuweisungen verwendet, kann aber auch sonst verwendet werden, z.B. für Parameter:
+Oft wird diese Syntax bei Zuweisungen verwendet, kann aber auch anderorts verwendet werden, beispielsweise für Parameter:
 
 Beispiel:
 
@@ -347,4 +347,4 @@ Ganz allgemein lautet die Syntax:
 condition ? expression1 : expression2;
 ```
 
-Zuerst wird die Bedingung (condition) ausgewertet. Wenn diese `true` ist, wird `expression1` ausgeführt und zurückgegeben, andernfalls `expression2`.
+Zuerst wird die Bedingung (condition) ausgewertet. Wenn diese `true` entspricht, wird `expression1` ausgeführt und zurückgegeben, andernfalls `expression2`.
