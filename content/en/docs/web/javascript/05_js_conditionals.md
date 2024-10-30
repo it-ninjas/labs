@@ -85,7 +85,7 @@ if (variable == "js") {
 
 `switch`-Statements in JavaScript ermöglichen es, verschiedene Codeblöcke basierend auf verschiedenen Bedingungen auszuführen. Das ist aus Übersichtlichkeitsgründen besser, als mehrere `else if` zu verwenden, da mehrere `else if`-Blöcke und eine `switch`-Kondition grundsätzlich dasselbe machen, ein `switch`-Ausdruck aber insbesondere bei vielen Konditionen besser lesbar ist.
 
-Ein `switch`-Statement besitzt immer einen `default` Case. Dieser gibt einen "Ausweg" an, wenn keiner der gegebenen Cases erfüllt wird.  
+Ein `switch`-Statement besitzt immer einen `default` Case. Dieser gibt einen "Ausweg" an, wenn keiner der gegebenen Cases erfüllt wird.
 
 ```javascript
 const expression = "Auto";
@@ -103,7 +103,7 @@ switch (expression) {
 }
 ```
 
-Die `break`-Keywords in den Cases werden verwendet, um das switch-Statement abzubrechen, wenn die Bedingung des Cases zugetroffen hat und der vor dem Keyword kommende Codeblock ausgeführt wurde. Wenn kein `break` im Case vorhanden ist, wird der Switch weiter ausgeführt. 
+Die `break`-Keywords in den Cases werden verwendet, um das switch-Statement abzubrechen, wenn die Bedingung des Cases zugetroffen hat und der vor dem Keyword kommende Codeblock ausgeführt wurde. Wenn kein `break` im Case vorhanden ist, wird der Switch weiter ausgeführt.
 
 ```javascript
 const expression = "Auto";
@@ -163,8 +163,8 @@ In JavaScript gibt es die Konzepte von `truthy`- und `falsy`-Werten. Truthy bezi
 
 Es existieren die folgenden `falsy`-Werte:
 
-| Wert          | Typ       | Beschreibung                                                                                                        |
-|---------------|-----------|---------------------------------------------------------------------------------------------------------------------|
+| Wert            | Typ       | Beschreibung                                                                                                        |
+| --------------- | --------- | ------------------------------------------------------------------------------------------------------------------- |
 | `null`          | Null      | Das Keyword `null` beschreibt die Absenz eines Werts - also eine leere Menge                                        |
 | `undefined`     | Undefined | Einer der primitiven Werte in Javascript. Eine Variable, welcher kein Wert zugeschrieben ist, nimmt diesen wert an. |
 | `false`         | Boolean   | Das Keyword `false` ist einer der beiden Grundwerte eines Booleans.                                                 |
@@ -175,4 +175,4 @@ Es existieren die folgenden `falsy`-Werte:
 | `""`            | String    | Ein leerer String-Wert. Beinhält ebenfalls die anderen Schreibweisen für Strings, beispielsweise `''`.              |
 | `documment.all` | Object    | `document.all` ist das einzige Objekt in Javascript, welches als `falsy` validiert wird.                            |
 
-Alle Werte, die keinem der in der oberen Tabelle beschriebenen Werte entsprechen, werden in Javascript als `truthy` behandelt. 
+Alle Werte, die keinem der in der oberen Tabelle beschriebenen Werte entsprechen, werden in Javascript als `truthy` behandelt.
