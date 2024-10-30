@@ -307,7 +307,7 @@ console.log(emptyStringCheck); // '' weil ein leerer String zwar falsy aber nich
 
 Der Ternary-Operator (`?:`) ermöglicht es, eine Zuweisung kombiniert mit einer Bedingung (`if`/`else`) auf eine einzige Anweisung zu reduzieren.
 
-Schauen wir uns hierfür folgendes Beispiel an, für das eine  `if`/`else`-Struktur umgesetzt wird:
+Schauen wir uns hierfür folgendes Beispiel an, für das eine `if`/`else`-Struktur umgesetzt wird:
 
 ```javascript
 const age = 18;
