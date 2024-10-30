@@ -29,7 +29,7 @@ Um eine Markdown-Datei anzusehen gibt es auch die Möglichkeit den Online Markdo
 
 Andere Markdown-Editoren sind:
 
-- [Ghostwriter](https://wereturtle.github.io/ghostwriter/)
+- [Ghostwriter](https://ghostwriter.kde.org/de/)
 - [Markdown Monster](https://markdownmonster.west-wind.com/)
 
 Für Linux und Mac stehen jeweils andere Editoren zur Verfügung.
