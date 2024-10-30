@@ -11,16 +11,16 @@ description: >
 ## Ziele
 
 - Du weisst, welche verschiedenen Conditionals es gibt.
-- Du kennst die Vorteile von einem Switch-Statement und weisst es angewandt wird.
-- Du weisst, was truthy und falsy Werte sind.
+- Du kennst die Vorteile von einem Switch-Statement und weisst, wie es angewandt wird.
+- Du weisst, was truthy und falsy Werte sind und welche es gibt.
 
 ## Conditionals
 
-Conditional Statements oder auch Bedingungsanweisungen sind ein grundlegendes Konzept in JavaScript und anderen Programmiersprachen. Sie ermöglichen es dem Programm, verschiedene Aktionen basierend auf Bedingungen auszuführen. In JavaScript gibt es zwei Hauptarten von Conditionals: `if`/`else`-Statements und `switch`-Statements.
+Conditional Statements oder auch Bedingungsanweisungen sind ein grundlegendes Konzept in JavaScript und anderen Programmiersprachen. Sie ermöglichen es dem Programm, verschiedene Aktionen je nach Erfüllung der Bedingungen auszuführen. In JavaScript gibt es hauptsächlich zwei Arten von Conditionals: `if`/`else`-Statements und `switch`-Statements.
 
-### if/else-Statement
+### `if`/`else`-Statement
 
-If-Statements überprüfen, ob eine Bedingung. Ist diese true, wird der darauf folgende Codeblock ausgeführt.
+If-Statements überprüfen, ob eine Bedingung dem Wert `true` entspricht. Ist das der Fall, wird der darauf folgende Codeblock ausgeführt.
 
 ```javascript
 const condition = true;
@@ -30,7 +30,7 @@ if (condition) {
 }
 ```
 
-Wenn man nun jedoch einen anderen Codeblock ausführen möchte, falls die Bedingung false ist, kann man das else-Statement verwenden.
+Wenn man nun jedoch einen anderen Codeblock ausführen möchte, falls die Bedingung dem Wert `false` entspricht, kann man dafür direkt auf den `if`-Block folgend das `else`-Statement verwenden.
 
 ```javascript
 const condition = false;
@@ -42,7 +42,7 @@ if (condition) {
 }
 ```
 
-Man kann jedoch auch auf mehrere Bedingungen prüfen, indem `if else`-Statement vor dem `else`-Statement geschrieben werden.
+Es ist ebenfalls möglich, mehrere spezifische Bedingungen zu prüfen, bevor der `else`-Block ausgelöst wird. Dazu verwendet man die `else if`-Kontrollstruktur, welche ebenfalls direkt auf den `if`-Block folgt.
 
 ```javascript
 const condition1 = false;
@@ -53,39 +53,39 @@ if (condition1) {
 } else if (condition2) {
   // condition2 ist true
 } else {
-  // keine der condition ist true
+  // keine der conditions ist true
 }
 ```
 
-In einem If-Statement kann man komplexere Bedingungen schreiben. Hier prüfen wir, ob eine Variable einen bestimmten Wert hat:
+In einem If-Statement kann man beliebig komplexe Bedingungen schreiben. Hier wird geprüft, ob eine Variable einen bestimmten Wert hat:
 
 ```javascript
 const variable = 1;
 
 if (variable == 1) {
-  // condition ist true, da die variable den Wert 1 hat.
+  // Condition ist true, da die variable den Wert 1 hat.
 } else {
-  // condition ist false
+  // Condition ist false
 }
 ```
 
-Das Gleiche funktioniert natürlich auch für Strings:
+Das Gleiche funktioniert natürlich auch mit Strings:
 
 ```javascript
 const variable = "js";
 
 if (variable == "js") {
-  // condition ist true, da die variable den Wert 'js' hat.
+  // Condition ist true, da die Variable den Wert 'js' hat.
 } else {
-  // condition ist false
+  // Condition ist false
 }
 ```
 
 ### switch-Statement
 
-`switch`-Statements in JavaScript ermöglichen es, verschiedene Codeblöcke basierend auf verschiedenen Bedingungen auszuführen. Das ist besser, als mehrere `else if` zu verwenden.
+`switch`-Statements in JavaScript ermöglichen es, verschiedene Codeblöcke basierend auf verschiedenen Bedingungen auszuführen. Das ist aus Übersichtlichkeitsgründen besser, als mehrere `else if` zu verwenden, da mehrere `else if`-Blöcke und eine `switch`-Kondition grundsätzlich dasselbe machen, ein `switch`-Ausdruck aber insbesondere bei vielen Konditionen besser lesbar ist.
 
-Ein `switch`-Statement besitzt auch immer ein `default` Case, in diesen Codeblock wir der Code festgehalten der ausgeführt werden soll, wenn keine der Bedingungen zutrifft.
+Ein `switch`-Statement besitzt immer einen `default` Case. Dieser gibt einen "Ausweg" an, wenn keiner der gegebenen Cases erfüllt wird.  
 
 ```javascript
 const expression = "Auto";
@@ -103,17 +103,17 @@ switch (expression) {
 }
 ```
 
-Die break in den Cases sind dazu da, das switch-Statement abzubrechen, wenn der Case zutraf und der Codeblock ausgeführt wurde.
+Die `break`-Keywords in den Cases werden verwendet, um das switch-Statement abzubrechen, wenn die Bedingung des Cases zugetroffen hat und der vor dem Keyword kommende Codeblock ausgeführt wurde. Wenn kein `break` im Case vorhanden ist, wird der Switch weiter ausgeführt. 
 
 ```javascript
 const expression = "Auto";
 
 switch (expression) {
   case "Bus":
-    // Code, der ausgeführt wird, wenn Ausdruck gleich 'Bus' ist
+    // Code, der ausgeführt wird, wenn der Ausdruck gleich 'Bus' ist
     break;
   case "Auto":
-  // Code, der ausgeführt wird, wenn Ausdruck gleich 'Auto' ist
+  // Code, der ausgeführt wird, wenn der Ausdruck gleich 'Auto' ist
   // break; das break wurde nicht gesetzt oder auskommentiert
   default:
     // Code, der ausgeführt wird, wenn keine der Bedingungen zutrifft
@@ -124,7 +124,7 @@ switch (expression) {
 
 #### Switch Expressions
 
-Oft kommt es vor, dass du mithilfe eines Switch-Statements z.B. eine Variable zuweisen möchtest. In Java 14 und anderen modernen Programmiersprachen könntest du das wie folgt tun:
+Oft kommt es vor, dass du mithilfe eines Switch-Statements je nach Case eine Variable zuweisen möchtest. In Java 14 und anderen modernen Programmiersprachen ist das möglich wie folgt:
 
 ```java
 int variable = switch (expression) {
@@ -134,9 +134,9 @@ int variable = switch (expression) {
 };
 ```
 
-Wenn die Variable `expression` hier den Wert "Bus" hätte, dann hätte die Variable `variable` den Wert 1, bei "Auto" 2, und sonst 0.
+Wenn die Variable `expression` hier den Wert "Bus" hätte, dann würde der Variable `variable` der Wert 1 zugeschrieben werden, bei "Auto" 2, und in jedem anderen Case 0.
 
-In JavaScript kannst du das Gleiche erreichen, aber mit einem kleinen Trick:
+In JavaScript kannst du mit einem kleinen Trick das Gleiche bewerkstelligen:
 
 ```javascript
 const variable = {
@@ -145,7 +145,7 @@ const variable = {
 }[expression];
 ```
 
-und wenn wir den `default`-Wert berücksichtigen möchten, können wir diesen mit dem `??`-Operator ergänzen. Das ist keine offizielle Syntax, funktioniert aber:
+Wenn wir den `default`-Wert berücksichtigen möchten, können wir diesen mit dem `??`-Operator ergänzen. Das ist keine "offizielle" Syntax, funktioniert aber:
 
 ```javascript
 const variable =
@@ -155,43 +155,24 @@ const variable =
   }[expression] ?? 0;
 ```
 
-Ohne den `??`-Operator würden wir für den `default`-Wert `undefined` erhalten. Der `??`-Operator tauscht den Wert mit dem Wert rechts rechts davon aus, falls der Wert `undefined` oder `null` wäre. Du wirst den Operator weiter unten und JavaScript-Objekte in einem anderen Kapitel genauer kennenlernen.
+Ohne den `??`-Operator würden wir als `default`-Wert `undefined` erhalten. Der `??`-Operator tauscht den Wert mit dem Wert rechts davon aus, falls der resultierende Wert `undefined` oder `null` entspräche. Du wirst den Operator und JavaScript-Objekte in einem anderen Kapitel genauer kennenlernen.
 
 ## truthy und falsy
 
-In JavaScript gibt es Konzepte von truthy und falsy Werten. Truthy bezieht sich auf einen Wert, der im booleschen Kontext als wahr interpretiert wird, während falsy sich auf einen Wert bezieht, der als falsch interpretiert wird.
+In JavaScript gibt es die Konzepte von `truthy`- und `falsy`-Werten. Truthy bezieht sich auf einen Wert, der im booleschen Kontext als `true` interpretiert wird, während falsy sich auf einen Wert bezieht, der als `false` interpretiert wird.
 
-Es gibt sechs falsy Werte:
+Es existieren die folgenden `falsy`-Werte:
 
-- `false`
-- `null`
-- `undefined`
-- `0`
-- Not a Number `NaN`
-- leeren String (`''`)
+| Wert          | Typ       | Beschreibung                                                                                                        |
+|---------------|-----------|---------------------------------------------------------------------------------------------------------------------|
+| `null`          | Null      | Das Keyword `null` beschreibt die Absenz eines Werts - also eine leere Menge                                        |
+| `undefined`     | Undefined | Einer der primitiven Werte in Javascript. Eine Variable, welcher kein Wert zugeschrieben ist, nimmt diesen wert an. |
+| `false`         | Boolean   | Das Keyword `false` ist einer der beiden Grundwerte eines Booleans.                                                 |
+| `NaN`           | Number    | Ein Wert, der beschreibt, dass ein gegebener Wert keine `Number` ist (Not A Number).                                |
+| `0`             | Number    | Die Zahl `0`. Beinhält ebenfalls Werte wie `0.0`, `0x0` etc.                                                        |
+| `-0`            | Number    | Die Zahl `-0`. Beinhält auch Werte wie `-0.0`, `-0x0` etc.                                                          |
+| `0n`            | BigInt    | Die Zahl `0` im Datentyp `BigInt`. Beinhält ebenfalls `0x0n` etc.                                                   |
+| `""`            | String    | Ein leerer String-Wert. Beinhält ebenfalls die anderen Schreibweisen für Strings, beispielsweise `''`.              |
+| `documment.all` | Object    | `document.all` ist das einzige Objekt in Javascript, welches als `falsy` validiert wird.                            |
 
-Alle anderen Werte sind truthy.
-
-Beispiel:
-
-```javascript
-const conditionFalse = false;
-const conditionNull = null;
-const conditionUndefined = undefined;
-const conditionZero = 0;
-const conditionNaN = NaN;
-const conditionEmptyString = "";
-
-if (
-  conditionFalse ||
-  conditionNull ||
-  conditionUndefined ||
-  conditionZero ||
-  conditionNaN ||
-  conditionEmptyString
-) {
-  // Codeblock wird nicht ausgeführt
-} else {
-  // Codeblock wird ausgeführt
-}
-```
+Alle Werte, die keinem der in der oberen Tabelle beschriebenen Werte entsprechen, werden in Javascript als `truthy` behandelt. 
