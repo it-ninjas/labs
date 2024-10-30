@@ -51,15 +51,13 @@ wir verwenden aber nur JUnit Tests hier (mvn clean test und nicht mvn clean inte
 
 ## Testcontainers
 
-
 ## Tests ausführen, SpringBoot-Tests ignorieren
 
 Geschwindigkeitsgewinn
 
-> mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*SpringBootTest*
+> mvn clean test -Dsurefire.excludes=**/_WebMvcTest_,**/_DataJpaTest_,\**/*SpringBootTest\*
 
 natürlich gäbe es auch noch andere Möglichkeiten, um zur Laufzeit Tests ein- resp. auszuschalten (z.B. über Maven-Profiles).
-
 
 ## Aufgaben (muss in Labs erledigt werden)
 
