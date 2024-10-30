@@ -14,8 +14,8 @@ Das Ausbildungsprogramm 2024/2025 besteht aus diversen einzelnen Ausbildungs-Mod
 
 Das Wissen aus jedem technischen Modul wird durch Selbst-Studium erworben und bei Bedarf eigenständig durch zusätzlich gesuchtes Wissen ergänzt.
 Nahezu jedes Modul bringt seine eigenen Übungen (Labs) mit. Einige der Module müssen durch ein Exam abgeschlossen werden.
-Die Resultate deiner Übungen und Exams besprichst du am besten mit einem Coach oder einem erfahrenen Software-Entwickler.
-Er wird dir Feedback geben und dir idealerweise die Freigabe für das nächste Modul erteilen.
+Die Resultate deiner Übungen und Exams besprichst du immer mit einer/einem Praxisbildner:in im Rahmen eines Reviews. 
+Er/Sie wird dir Feedback geben und dir idealerweise die Freigabe für das nächste Modul erteilen.
 Gewisse Module bieten freiwillige Challenges an, bei denen du dein Wissen mit anderen messen kannst.
 
 Das Ziel des technischne Ausbildungsprogramms ist

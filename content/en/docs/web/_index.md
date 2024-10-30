@@ -8,6 +8,6 @@ description: >
   Web Technologie lernen
 ---
 
-## {{% param sectionnumber %}}: Introduction
+## Inhalt
 
-_TODO: Beschreibung zu diesem Kapitel_
+In diesem Kapitel lernst du alles rund um die Frontend-Entwicklung. Zuerst setzt du eine passende IDE auf, gefolgt von Basics zu HTML,CSS und JavaScript. Anschliessend geht es weiter mit TypeScript und Angular. Zum Schluss gibt es noch (optionale) Module zu Angular NgRx. 
