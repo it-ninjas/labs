@@ -10,11 +10,11 @@ description: >
 
 ## Ziele
 
-- Du kennst verschiedenen Arten, um Objekte zu erstellen.
-- Du kennst die unterschiedlichen Arten, um die Variablen eines Objektes abzufragen.
-- Du kannst Objekte-Eigenschaften anpassen und auch neue Eigenschaften hinzufügen.
+- Du kennst die verschiedenen Arten, um Objekte zu erstellen.
+- Du kennst die unterschiedlichen Arten, die Attribute eines Objektes abzufragen.
+- Du kannst Objekt-Eigenschaften anpassen und Objekten auch neue Eigenschaften beifügen.
 - Du kannst Objekte in einen JSON-String kodieren und einen JSON-String in ein Objekt dekodieren.
-- Du, weisst, wofür der Spread-Operator ist, und wie er angewandt wird.
+- Du, weisst, wofür der Spread-Operator gebraucht wird und wie er angewandt wird.
 
 ## Objekte
 
@@ -32,11 +32,11 @@ const person = {
 
 ### Objekt erstellen
 
-Man kann Objekte auf zwei verschiedene Arten erstellen. Zum einen mit der Objektliteral-Syntax und zum anderen mit der Konstruktor-Syntax.
+Man kann Objekte auf zwei unterschiedliche Arten erstellen. Zum einen mit der Objektliteral-Syntax und zum anderen mit der Konstruktor-Syntax.
 
 #### Objektliteral-Syntax
 
-Die einfachere und auch gängigere Methode ist mit der Objektliteral-Syntax. Bei dieser Methode können die Eigenschaften und Werte direkt innerhalb geschweifter Klammern angeben werden:
+Die einfachere und auch gängigere Methode ist die Objektliteral-Syntax. Bei dieser Methode können die Eigenschaften und Werte direkt innerhalb geschweifter Klammern angeben werden:
 
 ```javascript
 const person = {
@@ -48,7 +48,7 @@ const person = {
 
 #### Konstruktor-Syntax.
 
-Die andere Möglichkeit, ein neues Objekt zu erstellen, besteht darin, einen Konstruktor zu verwenden:
+Die zweite Möglichkeit, ein neues Objekt zu erstellen, besteht darin, einen Konstruktor zu verwenden:
 
 ```javascript
 const person = new Object();
@@ -57,7 +57,7 @@ person.age = 20;
 person.isStudent = true;
 ```
 
-Man kann auch Methoden (Funktionen) innerhalb des Objekts hinzufügen, indem man sie als Eigenschaften definiert:
+Man kann auch Methoden (Funktionen) innerhalb eines Objekts hinzufügen, indem man sie als Eigenschaften definiert:
 
 ```javascript
 const person = {
@@ -70,16 +70,16 @@ const person = {
 };
 ```
 
-### Eingenschaften von Objekten abfragen
+### Eigenschaften von Objekten abfragen
 
-Um die Eigenschaften eines Objekts abzurufen, gibt es zwei verschiedene Arten:
+Um die Eigenschaften eines Objekts abzurufen, gibt es zwei Möglichkeiten:
 
-1. Mit der Punkt-Notation,
-2. und der Klammern-Notation.
+1. Die Punkt-Notation,
+2. und die Klammern-Notation.
 
 #### Punkt-Notation
 
-Eine bestimmte Eigenschaft ("property") kann abgefragt werden, indem nach dem Objekt ein Punkt `.` angehängt wird und der Name der Eigenschaft hingeschrieben wird:
+Eine bestimmte Eigenschaft (`property`) kann abgefragt werden, indem nach dem Objektaufruf ein Punkt `.` angehängt wird und der Name der Eigenschaft folgt:
 
 ```javascript
 const person = {
@@ -95,7 +95,7 @@ console.log(person.isStudent); // true
 
 #### Klammern-Notation
 
-Im Gegensatz zu der Punkt-Notation, wird bei der Klammern-Notation der Name der Eigenschaft als String übergeben:
+Im Gegensatz zur Punkt-Notation wird bei der Klammern-Notation der Name der Eigenschaft als String übergeben:
 
 ```javascript
 const person = {
@@ -109,7 +109,7 @@ console.log(person["age"]); // 20
 console.log(person["isStudent"]); // true
 ```
 
-Auch Methoden (Funktionen) innerhalb eines Objekts können über die Punkt-Notation oder Klammer-Notation aufgerufen werden:
+Auch Methoden (Funktionen) innerhalb eines Objekts können über die Punkt- oder Klammer-Notation aufgerufen werden:
 
 ```javascript
 let person = {
@@ -125,7 +125,7 @@ console.log(person.sayHello()); // 'Hello, my name is Max'
 console.log(person["sayHello"]()); // 'Hello, my name is Max'
 ```
 
-Diese Punkt-Notation könnte zu mehr Flexibilität und Wiederverwendbarkeit von Code führen. Beispielsweise, wenn wir eine Funktion generell für Objekte schreiben und bestimmte Dinge mit bestimmten Eigenschaften durchführen möchten, die wir später separat angeben können möchten:
+Die Klammer-Notation kann zu mehr Flexibilität und Wiederverwendbarkeit von Code führen. Wenn wir beispielsweise eine Funktion generell für Objekte schreiben und bestimmte Dinge mit bestimmten Eigenschaften durchführen möchten, die wir später separat angeben können möchten:
 
 ```javascript
 let person = {
@@ -146,11 +146,11 @@ printProperties(person, ["name", "age", "isStudent"]);
 // true
 ```
 
-In den meisten Fällen empfiehlt es sich aber, auf so ein Gebastel zu verzichten, da der Code so sehr schnell sehr unverständlich für andere Personen wird.
+In den meisten Fällen empfiehlt es sich aber, auf so ein "Gebastel" zu verzichten, da der Code für andere Personen so schnell sehr unverständlich wird.
 
 ### Objekte updaten
 
-Um Eigenschaften von Objekte anzupassen, kann wieder die Punkt-Notation sowie Klammer-Notation verwendet werden:
+Um Eigenschaften von Objekten anzupassen, können wieder sowohl die Punkt-Notation als auch die Klammer-Notation verwendet werden:
 
 ```javascript
 let person = {
@@ -178,7 +178,7 @@ person.sayHello(); // 'Hello, my name is Max and I am 40 years old.'
 
 ### Hinzufügen neuer Eigenschaften
 
-Um eine neue Eigenschaft zu einem Objekt hinzuzufügen, muss lediglich einen Wert mit einem neuen Eigenschaftsnamen zugewiesen werden.
+Um eine neue Eigenschaft zu einem Objekt hinzuzufügen, muss lediglich ein Wert mit einem neuen Eigenschaftsnamen zugewiesen werden:
 
 ```javascript
 let person = {
@@ -206,9 +206,9 @@ person.sayGoodbye(); // 'Bye!'
 
 > JSON (JavaScript Object Notation) ist ein Textformat zum Austausch von Daten. Es wird oft in der Webprogrammierung verwendet, um Daten zwischen einem Client und einem Server auszutauschen.
 
-Objekte können mithilfe von JSON codiert und dekodiert werden. Ein JavaScript-Objekt ist im Wesentlichen eine Sammlung von Key-Value-Paaren. Ein JSON-Objekt ist eine Zeichenfolge, die diese Key-Value-Paare im JSON-Format enthält.
+Objekte können mithilfe von JSON kodiert und dekodiert werden. Ein JavaScript-Objekt ist im Wesentlichen eine Sammlung von Key-Value-Paaren. Ein JSON-Objekt ist eine Zeichenfolge, die diese Key-Value-Paare im JSON-Format enthält.
 
-Es ist wichtig zu beachten, dass JSON nur bestimmte Datentypen unterstützt, darunter Zeichenfolgen, Zahlen, Booleans, null, Arrays und Objekte. Funktionen, undefinierte Werte können nicht in JSON codiert werden.
+Es ist wichtig zu beachten, dass JSON nur bestimmte Datentypen unterstützt, darunter Zeichenfolgen, Zahlen, Booleans, null, Arrays und Objekte. Funktionen und undefinierte Werte können nicht in JSON codiert werden.
 
 ### Objekt in JSON-String umwandeln
 
@@ -242,7 +242,7 @@ console.log(person); // Object { name: "Max", age: 20, isStudent: true }
 
 Der Spread-Operator ist ein Operator in JavaScript, der es ermöglicht, ein Array oder einen Objekt-Literal-Ausdruck in eine Liste von Argumenten zu "entpacken". Der Operator wird durch drei Punkte (`...`) dargestellt.
 
-Der Spread-Operator wird verwendet, um ein Array in eine Liste von Elementen zu "entpacken". Dadurch können Arrays einfach zusammengeführt oder kopiert werden.
+Der Spread-Operator wird in diesem Beispiel verwendet, um die Arrays in eine Liste von Elementen zu "entpacken". Dadurch können diese einfach zusammengeführt oder kopiert werden.
 
 ```javascript
 const array1 = [1, 2, 3];
@@ -278,7 +278,7 @@ console.log(originalArray); // [1, 2, 3]
 console.log(copiedArray); // [1, 2, 3, 4]
 ```
 
-Er kann auch als Parameter in einem Funktionsaufruf verwendet werden. Dadurch können Argumente einer Funktion als einzelne Werte an die Funktion übergeben werden, anstatt als Array oder Objekt.
+Der Operator kann auch als Parameter in einem Funktionsaufruf verwendet werden. Dadurch können Argumente einer Funktion als einzelne Werte an die Funktion übergeben werden, anstatt als Array oder Objekt.
 
 Wenn der Spread-Operator als Parameter verwendet wird, müssen die anderen Parameter vor ihm stehen, da er alle verbleibenden Argumente "entpackt".
 
