@@ -55,7 +55,8 @@ console.log(sortedFruits); // ["Apple", "Banana", "Mango", "Orange"]
 
 Die `sort()`-Funktion kann auch mit einer Vergleichsfunktion verwendet werden, um die Elemente auf andere Weise zu sortieren.
 
-Die Vergleichsfunktion sollte dabei: 
+Die Vergleichsfunktion sollte dabei:
+
 - zwei Argumente haben und einen negativen Wert zurückgeben, wenn das erste Argument vor dem zweiten Argument in der Sortierreihenfolge stehen soll,
 - einen positiven Wert, wenn das erste Argument nach dem zweiten Argument stehen soll,
 - und 0, wenn sie beide gleich zu gewichten sind.
