@@ -1,6 +1,6 @@
 ---
 title: "Git"
-weight: 4
+weight: 3
 sectionnumber: 1
 date: 2021-10-28
 description: Verteilte Versionsverwaltung mit Git
@@ -8,9 +8,9 @@ description: Verteilte Versionsverwaltung mit Git
 
 Hallo Ninja!
 
-Es freut uns das du **git** kennen lernen willst!
+Es freut uns das du **git** kennenlernen willst!
 
-Wir haben hier ein Lab für dich zusammengestellt damit du in dieses Thema eintauchen kannst. Finde für dich heraus warum **git** eine Zeitmaschine ist und was es mit den Paralleluniversen auf sich hat.
+Wir haben hier ein Lab für dich zusammengestellt damit du in dieses Thema eintauchen kannst. Finde für dich heraus, warum **git** eine Zeitmaschine ist und was es mit den Paralleluniversen auf sich hat.
 
 # Ziele
 

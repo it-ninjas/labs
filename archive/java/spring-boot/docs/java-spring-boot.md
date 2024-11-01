@@ -3,7 +3,7 @@ title: "Spring Boot"
 linkTitle: "Spring Boot"
 weight: 14
 description: >
-  Modul #J11 - Spring Boot
+  Modul #J8 - Spring Boot
 ---
 
 ![](../general/under-construction.png "Under Construction")

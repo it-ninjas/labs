@@ -4,7 +4,7 @@ linkTitle: "JDBC - Aufgaben"
 type: docs
 weight: 1
 description: >
-  Modul #J8 - JDBC
+  Modul #J7 - JDBC
 ---
 
 ## Persistente Notenverwaltungssystem

@@ -233,4 +233,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J7 - Java Collections - List](../../../../labs/java/java-collections/01_list)
+[Aufgaben zu Modul #J6 - Java Collections - List](../../../../labs/java/java-collections/01_list)

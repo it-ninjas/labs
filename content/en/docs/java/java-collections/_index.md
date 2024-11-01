@@ -3,7 +3,7 @@ title: "Java Collections"
 linkTitle: "Java Collections"
 weight: 10
 description: >
-  Modul #J7
+  Modul #J6
 ---
 
 #### Ziele

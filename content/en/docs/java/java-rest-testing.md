@@ -3,7 +3,7 @@ title: "Testing von REST-Schnittstellen"
 linkTitle: "Testing von REST-Schnittstellen"
 weight: 16
 description: >
-  Modul #J10 - Spring Boot
+  Modul #J8 - Testing von REST-Schnittstellen
 ---
 
 Wenn du ein Backend schreibst - was du mit Spring in den meisten Fällen tust, dann möchtest du deinen Code auch ausführen können.
