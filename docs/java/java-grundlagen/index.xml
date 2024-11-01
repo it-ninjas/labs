@@ -2083,4 +2083,99 @@ Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe ang
 &lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
 &lt;a href="https://www.youtube.com/watch?v=R0YzQPBusAg">Video&lt;/a>.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img alt="task1" src="/images/task.png"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/java/java-grundlagen/01_basicexercises/#aufgabe-9---arrays">Aufgabe 9&lt;/a> in den Labs.&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img alt="task1" src="/images/task.png"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/java/java-grundlagen/01_basicexercises/#aufgabe-9---arrays">Aufgabe 9&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Debugging</title><link>/docs/java/java-grundlagen/debugging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-grundlagen/debugging/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, wie du in IntelliJ Java Code debuggen kannst.&lt;/li>
+&lt;/ul>
+&lt;h2 id="wieso-ist-debuggen-wichtig">Wieso ist Debuggen wichtig?&lt;/h2>
+&lt;p>Es gibt eine Vielzahl von Gründen, warum Java-Anwendungen Fehler enthalten können. Typische Fehler sind zum Beispiel unerwartete Exceptions oder auch eine fehlerhafte Logik innerhalb des Codes. Mit Debugging kann man das Program systematisch analysieren und so die entsprechenden Fehler identifizieren und beheben.&lt;/p>
+&lt;p>Debuggen kann Entwicklern auch helfen den Ablauf eines Programms besser zu verstehen. Mit dem Debugger kann man den Code Schritt für Schritt durchlaufen und sieht, wie Daten sich verändern und wo welche Entscheidungen getroffen werden. Gerade wenn man eine Methode zum ersten Mal sieht, kann dies stark zum Verständnis der Funktionsweise des Programms beitragen.&lt;/p>
+&lt;h3 id="warum-debuggen-und-nicht-systemoutprintln-verwenden">Warum debuggen und nicht &lt;code>System.out.println()&lt;/code> verwenden?&lt;/h3>
+&lt;p>Die Antwort ist ziemlich einfach, die gleiche Logik wie beim Loggen eines Wertes kannst du mit einem einfach programmierten Breakpoint erreichen. Dazu gleich mehr.&lt;/p>
+&lt;p>Das Problem beim Loggen von Nachrichten und Werten ist nicht, dass es nicht funktioniert. Es ist, dass es die Lesbarkeit des geschriebenen Codes beeinträchtigt und die Konsole mit sinnlosen Logs überfüllt. Ausserdem birgt jedes geschriebene Log das Risiko, dass es bei einem &lt;code>git push&lt;/code> vergessen wird und so auf die produktiven Umgebungen gelangen könnte.&lt;/p>
+&lt;p>Zudem kann der Debugger deutlich mehr als nur Logs zu schreiben. Er wird benutzt, um mithilfe von Breakpoints den Code während der Ausführung anzuhalten, zu analysieren und Fehler im Code zu finden.
+Somit ist es besser mit Tools von IntelliJ zu debuggen.&lt;/p>
+&lt;h2 id="debuggen-in-intellij">Debuggen in IntelliJ&lt;/h2>
+&lt;p>Um in IntelliJ zu debuggen, muss man nicht zuerst ein File erstellen oder eine Extension haben. Es reicht, bereits wenn man die Breakpoints setzt.
+Dafür kann man, links neben der Zeilenzahl mittels Links-Klick einen normalen Breakpoint setzen oder mit Rechts-Klick die Optionen ansehen:&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun die Breakpoint Optionen" src="../debugging/debugging-options-intelliJ.png" title="Breakpoint Optionen IntelliJ">&lt;/p>
+&lt;p>Die Optionen zeigen folgende zwei Breakpoints:&lt;/p>
+&lt;ul>
+&lt;li>Breakpoints: Breakpoints sind die am häufigsten verwendeten. Sie ermöglichen es, den Programmfluss an einer bestimmten Zeile zu unterbrechen und den Code schrittweise zu debuggen.&lt;/li>
+&lt;li>Conditional Breakpoints: Conditional Breakpoints ermöglichen es, einen Breakpoint zu setzen, der nur unter bestimmten Bedingungen ausgelöst wird.&lt;/li>
+&lt;/ul>
+&lt;p>Um weitere Arten von Breakpoints zu definieren, muss man in der Auswahl den Conditional Breakpoint auswählen und anschliessend auf &lt;code>more&lt;/code> klicken.&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun mehr Optionen" src="../debugging/debugging-conditional-breakpoint-intelliJ.png" title="Conditional Breakpoint Optionen IntelliJ Code">&lt;/p>
+&lt;p>Es öffnet sich ein Pop-Up, in welchem man weitere Möglichkeiten hat um Breakpoints zu definieren.&lt;/p>
+&lt;p>&lt;img alt="IntelliJ öffnet ein erweitertes Breakpoint Menü" src="../debugging/debugging-conditional-breakpoint-extend-intelliJ.png" title="Conditional Breakpoint Optionen IntelliJ Code">&lt;/p>
+&lt;p>Hier kann beispielsweise, wie im Bild ersichtlich, einen Log definieren, so fungiert der Breakpoint zusätzlich als System.out.println(). Man kann auch einstellen, dass der Breakpoint entfernt werden soll, sobald er einmal aufgerufen wurde. Oder dass er solang inaktiv sein soll bis ein anderer Breakpoint ausgelöst wurde.&lt;/p>
+&lt;p>Um den Debug-Modus zu starten, kann man in IntelliJ oben rechts das Icon das wie ein Käfer aussieht verwenden:&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun, den Debuggstartbutton" src="../debugging/debugging-starten-intelliJ.png" title="Startbutton zum Debuggen in IntelliJ">&lt;/p>
+&lt;p>Das Debugging-Panel unten auf der Benutzeroberfläche besitzt verschiedene nützliche Tools:&lt;/p>
+&lt;ul>
+&lt;li>Debugger Controls&lt;/li>
+&lt;li>Debug Console&lt;/li>
+&lt;li>Frames&lt;/li>
+&lt;li>Variables&lt;/li>
+&lt;li>Watches&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img alt="IntelliJ zeigt nun, das Debugger Panel" src="../debugging/debugging-panel-intelliJ.png" title="Debugger Panel in IntelliJ">&lt;/p>
+&lt;h3 id="debugger-controls">Debugger Controls:&lt;/h3>
+&lt;p>&lt;img alt="IntelliJ zeigt nun, das Debugger Actions" src="../debugging/debugging-actions-intelliJ.png" title="Debugger Actions in IntelliJ">&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Rerun:
+Dieser Button startet das Programm im Debug-Modus neu.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Stop:
+Mit diesem Button stoppt man den Debug-Modus.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Pause:
+Dieser Button unterbricht den Programmablauf und hält den Debugger an. Man benutzt es, um das Programm zu pausieren und den aktuellen Zustand der Variablen und Objekte zu überprüfen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Resume Program:
+Mit diesem Button kann man das Programm im Debug-Modus fortsetzen, nachdem es unterbrochen wurde.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Step Over:
+Dieser Button führt das aktuelle Statement im Code aus und hält an der nächsten Zeile an. Wenn das Statement eine Methode aufruft, wird die Methode ausgeführt und der Debugger hält an der nächsten Zeile an.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Step Into:
+Diese Schaltfläche führt das aktuelle Statement im Code aus und hält an der nächsten Zeile an. Wenn das Statement eine Methode aufruft, wird der Debugger in die Methode hineinspringen und an der ersten Zeile der Methode anhalten.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Step Out:
+Mit dieser Schaltfläche kann man aus einer Methode heraus zurückkehren und den Debugger an der nächsten Zeile nach der Methode anhalten.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>View Breakpoints:
+Mit diesem Button kann man alle Breakpoints anzeigen und konfigurieren, einschliesslich Bedingungen und Aktionen, die bei der Unterbrechung ausgelöst werden sollen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Mute Breakpoint:
+Mit diesem Button kann man einen Breakpoint stumm schalten, ohne ihn zu entfernen. Dies ist nützlich, wenn man schnell durch den Code navigieren möchten, ohne dass der Debugger bei jedem Breakpoint stoppt.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="debug-console">Debug Console:&lt;/h3>
+&lt;p>Hier kann man interaktiv mit dem Code interagieren, indem man JS-Befehle eingibt und ihre Ausgabe sieht. Man kann auch Fehlermeldungen oder Ausnahmen sehen, die während der Ausführung des Codes auftreten.&lt;/p>
+&lt;h3 id="frames">Frames:&lt;/h3>
+&lt;p>In diesem Bereich werden die Stack-Frames angezeigt, die den aktuellen Programmablauf darstellen. Man kann durch die Frames navigieren, indem man auf den Namen des Frames klicken.&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun, das Frame Panel" src="../debugging/debugging-frames-panel-intelliJ.png" title="Frame Panel in IntelliJ">&lt;/p>
+&lt;h3 id="variables">Variables:&lt;/h3>
+&lt;p>Hier kann man die Werte von Variablen während des Debugging-Prozesses überwachen. Man kann die Variablen auswählen, um ihre aktuellen Werte anzuzeigen, oder man kann Ausdrücke eingeben, um ihre Werte zu berechnen.&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun, das Variable Panel" src="../debugging/debugging-variables-panel-intelliJ.png" title="Variable Panel in IntelliJ">&lt;/p>
+&lt;h3 id="watches">Watches:&lt;/h3>
+&lt;p>Man kann eine Liste von Variablen erstellen, die man überwachen möchten. Man kann Variablen zur Watcherlist hinzufügen, indem man mit der rechten Maustaste auf die Variable klicken und &amp;ldquo;Add to Watches&amp;rdquo; auswählen.
+Die Variable kann man auch im Inputfeld eingeben und auf das Plusicon am Ende klicken, um sie in die Watcherlist hinzuzufügen:&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun, das hinzufügen eines Watchers" src="../debugging/debugging-add-watcher-intelliJ.png" title="Watcher hinzufügen in IntelliJ">&lt;/p>
+&lt;p>Die Watcher werden dann über den Variablen aufgelistet:&lt;/p>
+&lt;p>&lt;img alt="IntelliJ zeigt nun, die Watchers" src="../debugging/debugging-watchers-intelliJ.png" title="Watchers in IntelliJ">&lt;/p>
+&lt;p>Genau wie beim Hinzufügen kann man einen Watcher entfernen, indem man einem rechten Mausklick auf die Variabel tätigt und &amp;ldquo;Remove Watch&amp;rdquo; anklickt.&lt;/p>
+&lt;hr>
+&lt;p>Mehr Informationen bezüglich Debuggen in IntelliJ findest du unter folgenden Link:
+&lt;a href="https://www.jetbrains.com/help/idea/debugging-code.html">Debug Code&lt;/a>&lt;/p></description></item></channel></rss>
