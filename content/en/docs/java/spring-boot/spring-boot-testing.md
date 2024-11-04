@@ -112,7 +112,7 @@ _WebMvcTest_ oder _DataJpaTest_ oder _SpringBootTest_ im Klassenamen haben werde
 
 ## Services testen mit Mockito
 
-Nun schauen wir an, wie die einzelnen Layers getestet werden können. Starten wir mit dem PersonService!
+Nun schauen wir an, wie die einzelnen Layers getestet werden können. Starten wir mit dem _PersonService_!
 
 Hier die UUT:
 
@@ -148,7 +148,9 @@ public class PersonService {
 }
 ```
 
-Wir schreiben zuerst **Mockito**-Tests. Da sollte dir bereits bekannt sein, wie's geht.
+Wir schreiben zuerst **Mockito**-Tests. Da sollte dir bereits bekannt sein, wie's geht. So sieht unser Testaufbau aus:
+
+![Service-Mockito-Tests](../spring-boot-testing/service-mockito.png)
 
 <details>
   <summary>Damit Mockito funktioniert, verwende die folgende Dependency im pom.xml</summary>
@@ -231,27 +233,294 @@ class PersonServiceTest {
 }
 ```
 
-![Service-Mockito-Tests](../spring-boot-testing/service-mockito.png)
-
 Wichtige Punkte zum Test:
-
 - Das PersonRepo wird gemockt.
 - _createPerson()_:
   - Die MyUtilityBean wird gespied, ob sie 2x aufgerufen wird und gleichzeitig wird gecaptured, ob die Bean auch die korrekten Person-Objekte übergeben bekommt.
 
 ## @SpringBootTest
 
+Wir testen erneut den _PersonService_, jetzt aber mit dem kompletten Application-Context. Auf Mocks 
+verzichten wir. Es gibt keine spezielle Annotation für Slice-Tests mit Services. Deshalb fahren wir den gesamten 
+Application-Context hoch:
+
 ![Service-SpringBootTest-Tests](../spring-boot-testing/service-springboottest.png)
+
+Wir verwenden eine H2 In-Memory Datenbank.
+
+<details>
+  <summary>Verwende die folgenden Dependencies im pom.xml</summary>
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-test</artifactId>
+  <scope>test</scope>
+</dependency>
+
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>test</scope>
+</dependency>
+```
+</details>
+
+```java
+package com.demo.springboottesting.services;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+import com.demo.springboottesting.entities.Person;
+import com.demo.springboottesting.repos.PersonRepo;
+import com.demo.springboottesting.utilities.MyUtilityBean;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.jdbc.Sql;
+
+@SpringBootTest()
+class PersonServiceSpringBootTest {
+
+    @Autowired
+    private PersonRepo personRepo;
+
+    @SpyBean
+    private MyUtilityBean myUtilityBean;
+
+    @Autowired
+    private PersonService personService;
+
+    @Test
+    @Sql(scripts = {"/data_personservice.sql"})
+    @DirtiesContext
+    void getAllPerson() {
+
+        //When
+        var personList = personService.getAllPerson();
+
+        //Then
+        assertThat(personList).hasSize(2);
+
+    }
+
+    @Test
+    @DirtiesContext
+    void createPersons() {
+        //Given
+        Person person = new Person(null, "Fritz", "Thun");
+        Person person2 = new Person(null, "Alexandra", "Biel/Bienne");
+
+        //When
+        personService.createPerson(person);
+        personService.createPerson(person2);
+
+        //Then
+        assertThat(personRepo.findAll()).hasSize(2);
+
+        ArgumentCaptor<Person> personCaptor = ArgumentCaptor.forClass(Person.class);
+        verify(myUtilityBean, times(2)).addPerson(personCaptor.capture());
+        assertThat(personCaptor.getAllValues().get(0)).isEqualTo(person);
+
+    }
+}
+```
+
+Wichtige Punkte zum Test:
+- Zur DB-Konfiguration verwenden wir das application.properties aus /src/**test**/resources. Dieses wird zuerst verwendet, weil es vorhanden ist.
+- Anstelle von @Spy (und @Mock) wird @SpyBean (und @MockBean) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden.
+- Für den Test _getAllPersons()_ verwenden wir ein spezifisches @Sql Script _data_personservice.sql_.
+- Die Annotation _@DirtiesContext_ bewirkt, dass nach dem Test die DB zurückgesetzt wird. Andernfalls hätten wir noch die Daten aus dem vorherigen Test in der DB.
+- Im Test _createPersons()_ verwenden wir einen ArgumentCaptor auf der _myUtilityBean_ und zählen, ob auf ihr 2x die Methode _addPerson()_ aufgerufen wird und ob die erste Person auch unseren Testdaten entspricht.
+- WebEnvironment deaktivieren: Falls du verhindern möchtest, dass das WebEnvironment (u.a. Controller) hochgefahren wird, kannst du die Annoation _@SpringBootTest_ erweitern um _@SpringBootTest(webEnvironment = WebEnvironment.NONE)_. In diesem Szenario hier wäre das sicher sinnvoll, da wir den Controller sowieso nicht verwenden. Also los, ändere die Annotation! 
 
 ## @WebMvcTest
 
+Nun testen wir den _PersonController_. Dazu fahren wir einen Slice-Test mit _@WebMvcTest_. Es werden weder Services, noch Repos, noch Entities hochgefahren. 
+Deshalb mocken wir den PersonService:
+
 ![Controller-WebMvcTest-Tests](../spring-boot-testing/controller-webmvctest.png)
+
+<details>
+  <summary>Verwende die folgenden Dependencies im pom.xml</summary>
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-test</artifactId>
+  <scope>test</scope>
+</dependency>
+```
+</details>
+
+```java
+package com.demo.springboottesting.controllers;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.demo.springboottesting.entities.Person;
+import com.demo.springboottesting.services.PersonService;
+import java.util.List;
+import org.hamcrest.core.StringContains;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+@WebMvcTest
+class PersonControllerWebMvcTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private PersonService personService;
+
+    @Test
+    void getAllPersons() throws Exception {
+        //given
+        Person person = new Person(1, "Ahnis", "Gotham");
+        Person person2 = new Person(2, "Saksham", "New york");
+
+        when(personService.getAllPerson()).thenReturn(List.of(person, person2));
+
+        //when
+        mockMvc.perform(get("/persons"))
+        //then
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(content().string(StringContains.containsString("Ahnis")))
+            .andExpect(content().string(StringContains.containsString("Saksham")))
+        ;
+    }
+
+    @Test
+    void createPerson() throws Exception {
+        //given
+        when(personService.createPerson(any())).thenAnswer(invocationOnMock -> {
+            Person p = invocationOnMock.getArgument(0);
+            p.setPersonId(1);
+            return p;
+        });
+
+        //when
+        mockMvc.perform(post("/createPerson")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"personName\": \"Alexandra\", \"personCity\": \"Biel\"}"))
+        //then
+            .andDo(print())
+            .andExpect(jsonPath("$.personName").value("Alexandra"))
+            .andExpect(jsonPath("$.personCity").value("Biel"))
+            .andExpect(jsonPath("$.personId").isNumber());
+
+    }
+}
+```
+
+Wichtige Punkte zum Test:
+- Der _PersonService_ wird gemockt.
+- Wir verwenden einen _MockMvc_. Damit können wir (REST-)Requests absetzen und die Antworten auswerten. _getAllPersons()_ macht einfache String-Überprüfungen, _createPerson()_ wertet die JSON-Response detailliert aus.
+- (Tipp am Rande: Falls du trotzdem eine DB verwenden würdest: Es gibt kein automatisches Rollback der Daten nach jedem Test.)
 
 ## @DataJpaTest
 
+Jetzt ist das PersonRepo inkl. Person (Entität) und DB dran. Wir fahren den Slice-Test mit @DataJpaTest. 
+Es werden nur DB, Entities und Repos initialisert, keine Services, keine Controller:
+
 ![Repo-DataJpaTest-Tests](../spring-boot-testing/repo-datajpatest.png)
 
+Auch hier verwenden wir die H2 In-Memory DB.
+
+<details>
+  <summary>Verwende die folgenden Dependencies im pom.xml</summary>
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+<groupId>com.h2database</groupId>
+<artifactId>h2</artifactId>
+<scope>test</scope>
+</dependency>
+```
+</details>
+
+```java
+package com.demo.springboottesting.repos;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.demo.springboottesting.entities.Person;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+@DataJpaTest(showSql = true)
+class PersonRepoDataJpaTest {
+
+    @Autowired
+    private PersonRepo personRepo;
+
+    private Person testPerson;
+
+
+    @BeforeEach
+    public void setUp() {
+        // Initialize test data before each test method
+        testPerson = new Person(null, "Maria", "Bern");
+        personRepo.save(testPerson);
+    }
+
+    //Not needed, DB is reset after every test run
+//    @AfterEach
+//    public void tearDown() {
+//        // Release test data after each test method
+//        personRepo.delete(testPerson);
+//    }
+
+    @Test
+    void existsById() {
+
+        assertTrue(personRepo.existsById(testPerson.getPersonId()));
+    }
+
+    @Test
+    void findAll() {
+
+        assertThat(personRepo.findAll()).hasSize(1);
+    }
+
+}
+```
+Wichtige Punkte zum Test:
+- Zur DB-Konfiguration verwenden wir das application.properties aus /src/**test**/resources. Dieses wird zuerst verwendet, weil es vorhanden ist.
+- @BeforeEach: vor jedem Test füllen wir die DB mit einer Person ab. 
+- Nach jedem Test müssen wir die DB **nicht** manuell (oder mit _tearDown()_) resetten oder den Test mit _@DirtiesContext_ annotieren. Dies passiert bei _@DataJpaTest_ automatisch.
+- Falls du möchtest, kannst du die Beans _EntityManager_ oder _TestEntityManager_ iniziieren lassen, um auf EntityManager-Ebene die Daten zu überprüfen.
+
 ## Testcontainers
+
+Bisher haben wir - wo benötigt - mit der In-Memory DB H2 gearbeitet. Wir möchten nun aber mit der "richtigen" DB, also Maria-DB, testen. 
 
 Vorteil: Du hast für den Test exakt dieselben Umsysteme wie in der Produktion verwendet. Anstelle
 einer H2 In-Memory-DB können wir hier eine Maria-DB verwenden, wie sie auch "in der Produktion" genutzt wird.
