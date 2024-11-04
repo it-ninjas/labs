@@ -34,7 +34,7 @@ Berufsübergreifende Module finden in Form von Workshops und Erfahrungstransfers
 
 ### Absprung zu den Debugging-Seiten
 
-- [Debugging von Java Code in IntelliJ](../../../../docs/java/debugging)
+- [Debugging von Java Code in IntelliJ](../../../../docs/java/java-grundlagen/debugging)
 - [Frontend-Debugging](../../../../docs/web/javascript/24_debugging/)
 
 ### Absprung zu den Testing-Seiten

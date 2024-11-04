@@ -241,20 +241,33 @@ Wichtige Punkte zum Test:
 
 ## @SpringBootTest
 
+![Service-SpringBootTest-Tests](../spring-boot-testing/service-springboottest.png)
+
 ## @WebMvcTest
+
+![Controller-WebMvcTest-Tests](../spring-boot-testing/controller-webmvctest.png)
+
 
 ## @DataJpaTest
 
+![Repo-DataJpaTest-Tests](../spring-boot-testing/repo-datajpatest.png)
+
+
 ## Testcontainers
 
-Vorteil: Du hast für den Test exakt dieselben Umsysteme wie in der Produktion verwendet. Anstelle 
+Vorteil: Du hast für den Test exakt dieselben Umsysteme wie in der Produktion verwendet. Anstelle
 einer H2 In-Memory-DB können wir hier eine Maria-DB verwenden, wie sie auch "in der Produktion" genutzt wird.
+
 > Docker resp. Podman muss installiert sein und laufen: > podman machine start
 
 natürlich gäbe es auch noch andere Möglichkeiten, um zur Laufzeit Tests ein- resp. auszuschalten (z.B. über Maven-Profiles).
 
-## Aufgaben (muss in Labs erledigt werden)
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/spring) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Erweitere/Korrigiere deine Tests aus den [Spring Boot Labs](../../../../labs/java/spring/01_spring/) wie folgt:
+- Schreibe Mockito-Tests für den _AdminService_.
+- Ändere den _AdminControllerIntegrationTest_ zu einem WebMvcTest.
+- Schreibe einen DataJpaTest, der das _StudentRepository_ inkl. _SchoolSubject_ abdeckt.
+- Schreibe einen SpringBootTest als kompletten Integrationstest, der vom Controller-Aufruf mittels MockMvc bis auf die H2-DB "runter" geht. Teste, ob das Anlegen eines neuen Schulfachs funktioniert und ob die Daten persistiert werden.
+
