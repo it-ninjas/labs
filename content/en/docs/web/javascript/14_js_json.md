@@ -8,6 +8,11 @@ description: >
   Modul #F4 - JavaScript - JSON
 ---
 
+## Ziele
+
+- Du weisst, was JSON ist ind weisst, woraus JSON-Daten bestehen.
+- Du weisst, wie geordnete Listen ist JSON dargestellt werden können.
+
 # JSON (JavaScript Object Notation)
 
 JSON ist ein weit verbreitetes Datenformat zur Repräsentation strukturierter Informationen. Es basiert auf einer
@@ -52,5 +57,5 @@ Hier ist ein einfaches Beispiel, das ein JSON-Objekt darstellt:
 }
 ```
 
-JSON wird häufig in der Webentwicklung, APIs und Datenaustausch verwendet, da es leicht zu verarbeiten ist. Es ist eine
+JSON wird häufig in der Webentwicklung, in APIs und beim Datenaustausch verwendet, da es leicht zu verarbeiten ist. Es ist eine
 effektive Möglichkeit, Daten in einer strukturierten Form zu speichern und zwischen verschiedenen Systemen auszutauschen.

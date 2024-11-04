@@ -11,14 +11,14 @@ description: >
 ## Ziele
 
 - Du kennst den Unterschied zwischen Maps und Sets.
-- Du kannst Sets erstellen, bearbeiten und Daten abrufen.
+- Du kannst Sets erstellen, bearbeiten und Daten aus diesen abrufen.
 - Du kannst Set-Iteratoren erklären.
 
 ## Set
 
-Oft möchte man eine Liste haben, in der klar ist, dass jedes Element nur 1x vorkommen kann.
+Oft möchte man eine Liste haben, in der gegeben sein soll, dass jedes Element nur einmal vorkommen kann.
 
-Genau diesen Zweck erfüllt die `Set`.
+Genau diesen Zweck erfüllt die `Set`-Datenstruktur.
 
 ```javascript
 const set = new Set();
@@ -26,9 +26,9 @@ const set = new Set();
 
 ### Wert hinzufügen
 
-Die `add(value)` Methode fügt einen Wert zur Set hinzu.
+Die `add(value)`-Methode fügt einen Wert zu einem Set hinzu.
 
-Wenn der Wert bereits in der Set vorkommt, wird der Wert kein weiteres Mal hinzugefügt, siehe:
+Wenn der Wert bereits im Set vorkommt, wird der Wert kein weiteres Mal hinzugefügt, wie im folgenden Beispiel gezeigt wird:
 
 ```javascript
 const set = new Set();
@@ -47,7 +47,7 @@ console.log(set); // Set {'value1', 'value2', 'value3', 'value4'}
 
 ### Wert löschen
 
-Die Methode `delete()` löscht den angegebenen Wert aus der Set, wenn dieser enthalten ist und gibt `true` zurück. Ansonsten `false`.
+Die `delete()`-Methode löscht den angegebenen Wert aus dem Set, wenn dieser enthalten ist und gibt als Rückgabewert `true` aus, ansonsten `false`.
 
 ```javascript
 const set = new Set();
@@ -60,9 +60,9 @@ console.log(set.delete("value1")); // true
 console.log(set.delete("value1")); // false
 ```
 
-### Prüfen, ob Wert vorhanden ist
+### Prüfen, ob ein Wert vorhanden ist
 
-Die `has()` Methode gibt zurück, ob der angegebene Value im Set enthalten ist oder nicht. Die Methode gibt "true" zurück, wenn der Value im Set vorhanden ist, andernfalls gibt sie "false" zurück.
+Die `has()`-Methode gibt zurück, ob der angegebene Value im Set enthalten ist oder nicht. Die Methode gibt `true` zurück, wenn der Value im Set vorhanden ist, andernfalls gibt sie `false` zurück.
 
 ```javascript
 const set = new Set();
@@ -77,7 +77,7 @@ console.log(set.has("value4")); // false
 
 ### Set zurücksetzen
 
-Die `clear()`-Methode löscht alle Elemente aus der Set.
+Die `clear()`-Methode löscht alle Elemente aus dem Set.
 
 ```javascript
 const set = new Set();
@@ -99,7 +99,7 @@ console.log(set.has("value3")); // false
 
 ### Anzahl Elemente
 
-Die Methode `size()` gibt die Anzahl der Elemente im Set zurück.
+Die `size()`-Methode gibt die Anzahl der Elemente in einem Set zurück.
 
 ```javascript
 const set = new Set();
@@ -117,11 +117,11 @@ console.log(set.size); // 0
 
 ## Set Iteratoren
 
-Im Set existieren im Grunde fast die gleichen Iteratoren wie bei einer Map. Jedoch gibt es bei `keys()` und `entries()` Unterschiede, diese sind nachfolgend nachzulesen.
+Im Set existieren im Grunde beinahe die gleichen Iteratoren wie bei einer Map. Jedoch gibt es bei `keys()` und `entries()` Unterschiede, welche nachfolgend genauer beschrieben werden.
 
 ### values()
 
-`values()` gibt einen Iterator zurück, der die Werte des Sets in der Reihenfolge des Einfügens zurück gibt:
+`values()` gibt einen Iterator zurück, der die Werte des Sets in der Reihenfolge des Einfügens zurückgibt:
 
 ```javascript
 const set = new Set();
@@ -141,6 +141,6 @@ for (const value of set.values()) {
 
 ### keys() und entries()
 
-`keys()` gibt einen Iterator zurück, der dieselben Value wie der `values()`-Iterator zurück gibt. Der `keys()`-Iterator ist jedoch nur aus Gründen der Kompatibilität mit der Map-Datenstruktur verfügbar und existiert für Sets nur, weil Sets auf der gleichen Grundlage wie Maps implementiert sind.
+`keys()` gibt einen Iterator zurück, der dieselben Values wie der `values()`-Iterator zurück gibt. Der `keys()`-Iterator ist jedoch nur aus Gründen der Kompatibilität mit der Map-Datenstruktur verfügbar und existiert für Sets nur, weil Sets auf der gleichen Grundlage wie Maps implementiert sind.
 
 Dasselbe gilt auch für die `entries()`-Methode.

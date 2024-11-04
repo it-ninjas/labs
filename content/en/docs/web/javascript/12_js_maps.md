@@ -16,7 +16,7 @@ description: >
 
 ## Map
 
-Maps sind spezielle Objekte, die eine Zuordnung von Key zu Value ermöglichen. Der Key kann ein beliebiges Objekt sein, während der Value beliebig sein kann. Eine Map speichert keine Duplikate von Keys.
+Maps sind spezielle Objekte, die eine Zuordnung eines Keys zu einem Value ermöglichen. Der Key kann ein beliebiges Objekt sein, während der Value beliebig sein kann. Eine Map speichert keine Duplikat-Keys.
 
 ```javascript
 const map = new Map();
@@ -24,7 +24,7 @@ const map = new Map();
 
 ### Eintrag hinzufügen
 
-Mit der `set()` Methode wird ein neues Key-Value-Paar zur Map hinzugefügt. Der erste Parameter der Methode ist der Key und der zweite Parameter ist der Value, der mit dem Key assoziiert werden soll. Wenn die Map bereits einen Eintrag mit dem angegebenen Key enthält, wird der neue Value anstelle des alten Values gespeichert.
+Mit der `set()`-Methode wird ein neues Key-Value-Paar zur Map hinzugefügt. Der erste Parameter der Methode ist der Key und der zweite Parameter ist der Value, der mit dem Key assoziiert werden soll. Wenn die Map bereits einen Eintrag mit dem angegebenen Key enthält, wird der neue Value anstelle des alten Values gespeichert.
 
 ```javascript
 const map = new Map();
@@ -42,7 +42,7 @@ console.log(map); // Map {'key1' => 'value4', 'key2' => 'value2', 'key3' => 'val
 
 ### Wert (value) für Key ermitteln
 
-Die `get(key)` Methode gibt den Value zurück, der mit einem bestimmten Key in der Map assoziiert ist. Wenn der Key nicht vorhanden ist, gibt die Methode `undefined` zurück.
+Die `get(key)` Methode gibt den Value zurück, der mit einem bestimmten Key in der Map assoziiert wird. Wenn der Key nicht vorhanden ist, gibt die Methode `undefined` zurück.
 
 ```javascript
 const map = new Map();
@@ -57,7 +57,7 @@ console.log(map.get("key4")); // undefined
 
 ### Prüfen, ob Key vorhanden ist
 
-Die `has(key)` Methode ist dazu da, um zu überprüfen, ob ein Key in der Map vorhanden ist. Die Methode gibt einen booleschen Wert zurück je nachdem ob der Key gefunden wurde oder nicht.
+Die `has(key)` Methode wird verwendet, um zu überprüfen, ob ein bestimmter Key in der Map vorhanden ist. Die Methode gibt, je nachdem ob der Key gefunden wurde oder nicht, einen entsprechenden booleschen Wert zurück.
 
 ```javascript
 const map = new Map();
@@ -72,8 +72,7 @@ console.log(map.has("key4")); // false
 
 ### Eintrag löschen
 
-Die Methode `delete(key)` löscht den Key und den zugehörigen Value aus der Map. Wenn der Key in der Map vorhanden ist, wird er zusammen mit dem Value entfernt, und die Methode gibt "true" zurück. Wenn der Key nicht vorhanden ist, wird die Map unverändert belassen, und die Methode gibt "false" zurück.
-
+Die Methode `delete(key)` löscht den angegebenen Key und den zugehörigen Value aus der Map. Wenn der Key in der Map vorhanden ist, wird er zusammen mit dem Value entfernt, und die Methode gibt "true" zurück. Wenn der Key nicht vorhanden ist, wird die Map nicht verändert und die Methode gibt "false" zurück.
 ```javascript
 const map = new Map();
 
@@ -88,7 +87,7 @@ console.log(map.get("key1")); // undefined
 
 ### Map zurücksetzen
 
-Die `clear()` Methode kann verwendet werden, um alle Key-Value-Paare aus einer Map zu entfernen und somit diese auf eine leere Map zurückzusetzen.
+Die `clear()`-Methode kann verwendet werden, um alle Key-Value-Paare aus einer Map zu entfernen und diese somit auf den Zustand einer leeren Map zurückzusetzen.
 
 ```javascript
 const map = new Map();
@@ -136,7 +135,7 @@ Iteratoren sind Objekte, die eine Möglichkeit bereitstellen, auf die Elemente e
 
 ### entries()
 
-Die `entries()` Methode gibt einen Iterator zurück, der alle Key-Value-Paare der Map in der Reihenfolge ihrer Hinzufügung enthält. Jedes Element des Iterators ist ein Array mit zwei Elementen, dem Key und dem zugehörigen Value.
+Die `entries()`-Methode gibt einen Iterator zurück, der alle Key-Value-Paare der Map in der Reihenfolge ihrer Hinzufügung enthält. Jedes Element des Iterators ist ein Array mit zwei Elementen, dem Key und dem zugehörigen Value.
 
 ```javascript
 const map = new Map();
@@ -156,7 +155,7 @@ for (const [key, value] of map.entries()) {
 
 ### keys()
 
-Die Methode `keys()` gibt einen Iterator zurück, der nur die Keys der Map enthält.
+Die `keys()`-Methode gibt einen Iterator zurück, der nur die Keys der Map enthält.
 
 ```javascript
 const map = new Map();
@@ -176,7 +175,7 @@ for (const key of map.keys()) {
 
 ### values()
 
-Die Methode `values()` gibt einen Iterator zurück, der im Gegensatz zu der Methode `keys()`nur die Values der Map enthält.
+Die `values()`-Methode gibt einen Iterator zurück, der im Gegensatz zu der `keys()`-Methode nur die Values der Map enthält.
 
 ```javascript
 const map = new Map();
@@ -193,3 +192,15 @@ for (const value of map.values()) {
 // value2
 // value3
 ```
+
+## Der Unterschied zwischen Maps und Sets
+Maps und Sets funktionieren relativ ähnlich, haben aber trotzdem ein paar Unterschiede zueinander, welche die beiden Datenstrukturen unterscheiden. Auf die genaue Funktionsweise wird im nächsten Abschnitt der Dokumentation genauer eingegangen. 
+
+### Nutzen
+Maps werden verwendet, um Werte zu speichern, welche jeweils ein `key-value`-Paar beinhalten. Sets hingegen werden verwendet, um Werte zu speichern, bei denen der `value` einzigartig ist. 
+
+### Einzigartigkeit
+Maps erzwingen die Einzigartigkeit des `key`-Elements, während Sets die Einzigartigkeit des `value`-Elements erzwingen.
+
+### Zugriff auf den Inhalt
+Um auf die Daten einer Map zuzugreifen, wird das `key`-Element verwendet. Um auf den Inhalt eines Sets zuzugreifen, wird das `value`-Element verwendet. 
