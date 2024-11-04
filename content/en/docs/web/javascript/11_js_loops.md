@@ -25,7 +25,7 @@ Wichtig bei der Verwendung von Loops ist es, darauf zu achten, dass die Bedingun
 
 ### for, forEach, for...of
 
-Im Kapitel [Arrays](../../../../docs/web/javascript/08_js_arrays#iterieren) werden die Loops `for`, `forEach` und `for...of` erklärt. Du kannst dort nochmal die Informationen nachlesen, wenn du dich im Thema nicht mehr so sicher fühlst. 
+Im Kapitel [Arrays](../../../../docs/web/javascript/08_js_arrays#iterieren) werden die Loops `for`, `forEach` und `for...of` erklärt. Du kannst dort nochmal die Informationen nachlesen, wenn du dich im Thema nicht mehr so sicher fühlst.
 
 ### for...in-Loop
 
@@ -67,7 +67,7 @@ while (i < 5) {
 
 ### do...while-Loop
 
-Der `do...while`-Loop funktioniert ähnlich wie der `while`-Loop, jedoch wird der Code-Block jeweils immer vor der Überprüfung der Kondition ausgeführt. 
+Der `do...while`-Loop funktioniert ähnlich wie der `while`-Loop, jedoch wird der Code-Block jeweils immer vor der Überprüfung der Kondition ausgeführt.
 
 ```javascript
 let i = 0;

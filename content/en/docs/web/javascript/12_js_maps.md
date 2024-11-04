@@ -73,6 +73,7 @@ console.log(map.has("key4")); // false
 ### Eintrag löschen
 
 Die Methode `delete(key)` löscht den angegebenen Key und den zugehörigen Value aus der Map. Wenn der Key in der Map vorhanden ist, wird er zusammen mit dem Value entfernt, und die Methode gibt "true" zurück. Wenn der Key nicht vorhanden ist, wird die Map nicht verändert und die Methode gibt "false" zurück.
+
 ```javascript
 const map = new Map();
 
@@ -194,13 +195,17 @@ for (const value of map.values()) {
 ```
 
 ## Der Unterschied zwischen Maps und Sets
-Maps und Sets funktionieren relativ ähnlich, haben aber trotzdem ein paar Unterschiede zueinander, welche die beiden Datenstrukturen unterscheiden. Auf die genaue Funktionsweise wird im nächsten Abschnitt der Dokumentation genauer eingegangen. 
+
+Maps und Sets funktionieren relativ ähnlich, haben aber trotzdem ein paar Unterschiede zueinander, welche die beiden Datenstrukturen unterscheiden. Auf die genaue Funktionsweise wird im nächsten Abschnitt der Dokumentation genauer eingegangen.
 
 ### Nutzen
-Maps werden verwendet, um Werte zu speichern, welche jeweils ein `key-value`-Paar beinhalten. Sets hingegen werden verwendet, um Werte zu speichern, bei denen der `value` einzigartig ist. 
+
+Maps werden verwendet, um Werte zu speichern, welche jeweils ein `key-value`-Paar beinhalten. Sets hingegen werden verwendet, um Werte zu speichern, bei denen der `value` einzigartig ist.
 
 ### Einzigartigkeit
+
 Maps erzwingen die Einzigartigkeit des `key`-Elements, während Sets die Einzigartigkeit des `value`-Elements erzwingen.
 
 ### Zugriff auf den Inhalt
-Um auf die Daten einer Map zuzugreifen, wird das `key`-Element verwendet. Um auf den Inhalt eines Sets zuzugreifen, wird das `value`-Element verwendet. 
+
+Um auf die Daten einer Map zuzugreifen, wird das `key`-Element verwendet. Um auf den Inhalt eines Sets zuzugreifen, wird das `value`-Element verwendet.
