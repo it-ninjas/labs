@@ -247,11 +247,9 @@ Wichtige Punkte zum Test:
 
 ![Controller-WebMvcTest-Tests](../spring-boot-testing/controller-webmvctest.png)
 
-
 ## @DataJpaTest
 
 ![Repo-DataJpaTest-Tests](../spring-boot-testing/repo-datajpatest.png)
-
 
 ## Testcontainers
 
@@ -262,12 +260,11 @@ einer H2 In-Memory-DB können wir hier eine Maria-DB verwenden, wie sie auch "in
 
 natürlich gäbe es auch noch andere Möglichkeiten, um zur Laufzeit Tests ein- resp. auszuschalten (z.B. über Maven-Profiles).
 
-
 ---
 
 ![task1](/images/task.png) Jetzt bist du dran. Erweitere/Korrigiere deine Tests aus den [Spring Boot Labs](../../../../labs/java/spring/01_spring/) wie folgt:
+
 - Schreibe Mockito-Tests für den _AdminService_.
 - Ändere den _AdminControllerIntegrationTest_ zu einem WebMvcTest.
 - Schreibe einen DataJpaTest, der das _StudentRepository_ inkl. _SchoolSubject_ abdeckt.
 - Schreibe einen SpringBootTest als kompletten Integrationstest, der vom Controller-Aufruf mittels MockMvc bis auf die H2-DB "runter" geht. Teste, ob das Anlegen eines neuen Schulfachs funktioniert und ob die Daten persistiert werden.
-
