@@ -3,7 +3,7 @@ title: "Lombok"
 linkTitle: "Lombok"
 weight: 6
 description: >
-  Vor- und Nachteile von Lombok
+  Module #J3 - Vor- und Nachteile von Lombok
 ---
 
 Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
@@ -127,3 +127,12 @@ Falls du in IntelliJ Probleme mit Lombok hast, kann es sein, dass das Annotation
 ---
 
 ![hint1](/images/hint.png) Optional: Finde mehr Informationen zu Lombok und was es kann unter: [Lombok Features](https://projectlombok.org/features/)
+
+---
+
+{{% alert title="Git ready?!" color="warning" %}}
+
+Falls du dich noch nicht intensiver mit Git auseinandergesetzt hast, ist jetzt die Zeit dafür: Erarbeite [**Git**](../git)!
+
+Bitte kehre nach Abschluss des Git-Moduls hierhin zurück und fahre mit der nächsten Seite fort.
+{{% /alert %}}

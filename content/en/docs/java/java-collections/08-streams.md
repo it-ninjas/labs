@@ -3,7 +3,7 @@ title: "Streams Basics"
 linkTitle: "Streams"
 weight: 8
 description: >
-  Modul #J7
+  Modul #J6
 ---
 
 ## Ziele

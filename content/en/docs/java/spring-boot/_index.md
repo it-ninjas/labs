@@ -3,7 +3,7 @@ title: "Spring Boot"
 linkTitle: "Spring Boot"
 weight: 15
 description: >
-  Modul #J11 - Spring Boot
+  Modul #J8 - Spring Boot
 ---
 
 #### Ziele
@@ -129,6 +129,10 @@ Web Starter
   <version>2.2.2.RELEASE</version>
 </dependency>
 ```
+
+## Debuggen von Spring Boot
+
+Spring Boot Code ist in Java geschrieben, dementsprechend bleibt das Debuggen grundsätzlich gleich. Jedoch musst du die Interaktionen zwischen Repositorys, Services und Controllern gut verstehen und wissen, wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step Into behilflich sein.
 
 ---
 
