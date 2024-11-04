@@ -196,7 +196,7 @@ for (const value of map.values()) {
 
 ## Der Unterschied zwischen Maps und Sets
 
-Maps und Sets funktionieren relativ ähnlich, haben aber trotzdem ein paar Unterschiede zueinander, welche die beiden Datenstrukturen unterscheiden. Auf die genaue Funktionsweise wird im nächsten Abschnitt der Dokumentation genauer eingegangen.
+Maps und Sets funktionieren relativ ähnlich, haben aber trotzdem ein paar Unterschiede zueinander, welche die beiden Datenstrukturen unterscheiden. Auf die genaue Funktionsweise von Sets wird im nächsten Kapitel der Dokumentation genauer eingegangen.
 
 ### Nutzen
 
