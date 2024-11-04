@@ -100,6 +100,8 @@ Hier nochmals in der Übersicht, welche Testarten sich für welchen Layer eignen
 
 Du kannst alle Tests mit `>mvn clean test` ausführen.
 
+![tippFailingTests](/images/hint.png) Evtl. schlägt der Test _PersonRepoTestContainerDataJpaTest_ fehl. Das hat damit zu tun, dass bei der Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten an.
+
 Wie bereits weiter oben erwähnt, sind @DataJpaTest-, @WebMvcTest- und @SpringBootTest-Tests zeitaufwändig.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
 Wege, der einfachste ist aber so: `>mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*SpringBootTest*`
@@ -146,9 +148,10 @@ public class PersonService {
 }
 ```
 
-Wir schreiben zuerst **Mockito**-Tests.
+Wir schreiben zuerst **Mockito**-Tests. Da sollte dir bereits bekannt sein, wie's geht.
 
-Damit Mockito funktioniert, verwende die folgende Dependency im pom.xml:
+<details>
+  <summary>Damit Mockito funktioniert, verwende die folgende Dependency im pom.xml</summary>
 
 ```xml
  <dependency>
@@ -157,6 +160,8 @@ Damit Mockito funktioniert, verwende die folgende Dependency im pom.xml:
    <scope>test</scope>
  </dependency>
 ```
+
+</details>
 
 ```java
 package com.demo.springboottesting.services;
@@ -234,14 +239,16 @@ Wichtige Punkte zum Test:
 - _createPerson()_:
   - Die MyUtilityBean wird gespied, ob sie 2x aufgerufen wird und gleichzeitig wird gecaptured, ob die Bean auch die korrekten Person-Objekte übergeben bekommt.
 
-## SpringBootTest
+## @SpringBootTest
 
-## WebMvcTest
+## @WebMvcTest
 
-## DataJpaTest
+## @DataJpaTest
 
 ## Testcontainers
 
+Vorteil: Du hast für den Test exakt dieselben Umsysteme wie in der Produktion verwendet. Anstelle 
+einer H2 In-Memory-DB können wir hier eine Maria-DB verwenden, wie sie auch "in der Produktion" genutzt wird.
 > Docker resp. Podman muss installiert sein und laufen: > podman machine start
 
 natürlich gäbe es auch noch andere Möglichkeiten, um zur Laufzeit Tests ein- resp. auszuschalten (z.B. über Maven-Profiles).
