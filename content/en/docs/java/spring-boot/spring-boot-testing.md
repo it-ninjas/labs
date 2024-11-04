@@ -234,14 +234,15 @@ class PersonServiceTest {
 ```
 
 Wichtige Punkte zum Test:
+
 - Das PersonRepo wird gemockt.
 - _createPerson()_:
   - Die MyUtilityBean wird gespied, ob sie 2x aufgerufen wird und gleichzeitig wird gecaptured, ob die Bean auch die korrekten Person-Objekte übergeben bekommt.
 
 ## @SpringBootTest
 
-Wir testen erneut den _PersonService_, jetzt aber mit dem kompletten Application-Context. Auf Mocks 
-verzichten wir. Es gibt keine spezielle Annotation für Slice-Tests mit Services. Deshalb fahren wir den gesamten 
+Wir testen erneut den _PersonService_, jetzt aber mit dem kompletten Application-Context. Auf Mocks
+verzichten wir. Es gibt keine spezielle Annotation für Slice-Tests mit Services. Deshalb fahren wir den gesamten
 Application-Context hoch:
 
 ![Service-SpringBootTest-Tests](../spring-boot-testing/service-springboottest.png)
@@ -264,6 +265,7 @@ Wir verwenden eine H2 In-Memory Datenbank.
   <scope>test</scope>
 </dependency>
 ```
+
 </details>
 
 ```java
@@ -332,16 +334,17 @@ class PersonServiceSpringBootTest {
 ```
 
 Wichtige Punkte zum Test:
+
 - Zur DB-Konfiguration verwenden wir das application.properties aus /src/**test**/resources. Dieses wird zuerst verwendet, weil es vorhanden ist.
 - Anstelle von @Spy (und @Mock) wird @SpyBean (und @MockBean) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden.
 - Für den Test _getAllPersons()_ verwenden wir ein spezifisches @Sql Script _data_personservice.sql_.
 - Die Annotation _@DirtiesContext_ bewirkt, dass nach dem Test die DB zurückgesetzt wird. Andernfalls hätten wir noch die Daten aus dem vorherigen Test in der DB.
 - Im Test _createPersons()_ verwenden wir einen ArgumentCaptor auf der _myUtilityBean_ und zählen, ob auf ihr 2x die Methode _addPerson()_ aufgerufen wird und ob die erste Person auch unseren Testdaten entspricht.
-- WebEnvironment deaktivieren: Falls du verhindern möchtest, dass das WebEnvironment (u.a. Controller) hochgefahren wird, kannst du die Annoation _@SpringBootTest_ erweitern um _@SpringBootTest(webEnvironment = WebEnvironment.NONE)_. In diesem Szenario hier wäre das sicher sinnvoll, da wir den Controller sowieso nicht verwenden. Also los, ändere die Annotation! 
+- WebEnvironment deaktivieren: Falls du verhindern möchtest, dass das WebEnvironment (u.a. Controller) hochgefahren wird, kannst du die Annoation _@SpringBootTest_ erweitern um _@SpringBootTest(webEnvironment = WebEnvironment.NONE)_. In diesem Szenario hier wäre das sicher sinnvoll, da wir den Controller sowieso nicht verwenden. Also los, ändere die Annotation!
 
 ## @WebMvcTest
 
-Nun testen wir den _PersonController_. Dazu fahren wir einen Slice-Test mit _@WebMvcTest_. Es werden weder Services, noch Repos, noch Entities hochgefahren. 
+Nun testen wir den _PersonController_. Dazu fahren wir einen Slice-Test mit _@WebMvcTest_. Es werden weder Services, noch Repos, noch Entities hochgefahren.
 Deshalb mocken wir den PersonService:
 
 ![Controller-WebMvcTest-Tests](../spring-boot-testing/controller-webmvctest.png)
@@ -356,6 +359,7 @@ Deshalb mocken wir den PersonService:
   <scope>test</scope>
 </dependency>
 ```
+
 </details>
 
 ```java
@@ -432,13 +436,14 @@ class PersonControllerWebMvcTest {
 ```
 
 Wichtige Punkte zum Test:
+
 - Der _PersonService_ wird gemockt.
 - Wir verwenden einen _MockMvc_. Damit können wir (REST-)Requests absetzen und die Antworten auswerten. _getAllPersons()_ macht einfache String-Überprüfungen, _createPerson()_ wertet die JSON-Response detailliert aus.
 - (Tipp am Rande: Falls du trotzdem eine DB verwenden würdest: Es gibt kein automatisches Rollback der Daten nach jedem Test.)
 
 ## @DataJpaTest
 
-Jetzt ist das PersonRepo inkl. Person (Entität) und DB dran. Wir fahren den Slice-Test mit @DataJpaTest. 
+Jetzt ist das PersonRepo inkl. Person (Entität) und DB dran. Wir fahren den Slice-Test mit @DataJpaTest.
 Es werden nur DB, Entities und Repos initialisert, keine Services, keine Controller:
 
 ![Repo-DataJpaTest-Tests](../spring-boot-testing/repo-datajpatest.png)
@@ -461,6 +466,7 @@ Auch hier verwenden wir die H2 In-Memory DB.
 <scope>test</scope>
 </dependency>
 ```
+
 </details>
 
 ```java
@@ -512,15 +518,17 @@ class PersonRepoDataJpaTest {
 
 }
 ```
+
 Wichtige Punkte zum Test:
+
 - Zur DB-Konfiguration verwenden wir das application.properties aus /src/**test**/resources. Dieses wird zuerst verwendet, weil es vorhanden ist.
-- @BeforeEach: vor jedem Test füllen wir die DB mit einer Person ab. 
+- @BeforeEach: vor jedem Test füllen wir die DB mit einer Person ab.
 - Nach jedem Test müssen wir die DB **nicht** manuell (oder mit _tearDown()_) resetten oder den Test mit _@DirtiesContext_ annotieren. Dies passiert bei _@DataJpaTest_ automatisch.
 - Falls du möchtest, kannst du die Beans _EntityManager_ oder _TestEntityManager_ iniziieren lassen, um auf EntityManager-Ebene die Daten zu überprüfen.
 
 ## Testcontainers
 
-Bisher haben wir - wo benötigt - mit der In-Memory DB H2 gearbeitet. Wir möchten nun aber mit der "richtigen" DB, also Maria-DB, testen. 
+Bisher haben wir - wo benötigt - mit der In-Memory DB H2 gearbeitet. Wir möchten nun aber mit der "richtigen" DB, also Maria-DB, testen.
 
 Vorteil: Du hast für den Test exakt dieselben Umsysteme wie in der Produktion verwendet. Anstelle
 einer H2 In-Memory-DB können wir hier eine Maria-DB verwenden, wie sie auch "in der Produktion" genutzt wird.
