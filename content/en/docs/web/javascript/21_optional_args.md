@@ -10,18 +10,18 @@ description: >
 
 ## Motivation
 
-Seit ES2015 (ES6) gibt es in JavaScript die Möglichkeit, den Parametern von Methoden einen Default-Wert zu geben.
+Seit ES2015 (ES6) gibt es in JavaScript die Möglichkeit, den Parametern von Methoden einen Default-Wert zu übergeben.
 
 ## Ziele
 
-- Du weisst, wie du in JavaScript optionale Argumente in einem Parameter einen Default-Wert zuweisen kannst.
-- Du weisst, wie du Named Arguments in Parameter verwenden kannst.
+- Du weisst, wie du in JavaScript optionalen Argumenten in einem Parameter einen Default-Wert zuweisen kannst.
+- Du weisst, wie du named Arguments in Parameter verwenden kannst.
 
 ## Basics
 
-Methoden (und daher auch Konstruktore) besitzen oft Werte, die zwingend übergeben werden müssen und welche, die optional sind.
+Methoden (und daher auch Konstruktoren) besitzen oft Werte, die zwingend übergeben werden müssen und welche, die optional sind.
 
-Beim nächsten Beispiel wäre z.B. der Name bei einer Person zwingend, das Alter, Geschlecht und sein/ihr Verhältnis zu JavaScript optional:
+Im folgenden Beispiel ist beispielsweise der Name bei einer Person zwingend, das Alter, Geschlecht und sein/ihr Verhältnis zu JavaScript sind aber optional:
 
 ```javascript
 class Person {
@@ -51,13 +51,13 @@ new Person("Man Ray", null, null, false);
 >>> Person {name: 'Man Ray', age: null, gender: null, lovesJavaScript: false}
 ```
 
-Mit dieser Lösung hast du zwar eine Lösung, das die Präferenz einer Person bez. JavaScript speichert, auch wenn nur ein Name angebeben wird. Aber was wäre, wenn du Eine Person erstellen möchtest mit einem Geschlecht, aber das Alter nicht angeben möchtest?
+Mit dieser Umsetzung hast du zwar eine Lösung, die die Präferenz einer Person bezüglich JavaScript speichert, auch wenn nur ein Name angegeben wird. Aber was wäre, wenn du eine Person mit einem Geschlecht erstellen möchtest, aber das Alter nicht angeben möchtest?
 
-Hierfür bieten sich dann Named Parameters an:
+Hierfür bieten sich dann named Parameters an:
 
 ## Named Parameters
 
-Dank dem Object Destructuring aus ES6 kannst du alle optionale Argument einzeln zuweisen bzw. überspringen. Das könnte wie folgt aussehen:
+Dank dem Object Destructuring aus ES6 kannst du alle optionale Argument einzeln zuweisen beziehungsweise überspringen. Das könnte wie folgt aussehen:
 
 ```javascript
 class Person {
