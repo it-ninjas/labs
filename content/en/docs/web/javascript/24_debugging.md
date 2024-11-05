@@ -15,19 +15,19 @@ description: >
 
 ## Wieso ist Debugging wichtig?
 
-Es gibt eine Vielzahl von Gründen, warum JavaScript-Anwendungen Fehler enthalten können. Typische Fehler sind zum Beispiel unerwartete Nutzereingaben, Netzwerkprobleme, 
+Es gibt eine Vielzahl von Gründen, warum JavaScript-Anwendungen Fehler enthalten können. Typische Fehler sind zum Beispiel unerwartete Nutzereingaben, Netzwerkprobleme,
 inkonsistente Daten oder eine fehlerhafte Logik innerhalb des Codes. Debugging kann dazu beitragen, diese Fehler zu identifizieren und zu beseitigen.
 
 Ein weiterer wichtiger Grund, warum Debugging in JavaScript relevant ist, ist, dass JavaScript eine dynamisch typisierte Sprache ist.
-Das bedeutet, dass Typfehler während der Laufzeit auftreten können, wenn eine Variable unbeabsichtigt einen anderen Datentyp zugewiesen bekommt, als erwartet. 
+Das bedeutet, dass Typfehler während der Laufzeit auftreten können, wenn eine Variable unbeabsichtigt einen anderen Datentyp zugewiesen bekommt, als erwartet.
 Typfehler können schwer zu finden sein, da sie nicht immer sofort zu offensichtlichen Fehlern, sondern häufig zu unerwartetem Verhalten führen können.
 
 ### Ist es schlau, für das Debugging `console.log()` zu verwenden?
 
 Die Antwort ist Jein.
 
-`console.log()` ist eine der gängigsten Methoden, die für das Debuggen verwendet wird, da sie es sehr schnell und einfach ist. 
-Jedoch beeinträchtigen zu viele Logs die Leistung des Codes, was dann zum Problem wird, wenn man beim Pushen in das GIT-Verzeichnis vergisst, 
+`console.log()` ist eine der gängigsten Methoden, die für das Debuggen verwendet wird, da sie es sehr schnell und einfach ist.
+Jedoch beeinträchtigen zu viele Logs die Leistung des Codes, was dann zum Problem wird, wenn man beim Pushen in das GIT-Verzeichnis vergisst,
 die Logs herauszunehmen. So passiert es dann schnell, dass die Konsole mit sinnlosen Logs überfüllt wird. Ausserdem können Logs auch zu Sicherheitsproblemen führen, wenn sensible Daten geloggt werden.
 
 Somit ist es besser, mit den Tools der jeweiligen IDE zu debuggen.
@@ -297,7 +297,7 @@ Hier kann man interaktiv mit dem Code interagieren, indem man JS-Befehle eingibt
 
 ### Frames:
 
-In diesem Bereich werden die Stack-Frames angezeigt, die den aktuellen Programmablauf darstellen. Man kann durch die Frames navigieren, indem man auf den Namen des Frames klickt. Ein Stack Frame ist ein "Stapel", der die zur Laufzeit des Programms gerade aufgerufenen Unterprogramme enthält. 
+In diesem Bereich werden die Stack-Frames angezeigt, die den aktuellen Programmablauf darstellen. Man kann durch die Frames navigieren, indem man auf den Namen des Frames klickt. Ein Stack Frame ist ein "Stapel", der die zur Laufzeit des Programms gerade aufgerufenen Unterprogramme enthält.
 
 ![IntelliJ zeigt nun, das Frame Panel](../images/debugging-frames-panel-intelliJ.png "Frame Panel in IntelliJ")
 
