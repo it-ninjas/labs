@@ -68,9 +68,8 @@ person1.sayHello(); // Hello, my name is Max
 
 Es gibt auch hier statische Methoden, welche in Klassen definiert werden, um Methoden aufzurufen, die nicht an eine bestimmte Instanz der Klasse gebunden sind, sondern direkt auf der Klasse selbst aufgerufen werden können.
 
-Statische Methoden sind hilfreich, um Hilfsfunktionen in einer Klasse zu definieren, die nicht auf eine bestimmte Instanz der Klasse angewiesen sind. 
+Statische Methoden sind hilfreich, um Hilfsfunktionen in einer Klasse zu definieren, die nicht auf eine bestimmte Instanz der Klasse angewiesen sind.
 Sie können auch verwendet werden, um Konstruktoren in einer Klasse zu definieren, die nur einmal ausgeführt werden müssen, unabhängig davon, wie viele Instanzen der Klasse erstellt werden.
-
 
 Statische Methoden werden mit dem Schlüsselbegriff `static` vor der Methodendefinition gekennzeichnet.
 

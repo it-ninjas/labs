@@ -38,7 +38,7 @@ b = "BB"
     at <anonymous>:1:3
 ```
 
-Wie du siehst, kannst du eine mit `let` deklarierte Variable verändern. Versuchst du, eine `const`-Variable neu zu deklarieren, wird ein Fehler geworfen. Es ist jedoch durchaus möglich, einzelne Attribute einer `const`-Variable zu ändern- 
+Wie du siehst, kannst du eine mit `let` deklarierte Variable verändern. Versuchst du, eine `const`-Variable neu zu deklarieren, wird ein Fehler geworfen. Es ist jedoch durchaus möglich, einzelne Attribute einer `const`-Variable zu ändern-
 
 > **Als Grundsatz gilt: Verwende immer `const`, ausser du willst später der Variable im gleichen Scope (nächster Abschnitt) einen anderen Wert zuweisen. Dann verwende `let`.**
 
@@ -73,11 +73,11 @@ console.log(addNumbers(5, 10)); // 15
 console.log(addNumbers("5", "10")); // '510'
 ```
 
-Allerdings gibt es in modernen Versionen von JavaScript (ab ES6) die Möglichkeit, (optionale) Typisierung durch das Verwenden von Typ-Annotationen oder TypeScript hinzuzufügen, welche einer statische Typisierung ähneln können. Dies kann helfen, die Lesbarkeit und die Sicherheit deines Codes zu erhöhen. Wie du die Typen der Parameter in einer Funktion bestimmen kannst, wirst du im Kapitel [JSDoc](https://labs.it-ninjas.ch/docs/web/javascript/22_jsdoc/) genauer sehen.  
+Allerdings gibt es in modernen Versionen von JavaScript (ab ES6) die Möglichkeit, (optionale) Typisierung durch das Verwenden von Typ-Annotationen oder TypeScript hinzuzufügen, welche einer statische Typisierung ähneln können. Dies kann helfen, die Lesbarkeit und die Sicherheit deines Codes zu erhöhen. Wie du die Typen der Parameter in einer Funktion bestimmen kannst, wirst du im Kapitel [JSDoc](https://labs.it-ninjas.ch/docs/web/javascript/22_jsdoc/) genauer sehen.
 
 ### ES6
 
-ES6, auch bezeichnet als ECMAScript 2015 oder ECMAScript 6, war die zweite grössere Revision von JavaScript als Sprache, man kann es auch als Update für JavaScript selbst betrachten. Im Rahmen der Einführung von ES6 wurden viele neue Funktionalitäten zur Sprache hinzugefügt, unter anderem: 
+ES6, auch bezeichnet als ECMAScript 2015 oder ECMAScript 6, war die zweite grössere Revision von JavaScript als Sprache, man kann es auch als Update für JavaScript selbst betrachten. Im Rahmen der Einführung von ES6 wurden viele neue Funktionalitäten zur Sprache hinzugefügt, unter anderem:
 
 - Der `let`-Schlüsselbegriff
 - Der `const`-Schlüsselbegriff
@@ -90,7 +90,7 @@ ES6, auch bezeichnet als ECMAScript 2015 oder ECMAScript 6, war die zweite grös
 - Verschiedene String-Operationen wie beispielsweise `String.includes()`, `String.startsWith()` etc.
 - Verschiedene Array-Operationen wie beispielsweise `Array.find()`, `Array.keys()` etc.
 - JavaScript-Module
-- Und weitere. 
+- Und weitere.
 
 Eine vollständige Liste aller Neuerungen im Rahmen der Einführung von ES6 findest du auf der folgenden Webseite: [Neuerungen in ES6](https://www.w3schools.com/js/js_es6.asp)
 
@@ -249,7 +249,7 @@ console.log(objectVar instanceof Object); // true
 
 `typeof` ist besser geeignet, um primitive Datentypen wie `Strings`, `numbers` und `Booleans` zu überprüfen.
 
-`instanceof` ist hingegen besser geeignet, um den Datentyp von Objekten zu überprüfen, einschließlich Arrays, Funktionen und benutzerdefinierten Objekten. Damit lässt sich ebenfalls prüfen, ob ein Objekt auf Basis einer bestimmten Klasse erstellt wurde. 
+`instanceof` ist hingegen besser geeignet, um den Datentyp von Objekten zu überprüfen, einschließlich Arrays, Funktionen und benutzerdefinierten Objekten. Damit lässt sich ebenfalls prüfen, ob ein Objekt auf Basis einer bestimmten Klasse erstellt wurde.
 
 ### Destructuring Assignment
 
@@ -321,7 +321,7 @@ Ignorieren wir zuerst die Variable `a` bzw. `one`.
 
 - Auf der linken Seite deklarieren wir die Variablen `d` und `b`.
 - Die Felder `d` und `b` aus dem Objekt auf der rechten Seite werden in die Variablen `d` und `b` auf der linken Seite kopiert.
-  - Die Variablen auf der linken Seite müssen nicht zwingend in der gleichen Reihenfolge stehen wie auf der rechten Seite, 
+  - Die Variablen auf der linken Seite müssen nicht zwingend in der gleichen Reihenfolge stehen wie auf der rechten Seite,
   - sie müssen lediglich gleich heissen.
 - Auf der linken Seite sieht `a: one` vielleicht noch verwirrend aus, vor allem wenn du bereits _TypeScript_ kennst.
   - Das bedeutet aber nur, dass du die Variable `a` von der **rechten** Seite in eine Variable **mit einem anderen Namen** `one` kopierst.
