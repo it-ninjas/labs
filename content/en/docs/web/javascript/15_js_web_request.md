@@ -42,7 +42,7 @@ Die Abfrage kannst du wie folgt manuell durchführen:
 fetch("https://api.chucknorris.io/jokes/random", { method: "get" });
 ```
 
-Du wirst sehen, dass dieser Funktionsaufruf ein `Promise {<pending>}` zurückgibt (Promises sind im Kapitel [JS_Async](https://labs.it-ninjas.ch/docs/web/javascript/16_js_async/) zu finden). Wir sehen, dass die Anfrage noch nicht beendet ist (pending = anstehend). Dieses `Promise`-Objekt wird die Antwort enthalten, sobald die Antwort verfügbar ist. Da wir sowieso erst weiterfahren möchten, wenn die Antwort bereit ist, interessieren wir uns noch nicht für das `Promise`. 
+Du wirst sehen, dass dieser Funktionsaufruf ein `Promise {<pending>}` zurückgibt (Promises sind im Kapitel [JS_Async](https://labs.it-ninjas.ch/docs/web/javascript/16_js_async/) zu finden). Wir sehen, dass die Anfrage noch nicht beendet ist (pending = anstehend). Dieses `Promise`-Objekt wird die Antwort enthalten, sobald die Antwort verfügbar ist. Da wir sowieso erst weiterfahren möchten, wenn die Antwort bereit ist, interessieren wir uns noch nicht für das `Promise`.
 Daher können wir mit der Fortsetzung des Scripts solange warten, bis wir die Antwort hätten. Das können wir wie folgt machen:
 
 ```javascript

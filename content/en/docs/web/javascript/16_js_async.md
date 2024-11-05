@@ -146,7 +146,7 @@ callPromiseFunction();
 // Promise {<rejected>: 'error'}
 ```
 
-Ohne das `async`-Keyword wäre es nämlich so, dass der Code je nachdem bereits weiter durchläuft, bevor das Promise erfüllt wurde und ein Resultat vorliegt. 
+Ohne das `async`-Keyword wäre es nämlich so, dass der Code je nachdem bereits weiter durchläuft, bevor das Promise erfüllt wurde und ein Resultat vorliegt.
 
 ```javascript
 function promiseFunction(number) {

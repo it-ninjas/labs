@@ -10,7 +10,7 @@ description: >
 
 ## Ziele
 
-- Du weisst, was `setTimeout(...)` ist, wie man die Methode verwendet und wie man einen Timeout frühzeitig abbricht. 
+- Du weisst, was `setTimeout(...)` ist, wie man die Methode verwendet und wie man einen Timeout frühzeitig abbricht.
 - Du weisst, was `setInterval(...)` ist, wie man die Methode verwendet und wie man ein Interval frühzeitig abbricht.
 
 ## Code verzögert ausführen: setTimeout(...)
@@ -48,12 +48,12 @@ Es ist auch möglich, ein `setTimeout(...)` frühzeitig abzubrechen. Auch hierzu
 
 ```javascript
 const timeoutId = setTimeout(function () {
-    console.log("Cance me!");
+  console.log("Cance me!");
 }, 10000);
 
-clearTimeout(timeoutId)
+clearTimeout(timeoutId);
 ```
 
-Insofern der Timeout zum Zeitpunkt, in dem `clearTimeout(timeoutId)` aufgerufen wird, nicht bereits ausgelaufen ist, wird er so abgebrochen. Wicht zu wissen ist hierbei, dass die callback-Function im Falle eines Abbruchs nicht ausgeführt wird. 
+Insofern der Timeout zum Zeitpunkt, in dem `clearTimeout(timeoutId)` aufgerufen wird, nicht bereits ausgelaufen ist, wird er so abgebrochen. Wicht zu wissen ist hierbei, dass die callback-Function im Falle eines Abbruchs nicht ausgeführt wird.
 
 ![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](https://labs.it-ninjas.ch/labs/web/javascript/01_javascript/#aufgabe-3---uhr).
