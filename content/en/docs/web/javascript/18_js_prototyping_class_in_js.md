@@ -8,6 +8,13 @@ description: >
   Modul #F4 - JavaScript - Prototypen und Klassen.
 ---
 
+## Ziele
+
+- Du weisst, was Prototypen sind und dass JavaScript eine Prototyp-basierte Programmiersprache ist. 
+- Du weisst, was Klassen sind und wie man diese verwendet. 
+- Du weisst, was statische Methoden sind und wie man sie verwendet. 
+- Du weisst, was die Methoden `typeOf` und `instanceOf` bewirken, wie man sie verwendet und was die beiden Methoden voneinander unterscheidet. 
+
 ## JavaScript ist eine Prototyp-basierte Programmiersprache
 
 JavaScript ist eine Prototyp-basierte Programmiersprache, was bedeutet, dass die Vererbung und die Erstellung von Objekten auf Prototypen basieren.
