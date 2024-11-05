@@ -8,11 +8,11 @@ description: >
   Modul #F4 - JavaScript - Prototypen und Klassen.
 ---
 
-## JavaScript ist Prototyp-basierende Programmiersprache
+## JavaScript ist eine Prototyp-basierte Programmiersprache
 
-JavaScript ist eine prototype-basierte Programmiersprache, was bedeutet, dass die Vererbung und die Erstellung von Objekten auf Prototypen basieren.
+JavaScript ist eine Prototyp-basierte Programmiersprache, was bedeutet, dass die Vererbung und die Erstellung von Objekten auf Prototypen basieren.
 
-Ein Prototyp ist ein vordefiniertes Objekt, das als Vorlage für die Erstellung neuer Objekte dient. Wenn ein neues Objekt erstellt wird, erbt es automatisch Eigenschaften und Methoden von seinem Prototypen.
+Ein Prototyp ist ein vordefiniertes Objekt, welches als Vorlage für die Erstellung neuer Objekte dient. Wenn ein neues Objekt erstellt wird, erbt es automatisch Eigenschaften und Methoden von seinem Prototypen.
 
 ```javascript
 // create Object-Prototyp
@@ -25,7 +25,7 @@ const personProto = {
   },
 };
 
-// create new object based on prototyp
+// Erstellen eines Objekts basierend auf einem Prototypen
 const person1 = Object.create(personProto);
 person1.name = "John";
 person1.age = 30;
@@ -68,9 +68,11 @@ person1.sayHello(); // Hello, my name is Max
 
 Es gibt auch hier statische Methoden, welche in Klassen definiert werden, um Methoden aufzurufen, die nicht an eine bestimmte Instanz der Klasse gebunden sind, sondern direkt auf der Klasse selbst aufgerufen werden können.
 
-Statische Methoden sind oft nützlich, um Hilfsfunktionen in einer Klasse zu definieren, die nicht auf eine bestimmte Instanz der Klasse angewiesen sind. Sie können auch verwendet werden, um Konstruktoren in einer Klasse zu definieren, die nur einmal ausgeführt werden müssen, unabhängig davon, wie viele Instanzen der Klasse erstellt werden.
+Statische Methoden sind hilfreich, um Hilfsfunktionen in einer Klasse zu definieren, die nicht auf eine bestimmte Instanz der Klasse angewiesen sind. 
+Sie können auch verwendet werden, um Konstruktoren in einer Klasse zu definieren, die nur einmal ausgeführt werden müssen, unabhängig davon, wie viele Instanzen der Klasse erstellt werden.
 
-Statische Methoden werden mit `static` vor der Methodendefinition gekennzeichnet.
+
+Statische Methoden werden mit dem Schlüsselbegriff `static` vor der Methodendefinition gekennzeichnet.
 
 ```javascript
 class Person {
@@ -97,7 +99,7 @@ person.sayHello(); // Hello, my name is Max
 Person.sayBye(); // Bye Bye
 ```
 
-Natürlich kann eine Klasse auch von einer anderen Erben (extends):
+Natürlich kann eine Klasse auch von einer anderen erben. Dazu wird der `extends`-Schlüsselbegriff verwendet:
 
 ```javascript
 class Person {
@@ -127,9 +129,9 @@ console.log(student.major); // Computer Science
 
 ### typeof vs instanceof bei Klassen
 
-Es gibt zwei Möglichkeiten, den Typ von Objekten zu überprüfen: der `typeof` Operator und der `instanceof` Operator. Wenn es um Klassen geht, haben beide ihre eigenen Anwendungen und Unterschiede:
+Es gibt zwei Möglichkeiten, den Typ eines Objekts zu überprüfen: den `typeof`-Operator und den `instanceof`-Operator. Wenn es um Klassen geht, haben beide ihre eigenen Anwendungsfälle und Unterschiede:
 
-`typeof` wird verwendet, um den Typ eines Werts zu überprüfen. Wenn eine Klasse definiert wird, wird ihr Typ als "function" zurückgegeben. Für eine Instanz wird "object" zurückgegeben.
+`typeof` wird verwendet, um den Typen eines Werts zu überprüfen. Wenn eine Klasse definiert wird, wird ihr Typ als "function" angegeben. Für eine Instanz wird `object` zurückgegeben.
 
 ```javascript
 class Person {
