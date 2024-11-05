@@ -53,6 +53,7 @@ console.dir(person);
 ```
 
 ### Tabelle loggen
+
 Möchtest du beispielsweise ein Array in Form einer Tabelle loggen, kannst du das mit `console.table(...)` bewerkstelligen.
 
 ```javascript
