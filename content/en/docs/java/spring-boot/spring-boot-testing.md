@@ -553,8 +553,8 @@ class PersonRepoDataJpaTest {
         testPerson = new Person(null, "Maria", "Bern");
         personRepo.save(testPerson);
     }
-
-    //Not needed, DB is reset after every test run
+    
+//Not needed, DB is reset after every test run
 //    @AfterEach
 //    public void tearDown() {
 //        // Release test data after each test method
