@@ -19,26 +19,26 @@ In diesem Kapitel lernst du verschiedene Testarten kennen, um eine Spring Boot A
 ## Das Demo-Projekt und sein Setup
 
 Damit du den folgenden Erklärungen einfacher folgen und laufenden Code untersuchen kannst, klone bitte das
-folgende GitHub-Repo und öffne das Projekt in deiner IDE: https://github.com/it-ninjas/springboottesting
+folgende GitHub-Repo und öffne das Projekt in deiner IDE (Branch: master): https://github.com/it-ninjas/springboottesting/tree/master
 
 Das Repo beinhaltet eine laufende Spring Boot Applikation (wen wundert's ;-)), die Personen verwaltet. Via REST-Schnittstelle können
-neue Personen erstellt (_createPerson_) werden und es gibt die Möglichkeit, alle Personen abzufragen (_getAllPersons_).
+neue Personen erstellt werden (_createPerson_) und es gibt die Möglichkeit, alle Personen abzufragen (_getAllPersons_).
 Damit du möglichst einfach Requests machen kannst, ist ein SwaggerUI vorhanden: [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html)
 
-**Datenbank**: Die Applikation benötigt eine laufende JDBC Verbindung auf eine Maria-DB mit Namen 'testDB'.
+<a id="podman-setup">**Datenbank**</a>: Die Applikation benötigt eine laufende JDBC Verbindung auf eine Maria-DB mit Namen 'testDB'.
 Die weiteren Verbindungs-Informationen entnimmst du _/src/main/resources/application.properties_.
 
 <details>
   <summary>Datenbank Setup</summary>
   Du kannst entweder eine bestehende Datenbank verwenden oder dann mittels Docker/Podman einen Maria-DB Container hochfahren:
 
-1. Bestelle dir die temporären Adminrechte. Als Grund kannst du die Installation von Podman angeben.
+1. Bestelle/Aktiviere dir die temporären Adminrechte. Als Grund kannst du die Installation von Podman angeben.
 2. Führe die Podman-Installation gemäss [https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md) durch.
    Hier ist die Anleitung für Windows verlinkt. Du musst nur das Kapitel Installing Podman durchführen.
+   - Falls du eine Fehlermeldung im Sinne von "WSL 2 erfordert ein Update der Kernelkomponente." erhältst, folge diesem Link: https://aka.ms/wsl2kernel und führe mindestens die Schritte 4 und 5 aus. Anschliessend führst du in der Kommando-Zeile `>podman machine init` aus.
 3. Öffne die Kommando-Zeile (cmd, powershell, etc.): `>`
-4. Podman zum ersten Mal initialisieren (nur 1x nach der Installation, danach nie wieder): `>podman machine init`
-5. Podman starten (muss nach jedem Neustart des Geräts gemacht werden): `>podman machine start`
-6. Maria-DB Container erstellen und starten:
+4. Podman starten (muss nach jedem Neustart des Geräts gemacht werden): `>podman machine start`
+5. Maria-DB Container erstellen und starten:
    1. Wechsle ins Projektverzeichnis und erstelle einen Ordner 'maria-db': `>mkdir maria-db`
    2. Starte den Container unter dem Namen _mdb_: `>podman run -d --name=mdb -p 3306:3306 -e MYSQL_USER=admin -e MYSQL_PASSWORD=saysoyeah -e MYSQL_ROOT_PASSWORD=SQLp4ss -e MYSQL_DATABASE=testDB -v ./maria-db:/var/lib/mysql docker.io/mariadb:latest`
    3. Prüfe, ob der Container läuft mittels: `>podman ps -a`
@@ -52,7 +52,7 @@ Die Applikation ist minimalistisch aber mit den wichtigsten Spring-Boot-Layers a
 - Wir haben 1 Entity: **Person**
 - Das **PersonRepo** basiert auf _JpaRepository_ und definiert keine zusätzlichen Methoden.
 - Auch der **PersonService** ist sehr kompliziert :-) Wichtig ist aber, dass er die @Component **MyUtilityBean** verwendet.
-  So haben wir auch noch eine Utility-Bean, die wir testen können.
+  So haben wir auch noch eine Utility-Bean, die wir beim Testen berücksichtigen können.
 - Der **PersonController** bietet zwei REST API Methoden an: _/persons_ (liefert alle Personen) und _/createPerson_ (so kannst du eine neue Person anlegen).
 
 Der PersonController verwendet den PersonService, welcher das PersonRepo anzieht, das die Person Entity nutzt.
@@ -71,36 +71,40 @@ sein resp. praktisch nicht möglich: Stell dir vor, du willst ein Repo mit Mocki
 da an die automatisch durch den Spring-Container generierten Methoden (z.B. _findAll()_)? Gar nicht.
 
 Deshalb gibt es Möglichkeiten, je nach Anwendungsfall den Spring Application-Context teilweise oder ganz hochzufahren.
-Wollen wir nur den Daten-Teil (Entity und Repo) hochfahren ist das ein @DataJpaTest. Hier werden keine Services und auch keine Controller instantiiert.
+Wollen wir nur den Daten-Teil (Entity und Repo) hochfahren ist das ein **@DataJpaTest**. 
+Hier werden keine Services und auch keine Controller instanziiert.
 
-Wollen wir nur den Controller-Teil (inkl. Security, Filter, Converter) hochfahren, ist das ein @WebMvcTest. Es werden keine Services, keine Repos und keine Entities instantiiert.
+Wollen wir nur den Controller-Teil (inkl. Security, Filter, Converter) hochfahren, ist das ein **@WebMvcTest**. 
+Es werden keine Services, keine Repos und keine Entities instanziiert.
 
-Bei @DataJpaTest und @WebMvcTest sprechen wir von sogenannten **Slice-Tests**.
+Bei @DataJpaTest und @WebMvcTest sprechen wir von sogenannten **Slice-Tests**, weil wir nur einen Teil-Bereich (intergrations-)testen.
 
-Natürlich können wir auch den ganzen Spring Application Context hochfahren. Dann verwenden wir @SpringBootTest.
+Natürlich können wir auch den ganzen Spring Application Context hochfahren. Dann verwenden wir **@SpringBootTest**.
 
 Für Services gibt es keine spezielle Slice-Test-Annotation resp. Umgebung. Da nehmen wir entweder Mockito oder dann @SpringBootTest.
 
-**@DataJpaTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch. Das ist langsamer, als pure Unit-Tests. Wir werden daher später lernen, nur gewisse Tests zu starten.**
+> **@DataJpaTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch. Das ist langsamer, als pure Unit-Tests. Wir werden daher später lernen, nur gewisse Tests zu starten.**
 
 ![tipIntegrationTest](/images/hint.png) Bei @DataJpaTest, @WebMvcTest und @SpringBootTest kann man von 'Integration-Tests' sprechen, muss aber nicht.
 Dafür spricht, das verschiedene Komponenten im Zusammenspiel untersucht werden. Wir könnten nun mit Maven
-das failsave Plugin verwenden, das für Integrations-Tests verwendet wird. Das Failsave-Plugin springt in der Maven Phase 'integraton-test' an,
+das [Failsave](https://maven.apache.org/surefire/maven-failsafe-plugin/) Plugin verwenden, das für Integrations-Tests verwendet wird. Das Failsave-Plugin springt in der Maven Phase 'integraton-test' an,
 also nach der Unit-Test-Phase 'test'. Es funktioniert anders als Unit-Tests. **Um die Komplexität zu reduzieren,
-fahren wir in diesem Projekt aber alle Tests als Unit-Tests (maven phase 'test').**
+fahren wir in diesem Projekt aber alle Tests als Unit-Tests (Maven Phase 'test').**
 
 Hier nochmals in der Übersicht, welche Testarten sich für welchen Layer eignen:
-| Layer | Testart(en) |
-| ----------- | ----------- |
-| Entity/Repo | @DataJpaTest |
-| Service | Mockito oder @SpringBootTest |
-| Controller | @WebMvcTest |
+| Layer | Testart(en) | Begründung |
+| ----------- | ----------- | ----------- |
+| Entity/Repo | @DataJpaTest | Wir wollen Queries bis auf die DB "runter" testen. Es gibt viel DB-Interaktion, nicht aber Logik. |
+| Service | Mockito und @SpringBootTest | Services beinhalten die Logik, daher mit Mockito. Services verbinden Repo und Controller, daher @SpringBootTest. |
+| Controller | @WebMvcTest | Es geht primär darum, Anfragen entgegenzunehmen und zurückzugeben, also Eingabe- und Ausgabe-Formate zu testen. Security etc. können ein Thema sein, nicht aber Logik. |
+| Utility-Klasse (hier MyUtilityBean) | Mockito | Reine Logik-Tests resp. "tun die Helper-Methoden, was sie sollen?"-Tests. Hinweise: Im Demo-Projekt gibt es keinen Unit-Test für die MyUtilityBean.|
 
 ## Tests ausführen, SpringBoot-Tests ignorieren
 
 Du kannst alle Tests mit `>mvn clean test` ausführen.
 
-![tippFailingTests](/images/hint.png) Evtl. schlägt der Test _PersonRepoTestContainerDataJpaTest_ fehl. Das hat damit zu tun, dass bei der Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten an.
+![tippFailingTests](/images/hint.png) Evtl. schlägt der Test _PersonRepoTestContainerDataJpaTest_ fehl. Das hat damit zu tun, 
+dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten an im Abschnitt [Testcontainers](#testcontainers).
 
 Wie bereits weiter oben erwähnt, sind @DataJpaTest-, @WebMvcTest- und @SpringBootTest-Tests zeitaufwändig.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
@@ -110,7 +114,7 @@ Mit `-Dsurefire.excludes=...` kannst du festlegen, welche Unit-Tests ignoriert w
 Das obige Beispiel bezieht sich auf die Bennenung der Tests im Demo-Projekt: Alle Tests die
 _WebMvcTest_ oder _DataJpaTest_ oder _SpringBootTest_ im Klassenamen haben werden so ignoriert.
 
-## Services testen mit Mockito
+## Service testen mit Mockito
 
 Nun schauen wir an, wie die einzelnen Layers getestet werden können. Starten wir mit dem _PersonService_!
 
@@ -239,7 +243,7 @@ Wichtige Punkte zum Test:
 - _createPerson()_:
   - Die MyUtilityBean wird gespied, ob sie 2x aufgerufen wird und gleichzeitig wird gecaptured, ob die Bean auch die korrekten Person-Objekte übergeben bekommt.
 
-## @SpringBootTest
+## Service mit @SpringBootTest testen
 
 Wir testen erneut den _PersonService_, jetzt aber mit dem kompletten Application-Context. Auf Mocks
 verzichten wir. Es gibt keine spezielle Annotation für Slice-Tests mit Services. Deshalb fahren wir den gesamten
@@ -265,7 +269,6 @@ Wir verwenden eine H2 In-Memory Datenbank.
   <scope>test</scope>
 </dependency>
 ```
-
 </details>
 
 ```java
@@ -336,13 +339,13 @@ class PersonServiceSpringBootTest {
 Wichtige Punkte zum Test:
 
 - Zur DB-Konfiguration verwenden wir das application.properties aus /src/**test**/resources. Dieses wird zuerst verwendet, weil es vorhanden ist.
-- Anstelle von @Spy (und @Mock) wird @SpyBean (und @MockBean) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden.
+- Anstelle von @Spy (und @Mock) wird **@SpyBean** (und **@MockBean**) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden.
 - Für den Test _getAllPersons()_ verwenden wir ein spezifisches @Sql Script _data_personservice.sql_.
 - Die Annotation _@DirtiesContext_ bewirkt, dass nach dem Test die DB zurückgesetzt wird. Andernfalls hätten wir noch die Daten aus dem vorherigen Test in der DB.
 - Im Test _createPersons()_ verwenden wir einen ArgumentCaptor auf der _myUtilityBean_ und zählen, ob auf ihr 2x die Methode _addPerson()_ aufgerufen wird und ob die erste Person auch unseren Testdaten entspricht.
 - WebEnvironment deaktivieren: Falls du verhindern möchtest, dass das WebEnvironment (u.a. Controller) hochgefahren wird, kannst du die Annoation _@SpringBootTest_ erweitern um _@SpringBootTest(webEnvironment = WebEnvironment.NONE)_. In diesem Szenario hier wäre das sicher sinnvoll, da wir den Controller sowieso nicht verwenden. Also los, ändere die Annotation!
 
-## @WebMvcTest
+## Controller mit @WebMvcTest testen
 
 Nun testen wir den _PersonController_. Dazu fahren wir einen Slice-Test mit _@WebMvcTest_. Es werden weder Services, noch Repos, noch Entities hochgefahren.
 Deshalb mocken wir den PersonService:
@@ -361,6 +364,42 @@ Deshalb mocken wir den PersonService:
 ```
 
 </details>
+
+Hier die UUT:
+
+```java
+package com.demo.springboottesting.controllers;
+
+import com.demo.springboottesting.entities.Person;
+import com.demo.springboottesting.services.PersonService;
+import jakarta.validation.Valid;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+public class PersonController {
+
+    private final PersonService personService;
+
+    @GetMapping("/persons")
+    public ResponseEntity<List<Person>> getAllPersons() {
+        return ResponseEntity.ok(personService.getAllPerson());
+    }
+
+    @PostMapping("/createPerson")
+    public ResponseEntity<Person> createPerson(@Valid @RequestBody Person person) {
+        return ResponseEntity.ok(personService.createPerson(person));
+    }
+}
+```
+
+Und hier die Test-Klasse:
 
 ```java
 package com.demo.springboottesting.controllers;
@@ -438,10 +477,12 @@ class PersonControllerWebMvcTest {
 Wichtige Punkte zum Test:
 
 - Der _PersonService_ wird gemockt.
-- Wir verwenden einen _MockMvc_. Damit können wir (REST-)Requests absetzen und die Antworten auswerten. _getAllPersons()_ macht einfache String-Überprüfungen, _createPerson()_ wertet die JSON-Response detailliert aus.
+- Wir verwenden einen _MockMvc_. Damit können wir (REST-)Requests absetzen und die Antworten auswerten. 
+  - _getAllPersons()_ macht einfache String-Überprüfungen.
+  - _createPerson()_ wertet die JSON-Response detailliert aus. Bei _jsonPath("$.personName")_ bezieht sich _$_ auf das zurückgegebene einzelne Objekt. Erwarten wir eine Liste von Objekten kann über den Index auf ein entsprechendes Objekt zugegriffen werden. Wollen wir z.B. auf das 2te Objekt in der Liste zugreifen, verwenden wir _$[1].personName_ .
 - (Tipp am Rande: Falls du trotzdem eine DB verwenden würdest: Es gibt kein automatisches Rollback der Daten nach jedem Test.)
 
-## @DataJpaTest
+## Repo/Entity mit @DataJpaTest testen
 
 Jetzt ist das PersonRepo inkl. Person (Entität) und DB dran. Wir fahren den Slice-Test mit @DataJpaTest.
 Es werden nur DB, Entities und Repos initialisert, keine Services, keine Controller:
@@ -461,13 +502,28 @@ Auch hier verwenden wir die H2 In-Memory DB.
 </dependency>
 
 <dependency>
-<groupId>com.h2database</groupId>
-<artifactId>h2</artifactId>
-<scope>test</scope>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>test</scope>
 </dependency>
 ```
 
 </details>
+
+Hier die UUT:
+
+```java
+package com.demo.springboottesting.repos;
+
+import com.demo.springboottesting.entities.Person;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PersonRepo
+    extends JpaRepository<Person, Integer> {
+}
+```
+
+Und hier die Test-Klasse:
 
 ```java
 package com.demo.springboottesting.repos;
@@ -528,14 +584,134 @@ Wichtige Punkte zum Test:
 
 ## Testcontainers
 
-Bisher haben wir - wo benötigt - mit der In-Memory DB H2 gearbeitet. Wir möchten nun aber mit der "richtigen" DB, also Maria-DB, testen.
+Mit Testcontainers kannst du beliebige Umsysteme einbinden. Das System basiert auf Docker/Podman-Containern, die 
+für den Test hochgefahren und initalisiert werden. Der Vorteil ist, dass du für den Test exakt dieselben Umsysteme 
+wie in der Produktion verwenden kannst. Beispiel: Anstelle einer H2 In-Memory-DB können wir nun eine Maria-DB verwenden, 
+wie sie auch "in der Produktion" genutzt wird. Grundsätzlich kannst du alle Container verwenden, die auf https://hub.docker.com/ zur Verfügung gestellt werden oder die du selber erstellt hast.
 
-Vorteil: Du hast für den Test exakt dieselben Umsysteme wie in der Produktion verwendet. Anstelle
-einer H2 In-Memory-DB können wir hier eine Maria-DB verwenden, wie sie auch "in der Produktion" genutzt wird.
+Damit Testcontainers funktionieren, musst du zuerst Podman/Docker installieren. Falls noch nicht gemacht, 
+führe die Schritte 1-4 aus im oben beschriebenen [Datenbank Setup](#podman-setup). Nun hast du Podman installiert und gestartet.
 
-> Docker resp. Podman muss installiert sein und laufen: > podman machine start
+Wir testen erneut das PersonRepo mit einem @DataJpaTest.
 
-natürlich gäbe es auch noch andere Möglichkeiten, um zur Laufzeit Tests ein- resp. auszuschalten (z.B. über Maven-Profiles).
+<details>
+  <summary>Verwende die folgenden Dependencies im pom.xml</summary>
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-testcontainers</artifactId>
+  <scope>test</scope>
+</dependency>
+
+<dependency>
+  <groupId>org.testcontainers</groupId>
+  <artifactId>junit-jupiter</artifactId>
+  <version>1.20.2</version>
+  <scope>test</scope>
+</dependency>
+
+<dependency>
+  <groupId>org.testcontainers</groupId>
+  <artifactId>mariadb</artifactId>
+  <version>1.20.2</version>
+  <scope>test</scope>
+</dependency>
+```
+
+</details>
+
+```java
+package com.demo.springboottesting.repos;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.demo.springboottesting.entities.Person;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.TestPropertySource;
+import org.testcontainers.containers.MariaDBContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+@DataJpaTest(showSql = true)
+//Optional: We specify to use only our own DB connection settings below.
+//If you still want to use DB settings from /src/test/resources/application.properties comment out the following line:
+@AutoConfigureTestDatabase( replace = Replace.ANY )
+//Set properties for these specific tests:
+@TestPropertySource( properties = {"spring.jpa.hibernate.ddl-auto=create-drop"} )
+//Tell the testrunner to use testcontainers:
+@Testcontainers
+class PersonRepoTestContainerDataJpaTest {
+
+    //Create the container with other properties (here related to the base DB-connection):
+    @Container
+    static MariaDBContainer<?> testContainer = new MariaDBContainer<>( "mariadb:latest" );
+    @DynamicPropertySource
+    static void properties( DynamicPropertyRegistry registry ) {
+        registry.add("spring.datasource.driver-class-name", testContainer::getDriverClassName);
+        registry.add( "spring.datasource.url", testContainer::getJdbcUrl );
+        registry.add( "spring.datasource.username", testContainer::getUsername );
+        registry.add( "spring.datasource.password", testContainer::getPassword );
+    }
+
+    @Autowired
+    private PersonRepo personRepo;
+
+    private Person testPerson;
+
+
+    @BeforeEach
+    public void setUp() {
+        // Initialize test data before each test method
+        testPerson = new Person(null, "Maria", "Bern");
+        personRepo.save(testPerson);
+    }
+    
+    @Test
+    void existsById() {
+        assertTrue(personRepo.existsById(testPerson.getPersonId()));
+    }
+
+    @Test
+    void findAll() {
+        assertThat(personRepo.findAll()).hasSize(1);
+    }
+
+}
+```
+
+Wichtige Punkte zum Test:
+- _@AutoConfigureTestDatabase( replace = Replace.ANY )_: Wir deaktivieren die Konfiguration aus /src/test/resources/application.properties komplett.
+- _@TestPropertySource( properties = {"spring.jpa.hibernate.ddl-auto=create-drop"} )_: Wir übergeben für diese Test-Klasse spezifische Properties, d.h. die DB wird komplett gelöscht und das Schema neu erzeugt.
+- @Testcontainers: Wird benötigt, damit der Test mit Testcontainers überhaupt funktioniert.
+- Container erstellen und Config-Daten aus dem gestarteten Container ins application.properties übernehmen: 
+ ```java
+    @Container
+    static MariaDBContainer<?> testContainer = new MariaDBContainer<>( "mariadb:latest" );
+    @DynamicPropertySource
+    static void properties( DynamicPropertyRegistry registry ) {
+        registry.add("spring.datasource.driver-class-name", testContainer::getDriverClassName);
+        registry.add( "spring.datasource.url", testContainer::getJdbcUrl );
+        registry.add( "spring.datasource.username", testContainer::getUsername );
+        registry.add( "spring.datasource.password", testContainer::getPassword );
+    }
+  ```
+- Wie du siehst, definieren wir an verschiedenen Orten die benötigten Properties. Standard-Properties werden hier über _@DynamicPropertySource_ hinzugefügt. Test-spezifische Properties werden über die Klassen-Annotation _@TestPropertySource_ gesetzt. Grundsätzlich könntest du aber auch nur mit der DynamicPropertySource arbeiten. 
+
 
 ---
 
@@ -543,5 +719,5 @@ natürlich gäbe es auch noch andere Möglichkeiten, um zur Laufzeit Tests ein- 
 
 - Schreibe Mockito-Tests für den _AdminService_.
 - Ändere den _AdminControllerIntegrationTest_ zu einem WebMvcTest.
-- Schreibe einen DataJpaTest, der das _StudentRepository_ inkl. _SchoolSubject_ abdeckt.
+- Schreibe einen DataJpaTest, der das _StudentRepository_ inkl. _SchoolSubject_ (evtl. hast du einen anderen Namen) abdeckt.
 - Schreibe einen SpringBootTest als kompletten Integrationstest, der vom Controller-Aufruf mittels MockMvc bis auf die H2-DB "runter" geht. Teste, ob das Anlegen eines neuen Schulfachs funktioniert und ob die Daten persistiert werden.
