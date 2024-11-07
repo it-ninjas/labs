@@ -51,7 +51,7 @@ Die Applikation ist minimalistisch aber mit den wichtigsten Spring-Boot-Layers a
 
 - Wir haben 1 Entity: **Person**
 - Das **PersonRepo** basiert auf _JpaRepository_ und definiert keine zusätzlichen Methoden.
-- Auch der **PersonService** ist sehr kompliziert :-) Wichtig ist aber, dass er die @Component **MyUtilityBean** verwendet.
+- Auch der **PersonService** ist sehr kompliziert :-). Wichtig ist aber, dass er die @Component **MyUtilityBean** verwendet.
   So haben wir auch noch eine Utility-Bean, die wir beim Testen berücksichtigen können.
 - Der **PersonController** bietet zwei REST API Methoden an: _/persons_ (liefert alle Personen) und _/createPerson_ (so kannst du eine neue Person anlegen).
 
