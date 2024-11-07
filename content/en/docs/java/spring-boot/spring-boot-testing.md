@@ -41,6 +41,7 @@ Die weiteren Verbindungs-Informationen entnimmst du _/src/main/resources/applica
 5. Maria-DB Container erstellen und starten:
    1. Wechsle ins Projektverzeichnis und erstelle einen Ordner 'maria-db': `>mkdir maria-db`
    2. Starte den Container unter dem Namen _mdb_: `>podman run -d --name=mdb -p 3306:3306 -e MYSQL_USER=admin -e MYSQL_PASSWORD=saysoyeah -e MYSQL_ROOT_PASSWORD=SQLp4ss -e MYSQL_DATABASE=testDB -v ./maria-db:/var/lib/mysql docker.io/mariadb:latest`
+      - Wenn du bereits eine Maria-DB auf Port 3306 am Laufen hast, musst du diese stoppen oder hier einen anderen Port verwenden: Ändere die erste Zahl 3306 auf einen neuen Port und anschliessend musst du auch die beiden application.properties Dateien anpassen.
    3. Prüfe, ob der Container läuft mittels: `>podman ps -a`
    4. Ab jetzt kannst du den Container mittels `>podman stop mdb` und `>podman start mdb` stoppen und starten.
    </details>
@@ -51,7 +52,7 @@ Die Applikation ist minimalistisch aber mit den wichtigsten Spring-Boot-Layers a
 
 - Wir haben 1 Entity: **Person**
 - Das **PersonRepo** basiert auf _JpaRepository_ und definiert keine zusätzlichen Methoden.
-- Auch der **PersonService** ist sehr kompliziert :-). Wichtig ist aber, dass er die @Component **MyUtilityBean** verwendet.
+- Auch der **PersonService** ist sehr kompliziert :-). Wichtig ist aber, dass er die `@Component` **MyUtilityBean** verwendet.
   So haben wir auch noch eine Utility-Bean, die wir beim Testen berücksichtigen können.
 - Der **PersonController** bietet zwei REST API Methoden an: _/persons_ (liefert alle Personen) und _/createPerson_ (so kannst du eine neue Person anlegen).
 
@@ -101,12 +102,12 @@ Hier nochmals in der Übersicht, welche Testarten sich für welchen Layer eignen
 
 ## Tests ausführen, SpringBoot-Tests ignorieren
 
-Du kannst alle Tests mit `>mvn clean test` ausführen.
+Du kannst alle Tests mit `mvn clean test` ausführen.
 
 ![tippFailingTests](/images/hint.png) Evtl. schlägt der Test _PersonRepoTestContainerDataJpaTest_ fehl. Das hat damit zu tun,
 dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten an im Abschnitt [Testcontainers](#testcontainers) an.
 
-Wie bereits weiter oben erwähnt, sind @DataJpaTest-, @WebMvcTest- und @SpringBootTest-Tests zeitaufwändig.
+Wie bereits weiter oben erwähnt, sind @DataJpaTest-, @WebMvcTest- und @SpringBootTest-Tests zeitaufwändig bei der Ausführung.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
 Wege, der einfachste ist aber so: `>mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*SpringBootTest*`.
 
