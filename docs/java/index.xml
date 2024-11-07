@@ -4336,7 +4336,13 @@ Mit Hilfe der Mockito-Methoden, kann jedoch definiert werden, dass bestimmte Met
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wie ein Spy verwendet werden kann, um nur einige Methoden umzuleiten, wird in einem späteren Kapitel erklärt.&lt;/p>
+&lt;/div>&lt;p>&lt;strong>⚠️ ACHTUNG ⚠️&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Für Stubbing in @Spy muss immer die Notation &lt;code>Mockito.doReturn().when().size();&lt;/code> verwendet werden. Mit &lt;code>Mockito.when().thenReturn()&lt;/code> wird es nicht funktionieren.
+Grund dafür ist, dass wenn &lt;code>Mockito.doReturn().when().size();&lt;/code> verwendet wird, in jedem Fall das gegebene Return durchgeführt wird.
+Wenn bei &lt;code>Mockito.when().thenReturn()&lt;/code> zum Beispiel eine Exception auftritt, wird nicht das richtige Resultat zurück gegeben.&lt;/p>
+&lt;/blockquote>
+&lt;p>Wie ein Spy verwendet werden kann, um nur einige Methoden umzuleiten, wird in einem späteren Kapitel erklärt.&lt;/p>
 &lt;h4 id="captor-annotation">@Captor Annotation&lt;/h4>
 &lt;p>Ein ArgumentCaptor kann Argumente einer Methode &amp;ldquo;fangen&amp;rdquo; damit diese danach inspiziert werden könnten.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
