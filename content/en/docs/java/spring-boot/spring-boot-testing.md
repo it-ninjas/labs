@@ -104,7 +104,7 @@ Hier nochmals in der Übersicht, welche Testarten sich für welchen Layer eignen
 Du kannst alle Tests mit `>mvn clean test` ausführen.
 
 ![tippFailingTests](/images/hint.png) Evtl. schlägt der Test _PersonRepoTestContainerDataJpaTest_ fehl. Das hat damit zu tun,
-dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten an im Abschnitt [Testcontainers](#testcontainers).
+dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten an im Abschnitt [Testcontainers](#testcontainers) an.
 
 Wie bereits weiter oben erwähnt, sind @DataJpaTest-, @WebMvcTest- und @SpringBootTest-Tests zeitaufwändig.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
