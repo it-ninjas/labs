@@ -108,7 +108,7 @@ dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter un
 
 Wie bereits weiter oben erwähnt, sind @DataJpaTest-, @WebMvcTest- und @SpringBootTest-Tests zeitaufwändig.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
-Wege, der einfachste ist aber so: `>mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*SpringBootTest*`
+Wege, der einfachste ist aber so: `>mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*SpringBootTest*`.
 
 Mit `-Dsurefire.excludes=...` kannst du festlegen, welche Unit-Tests ignoriert werden sollen.
 Das obige Beispiel bezieht sich auf die Bennenung der Tests im Demo-Projekt: Alle Tests die
