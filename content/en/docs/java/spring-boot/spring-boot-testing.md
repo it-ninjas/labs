@@ -152,7 +152,7 @@ public class PersonService {
 }
 ```
 
-Wir schreiben zuerst **Mockito**-Tests. Da sollte dir bereits bekannt sein, wie's geht. So sieht unser Testaufbau aus:
+Wir schreiben zuerst **Mockito**-Tests. Wie das geht, sollte dir bereits bekannt sein. So sieht unser Testaufbau aus:
 
 ![Service-Mockito-Tests](../spring-boot-testing/service-mockito.png)
 
