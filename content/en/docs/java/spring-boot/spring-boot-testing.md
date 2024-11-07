@@ -55,7 +55,7 @@ Die Applikation ist minimalistisch aber mit den wichtigsten Spring-Boot-Layers a
   So haben wir auch noch eine Utility-Bean, die wir beim Testen berücksichtigen können.
 - Der **PersonController** bietet zwei REST API Methoden an: _/persons_ (liefert alle Personen) und _/createPerson_ (so kannst du eine neue Person anlegen).
 
-Der PersonController verwendet den PersonService, welcher das PersonRepo anzieht, das die Person Entity nutzt.
+Der `PersonController` verwendet den PersonService, welcher auf das `PersonRepo` zugreift, das die `Person`-Entity nutzt.
 Das Zwiebelprinzip in Reinkultur ;-)
 
 ![tipParallel](/images/hint.png) Während du die Doku hier liest, schaust du dir parallel dazu die erwähnten Code-Stellen an,
