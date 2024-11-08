@@ -46,8 +46,8 @@ dass solche Situationen zur Laufzeit nicht auftreten.
 Hier ein Beispiel mit einer `NullPointerException`:
 \```java
 public static void main(String[] args) {
-    Person person = null; // könnte stattdessen auch eine Methode sein, welche null zurückgibt
-    person.getName(); // hier wird eine NullPointerException geworfen, da person == null
+Person person = null; // könnte stattdessen auch eine Methode sein, welche null zurückgibt
+person.getName(); // hier wird eine NullPointerException geworfen, da person == null
 }
 \```
 **Checked Exceptions** müssen entweder am Ort des Auftretens abgefangen oder an den Aufrufer der Methode weitergegeben werden.
@@ -162,7 +162,7 @@ try {
 
 Ein `try`-Block (ob mit oder ohne `catch`-Block) kann zusätzlich einen `finally`-Block haben.
 Der `finally`-Block wird nach der Bearbeitung der Exception ausgeführt.
-Falls keine Exception aufgetreten ist, wird der Code im `finally`-Block direkt nach dem `try`-Block ausgeführt. Der ` finally`-Block wird also auf jeden Fall ausgeführt. Er muss deshalb so geschrieben werden, das auf jeden Fall funktioniert, auch wenn der `Try`-Block nicht komplett ausgeführt wird oder der ` catch`-Block nie ausgeführt wurde. 
+Falls keine Exception aufgetreten ist, wird der Code im `finally`-Block direkt nach dem `try`-Block ausgeführt. Der ` finally`-Block wird also auf jeden Fall ausgeführt. Er muss deshalb so geschrieben werden, das auf jeden Fall funktioniert, auch wenn der `Try`-Block nicht komplett ausgeführt wird oder der ` catch`-Block nie ausgeführt wurde.
 
 ```java
 try {
