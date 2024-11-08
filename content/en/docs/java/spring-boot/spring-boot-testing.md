@@ -84,10 +84,10 @@ Natürlich können wir auch den ganzen Spring Application Context hochfahren. Da
 
 Für Services gibt es keine spezielle Slice-Test-Annotation resp. Umgebung. Da nehmen wir entweder Mockito oder dann @SpringBootTest.
 
-> @DataJpaTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch. 
+> @DataJpaTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch.
 > Das ist langsamer bei der Ausführung, als pure Unit-Tests. Wir werden daher später lernen, nur gewisse Tests zu starten.
 
-![tipIntegrationTest](/images/hint.png) Bei @DataJpaTest, @WebMvcTest und @SpringBootTest kann man von 'Integration-Tests' sprechen, 
+![tipIntegrationTest](/images/hint.png) Bei @DataJpaTest, @WebMvcTest und @SpringBootTest kann man von 'Integration-Tests' sprechen,
 weil verschiedene Komponenten im Zusammenspiel untersucht werden. Wir könnten nun mit Maven
 das [Failsave](https://maven.apache.org/surefire/maven-failsafe-plugin/) Plugin verwenden, das für Integrations-Tests verwendet wird. Das Failsave-Plugin springt in der Maven Phase 'integraton-test' an,
 also nach der Unit-Test-Phase 'test'. Es funktioniert anders als Unit-Tests. Um die Komplexität zu reduzieren,
@@ -110,7 +110,8 @@ dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter un
 
 Wie bereits weiter oben erwähnt, sind `@DataJpaTest`-, `@WebMvcTest`- und `@SpringBootTest`-Tests zeitaufwändig bei der Ausführung.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
-Wege, der einfachste ist aber so: 
+Wege, der einfachste ist aber so:
+
 ```
 mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*SpringBootTest*
 ```
