@@ -33,7 +33,7 @@ Die weiteren Verbindungs-Informationen entnimmst du _/src/main/resources/applica
   Du kannst entweder eine bestehende Datenbank verwenden oder dann mittels Docker/Podman einen Maria-DB Container hochfahren:
 
 1. Bestelle/Aktiviere dir die temporären Adminrechte. Als Grund kannst du die Installation von Podman angeben.
-2. Führe die Podman-Installation gemäss [https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md) durch.
+2. Führe die Podman-Installation gemäss [https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md#installing-podman) durch.
    Hier ist die Anleitung für Windows verlinkt. Du musst nur das Kapitel Installing Podman durchführen.
    - Falls du eine Fehlermeldung im Sinne von "WSL 2 erfordert ein Update der Kernelkomponente." erhältst, folge diesem Link: https://aka.ms/wsl2kernel und führe mindestens die Schritte 4 und 5 aus. Anschliessend führst du in der Kommando-Zeile `podman machine init` aus.
 3. Öffne die Kommando-Zeile (cmd, powershell, etc.).
