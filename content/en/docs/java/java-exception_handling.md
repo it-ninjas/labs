@@ -15,7 +15,7 @@ description: >
 - Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden.
 - Ich kenne die beiden Interfaces `AutoCloseable` und `Closeable`.
 - Ich kenne eine Möglichkeit, um anzugeben, dass bestimmte Werte "nullable" bzw. nicht "nullable" sind.
-- Ich verstehe, wie Optional meinen Code sicherer gegenüber null-Werten macht.
+- Ich verstehe, wie `Optional` meinen Code sicherer gegenüber `null`-Werten macht.
 
 ## Theorie / Einleitung
 
