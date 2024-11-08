@@ -296,7 +296,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 
-@SpringBootTest()
+@SpringBootTest
 class PersonServiceSpringBootTest {
 
     @Autowired
