@@ -37,7 +37,7 @@ Innerhalb des Java Exception Handling unterscheiden wir zwei Arten von Exception
 - **Unchecked Exceptions**: Laufzeitfehler, die vom Compiler nicht erkannt werden.
 - **Checked Exceptions**: Fehler, die vom Compiler zur Kompilierungszeit erkannt werden.
 
-_Unchecked Exceptions_ sind oft Fehler, welche bei der Implementation übersehen werden.
+**Unchecked Exceptions** sind oft Fehler, welche bei der Implementation übersehen werden.
 Der häufigste Laufzeitfehler ist die `NullPointerException`. Diese kann erst zur Laufzeit auftreten,
 da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt `null` sein kann.  
 Die einzige Möglichkeit, Laufzeitfehler abzuhandeln, ist "Safe Programming". Das heisst, dass wir während der Implementation
