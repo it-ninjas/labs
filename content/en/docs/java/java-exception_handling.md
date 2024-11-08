@@ -43,7 +43,13 @@ da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt `n
 Die einzige Möglichkeit, Laufzeitfehler abzuhandeln, ist "Safe Programming". Das heisst, dass wir während der Implementation
 Prüfungen und sog. "Guards" im Code einbauen (z.B. prüfen, ob eine Referenz nicht `null` ist bevor wir darauf zugreifen) um sicherzustellen,
 dass solche Situationen zur Laufzeit nicht auftreten.
-
+Hier ein Beispiel mit einer `NullPointerException`:
+\```java
+public static void main(String[] args) {
+    Person person = null; // könnte stattdessen auch eine Methode sein, welche null zurückgibt
+    person.getName(); // hier wird eine NullPointerException geworfen, da person == null
+}
+\```
 **Checked Exceptions** müssen entweder am Ort des Auftretens abgefangen oder an den Aufrufer der Methode weitergegeben werden.
 Dadurch wird die Verantwortung zur Behandlung der Exception an den Aufrufer weitergegeben.
 
