@@ -4777,42 +4777,47 @@ Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Test
 &lt;p>&lt;img alt="task1" src="/images/task.png"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/java/java-testing/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Exception Handling und Optionals</title><link>/docs/java/java-exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-exception_handling/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
-&lt;li>Ich kenne die Schlüsselwörter &lt;code>try&lt;/code>, &lt;code>catch&lt;/code>, &lt;code>finally&lt;/code>, &lt;code>throw&lt;/code> und &lt;code>throws&lt;/code>&lt;/li>
-&lt;li>Ich weiss was &amp;ldquo;Unchecked&amp;rdquo; und &amp;ldquo;Checked&amp;rdquo; Exceptions sind&lt;/li>
-&lt;li>Ich kann auftretende Exceptions abhandeln&lt;/li>
-&lt;li>Ich kann eigene Exceptions definieren und anwenden&lt;/li>
-&lt;li>Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden&lt;/li>
-&lt;li>Ich kenne die beiden Interfaces AutoCloseable und Closeable.&lt;/li>
-&lt;li>Ich kenne eine Möglichkeit, um klar zu machen, dass bestimmte Werte &amp;ldquo;nullable&amp;rdquo; bzw. nicht &amp;ldquo;nullable&amp;rdquo; sind.&lt;/li>
-&lt;li>Ich weiss, inwiefern &lt;code>Optionals&lt;/code> meinen Code &lt;code>null&lt;/code>-safer machen.&lt;/li>
+&lt;li>Ich kenne die Schlüsselwörter &lt;code>try&lt;/code>, &lt;code>catch&lt;/code>, &lt;code>finally&lt;/code>, &lt;code>throw&lt;/code> und &lt;code>throws&lt;/code>.&lt;/li>
+&lt;li>Ich weiss, was &amp;ldquo;Unchecked&amp;rdquo; und &amp;ldquo;Checked&amp;rdquo; Exceptions sind.&lt;/li>
+&lt;li>Ich kann auftretende Exceptions behandeln.&lt;/li>
+&lt;li>Ich kann eigene Exceptions definieren und anwenden.&lt;/li>
+&lt;li>Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden.&lt;/li>
+&lt;li>Ich kenne die beiden Interfaces &lt;code>AutoCloseable&lt;/code> und &lt;code>Closeable&lt;/code>.&lt;/li>
+&lt;li>Ich kenne eine Möglichkeit, um anzugeben, dass bestimmte Werte &amp;ldquo;nullable&amp;rdquo; bzw. nicht &amp;ldquo;nullable&amp;rdquo; sind.&lt;/li>
+&lt;li>Ich verstehe, wie &lt;code>Optional&lt;/code> meinen Code sicherer gegenüber &lt;code>null&lt;/code>-Werten macht.&lt;/li>
 &lt;/ul>
 &lt;h2 id="theorie--einleitung">Theorie / Einleitung&lt;/h2>
-&lt;p>In jeder Applikation kann es zu erwarteten oder unerwarteten Fehlern kommen.
-In Java werden diese Fehler durch den Bereich Exception Handling abgedeckt.
-Im Exception Handling gilt es, durch gezieltes Abhandeln von auftretenden Exceptions, Abstürze der Anwendung zu verhindern.
-Jeder Software-Entwickler muss sich bewusst sein, dass nicht behandelte Exceptions eine Anwendung jederzeit beenden können.&lt;/p>
+&lt;p>In jeder Applikation können erwartete oder unerwartete Fehler auftreten.
+In Java werden solche Fehler durch das Exception Handling abgefangen.
+Ziel des Exception Handlings ist es, durch gezieltes Behandeln von auftretenden Exceptions, Abstürze der Anwendung zu verhindern.
+Jeder Softwareentwickler sollte sich bewusst sein, dass unbehandelte Exceptions eine Anwendung jederzeit beenden können.&lt;/p>
 &lt;p>In Java unterscheidet man zwischen zwei Arten von Fehlern:&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>Error&lt;/strong>: das sind nicht reparierbare Laufzeitfehler oder ein Hardware-Problem, welche zum Absturz des Programms führen.&lt;/li>
-&lt;li>&lt;strong>Exception&lt;/strong>: das sind Fehler oder nicht geplante Ereignisse, welche während der Ausführung eines Programms vorkommen und dessen normalen Ablauf stören.&lt;/li>
+&lt;li>&lt;strong>Error&lt;/strong>: Dies sind nicht reparierbare Laufzeitfehler oder Hardware-Probleme, die zum Absturz des Programms führen.&lt;/li>
+&lt;li>&lt;strong>Exception&lt;/strong>: Dies sind Fehler oder unvorhergesehene Ereignisse, die während der Programmausführung auftreten und den normalen Ablauf stören.&lt;/li>
 &lt;/ul>
-&lt;p>Eine Java-Applikation sollte nicht versuchen &lt;em>Errors&lt;/em> zu &amp;ldquo;fangen&amp;rdquo;, da die meisten Fehler dieser Art
-wegen abnormalen Bedingungen (wie z.B. nicht genügend Speicher) auftreten und unter normalen Bedingungen nicht behoben werden können.&lt;br>
-Exceptions sind hingegen unerwartete Fehler, auf die das Programm reagieren muss.&lt;/p>
+&lt;p>Eine Java-Applikation sollte nicht versuchen, &lt;strong>Errors&lt;/strong> abzufangen, da diese Fehler in der Regel aufgrund abnormaler Bedingungen (wie z. B. zu wenig Speicher) auftreten und unter normalen Umständen nicht behoben werden können.
+&lt;strong>Exceptions&lt;/strong> hingegen sind unerwartete Fehler, auf die das Programm reagieren muss.&lt;/p>
 &lt;p>Innerhalb des Java Exception Handling unterscheiden wir zwei Arten von Exceptions:&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>Unchecked Exceptions&lt;/strong>: das sind Laufzeitfehler und sie werden durch den Compiler nicht erkannt.&lt;/li>
-&lt;li>&lt;strong>Checked Exceptions&lt;/strong>: das sind Fehler, welche vom Compiler zum Zeitpunkt der Kompilierung erkannt werden.&lt;/li>
+&lt;li>&lt;strong>Unchecked Exceptions&lt;/strong>: Laufzeitfehler, die vom Compiler nicht erkannt werden.&lt;/li>
+&lt;li>&lt;strong>Checked Exceptions&lt;/strong>: Fehler, die vom Compiler zur Kompilierungszeit erkannt werden.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;em>Unchecked Exceptions&lt;/em> sind oft Fehler, welche bei der Implementation übersehen werden.
-Der häufigste Laufzeitfehler ist die NullPointerException. Diese kann erst zur Laufzeit auftreten,
-da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt null sein kann.&lt;br>
-Die einzige Möglichkeit Laufzeitfehler abzuhandeln ist &amp;ldquo;Safe Programming&amp;rdquo;. Das heisst, dass wir während der Implementation
-Prüfungen und sog. &amp;ldquo;Guards&amp;rdquo; im Code einbauen (z.B. prüfen, ob eine Referenz nicht null ist bevor wir darauf zugreifen) um sicherzustellen,
-dass solche Situationen zur Laufzeit nicht auftreten.&lt;/p>
-&lt;p>&lt;em>Checked Exceptions&lt;/em> müssen zum Zeitpunkt der Kompilierung entweder am Ort des Auftretens abgehandelt werden oder
-sie werden an das Objekt weitergereicht, welches die entsprechende Methode aufgerufen hat.
-Damit wird auch die Verantwortung die Exception abzuhandeln an den Aufrufer weitergegeben.&lt;/p>
+&lt;p>&lt;strong>Unchecked Exceptions&lt;/strong> sind oft Fehler, welche bei der Implementation übersehen werden.
+Der häufigste Laufzeitfehler ist die &lt;code>NullPointerException&lt;/code>. Diese kann erst zur Laufzeit auftreten,
+da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt &lt;code>null&lt;/code> sein kann.&lt;br>
+Die einzige Möglichkeit, Laufzeitfehler abzuhandeln, ist &amp;ldquo;Safe Programming&amp;rdquo;. Das heisst, dass wir während der Implementation
+Prüfungen und sog. &amp;ldquo;Guards&amp;rdquo; im Code einbauen (z.B. prüfen, ob eine Referenz nicht &lt;code>null&lt;/code> ist bevor wir darauf zugreifen) um sicherzustellen,
+dass solche Situationen zur Laufzeit nicht auftreten.
+Hier ein Beispiel mit einer &lt;code>NullPointerException&lt;/code>:
+```java
+public static void main(String[] args) {
+Person person = null; // könnte stattdessen auch eine Methode sein, welche null zurückgibt
+person.getName(); // hier wird eine NullPointerException geworfen, da person == null
+}
+```
+&lt;strong>Checked Exceptions&lt;/strong> müssen entweder am Ort des Auftretens abgefangen oder an den Aufrufer der Methode weitergegeben werden.
+Dadurch wird die Verantwortung zur Behandlung der Exception an den Aufrufer weitergegeben.&lt;/p>
 &lt;p>Dazu ein kleines Beispiel:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -4830,9 +4835,8 @@ Damit wird auch die Verantwortung die Exception abzuhandeln an den Aufrufer weit
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Ohne die Implementation der Methode findByPhoneNumber zu kennen, muss ein Software-Entwickler an dieser Stelle
-das zurückgelieferte Objekt vom Typ Person zuerst auf null prüfen.&lt;br>
-Schauen wir uns also die Implementation dieser Methode etwas genauer an:&lt;/p>
+&lt;/div>&lt;p>Ohne die Implementierung der Methode &lt;code>findByPhoneNumber&lt;/code> zu kennen, muss ein Softwareentwickler das zurückgelieferte Objekt vom Typ &lt;code>Person&lt;/code> zunächst auf &lt;code>null&lt;/code> prüfen.
+Schauen wir uns daher die Implementierung dieser Methode genauer an:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -4863,9 +4867,9 @@ Schauen wir uns also die Implementation dieser Methode etwas genauer an:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wie (vielleicht) erwartet liefert die Methode null zurück, falls kein Eintrag mit der gesuchten Nummer gefunden wird.
-Dies führt in der Main-Methode im Codeblock oben auf der letzten Zeile zu einer NullPointerException,
-da die Referenz der Person auf null zeigt. Abhilfe schafft hier ein einfaches If-Statement:&lt;/p>
+&lt;/div>&lt;p>Wie (vielleicht) erwartet, liefert die Methode &lt;code>null&lt;/code> zurück, falls kein Eintrag mit der gesuchten Nummer gefunden wird.
+Dies führt in der Main-Methode im obigen Code auf der letzten Zeile zu einer &lt;code>NullPointerException&lt;/code>, da die Referenz &lt;code>person&lt;/code> auf &lt;code>null&lt;/code> zeigt.
+Ein einfaches &lt;code>if&lt;/code>-Statement kann hier Abhilfe schaffen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4886,9 +4890,9 @@ da die Referenz der Person auf null zeigt. Abhilfe schafft hier ein einfaches If
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Der Laufzeitfehler kann nun nicht mehr auftreten. Es stellt sich nun die Frage, ob wir mit dieser Lösung zufrieden sein können.&lt;br>
-Im Prinzip müssten wir zumindest informiert werden, wenn keine Person mit dieser Nummer gefunden wird.
-Eine Möglichkeit, dies zu tun ist mittel eines Else-Statement:&lt;/p>
+&lt;/div>&lt;p>Der Laufzeitfehler kann nun nicht mehr auftreten. Es stellt sich jedoch die Frage, ob diese Lösung zufriedenstellend ist.
+Prinzipiell sollten wir zumindest informiert werden, wenn keine Person mit dieser Nummer gefunden wird.
+Eine Möglichkeit besteht darin, ein &lt;code>else&lt;/code>-Statement hinzuzufügen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4905,7 +4909,7 @@ Eine Möglichkeit, dies zu tun ist mittel eines Else-Statement:&lt;/p>
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> AddressBook addressBook &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> AddressBook();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Person person &lt;span style="color:#f92672">=&lt;/span> addressBook.&lt;span style="color:#a6e22e">findByPhoneNumber&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;079 654 32 10&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (person &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (person &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(person.&lt;span style="color:#a6e22e">getName&lt;/span>());
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Es wurde keine Person mit dieser Nummer gefunden!&amp;#34;&lt;/span>);
@@ -4913,12 +4917,11 @@ Eine Möglichkeit, dies zu tun ist mittel eines Else-Statement:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Eine andere Lösung könnte sein das Null-Object Pattern oder auch ein Optional-Objekt zu verwenden
-und damit ein gültiges Objekt anstelle von null zurückzuliefern.&lt;/p>
+&lt;/div>&lt;p>Eine alternative Lösung könnte darin bestehen, das Null-Object-Pattern oder ein &lt;code>Optional&lt;/code>-Objekt zu verwenden, um ein gültiges Objekt anstelle von &lt;code>null&lt;/code> zurückzugeben.&lt;/p>
 &lt;hr>
 &lt;h2 id="try--catch--finally">try / catch / finally&lt;/h2>
-&lt;p>Um eine Checked Exception abzuhandeln, muss der Block (welcher die Exception erzeugt) innerhalb eines
-try-Blocks angelegt werden. Der abzuhandelnde Exception-Typ wird dabei in den catch-Block geschrieben:&lt;/p>
+&lt;p>Um eine &lt;strong>Checked Exception&lt;/strong> zu behandeln, muss der Codeblock, der die Exception erzeugen könnte, innerhalb eines &lt;code>try&lt;/code>-Blocks stehen.
+Der Exception-Typ, der abgefangen werden soll, wird in den zugehörigen &lt;code>catch&lt;/code>-Block geschrieben:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4931,11 +4934,11 @@ try-Blocks angelegt werden. Der abzuhandelnde Exception-Typ wird dabei in den ca
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">try&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Code, welcher eine IOException werfen könnte&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">catch&lt;/span> (IOException e) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Code für die Abhandlung der IOException&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Code zur Behandlung der IOException&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Ein solches Statement kann beliebig viele catch-Blöcke aufweisen:&lt;/p>
+&lt;/div>&lt;p>Ein &lt;code>try&lt;/code>-Statement kann beliebig viele &lt;code>catch&lt;/code>-Blöcke haben:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4960,14 +4963,37 @@ try-Blocks angelegt werden. Der abzuhandelnde Exception-Typ wird dabei in den ca
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Bei mehreren catch-Blöcken muss die spezifischste Exception stets zuoberst stehen.
-Je weiter unten der catch-Block steht, desto genereller wird die Exception, die abgefangen werden soll.
-Der Grund dafür ist, dass alle Checked Exceptions von der Klasse Exception abgeleitet sind.
-Steht eine allgemeinere Exception weiter oben, so wird der catch-Block der spezifischeren Exception
-weiter unten nicht mehr erreichbar sein.&lt;/p>
-&lt;p>An jeden try-Block (ob mit oder ohne catch-Block) kann zusätzlich ein finally-Block angehängt werden.
-Der finally-Block wird nach der Abhandlung der Exception ausgeführt.&lt;br>
-Wenn kein Exception aufgetreten ist, wird der Code im finally-Block direkt nach dem Code im try-Block ausgeführt.&lt;/p>
+&lt;/div>&lt;p>Bei mehreren &lt;code>catch&lt;/code>-Blöcken muss die spezifischste Exception stets zuerst stehen.
+Je weiter unten der &lt;code>catch&lt;/code>-Block steht, desto allgemeiner ist die Exception, die abgefangen wird.
+Der Grund dafür ist, dass alle Checked Exceptions von der Klasse &lt;code>Exception&lt;/code> abgeleitet sind.
+Befindet sich eine allgemeinere Exception weiter oben, wird der &lt;code>catch&lt;/code>-Block der spezifischeren Exception weiter unten nicht mehr erreichbar sein.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Code, der eine Ausnahme auslösen könnte&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> zahlen &lt;span style="color:#f92672">=&lt;/span> {1, 2, 3};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(zahlen&lt;span style="color:#f92672">[&lt;/span>5&lt;span style="color:#f92672">]&lt;/span>); &lt;span style="color:#75715e">// Dies wird eine ArrayIndexOutOfBoundsException auslösen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">catch&lt;/span> (ArrayIndexOutOfBoundsException e) { &lt;span style="color:#75715e">// Spezifische Ausnahme&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Spezifische Ausnahme abgefangen: ArrayIndexOutOfBoundsException&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">catch&lt;/span> (Exception e) { &lt;span style="color:#75715e">// Allgemeinere Ausnahme&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Allgemeine Ausnahme abgefangen: Exception&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ein &lt;code>try&lt;/code>-Block (ob mit oder ohne &lt;code>catch&lt;/code>-Block) kann zusätzlich einen &lt;code>finally&lt;/code>-Block haben.
+Der &lt;code>finally&lt;/code>-Block wird nach der Bearbeitung der Exception ausgeführt.
+Falls keine Exception aufgetreten ist, wird der Code im &lt;code>finally&lt;/code>-Block direkt nach dem &lt;code>try&lt;/code>-Block ausgeführt. Der &lt;code> finally&lt;/code>-Block wird also auf jeden Fall ausgeführt. Er muss deshalb so geschrieben werden, das auf jeden Fall funktioniert, auch wenn der &lt;code>Try&lt;/code>-Block nicht komplett ausgeführt wird oder der &lt;code> catch&lt;/code>-Block nie ausgeführt wurde.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4988,7 +5014,7 @@ Wenn kein Exception aufgetreten ist, wird der Code im finally-Block direkt nach 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wie oben erwähnt, kann der catch-Block weggelassen werden:&lt;/p>
+&lt;/div>&lt;p>Wie oben erwähnt, kann der &lt;code>catch&lt;/code>-Block weggelassen werden:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -5005,13 +5031,11 @@ Wenn kein Exception aufgetreten ist, wird der Code im finally-Block direkt nach 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Vorsicht ist geboten bei return-Anweisungen innerhalb von catch- oder finally-Blöcken.
-Da der finally-Block immer zuletzt ausgeführt wird, ist das Statement in diesem Block auch massgebend für die Funktionalität.&lt;/p>
+&lt;/div>&lt;p>Vorsicht bei &lt;code>return&lt;/code>-Anweisungen innerhalb von &lt;code>catch&lt;/code>- oder &lt;code>finally&lt;/code>-Blöcken: Da der &lt;code>finally&lt;/code>-Block immer zuletzt ausgeführt wird, ist ein &lt;code>return&lt;/code>-Statement in diesem Block massgeblich für die Funktionalität.&lt;/p>
 &lt;hr>
 &lt;h2 id="throw--throws">throw / throws&lt;/h2>
-&lt;p>Wie bereits weiter oben erwähnt, muss eine Exception nicht immer dort abgehandelt werden, wo sie gerade auftreten kann.
-Wenn entschieden wird, die Abhandlung in andere Klassen zu verlagern, so kann mit dem Schlüsselwort throws angegeben werden,
-dass die aufrufende Komponente die Exception abhandeln muss.&lt;/p>
+&lt;p>Eine Exception muss nicht immer dort behandelt werden, wo sie auftritt.
+Falls die Behandlung in andere Klassen verlagert werden soll, kann mit dem Schlüsselwort &lt;code>throws&lt;/code> angegeben werden, dass die aufrufende Komponente die Exception abfangen und behandeln muss.&lt;/p>
 &lt;p>Dazu ein kurzes Beispiel:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -5021,7 +5045,7 @@ dass die aufrufende Komponente die Exception abhandeln muss.&lt;/p>
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">EntryForbiddenException&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> Exception {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Optionale Erweiterungen für diese Exception&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
@@ -5042,7 +5066,7 @@ dass die aufrufende Komponente die Exception abhandeln muss.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (age &lt;span style="color:#f92672">&amp;lt;&lt;/span> 18) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> EntryForbiddenException();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Zusätzlicher Code ...&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
@@ -5067,24 +5091,22 @@ dass die aufrufende Komponente die Exception abhandeln muss.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> saloon.&lt;span style="color:#a6e22e">checkAge&lt;/span>(15);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (EntryForbiddenException e) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Behandlung der EntryForbiddenException&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wie wir sehen, wird die Abhandlung in die Main-Methode verlagert.
-Die Weitergabe von Exceptions kann über beliebig viele Stufen erfolgen.&lt;br>
-Wird die Exception jedoch von der &amp;ldquo;obersten&amp;rdquo; Stufe (in diesem Fall die Main-Methode) nicht abgehandelt,
-so wird die Anwendung mit der entsprechenden Exception beendet. Dies passiert, weil niemand die Exception abgehandelt hat.&lt;/p>
+&lt;/div>&lt;p>In diesem Beispiel wird die Behandlung in die &lt;code>main&lt;/code>-Methode verlagert.
+Exceptions können über beliebig viele Stufen weitergegeben werden.
+Wenn jedoch die &amp;ldquo;oberste&amp;rdquo; Stufe (hier die &lt;code>main&lt;/code>-Methode) die Exception nicht behandelt, wird die Anwendung mit einer entsprechenden Fehlermeldung beendet, da die Exception unbehandelt bleibt.&lt;/p>
 &lt;hr>
 &lt;h2 id="umwandlung-laufzeitfehler-in-checked-exception">Umwandlung Laufzeitfehler in Checked Exception&lt;/h2>
-&lt;p>Mit der Lösung aus dem Beispiel weiter oben können wir nicht wirklich zufrieden sein.&lt;br>
-Anstatt den Rückgabewert der Methode findByPhoneNumber auf null zu prüfen, wählen wir nun einen anderen Ansatz:&lt;br>
-Wir erweitern die Anwendung, sodass die Methode als Rückgabewert keine null-Werte mehr liefert.&lt;br>
-Da wir aber durch den Compiler gezwungen werden einen Rückgabewert zu definieren, bleibt uns nur noch
-die Möglichkeit übrig eine Exception zu werfen.
-Zu diesem Zweck definieren wir zuerst einmal eine entsprechende Exception:&lt;/p>
+&lt;p>Mit der Lösung aus dem vorherigen Beispiel können wir noch nicht vollständig zufrieden sein.
+Anstatt den Rückgabewert der Methode &lt;code>findByPhoneNumber&lt;/code> auf &lt;code>null&lt;/code> zu prüfen, wählen wir nun einen anderen Ansatz:&lt;/p>
+&lt;p>Wir erweitern die Anwendung so, dass die Methode keine &lt;code>null&lt;/code>-Werte mehr als Rückgabewert liefert.
+Da der Compiler jedoch einen Rückgabewert erzwingt, bleibt uns nur die Möglichkeit, eine Exception zu werfen, wenn kein Ergebnis gefunden wird.&lt;/p>
+&lt;p>Zu diesem Zweck definieren wir zuerst eine entsprechende Exception:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -5093,12 +5115,12 @@ Zu diesem Zweck definieren wir zuerst einmal eine entsprechende Exception:&lt;/p
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PersonNotFoundException&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> Exception {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Optional: Erweiterungen für die Exception&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Diese Exception wird nun an der entsprechenden Stelle im Sourcecode geworfen.
-Die Methode erhält zudem noch eine Erweiterung mit dem Schlüsselwort throws:&lt;/p>
+&lt;/div>&lt;p>Diese Exception wird nun an der entsprechenden Stelle im Code geworfen.
+Die Methode wird zusätzlich mit dem Schlüsselwort &lt;code>throws&lt;/code> versehen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -5129,7 +5151,7 @@ Die Methode erhält zudem noch eine Erweiterung mit dem Schlüsselwort throws:&l
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Beim Aufruf der Methode sind wir nun gezwungen, die Exception abzuhandeln:&lt;/p>
+&lt;/div>&lt;p>Beim Aufruf der Methode sind wir nun gezwungen, die Exception zu behandeln:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -5156,11 +5178,11 @@ Die Methode erhält zudem noch eine Erweiterung mit dem Schlüsselwort throws:&l
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Aus dem ursprünglichen Laufzeitfehler ist nun eine abgehandelte Exception geworden.
-Die Implementation vermeidet, wo immer möglich, die Rückgabe von null-Werten.&lt;/p>
+&lt;/div>&lt;p>Aus dem ursprünglichen Laufzeitfehler ist nun eine behandelte Exception geworden.
+Diese Implementierung vermeidet, wo immer möglich, die Rückgabe von &lt;code>null&lt;/code>-Werten.&lt;/p>
 &lt;hr>
 &lt;h2 id="multi-catch">Multi-Catch&lt;/h2>
-&lt;p>Seit Java 7 gibt es die Möglichkeit für einen sogenannten Multi-Catch.&lt;br>
+&lt;p>Seit Java 7 gibt es die Möglichkeit, mehrere Exceptions in einem sogenannten Multi-Catch zu behandeln.
 Schauen wir uns das folgende Beispiel an:&lt;/p>
 &lt;h4 id="ohne-multi-catch">Ohne Multi-Catch&lt;/h4>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -5182,6 +5204,7 @@ Schauen wir uns das folgende Beispiel an:&lt;/p>
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
@@ -5199,8 +5222,9 @@ Schauen wir uns das folgende Beispiel an:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (ParseException e) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">err&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Fehler beim Parsen der Daten: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> e.&lt;span style="color:#a6e22e">getMessage&lt;/span>());
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">finally&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> reader.&lt;span style="color:#a6e22e">close&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> reader.&lt;span style="color:#a6e22e">close&lt;/span>();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h4 id="mit-multi-catch">Mit Multi-Catch&lt;/h4>
@@ -5224,7 +5248,7 @@ Schauen wir uns das folgende Beispiel an:&lt;/p>
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String filename &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;example.txt&amp;#34;&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> BufferedReader reader &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -5237,14 +5261,14 @@ Schauen wir uns das folgende Beispiel an:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (IOException &lt;span style="color:#f92672">|&lt;/span> ParseException e) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">err&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Ein-/Ausgabefehler oder Fehler beim Parsen der Daten: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> e.&lt;span style="color:#a6e22e">getMessage&lt;/span>());
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">finally&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> reader.&lt;span style="color:#a6e22e">close&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> reader.&lt;span style="color:#a6e22e">close&lt;/span>();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Die beiden Exceptions werden in einem catch-Block zusammengefasst.
-Die Exceptions innerhalb eines Multi-Catch dürfen nicht in einer Vererbungsbeziehung zueinander stehen.
-Der Basistyp muss also unterschiedlich sein.&lt;/p>
+&lt;/div>&lt;p>Die beiden Exceptions werden hier in einem einzigen &lt;code>catch&lt;/code>-Block zusammengefasst.
+Zu beachten ist, dass die Exceptions innerhalb eines Multi-Catch nicht in einer Vererbungsbeziehung zueinander stehen dürfen.
+Das bedeutet, dass ihre Basistypen unterschiedlich sein müssen.&lt;/p>
 &lt;hr>
 &lt;h2 id="try-with-resources">Try-With-Resources&lt;/h2>
 &lt;p>Ebenfalls seit Java 7 gibt es die Möglichkeit für automatisches Ressourcen-Management.&lt;br>
@@ -5291,9 +5315,9 @@ Betrachten wir dazu zuerst ein Beispiel ohne automatisches Ressourcen-Management
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Der finally-Block ist notwendig, um die verwendete Ressource des Buffered-Readers zu schliessen.&lt;br>
-Da beim Schliessen aber eine IOException auftreten kann benötigen wir innerhalb des finally-Blocks
-einen zusätzlichen try-catch-Block.&lt;/p>
+&lt;/div>&lt;p>Der &lt;code>finally&lt;/code>-Block ist notwendig, um die verwendete Ressource des &lt;code>BufferedReaders&lt;/code> zu schliessen.&lt;br>
+Da beim Schliessen eine &lt;code>IOException&lt;/code> auftreten kann, benötigen wir im &lt;code>finally&lt;/code>-Blocks
+einen zusätzlichen &lt;code>try-catch&lt;/code>-Block.&lt;/p>
 &lt;p>Betrachten wir nun das gleiche Beispiel mit automatischem Ressourcen-Management:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -5317,24 +5341,23 @@ einen zusätzlichen try-catch-Block.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wie wir sehen fällt der finally-Block zum Schliessen der Ressourcen komplett weg.&lt;br>
-Die beiden Ressourcen FileReader und BufferedReader werden automatisch geschlossen.
-Dies geschieht im Hintergrund über die Methode close, welche vom Interface AutoCloseable zur Verfügung gestellt wird.&lt;br>
-In einem try-with-resources Statement dürfen also nur Objekte vorliegen, welches das genannte Interface implementieren.&lt;br>
-Das Closeable-Interface mit der gleichen Funktion stellt dabei die Abwärtskompatibilität zu älteren Java-Versionen sicher.&lt;br>
-Grundsätzlich soll das Closeable-Interface für IO Streams verwendet werden, da es mit IOExceptions arbeitet.&lt;/p>
-&lt;p>Das Schliessen der Ressourcen hat stets die Reihenfolge von hinten nach vorne.&lt;br>
-In unserem Beispiel wird also zuerst der BufferedReader geschlossen und danach der FileReader.&lt;br>
-Die Verkettung von Ressourcen innerhalb eines try-with-resources Statements ist zu vermeiden.
-Besser sind separate Deklarationen wie oben gezeigt.&lt;/p>
+&lt;/div>&lt;p>Wie wir sehen, entfällt der &lt;code>finally&lt;/code>-Block zum Schliessen der Ressourcen vollständig.
+Die Ressourcen &lt;code>FileReader&lt;/code> und &lt;code>BufferedReader&lt;/code> werden automatisch geschlossen.
+Dies geschieht im Hintergrund über die Methode &lt;code>close&lt;/code>, die vom Interface &lt;code>AutoCloseable&lt;/code> bereitgestellt wird.
+In einem &lt;code>try-with-resources&lt;/code>-Statement dürfen daher nur Objekte verwendet werden, die das genannte Interface implementieren.
+Das &lt;code>Closeable&lt;/code>-Interface stellt dabei die Abwärtskompatibilität zu älteren Java-Versionen sicher, da es ebenfalls die &lt;code>close&lt;/code>-Methode definiert.
+Grundsätzlich sollte das &lt;code>Closeable&lt;/code>-Interface für IO-Streams verwendet werden, da es mit &lt;code>IOException&lt;/code> arbeitet.&lt;/p>
+&lt;p>Das Schliessen der Ressourcen erfolgt immer in umgekehrter Reihenfolge.
+In unserem Beispiel wird also zuerst der &lt;code>BufferedReader&lt;/code> geschlossen und danach der &lt;code>FileReader&lt;/code>.
+Die Verkettung von Ressourcen innerhalb eines &lt;code>try-with-resources&lt;/code>-Statements sollte vermieden werden. Besser ist die getrennte Deklaration wie im obigen Beispiel.&lt;/p>
 &lt;hr>
 &lt;h2 id="null-safety">Null-Safety&lt;/h2>
-&lt;p>Der häufigsten Laufzeitfehler in Java ist die &lt;code>NullPointerException&lt;/code>. Diese Exception tritt auf, wenn&lt;/p>
+&lt;p>Ein häufiger Laufzeitfehler in Java ist die &lt;code>NullPointerException&lt;/code>. Diese Exception tritt auf, wenn&lt;/p>
 &lt;ul>
 &lt;li>eine Methode auf einem &lt;code>null&lt;/code>-Objekt aufgerufen wird,&lt;/li>
-&lt;li>oder wenn versucht wird, auf ein Feld (Variable) eines &lt;code>null&lt;/code>-Objektes zuzugreifen.&lt;/li>
+&lt;li>versucht wird, auf ein Feld (Variable) eines &lt;code>null&lt;/code>-Objekts zuzugreifen.&lt;/li>
 &lt;/ul>
-&lt;p>Häufig wird einfach vergessen, dass eine bestimmte Variable &lt;code>null&lt;/code> sein kann:&lt;/p>
+&lt;p>Oft wird schlicht übersehen, dass eine bestimmte Variable &lt;code>null&lt;/code> sein könnte:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -5355,16 +5378,16 @@ Besser sind separate Deklarationen wie oben gezeigt.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Im letzten Beispiel wird versucht, die Methode &lt;code>length()&lt;/code> auf dem Objekt mit Wert &lt;code>null&lt;/code> aufzurufen. Aus diesem Grund wird die &lt;code>NullPointerException&lt;/code> geworfen.&lt;/p>
-&lt;p>In diesem Beispiel sieht man ziemlich gut, wie &lt;code>NullPointerException&lt;/code>s auftreten können:&lt;/p>
+&lt;/div>&lt;p>Im obigen Beispiel führt der Versuch, die Methode &lt;code>length()&lt;/code> auf einem null-Objekt aufzurufen, zur &lt;code>NullPointerException&lt;/code>.&lt;/p>
+&lt;p>Hier werden zwei typische Ursachen für das Auftreten einer &lt;code>NullPointerException&lt;/code> deutlich:&lt;/p>
 &lt;ul>
-&lt;li>Einer Variable (hier &lt;code>parameter&lt;/code>) wird &lt;code>null&lt;/code> zugewiesen/übergeben, was aber nicht erlaubt sein sollte.&lt;/li>
-&lt;li>Oder es wird vergessen, dass eine Variable auch den Wert &lt;code>null&lt;/code> haben kann.&lt;/li>
+&lt;li>Einer Variable (hier &lt;code>parameter&lt;/code>) wird &lt;code>null&lt;/code> zugewiesen/übergeben, was in manchen Fällen unerwartet ist.&lt;/li>
+&lt;li>Es wird vergessen zu prüfen, dass eine Variable den Wert &lt;code>null&lt;/code> haben könnte.&lt;/li>
 &lt;/ul>
-&lt;p>Diese beide Fälle können in Java auf verschiedene Arten abgedeckt werden.&lt;/p>
+&lt;p>Diese beiden Fälle können in Java auf verschiedene Arten abgefangen werden.&lt;/p>
 &lt;h3 id="null-durch-check-abfangen">&lt;code>null&lt;/code> durch Check abfangen&lt;/h3>
-&lt;p>Die offensichtlichste Möglichkeiten, &lt;code>NullPointerException&lt;/code>s zu umgehen ist die Verwendung von &lt;code>null&lt;/code>-Checks.
-Im folgenden Beispiel verbieten wir den Wert &lt;code>null&lt;/code>, indem wir zu Beginn der Methode die Variable auf &lt;code>null&lt;/code> überprüfen und eine &lt;code>Exception&lt;/code> werfen (und somit die Methode abbrechen), falls die Variable dem Wert &lt;code>null&lt;/code> entspricht.&lt;/p>
+&lt;p>Die offensichtlichste Möglichkeit, &lt;code>NullPointerExceptions&lt;/code> zu vermeiden, ist die Verwendung von &lt;code>null&lt;/code>-Checks.&lt;/p>
+&lt;p>Im folgenden Beispiel verhindern wir &lt;code>null&lt;/code>, indem wir die Variable zu Beginn der Methode prüfen und eine &lt;code>Exception&lt;/code> werfen, falls die Variable &lt;code>null&lt;/code> ist:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -5383,8 +5406,10 @@ Im folgenden Beispiel verbieten wir den Wert &lt;code>null&lt;/code>, indem wir 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>In diesem Beispiel haben wir den Fall abgedeckt, in welchem für das Argument der Wert &lt;code>null&lt;/code> verbietet wird. Dieser Code hat neben den 3 zusätzlichen Zeilen Code den Nachteil, dass der/die Entwickler:in nicht direkt von aussen sieht, dass &lt;code>null&lt;/code>-Werte verboten sind. Diesen Fall wird besser mit einer anderen Technik angegangen, die später vorgestellt wird (&lt;code>@NotNull&lt;/code>-Annotation).&lt;/p>
-&lt;p>Sprechen wir aber nun über den Fall, in welchem der Wert &lt;code>null&lt;/code> eigentlich auch unterstützt werden müsste. Statt einem Fehler zu werfen, benutzen wir Bedingungen, um den richtigen Code auszuführen:&lt;/p>
+&lt;/div>&lt;p>In diesem Beispiel ist sichergestellt, dass der Wert &lt;code>null&lt;/code> für das Argument &lt;code>parameter&lt;/code> nicht erlaubt ist.
+Ein Nachteil dieser Lösung ist, dass Entwickler von aussen nicht direkt erkennen können, dass &lt;code>n&lt;/code>ull-Werte unzulässig sind.
+Diesen Fall könnte man stattdessen besser mit einer &lt;code>@NotNull&lt;/code>-Annotation abdecken, wie später beschrieben.&lt;/p>
+&lt;p>Manchmal jedoch sollen &lt;code>null&lt;/code>-Werte zulässig sein. In solchen Fällen verwenden wir Bedingungen, um den richtigen Code auszuführen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -5405,9 +5430,7 @@ Im folgenden Beispiel verbieten wir den Wert &lt;code>null&lt;/code>, indem wir 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Um hier &lt;code>null&lt;/code>-Sicherheit zu garantieren, haben wir nun 3 Zeilen hinzugefügt, was relativ viel für diesen Zweck ist.
-In solchen Fällen lohnt es sich oft, nur den problematischen Teil durch eine Bedingung zu ersetzen.
-In Java hilft der &amp;ldquo;Ternary-Operator&amp;rdquo; weiter:&lt;/p>
+&lt;/div>&lt;p>Um hier &lt;code>null&lt;/code>-Sicherheit zu garantieren, wurden einige zusätzliche Zeilen eingefügt. In solchen Fällen kann auch der Ternary-Operator nützlich sein:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -5448,8 +5471,9 @@ In Java hilft der &amp;ldquo;Ternary-Operator&amp;rdquo; weiter:&lt;/p>
 &lt;li>dass bei einer Variable erwartet wird, dass sie unter Umständen auch den Wert &lt;code>null&lt;/code> haben kann (&lt;code>@Nullable&lt;/code>)&lt;/li>
 &lt;li>bzw. dass eine Variable nicht den Wert &lt;code>null&lt;/code> aufweisen darf (&lt;code>@NotNull&lt;/code> bzw. &lt;code>@NonNull&lt;/code>).&lt;/li>
 &lt;/ul>
-&lt;p>Für die folgenden Beispiele haben wir die Library &lt;code>org.jetbrains.annotations&lt;/code> verwendet, es gibt aber weitere bekannte mit ähnlichen Annotationen.
-Da zu diesem Zeitpunkt noch nicht erklärt wurde, wie du Dependencies hinzufügen kannst (Maven-Teil), halten wir dies rein theoretisch.&lt;/p>
+&lt;p>In den folgenden Beispielen verwenden wir die Bibliothek &lt;code>org.jetbrains.annotations&lt;/code>.
+Es gibt jedoch auch andere Bibliotheken mit ähnlichen Annotationen.
+Da die Verwendung von Dependencies hier noch nicht behandelt wurde (Maven-Teil), bleibt dies ein theoretischer Hinweis.&lt;/p>
 &lt;p>Hier ein Beispiel, wie Annotationen zu mehr &lt;code>null&lt;/code>-Sicherheit führen können:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -5487,9 +5511,9 @@ Da zu diesem Zeitpunkt noch nicht erklärt wurde, wie du Dependencies hinzufüge
 &lt;li>die Annotation &lt;code>@NotNull&lt;/code> verwendet, um mitzuteilen, dass die Variable &lt;code>names&lt;/code> &lt;ins>&lt;strong>nicht&lt;/strong>&lt;/ins> den Wert &lt;code>null&lt;/code> haben darf. Leider fügt diese Möglichkeit kein Warning beim Aufruf von &lt;code>method(..., null)&lt;/code> hinzu. Dafür aber wird eine &lt;code>IllegalArgumentException&lt;/code> zur Laufzeit geworfen, falls ihr &lt;code>null&lt;/code> beim Methodenaufruf zugewiesen wird.&lt;/li>
 &lt;/ul>
 &lt;h3 id="optionals">Optionals&lt;/h3>
-&lt;p>In Java gibt es auch ohne externe Dependency eine Möglichkeit anzugeben, dass eine Variable den Wert &lt;code>null&lt;/code> &amp;ldquo;repräsentieren&amp;rdquo; kann.&lt;/p>
-&lt;p>Hierfür wurde die generische Klasse &lt;code>Optional&amp;lt;T&amp;gt;&lt;/code> ins Leben gerufen.&lt;/p>
-&lt;p>Die Idee ist, dass Variablen, die den Wert &lt;code>null&lt;/code> haben können, den Typ &lt;code>Optional&amp;lt;...&amp;gt;&lt;/code> bekommen. Für ein nullable &lt;code>String&lt;/code> wird also z.B. der Typ &lt;code>Optional&amp;lt;String&amp;gt;&lt;/code> gewählt:&lt;/p>
+&lt;p>In Java gibt es auch ohne externe Bibliothek eine Möglichkeit anzugeben, dass eine Variable den Wert &lt;code>null&lt;/code> „repräsentieren“ kann.
+Hierfür wurde die generische Klasse &lt;code>Optional&amp;lt;T&amp;gt;&lt;/code> eingeführt.&lt;/p>
+&lt;p>Die Idee dabei ist, dass Variablen, die den Wert &lt;code>null&lt;/code> haben könnten, den Typ &lt;code>Optional&amp;lt;...&amp;gt;&lt;/code> erhalten. Ein &lt;code>nullable&lt;/code> String hätte zum Beispiel den Typ &lt;code>Optional&amp;lt;String&amp;gt;&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -5530,7 +5554,7 @@ Da zu diesem Zeitpunkt noch nicht erklärt wurde, wie du Dependencies hinzufüge
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Der Nutzen von &lt;code>Optional&lt;/code>s ist, dass man als Entwickler:in gezwungen wird, einen &lt;code>null&lt;/code>-Check zu machen:&lt;/p>
+&lt;/div>&lt;p>Der Vorteil von &lt;code>Optional&lt;/code>s ist, dass man als Entwickler:in gezwungen wird, einen &lt;code>null&lt;/code>-Check zu machen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -5548,7 +5572,7 @@ Da zu diesem Zeitpunkt noch nicht erklärt wurde, wie du Dependencies hinzufüge
 &lt;li>wenn kein &lt;code>null&lt;/code>-Check vor dem Aufrufen von &lt;code>.get()&lt;/code> (was den eigentlichen Wert zurückgibt) gemacht wird , dann reklamiert deine Entwicklungsumgebung (IntelliJ/VS Code) automatisch mit einer Warnung.&lt;/li>
 &lt;li>wenn &lt;code>.get()&lt;/code> aufgerufen wird, und der Wert &lt;code>null&lt;/code> repräsentiert, dann wird bereits an dieser Stelle eine &lt;code>NullPointerException&lt;/code> geworfen.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;code>Optionals&lt;/code> sind daher eine der gängigsten Möglichkeiten, Entwickler:innen zu zwingen, Werte auf &lt;code>null&lt;/code> zu prüfen.&lt;/p>
+&lt;p>Optionals sind daher eine gängige Möglichkeit, Entwickler zu einer Prüfung auf &lt;code>null&lt;/code> zu verpflichten.&lt;/p>
 &lt;p>Diese Technik wird z.B. bei Streams häufig eingesetzt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -5642,6 +5666,61 @@ Das folgende Beispiel testet anhand &lt;code>assertThrows()&lt;/code> dass die M
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;hr>
+&lt;h2 id="exceptions-keine-kontrollstrukturen-sondern-fehlerbehandlung">Exceptions: Keine Kontrollstrukturen, sondern Fehlerbehandlung&lt;/h2>
+&lt;p>Nach den Prinzipien von Clean Code sollten Ausnahmen (Exceptions) nicht als normaler Programmfluss eingesetzt werden.
+Exceptions dienen dazu, &lt;strong>Ausnahmesituationen&lt;/strong> zu behandeln, die unerwartet auftreten und oft nicht durch reguläre Überprüfungen abgefangen werden können, wie z. B. Netzwerk- oder Datenbankfehler.
+Wenn Exceptions jedoch als Ersatz für reguläre Kontrollstrukturen (wie if-Abfragen) verwendet werden, wird der Code schwerer lesbar, schlechter wartbar und häufig ineffizienter.&lt;/p>
+&lt;p>&lt;strong>Warum sollten Exceptions nicht für den Programmfluss genutzt werden?&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Lesbarkeit&lt;/strong>: Die Verwendung von Exceptions für den Programmfluss macht den Code schwer verständlich, da andere Entwickler erwarten, dass Ausnahmen nur in Fehlerfällen auftreten.&lt;/li>
+&lt;li>&lt;strong>Performance&lt;/strong>: Exceptions sind in der Regel ressourcenintensiver, da das Erstellen und Verarbeiten von Exception-Objekten zusätzliche Leistung kostet. Das ist besonders problematisch, wenn Exceptions in Schleifen verwendet werden.&lt;/li>
+&lt;li>&lt;strong>Debugging&lt;/strong>: Der Missbrauch von Exceptions erschwert das Debugging, weil oft unklar ist, ob eine Ausnahme durch einen Fehler oder absichtlich durch eine Programmlogik ausgelöst wurde.&lt;/li>
+&lt;li>&lt;strong>Log-Analyse&lt;/strong>: Wenn Exceptions für den Programmfluss verwendet werden, kann die Log-Analyse erschwert werden, da die Logs mit unnötigen Ausnahme-Einträgen überflutet werden. Dies macht es schwierig, echte Fehler zu identifizieren, da sich Logs mit Informationen über erwartete oder absichtlich ausgelöste Ausnahmen füllen.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Beispiel für falsche Verwendung:&lt;/strong>&lt;/p>
+&lt;p>In diesem Beispiel wird eine Exception missbräuchlich zur Kontrolle des Programmflusses verwendet:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> value &lt;span style="color:#f92672">=&lt;/span> Integer.&lt;span style="color:#a6e22e">parseInt&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;abc&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// Wirft NumberFormatException&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">catch&lt;/span> (NumberFormatException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> value &lt;span style="color:#f92672">=&lt;/span> 0; &lt;span style="color:#75715e">// Setzt einen Standardwert&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Richtige Verwendung:&lt;/strong>
+Besser ist es, die Eingabe vor der Verarbeitung zu validieren und Exceptions nur für unerwartete Fehler zu nutzen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String input &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;abc&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (input.&lt;span style="color:#a6e22e">matches&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;\\d+&amp;#34;&lt;/span>)) { &lt;span style="color:#75715e">// Überprüfung, ob die Eingabe numerisch ist&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> value &lt;span style="color:#f92672">=&lt;/span> Integer.&lt;span style="color:#a6e22e">parseInt&lt;/span>(input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> value &lt;span style="color:#f92672">=&lt;/span> 0; &lt;span style="color:#75715e">// Standardwert setzen, ohne eine Exception auszulösen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Fazit&lt;/strong>: Durch die Verwendung von Kontrollstrukturen anstelle von Exceptions für den Programmfluss wird der Code nicht nur sauberer und verständlicher, sondern auch effizienter und robuster.&lt;/p>
+&lt;hr>
 &lt;p>&lt;img alt="task1" src="/images/task.png"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/java/java-exception-handling/">Aufgaben zu Exception Handling&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/java/java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/java-collections/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
