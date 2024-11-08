@@ -437,6 +437,9 @@ class PersonControllerWebMvcTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired 
+    private ObjectMapper objectMapper;
+
     @MockBean
     private PersonService personService;
 
@@ -466,11 +469,12 @@ class PersonControllerWebMvcTest {
             p.setPersonId(1);
             return p;
         });
+        Person dto = new Person(1, "Alexandra", "Biel");
 
         //when
         mockMvc.perform(post("/createPerson")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"personName\": \"Alexandra\", \"personCity\": \"Biel\"}"))
+                .content(objectMapper.writeValueAsString(dto)))
         //then
             .andDo(print())
             .andExpect(jsonPath("$.personName").value("Alexandra"))
