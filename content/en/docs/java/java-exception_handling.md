@@ -162,7 +162,7 @@ try {
 
 Ein `try`-Block (ob mit oder ohne `catch`-Block) kann zusätzlich einen `finally`-Block haben.
 Der `finally`-Block wird nach der Bearbeitung der Exception ausgeführt.
-Falls keine Exception aufgetreten ist, wird der Code im `finally`-Block direkt nach dem `try`-Block ausgeführt.
+Falls keine Exception aufgetreten ist, wird der Code im `finally`-Block direkt nach dem `try`-Block ausgeführt. Der ` finally`-Block wird also auf jeden Fall ausgeführt. Er muss deshalb so geschrieben werden, das auf jeden Fall funktioniert, auch wenn der `Try`-Block nicht komplett ausgeführt wird oder der ` catch`-Block nie ausgeführt wurde. 
 
 ```java
 try {
