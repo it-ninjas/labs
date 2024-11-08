@@ -437,7 +437,7 @@ class PersonControllerWebMvcTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired 
+    @Autowired
     private ObjectMapper objectMapper;
 
     @MockBean
@@ -490,7 +490,7 @@ Wichtige Punkte zum Test:
 - Der `PersonService` wird gemockt.
 - Wir verwenden einen `MockMvc`. Damit können wir (REST-)Requests absetzen und die Antworten auswerten.
   - `getAllPersons()` macht einfache String-Überprüfungen.
-  - `createPerson()` wertet die JSON-Response detailliert aus. 
+  - `createPerson()` wertet die JSON-Response detailliert aus.
     - `objectMapper.writeValueAsString(dto)`: Wir konvertieren das Person-Objekt automatisch nach JSON.
     - Bei `jsonPath("$.personName")` bezieht sich _$_ auf das zurückgegebene einzelne Objekt. Erwarten wir eine Liste von Objekten kann über den Index auf ein entsprechendes Objekt zugegriffen werden. Wollen wir z.B. auf das 2te Objekt in der Liste zugreifen, verwenden wir _$[1].personName_ .
 - (Tipp am Rande: Falls du trotzdem eine DB verwenden würdest: Es gibt kein automatisches Rollback der Daten nach jedem Test.)
