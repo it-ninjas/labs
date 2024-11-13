@@ -113,7 +113,7 @@ die es zu lösen gilt.
 Die passenden Aufgaben sind in den Labs unter
 - [Vorbereiten der IDE](../../../labs/git/vertiefung/02_preparing) 
 - [Gemeinsames Arbeiten an einem Projekt (ohne Konflikte)](../../../labs/git/vertiefung/03_collaboration)
-- und [Gemeinsames Arbeitane an einem Projekt (mit Merge-Konflikten)](../../../labs/git/vertiefung/03_merge-conflict)
+- und [Gemeinsames Arbeitane an einem Projekt (mit Merge-Konflikten)](../../../labs/git/vertiefung/04_merge-conflict)
 
 zu finden.
 

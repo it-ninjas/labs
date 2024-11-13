@@ -14,7 +14,7 @@ Die Schritte 1 bis 4 sind Einzelaufgaben, die jeder Ninja selbständig lösen mu
 5 bis 7 sind Teamaufgaben. 
 
 ### Schritt 1: Feature-Branch aktualisieren
-**Diese Aufgabe kann erst gestartet werden, wenn alle Feature-Branches aus dem [vorherigen Lab](../../../labs/git-vertiefung/03_collaboration)
+**Diese Aufgabe kann erst gestartet werden, wenn alle Feature-Branches aus dem [vorherigen Lab](../../../labs/git/vertiefung/03_collaboration)
 erfolgreich gemergt wurden.**
 1. Starte IntelliJ!
 2. Wechsle zum ersten Projekt (Menu › File › Recent Projects)!
