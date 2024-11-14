@@ -14,7 +14,7 @@ in der Zusammenarbeit und in der Arbeit mit den Versionierungstools.
 
 - Ihr wisst, wer zu eurem Team gehört und wie die Aufgaben verteilt sind.
 - Ihr habt alle den Zugriff auf dieselben Repositories mit der initialen Version des Beispielprojektes.
-- Die Branches `master` und `develop`  sind angelegt.
+- Die Branches `master` und `develop` sind angelegt.
 - Alle Teammitglieder haben die Repositories ausgecheckt.
 
 ## Aufgaben
@@ -48,7 +48,6 @@ Modulen erhalten bleibt. Dazu kann der Fork Befehl genutzt werden. Entweder übe
 Wenn du die Kopien der Repositories erfolgreich angelegt hast, musst du diese noch für die anderen
 Team-Mitglieder freigeben.
 
-
 ### Klonen von Repositories in IntelliJ
 
 Jeder Ninja erstellt einen Klon der Repositories in seinem lokalen Arbeitsbereich:
@@ -66,7 +65,7 @@ Jeder Ninja erstellt einen Klon der Repositories in seinem lokalen Arbeitsbereic
 
 ![Clone Dialog](../preliminaries/intellij_clonedialog.png)
 
-
 #### Hier geht es zu den Labs.
+
 - [Teambildung](../../../labs/git/vertiefung/01_team)
 - [Vorbereitung](../../../labs/git/vertiefung/02_preparing)

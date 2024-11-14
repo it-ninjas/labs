@@ -30,7 +30,7 @@ Wählt die zwei Projekte aus, mit denen euer Team arbeiten soll. Nutzt dazu die 
 - **Rollenspiel**
 
 - Für jedes der zwei Projekte wird der vorhandene Code eines beliebigen Teammitglieds genutzt.
-- Für die Aufgabe wird der Code in ein neues Repository übernommen (*fork*).
+- Für die Aufgabe wird der Code in ein neues Repository übernommen (_fork_).
 - Der jeweilige Originalstand wird im Branch `master` gehalten.
 - Vom master wird ein Standard-Arbeitsbranch `develop` erzeugt.
 - Die Repositories sind für alle Teammitglieder freizugeben (schreibender Zugriff).
@@ -42,5 +42,5 @@ Wählt die zwei Projekte aus, mit denen euer Team arbeiten soll. Nutzt dazu die 
 
 ### Schritt 4: Festlegen des Repositories für die Aufgabe "Zusammenarbeit"
 
-Legt gemeinsam fest, welches Repository für die gemeinsame Arbeit an einem Projekt  genutzt werden soll.
-Dieses wird in den nachfolgenden Aufgaben immer als *erstes Repository* bezeichnet.
+Legt gemeinsam fest, welches Repository für die gemeinsame Arbeit an einem Projekt genutzt werden soll.
+Dieses wird in den nachfolgenden Aufgaben immer als _erstes Repository_ bezeichnet.
