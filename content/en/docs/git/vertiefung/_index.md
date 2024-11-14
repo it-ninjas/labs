@@ -41,9 +41,9 @@ Dazu wirst du bereits bekannte Themen wiederholen und ...
 
 Das Lab ist in die folgende Aufgabenbereiche unterteilt:
 
-* [Voraussetzungen schaffen (Team bilden)](preliminaries)
-* [Zusammenarbeit in einem Projekt](collaboration)
-* [Paralleles Arbeiten mit mehreren Repositories](parallel-processing)
+- [Voraussetzungen schaffen (Team bilden)](preliminaries)
+- [Zusammenarbeit in einem Projekt](collaboration)
+- [Paralleles Arbeiten mit mehreren Repositories](parallel-processing)
 
 ## Hinweise
 
@@ -53,7 +53,7 @@ Das Lab ist in die folgende Aufgabenbereiche unterteilt:
 
 #### Hinweise zum Review
 
-* Das Review zum Modul wird mit dem gesamten Team geführt.
-* Das Team erläutert das Vorgehen und schildert auch aufgetretene Probleme.
-* Ein Beispiel-Projekt soll im Vorfeld zu einem releasefähigen Stand gebracht worden sein, der die Änderungen aller Teammitglieder beinhaltet.
-* Ein weiteres Beispielprojekt befindet sich noch in der Entwicklung.
+- Das Review zum Modul wird mit dem gesamten Team geführt.
+- Das Team erläutert das Vorgehen und schildert auch aufgetretene Probleme.
+- Ein Beispiel-Projekt soll im Vorfeld zu einem releasefähigen Stand gebracht worden sein, der die Änderungen aller Teammitglieder beinhaltet.
+- Ein weiteres Beispielprojekt befindet sich noch in der Entwicklung.
