@@ -29,16 +29,16 @@ Wählt die zwei Projekte aus, mit denen euer Team arbeiten soll. Nutzt dazu die 
 - **Weltmeisterschaft**
 - **Rollenspiel**
 
-* Für jedes der zwei Projekte wird der vorhandene Code eines beliebigen Teammitglieds genutzt.
-* Für die Aufgabe wird der Code in ein neues Repository übernommen (*fork*).
-* Der jeweilige Originalstand wird im Branch `master` gehalten.
-* Vom master wird ein Standard-Arbeitsbranch `develop` erzeugt.
-* Die Repositories sind für alle Teammitglieder freizugeben (schreibender Zugriff).
+- Für jedes der zwei Projekte wird der vorhandene Code eines beliebigen Teammitglieds genutzt.
+- Für die Aufgabe wird der Code in ein neues Repository übernommen (*fork*).
+- Der jeweilige Originalstand wird im Branch `master` gehalten.
+- Vom master wird ein Standard-Arbeitsbranch `develop` erzeugt.
+- Die Repositories sind für alle Teammitglieder freizugeben (schreibender Zugriff).
 
 #### Hinweise
 
-* Die neuen Repositories können wahlweise über die Bitbucket Weboberfläche oder via Git Kommando erstellt werden.
-* Die Branches sollten über die Weboberfläche erstellt werden.
+- Die neuen Repositories können wahlweise über die Bitbucket Weboberfläche oder via Git Kommando erstellt werden.
+- Die Branches sollten über die Weboberfläche erstellt werden.
 
 ### Schritt 4: Festlegen des Repositories für die Aufgabe "Zusammenarbeit"
 
