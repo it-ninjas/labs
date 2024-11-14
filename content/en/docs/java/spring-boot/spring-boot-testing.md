@@ -70,7 +70,7 @@ Wir wollen alle Layers (von der Entity bis zum Controller) testen. Dazu gibt es 
 
 Natürlich kannst du jeden Layer mit JUnit/Mockito testen. Das hast du ja bereits [früher gelernt](../../java-testing).
 Dazu nimmst du deine Unit-Under-Test (UUT) und mockst alles, was "darunter" liegt. Je nachdem kann das aber ganz schön mühsam
-sein resp. praktisch nicht möglich: Stell dir vor, du willst ein Repo mit Mockito testen. Wie kommst du
+sein resp. praktisch nicht möglich: Stell dir vor, du willst ein `@Repository` mit Mockito testen. Wie kommst du
 da an die automatisch durch den Spring-Container generierten Methoden (z.B. `findAll()`)? Gar nicht.
 
 Deshalb gibt es Möglichkeiten, je nach Anwendungsfall den Spring Application-Context teilweise oder ganz hochzufahren.
@@ -502,7 +502,7 @@ Wichtige Punkte zum Test:
 ## Repo/Entity mit @DataJpaTest testen
 
 Jetzt ist das `PersonRepo` inkl. `Person` (Entität) und DB dran. Wir fahren den Slice-Test mit `@DataJpaTest`.
-Es werden nur DB, Entities und Repos initialisert, keine Services, keine Controller:
+Es werden nur DB, Entities und Repositories initialisert, keine Services, keine Controller:
 
 ![Repo-DataJpaTest-Tests](../spring-boot-testing/repo-datajpatest.png)
 
