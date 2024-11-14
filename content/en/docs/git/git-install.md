@@ -13,12 +13,20 @@ weight: 2
 
 - Ich weiss, wie ich Git in meinem Betriebssystem installiere.
 
+## Überprüfe die Installation
+
+Verwende den folgenden Befehl, um zu überprüfen, ob git bereits installiert ist:
+
+```
+git --version
+```
+
 ## Git unter Linux installieren
 
-1. Ist Git schon installiert? `git --version`
-2. Falls nicht:
-   - Debian basierte Linux (Ubuntu): `sudo apt install git`
-   - Redhat basierte Linux (Fedora, Rocky Linux): `sudo dnf install git`
+- Debian basierte Linux (Ubuntu): `sudo apt install git`
+- Redhat basierte Linux (Fedora, Rocky Linux): `sudo dnf install git`
+
+Überprüfe die Installation mit `git --version`.
 
 ## Git unter Windows installieren
 
@@ -29,4 +37,4 @@ weight: 2
     - Es wird empfohlen während der Installation den PATH zu ändern.
       ![Git Setup PATH](../git-install/git-setup-path.png "Git Setup PATH")
 3.  Öffne Git Bash
-4.  Schreibe `git version` zum Überprüfen, ob Git erfolgreich installiert wurde.
+4.  Schreibe `git --version` zum Überprüfen, ob Git erfolgreich installiert wurde.
