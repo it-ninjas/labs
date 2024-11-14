@@ -19,7 +19,7 @@ in der Zusammenarbeit und in der Arbeit mit den Versionierungstools.
 
 ## Aufgaben
 
-In einem ersten Schritt solltet ihr die Voraussetzungen für dieses Modul schaffen. Dazu müsst ihr 
+In einem ersten Schritt solltet ihr die Voraussetzungen für dieses Modul schaffen. Dazu müsst ihr
 
 - ein Team bilden, das aus minimal zwei, maximal fünf IT-Ninjas besteht, die das Modul Git erfolgreich abgeschlossen haben.
 - die folgenden Aufgaben als Team ausführen.
@@ -27,9 +27,8 @@ In einem ersten Schritt solltet ihr die Voraussetzungen für dieses Modul schaff
 
 ![Bild eines Teams das an zwei Projekten arbeitet](../preliminaries/team.png)
 
-
-Für die Umsetzung könnt ihr die Git Befehle über die Kommandozeile eingeben oder die Funktionen in 
-IntelliJ und der Bitbucket Weboberfläche nutzen. Die folgenden Screenshots sollen euch dabei helfen, 
+Für die Umsetzung könnt ihr die Git Befehle über die Kommandozeile eingeben oder die Funktionen in
+IntelliJ und der Bitbucket Weboberfläche nutzen. Die folgenden Screenshots sollen euch dabei helfen,
 die Funktionen in den Tools schneller zu finden.
 
 ### Fork eines Repositories erstellen (Bitbucket)
@@ -41,12 +40,12 @@ Die Bilder zeigen ein Beispielprojekt, welches nicht zur Verfügung steht. Als P
 können die bereits abgeschlossenen Labs oder Exams der Module #J2 und #J3 verwendet werden.
 
 Für die Arbeit im Team sollten neue Repositories angelegt werden, damit die Arbeit aus den abgeschlossenen
-Modulen erhalten bleibt. Dazu kann der Fork Befehl genutzt werden. Entweder über die Git Kommandozeile oder - bequemer - 
+Modulen erhalten bleibt. Dazu kann der Fork Befehl genutzt werden. Entweder über die Git Kommandozeile oder - bequemer -
 über die Bitbucket Weboberfläche:
 
 ![Bitbucket Weboberfläche (Fork)](../preliminaries/bitbucket_fork.png)
 
-Wenn du die Kopien der Repositories erfolgreich angelegt hast, musst du diese noch für die anderen 
+Wenn du die Kopien der Repositories erfolgreich angelegt hast, musst du diese noch für die anderen
 Team-Mitglieder freigeben.
 
 
@@ -54,7 +53,7 @@ Team-Mitglieder freigeben.
 
 Jeder Ninja erstellt einen Klon der Repositories in seinem lokalen Arbeitsbereich:
 
-1. Bitbucket im Browser aufrufen und zum gewünschten Repository wechseln. Dann Klonen in der Seitenleiste auswählen und die URL kopieren. 
+1. Bitbucket im Browser aufrufen und zum gewünschten Repository wechseln. Dann Klonen in der Seitenleiste auswählen und die URL kopieren.
 2. Git im Menu auswählen (ggf. zuerst auf das Hamburger-Menu klicken).
 3. Im Git-Submenu den Eintrag Clone... auswählen.
 4. Im oberen Feld wird die aus Bitbucket kopierte URL eingefügt. Im unteren Feld ist das lokale Zielverzeichnis (muss leer sein!) auszuwählen.
@@ -71,6 +70,3 @@ Jeder Ninja erstellt einen Klon der Repositories in seinem lokalen Arbeitsbereic
 #### Hier geht es zu den Labs.
 - [Teambildung](../../../labs/git/vertiefung/01_team)
 - [Vorbereitung](../../../labs/git/vertiefung/02_preparing)
-
-
-

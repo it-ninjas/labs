@@ -26,21 +26,21 @@ Hier sollen die Kenntnisse zu den nachfolgenden Git Befehlen aufgefrischt werden
 - **pull**
 - **push**
 
-In den Labs zu diesem Modul werden die Git-Aktionen hauptsächlich innerhalb von IntelliJ oder über 
+In den Labs zu diesem Modul werden die Git-Aktionen hauptsächlich innerhalb von IntelliJ oder über
 die Weboberfläche von Bitbucket ausgeführt, da dies das in den Projekten übliche Vorgehen ist.
 
 ## Arbeit mit mehreren Repositories
 
 In diesem Abschnitt werdet ihr mit den gleichen Menueinträgen arbeiten, wie im vorigen. Wenn ihr nicht
-sicher seid, welche das sind, schaut einfach noch einmal auf der vorigen Seite nach. 
+sicher seid, welche das sind, schaut einfach noch einmal auf der vorigen Seite nach.
 
 Nach Abschluss der Aufgaben solltet ihr in der Lage sein, zwischen unterschiedlichen Projekten und zwischen
 verschiedenen Versionsständen eines Projektes zu wechseln ohne, dass eure lokalen Änderungen verloren gehen.
 
-Wir werden in diesem Abschnitt mit beiden Projekten arbeiten, wobei auf nur dem zweiten Projekt 
+Wir werden in diesem Abschnitt mit beiden Projekten arbeiten, wobei auf nur dem zweiten Projekt
 geändert wird. In einer ersten Aufgabe wird die parallele Arbeit an mehreren Projekten demonstriert.
 Dabei werden die beiden möglichen Arbeitsweisen vorgestellt.
- 
+
 Die zweite Aufgabe thematisiert den Wechsel zwischen Branches oder Commits des gleichen Projekts.
 Kleinere Änderungen werden auf mehrere Commits verteilt. Anschliessend wird zwischen diesen Commits
 gewechselt, korrigiert, erneut committed oder mit stash zwischengespeichert.
@@ -51,4 +51,3 @@ wechseln, wisst, wann stash eingesetzt wird und seid mit checkout, rebase, push 
 Zu den Labs:
 - [Simultanes Arbeiten an mehreren Projekten](../../../labs/git/vertiefung/05_project-switch)
 - [Wechseln zwischen Branches desselben Projekts](../../../labs/git/vertiefung/06_branch-switch)
-

@@ -14,7 +14,7 @@ erhältst du hier die Möglichkeit dein Wissen zu Git und Bitbucket zu vertiefen
 
 Dieses Modul ist fakultativ und gehört nicht zum normalen Ausbildungsplan. Es wird kein komplett neues Wissen vermittelt,
 sondern nur das bereits erlernte in einer realistischen Team-Umgebung angewandt. Dazu ist es erforderlich, dass das Modul
-von mindestens zwei Lernenden (mehr ist besser) gemeinsam bearbeitet wird. 
+von mindestens zwei Lernenden (mehr ist besser) gemeinsam bearbeitet wird.
 
 ## Ziele
 
@@ -45,16 +45,15 @@ Das Lab ist in die folgende Aufgabenbereiche unterteilt:
 * [Zusammenarbeit in einem Projekt](collaboration)
 * [Paralleles Arbeiten mit mehreren Repositories](parallel-processing)
 
-
 ## Hinweise
 
 - Zu diesem fakultativen Modul gibt es kein Exam.
 - Um dieses Modul erfolgreich zu bearbeiten ist Teamarbeit erforderlich.
 - Die geplante Bearbeitungszeit liegt bei 1 - 2 Tagen.
- 
+
 #### Hinweise zum Review
 
-* Das Review zum Modul wird mit dem gesamten Team geführt. 
+* Das Review zum Modul wird mit dem gesamten Team geführt.
 * Das Team erläutert das Vorgehen und schildert auch aufgetretene Probleme.
 * Ein Beispiel-Projekt soll im Vorfeld zu einem releasefähigen Stand gebracht worden sein, der die Änderungen aller Teammitglieder beinhaltet.
 * Ein weiteres Beispielprojekt befindet sich noch in der Entwicklung.
