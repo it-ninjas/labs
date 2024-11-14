@@ -498,7 +498,7 @@ Wichtige Punkte zum Test:
 ## Repo/Entity mit @DataJpaTest testen
 
 Jetzt ist das `PersonRepo` inkl. `Person` (Entität) und DB dran. Wir fahren den Slice-Test mit `@DataJpaTest`.
-Es werden nur DB, Entities und Repos initialisert, keine Services, keine Controller:
+Es werden nur DB, Entities und Repositories initialisert, keine Services, keine Controller:
 
 ![Repo-DataJpaTest-Tests](../spring-boot-testing/repo-datajpatest.png)
 
