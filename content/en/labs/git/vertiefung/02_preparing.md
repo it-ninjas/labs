@@ -31,5 +31,3 @@ Diese Aufgabe ist von jedem Teilnehmer auf seinem Rechner auszuführen.
 5. Wähle unter *Branch von* "develop" aus!
 6. Trage als *Branch-Name*  "Modul-S3-‹dein Vorname›-collaboration" ein (ohne Anführungszeichen)!
 7. Klicke auf *Branch erstellen*!
-
-
