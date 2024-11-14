@@ -54,7 +54,9 @@ Die Applikation ist minimalistisch aber mit den wichtigsten Spring-Boot-Layers a
 - Das `PersonRepo` basiert auf `JpaRepository` und definiert keine zusätzlichen Methoden.
 - Auch der `PersonService` ist sehr kompliziert :-). Wichtig ist aber, dass er die `@Component` `MyUtilityBean` verwendet.
   So haben wir auch noch eine Utility-Bean, die wir beim Testen berücksichtigen können.
-- Der `PersonController` bietet zwei REST API Methoden an: _/persons_ (liefert alle Personen) und _/createPerson_ (so kannst du eine neue Person anlegen).
+- Der `PersonController` bietet zwei REST API Methoden an:
+  - _/persons_ (liefert alle Personen)
+  - _/createPerson_ (so kannst du eine neue Person anlegen)
 
 Der `PersonController` verwendet den `PersonService`, welcher auf das `PersonRepo` zugreift, das die `Person`-Entity nutzt.
 Das Zwiebelprinzip in Reinkultur ;-).
@@ -345,8 +347,8 @@ class PersonServiceSpringBootTest {
 
 Wichtige Punkte zum Test:
 
-- Zur DB-Konfiguration verwenden wir das application.properties aus _/src/**test**/resources_. Dieses wird zuerst verwendet, weil es vorhanden ist.
-- Anstelle von `@Spy` (und `@Mock`) wird `@SpyBean` (und `@MockBean`) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden.
+- Zur DB-Konfiguration verwenden wir das application.properties aus _/src/**test**/resources_. Wird ein Test gestartet, scannt Spring zuerst die Dateien in _/src/test_. Da dort ein _application.properties_ vorhanden ist, wird dieses verwenden. Falls nicht, würde in einem zweiten Schritt _/src/main_ gescannt und die entsprechende _application.properties_ Datei verwendet werden.
+- Anstelle von `@Spy` (und `@Mock`) wird `@SpyBean` (und `@MockBean`) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden. `@MockBean` wird eingesetzt, damit der Mock die effektive Bean im Application-Context ersetzt und so überall der Mock verwendet wird. `@SpyBean` wird genutzt, um die bestehende Bean innerhalb des Applikation-Contexts auszuspionieren und nicht isoliert zu betrachten.
 - Für den Test `getAllPersons()` verwenden wir ein spezifisches `@Sql` Script _data_personservice.sql_.
 - Die Annotation `@DirtiesContext` bewirkt, dass nach dem Test die DB zurückgesetzt wird. Andernfalls hätten wir noch die Daten aus dem vorherigen Test in der DB.
 - Im Test `createPersons()` verwenden wir einen ArgumentCaptor auf der `myUtilityBean` und zählen, ob auf ihr 2x die Methode `addPerson()` aufgerufen wird und ob die erste Person auch unseren Testdaten entspricht.
@@ -489,7 +491,9 @@ Wichtige Punkte zum Test:
 
 - Der `PersonService` wird gemockt.
 - Wir verwenden einen `MockMvc`. Damit können wir (REST-)Requests absetzen und die Antworten auswerten.
-  - `getAllPersons()` macht einfache String-Überprüfungen.
+  - `getAllPersons()` `mockMvc.perform(get("/persons")).andDo(print()).andExcpect(...)...`: Zuerst wird
+    die Rest Schnittstelle _/persons_ aufgerufen. `andDo(print())` gibt die Response in der Konsole aus. Alle weiteren `andExpect(...)` arbeiten mit der Reponse. `content().string(...)`
+    holt den Body der Reponse und konvertiert ihn in einen String. Danach wird geschaut, ob der Body gewisse Strings enthält.
   - `createPerson()` wertet die JSON-Response detailliert aus.
     - `objectMapper.writeValueAsString(dto)`: Wir konvertieren das Person-Objekt automatisch nach JSON.
     - Bei `jsonPath("$.personName")` bezieht sich _$_ auf das zurückgegebene einzelne Objekt. Erwarten wir eine Liste von Objekten kann über den Index auf ein entsprechendes Objekt zugegriffen werden. Wollen wir z.B. auf das 2te Objekt in der Liste zugreifen, verwenden wir _$[1].personName_ .
@@ -593,7 +597,6 @@ Wichtige Punkte zum Test:
 - Zur DB-Konfiguration verwenden wir das application.properties aus _/src/**test**/resources_. Dieses wird zuerst verwendet, weil es vorhanden ist.
 - `@BeforeEach`: vor jedem Test füllen wir die DB mit einer Person ab.
 - Nach jedem Test müssen wir die DB **nicht** manuell (oder mit `tearDown()`) resetten oder den Test mit `@DirtiesContext` annotieren. Dies passiert bei `@DataJpaTest` automatisch.
-- Falls du möchtest, kannst du die Beans `EntityManager` oder `TestEntityManager` iniziieren lassen, um auf EntityManager-Ebene die Daten zu überprüfen.
 
 ## Testcontainers
 
@@ -726,8 +729,10 @@ Wichtige Punkte zum Test:
    }
 ```
 
-- Wie du siehst, definieren wir an verschiedenen Orten die benötigten Properties. Standard-Properties werden hier über `@DynamicPropertySource` hinzugefügt. Test-spezifische Properties werden über die Klassen-Annotation `@TestPropertySource` gesetzt. Grundsätzlich könntest du aber auch nur mit der DynamicPropertySource arbeiten.
+- `@Container`: Wir instanzieren einen Maria-DB Container. Falls der Container lokal noch nicht vorhanden ist im Docker/Podman wird er zuerst heruntergeladen. Hier verwenden wir jeweils die _latest_-Version von Maria-DB. In einer echten Applikation sollte hier stattdessen eine konkrete Version definiert werden.
+- Wie du siehst, definieren wir an verschiedenen Orten die benötigten Properties. Standard-Properties werden hier über `@DynamicPropertySource` hinzugefügt. Wir übernehmen aus dem `testContainer` die DB-Verbindungs-Properties. Solange wir diese nicht überschreiben, werden Default-Werte zurückgegeben.
+- Test-spezifische Properties werden über die Klassen-Annotation `@TestPropertySource` gesetzt. Grundsätzlich könntest du aber auch nur mit der DynamicPropertySource arbeiten.
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse die Aufgaben in [Spring Boot Testing - Aufgaben](../../../../labs/java/spring/02_spring_boot_testing/)!
+![task1](/images/task.png) Jetzt bist du dran. Löse die Aufgaben in [Spring Boot Testing - Aufgaben](../../../../labs/java/spring/02_Spring_Boot_Testing/)!
