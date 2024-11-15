@@ -84,7 +84,7 @@ Bei `@DataJpaTest` und `@WebMvcTest` sprechen wir von sogenannten **Slice-Tests*
 
 Natürlich können wir auch den ganzen Spring Application Context hochfahren. Dann verwenden wir `@SpringBootTest`.
 
-Für Services gibt es keine spezielle Slice-Test-Annotation resp. Umgebung. Da nehmen wir entweder Mockito oder dann @SpringBootTest.
+Für Services gibt es keine spezielle Slice-Test-Annotation oder Umgebung. Da nehmen wir entweder Mockito oder dann @SpringBootTest.
 
 > @DataJpaTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch.
 > Das ist langsamer bei der Ausführung, als pure Unit-Tests. Wir werden daher später lernen, nur gewisse Tests zu starten.
