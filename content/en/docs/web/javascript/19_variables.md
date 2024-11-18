@@ -197,7 +197,7 @@ Wenn du wissen willst, wieso `var` nicht mehr verwendet werden sollte, dann kann
 - `boolean` für boolesche Werte
 - `number` für Zahlen
 - `string` für Zeichenketten
-- `object` für Objekte (einschließlich Arrays und null-Werte)
+- `object` für Objekte (einschliesslich Arrays und null-Werte)
 - `function` für Funktionen
 
 ```javascript
