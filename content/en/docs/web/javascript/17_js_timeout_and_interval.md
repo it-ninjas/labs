@@ -54,6 +54,6 @@ const timeoutId = setTimeout(function () {
 clearTimeout(timeoutId);
 ```
 
-Insofern der Timeout zum Zeitpunkt, in dem `clearTimeout(timeoutId)` aufgerufen wird, nicht bereits ausgelaufen ist, wird er so abgebrochen. Wicht zu wissen ist hierbei, dass die callback-Function im Falle eines Abbruchs nicht ausgeführt wird.
+Insofern der Timeout zum Zeitpunkt, in dem `clearTimeout(timeoutId)` aufgerufen wird, nicht bereits ausgelaufen ist, wird er so abgebrochen. Wichtig zu wissen ist hierbei, dass die callback-Function im Falle eines Abbruchs nicht ausgeführt wird.
 
 ![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](https://labs.it-ninjas.ch/labs/web/javascript/01_javascript/#aufgabe-3---uhr).
