@@ -70,7 +70,7 @@ Weitere Informationen zu Transitions erhältst du hier: https://www.w3schools.co
 
 ## Animationen
 
-In CSS sind auch Animationen einfach realisierbar - auch ohne die Verwendung JavaScript.
+In CSS sind auch Animationen einfach realisierbar - auch ohne die Verwendung von JavaScript.
 
 Im folgenden Beispiel lassen wir eine Hand winken:
 
