@@ -10,7 +10,7 @@ description: >
 
 ## Ziele
 
-- Du weisst, was JSON ist ind weisst, woraus JSON-Daten bestehen.
+- Du weisst, was JSON ist und weisst, woraus JSON-Daten bestehen.
 - Du weisst, wie geordnete Listen ist JSON dargestellt werden können.
 
 # JSON (JavaScript Object Notation)
