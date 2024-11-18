@@ -77,7 +77,7 @@ Um durch ein Array zu iterieren, gibt es mehrere Möglichkeiten. Die gängigsten
 
 ### For-Loop
 
-Der `for`-Loop ist ein Loop, mit dem sich eine bestimmte Anzahl von Wiederholungen einer Kontrollstruktur durchlaufen lässt. Der `for`- Loop wird oft verwendet, um durch Arrays zu iterieren oder um eine Aktion eine bestimmte Anzahl von Malen auszuführen.
+Der `for`-Loop ist ein Loop, mit dem sich eine bestimmte Anzahl von Wiederholungen einer Kontrollstruktur durchlaufen lässt. Er wird häufig genutzt, um durch Arrays zu iterieren oder eine Aktion mehrmals auszuführen.
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
