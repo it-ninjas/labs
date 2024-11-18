@@ -43,7 +43,7 @@ Das `type`-Attribut definiert, um was für eine Art von Input-Element es sich ha
 
 ## Label für Input-Elemente
 
-Vor einem Input-Element steht zumeist ein Text, der beschreibt, was im `<input/>`-Element als Eingabe erwartet wird("Wie lautet dein Vorname"). Dieser Text wird auch "Label" genannt. Bei einer guten Webseite wird zudem auch das Textfeld ausgewählt, wenn der User auf das Label klickt (nicht nur beim Klick auf das Textfeld). Diese Funktionalität wollen wir hinzufügen:
+Vor einem Input-Element steht zumeist ein Text, der beschreibt, was im `<input/>`-Element als Eingabe erwartet wird ("Wie lautet dein Vorname"). Dieser Text wird auch "Label" genannt. Bei einer guten Webseite wird zudem auch das Textfeld ausgewählt, wenn der User auf das Label klickt (nicht nur beim Klick auf das Textfeld). Diese Funktionalität wollen wir hinzufügen:
 
 ```html
 <label>Wie lautet dein Vorname?<input type="text" name="firstname" /></label>
