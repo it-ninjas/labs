@@ -86,7 +86,7 @@ Der Hauptunterschied zwischen einer Funktionsdeklaration und einer Funktionsexpr
 Dieser Unterschied wird durch den **Hoisting-Prozess** verursacht:
 Der Hoisting-Prozess ist ein Konzept, bei dem Variablen- und Funktions**deklarationen** an den Anfang ihres Gültigkeitsbereichs verschoben werden.
 Mit anderen Worten werden, bevor der Code ausgeführt wird, Variablen und Funktionen in den Speicher geladen und sind somit bereits verfügbar, bevor sie im Code definiert wurden.
-Im Falle von Funktionsdeklarationen bedeutet das, dass die gesamte Funktionsdefinition im Speicher geladen wird, einschließlich der Funktionsparameter und des Funktionskörpers.
+Im Falle von Funktionsdeklarationen bedeutet das, dass die gesamte Funktionsdefinition im Speicher geladen wird, einschliesslich der Funktionsparameter und des Funktionskörpers.
 Dadurch kann eine Funktion in einem Programm an jeder beliebigen Stelle aufgerufen werden, auch wenn sie erst später im Code definiert wird.
 Es ist jedoch wichtig zu beachten, dass das Hoisting für Funktionsdeklarationen gilt, nicht aber für Funktionsexpressionen.
 Wenn man eine Funktion als Funktionsexpression definiert, wird sie nicht gehoisted. Das bedeutet, dass man sie erst nach der Definition aufrufen kann.
