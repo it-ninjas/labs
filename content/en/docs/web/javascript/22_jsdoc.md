@@ -21,7 +21,7 @@ Wenn du existierende Funktionen benutzen möchtest, dann wäre es doch praktisch
 
 In TypeScript kannst du jeder Variable einen Typ und jeder Funktion einen Rückgabewert zuweisen. Dsa geht in JavaScript nicht so einfach.
 
-Trotzdem kannst du dank des JSDoc-Projekts (https://jsdoc.app/about-getting-started.html) Typ-Angaben machen, damit deine Entwicklungsumgebung sich beschwer, wenn beispielsweise in einer Funktion ein Wert eines falschen Types übergeben wird.
+Trotzdem kannst du dank des JSDoc-Projekts (https://jsdoc.app/about-getting-started.html) Typ-Angaben machen, damit deine Entwicklungsumgebung sich beschwert, wenn beispielsweise in einer Funktion ein Wert eines falschen Types übergeben wird.
 
 In nächsten Beispiel siehst du, wie du in einer Funktion die Typen spezifizieren kannst:
 
