@@ -133,7 +133,7 @@ Ein weiterer Nachteil besteht in der beschränkten Kapazität, je nach Webserver
 
 ### POST
 
-Die POST-Methode schreibt die URL-Parameter direkt in die generierte HTTP-Request, womit die Parameter für den Benutzer nicht direkt einsehbar sind. Der Umfang der POST-Anfragen ist unbeschränkt.
+Die POST-Methode schreibt die Parameter direkt in den generierten HTTP-Request, womit die Parameter für den Benutzer nicht direkt einsehbar sind. Der Umfang der POST-Anfragen ist unbeschränkt.
 
 **Vorteile**
 
