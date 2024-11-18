@@ -208,7 +208,7 @@ person.sayGoodbye(); // 'Bye!'
 
 Objekte können in JavaScript mittels JSON serialisiert und deserialisiert werden. Ein JavaScript-Objekt besteht wesentlich aus einer Sammlung von Schlüssel-Wert-Paaren. Ein JSON-Objekt ist ein String, der diese Schlüssel-Wert-Paare in einem strukturierten JSON-Format enthält.
 
-Es ist wichtig zu beachten, dass JSON nur bestimmte Datentypen unterstützt, darunter Zeichenfolgen, Zahlen, Booleans, null, Arrays und Objekte. Funktionen und undefinierte Werte können nicht in JSON codiert werden.
+Es ist wichtig zu beachten, dass JSON nur bestimmte Datentypen unterstützt, darunter Zeichenfolgen, Zahlen, Booleans, null, Arrays und Objekte. Funktionen und undefinierte Werte können nicht in JSON serialisiert werden.
 
 ### Objekt in JSON-String umwandeln
 
