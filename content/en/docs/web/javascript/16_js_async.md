@@ -17,7 +17,7 @@ description: >
 
 Ein Promise repräsentiert einen Wert, der möglicherweise in der Zukunft verfügbar sein wird.
 
-Promises werden oft verwendet, um asynchrone Operationen wie das Laden von Daten von einem Server oder das Ausführen einer HTTP-Requests zu verwalten. Ein Promise kann sich in einem von drei Zuständen befinden:
+Promises werden oft verwendet, um asynchrone Operationen wie das Laden von Daten von einem Server oder das Ausführen eines HTTP-Requests zu verwalten. Ein Promise kann sich in einem von drei Zuständen befinden:
 
 - Pending (ausstehend): Das Promise ist noch nicht erfüllt (`resolved`) oder abgelehnt (`rejected`) worden.
 - Fulfilled (erfüllt): Die asynchrone Operation wurde erfolgreich abgeschlossen (`resolved`) und der Promise enthält den gelieferten Wert.
