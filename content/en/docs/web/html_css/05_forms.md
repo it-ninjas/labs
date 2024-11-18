@@ -137,7 +137,7 @@ Die POST-Methode schreibt die Parameter direkt in den generierten HTTP-Request, 
 
 **Vorteile**
 
-Wenn sensible Daten wie beispielsweise Benutzername und Passwort an den Server übermittelt werden sollen, bietet die POST-Methode die erforderliche Diskretion. Die Daten werden weder im Cache gespeichert, noch erscheinen sie im Browserverlauf.  Mit der POST-Methode können nicht nur kurze Texte, sondern Daten jeglichen Umfangs und Typs übermittelt werden, wie etwa Fotos oder Videos.
+Wenn sensible Daten wie beispielsweise Benutzername und Passwort an den Server übermittelt werden sollen, bietet die POST-Methode die erforderliche Diskretion. Die Daten werden weder im Cache gespeichert, noch erscheinen sie im Browserverlauf.  Mit der POST-Methode können nicht nur kurze Texte, sondern Daten jeglichen Umfangs und Typs übermittelt werden, wie etwa Bilder oder Videos.
 
 **Nachteile**
 
