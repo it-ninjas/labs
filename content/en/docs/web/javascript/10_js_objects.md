@@ -206,7 +206,7 @@ person.sayGoodbye(); // 'Bye!'
 
 > JSON (JavaScript Object Notation) ist ein Textformat zum Austausch von Daten. Es wird oft in der Webprogrammierung verwendet, um Daten zwischen einem Client und einem Server auszutauschen.
 
-Objekte können mithilfe von JSON kodiert und dekodiert werden. Ein JavaScript-Objekt ist im Wesentlichen eine Sammlung von Key-Value-Paaren. Ein JSON-Objekt ist eine Zeichenfolge, die diese Key-Value-Paare im JSON-Format enthält.
+Objekte können in JavaScript mittels JSON serialisiert und deserialisiert werden. Ein JavaScript-Objekt besteht wesentlich aus einer Sammlung von Schlüssel-Wert-Paaren. Ein JSON-Objekt ist ein String, der diese Schlüssel-Wert-Paare in einem strukturierten JSON-Format enthält.
 
 Es ist wichtig zu beachten, dass JSON nur bestimmte Datentypen unterstützt, darunter Zeichenfolgen, Zahlen, Booleans, null, Arrays und Objekte. Funktionen und undefinierte Werte können nicht in JSON codiert werden.
 
