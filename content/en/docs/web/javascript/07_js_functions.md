@@ -45,7 +45,7 @@ sayHello(); // 'Hello!'
 
 ### Arrow Functions
 
-Arrow Functions sind eine kompakte und pragmatische Möglichkeit, Funktionen in JavaScript in einer Kurzform zu definieren. Im Gegensatz zu herkömmlichen Funktionsdefinitionen haben Arrow-Funktionen einen kürzeren und einfacheren Syntax. Dies ist besonders nützlich, um den Code zu vereinfachen und die Lesbarkeit zu erhöhen. Arrow-Funktionen haben auch eine andere `this`-Binding-Regel im Vergleich zu herkömmlichen Funktionen. In Arrow-Funktionen wird `this` an das `this`-Objekt des äußeren Kontexts gebunden, während bei herkömmlichen Funktionen `this` an das Objekt des Aufrufers gebunden wird.
+Arrow Functions sind eine kompakte und pragmatische Möglichkeit, Funktionen in JavaScript in einer Kurzform zu definieren. Im Gegensatz zu herkömmlichen Funktionsdefinitionen haben Arrow-Funktionen einen kürzeren und einfacheren Syntax. Dies ist besonders nützlich, um den Code zu vereinfachen und die Lesbarkeit zu erhöhen. Arrow-Funktionen haben auch eine andere `this`-Binding-Regel im Vergleich zu herkömmlichen Funktionen. In Arrow-Funktionen wird `this` an das `this`-Objekt des äusseren Kontexts gebunden, während bei herkömmlichen Funktionen `this` an das Objekt des Aufrufers gebunden wird.
 
 Im Gegensatz zu herkömmlichen Funktionsdefinition wird der Funktionsname weggelassen und durch einen Pfeil (`=>`) ersetzt.
 
