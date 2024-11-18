@@ -129,7 +129,7 @@ messageDiv.innerHTML = insertHtml;
 In diesem Abschnitt passiert das Folgende:
 
 - für jeden Like wird im `<div id="message-div">` folgendes `<img>`-Element hinzugefügt: `<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Emoji_u1f44d.svg" alt="like" height="25">`
-- Das HTML-Element dieses Bilds haben wir zuerst in einer Konstante (`const`) gespeichert. `const` ist prinzipiell dasselbe wie `let`, nur mit dem Unterschied, dass sich dieser Wert innerhalb der Funktion nie verändern darf.
+- Das HTML-Element dieses Bilds haben wir zuerst in einer Konstante (`const`) gespeichert. `const` ist prinzipiell dasselbe wie `let`, nur mit dem Unterschied, dass sich dieser Wert nach der Initialisierung nie verändern darf.
 - Die String-Variable `insertHtml` brauchen wir als Zwischenspeicher, in welcher wir den HTML-String zusammensetzen, welchen wir später in das DOM einspeisen möchten.
 - Die Anzahl der Durchläufe der `for`-Schlaufe entspricht der Anzahl Likes. Das bedeutet, dass pro Like ein Bild in `insertHtml` kopiert wird.
 - Anschliessend holen wir uns das `<div id="message-div">`-Element via JavaScript. Wir hätten hier auch `document.getElementById('message-div')` verwenden können, `querySelector` funktioniert hier aber auch. Die `querySelector`-Funktion akzeptiert als Argument einen CSS-Selektor und gibt dann das entsprechende Element zurück, das damit angesprochen wird. In diesem Beispiel war `div#message-div` ein möglicher CSS-Selektor (wie `#message-div` auch), der das `<div id="message-div"` anspricht.
