@@ -38,7 +38,7 @@ b = "BB"
     at <anonymous>:1:3
 ```
 
-Wie du siehst, kannst du eine mit `let` deklarierte Variable verändern. Versuchst du, eine `const`-Variable neu zu deklarieren, wird ein Fehler geworfen. Es ist jedoch durchaus möglich, einzelne Attribute einer `const`-Variable zu ändern-
+Wie du siehst, kannst du eine mit `let` deklarierte Variable verändern. Versuchst du, eine `const`-Variable neu zu deklarieren, wird ein Fehler geworfen. Es ist jedoch durchaus möglich, einzelne Attribute einer `const`-Variable zu ändern.
 
 > **Als Grundsatz gilt: Verwende immer `const`, ausser du willst später der Variable im gleichen Scope (nächster Abschnitt) einen anderen Wert zuweisen. Dann verwende `let`.**
 
