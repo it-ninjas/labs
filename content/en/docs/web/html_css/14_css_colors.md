@@ -106,7 +106,7 @@ background-color: rgb(0, 0, 0, 128);
 
 ### via HEX color
 
-Am häufigsten werden in der Web-Entwicklung die Farben via Hex-Code angegeben.
+Am häufigsten werden in der Web-Entwicklung die Farben via Hex-Code angegeben, da sie mit der ausreichenden Erfahrung relativ einfach lesbar sind und eine praktisch endlose Range an Farben bieten. 
 
 Farben in Hexadezimalen sind auch nach dem RGB-Konzept aufgebaut, wobei jeweils 2 Stellen des Codes eine Farbe ausmachen.
 
