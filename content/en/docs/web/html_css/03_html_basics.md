@@ -39,4 +39,4 @@ Die Tags inklusive deren Inhalt nennen wir "Element". Das Element ist wie folgt 
 
 Jedes Element beginnt mit einem "Opening Tag". Zwischen diesem und dem Closing Tag befindet sich der Content, der auf Grundlage des Tags formatiert wird. Der Content wird oft "InnerText" oder "InnerHtml" genannt. Das Closing Tag hat immer vor dem Tag-Namen ein "/", das symbolisiert, dass es sich um ein Closing Tag handelt.
 
-Im Opening Tag können Attribute vorkommen, die den Tag "konfigurieren". Eine solche Konfiguration beinhält in den meisten Fällen einen Attribut-Key und -Value, welche mit einem Gleichzeichen verbunden werden. Der Attribut-Value (Wert) beginnt und endet **in jedem Fall** mit einem Anführungs- beziehungsweise Schlusszeichen, auch wenn der Wert eine Zahl oder true/false ist.
+Im Opening Tag können Attribute vorkommen, die den Tag "konfigurieren". Eine solche Konfiguration beinhaltet in den meisten Fällen einen Attribut-Key und -Value, welche mit einem Gleichzeichen verbunden werden. Der Attribut-Value (Wert) beginnt und endet **in jedem Fall** mit einem Anführungs- beziehungsweise Schlusszeichen, auch wenn der Wert eine Zahl oder true/false ist.
