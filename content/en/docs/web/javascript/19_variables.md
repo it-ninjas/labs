@@ -249,7 +249,7 @@ console.log(objectVar instanceof Object); // true
 
 `typeof` ist besser geeignet, um primitive Datentypen wie `Strings`, `numbers` und `Booleans` zu überprüfen.
 
-`instanceof` ist hingegen besser geeignet, um den Datentyp von Objekten zu überprüfen, einschließlich Arrays, Funktionen und benutzerdefinierten Objekten. Damit lässt sich ebenfalls prüfen, ob ein Objekt auf Basis einer bestimmten Klasse erstellt wurde.
+`instanceof` ist hingegen besser geeignet, um den Datentyp von Objekten zu überprüfen, einschliesslich Arrays, Funktionen und benutzerdefinierten Objekten. Damit lässt sich ebenfalls prüfen, ob ein Objekt auf Basis einer bestimmten Klasse erstellt wurde.
 
 ### Destructuring Assignment
 
