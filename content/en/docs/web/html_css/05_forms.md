@@ -128,7 +128,7 @@ Da die Parameter in die URL eingebettet werden, lassen sich für bestimmte Abfra
 
 **Nachteile**
 
-Der Hauptnachteil ist der mangelnde Datenschutz. Die mitgesendeten URL-Parameter werden nicht nur unverschlüsselt übertragen, sondern auch im Klartext im Cache, im Browserverlauf und im Logfile des Servers abgelegt. Deshalb sollten die Login-Daten, also insbesondere Passwörter, grundsätzlich mit POST übertragen werden.
+Der Hauptnachteil ist der mangelnde Datenschutz. Die mitgesendeten URL-Parameter werden im Klartext im Cache, im Browserverlauf und im Logfile des Servers abgelegt. Deshalb sollten die Login-Daten, also insbesondere Passwörter, grundsätzlich mit POST übertragen werden.
 Ein weiterer Nachteil besteht in der beschränkten Kapazität, je nach Webserver und Browser ist die maximale Länge der URL auf 2.000 Zeichen begrenzt. Das reicht meistens nicht, um zum Beispiel Dateien wie Bilder oder Videos zu übertragen.
 
 ### POST
