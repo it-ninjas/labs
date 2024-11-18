@@ -22,7 +22,7 @@ In HTML – insbesondere seit HTML 5 – gibt es semantische Tags, bei denen die
 
 Oft kommst du in die Situation, in der du mehrere Elemente in einem anderen Element gruppieren möchtest. In den meisten Fällen verwendet man dafür das `div`-Element.
 
-`<div>`-Tags werden oft als Container(Behälter) für HTML-Elemente verwendet. Dieser Container kann dann als Ganzes mit CSS gestylt oder mit JavaScript manipuliert werden. Probiere das nächste Beispiel einmal aus, ohne das Styling zu beachten (ignoriere also das, was im `<style>`-Element steht):
+`<div>`-Tags werden oft als Container (Behälter) für HTML-Elemente verwendet. Dieser Container kann dann als Ganzes mit CSS gestylt oder mit JavaScript manipuliert werden. Probiere das nächste Beispiel einmal aus, ohne das Styling zu beachten (ignoriere also das, was im `<style>`-Element steht):
 
 ```html
 Just a Text
