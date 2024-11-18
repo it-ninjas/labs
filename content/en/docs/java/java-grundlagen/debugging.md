@@ -1,9 +1,9 @@
 ---
 title: "Debugging"
 linkTitle: "Debugging"
-weight: 18
+weight: 12
 description: >
-  Modul #J12 - Debugging von Java Code
+  Modul #J1 - Debugging von Java Code
 ---
 
 ## Ziele
@@ -30,7 +30,7 @@ Somit ist es besser mit Tools von IntelliJ zu debuggen.
 Um in IntelliJ zu debuggen, muss man nicht zuerst ein File erstellen oder eine Extension haben. Es reicht, bereits wenn man die Breakpoints setzt.
 Dafür kann man, links neben der Zeilenzahl mittels Links-Klick einen normalen Breakpoint setzen oder mit Rechts-Klick die Optionen ansehen:
 
-![IntelliJ zeigt nun, die Breakpoint Optionen](../debugging/debugging-options-intelliJ.png "Breakpoint Optionen IntelliJ")
+![IntelliJ zeigt nun die Breakpoint Optionen](../debugging/debugging-options-intelliJ.png "Breakpoint Optionen IntelliJ")
 
 Die Optionen zeigen folgende zwei Breakpoints:
 
@@ -120,10 +120,6 @@ Die Watcher werden dann über den Variablen aufgelistet:
 ![IntelliJ zeigt nun, die Watchers](../debugging/debugging-watchers-intelliJ.png "Watchers in IntelliJ")
 
 Genau wie beim Hinzufügen kann man einen Watcher entfernen, indem man einem rechten Mausklick auf die Variabel tätigt und "Remove Watch" anklickt.
-
-## Debuggen von Spring Boot
-
-Spring Boot Code ist in Java geschrieben, dementsprechend bleibt das Debuggen grundsätzlich gleich. Jedoch musst du die Interaktionen zwischen Repositorys, Services und Controllern gut verstehen und wissen, wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step Into behilflich sein.
 
 ---
 

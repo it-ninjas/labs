@@ -3,7 +3,7 @@ title: "Spring"
 linkTitle: "Spring"
 weight: 14
 description: >
-  Modul #J10 - Spring Framework
+  Modul #J8 - Spring Framework
 ---
 
 #### Ziele
@@ -73,7 +73,7 @@ Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
 #### Spring Boot
 
-[Spring Boot](./spring-boot.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
+[Spring Boot](spring-boot/_index) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die
 Konfiguration.

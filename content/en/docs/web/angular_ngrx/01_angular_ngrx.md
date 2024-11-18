@@ -73,5 +73,5 @@ export const appConfig: ApplicationConfig = {
 
 ## Debugging Tool
 
-Damit man das gesamte auch gut debuggen kann, gibt es eine [Chrome Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related), welche dabei hilft.
+Damit man das gesamte auch gut debuggen kann, gibt es eine [Chrome Extension](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd), welche dabei hilft.
 Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stores zu überwachen, Aktionen zu verfolgen und den Ablauf der Anwendung besser zu verstehen.

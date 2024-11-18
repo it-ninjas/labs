@@ -14,8 +14,8 @@ Das Ausbildungsprogramm 2024/2025 besteht aus diversen einzelnen Ausbildungs-Mod
 
 Das Wissen aus jedem technischen Modul wird durch Selbst-Studium erworben und bei Bedarf eigenständig durch zusätzlich gesuchtes Wissen ergänzt.
 Nahezu jedes Modul bringt seine eigenen Übungen (Labs) mit. Einige der Module müssen durch ein Exam abgeschlossen werden.
-Die Resultate deiner Übungen und Exams besprichst du am besten mit einem Coach oder einem erfahrenen Software-Entwickler.
-Er wird dir Feedback geben und dir idealerweise die Freigabe für das nächste Modul erteilen.
+Die Resultate deiner Übungen und Exams besprichst du immer mit einer/einem Praxisbildner:in im Rahmen eines Reviews.
+Er/Sie wird dir Feedback geben und dir idealerweise die Freigabe für das nächste Modul erteilen.
 Gewisse Module bieten freiwillige Challenges an, bei denen du dein Wissen mit anderen messen kannst.
 
 Das Ziel des technischne Ausbildungsprogramms ist
@@ -34,11 +34,12 @@ Berufsübergreifende Module finden in Form von Workshops und Erfahrungstransfers
 
 ### Absprung zu den Debugging-Seiten
 
-- [Debugging von Java Code in IntelliJ](../../../../docs/java/debugging).
-- [Frontend-Debugging](../../../../docs/web/javascript/24_debugging/).
+- [Debugging von Java Code in IntelliJ](../../../../docs/java/java-grundlagen/debugging)
+- [Frontend-Debugging](../../../../docs/web/javascript/24_debugging/)
 
 ### Absprung zu den Testing-Seiten
 
 - [Testing Konzepte / JUnit / Mockito](../../../../docs/java/java-testing/)
-- [Rest-Schnittstellen testen](../../../../docs/java/java-rest-testing/).
-- [Angular Testfiles](../../../../docs/web/angular/02_7_angular_unit_test/).
+- [Spring Boot Testing](../../../../docs/java/spring-boot/spring-boot-testing/)
+- [Rest-Schnittstellen testen](../../../../docs/java/java-rest-testing/)
+- [Angular Testfiles](../../../../docs/web/angular/02_7_angular_unit_test/)
