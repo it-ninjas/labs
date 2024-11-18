@@ -21,7 +21,7 @@ Seit ES2015 (ES6) gibt es in JavaScript die Möglichkeit, den Parametern von Met
 
 Methoden (und daher auch Konstruktoren) besitzen oft Werte, die zwingend übergeben werden müssen und welche, die optional sind.
 
-Im folgenden Beispiel ist beispielsweise der Name bei einer Person zwingend, das Alter, Geschlecht und sein/ihr Verhältnis zu JavaScript sind aber optional:
+Im folgenden Beispiel ist der Name bei einer Person zwingend, das Alter, Geschlecht und sein/ihr Verhältnis zu JavaScript sind aber optional:
 
 ```javascript
 class Person {
