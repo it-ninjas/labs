@@ -77,7 +77,7 @@ Hier findest du eine Liste der Farben: https://www.w3schools.com/colors/colors_n
 
 ### via RGB
 
-RGB steht für Rot-Grün-Blau. Wenn man die Farben via RGB angibt, so gibt man an, wie intensiv jede dieser 3 Farben in der gewünschten Farbe teilhaben soll. 0 bedeutet, dass die Farbe nicht vorkommt, 255 bedeutet hingegen, dass die Farbe zu 100% gebraucht wird. Zusätzlich kann auch noch ein 4. Wert der sogenannte Alpha-Wert, angegeben werden. Dieser legt die Transparenz der Farbe fest, wobei 0 für komplette Transparenz und 255 für Undurchsichtigkeit steht.
+RGB steht für Rot, Grün und Blau. Bei der Angabe einer Farbe über RGB-Werte wird festgelegt, wie stark jede dieser drei Grundfarben vertreten ist. Der Wert 0 bedeutet, dass die aktuelle Farbe nicht präsent ist, während 255 eine vollständige Sättigung der jeweiligen Farbe darstellt, also die Farbe in voller Intensität angezeigt wird. Zusätzlich kann ein vierter Wert, der Alpha-Wert, angegeben werden, der die Transparenz der Farbe bestimmt. Der Alpha-Wert liegt zwischen 0 und 1, wobei 0 vollständige Transparenz (also unsichtbar) bedeutet und 1 vollständige Deckkraft (völlig undurchsichtig). Du kannst das als prozentuale Zahl betrachten: So entspricht 0,5 einem prozentualen Wert von 50%. Wenn kein Alpha-Wert angegeben wird, ist der Standardwert 1.
 
 Folgende RGB-Werte solltest du als Informatiker:in kennen:
 
