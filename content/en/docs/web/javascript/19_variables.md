@@ -47,7 +47,7 @@ Wenn du beispielsweise viele Variablen in einer Funktion hast, müsstest du zuer
 
 ### JavaScript besitzt keine Typisierung
 
-JavaScript ist eine dynamisch typisierte Sprache, was bedeutet, dass die Typen der Variablen und Ausdrücke erst zur Laufzeit und nicht zur Kompilierungszeit festgelegt werden. Im Gegensatz dazu haben andere Sprachen wie Java, C++ und Python eine statische Typisierung, bei der der Typ einer Variable oder eines Ausdrucks bereits zur Kompilierungszeit festgelegt wird.
+JavaScript ist eine dynamisch typisierte Sprache, was bedeutet, dass die Typen der Variablen und Ausdrücke erst zur Laufzeit und nicht zur Kompilierungszeit festgelegt werden. Im Gegensatz dazu haben andere Sprachen wie Java oder C++ eine statische Typisierung, bei der der Typ einer Variable oder eines Ausdrucks bereits zur Kompilierungszeit festgelegt wird.
 
 In JavaScript können Variablen während der Laufzeit ohne Einschränkung ihren Typ ändern. Beispielsweise kann eine Variable zunächst als String initialisiert werden und später im Code auf einen numerischen Wert aktualisiert werden. Das liegt daran, dass JavaScript die Datentypen von Variablen dynamisch zuweist und ihnen erlaubt, sich während der Laufzeit zu ändern.
 
