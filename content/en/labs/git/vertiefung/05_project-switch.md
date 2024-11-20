@@ -16,11 +16,11 @@ Diese Aufgabe ist eine Einzelaufgabe, die von jedem IT-Ninja eigenständig bearb
 
 1. Starte deinen Browser!
 2. Rufe die Bitbucketseite mit dem zweiten Repository auf!
-3. Klicke auf *Branch erstellen*!
-4. Wähle den *Branch-Typ* "Feature" aus!
-5. Wähle unter *Branch von* "develop" aus!
-6. Trage als *Branch-Name*  "Modul-S3-‹dein Vorname›-projekte" ein (ohne Anführungszeichen)!
-7. Klicke auf *Branch erstellen*!
+3. Klicke auf _Branch erstellen_!
+4. Wähle den _Branch-Typ_ "Feature" aus!
+5. Wähle unter _Branch von_ "develop" aus!
+6. Trage als _Branch-Name_  "Modul-S3-‹dein Vorname›-projekte" ein (ohne Anführungszeichen)!
+7. Klicke auf _Branch erstellen_!
 
 ### Schritt 2: Neu erstellten Branch auschecken
 
@@ -53,7 +53,7 @@ werden hierbei keine lokalen Daten überschrieben.
 
 ### Schritt 6: Projekt in 2. IDE-Fenster öffnen
 
-1. Wähle über *Menu › File › Recent Projects* das erste Projekt aus!
+1. Wähle über _Menu › File › Recent Projects_ das erste Projekt aus!
 2. Klicke bei der entsprechenden Nachfrage "New Window" an. Es wird eine neue Instanz der IDE mit eigenem Arbeitsbereich geöffnet.
 3. Jetzt kannst du durch Switchen der geöffneten IDE-Instanz an beiden Projekten arbeiten.
 

@@ -22,7 +22,7 @@ erfolgreich gemergt wurden.**
 2. Wechsle zum ersten Projekt (Menu › File › Recent Projects)!
 3. Achte darauf, dass du auf deinem Feature-branch arbeitest!
 4. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch)!
-5. Aktualisiere den Stand des Feature-Branch mit *Git › rebase* von `develop`!
+5. Aktualisiere den Stand des Feature-Branch mit _Git › rebase_ von `develop`!
 
 ### Schritt 2: Bearbeiten der gleichen Codestelle
 
@@ -36,10 +36,10 @@ Die Änderungen sollten nicht mehr als eine halbe Stunde Zeit benötigen.
 
 Anschliessend werden die Änderungen committet und auf den remote Feature-Branch gepusht.
 Gehe dazu in IntelliJ auf
-- *Git › Commit...* im Menu
-- oder *Git › Push...* über das Kontextmenu auf dem Projekt.
+- _Git › Commit..._ im Menu
+- oder _Git › Push..._ über das Kontextmenu auf dem Projekt.
 
-Wähle unter Changes die geänderten Dateien aus und übertrage sie mit *Commit and Push...* in das
+Wähle unter Changes die geänderten Dateien aus und übertrage sie mit _Commit and Push..._ in das
 lokale und remote Git-Repository.
 
 ### Schritt 4: Pull Request erstellen und überprüfen
@@ -63,7 +63,7 @@ Führt die folgenden Schritte jeweils vollständig aus, bevor ihr mit dem nächs
 
 1. Wechselt auf den Pull Request!
 2. Kontrolliert den aktuellen Zusatnd (es sollten Konflikte vorhanden sein)!
-3. Überprüft den Code mit *diff*!
+3. Überprüft den Code mit _diff_!
 4. Löst den Konflikt manuell oder folgt den Empfehlungen von Bitbucket!
 5. Genehmigt den Pull Request, wenn der Konflikt gelöst ist! (Achtung, das kann nicht der Ersteller des Pull Requests machen!)
 6. Führt Merge auf `develop` aus!

@@ -44,10 +44,10 @@ benötigt werden.
 Nun sollen die Änderungen committed und auf den remote Feature-Branch gepusht werden. Gehe dazu in
 IntelliJ auf
 
-- *Git › Commit* im Menu
-- oder *Git › Push* über das Kontextmenu auf dem Projekt.
+- _Git › Commit_ im Menu
+- oder _Git › Push_ über das Kontextmenu auf dem Projekt.
 
-Wähle unter Changes die geänderten Dateien aus und übertrage sie mit *Commit and Push...* in das lokale
+Wähle unter Changes die geänderten Dateien aus und übertrage sie mit _Commit and Push..._ in das lokale
 und remote Git-Repository.
 
 ### Schritt 5:  Pull Request erstellen
@@ -65,7 +65,7 @@ bearbeitet werden. Es wird aber empfohlen, dass jeweils alle Team-Member teilneh
 in Bitbucket zu üben.
 
 1. Ruft den Pull Request in Bitbucket auf!
-2. Vergleicht die Codeänderungen des aktuellen Pull Requests zum Stand von `develop` via *diff*!
+2. Vergleicht die Codeänderungen des aktuellen Pull Requests zum Stand von `develop` via _diff_!
 3. Fügt mindestens ein Team-Member als Prüfer hinzu! (Achtung das kann nicht der Ersteller des Pull Requests sein!)
 4. Genehmigt nun als Prüfer den Pull Request (grüner Button)!
 5. Mergt den Pull Request (sofern dies nicht automatisch startet)!
