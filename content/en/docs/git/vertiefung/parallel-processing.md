@@ -7,9 +7,9 @@ weight: 4
 ## Voraussetzungen
 Die Vorbereitungen aus [Aufgabe 1](../../../labs/git/vertiefung/01_team) sind umgesetzt. Insbesondere sind erledigt:
 
-- zwei neue Repositories mit vorhandenen Projekten wurden erstellt
-- es sind jeweils die Branches `master` und `develop` vorhanden
-- alle Teammember haben diese Repositories geklont
+- Zwei neue Repositories mit vorhandenen Projekten wurden erstellt.
+- Es sind jeweils die Branches `master` und `develop` vorhanden.
+- Alle Teammember haben diese Repositories geklont.
 
 ## Simulieren einer realen Projektarbeit
 

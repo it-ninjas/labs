@@ -33,7 +33,7 @@ die Funktionen in den Tools schneller zu finden.
 
 ### Fork eines Repositories erstellen (Bitbucket)
 
-**Achtung:** Diese Aktion muss nur von einem Teammember ausgeführt werden!
+**Achtung:** Diese Aktion muss nur von einem Team-Mitglied ausgeführt werden!
 
 **Hinweis:**<br>
 Die Bilder zeigen ein Beispielprojekt, welches nicht zur Verfügung steht. Als Projekte für diese Aufgabe

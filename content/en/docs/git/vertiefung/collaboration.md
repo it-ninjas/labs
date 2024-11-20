@@ -9,7 +9,7 @@ Die Vorbereitungen aus [Aufgabe 1](../../../labs/git/vertiefung/01_team) sind um
 
 - Zwei neue Repositories mit vorhandenen Projekten wurden erstellt.
 - Es sind jeweils die Branches `master` und `develop` vorhanden.
-- Alle Teammember haben diese Repositories geklont.
+- Alle Team-Mitglieder haben diese Repositories geklont.
 
 ## Simulieren einer realen Projektarbeit
 

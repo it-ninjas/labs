@@ -8,9 +8,9 @@ description: Verteilte Versionsverwaltung mit Git
 
 Hallo Ninja!
 
-Es freut uns das du **git** kennenlernen willst!
+Es freut uns, dass du **git** kennenlernen willst!
 
-Wir haben hier ein Lab für dich zusammengestellt damit du in dieses Thema eintauchen kannst. Finde für dich heraus, warum **git** eine Zeitmaschine ist und was es mit den Paralleluniversen auf sich hat.
+Wir haben hier ein Lab für dich zusammengestellt, damit du in dieses Thema eintauchen kannst. Finde für dich heraus, warum **git** eine Zeitmaschine ist und was es mit den Paralleluniversen auf sich hat.
 
 # Ziele
 

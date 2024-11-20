@@ -28,14 +28,14 @@ Du kannst ...
 
 Dazu wirst du bereits bekannte Themen wiederholen und ...
 
-- ein existierendes Repository klonen
-- ein neues Repository erstellen
-- ein Repository in den Arbeitsbereich holen
-- Branches anlegen und mergen
-- erkennen, ob ein Branch bereits gemergt wurde
-- Dateien und Verzeichnisse zu einem Repository hinzufügen
-- Dateien und Verzeichnisse von der Versionsverwaltung ausschliessen
-- die Weboberfläche von Bitbucket bedienen
+- ein existierendes Repository klonen.
+- ein neues Repository erstellen.
+- ein Repository in den Arbeitsbereich holen.
+- Branches anlegen und mergen.
+- erkennen, ob ein Branch bereits gemergt wurde.
+- Dateien und Verzeichnisse zu einem Repository hinzufügen.
+- Dateien und Verzeichnisse von der Versionsverwaltung ausschliessen.
+- die Weboberfläche von Bitbucket bedienen.
 
 ## Schwerpunkte
 

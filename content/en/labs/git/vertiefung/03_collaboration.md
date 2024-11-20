@@ -14,10 +14,10 @@ Die Schritte 1 bis 5 sind Einzelaufgaben, die jeder Ninja selbständig lösen mu
 eine Teamaufgabe und muss ebenfalls für jeden Feature-Branch ausgeführt werden.
 
 ### Schritt 1: Neuen Branch auschecken
-1. Starte IntelliJ!
-2. Wechsle zum ersten Projekt (Menu › File › Recent Projects)!
-3. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch)!
-4. Checke den oben erstellten Branch aus (Menu › Git › Branches...)!
+1. Starte IntelliJ.
+2. Wechsle zum ersten Projekt (Menu › File › Recent Projects).
+3. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch).
+4. Checke den oben erstellten Branch aus (Menu › Git › Branches...).
 
 ### Schritt 2: Dateien mit ausschliessen
 Das Verzeichnis .idea soll von der Versionsverwaltung ausgeschlossen werden. Nutze dazu den passenden
@@ -51,11 +51,11 @@ Gehe in Bitbucket (Browser) auf den FeatureBranch und
 
 ### Schritt 6: Zusammenführen
 Dieser Schritt muss mindestens vom Besitzer des Feature-Branches und vom Lead Developer gemeinsam
-bearbeitet werden. Es wird aber empfohlen, dass jeweils alle Team-Member teilnehmen, um den Merge-Vorgang
+bearbeitet werden. Es wird aber empfohlen, dass jeweils alle Team-Mitglieder teilnehmen, um den Merge-Vorgang
 in Bitbucket zu üben.
 
-1. Ruft den Pull Request in Bitbucket auf!
-2. Vergleicht die Codeänderungen des aktuellen Pull Requests zum Stand von `develop` via *diff*!
-3. Fügt mindestens ein Team-Member als Prüfer hinzu! (Achtung das kann nicht der Ersteller des Pull Requests sein!)
-4. Genehmigt nun als Prüfer den Pull Request (grüner Button)!
-5. Mergt den Pull Request (sofern dies nicht automatisch startet)!
+1. Ruft den Pull Request in Bitbucket auf.
+2. Vergleicht die Codeänderungen des aktuellen Pull Requests zum Stand von `develop` via *diff*.
+3. Fügt mindestens ein Team-Member als Prüfer hinzu. (Achtung das kann nicht der Ersteller des Pull Requests sein!)
+4. Genehmigt nun als Prüfer den Pull Request (grüner Button).
+5. Mergt den Pull Request (sofern dies nicht automatisch startet).
