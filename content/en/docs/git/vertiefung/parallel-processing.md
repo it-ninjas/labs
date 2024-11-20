@@ -5,6 +5,7 @@ weight: 4
 ---
 
 ## Voraussetzungen
+
 Die Vorbereitungen aus [Aufgabe 1](../../../labs/git/vertiefung/01_team) sind umgesetzt. Insbesondere sind erledigt:
 
 - Zwei neue Repositories mit vorhandenen Projekten wurden erstellt.
@@ -49,5 +50,6 @@ Nach den Übungen könnt ihr zwischen Projekten oder zwischen verschiedenen Bran
 wechseln, wisst, wann stash eingesetzt wird und seid mit checkout, rebase, push und pull vertraut.
 
 Zu den Labs:
+
 - [Simultanes Arbeiten an mehreren Projekten](../../../labs/git/vertiefung/05_project-switch)
 - [Wechseln zwischen Branches desselben Projekts](../../../labs/git/vertiefung/06_branch-switch)
