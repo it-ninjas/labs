@@ -19,7 +19,7 @@ Diese Aufgabe ist eine Einzelaufgabe, die von jedem IT-Ninja eigenständig bearb
 3. Klicke auf _Branch erstellen_!
 4. Wähle den _Branch-Typ_ "Feature" aus!
 5. Wähle unter _Branch von_ "develop" aus!
-6. Trage als _Branch-Name_  "Modul-S3-‹dein Vorname›-projekte" ein (ohne Anführungszeichen)!
+6. Trage als _Branch-Name_ "Modul-S3-‹dein Vorname›-projekte" ein (ohne Anführungszeichen)!
 7. Klicke auf _Branch erstellen_!
 
 ### Schritt 2: Neu erstellten Branch auschecken
@@ -40,7 +40,7 @@ aber führe kein commit aus.
 1. Wechsle nun zu deinem Feature-Branch von Projekt 1!
 2. Klicke bei der entsprechenden Nachfrage "This Window" an. (Der Arbeitsbereich der IDE wird wieder auf das 1. Projekt gesetzt.)
 3. Überprüfe, dass wirklich das erste Projekt geladen ist. Du solltest das am Projektnamen erkennen
-und daran, dass keine uncommitteten Änderungen vorhanden sind.
+   und daran, dass keine uncommitteten Änderungen vorhanden sind.
 
 ### Schritt 5: Zu Projekt 2 wechseln
 

@@ -50,7 +50,7 @@ IntelliJ auf
 Wähle unter Changes die geänderten Dateien aus und übertrage sie mit _Commit and Push..._ in das lokale
 und remote Git-Repository.
 
-### Schritt 5:  Pull Request erstellen
+### Schritt 5: Pull Request erstellen
 
 Gehe in Bitbucket (Browser) auf den FeatureBranch und
 

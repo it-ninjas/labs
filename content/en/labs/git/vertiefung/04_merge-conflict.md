@@ -18,6 +18,7 @@ Die Schritte 1 bis 4 sind Einzelaufgaben, die jeder Ninja selbständig lösen mu
 
 **Diese Aufgabe kann erst gestartet werden, wenn alle Feature-Branches aus dem [vorherigen Lab](../../../labs/git/vertiefung/03_collaboration)
 erfolgreich gemergt wurden.**
+
 1. Starte IntelliJ!
 2. Wechsle zum ersten Projekt (Menu › File › Recent Projects)!
 3. Achte darauf, dass du auf deinem Feature-branch arbeitest!
@@ -36,6 +37,7 @@ Die Änderungen sollten nicht mehr als eine halbe Stunde Zeit benötigen.
 
 Anschliessend werden die Änderungen committet und auf den remote Feature-Branch gepusht.
 Gehe dazu in IntelliJ auf
+
 - _Git › Commit..._ im Menu
 - oder _Git › Push..._ über das Kontextmenu auf dem Projekt.
 
@@ -49,7 +51,7 @@ Gehe in Bitbucket (Browser) auf den Feature-Branch und
 1. Erstelle einen Pull Request (Pull Requests oder Pull-Anfragen in der Seitenleiste)!
 2. Achte dabei darauf, das du `develop` als Zielbranch ausgewählt hast!
 3. Kontrolliere den Pull Request auf Konflikte!
-(Solange noch kein Pull Request gemergt wurde, sollten hier keine Konflikte auftreten.)
+   (Solange noch kein Pull Request gemergt wurde, sollten hier keine Konflikte auftreten.)
 
 ### Schritt 5: Mergen des ersten Feature-Branch
 
