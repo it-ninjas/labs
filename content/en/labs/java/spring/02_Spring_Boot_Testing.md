@@ -11,9 +11,7 @@ description: >
 
 Erweitere/Korrigiere deine Tests aus den [Spring und Spring Boot Aufgaben](./01_spring/) wie folgt:
 
-- Schreibe Mockito-Tests für den `AdminService` (JDBC) respektive `SubjectService`(JPA).
-- Ändere den `AdminControllerIntegrationTest` (JDBC) respektive `AdminSubjectTests` (JPA) zu einem `@WebMvcTest`.
-- Schreibe einen `@DataJpaTest`, der das `AdminRepository` inkl. `SchoolSubject` (JDBC) respektive `SubjectRepository` inkl. `Subject` (JPA) (evtl. hast du auch andere Namen) abdeckt.
+- Schreibe Mockito-Tests für den Service, der die Schulfächer verwaltet (z.B. `SchulfachAdminService`).
+- Ändere den Integrationstest zur Verwaltung von Schulfächern (z.B. `AdminControllerIntegrationTest`) zu einem `@WebMvcTest`.
+- Schreibe einen `@DataJpaTest`, der das Repository zur Verwaltung von Schulfächern inklusive seiner Entities abdeckt.
 - Schreibe einen `@SpringBootTest` als kompletten Integrationstest, der vom Controller-Aufruf mittels `MockMvc` bis auf die H2-DB “runter” geht. Teste, ob das Anlegen eines neuen Schulfachs funktioniert und ob die Daten persistiert werden.
-
-Tipp: Du musst bei den jeweiligen Aufgaben natürlich nur entweder JDBC- **oder** JPA- Tests umsetzen, abhängig davon, wie du deine Notenverwaltung umgesetzt hast.
