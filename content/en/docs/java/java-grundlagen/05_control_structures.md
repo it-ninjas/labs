@@ -93,7 +93,7 @@ if (dollars < 1000) {
 
 ### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=BBNrEkv_Sw4).
 
 ---
@@ -201,7 +201,7 @@ do {
 
 #### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=0dWbm-vb21Y).
 
 #### For-Loop
@@ -259,7 +259,7 @@ Der gezeigte Loop wird also fünfmal ausgeführt und der Wert der Variable _numb
 
 #### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=_y5lnzRZeko).
 
 ---

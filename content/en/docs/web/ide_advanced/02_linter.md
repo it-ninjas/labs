@@ -168,4 +168,4 @@ Nun hoffen wir, dass alle nötigen Installationen erfolgreich ausgeführt wurden
     - git --version
     - npm -v
 
-Sofern alle Versionen angezeigt werden, war die Installation erfolgreich. Anderweitig solltest du einen Coach konsultieren.
+Sofern alle Versionen angezeigt werden, war die Installation erfolgreich. Anderweitig solltest du einen Praxisbildner konsultieren.

@@ -60,7 +60,7 @@ Notiere dir deine Erkenntnisse. Versuche zudem folgende Fragen zu beantworten:
 
 ### Aufgabe 3 - Dokument als HTML
 
-Suche einen spanneden Text (z.B. aus einer alten Word-Datei, Wikipedia-Artikel, Anleitung). Dieser Text sollte mehrere Überschriften und Bilder besitzen. Setze diesen Text mit HTML um und versuche bereits, viele Semantic Tags zu verwenden. Zeige dein Resultat einem Coach.
+Suche einen spanneden Text (z.B. aus einer alten Word-Datei, Wikipedia-Artikel, Anleitung). Dieser Text sollte mehrere Überschriften und Bilder besitzen. Setze diesen Text mit HTML um und versuche bereits, viele Semantic Tags zu verwenden. Zeige dein Resultat einem Praxisbildner.
 
 ### Aufgabe 4 - persönliche Portfolio
 

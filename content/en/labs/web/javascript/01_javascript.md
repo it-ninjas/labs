@@ -13,7 +13,7 @@ description: >
 
 Verwende hierfür die Juck Norris-API: `GET https://api.chucknorris.io/jokes/random`
 
-Solltest du fertig mit dieser Aufgabe sein, dann melde dich bei einem Coach.
+Solltest du fertig mit dieser Aufgabe sein, dann melde dich bei einem Praxisbildner.
 
 ### Aufgabe 2 - Eine andere API anbinden
 
