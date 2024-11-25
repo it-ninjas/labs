@@ -10,7 +10,7 @@ description: >
 
 ## Motivation
 
-Die JavaScript-Konsole bietet viele hilfreiche Tools an, um Text zu loggen. Diese Möglichkeiten schauen wir uns hier an.
+Die JavaScript-Konsole bietet viele hilfreiche Tools an, um Texte zu loggen. Diese Möglichkeiten schauen wir uns hier an.
 
 ## Ziele
 
@@ -18,20 +18,20 @@ Die JavaScript-Konsole bietet viele hilfreiche Tools an, um Text zu loggen. Dies
 
 ## Basics
 
-Das `console.log(...)` in JavaScript ist das Äquivalent zu `System.out.println(...)` in Java, das `Console.WriteLine(...)` in C#, das `print(...)` in Python oder das `puts ...` in Ruby.
+Die `console.log(...)`-Struktur in JavaScript ist das Äquivalent zu `System.out.println(...)` in Java, `Console.WriteLine(...)` in C#, `print(...)` in Python oder `puts ...` in Ruby.
 
-Es gibt aber noch sehr viele Alternativen zu `console.log(...)`, die sehr nützlich sind.
+Es gibt in JavaScript noch weitere Alternativen zu `console.log(...)`, die durchaus nützlich sind.
 
-Z.B. kannst du den Logs noch eine Kategorie zuordnen und werden in unterschiedlichen Farben geloggt:
+Zum Beispiel kannst du den Logs eine Kategorie zuordnen, wobei die Logs in unterschiedlichen Farben angezeigt werden:
 
 - `console.info(...)` (neutral)
 - `console.warn(...)` (gelb/orange/grün)
 - `console.error(...)` (rot)
 - `console.debug(...)` (blau, aber nur sichtbar, wenn "Alle [Log-]Ebenen" in der Konsole angezeigt werden)
 
-### Nie mehr Counter-Variablen für Debugging-Zwecke!!
+### Nie mehr Counter-Variablen für Debugging-Zwecke!
 
-Wenn du z.B. feststellen möchtest, wie oft etwas aufgerufen wird, hilft dir vielleicht `console.count("")` weiter:
+Wenn du beispielsweise feststellen möchtest, wie oft etwas aufgerufen wird, kann dir `console.count("")` weiterhelfen:
 
 ```javascript
 console.count("alarm");
@@ -54,6 +54,8 @@ console.dir(person);
 
 ### Tabelle loggen
 
+Möchtest du beispielsweise ein Array in Form einer Tabelle loggen, kannst du das mit `console.table(...)` bewerkstelligen.
+
 ```javascript
 console.table(
     [person1, person2]
@@ -69,18 +71,18 @@ console.table(
 
 ### Log stylen
 
-Mit einem `%c` im Log kannst du den Text stylen:
+Wenn du `%c` zu der Message im Log hinzufügst, kannst du den angezeigten Text stylen:
 
 ```javascript
 console.log(
   "%cHello World",
-  "color: blue; font-weight: bolder; background-color: white; border-radius: 2em; padding: 1em;",
+  "color: blue; font-weight: bolder; background-color: white; border: 1px solid; border-radius: 2em; padding: 1em;",
 );
 ```
 
-### Falsche Werte loggen
+### Fehlerhafte Werte loggen
 
-Als Entwickler bist du informiert werden, wenn irgendwo falsche Werte zurückgegeben wurden (z.B. Rückgabe-Wert einer Funktion).
+Als Entwickler:in möchtest du informiert werden, wenn an einem Ort fehlerhafte Werte zurückgegeben wurden (zum Beispiel Rückgabe-Werte von Funktionen).
 
 Hierfür bietet sich `console.assert(...)` an:
 

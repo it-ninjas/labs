@@ -10,13 +10,13 @@ description: >
 
 ## Ziele
 
-- Du kannst ein Array mit Hilfe von High Order Functions filtrieren, deren Elemente umwandeln (`map`) und sortieren.
+- Du kannst ein Array mithilfe von Higher Order Functions filtrieren, deren Elemente umwandeln (`map`) und sortieren.
 
 ## Higher Order Functions
 
 ### map()
 
-Die `map()` Methode verwendet man, um eine neue Array-Instanz zu erstellen, indem jeder Wert des ursprünglichen Arrays durch eine bestimmte Funktion transformiert wird. Dabei wird eine neue Array-Instanz erstellt, die die transformierten Werte enthält.
+Die `map()` Methode wird verwendet, um eine neue Array-Instanz zu erstellen, indem jeder Wert des ursprünglichen Arrays durch eine bestimmte Funktion transformiert wird. Dabei wird eine neue Array-Instanz erstellt, die die transformierten Werte aufnimmt.
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
@@ -44,7 +44,7 @@ console.log(evenNumbers); // [2, 4]
 
 Die `sort()`-Methode sortiert die Elemente in einem Array.
 
-Die Standard-Sortierreihenfolge ist alphanumerisch. Das bedeutet, dass die Elemente nach ihrem Unicode-Codepunkt sortiert werden.
+Die Standard-Sortierreihenfolge ist alphanumerisch. Das bedeutet, dass die Elemente nach ihrer Unicode-Platzierung sortiert werden.
 
 ```javascript
 const fruits = ["Banana", "Mango", "Apple", "Orange"];
@@ -53,11 +53,11 @@ const sortedFruits = fruits.sort();
 console.log(sortedFruits); // ["Apple", "Banana", "Mango", "Orange"]
 ```
 
-`sort()` kann auch mit einer Vergleichsfunktion verwendet werden, um die Elemente auf andere Weise zu sortieren.
+Die `sort()`-Funktion kann auch mit einer Vergleichsfunktion verwendet werden, um die Elemente auf andere Weise zu sortieren.
 
-Die Vergleichsfunktion sollte zwei Argumente haben
+Die Vergleichsfunktion sollte dabei:
 
-- und einen negativen Wert zurückgeben, wenn das erste Argument vor dem zweiten Argument in der Sortierreihenfolge stehen soll,
+- zwei Argumente haben und einen negativen Wert zurückgeben, wenn das erste Argument vor dem zweiten Argument in der Sortierreihenfolge stehen soll,
 - einen positiven Wert, wenn das erste Argument nach dem zweiten Argument stehen soll,
 - und 0, wenn sie beide gleich zu gewichten sind.
 
@@ -70,7 +70,7 @@ console.log(numbers); // [3, 5, 10, 20]
 
 ### includes() (contains)
 
-Die `includes()` Methode wird verwendet, um zu prüfen, ob ein bestimmtes Element in einem Array vorhanden ist oder nicht. Die Funktion gibt `true` zurück, wenn das Element gefunden wurde, sonst `false`.
+Die `includes()`-Funktion wird verwendet, um zu prüfen, ob ein bestimmtes Element in einem Array vorhanden ist oder nicht. Die Funktion gibt `true` zurück, wenn das Element gefunden wurde, sonst `false`.
 
 ```javascript
 const fruits = ["Banana", "Mango", "Apple", "Orange"];
@@ -79,7 +79,7 @@ const isAppleInFruits = fruits.includes("Apple");
 console.log(isAppleInFruits); // true
 ```
 
-`includes()` kann auch mit einem optionalen zweiten Parameter verwendet werden. Dies ist der Index, der angibt, ab wo die Suche beginnen soll. Wenn dieser Parameter nicht angegeben wird, beginnt die Suche am Anfang des Arrays.
+`includes()` kann auch mit einem optionalen zweiten Parameter verwendet werden. Das wäre der Index, der angibt, von welcher Position im Array aus die Suche beginnen soll. Wenn dieser Parameter nicht angegeben wird, beginnt die Suche am Anfang des Arrays.
 
 ```javascript
 const fruits = ["Banana", "Mango", "Apple", "Orange"];
@@ -90,7 +90,7 @@ console.log(isAppleInFruits); // false
 
 ### some()
 
-Die Methode `some()` prüft, ob zumindest ein Element in einem Array den angegebenen Test bestehen würde. Die Funktion gibt `true` zurück, wenn mindestens ein Element den Test besteht, andernfalls gibt sie `false` zurück.
+Die Methode `some()` prüft, ob zumindest ein Element in einem Array die angegebene Kondition erfüllt. Die Funktion gibt `true` zurück, wenn mindestens ein Element der Kondition entspricht, andernfalls gibt sie `false` zurück.
 
 ```javascript
 const fruits = ["Banana", "Mango", "Apple", "Orange"];
@@ -101,7 +101,7 @@ console.log(isAppleInFruits); // true
 
 ### find()
 
-Die `find()` Methode wird verwendet, um das erste Element in einem Array zu finden, das den angegebenen Test bestehen würde. Die Funktion gibt das gefundene Element zurück, falls eines gefunden wird, andernfalls gibt sie `undefined` zurück.
+Die `find()`-Methode wird verwendet, um das erste Element in einem Array zu finden, welches der angegebenen Kondition entspricht. Die Funktion gibt das gefundene Element zurück, falls eines gefunden wird, andernfalls gibt sie `undefined` zurück.
 
 ```javascript
 const fruits = ["Banana", "Mango", "Apple", "Orange"];
@@ -112,7 +112,7 @@ console.log(apple); // 'Apple'
 
 ### reduce()
 
-Die `reduce()`-Methode wird verwendet, um das Array auf einen einzigen Wert zu reduzieren. Dabei wird der erste Wert ("Accumulator") genommen und mit dem zweiten kombiniert. Das Ergebnis davon ist der neue Accumulator und mit dem nächsten Wert (Wert des dritten Elements) im Array kombiniert. Dies solange bis man durch das gesamte Array durch ist.
+Die `reduce()`-Methode wird verwendet, um das Array auf einen einzigen Wert zu reduzieren. Dabei wird der erste Wert (auch als Accumulator bezeichnet) genommen und mit dem zweiten kombiniert. Das Ergebnis davon ist der neue Accumulator und mit dem nächsten Wert (Wert des dritten Elements) im Array kombiniert. Das geschieht so lange, bis man durch das gesamte Array durchiteriert hat.
 
 Beispiel mit nur Reduktionsfunktion:
 

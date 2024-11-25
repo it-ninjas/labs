@@ -10,15 +10,15 @@ description: >
 
 ## Ziele
 
-- Du weisst, wie eine Funktions-Definition aussieht sowie deren Aufruf.
+- Du weisst, wie eine Funktionsdefinition aussieht und weisst, wie du eine solche Funktion aufrufen kannst.
 - Du weisst, was Default-Parameter sind und wie man sie verwendet.
-- Du weisst, was Arrow-Functions sind und wie mit dieser Schreibweise Funktionen geschrieben werden.
-- Du kennst den Unterschied von Funktionen und Funktions Expressions.
-- Du weisst, was Globaler-Scope und Block-Scope bedeutet.
+- Du weisst, was Arrow-Functions sind und wie mit dieser Schreibweise Funktionen definiert werden.
+- Du kennst den Unterschied von Funktionen und Function-Expressions.
+- Du weisst, was global Scope und block Scope bedeutet.
 
-### Funktions-Definition und Aufruf
+### Funktionsdefinition und Aufruf
 
-Eine Funktions-Definition in JavaScript ist eine Möglichkeit, einen Code-Block zu erstellen und diesen zu benennen, der eine bestimmte Aufgabe ausführt.
+Eine Funktionsdefinition in JavaScript ist eine Möglichkeit, einen benannten Code-Block zu erstellen, der eine bestimmte Aufgabe ausführt.
 
 ```javascript
 function sum(number1, number2) {
@@ -33,7 +33,7 @@ let total = sum(3, 5);
 console.log(total); // 8
 ```
 
-Man kann auch Funktionen ohne Argumente aufrufen, indem man einfach die Klammern leer lässt:
+Man kann auch Funktionen ohne Argumente aufrufen, indem man einfach die Klammern leer lässt (das setzt aber voraus, dass die Funktion keinen Parameter erwartet):
 
 ```javascript
 function sayHello() {
@@ -45,7 +45,7 @@ sayHello(); // 'Hello!'
 
 ### Arrow Functions
 
-Arrow-Funktionen sind eine kompakte und prägnante Möglichkeit, Funktionen in JavaScript zu definieren. Im Gegensatz zu herkömmlichen Funktionsdefinitionen haben Arrow-Funktionen einen kürzeren und einfacheren Syntax. Dies ist besonders nützlich, um den Code zu vereinfachen und die Lesbarkeit zu erhöhen. Arrow-Funktionen haben auch eine andere `this`-Binding-Regel im Vergleich zu herkömmlichen Funktionen. In Arrow-Funktionen wird `this` an das `this`-Objekt des äußeren Kontexts gebunden, während bei herkömmlichen Funktionen `this` an das Objekt des Aufrufers gebunden wird.
+Arrow Functions sind eine kompakte und pragmatische Möglichkeit, Funktionen in JavaScript in einer Kurzform zu definieren. Im Gegensatz zu herkömmlichen Funktionsdefinitionen haben Arrow-Funktionen einen kürzeren und einfacheren Syntax. Dies ist besonders nützlich, um den Code zu vereinfachen und die Lesbarkeit zu erhöhen. Arrow-Funktionen haben auch eine andere `this`-Binding-Regel im Vergleich zu herkömmlichen Funktionen. In Arrow-Funktionen wird `this` an das `this`-Objekt des äusseren Kontexts gebunden, während bei herkömmlichen Funktionen `this` an das Objekt des Aufrufers gebunden wird.
 
 Im Gegensatz zu herkömmlichen Funktionsdefinition wird der Funktionsname weggelassen und durch einen Pfeil (`=>`) ersetzt.
 
@@ -66,7 +66,7 @@ const sum = (number1, number2) => number1 + number2;
 
 ### Function Expressions
 
-Eine Funktionsexpression ist ein anderer Ansatz, um eine Funktion in JavaScript zu definieren. Im Gegensatz zur Funktionsdeklaration wird bei der Funktionsexpression eine Funktion in einer Variablen gespeichert:
+Eine Funktionsexpression ist ein weiterer Ansatz, um eine Funktion in JavaScript zu definieren. Im Gegensatz zur Funktionsdeklaration wird bei der Funktionsexpression eine Funktion in einer Variablen gespeichert:
 
 ```javascript
 // Function-Expression:
@@ -81,10 +81,15 @@ console.log(sum(3, 5)); // 8
 console.log(sum2(3, 5)); // 8
 ```
 
-Der Hauptunterschied zwischen einer Funktionsdeklaration und einer Funktionsexpression besteht darin, dass Funktionsexpression nur im Scope der Variabel aufgerufen werden können, sprich erst nach der Zuweisung der Variable.
+Der Hauptunterschied zwischen einer Funktionsdeklaration und einer Funktionsexpression besteht darin, dass Funktionsexpressionen nur im Scope der Variabel aufgerufen werden können, sprich erst nach der Zuweisung der Variable.
 
 Dieser Unterschied wird durch den **Hoisting-Prozess** verursacht:
-Der Hoisting-Prozess ist ein Konzept, bei dem Variablen- und Funktions**deklarationen** an den Anfang ihres Gültigkeitsbereichs verschoben werden. Mit anderen Worten, bevor der Code ausgeführt wird, werden Variablen und Funktionen in den Speicher geladen und sind somit bereits verfügbar, bevor sie im Code definiert wurden. Im Falle von Funktionsdeklarationen bedeutet das, dass die gesamte Funktionsdefinition im Speicher geladen wird, einschließlich der Funktionsparameter und des Funktionskörpers. Dadurch kann eine Funktion in einem Programm an jeder beliebigen Stelle aufgerufen werden, auch wenn sie erst später im Code definiert wird. Es ist jedoch wichtig zu beachten, dass das Hoisting für Funktionsdeklarationen gilt, nicht aber für Funktionsexpressionen. Wenn man eine Funktion als Funktionsexpressionen definieren, wird sie nicht gehoisted. Das bedeutet, dass man sie erst nach der Definition aufrufen kann.
+Der Hoisting-Prozess ist ein Konzept, bei dem Variablen- und Funktions**deklarationen** an den Anfang ihres Gültigkeitsbereichs verschoben werden.
+Mit anderen Worten werden, bevor der Code ausgeführt wird, Variablen und Funktionen in den Speicher geladen und sind somit bereits verfügbar, bevor sie im Code definiert wurden.
+Im Falle von Funktionsdeklarationen bedeutet das, dass die gesamte Funktionsdefinition im Speicher geladen wird, einschliesslich der Funktionsparameter und des Funktionskörpers.
+Dadurch kann eine Funktion in einem Programm an jeder beliebigen Stelle aufgerufen werden, auch wenn sie erst später im Code definiert wird.
+Es ist jedoch wichtig zu beachten, dass das Hoisting für Funktionsdeklarationen gilt, nicht aber für Funktionsexpressionen.
+Wenn man eine Funktion als Funktionsexpression definiert, wird sie nicht gehoisted. Das bedeutet, dass man sie erst nach der Definition aufrufen kann.
 
 Beispiel mit Hoisting-Prozess:
 

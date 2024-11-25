@@ -5,20 +5,20 @@ linkTitle: "Layouting"
 weight: 16
 date: 2022-04-19
 description: >
-  Modul #F3 - HTML und CSS - Block-Elemente layouten.
+  Modul #F3 - HTML und CSS - Layouting von Block-Elementen.
 ---
 
 #### Ziele
 
 - Ich weiss, was Floating ist und wie es verwendet wird, um Elemente nebeneinander anzuordnen.
 - Ich weiss, was Flexbox ist und wie man display: flex anwendet, um flexible Layouts zu erstellen.
-- Ich kann Media Queries nutzen, um Flexbox-Layouts für unterschiedliche Bildschirmgrößen anzupassen.
+- Ich kann Media-Queries nutzen, um Flexbox-Layouts auf unterschiedliche Bildschirmgrößen anpassen zu können.
 
-Du hast dich sicherlich schon gefragt, wie du mehrere Elemente nebeneinander haben kannst. Hierfür müssen wir ein paar Worte über Layouting verlieren.
+Du hast dich vielleicht schon gefragt, wie du mehrere Elemente nebeneinander anordnen kannst. Hierfür müssen zuerst ein paar Worte über Layouting verloren werden.
 
 ## Floating
 
-Vor dem Zeitalter von FlexBoxen und Grids war das Layouting noch ein bisschen mühsamer. Eine Möglichkeit war es, die Elemente, die man z.B. nebeneinander haben wollte, dass diese ge`float`et werden. Das hätte ungefähr so ausgesehen:
+Vor dem Zeitalter von Flexboxen und Grids war das Layouting von Webseiten noch um einiges umständlicher. Es gab die Möglichkeit, die Elemente, die man nebeneinander haben wollte, mit `float` zu positionieren. Das kann aussehen wie folgt:
 
 ```html
 <div class="container">
@@ -37,34 +37,31 @@ Vor dem Zeitalter von FlexBoxen und Grids war das Layouting noch ein bisschen m�
 <style>
   .container {
     overflow: auto;
-
     background-color: lightgray;
   }
 
   .box {
     display: block;
     float: left;
-
     margin: 1em;
     width: 10em;
     height: 10em;
-
     background-color: orange;
   }
 </style>
 ```
 
-In diesem Beispiel wurde das container-`div` nur zur Demonstration verwendet. Da du diese Technik wahrscheinlich nie benötigen wirst, musst du im Moment auch nicht verstehen, weshalb `overflow: auto` verwendet wurde.
+In diesem Beispiel wurde das Container-`div` nur zur Demonstration verwendet. Da du diese Technik wahrscheinlich nie benötigen wirst, musst du im Moment auch nicht verstehen, weshalb im Beispiel `overflow: auto` verwendet wurde.
 
-Was genau passiert hier? Wichtig ist, dass die gefloateten Elemente `display: block` haben (was bei einem `<div>` bereits default ist). Mit `float: left` werden die Elemente der Reihe nach von links nach rechts angeordnet. Wenn es in den Rand hinaus gehen würde, wird eine neue Zeile begonnen (wrap). Das wäre bereits die ganze Magie.
+Was genau passiert hier? Wichtig ist, dass die mit `float` platzierten Elemente das Property `display: block` innehaben (was bei einem `<div>` bereits defaultmässig so ist). Mit `float: left` werden die Elemente der Reihe nach von links nach rechts angeordnet. Wenn die Elemente über den Rand hinausgehen würden, wird eine neue Zeile begonnen und das Element auf dieser platziert (wrap). Das ist im Grundsatz bereits die ganze Magie.
 
-![task1](/images/task.png) Ändere den Wert auf `float: right`. Nun beginnt ist das erste Element rechts. Was müsstest du machen, damit die Elemente zwar rechtsbündig sind, aber das erste Element dennoch links vom zweiten usw. ist?
+![task1](/images/task.png) Ändere den Wert auf `float: right`. Nun platziert das erste Element auf der rechten Seite. Was müsstest du machen, damit die Elemente zwar rechtsbündig sind, diese aber trotzdem jeweils links voneinander platziert werden?
 
-## Flex-Boxen
+## Flexboxen
 
-Wenn du Floating oft brauchen würdest, dann wirst du schnell merken, dass diese Technik sehr mühsam sein kann.
+Wenn man das `float`-Property viel braucht, wird man schnell merken, dass die Anwendung dieser Technik teils sehr umständlich sein kann.
 
-Die gute Nachricht ist, dass man die vorherige Technik praktisch gar nicht mehr benötigt seit der Einführung von Flex-Boxen. Das obige Beispiel kann verkürzt werden auf:
+Die gute Nachricht ist aber, dass man seit der Einführung von Flexboxen kaum mehr auf das manuelle Positionieren mit dem `float`-Property zurückgreifen muss. Das obenstehende Beispiel kann mithilfe von Flexbox auf die folgende Grösse verkleinert werden:
 
 ```html
 <div class="flex-container">
@@ -97,26 +94,26 @@ Die gute Nachricht ist, dass man die vorherige Technik praktisch gar nicht mehr 
 </style>
 ```
 
-Der grosse Unterschied hier ist, dass es einen Container braucht, den "Flex-Container". Du kannst ein beliebiges Element als Flex-Container definieren, indem du `display: flex` auf dieses Element anwendest.
+Der grosse Unterschied hierbei ist, dass es einen Container braucht, den "flex-container". Du kannst ein beliebiges Element als Flex-Container definieren, indem du `display: flex` auf dieses Element anwendest.
 
-Das `flex-wrap` ist nicht zwingend nötig, ist aber dafür verantwortlich, dass es einen Zeilenumbruch gibt, wenn die Elemente in den Rand hinaus gehen würden. Ansonsten war es das bereits. Interessanter Weise muss weder Flex-Container noch Flex-Item `display: block` haben. In diesem Beispiel könntest du also die `<div>`s mit `<span>`s (Inline-Element) ersetzen und es würde immer noch funktionieren (aber nicht empfehlenswert).
+Das `flex-wrap`-Property ist hingegen nicht zwingend nötig, ist aber in diesem Fall dafür verantwortlich, dass ein Zeilenumbruch gemacht wird, wenn die Elemente über den Rand hinausgehen würden, ansonsten war es das bereits. Interessanterweise müssen weder der Flex-Container noch die Flex-Items das `display: block`-Property innehaben. In diesem Beispiel könntest du also die `<div>`-Elemente mit `<span>`-Elementen (Inline-Element) ersetzen, worauf nach wie vor dasselbe Ergebnis entstehen würde (ist aber grundsätzlich nicht empfehlenswert).
 
-Wenn du den Zeilenumbruch (das `wrap`) nicht willst, dann kanst du die `flex-wrap`-Regel entfernen. Wenn du das machst, dann zieht die `width: 10em`-Regel nicht immer, z.B. wenn es zu wenig Platz dafür hätte. In diesem Fall kannst du `width` mit `min-width` ersetzen oder `flex-shrink: 0` auf den Items (`.box`) setzen. `flex-shrink: 0` bedeutet, dass sich die Items nicht verkleinern, wenn zu wenig Platz da ist. Beachte in beiden Fällen, dass die Elemente in den Rand hinaus gehen würden, wenn zu wenig Platz da wäre!
+Wenn du keinen Zeilenumbruch (`wrap`) möchtest, dann kannst du die `flex-wrap`-Regel entfernen. Wenn du das machst, gilt die `width: 10em`-Regel nicht immer, beispielsweise wenn es zu wenig Platz gäbe. In diesem Fall kannst du `width` mit `min-width` ersetzen oder das `flex-shrink: 0`-Property auf den Items (`.box`) setzen. Das `flex-shrink: 0`-Property bewirkt, dass sich die Items nicht verkleinern, wenn zu wenig Platz vorhanden ist. Beachte in beiden Fällen, dass die Elemente über den Rand hinausgehen würden, wenn zu wenig Platz vorhanden ist!
 
-Dieses Problem könntest du umgehen, indem du auf dem Flex-Container definierst, dass der Teil, der aus dem Rand hinausgehen würde,
+Dieses Problem kannst du umgehen, indem du im Flex-Container definierst, dass der Teil, der über den Rand hinausgehen würde,
 
-- entweder versteckt werden würde (`overflow: hidden`)
-- oder eine Scrollbar angezeigt würde (`overflow: auto` oder `overflow: scroll`)
+- entweder versteckt / abgeschnitten werden soll (`overflow: hidden`)
+- oder eine Scrollbar angezeigt werden soll (`overflow: auto` oder `overflow: scroll`).
 
 ### Flex-Boxen mit flexiblen Items
 
-Im Prinzip sind Flex-Boxen überhaupt nicht kompliziert, auch wenn man sehr komplexe Layouts damit machen kann.
+Prinzipiell sind Flex-Boxen nicht kompliziert, auch wenn man damit durchaus komplexe Layouts bewerkstelligen kann.
 
-Schaue dir rasch [CSS Flexbox in 100 Seconds](https://www.youtube.com/watch?v=K74l26pE4YA) an. Dort ist die ganze Technik gut und interessant zusammengefasst.
+Schaue dir das Video [CSS Flexbox in 100 Seconds](https://www.youtube.com/watch?v=K74l26pE4YA) an. Dort ist die Technologie knackig und interessant zusammengefasst.
 
-Oft möchte man z.B. mehrere Spalten nebeneinander haben, die alle gleich viel Platz beanspruchen und zugleich sollen alle Spalten zusammen möglichst dynamisch die ganze Breite des Browsers ausnutzen.
+Oft möchte man mehrere Spalten nebeneinander positionieren, die alle den gleichen Platz beanspruchen sollen, wobei zugleich alle Spalten zusammen möglichst dynamisch die ganze Breite des Browsers ausnutzen sollen.
 
-Folgendes Beispiel macht genau das:
+Folgendes Beispiel bewirkt genau das:
 
 ```html
 <p>
@@ -152,15 +149,15 @@ Folgendes Beispiel macht genau das:
 </style>
 ```
 
-Mit `flex: 1` haben wir gesagt, dass jede dieser Spalten genau gleich viel Platz beanspruchen soll. Ändere z.B. beim `<div>` mit dem Bild den `flex`-Wert auf 2. Du wirst sehen, dass dieses `<div>` nun anteilmässig doppelt so viel Platz beansprucht wie die anderen.
+Mit `flex: 1` sagen wir aus, dass jede dieser Spalten genau gleich viel Platz beanspruchen soll. Ändere testweise beim `<div>` mit dem Bild den `flex`-Wert auf 2. Du wirst sehen, dass dieses `<div>` nun anteilsmässig doppelt so viel Platz beansprucht wie die anderen.
 
-Welche Zahlen du genau verwendest, spielt keine grosse Rolle. Du kannst z.B. auch `flex: 25%` eingeben, was auch funktioniert. Wichtig zu wissen ist, dass so zu sagen alle Flex-Werte zusammen-addiert werden. Wenn du z.B. den `flex`-Wert des Bild-`div`s auf 2 geändert hast, so beansprucht dieses `div` 2 / (1 + 2 + 1) = 2/4 = 50% der Breite. Wenn du diese Rechnung nicht verstehen solltest, frage unbedingt nach!
+Welche Zahlen du genau verwendest, spielt keine grosse Rolle. Du kannst beispielsweise auch `flex: 25%` verwenden, was auch funktioniert. Wichtig zu wissen ist, dass sozusagen alle Flex-Werte zusammenaddiert werden. Wenn du also den `flex`-Wert des Bild-`div`s auf 2 geändert hast, so beansprucht dieses `div`-Element **2 / (1 + 2 + 1) = 2/4 = 50%** der Breite. Wenn du diese Rechnung nicht verstehen solltest, frage unbedingt bei einem Praxisbildner nach!
 
 ### Ausrichtung der Flex-Box
 
-Per Default werden die Elemente von links nach rechts angeordnet, was auch sehr viel Sinn macht: Um Elemente vertikal (also von oben nach unten) anzuordnen, braucht man eigentlich kein spezielles Layout.
+Per Default werden die Elemente von links nach rechts angeordnet, was auch durchaus Sinn ergibt. Um Elemente vertikal (also von oben nach unten) anzuordnen, braucht man eigentlich kein spezielles Layout.
 
-Möchtest du aber bei einem grossen Screen Elemente horizontal nebeneinander haben, aber bei einem kleinen Screen aus Platzgründen untereinander, so kannst du für kleinere Bildschirme folgende Regel hinzufügen:
+Möchtest du aber beispielsweise bei einem grossen Bildschirm die Elemente horizontal nebeneinander haben, bei einem kleinen Bildschirm aber aus Platzgründen untereinander, so kannst du für kleinere Bildschirme die folgende Regel hinzufügen:
 
 ```css
 @media (max-width: 600px) {
@@ -170,11 +167,11 @@ Möchtest du aber bei einem grossen Screen Elemente horizontal nebeneinander hab
 }
 ```
 
-Das `@media (max-width: 600px)` wird "Media Query" genannt. Wenn die Breite des Browsers einen bestimmten Wert unterschreitet, dann wird die Regel darin aktiv. Mehr über Media Queries erfährst du hier: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+Das `@media (max-width: 600px)`-Property wird "Media-Query" genannt. Wenn die Breite des Browsers einen bestimmten Wert(in diesem Beispiel 600 Pixel) unterschreitet, dann wird die Regel darin aktiv. Mehr über Media Queries erfährst du hier: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
 
 ### Beide Richtungen
 
-Bevor wir an das Praktische gehen, musst du noch zwei Begriffe kennen:
+Bevor wir zum praktischen Teil übergehen, musst du noch zwei Begriffe kennen:
 
 - MainAxis und
 - CrossAxis
@@ -183,7 +180,7 @@ Hat dein Flex-Container eine horizontale Ausrichtung (default: `flex-direction: 
 
 ### Flex-Elemente ausrichten
 
-Flex-Boxen machen das Ausrichten von Inhalt sehr einfach.
+Flexboxen erleichtern das Ausrichten von Inhalten stark.
 
 Der Einfachheit halber nehmen wir einmal dieses Beispiel:
 
@@ -212,7 +209,7 @@ Der Einfachheit halber nehmen wir einmal dieses Beispiel:
 
 Da per Default `flex-direction: row` gilt, werden die Elemente von oben links nach rechts dargestellt. Um die Elemente horizontal (bzw. auf der **MainAxis**) zu zentrieren, kannst du folgende Regel auf den Flex-Container anwenden: `justify-content: center`.
 
-Auf horizontaler Ebene (MainAxis) kannst du die Elemente noch auf viele andere Arten ausrichten. Probiere folgende Werte für `justify-content` (z.B. mit Hilfe der Entwickler-Tools deines Browsers via [F12]) einmal aus:
+Auf horizontaler Ebene (MainAxis) kannst du die Elemente zudem auf viele andere Arten ausrichten. Probiere folgende Werte für `justify-content` (beispielsweise mithilfe der Entwickler-Tools deines Browsers via [F12]!) einmal aus:
 
 - center
 - space-around
@@ -221,9 +218,9 @@ Auf horizontaler Ebene (MainAxis) kannst du die Elemente noch auf viele andere A
 - flex-start
 - flex-end
 
-Möchtest du hingegen die Elemente vertikal (auf der **CrossAxis**) ausrichten, dann hilft dir `align-items` weiter. Die Elemente kannst du vertikal zentrieren mit `align-items: center`. Die Elemente kannst du auch oben bzw. unten ausrichten mit `align-items: flex-start` bzw. `flex-end`.
+Möchtest du hingegen die Elemente vertikal (auf der **CrossAxis**) ausrichten, dann hilft dir die `align-items`-Regel weiter. Die Elemente kannst du vertikal mit `align-items: center` zentrieren. Die Elemente kannst du auch oben beziehungsweise unten ausrichten mithlfe von `align-items: flex-start` oder `flex-end`.
 
-Hast du Zeilenumbrüche drin, dann kannst du vertikal (auf der CrossAxis) die Abstände noch genauer spezifizieren. Um das auszuprobieren, setze `flex-wrap: wrap` auf dem Flex-Container und erstelle weitere `<div>`s darin, damit es genug Elemente hat. Probiere im Flex-Container nun folgende Werte für `align-content` aus:
+Hast du Zeilenumbrüche drin, dann kannst du vertikal (auf der CrossAxis) die Abstände noch genauer spezifizieren. Um das auszuprobieren, setze `flex-wrap: wrap` auf dem Flex-Container und erstelle weitere `<div>`-Elemente darin, damit es genug Elemente hat. Probiere im Flex-Container nun folgende Werte für `align-content` aus:
 
 - center
 - space-around
@@ -232,30 +229,30 @@ Hast du Zeilenumbrüche drin, dann kannst du vertikal (auf der CrossAxis) die Ab
 - flex-start
 - flex-end
 
-Wie du gesehen hast, sind die Property-Namen für die Ausrichtung unnötig kompliziert gewählt worden. Deshalb hier noch einmal in der Übersicht:
+Wie du gesehen hast, sind die Property-Namen für die Ausrichtung komplizierter, als sie es sein müssten. Deshalb hier noch einmal eine Übersicht:
 
-Um horizontal (bzw. in der MainAxis) Elemente auszurichten:
+Um horizontal (also in der MainAxis) Elemente auszurichten:
 
 - `justify-content`
 
-Um vertikal (bzw. in der CrossAxis) Elemente auszurichten:
+Um vertikal (also in der CrossAxis) Elemente auszurichten:
 
 - `align-items`
 - `align-content` in Kombination mit `flex-wrap: wrap`
 
 ### Website-Layout mit Flex-Boxen
 
-Theoretisch reicht das Wissen über Flex-Boxen bereits, um eine ganze Seite zu layouten. Damit du ein Gefühl dafür bekommst, schaue dir bitte das unterste Beispiel auf dieser Seite an: https://www.w3schools.com/css/css3_flexbox_responsive.asp
+Theoretisch reicht das Wissen über Flexboxen bereits aus, um eine ganze Seite zu layouten. Damit du ein Gefühl dafür bekommst, schaue dir das unterste Beispiel auf dieser Seite an: https://www.w3schools.com/css/css3_flexbox_responsive.asp
 
 ### Hilfestellung
 
-Hier kriegst du eine gute visuelle Übersicht über die einzelnen Flex-Properties: https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties
-Hier sind von w3schools die wichtigsten Eigenschaften von Flex-Boxen beschrieben: https://www.w3schools.com/css/css3_flexbox.asp
-Die Definition von Dimensionen - bes. auch der Höhe von elementen -, sowie Flexlayout und Gridlayout sind komplexe Themen, bei denen viele Missverständnisse auftreten können. Hier wird die Dokumentation von https://wiki.selfhtml.org/wiki/CSS/Tutorials/Flexbox (deutsch) als Ergänzung empfohlen.
+Hier bekommst du eine gute visuelle Übersicht über die einzelnen Flex-Properties: https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties
+Hier findest du die von w3schools bereitgestellten wichtigsten Eigenschaften von Flex-Boxen beschrieben: https://www.w3schools.com/css/css3_flexbox.asp
+Die Definition von Dimensionen - besonders auch der Höhe von Elementen -, sowie Flexlayout und Gridlayout sind komplexe Themen, bei denen gerne Missverständnisse auftreten können. Hier wird die Dokumentation von https://wiki.selfhtml.org/wiki/CSS/Tutorials/Flexbox (deutsch) als Ergänzung empfohlen.
 
 ### Display-Flex-Properties üben
 
-Auf [Flexbox Froggy](https://flexboxfroggy.com/#de) kannst du dein Flexbox-Wissen auf lustige Art und Weise trainieren. Nimm dir rasch Zeit dafür.
+Auf [Flexbox Froggy](https://flexboxfroggy.com/#de) kannst du dein Flexbox-Wissen auf lustige Art und Weise trainieren. Nimm dir kurz Zeit dafür.
 
 ### Aufgaben im Lab
 

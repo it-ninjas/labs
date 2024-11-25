@@ -5,16 +5,16 @@ linkTitle: "CSS-Grundlagen"
 weight: 11
 date: 2022-04-14
 description: >
-  Modul #F3 - HTML und CSS - Grundlagen der CSS-Sprache.
+  Modul #F3 - HTML und CSS - Grundlagen von CSS.
 ---
 
 ## Wie funktioniert CSS?
 
-Um CSS anwenden zu können, müssen wir das Grundprinzip verstehen:
+Um CSS anwenden zu können, müssen wir als Erstes das Grundprinzip von CSS verstehen:
 
-Mit CSS wird das Aussehen (und z.T. auch Verhalten) von HTML-Elementen definiert. Diese Styledefinition wird nur auf passende HTML-elemente angewendet, wenn kein passendes HTML-Element vorhanden ist, bleibt die Definition wirkungslos. Hierfür gibt es verschiedene Möglichkeiten, welche wir im Verlaufe des Kurses kennenlernen werden.
+Mit CSS wird das Aussehen (und zum Teil auch das Verhalten) von HTML-Elementen definiert. Diese Styledefinition wird nur auf passende HTML-elemente angewendet. Wenn kein passendes HTML-Element vorhanden ist, bleibt die Definition wirkungslos. Hierfür gibt es verschiedene Möglichkeiten, welche wir im Verlaufe des Kurses kennenlernen werden.
 
-CSS verfolgt dabei die folgende Syntax:
+CSS hält sich dabei an die folgende Syntax:
 
 ```css
 p {
@@ -23,12 +23,12 @@ p {
 }
 ```
 
-- Die Zeichenfolge vor den geschweiften Klammern ist der sogenannte Selektor (Englisch: Selector). Er definiert, auf welche Elemente das Styling angewendet werden soll. In diesem Fall würde das Styling auf alle Paragraphen angewendet werden.
-- Die Zeilen innerhalb der geschweiften Klammern, definieren was für ein Styling angwendet werden soll. Beim gezeigten Beispiel würde die Textfarbe auf blau eingestellt werden und die Hintergrundfarbe rot.
+- Die Zeichenfolge vor den geschweiften Klammern ist der sogenannte Selektor (Englisch: Selector). Er definiert, auf welche Elemente das Styling angewendet werden soll. In diesem Fall würde das Styling auf alle `<p>`-Elemente angewandt werden.
+- Die Zeilen innerhalb der geschweiften Klammern definieren, welche Art von Styling angewandt werden soll. Beim gezeigten Beispiel wird die Textfarbe auf Blau und die Hintergrundfarbe rot eingestellt.
 
 ## Wie kann ich CSS anwenden?
 
-Als nächstes schauen wir an, wie man CSS in eine Webseite (bzw. in ein HTML File) einbinden kann. Dafür schauen wir uns folgende Abschnitte an:
+Als Nächstes schauen wir an, wie man CSS in eine Webseite (bzw. in ein HTML File) einbinden kann.
 
 ### Direktes einbinden in HTML-Elemente
 
@@ -44,7 +44,7 @@ Dabei ist anzumerken, dass sich die Syntax gegenüber der herkömmlichen Syntax 
 
 ### Einbinden über einen Style-Tag
 
-Man kann CSS aber auch über einen sogenannten "Style" Tag ins HTML einbinden. Dies sieht wie folgt aus:
+Man kann CSS aber auch über einen sogenannten "Style" Tag direkt in die HTML-Datei einbinden. Dies sähe dann aus wie folgt:
 
 ```html
 <head>
@@ -59,13 +59,11 @@ Man kann CSS aber auch über einen sogenannten "Style" Tag ins HTML einbinden. D
 </head>
 ```
 
-Hierbei können wir innerhalb des Style-Tags herkömmliches CSS anwenden, wie wir es bereits aus dem ersten Beispiel kennen. Der Style-Tag kann irgendwo (auch verschachtelt) irgendwo im `<head>` oder `<body>` stehen. Wo genau darin ist jedoch nicht wichtig. Best-Practice dafür wäre im `<head>` nach den `<meta>`-Tags.
+Hierbei können wir innerhalb des Style-Tags herkömmliches CSS anwenden, wie wir es bereits aus dem ersten Beispiel kennen. Der Style-Tag kann irgendwo (auch verschachtelt) irgendwo im `<head>` oder `<body>` stehen, wo genau macht funktionstechnisch aber keinen Unterschied. Am meisten Sinn macht es aber, den Style-Tag im `<head>` nach den `<meta>`-Tags einzubinden, da er dort am besten sichtbar ist.
 
 ### Einbinden über ein externes CSS-File
 
-Die wohl am weitesten verbreitete Methode CSS in eine Webseite einzubinden ist es, das CSS in ein CSS-File auszulagern und dann im HTML darauf zu verweisen.
-
-Dies kann man wie folgt machen:
+Die wohl am weitesten verbreitete und "schönste" Methode CSS in eine Webseite einzubinden ist es, das CSS in ein CSS-File auszulagern und dann im HTML auf dieses zu verweisen. Nachfolgend ein Beispiel, wie man das machen kann:
 
 Datei: index.html
 
@@ -77,6 +75,7 @@ Datei: index.html
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    /* Verweis auf das CSS-File */
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -94,16 +93,16 @@ p {
 }
 ```
 
-Der Wichtige Teil des HTML-Codes ist dabei folgender Tag im Head:
+Der wichtigste Teil des HTML-Codes in diesem Beispiel ist dabei folgender Tag im Head:
 
 ```html
 <link rel="stylesheet" href="styles.css" />
 ```
 
-Dieser Link-Tag definiert, dass der CSS-Code der Datei mit dem Pfad "styles.css" auf die aktuelle HTML-Datei angwendet werden soll.
+Dieser Link-Tag definiert, dass der CSS-Code der Datei mit dem Pfad "styles.css" auf die aktuelle HTML-Datei als "stylesheet" angewandt werden soll.
 
-## Was gibt es alles für CSS-Styling-Properties?
+## Was gibt es für CSS-Styling-Properties?
 
 Es gibt unzählige CSS-Properties. Zu viele, um auf jedes detailliert einzugehen. Auf [dieser Seite](https://www.tutorialrepublic.com/css-reference/css3-properties.php) findet ihr eine ganze Reihe CSS-Properties.
 
-Auf die wichtigsten Properties werden wir jedoch in den nächsten Seiten genauer eingehen.
+Auf die wichtigsten dieser Properties werden wir nachfolgend konkreter eingehen.

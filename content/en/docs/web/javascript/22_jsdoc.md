@@ -10,18 +10,18 @@ description: >
 
 ## Motivation
 
-Wenn du existierende Funktionen benutzen möchtest, dann wäre es praktisch, wenn deine IDE dir mitteilt, was die Funktion tut und welche Typen die Parameter haben. Dies kannst du mit JSDoc erreichen.
+Wenn du existierende Funktionen benutzen möchtest, dann wäre es doch praktisch, wenn deine IDE dir direkt mitteilt, was die Funktion bewirkt und welche Typen die Parameter haben. Das lässt sich mit JSDoc erreichen.
 
 ## Ziele
 
-- Du weisst, wie du in JavaScript bei Klassen und Funktionen eine Beschreibung hinzufügen kannst, die dir deine Entwicklungsumgebung anzeigt, wenn du mittels Auto-Completion diese Variable auswählst.
-- Du weisst, wie du in JavaScript eine Typ-Angabe machen kannst (die aber zur Laufzeit nichts tut).
+- Du weisst, wie du in JavaScript zu Klassen und Funktionen eine Beschreibung hinzufügen kannst, die dir deine Entwicklungsumgebung anzeigt, wenn du diese mittels Auto-Completion auswählst.
+- Du weisst, wie du in JavaScript eine Typ-Angabe machen kannst (die aber zur Laufzeit nichts bewirkt).
 
 ## Basics
 
-In TypeScript kannst du jeder Variable einen Typ, jeder Funktion einen Rückgabewert zuweisen. Dies kannst du in JavaScript nicht so einfach.
+In TypeScript kannst du jeder Variable einen Typ und jeder Funktion einen Rückgabewert zuweisen. Das geht in JavaScript nicht so einfach.
 
-Trotzdem kannst du dank dem JSDoc-Projekt (https://jsdoc.app/about-getting-started.html) Typ-Angaben machen, damit deine Entwicklungsumbegung reklamiert, wenn z.B. in einer Funktion ein Wert eines falschen Types übergeben wird.
+Trotzdem kannst du dank des JSDoc-Projekts (https://jsdoc.app/about-getting-started.html) Typ-Angaben machen, damit deine Entwicklungsumgebung sich beschwert, wenn beispielsweise in einer Funktion ein Wert eines falschen Types übergeben wird.
 
 In nächsten Beispiel siehst du, wie du in einer Funktion die Typen spezifizieren kannst:
 
@@ -29,7 +29,7 @@ In nächsten Beispiel siehst du, wie du in einer Funktion die Typen spezifiziere
 /**
  * Diese Funktion leitet die Argumente dem Konstruktor der Klasse `Person` weiter.
  * @param {string} name                 Der Name der Person
- * @param {Object} namedArgs            (Eigentlich unnötig, wird aber als Label für Referenz auf die named Parameter benötigt)
+ * @param {Object} namedArgs            (Eigentlich unnötig, wird aber als Label für die Referenz auf die named Parameter benötigt)
  * @param {number} [namedArgs.age]      Alter
  * @param {string} [namedArgs.gender]   Geschlecht, darf irgend ein String sein.
  * @returns {Person}                    Ein Personen-Objekt mit den übergebenen Werten.
@@ -42,26 +42,26 @@ function createPerson(name, { age = undefined, gender = undefined }) {
 }
 ```
 
-Deine Entwicklungsumgebung könnte diese Informationen nun auch anzeigen:
+Deine Entwicklungsumgebung kann diese Informationen nun auch anzeigen:
 
 ![VS Code zeigt nun den JSDoc an, wenn du diese Funktion eintippst](../images/vscode-jsdoc.jpg "JSDoc in VS Code")
 
 ## Tags
 
-Im vorherigen JSDoc wurden viele Tags verwendet. Hier eine Übersicht zu den wichtigsten:
+Im vorherigen JSDoc wurden viele Tags verwendet. Hier eine kleine Übersicht zu den wichtigsten:
 
-- `@param`: Damit wird ein Parameter beschrieben
-- `@returns`: Damit wird der Rückgabewert beschrieben
-- `{number}`: Das ist eine Typangabe. Hier musste das Argument eine Zahl sein.
-- `[namedArgs.gender]`: Die eckigen Klammern spezifizieren das Argument als optional (nullable). Ansonsten sollten die Argument nicht den Wert `undefined` oder `null` haben.
+- `@param`: Damit wird ein Parameter beschrieben.
+- `@returns`: Damit wird der Rückgabewert beschrieben.
+- `{number}`: Das ist eine Typangabe. Im Beispiel muss das Argument eine Zahl sein.
+- `[namedArgs.gender]`: Die eckigen Klammern spezifizieren das Argument als optional (nullable). Ansonsten sollten die Argumente nicht den Wert `undefined` oder `null` annehmen.
 
-Eine Auflistung von JSDoc-Tags findest du auch hier: https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
+Eine Auflistung aller JSDoc-Tags findest du hier: https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html
 
 ## Fehler anzeigen, wenn Typen falsch sind
 
-In VS Code gibt es die Möglichkeit, dass die IDE reklamiert, wenn du Werte des falschen Typs übergibst.
+In VS Code gibt es die Möglichkeit, dass die IDE eine Meldung ausgibt, wenn du Werte des falschen Typs übergibst.
 
-Um hiervon Gebrauch zu machen, kann im Projekt-Verzeichnis eine `jsconfig.json`-Datei angelegt werden. Folgende Konfiguration könnte für Browser-Anwendungen Sinn ergeben, wenn sich die JS-Dateinen im Ordner "${workspaceFolder}/static/js/" (nur ein Beispiel, kann natürlich auch etwas anderes Sein) befinden:
+Um hiervon Gebrauch zu machen, kann im Projekt-Verzeichnis eine `jsconfig.json`-Datei angelegt werden. Folgende Konfiguration könnte für Browser-Anwendungen Sinn ergeben, wenn sich die JS-Dateien beispielsweise im Ordner "${workspaceFolder}/static/js/" befinden:
 
 ```json
 {

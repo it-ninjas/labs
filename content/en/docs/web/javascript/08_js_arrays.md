@@ -10,12 +10,12 @@ description: >
 
 ## Ziele
 
-- Du weisst, wie man ein Array/eine Liste erstellt und updated.
-- Du weisst, wie man durch Arrays iteriert, und welcher Ansatz welche Vor-/Nachteile besitzt.
+- Du weisst, wie man Arrays und Listen erstellt und updated.
+- Du weisst, wie man durch Arrays iteriert und welcher Ansatz jeweils welche Vor- oder Nachteile besitzt.
 
 ## Arrays Basics
 
-Ein Array ist eine Datenstruktur in JavaScript, die eine geordnete Sammlung von Elementen speichert. Ein Array kann verschiedene Datentypen speichern, einschliesslich Zahlen, Zeichenketten und Objekten. Arrays werden in JavaScript durch eckige Klammern `[]` definiert und die Elemente innerhalb des Arrays werden durch Kommas getrennt.
+Ein Array ist eine Datenstruktur in JavaScript, die eine geordnete Sammlung von Elementen speichert. Ein Array kann verschiedene Datentypen speichern, beispielsweise Zahlen, Zeichenketten und Objekte. Arrays werden in JavaScript durch eckige Klammern `[]` definiert und die Elemente innerhalb des Arrays werden durch Kommas getrennt.
 
 ```javascript
 const array = [1, 2, 3, "vier", "fünf", { name: "Max" }];
@@ -34,7 +34,7 @@ console.log(array[3]); // 'vier'
 
 ### Erstellen
 
-Um ein Array in JavaScript zu erstellen, kann man die eckigen Klammern-Notation verwenden und die Elemente durch Kommas trennen.
+Um ein Array in JavaScript zu erstellen, kann man die eckige Klammern-Notation verwenden und die Elemente durch Kommas trennen.
 
 ```javascript
 const array = [1, 2, 3, "vier", "fünf", { name: "Max" }];
@@ -73,11 +73,11 @@ console.log(array.length); // 5
 
 ## Iterieren
 
-Um durch ein Array zu iterieren, gibt es mehrere Möglichkeiten. Die gängisten davon sind `for`, `forEach` und `for of`
+Um durch ein Array zu iterieren, gibt es mehrere Möglichkeiten. Die gängigsten davon sind `for`, `forEach` und `for of`
 
 ### For-Loop
 
-Der for Loop ist eine Loop, mit der man eine bestimmte Anzahl von Loop durchläufen ausführen kann. Der for Loop wird oft verwendet, um durch Arrays zu iterieren oder um eine Aktion eine bestimmte Anzahl von Malen auszuführen.
+Der `for`-Loop ist ein Loop, mit dem sich eine bestimmte Anzahl von Wiederholungen einer Kontrollstruktur durchlaufen lässt. Er wird häufig genutzt, um durch Arrays zu iterieren oder eine Aktion mehrmals auszuführen.
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
@@ -89,7 +89,7 @@ for (let i = 0; i < array.length; i++) {
 
 ### break
 
-Das `break`-Statement wird verwendet, um den Loop vorzeitig zu beenden.
+Das `break`-Statement wird verwendet, um einen Loop vorzeitig zu beenden.
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5, 6];
@@ -131,9 +131,9 @@ console.log("Loop beendet!");
 
 ### forEach-Loop
 
-`forEach` ist eine Methode auf Arrays, um durch jedes Element des Arrays nacheinander zu iterieren. Der `forEach`-Loop ist eine kürzere Schreibweise, um durch ein Array zu iterieren.
+`forEach` ist eine Methode auf Arrays, um Stück für Stück durch jedes Element des Arrays zu iterieren. Der `forEach`-Loop ist eine kürzere Schreibweise, um durch ein Array zu iterieren.
 
-Man kann es in JavaScript mit der `function()` lösen:
+Man kann das in JavaScript mit der `function()` lösen:
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
@@ -148,7 +148,7 @@ array.forEach(function (element) {
 // 5
 ```
 
-Wie in Kapitel [Functions](../../../docs/web/javascript/07_js_functions.md#arrow-functions) beschrieben, kann auch eine Arrow-Function verwendet werden:
+Wie in Kapitel [Functions](../../../docs/web/javascript/07_js_functions.md#arrow-functions) beschrieben, kann auch eine Arrow-Function verwendet werden. Grundsätzlich ist die Arrow-Function der Verwendung von `function()` vorzuziehen, da diese Schreibweise einfacher zu verstehen ist:
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
@@ -161,11 +161,11 @@ array.forEach((element) => console.log(element));
 // 5
 ```
 
-Im Gegensatz zum `for` Loop bietet die `forEach`-Methode jedoch weniger Kontrolle über den Loop. Zum Beispiel kann man den Loop nicht mit `break` oder `continue` unterbrechen oder überspringen. Ausserdem gibt es so keine Möglichkeit, auf den Index jedes Elements im Array zuzugreifen. Wenn man den Index benötigen, müsste man einen Zähler verwenden.
+Im Gegensatz zum `for` Loop bietet der `forEach`-Loop jedoch weniger Kontrolle über den Loop. Zum Beispiel kann man den Loop nicht mit `break` oder `continue` unterbrechen oder überspringen. Ausserdem gibt es so keine Möglichkeit, auf den Index jedes Elements im Array zuzugreifen. Wenn man den Index benötigen, müsste man einen Zähler verwenden.
 
 ### for...of-Loop
 
-Der `for (... of ...)`-Loop ist dafür ausgelegt, Arrays oder andere iterierbare Objekte wie Maps, Sets, Strings usw. zu durchlaufen. Dieser Loop ist in der Regel einfacher zu lesen und zu schreiben als ein traditioneller `for`-Loop.
+Der `for (... of ...)`-Loop ist darauf ausgelegt, Arrays oder andere iterierbare Objekte wie Maps, Sets, Strings etc. zu durchlaufen. Dieser Loop ist in der Regel einfacher zu lesen und zu schreiben als ein traditioneller `for`-Loop.
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
@@ -236,21 +236,6 @@ console.log(array); // [4, 5, 1, 2, 3]
 console.log(newLength); // 5
 ```
 
-### Elemente austauschen
-
-Die Methode `slice()` entfernt Elemente aus einem Array und fügt neue Elemente an ihrer Stelle ein. Die `splice()` Methode nimmt drei Parameter an:
-
-1. den Index, an dem man beginnen möchten,
-2. die Anzahl der Elemente, die man entfernen möchten, und
-3. die neuen Elemente, die man einfügen möchte.
-
-```javascript
-let array = [1, 2, 3, 4, 5];
-array.splice(1, 1, "new element 1", "new element 2");
-
-console.log(array); // [1, 'new element 1', 'new element 2', 3, 4, 5]
-```
-
 ### Elemente an bestimmter Position hinzufügen oder entfernen
 
 Die `splice()`-Methode wird verwendet, um Elemente im Array hinzuzufügen oder zu entfernen.
@@ -281,7 +266,7 @@ console.log(array); // [1, 2, 6, 7, 3, 4, 5]
 
 ### Arrays kombinieren
 
-Die `concat()` Methode gibt ein neues Array zurück, das aus der Verkettung (Zusammenführung) von zwei oder mehr Arrays besteht. Man kann somit mehrere Arrays zusammenmergen.
+Die `concat()` Methode gibt ein neues Array zurück, das aus der Verkettung (Zusammenführung) von zwei oder mehr Arrays besteht. Man kann somit mehrere Arrays zusammenführen.
 
 ```javascript
 const array1 = [1, 2, 3];
