@@ -88,12 +88,13 @@ The JAVA_HOME environment variable is not defined correctly,
 this environment variable is needed to run this program.
 ```
 
-Das bedeutet, dass die Java-Installation nicht gefunden werden kann. 
-IntelliJ enthält zwar eine eigene Java-Installation, allerdings weiss Windows nicht, wo sich diese befindet. 
-Aus diesem Grund musst du eine Umgebungsvariable setzen, die auf diese Installation zeigt. 
+Das bedeutet, dass die Java-Installation nicht gefunden werden kann.
+IntelliJ enthält zwar eine eigene Java-Installation, allerdings weiss Windows nicht, wo sich diese befindet.
+Aus diesem Grund musst du eine Umgebungsvariable setzen, die auf diese Installation zeigt.
 Dafür musst du zuerst herausfinden, wo sich die Installation befindet.
 
 Unter IntelliJ gehe zu folgendem Fenster:
+
 ```
 File > Project Structure > Platform Settings > SDKs
 ```
@@ -101,11 +102,13 @@ File > Project Structure > Platform Settings > SDKs
 Kopiere den Pfad unter `JDK home path`.
 
 Erstelle nun gleich wie zuvor eine neue Ungebungsvariable mit den folgenden Werten:
+
 ```
 JAVA_HOME:{JDK home path}
 ```
 
 Ersetze `{JDK home path}` mit deinem kopierten Wert. Öffne danach ein neues Terminal und versuche es erneut.
+
 </details>
 
 ---
