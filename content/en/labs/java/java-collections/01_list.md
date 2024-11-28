@@ -9,13 +9,13 @@ description: >
 
 ## Aufgabe 1
 
-Wir programmieren eine eigene ArrayList-Klasse `MyArrayList`:
+Wir programmieren eine eigene ArrayList-Klasse `MyArrayListSimple`:
 
 1. Die Elemente sollen in einem Array gespeichert werden.
 2. Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.
 3. Die Klasse muss das Interface `MyListInterfaceSimple` implementieren.
 4. Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse der internen Datenstruktur dynamische anpassen.
-5. Die `toString()` Methode der `java.lang.Object` Klasse soll von der `MyArrayList` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: `[Cat, Hamster, Dog, Goldfish]`
+5. Die `toString()` Methode der `java.lang.Object` Klasse soll von der `MyArrayListSimple` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: `[Cat, Hamster, Dog, Goldfish]`
 6. Überprüfe deine Implemenation mit dem JUnitTest [MyArrayListSimpleTest](https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/list/lab1/MyArrayListSimpleTest.java)
 
 ### Input
@@ -75,7 +75,7 @@ public interface MyListInterfaceSimple<E> {
 
 ## Aufgabe 2
 
-Nun erweitern wir unsere `MyArrayList` Klasse.
+Nun erweitern wir unsere `MyArrayListSimple` Klasse.
 
 1. Erstelle eine Kopie deiner Klasse und nenne diese `MyArrayListExtended`.
 2. Diese soll das Interface `MyListInterfaceExtended` implementieren, welche folgende zusätzliche Methoden aufweist:
