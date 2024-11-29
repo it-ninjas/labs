@@ -101,7 +101,7 @@ File > Project Structure > Platform Settings > SDKs
 
 Kopiere den Pfad unter `JDK home path`.
 
-Erstelle nun gleich wie zuvor eine neue Ungebungsvariable mit den folgenden Werten:
+Erstelle nun [gleich wie zuvor](#umgebungsvariablen-setzen) eine neue Umgebungsvariable mit den folgenden Werten:
 
 ```
 JAVA_HOME:{JDK home path}
