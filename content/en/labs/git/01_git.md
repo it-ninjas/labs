@@ -9,14 +9,19 @@ description: >
 
 ### Schritt 1: Initialisiere ein Git-Repository
 
-1. Öffne dein Terminal oder die Kommandozeile
-2. Erstelle ein neues Verzeichnis und navigiere in dieses
-3. Initialisiere ein neues Git-Repository mit `git init`
+1. Öffne dein Terminal oder die Kommandozeile.
+2. Erstelle ein neues Verzeichnis.
+3. Navigiere in das gerade erstellte Verzeichnis.
+4. Initialisiere ein neues Git-Repository.
+   ```shell
+   git init
+   git status
+   ```
 
 ### Schritt 2: Erstelle eine konfliktverursachende Datei
 
 1. Erstelle eine neue Datei mit dem Namen `index.txt` und füge einen Satz hinzu.
-2. Speichere die Datei und committe die initiale Version
+2. Speichere die Datei und committe die initiale Version.
    ```shell
    git add index.txt
    git commit -m "Add index.txt"
@@ -42,7 +47,7 @@ description: >
 
 ### Schritt 5: Konfliktverursachende Änderungen auf Master hinzufügen
 
-1. Wechsle zurück zum master-Branch.
+1. Wechsle zurück zum `master`-Branch.
 2. Öffne die `index.txt` Datei und ändere den Inhalt.
 3. Speichere die Datei und committe die Änderungen.
    ```
@@ -54,21 +59,21 @@ description: >
 
 Übernimm nun den letzten Commit aus dem Feature-Branch in den Master-Branch, mithilfe von `cherry-pick`.
 
-1. Mit `git log --oneline` den letzten Commit-Hash anzeigen, in diesem Fall wäre das `ea95358`
+1. Mit `git log --oneline` den letzten Commit-Hash anzeigen, in diesem Fall wäre das `ea95358`.
 
    ```⏲ 38ms
    6238890 (HEAD -> master) Changed something in index.html
    ea95358 (feature/my-cool-branch) Added index.txt
    ```
 
-2. Danach die Änderungen aus dem Feature-Branch cherry-picken
+2. Danach die Änderungen aus dem Feature-Branch cherry-picken.
 
    ```
    git log --oneline
    git cherry-pick <COMMIT-HASH>
    ```
 
-3. Wenn alles richtige gemacht wurde, erscheint danach eine Warnung über einen Merge-Konflikt
+3. Wenn alles richtige gemacht wurde, erscheint danach eine Warnung über einen Merge-Konflikt.
    ```
    Auto-merging index.txt
    CONFLICT (add/add): Merge conflict in index.txt
@@ -82,7 +87,7 @@ Um den Merge-Konflikt zu lösen, öffnest du am besten Visual Studio Code oder I
 
 <details>
 <summary>Vim schliessen</summary>
-Je nach Betriebssystem und Einstellungen, kann es sein das git automatisch den Texteditor Vim öffnet. Das sieht dann etwa so aus wie im Bild unten.
+Je nach Betriebssystem und Einstellungen, kann es sein das Git automatisch den Texteditor Vim öffnet. Das sieht dann etwa so aus wie im Bild unten.
 
 Um den Editor wieder zu schliessen, kannst du die folgende Schritte verwenden:
 
@@ -94,13 +99,13 @@ Um den Editor wieder zu schliessen, kannst du die folgende Schritte verwenden:
 
 </details>
 
-### Schritt 8: Wende den Stash an
+### Schritt 8: Änderungen vom Stash anwenden
 
-1. Jetzt können wir den Stash auf den Master-Branch anwenden, um die zuvor gestashten Änderungen wiederherzustellen.
+1. Jetzt können wir die Änderungen auf dem Stash, dem Master-Branch hinzufügen.
 
-```shell
-git stash pop 0
-```
+   ```shell
+   git stash pop 0
+   ```
 
-2. Du wirst wieder einen Konflikt in der `index.txt` Datei erhalten. Öffne die Datei und löse den Konflikt. Du kannst das wieder mit dem Tool deiner Wahl machen.
-3. Speichere die Datei und committe den gelösten Konflikt.
+2. Du wirst wieder einen Konflikt in der `index.txt` Datei erhalten. Löse den Konflikt. Du kannst das wieder mit dem Tool deiner Wahl machen.
+3. Speichere die Datei und mache einen Commit.
