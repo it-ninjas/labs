@@ -366,6 +366,44 @@ Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugef�
 &lt;code>Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)&lt;/code>&lt;/p>
 &lt;p>&lt;img alt="img.png" src="../maven/cmd_maven_version.png">&lt;/p>
 &lt;p>Die Version muss nicht mit deiner übereinstimmen.&lt;/p>
+&lt;details>
+&lt;summary>JAVA_HOME Troubleshoot&lt;/summary>
+&lt;p>Es kann sein, dass du folgende Fehlermeldung siehst:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>The JAVA_HOME environment variable is &lt;span style="color:#f92672">not&lt;/span> defined correctly,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>this environment variable is needed to run this program&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das bedeutet, dass die Java-Installation nicht gefunden werden kann.
+IntelliJ enthält zwar eine eigene Java-Installation, allerdings weiss Windows nicht, wo sich diese befindet.
+Aus diesem Grund musst du eine Umgebungsvariable setzen, die auf diese Installation zeigt.
+Dafür musst du zuerst herausfinden, wo sich die Installation befindet.&lt;/p>
+&lt;p>Unter IntelliJ gehe zu folgendem Fenster:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>File &amp;gt; Project Structure &amp;gt; Platform Settings &amp;gt; SDKs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Kopiere den Pfad unter &lt;code>JDK home path&lt;/code>.&lt;/p>
+&lt;p>Erstelle nun &lt;a href="/docs/java/maven/#umgebungsvariablen-setzen">gleich wie zuvor&lt;/a> eine neue Umgebungsvariable mit den folgenden Werten:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>JAVA_HOME:{JDK home path}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ersetze &lt;code>{JDK home path}&lt;/code> mit deinem kopierten Wert. Öffne danach ein neues Terminal und versuche es erneut.&lt;/p>
+&lt;/details>
 &lt;hr>
 &lt;h3 id="intellij-idea-einrichten">IntelliJ IDEA einrichten&lt;/h3>
 &lt;p>Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise sind diese Einstellungen bereits korrekt.&lt;/p>
