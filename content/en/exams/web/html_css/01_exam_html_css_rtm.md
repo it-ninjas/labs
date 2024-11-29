@@ -104,4 +104,4 @@ Scrollleiste: overflow-y oder overflow-x<br>
 
 ## Sobald du fertig bist...
 
-Wenn du fertig mit diesem Exam bist, zeige dein Resultat einem Coach. Nach dem Okay des Coaches kannst du mit [JavaScript](../../../../docs/web/javascript/01_js_intro) beginnen.
+Wenn du fertig mit diesem Exam bist, zeige dein Resultat einem Praxisbildner. Nach dem Okay des Praxisbildners kannst du mit [JavaScript](../../../../docs/web/javascript/01_js_intro) beginnen.

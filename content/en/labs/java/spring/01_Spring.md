@@ -199,7 +199,7 @@ Diese JSON-Objekte werden wir im nächsten Abschnitt verwenden, um die Resource-
 
 **Aufgabe**  
 Erweitere die obige Tabelle mit den restlichen Funktionen gemäss den funktionalen Anforderungen.
-Buche sobald du fertig bist ein Review mit einem Coach, damit spätere Fehler vermieden werden.
+Buche sobald du fertig bist ein Review mit einem Praxisbildner, damit spätere Fehler vermieden werden.
 
 ---
 

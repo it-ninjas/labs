@@ -306,16 +306,16 @@ git push origin master
 
 {{% /details %}}
 
-### Coaches auf deinem Repository berechtigen
+### Praxisbildner auf deinem Repository berechtigen
 
 Nun kannst du deine Arbeit mit Git verwalten. Somit stellst du sicher, dass deine Arbeit auch im schlimmsten Fall nicht verloren geht.
-Damit deine Coaches dich bei Problemsituationen unterstützen können, musst du sie auf deinem Bitbucket-Repository berechtigen.
+Damit deine Praxisbildner dich bei Problemsituationen unterstützen können, musst du sie auf deinem Bitbucket-Repository berechtigen.
 Dies erledigst du mit folgenden Schritten:
 
 1. Öffne dein Bitbucket-Repository im Browser
 2. Im Navigationsbereich klicke auf _Repository Settings_ und dort auf _Repository Permissions_
    ![Bitbucket Repo Permissions](../bitbucket/bitbucket_repo_permissions.png)
-3. Klicke die Schaltfläche "Add user or group" und berechtige alle Coaches als Administratoren auf deinem Repository. Anschliessend klicke die "Add" Schaltfläche
-   ![Coaches Permissions](../bitbucket/coaches_admin_permission.png)
+3. Klicke die Schaltfläche "Add user or group" und berechtige alle Praxisbildner als Administratoren auf deinem Repository. Anschliessend klicke die "Add" Schaltfläche
+   ![Praxisbildner Permissions](../bitbucket/praxisbildner_admin_permission.png)
 
-Nun sind alle Coaches auf deinem Repository berechtigt.
+Nun sind alle Praxisbildner auf deinem Repository berechtigt.

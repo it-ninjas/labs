@@ -83,5 +83,5 @@ Das Minibeispiel soll lediglich die 3 wichtigen Schritte etwas besser darstellen
 
 ### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=yunF2PgJlHU).

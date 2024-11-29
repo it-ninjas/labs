@@ -49,7 +49,7 @@ In diesem Fall erwartet die Methode `greetUser` einen `String`-Parameter, der de
 
 ### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=oSDtCcDXcTM).
 
 ## Methoden mit Rückgabewert
@@ -138,7 +138,7 @@ Für den Leser ist auch klar, was in diesem Code passiert, da es einen sprechend
 
 ### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=qQ79aq7HZ-U).
 
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 5](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-5---methoden) in den Labs.

@@ -26,18 +26,18 @@ Hier sind einige grundlegende Informationen, die dir helfen sollen, ein ERD für
      Eine Position enthält Informationen wie die Produktmenge.
 
 Erstelle das ERD mithilfe von Draw.io so, dass die 3NF erreicht wird. Schaue anschliessend das fertige ERD mit einem
-Coach an, um Feedback dazu zu erhalten.
+Praxisbildner an, um Feedback dazu zu erhalten.
 
 ## Übung 2
 
 Erstelle anhand dieses ERDs eine Datenbank. Verwende hierbei die deiner Meinung nach richtigen Datentypen. Die Datenbank
-soll die 3NF erreichen. **Achtung!** das ERD ist nicht in der 3NF. Schau deine fertige Datenbank mit einem Coach an.
+soll die 3NF erreichen. **Achtung!** das ERD ist nicht in der 3NF. Schau deine fertige Datenbank mit einem Praxisbildner an.
 
 ![ERD Zoo](../images/Zoo-ERD.png)
 
 ## Übung 3
 
 In dieser Übung geht es darum, mit deinen SQL-Kenntnissen einen Mord zu lösen. Ziel ist es, dass du alle Rätsel löst und
-das letzte Query mit einem Coach anschaust. Beim Lösen empfiehlt es sich Zwischenschritte aufzuschreiben, um die
-Übersicht zu behalten. Falls du diese Zwischenschritte auch mit einem Coach anschauen möchtest, ist dies auch möglich.
+das letzte Query mit einem Praxisbildner anschaust. Beim Lösen empfiehlt es sich Zwischenschritte aufzuschreiben, um die
+Übersicht zu behalten. Falls du diese Zwischenschritte auch mit einem Praxisbildner anschauen möchtest, ist dies auch möglich.
 [SQL Murder Mystery](https://mystery.knightlab.com/)
