@@ -7,9 +7,14 @@ description: >
   Hier wird erklärt was Linter sind und wie man diese benutzt.
 ---
 
+#### Ziele
+- Du weisst, was ein Linter ist und was dieser macht. 
+- Du weisst, was Prettier ist, wozu es verwendet wird und wie man es konfiguriert.
+- Du weisst, was ESLint ist, wozu es verwendet wird und wie man es konfiguriert. 
+
 ## Linter
 
-Ein Linter analysiert den Quellcode auf der Grundlage vordefinierter Regeln, Konventionen und Best Practices. Er prüft den Code auf häufige Fehler wie fehlende Semikolons, undefinierte Variablen, nicht verwendete Importe, ungültige Syntax und andere potenzielle Probleme. Darüber hinaus kann ein Linter auch den Code-Stil überprüfen, um sicherzustellen, dass er den vereinbarten Standards im Projekt entspricht.
+Ein Linter analysiert den Quellcode auf der Grundlage vordefinierter Regeln, Konventionen und Best Practices. Er prüft den Code auf häufige Fehler wie fehlende Semikolons, undefinierte Variablen, nicht verwendete Imports, ungültige Syntax und andere potenzielle Probleme. Darüber hinaus kann ein Linter auch den Code-Stil überprüfen, um sicherzustellen, dass er den vereinbarten Standards im Projekt entspricht.
 Der Hauptzweck eines Linters besteht darin, Entwicklern dabei zu helfen, qualitativ hochwertigen Code zu schreiben, der gut strukturiert und leicht wartbar ist.
 
 ### Prettier
@@ -24,16 +29,16 @@ Prettier kann den gesamten Code automatisch formatieren, einschliesslich Einrüc
 
 Prettier benötigt normalerweise keine umfangreiche Konfiguration, da es über standardmässige Formatierungsregeln verfügt. Man kann jedoch bestimmte Einstellungen in einer .`prettierrc`-Datei festlegen, um das Verhalten anzupassen.
 
-Hier ist ein Beispiel wie man dies tun kann:
+Hier ist ein Beispiel wie man das machen kann:
 
-Wenn man z.B.
+Wenn man beispielsweise.
 
 - die Anzahl der Leerzeichen (2) festlegen will, die für einen Tab verwendet werden sollen,
 - doppelte Anführungszeichen `"` mit einfachen `'` ersetzen will,
 - Tabs durch Leerzeichen ersetzen will,
 - fehlende Semikolons (im JavaScript) automatisch hinzufügen will,
-- automatisch Space bei Klammern hinzufügen will,
-  dann kann dies wie folgt getan werden.
+- automatisch Spaces bei Klammern hinzufügen will,
+  dann kann das wie folgt getan werden.
 
 ```json
 {
@@ -46,11 +51,11 @@ Wenn man z.B.
 }
 ```
 
-Weitere Informationen zu den verfügbaren Optionen und deren Werten finden man in der Prettier-Dokumentation unter https://prettier.io/docs/en/configuration.html.
+Weitere Informationen zu den verfügbaren Optionen und deren Werten findet man in der Prettier-Dokumentation unter https://prettier.io/docs/en/configuration.html.
 
 #### Prettier ausführen
 
-Das Prettier Plugin kann man wie folgt ausführe.
+Das Prettier Plugin kann man wie folgt ausführen:
 
 - **IntelliJ**: Alt-Shift-Ctrl-P auf Windows und Linux oder Alt-Shift-Cmd-P auf macOS.
 
@@ -60,10 +65,10 @@ Das Prettier Plugin kann man wie folgt ausführe.
 
 ESLint ist ein äusserst beliebtes und leistungsstarkes statisches Code-Analysetool für JavaScript- und TypeScript-Projekte.
 
-### ESLinkt installieren
+### ESLint installieren
 
-Bevor ESLint verwendet werden kann, muss es installiert werden (und bei Windows am besten noch den PC neustarten).
-Mit den folgenden drei Befehlen kann man es installere:
+Bevor ESLint verwendet werden kann, muss es installiert werden (und bei Windows am besten noch der PC neu gestartet werden).
+Mit den folgenden drei Befehlen kann man es installeren:
 
 ```shell
 npm install eslint --save-dev
@@ -92,7 +97,7 @@ In der `.eslintrc`-Datei kann man die Einstellungen für eine spezifische Regel 
 
 **Hinzufügen neuer Regel**:
 
-Man kann Regeln hinzufügen oder entfernen, indem man die `rules`-Eigenschaft anpassen. Angenommen, man möchten die Regel "no-console" aktivieren, um den Einsatz von console.log zu verhindern.
+Man kann Regeln hinzufügen oder entfernen, indem man die `rules`-Eigenschaft anpasst. Angenommen, man möchte die Regel "no-console" aktivieren, um den Einsatz von console.log zu verhindern:
 
 ```json
 {
@@ -106,10 +111,10 @@ Weitere Informationen findest du in der ESLint-Dokumentation unter https://eslin
 
 #### ESLint ausführen
 
-ESLint kann man über die Konsole ausführen dazu sind folgende Schritte erforderlich:
+ESLint kann man über die Konsole ausführen, dazu sind folgende Schritte erforderlich:
 
 1. In der Konsole zum Wurzelverzeichnis des Projekts navigieren.
-2. Den Befehl `eslint` gefolgt von den Datei- oder Verzeichnisnamen ausführen, die man überprüfen möchten.
+2. Den Befehl `eslint` gefolgt von den Datei- oder Verzeichnisnamen ausführen, die man überprüfen möchte.
 
 ```shell
 eslint src/index.js
@@ -123,7 +128,7 @@ ESLint kann man mit zusätzlichen Optionen und Flags verwenden, die wichtigste F
 eslint --fix src/index.js
 ```
 
-Vielfach ist ESLint bereits als Script im `packages.json` hinterlegt und kann dann so mit dem Befehl `npm run <scriptname>` (beispielsweise `npm run lint`) aufgerufen werden.
+Vielfach ist ESLint bereits als Script im `package.json` hinterlegt und kann dann so mit dem Befehl `npm run <scriptname>` (beispielsweise `npm run lint`) aufgerufen werden.
 
 #### ESLint automatisch beim Speichern
 
@@ -159,7 +164,7 @@ Man navigiert zu `Languages & Frameworks` -> `[Code-Language z.B. JavaScript]` -
 
 ## Überprüfen
 
-Nun hoffen wir, dass alle nötigen Installationen erfolgreich ausgeführt wurden.
+Nun gehen wir davon aus, dass alle nötigen Installationen erfolgreich ausgeführt wurden.
 
 ![task5](/images/task.png) 5' - Einzelarbeit
 
