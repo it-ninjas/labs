@@ -8,9 +8,10 @@ description: >
 ---
 
 #### Ziele
-- Du weisst, was ein Linter ist und was dieser macht. 
+
+- Du weisst, was ein Linter ist und was dieser macht.
 - Du weisst, was Prettier ist, wozu es verwendet wird und wie man es konfiguriert.
-- Du weisst, was ESLint ist, wozu es verwendet wird und wie man es konfiguriert. 
+- Du weisst, was ESLint ist, wozu es verwendet wird und wie man es konfiguriert.
 
 ## Linter
 
