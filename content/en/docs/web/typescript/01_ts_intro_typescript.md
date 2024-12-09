@@ -10,7 +10,7 @@ description: >
 
 ## Was ist TypeScript
 
-Die Programmiersprache wurde von Microsoft entwickelt und wurde im Jahr 2012 mit der ersten Version veröffentlicht.
+Die Programmiersprache Typescript wurde von Microsoft entwickelt und wurde im Jahr 2012 mit der ersten Version veröffentlicht.
 Seitdem wird die Programmiersprache kontinuierlich weiterentwickelt. Zahlreiche JavaScript-Frameworks setzen heute auf die Verwendung von TypeScript.
 Dazu gehören zum Beispiel Angular 2+ und React.
 
@@ -21,10 +21,10 @@ Da Quellcode geschrieben in TypeScript zu JavaScript transpiliert wird, ist der 
 
 ## Vorteile von TypeScript
 
-- TypeScript hebt Fehler während der Kompilierung hervor, während JavaScript - zur Laufzeit.
+- TypeScript hebt Fehler während der Transpilierung hervor, während JavaScript das erst zur Laufzeit macht.
 - TypeScript unterstützt statische Typisierung.
 - Ermöglicht bessere Code-Strukturierung und Objekt-Orientierte Programmiertechniken.
-- TypeScript ist in jedem Browser oder JS Engine lauffähig.
+- TypeScript ist in jedem Browser und jeder JS-Engine lauffähig.
 - Hervorragendes "Tooling" mit IntelliSense, das beim Hinzufügen des Codes aktive Hinweise liefert.
 
 ## Grundlegende Syntax
@@ -35,15 +35,15 @@ Mit TypeScript wird JavaScript zu einer stark typisierten, objektorientierten Sp
 
 ## Null Safety
 
-In TypeScript gibt es standardmäßig keine "Null Safety" im Sinne einer statischen Typüberprüfung auf mögliche Null- oder Undefined-Werte. Das bedeutet, dass Variablen jeder Typ sein können, einschliesslich `null` oder `undefined`, es sei denn es wird explizit angegeben, dass sie einen anderen Typ haben sollen.
-Dies kann dazu führen, dass in TypeScript-Code unerwartete Fehler auftreten, wenn versucht wird, auf Eigenschaften oder Methoden von null- oder undefined-Variablen zuzugreifen. Solche Fehler treten normalerweise zur Laufzeit auf und werden nicht vom Compiler erkannt.
+In TypeScript gibt es standardmäßig keine "Null Safety" im Sinne einer statischen Typüberprüfung auf mögliche Null- oder Undefined-Werte. Das bedeutet, dass Variablen jeden Typ annehmen können, einschliesslich `null` oder `undefined`, es sei denn, es wird explizit angegeben, dass sie einen anderen Typ haben sollen.
+Das kann dazu führen, dass in TypeScript-Code unerwartete Fehler auftreten, wenn versucht wird, auf Eigenschaften oder Methoden von null- oder undefined-Variablen zuzugreifen. Solche Fehler treten normalerweise zur Laufzeit auf und werden nicht vom Compiler erkannt.
 
 Um das Risiko von Fehlern durch null- oder undefined-Werte zu reduzieren, kann man die Option `strictNullChecks` in der `tsconfig.json`-Datei aktivieren.
 
 ## Typanmeldungen
 
 Typdeklarationen können zu Variablen, Funktionsparametern und Funktionsrückgabetypen hinzugefügt werden.
-Der Typ folgt jeweils nach einem Doppelpunkt hinter dem Variablennamen:
+Der Typ folgt jeweils auf einen Doppelpunkt hinter dem Variablennamen:
 
 ```typescript
 const num: number = 1;
@@ -55,7 +55,7 @@ Die verschiedenen Grundtypen von TypeScript sind [hier](https://www.typescriptla
 
 ### Type Any
 
-Der Typ `any` ein spezieller Typ, der es ermöglicht Variablen, Funktionen und andere Objekte ohne explizite Typisierung zu deklarieren. Wenn eine Variable oder ein Objekt mit `any` deklariert wird, bedeutet dies, dass der Typ nicht eingeschränkt ist und dass alle Arten von Werten diesem Typ zugewiesen werden können, ohne dass eine Typenüberprüfung durchgeführt wird. Bedeutet das man so die gesamte Typisierung umgehen kann und dann wie bei JavaScript Typfehler erst während der Laufzeit sehen würde.
+Der Typ `any` ist ein spezieller Typ, der es ermöglicht, Variablen, Funktionen und andere Objekte ohne explizite Typisierung zu deklarieren. Wenn eine Variable oder ein Objekt mit `any` deklariert wird, bedeutet dies, dass der Typ nicht eingeschränkt ist und dass alle Arten von Werten diesem Typ zugewiesen werden können, ohne dass eine Typenüberprüfung durchgeführt wird. Das bedeutet, dass man so die gesamte Typisierung umgehen kann und dann wie bei JavaScript Typfehler erst während der Laufzeit sehen würde.
 
 Beispiel mit `any`, welches zu Laufzeitfehler führt:
 
@@ -86,7 +86,7 @@ Ein Beispiel:
 
 Nun kann sich unser Hund von Anderen unterscheiden, jedoch kann er noch nicht bellen. Deshalb haben
 Objekte auch Funktionen (Methoden). In unserem Beispiel könnte der Hund z.B. über die Methode "bark()" verfügen,
-welche ihm erlaubt zu bellen.
+welche es ihm erlaubt, zu bellen.
 
 In unserem Beispiel handelt es sich bei dem Hund um eine Klasse. Klassen sind also wie Baupläne für Objekte.
 
@@ -95,7 +95,7 @@ An dieser Stelle kommt dann die Vererbung ins Spiel.
 
 Hunde sowie Katzen sind beides Tiere. In der Objektorientierten Programmierung würde man dazu also eine Klasse "Animal" erstellen.
 Die beiden Klassen "Cat" und "Dog" würden dann die Klasse "Animal" erben. Dies Bedeutet, dass sie die Eigenschaften der Klasse "Animal" übernehmen
-und durch ihre eigenen Eigenschaften erweitern.
+und durch ihre eigenen Eigenschaften ergänzen.
 
 Da sich beide Tiere fortbewegen, könnte man also der Klasse "Animal" die Funktion "move()" geben, welche dann von den beiden anderen Klassen geerbt werden würde.
 Dadurch hat man verhindert, dass sich die Funktion zum bewegen mehrmals im Quellcode befindet.
