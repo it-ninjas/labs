@@ -8,7 +8,12 @@ description: >
   Modul #F5 - TypeScript - JavaScript mit Typen.
 ---
 
-## Was ist TypeScript
+### Ziele
+- Du weisst, was Typescript ist und inwiefern es sich von Javascript unterscheidet.
+- Du weisst, welche Vorteile Typescript im Vergleich zu Javascript hat. 
+- Du weisst, wie du den objektorientierten Programmieransatz in Typescript einbinden kannst und wie man in Typescript Klassen verwendet. 
+
+## Was ist TypeScript?
 
 Die Programmiersprache Typescript wurde von Microsoft entwickelt und wurde im Jahr 2012 mit der ersten Version veröffentlicht.
 Seitdem wird die Programmiersprache kontinuierlich weiterentwickelt. Zahlreiche JavaScript-Frameworks setzen heute auf die Verwendung von TypeScript.
@@ -49,7 +54,7 @@ Der Typ folgt jeweils auf einen Doppelpunkt hinter dem Variablennamen:
 const num: number = 1;
 ```
 
-Der Compiler überprüft dann die Typen während des Kompilierens und meldet allfällige Typfehler.
+Der Compiler überprüft dann die Typen während des Transpilierens und meldet allfällige Typfehler.
 
 Die verschiedenen Grundtypen von TypeScript sind [hier](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) ersichtlich.
 
@@ -130,6 +135,23 @@ Wenn wir in einer Klasse auf ein Member innerhalb der Klasse referenzieren, verw
 
 Auf der letzten Zeile erstellen wir eine neue Instanz der Klasse `Greeter` mit `new`.
 
+## Interfaces
+
+Als Gegenstück zu Klassen exisiteren in Typescript ebenfalls Interfaces. 
+
+Klassen haben die Eigenschaft, dass sie in Javascript "reale" Dinge sind. Es ist also möglich, diese über den prototype zu verwenden oder mit "instanceof" den Typ der Klasse zu überprüfen. 
+
+Interfaces werden hingegen vom Compiler "gelöscht". Das heisst, dass sie von Javascript (wahrscheinlich) als einfache Objekte interpretiert werden. 
+
+Ein Beispiel für ein Interface wäre das folgende: 
+
+```javascript
+interface Person{
+    name: String;
+    alter: number;
+}
+```
+
 ### Vererbung
 
 In TypeScript können wir allgemeine objektorientierte Muster verwenden. Eines der grundlegendsten Muster in der klassenbasierten Programmierung ist die Möglichkeit, vorhandene Klassen durch Vererbung zu erweitern, um neue Klassen zu erstellen.
@@ -197,7 +219,7 @@ sammy.move();
 tom.move(35);
 ```
 
-In diesem Beispiel werden 2 neue Subklassen von `Animal` erstellt: `Horse` und `Snake`.
+In diesem Beispiel werden zwei neue Subklassen von `Animal` erstellt: `Horse` und `Snake`.
 
 Ein Unterschied zum vorherigen Beispiel besteht darin, dass jede abgeleitete Klasse, die eine Konstruktorfunktion enthält, `super()` aufrufen muss, wodurch der Konstruktor der Basisklasse ausgeführt wird. Ausserdem müssen wir `super()` aufrufen, damit wir im Konstruktorkörper auf `name` mit `this` zugreifen können.
 

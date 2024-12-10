@@ -10,11 +10,11 @@ description: >
 
 ## Ziele
 
-- Du kennst, die wichtigen special Operators in Angular und kannst diese anwenden.
+- Du kennst die wichtigsten Special Operators in Angular und kannst diese anwenden.
 
 ## Special Operators
 
-Viele der wichtigen Operatoren wurden bereits beim JavaScript behandelt, diese können auch in TypeScript verwendet
+Viele der relevanten Operatoren wurden bereits beim JavaScript behandelt, diese können auch in TypeScript verwendet
 werden. Die Operatoren können [hier](../../javascript/06_js_operators) nachgelesen werden.
 
 ### ?-Operator
@@ -49,7 +49,7 @@ console.log(person2?.getInfo()); // 'Name: Alice, Age: undefined'
 
 ### !-Operator
 
-Der `!`-Operator ist ein Non-null-Assertion-Operator. Er wird verwendet, um dem Compiler mitzuteilen und zu garantieren, dass eine Variabel während der Laufzeit nicht `null` oder `undefiniert` ist und somit einen gültigen Wert hat.
+Der `!`-Operator ist ein Non-null-Assertion-Operator. Er wird verwendet, um dem Compiler mitzuteilen und zu garantieren, dass eine Variable während der Laufzeit nicht `null` oder `undefined` ist und somit einen gültigen Wert hat.
 
 Dadurch wird der Compiler davon abgehalten, Warnungen oder Fehlermeldungen auszugeben, die normalerweise auftreten würden, wenn eine mögliche Null- oder Undefined-Zuweisung vorliegt.
 
