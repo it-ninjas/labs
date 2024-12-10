@@ -9,7 +9,8 @@ description: >
 ---
 
 ### Ziele
-- Du kannst eine Typescript-Datei erstellen und ausführen lassen. 
+
+- Du kannst eine Typescript-Datei erstellen und ausführen lassen.
 - Du bist in der Lage, eine Typescript-Datei in eine Javascript-Datei zu transpilieren.
 
 ## Hello World

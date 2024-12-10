@@ -9,9 +9,10 @@ description: >
 ---
 
 ### Ziele
+
 - Du weisst, was Typescript ist und inwiefern es sich von Javascript unterscheidet.
-- Du weisst, welche Vorteile Typescript im Vergleich zu Javascript hat. 
-- Du weisst, wie du den objektorientierten Programmieransatz in Typescript einbinden kannst und wie man in Typescript Klassen verwendet. 
+- Du weisst, welche Vorteile Typescript im Vergleich zu Javascript hat.
+- Du weisst, wie du den objektorientierten Programmieransatz in Typescript einbinden kannst und wie man in Typescript Klassen verwendet.
 
 ## Was ist TypeScript?
 
@@ -137,13 +138,13 @@ Auf der letzten Zeile erstellen wir eine neue Instanz der Klasse `Greeter` mit `
 
 ## Interfaces
 
-Als Gegenstück zu Klassen exisiteren in Typescript ebenfalls Interfaces. 
+Als Gegenstück zu Klassen exisiteren in Typescript ebenfalls Interfaces.
 
-Klassen haben die Eigenschaft, dass sie in Javascript "reale" Dinge sind. Es ist also möglich, diese über den prototype zu verwenden oder mit "instanceof" den Typ der Klasse zu überprüfen. 
+Klassen haben die Eigenschaft, dass sie in Javascript "reale" Dinge sind. Es ist also möglich, diese über den prototype zu verwenden oder mit "instanceof" den Typ der Klasse zu überprüfen.
 
-Interfaces werden hingegen vom Compiler "gelöscht". Das heisst, dass sie von Javascript (wahrscheinlich) als einfache Objekte interpretiert werden. 
+Interfaces werden hingegen vom Compiler "gelöscht". Das heisst, dass sie von Javascript (wahrscheinlich) als einfache Objekte interpretiert werden.
 
-Ein Beispiel für ein Interface wäre das folgende: 
+Ein Beispiel für ein Interface wäre das folgende:
 
 ```javascript
 interface Person{

@@ -9,8 +9,9 @@ description: >
 ---
 
 ### Ziele
-- Du weisst, was die tsconfig-Datei ist und wofür diese verwendet wird. 
-- Du kennst die wichtigsten Einstellungen und Optionen, die du in der tsconfig-Datei anpassen kannst. 
+
+- Du weisst, was die tsconfig-Datei ist und wofür diese verwendet wird.
+- Du kennst die wichtigsten Einstellungen und Optionen, die du in der tsconfig-Datei anpassen kannst.
 
 ## Konfigurationsdatei für TypeScript-Projekte
 
