@@ -5298,6 +5298,16 @@ In diesem Kontext dient H2, eine In-Memory-Datenbank, als Ersatz für die eigent
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import static&lt;/span> org.junit.jupiter.api.Assertions.assertTrue;
@@ -5305,7 +5315,7 @@ In diesem Kontext dient H2, eine In-Memory-Datenbank, als Ersatz für die eigent
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PasswordValidatorTest&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> PasswordValidator uut;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> PasswordValidator uut &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> PasswordValidator();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordNull&lt;/span>() {
@@ -5314,42 +5324,52 @@ In diesem Kontext dient H2, eine In-Memory-Datenbank, als Ersatz für die eigent
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordTooShort&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;1234567&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// NIST Password Guidelines: Minimum 8 Zeichen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;aB1$Cd3&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordTooLong&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;ABCDEFGHIJKLMNOPQRSTU&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// NIST Password Guidelines: Maximum 64 Zeichen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;aB1$cdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordContainsNoSpace&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;ABCDEFGHIJKLMNOPQR T&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;aB1$cdefghij k&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordContainsNoNumeric&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;ABCDEFGHIJKLMNOPQRST&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;aB$cdefghijklm&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordContainsNoLowercaseChar&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;ABCDEFGHIJ0123456789&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;AB1$CDEFGHIJKLMN&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordContainsNoUppercaseChar&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;abcdefghij0123456789&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ab1$cdefghijklmn&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordContainsNoSpecialChar&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;abcdeFGHIJ0123456789&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;aB1cdefghijklm&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">testPasswordValid&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertTrue(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;abcdeFGHIJ01234$*%?+&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;aB1$cdefghij&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertTrue(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">uut&lt;/span>.&lt;span style="color:#a6e22e">isPasswordValid&lt;/span>(password));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
