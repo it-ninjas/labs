@@ -107,7 +107,7 @@ public class PasswordValidatorTest {
     @Test
     public void testPasswordTooShort() {
         // NIST Password Guidelines: Minimum 8 Zeichen
-        String password = "aB1$";
+        String password = "aB1$Cd3";
         assertFalse(this.uut.isPasswordValid(password));
     }
 
