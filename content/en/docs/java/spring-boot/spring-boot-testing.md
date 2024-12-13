@@ -22,7 +22,7 @@ Damit du den folgenden Erklärungen einfacher folgen und laufenden Code untersuc
 folgende GitHub-Repo und öffne das Projekt in deiner IDE (Branch: master): https://github.com/it-ninjas/springboottesting/tree/master
 
 Das Repo beinhaltet eine laufende Spring Boot Applikation (wen wundert's ;-)), die Personen verwaltet. Via REST-Schnittstelle können
-neue Personen erstellt werden (_createPerson_) und es gibt die Möglichkeit, alle Personen abzufragen (_getAllPersons_).
+neue Personen erstellt werden (_createPerson_) und es gibt die Möglichkeit, alle Personen abzufragen (_getAllPersons_). Zur Verwaltung der Daten wird JPA verwendet.
 Damit du möglichst einfach Requests machen kannst, ist ein SwaggerUI vorhanden: [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html)
 
 <a id="podman-setup">**Datenbank**</a>: Die Applikation benötigt eine laufende JDBC Verbindung auf eine Maria-DB mit Namen 'testDB'.
@@ -74,22 +74,22 @@ sein resp. praktisch nicht möglich: Stell dir vor, du willst ein `@Repository` 
 da an die automatisch durch den Spring-Container generierten Methoden (z.B. `findAll()`)? Gar nicht.
 
 Deshalb gibt es Möglichkeiten, je nach Anwendungsfall den Spring Application-Context teilweise oder ganz hochzufahren.
-Wollen wir nur den Daten-Teil (Entity und Repo) hochfahren ist das ein `@DataJpaTest`.
+Wollen wir nur den Daten-Teil (Entity und Repo) hochfahren ist das ein `@DataJpaTest` für JPA der ein `@DataJdbcTest` für eine JDBC-Umsetzung.
 Hier werden keine Services und auch keine Controller instanziiert.
 
 Wollen wir nur den Controller-Teil (inkl. Security, Filter, Converter) hochfahren, ist das ein `@WebMvcTest`.
 Es werden keine Services, keine Repos und keine Entities instanziiert.
 
-Bei `@DataJpaTest` und `@WebMvcTest` sprechen wir von sogenannten **Slice-Tests**, weil wir nur einen Teil-Bereich (intergrations-)testen.
+Bei `@DataJpaTest`, `@DataJdbcTest` und `@WebMvcTest` sprechen wir von sogenannten **Slice-Tests**, weil wir nur einen Teil-Bereich (intergrations-)testen.
 
 Natürlich können wir auch den ganzen Spring Application Context hochfahren. Dann verwenden wir `@SpringBootTest`.
 
-Für Services gibt es keine spezielle Slice-Test-Annotation oder Umgebung. Da nehmen wir entweder Mockito oder dann @SpringBootTest.
+Für Services gibt es keine spezielle Slice-Test-Annotation oder Umgebung. Da nehmen wir entweder Mockito oder dann `@SpringBootTest`.
 
-> @DataJpaTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch.
+> @DataJpaTest, @DataJdbcTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch.
 > Das ist langsamer bei der Ausführung, als pure Unit-Tests. Wir werden daher später lernen, nur gewisse Tests zu starten.
 
-![tipIntegrationTest](/images/hint.png) Bei @DataJpaTest, @WebMvcTest und @SpringBootTest kann man von 'Integration-Tests' sprechen,
+![tipIntegrationTest](/images/hint.png) Bei @DataJpaTest, @DataJdbcTest, @WebMvcTest und @SpringBootTest kann man von 'Integration-Tests' sprechen,
 weil verschiedene Komponenten im Zusammenspiel untersucht werden. Wir könnten nun mit Maven
 das [Failsave](https://maven.apache.org/surefire/maven-failsafe-plugin/) Plugin verwenden, das für Integrations-Tests verwendet wird. Das Failsave-Plugin springt in der Maven Phase 'integraton-test' an,
 also nach der Unit-Test-Phase 'test'. Es funktioniert anders als Unit-Tests. Um die Komplexität zu reduzieren,
@@ -98,7 +98,7 @@ fahren wir in diesem Projekt aber alle Tests als Unit-Tests (Maven Phase 'test')
 Hier nochmals in der Übersicht, welche Testarten sich für welchen Layer eignen:
 | Layer | Testart(en) | Begründung |
 | ----------- | ----------- | ----------- |
-| Entity/Repo | `@DataJpaTest` | Wir wollen Queries bis auf die DB "runter" testen. Es gibt viel DB-Interaktion, nicht aber Logik. |
+| Entity/Repo | `@DataJpaTest` oder `@DataJdbcTest` | Wir wollen Queries bis auf die DB "runter" testen. Es gibt viel DB-Interaktion, nicht aber Logik. |
 | Service | Mockito und `@SpringBootTest` | Services beinhalten die Logik, daher mit Mockito. Services verbinden Repo und Controller, daher @SpringBootTest. |
 | Controller | `@WebMvcTest` | Es geht primär darum, Anfragen entgegenzunehmen und zurückzugeben, also Eingabe- und Ausgabe-Formate zu testen. Security etc. können ein Thema sein, nicht aber Logik. |
 | Utility-Klasse (hier MyUtilityBean) | Mockito | Reine Logik-Tests resp. "tun die Helper-Methoden, was sie sollen?"-Tests. Hinweise: Im Demo-Projekt gibt es keinen Unit-Test für die MyUtilityBean.|
@@ -110,17 +110,17 @@ Du kannst alle Tests mit `mvn clean test` ausführen.
 ![tippFailingTests](/images/hint.png) Evtl. schlägt der Test `PersonRepoTestContainerDataJpaTest` fehl. Das hat damit zu tun,
 dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten im Abschnitt [Testcontainers](#testcontainers) an.
 
-Wie bereits weiter oben erwähnt, sind `@DataJpaTest`-, `@WebMvcTest`- und `@SpringBootTest`-Tests zeitaufwändig bei der Ausführung.
+Wie bereits weiter oben erwähnt, sind `@DataJpaTest`-, `@DataJdbcTest`-, `@WebMvcTest`- und `@SpringBootTest`-Tests zeitaufwändig bei der Ausführung.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
 Wege, der einfachste ist aber so:
 
 ```
-mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*SpringBootTest*
+mvn clean test -Dsurefire.excludes=**/*WebMvcTest*,**/*DataJpaTest*,**/*DataJdbcTest*,**/*SpringBootTest*
 ```
 
 Mit `-Dsurefire.excludes=...` kannst du festlegen, welche Unit-Tests ignoriert werden sollen.
 Das obige Beispiel bezieht sich auf die Bennenung der Tests im Demo-Projekt: Alle Tests die
-_WebMvcTest_ oder _DataJpaTest_ oder _SpringBootTest_ im Klassenamen haben werden so ignoriert.
+_WebMvcTest_ oder _DataJpaTest_ oder _DataJdbcTest_ oder _SpringBootTest_ im Klassenamen haben werden so ignoriert.
 
 ## Service testen mit Mockito
 
@@ -499,9 +499,12 @@ Wichtige Punkte zum Test:
     - Bei `jsonPath("$.personName")` bezieht sich _$_ auf das zurückgegebene einzelne Objekt. Erwarten wir eine Liste von Objekten kann über den Index auf ein entsprechendes Objekt zugegriffen werden. Wollen wir z.B. auf das 2te Objekt in der Liste zugreifen, verwenden wir _$[1].personName_ .
 - (Tipp am Rande: Falls du trotzdem eine DB verwenden würdest: Es gibt kein automatisches Rollback der Daten nach jedem Test.)
 
-## Repo/Entity mit @DataJpaTest testen
+## Repo/Entity mit @DataJpaTest oder @DataJdbcTest testen
 
 Jetzt ist das `PersonRepo` inkl. `Person` (Entität) und DB dran. Wir fahren den Slice-Test mit `@DataJpaTest`.
+
+Falls deine Applikation mit JDBC implementiert ist, kannst du einfach `@DataJpaTest` durch `@DataJdbcTest` ersetzen, da sich beide Slice-Tests gleich verhalten.
+
 Es werden nur DB, Entities und Repositories initialisert, keine Services, keine Controller:
 
 ![Repo-DataJpaTest-Tests](../spring-boot-testing/repo-datajpatest.png)
