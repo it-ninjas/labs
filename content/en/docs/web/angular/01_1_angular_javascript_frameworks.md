@@ -9,8 +9,9 @@ description: >
 ---
 
 ### Ziele
-- Du weisst, was ein Frontend ist. 
-- Du weisst, was Angular ist, und kennst entsprechende Alternativen dazu. 
+
+- Du weisst, was ein Frontend ist.
+- Du weisst, was Angular ist, und kennst entsprechende Alternativen dazu.
 
 ## Was ist das Frontend?
 
@@ -34,9 +35,9 @@ Durch verschiedenste Web-Frameworks wird die Gestaltung von Websites sehr flexib
 ### Angular
 
 Eines der leistungsstärksten und effizientesten Open-Source-JavaScript-Frameworks ist Angular.
-Google betreibt dieses Framework, welches für die Entwicklung einer Single Page Application (SPA) verwendet wird. 
+Google betreibt dieses Framework, welches für die Entwicklung einer Single Page Application (SPA) verwendet wird.
 Eine Single-Page-Application ist eine Anwendung, welche mit dem Nutzer interagiert, indem die aktuelle Seite dynamisch mit neuen Daten gerendert wird. Das heisst, es wird für eine neue
-Ansicht nicht jedes mal eine neue Page erstellt, sondern wird die bestehende Seite an die neuen Daten angepasst. 
+Ansicht nicht jedes mal eine neue Page erstellt, sondern wird die bestehende Seite an die neuen Daten angepasst.
 
 ![Angular](../images/angular.png)
 

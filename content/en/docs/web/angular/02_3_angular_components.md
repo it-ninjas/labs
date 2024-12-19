@@ -29,7 +29,7 @@ Components sind wie Grundbausteine in einer Angular-Applikation. Components werd
 
 Components sind TypeScript Klassen, die die Daten und Kontrollstrukturen zum Verhalten der Templates beinhalten.
 Metadaten teilen Angular mit, wie die Components verarbeitet werden sollen (selector, template, style), das kann im Kapitel [Component Decorator](../03_3_angular_decorator#component) genauer nachgelesen werden.
-Ein Component hat einen von Angular verwalteten Lifecycle. Angular erstellt und rendert Components zusammen mit ihren Children. 
+Ein Component hat einen von Angular verwalteten Lifecycle. Angular erstellt und rendert Components zusammen mit ihren Children.
 Überprüft, wann sich ihre Properties ändern, und zerstört sie, bevor sie aus dem DOM entfernt werden.
 Angular bietet sogenannte [Lifecycle-Hooks](./02_18_angular_life_cycle_hook) an, mit denen wir handeln können, sobald ein bestimmter Teils des Lifecycles auftrtitt.
 

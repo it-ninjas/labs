@@ -33,7 +33,7 @@ Die grundlegende Struktur einer Angular-Anwendung besteht aus folgenden Files:
 ## Ordnerstruktur
 
 Die Ordnerstruktur in Angular kann nach persönlichen Präferenzen gewählt werden. Jedoch ist die unten folgenden Struktur die gängigste Best-Practice-Variante und sollte daher auch immer so angewendet werden.
-Die Struktur bietet eine klare Trennung der verschiedenen Artefakte einer Angular-Anwendung und fördert die Modularität, Wiederverwendbarkeit und Testbarkeit des Codes. 
+Die Struktur bietet eine klare Trennung der verschiedenen Artefakte einer Angular-Anwendung und fördert die Modularität, Wiederverwendbarkeit und Testbarkeit des Codes.
 
 ```text
 ├── e2e

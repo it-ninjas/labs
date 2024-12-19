@@ -10,10 +10,8 @@ description: >
 
 ### Ziele
 
-- Du kennst die Vor- und Nachteile von Angular. 
+- Du kennst die Vor- und Nachteile von Angular.
 - Du weisst, wie du ein erstes Angular-Projekt aufsetzen kannst.
-
-
 
 ## Was ist Angular
 
@@ -31,7 +29,8 @@ Angular wird für Frontend-Applikationen verwendet. Oft wird ein Backend via HTT
 
 - **TypeScript-Unterstützung**: Angular ist in TypeScript geschrieben. TypeScript bietet statische Typisierung, verbesserte IDE-Unterstützung und ermöglicht eine bessere Fehlererkennung zur Entwicklungszeit.
 
-- **Grosse Community**: Angular ist ein viel genutztes Framework, wodurch bereits viele Best-Practices, standartisierte Vorgehensweisen und bewährte Praktiken und Konventionen bestehen, an denen man sich als Entwickler orientieren kann.   
+- **Grosse Community**: Angular ist ein viel genutztes Framework, wodurch bereits viele Best-Practices, standartisierte Vorgehensweisen und bewährte Praktiken und Konventionen bestehen, an denen man sich als Entwickler orientieren kann.
+
 ### Nachteile von Angular
 
 - **Lernkurve**: Angular ist ein umfangreiches Framework und erfordert eine gewisse Einarbeitungszeit. Die Konzepte wie Dependency Injection, TypeScript und das Componentmodel können für Entwickler mit wenig Erfahrung zunächst herausfordernd sein.
@@ -66,7 +65,7 @@ Als nächstes muss in das Projektverzeichnis gewechselt werden, indem man den fo
 
 ```shell
 cd new-angular-project
-``` 
+```
 
 ### Projekt starten
 
@@ -128,13 +127,13 @@ Die `angular.json`-Datei ist die Konfigurationsdatei eines Angular-Projekts. Sie
 Der Einstiegspunkt einer Angular-Anwendung ist die Datei main.ts. Diese Datei ist das Hauptmodul der Anwendung, in dem der Bootstrap-Prozess gestartet wird.
 
 ```typescript
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
-import { AppModule } from './app/app.module';
+import { AppModule } from "./app/app.module";
 
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-        .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
 ```
 
 Das AppModule selbst ist das Root-Modul der Angular-Anwendung. Es wird in der Regel in einer separaten Datei (`app.module.ts`) definiert und enthält die erforderlichen Importe und Konfigurationen für die Anwendung, einschliesslich der Components, Services, Modules und anderer Funktionen, welche d Anwendung benötigt.
@@ -143,9 +142,9 @@ Die `main.ts`-Datei wird beim Starten der Angular-Anwendung vom Build-System ode
 
 Es ist wichtig zu beachten, dass die `main.ts`-Datei normalerweise nicht manuell bearbeitet werden muss, es sei denn, man hat spezifische Anpassungen oder Erweiterungen für den Bootstrap-Prozess vorzunehmen. Die meisten Änderungen und Konfigurationen sollten im AppModule und den anderen Modulen der Anwendung vorgenommen werden.
 
-Es ist wichtig zu beachten, dass seit Angular 17 das App-Modul **nicht** mehr standardmässig beim Erstellen eines neuen Angular-Projekts generiert wird, da seit Angular 17 
+Es ist wichtig zu beachten, dass seit Angular 17 das App-Modul **nicht** mehr standardmässig beim Erstellen eines neuen Angular-Projekts generiert wird, da seit Angular 17
 alle Components standardmässig standalone sind und alle nötigen Imports selber enthalten, womit das App-Modul entfällt. Wenn du trotzdem ein App-Modul generieren möchtest, musst du beim Erstellen
-des Angular-Projekts das "-- no-standalone"-Flag zum Befehl hinzufügen: 
+des Angular-Projekts das "-- no-standalone"-Flag zum Befehl hinzufügen:
 
 ```shell
 ng new <name> --no-standalone
@@ -207,8 +206,7 @@ In der Angular Dokumentation sind zudem auch [Tutorials](https://angular.dev/tut
 
 Zudem ist nun auch ein sogenannter [Playground](https://angular.dev/playground) von Angular selbst hinzugefügt worden, diesen kann man auch über die Dokumentation erreichen.
 Der Playground erfüllt den Nutzen, dass Entwickler ihren Code vorab isoliert im Browser testen können, ohne dafür ein neues Angular-Projekt aufsetzen zu müssen.
-Vor dem offiziellen Playground musste fürs Testen vorab  [Stackblitz](https://stackblitz.com/) verwenden. Die Seite ist jedoch auch heutzutage immer noch sehr hilfreich, da man dort in verschiedensten Sprachen Code im Browser testen kann.
-
+Vor dem offiziellen Playground musste fürs Testen vorab [Stackblitz](https://stackblitz.com/) verwenden. Die Seite ist jedoch auch heutzutage immer noch sehr hilfreich, da man dort in verschiedensten Sprachen Code im Browser testen kann.
 
 ## Debugging
 
