@@ -44,13 +44,13 @@ Der Streaming Dienst kann
 - alle Kreditkarten der Kunden ausgeben _(println)_
   die das Abonnemente per Monatlichen Zahlung bezahlen
 
-*Generell gilt die Regel, dass jede E-Mail-Adresse und jeder Film-Name einzigartig sein muss*
+_Generell gilt die Regel, dass jede E-Mail-Adresse und jeder Film-Name einzigartig sein muss_
 
 Für die Sprachen soll folgende Auswahl vorhanden sein: `BULGARIAN,CROATIAN,CZECH,DANISH,DUTCH,ENGLISH,ESTONIAN,FINNISH,FRENCH,GERMAN,GREEK,HUNGARIAN,IRISH,ITALIAN,SLOVENIA,LATVIAN,LITHUANIAN,MALTESE,POLISH,PORTUGUESE,ROMANIAN,SLOVAK,SLOVENE,SPANISH,SWEDISH`
 
 **Die Sprachen sollen nicht in Form eines Strings gespeichert werden!**
 
-*Es soll kein Scanner eingesetzt werden.*
+_Es soll kein Scanner eingesetzt werden._
 
 ---
 
