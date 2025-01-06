@@ -3,7 +3,7 @@ title: "Spring Framework Introduction"
 linkTitle: "Spring Framework Introduction"
 weight: 13
 description: >
-  Modul #J10 - Spring Basics IoC / DI
+  Modul #J8 - Spring Basics IoC / DI
 ---
 
 ![](../general/under-construction.png "Under Construction")

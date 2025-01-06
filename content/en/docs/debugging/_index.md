@@ -6,7 +6,8 @@ description: >
 ---
 
 ## Inhalt
+
 Diese Seite soll als Landing Page dienen und den Absprung zu den verschiedenen Debugging-Seiten erleichtern.
 
-- [Debugging von Java Code in IntelliJ](../../../../docs/java/debugging).
-- [Frontend-Debugging](../../../../docs/web/javascript/24_debugging/).
+- [Debugging von Java Code in IntelliJ](../../../../docs/java/java-grundlagen/debugging)
+- [Frontend-Debugging](../../../../docs/web/javascript/24_debugging/)

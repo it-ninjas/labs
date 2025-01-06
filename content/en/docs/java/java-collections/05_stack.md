@@ -14,7 +14,7 @@ Auf Deutsch könnte man Stack als "Stapel" übersetzen.
 
 ![stack1](../../java-collections/stack1.png)
 
-Ein Stack kann leer sein oder kann beliebig wachsen. Mit der Methode `push(E item)` legt man das Element *item* auf den
+Ein Stack kann leer sein oder kann beliebig wachsen. Mit der Methode `push(E item)` legt man das Element _item_ auf den
 Stack, d.h. man fügt es zu oberst hinzu.
 `pop()` entfernt das oberste Element vom Stack und gibt es zurück.
 
@@ -107,6 +107,7 @@ public class StackExample {
 ```
 
 Output:
+
 ```
 [blue, yellow, green, orange]
 Color on top: orange
@@ -121,7 +122,7 @@ Position of element green: 1
 
 ```
 
-Im oberen Beispiel verwenden wir die Methode *size()*. Diese Methode ist nicht in der java.util.Stack-Klasse
+Im oberen Beispiel verwenden wir die Methode _size()_. Diese Methode ist nicht in der java.util.Stack-Klasse
 implementiert, wird jedoch von der Vector-Mutterklasse geerbt. Diese Vector-Klasse implementiert zusätzlich weitere
 Methoden des List-Interfaces, weshalb diese auch für Stacks verwendet werden können. Ein Stack bzw. die Datenstruktur des
 Stacks wird jedoch durch die oben aufgeführten Methoden ausgemacht.
@@ -142,6 +143,7 @@ public class StackExampleEmptyStackExceptionA {
 ```
 
 Dies führt zu folgendem Output:
+
 ```
 Exception in thread "main" java.util.EmptyStackException
 	at java.base/java.util.Stack.peek(Stack.java:102)
@@ -164,6 +166,7 @@ public class StackExampleEmptyStackExceptionB {
 ```
 
 Wie erwartet, kriegen wir folgenden Output:
+
 ```
 Exception in thread "main" java.util.EmptyStackException
 	at java.base/java.util.Stack.peek(Stack.java:102)
@@ -177,7 +180,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J7 - Java Collections - Stack](../../../../labs/java/java-collections/04_stack)
-
-
-
+[Aufgaben zu Modul #J6 - Java Collections - Stack](../../../../labs/java/java-collections/04_stack)

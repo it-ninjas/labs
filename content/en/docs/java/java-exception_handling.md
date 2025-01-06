@@ -1,52 +1,60 @@
 ---
-title: "Exception Handling"
-linkTitle: "Exception Handling (und Optionals)"
+title: "Exception Handling und Optionals"
+linkTitle: "Exception Handling und Optionals"
 weight: 8
 description: >
   Modul #J5 - Exception Handling und Optionals
 ---
 
 ## Ziele
-* Ich kenne die Schlüsselwörter `try`, `catch`, `finally`, `throw` und `throws`
-* Ich weiss was "Unchecked" und "Checked" Exceptions sind
-* Ich kann auftretende Exceptions abhandeln
-* Ich kann eigene Exceptions definieren und anwenden
-* Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden
-* Ich kenne die beiden Interfaces AutoCloseable und Closeable.
-* Ich kenne eine Möglichkeit, um klar zu machen, dass bestimmte Werte "nullable" bzw. nicht "nullable" sind.
-* Ich weiss, inwiefern `Optionals` meinen Code `null`-safer machen.
 
+- Ich kenne die Schlüsselwörter `try`, `catch`, `finally`, `throw` und `throws`.
+- Ich weiss, was "Unchecked" und "Checked" Exceptions sind.
+- Ich kann auftretende Exceptions behandeln.
+- Ich kann eigene Exceptions definieren und anwenden.
+- Ich kenne Multicatch und Try-With-Resources und kann die beiden Konstrukte anwenden.
+- Ich kenne die beiden Interfaces `AutoCloseable` und `Closeable`.
+- Ich kenne eine Möglichkeit, um anzugeben, dass bestimmte Werte "nullable" bzw. nicht "nullable" sind.
+- Ich verstehe, wie `Optional` meinen Code sicherer gegenüber `null`-Werten macht.
 
 ## Theorie / Einleitung
-In jeder Applikation kann es zu erwarteten oder unerwarteten Fehlern kommen.
-In Java werden diese Fehler durch den Bereich Exception Handling abgedeckt.
-Im Exception Handling gilt es, durch gezieltes Abhandeln von auftretenden Exceptions, Abstürze der Anwendung zu verhindern.
-Jeder Software-Entwickler muss sich bewusst sein, dass nicht behandelte Exceptions eine Anwendung jederzeit beenden können.
+
+In jeder Applikation können erwartete oder unerwartete Fehler auftreten.
+In Java werden solche Fehler durch das Exception Handling abgefangen.
+Ziel des Exception Handlings ist es, durch gezieltes Behandeln von auftretenden Exceptions, Abstürze der Anwendung zu verhindern.
+Jeder Softwareentwickler sollte sich bewusst sein, dass unbehandelte Exceptions eine Anwendung jederzeit beenden können.
 
 In Java unterscheidet man zwischen zwei Arten von Fehlern:
-* **Error**: das sind nicht reparierbare Laufzeitfehler oder ein Hardware-Problem, welche zum Absturz des Programms führen.
-* **Exception**: das sind Fehler oder nicht geplante Ereignisse, welche während der Ausführung eines Programms vorkommen und dessen normalen Ablauf stören.
 
-Eine Java-Applikation sollte nicht versuchen _Errors_ zu "fangen", da die meisten Fehler dieser Art
-wegen abnormalen Bedingungen (wie z.B. nicht genügend Speicher) auftreten und unter normalen Bedingungen nicht behoben werden können.  
-Exceptions sind hingegen unerwartete Fehler, auf die das Programm reagieren muss.
+- **Error**: Dies sind nicht reparierbare Laufzeitfehler oder Hardware-Probleme, die zum Absturz des Programms führen.
+- **Exception**: Dies sind Fehler oder unvorhergesehene Ereignisse, die während der Programmausführung auftreten und den normalen Ablauf stören.
+
+Eine Java-Applikation sollte nicht versuchen, **Errors** abzufangen, da diese Fehler in der Regel aufgrund abnormaler Bedingungen (wie z. B. zu wenig Speicher) auftreten und unter normalen Umständen nicht behoben werden können.
+**Exceptions** hingegen sind unerwartete Fehler, auf die das Programm reagieren muss.
 
 Innerhalb des Java Exception Handling unterscheiden wir zwei Arten von Exceptions:
-* **Unchecked Exceptions**: das sind Laufzeitfehler und sie werden durch den Compiler nicht erkannt.
-* **Checked Exceptions**: das sind Fehler, welche vom Compiler zum Zeitpunkt der Kompilierung erkannt werden.
 
-_Unchecked Exceptions_ sind oft Fehler, welche bei der Implementation übersehen werden.
-Der häufigste Laufzeitfehler ist die NullPointerException. Diese kann erst zur Laufzeit auftreten,
-da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt null sein kann.  
-Die einzige Möglichkeit Laufzeitfehler abzuhandeln ist "Safe Programming". Das heisst, dass wir während der Implementation
-Prüfungen und sog. "Guards" im Code einbauen (z.B. prüfen, ob eine Referenz nicht null ist bevor wir darauf zugreifen) um sicherzustellen,
+- **Unchecked Exceptions**: Laufzeitfehler, die vom Compiler nicht erkannt werden.
+- **Checked Exceptions**: Fehler, die vom Compiler zur Kompilierungszeit erkannt werden.
+
+**Unchecked Exceptions** sind oft Fehler, welche bei der Implementation übersehen werden.
+Der häufigste Laufzeitfehler ist die `NullPointerException`. Diese kann erst zur Laufzeit auftreten,
+da nur zur Laufzeit Objekte erzeugt werden und damit eine Referenz überhaupt `null` sein kann.  
+Die einzige Möglichkeit, Laufzeitfehler abzuhandeln, ist "Safe Programming". Das heisst, dass wir während der Implementation
+Prüfungen und sog. "Guards" im Code einbauen (z.B. prüfen, ob eine Referenz nicht `null` ist bevor wir darauf zugreifen) um sicherzustellen,
 dass solche Situationen zur Laufzeit nicht auftreten.
-
-_Checked Exceptions_ müssen zum Zeitpunkt der Kompilierung entweder am Ort des Auftretens abgehandelt werden oder
-sie werden an das Objekt weitergereicht, welches die entsprechende Methode aufgerufen hat.
-Damit wird auch die Verantwortung die Exception abzuhandeln an den Aufrufer weitergegeben.
+Hier ein Beispiel mit einer `NullPointerException`:
+\```java
+public static void main(String[] args) {
+Person person = null; // könnte stattdessen auch eine Methode sein, welche null zurückgibt
+person.getName(); // hier wird eine NullPointerException geworfen, da person == null
+}
+\```
+**Checked Exceptions** müssen entweder am Ort des Auftretens abgefangen oder an den Aufrufer der Methode weitergegeben werden.
+Dadurch wird die Verantwortung zur Behandlung der Exception an den Aufrufer weitergegeben.
 
 Dazu ein kleines Beispiel:
+
 ```java
 public static void main(String[] args) {
     PhoneBook phoneBook = new PhoneBook();
@@ -55,13 +63,13 @@ public static void main(String[] args) {
 }
 ```
 
-Ohne die Implementation der Methode findByPhoneNumber zu kennen, muss ein Software-Entwickler an dieser Stelle
-das zurückgelieferte Objekt vom Typ Person zuerst auf null prüfen.  
-Schauen wir uns also die Implementation dieser Methode etwas genauer an:
+Ohne die Implementierung der Methode `findByPhoneNumber` zu kennen, muss ein Softwareentwickler das zurückgelieferte Objekt vom Typ `Person` zunächst auf `null` prüfen.
+Schauen wir uns daher die Implementierung dieser Methode genauer an:
+
 ```java
 public class PhoneBook {
     private List<Person> entries = new ArrayList<>();
-    
+
     public Person findByPhoneNumber(String number) {
         for (Person p: this.entries) {
             if (p.getPhoneNumber().equals(number)) {
@@ -73,51 +81,56 @@ public class PhoneBook {
 }
 ```
 
-Wie (vielleicht) erwartet liefert die Methode null zurück, falls kein Eintrag mit der gesuchten Nummer gefunden wird.
-Dies führt in der Main-Methode im Codeblock oben auf der letzten Zeile zu einer NullPointerException,
-da die Referenz der Person auf null zeigt. Abhilfe schafft hier ein einfaches If-Statement:
- ```java
+Wie (vielleicht) erwartet, liefert die Methode `null` zurück, falls kein Eintrag mit der gesuchten Nummer gefunden wird.
+Dies führt in der Main-Methode im obigen Code auf der letzten Zeile zu einer `NullPointerException`, da die Referenz `person` auf `null` zeigt.
+Ein einfaches `if`-Statement kann hier Abhilfe schaffen:
+
+```java
+public static void main(String[] args) {
+   AddressBook addressBook = new AddressBook();
+   Person person = addressBook.findByPhoneNumber("079 654 32 10");
+   if (person != null) {
+       System.out.println(person.getName());
+   }
+}
+```
+
+Der Laufzeitfehler kann nun nicht mehr auftreten. Es stellt sich jedoch die Frage, ob diese Lösung zufriedenstellend ist.
+Prinzipiell sollten wir zumindest informiert werden, wenn keine Person mit dieser Nummer gefunden wird.
+Eine Möglichkeit besteht darin, ein `else`-Statement hinzuzufügen:
+
+```java
 public static void main(String[] args) {
     AddressBook addressBook = new AddressBook();
     Person person = addressBook.findByPhoneNumber("079 654 32 10");
     if (person != null) {
         System.out.println(person.getName());
-    }
-}
-```
-
-Der Laufzeitfehler kann nun nicht mehr auftreten. Es stellt sich nun die Frage, ob wir mit dieser Lösung zufrieden sein können.  
-Im Prinzip müssten wir zumindest informiert werden, wenn keine Person mit dieser Nummer gefunden wird.
-Eine Möglichkeit, dies zu tun ist mittel eines Else-Statement:
-```java
-public static void main(String[] args) {
-    AddressBook addressBook = new AddressBook();
-    Person person = addressBook.findByPhoneNumber("079 654 32 10");
-    if (person == null) {
-        System.out.println(person.getName());
     } else {
         System.out.println("Es wurde keine Person mit dieser Nummer gefunden!");
     }
 }
+
 ```
 
-Eine andere Lösung könnte sein das Null-Object Pattern oder auch ein Optional-Objekt zu verwenden
-und damit ein gültiges Objekt anstelle von null zurückzuliefern.
+Eine alternative Lösung könnte darin bestehen, das Null-Object-Pattern oder ein `Optional`-Objekt zu verwenden, um ein gültiges Objekt anstelle von `null` zurückzugeben.
 
 ---
 
 ## try / catch / finally
-Um eine Checked Exception abzuhandeln, muss der Block (welcher die Exception erzeugt) innerhalb eines
-try-Blocks angelegt werden. Der abzuhandelnde Exception-Typ wird dabei in den catch-Block geschrieben:
+
+Um eine **Checked Exception** zu behandeln, muss der Codeblock, der die Exception erzeugen könnte, innerhalb eines `try`-Blocks stehen.
+Der Exception-Typ, der abgefangen werden soll, wird in den zugehörigen `catch`-Block geschrieben:
+
 ```java
 try {
     // Code, welcher eine IOException werfen könnte
 } catch (IOException e) {
-    // Code für die Abhandlung der IOException
+    // Code zur Behandlung der IOException
 }
 ```
 
-Ein solches Statement kann beliebig viele catch-Blöcke aufweisen:
+Ein `try`-Statement kann beliebig viele `catch`-Blöcke haben:
+
 ```java
 try {
     FileReader fileReader = new FileReader("nonexistent.txt");
@@ -130,15 +143,27 @@ try {
 }
 ```
 
-Bei mehreren catch-Blöcken muss die spezifischste Exception stets zuoberst stehen.
-Je weiter unten der catch-Block steht, desto genereller wird die Exception, die abgefangen werden soll.
-Der Grund dafür ist, dass alle Checked Exceptions von der Klasse Exception abgeleitet sind.
-Steht eine allgemeinere Exception weiter oben, so wird der catch-Block der spezifischeren Exception
-weiter unten nicht mehr erreichbar sein.
+Bei mehreren `catch`-Blöcken muss die spezifischste Exception stets zuerst stehen.
+Je weiter unten der `catch`-Block steht, desto allgemeiner ist die Exception, die abgefangen wird.
+Der Grund dafür ist, dass alle Checked Exceptions von der Klasse `Exception` abgeleitet sind.
+Befindet sich eine allgemeinere Exception weiter oben, wird der `catch`-Block der spezifischeren Exception weiter unten nicht mehr erreichbar sein.
 
-An jeden try-Block (ob mit oder ohne catch-Block) kann zusätzlich ein finally-Block angehängt werden.
-Der finally-Block wird nach der Abhandlung der Exception ausgeführt.  
-Wenn kein Exception aufgetreten ist, wird der Code im finally-Block direkt nach dem Code im try-Block ausgeführt.
+```java
+try {
+    // Code, der eine Ausnahme auslösen könnte
+    int[] zahlen = {1, 2, 3};
+    System.out.println(zahlen[5]); // Dies wird eine ArrayIndexOutOfBoundsException auslösen
+} catch (ArrayIndexOutOfBoundsException e) { // Spezifische Ausnahme
+    System.out.println("Spezifische Ausnahme abgefangen: ArrayIndexOutOfBoundsException");
+} catch (Exception e) { // Allgemeinere Ausnahme
+    System.out.println("Allgemeine Ausnahme abgefangen: Exception");
+}
+```
+
+Ein `try`-Block (ob mit oder ohne `catch`-Block) kann zusätzlich einen `finally`-Block haben.
+Der `finally`-Block wird nach der Bearbeitung der Exception ausgeführt.
+Falls keine Exception aufgetreten ist, wird der Code im `finally`-Block direkt nach dem `try`-Block ausgeführt. Der ` finally`-Block wird also auf jeden Fall ausgeführt. Er muss deshalb so geschrieben werden, das auf jeden Fall funktioniert, auch wenn der `Try`-Block nicht komplett ausgeführt wird oder der ` catch`-Block nie ausgeführt wurde.
+
 ```java
 try {
     // Code, welcher eine IOException werfen könnte
@@ -149,7 +174,8 @@ try {
 }
 ```
 
-Wie oben erwähnt, kann der catch-Block weggelassen werden:
+Wie oben erwähnt, kann der `catch`-Block weggelassen werden:
+
 ```java
 try {
     // Code, welcher eine beliebige Exception werfen könnte
@@ -158,20 +184,20 @@ try {
 }
 ```
 
-Vorsicht ist geboten bei return-Anweisungen innerhalb von catch- oder finally-Blöcken.
-Da der finally-Block immer zuletzt ausgeführt wird, ist das Statement in diesem Block auch massgebend für die Funktionalität.
+Vorsicht bei `return`-Anweisungen innerhalb von `catch`- oder `finally`-Blöcken: Da der `finally`-Block immer zuletzt ausgeführt wird, ist ein `return`-Statement in diesem Block massgeblich für die Funktionalität.
 
 ---
 
 ## throw / throws
-Wie bereits weiter oben erwähnt, muss eine Exception nicht immer dort abgehandelt werden, wo sie gerade auftreten kann.
-Wenn entschieden wird, die Abhandlung in andere Klassen zu verlagern, so kann mit dem Schlüsselwort throws angegeben werden,
-dass die aufrufende Komponente die Exception abhandeln muss.
+
+Eine Exception muss nicht immer dort behandelt werden, wo sie auftritt.
+Falls die Behandlung in andere Klassen verlagert werden soll, kann mit dem Schlüsselwort `throws` angegeben werden, dass die aufrufende Komponente die Exception abfangen und behandeln muss.
 
 Dazu ein kurzes Beispiel:
+
 ```java
 public class EntryForbiddenException extends Exception {
-    
+    // Optionale Erweiterungen für diese Exception
 }
 ```
 
@@ -181,7 +207,7 @@ public class Saloon {
         if (age < 18) {
             throw new EntryForbiddenException();
         }
-        // ...
+        // Zusätzlicher Code ...
     }
 }
 ```
@@ -193,38 +219,41 @@ public class Main {
         try {
             saloon.checkAge(15);
         } catch (EntryForbiddenException e) {
-            // ...
+            // Behandlung der EntryForbiddenException
         }
     }
 }
 ```
 
-Wie wir sehen, wird die Abhandlung in die Main-Methode verlagert.
-Die Weitergabe von Exceptions kann über beliebig viele Stufen erfolgen.  
-Wird die Exception jedoch von der "obersten" Stufe (in diesem Fall die Main-Methode) nicht abgehandelt,
-so wird die Anwendung mit der entsprechenden Exception beendet. Dies passiert, weil niemand die Exception abgehandelt hat.
+In diesem Beispiel wird die Behandlung in die `main`-Methode verlagert.
+Exceptions können über beliebig viele Stufen weitergegeben werden.
+Wenn jedoch die "oberste" Stufe (hier die `main`-Methode) die Exception nicht behandelt, wird die Anwendung mit einer entsprechenden Fehlermeldung beendet, da die Exception unbehandelt bleibt.
 
 ---
 
 ## Umwandlung Laufzeitfehler in Checked Exception
-Mit der Lösung aus dem Beispiel weiter oben können wir nicht wirklich zufrieden sein.  
-Anstatt den Rückgabewert der Methode findByPhoneNumber auf null zu prüfen, wählen wir nun einen anderen Ansatz:  
-Wir erweitern die Anwendung, sodass die Methode als Rückgabewert keine null-Werte mehr liefert.  
-Da wir aber durch den Compiler gezwungen werden einen Rückgabewert zu definieren, bleibt uns nur noch
-die Möglichkeit übrig eine Exception zu werfen.
-Zu diesem Zweck definieren wir zuerst einmal eine entsprechende Exception:
+
+Mit der Lösung aus dem vorherigen Beispiel können wir noch nicht vollständig zufrieden sein.
+Anstatt den Rückgabewert der Methode `findByPhoneNumber` auf `null` zu prüfen, wählen wir nun einen anderen Ansatz:
+
+Wir erweitern die Anwendung so, dass die Methode keine `null`-Werte mehr als Rückgabewert liefert.
+Da der Compiler jedoch einen Rückgabewert erzwingt, bleibt uns nur die Möglichkeit, eine Exception zu werfen, wenn kein Ergebnis gefunden wird.
+
+Zu diesem Zweck definieren wir zuerst eine entsprechende Exception:
+
 ```java
 public class PersonNotFoundException extends Exception {
-    
+    // Optional: Erweiterungen für die Exception
 }
 ```
 
-Diese Exception wird nun an der entsprechenden Stelle im Sourcecode geworfen.
-Die Methode erhält zudem noch eine Erweiterung mit dem Schlüsselwort throws:
+Diese Exception wird nun an der entsprechenden Stelle im Code geworfen.
+Die Methode wird zusätzlich mit dem Schlüsselwort `throws` versehen:
+
 ```java
 public class PhoneBook {
     private List<Person> entries = new ArrayList<>();
-    
+
     public Person findByPhoneNumber(String number) throws PersonNotFoundException {
         for (Person p: this.entries) {
             if (p.getPhoneNumber().equals(number)) {
@@ -236,12 +265,13 @@ public class PhoneBook {
 }
 ```
 
-Beim Aufruf der Methode sind wir nun gezwungen, die Exception abzuhandeln:
+Beim Aufruf der Methode sind wir nun gezwungen, die Exception zu behandeln:
+
 ```java
 public static void main(String[] args) {
     AddressBook addressBook = new AddressBook();
     try {
-        Person person = addressBook.findByPhoneNumber("079 654 32 10");	
+        Person person = addressBook.findByPhoneNumber("079 654 32 10");
         System.out.println(person.getName());
     } catch (PersonNotFoundException e) {
         System.out.println("Es wurde keine Person mit dieser Nummer gefunden!");
@@ -250,64 +280,71 @@ public static void main(String[] args) {
 }
 ```
 
-Aus dem ursprünglichen Laufzeitfehler ist nun eine abgehandelte Exception geworden.
-Die Implementation vermeidet, wo immer möglich, die Rückgabe von null-Werten.
+Aus dem ursprünglichen Laufzeitfehler ist nun eine behandelte Exception geworden.
+Diese Implementierung vermeidet, wo immer möglich, die Rückgabe von `null`-Werten.
 
 ---
 
 ## Multi-Catch
-Seit Java 7 gibt es die Möglichkeit für einen sogenannten Multi-Catch.  
+
+Seit Java 7 gibt es die Möglichkeit, mehrere Exceptions in einem sogenannten Multi-Catch zu behandeln.
 Schauen wir uns das folgende Beispiel an:
+
 #### Ohne Multi-Catch
+
 ```java
  public static void main(String[] args) {
-        String filename = "example.txt";
-        BufferedReader reader = null;
+    String filename = "example.txt";
+    BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(filename));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            System.err.println("Ein-/Ausgabefehler beim Lesen der Datei: " + e.getMessage());
-        } catch (ParseException e) {
-            System.err.println("Fehler beim Parsen der Daten: " + e.getMessage());
-        } finally {
-            reader.close()
+    try {
+        reader = new BufferedReader(new FileReader(filename));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
+    } catch (IOException e) {
+        System.err.println("Ein-/Ausgabefehler beim Lesen der Datei: " + e.getMessage());
+    } catch (ParseException e) {
+        System.err.println("Fehler beim Parsen der Daten: " + e.getMessage());
+    } finally {
+        reader.close();
+    }
+}
 ```
 
 #### Mit Multi-Catch
-```java
-     public static void main(String[] args) {
-        String filename = "example.txt";
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(filename));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException | ParseException e) {
-            System.err.println("Ein-/Ausgabefehler oder Fehler beim Parsen der Daten: " + e.getMessage());
-        } finally {
-            reader.close()
+```java
+public static void main(String[] args) {
+    String filename = "example.txt";
+    BufferedReader reader = null;
+
+    try {
+        reader = new BufferedReader(new FileReader(filename));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
+    } catch (IOException | ParseException e) {
+        System.err.println("Ein-/Ausgabefehler oder Fehler beim Parsen der Daten: " + e.getMessage());
+    } finally {
+        reader.close();
     }
+}
 ```
 
-Die beiden Exceptions werden in einem catch-Block zusammengefasst.
-Die Exceptions innerhalb eines Multi-Catch dürfen nicht in einer Vererbungsbeziehung zueinander stehen.
-Der Basistyp muss also unterschiedlich sein.
+Die beiden Exceptions werden hier in einem einzigen `catch`-Block zusammengefasst.
+Zu beachten ist, dass die Exceptions innerhalb eines Multi-Catch nicht in einer Vererbungsbeziehung zueinander stehen dürfen.
+Das bedeutet, dass ihre Basistypen unterschiedlich sein müssen.
 
 ---
 
 ## Try-With-Resources
+
 Ebenfalls seit Java 7 gibt es die Möglichkeit für automatisches Ressourcen-Management.  
 Betrachten wir dazu zuerst ein Beispiel ohne automatisches Ressourcen-Management:
+
 ```java
 public static String readFirstLine(String path) {
     BufferedReader br = null;
@@ -329,13 +366,14 @@ public static String readFirstLine(String path) {
 }
 ```
 
-Der finally-Block ist notwendig, um die verwendete Ressource des Buffered-Readers zu schliessen.  
-Da beim Schliessen aber eine IOException auftreten kann benötigen wir innerhalb des finally-Blocks
-einen zusätzlichen try-catch-Block.
+Der `finally`-Block ist notwendig, um die verwendete Ressource des `BufferedReaders` zu schliessen.  
+Da beim Schliessen eine `IOException` auftreten kann, benötigen wir im `finally`-Blocks
+einen zusätzlichen `try-catch`-Block.
 
 Betrachten wir nun das gleiche Beispiel mit automatischem Ressourcen-Management:
+
 ```java
-public static String readFirstLine(String path) { 
+public static String readFirstLine(String path) {
     try (FileReader fr = new FileReader(path); BufferedReader br = new BufferedReader(fr)) {
         return br.readLine();
     } catch (IOException e) {
@@ -345,26 +383,27 @@ public static String readFirstLine(String path) {
 }
 ```
 
-Wie wir sehen fällt der finally-Block zum Schliessen der Ressourcen komplett weg.  
-Die beiden Ressourcen FileReader und BufferedReader werden automatisch geschlossen.
-Dies geschieht im Hintergrund über die Methode close, welche vom Interface AutoCloseable zur Verfügung gestellt wird.  
-In einem try-with-resources Statement dürfen also nur Objekte vorliegen, welches das genannte Interface implementieren.  
-Das Closeable-Interface mit der gleichen Funktion stellt dabei die Abwärtskompatibilität zu älteren Java-Versionen sicher.  
-Grundsätzlich soll das Closeable-Interface für IO Streams verwendet werden, da es mit IOExceptions arbeitet.
+Wie wir sehen, entfällt der `finally`-Block zum Schliessen der Ressourcen vollständig.
+Die Ressourcen `FileReader` und `BufferedReader` werden automatisch geschlossen.
+Dies geschieht im Hintergrund über die Methode `close`, die vom Interface `AutoCloseable` bereitgestellt wird.
+In einem `try-with-resources`-Statement dürfen daher nur Objekte verwendet werden, die das genannte Interface implementieren.
+Das `Closeable`-Interface stellt dabei die Abwärtskompatibilität zu älteren Java-Versionen sicher, da es ebenfalls die `close`-Methode definiert.
+Grundsätzlich sollte das `Closeable`-Interface für IO-Streams verwendet werden, da es mit `IOException` arbeitet.
 
-Das Schliessen der Ressourcen hat stets die Reihenfolge von hinten nach vorne.  
-In unserem Beispiel wird also zuerst der BufferedReader geschlossen und danach der FileReader.  
-Die Verkettung von Ressourcen innerhalb eines try-with-resources Statements ist zu vermeiden.
-Besser sind separate Deklarationen wie oben gezeigt.
+Das Schliessen der Ressourcen erfolgt immer in umgekehrter Reihenfolge.
+In unserem Beispiel wird also zuerst der `BufferedReader` geschlossen und danach der `FileReader`.
+Die Verkettung von Ressourcen innerhalb eines `try-with-resources`-Statements sollte vermieden werden. Besser ist die getrennte Deklaration wie im obigen Beispiel.
 
 ---
 
 ## Null-Safety
-Der häufigsten Laufzeitfehler in Java ist die `NullPointerException`. Diese Exception tritt auf, wenn
-* eine Methode auf einem `null`-Objekt aufgerufen wird,
-* oder wenn versucht wird, auf ein Feld (Variable) eines `null`-Objektes zuzugreifen.
 
-Häufig wird einfach vergessen, dass eine bestimmte Variable `null` sein kann:
+Ein häufiger Laufzeitfehler in Java ist die `NullPointerException`. Diese Exception tritt auf, wenn
+
+- eine Methode auf einem `null`-Objekt aufgerufen wird,
+- versucht wird, auf ein Feld (Variable) eines `null`-Objekts zuzugreifen.
+
+Oft wird schlicht übersehen, dass eine bestimmte Variable `null` sein könnte:
 
 ```java
 public static void main(String[] args) {
@@ -376,17 +415,20 @@ private static void method(String parameter) {
 }
 ```
 
-Im letzten Beispiel wird versucht, die Methode `length()` auf dem Objekt mit Wert `null` aufzurufen. Aus diesem Grund wird die `NullPointerException` geworfen.
+Im obigen Beispiel führt der Versuch, die Methode `length()` auf einem null-Objekt aufzurufen, zur `NullPointerException`.
 
-In diesem Beispiel sieht man ziemlich gut, wie `NullPointerException`s auftreten können:
-* Einer Variable (hier `parameter`) wird `null` zugewiesen/übergeben, was aber nicht erlaubt sein sollte.
-* Oder es wird vergessen, dass eine Variable auch den Wert `null` haben kann.
+Hier werden zwei typische Ursachen für das Auftreten einer `NullPointerException` deutlich:
 
-Diese beide Fälle können in Java auf verschiedene Arten abgedeckt werden.
+- Einer Variable (hier `parameter`) wird `null` zugewiesen/übergeben, was in manchen Fällen unerwartet ist.
+- Es wird vergessen zu prüfen, dass eine Variable den Wert `null` haben könnte.
+
+Diese beiden Fälle können in Java auf verschiedene Arten abgefangen werden.
 
 ### `null` durch Check abfangen
-Die offensichtlichste Möglichkeiten, `NullPointerException`s zu umgehen ist die Verwendung von `null`-Checks.
-Im folgenden Beispiel verbieten wir den Wert `null`, indem wir zu Beginn der Methode die Variable auf `null` überprüfen und eine `Exception` werfen (und somit die Methode abbrechen), falls die Variable dem Wert `null` entspricht.
+
+Die offensichtlichste Möglichkeit, `NullPointerExceptions` zu vermeiden, ist die Verwendung von `null`-Checks.
+
+Im folgenden Beispiel verhindern wir `null`, indem wir die Variable zu Beginn der Methode prüfen und eine `Exception` werfen, falls die Variable `null` ist:
 
 ```java
 private static void method(String parameter) throws IllegalArgumentException {
@@ -397,9 +439,11 @@ private static void method(String parameter) throws IllegalArgumentException {
 }
 ```
 
-In diesem Beispiel haben wir den Fall abgedeckt, in welchem für das Argument der Wert `null` verbietet wird. Dieser Code hat neben den 3 zusätzlichen Zeilen Code den Nachteil, dass der/die Entwickler:in nicht direkt von aussen sieht, dass `null`-Werte verboten sind. Diesen Fall wird besser mit einer anderen Technik angegangen, die später vorgestellt wird (`@NotNull`-Annotation).
+In diesem Beispiel ist sichergestellt, dass der Wert `null` für das Argument `parameter` nicht erlaubt ist.
+Ein Nachteil dieser Lösung ist, dass Entwickler von aussen nicht direkt erkennen können, dass `n`ull-Werte unzulässig sind.
+Diesen Fall könnte man stattdessen besser mit einer `@NotNull`-Annotation abdecken, wie später beschrieben.
 
-Sprechen wir aber nun über den Fall, in welchem der Wert `null` eigentlich auch unterstützt werden müsste. Statt einem Fehler zu werfen, benutzen wir Bedingungen, um den richtigen Code auszuführen:
+Manchmal jedoch sollen `null`-Werte zulässig sein. In solchen Fällen verwenden wir Bedingungen, um den richtigen Code auszuführen:
 
 ```java
 private static void method(String parameter) {
@@ -411,9 +455,7 @@ private static void method(String parameter) {
 }
 ```
 
-Um hier `null`-Sicherheit zu garantieren, haben wir nun 3 Zeilen hinzugefügt, was relativ viel für diesen Zweck ist.
-In solchen Fällen lohnt es sich oft, nur den problematischen Teil durch eine Bedingung zu ersetzen.
-In Java hilft der "Ternary-Operator" weiter:
+Um hier `null`-Sicherheit zu garantieren, wurden einige zusätzliche Zeilen eingefügt. In solchen Fällen kann auch der Ternary-Operator nützlich sein:
 
 ```java
 private static void method(String parameter) {
@@ -423,6 +465,7 @@ private static void method(String parameter) {
 ```
 
 Der Ternary-Ausdruck ist hierbei der folgende:
+
 ```java
 parameter != null ? parameter.length() : "ist nicht definiert bzw. 0."
 ```
@@ -430,22 +473,25 @@ parameter != null ? parameter.length() : "ist nicht definiert bzw. 0."
 Dieser Ausdruck gibt `parameter.length()` zurück, wenn `parameter != null` ist. Ansonsten gibt er den String `"ist nicht definiert bzw. 0."` zurück.
 
 Ganz allgemein ist der Ternary-Ausdruck wie folgt aufgebaut:
+
 ```
 Bedingung ? Wert-wenn-Bedingung-true : Wert-wenn-Bedingung-false
 ```
 
 ### Annotationen wie `@NotNull` und `@Nullable`
+
 Sicherlich ist dir schon einmal die Angabe `@Nullable` bei einem Argument von einer Methode aus einer externen Library aufgefallen.
 
 Solche Annotationen teilen mit,
-* dass bei einer Variable erwartet wird, dass sie unter Umständen auch den Wert `null` haben kann (`@Nullable`)
-* bzw. dass eine Variable nicht den Wert `null` aufweisen darf (`@NotNull` bzw. `@NonNull`).
 
-Für die folgenden Beispiele haben wir die Library `org.jetbrains.annotations` verwendet, es gibt aber weitere bekannte mit ähnlichen Annotationen.
-Da zu diesem Zeitpunkt noch nicht erklärt wurde, wie du Dependencies hinzufügen kannst (Maven-Teil), halten wir dies rein theoretisch.
+- dass bei einer Variable erwartet wird, dass sie unter Umständen auch den Wert `null` haben kann (`@Nullable`)
+- bzw. dass eine Variable nicht den Wert `null` aufweisen darf (`@NotNull` bzw. `@NonNull`).
+
+In den folgenden Beispielen verwenden wir die Bibliothek `org.jetbrains.annotations`.
+Es gibt jedoch auch andere Bibliotheken mit ähnlichen Annotationen.
+Da die Verwendung von Dependencies hier noch nicht behandelt wurde (Maven-Teil), bleibt dies ein theoretischer Hinweis.
 
 Hier ein Beispiel, wie Annotationen zu mehr `null`-Sicherheit führen können:
-
 
 ```java
 public static void main(String[] args) {
@@ -463,15 +509,16 @@ private static void method(@Nullable String fullName, @NotNull String[] names) {
 ```
 
 In diesem Beispiel wird
-* die Annotation `@Nullable` verwendet, um mitzuteilen, dass bei der Variable `fullName` der Wert `null` möglich ist. In IntelliJ Idea (von Jetbrains) wird dadurch die Methode `length()` gelb unterstrichen, weil für die Variable `fullName` der `null`-Check fehlt.
-* die Annotation `@NotNull` verwendet, um mitzuteilen, dass die Variable `names` <ins>**nicht**</ins> den Wert `null` haben darf. Leider fügt diese Möglichkeit kein Warning beim Aufruf von `method(..., null)` hinzu. Dafür aber wird eine `IllegalArgumentException` zur Laufzeit geworfen, falls ihr `null` beim Methodenaufruf zugewiesen wird.
+
+- die Annotation `@Nullable` verwendet, um mitzuteilen, dass bei der Variable `fullName` der Wert `null` möglich ist. In IntelliJ Idea (von Jetbrains) wird dadurch die Methode `length()` gelb unterstrichen, weil für die Variable `fullName` der `null`-Check fehlt.
+- die Annotation `@NotNull` verwendet, um mitzuteilen, dass die Variable `names` <ins>**nicht**</ins> den Wert `null` haben darf. Leider fügt diese Möglichkeit kein Warning beim Aufruf von `method(..., null)` hinzu. Dafür aber wird eine `IllegalArgumentException` zur Laufzeit geworfen, falls ihr `null` beim Methodenaufruf zugewiesen wird.
 
 ### Optionals
-In Java gibt es auch ohne externe Dependency eine Möglichkeit anzugeben, dass eine Variable den Wert `null` "repräsentieren" kann.
 
-Hierfür wurde die generische Klasse `Optional<T>` ins Leben gerufen.
+In Java gibt es auch ohne externe Bibliothek eine Möglichkeit anzugeben, dass eine Variable den Wert `null` „repräsentieren“ kann.
+Hierfür wurde die generische Klasse `Optional<T>` eingeführt.
 
-Die Idee ist, dass Variablen, die den Wert `null` haben können, den Typ `Optional<...>` bekommen. Für ein nullable `String` wird also z.B. der Typ `Optional<String>` gewählt:
+Die Idee dabei ist, dass Variablen, die den Wert `null` haben könnten, den Typ `Optional<...>` erhalten. Ein `nullable` String hätte zum Beispiel den Typ `Optional<String>`:
 
 ```java
 import java.util.Optional;
@@ -481,7 +528,7 @@ public static void main(String[] args) {
     // Richtige Verwendung von Optionals:
     method(Optional.of("Hello World"));     // Repräsentiert den Wert "Hello World".
     method(Optional.empty());               // Repräsentiert den Wert null.
-    
+
     // Falsche Verwendung von Optionals:
     method(Optional.of(null));              // Null-Pointer, weil `Optional.of()` beim Wert `null` einen Fehler wirft.
     method(null);                           // Null-Pointer, weil `isPresent()` nicht auf `null` aufgerufen werden kann.
@@ -493,7 +540,8 @@ private static void method(Optional<String> parameter) {
 }
 ```
 
-Der Nutzen von `Optional`s ist, dass man als Entwickler:in gezwungen wird, einen `null`-Check zu machen:
+Der Vorteil von `Optional`s ist, dass man als Entwickler:in gezwungen wird, einen `null`-Check zu machen:
+
 ```java
 if (optional.isPresent()) {
     System.out.println("Wert ist: " + optional.get());
@@ -501,10 +549,11 @@ if (optional.isPresent()) {
 ```
 
 Denn
-* wenn kein `null`-Check vor dem Aufrufen von `.get()` (was den eigentlichen Wert zurückgibt) gemacht wird , dann reklamiert deine Entwicklungsumgebung (IntelliJ/VS Code) automatisch mit einer Warnung.
-* wenn `.get()` aufgerufen wird, und der Wert `null` repräsentiert, dann wird bereits an dieser Stelle eine `NullPointerException` geworfen.
 
-`Optionals` sind daher eine der gängigsten Möglichkeiten, Entwickler:innen zu zwingen, Werte auf `null` zu prüfen.
+- wenn kein `null`-Check vor dem Aufrufen von `.get()` (was den eigentlichen Wert zurückgibt) gemacht wird , dann reklamiert deine Entwicklungsumgebung (IntelliJ/VS Code) automatisch mit einer Warnung.
+- wenn `.get()` aufgerufen wird, und der Wert `null` repräsentiert, dann wird bereits an dieser Stelle eine `NullPointerException` geworfen.
+
+Optionals sind daher eine gängige Möglichkeit, Entwickler zu einer Prüfung auf `null` zu verpflichten.
 
 Diese Technik wird z.B. bei Streams häufig eingesetzt:
 
@@ -525,16 +574,17 @@ if (firstResult.isPresent()) {
 ```
 
 ### Zusammenfassung zu Null-Safety
+
 Die `NullPointerException` ist eine der häufigsten Exceptions in Java-Programmen. Deswegen lohnt es sich, besser mit `null`-Werten umzugehen bzw. besser sichtbar zu machen, dass Werte `null` sein können.
 
 Drei der häufigsten Möglichkeiten, um mehr Null-Sicherheit in deinen Code zu bringen, sind:
-* `null`-Checks
-* Annotationen wie `@NotNull` und `@Nullable`
-* und `Optional<...>`-Typen zu verwenden.
 
-
+- `null`-Checks
+- Annotationen wie `@NotNull` und `@Nullable`
+- und `Optional<...>`-Typen zu verwenden.
 
 ## Exceptions testen
+
 Wie regulären Java Code kann man natürlich auch Exceptions mit JUnit testen. Eine ausführliche Erklärung dazu ist [hier](https://www.baeldung.com/junit-assert-exception) zu finden.
 Das folgende Beispiel testet anhand `assertThrows()` dass die Methode `testCheckAge()` mit einem Alter unter 18 eine `EntryForbiddenException` wirft.
 
@@ -563,4 +613,48 @@ public class SaloonTest {
 ```
 
 ---
+
+## Exceptions: Keine Kontrollstrukturen, sondern Fehlerbehandlung
+
+Nach den Prinzipien von Clean Code sollten Ausnahmen (Exceptions) nicht als normaler Programmfluss eingesetzt werden.
+Exceptions dienen dazu, **Ausnahmesituationen** zu behandeln, die unerwartet auftreten und oft nicht durch reguläre Überprüfungen abgefangen werden können, wie z. B. Netzwerk- oder Datenbankfehler.
+Wenn Exceptions jedoch als Ersatz für reguläre Kontrollstrukturen (wie if-Abfragen) verwendet werden, wird der Code schwerer lesbar, schlechter wartbar und häufig ineffizienter.
+
+**Warum sollten Exceptions nicht für den Programmfluss genutzt werden?**
+
+- **Lesbarkeit**: Die Verwendung von Exceptions für den Programmfluss macht den Code schwer verständlich, da andere Entwickler erwarten, dass Ausnahmen nur in Fehlerfällen auftreten.
+- **Performance**: Exceptions sind in der Regel ressourcenintensiver, da das Erstellen und Verarbeiten von Exception-Objekten zusätzliche Leistung kostet. Das ist besonders problematisch, wenn Exceptions in Schleifen verwendet werden.
+- **Debugging**: Der Missbrauch von Exceptions erschwert das Debugging, weil oft unklar ist, ob eine Ausnahme durch einen Fehler oder absichtlich durch eine Programmlogik ausgelöst wurde.
+- **Log-Analyse**: Wenn Exceptions für den Programmfluss verwendet werden, kann die Log-Analyse erschwert werden, da die Logs mit unnötigen Ausnahme-Einträgen überflutet werden. Dies macht es schwierig, echte Fehler zu identifizieren, da sich Logs mit Informationen über erwartete oder absichtlich ausgelöste Ausnahmen füllen.
+
+**Beispiel für falsche Verwendung:**
+
+In diesem Beispiel wird eine Exception missbräuchlich zur Kontrolle des Programmflusses verwendet:
+
+```java
+try {
+    int value = Integer.parseInt("abc"); // Wirft NumberFormatException
+} catch (NumberFormatException e) {
+    value = 0; // Setzt einen Standardwert
+}
+```
+
+**Richtige Verwendung:**
+Besser ist es, die Eingabe vor der Verarbeitung zu validieren und Exceptions nur für unerwartete Fehler zu nutzen:
+
+```java
+String input = "abc";
+int value;
+
+if (input.matches("\\d+")) { // Überprüfung, ob die Eingabe numerisch ist
+    value = Integer.parseInt(input);
+} else {
+    value = 0; // Standardwert setzen, ohne eine Exception auszulösen
+}
+```
+
+**Fazit**: Durch die Verwendung von Kontrollstrukturen anstelle von Exceptions für den Programmfluss wird der Code nicht nur sauberer und verständlicher, sondern auch effizienter und robuster.
+
+---
+
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Exception Handling](../../../labs/java/java-exception-handling) in den Labs.

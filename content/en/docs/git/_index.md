@@ -1,6 +1,6 @@
 ---
 title: "Git"
-weight: 4
+weight: 3
 sectionnumber: 1
 date: 2021-10-28
 description: Verteilte Versionsverwaltung mit Git
@@ -8,9 +8,9 @@ description: Verteilte Versionsverwaltung mit Git
 
 Hallo Ninja!
 
-Es freut uns das du **git** kennen lernen willst!
+Es freut uns das du **git** kennenlernen willst!
 
-Wir haben hier ein Lab für dich zusammengestellt damit du in dieses Thema eintauchen kannst. Finde für dich heraus warum **git** eine Zeitmaschine ist und was es mit den Paralleluniversen auf sich hat.
+Wir haben hier ein Lab für dich zusammengestellt damit du in dieses Thema eintauchen kannst. Finde für dich heraus, warum **git** eine Zeitmaschine ist und was es mit den Paralleluniversen auf sich hat.
 
 # Ziele
 
@@ -36,19 +36,20 @@ Vielleicht sogar ...
 
 Dieses Lab unterteilt sich in folgende Themenbereiche:
 
-* [Was ist dieses Git?](was-ist-git)
-* [Git installieren](git-install)
-* [Git Basics](git-basics)
-* [Git Branches](git-branches)
-* [GitHub](git-hub)
-* [Bitbucket](bitbucket)
-* [Git Erweitert](git-extended)
+- [Was ist dieses Git?](was-ist-git)
+- [Git installieren](git-install)
+- [Git Basics](git-basics)
+- [Git Branches](git-branches)
+- [GitHub](git-hub)
+- [Bitbucket](bitbucket)
+- [Git Erweitert](git-extended)
 
 Nachdem du die Docs gelesen hast, solltest du in der Lage sein die [Labs](../../../../labs/git/) zu lösen.
+
 ## Let's play!
 
 Meisterst du diese Challenges?
 
-* [oh my git!](https://ohmygit.org/)
-* [learn git branching](https://learngitbranching.js.org/)
-* [git immersion](https://gitimmersion.com)
+- [oh my git!](https://ohmygit.org/)
+- [learn git branching](https://learngitbranching.js.org/)
+- [git immersion](https://gitimmersion.com)

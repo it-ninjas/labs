@@ -93,6 +93,7 @@ String value = words[index];
 ```
 
 ### Durch alle Elemente durchgehen
+
 Im Kapitel der "Kontrollstrukturen" hast du die `for`- und "foreach"-Schlaufe kennengelernt. Beide Schlaufen eignen sich, um ein Array durchzugehen ("iterieren"). Hier ein kleiner Reminder:
 
 ```java
@@ -108,31 +109,38 @@ for (String word : words) {
 ```
 
 ### Lernvideo
-Wenn du dir die Erklärung noch mit Videos genauer anschauen möchtest, empfiehlt dir das Coaching-Team diese
-Videos: [Theoretische Erklärung](https://www.youtube.com/watch?v=SRJZ1XmqHfA), 
+
+Wenn du dir die Erklärung noch mit Videos genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team diese
+Videos: [Theoretische Erklärung](https://www.youtube.com/watch?v=SRJZ1XmqHfA),
 [Anwendung in Java](https://www.youtube.com/watch?v=lfIUilgq4qo)
 
 ## Zweidimensionale Arrays (2D Array)
-Bis jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch, 
+
+Bis jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch,
 um Listen-Artige Daten zu speichern. Zweidimensionale Arrays haben wie es der Name schon verrät eine zweite Dimension.
-Diese Art von Arrays sind praktisch für tabellarische Daten. 
+Diese Art von Arrays sind praktisch für tabellarische Daten.
 
 Du kannst dir ein 2D-Array wie eine Excel vorstellen. Es besteht aus Reihen und Spalten die gleich wie im normalen Array
-mit einem Index/einer Position definiert werden. 
+mit einem Index/einer Position definiert werden.
 
 ### Syntax
+
 Für die Deklaration eines zweidimensionalen Arrays wird eine Angabe von der Anzahl Reihen und Spalten benötigt.
 Bei dieser Art von Array können die gleichen Datentypen wie bei den normalen Arrays verwendet werden. So sieht schliesslich
 die Syntax aus:
+
 ```java
 int anzahlReihen = 4;
 int anzahlSpalten = 3;
 
 int[][] zweiDArray = new int[anzahlReihen][anzahlSpalten];
 ```
+
 ### Zugriff auf Elemente
+
 Da wir jetzt im zweidimensionalen Bereich unterwegs sind, müssen wir für den Zugriff auf Elemente beide Dimensionen beachten.
 Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe angeben müssen. Hier ein Beispiel dazu:
+
 ```java
 int[][] zweiDArray = new int[4][2];
 
@@ -143,8 +151,10 @@ System.out.println(output); // Ausgabe: 69
 ```
 
 ### Lernvideo
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=R0YzQPBusAg).
 
 ---
+
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 9](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-9---arrays) in den Labs.

@@ -9,19 +9,23 @@
   "author": "Puzzle ITC",
   "dependencies": {
     "autoprefixer": "^10.0.0",
-    "husky": "^5.0.0",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.0.0",
-    "postcss-cli": "^8.0.0"
+    "postcss-cli": "^8.0.0",
+    "prettier": "^3.3.3"
   },
   "scripts": {
     "mdlint": "markdownlint --config .markdownlint.json content *.md",
-    "prepare": "husky install"
+    "prepare": "husky",
+    "format": "prettier --no-error-on-unmatched-pattern --ignore-unknown --write --check content/",
+    "lint": "prettier --check content/"
   },
   "bugs": {
     "url": "https://github.com/puzzle-bbt/training-sbb-puzzle/issues"
   },
   "homepage": "https://github.com/puzzle-bbt/training-sbb-puzzle#readme",
   "devDependencies": {
+    "husky": "^9.1.6",
     "markdownlint-cli": "0.27.1"
   },
   "main": "index.js",

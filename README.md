@@ -97,64 +97,52 @@ docker run \
   server -p 8080 --bind 0.0.0.0
 ```
 
-
 ### Linting of Markdown content
 
-Markdown files are linted with [markdownlint](https://github.com/DavidAnson/markdownlint).
-Custom rules are in [markdownlint.json](markdownlint.json).
-There's a GitHub Action [github/workflows/markdownlint.yaml](github/workflows/markdownlint.yaml) for CI.
-For local checks, you can either use Visual Studio Code with the corresponding extension, or the command line like this:
+Markdown files are linted with [prettier](https://prettier.io/docs/en/options).
+It can be configured with [.prettierrc](.prettierrc) and [.prettierignore](.prettierignore).
+
+Locally it should be executed before each commit with a pre-commit hook, managed by [husky](https://typicode.github.io/husky/).
+If you want to run it manually, you can do so from the commandline:
 
 ```bash
 npm install
-node_modules/.bin/markdownlint content
+npm run format
 ```
 
+### Test for broken links
+
+The fully builded Hugo site (meaning the generated `./public` directory) can automatically scanned for broken links. The tool used is [htmltest](https://github.com/wjdp/htmltest). To check manually install htmltest and then run:
+
+```bash
+htmltest
+```
+
+The test is configured with the options in [.htmltest.yml](./.htmltest.yml). All the config options are available [here](https://github.com/wjdp/htmltest#wrench-configuration). 
 
 ## Github Actions
 
+### Quality
+The [quality action](.github/workflows/quality.yml) is fired on each push. It does the following:
+* build the Hugo site
+* test if the linting is OK
+* test if any broken links are present in the generated HTML
 
-### Build
+### Test
 
-The [build action](.github/workflows/build.yaml) is fired on Pull Requests does the following
+The [test action](.github/workflows/test.yml) is fired on each push to a feature branch and does the following:
 
-* builds all PR Versions (Linting and Docker build)
-* deploys the built container images to the container registry
-* Deploys a PR environment in a k8s test namespace with helm
-* Triggers a redeployment
-* Comments in the PR where the PR Environments can be found
+* builds the Hugo site
 
 
-### PR Cleanup
-
-The [pr-cleanup action](.github/workflows/pr-cleanup.yaml) is fired when Pull Requests are closed and does the following
-
-* Uninstalls PR Helm Release
 
 
 ### Push Main
 
-The [push main action](.github/workflows/push-main.yaml) is fired when a commit is pushed to the main branch (eg. a PR is merged) and does the following, it's very similar to the Build Action
+The [push main action](.github/workflows/main.yml) is fired when a commit is pushed to the main branch (eg. a PR is merged) and does the following:
 
-* builds main Versions (Linting and Docker build)
-* deploys the built container images to the container registry
-* Deploys the main Version on k8s using helm
-* Triggers a redeployment
-
-
-## Helm
-
-Manually deploy the training Release using the following command:
-
-```bash
-helm install --repo https://acend.github.io/helm-charts/  <release> acend-training-chart --values helm-chart/values.yaml -n <namespace>
-```
-
-For debugging purposes use the `--dry-run` parameter
-
-```bash
-helm install --dry-run --repo https://acend.github.io/helm-charts/  <release> acend-training-chart --values helm-chart/values.yaml -n <namespace>
-```
+* builds the Hugo site
+* deploys it to GitHub pages
 
 
 ## Contributions

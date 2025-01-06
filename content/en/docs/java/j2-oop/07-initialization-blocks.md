@@ -7,12 +7,15 @@ description: >
 ---
 
 ## Ziele
-* Ich kann in eigenen Worten den Unterschied zwischen statische- und nicht-statische Initialisierungsblöcke erklären.
-* Ich kann den Zweck erörtern, welcher Initialisierungsblöcke erfüllen.
+
+- Ich kann in eigenen Worten den Unterschied zwischen statische- und nicht-statische Initialisierungsblöcke erklären.
+- Ich kann den Zweck erörtern, welcher Initialisierungsblöcke erfüllen.
 
 ## Initialisierungsblöcke
+
 Neben Konstruktoren gibt es noch zwei weitere Konstrukte, die der Initialisierung dienen. Statische und nicht-statische Initialisierungsblöcke.
 Diese sehen wie folgt aus:
+
 ```java
 public class Car {
 
@@ -29,9 +32,11 @@ public class Car {
 	}
 }
 ```
+
 Innerhalb dieser Initialisierungblöcke können ähnlich wie bei den Konstruktoren bestimmte Initialisierungen durchgeführt werden. Initialisierungsblöcke sind dann nützlich, wenn z.B. bei der Erstellung eines Objekts gewisser Code noch vor der Ausführung des Konstruktors als Vorbereitung ausgeführt werden muss.
 
 Grundsätzlich können die beiden Blöcke beliebigen Programmcode enthalten. Die Reihenfolge bei der Erstellung eines neuen Objekts ist wie folgt:
+
 1.  Statische Variablen
 2.  Statische Initialisierungblöcke
 3.  Instanzvariablen

@@ -28,7 +28,6 @@ Der letzte Knoten enthält eine Referenz auf `null`.
 
 ![linkedlist1](../../java-collections/linkedlist1.png)
 
-
 #### Element zu einer einfach verketten Liste hinzufügen
 
 Wird ein Knoten zu einer einfach verketteten Liste hinzugefügt, dann muss die Referenz des Knotens davor
@@ -61,6 +60,7 @@ und eine Referenze auf den letzten Knoten der Liste.
 Das Einfügen und Entfernen funktioniert analog zu einer einfach verketteten Liste.
 
 #### Ein Element aus einer (einfach oder doppelt) verketteten Liste auslesen
+
 Wenn man ein Element in einer einfach verketteten Liste auslesen möchte, dann muss man vom ersten Knoten
 anfangen und ein Knoten nach dem anderen die Liste durchlaufen bis zu diesem Element. Im "schlimmsten" Fall
 muss über alle Knoten iteriert werden, wenn das Element, das man sucht, im letzten Knoten ist.
@@ -78,6 +78,7 @@ Die Entscheidung für einen bestimmten Listen-Typ ist also abhängig von der Art
 der Zugriffe.
 
 ### LinkedList-Klasse im Java
+
 Die LinkedList-Klasse im Java (java.util.LinkedList) implementiert eine doppelt verkettete Liste.
 Sie ist so implementiert, dass sie zwei Referenzen enthält, zum einen die Referenz
 zum ersten Knoten und zum anderen die Referenz zum zweiten Knoten:
@@ -95,7 +96,7 @@ public class LinkedList<E>  extends AbstractSequentialList<E>  implements List<E
    * Pointer to last node.
    */
   transient Node<E> last;
-  
+
   ...
 }
 
@@ -103,11 +104,11 @@ public class LinkedList<E>  extends AbstractSequentialList<E>  implements List<E
 
 Das Java-Schlüsselwort `transient` wird verwendet, um ein Feld in einer Klasse von der Serialisierung auszuschließen. **Serialisierung** ist der Prozess, ein Objekt in einen Byte-Stream umzuwandeln, um es zu speichern oder über ein Netzwerk zu übertragen. Transiente Felder werden dabei nicht gespeichert und erhalten nach der Deserialisierung ihre **Standardwerte** (z. B. `null` für Objekte, `0` für Zahlen).
 
+Ein Knoten, also das Objekt des Typs `Node`, enthält
 
-Ein Knoten, also das Objekt des Typs `Node`, enthält 
-* das Element, welches einen generischen Typ hat (deshalb `Node<E>`),
-* die Referenz auf den vorherigen Knoten, also auf ein Node-Objekt 
-* und eine Referenz auf den nächsten Knoten.
+- das Element, welches einen generischen Typ hat (deshalb `Node<E>`),
+- die Referenz auf den vorherigen Knoten, also auf ein Node-Objekt
+- und eine Referenz auf den nächsten Knoten.
 
 Die statische Klasse `Node<E>` ist innerhalb der Klasse java.util.LinkedList definiert:
 
@@ -125,6 +126,7 @@ Die statische Klasse `Node<E>` ist innerhalb der Klasse java.util.LinkedList def
     }
 
 ```
+
 ### Einige Methoden der Klasse java.util.LinkedList
 
 ```java
@@ -163,7 +165,7 @@ public void addFirst(E e)
  */
 public void addLast(E e)
 ...
-        
+
 // *** Queue and Deque methods ***
         ...
 // *** Stack methods ***
@@ -173,8 +175,11 @@ public void addLast(E e)
 
 
 ```
+
 ### Beispiel
+
 Hier ein kurzes Beispiel wie LinkedList verwendet werden könnte:
+
 ```java
 import java.util.LinkedList;
 
@@ -185,7 +190,7 @@ public class Main {
         // Elemente hinzufügen
         fruits.add("Apfel");
         fruits.add("Banane");
-        
+
         fruits.addFirst("Erdbeere");  // Element am Anfang hinzufügen
 
         // Elemente anzeigen
@@ -201,6 +206,6 @@ public class Main {
 }
 ```
 
-
 ## Aufgaben
+
 Löse nun die [Aufgaben](../../../../labs/java/java-collections/07_linkedlist) zur LinkedList.

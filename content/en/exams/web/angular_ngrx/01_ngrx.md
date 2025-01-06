@@ -3,9 +3,9 @@ title: "Exam zu NgRx"
 type: docs
 linkTitle: "NgRx"
 weight: 2
-date: 2024-03-2
+date: 2024-03-02
 description: >
-    Eine Aufgaben zu NgRx.
+  Eine Aufgaben zu NgRx.
 ---
 
 Im Exam zu Angular hast du eine Notenverwaltung erstellt. Nun sollst du sie geschickt mit NgRx erweitern, um die Fächer, Noten, Durchschnitte usw. mithilfe von NgRx zu speichern.
