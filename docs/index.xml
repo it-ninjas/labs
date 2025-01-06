@@ -2423,29 +2423,96 @@ MODUL_NAME&amp;gt;&lt;/em> : &lt;em>&amp;lt;MODUL_SCHLUSSNOTE&amp;gt;&lt;/em> au
 &lt;/ul>
 &lt;p>Zudem wird erwartet, dass ein eigenes Testing (wie in &lt;a href="/docs/java/java-testing/">J4 Testing&lt;/a> gelernt) zu der Umsetzung gehört.&lt;/p></description></item><item><title>Labs: Lists Basics - Aufgaben</title><link>/labs/java/java-oop/01_lists/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-oop/01_lists/</guid><description>
 &lt;h3 id="aufgabe-1">Aufgabe 1&lt;/h3>
-&lt;p>Schreibe ein Programm, welche aus der Kommandozeile eine Reihe von Zahlen liest und die
-Zahl an der Position x (x ist die erste Zahl in der Reihe) in der Konsole ausgibt.
-Folgende Bedingungen müssen eingehalten werden:&lt;/p>
+&lt;p>In dieser Aufgabe werden wir eine Liste von Wörtern analysieren. Die Liste enthält bereits vordefinierte Wörter, und dein Programm soll die folgenden Schritte ausführen:&lt;/p>
 &lt;ul>
-&lt;li>Die Anzahl der Zahlen in der Reihe kann beliebig variert werden.&lt;/li>
-&lt;li>Wenn es die Position nicht gibt, wird &amp;ldquo;ERROR! Die Position x existiert nicht&amp;rdquo; in der Konsole ausgegeben&lt;/li>
+&lt;li>Gib die &lt;strong>Anzahl der Wörter&lt;/strong> in der Liste aus.&lt;/li>
+&lt;li>Gib &lt;strong>alle Wörter&lt;/strong> in der Konsole wieder.&lt;/li>
+&lt;li>Gib alle &lt;strong>Nomen&lt;/strong> (Wörter, die mit einem grossen Buchstaben beginnen) &lt;strong>in Grossbuchstaben&lt;/strong> aus.&lt;/li>
+&lt;li>Gib die &lt;strong>Wörter in umgekehrter Reihenfolge&lt;/strong> aus.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;em>Bei der Umsetzung dürfen keine Streams verwendet werden!&lt;/em>&lt;/p>
-&lt;p>&lt;strong>Beispiel 1&lt;/strong>&lt;/p>
-&lt;p>Input: 3 45 6 23 76 34&lt;br>
-Output: Die Zahl an der Position 3 ist: 23&lt;/p>
-&lt;p>&lt;strong>Beispiel 2&lt;/strong>&lt;/p>
-&lt;p>Input: 8 45 6 23 76 34&lt;br>
-Output: ERROR! Die Position 8 existiert nicht&lt;/p>
+&lt;p>Die Liste, die du verwenden sollst, lautet:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>(List.&lt;span style="color:#a6e22e">of&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Abstraktion&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;API&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Annotation&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;ArrayList&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Bedingung&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Bibliothek&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Bytecode&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Collection&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Compiler&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Debugging&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Deployment&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;entwickeln&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Exception&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Framework&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;GarbageCollector&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;generisch&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;HashMap&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Heap&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;implementieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Interface&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;JVM&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Kapselung&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Klasse&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;konstruieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Konstruktor&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Lambda&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;lernen&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Methoden&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Modifikator&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Objekt&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;optimieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Polymorphismus&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;reflektieren&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Reflexion&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Schleife&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;sortieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Stack&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Stream&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Synchronisation&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Thread&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;TreeSet&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;UnitTest&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Variable&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Vererbung&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;em>Bei der Umsetzung dürfen keine Streams verwendet werden!&lt;/em>&lt;/p>
 &lt;hr>
 &lt;h3 id="aufgabe-2">Aufgabe 2&lt;/h3>
-&lt;p>Schreibe ein Programm, welche einen Text mit einer beliebigen Anzahl Wörter aus der Kommandozeile liest und folgendes damit macht:&lt;/p>
+&lt;p>Schreibe ein Programm, das die &lt;strong>Fibonacci-Zahlen&lt;/strong> bis zu einer bestimmten Zahl &lt;strong>n&lt;/strong> berechnet und in einer ArrayList speichert.&lt;/p>
+&lt;h4 id="was-ist-fibonacci">Was ist Fibonacci?&lt;/h4>
+&lt;p>Die &lt;strong>Fibonacci-Folge&lt;/strong> ist eine berühmte Zahlenreihe, bei der &lt;strong>jede Zahl die Summe der beiden vorangehenden Zahlen ist&lt;/strong>. Sie beginnt immer mit den Zahlen 0 und 1.
+Die ersten Fibonacci-Zahlen sind:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Berechnungen verlaufen also folgendermassen:&lt;/p>
 &lt;ul>
-&lt;li>Die Anzahl gelesene Wörter ausgeben&lt;/li>
-&lt;li>Alle gelesenen Wörter in der Konsole wiedergeben&lt;/li>
-&lt;li>Alle Nomen aus dem Text (Wörter, die mit einem grossen Buchstaben beginnen) in Grossbuchstaben ausgeben&lt;/li>
-&lt;li>Alle gelesene Wörter in umgekehrte Reihenfolge ausgeben&lt;/li>
+&lt;li>0 (erste Zahl, fixer Wert)&lt;/li>
+&lt;li>1 (zweite Zahl, fixer Wert)&lt;/li>
+&lt;li>1 (= 0 + 1)&lt;/li>
+&lt;li>2 (= 1 + 1)&lt;/li>
+&lt;li>3 (= 1 + 2)&lt;/li>
+&lt;li>5 (= 2 + 3)&lt;/li>
+&lt;li>8 (= 3 + 5)&lt;/li>
+&lt;li>13 (= 5 + 8)&lt;/li>
+&lt;li>21 (= 8 + 13)&lt;/li>
+&lt;li>34 (= 13 + 21)&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
 &lt;/ul>
+&lt;p>Eine ArrayList eignet sich besonders gut, um Fibonacci-Zahlen zu speichern, da wir im Voraus nicht wissen, wie viele Zahlen berechnet werden müssen, bis eine bestimmte Zahl erreicht ist.
+Die ArrayList kann dynamisch wachsen und neue Zahlen aufnehmen.
+Durch diese Aufgabe lernst du den Umgang mit ArrayLists und wie sie sich dynamisch vergrössern lassen, ohne dass du dir Gedanken über die feste Größe von Arrays machen musst.&lt;/p>
+&lt;p>Die Fibonacci-Folge ist relevant, weil sie in der &lt;strong>Natur&lt;/strong> häufig vorkommt, wie bei der Anordnung von Blättern oder der Struktur von Tannenzapfen.&lt;/p>
+&lt;h4 id="umsetzung">Umsetzung&lt;/h4>
+&lt;p>Du schreibst eine Methode für die Berechnung der Fibonacci-Zahlen bis zu einem bestimmten Wert.
+Die Methode berechnet die Fibonacci-Zahlen, bis die aktuell berechnete Zahl grösser als &lt;strong>n&lt;/strong> ist, und gibt die Liste der berechneten Fibonacci-Zahlen als Rückgabewert zurück.
+Es ist also vor der Berechnung unklar, wie lange die Liste werden kann.&lt;/p>
+&lt;p>Methodensignatur:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">fibonacci&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> n);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wenn wir also zum Beispiel &lt;strong>n&lt;/strong> auf 20 setzen, wäre das Resultat eine ArrayList mit den folgenden Einträgen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>0, 1, 1, 2, 3, 5, 8, 13, 21&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>21 ist grösser als 20, deshalb stoppt die Liste nach diesem Eintrag.&lt;/p>
 &lt;p>&lt;em>Bei der Umsetzung dürfen keine Streams verwendet werden!&lt;/em>&lt;/p>
 &lt;hr>
 &lt;p>Hier kannst du &lt;a href="/docs/java/j2-oop/05-list-basics/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Maven und Continuous Integration - Aufgaben</title><link>/labs/java/maven/01_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/maven/01_exercises/</guid><description>
