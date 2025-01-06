@@ -7,10 +7,13 @@ date: 2023-05-26
 description: >
   Modul #F7 - Angular NgRx - Actions
 ---
+
 ## Ziele
-* Du weisst, was NgRx Actions sind und kannst diese anwenden.
+
+- Du weisst, was NgRx Actions sind und kannst diese anwenden.
 
 ## NgRx Actions
+
 Actions sind einfache JS-Objekte, die eine bestimmte Aktion beschreiben, die in einer Anwendung ausgeführt werden soll. Jede Action hat einen Typ und optional zusätzliche Daten.
 
 Actions spielen eine zentrale Rolle in der Redux-Architektur und dienen als Auslöser für Zustandsänderungen im Store. Durch die Verwendung von Actions, kann man den Zustand der Anwendung eindeutig beschreiben und die Auswirkungen dieser Aktionen auf den Zustand zentral verwalten.
@@ -18,68 +21,73 @@ Actions spielen eine zentrale Rolle in der Redux-Architektur und dienen als Ausl
 Die Action Typen werden meistens in einem Enum definiert, so hat man eine bessere Übersicht welche Actions die Anwendung besitzt. Die Typen werden in eckigen Klammern mit einem präfix, der den Kontext der Aktion angibt, geschrieben.
 
 Hier ein Beispiel:
+
 ```typescript
 export enum ActionTypes {
-    GETABILITIES = '[Dragon Warrior] Get Abilities',
-    ADDABILITY ='[Dragon Warrior] Add Ability',
-    DELETEABILITY= '[Dragon Warrior] Delete Ability'
+  GETABILITIES = "[Dragon Warrior] Get Abilities",
+  ADDABILITY = "[Dragon Warrior] Add Ability",
+  DELETEABILITY = "[Dragon Warrior] Delete Ability",
 }
 ```
 
 Als Nächstes muss man die Typen in einer Action-Creator-Funktion verwenden. Dazu muss diese Funktion zuerst erstellt werden. Mithilfe der `createAction`-Funktion aus dem `@ngrx/store`-Package kann man Action-Creator-Funktionen erstellen. Die Funktion `createAction` akzeptiert den Action-Typ und optional zusätzliche Daten (Props) und gibt eine Action zurück.
-```typescript
-import { createAction, props } from '@ngrx/store';
 
-export const getAbilities = createAction(
-    ActionTypes.GETABILITIES
-);
+```typescript
+import { createAction, props } from "@ngrx/store";
+
+export const getAbilities = createAction(ActionTypes.GETABILITIES);
 
 export const addAbility = createAction(
-    ActionTypes.ADDABILITY, 
-    props<{ ability: string }>()
+  ActionTypes.ADDABILITY,
+  props<{ ability: string }>(),
 );
 
 export const deleteAbility = createAction(
-    ActionTypes.DELETEABILITY, 
-    props<{ ability: string }>()
+  ActionTypes.DELETEABILITY,
+  props<{ ability: string }>(),
 );
 ```
 
 Diese Action-Creator-Funktionen kann man nun in den Components verwenden und sie auslösen.
+
 ```typescript
-import { Component, inject, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { addAbility, deleteAbility } from 'src/app/actions/ability.actions';
+import { Component, inject, OnInit } from "@angular/core";
+import { FormControl } from "@angular/forms";
+import { select, Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { addAbility, deleteAbility } from "src/app/actions/ability.actions";
 
 @Component({
-    // ..
+  // ..
 })
 export class AbilityComponent implements OnInit {
-    ability$: Observable<{ abilities: string[]; }> = new Observable<{ abilities: string[]; }>();
-    abilities$: Observable<string[]> = new Observable<string[]>()
-    abilityForm: FormControl = new FormControl('');
+  ability$: Observable<{ abilities: string[] }> = new Observable<{
+    abilities: string[];
+  }>();
+  abilities$: Observable<string[]> = new Observable<string[]>();
+  abilityForm: FormControl = new FormControl("");
 
-    private store = inject(Store<{ability: {abilities: string[] }}>);
+  private store = inject(Store<{ ability: { abilities: string[] } }>);
 
-    constructor() {}
+  constructor() {}
 
-    ngOnInit(): void {
-        this.ability$ = this.store.select('ability');
+  ngOnInit(): void {
+    this.ability$ = this.store.select("ability");
 
-        this.abilities$ = this.ability$.pipe(map(x => {
-            return x.abilities
-        }))
-    }
+    this.abilities$ = this.ability$.pipe(
+      map((x) => {
+        return x.abilities;
+      }),
+    );
+  }
 
-    addAbility() {
-        this.store.dispatch(addAbility({ ability: this.abilityForm.value ?? '' }));
-    }
+  addAbility() {
+    this.store.dispatch(addAbility({ ability: this.abilityForm.value ?? "" }));
+  }
 
-    deleteAbility(ability: string) {
-        this.store.dispatch(deleteAbility({ ability: ability }));
-    }
+  deleteAbility(ability: string) {
+    this.store.dispatch(deleteAbility({ ability: ability }));
+  }
 }
 ```
 

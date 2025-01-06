@@ -77,6 +77,7 @@ String greeting = sb.toString();
 Hierbei musst du aber zuerst ein neues `StringBuilder`-Objekt erstellen. (Im Modul #J1 musst du solche Objekte noch nicht verstehen.) Anschliessend fügst du alle einzelnen Strings via `.append(...)` hinzu. Den gewünschten String kannst du dann mit `.toString()` generieren lassen.
 
 ### Neue Zeilen oder Tabs
+
 Beim Verknüpfen von Strings ist es oft praktisch, wenn man Zeilenumbrüche hinzufügen kann. Dies kannst du mit dem `Character` `'\n'` (new line) tun:
 
 ```java
@@ -84,6 +85,7 @@ String greeting = " name: " + name + ", \n nage: " + age;
 ```
 
 Das Gleiche ist auch mit Einrückungen (Tabulatoren) möglich mit dem `Character` `'\t'` (tab):
+
 ```java
 System.out.println("weapon name \t ranges (m)");
 System.out.println("Shuriken \t 5-10");
@@ -92,8 +94,9 @@ System.out.println("Naginata \t 3-4");
 ```
 
 Im Java fungiert das Zeichen `\` als "escape character". Das bedeutet, dass spezielle Zeichen, die in einem String regulär nicht möglich wären, oft irgendwie mit einem `\` "escaped" werden. Neben der "New-Line" und dem "Tabulator" gibt es noch weitere, die oft verwendet werden:
-* `\\`: Das `\`-Zeichen ("Backslash) selber.
-* `\"`: Ein Anführungszeichen in einem String.
+
+- `\\`: Das `\`-Zeichen ("Backslash) selber.
+- `\"`: Ein Anführungszeichen in einem String.
 
 Hier ein Beispiel, wie das Anführungszeichen und Backslash in einem String verwendet werden können:
 
@@ -284,6 +287,7 @@ System.out.println("Pointe: " + punchline);
 ```
 
 #### Teile eines Strings ersetzen (`String.replace()`)
+
 Ein bestimmter Teil eines Strings kannst du mit `replace` ersetzen:
 
 ```java
@@ -295,7 +299,6 @@ System.out.println(classicPhrase.replace("o be", "o beer"));
 ```
 
 Beachte auch hier, dass `replace` den ursprünglichen String nicht verändert, sondern einen neuen zurückgibt.
-
 
 #### Bausteine aus einem String herauslösen (`String.split()`)
 
@@ -312,17 +315,19 @@ for (String item : items)
 ```
 
 Die `for`-Schlaufe gibt schlussendlich folgende Werte aus:
-* Käse
-* Brot
-* Speck
-* Eier
-* Surströmming
+
+- Käse
+- Brot
+- Speck
+- Eier
+- Surströmming
 
 Auf diese Art und Weise können wir z.B. alle Wörter aus einem String ermitteln.
 
-Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten "Regulären Ausdruck" (RegEx) handelt. Eine RegEx ist eine Folge von Zeichen, die ein Suchmuster bilden. Eine Regex wird dafür verwendet, um einen Text anhand eines Musters (einer Regel) abzugleichen. RegEx ist im Moment kein Thema im Modul #J1. Wichtig ist für dich im Moment nur, dass du weisst, dass sich bei diesem Suchbegriff von `split(...)` nicht um einen gewöhnlichen String handelt, sondern um eine RegEx. Möglicherweise können dir RegEx' viel Arbeit abnehmen. 
+Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten "Regulären Ausdruck" (RegEx) handelt. Eine RegEx ist eine Folge von Zeichen, die ein Suchmuster bilden. Eine Regex wird dafür verwendet, um einen Text anhand eines Musters (einer Regel) abzugleichen. RegEx ist im Moment kein Thema im Modul #J1. Wichtig ist für dich im Moment nur, dass du weisst, dass sich bei diesem Suchbegriff von `split(...)` nicht um einen gewöhnlichen String handelt, sondern um eine RegEx. Möglicherweise können dir RegEx' viel Arbeit abnehmen.
 
 Falls du mehr über RegEx lernen möchtest empfehlen wir [dieses Tutorial](https://www.geeksforgeeks.org/regular-expressions-in-java/). Das Gelernte kannst du anschliessend gleich in [dieser Sandbox](https://regex101.com/) challengen. Achte bei der Sandbox darauf, dass du das richtige Flavor (Java 8) auswählst.
 
 ---
+
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben 6 und 7](../../../../labs/java/java-grundlagen/01_basicexercises/#aufgabe-6---strings) in den Labs.

@@ -40,10 +40,12 @@ char, ...) als Objekte zu verwenden:
 java.lang.Integer, java.lang.Double, java.lang.Boolean, java.lang.Character,..
 
 Schauen wir uns die folgenden Beispiele an, wo wir einer Liste mit Elementen vom Typ Integer das Element 3 hinzufügen:
+
 ```java
 List<Integer> integerList = new ArrayList<>();
 integerList.add(Integer.valueOf(3));
 ```
+
 Oben haben wir der Liste das Integer-Objekt 3 hinzugefügt - also ein `Integer`-Objekt und nicht der Wert des primitiven Datentyps `int`.
 
 ```java
@@ -57,7 +59,7 @@ Obwohl wir den int-Wert 3 als primitiver Datentypen und nicht als Integer-Objekt
 `integerList` ist jedoch eine Liste von Integer-Objekten und nicht eine Liste von int-Werten.
 Warum haben wir dann beim Kompilieren dieses Codes kein gekriegt?
 
-Der Copmiler konvertiert den int-Wert zu einem Integer-Objekt und fügt dieses dann zur Liste *integerList* hinzu.
+Der Copmiler konvertiert den int-Wert zu einem Integer-Objekt und fügt dieses dann zur Liste _integerList_ hinzu.
 Diese Konvertierung nennt man _Autoboxing_.
 _Autoboxing_ ist die automatische Konvertierung zwischen den primitiven Datentypen zu Objekten ihrer entsprechenden Wrapper-Klassen, die der Java Compiler durchführt
 (beispielsweise `int` zu `Integer`, `double` zu `Double`, ect.).

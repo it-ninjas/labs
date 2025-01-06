@@ -1,6 +1,9 @@
 {{ if .Path }}
   {{ $pathFormatted := replace .Path "\\" "/" }}
   {{ $gh_repo := ($.Param "github_repo") }}
+  {{ $sbb_jira := ($.Param "sbb_jira") }}
+  {{ $sbb_jira_pid := ($.Param "sbb_jira_pid") }}
+  {{ $sbb_jira_issuetype := ($.Param "sbb_jira_issuetype") }}
   {{ $gh_subdir := ($.Param "github_subdir") }}
   {{ $gh_project_repo := ($.Param "github_project_repo") }}
   {{ $gh_branch := (default "master" ($.Param "github_branch")) }}
@@ -16,14 +19,12 @@
     {{ end }}
     {{ $editURL := printf "%s/edit/%s" $gh_repo $gh_repo_path }}
     {{ $createURL := printf "%s/edit/%s" $gh_repo $gh_repo_path }}
-    {{ $issuesURL := printf "%s/issues/new?title=%s" $gh_repo (htmlEscape $.Title )}}
+    {{ $issuesURL := printf "%s?pid=%s&issuetype=%s&customfield_10122=%s&priority=10003&summary=%s" $sbb_jira $sbb_jira_pid $sbb_jira_issuetype (htmlEscape $gh_repo_path) (htmlEscape $.Title)}}
     {{ $newPageStub := resources.Get "stubs/new-page-template.md" }}
     {{ $newPageQS := querify "value" $newPageStub.Content "filename" "change-me.md" | safeURL }}
     {{ $newPageURL := printf "%s/new/%s?%s"  $gh_repo $gh_repo_path $newPageQS }}
 
-    <a href="{{ $editURL }}" target="_blank"><i class="fa fa-edit fa-fw"></i> {{ T "post_edit_this" }}</a>
-    <a href="{{ $newPageURL }}" target="_blank"><i class="fa fa-edit fa-fw"></i> {{ T "post_create_child_page" }}</a>
-    <a href="{{ $issuesURL }}" target="_blank"><i class="fab fa-github fa-fw"></i> {{ T "post_create_issue" }}</a>
+    <a href="{{ $issuesURL }}" target="_blank"><i class="fab fa-bitbucket fa-fw"></i> Erfasse Feedback zu dieser Seite. </a>
     {{ if $gh_project_repo }}
       {{ $project_issueURL := printf "%s/issues/new" $gh_project_repo }}
       <a href="{{ $project_issueURL }}" target="_blank"><i class="fas fa-tasks fa-fw"></i> {{ T "post_create_project_issue" }}</a>

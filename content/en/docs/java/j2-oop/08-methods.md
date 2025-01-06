@@ -7,21 +7,23 @@ description: >
 ---
 
 ## Ziele
-* Ich kann alle Komponenten auswendig aufzählen, die zu einer Methodendeklaration gehören.
-* Ich kann auswendig die Regeln aufzählen, die ein Methodenname einhalten sollte (Konventionen).
-* Ich schreibe Getter- und Setter-Methoden gemäss Namenskonventionen.
-* Ich kann in eigenen Worten erklären, warum der Zugriffsmodifikator einer Methode so restriktiv wie möglich gewählt werden sollte.
-* Ich kann die Voraussetzungen, um Methoden überladen zu können, vollständig aufzählen.
-* Ich kann in eigenen Worten die Umstände erläutern, wann die `equals`- und die `hashCode`-Methode überschrieben werden sollten.
-* Ich kann in eigenen Worten die Bedingungen beschreiben, welche bei der Überschreibung der Methode `equals` erfüllt werden müssen.
-* Ich kann in eigenen Worten die Bedingungen beschreiben, welche bei der Überschreibung der Methode `hashCode` erfüllt werden müssen.
+
+- Ich kann alle Komponenten auswendig aufzählen, die zu einer Methodendeklaration gehören.
+- Ich kann auswendig die Regeln aufzählen, die ein Methodenname einhalten sollte (Konventionen).
+- Ich schreibe Getter- und Setter-Methoden gemäss Namenskonventionen.
+- Ich kann in eigenen Worten erklären, warum der Zugriffsmodifikator einer Methode so restriktiv wie möglich gewählt werden sollte.
+- Ich kann die Voraussetzungen, um Methoden überladen zu können, vollständig aufzählen.
+- Ich kann in eigenen Worten die Umstände erläutern, wann die `equals`- und die `hashCode`-Methode überschrieben werden sollten.
+- Ich kann in eigenen Worten die Bedingungen beschreiben, welche bei der Überschreibung der Methode `equals` erfüllt werden müssen.
+- Ich kann in eigenen Worten die Bedingungen beschreiben, welche bei der Überschreibung der Methode `hashCode` erfüllt werden müssen.
 
 ## Instanzmethoden
+
 Methoden sind dafür da, bestimmte Aufgaben auszuführen. Sie können den Zustand eines Objekts ändern oder Berechnungen durchführen. Kurz gesagt, hier passiert die "Magie" in einer Anwendung.
 Zum Beispiel kann eine Methode den Wert eines Datenfeldes ändern (wie die Geschwindigkeit eines Autos) oder eine Berechnung durchführen (wie das Berechnen der benötigten Zeit, um eine bestimmte Strecke zurückzulegen).
 
-
 Eine Methodendeklaration besteht aus bis zu sieben Komponenten
+
 1. **Zugriffsmodifikator**: `public`, `protected`, `private` oder package-private. Er bestimmt, wer auf die Methode zugreifen kann. Wichtig: Wähle immer den Modifikator, der den Zugriff so eingeschränkt wie möglich hält.
 2. **Andere Modifikatoren**: Beispielsweise `static` oder `synchronized`.
    - `static`: Wenn eine Methode als `static` deklariert wird, gehört sie zur Klasse und nicht zu einer Instanz der Klasse. Das bedeutet, dass du die Methode aufrufen kannst, ohne ein Objekt der Klasse zu erstellen. Zum Beispiel: `Math.abs()`. Das wird später in der objektorientierten Programmierung wichtig, musst du jetzt aber noch nicht verstehen.
@@ -35,6 +37,7 @@ Eine Methodendeklaration besteht aus bis zu sieben Komponenten
 ### Beispiel: Methode für ein Auto
 
 Schauen wir uns eine Methode (`calculateTimeToDistance`) für ein Auto an:
+
 ```java
 public class Auto{
     // Ein Datenfeld für die Geschwindigkeit des Autos (in km/h)
@@ -48,34 +51,40 @@ public class Auto{
 ```
 
 Erklärung der Methode:
+
 - **Zugriffsmodifikator**: `public` - Die Methode kann von aussen aufgerufen werden.
 - **Andere Modifikatoren**: Keine.
 - **Rückgabewert**: `double` - Die Methode gibt die benötigte Zeit in Stunden zurück, daher der Datentyp double.
 - **Methodenname**: `calculateTimeToDistance` - Der Name sagt klar aus, was die Methode macht.
-- **Parameterliste**: `int distanceInKm` - Die Methode braucht die Distanz  als Eingabewert.
-- **Ausnahmen (Exceptions)**: `throws ArithmeticException`  - Falls die Geschwindigkeit 0 ist, könnte es zu einer Exception kommen, weil eine Division durch 0 nicht möglich ist. Dies wird in einem späteren Kapitel genauer erklärt.
+- **Parameterliste**: `int distanceInKm` - Die Methode braucht die Distanz als Eingabewert.
+- **Ausnahmen (Exceptions)**: `throws ArithmeticException` - Falls die Geschwindigkeit 0 ist, könnte es zu einer Exception kommen, weil eine Division durch 0 nicht möglich ist. Dies wird in einem späteren Kapitel genauer erklärt.
 - **Methodenkörper**: Die Berechnung wird durchgeführt, indem die Distanz durch die Geschwindigkeit geteilt wird.
 
 ### Namenskonventionen für Methoden
+
 Methodennamen sollen - per Konvention - folgende Regeln einhalten:
-* Der erste Buchstabe ist immer klein.
-* Verwende CamelCase: Das bedeutet, dass alle Buchstaben des ersten Worts klein geschrieben werden. Ab dann wird jeweils der erste Buchstaben von jedem Wort gross geschrieben. Beispiele: `equals`, `printThisToConsole`.
-* Der Methodenname soll ein Verb enthalten, welches die Funktionalität der Methode beschreibt. Wenn es dem Verständnis der Funktionalität dient, wird dieses Verb zusammen mit einem Nomen zusammengesetzt.
-* Der Name sollte möglichst klar und verständlich sein, damit man sofort weiss, was die Methode macht.
-* Vermeide Abkürzungen, schreibe die Wörter lieber aus (ausser es sind sehr bekannte Abkürzungen).
+
+- Der erste Buchstabe ist immer klein.
+- Verwende CamelCase: Das bedeutet, dass alle Buchstaben des ersten Worts klein geschrieben werden. Ab dann wird jeweils der erste Buchstaben von jedem Wort gross geschrieben. Beispiele: `equals`, `printThisToConsole`.
+- Der Methodenname soll ein Verb enthalten, welches die Funktionalität der Methode beschreibt. Wenn es dem Verständnis der Funktionalität dient, wird dieses Verb zusammen mit einem Nomen zusammengesetzt.
+- Der Name sollte möglichst klar und verständlich sein, damit man sofort weiss, was die Methode macht.
+- Vermeide Abkürzungen, schreibe die Wörter lieber aus (ausser es sind sehr bekannte Abkürzungen).
 
 ### Getter und Setter
-Eine `get`-Methode (auch **Getter** genannt) holt den Wert eines bestimmten Datenfelds und gibt ihn zurück. 
-Eine `set`-Methode (auch **Setter** genannt) ändert den Wert dieses Datenfelds. 
+
+Eine `get`-Methode (auch **Getter** genannt) holt den Wert eines bestimmten Datenfelds und gibt ihn zurück.
+Eine `set`-Methode (auch **Setter** genannt) ändert den Wert dieses Datenfelds.
 Das Ganze gehört zum **Prinzip der Kapselung**, was bedeutet, dass Daten sicher verwaltet werden.
 
-Du fragst dich vielleicht: **Warum nicht einfach alle meine Variablen als `public` deklarieren?** 
-Das klingt doch einfacher, oder? Aber das Problem ist, dass jeder Teil deines Programms dann direkt auf die Daten zugreifen und sie ändern könnte – auch unbeabsichtigt. 
+Du fragst dich vielleicht: **Warum nicht einfach alle meine Variablen als `public` deklarieren?**
+Das klingt doch einfacher, oder? Aber das Problem ist, dass jeder Teil deines Programms dann direkt auf die Daten zugreifen und sie ändern könnte – auch unbeabsichtigt.
 Mit `get`- und `set`-Methoden kannst du kontrollieren, wer auf die Daten zugreifen oder sie verändern darf. Zum Beispiel auch, wenn andere Entwickler auf deinem Code arbeiten.
 Zum Beispiel: Wenn du nur eine `get`-Methode ohne `set`-Methode erstellst, machst du das Datenfeld von ausserhalb nur lesbar – man kann es also nicht ändern.
 
 #### Namenskonventionen
+
 Für Getter- und Setter-Methoden werden immer die gleichen Methodennamen verwendet. Als Präfix benutzen wir `get` und `set` gefolgt vom Namen des Datenfelds worauf sich die Methode bezieht.
+
 ```java
 public class Car {
 	private int speed;
@@ -89,6 +98,7 @@ public class Car {
 	}
 }
 ```
+
 ```java
 class Demo {
 	public static void main(String[] args) {
@@ -100,9 +110,11 @@ class Demo {
 ```
 
 ### Methoden überladen
-In Java können wir Methoden überladen. 
-Das heisst, wir können mehrere Methoden mit demselben Namen definieren, solange die Anzahl an Parametern oder die Datentypen der Parameter variieren. 
+
+In Java können wir Methoden überladen.
+Das heisst, wir können mehrere Methoden mit demselben Namen definieren, solange die Anzahl an Parametern oder die Datentypen der Parameter variieren.
 Beim Aufruf der Methode wird vom Compiler die entsprechende Definition ausgewählt.
+
 ```java
 class Calculator {
 
@@ -114,13 +126,14 @@ class Calculator {
 	public double product(double x, double y, double z) {
 		return x * y * z;
 	}
-    
+
     // Overloading the function to handle int
 	public int product(int x, int y) {
 		return x * y;
 	}
 }
 ```
+
 ```java
 class Demo {
 	public static void main(String[] args) {
@@ -140,19 +153,21 @@ class Demo {
 Methoden, deren Parameter gleich sind (gleiche Anzahl, gleiche Datentypen) und sich lediglich in ihren Rückgabetypen unterscheiden, können nicht überladen werden, da der Compiler nicht in der Lage ist, zwischen ihren Aufrufen zu unterscheiden.
 
 ### Die Methoden equals() und hashCode()
-Die Methoden `equals()` und `hashCode()` sind wichtige Bestandteile der Java-APIs. Sie sind automatisch in jeder Klasse vorhanden, weil sie von der **Object-Klasse** geerbt werden. 
-Das bedeutet, dass jede Klasse in Java diese beiden Methoden hat, auch wenn du sie nicht selbst hinzufügst. 
+
+Die Methoden `equals()` und `hashCode()` sind wichtige Bestandteile der Java-APIs. Sie sind automatisch in jeder Klasse vorhanden, weil sie von der **Object-Klasse** geerbt werden.
+Das bedeutet, dass jede Klasse in Java diese beiden Methoden hat, auch wenn du sie nicht selbst hinzufügst.
 Mehr darüber erfährst du im Modul "Objektorientiertes Design (OOD)".
 
-
 #### equals()
-Du hast bereits im Thema String gesehen, dass man mit `equals()` überprüft, ob zwei Objekte denselben Wert haben. 
-Der Unterschied zu `==` ist, dass `==` nur prüft, ob beide Objekte exakt dasselbe sind, also die gleiche Speicheradresse haben. 
+
+Du hast bereits im Thema String gesehen, dass man mit `equals()` überprüft, ob zwei Objekte denselben Wert haben.
+Der Unterschied zu `==` ist, dass `==` nur prüft, ob beide Objekte exakt dasselbe sind, also die gleiche Speicheradresse haben.
 Mit `equals()` hingegen vergleichst du den Inhalt der Objekte.
 
-Standardmässig definiert die `equals()`-Methode in der **Object-Klasse**, dass zwei Objekte nur dann gleich sind, wenn sie exakt die gleiche Identität haben. 
+Standardmässig definiert die `equals()`-Methode in der **Object-Klasse**, dass zwei Objekte nur dann gleich sind, wenn sie exakt die gleiche Identität haben.
 Das bedeutet, dass zwei unterschiedliche Objekte derselben Klasse als nicht gleich angesehen werden, selbst wenn alle ihre Felder die gleichen Werte enthalten.
 Es wird also die Speicheradresse mit `==` verlgichen:
+
 ```java
 // Der Code aus der Klasse Object in Java
 public boolean equals(Object obj) {
@@ -160,10 +175,11 @@ public boolean equals(Object obj) {
 }
 ```
 
-Das passt aber nicht immer, besonders wenn du den Inhalt der Objekte vergleichen möchtest oder du nur spezifische Eigenschaften, wie zum Beispiel eine ID vergleichen möchtest. 
+Das passt aber nicht immer, besonders wenn du den Inhalt der Objekte vergleichen möchtest oder du nur spezifische Eigenschaften, wie zum Beispiel eine ID vergleichen möchtest.
 In diesem Fall musst du die `equals()`-Methode überschreiben, um die Gleichheit richtig zu definieren.
 
-Bei der Umsetzung müssen folgende Bedingungen für die Definition der Gleichheit bei nicht-`null` Objekten gemäss [API-Definition für equals()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) erfüllt werden:
+Bei der Umsetzung müssen folgende Bedingungen für die Definition der Gleichheit bei nicht-`null` Objekten gemäss [API-Definition für equals()](<https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)>) erfüllt werden:
+
 - **Reflexivität**: Das Objekt liefert beim Vergleich mit sich selbst true.
 - **Symmetrie**: Wenn Objekt x gleich Objekt y ist, dann muss y auch gleich x sein.
 - **Transivität**: Wenn x gleich y ist und y gleich z, dann muss auch x gleich z sein.
@@ -201,14 +217,15 @@ if (carA.equals(carB)){
 ```
 
 #### hashCode()
-Die Methode `hashCode()` erstellt für jedes Objekt einen **Hashwert** – das ist wie ein Fingerabdruck, der das Objekt möglichst eindeutig beschreibt. 
+
+Die Methode `hashCode()` erstellt für jedes Objekt einen **Hashwert** – das ist wie ein Fingerabdruck, der das Objekt möglichst eindeutig beschreibt.
 Dieser Hashwert wird aus den Feldern des Objekts berechnet. Der Hashwert ist eine Zahl, der Rückgabetyp von `hashCode` ist also ein `int`.
 
 Falls du genauer erfahren möchtest, wie Hashing funktioniert, kannst du diesen [Beitrag](https://www.tessa-dam.com/de/wiki-de-reader/hash) lesen.
 
 Der Hashwert ermöglicht es Java, Objekte effizient zu vergleichen und zu verwalten. Wichtig ist, dass der Hashwert immer dieselbe Zahl liefert, solange sich das Objekt nicht ändert.
 
-Auch für diese Methode definiert die [API-Definition für hashCode()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#hashCode()) Bedingungen, welche erfüllt werden müssen, damit die Methode zweckmässig verwendet werden kann:
+Auch für diese Methode definiert die [API-Definition für hashCode()](<https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Object.html#hashCode()>) Bedingungen, welche erfüllt werden müssen, damit die Methode zweckmässig verwendet werden kann:
 
 - **Konsistenz**: Jedes Mal, wenn `hashCode()` aufgerufen wird, muss derselbe Wert zurückgegeben werden, solange das Objekt unverändert bleibt.
 - **Zusammenhang mit `equals()`**: Zwei Objekte, die gemäss `equals()` gleich sind, müssen den gleichen Hashwert liefern.
@@ -223,7 +240,7 @@ public class Car {
     private int speed;
     private String brand;
     private float remainingAmountOfFuel;
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(speed, brand, remainingAmountOfFuel);

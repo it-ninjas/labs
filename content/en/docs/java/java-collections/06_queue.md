@@ -7,6 +7,7 @@ description: >
 ---
 
 ## java.util.Queue
+
 Eine Queue ist ähnlich einem Stack ein Behälter, in den Elemente eingefügt und nur in einer bestimmten Reihenfolge
 wieder entnommen werden können. Bei den Queues gilt das _First In First Out_ (=FIFO) Prinzip:
 Das Einfügen eines Elements erfolgt an einem Ende und heisst _EnQueue_. Die Entfernung eines Elements erfolgt dann am
@@ -19,7 +20,7 @@ Queues können in ihrer Grösse beschränkt oder unbeschränkt sein.
 Auf Deutsch könnte man Queues als "Warteschlangen" bezeichnen.
 Wir kennen Warteschlangen von unserem Alltag:
 Beispielsweise vom Einkaufen, wo es eine Schlange von Kunden gibt, die an der Kasse auf einen Kassierer warten.
-Ein Kunde stellt sich zu hinterst an  und rückt "in der Warteschlange" vor, wenn vorherigen Kunden bedient wurden.
+Ein Kunde stellt sich zu hinterst an und rückt "in der Warteschlange" vor, wenn vorherigen Kunden bedient wurden.
 
 ![queue1](../../java-collections/queue1.png)
 
@@ -39,9 +40,9 @@ boolean add(E e);
  * wenn dies möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
  * Bei Erfolg wird true zurückgegeben und sonst wird false zurückgegeben.
  *
- * Bei der Verwendung einer Queue mit Kapazitätsbeschränkungen ist diese Methode in der Regel add(E e) vorzuziehen, 
+ * Bei der Verwendung einer Queue mit Kapazitätsbeschränkungen ist diese Methode in der Regel add(E e) vorzuziehen,
  * da bei Verletzung der Kapazitätsbeschränkungen keine Exception geworfen wird, sondern false zurückgegeben wird.
- * 
+ *
  */
 boolean offer(E e);
 
@@ -70,14 +71,13 @@ E peek();
 E element();
 ```
 
-
 ## java.util.Deque
+
 Die Deque ist eine Queue mit zwei Enden, und Datenelemente können an beiden Enden hinzugefügt oder entfernt
 werden. Die Deque in Java wird über die das Interface java.util.Deque implementiert, die ein
 Subtyp des Interface java.util.Queue ist.
 
 ![deque1](../../java-collections/deque1.png)
-
 
 ### Alle Methoden vom Interface java.util.Deque
 
@@ -85,7 +85,7 @@ Subtyp des Interface java.util.Queue ist.
 
 /*
  * Fügt das angegebene Element an den Anfang dieser Deque ein,
- * wenn dies möglich ist, ohne Kapazitätsbeschränkungen zu verletzen 
+ * wenn dies möglich ist, ohne Kapazitätsbeschränkungen zu verletzen
  * und löst eine IllegalStateException aus, wenn derzeit kein Platz verfügbar ist.
  */
 void addFirst(E e);
@@ -102,9 +102,9 @@ void addLast(E e);
  * wenn dies  möglich ist, ohne Kapazitätsbeschränkungen zu verletzen.
  * Bei Erfolg wird true zurückgegeben und sonst wird false zurückgegeben.
  *
- * Bei der Verwendung einer Deque mit Kapazitätsbeschränkungen ist diese Methode in der Regel addFirst(E e) vorzuziehen, 
+ * Bei der Verwendung einer Deque mit Kapazitätsbeschränkungen ist diese Methode in der Regel addFirst(E e) vorzuziehen,
  * da bei Verletzung der Kapazitätsbeschränkungen keine Exception geworfen wird, sondern false zurückgegeben wird.
- * 
+ *
  */
 boolean offerFirst(E e);
 
@@ -200,4 +200,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J7 - Java Collections - Queue + Deque](../../../../labs/java/java-collections/05_queue)
+[Aufgaben zu Modul #J6 - Java Collections - Queue + Deque](../../../../labs/java/java-collections/05_queue)
