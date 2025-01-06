@@ -8,6 +8,7 @@ description: >
 ---
 
 ### Aufgabe 1
+
 In dieser Aufgabe werden wir eine Liste von Wörtern analysieren. Die Liste enthält bereits vordefinierte Wörter, und dein Programm soll die folgenden Schritte ausführen:
 
 - Gib die **Anzahl der Wörter** in der Liste aus.
@@ -16,6 +17,7 @@ In dieser Aufgabe werden wir eine Liste von Wörtern analysieren. Die Liste enth
 - Gib die **Wörter in umgekehrter Reihenfolge** aus.
 
 Die Liste, die du verwenden sollst, lautet:
+
 ```java
 List<String> words = new ArrayList<>(List.of(
     "Abstraktion", "API", "Annotation", "ArrayList", "Bedingung", "Bibliothek",
@@ -29,16 +31,17 @@ List<String> words = new ArrayList<>(List.of(
 ));
 ```
 
-*Bei der Umsetzung dürfen keine Streams verwendet werden!*
+_Bei der Umsetzung dürfen keine Streams verwendet werden!_
 
 ---
 
 ### Aufgabe 2
+
 Schreibe ein Programm, das die **Fibonacci-Zahlen** bis zu einer bestimmten Zahl **n** berechnet und in einer ArrayList speichert.
 
 #### Was ist Fibonacci?
 
-Die **Fibonacci-Folge** ist eine berühmte Zahlenreihe, bei der **jede Zahl die Summe der beiden vorangehenden Zahlen ist**. Sie beginnt immer mit den Zahlen 0 und 1. 
+Die **Fibonacci-Folge** ist eine berühmte Zahlenreihe, bei der **jede Zahl die Summe der beiden vorangehenden Zahlen ist**. Sie beginnt immer mit den Zahlen 0 und 1.
 Die ersten Fibonacci-Zahlen sind:
 
 ```
@@ -66,23 +69,27 @@ Durch diese Aufgabe lernst du den Umgang mit ArrayLists und wie sie sich dynamis
 Die Fibonacci-Folge ist relevant, weil sie in der **Natur** häufig vorkommt, wie bei der Anordnung von Blättern oder der Struktur von Tannenzapfen.
 
 #### Umsetzung
+
 Du schreibst eine Methode für die Berechnung der Fibonacci-Zahlen bis zu einem bestimmten Wert.
 Die Methode berechnet die Fibonacci-Zahlen, bis die aktuell berechnete Zahl grösser als **n** ist, und gibt die Liste der berechneten Fibonacci-Zahlen als Rückgabewert zurück.
 Es ist also vor der Berechnung unklar, wie lange die Liste werden kann.
 
 Methodensignatur:
+
 ```java
 List<Integer> fibonacci(int n);
 ```
 
 Wenn wir also zum Beispiel **n** auf 20 setzen, wäre das Resultat eine ArrayList mit den folgenden Einträgen:
+
 ```java
 [0, 1, 1, 2, 3, 5, 8, 13, 21]
 ```
 
 21 ist grösser als 20, deshalb stoppt die Liste nach diesem Eintrag.
 
-*Bei der Umsetzung dürfen keine Streams verwendet werden!*
+_Bei der Umsetzung dürfen keine Streams verwendet werden!_
 
 ---
+
 Hier kannst du [zurück zur Theorie](../../../../docs/java/j2-oop/05-list-basics).
