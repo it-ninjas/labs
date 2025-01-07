@@ -11,13 +11,13 @@ description: >
 ## Ziele
 
 - Du weisst, was Unit-Tests in Angular sind.
-- Du kannst, beschrieben welche Blöcke es in einem Unit-Test gibt.
+- Du kannst beschreiben, welche Blöcke es in einem Unit-Test gibt.
 
 ## Unit Testing
 
-Testdateien (.spec.ts Files) sind Teil des Test-Frameworks, das in Angular integriert ist. Sie dienen dazu, verschiedene Components, Services, Directives, Pipes etc in einer Angular-Anwendung zu testen. Das Testen ist ein wichtiger Bestandteil der Entwicklung, da es hilft, die Funktionalität einer Anwendung zu überprüfen, Fehler zu identifizieren und sicherzustellen, dass Änderungen keine unerwünschten Nebenwirkungen haben.
+Testdateien (`.spec.ts`-Files) sind Teil des Test-Frameworks, das in Angular integriert ist. Sie dienen dazu, verschiedene Components, Services, Directives, Pipes etc. in einer Angular-Anwendung zu testen. Das Testen ist ein wichtiger Bestandteil der Entwicklung, da es hilft, die Funktionalität einer Anwendung zu überprüfen, Fehler zu identifizieren und sicherzustellen, dass gemachte Änderungen keine unerwünschten Nebenwirkungen haben.
 
-Als Beispiel sieht man einen minimalen Test, welcher für den AppComponent erstellt wurde:
+Als Beispiel folgt ein minimaler Test, welcher für den AppComponent erstellt wurde:
 
 ```typescript
 // app.component.ts
@@ -70,9 +70,9 @@ describe("AppComponent", () => {
 });
 ```
 
-Wozu die einzelnen Blöcke und Methoden im Testfile sind wird nachfolgend besser erläutert.
+Wozu die einzelnen Blöcke und Methoden im Testfile sind wird nachfolgend erläutert.
 
 - **Test-Suites** (`describe`-Blöcke): Eine Testdatei enthält normalerweise eine oder mehrere Test-Suiten. Eine Test-Suite fasst eine Gruppe von verwandten Tests zusammen. Zum Beispiel kann man eine Test-Suite für einen bestimmten Component oder einen bestimmten Service erstellen.
 - **Test-Cases** (`it`-Blöcke): Innerhalb einer Test-Suite werden einzelne Test-Cases definiert. Ein Test-Case überprüft eine bestimmte Funktionalität oder ein bestimmtes Verhalten der Anwendung. Man kann mehrere Test-Cases innerhalb einer Test-Suite haben.
-- **Test-Setup** (`beforeEach`-Block): Vor jedem Testfall kann man den `beforeEach`-Block verwenden, um Vorbereitungsschritte auszuführen. Zum Beispiel kann man einen Component initialisieren, Abhängigkeiten injizieren oder den Zustand der Anwendung festlegen. Dies stellt sicher, dass jeder Test-Case in einem konsistenten Zustand beginnt.
+- **Test-Setup** (`beforeEach`-Block): Vor jedem Testfall kann man den `beforeEach`-Block verwenden, um die für den Test notwendigen Vorbereitungsschritte auszuführen. Zum Beispiel kann man einen Component initialisieren, Abhängigkeiten injizieren oder den Zustand der Anwendung festlegen. Dies stellt sicher, dass jeder Test-Case in einem konsistenten Zustand beginnt.
 - **Assertions**: In den Test-Cases verwendet man Assertions, um zu überprüfen, ob das erwartete Verhalten erfüllt ist. Man kann verschiedene Assertions verwenden, um Eigenschaften, Zustände, Ausgaben oder Verhalten des Components zu überprüfen. Beispiele für Assertions sind `expect()`, `toBe()`, `toEqual()`, `toContain()`, `toBeTruthy()` etc.
