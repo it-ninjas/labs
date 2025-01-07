@@ -9,9 +9,10 @@ description: >
 ---
 
 ### Ziele
-- Du weisst, was Server Side Rendering ist und welche Vorteile dieses bietet. 
-- Du weisst, was Static Site Generation ist und welche Vorteile diese bietet. 
-- Du kennst das Konzept der Hydration und weisst, wie man diese für ein Angular-Projekt aktiviert. 
+
+- Du weisst, was Server Side Rendering ist und welche Vorteile dieses bietet.
+- Du weisst, was Static Site Generation ist und welche Vorteile diese bietet.
+- Du kennst das Konzept der Hydration und weisst, wie man diese für ein Angular-Projekt aktiviert.
 
 ## Server Side Rendering (SSR)
 
@@ -28,10 +29,12 @@ Die Hauptvorteile von SSR im Vergleich zu clientseitigem Rendering (CSR) sind:
 Seit Angular 17 muss man keine speziellen Schritte mehr durchführen, um das Server-Side-Rendering in seine Angular-Applikaton zu integrieren.
 Wird ein neues Angular-Projekt mit `ng new <>` generiert, wird seit Angular 17 direkt beim Generieren gefragt, ob SSR für das Projekt aktiviert werden soll.
 
-Um SSR zu einem bereits existierenden Angular-Projekt hinzuzufügen, kann man den folgenden Befehl ausführen: 
+Um SSR zu einem bereits existierenden Angular-Projekt hinzuzufügen, kann man den folgenden Befehl ausführen:
+
 ```shell
 ng add @angular/ssr
 ```
+
 Diese Befehle erstellen und aktualisieren den Anwendungscode, um SSR zu aktivieren, und fügen dem Projekt strukturspezifische Dateien hinzu.
 
 ### Projektstruktur
@@ -55,8 +58,8 @@ Der wesentliche Unterschied liegt im Ansatz, dass Seiten als statischer Inhalt b
 Wenn die für das serverseitige Rendering erforderlichen Daten bei allen Benutzern konsistent bleiben, erweist sich die Strategie des Prerenderings als wertvolle Alternative.
 Anstatt Seiten dynamisch für jede Benutzeranfrage zu rendern, geht das Prerendering proaktiv vor und rendert sie im Voraus.
 
-Insofern ein Angular-Projekt mit SSR-Funktionalitäten erstellt wird oder SSR zu einem bestehenden Angular-Projekt hinzugefügt wird, wird auch automatisch SSG aktiviert. 
-Es ist möglich, SSG je nach Wunsch ein- oder auszuschalten. Das lässt sich in der `angular.json`-Datei bewerkstelligen: 
+Insofern ein Angular-Projekt mit SSR-Funktionalitäten erstellt wird oder SSR zu einem bestehenden Angular-Projekt hinzugefügt wird, wird auch automatisch SSG aktiviert.
+Es ist möglich, SSG je nach Wunsch ein- oder auszuschalten. Das lässt sich in der `angular.json`-Datei bewerkstelligen:
 
 ```json
 {
@@ -64,7 +67,7 @@ Es ist möglich, SSG je nach Wunsch ein- oder auszuschalten. Das lässt sich in 
     "build": {
       "options": {
         "server": "src/main.server.ts",
-        //Mithilfe des "prerender"-Settings lässt sich SSG für das Projekt ein- oder ausschalten  
+        //Mithilfe des "prerender"-Settings lässt sich SSG für das Projekt ein- oder ausschalten
         "prerender": false,
         "ssr": {
           "entry": "server.ts"
@@ -87,7 +90,7 @@ Es ist ebenfalls möglich, nur SSG ohne SSR zu verwenden. Die Konfiguration sieh
           "routesFile": "prerender-routes.txt"
           "discoverRoutes": false
         },
-        //Mithilfe des "ssr"-Settings lässt sich SSR für das Projekt ein- oder ausschalten 
+        //Mithilfe des "ssr"-Settings lässt sich SSR für das Projekt ein- oder ausschalten
         "ssr": false
       }
     }
@@ -95,7 +98,7 @@ Es ist ebenfalls möglich, nur SSG ohne SSR zu verwenden. Die Konfiguration sieh
 }
 ```
 
-Um zu prüfen, ob alles funktioniert wie gewünscht, kannst du das Projekt mit dem folgenden Befehl lokal builden. 
+Um zu prüfen, ob alles funktioniert wie gewünscht, kannst du das Projekt mit dem folgenden Befehl lokal builden.
 
 ```shell
 ng build

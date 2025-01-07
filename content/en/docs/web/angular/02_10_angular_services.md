@@ -34,5 +34,6 @@ export class WeaponService {
 ```
 
 ## providedIn
-Innerhalb der `@Injectable`-Annotation findet sich immer die Konfiguration `providedIn`. Diese bestimmt, innerhalb welchen Scopes sich der Service injizieren lässt. Standardmässig hat die Konfiguration 
-den Wert `root` inne, der aussagt, dass der Service innerhalb der gesamten Applikation injiziert werden kann. Insofern ein Service nur in einem bestimmten Teil der Applikation injiziert werden soll, kann der Scope mithilfe von `providedIn` angepasst werden.  
+
+Innerhalb der `@Injectable`-Annotation findet sich immer die Konfiguration `providedIn`. Diese bestimmt, innerhalb welchen Scopes sich der Service injizieren lässt. Standardmässig hat die Konfiguration
+den Wert `root` inne, der aussagt, dass der Service innerhalb der gesamten Applikation injiziert werden kann. Insofern ein Service nur in einem bestimmten Teil der Applikation injiziert werden soll, kann der Scope mithilfe von `providedIn` angepasst werden.

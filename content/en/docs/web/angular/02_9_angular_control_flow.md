@@ -7,10 +7,11 @@ date: 2024-02-16
 description: >
   Modul #F6 - Angular - Neuer Control Flow in Angular
 ---
-### Ziele
-- Du weisst, was ein control flow ist und wofür dieser verwendet wird. 
-- Du kennst die relevanten Änderungen der control flows, die im Rahmen von Angular 17 entstanden sind. 
 
+### Ziele
+
+- Du weisst, was ein control flow ist und wofür dieser verwendet wird.
+- Du kennst die relevanten Änderungen der control flows, die im Rahmen von Angular 17 entstanden sind.
 
 ## Control Flow
 
@@ -110,7 +111,7 @@ Es ist auch möglich, den Index des aktuellen Elements zu erhalten, das wird mit
 
 In diesem Beispiel gibt `{{$index}}` den Index des aktuellen Elements in der Sammlung zurück und `{{item}}` gibt den Wert des aktuellen Elements zurück.
 Dies ist besonders nützlich, wenn du sowohl den Index als auch den Wert des Elements in deinem Template benötigst.
-Relevant ist hierbei, dass im Vergleich zu früher das Tracken des Index nicht mehr optional ist, sondern bei jeder Verwendung eines `@for`-Flows benötigt wird. 
+Relevant ist hierbei, dass im Vergleich zu früher das Tracken des Index nicht mehr optional ist, sondern bei jeder Verwendung eines `@for`-Flows benötigt wird.
 
 Passend zum `@for` gibt es `@empty`, welches einen Standardwert für den Fall bereitstellt, dass es keine Elemente gibt, über die iteriert werden kann. Hier ein Beispiel dazu:
 

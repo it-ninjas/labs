@@ -136,8 +136,9 @@ export class TriumphsComponent {
 }
 ```
 
-Wenn man den Index bei einem `*ngFor` benötigt, kann dieser sehr einfach angegeben werden. Dazu muss man nach dem `*ngFor` den Code `; let i = index` hinzufügen. Nun kann man in den Elementen innerhalb des `*ngFor` auf den Index der Elemente zu greifen. 
-Der Index ist insofern relevant, dass man einzelne Elemente anhand dessen identifizieren kann, zudem ist direkt ersichtlich, welchen Index das gerenderte Element innehat. 
+Wenn man den Index bei einem `*ngFor` benötigt, kann dieser sehr einfach angegeben werden. Dazu muss man nach dem `*ngFor` den Code `; let i = index` hinzufügen. Nun kann man in den Elementen innerhalb des `*ngFor` auf den Index der Elemente zu greifen.
+Der Index ist insofern relevant, dass man einzelne Elemente anhand dessen identifizieren kann, zudem ist direkt ersichtlich, welchen Index das gerenderte Element innehat.
+
 ```html
 <div *ngFor="let triumph of triumphs; let i = index">
   <p>{{ triumph }}, {{ i }}</p>

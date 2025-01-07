@@ -63,7 +63,7 @@ const routes: Routes = [
 ];
 ```
 
-Seit Angular 18 muss in der  `app.component.ts`-Datei `RouterOutlet` in den imports hinzugefügt werden, da das Routing ansonsten nicht funktioniert. 
+Seit Angular 18 muss in der `app.component.ts`-Datei `RouterOutlet` in den imports hinzugefügt werden, da das Routing ansonsten nicht funktioniert.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -208,12 +208,16 @@ Beispielsweise:
 ```
 
 ## Resolvers
-Ein Resolver ist ein Interface, welches von Klassen als Daten-Provider implementiert werden kann. Ein solcher Provider kann in zusammenarbeit mit dem Router verwendet werden, um Daten während der navigation zu liefern. 
-Es gibt in jedem Resolver eine `resolve()`-Methode. Der Router wartet jeweils, bis die Daten geliefert sind, bevor die Route aktiviert wird. Nachfolgend ein Beispiel für einen Resolver: 
+
+Ein Resolver ist ein Interface, welches von Klassen als Daten-Provider implementiert werden kann. Ein solcher Provider kann in zusammenarbeit mit dem Router verwendet werden, um Daten während der navigation zu liefern.
+Es gibt in jedem Resolver eine `resolve()`-Methode. Der Router wartet jeweils, bis die Daten geliefert sind, bevor die Route aktiviert wird. Nachfolgend ein Beispiel für einen Resolver:
 
 ```typescript
 interface Resolve<T> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<T | RedirectCommand>;
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+  ): MaybeAsync<T | RedirectCommand>;
 }
 ```
 

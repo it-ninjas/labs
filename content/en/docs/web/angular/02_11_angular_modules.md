@@ -15,7 +15,7 @@ description: >
 
 ## Modules
 
-Wichtig: Dieser Abschnitt ist im Rahmen der Veröffentlichung von Angular 18 inzwischen mehr oder weniger überflüssig, da seit Angular 18 alle Komponenten standardmässig als standalone behandelt werden. Da es aber nach wie vor möglich ist, mit Modulen zu arbeiten, ist es dennoch empfehlenswert, sich diesen Abschnitt kurz zu Gemüte zu führen. 
+Wichtig: Dieser Abschnitt ist im Rahmen der Veröffentlichung von Angular 18 inzwischen mehr oder weniger überflüssig, da seit Angular 18 alle Komponenten standardmässig als standalone behandelt werden. Da es aber nach wie vor möglich ist, mit Modulen zu arbeiten, ist es dennoch empfehlenswert, sich diesen Abschnitt kurz zu Gemüte zu führen.
 
 In Angular ist ein Modul ein Mechanismus, um Components, Directives und Pipes und Services zu gruppieren, die miteinander zusammenhängen. Auf diese Weise können sie mit anderen Modulen kombiniert werden, um eine Anwendung zu erstellen.
 
