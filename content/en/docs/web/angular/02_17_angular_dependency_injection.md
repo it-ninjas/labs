@@ -52,16 +52,14 @@ export class WeaponService {}
 import { WeaponService } from "./services/weapon.service";
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    { provide: WeaponService },
-  ]
+  providers: [{ provide: WeaponService }],
 };
 ```
 
-Dann muss noch die folgende Einstellung in der `main.ts`-Datei gemacht werden: 
+Dann muss noch die folgende Einstellung in der `main.ts`-Datei gemacht werden:
 
 ```typescript
-bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(AppComponent, appConfig);
 ```
 
 3. Dependency injecten wo (in unserem Beispiel) der Service genutzt wird:
@@ -84,7 +82,7 @@ export class WeaponComponent {
 ```
 
 Das Minibeispiel soll lediglich die 3 wichtigen Schritte etwas besser darstellen.
-Im gemachten Beispiel ist zudem die Dependency auf der `root`-Ebene verfügbar. (Sichtbar durch den Teil `providedIn: "root"` im `@Injectable`-Block) Das bedeutet, dass Angular für die gesamte Applikation genau eine Instanz des injizierbaren Services erstellt, welcher dann jeweils von allen Klassen verwendet wird, die ihn injecten. 
+Im gemachten Beispiel ist zudem die Dependency auf der `root`-Ebene verfügbar. (Sichtbar durch den Teil `providedIn: "root"` im `@Injectable`-Block) Das bedeutet, dass Angular für die gesamte Applikation genau eine Instanz des injizierbaren Services erstellt, welcher dann jeweils von allen Klassen verwendet wird, die ihn injecten.
 
 Es gibt aber auch eine andere Möglichkeit, einen solchen Service zu injecten. Im folgenden Beispiel wird der Service auf der Component-Ebene injected und wird für jede neue Instanz des Components neu instanziert:
 
@@ -100,16 +98,17 @@ class WeaponService {}
 ```typescript
 @Component({
   standalone: true,
-  selector: 'weapon',
-  template: '...',
-  providers: [WeaponService]
+  selector: "weapon",
+  template: "...",
+  providers: [WeaponService],
 })
 class WeaponComponent {}
 ```
 
-Auf diese Weise wird für jede neue Instanz des Components auch eine neue Instanz des Service verwendet. Unter verwendung von `providedIn: 'root'` wird eine Instanz der inizierten Klasse für die gesamte Applikation verwendet. 
-Es gibt für beide Möglichkeiten valide Anwendungsfälle, grundsätzlich empfiehlt es sich aber, injizierbare Klassen auf der `root`-Ebene zu providen, da so nicht unnötig viele Instanzen erstellt werden und die Instanz auch von Angular entfernt werden kann, wenn sie nirgendwo gebraucht wird. 
+Auf diese Weise wird für jede neue Instanz des Components auch eine neue Instanz des Service verwendet. Unter verwendung von `providedIn: 'root'` wird eine Instanz der inizierten Klasse für die gesamte Applikation verwendet.
+Es gibt für beide Möglichkeiten valide Anwendungsfälle, grundsätzlich empfiehlt es sich aber, injizierbare Klassen auf der `root`-Ebene zu providen, da so nicht unnötig viele Instanzen erstellt werden und die Instanz auch von Angular entfernt werden kann, wenn sie nirgendwo gebraucht wird.
+
 ### Lernvideo
 
-Wenn du dir das Konzept der Dependency-Injection etwas genauer anschauen möchtest, kannst du dieses 
-[Video](https://www.youtube.com/watch?v=yunF2PgJlHU) anschauen. 
+Wenn du dir das Konzept der Dependency-Injection etwas genauer anschauen möchtest, kannst du dieses
+[Video](https://www.youtube.com/watch?v=yunF2PgJlHU) anschauen.

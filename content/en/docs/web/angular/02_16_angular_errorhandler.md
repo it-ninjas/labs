@@ -25,26 +25,26 @@ import { ErrorHandler, Injectable } from "@angular/core";
 class GlobalErrorHandler implements ErrorHandler {
   handleError(error: any): void {
     console.log("test", error.message);
-    
+
     // Weitere Aktionen ausführen, z.B. Fehlermeldung anzeigen oder Logging durchführen
   }
 }
 ```
 
-Seit der Änderung zu standardmässig als `standalone` gehandelten Komponenten muss der `ErrorHandler` nun nicht mehr im `AppModule`, sondern in der `main.ts`-Datei in den Providers hinzugefügt werden: 
+Seit der Änderung zu standardmässig als `standalone` gehandelten Komponenten muss der `ErrorHandler` nun nicht mehr im `AppModule`, sondern in der `main.ts`-Datei in den Providers hinzugefügt werden:
 
 ```typescript
 bootstrapApplication(AppComponent, {
-  providers: [{provide: ErrorHandler, useClass: GlobalErrorHandler}]
-})
+  providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }],
+});
 ```
 
-Wenn du aber trotzdem eine `module`-basierte entwickelst, musst du den Provider stattdessen innerhalb des `@NgModule`-Decorators des jeweiligen Moduls hinzufügen:  
+Wenn du aber trotzdem eine `module`-basierte entwickelst, musst du den Provider stattdessen innerhalb des `@NgModule`-Decorators des jeweiligen Moduls hinzufügen:
+
 ```typescript
 @NgModule({
-  providers: [{provide: ErrorHandler, useClass: GlobalErrorHandler}]
+  providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }],
 })
-
 class MyModule {}
 ```
 

@@ -68,7 +68,7 @@ import { RequestLogInterceptor } from "...";
 export class AppModule {}
 ```
 
-Die Option `multi: true` teilt Angular mit, dass wir mehrere Interceptors bereitstellen. Diese Einstellung muss daher auch nur in diesem Fall gemacht werden. 
+Die Option `multi: true` teilt Angular mit, dass wir mehrere Interceptors bereitstellen. Diese Einstellung muss daher auch nur in diesem Fall gemacht werden.
 In unserem Beispielszenario wäre dies also nicht erforderlich, da wir nur einen Interceptor implementiert haben.
 
 Ebenfalls wichtig zu berücksichtigen ist, dass Angular Interceptors in der Reihenfolge anwendet, in der sie bei den Providers des Moduls angegeben sind.

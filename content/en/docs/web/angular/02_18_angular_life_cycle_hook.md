@@ -46,10 +46,9 @@ Die Ausführung von Render-Callbacks ist nicht an eine bestimmte Komponenteninst
 
 ![Lifecycle-Hooks ](../images/angular-lifecycle-update.png)
 
+Der afterNextRender-Hook wird einmal nach dem jeweiligen Change-Detection-Zyklus durchgeführt. Daher ist dieser Hook gut dazu geeeignet, einmalige Initialisierungen wie die Integration einer Third-Party-Library durchzuführen.
+Der afterRender-Hook funktioniert hingegen so, dass er nach **jedem** Change-Detection-Hook ausgeführt wird. Der Hook eignet sich daher also gut dazu, sich wiederholende, nach dem Change-Detection-Hook nötige Anweisungen auszuführen.
 
-Der afterNextRender-Hook wird einmal nach dem jeweiligen Change-Detection-Zyklus durchgeführt. Daher ist dieser Hook gut dazu geeeignet, einmalige Initialisierungen wie die Integration einer Third-Party-Library durchzuführen. 
-Der afterRender-Hook funktioniert hingegen so, dass er nach **jedem** Change-Detection-Hook ausgeführt wird. Der Hook eignet sich daher also gut dazu, sich wiederholende, nach dem Change-Detection-Hook nötige Anweisungen auszuführen. 
-
-Genauere Informationen zum afterNextRender-Hook und zum afterRender-Hook findest du in der offizielen Angular-Dokumentation: 
+Genauere Informationen zum afterNextRender-Hook und zum afterRender-Hook findest du in der offizielen Angular-Dokumentation:
 [Dokumentation zu afterNextRender](https://angular.dev/api/core/afterNextRender)
 [Dokumentation zu afterRender](https://angular.dev/api/core/afterRender)
