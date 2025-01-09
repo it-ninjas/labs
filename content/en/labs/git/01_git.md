@@ -83,8 +83,25 @@ description: >
 
 ### Schritt 7: Löse den Merge-Konflikt
 
-Um den Merge-Konflikt zu lösen, öffnest du am besten Visual Studio Code oder IntelliJ. Du kannst es natürlich auch über das Terminal versuchen, wenn du mutig genug bist.
+Um den Merge-Konflikt zu lösen, öffnest du am besten IntelliJ(empfohlen) oder Visual Studio Code. Du kannst es natürlich auch über das Terminal versuchen, wenn du mutig genug bist.s
 
+<details>
+   <summary>Konflikt mit IntelliJ lösen</summary>
+   <p>
+      IntelliJ hat ein eingebautes UI um Merge Konflikte zu lösen. JetBrains stellt eine <a href="https://www.jetbrains.com/help/idea/resolve-conflicts.html">super Anleitung</a> zur Verfügung.
+   </p>
+</details>
+
+<details>
+   <summary>Konflikt mit Visual Studio Code lösen</summary>
+   <p>
+      Visual Studio Code hat sogar zwei verschiedene Arten, wie du Merge-Konflikte lösen kannst. Einen eher simpeln Ansatz, "Inline Editor" genannt, und einen der etwas mehr an IntelliJ erinnert, "3-Way Editor" genannt.
+   </p>
+   <p>
+      Eine gute Anleitung zu beiden findest du <a href="https://monsterlessons-academy.com/posts/resolving-merge-conflicts-in-visual-studio-code-the-easy-way">hier</a>.
+   </p>
+</details>
+   
 <details>
 <summary>Vim schliessen</summary>
 Je nach Betriebssystem und Einstellungen, kann es sein das Git automatisch den Texteditor Vim öffnet. Das sieht dann etwa so aus wie im Bild unten.
@@ -98,6 +115,8 @@ Um den Editor wieder zu schliessen, kannst du die folgende Schritte verwenden:
    ![](../images/vim.png "Vim")
 
 </details>
+
+Es gibt noch unzählige weitere Tools wie [Meld](http://meldmerge.org/) oder vimdiff, welche dazu genutzt werden können Merge-Konflikte zu lösen. Du darfst dich gerne durchprobieren und das Tool wählen, welches dir am besten gefällt. Für die meisten reicht das Tooling ihrer IDE.
 
 ### Schritt 8: Änderungen vom Stash anwenden
 
