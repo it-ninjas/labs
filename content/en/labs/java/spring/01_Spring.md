@@ -1107,7 +1107,7 @@ spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=password
-spring.datasource.platform=h2
+spring.sql.init.platform=h2
 spring.jpa.hibernate.ddl-auto=update
 ```
 
@@ -1119,8 +1119,10 @@ spring:
     url: jdbc:h2:mem:testdb
     username: sa
     password: password
-    platform: h2
     driver-class-name: org.h2.Driver
+  sql:
+    init:
+      platform: h2
 jpa:
   hibernate:
     ddl-auto: update
@@ -1156,7 +1158,7 @@ Integrationstests sind wichtig, um sicherzustellen, dass verschiedene Komponente
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("admin")
-@ExtendWith(SpringExtension.class)
+@TestPropertySource("/application-test.properties")
 public class AdminControllerIntegrationTest {
 
     @Autowired
