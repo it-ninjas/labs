@@ -17,8 +17,8 @@ description: >
 
 Internationalisierung (i18n) bezieht sich auf die Anpassung einer Anwendung, um sie für verschiedene Sprachen und Regionen weltweit zugänglich und benutzbar zu machen. Durch Internationalisierung wird die Anwendung so gestaltet, dass sie leicht in verschiedene Sprachen übersetzt werden kann, um eine breitere Benutzerbasis anzusprechen.
 
-Meistens wird die Internationalisierung mit JSON und einer Translate-Pipe umgesetzt. Dabei werden JSON-Dateien verwendet, um die einzelnen Texte jeweils pro Sprache zu speichern, und die Translate-Pipe wird verwendet, um die passenden Übersetzungen abzurufen und anzuzeigen. 
-Wichtig zu beachten ist hierbei, dass bei einem Wechsel der Sprache die Texte umgeschalten werden, ohne dass die Seite neu laden muss. 
+Meistens wird die Internationalisierung mit JSON und einer Translate-Pipe umgesetzt. Dabei werden JSON-Dateien verwendet, um die einzelnen Texte jeweils pro Sprache zu speichern, und die Translate-Pipe wird verwendet, um die passenden Übersetzungen abzurufen und anzuzeigen.
+Wichtig zu beachten ist hierbei, dass bei einem Wechsel der Sprache die Texte umgeschalten werden, ohne dass die Seite neu laden muss.
 
 ## Internationalisierung mit JSON und einer Translate-Pipe einrichten
 
@@ -54,20 +54,21 @@ Wichtig zu beachten ist hierbei, dass bei einem Wechsel der Sprache die Texte um
 ```
 
 3. Library installieren: Nun muss man eine Library installieren, um die translate-Pipe verwenden zu können. Dazu kann man den Befehl `npm install @ngx-translate/core` benutzen, um die `@ngx-translate/core`-Library zu installieren. Und den Befehl `npm install @ngx-translate/http-loader`, damit man die Library `@ngx-translate/http-loader` verwenden kann. Diese wird verwendet, damit der HTTPLoader in ngx-translate verwendet werden kann.
-4. Das Translate-Module importieren: Um die Übersetzung App-weit zu ermöglichen, muss das TranslateModule im AppComponent imporiert werden.  
+4. Das Translate-Module importieren: Um die Übersetzung App-weit zu ermöglichen, muss das TranslateModule im AppComponent imporiert werden.
+
 ```typescript
 @Component({
-   //...
-   standalone: true,
-   imports: [CommonModule, TranslateModule],
-   //...
+  //...
+  standalone: true,
+  imports: [CommonModule, TranslateModule],
+  //...
 })
 export class AppComponent {
-   //....
+  //....
 }
 ```
 
-5. Falls es noch kein `environment`-File im Projekt gibt, muss dieses erstellt werden. Dazu muss in `src` ein Ordner `environments` erstellt werdne. Darin dann das File `environment.ts`. 
+5. Falls es noch kein `environment`-File im Projekt gibt, muss dieses erstellt werden. Dazu muss in `src` ein Ordner `environments` erstellt werdne. Darin dann das File `environment.ts`.
 
 ```typescript
 export const environment = {
@@ -123,13 +124,14 @@ export class AppComponent implements OnInit {
 ```
 
 ## Anwendungsbeispiele
+
 ```typescript
-// Fügt die Sprachen "en" und "de" zu den möglichen Sprachen hinzu. 
-this.translateService.addLangs(['en', 'de']);
-// Gibt Englisch als standardmässig verwendete Sprache an. 
-this.translateService.setDefaultLang('en');
+// Fügt die Sprachen "en" und "de" zu den möglichen Sprachen hinzu.
+this.translateService.addLangs(["en", "de"]);
+// Gibt Englisch als standardmässig verwendete Sprache an.
+this.translateService.setDefaultLang("en");
 // Liest die derzeitige im Browser verwendete Sprache aus.
 const browserLang = translateService.getBrowserLang();
-// Prüft, ob die derzeitige im Browser verwendete Sprache englisch oder deutsch entspricht. Entspricht einer der beiden Fälle 
-this.translateService.use(browserLang.match(/en|de/) ? browserLang : 'en');
+// Prüft, ob die derzeitige im Browser verwendete Sprache englisch oder deutsch entspricht. Entspricht einer der beiden Fälle
+this.translateService.use(browserLang.match(/en|de/) ? browserLang : "en");
 ```

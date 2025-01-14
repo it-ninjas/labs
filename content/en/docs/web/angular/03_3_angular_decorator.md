@@ -61,7 +61,7 @@ export class GreetingComponent {
 ### @Input
 
 Der @Input-Decorator ermöglicht es, Daten von einem übergeordneten Component (Parent) an einen untergeordneten Component (Child) zu übergeben.
-Somit wird die Kommunikation zwischen den Components erleichtert: 
+Somit wird die Kommunikation zwischen den Components erleichtert:
 
 ```typescript
 import { Component, Input } from "@angular/core";

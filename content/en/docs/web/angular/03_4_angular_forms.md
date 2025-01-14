@@ -13,7 +13,7 @@ description: >
 - Du weisst was Angular Reactive Forms sind.
 - Du weisst, was FormsControl, -Group und -Array sind und kannst diese anwenden.
 - Du weisst, was der FormBuilder ist und kannst ihn anwenden.
-- Du kennst die Validators,  kannst sie verwenden und eigene schrieben.
+- Du kennst die Validators, kannst sie verwenden und eigene schrieben.
 
 ## Angular Reactive Forms
 
@@ -249,7 +249,7 @@ export class TriumphsComponent implements AfterViewInit {
 <p>Value Zip: {{ triumphForm.value.placeOfAchieving.zip }}</p>
 ```
 
-Wenn man eine so grosse `FormGroup` hat und nun einen Wert über Typescript ändern möchte, kann man dies auch mittels `setValue()` tun. Das kann jedoch mühsam sein, da man bei dieser Methode alle Values (FormControls) der FormGroup angeben muss. Wenn man aber nur einzelne anpassen möchte, kann man die Methode `patchValue()` verwenden. 
+Wenn man eine so grosse `FormGroup` hat und nun einen Wert über Typescript ändern möchte, kann man dies auch mittels `setValue()` tun. Das kann jedoch mühsam sein, da man bei dieser Methode alle Values (FormControls) der FormGroup angeben muss. Wenn man aber nur einzelne anpassen möchte, kann man die Methode `patchValue()` verwenden.
 Diese Methode erlaubt es nämlich, dass man nur einzelne der Values (FormControls) angeben muss.
 
 ```typescript
@@ -477,7 +477,7 @@ Es gibt eine Vielzahl von Validators, die man verwenden kann, um die Eingaben de
 
 - `Validators.max(max)`: Dieser Validator überprüft, ob der Value des Formularelements kleiner oder gleich dem angegebenen Maximum `(max)` ist. Auch dieser Validator wird zumeist für numerische Eingabefelder verwendet.
 
-Es können auch mehrere Validators eingesetzt werden, dazu muss man diese einfach in Form eines Arrays angeben. Grundsätzlich setzen die Validators jeweils die CSS-Klassen `ng-valid ` (bei einer positiven Validierung) und `ng-invalid` (bei einer negativen Validierung) auf des entsprechende Element. Das Ergebnis hingegen muss aber jeweils vom Entwickler visualisiert werden. 
+Es können auch mehrere Validators eingesetzt werden, dazu muss man diese einfach in Form eines Arrays angeben. Grundsätzlich setzen die Validators jeweils die CSS-Klassen `ng-valid ` (bei einer positiven Validierung) und `ng-invalid` (bei einer negativen Validierung) auf des entsprechende Element. Das Ergebnis hingegen muss aber jeweils vom Entwickler visualisiert werden.
 
 ```typescript
 import { Component } from "@angular/core";

@@ -27,9 +27,9 @@ Wenn wir zum Beispiel den `MatSlider` in unsere Applikation implementieren möch
 Jeder Component wird auf der Website von Material wie folgt beschrieben:
 
 - **Overview**: Auf der Übersicht wird beschrieben, wie und wozu man den Component anwenden kann.
-  Oftmals werden hier auch erweiterte Funktionen eines Components aufgelistet. Daher gilt: **Immer aufmerksam durchlesen!** 
-Wenn du einen spezifischen Use-Case mit einem Material-Component abdecken möchtest, kannst du so im Vorhinein schon bestimmen, ob der
-der Component das von dir gewünschte Verhalten / Design umsetzen kann. 
+  Oftmals werden hier auch erweiterte Funktionen eines Components aufgelistet. Daher gilt: **Immer aufmerksam durchlesen!**
+  Wenn du einen spezifischen Use-Case mit einem Material-Component abdecken möchtest, kannst du so im Vorhinein schon bestimmen, ob der
+  der Component das von dir gewünschte Verhalten / Design umsetzen kann.
 - **API**: In diesem Abschnitt ist für uns vor allem der Import wichtig. Für jeden Component muss erst das dazugehörige Modul importiert werden:
 
 ```typescript
@@ -46,8 +46,8 @@ import { MatSliderModule } from '@angular/material/slider';
 ```
 
 - **Examples**: In diesem Abschnitt werden jeweils Anwendungsbeispiele aufgezeigt, von welchen wir unseren Code ableiten können.
-Das ist insbesondere nützlich, wenn man noch nicht mit dem Component vertraut ist und sich einen Überblick verschaffen möchte, was alles 
-damit umsetzbar ist. 
+  Das ist insbesondere nützlich, wenn man noch nicht mit dem Component vertraut ist und sich einen Überblick verschaffen möchte, was alles
+  damit umsetzbar ist.
 
 ```html
 <mat-slider
@@ -71,7 +71,7 @@ Wie man Material in seiner Angular-Applikation installiert, wird auf der [offizi
 ## Material Theming
 
 Material Design unterstützt Theming. Ein Theme ist eine Farbpalette, welche defaultmässig auf jeden Angular Material Component angewendet wird
-und der App somit ohne grösseren Aufwand einen von Anfang an relativ einheitlichen Look verleiht. 
+und der App somit ohne grösseren Aufwand einen von Anfang an relativ einheitlichen Look verleiht.
 
 Ein Theme besteht aus:
 
@@ -94,8 +94,8 @@ Um ein solches Theme zu verwenden, müssen wir dies in unserem globalen Styleshe
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 ```
 
-Bei der ersten Installation von Material wird man bereits gefragt, ob man ein Theme für seine App haben möchte. Insofern 
-bei der Installation also bereits ein Theme ausgewählt wurde, kann man sich den obenstehenden Schritt sparen. 
+Bei der ersten Installation von Material wird man bereits gefragt, ob man ein Theme für seine App haben möchte. Insofern
+bei der Installation also bereits ein Theme ausgewählt wurde, kann man sich den obenstehenden Schritt sparen.
 
 Natürlich kann man auch sein eigene Theme für Angular Material erstellen.
 Wie ihr dies machen könnt, wird [hier](https://material.angular.io/guide/theming#defining-a-custom-theme) ausführlich beschrieben (Für diejenigen, die mit den Übungen frühzeitig fertig sind).

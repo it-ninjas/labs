@@ -138,7 +138,7 @@ export class TriumphsComponent {
     <input [value]="title" (input)="title = getValue($event)" />
   </p>
 
-  //Das folgende Beispiel ist eine kompakte Schreibweise für ein Input-Property. 
+  //Das folgende Beispiel ist eine kompakte Schreibweise für ein Input-Property.
   <p>
     <input [(ngModel)]="title" />
   </p>
