@@ -11,7 +11,7 @@ description: >
 ## Ziele
 
 - Du weisst, was Decorators in Angular sind.
-- Du kennst, die verschiedenen Decorators von Angular und kannst diese anwenden.
+- Du kennst die verschiedenen Decorators von Angular und kannst diese anwenden.
 
 ## Decorators
 
@@ -19,31 +19,31 @@ Decorators sind spezielle Funktionen, die verwendet werden, um zusätzliche Info
 
 Folgende sieben Decorators sind in Angular die meistverwendeten:
 
-- `@Component`: Der @Component-Decorator wird verwendet, um den Component zu definieren.
+- `@Component`: Der `@Component`-Decorator wird verwendet, um einen Component zu definieren.
 
-- `@Directive`: Der @Directive-Decorator wird verwendet, um eine [Directives](./02_8_angular_directives) zu definieren.
+- `@Directive`: Der `@Directive`-Decorator wird verwendet, um eine [Directives](https://labs.it-ninjas.ch/docs/web/angular/02_8_angular_directives/) zu definieren.
 
-- `@Injectable`: Der @Injectable-Decorator wird verwendet, um einen [Service](./02_10_angular_services) zu definieren, er wird aber auch bei [Dependency Injection](./02_17_angular_dependency_injection) verwendet.
+- `@Injectable`: Der `@Injectable`-Decorator wird verwendet, um einen [Service](./02_10_angular_services) zu definieren, er wird aber auch bei [Dependency Injection](./02_17_angular_dependency_injection) verwendet.
 
-- `@Input`: Der @Input-Decorator wird verwendet, um eine Eingabeeigenschaft in eines Components oder Directive zu definieren.
+- `@Input`: Der `@Input`-Decorator wird verwendet, um eine Eingabeeigenschaft in eines Components oder einer Directive zu definieren.
 
-- `@Output`: Der @Output-Decorator wird verwendet, um eine Ausgabeeigenschaft in eines Components oder Directive zu definieren.
+- `@Output`: Der `@Output`-Decorator wird verwendet, um eine Ausgabeeigenschaft in eines Components oder einer Directive zu definieren.
 
-- `@ViewChild`: Der @ViewChild-Decorator wird verwendet, um auf ein Child-Element in eines Components zuzugreifen.
+- `@ViewChild`: Der `@ViewChild`-Decorator wird verwendet, um auf ein Child-Element eines Components zuzugreifen.
 
-- `@ViewChildren`: Der @ViewChildren-Decorator wird verwendet, um auf eine Liste von Child-Elementen in einen Component zuzugreifen.
+- `@ViewChildren`: Der `@ViewChildren`-Decorator wird verwendet, um auf eine Liste von Child-Elementen eines Components zuzugreifen.
 
 ### @Component
 
-Der @Component-Decorator wird verwendet, um einen Component zu definieren. Er ist einer der wichtigsten Decorators und enthält Metadaten, die Angular dabei helfen, den Component zu verstehen und zu rendern.
+Der `@Component`-Decorator wird verwendet, um einen Component zu definieren. Er ist einer der wichtigsten Decorators und enthält Metadaten, die Angular dabei helfen, den Component zu verstehen und zu rendern.
 
 Er wird über der Klassen-Deklaration platziert und enthält ein Objekt mit verschiedenen Eigenschaften:
 
-- `selector`: Der selector gibt an, wie der Component in HTML-Dateien referenziert wird. Im folgenden Beispiel wäre das `<app-my-component></app-my-component>`, damit kann man den Components in anderen Templates verwenden.
+- `selector`: Der selector gibt an, wie der Component in HTML-Dateien referenziert wird. Im folgenden Beispiel wäre das `<app-my-component></app-my-component>`.
 
-- `templateUrl` (oder `template`): Der templateUrl-Eigenschaftswert gibt den Pfad zur HTML-Datei an, die das Template des Components enthält. Alternativ kann man auch die template-Eigenschaft verwenden, um das Template direkt innerhalb des @Component-Decorators zu definieren, das sollte jedoch vermieden werden.
+- `templateUrl` (oder `template`): Der `templateUrl`-Eigenschaftswert gibt den Pfad zur HTML-Datei an, die das Template des Components enthält. Alternativ kann man auch die template-Eigenschaft verwenden, um das Template direkt innerhalb des `@Component`-Decorators zu definieren, das sollte jedoch vermieden werden.
 
-- `styleUrl`s (oder `styles`): Die styleUrls-Eigenschaft gibt ein Array von CSS-Dateipfaden an, die für den Component gelten sollen. Man kann auch die styles-Eigenschaft verwenden, um den CSS-Code direkt im @Component-Decorator einzufügen, dies sollte jedoch vermieden werden.
+- `styleUrls` (oder `styles`): Die `styleUrls`-Eigenschaft gibt ein Array von CSS-Dateipfaden an, die für den Component gelten sollen. Man kann auch die `styles`-Eigenschaft verwenden, um den CSS-Code direkt im `@Component`-Decorator einzufügen, dies sollte jedoch vermieden werden.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -60,8 +60,8 @@ export class GreetingComponent {
 
 ### @Input
 
-Der @Input-Decorator ermöglicht es, Daten von einem übergeordneten Component (Parent) an einen untergeordnete Component (Child) zu übergeben.
-Somit wird die Kommunikation zwischen den Components erleichtern
+Der @Input-Decorator ermöglicht es, Daten von einem übergeordneten Component (Parent) an einen untergeordneten Component (Child) zu übergeben.
+Somit wird die Kommunikation zwischen den Components erleichtert: 
 
 ```typescript
 import { Component, Input } from "@angular/core";
@@ -75,7 +75,7 @@ export class TriumphsComponent {
 }
 ```
 
-Um die Eingabeeigenschaft zu verwenden und Daten vom Parent zu erhalten, verwendet man die Property-Bindingsyntax im Parent.
+Um die Eingabeeigenschaft zu verwenden und Daten vom Parent zu erhalten, verwendet man die Property-Binding-Syntax im Parent-Element.
 
 ```angular17html
 <app-triumphs *ngIf="hasTriumphs" [title]="'Triumphs'" [triumphs]="triumphs"></app-triumphs>
@@ -84,7 +84,7 @@ Um die Eingabeeigenschaft zu verwenden und Daten vom Parent zu erhalten, verwend
 #### required
 
 Seit Angular 17 bietet `@Input` die Möglichkeit ein Input als benötigt zu markieren.
-Der Required-Status wird dadurch dann durch den Compiler geprüft und ein Fehler geworfen, falls der Input nicht angegeben wird.
+Der Required-Status wird dadurch dann durch den Compiler geprüft und es wird ein Fehler geworfen, falls der Input nicht angegeben wird.
 
 ```typescript
 import { Component, Input } from "@angular/core";
@@ -94,7 +94,7 @@ import { Component, Input } from "@angular/core";
 })
 export class TriumphsComponent {
   @Input({ required: true }) title: string;
-  @Input() triumphs: string[] | null;
+  @Input() triumphs?: string[];
 }
 ```
 
@@ -106,9 +106,9 @@ Somit wäre hier der Input `triumphs` nicht nötig, `title` hingegen schon.
 
 #### transform
 
-Auch mit Angular 17 wurde auch `transform` hinzugefügt, diese Option kann den eingegebenen Wert ähnlich wie eine Pipe umwandeln.
+Nit Angular 17 wurde auch `transform` hinzugefügt, diese Option kann den eingegebenen Wert ähnlich wie eine Pipe umwandeln.
 Ein gutes Beispiel dafür ist, wenn eine Grössenangabe gemacht werden muss.
-Hier kann einfach die Zahl angegeben werden und der Input wird automatisch in Pixel umgewandelt.
+Im folgenden Beispiel kann einfach die Zahl angegeben werden und der Input wird automatisch in Pixel umgewandelt.
 
 ```typescript
 @Component({...})
@@ -160,7 +160,7 @@ Um das Ereignis im Parent zu empfangen und darauf zu reagieren, wird das Event-B
 
 ### @ViewChild
 
-`@ViewChild` wird verwendet, um auf ein Element oder ein Directive in der View eines Components zuzugreifen. Der @ViewChild-Decorator wird normalerweise zusammen mit einer Template-Referenzvariable verwendet, um das gewünschte Element oder das gewünschte Directive zu identifizieren.
+`@ViewChild` wird verwendet, um auf ein Element oder eine Directive in der View eines Components zuzugreifen. Der `@ViewChild`-Decorator wird normalerweise zusammen mit einer Template-Referenzvariable verwendet, um das gewünschte Element oder die gewünschte Directive zu identifizieren.
 
 ```typescript
 import { Component, ViewChild, ElementRef } from "@angular/core";
@@ -189,13 +189,13 @@ export class GreetingComponent implements AfterViewInit {
 ></app-triumphs>
 ```
 
-Auf das Element sollte dann erst in der `ngAfterViewInit`-Lifecycle-Hook-Methode zugegriffen werden, da dieser Hook erst ausgelöst wird wenn die View initialisiert wurde.
+Auf das Element sollte dann erst in der `ngAfterViewInit`-Lifecycle-Hook-Methode zugegriffen werden, da dieser Hook erst ausgelöst wird, wenn die View initialisiert wurde.
 
 ### @ViewChildren
 
 Es gibt auch den `@ViewChildren`-Decorator, der ähnlich wie der `@ViewChild`-Decorator funktioniert, jedoch verwendet wird, um auf mehrere Elemente oder Directives in der View eines Components zuzugreifen.
 
-Der `@ViewChildren-Decorator` wird normalerweise zusammen mit einem Selektor oder einer Klasse verwendet, um die gewünschten Elemente oder Directives zu identifizieren. Das Ergebnis ist eine `QueryList`, die eine Sammlung der gefundenen Elemente oder Directives darstellt.
+Der `@ViewChildren`-Decorator wird normalerweise zusammen mit einem Selektor oder einer Klasse verwendet, um die gewünschten Elemente oder Directives zu identifizieren. Das Ergebnis ist eine `QueryList`, die eine Sammlung der gefundenen Elemente oder Directives darstellt.
 
 ```typescript
 import { Component, ViewChildren, QueryList, ElementRef } from "@angular/core";
@@ -208,7 +208,7 @@ export class TriumphsComponent implements AfterViewInit {
 
   // ..
 
-  datesOfTriumph: Date[] = [
+  triumphElements: Date[] = [
     new Date(1412, 0, 23),
     new Date(1823, 2, 12),
     new Date(1945, 3, 20),
@@ -228,5 +228,5 @@ export class TriumphsComponent implements AfterViewInit {
 ```
 
 ```html
-<div *ngFor="let element of elements" #element>{{ element }}</div>
+<div *ngFor="let element of datesOfTriumph" #triumphElements>{{ element }}</div>
 ```
