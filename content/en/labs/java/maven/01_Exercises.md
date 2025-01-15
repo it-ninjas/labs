@@ -1,6 +1,6 @@
 ---
-title: "Maven und Continuous Integration - Aufgaben"
-linkTitle: "Maven und Continuous Integration - Aufgaben"
+title: "Maven - Aufgaben"
+linkTitle: "Maven - Aufgaben"
 type: docs
 weight: 1
 description: >
