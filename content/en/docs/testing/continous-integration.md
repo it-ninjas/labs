@@ -1,10 +1,10 @@
 ---
-title: "CI/CD-Pipelines"
-linkTitle: "CI/CD-Pipelines"
+title: "CI-Pipelines"
+linkTitle: "CI-Pipelines"
 type: docs
 weight: 5
 description: >
-  TODO
+  Fortlaufendes Testen mit CI-Pipelines
 ---
 
 #### Ziele
@@ -96,12 +96,108 @@ Es muss also nicht für jedes Ereignis die gleiche Pipeline ausgeführt werden. 
 
 ### Umsetzen einer CI-Pipeline
 
-Es gibt viele Möglichkeiten eine CI-Pipeline umzusetzen. Gewisse sind eigenständige Tools wie [Jenkins](https://www.jenkins.io/) oder [CircleCI](https://circleci.com/). Viele Plattformen bauen direkt ihre eigenen Lösungen ein, wie etwa [GitLab](https://docs.gitlab.com/ee/ci/) oder [GitHub](https://github.com/features/actions).
+Es gibt viele Möglichkeiten eine CI-Pipeline umzusetzen. Gewisse sind eigenständige Tools wie [Jenkins](https://www.jenkins.io/) oder [CircleCI](https://circleci.com/). Viele Plattformen bauen direkt ihre eigenen Lösungen ein, wie etwa [GitLab](https://docs.gitlab.com/ee/ci/) oder [GitHub](https://github.com/features/actions). Für dieses Guide benutzen wir GitHub, viele der Konzepte können aber auch auf andere Tools übertragen werden.
 
-TODO
+GitHub stellt sogenannte Actions oder Workflow als CI-Lösung zur Verfügung. Das sind [YAML](https://geekflare.com/de/what-is-yaml/)-Dateien, welche in `.github/workflows` abgelegt werden. Jede Datei ist dabei ein "Workflow" und kann beliebig benannt werden, solange sie mit `.yml` oder `.yaml` aufhört. Vorhandene Workflows, werden im [Actions](https://github.com/it-ninjas/labs/actions)-Tab eines Repositories angezeigt.
 
-## Continous Deployment
+#### Simpler Workflow
 
-Continous Deployment, oder kurz CD, ist das gleiche Prinzip wie CI aber auf das veröffentlich einer Software bezogen. Das kann z.B. das Updaten einer Website oder das Veröffentlichen einer neuen Version einer App.
+Ein simpler Workflow könnte etwa in `.github/workflows/hello-world.yaml` gespeichert sein und so aussehen:
 
-TODO
+```yaml
+name: GitHub Actions Hello World
+on: [push]
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello world!"
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Execute multiple commands
+        run: |
+          echo "One line"
+          echo "Another one"
+```
+
+Dieser Workflow besteht aus folgenen Elementen:
+
+- `name` Der Name des Workflows.
+- `on` Wann der Workflow ausgeführt werden soll. Das kann von einem `git push` bis zum Erstellen eines neuen Issues alles Mögliche sein, wobei GitHub hier [eine gute Dokumentation dazu hat](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows). In unserem Fall wird der Workflow bei jedem `git push` ausgeführt.
+- `jobs` Eine Liste mit Aufgaben, welche der Workflow ausführen soll. Jeder Job hat dabei einen eindeutigen Namen, hier `hello-world`.
+- `runs-on` Definiert auf was für einem Computer der Workflow ausgeführt werden soll. Standardmässig ist das ein Ubuntu-Linux, Windows und OSX sind aber ebenfalls möglich.
+- `steps` Eine Liste mit Anweisungen, welche nacheinander in diesem Job ausgeführt werden.
+
+Ein ganz simpler Step, wie zB. `run: echo "Hello world!"`, macht nichts anderes als den Befehl `echo "Hello World!"` auszuführen.
+
+Um ein wenig mehr Dynamik in die Sache zu bringen, können wir Teile eines Befehls mit dieser Syntax ersetzen `${{ dein.variable.name }}`.
+
+```sh
+echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+```
+
+wird somit zu
+
+```sh
+echo "🐧 This job is now running on a ubuntu-latest server hosted by GitHub!"
+```
+
+Damit man nicht alles selber schreiben muss, kann man auch einfach bereits erstellte "steps" benutzen. GitHub nennt diese "Actions" und hat [einen ganzen Marktplatz](https://github.com/marketplace?type=actions) damit. Es lohnt sich zuerst zu schauen ob jemand schon eine Action geschrieben hat, bevor man sich selber die Mühe macht.
+Ein Beispiel davon ist dieser Step hier:
+
+```yaml
+- name: Check out repository code
+  uses: actions/checkout@v4
+```
+
+`name` ist wie der Step heisst. `uses` gibt an das wir die [Checkout Action](https://github.com/marketplace/actions/checkout) benutzen wollen. Diese macht ein `git clone` des Repositories und kann in fast jedem CI-Workflow angetroffen werden. Viele
+
+Falls es mal doch keine Action gibt welche den Zweck erfüllt, können mehrere Befehle mit dieser Syntax auch über mehrere Zeilen geschrieben werden. Das macht die Sache etwas übersichtlicher.
+
+```yaml
+- name: Execute multiple commands
+  run: |
+    echo "One line"
+    echo "Another one"
+```
+
+#### Testing Workflow
+
+Ein einfacher Workflow für das Testen ein Spring Boot App mit Maven könnte so aussehen:
+
+```yaml
+name: Testing with Maven
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: "temurin"
+          cache: maven
+      - name: Test
+        run: mvn clean verify
+```
+
+Dieser Workflow macht, in dieser Reihenfolge:
+
+- ein `git clone`
+- installiert Java mit der Version 21
+- führt die Tests mit dem Befehl `mvn clean verify` aus
+
+Sollte es zu einem Fehler in den Tests kommen, wird der Workflow fehlschlagen und den Entwickler informieren.
+![](../gh-actions-failure.png)
+
+## Continous Deployment, Continous Delivery
+
+Continous Delivery, kurz CD, erweitert das automatische Testing um einen automatiserten Freigabeprozess. Eine neue Version der Anwendung soll also per Knopfdruck (und nach dem erfolgreichen Durchlaufen der CI-Pipeline) jederzeit deployed werden können.
+Continous Deployment, was verwirrenderweise ebenfalls CD abgekürzt wird, treibt das Prinzip auf die Spitze. Jede Änderung wird sofort produktiv gesetzt, vorausgesetzt es gibt keinen Fehler in den automatischen Tests.
+
+Da es hier aber nur um das testen gehen soll, beschränken wir uns auf CI. Wer Lust auf mehr hat, findet [hier](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment) einen guten Artikel welcher die Unterschiede erklärt.
