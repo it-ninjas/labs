@@ -23,7 +23,7 @@ Continous Integration, oder kurz CI, heisst auf Deutsch so viel wie "Fortlaufend
 
 Das Ausführen so einer Pipeline passieren entweder nach einem bestimmten Ereignis, z.B. einem Push auf einen Git-Branch, oder periodisch, jede Nacht um 3:00. Damit das Möglich ist, werden sie nicht auf dem Computer des Entwicklers sondern einem separaten CI-Server ausgeführt. So kann sichergestellt werden das nicht vergessen geht und die Ergebnise transparent sind.
 
-Wichtig ist dass das fortlaufende Integrieren von Änderungen nicht heisst, das nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe [Continous Deployment](#continous-deployment)) muss aber nicht. Viel mehr geht es darum das die Änderungen jeweils klein und gut getestet sind.
+Wichtig ist dass das fortlaufende Integrieren von Änderungen nicht heisst, das nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe [Continous Deployment](#continous-deployment-continous-delivery)) muss aber nicht. Viel mehr geht es darum das die Änderungen jeweils klein und gut getestet sind.
 
 ### Beispiel einer CI-Pipeline
 
