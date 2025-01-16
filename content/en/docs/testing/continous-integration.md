@@ -130,7 +130,7 @@ Dieser Workflow besteht aus folgenen Elementen:
 - `runs-on` Definiert auf was für einem Computer der Workflow ausgeführt werden soll. Standardmässig ist das ein Ubuntu-Linux, Windows und OSX sind aber ebenfalls möglich.
 - `steps` Eine Liste mit Anweisungen, welche nacheinander in diesem Job ausgeführt werden.
 
-Ein ganz simpler Step, wie zB. `run: echo "Hello world!"`, macht nichts anderes als den Befehl `echo "Hello World!"` auszuführen.
+Ein ganz simpler Step, wie z.B. `run: echo "Hello world!"`, macht nichts anderes als den Befehl `echo "Hello World!"` auszuführen.
 
 Um ein wenig mehr Dynamik in die Sache zu bringen, können wir Teile eines Befehls mit dieser Syntax ersetzen `${{ dein.variable.name }}`.
 
