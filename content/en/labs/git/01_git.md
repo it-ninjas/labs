@@ -85,6 +85,57 @@ description: >
 
 Um den Merge-Konflikt zu lösen, öffnest du am besten IntelliJ(empfohlen) oder Visual Studio Code. Du kannst es natürlich auch über das Terminal versuchen, wenn du mutig genug bist.
 
+Grundsätzlich entsteht ein Merge-Conflict, wenn am gleichen Ort unterschiedliche Änderungen vorgenommen wurden. Git kann dann die Änderungen nicht mehr automatisch zusammenführen (mergen).
+
+Git zeigt einen Merge-Konflikt mithilfe von `<<<`, `>>>` und `===` an. Der Text bei `<<<` sind deine Änderungen, die Änderungen bei `>>>` kommen aus dem Remote-Repository. Getrennt werden sie durch eine Zeile an Gleichzeichen `===`. Oft abstrahiert deine IDE diese Darstellung jedoch noch.
+
+Bei dieser List von Hobbies wurde lokal die Zeile "Schlafen" hinzugefügt, remote wurde auf der gleichen Zeile jedoch "Gym" hinzugefügt.
+
+```
+- Lesen
+- Gamen
+<<<<<<< HEAD
+- Schlafen
+=======
+- Gym
+>>>>>>> 3c55804e0fa4cac9002edb45443d4a9c95bc26b4
+```
+
+Um den Konflikt zu lösen hast folgende Möglichkeiten:
+
+- Du behältst deine Änderungen und verwirfst die Anderen
+  ```
+  - Lesen
+  - Gamen
+  - Schlafen
+  ```
+- Du verwirfst deine Änderungen und behältst die Anderen
+  ```
+  - Lesen
+  - Gamen
+  - Gym
+  ```
+- Du behältst alle Änderungen
+  ```
+  - Lesen
+  - Gamen
+  - Schlafen
+  - Gym
+  ```
+- Du verwirfst beide Änderungen
+  ```
+  - Lesen
+  - Gamen
+  ```
+- Eine Mischung aus allen vorherigen Möglichkeiten
+  ```
+  - Lesen
+  - Gamen
+  - Schlafen oder Gym
+  ```
+
+Um einen Merge-Konflikt zu lösen, musst du also aus diesen Möglichkeiten auswählen. Du kannst das für jeden Konflikt unterschiedlich machen. Deine IDE wird dir dabei einige Hilfestellungen liefern, welche den Prozess etwas vereinfachen, siehe dazu die Felder weiter unten.
+
 <details>
    <summary>Konflikt mit IntelliJ lösen</summary>
    <p>
