@@ -83,7 +83,7 @@ description: >
 
 ### Schritt 7: Löse den Merge-Konflikt
 
-Um den Merge-Konflikt zu lösen, öffnest du am besten IntelliJ(empfohlen) oder Visual Studio Code. Du kannst es natürlich auch über das Terminal versuchen, wenn du mutig genug bist.s
+Um den Merge-Konflikt zu lösen, öffnest du am besten IntelliJ(empfohlen) oder Visual Studio Code. Du kannst es natürlich auch über das Terminal versuchen, wenn du mutig genug bist.
 
 <details>
    <summary>Konflikt mit IntelliJ lösen</summary>
