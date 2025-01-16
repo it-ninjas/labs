@@ -113,7 +113,7 @@ jobs:
     steps:
       - run: echo "Hello world!"
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }}, your repository is ${{ github.repository }} and this workflow was triggered by ${{ github.actor }}"
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Execute multiple commands
