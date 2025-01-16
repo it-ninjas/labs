@@ -19,7 +19,7 @@ description: >
 
 Continous Integration, oder kurz CI, heisst auf Deutsch so viel wie "Fortlaufende Integration". Es beschreibt die Praxis Codeänderungen oft und regelmässig in die Code Basis zu integrieren. Dazu gehört auch das Testen dieser Änderungen sowie andere Checks, wie etwa Security Scans. Da dies mühsame Arbeit ist, passiert das meistens vollautomatisiert in einer sogenannten Pipeline. Diese heissen so da die der Code wie durch ein (oder mehre) Rohre muss, welche diese Checks ausführen und das Ventil zudrehen können, sollte etwas nicht gut sein.
 
-![](../pipeline.gif)
+![](../images/pipeline.gif)
 
 Das Ausführen so einer Pipeline passieren entweder nach einem bestimmten Ereignis, z.B. einem Push auf einen Git-Branch, oder periodisch, jede Nacht um 3:00. Damit das Möglich ist, werden sie nicht auf dem Computer des Entwicklers sondern einem separaten CI-Server ausgeführt. So kann sichergestellt werden das nicht vergessen geht und die Ergebnise transparent sind.
 
@@ -29,7 +29,7 @@ Wichtig ist dass das fortlaufende Integrieren von Änderungen nicht heisst, das 
 
 Als Beispiel nehmen wir eine Anwendung, welche eine neue Login-Page bekommen soll. Der Entwickler macht also einen neuen Branch `feature/new-login-page`. Auf diesem nimmt er seine Änderungen vor und mergt, sobald er fertig ist, diese wieder in den `main`-Branch. Vor dem Mergen können andere Entwickler noch Tests ausführen oder einen Security Scan laufen lassen. Da dies jedoch manuell gemacht werden muss, geht das oft vergessen oder wird aus Faulheit nicht umgesetzt.
 
-![](../no-ci.png)
+![](../images/no-ci.png)
 
 <!--
 gitGraph
@@ -47,7 +47,7 @@ gitGraph
 
 Mithilfe einer CI-Pipeline können wir diese zwei Sachen automatisiert ausführen nach (oder idealerweise noch vor) einem Merge. Pipelines können also dazu dienen langweilige, wiederkehrende Arbeiten zu verrichten und Entwickler zum einhalten von Standards zu bewegen. Durch die Pipeline merken wir z.B. das mehrere Unit-Test fehlschlagen. Dazu hat die Pipeline ganz einfach den Maven-Command `mvn clean test` ausgeführt und geschaut ob jeder Test grün ist. So wie es ein Entwickler auch auf seiner Maschine tun kann.
 
-![](../simple-ci.png)
+![](../images/simple-ci.png)
 
 <!--
 gitGraph
@@ -65,7 +65,7 @@ gitGraph
 
 Das hätte der Entwickler merken können wenn er nach jedem Commit die Tests ausgeführt hat. Da dies aber manuelle und langweilige Arbeit ist, hat er das natürlich nicht gemacht. Werden die Tests stattdessen auch in einer Pipeline nach jedem `git push` ausgeführt merkt der Entwickler schneller das sein Code noch nicht gut ist.
 
-![](../reasonable-ci.png)
+![](../images/reasonable-ci.png)
 
 <!--
 gitGraph
@@ -193,7 +193,7 @@ Dieser Workflow macht, in dieser Reihenfolge:
 - führt die Tests mit dem Befehl `mvn clean verify` aus
 
 Sollte es zu einem Fehler in den Tests kommen, wird der Workflow fehlschlagen und den Entwickler informieren.
-![](../gh-actions-failure.png)
+![](../images/gh-actions-failure.png)
 
 ## Continous Deployment, Continous Delivery
 
