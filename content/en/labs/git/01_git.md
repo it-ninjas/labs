@@ -34,10 +34,10 @@ description: >
    git branch feature/my-cool-feature
    git switch feature/my-cool-feature
    ```
-2. Öffne die `index.txt` Datei und ändere den Inhalt.
+2. Öffne die `index.txt` Datei und ändere den Inhalt. Die Änderung soll dabei auf der gleichen Zeile sein wie den Satz den du zuvor hinzugefügt hast. Z.B. `Mein Satz` zu `Mein viel besserer Satz`.
 3. Speichere die Datei.
 
-### Schritt 4: Änderungen im Feature-Branch stashen
+### Schritt 4: Änderungen im Feature-Branch stashens
 
 1. Bevor du den Feature-Branch in den Master-Branch mergst, stashe zuerst die Änderungen.
    ```shell
