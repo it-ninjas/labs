@@ -201,7 +201,7 @@ Die folgende Beispiel-Methode fasst die oben erwähnten Arbeitsschritte mit JDBC
 private static void findByUsernameAndAge(String url, String dbUsername, String password, String username, int age) throws SQLException {
   try(Connection connection = DriverManager.getConnection(url, dbUsername, password))  {
     String query = "SELECT * FROM user WHERE username = ? and age > ?";
-    
+
     try(PreparedStatement statement = connection.prepareStatement(query)){
       statement.setString(1, username);
       statement.setInt(2, age);
