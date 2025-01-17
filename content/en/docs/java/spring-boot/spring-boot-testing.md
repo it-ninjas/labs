@@ -71,10 +71,10 @@ Wir wollen alle Layers (von der Entity bis zum Controller) testen. Dazu gibt es 
 Natürlich kannst du jeden Layer mit JUnit/Mockito testen. Das hast du ja bereits [früher gelernt](../../java-testing).
 Dazu nimmst du deine Unit-Under-Test (UUT) und mockst alles, was "darunter" liegt. Je nachdem kann das aber ganz schön mühsam
 sein resp. praktisch nicht möglich: Stell dir vor, du willst ein `@Repository` mit Mockito testen. Wie kommst du
-da an die automatisch durch den Spring-Container generierten Methoden (z.B. `findAll()`)? Gar nicht.
+da an die automatisch durch den Spring-Container generierten Methoden (z.B. `findAll()`)? Die Antwort lautet: Gar nicht.
 
 Deshalb gibt es Möglichkeiten, je nach Anwendungsfall den Spring Application-Context teilweise oder ganz hochzufahren.
-Wollen wir nur den Daten-Teil (Entity und Repo) hochfahren ist das ein `@DataJpaTest` für JPA der ein `@DataJdbcTest` für eine JDBC-Umsetzung.
+Wollen wir nur den Daten-Teil (Entity und Repo) hochfahren ist das ein `@DataJpaTest`, wenn du mit JPA arbeitest, oder ein `@DataJdbcTest` für eine Anwendung, die mit JDBC auf die Datenbank zugreift.
 Hier werden keine Services und auch keine Controller instanziiert.
 
 Wollen wir nur den Controller-Teil (inkl. Security, Filter, Converter) hochfahren, ist das ein `@WebMvcTest`.
