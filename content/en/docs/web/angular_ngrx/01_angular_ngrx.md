@@ -41,8 +41,7 @@ Um NgRx in einem Angular-Projekt zu verwenden, werden folgende Schritte benötig
 npm install @ngrx/store
 ```
 
-Dieser installiert das NgRx Store-Paket, das den zentralen Store und andere wichtige Funktionen für das State-Management bereitstellt. 
-4. **Optional**: Je nachdem, welche NgRx-Features man verwenden möchte, kann man weitere NgRx-Pakete installieren. Hier sind einige gängige Pakete:
+Dieser installiert das NgRx Store-Paket, das den zentralen Store und andere wichtige Funktionen für das State-Management bereitstellt. 4. **Optional**: Je nachdem, welche NgRx-Features man verwenden möchte, kann man weitere NgRx-Pakete installieren. Hier sind einige gängige Pakete:
 
 ```shell
 npm install @ngrx/effects       // Für die Verwendung von Effects
@@ -68,7 +67,7 @@ export const appConfig: ApplicationConfig = {
 
 ```typescript
 import { provideEffects } from "@ngrx/effects";
-import { RouterEffects } from '@ngrx/router-store';
+import { RouterEffects } from "@ngrx/router-store";
 export const appConfig: ApplicationConfig = {
   providers: [provideEffects(RouterEffects)],
 };
