@@ -8,19 +8,19 @@ description: >
 
 ## Was ist REST
 
-REST (Representational State Transfer) ist ein Architekturstil für die Kommunikation zwischen Computern in Netzwerken, insbesondere im World Wide Web. 
-Es basiert auf einer einfachen Idee: Ressourcen, wie z.B. Daten oder Dienste, werden durch eindeutige URLs (Uniform Resource Locators) identifiziert. 
-Um auf diese Ressourcen zuzugreifen oder sie zu manipulieren, verwendet man standardisierte HTTP-Methoden wie GET (zum Abrufen von Daten), 
+REST (Representational State Transfer) ist ein Architekturstil für die Kommunikation zwischen Computern in Netzwerken, insbesondere im World Wide Web.
+Es basiert auf einer einfachen Idee: Ressourcen, wie z.B. Daten oder Dienste, werden durch eindeutige URLs (Uniform Resource Locators) identifiziert.
+Um auf diese Ressourcen zuzugreifen oder sie zu manipulieren, verwendet man standardisierte HTTP-Methoden wie GET (zum Abrufen von Daten),
 POST (zum Erstellen neuer Daten), PUT (zum Aktualisieren von Daten) und DELETE (zum Löschen von Daten).
 
-Ein zentrales Konzept von REST ist die Zustandslosigkeit (Statelessness). 
-Das bedeutet, dass jede Anfrage vom Client an den Server alle Informationen enthalten muss, 
-die der Server benötigt, um sie zu verstehen und zu verarbeiten, ohne den Zustand von vorherigen Anfragen zu speichern. 
+Ein zentrales Konzept von REST ist die Zustandslosigkeit (Statelessness).
+Das bedeutet, dass jede Anfrage vom Client an den Server alle Informationen enthalten muss,
+die der Server benötigt, um sie zu verstehen und zu verarbeiten, ohne den Zustand von vorherigen Anfragen zu speichern.
 Dadurch wird die Skalierbarkeit und Zuverlässigkeit der Kommunikation verbessert.
 
-RESTful APIs (Application Programming Interfaces) sind weit verbreitet, weil sie einfach zu verstehen und zu implementieren sind. 
-Sie ermöglichen es verschiedenen Systemen, unabhängig von ihrer Plattform oder Technologie, miteinander zu interagieren. 
-Ein Beispiel für eine RESTful API könnte ein Online-Dienst sein, der Wetterdaten bereitstellt: 
+RESTful APIs (Application Programming Interfaces) sind weit verbreitet, weil sie einfach zu verstehen und zu implementieren sind.
+Sie ermöglichen es verschiedenen Systemen, unabhängig von ihrer Plattform oder Technologie, miteinander zu interagieren.
+Ein Beispiel für eine RESTful API könnte ein Online-Dienst sein, der Wetterdaten bereitstellt:
 Durch eine einfache HTTP-Anfrage kann ein Client aktuelle Wetterinformationen für eine bestimmte Stadt abrufen.
 
 ## Verschiedene Request-Arten

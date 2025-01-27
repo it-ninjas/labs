@@ -111,7 +111,6 @@ Starte deine Anwendung mit der Default-Run-Konfiguration. Zu diesem Zweck kannst
 Nach dem Start sollte die Run-Konsole wie folgt aussehen:
 ![](../images/02_application_success_run_console.png)
 
-
 ## Schritt 2: Rest Schnittstellen definieren und umsetzen
 
 In diesem Schritt geht es darum die Schnittstellen (die API) zur Anwendung zu definieren.
@@ -336,11 +335,11 @@ Entitäten können untereinander, genauso wie Datenbank-Tabellen, Beziehungen ei
 @Entity
 @Table(name = "SCHOOL_SUBJECT")
 public class Schulfach {
-    
+
   @Id
   @Column(name = "Id")
   private Long id;
-  
+
   @Column(name = "description")
   private String bezeichnung;
 

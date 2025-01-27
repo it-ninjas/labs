@@ -9,6 +9,7 @@ description: >
 ## Spring
 
 ### Ziele
+
 - Ich kann am Beispiel Spring erklären, was ein "Framework" ausmacht, indem ich Unterschiede zu einer gewöhnlichen externen Library aufzählen kann.
 - Ich kenne einige Vor- und Nachteile, wenn ein Frameworks im Projekt eingesetzt wird.
 - Ich kann erläutern, welche Zuständigkeiten die folgenden Module im Spring-Framework haben: Core, Data-Access, Web und
@@ -83,4 +84,3 @@ Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die
 Konfiguration.
-

@@ -73,8 +73,8 @@ gilt und nicht systemweit.
 
 ### Beans
 
-Ein Bean im Spring Framework ist ein Objekt, das vom Spring IoC (Inversion of Control) Container verwaltet wird. 
-Der IoC Container ist verantwortlich dafür, die Beans zu instanziieren, ihre Abhängigkeiten zu verwalten und sie 
+Ein Bean im Spring Framework ist ein Objekt, das vom Spring IoC (Inversion of Control) Container verwaltet wird.
+Der IoC Container ist verantwortlich dafür, die Beans zu instanziieren, ihre Abhängigkeiten zu verwalten und sie
 bei Bedarf bereitzustellen. Beans sind die grundlegenden Bausteine einer Spring-Anwendung und repräsentieren in der Regel Dienste,
 Komponenten oder andere zentrale Teile der Anwendung.
 
@@ -140,7 +140,7 @@ Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird.
 Hier eine Liste der Scopes:
 
 | Scope                | Beschreibung                                                                                                                                                                          |
-| -------------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | singleton (Standard) | Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur **eine** Bean-Instanz in jedem IoC-Container. Mehr [hier](#singleton). |
 | prototype            | Erstellt bei jeder Abhängigkeit eine neue Bean Instanz.                                                                                                                               |
 | request              | Erstellt für jeden HTTP Request eine Bean Instanz.                                                                                                                                    |

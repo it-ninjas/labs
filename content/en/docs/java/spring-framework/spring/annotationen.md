@@ -7,6 +7,7 @@ description: >
 ---
 
 ## Annotationen in Spring
+
 Annotationen in Spring sind spezielle Markierungen im Code, die verwendet werden,
 um Metadaten bereitzustellen und das Verhalten von Klassen, Methoden oder Feldern zu konfigurieren.
 Sie helfen dabei, den Code sauberer und lesbarer zu machen, indem sie die Konfiguration direkt in den Code integrieren,
@@ -25,6 +26,7 @@ direkt im Code definieren, was die Entwicklung und Wartung erleichtert.
 ### Die verschiedenen Arten von Annotationen
 
 #### Spring Annotationen
+
 `@Configuration`: In Spring wird diese Annotation verwendet,
 um eine Klasse als Konfigurationsklasse zu markieren. Das bedeutet, dass diese Klasse Methoden enthalten kann,
 die Beans definieren und konfigurieren. Wenn Spring eine solche Klasse sieht, wird sie verwendet,
@@ -49,7 +51,7 @@ Das bedeutet, dass Spring die benötigten Beans automatisch findet und sie in da
 den Konstruktor oder die Methode einfügt. Dadurch entfällt die Notwendigkeit, Abhängigkeiten manuell zu instanziieren,
 was den Code sauberer und übersichtlicher macht. `@Autowired` erleichtert die Verwaltung von Abhängigkeiten und fördert die lose Kopplung in deiner Anwendung.
 
-`@Service`:  Wird in Spring verwendet, um eine Klasse als Service-Komponente zu kennzeichnen.
+`@Service`: Wird in Spring verwendet, um eine Klasse als Service-Komponente zu kennzeichnen.
 Services sind spezialisierte Komponenten, die Geschäftslogik enthalten und häufig als Vermittler zwischen dem Controller und dem Repository fungieren.
 Durch die Verwendung von `@Service` erkennt Spring die Klasse als Bean und verwaltet sie automatisch im IoC Container.
 Das ermöglicht eine saubere Trennung der Geschäftslogik von anderen Schichten der Anwendung und fördert die Wiederverwendbarkeit
@@ -61,13 +63,14 @@ Wenn Spring eine Klasse mit @Repository entdeckt, wird sie als Bean registriert 
 Dies verbessert die Verwaltung von Datenbankzugriffen und gewährleistet eine klare Trennung zwischen der Datenzugriffsschicht und anderen Teilen der Anwendung.
 
 #### MVC Annotationen
+
 `@Controller`: Um eine Klasse in Spring als Web-Controller zu kennzeichnen, wird die Annotation `@Controller` verwendet. Diese Annotation zeigt an, dass die Klasse HTTP-Anfragen entgegennimmt
 und darauf reagiert. Ein Controller verarbeitet die eingehenden Anfragen, delegiert die Geschäftslogik an entsprechende Services und gibt die passenden Antworten zurück.
 Typischerweise werden in einem Controller Methoden mit weiteren Annotationen wie `@GetMapping` oder `@PostMapping` versehen,
 um spezifische Endpunkte und HTTP-Methoden zu definieren. Durch die Verwendung von `@Controller` wird die Klasse als Bean im Spring IoC Container registriert,
 was die Strukturierung und Verwaltung von Webanfragen innerhalb der Anwendung erleichtert.
 
-`@RequestMapping`: Es ermöglicht dir, in Spring HTTP-Anfragen bestimmten Methoden in deinem Controller zuzuordnen. 
+`@RequestMapping`: Es ermöglicht dir, in Spring HTTP-Anfragen bestimmten Methoden in deinem Controller zuzuordnen.
 Es gibt spezialisierte Versionen dieser Annotation für die verschiedenen HTTP-Methoden, die den Code lesbarer und spezifischer machen.
 Hier sind die 4 wichtigsten Varianten:
 
@@ -95,7 +98,7 @@ public User getUserById(@PathVariable("id") Long userId) {
 ```
 
 In diesem Beispiel wird der Wert des URL-Platzhalters `{id}` automatisch der Methode als Parameter `userId` übergeben,
-was die Handhabung von dynamischen URLs erleichtert und den Code klarer und lesbarer macht.    
+was die Handhabung von dynamischen URLs erleichtert und den Code klarer und lesbarer macht.
 
 `@RequestParam`: Wenn du HTTP-Request-Parameter an Methodenparameter im Controller binden möchtest,
 ist `@RequestParam` die richtige Wahl. Diese Annotation ermöglicht es dir, Werte aus der URL-Abfragezeichenfolge
@@ -115,7 +118,6 @@ public String search(@RequestParam("query") String searchQuery) {
 
 In diesem Beispiel wird der Wert des Query-Parameters `query` automatisch der Methode als Parameter `searchQuery` übergeben.
 Dies erleichtert die Handhabung von URL-Parametern und macht deinen Code klarer und besser strukturiert.
-
 
 `@RequestBody`: Um den Inhalt einer HTTP-Anfrage direkt an ein Methodenparameter zu binden, verwendest du `@RequestBody` in Spring.
 Diese Annotation ist besonders nützlich, wenn du JSON- oder XML-Daten von einem Client empfangen und in ein Java-Objekt umwandeln möchtest.

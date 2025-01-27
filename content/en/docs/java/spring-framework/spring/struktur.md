@@ -211,8 +211,8 @@ spring.jpa.hibernate.ddl-auto=update
 
 ##### Repository
 
-Eines der am häufigsten verwendeten Design-Patterns ist das Repository Design-Pattern. 
-Ein Repository ist eine Schnittstelle, die den Zugriff auf Daten in der Datenbank ermöglicht. 
+Eines der am häufigsten verwendeten Design-Patterns ist das Repository Design-Pattern.
+Ein Repository ist eine Schnittstelle, die den Zugriff auf Daten in der Datenbank ermöglicht.
 Man kann es sich wie einen Bibliothekar vorstellen: Der Bibliothekar findet und bringt uns die gewünschten Bücher,
 ohne dass wir wissen müssen, wie er sie findet. Wir kennen nur die "Befehle" (Methoden) des Repositorys und welche Ergebnisse wir erwarten können.
 

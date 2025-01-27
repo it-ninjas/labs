@@ -52,8 +52,6 @@ Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu [Spring
 - Direkter Zugriff auf der internen Struktur einer Klasse ist verboten (Encapsulation / Information Hiding).
 - Jede Klasse ist getestet.
 
-
-
 ## Unittests
 
 Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 Testing](../../../../docs/java/java-testing) bereits kennen.
