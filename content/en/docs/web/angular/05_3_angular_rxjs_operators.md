@@ -57,7 +57,7 @@ source.subscribe((value) => console.log(value));
 
 ### of
 
-Der `of`-Operator wandelt wie der `from`-Operator auch eine feste Anzahl von Werten in ein Observable um. Der Operator akzeptiert jedoch eine beliebige Anzahl von Argumenten und gibt ein Observable zurück, das diese Argumente in der Reihenfolge ihres Auftretens emittiert. 
+Der `of`-Operator wandelt wie der `from`-Operator auch eine feste Anzahl von Werten in ein Observable um. Der Operator akzeptiert jedoch eine beliebige Anzahl von Argumenten und gibt ein Observable zurück, das diese Argumente in der Reihenfolge ihres Auftretens emittiert.
 
 Dieser Operator ist besonders nützlich, um eine feste Anzahl von Werten zu emittieren, die bekannt sind, bevor das Observable abonniert wird. Wenn man eine Quelle von Werten hat, die dynamisch generiert werden, ist es wahrscheinlich sinnvoller, den `from` Operator zu verwenden.
 
@@ -150,7 +150,8 @@ Dieser Operator ist besonders nützlich, wenn man mehrere Datenströme kombinier
 
 Auch zu beachten ist, dass der Operator darauf wartet, dass alle Observables eine Emission abgeben, bevor er eine Emission ausgibt. Wenn ein Observable keine Emission abgibt, wird das resultierende Observable keine Emissionen ausgeben.
 
-Der Hauptunterschied vom `zip`-Operator zum `forkJoin`-Operator ist, dass mit `zip` die reinkommenden Werte Schritt für Schritt kombiniert werden, während `forkJoin` die Werte erst emittiert, nachdem alle Input-Observables completed wurden. 
+Der Hauptunterschied vom `zip`-Operator zum `forkJoin`-Operator ist, dass mit `zip` die reinkommenden Werte Schritt für Schritt kombiniert werden, während `forkJoin` die Werte erst emittiert, nachdem alle Input-Observables completed wurden.
+
 ```typescript
 import { zip, of } from "rxjs";
 
@@ -252,8 +253,8 @@ from([1, 2, 3, 4])
 // retrieved new data with param 4
 ```
 
+Hinweis: Oft wird `flatMap` als Alias für `mergeMap` verwendet. Lass dich also nicht verwirren, wenn die Begriffe teilweise wechseln.
 
-Hinweis: Oft wird `flatMap` als Alias für `mergeMap` verwendet. Lass dich also nicht verwirren, wenn die Begriffe teilweise wechseln.  
 ### switchAll/switchMap
 
 `switchMap` funktioniert ähnlich wie `mergeMap`. Der Operator subscribed auch auf das innere Observable. Auch hier ist `switchMap` eine Kombination, und zwar von `switchAll` und `map`. `switchAll` canceled die vorherige Subscription und subscribed auf die neue, wenn ein neues Observable reinkommt.
@@ -300,8 +301,8 @@ from([1, 2, 3, 4])
 Auch `concatMap` subscribed auf das innere Observable. Der Unterschied zu `switchMap` ist, dass `concatMap` nicht die Subscription cancelled, wenn ein neues Observable reinkommt. Es subscribed stattdessen solange nicht auf das nächste Observable, bis das momentane fertig ist.
 
 ```typescript
-import { of, from} from "rxjs";
-import { delay, concatMap } from "rxjs/operators"
+import { of, from } from "rxjs";
+import { delay, concatMap } from "rxjs/operators";
 
 const getData2 = (param) => {
   return of(`2 retrieved new data with param ${param}`).pipe(delay(1000));

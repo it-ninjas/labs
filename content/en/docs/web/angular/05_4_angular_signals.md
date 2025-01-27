@@ -9,13 +9,14 @@ description: >
 ---
 
 ## Ziele
-- Du weisst, was Signals in Angular sind und wie man diese verwendet. 
+
+- Du weisst, was Signals in Angular sind und wie man diese verwendet.
 
 ## Signals
 
 Signals funktionieren in Angular ähnlich wie Observables. Ein Signal umfasst einen Wrapper um einen Wert, welcher Konsumenten benachrichtigen kann, wenn sich der Wert ändert.
 Signals gibt es als Read-Only- oder als Writable-Variante. Der Wert eines Signals wird immer durch eine `getter`-function gelesen. Wenn man ein Signal aufruft, wird der Wert darin gelesen.
-Man kann Signals von primitiven bis hin zu komplexen Datenstrukturen definieren. 
+Man kann Signals von primitiven bis hin zu komplexen Datenstrukturen definieren.
 
 ### Writable Signals
 
@@ -66,7 +67,7 @@ Somit wird der Wert neu berechnet wenn man das Computed Signal das nächste Mal 
 
 Es werden nur die Signals getracked, die während der Ableitung auch gelesen werden.
 
-Zum Beispiel wird im folgenden Beispiel das Signal `count` nur gelesen, wenn das Signal `showCount` `true ` entspricht. 
+Zum Beispiel wird im folgenden Beispiel das Signal `count` nur gelesen, wenn das Signal `showCount` `true ` entspricht.
 
 ```ts
 const showCount = signal(false);
@@ -135,9 +136,7 @@ Nehmen wir beispielsweise an, dass bei einer Änderung von `currentUser` der Wer
 
 ```ts
 effect(() => {
-  console.log(
-    `User set to ${currentUser()} and the counter is ${counter}`,
-  );
+  console.log(`User set to ${currentUser()} and the counter is ${counter}`);
 });
 ```
 

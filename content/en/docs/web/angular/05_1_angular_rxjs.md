@@ -45,7 +45,7 @@ Wie schon angeschnitten wurde, ist ein Observable eine Art Datenstrom, der Werte
 
 Ein Observable ist im Grunde genommen eine Funktion, die einen Datenstrom definiert und zurückgibt. Diese Funktion kann dann durch verschiedene Operatoren transformiert werden, um den Datenstrom auf verschiedene Weisen zu bearbeiten.
 
-Bei Observables gilt prinzipiell die Konvention, dass Variablennamen mit einem `$` enden. Das macht Observables einfacher erkennbar und macht es Entwicklern einfacher, diese von "normalen" Variablen zu unterscheiden.   
+Bei Observables gilt prinzipiell die Konvention, dass Variablennamen mit einem `$` enden. Das macht Observables einfacher erkennbar und macht es Entwicklern einfacher, diese von "normalen" Variablen zu unterscheiden.
 
 Beispiel zur Erstellung eines Observables:
 
