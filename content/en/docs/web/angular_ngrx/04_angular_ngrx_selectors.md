@@ -11,12 +11,12 @@ description: >
 ## Ziele
 
 - Du weisst, was NgRx Selectors sind und kannst diese anwenden.
-- Du weisst, was das AppState ist.
+- Du weisst, was der AppState ist.
 
 ## AppState
 
 In einer typischen NgRx-Anwendung kann die AppState-Datei verwendet werden, um den gesamten Anwendungsstatus zu definieren und zu typisieren. Sie enthält normalerweise eine Schnittstelle oder ein Interface, das alle Teilzustände oder Slices des Anwendungsstatus definiert und zu einem Gesamtzustand kombiniert.
-Dies findet man im `index.ts` und kann sie dort erweitern.
+Diesen findet man im `index.ts`, wo man auch Erweiterungen umsetzen kann.
 
 ```typescript
 export interface AbilityState {
@@ -32,7 +32,7 @@ export interface AppState {
 
 Selectors sind Funktionen, die dazu dienen, bestimmte Teile des Zustands aus dem Store abzurufen. Sie ermöglichen es, den Zustand zu filtern, zu transformieren und zu kombinieren, um spezifische Daten abzurufen, die von den Components verwendet werden.
 
-In unserem Beispiel vereinfachen wir das Beispiel aus den Actions da man dort nur mühsam zu den `abilities` gekommen ist.
+In unserem Beispiel vereinfachen wir das Beispiel aus den Actions, da man dort nur mühsam zu den `abilities` gekommen ist.
 
 ```typescript
 import { createSelector } from "@ngrx/store";

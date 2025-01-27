@@ -18,7 +18,7 @@ Actions sind einfache JS-Objekte, die eine bestimmte Aktion beschreiben, die in 
 
 Actions spielen eine zentrale Rolle in der Redux-Architektur und dienen als Auslöser für Zustandsänderungen im Store. Durch die Verwendung von Actions, kann man den Zustand der Anwendung eindeutig beschreiben und die Auswirkungen dieser Aktionen auf den Zustand zentral verwalten.
 
-Die Action Typen werden meistens in einem Enum definiert, so hat man eine bessere Übersicht welche Actions die Anwendung besitzt. Die Typen werden in eckigen Klammern mit einem präfix, der den Kontext der Aktion angibt, geschrieben.
+Die Action-Typen werden meistens in einem Enum definiert. Auf diese Weise hat man eine bessere Übersicht darüber, welche Actions die Anwendung besitzt. Die Typen werden in eckigen Klammern mit einem Präfix, der den Kontext der Aktion angibt, geschrieben.
 
 Hier ein Beispiel:
 
