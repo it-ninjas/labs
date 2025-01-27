@@ -2,7 +2,7 @@
 title: "RxJS Subjects"
 type: docs
 linkTitle: "RxJS Subjects"
-weight: 27
+weight: 28
 date: 2023-04-21
 description: >
   Modul #F6 - Angular - RxJS Subjects
@@ -11,24 +11,24 @@ description: >
 ## Ziele
 
 - Du weisst, was RxJS-Subjects sind.
-- Du kennst, die vier Arten von Subjects und kannst diese erläutern und anwenden.
+- Du kennst die vier Arten von Subjects und kannst diese erläutern und anwenden.
 
-RxJS-Subjects sind spezielle Arten von Observables, die sowohl als Observables als auch als Observer fungieren können. Mit anderen Worten, sie ermöglichen das Senden und Empfangen von Werten und Ereignissen und das Weiterleiten dieser Werte und Ereignisse an andere Observable-Subscriber.
+RxJS-Subjects sind spezielle Arten von Observables, die sowohl als Observables als auch als Observer fungieren können. In anderen Worten ermöglichen sie das Senden und Empfangen von Werten und Ereignissen und das Weiterleiten dieser Werte und Ereignisse an andere Observable-Subscriber.
 
 Es gibt vier Arten von Subjects:
 
-- `Subject`: Ein einfacher Subject, das die neuesten Werte an seine Abonnenten weiterleitet.
+- `Subject`: Ein einfaches Subject, das die neuesten Werte an seine jeweiligen Abonnenten weiterleitet.
 - `BehaviorSubject`: Ein Subject, das den letzten Wert beibehält, der an ihn gesendet wurde, und ihn an jeden neuen Abonnenten sofort weitergibt.
 - `ReplaySubject`: Ein Subject, das alle Werte an seine neuen Abonnenten weiterleitet, unabhängig davon, wann sie das Abonnement starten.
 - `AsyncSubject`: Ein Subject, das nur den letzten Wert weiterleitet, wenn es vollständig abgeschlossen ist.
 
-Subjects sind besonders nützlich, wenn du eine zentrale Stelle benötigst, um Daten innerhalb deiner Anwendung zu verwalten und zu teilen. Zum Beispiel könntest du ein Subject verwenden, um Benutzerinteraktionen zu verfolgen und diese Daten an verschiedene Komponenten deiner Anwendung weiterzuleiten, um sie zu aktualisieren oder anzuzeigen.
+Subjects sind besonders nützlich, wenn du einen zentralen Knotenpunkt benötigst, um Daten innerhalb deiner Anwendung zu verwalten und zu teilen. Zum Beispiel kannst du ein Subject verwenden, um Benutzerinteraktionen zu verfolgen und diese Daten an verschiedene Komponenten deiner Anwendung weiterzuleiten, um sie zu aktualisieren oder anzuzeigen.
 
 ## Subject
 
 Das `Subject` speichert keine Werte, die vor der Registrierung/Abonnierung (Subscription) der Observer gesendet wurden. Wenn ein Observer sich später registriert, empfängt er nur die Werte, die nach seiner Registrierung/Abonnierung gesendet wurden.
 
-Es ist zu beachten, dass die Observer in der Reihenfolge registriert werden, in der sie `subscribe` aufrufen.
+Es ist zu beachten, dass die Observer in der Reihenfolge registriert werden, in der sie die `subscribe`-Methode aufrufen.
 
 ```typescript
 import { Subject } from "rxjs";
@@ -54,7 +54,7 @@ mySubject.next("Another value");
 
 ## BehaviorSubject
 
-Im Gegensatz zum normalen `Subject` speichert das `BehaviorSubject` den letzten gesendeten Wert, sodass er ihn an neue Observer weitergeben kann. Wenn keine Werte zuvor gesendet wurden, gibt das `BehaviorSubject` den initialen Wert zurück, der ihm während der Initialisierung zugewiesen wurde.
+Im Gegensatz zum normalen `Subject` speichert das `BehaviorSubject` den letzten gesendeten Wert, sodass es ihn an neue Observer weitergeben kann. Wenn keine Werte zuvor gesendet wurden, gibt das `BehaviorSubject` den initialen Wert zurück, der ihm während der Initialisierung zugewiesen wurde.
 
 Ein `BehaviorSubject` kann nützlich sein, wenn man einen Wert benötigt, auf den man jederzeit zugreifen kann, auch wenn es keine neuen Ereignisse gibt.
 
@@ -86,7 +86,7 @@ myBehaviorSubject.next("Another value");
 
 Im Gegensatz zum `BehaviorSubject`, welches nur den letzten Wert speichert, speichert das `ReplaySubject` eine definierte Anzahl von Werten, die es an neue Observer weitergibt. Wenn ein neuer Observer sich beim `ReplaySubject` registriert, erhält er die gespeicherten Werte in der Reihenfolge, in der sie gesendet wurden, bevor er auf zukünftige Werte wartet.
 
-Ein `ReplaySubject` kann nützlich sein, wenn man eine feste Anzahl von Werten benötigen, auf die man jederzeit zugreifen kann, auch wenn es keine neuen Ereignisse gibt.
+Ein `ReplaySubject` kann nützlich sein, wenn man eine feste Anzahl von Werten benötigt, auf die man jederzeit zugreifen kann, auch wenn es keine neuen Ereignisse gibt.
 
 Zu beachten ist, dass die Größe des `ReplaySubject` bei der Initialisierung angegeben wird und die maximale Anzahl der gespeicherten Werte definiert. Wenn mehr Werte gesendet werden, als die Größe des `ReplaySubject` zulässt, werden ältere Werte entfernt.
 
@@ -118,7 +118,7 @@ myReplaySubject.subscribe((value) => {
 
 ## AsyncSubject
 
-Im Gegensatz zu anderen Typen von Subjects speichert das `AsyncSubject` nur den letzten Wert, der von einem Observable gesendet wird, wenn das Observable vollständig abgeschlossen (`complete()`) ist, selbst wenn die `next()` Methode aufgerufen wurde. Wurde das Observable vollständig abgeschlossen, wird der letzte Wert an alle Observer weitergegeben, die auf das `AsyncSubject` subscriben. Ansonsten wird der letzte Wert nicht weitergegeben.
+Im Gegensatz zu anderen Typen von Subjects speichert das `AsyncSubject` nur den letzten Wert, der von einem Observable gesendet wurde, wenn das Observable vollständig abgeschlossen (`complete()`) ist, selbst wenn die `next()` Methode aufgerufen wurde. Wurde das Observable vollständig abgeschlossen, wird der letzte Wert an alle Observer weitergegeben, die auf das `AsyncSubject` subscriben. Ansonsten wird der letzte Wert nicht weitergegeben.
 
 ```typescript
 import { AsyncSubject } from "rxjs";
