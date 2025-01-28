@@ -19,11 +19,11 @@ Die Schritte 1 bis 4 sind Einzelaufgaben, die jeder Ninja selbständig lösen mu
 **Diese Aufgabe kann erst gestartet werden, wenn alle Feature-Branches aus dem [vorherigen Lab](../../../labs/git/vertiefung/03_collaboration)
 erfolgreich gemergt wurden.**
 
-1. Starte IntelliJ!
-2. Wechsle zum ersten Projekt (Menu › File › Recent Projects)!
-3. Achte darauf, dass du auf deinem Feature-branch arbeitest!
-4. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch)!
-5. Aktualisiere den Stand des Feature-Branch mit _Git › rebase_ von `develop`!
+1. Starte IntelliJ.
+2. Wechsle zum ersten Projekt (Menu › File › Recent Projects).
+3. Achte darauf, dass du auf deinem Feature-branch arbeitest.
+4. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch).
+5. Aktualisiere den Stand des Feature-Branch mit _Git › rebase_ von `develop`.
 
 ### Schritt 2: Bearbeiten der gleichen Codestelle
 
