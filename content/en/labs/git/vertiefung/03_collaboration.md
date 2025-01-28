@@ -61,7 +61,7 @@ Gehe in Bitbucket (Browser) auf den FeatureBranch und
 ### Schritt 6: Zusammenführen
 
 Dieser Schritt muss mindestens vom Besitzer des Feature-Branches und vom Lead Developer gemeinsam
-bearbeitet werden. Es wird aber empfohlen, dass jeweils alle Team-Member teilnehmen, um den Merge-Vorgang
+bearbeitet werden. Es wird aber empfohlen, dass jeweils alle Team-Mitglied teilnehmen, um den Merge-Vorgang
 in Bitbucket zu üben.
 
 1. Ruft den Pull Request in Bitbucket auf!
