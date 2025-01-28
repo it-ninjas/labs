@@ -14,13 +14,13 @@ Diese Aufgabe ist eine Einzelaufgabe, die von jedem IT-Ninja eigenständig bearb
 
 ### Schritt 1: Feature-Branch auf dem 2. Repository erstellen
 
-1. Starte deinen Browser!
-2. Rufe die Bitbucketseite mit dem zweiten Repository auf!
-3. Klicke auf _Branch erstellen_!
-4. Wähle den _Branch-Typ_ "Feature" aus!
-5. Wähle unter _Branch von_ "develop" aus!
-6. Trage als _Branch-Name_ "Modul-S3-‹dein Vorname›-projekte" ein (ohne Anführungszeichen)!
-7. Klicke auf _Branch erstellen_!
+1. Starte deinen Browser.
+2. Rufe die Bitbucketseite mit dem zweiten Repository auf.
+3. Klicke auf _Branch erstellen_.
+4. Wähle den _Branch-Typ_ "Feature" aus.
+5. Wähle unter _Branch von_ "develop" aus.
+6. Trage als _Branch-Name_ "Modul-S3-‹dein Vorname›-projekte" ein (ohne Anführungszeichen).
+7. Klicke auf _Branch erstellen_.
 
 ### Schritt 2: Neu erstellten Branch auschecken
 
