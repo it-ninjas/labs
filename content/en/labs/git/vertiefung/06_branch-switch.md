@@ -49,7 +49,7 @@ Speichere deine Änderungen.
 ### Schritt 6: Zuruck zum Hotfix-Branch
 
 Gehe auf _Git › Branches..._, wähle den Hotfix-Branch aus und gehe auf _Checkout_. Du solltest nun
-einen Hinweis sehen, der dich vor dem Überschreiben von nicht committeten Änderungen warnt. klicke auf
+einen Hinweis sehen, der dich vor dem Überschreiben von nicht committeten Änderungen warnt. Klicke auf
 `Don't checkout`.
 
 #### Schritt 7: Stash
