@@ -63,13 +63,13 @@ Aktion sollte es noch nicht zu Konflikten kommen.
 Legt nun die Reihenfolge fest, in der die übrigen Feature-Branches auf `develop` gemergt werden sollen.
 Führt die folgenden Schritte jeweils vollständig aus, bevor ihr mit dem nächsten Branch startet.
 
-1. Wechselt auf den Pull Request!
-2. Kontrolliert den aktuellen Zusatnd (es sollten Konflikte vorhanden sein)!
-3. Überprüft den Code mit _diff_!
-4. Löst den Konflikt manuell oder folgt den Empfehlungen von Bitbucket!
-5. Genehmigt den Pull Request, wenn der Konflikt gelöst ist! (Achtung, das kann nicht der Ersteller des Pull Requests machen!)
-6. Führt Merge auf `develop` aus!
-7. Wiederholt Punkt 1 bis 6 für den nächsten Pull Request!
+1. Wechselt auf den Pull Request.
+2. Kontrolliert den aktuellen Zusatnd (es sollten Konflikte vorhanden sein).
+3. Überprüft den Code mit _diff_.
+4. Löst den Konflikt manuell oder folgt den Empfehlungen von Bitbucket.
+5. Genehmigt den Pull Request, wenn der Konflikt gelöst ist. (Achtung, das kann nicht der Ersteller des Pull Requests machen!)
+6. Führt Merge auf `develop` aus.
+7. Wiederholt Punkt 1 bis 6 für den nächsten Pull Request.
 
 ### Schritt 7: Überprüfen des finalen Standes
 
