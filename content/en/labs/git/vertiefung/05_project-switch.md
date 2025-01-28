@@ -37,7 +37,7 @@ aber führe kein commit aus.
 
 ### Schritt 4: Zu Projekt 1 wechseln
 
-1. Wechsle nun zu deinem Feature-Branch von Projekt 1!
+1. Wechsle nun zu deinem Feature-Branch von Projekt 1.
 2. Klicke bei der entsprechenden Nachfrage "This Window" an. (Der Arbeitsbereich der IDE wird wieder auf das 1. Projekt gesetzt.)
 3. Überprüfe, dass wirklich das erste Projekt geladen ist. Du solltest das am Projektnamen erkennen
    und daran, dass keine uncommitteten Änderungen vorhanden sind.
