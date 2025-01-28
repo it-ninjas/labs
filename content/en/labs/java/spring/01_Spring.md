@@ -58,4 +58,4 @@ Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 T
 
 ---
 
-Zurück zur [Spring](../../../docs/java/spring-framework/spring) und [Spring Boot](../../../docs/java/spring-framework/spring-boot) Theorie.
+Zurück zur [Spring](../../../docs/java/spring-framework/spring/spring.md) und [Spring Boot](../../../docs/java/spring-framework/spring-boot/spring-boot.md) Theorie.
