@@ -26,10 +26,10 @@ Diese Aufgabe ist von jedem Teilnehmer auf seinem Rechner auszuführen.
 
 ### Schritt 3: Branch für die Aufgabe "Zusammenarbeit" erstellen
 
-1. Starte deinen Browser!
-2. Rufe die Bitbucketseite mit dem ersten Repository auf!
-3. Klicke auf _Branch erstellen_!
-4. Wähle den _Branch-Typ_ "Feature" aus!
-5. Wähle unter _Branch von_ "develop" aus!
-6. Trage als _Branch-Name_ "Modul-S3-‹dein Vorname›-collaboration" ein (ohne Anführungszeichen)!
-7. Klicke auf _Branch erstellen_!
+1. Starte deinen Browser.
+2. Rufe die Bitbucketseite mit dem ersten Repository auf.
+3. Klicke auf _Branch erstellen_.
+4. Wähle den _Branch-Typ_ "Feature" aus.
+5. Wähle unter _Branch von_ "develop" aus.
+6. Trage als _Branch-Name_ "Modul-S3-‹dein Vorname›-collaboration" ein (ohne Anführungszeichen).
+7. Klicke auf _Branch erstellen_.
