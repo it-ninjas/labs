@@ -24,11 +24,11 @@ Diese Aufgabe ist eine Einzelaufgabe, die von jedem IT-Ninja eigenständig bearb
 
 ### Schritt 2: Neu erstellten Branch auschecken
 
-1. Starte IntelliJ!
-2. Wechsle zum zweiten Projekt (Menu › File › Recent Projects)!
-3. Klicke bei der entsprechenden Nachfrage "This Window" an!
-4. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch)!
-5. Checke den oben erstellten Branch aus (Menu › Git › Branches...)!
+1. Starte IntelliJ.
+2. Wechsle zum zweiten Projekt (Menu › File › Recent Projects).
+3. Klicke bei der entsprechenden Nachfrage "This Window" an.
+4. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch).
+5. Checke den oben erstellten Branch aus (Menu › Git › Branches...).
 
 ### Schritt 3: Codeänderung
 
