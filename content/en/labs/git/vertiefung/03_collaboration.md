@@ -16,10 +16,10 @@ eine Teamaufgabe und muss ebenfalls für jeden Feature-Branch ausgeführt werden
 
 ### Schritt 1: Neuen Branch auschecken
 
-1. Starte IntelliJ!
-2. Wechsle zum ersten Projekt (Menu › File › Recent Projects)!
-3. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch)!
-4. Checke den oben erstellten Branch aus (Menu › Git › Branches...)!
+1. Starte IntelliJ.
+2. Wechsle zum ersten Projekt (Menu › File › Recent Projects).
+3. Aktualisiere den lokalen Stand von Git (Menu › Git › Fetch).
+4. Checke den oben erstellten Branch aus (Menu › Git › Branches...).
 
 ### Schritt 2: Dateien mit ausschliessen
 
