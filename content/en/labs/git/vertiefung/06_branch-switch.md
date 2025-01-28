@@ -65,6 +65,6 @@ Schritt 5 sollten nun nicht mehr vorhanden sein.
 ### Schritt 9: Unstash
 
 Kehre nun zum Feature-Branch zurück und überprüfe die Main-Methode. Auch hier sind die Änderungen aus
-Schritt 5 nicht vorhanden. Überlege warum das so ist.
+Schritt 5 nicht vorhanden. Überlege, warum das so ist.
 
 Führe nun `git pop` oder `git apply` auf dieser Klasse aus. Begründe deine Entscheidung!
