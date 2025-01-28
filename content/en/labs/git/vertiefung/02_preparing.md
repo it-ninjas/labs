@@ -11,14 +11,14 @@ Diese Aufgabe ist von jedem Teilnehmer auf seinem Rechner auszuführen.
 
 ### Schritt 1: Klonen des ersten Repository
 
-1. Starte deinen Browser!
-2. Rufe die Bitbucketseite mit dem ersten Repository auf!
-3. Wähle "Klonen" in der Navigationsleiste (links) aus und kopiere die URL!
-4. Starte IntelliJ!
-5. Wähle im Menu Git -> Clone... aus!
-6. Füge die kopierte URL in der ersten Zeile ein!
-7. Wähle dein Arbeitsverzeichnis für das neue Repository aus!
-8. Klicke auf "Clone"!
+1. Starte deinen Browser.
+2. Rufe die Bitbucketseite mit dem ersten Repository auf.
+3. Wähle "Klonen" in der Navigationsleiste (links) aus und kopiere die URL.
+4. Starte IntelliJ.
+5. Wähle im Menu Git -> Clone... aus.
+6. Füge die kopierte URL in der ersten Zeile ein.
+7. Wähle dein Arbeitsverzeichnis für das neue Repository aus.
+8. Klicke auf "Clone".
 
 ### Schritt 2: Klonen des zweiten Repository
 
