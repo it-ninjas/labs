@@ -22,7 +22,7 @@ Diese Aufgabe ist von jedem Teilnehmer auf seinem Rechner auszuführen.
 
 ### Schritt 2: Klonen des zweiten Repository
 
-1. Wiederhole die Punkte 2, 3 und 5 - 8 aus Schritt 4 für das zweite Repository!
+1. Wiederhole die Punkte 2, 3 und 5 - 8 aus Schritt 4 für das zweite Repository.
 
 ### Schritt 3: Branch für die Aufgabe "Zusammenarbeit" erstellen
 
