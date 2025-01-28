@@ -53,7 +53,7 @@ werden hierbei keine lokalen Daten überschrieben.
 
 ### Schritt 6: Projekt in 2. IDE-Fenster öffnen
 
-1. Wähle über _Menu › File › Recent Projects_ das erste Projekt aus!
+1. Wähle über _Menu › File › Recent Projects_ das erste Projekt aus.
 2. Klicke bei der entsprechenden Nachfrage "New Window" an. Es wird eine neue Instanz der IDE mit eigenem Arbeitsbereich geöffnet.
 3. Jetzt kannst du durch Switchen der geöffneten IDE-Instanz an beiden Projekten arbeiten.
 
