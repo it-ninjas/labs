@@ -48,9 +48,9 @@ lokale und remote Git-Repository.
 
 Gehe in Bitbucket (Browser) auf den Feature-Branch und
 
-1. Erstelle einen Pull Request (Pull Requests oder Pull-Anfragen in der Seitenleiste)!
-2. Achte dabei darauf, das du `develop` als Zielbranch ausgewählt hast!
-3. Kontrolliere den Pull Request auf Konflikte!
+1. Erstelle einen Pull Request (Pull Requests oder Pull-Anfragen in der Seitenleiste).
+2. Achte dabei darauf, das du `develop` als Zielbranch ausgewählt hast.
+3. Kontrolliere den Pull Request auf Konflikte.
    (Solange noch kein Pull Request gemergt wurde, sollten hier keine Konflikte auftreten.)
 
 ### Schritt 5: Mergen des ersten Feature-Branch
