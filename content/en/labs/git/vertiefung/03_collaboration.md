@@ -64,8 +64,8 @@ Dieser Schritt muss mindestens vom Besitzer des Feature-Branches und vom Lead De
 bearbeitet werden. Es wird aber empfohlen, dass jeweils alle Team-Mitglied teilnehmen, um den Merge-Vorgang
 in Bitbucket zu üben.
 
-1. Ruft den Pull Request in Bitbucket auf!
-2. Vergleicht die Codeänderungen des aktuellen Pull Requests zum Stand von `develop` via _diff_!
-3. Fügt mindestens ein Team-Member als Prüfer hinzu! (Achtung das kann nicht der Ersteller des Pull Requests sein!)
-4. Genehmigt nun als Prüfer den Pull Request (grüner Button)!
-5. Mergt den Pull Request (sofern dies nicht automatisch startet)!
+1. Ruft den Pull Request in Bitbucket auf.
+2. Vergleicht die Codeänderungen des aktuellen Pull Requests zum Stand von `develop` via _diff_.
+3. Fügt mindestens ein Team-Mitglied als Prüfer hinzu. (Achtung das kann nicht der Ersteller des Pull Requests sein!)
+4. Genehmigt nun als Prüfer den Pull Request (grüner Button).
+5. Mergt den Pull Request (sofern dies nicht automatisch startet).
