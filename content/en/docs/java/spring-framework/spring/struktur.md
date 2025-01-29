@@ -209,7 +209,7 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-```yml properties
+````yml properties
 spring:
   datasource:
     url: "jdbc:mariadb://localhost:3306/order"
@@ -244,7 +244,7 @@ public interface ArticleRepository {
 
     Article delete(Article article);
 }
-```
+````
 
 Meistens wird das Interface im Hintergrund vom Framework implementiert und wir müssen nichts dafür
 tun, ausser den richtigen Methodennamen und Rückgabewert zu wählen, damit Spring weiss, was es implementieren soll.

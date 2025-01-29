@@ -141,7 +141,7 @@ Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird. Zudem sagt da
 Hier eine Liste der Scopes:
 
 | Scope                | Beschreibung                                                                                                                                                                          |
-| -------------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | singleton (Standard) | Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur **eine** Bean-Instanz in jedem IoC-Container. Mehr [hier](#singleton). |
 | prototype            | Erstellt bei jeder Abhängigkeit eine neue Bean Instanz.                                                                                                                               |
 | request              | Erstellt für jeden HTTP Request eine Bean Instanz.                                                                                                                                    |
