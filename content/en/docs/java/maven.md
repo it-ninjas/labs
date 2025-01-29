@@ -257,7 +257,7 @@ Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert
 
 #### Abschnitt 3
 
-Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](../spring-boot) Projekten wichtig.
+Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](spring-framework/spring-boot) Projekten wichtig.
 
 #### Abschnitt 4
 

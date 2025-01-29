@@ -19,8 +19,8 @@ Das Ziel dabei ist es eine lose Kopplung zu erreichen, wodurch der Code eine bes
 Wartbarkeit und Erweiterbarkeit erreicht.
 
 IoC wird in Spring durch "Dependency Injection" geregelt, was im nächsten Kapitel vorgestellt wird.
-Dabei werden Abhängigkeiten wie Variablen von einer anderen Klasse durch Spring automatisch erstellt und "injektiert" (eingefügt).
-Dadurch erspart man sich die Mühe, die Objekte selbst zu erstellen.
+Dabei werden Abhängigkeiten wie Variablen von einer anderen Klasse durch Spring automatisch erstellt und "injiziert" (eingefügt).
+Dadurch erspart man sich die Mühe, die Objekte selbst zu erstellen sowie auch wieder aufzuräumen, da diese automatisch aufgeräumt werden.
 Zudem werden Zuständigkeiten dadurch getrennt. Spring nutzt dieses Prinzip.
 
 ### Dependency Injection (DI)
@@ -38,6 +38,7 @@ Ein Beispiel sieht so aus:
 
 @Component
 public class Store {
+    @Bean
     private final Item item;
 
     public Store(Item item1) {
@@ -68,7 +69,7 @@ alle Instanzvariablen mit `final` zu deklarieren. Mehr Informationen zu der `@Au
 ### Singleton
 
 Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring
-können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, dass dies innerhalb des Spring-Containers
+können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, das dies nur innerhalb des Spring-Containers
 gilt und nicht systemweit.
 
 ### Beans
@@ -135,17 +136,17 @@ In der folgenden offiziellen Dokumentation zu der `@Bean`-Annotation findest du 
 
 ##### Scope
 
-Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird.
+Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird. Zudem sagt das Scope auch, wielange ein Bean "lebt".
 
 Hier eine Liste der Scopes:
 
 | Scope                | Beschreibung                                                                                                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | singleton (Standard) | Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur **eine** Bean-Instanz in jedem IoC-Container. Mehr [hier](#singleton). |
 | prototype            | Erstellt bei jeder Abhängigkeit eine neue Bean Instanz.                                                                                                                               |
 | request              | Erstellt für jeden HTTP Request eine Bean Instanz.                                                                                                                                    |
 | session              | Erstellt für jede HTTP `Session` eine Bean Instanz.                                                                                                                                   |
-| application          | Erstellt für jeden `ServetContext` eine Bean Instanz.                                                                                                                                 |
+| application          | Erstellt für jeden `ServletContext` eine Bean Instanz.                                                                                                                                |
 | websocket            | Erstellt für jeden `WebSocket` eine Bean Instanz.                                                                                                                                     |
 
 Die beiden wichtigsten Scopes sind `singleton` und `prototype`.

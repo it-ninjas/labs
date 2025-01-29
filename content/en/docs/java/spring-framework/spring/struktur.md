@@ -75,12 +75,12 @@ public class OrderController {
 ```
 
 Dies ist eine Rest-Resource und sie wird definiert mit der Annotation `@RestController`. Die
-Annotation `@RequestMapping("/orders")` legt fest, dass alle Aufrufe, wessen URL mit `"/orders"` beginnen, diesen Rest-Controller
+Annotation `@RequestMapping("/orders")` legt fest, das alle Aufrufe, deren URL mit `"/orders"` beginnen, diesen Rest-Controller
 verwenden sollen.
 
 #### Control Layer
 
-Der Control Layer bildet den Kern aller Anwendungen und enthält dessen Geschäfts-Logiken. Auf der
+Der Control Layer bildet den Kern aller Anwendungen und enthält die Geschäftslogiken. Auf der
 technischen Ebene ist der Control Layer die grundlegendste Schicht.
 Die Control Layer könnte wie folgt aussehen:
 
@@ -170,8 +170,8 @@ public class Order {
 ```
 
 Damit wir auf die Daten zugreifen können, brauchen wir ein Repository. Dazu können wir ein Interface
-implementieren, welches `CrudRepository` extended. Das `CrudRepository` hat schon viele Methoden
-implementiert, deshalb müssen wir keine eigenen implementieren.
+implementieren, welches `CrudRepository` extended. Das `CrudRepository` sucht zur Laufzeit passende Implementierungsklassen, die wir verwenden können,
+deshalb müssen wir keine eigenen implementieren.
 
 Hier ein Beispiel:
 
@@ -209,6 +209,18 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 ```
 
+```yml properties
+spring:
+  datasource:
+    url: "jdbc:mariadb://localhost:3306/order"
+    username: spring
+    password: 1234
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+``
+
 ##### Repository
 
 Eines der am häufigsten verwendeten Design-Patterns ist das Repository Design-Pattern.
@@ -244,7 +256,7 @@ nur entsprechend gesetzt werden, sobald eine bestimmte Bedingung zutrifft. Die D
 laden, wenn das `Dev`-Profil aktiv ist, ansonsten soll eine richtige Datenbank verwendet werden.
 
 Mit der `@Profile` Annotation kann man einer Klasse oder Methode (Beans) sagen, ob sie bei einem
-Profil läuft. Das standard Profil ist `default`, sobald ein anderes Profil aktiv ist, wird das `default`
+Profil läuft. Das Standardprofil ist `default`, sobald ein anderes Profil aktiv ist, wird das `default`
 Profil deaktiviert.
 Hier ist ein Beispiel:
 
@@ -291,7 +303,7 @@ die `defaultString` Methode geladen, wenn das Profil `test` oder `test2` aktiv i
 die `testString` Methode geladen, wenn keines der obengenannten Profile aktiv ist, wird
 die `rewoltString`-Methode geladen.
 
-In Spring kann man Mehrere Profile aktivieren. Die Profile können mit dem Program gesetzt werden.  
+In Spring kann man mehrere Profile aktivieren. Die Profile können mit dem Program gesetzt werden.  
 Beispiel hier:
 
 ```java

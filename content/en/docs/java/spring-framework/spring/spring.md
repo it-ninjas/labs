@@ -17,7 +17,7 @@ description: >
 - Ich bin mit den bedeutendsten Spring-Projekten (Spring-Boot, Spring-Cloud, Spring-Security) vertraut, und kann erklären, wann und wofür welche eingesetzt werden.
 - Ich verstehe das Konzept hinter "Inversion of Control" (IoC) und kann erklären, auf welche Art und Weise es in Spring eingesetzt wird.
 - Ich kann mind. 2 Arten auflisten, wie "Dependency-Injection" (DI) dazu verwendet werden kann, um Variabeln automatisch einen Wert zuzuweisen.
-  Constructor-Based, Setter-Based, Field-Based) um DI in Spring zu benutzen.
+  (Constructor-Based, Setter-Based, Field-Based) um DI in Spring zu benutzen.
 - Ich kann das Konzept hinter `@Bean`s in Spring skizzieren und kann erläutern, wie `@Bean`s definiert und verwendet werden können.
 - Ich kann den Scopes einer "Spring-Beans" ändern. (z.B. Singleton, Session, Application
   usw.).
@@ -26,7 +26,7 @@ description: >
   erfüllen.
 - Ich weiss, was "Wiring" bedeutet und wie es in Spring verwendet wird.
 - Ich kann in Spring-Projekten sogenannte Properties setzen und abfragen.
-- Ich kenne Anwendungsfälle, in welchen Spring-Profiles verwendet werden und wie ich sie setzen kann.
+- Ich kenne Anwendungsfälle, in welchen Spring-Profiles verwendet werden und weiss, wie ich sie setzen kann.
 
 ---
 

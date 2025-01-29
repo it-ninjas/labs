@@ -67,7 +67,7 @@ public class OrderResource {
 ```
 
 Dies ist eine Rest-Resource und sie wird definiert mit der Annotation `@RestController`. Die
-Annotation `@RequestMapping("/orders")` legt fest, dass alle Aufrufe, wessen URL mit `"/orders"` beginnen, diesen Rest-Controller
+Annotation `@RequestMapping("/orders")` legt fest, dass alle Aufrufe, deren URL mit `"/orders"` beginnen, diesen Rest-Controller
 verwenden sollen.
 
 Schauen wir uns die verschiedenen, in diesem File definierten Endpoints doch genauer an.
@@ -98,7 +98,8 @@ public Order update(@PathVariable Long id,@RequestBody Order order){
 }
 ```
 
-Hier wird mit der `@PutMapping` Annotation ein Put-Endpoint auf dem Pfad `orders/id` definiert. Man kann verschiedene Endpoints für denselben Pfad definieren. Wichtig ist jedoch, dass sie sich in der Request-Art(Get, Put, Post, Delete) unterscheiden.
+Hier wird mit der `@PutMapping` Annotation ein Put-Endpoint auf dem Pfad `orders/id` definiert. Man kann verschiedene Endpoints für denselben Pfad definieren.
+Wichtig ist jedoch, dass sie sich in der Request-Methoden(Get, Put, Post, Delete) unterscheiden.
 Die Annotation `@RequestBody` wird verwendet, um anzugeben, dass der Parameter `order` aus dem Request-Body des
 HTTP-Requests gelesen werden soll.
 
@@ -133,6 +134,6 @@ public ResponseEntity delete(@PathVariable Long id) {
 Mit der `@DeleteMapping` Annotation bestimmen wir, dass alle Anfragen auf dem `orders/id` Pfad von diesem Endpoint behandelt werden,
 wenn die HTTP-Methode `Delete` verwendet wurde. Dank der `@PathVariable` Annotation wird die ID des zu löschenden Objektes aus der URL genommen und als Long-Wert gespeichert.
 Anschliessend wird im Body mithilfe des Services die `Order` mit der entsprechenden ID gelöscht.
-Nachdem Löschen wird eine erfolgreiche Antwort (HTTP 200 OK) zurückgegeben.
+Nach dem Löschen wird eine erfolgreiche Antwort (HTTP 200 OK) zurückgegeben.
 
 Mehr Informationen zu den verschiedenen Annotationen findest du [hier](../spring/annotationen.md).

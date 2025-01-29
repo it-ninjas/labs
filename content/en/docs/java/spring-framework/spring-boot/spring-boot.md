@@ -52,7 +52,7 @@ Komfortfunktionen setzt wie z.B. einen schnellen Projektstart, Starter Pakete un
 Zudem besitzt Spring Boot noch Funktionen wie z.B. eingebettete Server, um Komplexität zu vermeiden aber auch
 automatische Konfigurationen für die Spring Funktionalität.
 
-In der Praxis lohnt sich eine Verwendung von Spring Boot, ausser du benötigst eine sehr einzigartige
+In der Praxis lohnt sich die Verwendung von Spring Boot, ausser du benötigst eine sehr einzigartige
 Konfiguration. Da man mit Boot auch auf das Annotationssystem des Spring Frameworks
 zugreifen kann und der Anwendung immer problemlos zusätzliche Abhängigkeiten hinzufügen kann,
 wird Boot in den meisten Fällen empfohlen.
