@@ -1,7 +1,7 @@
 ---
 title: "REST-Endpoints"
 linkTitle: "REST-Endpoints"
-weight: 14
+weight: 2
 description: >
   Modul #J8 - Spring Framework - REST-Endpoints
 ---
@@ -136,4 +136,4 @@ wenn die HTTP-Methode `Delete` verwendet wurde. Dank der `@PathVariable` Annotat
 Anschliessend wird im Body mithilfe des Services die `Order` mit der entsprechenden ID gelöscht.
 Nach dem Löschen wird eine erfolgreiche Antwort (HTTP 200 OK) zurückgegeben.
 
-Mehr Informationen zu den verschiedenen Annotationen findest du [hier](../spring/annotationen.md).
+Mehr Informationen zu den verschiedenen Annotationen findest du [hier](../spring/05_annotationen).

@@ -1,9 +1,9 @@
 ---
 title: "Testing von REST-Schnittstellen"
 linkTitle: "Testing von REST-Schnittstellen"
-weight: 16
+weight: 8
 description: >
-  Modul #J8 - Testing von REST-Schnittstellen
+  Modul #J8 - Spring Framework - Testing von REST-Schnittstellen
 ---
 
 Wenn du ein Backend schreibst - was du mit Spring in den meisten Fällen tust, dann möchtest du deinen Code auch ausführen können.

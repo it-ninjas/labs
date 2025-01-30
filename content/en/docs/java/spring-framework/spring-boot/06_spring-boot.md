@@ -1,7 +1,7 @@
 ---
 title: "Spring Boot"
 linkTitle: "Spring Boot"
-weight: 18
+weight: 6
 description: >
   Modul #J8 - Spring Framework - Spring Boot
 ---
@@ -65,7 +65,7 @@ zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@Enab
 Annotation schaltet die automatische Konfiguration ein, was einer der Hauptbestandteile von Spring
 Boot ist.
 
-Mehr dazu findest du [hier](../spring/annotationen.md).
+Mehr dazu findest du [hier](../spring/05_annotationen).
 
 ### Spring Boot Starter
 
@@ -140,4 +140,4 @@ wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step
 
 ---
 
-![task1](../../../../../../static/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/spring) in den Labs.
+![task1](../../../../../../static/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/spring/01_Spring.md) in den Labs.
