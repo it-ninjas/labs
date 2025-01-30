@@ -1,19 +1,27 @@
 ---
 title: "REST-Endpoints"
 linkTitle: "REST-Endpoints"
-weight: 15
+weight: 14
 description: >
-  Modul #J8 - REST-Endpoints
+  Modul #J8 - Spring Framework - REST-Endpoints
 ---
 
 ## Was ist REST
 
-REST (Representational State Transfer) ist ein Designkonzept für das Internet, das Regeln und Standards definiert,
-wie Webdienste miteinander kommunizieren. Es basiert auf dem Austausch von Daten über das HTTP-Protokoll und verwendet
-einheitliche Methoden wie GET, POST, PUT und DELETE, um auf Ressourcen zuzugreifen und mit ihnen zu interagieren.
-REST betont die Verwendung von klaren, eindeutigen URLs und fördert eine zustandslose Kommunikation, was bedeutet,
-dass jede Anfrage alle benötigten Informationen enthält, um verstanden zu werden, ohne auf vergangene Anfragen
-zurückgreifen zu müssen.
+REST (Representational State Transfer) ist ein Architekturstil für die Kommunikation zwischen Computern in Netzwerken, insbesondere im World Wide Web.
+Es basiert auf einer einfachen Idee: Ressourcen, wie z.B. Daten oder Dienste, werden durch eindeutige URLs (Uniform Resource Locators) identifiziert.
+Um auf diese Ressourcen zuzugreifen oder sie zu manipulieren, verwendet man standardisierte HTTP-Methoden wie GET (zum Abrufen von Daten),
+POST (zum Erstellen neuer Daten), PUT (zum Aktualisieren von Daten) und DELETE (zum Löschen von Daten).
+
+Ein zentrales Konzept von REST ist die Zustandslosigkeit (Statelessness).
+Das bedeutet, dass jede Anfrage vom Client an den Server alle Informationen enthalten muss,
+die der Server benötigt, um sie zu verstehen und zu verarbeiten, ohne den Zustand von vorherigen Anfragen zu speichern.
+Dadurch wird die Skalierbarkeit und Zuverlässigkeit der Kommunikation verbessert.
+
+RESTful APIs (Application Programming Interfaces) sind weit verbreitet, weil sie einfach zu verstehen und zu implementieren sind.
+Sie ermöglichen es verschiedenen Systemen, unabhängig von ihrer Plattform oder Technologie, miteinander zu interagieren.
+Ein Beispiel für eine RESTful API könnte ein Online-Dienst sein, der Wetterdaten bereitstellt:
+Durch eine einfache HTTP-Anfrage kann ein Client aktuelle Wetterinformationen für eine bestimmte Stadt abrufen.
 
 ## Verschiedene Request-Arten
 
@@ -59,10 +67,10 @@ public class OrderResource {
 ```
 
 Dies ist eine Rest-Resource und sie wird definiert mit der Annotation `@RestController`. Die
-Annotation `@RequestMapping("/orders")` legt fest, dass alle Aufrufe, wessen URL mit `"/orders"` beginnen, diesen Rest-Controller
+Annotation `@RequestMapping("/orders")` legt fest, dass alle Aufrufe, deren URL mit `"/orders"` beginnen, diesen Rest-Controller
 verwenden sollen.
 
-Schauen wir uns die verschiedenen, in diesem File definierten, Endpoints doch gleich ein bisschen genauer an.
+Schauen wir uns die verschiedenen, in diesem File definierten Endpoints doch genauer an.
 
 ### Get
 
@@ -90,7 +98,8 @@ public Order update(@PathVariable Long id,@RequestBody Order order){
 }
 ```
 
-Hier wird mit der `@PutMapping` Annotation ein Put-Endpoint auf dem Pfad `orders/id` definiert. Wir man kann verschiedene Endpoints für denselben Pfad definieren. Wichtig ist jedoch, dass sie sich in der Request-Art(Get, Put, Post, Delete) unterscheiden.
+Hier wird mit der `@PutMapping` Annotation ein Put-Endpoint auf dem Pfad `orders/id` definiert. Man kann verschiedene Endpoints für denselben Pfad definieren.
+Wichtig ist jedoch, dass sie sich in der Request-Methoden(Get, Put, Post, Delete) unterscheiden.
 Die Annotation `@RequestBody` wird verwendet, um anzugeben, dass der Parameter `order` aus dem Request-Body des
 HTTP-Requests gelesen werden soll.
 
@@ -126,3 +135,5 @@ Mit der `@DeleteMapping` Annotation bestimmen wir, dass alle Anfragen auf dem `o
 wenn die HTTP-Methode `Delete` verwendet wurde. Dank der `@PathVariable` Annotation wird die ID des zu löschenden Objektes aus der URL genommen und als Long-Wert gespeichert.
 Anschliessend wird im Body mithilfe des Services die `Order` mit der entsprechenden ID gelöscht.
 Nach dem Löschen wird eine erfolgreiche Antwort (HTTP 200 OK) zurückgegeben.
+
+Mehr Informationen zu den verschiedenen Annotationen findest du [hier](../spring/annotationen.md).
