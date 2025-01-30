@@ -3575,7 +3575,65 @@ wie folgt verbinden:&lt;/p>
 &lt;li>Vom SQL-Editor aus kannst du alle gelernten SQL-Statements anwenden. Zuerst solltest du jedoch eine Datenbank mit
 &lt;code>CREATE DATABASE name&lt;/code> erstellen. Dort kannst du wie in den Docs gelernt Tabellen usw. erstellen.&lt;/li>
 &lt;/ol>
-&lt;p>Wenn diese Schritte funktioniert haben, bist du für die Labs bereit.&lt;/p></description></item><item><title>Labs: Spring und Spring Boot - Aufgaben</title><link>/labs/java/spring/01_spring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/spring/01_spring/</guid><description>
+&lt;p>Wenn diese Schritte funktioniert haben, bist du für die Labs bereit.&lt;/p></description></item><item><title>Docs: Spring</title><link>/docs/java/spring-framework/spring/01_spring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/java/spring-framework/spring/01_spring/</guid><description>
+&lt;h2 id="spring">Spring&lt;/h2>
+&lt;h3 id="ziele">Ziele&lt;/h3>
+&lt;ul>
+&lt;li>Ich kann am Beispiel Spring erklären, was ein &amp;ldquo;Framework&amp;rdquo; ausmacht, indem ich Unterschiede zu einer gewöhnlichen externen Library aufzählen kann.&lt;/li>
+&lt;li>Ich kenne einige Vor- und Nachteile, wenn ein Frameworks im Projekt eingesetzt wird.&lt;/li>
+&lt;li>Ich kann erläutern, welche Zuständigkeiten die folgenden Module im Spring-Framework haben: Core, Data-Access, Web und
+welche Aufgaben sie erfüllen.&lt;/li>
+&lt;li>Ich bin mit den bedeutendsten Spring-Projekten (Spring-Boot, Spring-Cloud, Spring-Security) vertraut, und kann erklären, wann und wofür welche eingesetzt werden.&lt;/li>
+&lt;li>Ich verstehe das Konzept hinter &amp;ldquo;Inversion of Control&amp;rdquo; (IoC) und kann erklären, auf welche Art und Weise es in Spring eingesetzt wird.&lt;/li>
+&lt;li>Ich kann mind. 2 Arten auflisten, wie &amp;ldquo;Dependency-Injection&amp;rdquo; (DI) dazu verwendet werden kann, um Variabeln automatisch einen Wert zuzuweisen.
+(Constructor-Based, Setter-Based, Field-Based) um DI in Spring zu benutzen.&lt;/li>
+&lt;li>Ich kann das Konzept hinter &lt;code>@Bean&lt;/code>s in Spring skizzieren und kann erläutern, wie &lt;code>@Bean&lt;/code>s definiert und verwendet werden können.&lt;/li>
+&lt;li>Ich kann den Scopes einer &amp;ldquo;Spring-Beans&amp;rdquo; ändern. (z.B. Singleton, Session, Application
+usw.).&lt;/li>
+&lt;li>Ich kenne die am häufigsten verwendeten Spring-Bean-Annotationen &lt;code>@Service&lt;/code>, &lt;code>@Configuration&lt;/code>,
+&lt;code>@Component&lt;/code>, &lt;code>@Repository&lt;/code>, &lt;code>@Controller&lt;/code> und weiss, wie ich diese einsetze und welchen Zweck sie
+erfüllen.&lt;/li>
+&lt;li>Ich weiss, was &amp;ldquo;Wiring&amp;rdquo; bedeutet und wie es in Spring verwendet wird.&lt;/li>
+&lt;li>Ich kann in Spring-Projekten sogenannte Properties setzen und abfragen.&lt;/li>
+&lt;li>Ich kenne Anwendungsfälle, in welchen Spring-Profiles verwendet werden und weiss, wie ich sie setzen kann.&lt;/li>
+&lt;/ul>
+&lt;h3 id="framework">Framework&lt;/h3>
+&lt;p>Ein Framework kann die Grundstruktur für Applikationen vorgeben.
+Es stellt Funktionen, Bibliotheken und Regeln bereit, um den Entwicklungsprozess zu erleichtern und zu beschleunigen.
+Häufig gibt es eine standartisierte Struktur und Methodik vor, um eine gewisse Konsistenz und Qualität des Codes und der Software sicherzustellen.&lt;/p>
+&lt;h2 id="spring-framework">Spring Framework&lt;/h2>
+&lt;p>Das Spring Framework ist ein weit verbreitetes Framework für die Entwicklung von Java-Anwendungen.
+Es bietet eine umfassende Infrastruktur, die Entwicklern hilft, robuste und wartbare Anwendungen zu erstellen.
+Eines der Kernkonzepte von Spring ist die Inversion of Control (IoC), bei der das Framework die Verantwortung
+für das Erstellen und Verwalten von Objekten übernimmt, anstatt dass der Entwickler dies manuell tun muss.&lt;/p>
+&lt;p>Spring bietet viele nützliche Module und Funktionen, wie z.B. Spring MVC für die Entwicklung von Webanwendungen,
+Spring Data für den einfachen Zugriff auf Datenbanken und Spring Security für die Implementierung von Sicherheitsfunktionen.
+Durch die Nutzung von Spring können Entwickler sich auf die Geschäftslogik ihrer Anwendungen konzentrieren,
+während das Framework viele der wiederkehrenden Aufgaben übernimmt. Dies führt zu saubererem, besser organisiertem Code
+und erleichtert die Wartung und Erweiterung der Anwendungen.&lt;/p>
+&lt;h3 id="module">Module&lt;/h3>
+&lt;p>Das Spring-Framework besteht aus verschiedenen Modulen, die unterschiedliche Aufgaben erfüllen und in Kategorien wie
+Core, Data Access, Web usw. organisiert sind.&lt;/p>
+&lt;p>&lt;img alt="spring-module-overview.png" src="https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png">&lt;/p>
+&lt;p>Quelle: &lt;a href="https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png">https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png&lt;/a>&lt;/p>
+&lt;p>Das Core-Modul umfasst essenzielle Funktionen wie Dependency Injection. Das Beans-Modul beinhaltet alles, was zur
+Erstellung von Beans benötigt wird.&lt;/p>
+&lt;p>Das JDBC-Modul bietet ein JDBC-Interface für den Datenbankzugriff. Das ORM-Modul ermöglicht den Zugriff auf
+Object-Mapping-APIs wie JPA, JDO, Hibernate. Das OXM-Modul ermöglicht den Zugriff auf
+Objekt/XML-Speicher-Implementierungen.&lt;/p>
+&lt;p>Das Web-Modul ist für die Kommunikation mit der Aussenwelt (Internet) verantwortlich.&lt;/p>
+&lt;p>Weitere Informationen befinden sich in der offiziellen
+&lt;a href="https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/index.html">Dokumentation&lt;/a>.&lt;/p>
+&lt;h3 id="spring-projekte">Spring Projekte&lt;/h3>
+&lt;p>Es gibt verschiedene Spring-Projekte, die auf dem Spring Framework aufbauen und dessen Anwendungsmöglichkeiten
+erweitern. Zu diesen gehören z. B. Spring Security, Spring Shell, Spring Boot, die jeweils spezifische
+Funktionalitäten bereitstellen.&lt;/p>
+&lt;p>Mehr dazu auf &lt;a href="https://github.com/spring-projects">GitHub Spring Projects&lt;/a>.&lt;/p>
+&lt;h4 id="spring-boot">Spring Boot&lt;/h4>
+&lt;p>&lt;a href="/docs/java/spring-framework/spring-boot/06_spring-boot/">Spring Boot&lt;/a> vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
+Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des
+Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die
+Konfiguration.&lt;/p></description></item><item><title>Labs: Spring und Spring Boot - Aufgaben</title><link>/labs/java/spring/01_spring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/spring/01_spring/</guid><description>
 &lt;h1 id="aufträge">Aufträge&lt;/h1>
 &lt;h2 id="voraussetzungen">Voraussetzungen&lt;/h2>
 &lt;p>Im &lt;a href="../../java-jdbc/01_jdbc_exercises/">Lab zu Modul #J8 (JDBC)&lt;/a> hast du ein persistentes Notenverwaltungssystem umgesetzt.
@@ -3590,7 +3648,7 @@ Bei Bedarf kannst du das Model erweitern.&lt;/p>
 &lt;h2 id="auftrag">Auftrag&lt;/h2>
 &lt;p>Die Aufgaben in diesem Lab führen dich Schritt für Schritt durch die Umsetzung einer Webanwendung mit Spring Boot, welche einem Notenverwaltungssystem entspricht.
 Die folgenden Abschnitte listen die groben Funktionalen (was soll die Anwendung können) und die nicht-funktionalen (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung auf.
-Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu &lt;a href="/docs/java/spring-framework/spring-boot/projekt-erstellen/">Spring Boot&lt;/a>.&lt;/p>
+Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu &lt;a href="/docs/java/spring-framework/spring-boot/07_projekt-erstellen/">Spring Boot&lt;/a>.&lt;/p>
 &lt;h3 id="funktionale-anforderungen">Funktionale Anforderungen&lt;/h3>
 &lt;ul>
 &lt;li>Die Anwendung unterstützt zwei unterschiedliche Profile: &amp;ldquo;student&amp;rdquo; und &amp;ldquo;admin&amp;rdquo;&lt;/li>
@@ -3628,7 +3686,7 @@ Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu &lt;a h
 &lt;h2 id="unittests">Unittests&lt;/h2>
 &lt;p>Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus &lt;a href="/docs/java/java-testing/">J4 Testing&lt;/a> bereits kennen.&lt;/p>
 &lt;hr>
-&lt;p>Zurück zur &lt;a href="/docs/java/spring-framework/spring/spring/">Spring&lt;/a> und &lt;a href="/docs/java/spring-framework/spring-boot/spring-boot/">Spring Boot&lt;/a> Theorie.&lt;/p></description></item><item><title>Labs: Streams Basics - Aufgaben</title><link>/labs/java/java-collections/06_streams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/06_streams/</guid><description>
+&lt;p>Zurück zur &lt;a href="/docs/java/spring-framework/spring/01_spring/">Spring&lt;/a> und &lt;a href="/docs/java/spring-framework/spring-boot/06_spring-boot/">Spring Boot&lt;/a> Theorie.&lt;/p></description></item><item><title>Labs: Streams Basics - Aufgaben</title><link>/labs/java/java-collections/06_streams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-collections/06_streams/</guid><description>
 &lt;h2 id="aufgabe-1---user-eingabe-in-liste-umwandeln">Aufgabe 1 - User-Eingabe in Liste umwandeln&lt;/h2>
 &lt;p>&lt;img alt="task1" src="/images/task.png"> Schreibe folgendes Programm:&lt;/p>
 &lt;ul>
@@ -6474,206 +6532,4 @@ Lies das Kapitel durch und mach dich mit den Tabellen und dem Hervorheben von Co
 &lt;p>Wenn du noch mehr wissen willst, bringt dich das Kapitel &lt;a href="https://www.markdownguide.org/hacks/">Hacks&lt;/a> noch tiefer in nicht offizielle Funktionen von Markdown hinein.&lt;/p>
 &lt;hr>
 &lt;h3 id="cheat-sheet">Cheat Sheet&lt;/h3>
-&lt;p>Das Cheat-Sheet mit den wichtigsten Teilen der Markdown-Syntax findest du &lt;a href="https://www.markdownguide.org/cheat-sheet/">hier&lt;/a>&lt;/p></description></item><item><title>Labs: Mockito - Aufgaben</title><link>/labs/java/java-testing/02_mockito/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/java-testing/02_mockito/</guid><description>
-&lt;p>Eine Wörterbuch-Anwendung bewahrt die Einträge in einer Datenbank.
-Die Interaktion mit der Datenbank wird durch ein DictionaryRepository umgesetzt.&lt;/p>
-&lt;p>Ein DictionaryRepository setzt folgendes Interface um:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">DictionaryRepository&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Die Methode erhält ein Wort und die Definition dazu und speichert diese als Eintrag in der Datenbank
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> *
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param word das Wort, welche in dem Wörterbuch hinzugefügt werden soll
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param definition die Definition des Wortes
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(String key, String value);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Die Methode aktualisiert die Definition des Wortes in der Wörterbuch-Datenbank
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> *
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param word das Wort, welche in dem Wörterbuch bereits existiert
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param definition die aktualisierte Definition des Wortes
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">update&lt;/span>(String key, String value);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Die Methode liefert die Definition für das gegebene Wort aus der Wörterbuch-Datenbank zurück.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> *
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param word das Wort, dessen Definition gesucht wird
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Return die Definition des Wortes aus der Wörterbuch-Datenbank, falls vorhanden, ansonsten null
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String &lt;span style="color:#a6e22e">getDefinition&lt;/span>(String word);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Klasse &lt;em>Dictionary&lt;/em> beinhaltet die Business-Logik des Wörterbuchs und verwendet ein &lt;em>DictionaryRepository&lt;/em>,
-um die Einträge in der Datenbank zu speichern und zu finden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">enum&lt;/span> DictionaryStatus {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ADDED,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> UPDATED,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> INVALID,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> NOT_FOUND
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Dictionary&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> DictionaryRepository repository;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Dictionary&lt;/span>(DictionaryRepository repository) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">repository&lt;/span> &lt;span style="color:#f92672">=&lt;/span> repository;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Die Methode schreibt eine Definition für ein Wort in der Wörterbuch-Datenbank.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Zuerst wird geschaut, ob das Wort in der Datenbank bereits existiert.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Falls das Wort noch nicht existiert, wird einen neuen Eintrag in der Datenbank erstellt.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Falls das Wort bereits existiert, wird seine Definition aktualisiert.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> *
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param word das Wort, welche in dem Wörterbuch hinzugefügt oder aktualisiert werden soll
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param definition die Definition des Wortes
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Return DictionaryStatus.ADDED falls das Wort neu ist, DictionaryStatus.UPDATED falls das Wort
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * bereits vorhanden war und DictionaryStatus.INVALID, falls das Wort ein leerer String ist oder Zahlen beinhaltet
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> DictionaryStatus &lt;span style="color:#a6e22e">addOrUpdateWord&lt;/span>(String word, String definition) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//TODO gemäss JavaDoc umsetzen&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Die Methode sucht nach der Definition des gegebenen Worts.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Falls das Wort existiert, wird die Definition zurückgeliefert und ansonsten einen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Text, welcher darauf hinweist, dass das Wort nicht vorhanden ist.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> *
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Param word das Wort, dessen Definition gesucht wird
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @Return die Definition des Wortes, falls das Wort im Wörterbuch existiert. Ansonsten folgenden Text:
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * &amp;#34;Das Wort xxx konnte im Wörterbuch nicht gefunden werden&amp;#34; (xxx steht als Platzhalter für das gesuchte Wort)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> String &lt;span style="color:#a6e22e">getDefinition&lt;/span>(String word) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//TODO gemäss JavaDoc umsetzen&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="aufgabe">Aufgabe&lt;/h4>
-&lt;p>Schreibe eine Test-Klasse für &lt;em>Dictionary&lt;/em>, welche folgende Tests beinhaltet:&lt;/p>
-&lt;ul>
-&lt;li>Tests der Methode &lt;em>addOrUpdateWord&lt;/em>:
-&lt;ul>
-&lt;li>Das Wort befindet sich noch nicht in der Datenbank&lt;/li>
-&lt;li>Das Wort befindet sich bereits in der Datenbank&lt;/li>
-&lt;li>Das Wort ist ein leerer String&lt;/li>
-&lt;li>Das Wort beinhaltet Zahlen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Tests der Methode &lt;em>getDefinition&lt;/em>:
-&lt;ul>
-&lt;li>Das gesuchte Wort existiert in der Datenbank&lt;/li>
-&lt;li>Das gesuchte Wort existiert nicht in der Datenbank&lt;/li>
-&lt;li>Das gesuchte Wort is ungültig: leerer String&lt;/li>
-&lt;li>Das gesuchte Wort is ungültig: das Wort beinhaltet Zahlen&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Anforderungen&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Schreibe jeweils einen Test und erweitere den Code dann nur soweit bis der Test grün ist. Wiederhole dies für alle Tests (die bestehende Tests müssen weiterhin funktionieren!).&lt;/li>
-&lt;li>Der Interface &lt;em>DictionaryRepository&lt;/em> darf nicht umgesetzt werden. Für die Tests wird ein Mock oder ein Spy aus dem Mockito-Framework verwendet.&lt;/li>
-&lt;li>Jede Test-Methode hat folgendes Namensschema:
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">given_when_then&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>Wobei:
-&lt;ul>
-&lt;li>&lt;strong>given&lt;/strong> die Ausgangslage definiert&lt;/li>
-&lt;li>&lt;strong>when&lt;/strong> ist der Name der Methode, welche getestet wird&lt;/li>
-&lt;li>&lt;strong>then&lt;/strong> ist das Ergebnis, welche erwartet wird&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Jede Test-Methode prüft, dass alle Methoden eines Mocks/Spy&amp;rsquo;s welche aufgerufen werden müssen, auch aufgerufen wurden.&lt;/li>
-&lt;li>Jede Test-Methode prüft, dass alle Methoden eines Mocks/Spy&amp;rsquo;s welche NICHT aufgerufen werden sollen, auch nicht aufgerufen wurden.&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;p>Hier kannst du &lt;a href="/docs/java/java-testing/#mockito">zurück zur Theorie&lt;/a>.&lt;/p></description></item></channel></rss>
+&lt;p>Das Cheat-Sheet mit den wichtigsten Teilen der Markdown-Syntax findest du &lt;a href="https://www.markdownguide.org/cheat-sheet/">hier&lt;/a>&lt;/p></description></item></channel></rss>
