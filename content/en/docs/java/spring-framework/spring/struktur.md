@@ -8,7 +8,7 @@ description: >
 
 ## Spring Struktur
 
-![spring-struktur.png](../images/spring-struktur.png)
+![spring-struktur.png](../../images/spring-struktur.png)
 
 Die Meisten modernen Webapplikationen bestehen aus 3 Schichten:
 
