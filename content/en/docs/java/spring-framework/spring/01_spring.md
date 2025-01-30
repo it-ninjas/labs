@@ -1,7 +1,7 @@
 ---
 title: "Spring"
 linkTitle: "Spring"
-weight: 13
+weight: 1
 description: >
   Modul #J8 - Spring Framework - Spring
 ---
@@ -27,8 +27,6 @@ description: >
 - Ich weiss, was "Wiring" bedeutet und wie es in Spring verwendet wird.
 - Ich kann in Spring-Projekten sogenannte Properties setzen und abfragen.
 - Ich kenne Anwendungsfälle, in welchen Spring-Profiles verwendet werden und weiss, wie ich sie setzen kann.
-
----
 
 ### Framework
 
@@ -80,7 +78,7 @@ Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
 #### Spring Boot
 
-[Spring Boot](../spring-boot/spring-boot.md) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
+[Spring Boot](../spring-boot/06_spring-boot) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die
 Konfiguration.
