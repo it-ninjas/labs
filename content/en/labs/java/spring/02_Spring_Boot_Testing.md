@@ -13,5 +13,5 @@ Erweitere/Korrigiere deine Tests aus den [Spring und Spring Boot Aufgaben](./01_
 
 - Schreibe Mockito-Tests für den Service, der die Schulfächer verwaltet (z.B. `SchulfachAdminService`).
 - Ändere den Integrationstest zur Verwaltung von Schulfächern (z.B. `AdminControllerIntegrationTest`) zu einem `@WebMvcTest`.
-- Schreibe einen `@DataJpaTest`, der das Repository zur Verwaltung von Schulfächern inklusive seiner Entities abdeckt.
+- Schreibe einen `@DataJpaTest` respektive `@DataJdbcTest`, der das Repository zur Verwaltung von Schulfächern inklusive seiner Entities abdeckt.
 - Schreibe einen `@SpringBootTest` als kompletten Integrationstest, der vom Controller-Aufruf mittels `MockMvc` bis auf die H2-DB “runter” geht. Teste, ob das Anlegen eines neuen Schulfachs funktioniert und ob die Daten persistiert werden.
