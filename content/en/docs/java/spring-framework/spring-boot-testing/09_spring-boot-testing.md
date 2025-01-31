@@ -63,7 +63,7 @@ Die Applikation ist minimalistisch aber mit den wichtigsten Spring-Boot-Layers a
 Der `PersonController` verwendet den `PersonService`, welcher auf das `PersonRepo` zugreift, das die `Person`-Entity nutzt.
 Das Zwiebelprinzip in Reinkultur ;-).
 
-![tipParallel](../../../../../../static/images/hint.png) Während du die Doku hier liest, schaust du dir parallel dazu die erwähnten Code-Stellen an,
+![tipParallel](/images/hint.png) Während du die Doku hier liest, schaust du dir parallel dazu die erwähnten Code-Stellen an,
 lässt die beschriebenen Tests laufen und versuchst so, die Erkärungen nachzuvollziehen.
 
 ## Testarten und Best Practices
@@ -91,7 +91,7 @@ Für Services gibt es keine spezielle Slice-Test-Annotation oder Umgebung. Da ne
 > @DataJpaTest, @DataJdbcTest, @WebMvcTest und @SpringBootTest fahren den Application-Context (oder zumindest Teile davon) hoch.
 > Das ist langsamer bei der Ausführung, als pure Unit-Tests. Wir werden daher später lernen, nur gewisse Tests zu starten.
 
-![tipIntegrationTest](../../../../../../static/images/hint.png) Bei @DataJpaTest, @DataJdbcTest, @WebMvcTest und @SpringBootTest kann man von 'Integration-Tests' sprechen,
+![tipIntegrationTest](/images/hint.png) Bei @DataJpaTest, @DataJdbcTest, @WebMvcTest und @SpringBootTest kann man von 'Integration-Tests' sprechen,
 weil verschiedene Komponenten im Zusammenspiel untersucht werden. Wir könnten nun mit Maven
 das [Failsave](https://maven.apache.org/surefire/maven-failsafe-plugin/) Plugin verwenden, das für Integrations-Tests verwendet wird. Das Failsave-Plugin springt in der Maven Phase 'integraton-test' an,
 also nach der Unit-Test-Phase 'test'. Es funktioniert anders als Unit-Tests. Um die Komplexität zu reduzieren,
@@ -109,7 +109,7 @@ Hier nochmals in der Übersicht, welche Testarten sich für welchen Layer eignen
 
 Du kannst alle Tests mit `mvn clean test` ausführen.
 
-![tippFailingTests](../../../../../../static/images/hint.png) Evtl. schlägt der Test `PersonRepoTestContainerDataJpaTest` fehl. Das hat damit zu tun,
+![tippFailingTests](/images/hint.png) Evtl. schlägt der Test `PersonRepoTestContainerDataJpaTest` fehl. Das hat damit zu tun,
 dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten im Abschnitt [Testcontainers](#testcontainers) an.
 
 Wie bereits weiter oben erwähnt, sind `@DataJpaTest`-, `@DataJdbcTest`-, `@WebMvcTest`- und `@SpringBootTest`-Tests zeitaufwändig bei der Ausführung.
@@ -509,7 +509,7 @@ Falls deine Applikation mit JDBC implementiert ist, kannst du einfach `@DataJpaT
 
 Es werden nur DB, Entities und Repositories initialisert, keine Services, keine Controller:
 
-![Repo-DataJpaTest-Tests](../../images/repo-datajpatest.png)
+![Repo-DataJpaTest-Tests](../../images/repo-datajpajdbctest.png)
 
 Auch hier verwenden wir die H2 In-Memory DB.
 
@@ -740,4 +740,4 @@ Wichtige Punkte zum Test:
 
 ---
 
-![task1](../../../../../../static/images/task.png) Jetzt bist du dran. Löse die Aufgaben in [Spring Boot Testing - Aufgaben](../../../../labs/java/spring/02_Spring_Boot_Testing/)!
+![task1](/images/task.png) Jetzt bist du dran. Löse die Aufgaben in [Spring Boot Testing - Aufgaben](../../../../labs/java/spring/02_Spring_Boot_Testing/)!

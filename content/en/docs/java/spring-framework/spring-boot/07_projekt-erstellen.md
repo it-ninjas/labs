@@ -1107,4 +1107,4 @@ public class AdminControllerIntegrationTest {
 }
 ```
 
-![task1](../../../../../../static/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Spring](../../../../labs/java/spring) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Spring](../../../../labs/java/spring) in den Labs.
