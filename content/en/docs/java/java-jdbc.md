@@ -197,7 +197,25 @@ Die Arbeit mit try-with-resources ist immer vorzuziehen, wenn es um Closable-Res
 
 Die folgende Beispiel-Methode fasst die oben erwähnten Arbeitsschritte mit JDBC (aktuelle Version) zusammen:
 
-![](../java-jdbc/jdbc_complete_code_example.png)
+```java
+private static void findByUsernameAndAge(String url, String dbUsername, String password, String username, int age) throws SQLException {
+  try(Connection connection = DriverManager.getConnection(url, dbUsername, password))  {
+    String query = "SELECT * FROM user WHERE username = ? and age > ?";
+
+    try(PreparedStatement statement = connection.prepareStatement(query)){
+      statement.setString(1, username);
+      statement.setInt(2, age);
+
+      ResultSet resultSet = statement.executeQuery();
+
+      while(resultSet.next()){
+        String data = resultSet.getInt(1) + ":" + resultSet.getString(2);
+        System.out.println(data);
+      }
+    }
+  }
+}
+```
 
 ---
 
