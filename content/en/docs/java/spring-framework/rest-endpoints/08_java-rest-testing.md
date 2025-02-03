@@ -1,9 +1,9 @@
 ---
 title: "Testing von REST-Schnittstellen"
 linkTitle: "Testing von REST-Schnittstellen"
-weight: 16
+weight: 8
 description: >
-  Modul #J8 - Testing von REST-Schnittstellen
+  Modul #J8 - Spring Framework - Testing von REST-Schnittstellen
 ---
 
 Wenn du ein Backend schreibst - was du mit Spring in den meisten Fällen tust, dann möchtest du deinen Code auch ausführen können.
@@ -36,25 +36,25 @@ Mit Spring Boot 3 wird neu nur noch einen Dependency benötigt, damit der Swagge
 
 Wenn man nun die Applikation startet, kann man auf die URL http://localhost:8080/swagger-ui/index.html# zugreifen. Dort sieht man dan folgendes:
 
-[SwaggerOverview](../java-rest-testing/SwaggerOverview.png)
+[SwaggerOverview](../../images/SwaggerOverview.png)
 
 Auf dem untenstehenden Bild kann man die API-Schnittstelle von einer GET-Anfrage sehen. Mit einem Klick auf den `Try it out`-Button kann man nachher diese Anfrage ausprobieren.
 
-![SwaggerGet](../java-rest-testing/SwaggerGet.png)
+![SwaggerGet](../../images/SwaggerGet.png)
 
 Nun erscheint ein grosser blauer Button mit der Aufschrift `Execute`. Auf Knopfdruck wird die GET-Anfrage gesendet und die Antwort wird nach Erhalt angezeigt.
 
-![SwaggerGetTryOut](../java-rest-testing/SwaggerGetTryOut.png)
+![SwaggerGetTryOut](../../images/SwaggerGetTryOut.png)
 
 Was bei den GET-Anfragen galt, gilt auch für POST-Requests. Im Unterschied zur vorherigen Schnittstelle muss bei dieser zusätzlich ein Request Body im JSON-Format angegeben werden.
 
 Möchte man z.B. `GetById` ausführen, dann muss möglicherweise auch noch eine ID angegeben werden.
 
-![SwaggerPost](../java-rest-testing/SwaggerPost.png)
+![SwaggerPost](../../images/SwaggerPost.png)
 
 Das Json für den Request-Body kann auch hier erst nach einem Klick auf "Try it out" spezifiziert werden:
 
-![SwaggerPostTryOut](../java-rest-testing/SwaggerPostTryOut.png)
+![SwaggerPostTryOut](../../images/SwaggerPostTryOut.png)
 
 Wenn deine API Zugriffsbeschränkungen oder Authentifizierungsschichten implementiert, ist eine Anpassung der Swagger-Konfiguration notwendig, um diese Sicherheitsmechanismen zu berücksichtigen.
 
@@ -101,7 +101,7 @@ Dies ist nützlich, um Web-APIs schnell zu testen, ohne eine separate Anwendung 
 
 Damit man den HTTP Client verwenden kann, muss man zuerst ein solches File erstellen. Dies kann wie folgt getan werden:
 
-![HttpRequestFile](../java-rest-testing/HttpRequestFile.png)
+![HttpRequestFile](../../images/HttpRequestFile.png)
 
 Einige Entwickler legen die HTTP-Dateien in einem separaten Ordner wie "http" oder "requests" im Hauptverzeichnis ihres Projekts ab. Andere bevorzugen es, die HTTP-Dateien im Verzeichnis des Moduls zu speichern, das sie verwenden.
 

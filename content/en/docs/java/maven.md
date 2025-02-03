@@ -78,6 +78,39 @@ Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum B
 
 Die Version muss nicht mit deiner übereinstimmen.
 
+<details>
+<summary>JAVA_HOME Troubleshoot</summary>
+
+Es kann sein, dass du folgende Fehlermeldung siehst:
+
+```
+The JAVA_HOME environment variable is not defined correctly,
+this environment variable is needed to run this program.
+```
+
+Das bedeutet, dass die Java-Installation nicht gefunden werden kann.
+IntelliJ enthält zwar eine eigene Java-Installation, allerdings weiss Windows nicht, wo sich diese befindet.
+Aus diesem Grund musst du eine Umgebungsvariable setzen, die auf diese Installation zeigt.
+Dafür musst du zuerst herausfinden, wo sich die Installation befindet.
+
+Unter IntelliJ gehe zu folgendem Fenster:
+
+```
+File > Project Structure > Platform Settings > SDKs
+```
+
+Kopiere den Pfad unter `JDK home path`.
+
+Erstelle nun [gleich wie zuvor](#umgebungsvariablen-setzen) eine neue Umgebungsvariable mit den folgenden Werten:
+
+```
+JAVA_HOME:{JDK home path}
+```
+
+Ersetze `{JDK home path}` mit deinem kopierten Wert. Öffne danach ein neues Terminal und versuche es erneut.
+
+</details>
+
 ---
 
 ### IntelliJ IDEA einrichten
@@ -224,7 +257,7 @@ Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert
 
 #### Abschnitt 3
 
-Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](../spring-boot) Projekten wichtig.
+Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](spring-framework/spring-boot/06_spring-boot.md) Projekten wichtig.
 
 #### Abschnitt 4
 

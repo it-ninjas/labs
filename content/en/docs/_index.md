@@ -34,12 +34,12 @@ Berufsübergreifende Module finden in Form von Workshops und Erfahrungstransfers
 
 ### Absprung zu den Debugging-Seiten
 
-- [Debugging von Java Code in IntelliJ](../../../../docs/java/java-grundlagen/debugging)
-- [Frontend-Debugging](../../../../docs/web/javascript/24_debugging/)
+- [Debugging von Java Code in IntelliJ](java/java-grundlagen/debugging)
+- [Frontend-Debugging](web/javascript/24_debugging/)
 
 ### Absprung zu den Testing-Seiten
 
-- [Testing Konzepte / JUnit / Mockito](../../../../docs/java/java-testing/)
-- [Spring Boot Testing](../../../../docs/java/spring-boot/spring-boot-testing/)
-- [Rest-Schnittstellen testen](../../../../docs/java/java-rest-testing/)
-- [Angular Testfiles](../../../../docs/web/angular/02_7_angular_unit_test/)
+- [Testing Konzepte / JUnit / Mockito](java/java-testing/)
+- [Spring Boot Testing](java/spring-framework/spring-boot-testing/09_spring-boot-testing)
+- [Rest-Schnittstellen testen](java/spring-framework/rest-endpoints/08_java-rest-testing.md)
+- [Angular Testfiles](web/angular/02_7_angular_unit_test/)

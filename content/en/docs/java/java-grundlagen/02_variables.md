@@ -161,5 +161,5 @@ Der Name einer Variable sollte so gewählt werden, dass klar ist, welcher Wert d
 
 ### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=8YI0etAGQGA). Relevant sind nur die Themen bis 4:25.
