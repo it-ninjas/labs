@@ -56,7 +56,7 @@ const doubleCount: Signal<number> = computed(() => count() * 2);
 
 Bei einem Computed Signal kann man nicht direkt einen wert mit `.set()` setzen, wie es bei den Writable Signals der Fall ist. Es wird einen Compilation Error geben, wenn man das versucht.
 
-### lazily evaluated and memoized
+### lazily evaluated and memorized
 
 Der Wert des Computed Signals wird so lange nicht berechnet, bis man es aufruft, danach wird der Wert gecached.
 Wenn man nun den Wert des Computed Signals erneut liest, wird es nicht neu berechnet, sondern nimmt den Wert aus dem Cache.
