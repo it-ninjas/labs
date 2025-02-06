@@ -163,7 +163,7 @@ Um den Editor wieder zu schliessen, kannst du die folgende Schritte verwenden:
 2. `:` drücken
 3. `q!` eintippen
 4. `ENTER` drücken
-   ![](../images/vim.png "Vim")
+   ![](../../images/vim.png "Vim")
 
 </details>
 
