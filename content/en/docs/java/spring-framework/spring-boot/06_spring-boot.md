@@ -1,22 +1,22 @@
 ---
 title: "Spring Boot"
 linkTitle: "Spring Boot"
-weight: 15
+weight: 6
 description: >
-  Modul #J8 - Spring Boot
+  Modul #J8 - Spring Framework - Spring Boot
 ---
 
 #### Ziele
 
-- Ich weiss, was Spring-Boot ist und wozu es verwendet wird.
-- Ich kenne die Unterschiede zwischen dem Spring-Framework und Spring-Boot.
-- Ich kann eine einfache Spring-Boot-Applikation erzeugen (Bootstrap).
-- Ich kenne die, am häufigsten verwendeten Spring-Boot Annotationen (z.B. `@SpringBootApplication`,
+- Ich weiss was Spring Boot ist und wofür es verwendet wird.
+- Ich kenne die Unterschiede zwischen dem Spring-Framework und Spring Boot.
+- Ich kann eine einfache Spring Boot Applikation erzeugen (Bootstrap).
+- Ich kenne die am häufigsten verwendeten Spring Boot Annotationen (z.B. `@SpringBootApplication`,
   `@EnableAutoConfiguration`) und deren Bedeutung.
-- Ich weiss, was ein Spring-Boot-Starter ist und kenne die am häufigsten verwendeten
-  Spring-Boot-Starter (z.B. Web-Starter, Test-Starter usw.) und deren Zweck.
-- Ich kann, eine Rest-Schnittstelle mit Spring-Boot erstellen und diese mit Insomnia (o.ä)
-  ausführen/testen
+- Ich weiss was ein Spring Boot Starter ist und kenne die am häufigsten verwendeten
+  Spring Boot Starter (z.B. Web-Starter, Test-Starter usw.) und deren Zweck.
+- Ich kann eine Rest-Schnittstelle mit Spring Boot erstellen und diese mit Insomnia (o.ä)
+  ausführen und testen
 
 ---
 
@@ -27,7 +27,7 @@ zu können. Es gibt viele Voreinstellungen, die auch nachträglich noch geänder
 den [Spring Initializr](https://start.spring.io/), der ein Spring Boot Projekt erstellt.
 Dort kann man dann auch weitere Abhängigkeiten und Funktionalitäten hinzufügen.
 
-Spring Boot nimmt uns eigentlich sehr viel Arbeit ab, wenn man damit umzugehen weiß.
+Spring Boot nimmt uns eigentlich sehr viel Arbeit ab, wenn man damit umzugehen weiss.
 Z.B. beherrscht Spring Boot die Autokonfiguration, kann zusätzlich eigenständige Anwendungen
 erstellen und vieles mehr. Wir gehen hier aber nur auf die wichtigsten Aspekte ein.
 
@@ -52,18 +52,20 @@ Komfortfunktionen setzt wie z.B. einen schnellen Projektstart, Starter Pakete un
 Zudem besitzt Spring Boot noch Funktionen wie z.B. eingebettete Server, um Komplexität zu vermeiden aber auch
 automatische Konfigurationen für die Spring Funktionalität.
 
-In der Praxis lohnt sich eine Verwendung von Spring Boot, außer du benötigst eine sehr einzigartige
+In der Praxis lohnt sich die Verwendung von Spring Boot, ausser du benötigst eine sehr einzigartige
 Konfiguration. Da man mit Boot auch auf das Annotationssystem des Spring Frameworks
 zugreifen kann und der Anwendung immer problemlos zusätzliche Abhängigkeiten hinzufügen kann,
 wird Boot in den meisten Fällen empfohlen.
 
-### Boot Spezifische Annotationen
+### Spring Boot spezifische Annotationen
 
 Für Spring Boot gibt es spezifische Annotationen. Die `@SpringBootApplication` konfiguriert eine
 Klasse. Die `@SpringBootApplication` Annotation ist equivalent
 zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@EnableAutoConfiguration`
 Annotation schaltet die automatische Konfiguration ein, was einer der Hauptbestandteile von Spring
 Boot ist.
+
+Mehr dazu findest du [hier](../spring/05_annotationen).
 
 ### Spring Boot Starter
 
@@ -82,10 +84,10 @@ Es sind jedoch die wichtigsten und am häufigsten verwendeten Starter.
   in der Unternehmensentwicklung, da dort das Senden von E-Mails und der direkte Umgang
   mit Java Mail API normalerweise schwierig sein kann. Mail Starter verbirgt diese Komplexitäten.
 - Web Starter: Der Spring Boot Web Starter konfiguriert dir automatisch folgende Dinge: Dispatcher,
-  Servlet, Fehlerseite, Web-JAR's und Eingebettete Servlet-Behälter. Dies sind alles wichtige
+  Servlet, Fehlerseite, Web-JAR's und eingebettete Servlet-Behälter. Dies sind alles wichtige
   Konfigurationen, wenn du ein Spring Boot Backend für Web aufbauen willst.
 
-Nun schauen wir uns noch kurz an, wie man diese Starter in sein Projekt einbringen würde:
+Nun schauen wir uns kurz an, wie man diese Starter in das Projekt einbringen würde:
 
 Test Starter:
 
@@ -132,8 +134,10 @@ Web Starter
 
 ## Debuggen von Spring Boot
 
-Spring Boot Code ist in Java geschrieben, dementsprechend bleibt das Debuggen grundsätzlich gleich. Jedoch musst du die Interaktionen zwischen Repositorys, Services und Controllern gut verstehen und wissen, wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step Into behilflich sein.
+Spring Boot Code ist in Java geschrieben, dementsprechend bleibt das Debuggen grundsätzlich gleich.
+Jedoch musst du die Interaktionen zwischen Repositorys, Services und Controllern gut verstehen und wissen,
+wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step Into behilflich sein.
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/spring) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/spring/01_Spring.md) in den Labs.

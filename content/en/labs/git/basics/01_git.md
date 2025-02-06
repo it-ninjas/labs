@@ -1,10 +1,10 @@
 ---
 title: "Git Hands On Aufgabe"
-linkTitle: "Git"
+linkTitle: "Git Grundlagen"
 type: docs
-weight: 3
+weight: 1
 description: >
-  Hands On Aufgabe für [Git](../../../../docs/git/)
+  Hands On Aufgabe für [Git](../../../../docs/git/basics)
 ---
 
 ### Schritt 1: Initialisiere ein Git-Repository
