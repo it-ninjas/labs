@@ -114,8 +114,8 @@ trotzdem Datenstrukturen zur Darstellung von Sammlungen von Objekten als eine Ei
 
 ## Collection
 
-Eine `Collection` ist ein Objekt, dass eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit zusammenfasst. 
-In der Regel enthält eine Collection Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B. eine Fussballmannschaft, die eine “Sammlung” von Fussballspielern ist, d.h. Fussballspieler enthält. 
+Eine `Collection` ist ein Objekt, dass eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit zusammenfasst.
+In der Regel enthält eine Collection Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B. eine Fussballmannschaft, die eine “Sammlung” von Fussballspielern ist, d.h. Fussballspieler enthält.
 Collections bieten uns im Allgemeinen die Möglichkeit neue Elemente hinzuzufügen, Elemente zu löschen und sonst die Elemente zu verwalten.
 
 **Allgemeine Methoden:**  
@@ -163,17 +163,20 @@ Sie definieren, wann zwei Elemente als gleich gelten.
 `iterator()`
 
 > Folgend sind 3 gängige `Set` Implementationen:
-> 
+>
 > **[HashSet](https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html) - Schnell, aber unsortiert**
-> - Speichert Elemente in keiner bestimmten Reihenfolge. 
+>
+> - Speichert Elemente in keiner bestimmten Reihenfolge.
 > - Sehr schnell beim Einfügen und Suchen.
-> 
+>
 > **[TreeSet](https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html) – Sortiert, aber langsamer**
-> - Speichert Elemente aufsteigend sortiert. 
+>
+> - Speichert Elemente aufsteigend sortiert.
 > - Einfügen und Suchen dauert länger.
-> 
-> **[LinkedHashSet](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashSet.html)  – Reihenfolge bleibt erhalten**
-> - Speichert Elemente in der Reihenfolge, in der sie hinzugefügt wurden. 
+>
+> **[LinkedHashSet](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashSet.html) – Reihenfolge bleibt erhalten**
+>
+> - Speichert Elemente in der Reihenfolge, in der sie hinzugefügt wurden.
 > - Schneller als TreeSet, aber etwas langsamer als HashSet.
 
 ### Map
@@ -194,20 +197,22 @@ Zusätzlich zu den vererbten Methoden der `Collection` bietet die `List` folgend
 **Zugriff wie auf eine Collection:**  
 `keySet()`, `entrySet()`, `values()`
 
->Folgend sind 3 gängige Implementationen von `Map`:
+> Folgend sind 3 gängige Implementationen von `Map`:
 >
->**[HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) – Schnell, aber unsortiert**
->- Speichert Schlüssel-Wert-Paare in keiner bestimmten Reihenfolge.
->- Sehr schnell beim Einfügen und Suchen.
+> **[HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) – Schnell, aber unsortiert**
 >
->**[TreeMap](https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html) – Sortiert, aber langsamer**
->- Speichert Schlüssel **nach ihrer natürlichen Ordnung** oder mit einem Comparator.
->- Einfügen und Suchen dauert länger.
+> - Speichert Schlüssel-Wert-Paare in keiner bestimmten Reihenfolge.
+> - Sehr schnell beim Einfügen und Suchen.
 >
->**[LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html) – Reihenfolge bleibt erhalten**
->- Speichert Schlüssel in der Reihenfolge, in der sie hinzugefügt wurden.
->- Schneller als `TreeMap`, aber etwas langsamer als `HashMap`.
-
+> **[TreeMap](https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html) – Sortiert, aber langsamer**
+>
+> - Speichert Schlüssel **nach ihrer natürlichen Ordnung** oder mit einem Comparator.
+> - Einfügen und Suchen dauert länger.
+>
+> **[LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html) – Reihenfolge bleibt erhalten**
+>
+> - Speichert Schlüssel in der Reihenfolge, in der sie hinzugefügt wurden.
+> - Schneller als `TreeMap`, aber etwas langsamer als `HashMap`.
 
 ## Performanz
 
@@ -228,6 +233,7 @@ In der Praxis ist das jedoch kein Problem, da der Hash-Code lediglich für eine 
 Das bedeutet, wenn die Hash Codes nicht gleich sind, sind die Objekte definitiv nicht gleich. Sind die Hash Codes gleich, werden trotzdem noch die Objekte direkt vergleicht.
 
 #### Verwendung
+
 Schauen wir uns die Verwendung von `Set` an:
 Bei einem Set können wir mit der Methode `contains(Object o)` abfragen, ob ein Objekt in einem Set vorhanden ist.
 Das Set muss somit jedes Objekt mit dem Objekt vergleichen, welches wir der Methode `contains` übergeben.
