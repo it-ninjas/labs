@@ -480,22 +480,22 @@ public class RectangleTest {
     void givenPointLeftOfRectangle_whenIsInsideCheck_thenReturnsFalse() {
       assertFalse(this.uut.isInside(-1, 5));
     }
-  
+
     @Test
     void givenPointRightOfRectangle_whenIsInsideCheck_thenReturnsFalse() {
       assertFalse(this.uut.isInside(11, 5));
     }
-  
+
     @Test
     void givenPointAboveRectangle_whenIsInsideCheck_thenReturnsFalse() {
       assertFalse(this.uut.isInside(5, -1));
     }
-  
+
     @Test
     void givenPointBelowRectangle_whenIsInsideCheck_thenReturnsFalse() {
       assertFalse(this.uut.isInside(5, 11));
     }
-  
+
     @Test
     void givenPointInsideRectangle_whenIsInsideCheck_thenReturnsTrue() {
       assertTrue(this.uut.isInside(5, 5));
@@ -550,7 +550,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RectangleTest {
 
     private Rectangle uut = new Rectangle(0, 0, 10, 10);
-  
+
     @ParameterizedTest
     @CsvSource({
             "-1, 5, false",
@@ -568,6 +568,7 @@ public class RectangleTest {
 Mit `@CsvSource` können mehrere Parameter mit Komma getrennt angegeben werden. Die Anzahl (im Beispiel 3) muss mit den Parameter der Testklasse übereinstimmen.
 
 Ein simpleres Beispiel ist hier zu sehen:
+
 ```java
 package ch.sbb.talentfactory.calculator;
 
@@ -1002,7 +1003,7 @@ public class MyServiceTest {
   @InjectMocks
   private MyService myService;  // der Mock von DataService wird in die MyService-Instanz "injiziiert", das heisst
                                 // überall im DataService-Objekt, wo der DataService verwendet wird, wird der Mock zum Zug kommen!
-  
+
   @Test
   public void givenListOfNumbers_whenProcessData_thenReturnsSum() {
     List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
