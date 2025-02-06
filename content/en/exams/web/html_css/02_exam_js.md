@@ -60,6 +60,9 @@ Im HTML-CSS-Exam hast du den Text für die Kacheln hartcodiert. Das soll sich nu
     Dein Script soll die Daten von hier laden:
 
     https://raw.githubusercontent.com/it-ninjas/labs/master/static/files/json/dashboard.json
+    https://raw.githubusercontent.com/it-ninjas/labs/master/static/files/json/dashboard2.json
+
+    Stelle sicher, dass beide Dateien funktionieren.
 
 ## Personen für den Chat dynamisch laden
 
