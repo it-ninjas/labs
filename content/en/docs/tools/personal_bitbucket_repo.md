@@ -8,9 +8,9 @@ description: >
 
 #### Ziele
 
-- Ich erkläre anhand von Beispielen, wozu Git verwendet werden kann
-- Ich richte selbständig ein persönliches Git-Repository gemäss Anleitung korrekt ein
-- Ich verwalte meine Code-Aufgaben im persönlichen Git-Repository unter Einhaltung der firmeninternen Richtlinien korrekt
+- Ich erkläre anhand von Beispielen, wozu Git verwendet werden kann.
+- Ich richte selbständig ein persönliches Git-Repository gemäss Anleitung korrekt ein.
+- Ich verwalte meine Code-Aufgaben im persönlichen Git-Repository unter Einhaltung der firmeninternen Richtlinien korrekt.
 
 ### Voraussetzungen
 
@@ -32,10 +32,10 @@ git config --global core.longpaths true
 ### Warum du Git ab heute verwenden wirst
 
 Stell dir folgendes Szenario vor:
-Du arbeitest mit deinem Computer seit mehreren Stunden um deine Hausaufgaben, welche morgen fällig werden, zu erledigen.
+Du arbeitest mit deinem Computer seit mehreren Stunden an deine Hausaufgaben, welche morgen fällig werden.
 Du speicherst deine Anpassungen immer wieder, damit diese nicht verloren gehen.
 Plötzlich stürzt dein Computer ab und startet nicht wieder.
-Zum Glück, hast du noch ein altes Laptop, welcher funktionstüchtig ist und womit du morgen in die Schule gehen kannst.
+Zum Glück hast du noch ein altes Laptop, welcher funktional ist und womit du morgen in die Schule gehen kannst.
 Nur, was ist mit deinen Hausaufgaben? Die ganze Arbeit ist verloren und du musst wieder von Anfang an beginnen. Grrr....
 
 Wenn du deine Arbeit nicht nur auf deinem Computer, sondern auch irgendwo anders gespeichert hättest (z.B. Dropbox, Google-Drive usw.),
@@ -46,7 +46,7 @@ Du arbeitest an einem Computer-Programm. Es funktioniert. Nun musst du etwas Neu
 Du arbeitest ein paar Stunden dran und am Schluss merkst du, dass was bisher einwandfrei funktioniert hat, jetzt gar nicht funktioniert.
 Du willst die Änderungen rückgängig machen, weisst aber nicht wie der Code vor der Änderungen ausgesehen hat. Grrr....
 
-Wenn du deine ursprüngliche Arbeit als eine Art "Snapshot" irgendwo abgelegt hättest bevor du mit den Änderungen begonnen hast,
+Wenn du deine ursprüngliche Arbeit als eine Art "Snapshot" irgendwo abgelegt hättest, bevor du mit den Änderungen begonnen hast,
 so hättest du ganz einfach auf diesen "Snapshot" zurückgreifen können und den alten, funktionierenden Zustand wiederherstellen können.
 
 Diese zwei, in der Realität nicht ganz seltenen, Szenarien sind nur zwei Gründe, warum du ab heute mit Git und mit dem Git-Tool "Bitbucket" arbeiten wirst.
@@ -60,17 +60,17 @@ Hier geht es aber in erster Linie um das Backup deiner Arbeit, damit du bei eine
 ### Persönliches Bitbucket Repository einrichten
 
 Um deine Arbeit ausserhalb deines Computers zu sichern, wirst du in den nächsten Abschnitten ein
-Remote Git-Repository in Bitbucket erstellen und einrichten.  
-Anschliessend, wirst du dieses Repository bei dir (lokal) "klonen", sodass du auch ein lokales
+Remote Git-Repository in Bitbucket erstellen und einrichten.
+Anschliessend wirst du dieses Repository bei dir (lokal) "klonen", sodass du auch ein lokales
 Repository hast, womit du auch ohne Internetverbindung arbeiten kannst.
 
 #### Remote Repository erstellen
 
-1. Klicke auf den folgenden Link, um Bitbucket in deinem Browser zu öffnen: [Bitbucket](https://code.sbb.ch/)
-2. Wenn du noch nicht eingeloggt bist, folge den Anweisungen auf der Login-Seite
-3. Nach dem Login wirst du oben rechts ein, vermutlich, noch leeres Profil-Bild sehen. Klicke darauf und wähle **View Profile** (Profil anzeigen) aus  
+1. Klicke auf den folgenden Link, um Bitbucket in deinem Browser zu öffnen: [Bitbucket](https://code.sbb.ch/).
+2. Wenn du noch nicht eingeloggt bist, folge den Anweisungen auf der Login-Seite.
+3. Nach dem Login wirst du oben rechts ein, vermutlich, noch leeres Profil-Bild sehen. Klicke darauf und wähle **View Profile** (Profil anzeigen) aus:
    ![View Profile](../bitbucket/bitbucket_view_profile.png)
-4. Auf deiner Profilseite, klickst du nun den **Create repository** (Neues Repository erstellen) Schaltfläche
+4. Auf deiner Profilseite, klickst du nun den **Create repository** (Neues Repository erstellen) Button.
 5. Gib im geöffneten Formular deinem Repository einen Namen (z.B. "ausbildungsprogramm") und lasse die andere Felder leer. Anschliessend klicke auf **Create Repository** (Repository erstellen).
 
 Bitbucket erstellt nun das Repository für dich und du wirst automatisch zu deinem, noch leeren, Repository geführt.
@@ -99,22 +99,22 @@ Bei der nächsten Eingabeaufforderung wirst du nach einer sicheren Passphrase ge
 Auch hier kannst du die Eingabetaste verwenden, um keine Passphrase zu definieren (oder du wählst dir eine Passphrase aus).
 
 Deine SSH-Schlüsselpaar-Dateien sind nun in deinem Standardverzeichnis (auf Windows: C:\Users\<deine-uNummer>\.ssh) vorhanden:
-Der private Schlüssel ist in der Datei **id_rsa** abgelegt.
+Der private Schlüssel ist in der Datei **id_rsa** abgelegt. Der private Schlüssel darf **nie** geteilt werden.
 Der öffentliche Schlüssel ist in der Datei **id_rsa.pub** abgelegt.
 
 ##### Öffentlicher Schlüssel in Bitbucket ablegen
 
 Als letzter Schritt legst du deinen öffentlichen SSH-Schlüssel wie folgt in Bitbucket ab:
 
-1. Öffne ein Git-Bash Terminal und navigiere zum Speicherort deines SSH-Schlüsselpaars
+1. Öffne ein Git-Bash Terminal und navigiere zum Speicherort deines SSH-Schlüsselpaars.
 2. Gib folgenden Befehl ein, um deinen Schlüssel im Terminal auszugeben:
 
 ```bash
-C:\Users\u123456\.ssh> cat id_rsa.pub
+C:\Users\u123456\.ssh> type id_rsa.pub
 ```
 
-3. Markiere die Ausgabe und kopiere sie zum Clipboard (CTRL+C)
-4. [Klicke hier, um deinen öffentlichen Schlüssel ins Bitbucket hinzuzufügen](https://code.sbb.ch/plugins/servlet/ssh/account/keys)
+3. Markiere die Ausgabe und kopiere sie zum Clipboard (CTRL+C).
+4. [Klicke hier, um deinen öffentlichen Schlüssel ins Bitbucket hinzuzufügen](https://code.sbb.ch/plugins/servlet/ssh/account/keys).
 5. Klicke die "Add key" Schaltfläche, fülle das geöffnete Formular wie folgt aus und drücke anschliessend die "Save" Schaltfläche:  
    ![Bitbucket SSH-Schlüssel](../bitbucket/bitbucket_ssh_key.png)
 
@@ -130,7 +130,7 @@ Da du jetzt einen Ort hast, an dem du deine Arbeitsdateien hinzufügen und siche
 von deinem lokalen System (also direkt von deinem Computer und nicht nur über Browser) darauf zuzugreifen.  
 Um dies einzurichten, kopierst du das Bitbucket-Repository auf dein System.  
 Bei Git wird dieser Kopiervorgang als **Klonen** bezeichnet.  
-Wenn du ein Repository klonst, erstellst du eine Verbindung zwischen dem Bitbucket-Server (den Git als "origin" kennt) und deinem lokalen System.
+Wenn du ein Repository klonst, erstellst du eine Verbindung zwischen dem Bitbucket-Server (bei Git als Origin benannt) und deinem lokalen System.
 
 ![Git Clone](../bitbucket/git_clone.png)
 
@@ -139,7 +139,7 @@ Wenn du ein Repository klonst, erstellst du eine Verbindung zwischen dem Bitbuck
 Bevor du dein Repository klonen wirst, erstellst du nun ein Ordner, welcher dieses Repository (und später auch weitere Repositories) beinhalten wird.
 
 **Aufgabe**  
-Erstelle den Ordner "local*repos" unter deinem Startverzeichnis (bei Windows unter *"C:\\Users\\\<dein Benutzername\>"\_)
+Erstelle den Ordner "local_repos" unter deinem Startverzeichnis (bei Windows unter *"C:\\Users\\\<dein Benutzername\>"\_)
 
 {{% details title="Falls du Hilfe brauchst.." %}}
 
@@ -155,9 +155,9 @@ C:\Users\e123456\local_repos> # fertig...
 #### Repository klonen
 
 1. Auf deiner Bitbucket-Repository Seite, klicke die **Clone** (klonen) Schaltfläche.
-2. Im geöffneten Popup-Fenster, wähle **SSH** als Protokoll und kopiere (CTRL+C) die URL zu deinem Repository (direkt neben dem Protokoll) in dein Clipboard  
+2. Im geöffneten Popup-Fenster, wähle **SSH** als Protokoll und kopiere (CTRL+C) die URL zu deinem Repository (direkt neben dem Protokoll) in dein Clipboard:
    ![Bitbucket Clone](../bitbucket/bitbucket_clone.png)
-3. Öffne nun dein Git-Bash Terminal und navigiere zu deinem, im vorherigen Schritt erstellten, "local_repos" Ordner
+3. Öffne nun dein Git-Bash Terminal und navigiere zu deinem, im vorherigen Schritt erstellten, "local_repos" Ordner.
 4. Verwende folgenden Befehl, um dein Repository zu klonen:
 
 ```bash
@@ -206,7 +206,7 @@ Die Ausgabe zeigt dir, dass es eine neue Datei in der **Staging-Umgebung** gibt,
 #### "git commit"
 
 Wenn du den Befehl **git commit** eingibst, speicherst du die "gestagete" Arbeit in deinem lokalen Repository.
-Bei Bedarf, kannst du diesen Snapshot aus dem Repository wiederherstellen.
+Bei Bedarf kannst du diesen Snapshot aus dem Repository wiederherstellen.
 
 Führe folgender Befehl aus, um den ersten Snapshot deiner Datei im Repository zu speichern:
 
@@ -281,7 +281,7 @@ Dieses Szenario wirst du jetzt üben.
 1. Lösche dein lokale Repository (das Verzeichnis unter **local_repos** und alles darunter löschen).
 2. Stelle deine Arbeit aus dem Bitbucket-Server wieder her.
 3. Füge folgenden Text deinem README.md File hinzu: "git clone: klont ein Remote-Repository auf das lokale System in einem lokalen Repository."
-4. Erstelle ein Snapshot für die Änderung, commite sie und pushe sie auf den Bitbucket-Server
+4. Erstelle ein Snapshot für die Änderung, commite sie und pushe sie auf den Bitbucket-Server.
 
 {{% details title="Falls du etwas Hilfe brauchst..." %}}
 
@@ -312,10 +312,10 @@ Nun kannst du deine Arbeit mit Git verwalten. Somit stellst du sicher, dass dein
 Damit deine Praxisbildner dich bei Problemsituationen unterstützen können, musst du sie auf deinem Bitbucket-Repository berechtigen.
 Dies erledigst du mit folgenden Schritten:
 
-1. Öffne dein Bitbucket-Repository im Browser
-2. Im Navigationsbereich klicke auf _Repository Settings_ und dort auf _Repository Permissions_
+1. Öffne dein Bitbucket-Repository im Browser.
+2. Im Navigationsbereich klicke auf _Repository Settings_ und dort auf _Repository Permissions_:
    ![Bitbucket Repo Permissions](../bitbucket/bitbucket_repo_permissions.png)
-3. Klicke die Schaltfläche "Add user or group" und berechtige alle Praxisbildner als Administratoren auf deinem Repository. Anschliessend klicke die "Add" Schaltfläche
+3. Klicke die Schaltfläche "Add user or group" und berechtige alle Praxisbildner als Administratoren auf deinem Repository. Anschliessend klicke die "Add" Schaltfläche:
    ![Praxisbildner Permissions](../bitbucket/praxisbildner_admin_permission.png)
 
 Nun sind alle Praxisbildner auf deinem Repository berechtigt.
