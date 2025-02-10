@@ -24,11 +24,9 @@ Die Plattform wird auf [GitHub](https://github.com/) gehostet, ähnlich wie dein
 - Auf jeder IT-Ninjas-Seite gibt es eine **Kommentarfunktion**, mit der du Fragen stellen, Probleme melden oder an Diskussionen teilnehmen kannst.
 - Alle Kommentare werden auf der [GitHub-Discussions-Seite von IT-Ninjas](https://github.com/it-ninjas/labs/discussions) gespeichert.
 
-Wenn du oben rechts auf der Seite nachsiehst, solltest du einen Link zur Kommentarfunktion finden:
-
-Wahrscheinlich ist für dich die Funktion aktuell blockiert:
-
-Damit du teilhaben kannst, brauchst du einen GitHub Account.
+Wenn du oben rechts auf der Seite nachsiehst, solltest du einen Hyperlink zu der Kommentarfunktion finden. 
+Klickst du darauf, wirst du auf das Ende der Seite referenziert. Dort findest du die Kommentarfunktion
+Falls diese für dich nicht sichtbar oder gesperrt ist, musst du dich zuerst mit GitHub anmelden.
 
 ---
 
