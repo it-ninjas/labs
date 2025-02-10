@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Angular NgRx</title><link>/docs/web/angular_ngrx/</link><description>Recent content in Angular NgRx on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 06 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="/docs/web/angular_ngrx/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: (Zusatz) NgRx</title><link>/docs/web/angular_ngrx/01_angular_ngrx/</link><pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/01_angular_ngrx/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
-&lt;li>Du weisst, was und wozu NgRx ist, und kennst das Kernkonzept davon.&lt;/li>
-&lt;li>Du kannst, es bei dir installieren.&lt;/li>
+&lt;li>Du weisst was NgRx ist, kennst die dazugehörigen Kernkonzepte und weisst, wofür man NgRx nutzt.&lt;/li>
+&lt;li>Du kannst NgRx bei dir installieren.&lt;/li>
 &lt;/ul>
 &lt;h2 id="ngrx">NgRx&lt;/h2>
 &lt;p>NgRx ist ein beliebtes State-Management-Framework für Angular-Anwendungen, das auf der Redux-Architektur basiert. Es bietet eine zentrale Datenquelle, den sogenannten Store, um den Anwendungsstatus zu verwalten. Mit NgRx kann man den Zustand einer Anwendung zentralisieren, die Datenflüsse vereinfachen und eine bessere Skalierbarkeit und Testbarkeit erreichen.&lt;/p>
 &lt;p>NgRx besteht aus verschiedenen Kernkonzepten:&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;p>&lt;strong>Store&lt;/strong>: Der Store ist der zentrale Speicherort für den Anwendungsstatus. Er enthält den globalen Zustand deiner Anwendung in einem einheitlichen JavaScript-Objekt. Du kannst den Zustand lesen und ihn mit Aktionen ändern.&lt;/p>
+&lt;p>&lt;strong>Store&lt;/strong>: Der Store ist der zentrale Speicherort für den Anwendungsstatus. Er enthält den globalen Zustand deiner Anwendung in einem einheitlichen JavaScript-Objekt. Du kannst den Zustand von praktisch überall auslesen und ihn mit Actions ändern.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>Actions&lt;/strong>: Actions repräsentieren Ereignisse oder Absichten, die in einer Anwendung auftreten können. Sie sind einfache JavaScript-Objekte, die eine Typ-Eigenschaft haben, um den Typ der Aktion zu definieren. Actions werden verwendet, um Änderungen im Zustand anzufordern.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>&lt;strong>Reducers&lt;/strong>: Reducers sind pure Funktionen, die den vorherigen Zustand und eine Aktion als Eingabe erhalten und den neuen Zustand zurückgeben. Sie definieren, wie sich der Zustand der Anwendung basierend auf den empfangenen Aktionen ändert.&lt;/p>
+&lt;p>&lt;strong>Reducers&lt;/strong>: Reducers sind pure Funktionen, die den vorherigen Zustand und eine Aktion als Eingabe erhalten und den neuen Zustand zurückgeben. Sie definieren, wie sich der Zustand der Anwendung basierend auf den empfangenen Actions ändert.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>Selectors&lt;/strong>: Selectors sind Funktionen, die den Zustand aus dem Store abrufen und bestimmte Teile des Zustands extrahieren. Sie werden verwendet, um Daten aus dem Store zu lesen und an die Components weiterzugeben.&lt;/p>
@@ -27,9 +27,9 @@
 &lt;h2 id="installation">Installation&lt;/h2>
 &lt;p>Um NgRx in einem Angular-Projekt zu verwenden, werden folgende Schritte benötigt:&lt;/p>
 &lt;ol>
-&lt;li>Stelle sicher, dass Node.js und npm (Node Package Manager) auf dem Computer installiert sind. (Kann mit &lt;code>npm -v&lt;/code> geprüft werden.)&lt;/li>
+&lt;li>Stelle sicher, dass Node.js und npm (Node Package Manager) auf dem Computer installiert sind. (Kann mit &lt;code>npm -v&lt;/code> geprüft werden)&lt;/li>
 &lt;li>Öffne ein Terminal oder eine andere Shell und navigiere zum Hauptverzeichnis des Projekts.&lt;/li>
-&lt;li>Folgenden Befehl ausführen, um NgRx zu installieren:&lt;/li>
+&lt;li>Führe den folgenden Befehl aus, um NgRx zu installieren:&lt;/li>
 &lt;/ol>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -53,11 +53,11 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;ol start="5">
-&lt;li>Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwenden werden, indem die entsprechenden Provides angegeben und konfiguriert werden:&lt;/li>
+&lt;li>Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwendet werden, indem die entsprechenden Provides angegeben und konfiguriert werden:&lt;/li>
 &lt;/ol>
 &lt;ul>
-&lt;li>NgRx Store: Um den NgRx Store zu verwenden, muss das &lt;code>provideStore&lt;/code> importiert und im &lt;code>app.config.ts&lt;/code> konfiguriert werden.
-(Das &lt;code>reducers&lt;/code>ist aus dem &lt;code>index.ts&lt;/code> im &lt;code>reducers&lt;/code>-Ordner)&lt;/li>
+&lt;li>NgRx Store: Um den NgRx Store zu verwenden, muss &lt;code>provideStore&lt;/code> importiert und in der &lt;code>app.config.ts&lt;/code>-Datei konfiguriert werden.
+(&lt;code>reducers&lt;/code> stammt aus der &lt;code>index.ts&lt;/code>-Datei im &lt;code>reducers&lt;/code>-Ordner)&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -78,22 +78,26 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;ul>
-&lt;li>&lt;strong>Optional&lt;/strong> NgRx Effects: Um den NgRx Effects zu verwenden, muss das &lt;code>provideEffects&lt;/code> importiert und im &lt;code>app.config.ts&lt;/code> konfiguriert werden.&lt;/li>
+&lt;li>&lt;strong>Optional&lt;/strong> NgRx Effects: Um den NgRx Effects zu verwenden, muss &lt;code>provideEffects&lt;/code> importiert und in der &lt;code>app.config.ts&lt;/code>-Datei konfiguriert werden.&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">appConfig&lt;/span>: &lt;span style="color:#66d9ef">ApplicationConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">provideEffects&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@ngrx/effects&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">RouterEffects&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@ngrx/router-store&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">appConfig&lt;/span>: &lt;span style="color:#66d9ef">ApplicationConfig&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">providers&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#a6e22e">provideEffects&lt;/span>(&lt;span style="color:#a6e22e">RouterEffects&lt;/span>)],
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="debugging-tool">Debugging Tool&lt;/h2>
-&lt;p>Damit man das gesamte auch gut debuggen kann, gibt es eine &lt;a href="https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Chrome Extension&lt;/a>, welche dabei hilft.
+&lt;p>Damit man mit NgRx auch anständig debuggen kann, gibt es eine &lt;a href="https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Chrome Extension&lt;/a>, welche dabei sehr helfen kann.
 Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stores zu überwachen, Aktionen zu verfolgen und den Ablauf der Anwendung besser zu verstehen.&lt;/p></description></item><item><title>Docs: NgRx Actions</title><link>/docs/web/angular_ngrx/02_angular_ngrx_actions/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/02_angular_ngrx_actions/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
@@ -102,7 +106,7 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 &lt;h2 id="ngrx-actions">NgRx Actions&lt;/h2>
 &lt;p>Actions sind einfache JS-Objekte, die eine bestimmte Aktion beschreiben, die in einer Anwendung ausgeführt werden soll. Jede Action hat einen Typ und optional zusätzliche Daten.&lt;/p>
 &lt;p>Actions spielen eine zentrale Rolle in der Redux-Architektur und dienen als Auslöser für Zustandsänderungen im Store. Durch die Verwendung von Actions, kann man den Zustand der Anwendung eindeutig beschreiben und die Auswirkungen dieser Aktionen auf den Zustand zentral verwalten.&lt;/p>
-&lt;p>Die Action Typen werden meistens in einem Enum definiert, so hat man eine bessere Übersicht welche Actions die Anwendung besitzt. Die Typen werden in eckigen Klammern mit einem präfix, der den Kontext der Aktion angibt, geschrieben.&lt;/p>
+&lt;p>Die Action-Typen werden meistens in einem Enum definiert. Auf diese Weise hat man eine bessere Übersicht darüber, welche Actions die Anwendung besitzt. Die Typen werden in eckigen Klammern mit einem Präfix, der den Kontext der Aktion angibt, geschrieben.&lt;/p>
 &lt;p>Hier ein Beispiel:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -245,9 +249,9 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 &lt;h2 id="ngrx-reducers">NgRx Reducers&lt;/h2>
 &lt;p>Reducers sind Funktionen in NgRx, die den aktuellen Zustand des Stores und eine Action als Parameter entgegennehmen und den neuen Zustand des Stores zurückgeben. Sie sind dafür verantwortlich, den Zustand basierend auf den eingehenden Aktionen zu aktualisieren.&lt;/p>
 &lt;p>Reducers in NgRx folgen dem Redux-Muster und sollten immer eine rein funktionale Programmierung befolgen. Das bedeutet, dass sie den aktuellen Zustand nicht verändern, sondern einen neuen Zustand erstellen und zurückgeben.&lt;/p>
-&lt;p>Für jeden State, der in der Applikation verwendet werden soll, wird ein Interface erstellt. Diese Interfaces werden dazu verwendet mindestens einen weiteren State zu definieren, nämlich den Initialen State. Mit dem Initialen State wird vermieden, dass der State &lt;code>undefined&lt;/code> sein kann.&lt;/p>
-&lt;p>Da meistens mehrere Actions vorhanden sind, müssen diese auch unterschieden werden. Dazu ist die &lt;code>on&lt;/code>-Funktion da, diese kann einen Fallunterschied zwischen den Actions erstellen. Durch die Verwendung der props in den Action-Creator-Funktionen kann man die relevanten Daten an die Reducer-Funktion übergeben und im Reducer-Zustand verwenden.&lt;/p>
-&lt;p>Seit Angular 17 ist es so das es ein &lt;code>index.ts&lt;/code>, innerhalb des reducer-Ordner gibt. In diese werden alle Reducers registriert, damit diese dann in die &lt;code>app.config.ts&lt;/code> exportiert werden können. Es dient der neuen Struktur, welche für eine besser Übersicht sorgen soll.&lt;/p>
+&lt;p>Für jeden State, der in der Applikation verwendet werden soll, wird ein Interface erstellt. Diese Interfaces werden dazu verwendet, mindestens einen weiteren State zu definieren, nämlich den initialen State. Mit dem initialen State wird vermieden, dass der State &lt;code>undefined&lt;/code> sein kann.&lt;/p>
+&lt;p>Da zumeist mehrere Actions vorhanden sind, müssen diese auch unterschieden werden. Dazu ist die &lt;code>on&lt;/code>-Funktion , diese kann einen Fallunterschied zwischen den Actions erstellen. Durch die Verwendung der props in den Action-Creator-Funktionen kann man die relevanten Daten an die Reducer-Funktion übergeben und im Reducer-Zustand verwenden.&lt;/p>
+&lt;p>Seit Angular 17 ist es so, dass es eine &lt;code>index.ts&lt;/code>-Datei, innerhalb des reducer-Ordners gibt. In diese werden alle Reducers registriert, damit diese dann in die &lt;code>app.config.ts&lt;/code>-Datei exportiert werden können. Das dient der neuen Struktur, welche für eine bessere allgemeine Übersicht sorgen soll.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -355,15 +359,15 @@ Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stor
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="reducers-registrieren">Reducers Registrieren&lt;/h2>
-&lt;p>&lt;strong>Wichtig:&lt;/strong> die Reducers müssen im &lt;code>index.ts&lt;/code> in der Konstante &lt;code>export const reducers&lt;/code> angegeben werden. Diese Konstante wird dann wie bereits erwähnt im &lt;code>app.config.ts&lt;/code> innerhalb der Rundenklammern des &lt;code>provideStore()&lt;/code> angegeben.&lt;/p></description></item><item><title>Docs: NgRx Selectors</title><link>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</guid><description>
+&lt;p>&lt;strong>Wichtig:&lt;/strong> die Reducers müssen im &lt;code>index.ts&lt;/code> in der Konstante &lt;code>export const reducers&lt;/code> angegeben werden. Diese Konstante wird dann wie bereits erwähnt in der &lt;code>app.config.ts&lt;/code>-Datei innerhalb der runden Klammern von &lt;code>provideStore()&lt;/code> angegeben.&lt;/p></description></item><item><title>Docs: NgRx Selectors</title><link>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du weisst, was NgRx Selectors sind und kannst diese anwenden.&lt;/li>
-&lt;li>Du weisst, was das AppState ist.&lt;/li>
+&lt;li>Du weisst, was der AppState ist.&lt;/li>
 &lt;/ul>
 &lt;h2 id="appstate">AppState&lt;/h2>
 &lt;p>In einer typischen NgRx-Anwendung kann die AppState-Datei verwendet werden, um den gesamten Anwendungsstatus zu definieren und zu typisieren. Sie enthält normalerweise eine Schnittstelle oder ein Interface, das alle Teilzustände oder Slices des Anwendungsstatus definiert und zu einem Gesamtzustand kombiniert.
-Dies findet man im &lt;code>index.ts&lt;/code> und kann sie dort erweitern.&lt;/p>
+Diesen findet man im &lt;code>index.ts&lt;/code>, wo man auch Erweiterungen umsetzen kann.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -386,7 +390,7 @@ Dies findet man im &lt;code>index.ts&lt;/code> und kann sie dort erweitern.&lt;/
 &lt;/div>
 &lt;/div>&lt;h2 id="ngrx-selectors">NgRx Selectors&lt;/h2>
 &lt;p>Selectors sind Funktionen, die dazu dienen, bestimmte Teile des Zustands aus dem Store abzurufen. Sie ermöglichen es, den Zustand zu filtern, zu transformieren und zu kombinieren, um spezifische Daten abzurufen, die von den Components verwendet werden.&lt;/p>
-&lt;p>In unserem Beispiel vereinfachen wir das Beispiel aus den Actions da man dort nur mühsam zu den &lt;code>abilities&lt;/code> gekommen ist.&lt;/p>
+&lt;p>In unserem Beispiel vereinfachen wir das Beispiel aus den Actions, da man dort nur mühsam zu den &lt;code>abilities&lt;/code> gekommen ist.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -459,169 +463,6 @@ Dies findet man im &lt;code>index.ts&lt;/code> und kann sie dort erweitern.&lt;/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ..
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Docs: Json Web Token Authorisation (JWT)</title><link>/docs/web/angular_ngrx/07_1_angular_exkurs_jwt/</link><pubDate>Mon, 09 May 2022 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/07_1_angular_exkurs_jwt/</guid><description>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Du weisst, was ein JWT ist und wie dieser zusammengesetzt ist.&lt;/li>
-&lt;/ul>
-&lt;h2 id="exkurs-jwt">Exkurs JWT&lt;/h2>
-&lt;p>JWT ist ein offener Standard (RFC 7519) zur sicheren Übermittlung eines JSON-Objekts. In der Regel muss sich der Benutzer anmelden und erhält dann einen Token für API-Calls. Der Token besteht aus drei Teilen: Header, Payload und Signatur. Da der Payload alle erforderlichen Informationen enthält, ist für die Authentifizierung keine Datenbankabfrage erforderlich. Das ist besonders für die Skalierung zustandsloser Backend-Architekturen super!&lt;/p>
-&lt;p>Es ist jedoch wichtig, JWT mit Vorsicht zu verwenden und Sicherheitsvorkehrungen zu treffen, um Angriffe wie Token-Entführung oder Token-Manipulation zu verhindern. Dazu gehören Massnahmen wie die sichere Speicherung von geheimen Schlüsseln, die Verwendung von HTTPS für die Token-Übertragung und die Implementierung von Ablaufzeiten und erneuerbaren Tokens.&lt;/p>
-&lt;h2 id="sichere-kommunikation-mit-json-web-token">Sichere Kommunikation mit JSON Web Token&lt;/h2>
-&lt;p>Ein JWT kann von jedem dekodiert und gelesen werden. Tatsächlich ist das für den Client und das Debuggen nützlich. Die Payload wird nicht verschlüsselt (für Verschlüsselung s. JWE), aber gültige Signaturen können nur erstellt werden, wenn man ein Geheimnis kennt. Jedes Mal, wenn ein Token empfangen wird, muss eine Integritätsprüfung die Signatur bestätigen. So wird sichergestellt, dass der Token nicht manipuliert wurde. Danach wird sein Inhalt als vertrauenswürdig eingestuft.&lt;/p>
-&lt;p>Die Gültigkeitsdauer des Token kann begrenzt werden, indem zeitbezogene Claims wie iat (&amp;ldquo;Issued At&amp;rdquo;), nbf (&amp;ldquo;Not Before&amp;rdquo;) und exp (&amp;ldquo;Expiration Time&amp;rdquo;) einbezogen werden. Ein abgelaufener JWT ist zwar weiterhin gültig, da es jedoch nicht möglich ist, Einträge zu manipulieren, ohne die Signatur zu zerstören, wird bei der serverseitigen Integritätsprüfung das Ablaufdatum des Tokens gelesen und der Zugriff verweigert.&lt;/p>
-&lt;p>Ein Nachteil ist das sehr komplizierte Widerrufen eines Tokens. Eine gängige Lösung ist das &lt;strong>Blacklisting&lt;/strong>. Außerdem helfen kurze Gültigkeitsdauern.&lt;/p>
-&lt;p>&lt;strong>Beispiel für die Erstellung eines JSON Web Token&lt;/strong>&lt;/p>
-&lt;p>Ein typisches JWT sieht folgendermassen aus (Header, Payload, Signature):&lt;/p>
-&lt;p>&lt;strong>xxxxx.yyyyyy.zzzzzz&lt;/strong>&lt;/p>
-&lt;h3 id="header">Header&lt;/h3>
-&lt;p>Der Header ist typischerweise in zwei Parts aufgeteilt: der erste Part ist der benötigte Algorythmus und der zweite der Typ des Tokens. Unten ein Beispiel dazu:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;alg&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;HS256&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;typ&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;JWT&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="payload">Payload&lt;/h3>
-&lt;p>Der zweite Teil des Tokens der Payload, welche die erstellten Forderungen enthält. Forderungen sind Aussagen über eine Entität (normalerweise den Benutzer) und zusätzliche Daten. Es gibt drei Arten von Forderungen : registrierte, öffentliche und private.&lt;/p>
-&lt;ol>
-&lt;li>Registrierte: Reihe vordefinierter Forderungen die nicht obligatorisch aber empfohlen sind; iss(Emittent), exp(Ablaufzeit), sub(Betreff) und aud(Publikum)&lt;/li>
-&lt;li>Öffentliche: Können nach Belieben definiert werden. Um Kollisionen zu vermeiden, sollten sie jedoch in der IANA JSON Web Token Registry definiert sein.&lt;/li>
-&lt;li>Private: Hierbei handelt es sich um benutzerdefinierte Forderungen, die erstellt wurden, um Informationen zwischen Parteien auszutauschen, die sich auf deren Verwendung einigen und weder registrierte noch öffentliche Forderungen sind&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;sub&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;1234567890&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;John Doe&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;admin&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="signatur">Signatur&lt;/h3>
-&lt;p>Um den Signaturteil zu erstellen, muss man den codierten Header, den codierten Payload, ein Secret und den im Header angegebenen Algorithmus verwenden und diesen signieren.
-Wenn man beispielsweise den HMAC SHA256-Algorithmus verwenden möchte, wird die Signatur folgendermaßen erstellt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">HMACSHA&lt;/span>&lt;span style="color:#ae81ff">256&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">base&lt;/span>&lt;span style="color:#ae81ff">64&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">UrlEncode(header)&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">+&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">base&lt;/span>&lt;span style="color:#ae81ff">64&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">UrlEncode(payload),&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#960050;background-color:#1e0010">secret)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Signatur wird verwendet, um zu überprüfen, ob die Nachricht unterwegs nicht geändert wurde. Bei Token, die mit einem privaten Schlüssel signiert wurden, kann auch überprüft werden, ob der Absender des JWT derjenige ist, für den er sich ausgibt.&lt;/p>
-&lt;h2 id="alles-zusammenführen">Alles zusammenführen&lt;/h2>
-&lt;p>Wie man nun ein solches JWT erstellt und im Frontend verwendet wird folgend erklärt.&lt;/p>
-&lt;p>Dazu muss man als Erstes das JWT zusammenstellen, wie es oben erklärt wurde. Und dieses dann in den &lt;code>SessionStorage&lt;/code> speichern. Beseitz man nun sein JWT so kann man es bei den HTTP-Anfragen verwenden und an das Backend mitsenden, wo man es dann verifizieren muss.&lt;/p>
-&lt;p>Token erstellen und speichern:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">header&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">alg&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;HS256&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">typ&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;JWT&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">payload&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">sub&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;1234567890&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;John Doe&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">admin&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">secret&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;mysecretkey&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Header und Payload zu JSON-Strings konvertieren
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">encodedHeader&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">btoa&lt;/span>(&lt;span style="color:#a6e22e">JSON&lt;/span>.&lt;span style="color:#a6e22e">stringify&lt;/span>(&lt;span style="color:#a6e22e">header&lt;/span>));
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">encodedPayload&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">btoa&lt;/span>(&lt;span style="color:#a6e22e">JSON&lt;/span>.&lt;span style="color:#a6e22e">stringify&lt;/span>(&lt;span style="color:#a6e22e">payload&lt;/span>));
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Signatur erstellen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">signature&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">btoa&lt;/span>(&lt;span style="color:#a6e22e">encodedHeader&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">encodedPayload&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">secret&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// JWT-Token erstellen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">token&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">encodedHeader&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">encodedPayload&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;.&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">signature&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Token im Local Storage speichern
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">sessionStorage&lt;/span>.&lt;span style="color:#a6e22e">setItem&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;token&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">token&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Token bei HTTP-Anfragen mitsenden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">HttpClient&lt;/span>, &lt;span style="color:#a6e22e">HttpHeaders&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@angular/common/http&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Token aus dem Local Storage abrufen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">token&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sessionStorage&lt;/span>.&lt;span style="color:#a6e22e">getItem&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;token&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// HTTP-Header mit dem Token erstellen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">headers&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">HttpHeaders&lt;/span>().&lt;span style="color:#66d9ef">set&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Authorization&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">`Bearer &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">token&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// HTTP-Anfrage mit dem Header senden
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#66d9ef">get&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/api/data&amp;#34;&lt;/span>, { &lt;span style="color:#a6e22e">headers&lt;/span> }).&lt;span style="color:#a6e22e">subscribe&lt;/span>((&lt;span style="color:#a6e22e">response&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Verarbeitung der Serverantwort
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>});
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item></channel></rss>
