@@ -88,7 +88,7 @@ Im Gegensatz zum `BehaviorSubject`, welches nur den letzten Wert speichert, spei
 
 Ein `ReplaySubject` kann nützlich sein, wenn man eine feste Anzahl von Werten benötigt, auf die man jederzeit zugreifen kann, auch wenn es keine neuen Ereignisse gibt.
 
-Zu beachten ist, dass die Größe des `ReplaySubject` bei der Initialisierung angegeben wird und die maximale Anzahl der gespeicherten Werte definiert. Wenn mehr Werte gesendet werden, als die Größe des `ReplaySubject` zulässt, werden ältere Werte entfernt.
+Zu beachten ist, dass die Grösse des `ReplaySubject` bei der Initialisierung angegeben wird und die maximale Anzahl der gespeicherten Werte definiert. Wenn mehr Werte gesendet werden, als die Größe des `ReplaySubject` zulässt, werden ältere Werte entfernt.
 
 ```typescript
 import { ReplaySubject } from "rxjs";

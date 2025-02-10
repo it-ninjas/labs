@@ -10,7 +10,7 @@ description: >
 
 ## Ziele
 
-- Du weisst wasNgRx ist, kennst die dazugehörigen Kernkonzepte und weisst, wofür man NgRx nutzt.
+- Du weisst was NgRx ist, kennst die dazugehörigen Kernkonzepte und weisst, wofür man NgRx nutzt.
 - Du kannst NgRx bei dir installieren.
 
 ## NgRx

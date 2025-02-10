@@ -110,7 +110,7 @@ for (String word : words) {
 
 ### Lernvideo
 
-Wenn du dir die Erklärung noch mit Videos genauer anschauen möchtest, empfiehlt dir das Coaching-Team diese
+Wenn du dir die Erklärung noch mit Videos genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team diese
 Videos: [Theoretische Erklärung](https://www.youtube.com/watch?v=SRJZ1XmqHfA),
 [Anwendung in Java](https://www.youtube.com/watch?v=lfIUilgq4qo)
 
@@ -152,7 +152,7 @@ System.out.println(output); // Ausgabe: 69
 
 ### Lernvideo
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Coaching-Team dieses
+Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=R0YzQPBusAg).
 
 ---

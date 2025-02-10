@@ -97,7 +97,7 @@ import org.junit.jupiter.api.Test;
 
 public class PasswordValidatorTest {
 
-    private PasswordValidator uut;
+    private PasswordValidator uut = new PasswordValidator();
 
     @Test
     public void testPasswordNull() {
@@ -106,42 +106,52 @@ public class PasswordValidatorTest {
 
     @Test
     public void testPasswordTooShort() {
-        assertFalse(this.uut.isPasswordValid("1234567"));
+        // NIST Password Guidelines: Minimum 8 Zeichen
+        String password = "aB1$Cd3";
+        assertFalse(this.uut.isPasswordValid(password));
     }
 
     @Test
     public void testPasswordTooLong() {
-        assertFalse(this.uut.isPasswordValid("ABCDEFGHIJKLMNOPQRSTU"));
+        // NIST Password Guidelines: Maximum 64 Zeichen
+        String password = "aB1$cdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!";
+        assertFalse(this.uut.isPasswordValid(password));
     }
 
     @Test
     public void testPasswordContainsNoSpace() {
-        assertFalse(this.uut.isPasswordValid("ABCDEFGHIJKLMNOPQR T"));
+        String password = "aB1$cdefghij k";
+        assertFalse(this.uut.isPasswordValid(password));
     }
 
     @Test
     public void testPasswordContainsNoNumeric() {
-        assertFalse(this.uut.isPasswordValid("ABCDEFGHIJKLMNOPQRST"));
+        String password = "aB$cdefghijklm";
+        assertFalse(this.uut.isPasswordValid(password));
     }
 
     @Test
     public void testPasswordContainsNoLowercaseChar() {
-        assertFalse(this.uut.isPasswordValid("ABCDEFGHIJ0123456789"));
+        String password = "AB1$CDEFGHIJKLMN";
+        assertFalse(this.uut.isPasswordValid(password));
     }
 
     @Test
     public void testPasswordContainsNoUppercaseChar() {
-        assertFalse(this.uut.isPasswordValid("abcdefghij0123456789"));
+        String password = "ab1$cdefghijklmn";
+        assertFalse(this.uut.isPasswordValid(password));
     }
 
     @Test
     public void testPasswordContainsNoSpecialChar() {
-        assertFalse(this.uut.isPasswordValid("abcdeFGHIJ0123456789"));
+        String password = "aB1cdefghijklm";
+        assertFalse(this.uut.isPasswordValid(password));
     }
 
     @Test
     public void testPasswordValid() {
-        assertTrue(this.uut.isPasswordValid("abcdeFGHIJ01234$*%?+"));
+        String password = "aB1$cdefghij";
+        assertTrue(this.uut.isPasswordValid(password));
     }
 }
 ```

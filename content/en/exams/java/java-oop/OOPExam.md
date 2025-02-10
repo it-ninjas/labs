@@ -53,7 +53,7 @@ Abgesehen von der `main(...)`-Methode soll keine weitere Methode statisch sein.
 - Der Entwurf kann auf Papier oder mit einem Tool (z.B. draw.io, Visio, plantUML) erstellt werden.
 - Plane auch schon die Methoden im Entwurf ein.
 
-Zeige den Entwurf zuerst einem Coach, bevor du weiterfährst.
+Zeige den Entwurf zuerst einem Praxisbildner, bevor du weiterfährst.
 
 #### Aufgabe 2 - Klassen umsetzen
 

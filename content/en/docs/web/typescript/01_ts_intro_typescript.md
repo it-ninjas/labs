@@ -41,7 +41,7 @@ Mit TypeScript wird JavaScript zu einer stark typisierten, objektorientierten Sp
 
 ## Null Safety
 
-In TypeScript gibt es standardmäßig keine "Null Safety" im Sinne einer statischen Typüberprüfung auf mögliche Null- oder Undefined-Werte. Das bedeutet, dass Variablen jeden Typ annehmen können, einschliesslich `null` oder `undefined`, es sei denn, es wird explizit angegeben, dass sie einen anderen Typ haben sollen.
+In TypeScript gibt es standardmässig keine "Null Safety" im Sinne einer statischen Typüberprüfung auf mögliche Null- oder Undefined-Werte. Das bedeutet, dass Variablen jeden Typ annehmen können, einschliesslich `null` oder `undefined`, es sei denn, es wird explizit angegeben, dass sie einen anderen Typ haben sollen.
 Das kann dazu führen, dass in TypeScript-Code unerwartete Fehler auftreten, wenn versucht wird, auf Eigenschaften oder Methoden von null- oder undefined-Variablen zuzugreifen. Solche Fehler treten normalerweise zur Laufzeit auf und werden nicht vom Compiler erkannt.
 
 Um das Risiko von Fehlern durch null- oder undefined-Werte zu reduzieren, kann man die Option `strictNullChecks` in der `tsconfig.json`-Datei aktivieren.
@@ -138,20 +138,14 @@ Auf der letzten Zeile erstellen wir eine neue Instanz der Klasse `Greeter` mit `
 
 ## Interfaces
 
-Als Gegenstück zu Klassen exisiteren in Typescript ebenfalls Interfaces.
+Interfaces in TypeScript beschreiben die Struktur von Objekten, ohne tatsächlichen JavaScript-Code zu erzeugen. Bei der Transpilation entfernt TypeScript alle Interfaces, sodass sie in der Laufzeitumgebung nicht mehr existieren. Sie sind also rein für die statische Typisierung gedacht und lassen sich beispielsweise nicht per `instanceof` prüfen.
 
-Klassen haben die Eigenschaft, dass sie in Javascript "reale" Dinge sind. Es ist also möglich, diese über den prototype zu verwenden oder mit "instanceof" den Typ der Klasse zu überprüfen.
-
-Interfaces werden hingegen vom Compiler "gelöscht". Das heisst, dass sie von Javascript (wahrscheinlich) als einfache Objekte interpretiert werden.
-
-Ein Beispiel für ein Interface wäre das folgende:
-
+Ein einfaches Beispiel ist das folgende:
 ```javascript
-interface Person{
-    name: String;
+interface Person {
+    name: string;
     alter: number;
 }
-```
 
 ### Vererbung
 

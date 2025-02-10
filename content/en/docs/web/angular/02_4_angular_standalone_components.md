@@ -37,7 +37,7 @@ Im Gegensatz zu Standalone-Komponenten sind reguläre Komponenten modulabhängig
 - **Imports**: Reguläre Komponenten können Imports aus ihrem Modul erhalten, während Standalone-Komponenten dies nicht tun. Dies kann die Wiederverwendbarkeit von Standalone-Komponenten erhöhen.
   **Verwendung**: Seit Angular 17 sind Standalone-Komponenten per Default aktiviert und eingesetzt, was ihre Verwendung fördert. Reguläre Komponenten hingegen erfordern eine spezifische Deklaration in ihrem Modul, um verwendet werden zu können.
 
-Insgesamt bieten Standalone-Komponenten also eine größere Flexibilität und Wiederverwendbarkeit im Vergleich zu regulären Komponenten, was sie zu einer attraktiven Option für die Strukturierung von Angular-Anwendungen macht.
+Insgesamt bieten Standalone-Komponenten also eine grössere Flexibilität und Wiederverwendbarkeit im Vergleich zu regulären Komponenten, was sie zu einer attraktiven Option für die Strukturierung von Angular-Anwendungen macht.
 
 ### appConfig
 

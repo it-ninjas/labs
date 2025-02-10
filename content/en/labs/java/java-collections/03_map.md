@@ -56,7 +56,7 @@ Beachte, dass die Aufzählungen der Ortschaften sortiert sind. Die Ausgabe könn
 ```
 
 > **Ausgabe überprüfen**  
-> Der Konsole-Output Hash für diese Aufgabe ist: **`1768988137`**
+> Der Konsole-Output Hash für diese Aufgabe ist: **`494931922`**
 
 ## Aufgabe 2 (Optional)
 

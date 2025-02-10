@@ -182,7 +182,7 @@ Folgende Anforderungen sind gegeben:
 - Der BicycleService enthält folgende Funktionen:
   - `getBicycle(id: number)`: Gibt ein bestimmtes Bicycle über die ID zurück.
   - `getAllBicycle()`: Gibt alle Bicycles zurück. Ein Bicycle hat stellvertretend für den Typ und die Marke nur die dazugehörige id.
-  - `getFullBicycle(id: number)`: Gibt ein vollständiges Bicycle inklusive aller dazugehörigen Attribute zurück. Ein FullBicycle hat den effektiven Wert des Typs und der Marke.
+  - `getFullBicycle(id: number)`: Gibt ein vollständiges Bicycle Objekt inklusive aller dazugehörigen Attribute zurück. Ein FullBicycle hat den effektiven Wert des Typs und der Marke.
 - Der BrandService enthält folgende Funktionen: `getBrand(id: number)` und `getBrandName(id: number)`.
 - Der TypeService enthält folgende Funktionen: `getTypes(ids: number[])` und `getTypesName(ids: number[])`.
 - Sollte der Benutzer bei den Services versuchen etwas zu getten was es nicht gibt sol einen Fehler geworfen werden mit `throw Error`.
