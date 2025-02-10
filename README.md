@@ -143,6 +143,7 @@ The [push main action](.github/workflows/main.yml) is fired when a commit is pus
 
 * builds the Hugo site
 * deploys it to GitHub pages
+* 
 
 
 ## Contributions
