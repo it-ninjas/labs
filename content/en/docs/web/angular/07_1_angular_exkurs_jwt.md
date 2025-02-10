@@ -47,7 +47,7 @@ Der Header ist typischerweise in zwei Parts aufgeteilt: der erste Part ist der b
 
 Der zweite Teil des Tokens ist der Payload, welcher die erstellten Forderungen enthält. Forderungen sind Aussagen über eine Entität (normalerweise den Benutzer) und zusätzliche Daten. Es gibt drei Arten von Forderungen : registrierte, öffentliche und private.
 
-1. Registrierte: Reihe vordefinierter Forderungen die nicht obligatorisch, aber empfohlen sind; iss(Emittent), exp(Ablaufzeit), sub(Betreff) und aud(Publikum)
+1. Registrierte: Reihe vordefinierter Forderungen die nicht obligatorisch, aber empfohlen sind; iss(Aussteller), exp(Ablaufzeit), sub(Betreff) und aud(Zielgruppe)
 2. Öffentliche: Können nach Belieben definiert werden. Um Kollisionen zu vermeiden, sollten sie jedoch in der IANA JSON Web Token Registry definiert sein.
 3. Private: Hierbei handelt es sich um benutzerdefinierte Forderungen, die erstellt wurden, um Informationen zwischen Parteien auszutauschen, die sich auf deren Verwendung einigen und weder registrierte noch öffentliche Forderungen sind
 
