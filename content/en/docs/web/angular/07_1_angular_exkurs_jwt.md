@@ -24,7 +24,7 @@ Ein JWT kann von jedem dekodiert und gelesen werden. Tatsächlich ist das für d
 
 Die Gültigkeitsdauer des Tokens kann begrenzt werden, indem zeitbezogene Claims wie iat ("Issued At"), nbf ("Not Before") und exp ("Expiration Time") einbezogen werden. Ein abgelaufener JWT ist zwar weiterhin gültig, da es jedoch nicht möglich ist, Einträge zu manipulieren, ohne die Signatur zu zerstören, wird bei der serverseitigen Integritätsprüfung das Ablaufdatum des Tokens gelesen und der Zugriff verweigert.
 
-Ein Nachteil davon ist das sehr komplizierte Widerrufen eines Tokens. Eine gängige Lösung ist das **Blacklisting**. Außerdem helfen kurze Gültigkeitsdauern.
+Ein Nachteil davon ist das sehr komplizierte Widerrufen eines Tokens. Eine gängige Lösung ist das **Blacklisting**. Ausserdem helfen kurze Gültigkeitsdauern.
 
 **Beispiel für die Erstellung eines JSON Web Token**
 
