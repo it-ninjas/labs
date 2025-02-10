@@ -138,20 +138,14 @@ Auf der letzten Zeile erstellen wir eine neue Instanz der Klasse `Greeter` mit `
 
 ## Interfaces
 
-Als Gegenstück zu Klassen exisiteren in Typescript ebenfalls Interfaces.
+Interfaces in TypeScript beschreiben die Struktur von Objekten, ohne tatsächlichen JavaScript-Code zu erzeugen. Bei der Transpilation entfernt TypeScript alle Interfaces, sodass sie in der Laufzeitumgebung nicht mehr existieren. Sie sind also rein für die statische Typisierung gedacht und lassen sich beispielsweise nicht per `instanceof` prüfen.
 
-Klassen haben die Eigenschaft, dass sie in Javascript "reale" Dinge sind. Es ist also möglich, diese über den prototype zu verwenden oder mit "instanceof" den Typ der Klasse zu überprüfen.
-
-Interfaces werden hingegen vom Compiler "gelöscht". Das heisst, dass sie von Javascript (wahrscheinlich) als einfache Objekte interpretiert werden.
-
-Ein Beispiel für ein Interface wäre das folgende:
-
+Ein einfaches Beispiel ist das folgende:
 ```javascript
-interface Person{
-    name: String;
+interface Person {
+    name: string;
     alter: number;
 }
-```
 
 ### Vererbung
 
