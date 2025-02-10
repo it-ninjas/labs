@@ -32,7 +32,8 @@ Falls diese für dich nicht sichtbar oder gesperrt ist, musst du dich zuerst mit
 
 ### GitHub Account
 
-Damit du teilnehmen kannst, benötigst du einen GitHub-Account. Falls du noch keinen hast, erstelle einen nach [dieser Anleitung](https://docs.github.com/de/get-started/start-your-journey/creating-an-account-on-github).
+Damit du teilnehmen kannst, benötigst du einen GitHub-Account.
+Falls du noch keinen hast, erstelle einen nach [dieser Anleitung](https://docs.github.com/de/get-started/start-your-journey/creating-an-account-on-github).
 
 Hast du bereits einen GitHub-Account? Dann kannst du diesen nutzen.
 Sobald du dich registriert hast, klicke auf "**Mit GitHub anmelden**" auf IT-Ninjas – danach kannst du Kommentare schreiben!
