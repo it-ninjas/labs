@@ -1,9 +1,9 @@
 ---
 title: "Microsoft Word"
 linkTitle: "Microsoft Word"
-weight: 3
+weight: 4
 description: >
-  Modul #O4 - Microsoft Word
+  Tools - Microsoft Word
 ---
 
 #### Ziele

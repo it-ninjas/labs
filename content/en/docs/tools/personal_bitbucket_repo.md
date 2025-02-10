@@ -1,9 +1,9 @@
 ---
 title: "Persönliches Git-Repository einrichten"
 linkTitle: "Persönliches Git-Repository einrichten"
-weight: 1
+weight: 2
 description: >
-  Modul #O4 - Persönliches Git-Repository einrichten
+   Tools - Persönliches Git-Repository einrichten
 ---
 
 #### Ziele
