@@ -34,7 +34,7 @@ Ein typisches JWT sieht aus wie folgt (Header, Payload, Signature):
 
 ### Header
 
-Der Header ist typischerweise in zwei Parts aufgeteilt: der erste Part ist der benötigte Algorithmus und der zweite der Typ des Tokens. Unten ein Beispiel dazu:
+Der Header ist typischerweise in zwei Parts aufgeteilt: der erste Part ist der genutzte Algorithmus und der zweite der Typ des Tokens. Unten ein Beispiel dazu:
 
 ```json
 {
