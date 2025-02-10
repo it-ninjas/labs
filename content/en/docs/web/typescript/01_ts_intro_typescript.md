@@ -41,7 +41,7 @@ Mit TypeScript wird JavaScript zu einer stark typisierten, objektorientierten Sp
 
 ## Null Safety
 
-In TypeScript gibt es standardmäßig keine "Null Safety" im Sinne einer statischen Typüberprüfung auf mögliche Null- oder Undefined-Werte. Das bedeutet, dass Variablen jeden Typ annehmen können, einschliesslich `null` oder `undefined`, es sei denn, es wird explizit angegeben, dass sie einen anderen Typ haben sollen.
+In TypeScript gibt es standardmässig keine "Null Safety" im Sinne einer statischen Typüberprüfung auf mögliche Null- oder Undefined-Werte. Das bedeutet, dass Variablen jeden Typ annehmen können, einschliesslich `null` oder `undefined`, es sei denn, es wird explizit angegeben, dass sie einen anderen Typ haben sollen.
 Das kann dazu führen, dass in TypeScript-Code unerwartete Fehler auftreten, wenn versucht wird, auf Eigenschaften oder Methoden von null- oder undefined-Variablen zuzugreifen. Solche Fehler treten normalerweise zur Laufzeit auf und werden nicht vom Compiler erkannt.
 
 Um das Risiko von Fehlern durch null- oder undefined-Werte zu reduzieren, kann man die Option `strictNullChecks` in der `tsconfig.json`-Datei aktivieren.
