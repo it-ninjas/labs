@@ -3,7 +3,7 @@ title: "Persönliches Git-Repository einrichten"
 linkTitle: "Persönliches Git-Repository einrichten"
 weight: 2
 description: >
-   Tools - Persönliches Git-Repository einrichten
+  Tools - Persönliches Git-Repository einrichten
 ---
 
 #### Ziele

@@ -6,7 +6,6 @@ description: >
   Tools - IT-Ninja
 ---
 
-
 #### Ziele
 
 - Ich weiss, wie ich IT-Ninjas nutze.
@@ -21,6 +20,7 @@ Du befindest dich auf **labs.it-ninjas.ch**, einer Lernplattform, die dich auf d
 Diese Seite wird ständig weiterentwickelt und verbessert – und du kannst dazu beitragen!
 
 Die Plattform wird auf [GitHub](https://github.com/) gehostet, ähnlich wie dein eigenes Git-Repository, welches du im nächsten Schritt erstellen wirst. Doch GitHub kann noch mehr:
+
 - Auf jeder IT-Ninjas-Seite gibt es eine **Kommentarfunktion**, mit der du Fragen stellen, Probleme melden oder an Diskussionen teilnehmen kannst.
 - Alle Kommentare werden auf der [GitHub-Discussions-Seite von IT-Ninjas](https://github.com/it-ninjas/labs/discussions) gespeichert.
 
@@ -58,4 +58,3 @@ Bitte poste nicht: \
 🚫 Interne Firmeninformationen
 
 Viel Erfolg auf IT-Ninjas!
-
