@@ -2,7 +2,7 @@
 title: "RxJS Operators"
 type: docs
 linkTitle: "RxJS Operators"
-weight: 28
+weight: 29
 date: 2023-04-21
 description: >
   Modul #F6 - Angular - RxJS Operators
@@ -10,7 +10,7 @@ description: >
 
 ## Ziele
 
-- Du kennst, die viele verschiedenen RxJS-Operatoren und kannst diese auch anwenden.
+- Du kennst die verschiedenen RxJS-Operatoren und kannst diese anwenden.
 
 ## Operators
 
@@ -18,8 +18,8 @@ RxJS bietet eine Vielzahl von Operatoren, die auf Observables angewendet werden 
 
 ## Piping
 
-Piping ist ein wichtiger Operator, der es ermöglicht, eine Observable-Kette zu erstellen, indem verschiedene Operatoren nacheinander angewendet werden. Der Piping-Operator wird verwendet, um die Lesbarkeit und Wartbarkeit von Observable-Ketten zu verbessern, indem man sie in kleinere und leichter zu verstehende Abschnitte unterteilt.
-Wie [map](./05_3_angular_rxjs_operators#map) funktioniert kann man hier nachlesen.
+Die `pipe()` ist ein wichtiger Operator, der es ermöglicht, eine Observable-Kette zu erstellen, indem verschiedene Operatoren nacheinander angewendet werden. Der Piping-Operator wird verwendet, um die Lesbarkeit und Wartbarkeit von Observable-Ketten zu verbessern, indem man sie in kleinere und leichter zu verstehende Abschnitte unterteilt.
+Wie eine [map](https://labs.it-ninjas.ch/docs/web/angular/05_2_angular_rxjs_subjects/) funktioniert, kannst du hier nachlesen.
 
 ```typescript
 import { of, map } from "rxjs";
@@ -37,7 +37,9 @@ of(1, 2, 3)
 
 ### from
 
-Der `from` Operator, wandelt eine Reihe von Werten oder ein Iterable in ein Observable um. Er akzeptiert eine Quelle von Werten, wie beispielsweise ein Array oder eine Map, und gibt ein Observable zurück, das die Werte dieser Quelle nacheinander emittiert.
+Der `from`-Operator wandelt eine Reihe von Werten oder ein Iterable in ein Observable um. Er akzeptiert eine Quelle von Werten, wie beispielsweise ein Array oder eine Map, und gibt ein Observable zurück, das die Werte dieser Quelle nacheinander emittiert.
+
+Der `from`-Operator ist daher primär für Werte geeignet, die aus verschiedenen dynamischen Quellen resultieren. Er splittet die Eingabe, was der `of`-Operator nicht tut. Mögliche Argumente sind dabei subscribable Objects, Promises, Observable-artige Objekte, Arrays, iterierbare Datenstrukturen oder ein Array-artige Objekte.
 
 ```typescript
 import { from } from "rxjs";
@@ -55,9 +57,9 @@ source.subscribe((value) => console.log(value));
 
 ### of
 
-Der `of` Operator, wandelt wie der `from` Operator auch eine feste Anzahl von Werten in ein Observable um. Der Operator akzeptiert jedoch eine beliebige Anzahl von Argumenten und gibt ein Observable zurück, das diese Argumente in der Reihenfolge ihres Auftretens emittiert.
+Der `of`-Operator wandelt wie der `from`-Operator auch eine feste Anzahl von Werten in ein Observable um. Der Operator akzeptiert jedoch eine beliebige Anzahl von Argumenten und gibt ein Observable zurück, das diese Argumente in der Reihenfolge ihres Auftretens emittiert.
 
-Der Operator ist besonders nützlich, um eine feste Anzahl von Werten zu emittieren, die bekannt sind, bevor das Observable abonniert wird. Wenn man eine Quelle von Werten hat, die dynamisch generiert werden, ist es wahrscheinlich sinnvoller, den `from` Operator zu verwenden.
+Dieser Operator ist besonders nützlich, um eine feste Anzahl von Werten zu emittieren, die bekannt sind, bevor das Observable abonniert wird. Wenn man eine Quelle von Werten hat, die dynamisch generiert werden, ist es wahrscheinlich sinnvoller, den `from` Operator zu verwenden.
 
 ```typescript
 import { of } from "rxjs";
@@ -75,7 +77,7 @@ source.subscribe((value) => console.log(value));
 
 ## Join Creation Operators
 
-Info: In RxJS bezieht sich "Emission" auf den Wert, der von einem Observable emittiert oder ausgegeben wird.
+Info: In RxJS bezieht sich "Emission" auf den Wert, der von einem Observable emittiert / ausgegeben wird.
 
 ### forkJoin
 
@@ -100,11 +102,11 @@ forkJoin([source1, source2]).subscribe(([value1, value2]) => {
 
 ### concat
 
-Der `concat` Operator kombiniert mehrere Observables sequentiell, indem er die Emissionen des ersten Observables vollständig verarbeitet, bevor er mit dem nächsten Observable fortfährt. Dies bedeutet, dass das zweite Observable erst dann subscribed wird, wenn das erste Observable seine Emissionen vollständig abgeschlossen hat, und so weiter.
+Der `concat`-Operator kombiniert mehrere Observables sequentiell, indem er die Emissionen des ersten Observables vollständig verarbeitet, bevor er mit dem nächsten Observable fortfährt. Das bedeutet, dass das zweite Observable erst dann subscribed wird, wenn das erste Observable seine Emissionen vollständig abgeschlossen hat und so weiter.
 
-Dieser Operator ist besonders nützlich, wenn man sicherstellen muss, dass bestimmte Aktionen in einer bestimmten Reihenfolge ausgeführt werden müssen, oder wenn man die Emissionen von Observables in einer bestimmten Sequenz verarbeiten muss.
+Dieser Operator ist besonders nützlich, wenn man sicherstellen muss, dass bestimmte Aktionen in einer bestimmten Reihenfolge ausgeführt werden, oder wenn man die Emissionen von Observables in einer bestimmten Sequenz verarbeiten muss.
 
-Zu beachten gilt jedoch, dass der Operator blockierend ist und erst dann zur nächsten Phase der Verarbeitung übergeht, wenn das vorherige Observable abgeschlossen wurde.
+Zu beachten ist jedoch, dass der Operator blockierend ist und erst dann zur nächsten Phase der Verarbeitung übergeht, wenn das vorherige Observable abgeschlossen wurde.
 
 ```typescript
 import { concat, of } from "rxjs";
@@ -122,7 +124,7 @@ concat(source1, source2).subscribe((value) => {
 
 ### merge
 
-Der `merge` Operator kombiniert auch mehrere Observables, indem er die Emissionen aller Observables in einem einzigen Observable zusammenführt. Im Gegensatz zum `concat` Operator führt `merge` die Emissionen parallel aus, unabhängig davon, welches Observable die Emissionen zuerst ausgibt.
+Der `merge`-Operator kombiniert auch mehrere Observables, indem er die Emissionen aller Observables in einem einzigen Observable zusammenführt. Im Gegensatz zum `concat`-Operator führt der `merge`-Operator die Emissionen parallel aus, unabhängig davon, welches Observable die Emissionen zuerst ausgibt.
 
 Beachten muss man jedoch, dass dieser Operator keine Garantie für die Reihenfolge der Emissionen gibt und dass es möglich ist, dass die Emissionen der Observables sich gegenseitig überschneiden.
 
@@ -148,6 +150,8 @@ Dieser Operator ist besonders nützlich, wenn man mehrere Datenströme kombinier
 
 Auch zu beachten ist, dass der Operator darauf wartet, dass alle Observables eine Emission abgeben, bevor er eine Emission ausgibt. Wenn ein Observable keine Emission abgibt, wird das resultierende Observable keine Emissionen ausgeben.
 
+Der Hauptunterschied vom `zip`-Operator zum `forkJoin`-Operator ist, dass mit `zip` die reinkommenden Werte Schritt für Schritt kombiniert werden, während `forkJoin` die Werte erst emittiert, nachdem alle Input-Observables completed wurden.
+
 ```typescript
 import { zip, of } from "rxjs";
 
@@ -166,7 +170,7 @@ zip(source1, source2, source3).subscribe((value) => {
 
 ### map
 
-Der meist verwendete RxJS-Operator ist der `map` Operator wird verwendet, um die Werte eines Observables zu transformieren. Es gibt viele Anwendungsfälle für diesen Operator, einschliesslich der Umwandlung von Daten in ein anderes Format, der Extraktion von bestimmten Werten aus einem Datenstrom oder der Anwendung einer Funktion auf jeden Wert in einem Observable.
+Der meist verwendete RxJS-Operator ist der `map` Operator. Dieser wird verwendet, um die Werte eines Observables zu transformieren. Es gibt viele Anwendungsfälle für diesen Operator, einschliesslich der Umwandlung von Daten in ein anderes Format, der Extraktion von bestimmten Werten aus einem Datenstrom oder der Anwendung einer Funktion auf jeden Wert in einem Observable.
 
 ```typescript
 import { of } from "rxjs";
@@ -185,9 +189,9 @@ doubled.subscribe((value) => console.log(value));
 // 10
 ```
 
-### mergeALL/mergeMap
+### mergeAll/mergeMap
 
-Es kann passieren das man Observable eine Methode aufruft, die ein weiteres Observable zurückgibt, das ist vielfach der Fall bei API-Abfrage. Somit hat man dann ein äusseres und inneres Observable, um nun an die Daten zu gelangen, müsste man auf beide subscriben was auch möglich ist:
+Es kann passieren, dass ein Observable eine Methode aufruft, die ein weiteres Observable zurückgibt. Dieser Verhalten kommt oft bei API-Abfragen vor. Somit hat man dann ein äusseres und inneres Observable. Um nun an die Daten zu gelangen, müsste man auf beide subscriben, was auch möglich ist:
 
 ```typescript
 import { of, from, map } from "rxjs";
@@ -206,7 +210,7 @@ from([1, 2, 3, 4])
 // retrieved new data with param 4
 ```
 
-Dies ist aber alles andere als optimal, weshalb man `mergeMap` benutzen kann. `mergeMap` ist eine kombination von `mergeAll` und `map`. `mergeAll` erledigt die subscription auf das innere Observable so muss man dann nicht mehr zweimal subscriben zudem merged es das innere Observable in das äussere.
+Das ist aber alles andere als optimal, weshalb man alternativ `mergeMap` benutzen kann. `mergeMap` ist eine Kombination von `mergeAll` und `map`. `mergeAll` erledigt die subscription auf das innere Observable, auf diese Weise muss man dann nicht mehr zweimal subscriben. Zudem merged es das innere Observable in das äussere.
 
 Beispiel mit `mergeAll`:
 
@@ -249,11 +253,13 @@ from([1, 2, 3, 4])
 // retrieved new data with param 4
 ```
 
+Hinweis: Oft wird `flatMap` als Alias für `mergeMap` verwendet. Lass dich also nicht verwirren, wenn die Begriffe teilweise wechseln.
+
 ### switchAll/switchMap
 
-`switchMap` ist ähnlich wie das `mergeMap`, es subscribed auch das innere Observable. Auch hier ist `switchMap` eine Kombination, und zwar von `switchAll` und `map`. `switchAll` canceled die vorherige Subscription und subscribed auf die neue, wenn ein neues Observable reinkommt.
+`switchMap` funktioniert ähnlich wie `mergeMap`. Der Operator subscribed auch auf das innere Observable. Auch hier ist `switchMap` eine Kombination, und zwar von `switchAll` und `map`. `switchAll` canceled die vorherige Subscription und subscribed auf die neue, wenn ein neues Observable reinkommt.
 
-Wie [delay](../angular/05_3_angular_rxjs_operators#delay) funktioniert kann man hier nachlesen.
+[Hier](https://labs.it-ninjas.ch/docs/web/angular/05_3_angular_rxjs_operators/#delay) kannst du nachlesen, wie `delay` funktioniert.
 
 Beispiel mit `switchAll`:
 
@@ -292,10 +298,11 @@ from([1, 2, 3, 4])
 
 ### concatMap
 
-Auch `concatMap` subscribed auf das innere Observable. Der Unterschied zum `switchMap` ist das `concatMap` nicht die Subscription canceled, wenn ein neues Observable reinkommt, sondern es subscribed solange nicht auf das nächste Observable bis das momentan fertig ist.
+Auch `concatMap` subscribed auf das innere Observable. Der Unterschied zu `switchMap` ist, dass `concatMap` nicht die Subscription cancelled, wenn ein neues Observable reinkommt. Es subscribed stattdessen solange nicht auf das nächste Observable, bis das momentane fertig ist.
 
 ```typescript
-import { of, from, delay, concatMap } from "rxjs";
+import { of, from } from "rxjs";
+import { delay, concatMap } from "rxjs/operators";
 
 const getData2 = (param) => {
   return of(`2 retrieved new data with param ${param}`).pipe(delay(1000));
@@ -306,18 +313,18 @@ from([1, 2, 3, 4])
   .subscribe((value) => console.log(value));
 
 // [wait 1s]
-// retrieved new data with param 1
+// 2 retrieved new data with param 1
 // [wait 1s]
-// retrieved new data with param 2
+// 2 retrieved new data with param 2
+// 2 [wait 1s]
+// 2 retrieved new data with param 3
 // [wait 1s]
-// retrieved new data with param 3
-// [wait 1s]
-// retrieved new data with param 4
+// 2 retrieved new data with param 4
 ```
 
 ### groupBy
 
-Die `groupBy()` Methode ermöglicht es, ein Observable in mehrere Observables aufzuteilen, die auf der Grundlage eines bestimmten Schlüssels gruppiert sind.
+Die `groupBy()`-Methode ermöglicht es, ein Observable in mehrere Observables aufzuteilen, die auf der Grundlage eines bestimmten Schlüssels gruppiert sind.
 
 Der Prozess besteht darin, die ursprünglichen Emissionen in Gruppen aufzuteilen, die jeweils auf einen eindeutigen Schlüssel abgebildet werden. Jede Gruppe ist ein eigenes Observable, das alle Emissionen enthält, die diesem Schlüssel zugeordnet sind.
 
@@ -352,7 +359,7 @@ people
 
 ### elementAt
 
-`elementAt()` wir benutzt um, ein Element eines Observable an der angegebenen Indexposition auszugeben und das Observable zu schliessen. Der Operator gibt ein Observable zurück, das nur das angeforderte Element emittiert und dann vollständig schliesst.
+`elementAt()` wird benutzt, um ein Element eines Observable an der angegebenen Indexposition auszugeben und das Observable zu schliessen. Der Operator gibt ein Observable zurück, das nur das angeforderte Element emittiert und dann vollständig geschlossen wird.
 
 Man kann nach der Indexposition auch einen Defaultwert angeben, welcher zurückgegeben wird, wenn das Element an der angegebenen Indexposition nicht gefunden wurde.
 
@@ -379,7 +386,7 @@ source$
 
 ### filter
 
-`filter` wird verwendet, um Observable-Elemente zu filtern, die nicht den Bedingungen entsprechen, die in der übergebenen Funktion definiert sind. Die Filterfunktion gibt ein neues Observable zurück, das nur Elemente enthält, die die Bedingungen der Filterfunktion erfüllen.
+`filter` wird verwendet, um Observable-Elemente zu filtern, die nicht den Bedingungen entsprechen, die in der übergebenen Funktion definiert wurden. Die Filterfunktion gibt ein neues Observable zurück, das nur Elemente enthält, die die Bedingungen der Filterfunktion erfüllen.
 
 ```typescript
 import { of } from "rxjs";
@@ -394,7 +401,7 @@ filtered.subscribe((x) => console.log(x));
 
 ### first
 
-Der `first` Operator gibt nur das erste Element aus einem Observable zurück. Man kann den Operator aber auch mittels einer Funktion ergänzen, um eine Bedienung zu schaffen, somit wird dann das erste Element zurückgegeben, welches nach dieser Bedingung zutrifft. Nach der Funktion kann man auch einen Defaultwert hinzufügen, welcher zurückgegeben werden soll, wenn kein Element gefunden wird. Gibt man keinen Defaultwert an und die Bedingung trifft nicht zu, so wird ein fehler ausgegeben.
+Der `first` Operator gibt nur das erste Element aus einem Observable zurück. Man kann den Operator aber auch mittels einer Funktion ergänzen, um eine Bedienung zu schaffen, somit wird dann das erste Element zurückgegeben, welches auf diese Bedingung zutrifft. Nach der Funktion kann man auch einen Defaultwert hinzufügen, welcher zurückgegeben werden soll, wenn kein Element gefunden wird. Gibt man keinen Defaultwert an und die Bedingung trifft nicht zu, so wird ein fehler ausgegeben.
 
 ```typescript
 import { of } from "rxjs";
@@ -411,7 +418,7 @@ source.pipe(first((x) => x > 3, null)).subscribe((value) => console.log(value));
 
 ### last
 
-Der `last` Operator funktioniert genau gleich wie der [first](#first) Operator. Nur das hier immer das letzte Element zurückgegeben wird.
+Der `last` Operator funktioniert genau gleich wie der [first](#first) Operator. Nur ist es so, dass hier immer das letzte Element zurückgegeben wird.
 
 ```typescript
 import { of } from "rxjs";
@@ -443,7 +450,7 @@ result.subscribe((value) => console.log(value));
 
 ### take
 
-Der `take()` Operator gibt eine bestimmte Anzahl von Werten eines Observables aus und schliesst es dann ab. Der Operator akzeptiert als Parameter die Anzahl der Werte, die ausgegeben werden sollen. Wenn der Parameter nicht angegeben wird, wird standardmässig nur ein Wert ausgegeben. Sind weniger Werte verfügbar asl angegeben, gibt der Operator die Anzahl Werte, die er zur Verfügung hat aus.
+Der `take()` Operator gibt eine bestimmte Anzahl von Werten eines Observables aus und schliesst es dann ab. Der Operator akzeptiert als Parameter die Anzahl der Werte, die ausgegeben werden sollen. Wenn der Parameter nicht angegeben wird, wird standardmässig nur ein Wert ausgegeben. Sind weniger Werte verfügbar als angegeben, gibt der Operator die Anzahl Werte aus, die er zur Verfügung hat.
 
 ```typescript
 import { of } from "rxjs";
@@ -466,7 +473,7 @@ source.pipe(take(10)).subscribe((value) => console.log(value));
 
 ### takeUntil
 
-`takeUntil` ist ein Operator, der ein Observable subscribed, bis ein anderes Observable ein Ereignis ausgibt. Es wird verwendet, um das Subscriben eines Observables zu beenden, basierend auf einem anderen Observable.
+`takeUntil` ist ein Operator, der ein Observable subscribed, bis ein anderes Observable ein Ereignis ausgibt. Es wird verwendet, um das Subscriben eines Observables basierend auf einem anderen Observable zu beenden.
 
 Das zweite Observable wird als "Abbruch- oder Trigger-Observable" bezeichnet. Sobald das Trigger-Observable ein Ereignis ausgibt, wird das Subscriben des ersten Observables beendet und das Observable gibt keine weiteren Werte mehr aus.
 
@@ -494,7 +501,7 @@ setTimeout(() => {
 // 4
 ```
 
-In der Praxis wird es häufig in Nomination von `ngOnDestroy` verwendet. Den `ngOnDestroy()`ist eine Lifecycle-Methode welche aufgerufen wird, bevor eine Komponente aus dem DOM entfernt wird. Somit kann man `takeUntil` verwenden, um Subscriptions zu beenden und somit Ressourcen freizugeben und Speicherlecks zu vermeiden.
+In der Praxis wird `takeUntil` häufig in Kombination mit `ngOnDestroy` verwendet. `ngOnDestroy()`ist eine Lifecycle-Methode welche aufgerufen wird, bevor eine Komponente aus dem DOM entfernt wird. Somit kann man `takeUntil` verwenden, um Subscriptions zu beenden und somit Ressourcen freizugeben und Speicherlecks zu vermeiden.
 
 ```typescript
 import { Component, OnInit, OnDestroy } from "@angular/core";
@@ -524,9 +531,9 @@ export class WeaponComponent implements OnInit, OnDestroy {
 
 ### catchError
 
-`catchError` ist ein Operator, der verwendet wird, um Fehler in Observables zu verarbeiten. Er erlaubt es, einen alternativen Observable zurückzugeben oder eine andere Aktion auszuführen, wenn ein Fehler im ursprünglichen Observable auftritt.
+`catchError` ist ein Operator, der verwendet wird, um Fehler in Observables zu verarbeiten. Er erlaubt es, ein alternatives Observable zurückzugeben oder eine andere Aktion auszuführen, wenn ein Fehler im ursprünglichen Observable auftritt.
 
-Denn normalerweise, wenn ein Fehler in einem Observable auftritt, wird das gesamte Observable abgebrochen und keine weiteren Werte emittiet. Wenn man jedoch `catchError` verwendet, kann man eine Funktion angeben, die den Fehler verarbeitet und ein alternatives Observable zurückgibt. Dadurch kann man das Observable weiterlaufen lassen, anstatt es abzubrechen.
+Denn normalerweise ist es so, dass im Falle eines Fehler in einem Observable, das gesamte Observable abgebrochen wird und keine weiteren Werte emittiet werden. Wenn man jedoch `catchError` verwendet, kann man eine Funktion angeben, die den Fehler verarbeitet und ein alternatives Observable zurückgibt. Dadurch kann man das Observable weiterlaufen lassen, anstatt es abzubrechen.
 
 ```typescript
 import { of } from "rxjs";
@@ -571,9 +578,9 @@ result.subscribe({
 
 `retry()` versucht, das Observable beim ersten Fehler neu zu starten. Dabei wird das gesamte Observable neu subscribed. Wenn das erneute Subscriben wieder einen Fehler erzeugt, wird das Observable erneut neu gestartet und so weiter, bis das erneute Subscriben erfolgreich ist.
 
-Wenn man dies aber nicht unendlich machen möchte, bis man erfolgreich ist, kann man die Anzahl der Wiederholungen als Parameter dem `retry()` mitgeben.
+Wenn man dies aber nicht unbegrenzt lange machen möchte, bis man erfolgreich ist, kann man die Anzahl der Wiederholungen als Parameter im `retry()`-Operator mitgeben.
 
-In der Praxis verwendet man es viel, um API-Request zu wiederholen, wenn sie fehlschlagen, da sie evtl. zu lange hatten.
+In der Praxis verwendet man `retry()` oft, um API-Requests zu wiederholen, wenn sie fehlschlagen sollten, da sie eventuell zu lange gebraucht haben.
 
 ```typescript
 import { interval } from "rxjs";
@@ -628,7 +635,7 @@ source
 
 ### delay
 
-`delay` verzögert das Weiterleiten von Werten eines Observable um eine bestimmte Zeitspanne. Dadurch kann man eine Verzögerung in der Ausführung von Aktionen erzielen, was besonders nützlich ist, wenn man z.B. Animationen oder Zeitabhängigkeiten implementiert.
+`delay` verzögert das Weiterleiten von Werten eines Observables um eine bestimmte Zeitspanne. Dadurch kann man eine Verzögerung in der Ausführung von Aktionen erzielen, was besonders nützlich ist, wenn man z.B. Animationen oder Zeitabhängigkeiten implementiert.
 
 ```typescript
 import { delay, of } from "rxjs";
@@ -698,7 +705,7 @@ numbers.pipe(findIndex((x) => x > 10)).subscribe(
 
 ### isEmpty
 
-`isEmpty` ist ein Operator, welcher prüft, ob eine Observable leer ist oder nicht. Wenn das Observable leer ist, gibt der Operator `true` zurück, andernfalls `false`.
+`isEmpty` ist ein Operator, welcher prüft, ob ein Observable leer ist. Wenn das Observable leer ist, gibt der Operator `true` zurück, andernfalls `false`.
 
 ```typescript
 import { of } from "rxjs";

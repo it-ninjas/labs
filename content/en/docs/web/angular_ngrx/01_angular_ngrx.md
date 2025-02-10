@@ -10,8 +10,8 @@ description: >
 
 ## Ziele
 
-- Du weisst, was und wozu NgRx ist, und kennst das Kernkonzept davon.
-- Du kannst, es bei dir installieren.
+- Du weisst was NgRx ist, kennst die dazugehörigen Kernkonzepte und weisst, wofür man NgRx nutzt.
+- Du kannst NgRx bei dir installieren.
 
 ## NgRx
 
@@ -19,11 +19,11 @@ NgRx ist ein beliebtes State-Management-Framework für Angular-Anwendungen, das 
 
 NgRx besteht aus verschiedenen Kernkonzepten:
 
-- **Store**: Der Store ist der zentrale Speicherort für den Anwendungsstatus. Er enthält den globalen Zustand deiner Anwendung in einem einheitlichen JavaScript-Objekt. Du kannst den Zustand lesen und ihn mit Aktionen ändern.
+- **Store**: Der Store ist der zentrale Speicherort für den Anwendungsstatus. Er enthält den globalen Zustand deiner Anwendung in einem einheitlichen JavaScript-Objekt. Du kannst den Zustand von praktisch überall auslesen und ihn mit Actions ändern.
 
 - **Actions**: Actions repräsentieren Ereignisse oder Absichten, die in einer Anwendung auftreten können. Sie sind einfache JavaScript-Objekte, die eine Typ-Eigenschaft haben, um den Typ der Aktion zu definieren. Actions werden verwendet, um Änderungen im Zustand anzufordern.
 
-- **Reducers**: Reducers sind pure Funktionen, die den vorherigen Zustand und eine Aktion als Eingabe erhalten und den neuen Zustand zurückgeben. Sie definieren, wie sich der Zustand der Anwendung basierend auf den empfangenen Aktionen ändert.
+- **Reducers**: Reducers sind pure Funktionen, die den vorherigen Zustand und eine Aktion als Eingabe erhalten und den neuen Zustand zurückgeben. Sie definieren, wie sich der Zustand der Anwendung basierend auf den empfangenen Actions ändert.
 
 - **Selectors**: Selectors sind Funktionen, die den Zustand aus dem Store abrufen und bestimmte Teile des Zustands extrahieren. Sie werden verwendet, um Daten aus dem Store zu lesen und an die Components weiterzugeben.
 
@@ -33,9 +33,9 @@ NgRx besteht aus verschiedenen Kernkonzepten:
 
 Um NgRx in einem Angular-Projekt zu verwenden, werden folgende Schritte benötigt:
 
-1. Stelle sicher, dass Node.js und npm (Node Package Manager) auf dem Computer installiert sind. (Kann mit `npm -v` geprüft werden.)
+1. Stelle sicher, dass Node.js und npm (Node Package Manager) auf dem Computer installiert sind. (Kann mit `npm -v` geprüft werden)
 2. Öffne ein Terminal oder eine andere Shell und navigiere zum Hauptverzeichnis des Projekts.
-3. Folgenden Befehl ausführen, um NgRx zu installieren:
+3. Führe den folgenden Befehl aus, um NgRx zu installieren:
 
 ```shell
 npm install @ngrx/store
@@ -49,10 +49,10 @@ npm install @ngrx/entity        // Für die Verwendung von Entity State
 npm install @ngrx/router-store  // Für die Integration von Router-Status mit dem Store
 ```
 
-5. Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwenden werden, indem die entsprechenden Provides angegeben und konfiguriert werden:
+5. Sobald die Installation abgeschlossen ist, können die NgRx-Features im Projekt verwendet werden, indem die entsprechenden Provides angegeben und konfiguriert werden:
 
-- NgRx Store: Um den NgRx Store zu verwenden, muss das `provideStore` importiert und im `app.config.ts` konfiguriert werden.
-  (Das `reducers`ist aus dem `index.ts` im `reducers`-Ordner)
+- NgRx Store: Um den NgRx Store zu verwenden, muss `provideStore` importiert und in der `app.config.ts`-Datei konfiguriert werden.
+  (`reducers` stammt aus der `index.ts`-Datei im `reducers`-Ordner)
 
 ```typescript
 import { provideStore } from "@ngrx/store";
@@ -63,9 +63,11 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-- **Optional** NgRx Effects: Um den NgRx Effects zu verwenden, muss das `provideEffects` importiert und im `app.config.ts` konfiguriert werden.
+- **Optional** NgRx Effects: Um den NgRx Effects zu verwenden, muss `provideEffects` importiert und in der `app.config.ts`-Datei konfiguriert werden.
 
 ```typescript
+import { provideEffects } from "@ngrx/effects";
+import { RouterEffects } from "@ngrx/router-store";
 export const appConfig: ApplicationConfig = {
   providers: [provideEffects(RouterEffects)],
 };
@@ -73,5 +75,5 @@ export const appConfig: ApplicationConfig = {
 
 ## Debugging Tool
 
-Damit man das gesamte auch gut debuggen kann, gibt es eine [Chrome Extension](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd), welche dabei hilft.
+Damit man mit NgRx auch anständig debuggen kann, gibt es eine [Chrome Extension](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd), welche dabei sehr helfen kann.
 Die Extension bietet eine Vielzahl von Funktionen, um den Zustand des Redux-Stores zu überwachen, Aktionen zu verfolgen und den Ablauf der Anwendung besser zu verstehen.

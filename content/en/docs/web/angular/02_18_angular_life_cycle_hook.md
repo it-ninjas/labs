@@ -10,8 +10,8 @@ description: >
 
 ## Ziele
 
-- Du weisst, was der Angular Life Cycle Hook ist und wozu dieser ist.
-- Du kennst, die verschiedenen Hooks und weisst wozu diese zuständig sind.
+- Du weisst, was der Angular Life Cycle Hook ist und wozu dieser verwendet wird.
+- Du kennst die verschiedenen Hooks und weisst wozu diese zuständig sind.
 
 ## Angular Life Cycle Hook
 
@@ -45,3 +45,10 @@ Die Ausführung von Render-Callbacks ist nicht an eine bestimmte Komponenteninst
 ![Lifecycle-Hooks ](../images/angular-lifecycle-init.png)
 
 ![Lifecycle-Hooks ](../images/angular-lifecycle-update.png)
+
+Der afterNextRender-Hook wird einmal nach dem jeweiligen Change-Detection-Zyklus durchgeführt. Daher ist dieser Hook gut dazu geeeignet, einmalige Initialisierungen wie die Integration einer Third-Party-Library durchzuführen.
+Der afterRender-Hook funktioniert hingegen so, dass er nach **jedem** Change-Detection-Hook ausgeführt wird. Der Hook eignet sich daher also gut dazu, sich wiederholende, nach dem Change-Detection-Hook nötige Anweisungen auszuführen.
+
+Genauere Informationen zum afterNextRender-Hook und zum afterRender-Hook findest du in der offizielen Angular-Dokumentation:
+[Dokumentation zu afterNextRender](https://angular.dev/api/core/afterNextRender)
+[Dokumentation zu afterRender](https://angular.dev/api/core/afterRender)

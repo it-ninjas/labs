@@ -11,13 +11,13 @@ description: >
 ## Ziele
 
 - Du weisst, was ein Template ist.
-- Du weisst, für was ng-container und ng-template sind und kannst diese anwenden.
+- Du weisst, für was `ng-container` und `ng-template` verwendet werden und kannst diese anwenden.
 
 ## Was ist ein Template?
 
-In Angular ist das Template der Teil eines Components, der die Benutzeroberfläche definiert. Es ist im Wesentlichen das HTML, das vom Component angezeigt wird und mit der Benutzer interagieren kann.
+In Angular ist das Template der Teil eines Components, der die Benutzeroberfläche definiert. Es ist im Wesentlichen das HTML, das vom Component angezeigt wird und mit dem der Benutzer interagieren kann.
 
-Das Template kann jedoch mehr als nur HTML enthalten. Es kann auch Angularspezifische Syntax wie
+Das Template kann jedoch mehr als nur HTML enthalten. Es kann auch angularspezifische Syntax wie
 [Template Styling](../02_6_angular_stylesheet#template-styling), [Directives](../02_8_angular_directives), [Pipes](../03_2_angular_pipes),
 [Interpolationen](../03_1_angular_data_binding#interpolation) und [Bindings](../03_1_angular_data_binding) enthalten, die die Funktionalität und das Verhalten des Components bestimmen.
 
@@ -52,12 +52,12 @@ Durch die Verwendung des DOMs können Entwickler dynamische Webseiten erstellen,
 
 Durch die Verwendung von `ng-container` und `ng-template` kann der HTML-Code in Components besser strukturiert, lesbarer und wiederverwendbarer gemacht werden. Sie bieten eine flexible Möglichkeit, Inhalte bedingt anzuzeigen, dynamische Templates zu erstellen und den Code effizienter zu gestalten.
 
-`ng-container` und `ng-template` erzeugen kein zusätzliches HTML-Element im DOM, das bedeutet das man nur den HTML-Code innerhalb der beiden im DOM sieht und nur von diesen welche aktiv sind.
-Dies eignet sich gut, wenn man andere Directives wie `*ngIf`, `*ngFor` oder `*ngSwitch` verwenden möchte.
+`ng-container` und `ng-template` erzeugen kein zusätzliches HTML-Element im DOM, was bedeutet, dass man nur den HTML-Code innerhalb der beiden im DOM sieht, insofern diese aktiv sind.
+Das eignet sich gut, wenn man andere Directives wie `*ngIf`, `*ngFor` oder `*ngSwitch` verwenden möchte.
 
-Um das `else`-Statement in Kombination mit `ngIf` zu verwenden, definiert man einen Template-Verweis (Referenz) mit einem #-Präfix und verwendet ihn in einem `ng-template`. Somit kann man sagen das wenn die Condition nicht zutrifft man ein anderes Template anzeigen möchte.
+Um das `else`-Statement in Kombination mit `ngIf` zu verwenden, definiert man einen Template-Verweis (Referenz) mit einem #-Präfix und verwendet ihn in einem `ng-template`. Somit kann man aussagen, dass wenn die Condition nicht zutrifft, man ein anderes Template anzeigen möchte.
 
-Wenn man `ng-container` und `ng-template` verwendet ist vielfach auch ein `*ngTemplateOutlet` im Spiel. `*ngTemplateOutlet` ist auch ein Directive, welche verwendet wird, um ein Template an einer bestimmten Stelle in einem Template eines Components einzusetzen. Es wird verwendet, wenn man nicht mit `*ngif` arbeiten muss (oder will, weil die Bedingung immer true sein sollte). Es ist wie im `else` eine Template-Verweis.
+Wenn man `ng-container` und `ng-template` verwendet, ist vielfach auch ein `*ngTemplateOutlet` im Spiel. `*ngTemplateOutlet` ist ein Directive, welches verwendet wird, um ein Template an einer bestimmten Stelle in einem Template eines Components einzusetzen. Es wird verwendet, wenn man nicht mit `*ngif` arbeiten muss (oder will, weil die Bedingung immer true sein sollte). Es ist wie im `else` ein Template-Verweis.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -95,6 +95,6 @@ export class GreetingComponent {
 </div>
 ```
 
-Wenn der obenstehende Code gerendert wurde, sieht man das im DOM nun nur der div-tag, den h1-tag und die beiden p-tags zusehen sind, das `ng-container` und `ng-template` nicht.
+Wenn der obenstehende Code gerendert wurde, sieht man das im DOM nun nur der div-tag, der h1-tag und die beiden p-tags zu sehen sind, das `ng-container` und `ng-template` nicht.
 
 ![DOM](../images/template-dom.png)

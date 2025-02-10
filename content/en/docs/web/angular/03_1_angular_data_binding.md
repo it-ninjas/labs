@@ -10,13 +10,13 @@ description: >
 
 ## Ziele
 
-- Du kennst, die verschiedenen Angular Data Bindings und kannst diese umsetzen.
+- Du kennst die verschiedenen Angular Data Bindings und kannst diese umsetzen.
 
 ## Angular Data Bindings
 
 ### Interpolation
 
-- Anhand von diesem One-Way Binding kann man Properties des Components im Template anzeigen.
+- Mithilfe dieses One-Way-Bindings kann man Properties(u.a. Variablen) des Components im Template anzeigen.
   Wenn sich das Property im Component ändert, wird das Template aktualisiert, um die neuen Änderungen anzuzeigen.
 
 ```typescript
@@ -39,7 +39,7 @@ export class GreetingComponent {
 
 ### Event Binding
 
-- Event Binding ist definiert als das Aktualisieren/Senden des Werts/der Information einer bestimmten Variablen vom Template zum Component.\
+- Event Binding ist definiert als das Aktualisieren/Senden des Werts/der Information einer bestimmten Variable vom Template zum Component.\
   Zum Beispiel das Klicken eines Buttons.
 
 ```typescript
@@ -75,7 +75,7 @@ export class WeaponComponent {
 
 ### Property Binding
 
-- Anhand von Property Bindings können wir einen Wert unseres Components auf eine Eigenschaft eines Elements binden.
+- Mithilfe von Property Bindings können wir einen Wert unseres Components auf eine Eigenschaft eines Elements binden.
   Wenn sich also der bestimmte Wert im Component verändern sollte, wird dies im Template aktualisiert.
 
 ```typescript
@@ -111,6 +111,8 @@ export class WeaponComponent {
   Dies bedeutet also, dass Änderungen, die an den Daten des Components vorgenommen wurden, werden mit dem Template synchronisiert und sofort aktualisiert.
   Umgekehrt funktioniert es auf dieselbe Weise, daher auch der Name "Two-Way-Binding".
 
+- Achte hierbei auf die Verwendung des `@Input`-Decorators im Component. Dieser markiert ein Feld als ein Input-Property, wodurch es an das DOM-Property angebunden wird. Damit erkennt Angular während der Change-Detection automatisch, ob sich das etwas geändert hat und passt in diesem Fall automatisch das Property im DOM an.
+
 ```typescript
 import { Component } from "@angular/core";
 
@@ -136,6 +138,7 @@ export class TriumphsComponent {
     <input [value]="title" (input)="title = getValue($event)" />
   </p>
 
+  //Das folgende Beispiel ist eine kompakte Schreibweise für ein Input-Property.
   <p>
     <input [(ngModel)]="title" />
   </p>
@@ -144,28 +147,6 @@ export class TriumphsComponent {
     <input [ngModel]="title" (ngModelChange)="title = $event" />
   </p>
 </div>
-```
-
-Wichtig im `app.module.ts` muss man das `FormsModule` bei den imports hinzufügen damit man `ngModel`verwenden kann
-
-```typescript
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms"; // <---  import FormsModule
-
-import { AppComponent } from "./app.component";
-import { NgModelComponent } from "./ng-model.component";
-
-@NgModule({
-  declarations: [AppComponent, NgModelComponent],
-  imports: [
-    BrowserModule,
-    FormsModule, // <--- import into the NgModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
 ```
 
 ![Databinding](../images/component-of-data-binding.png)

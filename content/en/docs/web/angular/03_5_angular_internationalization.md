@@ -10,19 +10,20 @@ description: >
 
 ## Ziele
 
-- Du weisst, wofür Internationalisierung ist.
+- Du weisst, wofür die Internationalisierung verwendet wird.
 - Du kannst diese in deinen Projekten anwenden.
 
-## Wofür ist Internationalisierung
+## Wofür wird die Internationalisierung verwendet?
 
 Internationalisierung (i18n) bezieht sich auf die Anpassung einer Anwendung, um sie für verschiedene Sprachen und Regionen weltweit zugänglich und benutzbar zu machen. Durch Internationalisierung wird die Anwendung so gestaltet, dass sie leicht in verschiedene Sprachen übersetzt werden kann, um eine breitere Benutzerbasis anzusprechen.
 
-Meistens wird die Internationalisierung mit JSON und einer Translate-Pipe umgesetzt. Dabei werden JSON-Dateien verwendet, um die übersetzten Texte zu speichern, und die Translate-Pipe wird verwendet, um die entsprechenden Übersetzungen abzurufen und anzuzeigen.
+Meistens wird die Internationalisierung mit JSON und einer Translate-Pipe umgesetzt. Dabei werden JSON-Dateien verwendet, um die einzelnen Texte jeweils pro Sprache zu speichern, und die Translate-Pipe wird verwendet, um die passenden Übersetzungen abzurufen und anzuzeigen.
+Wichtig zu beachten ist hierbei, dass bei einem Wechsel der Sprache die Texte umgeschalten werden, ohne dass die Seite neu laden muss.
 
 ## Internationalisierung mit JSON und einer Translate-Pipe einrichten
 
-1. Zuerst muss man JSON-Dateien erstellen für die Übersetzungen: Für jede Sprache, die man unterstützen möchte, sollte man ein eigenes JSON erstellen. Diese sollten in einen neuen Ordner names `i18n` in den `assets` abgelegt werden. Die JSON-Dateien werden meistens [kürzel].json benannt. Also zum Beispiel für Deutsch `de.json`.
-2. Inhalt einfügen: Nun kann man die Wörter und Texte, die man dynamisch übersetzen, lassen möchte in die JSON-Dateien eintragen. Diese werden nach dem Key-Value Prinzip eingetragen, wobei der Key in Capslock ist. Zudem müssen die Keys in allen JSONs immer gleich sein für den gleichen Text, ansonsten funktionierts nicht. Man kann einem Key auch mehrere weitere Key-Value Paare geben, dies wird getan, wenn sie zueinander gehören.
+1. Zuerst muss man für die jeweiligen Übersetzungen JSON-Dateien erstellen: Für jede Sprache, die man unterstützen möchte, sollte man ein eigenes JSON erstellen. Diese sollten in einen neuen Ordner names `i18n` in den `assets` des Projekts abgelegt werden. Die JSON-Dateien werden meistens [kürzel].json benannt. Also zum Beispiel für Deutsch `de.json`.
+2. Inhalt einfügen: Nun kann man die Wörter und Texte, die man dynamisch übersetzen lassen möchte, in die JSON-Dateien eintragen. Diese werden nach dem Key-Value Prinzip eingetragen, wobei der Key in Capslock ist. Zudem müssen die Keys für die jeweiligen entsprechenden Textteile in allen JSON-Dateien immer gleich sein, ansonsten funktioniert die Übersetzung nicht. Man kann einem Key auch mehrere weitere Key-Value Paare geben, was gemacht wird, wenn sie zueinander gehören.
 
 ```json
 // de.json
@@ -52,38 +53,22 @@ Meistens wird die Internationalisierung mit JSON und einer Translate-Pipe umgese
 }
 ```
 
-3. Library installieren: Nun muss man eine Library installieren um die Pipe verwenden zu können. Dazu kann man den Befehl `npm install @ngx-translate/core` benutzen, um die `@ngx-translate/core`-Library zu installieren. Und den Befehl `npm install @ngx-translate/http-loader` damit man die Library `@ngx-translate/http-loader` verwenden kann, diese wird verwendet damit man HTTPLoader in ngx-translate verwenden kann.
-4. TranslateModule konfigurieren: Das `TranslateModule` aus @ngx-translate/core muss man in das `app.module.ts` importieren. Danach muss man es in den `imports` konfiguriere. Nun muss man die Konfiguration entsprechend den Dateipfaden und Einstellungen anpassen.
+3. Library installieren: Nun muss man eine Library installieren, um die translate-Pipe verwenden zu können. Dazu kann man den Befehl `npm install @ngx-translate/core` benutzen, um die `@ngx-translate/core`-Library zu installieren. Und den Befehl `npm install @ngx-translate/http-loader`, damit man die Library `@ngx-translate/http-loader` verwenden kann. Diese wird verwendet, damit der HTTPLoader in ngx-translate verwendet werden kann.
+4. Das Translate-Module importieren: Um die Übersetzung App-weit zu ermöglichen, muss das TranslateModule im AppComponent imporiert werden.
 
 ```typescript
-import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-
-// ...
-
-export function createTranslateLoader(http: HttpClient) {
-  // Pfad der JSON-Datein mit den übersetzungen
-  return new TranslateHttpLoader(http, "./../assets/i18n/", ".json");
-}
-
-@NgModule({
-  imports: [
-    // ...
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-  ],
-  // ...
+@Component({
+  //...
+  standalone: true,
+  imports: [CommonModule, TranslateModule],
+  //...
 })
-export class AppModule {}
+export class AppComponent {
+  //....
+}
 ```
 
-5. Falls es noch kein `environment`-File im Projekt gibt muss man dieses erstellen. Dazu im `src` einen Ordner `environments` erstellen und darin das File `environment.ts
+5. Falls es noch kein `environment`-File im Projekt gibt, muss dieses erstellt werden. Dazu muss in `src` ein Ordner `environments` erstellt werdne. Darin dann das File `environment.ts`.
 
 ```typescript
 export const environment = {
@@ -92,8 +77,8 @@ export const environment = {
 };
 ```
 
-6. Sprachlokalisierung aktivierung: Mithilfe des `TranslateService` kann man die gewünschte Sprache einstellen und die übersetzten Texte in der entsprechenden Sprache anzeigen. Man kann die Sprache basierend auf Benutzervorlieben oder anderen Kriterien festlegen.
-   Dies wird immer im `app.components.ts` getan.
+6. Sprachlokalisierung aktivieren: Mithilfe des `TranslateService` kann man die gewünschte Sprache einstellen und die übersetzten Texte in der entsprechenden Sprache anzeigen. Man kann die Sprache basierend auf Benutzervorlieben oder anderen Kriterien festlegen.
+   Das wird immer im `app.components.ts` gemacht.
 
 ```typescript
 import { TranslateService } from "@ngx-translate/core";
@@ -118,7 +103,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-7. Translate-Pipe in den HTML-Dateien: In den HTML-Dateien der Components kann man die Translate-Pipe verwenden, um die lokalisierten Texte anzuzeigen. Dazu die Pipe `translate` mit dem Übersetzungs-Key verwenden, um die Übersetzungen abzurufen. Wurden einem Key mehrere neue Key-Value Paare geben so ruft man den äussersten Schlüssel auf und fügt ihn mittels eines Punktes (`.`) mit dem nächsten Key zusammen.
+7. Translate-Pipe in den HTML-Dateien: In den HTML-Dateien der Components kann man nun die Translate-Pipe verwenden, um die lokalisierten Texte anzuzeigen. Dazu die Pipe `translate` mit dem Übersetzungs-Key verwenden, um die Übersetzungen abzurufen. Wurden einem Key mehrere neue Key-Value Paare gegeben, so ruft man den äussersten Schlüssel auf und fügt ihn mittels eines Punktes (`.`) mit dem nächsten Key zusammen.
 
 ```html
 <h1>{{ 'TITEL' | translate }}{{ name }}!</h1>
@@ -136,4 +121,17 @@ export class AppComponent implements OnInit {
 <ng-template #otherName>
   <p>{{ 'TEXT.OTHER' | translate }}</p>
 </ng-template>
+```
+
+## Anwendungsbeispiele
+
+```typescript
+// Fügt die Sprachen "en" und "de" zu den möglichen Sprachen hinzu.
+this.translateService.addLangs(["en", "de"]);
+// Gibt Englisch als standardmässig verwendete Sprache an.
+this.translateService.setDefaultLang("en");
+// Liest die derzeitige im Browser verwendete Sprache aus.
+const browserLang = translateService.getBrowserLang();
+// Prüft, ob die derzeitige im Browser verwendete Sprache englisch oder deutsch entspricht. Entspricht einer der beiden Fälle
+this.translateService.use(browserLang.match(/en|de/) ? browserLang : "en");
 ```

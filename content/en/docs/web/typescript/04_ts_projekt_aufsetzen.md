@@ -8,9 +8,14 @@ description: >
   Modul #F5 - TypeScript - TypeScript in Projekten
 ---
 
+### Ziele
+
+- Du kannst eine Typescript-Datei erstellen und ausführen lassen.
+- Du bist in der Lage, eine Typescript-Datei in eine Javascript-Datei zu transpilieren.
+
 ## Hello World
 
-Da Node.js bereits installiert wurde, kann nun anhand des Node Package Manager mühelos typescript installiert werden.
+Da Node.js bereits installiert wurde, kann nun anhand des Node Package Manager mühelos Typescript installiert werden.
 Dazu öffnet man eine Konsole und gibt den folgenden Befehl ein:
 
 ```shell
@@ -24,7 +29,7 @@ Nun die Datei mit einer IDE öffnen und die folgende Codezeile reinschreiben:
 console.log("Hello World");
 ```
 
-Somit wurde das erste Typescript "Projekt" erstellt. Um dieses auszuführen, muss der Quellcode zu JS transpilieren.
+Somit wurde das erste Typescript "Projekt" erstellt. Um dieses auszuführen, muss der Quellcode zu JS transpiliert werden.
 Dazu eine Konsole öffnen und sich in das Verzeichnis, indem sich die Datei befindet, begeben.
 
 Danach folgenden Befehl in der Konsole eingeben:

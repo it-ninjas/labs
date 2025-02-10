@@ -2,7 +2,7 @@
 title: "RxJS"
 type: docs
 linkTitle: "RxJS"
-weight: 26
+weight: 27
 date: 2023-04-20
 description: >
   Modul #F6 - Angular - RxJS
@@ -10,16 +10,16 @@ description: >
 
 ## Ziele
 
-- Du weisst, was RxJS ist und welches Konzept es besitzt.
-- Du kennst, Observable, Observer und Subscription und kannst diese anwenden.
+- Du weisst, was RxJS ist und welches Konzept die Technologie folgt.
+- Du kennst Observables, Observers und Subscriptions und kannst diese anwenden.
 
 ## RxJS
 
-RxJS (Reactive Extensions for JavaScript) ist eine Library für funktionale, reaktive Programmierung in JavaScript. Das Konzept von RxJS basiert auf der Idee, dass alles in der Welt um uns herum ständig Veränderungen unterworfen ist und dass wir diese Veränderungen durch die Verarbeitung von Ereignissen und Strömen von Daten verwalten können.
+RxJS (Reactive Extensions for JavaScript) ist eine Library für funktionale, reaktive Programmierung in JavaScript. Das Konzept von RxJS basiert auf der Idee, dass alles in der Welt um uns herum ständig Veränderungen unterworfen ist und dass wir diese Veränderungen mithilfe der Verarbeitung von Ereignissen und Datenströmen verwalten können.
 
-RxJS bietet eine Reihe von Tools und Operatoren, mit denen man Ereignisse und Ströme von Daten auf eine reaktive und deklarative Weise verarbeiten kann. Dabei wird der Fokus auf die Verarbeitung der Daten selbst gelegt, anstatt auf den Ablauf des Codes.
+RxJS bietet eine Reihe von Tools und Operatoren, mit denen man Ereignisse und Ströme von Daten auf eine reaktive und deklarative Weise verarbeiten kann. Dabei wird der Fokus nicht auf den Ablauf des Codes, sondern auf die Verarbeitung der Daten selbst gelegt.
 
-RxJS bietet verschiedene Arten von Observables und Subjects an, um Daten innerhalb deiner Anwendung zu verwalten und zu teilen. Diese können verwendet werden, um Daten zwischen verschiedenen Komponenten zu übertragen oder um globale Ereignisse zu verwalten.
+RxJS bietet verschiedene Arten von Observables und Subjects an, um Daten innerhalb einer Anwendung zu verwalten und zu teilen. Diese können verwendet werden, um Daten zwischen verschiedenen Komponenten zu übertragen oder um globale Ereignisse zu verwalten.
 
 ## Konzept
 
@@ -41,17 +41,19 @@ npm install rxjs
 
 ## Observables
 
-Wie schon ein wenig erwähnt ist ein Observable eine Art von Datenstrom, der Werte oder Ereignisse asynchron und über einen bestimmten Zeitraum hinweg ausgibt. Ein Observable kann auf Ereignisse wie Benutzerinteraktionen, Datenbankabfragen, API-Aufrufe und mehr reagieren und diese verarbeiten.
+Wie schon angeschnitten wurde, ist ein Observable eine Art Datenstrom, der Werte oder Ereignisse asynchron und über einen bestimmten Zeitraum hinweg ausgibt. Ein Observable kann auf Ereignisse wie Benutzerinteraktionen, Datenbankabfragen, API-Aufrufe und weitere reagieren und diese verarbeiten.
 
-Ein Observable ist im Grunde genommen eine Funktion, die einen Datenstrom definiert und zurückgibt. Diese Funktion kann dann durch verschiedene Operatoren transformiert werden, um den Datenstrom auf verschiedene Weise zu bearbeiten.
+Ein Observable ist im Grunde genommen eine Funktion, die einen Datenstrom definiert und zurückgibt. Diese Funktion kann dann durch verschiedene Operatoren transformiert werden, um den Datenstrom auf verschiedene Weisen zu bearbeiten.
 
-Beispiel für ein Observable zu erstellen:
+Bei Observables gilt prinzipiell die Konvention, dass Variablennamen mit einem `$` enden. Das macht Observables einfacher erkennbar und macht es Entwicklern einfacher, diese von "normalen" Variablen zu unterscheiden.
+
+Beispiel zur Erstellung eines Observables:
 
 ```typescript
 import { Observable } from "rxjs";
 
 const myObservable$ = new Observable((observer) => {
-  // einiger Wert des Observable
+  // einziger Wert des Observables
   // mit next() wird der Wert an die Subscriber gesendet
   observer.next("Hello Dragon Warrior!");
 

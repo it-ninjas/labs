@@ -10,15 +10,15 @@ description: >
 
 ## Ziele
 
-- Du weisst, was ein Directive ist und wozu es verwendet wird.
-- Du kennst, die drei Arten von Directives und kannst diese beschrieben
-- Du kannst, ngIf, ngFor, ngSwitch und ngClass anwenden und erklären.
+- Du weisst, was ein Directive ist und wozu diese verwendet wird.
+- Du kennst die drei Arten von Directives und kannst diese beschrieben.
+- Du kannst `ngIf`, `ngFor`, `ngSwitch` und `ngClass` anwenden und erklären.
 
 ## Directives
 
-Directives sind ein Mechanismus, um die Darstellung von HTML-Elementen und das Verhalten von Components zu manipulieren. Direktiven ermöglichen es, benutzerdefinierte HTML-Attribute oder -Elemente zu definieren, die spezielle Funktionalitäten bereitstellen, die standardmässig nicht in HTML verfügbar sind.
+Directives sind ein Mechanismus, um die Darstellung von HTML-Elementen und das Verhalten von Components zu manipulieren. Directives ermöglichen es, benutzerdefinierte HTML-Attribute oder -Elemente zu definieren, die spezielle Funktionalitäten bereitstellen, die standardmässig nicht in HTML verfügbar sind.
 
-Es gibt drei Arten von Directives in Angular
+Es gibt drei Arten von Directives in Angular:
 
 ## Components-Directives
 
@@ -93,7 +93,7 @@ export class GreetingComponent {
 
 ### \*ngFor
 
-Die `*ngFor`-Direktive wird verwendet, um eine Liste von Elementen im Template eines Components zu rendern. Mit `*ngFor` kann man über eine Datenquelle iterieren und für jedes Element den entsprechenden Code im Template generieren. Es ist besonders nützlich wenn man Kachel anzeigen möchte oder eine Liste mit User Objekten anzeigen möchte.
+Die `*ngFor`-Direktive wird verwendet, um eine Liste von Elementen im Template eines Components zu rendern. Mit `*ngFor` kann man über eine Datenquelle iterieren und für jedes Element den entsprechenden Code im Template generieren. Das ist besonders nützlich, wenn man Kacheln anzeigen möchte oder eine Liste mit User Objekten anzeigen möchte.
 
 ```html
 <!--app-greeting.html-->
@@ -136,7 +136,8 @@ export class TriumphsComponent {
 }
 ```
 
-Wenn man den Index bei einem `*ngFor` benötigt kann dieser sehr einfach angegeben werden. Dazu muss man nach dem `*ngFor` den Code `; let i = index` hinzufügen. Nun kann man in den Elementen innerhalb des `*ngFor` auf den Index der Elemente zu greifen.
+Wenn man den Index bei einem `*ngFor` benötigt, kann dieser sehr einfach angegeben werden. Dazu muss man nach dem `*ngFor` den Code `; let i = index` hinzufügen. Nun kann man in den Elementen innerhalb des `*ngFor` auf den Index der Elemente zu greifen.
+Der Index ist insofern relevant, dass man einzelne Elemente anhand dessen identifizieren kann, zudem ist direkt ersichtlich, welchen Index das gerenderte Element innehat.
 
 ```html
 <div *ngFor="let triumph of triumphs; let i = index">
@@ -146,7 +147,7 @@ Wenn man den Index bei einem `*ngFor` benötigt kann dieser sehr einfach angegeb
 
 ### \*ngSwitch
 
-Das `ngSwitch`-Directive ermöglicht das bedingte Rendern von Inhalten auf der Grundlage eines Ausdrucks mit mehreren möglichen Werten. Es funktioniert ähnlich wie ein `switch` in anderen Programmiersprachen.
+Das `ngSwitch`-Directive ermöglicht das bedingte Rendern von Inhalten auf der Grundlage eines Ausdrucks mit mehreren möglichen Werten. Es funktioniert ähnlich wie ein `switch`-Statement in anderen Programmiersprachen.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -160,7 +161,7 @@ export class WeaponComponent {
 ```
 
 ```html
-<div [ngSwitch]="chosenWeapon">
+<div [ngSwitch]="weapons">
   <div *ngSwitchCase="'Sword'">
     <p>You are wielding a mighty sword!</p>
     <p>Defeat your enemies with precision and power.</p>
@@ -182,7 +183,7 @@ export class WeaponComponent {
 
 ## Attribut-Directives
 
-Attribut-Directives sind Directives, die das Verhalten von HTML-Elementen ändern, ohne sie zu ersetzen. Ein Beispiel für eine Attribut-Direktive ist ngClass, die es ermöglicht, CSS-Klassen basierend auf Bedingungen hinzuzufügen oder zu entfernen.
+Attribut-Directives sind Directives, die das Verhalten von HTML-Elementen ändern, ohne sie zu ersetzen. Ein Beispiel für eine Attribut-Direktive ist `ngClass`, welche es ermöglicht, CSS-Klassen basierend auf Bedingungen hinzuzufügen oder zu entfernen.
 
 ```html
 <h1 appTriumphs>{{ title }}</h1>
@@ -218,7 +219,7 @@ export class TriumphsDirective {
 
 Die Direktive `ngClass` wird verwendet, um dynamisch CSS/(SCSS)-Klassen auf ein HTML-Element anzuwenden. Sie ermöglicht es, CSS/(SCSS)-Klassen basierend auf Bedingungen oder Ausdrücken hinzuzufügen oder zu entfernen.
 
-Es gibt zwei verschiedene Arten wie `ngClass` verwendet wird.
+Es gibt zwei verschiedene Arten wie `ngClass` verwendet wird:
 
 #### **Variante 1**:
 
@@ -286,7 +287,7 @@ export class GreetingComponent {
 
 #### **Variante 2**:
 
-Bei der zweiten Variante arbeitet man mit dem [ternary Operator](../../javascript/06_js_operators#ternary-operator-), um zu prüfen ist eine Bedingung `true`, wenn ja verwende die erste angegebene Klasse. Ist die Bedingung jedoch `false` so verwende die zweite Klasse.
+Bei der zweiten Variante arbeitet man mit dem [ternary Operator](../../javascript/06_js_operators#ternary-operator-), um zu prüfen ob eine Bedingung `true` ist. Wenn das der Fall ist, wird die erste angegebene Klasse verwendet. Ist die Bedingung jedoch `false`, so wird die zweite Klasse verwendet.
 
 ```typescript
 import { Component } from "@angular/core";

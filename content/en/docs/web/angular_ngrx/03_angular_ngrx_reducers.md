@@ -19,11 +19,11 @@ Reducers sind Funktionen in NgRx, die den aktuellen Zustand des Stores und eine 
 
 Reducers in NgRx folgen dem Redux-Muster und sollten immer eine rein funktionale Programmierung befolgen. Das bedeutet, dass sie den aktuellen Zustand nicht verändern, sondern einen neuen Zustand erstellen und zurückgeben.
 
-Für jeden State, der in der Applikation verwendet werden soll, wird ein Interface erstellt. Diese Interfaces werden dazu verwendet mindestens einen weiteren State zu definieren, nämlich den Initialen State. Mit dem Initialen State wird vermieden, dass der State `undefined` sein kann.
+Für jeden State, der in der Applikation verwendet werden soll, wird ein Interface erstellt. Diese Interfaces werden dazu verwendet, mindestens einen weiteren State zu definieren, nämlich den initialen State. Mit dem initialen State wird vermieden, dass der State `undefined` sein kann.
 
-Da meistens mehrere Actions vorhanden sind, müssen diese auch unterschieden werden. Dazu ist die `on`-Funktion da, diese kann einen Fallunterschied zwischen den Actions erstellen. Durch die Verwendung der props in den Action-Creator-Funktionen kann man die relevanten Daten an die Reducer-Funktion übergeben und im Reducer-Zustand verwenden.
+Da zumeist mehrere Actions vorhanden sind, müssen diese auch unterschieden werden. Dazu ist die `on`-Funktion , diese kann einen Fallunterschied zwischen den Actions erstellen. Durch die Verwendung der props in den Action-Creator-Funktionen kann man die relevanten Daten an die Reducer-Funktion übergeben und im Reducer-Zustand verwenden.
 
-Seit Angular 17 ist es so das es ein `index.ts`, innerhalb des reducer-Ordner gibt. In diese werden alle Reducers registriert, damit diese dann in die `app.config.ts` exportiert werden können. Es dient der neuen Struktur, welche für eine besser Übersicht sorgen soll.
+Seit Angular 17 ist es so, dass es eine `index.ts`-Datei, innerhalb des reducer-Ordners gibt. In diese werden alle Reducers registriert, damit diese dann in die `app.config.ts`-Datei exportiert werden können. Das dient der neuen Struktur, welche für eine bessere allgemeine Übersicht sorgen soll.
 
 ```typescript
 // index.ts
@@ -80,4 +80,4 @@ export const abilityReducer = createReducer(
 
 ## Reducers Registrieren
 
-**Wichtig:** die Reducers müssen im `index.ts` in der Konstante `export const reducers` angegeben werden. Diese Konstante wird dann wie bereits erwähnt im `app.config.ts` innerhalb der Rundenklammern des `provideStore()` angegeben.
+**Wichtig:** die Reducers müssen im `index.ts` in der Konstante `export const reducers` angegeben werden. Diese Konstante wird dann wie bereits erwähnt in der `app.config.ts`-Datei innerhalb der runden Klammern von `provideStore()` angegeben.

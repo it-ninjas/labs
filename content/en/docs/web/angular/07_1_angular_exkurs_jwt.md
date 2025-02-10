@@ -1,11 +1,11 @@
 ---
-title: "Json Web Token Authorisation (JWT)"
+title: "Json Web Token Authorization (JWT)"
 type: docs
-linkTitle: "Json Web Token Authorisation (JWT)"
+linkTitle: "Json Web Token Authorization (JWT)"
 weight: 31
 date: 2022-05-09
 description: >
-  In diesem Exkurs ist zu sehen was ein JSON Web Token (JWT) ist und wie dieser funktioniert.
+  In diesem Exkurs ist zu sehen, was ein JSON Web Token (JWT) ist und wie dieser funktioniert.
 ---
 
 ## Ziele
@@ -14,7 +14,7 @@ description: >
 
 ## Exkurs JWT
 
-JWT ist ein offener Standard (RFC 7519) zur sicheren Übermittlung eines JSON-Objekts. In der Regel muss sich der Benutzer anmelden und erhält dann einen Token für API-Calls. Der Token besteht aus drei Teilen: Header, Payload und Signatur. Da der Payload alle erforderlichen Informationen enthält, ist für die Authentifizierung keine Datenbankabfrage erforderlich. Das ist besonders für die Skalierung zustandsloser Backend-Architekturen super!
+JWT ist ein offener Standard (RFC 7519) zur sicheren Übermittlung eines JSON-Objekts. In der Regel muss sich der Benutzer anmelden und erhält dann einen Token für API-Calls. Das Token besteht aus drei Teilen: Header, Payload und Signatur. Da der Payload alle erforderlichen Informationen enthält, ist für die Authentifizierung keine Datenbankabfrage erforderlich. Das ist besonders für die Skalierung zustandsloser Backend-Architekturen super! Das JWT kann von jedem Service selbständig validiert werden. Es braucht also keine zentrale Datenbank, welche alle Sessions abspeichert und von den verschiedenen Services abgerufen werden muss.
 
 Es ist jedoch wichtig, JWT mit Vorsicht zu verwenden und Sicherheitsvorkehrungen zu treffen, um Angriffe wie Token-Entführung oder Token-Manipulation zu verhindern. Dazu gehören Massnahmen wie die sichere Speicherung von geheimen Schlüsseln, die Verwendung von HTTPS für die Token-Übertragung und die Implementierung von Ablaufzeiten und erneuerbaren Tokens.
 
@@ -22,19 +22,19 @@ Es ist jedoch wichtig, JWT mit Vorsicht zu verwenden und Sicherheitsvorkehrungen
 
 Ein JWT kann von jedem dekodiert und gelesen werden. Tatsächlich ist das für den Client und das Debuggen nützlich. Die Payload wird nicht verschlüsselt (für Verschlüsselung s. JWE), aber gültige Signaturen können nur erstellt werden, wenn man ein Geheimnis kennt. Jedes Mal, wenn ein Token empfangen wird, muss eine Integritätsprüfung die Signatur bestätigen. So wird sichergestellt, dass der Token nicht manipuliert wurde. Danach wird sein Inhalt als vertrauenswürdig eingestuft.
 
-Die Gültigkeitsdauer des Token kann begrenzt werden, indem zeitbezogene Claims wie iat ("Issued At"), nbf ("Not Before") und exp ("Expiration Time") einbezogen werden. Ein abgelaufener JWT ist zwar weiterhin gültig, da es jedoch nicht möglich ist, Einträge zu manipulieren, ohne die Signatur zu zerstören, wird bei der serverseitigen Integritätsprüfung das Ablaufdatum des Tokens gelesen und der Zugriff verweigert.
+Die Gültigkeitsdauer des Tokens kann begrenzt werden, indem zeitbezogene Claims wie iat ("Issued At"), nbf ("Not Before") und exp ("Expiration Time") einbezogen werden. Ein abgelaufener JWT ist zwar weiterhin gültig, da es jedoch nicht möglich ist, Einträge zu manipulieren, ohne die Signatur zu zerstören, wird bei der serverseitigen Integritätsprüfung das Ablaufdatum des Tokens gelesen und der Zugriff verweigert.
 
-Ein Nachteil ist das sehr komplizierte Widerrufen eines Tokens. Eine gängige Lösung ist das **Blacklisting**. Außerdem helfen kurze Gültigkeitsdauern.
+Ein Nachteil davon ist das sehr komplizierte Widerrufen eines Tokens. Eine gängige Lösung ist das **Blacklisting**. Ausserdem helfen kurze Gültigkeitsdauern.
 
 **Beispiel für die Erstellung eines JSON Web Token**
 
-Ein typisches JWT sieht folgendermassen aus (Header, Payload, Signature):
+Ein typisches JWT sieht aus wie folgt (Header, Payload, Signature):
 
 **xxxxx.yyyyyy.zzzzzz**
 
 ### Header
 
-Der Header ist typischerweise in zwei Parts aufgeteilt: der erste Part ist der benötigte Algorythmus und der zweite der Typ des Tokens. Unten ein Beispiel dazu:
+Der Header ist typischerweise in zwei Parts aufgeteilt: der erste Part ist der genutzte Algorithmus und der zweite der Typ des Tokens. Unten ein Beispiel dazu:
 
 ```json
 {
@@ -45,9 +45,9 @@ Der Header ist typischerweise in zwei Parts aufgeteilt: der erste Part ist der b
 
 ### Payload
 
-Der zweite Teil des Tokens der Payload, welche die erstellten Forderungen enthält. Forderungen sind Aussagen über eine Entität (normalerweise den Benutzer) und zusätzliche Daten. Es gibt drei Arten von Forderungen : registrierte, öffentliche und private.
+Der zweite Teil des Tokens ist der Payload, welcher die erstellten Forderungen enthält. Forderungen sind Aussagen über eine Entität (normalerweise den Benutzer) und zusätzliche Daten. Es gibt drei Arten von Forderungen : registrierte, öffentliche und private.
 
-1. Registrierte: Reihe vordefinierter Forderungen die nicht obligatorisch aber empfohlen sind; iss(Emittent), exp(Ablaufzeit), sub(Betreff) und aud(Publikum)
+1. Registrierte: Reihe vordefinierter Forderungen die nicht obligatorisch, aber empfohlen sind; iss(Aussteller), exp(Ablaufzeit), sub(Betreff) und aud(Zielgruppe)
 2. Öffentliche: Können nach Belieben definiert werden. Um Kollisionen zu vermeiden, sollten sie jedoch in der IANA JSON Web Token Registry definiert sein.
 3. Private: Hierbei handelt es sich um benutzerdefinierte Forderungen, die erstellt wurden, um Informationen zwischen Parteien auszutauschen, die sich auf deren Verwendung einigen und weder registrierte noch öffentliche Forderungen sind
 
@@ -71,13 +71,13 @@ HMACSHA256(
     secret)
 ```
 
-Die Signatur wird verwendet, um zu überprüfen, ob die Nachricht unterwegs nicht geändert wurde. Bei Token, die mit einem privaten Schlüssel signiert wurden, kann auch überprüft werden, ob der Absender des JWT derjenige ist, für den er sich ausgibt.
+Die Signatur wird verwendet, um zu überprüfen, ob die Nachricht nicht geändert wurde. Bei Tokens, die mit einem privaten Schlüssel signiert wurden, kann auch überprüft werden, ob der Absender des JWT derjenige ist, für den er sich ausgibt.
 
 ## Alles zusammenführen
 
-Wie man nun ein solches JWT erstellt und im Frontend verwendet wird folgend erklärt.
+Wie man nun ein solches JWT erstellt und im Frontend verwendet, wird nachfolgend erklärt.
 
-Dazu muss man als Erstes das JWT zusammenstellen, wie es oben erklärt wurde. Und dieses dann in den `SessionStorage` speichern. Beseitz man nun sein JWT so kann man es bei den HTTP-Anfragen verwenden und an das Backend mitsenden, wo man es dann verifizieren muss.
+Dazu muss man als Erstes das JWT zusammenstellen, wie es oben erklärt wurde und dieses dann in den `SessionStorage` speichern. Besitzt man nun sein JWT, so kann man es bei den HTTP-Anfragen verwenden und an das Backend mitsenden, wo man es dann verifizieren muss.
 
 Token erstellen und speichern:
 

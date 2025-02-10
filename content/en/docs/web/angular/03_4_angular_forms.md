@@ -11,9 +11,9 @@ description: >
 ## Ziele
 
 - Du weisst was Angular Reactive Forms sind.
-- Du weisst, wozu FormsControl, -Group und -Array sind und kannst sie anwenden.
+- Du weisst, was FormsControl, -Group und -Array sind und kannst diese anwenden.
 - Du weisst, was der FormBuilder ist und kannst ihn anwenden.
-- Du kennst, die Validators und kannst sie verwenden und eigene schrieben.
+- Du kennst die Validators, kannst sie verwenden und eigene schrieben.
 
 ## Angular Reactive Forms
 
@@ -21,17 +21,18 @@ Angular Reactive Forms sind ein leistungsstarkes Feature von Angular, mit dem En
 
 ## Doch wieso sollte man Forms verwenden?
 
-Dies hört sich nun sehr ähnlich an wie `ngModel`, doch wieso sollte man besser Reactive Forms verwenden? Dazu gibt es folgende Gründe:
+Dies hört sich nun sehr ähnlich an wie `ngModel`, welches eine `FormControl`-Instanz erstellt und diese an ein `FormControlElement` anbindet. Genauere Infos zu `ngModel` kannst du dir [hier](https://markasky-josh.medium.com/angular-using-the-ngmodel-for-forms-template-driven-forms-d14216dc6122) anschauen.
+Wieso aber sollte man besser Reactive Forms verwenden? Dazu gibt es folgende Gründe:
 
-1. Reactive Forms ermöglichen eine klare Trennung zwischen Datenmodell und View. Man erstellt ein separates FormGroup-Objekt, das die Struktur und Validierung der Formulardaten definiert. Dieses Datenmodell kann unabhängig von dem View-Components existieren und ermöglicht eine bessere Organisation und Wiederverwendbarkeit des Codes.
-2. Mit Reactive Forms hat man volle Kontrolle über die Formulare, da man FormControls und FormGroups programmatisch erstellen und manipulieren kann. Man kann dynamisch Formularfelder hinzufügen, entfernen oder ändern, Validierungsregeln anpassen und auf Ereignisse reagieren.
+1. Reactive Forms ermöglichen eine klare Trennung zwischen Datenmodell und View. Man erstellt ein separates FormGroup-Objekt, das die Struktur und Validierung der Formulardaten definiert. Dieses Datenmodell kann unabhängig von dem View-Component existieren und ermöglicht eine bessere Organisation und Wiederverwendbarkeit des Codes.
+2. Mit Reactive Forms hat man die volle Kontrolle über die Formulare, da man FormControls und FormGroups programmatisch erstellen und manipulieren kann. Man kann dynamisch Formularfelder hinzufügen, entfernen oder ändern, Validierungsregeln anpassen und auf Ereignisse reagieren.
 3. Reactive Forms bieten eine umfangreichere Unterstützung für komplexe Validierungsszenarien. Man kann benutzerdefinierte Validatoren erstellen oder viele bereits existierende verwenden.
 
-Insgesamt bietet die Verwendung von Reactive Forms eine flexiblere, leistungsfähigere und besser strukturierte Möglichkeit, Formulare in Angular zu verwalten. Es ermöglicht eine bessere Kontrolle, erweiterte Validierungsoptionen und eine klarere Trennung zwischen Datenmodell und View-Komponente.
+Insgesamt bietet die Verwendung von Reactive Forms eine flexiblere, leistungsfähigere und besser strukturierte Möglichkeit, Formulare in Angular zu verwalten. Sie ermöglichen eine bessere Kontrolle, erweiterte Validierungsoptionen und eine klarere Trennung zwischen Datenmodell und View-Komponenten.
 
 ## Importieren in Module
 
-Bevor man Reactive Forms verwenden kann muss man die `ReactiveFormsModule` in das Modul, in dem man Reactive Forms verwenden möchte importieren.
+Bevor man Reactive Forms verwenden kann, muss man die `ReactiveFormsModule` in das Modul / den Component importieren, in dem man Reactive Forms verwenden möchte.
 
 ```typescript
 import { ReactiveFormsModule } from "@angular/forms";
@@ -43,11 +44,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 export class AppModule {}
 ```
 
-## Forms Control
+## FormControl
 
-Ein `FormControl` ein Objekt, das ein einzelnes Formularelement repräsentiert und steuert. Es ermöglicht die Verwaltung des Werts, der Validierung und des Zustands des Formularelements.
+Ein `FormControl` ist ein Objekt, das ein einzelnes Formularelement repräsentiert und steuert. Es ermöglicht die Verwaltung des Werts, der Validierung und des Zustands des Formularelements.
 
-Wenn man ein `FormControl` verwenden möchte kann man dieses mittels `new FormControl('')` einer Variable zuweisen. Dadurch ist die Variabel nun das FormControl. Damit man es nun im HTML verwenden kann um es zu Binden muss man bei einem `input`-tag `[formControl]=""` verwenden in die "" kommt dann der Variabelname des FormControls.
+Wenn man ein `FormControl` verwenden möchte, kann man dieses mittels `new FormControl('')` einer Variable zuweisen. Dadurch ist die Variable nun die FormControl. Damit man es nun im HTML verwenden kann, um es zu binden, muss man bei einem `input`-tag `[formControl]=""` verwenden. In die `""` kommt dann der Variabelname der FormControl.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -73,8 +74,8 @@ export class TriumphsComponent implements AfterViewInit {
 </div>
 ```
 
-Man kann dem FormControl auch einen Defaultwert geben, dazu einfach innerhalb der runden Klammern anstelle von einem leeren String den Defaultwert einfügen.
-Auch der Value kann man manuel im Typescript verändern mittels der `setValue()` Methode.
+Man kann der `FormControl` auch einen Defaultwert geben, dazu einfach innerhalb der runden Klammern anstelle von einem leeren String den Defaultwert einfügen.
+Auch den Value kann man manuell im Typescript verändern, das funktioniert mittels der `setValue()` Methode.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -105,7 +106,7 @@ export class TriumphsComponent implements AfterViewInit {
 </div>
 ```
 
-Wenn man im Typescript auch direkt auf Änderungen im FormControl subscriben möchte, damit man immer den aktuellen Value des FormControls hat, kann man `valueChanges` benutzen. Somit hat man im Typescript die gleiche aktuelle Value wie im HTML mittels `{{ name.value }}`.
+Wenn man in Typescript direkt auf Änderungen der `FormControl` subscriben möchte, damit man immer den aktuellen Value der `FormControl` hat, kann man `valueChanges` benutzen. Somit hat man im Typescript denselben aktuellen Value wie im HTML mittels `{{ name.value }}`.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -137,13 +138,13 @@ export class TriumphsComponent implements AfterViewInit {
 </div>
 ```
 
-## Froms Group
+## FormGroup
 
-Da eine Form normalerweise aus mehr als einem Controls besteht, kann all die FormControls zu einer gruppieren.
+Da ein `Form`-Element normalerweise aus mehr als einem `Control`-Element besteht, kann man `FormControl`s jeweils zu einer gruppieren.
 
-Für die FormGroup erstellt man auch eine neue Instanz des `FormGroup` in welcher sich die `FormControl`'s befinden. Die FormGroup wird in einer Variabel gespeichert, die FormControls werden mit eindeutigem Key-Value Prinzip definiert.
-Man kann auch hier auf die Group mittels `valueChanges` subscriben, nur das man hier dann nicht einfach den Value des Inputs erhaltet, sondern ein Objekt mit den Controls als Key-Value.
-Um eine FormGroup im HTML zu verwenden, sollte man den `form`-tag. In diesem muss man die FormGroup mittels `[formGroup]=""` angeben, auch hier kommt in die "" der Variabelname der FormGroup. Um nun die FormControls anzugeben verwendet man nicht mehr `[formControl]=""`, sondern `formControlName=""`, hier kommt in die "" der Key der FormControl.
+Für die `FormGroup` erstellt man auch eine neue Instanz der `FormGroup`, in welcher sich die `FormControl`'s befinden. Die `FormGroup` wird in einer Variable gespeichert, die `FormControl`s werden mit eindeutigem Key-Value-Prinzip definiert.
+Man kann auch hier auf die Group mittels `valueChanges` subscriben, nur dass hier dann nicht einfach der Value des Inputs ausgegeben wird, sondern ein Objekt mit den Controls als Key-Value geliefert wird.
+Um eine `FormGroup` im HTML zu verwenden, sollte der `form`-tag verwendet werden. In diesem muss man die FormGroup mittels `[formGroup]=""` angeben, auch hier kommt in die "" der Variablenname der `FormGroup`. Um nun die `FormControl`s anzugeben, verwendet man nicht mehr `[formControl]=""`, sondern `formControlName=""`, hier kommt in die "" der Key der FormControl.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -182,8 +183,8 @@ export class TriumphsComponent implements AfterViewInit {
 <p>Value Year of Achieving: {{ triumphForm.value.yearOfAchieving }}</p>
 ```
 
-Es ist auch möglich FormGroup innerhalb einer FormGroup zu verwenden und so das gesamte verschachteln, um komplexe Forms mit hierarchischer Struktur zu erstellen. Dies funktioniert genau gleich hier muss dann einfach die zweite FormGroup auch als Key-Value angegeben werden.
-Die zweite FormGroup muss dann mit `formGroupName=""` angegeben werden und nicht mehr mit `[formGroup]=""`, innerhalb der "" kommt hier dann auch der Key der zweiten FormGroup. Man sollte für die zweite FormGroup dann ein `div`-tag verwenden.
+Es ist auch möglich, eine `FormGroup` innerhalb einer anderen `FormGroup` zu verwenden und so das gesamte zu verschachteln, um komplexe Forms mit hierarchischer Struktur zu erstellen. Das funktioniert genau gleich, hier muss dann einfach die zweite `FormGroup` auch als Key-Value angegeben werden.
+Die zweite `FormGroup` muss dann mit `formGroupName=""` angegeben werden und nicht mehr mit `[formGroup]=""`, innerhalb der "" kommt hier dann auch der Key der zweiten FormGroup. Man sollte für die zweite FormGroup dann ein `div`-tag verwenden.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -248,8 +249,8 @@ export class TriumphsComponent implements AfterViewInit {
 <p>Value Zip: {{ triumphForm.value.placeOfAchieving.zip }}</p>
 ```
 
-Wenn man eine so grosse FormGroup hat und nun ein Wert ändern möchte über das Typescript, kann man dies auch mittels `setValue()` tun. Das kann jedoch mühsam sein da man bei dieser Methode alle Values (FormControls) der FormGroup angeben muss. Wenn man aber nur einzelne anpassen möchte, kann man die Methode `patchValue()` verwenden.
-Denn diese Methode erlaubt es das man nur einzelne der Values (FormControls) angeben muss.
+Wenn man eine so grosse `FormGroup` hat und nun einen Wert über Typescript ändern möchte, kann man dies auch mittels `setValue()` tun. Das kann jedoch mühsam sein, da man bei dieser Methode alle Values (FormControls) der FormGroup angeben muss. Wenn man aber nur einzelne anpassen möchte, kann man die Methode `patchValue()` verwenden.
+Diese Methode erlaubt es nämlich, dass man nur einzelne der Values (FormControls) angeben muss.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -324,10 +325,10 @@ export class TriumphsComponent implements AfterViewInit {
 <p>Value Zip: {{ triumphForm.value.placeOfAchieving.zip }}</p>
 ```
 
-## Form Array
+## FormArray
 
-`FormArray` ist eine Alternative zu `FormGroup`, wird jedoch verwendet, wenn man eine unbestimmte Anzahl von FormControls, FormGroups oder weiteren FormArrays haben möchte. Durch das hat man die Möglichkeit dynamisch Formularelement während der Laufzeit hinzuzufügen oder löschen.
-Praktisch ist das man keinen Key für die Formularelemente definieren muss und man nicht weiss wie viele Elemente es am Schluss sein werden.
+`FormArray` ist eine Alternative zu `FormGroup`, wird jedoch verwendet, wenn man eine unbestimmte Anzahl von FormControl-Elemente, FormGroups oder weiteren FormArrays haben möchte. Dadurch hat man die Möglichkeit, dynamisch Formularelemente während der Laufzeit hinzuzufügen oder zu löschen.
+Praktisch ist, dass man keinen Key für die Formularelemente definieren muss und man nicht weiss, wie viele Elemente es am Schluss sein werden.
 
 Um auf das FormArray zugreifen zu können muss man eine `get`-Methode schreiben, diese findet man im folgenden Code.
 
@@ -423,8 +424,8 @@ export class TriumphsComponent implements AfterViewInit {
 
 ## Form Builder
 
-Wie man bei der verschachtelten FormGroup gesehen hat, ist zum Teil der Code sehr duplikat. Um dies zu vermeiden, kann man beim Erstellen einer Form einen Hilfsservice namens `FormBuilder` benutzen. Diesen muss man auch importieren und dann im constructor injecten.
-Anstelle von `new FormGroup()` schreibt man nun `this.formBuilder.group()`, bei `FormArray` schreibt man mittels FormBuilder noch `this.formBuilder.array()` und bei den Controls kann man jedoch einfach nur das Key-Value Paar angeben.
+Wie man bei der verschachtelten FormGroup gesehen hat, besteht der Code zum Teil aus einigen Duplikaten. Um dies zu vermeiden, kann man beim Erstellen einer Form einen Hilfsservice namens `FormBuilder` benutzen. Diesen muss man auch importieren und dann im Constructor injecten.
+Anstelle von `new FormGroup()` verwendet man nun `this.formBuilder.group()`, bei `FormArray` schreibt man mittels dem FormBuilder noch `this.formBuilder.array()`. Bei den Controls kann man jedoch einfach nur das Key-Value Paar angeben.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -460,23 +461,23 @@ export class TriumphsComponent implements AfterViewInit {
 
 ## Validators
 
-Es gibt eine Vielzahl von Validators, die man verwenden kann, um die Eingaben der Benutzer zu überprüfen und sicherzustellen, dass sie den gewünschten Anforderungen entsprechen. Die häufigst verwendeten Validators sind:
+Es gibt eine Vielzahl von Validators, die man verwenden kann, um die Eingaben der Benutzer zu überprüfen und sicherzustellen, dass sie den gewünschten Anforderungen entsprechen. Die am häufigsten verwendeten Validators sind:
 
 - `Validators.required`: Dieser Validator stellt sicher, dass das Formularelement einen Wert enthält und nicht leer ist.
 
-- `Validators.minLength(minLength)`: Dieser Validator überprüft, ob der Value des Formularelements eine Mindestlänge hat, die durch den Parameter `minLength` festgelegt wird.
+- `Validators.minLength(minLength)`: Dieser Validator überprüft, ob der Value des Formularelements einer Mindestlänge entspricht, die durch den Parameter `minLength` festgelegt wird.
 
-- `Validators.maxLength(maxLength)`: Dieser Validator überprüft, ob der Value des Formularelements eine Maximallänge hat, die durch den Parameter `maxLength` festgelegt wird.
+- `Validators.maxLength(maxLength)`: Dieser Validator überprüft, ob der Value des Formularelements einer Maximallänge entspricht, die durch den Parameter `maxLength` festgelegt wird.
 
-- `Validators.pattern(pattern)`: Dieser Validator überprüft den Value des Formularelements anhand eines regulären Ausdrucks, der durch den Parameter `pattern` definiert wird. Man kann damit bestimmte Muster wie z.B. eine gültige E-Mail-Adresse, Telefonnummer etc. überprüfen. Das `pattern` ist wie ein Regex und kann in diesem Format angegeben werden z:B. `[a-zA-Z0-9]`
+- `Validators.pattern(pattern)`: Dieser Validator überprüft den Value des Formularelements anhand eines regulären Ausdrucks, der durch den Parameter `pattern` definiert wird. Man kann damit bestimmte Muster wie z.B. eine gültige E-Mail-Adresse, Telefonnummer etc. voraussetzen. Das `pattern` funktioniert wie ein Regex und kann in diesem Format angegeben werden, z:B so: `[a-zA-Z0-9]`
 
 - `Validators.email`: Dieser Validator überprüft, ob der Value des Formularelements eine gültige E-Mail-Adresse ist.
 
-- `Validators.min(min)`: Dieser Validator überprüft, ob der Value des Formularelements grösser oder gleich dem angegebenen Minimum `(min)` ist. Dies wird oft für numerische Eingabefelder verwendet.
+- `Validators.min(min)`: Dieser Validator überprüft, ob der Value des Formularelements grösser oder gleich dem angegebenen Minimum `(min)` ist. Dieser Validator wird zumeist für numerische Eingabefelder verwendet.
 
-- `Validators.max(max)`: Dieser Validator überprüft, ob der Value des Formularelements kleiner oder gleich dem angegebenen Maximum `(max)` ist. Auch dies wird häufig für numerische Eingabefelder verwendet.
+- `Validators.max(max)`: Dieser Validator überprüft, ob der Value des Formularelements kleiner oder gleich dem angegebenen Maximum `(max)` ist. Auch dieser Validator wird zumeist für numerische Eingabefelder verwendet.
 
-Es können auch mehrere Validators eingesetzt werden, dazu muss man diese einfach in einem Array angeben.
+Es können auch mehrere Validators eingesetzt werden, dazu muss man diese einfach in Form eines Arrays angeben. Grundsätzlich setzen die Validators jeweils die CSS-Klassen `ng-valid ` (bei einer positiven Validierung) und `ng-invalid` (bei einer negativen Validierung) auf des entsprechende Element. Das Ergebnis hingegen muss aber jeweils vom Entwickler visualisiert werden.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -495,7 +496,7 @@ export class TriumphsComponent implements AfterViewInit {
       street: ["", Validators.required],
       city: ["", Validators.required],
       state: ["", Validators.required],
-      zip: ["", [Validators.required, Validators.minLength(4)]],
+      zip: ["", [Validators.required, Validators.min(1000)]],
     }),
     aliases: this.formBuilder.array([
       this.formBuilder.control("", Validators.required),
@@ -544,7 +545,7 @@ export class TriumphsComponent implements AfterViewInit {
       street: ["", Validators.required],
       city: ["", Validators.required],
       state: ["", Validators.required],
-      zip: ["", [Validators.required, Validators.minLength(4)]],
+      zip: ["", [Validators.required, Validators.min(1000)]],
     }),
     aliases: this.formBuilder.array([
       this.formBuilder.control("", Validators.required),
