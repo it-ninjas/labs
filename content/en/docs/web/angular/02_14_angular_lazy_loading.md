@@ -15,7 +15,7 @@ description: >
 
 ## Was ist Lazy Loading
 
-Lazy Loading bezeichnet im Allgemeinen eine Funktionalität in der Software-Entwicklung, bei der Daten erst ab dem Zeitpunkt geladen werdne, in dem sie benötigt werden.
+Lazy Loading bezeichnet im Allgemeinen eine Funktionalität in der Software-Entwicklung, bei der Daten erst ab dem Zeitpunkt geladen werden, in dem sie benötigt werden.
 Im Zusammenhang mit Websites geht es darum, Inhalte wie Bilder erst dann vom Server zu laden, wenn diese im sichtbaren Bereich und somit nötig sind.
 Dadurch wird die Ladezeit der Seite zu Beginn reduziert. Auf diese Weise wird dem User beispielsweise bereits eine Seite angezeigt, obwohl weitere Inhalte noch geladen werden.
 ![Lazy loading](../images/lazy_loading.png)
