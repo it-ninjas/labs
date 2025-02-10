@@ -141,7 +141,8 @@ Auf der letzten Zeile erstellen wir eine neue Instanz der Klasse `Greeter` mit `
 Interfaces in TypeScript beschreiben die Struktur von Objekten, ohne tatsächlichen JavaScript-Code zu erzeugen. Bei der Transpilation entfernt TypeScript alle Interfaces, sodass sie in der Laufzeitumgebung nicht mehr existieren. Sie sind also rein für die statische Typisierung gedacht und lassen sich beispielsweise nicht per `instanceof` prüfen.
 
 Ein einfaches Beispiel ist das folgende:
-```javascript
+
+````javascript
 interface Person {
     name: string;
     alter: number;
@@ -168,7 +169,7 @@ const dog = new Dog();
 dog.bark();
 dog.move(10);
 dog.bark();
-```
+````
 
 Dieses Beispiel zeigt die grundlegendste Vererbungsfunktion: Klassen erben Eigenschaften und Methoden von Basisklassen (`Animal`). `Dog` ist hier eine abgeleitete Klasse, die mit dem Schlüsselwort `extends` von der Basisklasse Animal abgeleitet wird. Abgeleitete Klassen werden häufig als Unterklassen bezeichnet, und Basisklassen als Superklassen.
 
