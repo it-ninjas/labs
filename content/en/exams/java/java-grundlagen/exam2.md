@@ -125,13 +125,13 @@ Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandel
 
 Beispiel:
 
-String text = "H<span style="color: blue">a</span>ll<span style="color: red">o</span> mein N<span style="color: blue">a</span>me ist Claudi<span style="color: red">o</span>"
+String text = "H<span style="color: blue">a</span>ll<span style="color: red">o</span> mein N<span style="color: blue">a</span>me ist Cl<span style="color: blue">a</span>udi<span style="color: red">o</span>"
 
 |     | <span style="color: blue">a</span>  | c   | d   | e   | h   | i   | l   | m   | n   | <span style="color: red">o</span>  | s   | t   | u   |
 | --- | ----------------------------------- | --- | --- | --- | --- | --- | --- | --- | --- | ---------------------------------- | --- | --- | --- |
 | 5   | <span style="color: blue">1</span>  | 20  | 24  | 7   | 0   | 8   | 2   | 6   | 9   | <span style="color: red">4</span>  | 17  | 18  | 23  |
 | 10  | <span style="color: blue">12</span> |     |     | 14  |     | 16  | 3   | 13  | 11  | <span style="color: red">26</span> |     |     |     |
-| 15  |                                     |     |     |     |     |     |     |     |     |                                    |     |     |     |
+| 15  | <span style="color: blue">22</span> |     |     |     |     | 25  | 21  |     |     |                                    |     |     |     |
 | 19  |                                     |     |     |     |     |     |     |     |     |                                    |     |     |     |
 
 Der Tabelle kann folgendes entnommen werden:
