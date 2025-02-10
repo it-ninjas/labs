@@ -1,6 +1,6 @@
 ---
 title: "Git"
-weight: 2
+weight: 4
 description: >
   Arbeiten mit Git
 ---
