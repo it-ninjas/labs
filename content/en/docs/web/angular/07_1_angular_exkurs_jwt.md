@@ -71,7 +71,7 @@ HMACSHA256(
     secret)
 ```
 
-Die Signatur wird verwendet, um zu überprüfen, ob die Nachricht unterwegs nicht geändert wurde. Bei Tokens, die mit einem privaten Schlüssel signiert wurden, kann auch überprüft werden, ob der Absender des JWT derjenige ist, für den er sich ausgibt.
+Die Signatur wird verwendet, um zu überprüfen, ob die Nachricht nicht geändert wurde. Bei Tokens, die mit einem privaten Schlüssel signiert wurden, kann auch überprüft werden, ob der Absender des JWT derjenige ist, für den er sich ausgibt.
 
 ## Alles zusammenführen
 
