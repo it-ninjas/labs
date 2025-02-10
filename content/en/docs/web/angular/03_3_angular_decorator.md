@@ -106,7 +106,7 @@ Somit wäre hier der Input `triumphs` nicht nötig, `title` hingegen schon.
 
 #### transform
 
-Nit Angular 17 wurde auch `transform` hinzugefügt, diese Option kann den eingegebenen Wert ähnlich wie eine Pipe umwandeln.
+Mit Angular 17 wurde auch `transform` hinzugefügt, diese Option kann den eingegebenen Wert ähnlich wie eine Pipe umwandeln.
 Ein gutes Beispiel dafür ist, wenn eine Grössenangabe gemacht werden muss.
 Im folgenden Beispiel kann einfach die Zahl angegeben werden und der Input wird automatisch in Pixel umgewandelt.
 
