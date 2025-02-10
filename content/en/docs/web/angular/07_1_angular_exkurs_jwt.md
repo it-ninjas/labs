@@ -14,7 +14,7 @@ description: >
 
 ## Exkurs JWT
 
-JWT ist ein offener Standard (RFC 7519) zur sicheren Übermittlung eines JSON-Objekts. In der Regel muss sich der Benutzer anmelden und erhält dann einen Token für API-Calls. Das Token besteht aus drei Teilen: Header, Payload und Signatur. Da der Payload alle erforderlichen Informationen enthält, ist für die Authentifizierung keine Datenbankabfrage erforderlich. Das ist besonders für die Skalierung zustandsloser Backend-Architekturen super!
+JWT ist ein offener Standard (RFC 7519) zur sicheren Übermittlung eines JSON-Objekts. In der Regel muss sich der Benutzer anmelden und erhält dann einen Token für API-Calls. Das Token besteht aus drei Teilen: Header, Payload und Signatur. Da der Payload alle erforderlichen Informationen enthält, ist für die Authentifizierung keine Datenbankabfrage erforderlich. Das ist besonders für die Skalierung zustandsloser Backend-Architekturen super! Das JWT kann von jedem Service selbständig validiert werden. Es braucht also keine zentrale Datenbank, welche alle Sessions abspeichert und von den verschiedenen Services abgerufen werden muss.
 
 Es ist jedoch wichtig, JWT mit Vorsicht zu verwenden und Sicherheitsvorkehrungen zu treffen, um Angriffe wie Token-Entführung oder Token-Manipulation zu verhindern. Dazu gehören Massnahmen wie die sichere Speicherung von geheimen Schlüsseln, die Verwendung von HTTPS für die Token-Übertragung und die Implementierung von Ablaufzeiten und erneuerbaren Tokens.
 
