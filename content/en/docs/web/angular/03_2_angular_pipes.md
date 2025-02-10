@@ -82,7 +82,7 @@ Das Datum wird nun so angezeigt: APR/20/45
 
 ## AsyncPipe
 
-Die AsyncPipe wird verwendet, um Observables oder Promises im Template zu subscriben und automatisch zu aktualisieren, sobald neue Werte verfügbar sind. Was Observables und Promises sind, wird in einem späteren Kapitel behandelt. 
+Die AsyncPipe wird verwendet, um Observables oder Promises im Template zu subscriben und automatisch zu aktualisieren, sobald neue Werte verfügbar sind. Was Observables und Promises sind, wird in einem späteren Kapitel behandelt.
 
 ```html
 <p>{{ myObservableData$ | async }}</p>
