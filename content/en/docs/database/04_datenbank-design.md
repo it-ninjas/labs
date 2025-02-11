@@ -16,10 +16,10 @@ weight: 4
 Die Normalisierung in SQL ist ein Prozess, bei dem Datenbanktabellen in bestimmte **Normalformen** überführt werden, um die Datenintegrität und -konsistenz zu gewährleisten sowie Redundanzen zu minimieren.
 Das Ziel ist es, Daten effizient, konsistent und strukturiert zu speichern, zu verwalten und abzufragen.
 
-Was bedeutet das genau? Wir wollen zum Beispiel **doppelte Daten** in der Datenbank vermeiden.
+Was bedeutet das genau? Wir wollen zum Beispiel **doppelte (redundante) Daten** in der Datenbank vermeiden.
 Das sparrt einerseits **Speicherplatz**, stellt aber andererseits auch sicher, das die **Integrität** gewährleistet ist.
-Das heisst, was passiert, wenn ich den gleichen User zweimal in einer Datenbank habe, und dann nur einen Eintrag davon bearbeitet.
-Dadurch kann es zu Fehler kommen, die man im Design verhindern kann.
+Was passiert, wenn ich den gleichen User zweimal in einer Datenbank habe, und dann nur einen Eintrag davon bearbeitet.
+Dadurch kann es zu Anomalien (Fehler, unerwartetes Verhalten) kommen, die man im Design verhindern kann.
 
 Ein Datenbankschema kann in unterschiedlichem Mass gegen Anomalien wie Inkonsistenzen oder Redundanzen geschützt werden.
 Diese Abstufungen werden als Normalformen bezeichnet.
@@ -38,7 +38,7 @@ Du bekommst den Auftrag, alle Kunde von einer bestimmten Strasse oder einer best
 Jetzt musst du immer die Adresse auslesen und splitten. Das geht einfacher.
 
 Die erste Normalform (1NF) ist eine grundlegende Regel in der Datenbankentwicklung.
-Sie stellt sicher, dass eine Tabelle nur atomare (eine Zelle hat nur genau ein) Werte enthält und keine wiederholten Gruppen von Attributen aufweist.
+Sie stellt sicher, dass eine Tabelle nur atomare (nicht weiter teilbare) Werte enthält und keine wiederholten Gruppen von Attributen aufweist.
 Das Ziel der 1NF ist es, Daten in ihre einfachsten, nicht weiter unterteilbaren Bestandteile zu zerlegen.
 
 In der ersten Normalform muss jede Zelle einer Tabelle genau einen einzigen Wert enthalten.
@@ -216,6 +216,7 @@ Die dritte Normalform (3NF) baut auf der zweiten Normalform (2NF) auf und stellt
 
 Das Ziel der 3NF ist es sicherzustellen, dass **keine funktionalen Abhängigkeiten zwischen Nicht-Schlüsselattributen bestehen**.
 Das bedeutet, dass alle Nicht-Schlüsselattribute **ausschliesslich vom Primärschlüssel** abhängig sein müssen und nicht von anderen Nicht-Schlüsselattributen.
+Also: Alle Nicht-Schlüsselattribute hängen nur von dem PK ab und nicht untereinander. Nicht-Schlüsselattribute dürfen keinen Einfluss auf andere Nicht-Schlüsselattribute haben.
 
 Eine Tabelle ist in der 3NF, wenn:
 
@@ -402,14 +403,23 @@ Ein klassisches Beispiel für Kardinalitäten ist eine **Buchdatenbank**, die **
 
 Hier sind einige typische Beziehungen:
 
-- **Ein Buch kann von mehreren Autoren geschrieben werden.** (m:n-Beziehung)
-- **Ein Autor kann mehrere Bücher geschrieben haben.** (m:n-Beziehung)
+- **Ein Buch kann von mehreren Autoren geschrieben werden.** (m:m-Beziehung)
+- **Ein Autor kann mehrere Bücher geschrieben haben.** (m:m-Beziehung)
+
+> Für die Kardinalitäten in diesem Beispiel gäbe es auch weitere Möglichkeiten.
+>
+> Was ist, wenn ein Autor kein Buch geschrieben hat? Die Beziehung müsste m:mc sein, aber kann jemand ein Autor sein, wenn er kein Buch hat?
+>
+> Das hängt ganz von den Anforderungen ab, vielleicht möchte man bestimmte Autoren erfassen, aber ihre Bücher nicht.
+>
+> Beim Buch gilt natürlich das genau gleich. Was ist, wenn wir ein Buch haben, für das der Autor unbekannt ist oder nicht in der DB?
+> Du als Softwareentwickler musst entscheiden, ob diese Fälle in deiner Applikation abgedeckt werden.
 
 ---
 
 ### Wichtiger Hinweis zu m:n-Beziehungen:
 
-> **Viele-zu-Viele-Beziehungen (m:m, mc:m, ...) benötigen normalerweise eine Zwischentabelle**, da ansonsten keine eindeutige Verbindung zwischen den Tabellen hergestellt werden kann. Diese Zwischentabelle enthält die Fremdschlüssel der beiden verknüpften Tabellen und kann zusätzlich eigene Attribute wie das Erstellungsdatum der Beziehung enthalten.
+**Viele-zu-Viele-Beziehungen (m:m, mc:m, ...) benötigen normalerweise eine Zwischentabelle**, da ansonsten keine eindeutige Verbindung zwischen den Tabellen hergestellt werden kann. Diese Zwischentabelle enthält die Fremdschlüssel der beiden verknüpften Tabellen und kann zusätzlich eigene Attribute wie das Erstellungsdatum der Beziehung enthalten.
 
 #### Beispiel einer Zwischentabelle für die Buchdatenbank:
 
