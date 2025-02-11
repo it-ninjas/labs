@@ -156,7 +156,6 @@ export class MyCounterComponent {
 ```
 
 ```html
-
 <button (click)="increment()">Increment</button>
 
 <div>Current Count: {{ count$ | async }}</div>
@@ -586,7 +585,6 @@ funktioniert.
 Das ist auch schon alles, was in die Datei `app.component.html` rein muss:
 
 ```html
-
 <router-outlet></router-outlet>
 ```
 
@@ -598,9 +596,7 @@ Für das Beispiel sähen die Routen aber aus wie folgt:
 ```typescript
 import { Routes } from "@angular/router";
 import { OverviewComponent } from "./aufgabe-2/components/overview/overview.component";
-import {
-  ShoppingCartComponent
-} from "./aufgabe-2/components/shopping-cart/shopping-cart.component";
+import { ShoppingCartComponent } from "./aufgabe-2/components/shopping-cart/shopping-cart.component";
 
 export const routes: Routes = [
   { path: "", component: OverviewComponent },
@@ -670,7 +666,6 @@ was wir auf der Seite der Logik machen müssen.
 Als nächstes schauen wir das Template und somit die Anzeige der Daten an:
 
 ```html
-
 <div class="title-container">
   <a routerLink="">Übersicht</a>
   <a routerLink="shopping-cart">Warenkorb</a>
@@ -788,7 +783,6 @@ Den logischen Teil im Component haben wir nun bereits abgeschlossen. Nun bleibt 
 Template:
 
 ```html
-
 <div class="title-container">
   <a routerLink="">Übersicht</a>
   <a routerLink="shopping-cart">Warenkorb</a>
@@ -918,24 +912,27 @@ müssen:
 Aus dieser Aufgabenstellung ergeben sich dann die folgenden 3 Actions:
 
 ```typescript
-import { createAction, props } from '@ngrx/store';
+import { createAction, props } from "@ngrx/store";
 import { TaskModel } from "../models/task-model";
 
 export enum ActionTypes {
   ADDTASK = "[Task Component] add task",
   REMOVETASK = "[Task Component] remove task",
-  COMPLETETASK = "[Task Component] complete task"
+  COMPLETETASK = "[Task Component] complete task",
 }
 
 export const addTask = createAction(
   ActionTypes.ADDTASK,
-  props<{ task: TaskModel }>())
+  props<{ task: TaskModel }>(),
+);
 export const removeTask = createAction(
   ActionTypes.REMOVETASK,
-  props<{ id: number }>())
+  props<{ id: number }>(),
+);
 export const completeTask = createAction(
   ActionTypes.COMPLETETASK,
-  props<{ id: number }>())
+  props<{ id: number }>(),
+);
 ```
 
 Hier gibt es im Vergleich zu Aufgabe 2 eigentlich nichts Neues. Wie gewohnt erstellen wir zuerst die
@@ -979,14 +976,14 @@ und den intialState für den Reducer unterzubringen.
 Die Datei sieht aus wie folgt:
 
 ```typescript
-import { TaskModel } from '../models/task-model';
+import { TaskModel } from "../models/task-model";
 
 export interface TaskState {
   tasks: TaskModel[];
 }
 
 export const initalState: TaskState = {
-  tasks: []
+  tasks: [],
 };
 ```
 
@@ -1001,30 +998,30 @@ beinhält.
 Die `task.reducers.ts`-Datei sollte dabei aussehen wie folgt:
 
 ```typescript
-import { createReducer, on } from '@ngrx/store';
-import { initalState } from './index';
-import { addTask, completeTask, removeTask } from './task.actions';
+import { createReducer, on } from "@ngrx/store";
+import { initalState } from "./index";
+import { addTask, completeTask, removeTask } from "./task.actions";
 
 export const taskReducer = createReducer(
   initalState,
 
   on(addTask, (state, { task }) => ({
     ...state,
-    tasks: [...state.tasks, task]
+    tasks: [...state.tasks, task],
   })),
 
   on(removeTask, (state, { id }) => ({
     ...state,
-    tasks: state.tasks.filter(task => task.id !== id)
+    tasks: state.tasks.filter((task) => task.id !== id),
   })),
 
   on(completeTask, (state, { id }) => ({
     ...state,
-    tasks: state.tasks.map(task =>
-      task.id === id ? { ...task, completed: true } : task
-    )
-  }))
-)
+    tasks: state.tasks.map((task) =>
+      task.id === id ? { ...task, completed: true } : task,
+    ),
+  })),
+);
 ```
 
 Als erstes wird in der `createReducer` Funktion der `initialState` aus der `index.ts` als Parameter
@@ -1057,14 +1054,12 @@ Wie auch schon in Aufgabe 2 sieht die Aufgabenstellung vor, dass wir Selectors n
 aus dem Store auszulesen. Der Code dazu sieht aus wie folgt:
 
 ```typescript
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { TaskState } from './index';
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { TaskState } from "./index";
 
-export const selectTaskState = createFeatureSelector<TaskState>('tasks');
+export const selectTaskState = createFeatureSelector<TaskState>("tasks");
 
-export const getTasks = createSelector(
-  selectTaskState,
-  (state) => state.tasks);
+export const getTasks = createSelector(selectTaskState, (state) => state.tasks);
 ```
 
 Der Aufbau des Selectors ist genau derselbe wie bei Aufgabe 2; Als erstes definieren wir eine
@@ -1079,15 +1074,24 @@ Wie immer müssen wir die Datei `app.config.ts` Anpassen, damit unsere Reducer u
 funktionieren. Die Datei sollte ausgepasst so aussehen:
 
 ```typescript
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-import { provideStore, StoreModule } from '@ngrx/store';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { taskReducer } from './aufgabe-3/ngrx/task.reducers';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideZoneChangeDetection,
+} from "@angular/core";
+import { provideRouter } from "@angular/router";
+import { routes } from "./app.routes";
+import { provideStore, StoreModule } from "@ngrx/store";
+import { provideStoreDevtools } from "@ngrx/store-devtools";
+import { taskReducer } from "./aufgabe-3/ngrx/task.reducers";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideStore(), importProvidersFrom(StoreModule.forRoot({ tasks: taskReducer }))]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideStore(),
+    importProvidersFrom(StoreModule.forRoot({ tasks: taskReducer })),
+  ],
 };
 ```
 
@@ -1101,13 +1105,13 @@ nachher nur noch in den Components selbst arbeiten müssen. Die `app.routes.ts`-
 aussehen wie folgt:
 
 ```typescript
-import { Routes } from '@angular/router';
-import { OverviewComponent } from './aufgabe-3/components/overview/overview.component';
-import { CreateTaskComponent } from './aufgabe-3/components/create-task/create-task.component';
+import { Routes } from "@angular/router";
+import { OverviewComponent } from "./aufgabe-3/components/overview/overview.component";
+import { CreateTaskComponent } from "./aufgabe-3/components/create-task/create-task.component";
 
 export const routes: Routes = [
-  { path: '', component: OverviewComponent },
-  { path: 'create-task', component: CreateTaskComponent }
+  { path: "", component: OverviewComponent },
+  { path: "create-task", component: CreateTaskComponent },
 ];
 ```
 
@@ -1121,32 +1125,31 @@ mocken müssten.
 Beginnen wir beim `ts`-File des Components:
 
 ```typescript
-import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TaskModel } from '../../models/task-model';
-import { Store } from '@ngrx/store';
-import { addTask } from '../../ngrx/task.actions';
-import { RouterLink } from '@angular/router';
+import { Component } from "@angular/core";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { TaskModel } from "../../models/task-model";
+import { Store } from "@ngrx/store";
+import { addTask } from "../../ngrx/task.actions";
+import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-create-task',
-  imports: [
-    ReactiveFormsModule,
-    RouterLink
-  ],
-  templateUrl: './create-task.component.html',
-  styleUrl: './create-task.component.scss'
+  selector: "app-create-task",
+  imports: [ReactiveFormsModule, RouterLink],
+  templateUrl: "./create-task.component.html",
+  styleUrl: "./create-task.component.scss",
 })
 export class CreateTaskComponent {
-  name = new FormControl('');
+  name = new FormControl("");
 
-  constructor(private store: Store<{ tasks: TaskModel[] }>) {
-  }
+  constructor(private store: Store<{ tasks: TaskModel[] }>) {}
 
   addTask() {
-    let task = new TaskModel(Date.now(), this.name.value ? this.name.value : '')
+    let task = new TaskModel(
+      Date.now(),
+      this.name.value ? this.name.value : "",
+    );
     this.store.dispatch(addTask({ task }));
-    this.name = new FormControl('');
+    this.name = new FormControl("");
   }
 }
 ```
@@ -1172,7 +1175,6 @@ Als nächstes muss das entsprechende Template für die Erstellung der Task umges
 in diesem Fall aus wie folgt:
 
 ```html
-
 <div class="header">
   <a class="header-link" routerLink="">Übersicht</a>
   <a class="header-link" routerLink="/create-task">Task erstellen</a>
@@ -1180,8 +1182,13 @@ in diesem Fall aus wie folgt:
 
 <div class="create-task-container">
   <label class="create-task-label" for="name">Name: </label>
-  <input class="create-task-input" id="name" type="text" [formControl]="name">
-  <button class="create-task-button" (click)="addTask()" [disabled]="name.value === ''">Create
+  <input class="create-task-input" id="name" type="text" [formControl]="name" />
+  <button
+    class="create-task-button"
+    (click)="addTask()"
+    [disabled]="name.value === ''"
+  >
+    Create
   </button>
 </div>
 ```
@@ -1221,26 +1228,22 @@ die Übersicht aller offenen Tasks umsetzten.
 Die fertige Version der `ts`-Datei für diesen Component sieht aus wie folgt:
 
 ```typescript
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { TaskModel } from '../../models/task-model';
-import { Observable } from 'rxjs';
-import { getTasks } from '../../ngrx/task.selectors';
-import { Store } from '@ngrx/store';
-import { AsyncPipe } from '@angular/common';
-import { completeTask, removeTask } from '../../ngrx/task.actions';
+import { Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { TaskModel } from "../../models/task-model";
+import { Observable } from "rxjs";
+import { getTasks } from "../../ngrx/task.selectors";
+import { Store } from "@ngrx/store";
+import { AsyncPipe } from "@angular/common";
+import { completeTask, removeTask } from "../../ngrx/task.actions";
 
 @Component({
-  selector: 'app-overview',
-  imports: [
-    RouterLink,
-    AsyncPipe
-  ],
-  templateUrl: './overview.component.html',
-  styleUrl: './overview.component.scss'
+  selector: "app-overview",
+  imports: [RouterLink, AsyncPipe],
+  templateUrl: "./overview.component.html",
+  styleUrl: "./overview.component.scss",
 })
 export class OverviewComponent {
-
   tasks$ = new Observable<TaskModel[]>();
 
   constructor(private store: Store<TaskModel[]>) {
@@ -1248,11 +1251,11 @@ export class OverviewComponent {
   }
 
   completeTask(id: number) {
-    this.store.dispatch(completeTask({ id }))
+    this.store.dispatch(completeTask({ id }));
   }
 
   removeTask(id: number) {
-    this.store.dispatch(removeTask({ id }))
+    this.store.dispatch(removeTask({ id }));
   }
 }
 ```
@@ -1270,26 +1273,23 @@ Beide Funktionen nehmen jeweils die `id` der jeweiligen Task entgegen und rufen 
 Anschliessend können wir das Template umsetzen, das im Falle dieser Lösung aussieht wie folgt:
 
 ```html
-
 <div class="header">
   <a class="header-link" routerLink="">Übersicht</a>
   <a class="header-link" routerLink="/create-task">Task erstellen</a>
 </div>
 
-@for (task of tasks$ | async; track task.id) {
-  @if (!task.completed) {
-    <div class="task-container">
-      <p class="task-text">ID: {{ task.id }}</p>
-      <p class="task-text">Name: {{ task.name }}</p>
-      <p>{{task.completed}}</p>
-      <div class="task-button-container">
-        <button (click)="completeTask(task.id)">Task abschliessen</button>
-        <button (click)="removeTask(task.id)">Task entfernen</button>
-      </div>
-    </div>
-}
-} @empty {
-  <p class="task-text">Keine Tasks vorhanden</p>
+@for (task of tasks$ | async; track task.id) { @if (!task.completed) {
+<div class="task-container">
+  <p class="task-text">ID: {{ task.id }}</p>
+  <p class="task-text">Name: {{ task.name }}</p>
+  <p>{{task.completed}}</p>
+  <div class="task-button-container">
+    <button (click)="completeTask(task.id)">Task abschliessen</button>
+    <button (click)="removeTask(task.id)">Task entfernen</button>
+  </div>
+</div>
+} } @empty {
+<p class="task-text">Keine Tasks vorhanden</p>
 }
 ```
 
@@ -1299,37 +1299,38 @@ Spannend wird es aber ab Zeile 6. Dort iterieren wir übr das `tasks$`-Observabl
 nicht vergessen!)
 Darauf prüfen wir, bevor etwas angezeigt wird, für jede Task, ob das `completed`-Attribut auf`false`
 gesetzt ist. Die Task wird nur angezeigt, solange das der Fall ist.
-Insofern `completed` auf `false` gesetzt ist, wird anschliessend die `id` und der `name` der Task angezeigt. Für  jede Task werden zudem zwei Knöpfe angezeigt, über die man sie jeweils abschliessen oder entfernen kann.
+Insofern `completed` auf `false` gesetzt ist, wird anschliessend die `id` und der `name` der Task angezeigt. Für jede Task werden zudem zwei Knöpfe angezeigt, über die man sie jeweils abschliessen oder entfernen kann.
 Für den Fall, dass `tasks$` keinen Inhalt hat, definieren wir `@empty` den Text "Keine Tasks vorhanden" als "Platzhalter", damit nicht einfach nichts angezeigt wird.
 
-Für die Interessierten folgt noch das SCSS-File zum Component: 
+Für die Interessierten folgt noch das SCSS-File zum Component:
+
 ```scss
-.header{
+.header {
   width: 100vw;
   text-align: center;
 
-  .header-link{
+  .header-link {
     margin: 0 5% 0 5%;
     font-size: 2rem;
   }
 }
 
-.task-container{
+.task-container {
   width: 45%;
   display: inline-block;
   background: blueviolet;
   border: 2px black solid;
   margin: 5% 1% 0 1%;
-  .task-text{
+  .task-text {
     font-size: 2rem;
   }
 
-  .task-button-container{
+  .task-button-container {
     width: 100%;
     display: flex;
   }
 }
 ```
 
-Der fertige Component sollte dann aussehen wie folgt: 
+Der fertige Component sollte dann aussehen wie folgt:
 ![Overview Component](./images/ngrx_applied_exercise_3_overview_page.png)
