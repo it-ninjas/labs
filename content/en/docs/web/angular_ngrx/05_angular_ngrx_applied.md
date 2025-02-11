@@ -712,7 +712,7 @@ dir aber dennoch das SCSS anschauen:
 ```
 
 Die Seite sieht, wenn sie so umgesetzt und gestylt wird wie hier, schlussendlich so aus:
-![Overview Page](./images/ngrx_applied_exercise_2_overview_page.png)
+![Overview Page](../images/ngrx_applied_exercise_2_overview_page.png)
 
 ## Aufgabe 2 - Warenkorb-Component
 
@@ -875,7 +875,7 @@ Hier noch das SCSS-File für die Interessierten:
 
 Die fertige Seite sieht mit dem obenstehenden Design dann aus wie folgt:
 
-![Warenkorb Component](./images/ngrx_applied_exercise_2_shopping_cart_page.png)
+![Warenkorb Component](../images/ngrx_applied_exercise_2_shopping_cart_page.png)
 
 ## Aufgabe 3 - Aufgabenstellung
 
@@ -1219,7 +1219,7 @@ aber **nicht** braucht. Für die Interessierten folgt noch der Inhalt das `SCSS`
 ```
 
 Die fertige Seite für die Erstellung der Tasks sieht schlussendlich aus wie folgt:
-![Task Erstellung](./images/ngrx_applied_exercise_3_create_task_page.png)
+![Task Erstellung](../images/ngrx_applied_exercise_3_create_task_page.png)
 
 ## Aufgabe 3 - Übersicht
 
