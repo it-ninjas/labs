@@ -1333,4 +1333,4 @@ Für die Interessierten folgt noch das SCSS-File zum Component:
 ```
 
 Der fertige Component sollte dann aussehen wie folgt:
-![Overview Component](images/ngrx_applied_exercise_3_overview_page.png)
+![Overview Component](../images/ngrx_applied_exercise_3_overview_page.png)
