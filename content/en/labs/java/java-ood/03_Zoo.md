@@ -6,6 +6,7 @@ weight: 3
 description: >
   Aufgabe zu Modul #J3 - [OOD](../../../../docs/java/java-ood) - Zoo
 ---
+
 Modelliere einen Klassenaufbau für einen Zoo. Folgende Klassen sollen enthalten sein:
 
 - Personen
@@ -47,7 +48,7 @@ Zusätzlich soll jedes Tier eine Methode besitzen, um einen spezifischen Laut vo
 Das Standardverhalten ist, dass ein Tier kein Ton macht. Bei den Tieren, bei denen das nicht zutrifft, muss dieses Verhalten entsprechend angepasst werden.
 
 Führe Tiere ein, die in mehr als einem dieser Bereiche agieren können (z.B. ein Tier, das sowohl an Land als auch im Wasser leben kann.).
-Stelle sicher, dass du  mindestens ein Tier hast, welches keinen Laut macht.
+Stelle sicher, dass du mindestens ein Tier hast, welches keinen Laut macht.
 Achte darauf, diese Kombinationen korrekt zu modellieren.
 
 Du kannst frei wählen, welche konkreten Tiere dein Zoo enthalten soll und wie diese auf die Gehege verteilt werden. Beispiele wären:
@@ -62,4 +63,5 @@ Der Zoo hat also Mitarbeiter und Mitglieder sowie verschiedene Tiere, die in ver
 Info: Bei dieser Aufgabe darf man NICHT Gebrauch von Lombok machen.
 
 ---
+
 Hier kannst du [zurück zur Theorie](../../../../docs/java/java-ood).

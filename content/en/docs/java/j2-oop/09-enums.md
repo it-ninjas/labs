@@ -5,17 +5,21 @@ weight: 9
 description: >
   Modul #J2
 ---
+
 ## Ziele
-* Ich kann auswendig in eigenen Worten beschreiben, was Enums sind und wann sie benutzt werden.
-* Ich setze Enums in einem konkreten Code-Beispiel selbständig und korrekt ein.
-* Ich setze Methoden und Konstruktoren in Enums in einem konkreten Code-Beispiel selbständig und korrekt ein.
+
+- Ich kann auswendig in eigenen Worten beschreiben, was Enums sind und wann sie benutzt werden.
+- Ich setze Enums in einem konkreten Code-Beispiel selbständig und korrekt ein.
+- Ich setze Methoden und Konstruktoren in Enums in einem konkreten Code-Beispiel selbständig und korrekt ein.
 
 ## Enums
+
 Enums (kurz für "enumeration", zu Deutsch "Aufzählung") bieten die Möglichkeit, vordefinierte Konstanten zusammen zu gruppieren.
 Enums werden dann verwendet, wenn alle mögliche Werte zur Kompilierzeit bekannt sind (z.B. alle Wochentage, alle Planeten im Sonnensystem usw.).
 
-In Java sind Aufzählungstypen als Klassen realisiert und die definierten Werte sind als Objekte implementiert. 
+In Java sind Aufzählungstypen als Klassen realisiert und die definierten Werte sind als Objekte implementiert.
 Daraus ergeben sich folgenden nützlichen Eigenschaften:
+
 - Enums können Konstruktoren, Instanzvariablen und Instanz-Methoden beinhalten
 - Der Name der Enum-Werte kann mithilfe der `toString()`-Methode (oder mit dem Keywort `this`) im Klartext (String) ausgegeben werden.
 - Mithilfe des `==`-Operators kann auf Gleichheit geprüft werden.
@@ -26,6 +30,7 @@ Obwohl Java Enums als Klassen realisiert werden, müssen sie nicht mit `new` ins
 Im Gegensatz zu Klassen können Java-Enums weder erweitert werden noch von anderen Klassen erben.
 
 ### Enums definieren
+
 Enums können innerhalb oder ausserhalb einer Klasse definiert werden (nicht aber innerhalb einer Methode!).
 Um ein Enum zu definieren, wird das Java-Schlüsselwort `enum` verwendet.
 
@@ -37,6 +42,7 @@ Weil es `static` ist, kann über den Enum-Namen darauf zugegriffen werden.
 Weil es `final` ist, kann es nicht erweitert werden.
 
 #### Beispiel: Definition ausserhalb einer Klasse
+
 ```java
 enum Weekday {
     MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
@@ -68,6 +74,7 @@ public class DailyPlanner {
 ```
 
 #### Beispiel: Definition innerhalb einer Klasse
+
 ```java
 public class DailyPlanner {
     enum Weekday {
@@ -81,14 +88,16 @@ public class DailyPlanner {
 ```
 
 ### Enum mit einem Konstruktor
+
 Ein Enum-Konstruktor wird für jede Enum-Konstante während dem Klassenladen des Enums ausgeführt.
 Es ist unmöglich, Enum-Objekte explizit zu erzeugen. Darum kann ein Enum-Konstruktor auch nicht direkt aufgerufen werden.
 
 #### Beispiel: Enum mit einem Konstruktor
+
 ```java
 enum Weekday {
     MONDAY(1), TUESDAY(2), WEDNESDAY(3), THURSDAY(4), FRIDAY(5), SATURDAY(6), SUNDAY(7);
-    
+
     final int dayNumber;
     Weekday(int dayNumber) {
         this.dayNumber = dayNumber;
@@ -112,10 +121,12 @@ public class TestDays {
 ```
 
 ### Enum mit Methoden
+
 Ein Enum kann konkrete wie auch abstrakte Methoden beinhalten. Wenn ein Enum eine abstrakte Methode beinhaltet,
 muss jede Instanz (also jede Konstante) dieses Enums diese Methode umsetzen (mehr Information über abstrakten Methoden findest du im Modul OOD).
 
 #### Beispiel: Enum mit konkreten und abstrakten Methoden
+
 ```java
 enum Color {
     RED {

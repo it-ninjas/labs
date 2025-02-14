@@ -1,0 +1,34 @@
+name: Quality
+on: [ push ]
+jobs:
+  build:
+    uses: ./.github/workflows/build-deploy.yml
+    with: 
+      upload-artifact: true
+      artifact-name: quality-check-build
+  check-links:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download build
+        uses: actions/download-artifact@v4
+        with:
+          name: quality-check-build
+          path: ./public
+      - name: Run htmltest
+        uses: wjdp/htmltest-action@master
+        with:
+          config: .htmltest.yml
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+      - name: Install
+        run: npm install
+      - name: Lint
+        run: npm run lint

@@ -7,30 +7,34 @@ date: 2023-05-04
 description: >
   Modul #F6 - Angular - Angular Strukturen
 ---
+
 ## Ziele
-* Du kennst, die grundlegende Struktur von Angular und kannst diese erläutern.
+
+- Du kennst die grundlegende Struktur eines Angular-Projekts und kannst diese erläutern.
 
 ## Grundlegende Struktur einer Angular-Anwendung
-In Angular gibt es eine definierte Struktur, die von Entwicklern empfohlen wird, um eine konsistente und leicht verständliche Anwendungsentwicklung sicherzustellen.
+
+In Angular gibt es eine vordefinierte Struktur, die von Entwicklern empfohlen wird, um eine konsistente und leicht verständliche Anwendungsentwicklung sicherzustellen.
 
 Die grundlegende Struktur einer Angular-Anwendung besteht aus folgenden Files:
 
-* [Module](../02_9_angular_modules): Ein Angular-Modul ist eine Sammlung von Components, Services, Directives und anderen Funktionen, die für eine bestimmte Funktionalität oder einen bestimmten Zweck zusammengefasst werden. Ein Modul wird in der Regel in einer separaten File deklariert und exportiert.
+- [Module](./02_2_angular_strukturen.md): Ein Angular-Modul ist eine Sammlung von Components, Services, Directives und anderen Funktionen, die für eine bestimmte Funktionalität oder einen bestimmten Zweck zusammengefasst werden. Ein Modul wird in der Regel in einem separaten File deklariert und exportiert.
 
-* [Component](../02_3_angular_components): Eine Angular-Component ist eine Klasse, die das Verhalten und das Aussehen einer Benutzeroberflächeneinheit definiert. Eine Component besteht aus TypeScript-Fie und einer Vorlage, die das HTML definiert, das die Benutzeroberfläche darstellt. Eine Component kann andere Component enthalten oder sich selbst in andere Component einbetten.
+- [Component](./02_3_angular_components): Ein Angular-Component ist eine Klasse, die das Verhalten und das Aussehen einer Benutzeroberflächeneinheit definiert. Ein Component besteht aus TypeScript-Files und einer Vorlage, die das HTML definiert, das die Benutzeroberfläche darstellt. Ein Component kann andere Component enthalten oder sich selbst in andere Components einbetten.
 
-* [Services](../02_8_angular_services): Ein Angular-Service ist eine Klasse, die Funktionen und Daten bereitstellt, die von anderen Teilen der Anwendung verwendet werden können. Ein Services kann z.B. eine Datenbankabfrage durchführen, eine REST-API aufrufen oder Benutzerinformationen verwalten.
- 
-* [Directives](../02_7_angular_directives): Eine Angular-Directives ist eine Anweisung, die auf ein HTML-Element angewendet wird, um sein Verhalten oder Aussehen zu ändern. Eine Directives kann z.B. ein Attribut oder eine Struktur sein, die das Verhalten eines HTML-Elements steuert oder ein Template-Element sein, das dynamisch in die Benutzeroberfläche eingefügt wird.
+- [Services](./02_10_angular_services): Ein Angular-Service ist eine Klasse, die Funktionen und Daten bereitstellt, die von anderen Teilen der Anwendung verwendet werden können. Ein Service kann z.B. eine Datenbankabfrage durchführen, eine REST-API aufrufen oder Benutzerinformationen verwalten.
 
-* [Template](../02_4_angular_templates): Ein Template ist die HTML-Datei, die eine Component darstellt. Es kann auch spezielle Angular-Directives und -Syntax verwenden, um die Interaktivität und Funktionalität der Anwendung zu verbessern.
+- [Directives](./02_8_angular_directives): Eine Angular-Directive ist eine Anweisung, die auf ein HTML-Element angewendet wird, um sein Verhalten oder Aussehen zu ändern. Eine Directive kann z.B. ein Attribut oder eine Struktur sein, die das Verhalten eines HTML-Elements steuert oder ein Template-Element sein, das dynamisch in die Benutzeroberfläche eingefügt wird.
 
-![Angular](../images/architektur.png)  
+- [Template](./02_5_angular_templates): Ein Template ist die HTML-Datei, die ein Component darstellt. Es kann auch spezielle Angular-Directives und -Syntax verwenden, um die Interaktivität und Funktionalität der Anwendung zu verbessern.
 
+![Angular](../images/architektur.png)
 
 ## Ordnerstruktur
-Die Ordnerstruktur in Angular kann nach persönlichen Präferenzen gewählt werden. Jedoch ist die unten folgenden Struktur die gängigste Best-Practices Variante und sollte daher auch immer so angewendet werden.
+
+Die Ordnerstruktur in Angular kann nach persönlichen Präferenzen gewählt werden. Jedoch ist die unten folgenden Struktur die gängigste Best-Practice-Variante und sollte daher auch immer so angewendet werden.
 Die Struktur bietet eine klare Trennung der verschiedenen Artefakte einer Angular-Anwendung und fördert die Modularität, Wiederverwendbarkeit und Testbarkeit des Codes.
+
 ```text
 ├── e2e
 │   └── ...
@@ -104,7 +108,7 @@ Die Struktur bietet eine klare Trennung der verschiedenen Artefakte einer Angula
 │   │   ├── app.component.html
 │   │   ├── app.component.scss
 │   │   ├── app.component.spec.ts
-│   │   ├── app.module.ts
+│   │   ├── app.module.ts (Wird nicht mehr ohne weiteres automatisch erstellt)
 │   │   └── app.routing.module.ts
 │   ├── assets
 │   │   ├── images

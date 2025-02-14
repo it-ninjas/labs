@@ -7,19 +7,19 @@ description: >
   Aufgaben zu [Java Collections - List](../../../../docs/java/java-collections/02_array-list)
 ---
 
-
 ## Aufgabe 1
 
-Wir programmieren eine eigene ArrayList-Klasse `MyArrayList`:
+Wir programmieren eine eigene ArrayList-Klasse `MyArrayListSimple`:
+
 1. Die Elemente sollen in einem Array gespeichert werden.
 2. Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.
 3. Die Klasse muss das Interface `MyListInterfaceSimple` implementieren.
 4. Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse der internen Datenstruktur dynamische anpassen.
-5. Die `toString()` Methode der `java.lang.Object` Klasse soll von der `MyArrayList` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: `[Cat, Hamster, Dog, Goldfish]`
+5. Die `toString()` Methode der `java.lang.Object` Klasse soll von der `MyArrayListSimple` so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: `[Cat, Hamster, Dog, Goldfish]`
 6. Überprüfe deine Implemenation mit dem JUnitTest [MyArrayListSimpleTest](https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/list/lab1/MyArrayListSimpleTest.java)
 
-
 ### Input
+
 {{% details title="Inferface MyListInterfaceSimple" %}}
 
 ```java
@@ -75,19 +75,22 @@ public interface MyListInterfaceSimple<E> {
 
 ## Aufgabe 2
 
-Nun erweitern wir unsere `MyArrayList` Klasse.
+Nun erweitern wir unsere `MyArrayListSimple` Klasse.
+
 1. Erstelle eine Kopie deiner Klasse und nenne diese `MyArrayListExtended`.
 2. Diese soll das Interface `MyListInterfaceExtended` implementieren, welche folgende zusätzliche Methoden aufweist:
-  * `void add(int index, E element)`
-  * `boolean contains(Object o)`
-  * `int indexOf(Object o)`
-  * `E set(int index, E element)`
-  * `boolean equals(Object o)`
-  * `boolean remove(Object o)`
+
+- `void add(int index, E element)`
+- `boolean contains(Object o)`
+- `int indexOf(Object o)`
+- `E set(int index, E element)`
+- `boolean equals(Object o)`
+- `boolean remove(Object o)`
+
 3. Überprüfe deine Implemenation mit dem JUnitTest [MyArrayListExtendedTest](https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/list/lab2/MyArrayListExtendedTest.java)
 
-
 ### Input
+
 {{% details title="Inferface MyListInterfaceExtended" %}}
 
 ```java
@@ -213,7 +216,7 @@ Anforderungen an die `Modul`-Klasse:
 - Der Moduldurchschnitt, soll von der Methode `getFinalModuleGrade()` als `float` zurückgegeben werden.
 - Das Modul kann nur bewertet werden, wenn die Gewichtung aller LBVs genau 1 ergib. Ansonsten soll
   eine `ModulNotGradeableException` geworfen werden.
-- Die Methode `printReportEntry()` soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format *<
-  MODUL_NAME>* : *<MODUL_SCHLUSSNOTE>* auszugeben.
+- Die Methode `printReportEntry()` soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format _<
+  MODUL_NAME>_ : _<MODUL_SCHLUSSNOTE>_ auszugeben.
 
 Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/java/java-testing) gelernt) zu der Umsetzung gehört.

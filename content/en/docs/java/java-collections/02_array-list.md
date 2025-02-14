@@ -89,6 +89,7 @@ System.out.println(list.get(3));
 ```
 
 Hier wird dann diese Meldung angezeigt:
+
 ```
 "java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3"
 ```
@@ -97,15 +98,16 @@ Der Fehler war hier, dass die Liste 3 Elemente enthielt, und versucht wird, auf 
 
 Ganz generell wird die `IndexOutOfBoundException` geworfen, wenn versucht wird, auf einen ungültigen Index innerhalb einer Collection
 zuzugreifen. Hat eine Liste die Grösse x:
-* dann sind die gültigen Indizes, um auf Elemente zuzugreifen 0, 1, 2, ..., x-1
-* und die Indizes x, x+1, x+2, ... wären ungültig.
+
+- dann sind die gültigen Indizes, um auf Elemente zuzugreifen 0, 1, 2, ..., x-1
+- und die Indizes x, x+1, x+2, ... wären ungültig.
 
 Diese Exception kann bei den folgenden Methoden von oben geworfen werden:
 (Diese Liste hier ist genau so nicht vollständig, wie die oben.)
 
-* `public void add(int index, E element)` (beachte das Argument `index`.)
-* `public E remove(int index)`
-* `public E get(int index)`
+- `public void add(int index, E element)` (beachte das Argument `index`.)
+- `public E remove(int index)`
+- `public E get(int index)`
 
 ## Beispiel
 
@@ -157,7 +159,6 @@ public class Pets {
 
 ```
 
-
 ### Beispiel 2 - `for`-Schleife
 
 Dieses Beispiel zeigt auf wie mit einer `for`-Schleife über die Elemente einer Liste iteriert werden kann.
@@ -183,13 +184,13 @@ class ListSum {
     }
 }
 ```
+
 Output:
+
 ```
 Die Summe der Elemente beträgt 7875
 
 ```
-
-
 
 ### Beispiel 3 - `while`-Schleife
 
@@ -217,6 +218,7 @@ public class WhileLoopExample {
 ```
 
 Output:
+
 ```
 Anna
 Simon
@@ -231,4 +233,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J7 - Java Collections - List](../../../../labs/java/java-collections/01_list)
+[Aufgaben zu Modul #J6 - Java Collections - List](../../../../labs/java/java-collections/01_list)

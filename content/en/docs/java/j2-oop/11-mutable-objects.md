@@ -7,19 +7,20 @@ description: >
 ---
 
 ## Ziele
-* Ich kann eine Möglichkeit aufzeigen, wie Felder nie überschrieben werden dürfen.
-* Ich kann erklären, wie die Objekte von eigenen Klassen "unveränderlich" gemacht werden können.
-* Ich kann auswendig erklären, welche Vorteile unveränderliche Klassen bieten.
 
+- Ich kann eine Möglichkeit aufzeigen, wie Felder nie überschrieben werden dürfen.
+- Ich kann erklären, wie die Objekte von eigenen Klassen "unveränderlich" gemacht werden können.
+- Ich kann auswendig erklären, welche Vorteile unveränderliche Klassen bieten.
 
 ## Felder unveränderlich machen
+
 Manchmal wirst du in Klassen Felder haben, die sich nie ändern werden - und auch nie sollten. Damit sich ein Feld nicht ändern kann, kannst du das Keyword `final` vor dem Datentyp angeben. Im folgenden Beispiel haben wir eine Klasse für einen Schweizer Staatsbürger, der einen Namen besitzen kann, der sich ändern kann. Zusätzlich müssen alle BürgerInnen eine AHV-Nummer (`socialSecurityNumber`), die sich (im Normalfall) nie ändert:
 
 ```java
 public class SwissCitizen {
     private String name;
     private final String socialSecurityNumber; // AHV-Nummer
-    
+
     public SwissCitizen(String name, String socialSecurityNumber) {
         this.name = name;
         this.socialSecurityNumber = socialSecurityNumber;
@@ -48,10 +49,10 @@ public class SwissCitizen {
 Somit bietet das `final`-Keyword eine gute Möglichkeit an zu garantieren, dass ein Feld nicht später aus Versehen verändert wird.
 
 ## Veränderungen an Objekten - Immutable & mutable objects
+
 In der Programmierung gibt es ein wichtiges Konzept, das "Unveränderlichkeit" (Englisch: Immutability) genannt wird. Unveränderlichkeit bedeutet, dass ein Objekt nie seine Werte ändert. Wenn wir diese Werte ändern wollen, müssen wir ein neues Objekt erstellen.
 
 Das klassische Beispiel ist die Klasse `String`. Zeichenfolgen sind unveränderliche Objekte, sodass alle String-Operationen einen neuen String erzeugen.
-
 
 ```java
 String alice = "alice";
@@ -63,18 +64,19 @@ System.out.println(aliceCapitalLetters); // Output: ALICE
 ```
 
 Unsere neudefinierte Klasse `Color` hingegen ist nicht unveränderlich:
+
 ```java
 public class Color {
     private int red;
     private int green;
     private int blue;
-    
+
     public Color(int red, int green, int blue) {
         this.red = red;
         this.green = green;
         this.blue = blue;
     }
-    
+
     @Override
     public String toString() {
         return String.format("Color(%s, %s, %s)",  red, green, blue);
@@ -108,6 +110,7 @@ System.out.println("Rot:\t" + Color.RED);
 ```
 
 Die letzte Zeile führt zu dieser Ausgabe, die falsch ist:
+
 ```
 Rot:    Color(255, 255, 255)
 ```
@@ -144,15 +147,15 @@ Im ersten Beispiel gehen wir davon aus, dass `Color` veränderlich ist (also kei
  public static Color convertToGrayScale(Color color) {
     // Helligkeit berechnen (Grün wird als Heller empfunden als z.B. Blau):
     int luminance = (int) (
-        0.299 * color.red + 
-        0.587 * color.green + 
+        0.299 * color.red +
+        0.587 * color.green +
         0.114 * color.blue);
 
     // Bei einem Grauton haben alle Farbwerte den gleichen Wert:
     color.red = luminance;
     color.green = luminance;
     color.blue = luminance;
-    
+
     return color;
 }
 

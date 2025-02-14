@@ -6,8 +6,8 @@ weight: 2
 description: >
   Exam zu Modul #J2
 ---
-*Für dieses Exam dürfen auch Inhalte der Themen Lists und Generics verwendet werden.*
 
+_Für dieses Exam dürfen auch Inhalte der Themen Lists und Generics verwendet werden._
 
 ## Weltmeisterschaft - OOP Exam
 
@@ -24,37 +24,39 @@ Die Idee ist nicht, dass du diese Datei im Programm ausliest oder diese Informat
 
 Deine Klassen sollen folgendes abbilden:
 
-* In diesem Turnier (Competition) spielen die Mannschaften (Team) gegeneinander. 
-* Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), PLAYOFF, Viertel- (QUARTER_FINAL), Halbfinale (SEMI_FINAL) oder FINAL.
-* Bei jedem Spiel (Game) gibt es immer eine Heim- (home) und Gast-Mannschaft (visiting/away team).
-* Bei jedem Spiel wird festgehalten, wie viele Tore (goals) welche Mannschaft (home oder visiting) geschossen hat. Zudem wird festgehalten, wo (location) das Spiel stattgefunden hat.
-
+- In diesem Turnier (Competition) spielen die Mannschaften (Team) gegeneinander.
+- Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), PLAYOFF, Viertel- (QUARTER_FINAL), Halbfinale (SEMI_FINAL) oder FINAL.
+- Bei jedem Spiel (Game) gibt es immer eine Heim- (home) und Gast-Mannschaft (visiting/away team).
+- Bei jedem Spiel wird festgehalten, wie viele Tore (goals) welche Mannschaft (home oder visiting) geschossen hat. Zudem wird festgehalten, wo (location) das Spiel stattgefunden hat.
 
 ### Was soll die Anwendung können?
 
 Auf Stufe Spiel (Game)
-* möchten wir wissen, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (`didTeamPlayThisGame(team)`).
-* Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (`getPointsFor(team)`).
+
+- möchten wir wissen, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (`didTeamPlayThisGame(team)`).
+- Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (`getPointsFor(team)`).
 
 Auf Stufe Turnier (Competition)
-* wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (`getScoresDuringGroupStageFor(team)`).
-* Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (`getGoalsForTeam(team)`).
-* Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (`getAllGamesForLocation(location)`).
+
+- wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (`getScoresDuringGroupStageFor(team)`).
+- Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (`getGoalsForTeam(team)`).
+- Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (`getAllGamesForLocation(location)`).
 
 Abgesehen von der `main(...)`-Methode soll keine weitere Methode statisch sein.
-
 
 ### Aufgaben
 
 #### Aufgabe 1 - Entwurf
+
 ![task1](/images/task.png) Erstelle einen Entwurf vom Klassenmodell.
-* Der Entwurf kann auf Papier oder mit einem Tool (z.B. draw.io, Visio, plantUML) erstellt werden.
-* Plane auch schon die Methoden im Entwurf ein.
 
-Zeige den Entwurf zuerst einem Coach, bevor du weiterfährst.
+- Der Entwurf kann auf Papier oder mit einem Tool (z.B. draw.io, Visio, plantUML) erstellt werden.
+- Plane auch schon die Methoden im Entwurf ein.
 
+Zeige den Entwurf zuerst einem Praxisbildner, bevor du weiterfährst.
 
 #### Aufgabe 2 - Klassen umsetzen
+
 ![task1](/images/task.png) Setze die Klassen im Code um, inkl. Methoden.
 
 Für den Moment müssen die Methoden noch nichts machen und sollen für den Beginn nur einen Default-Wert zurückgeben - der Einfachheit halber.
@@ -62,13 +64,14 @@ Für den Moment müssen die Methoden noch nichts machen und sollen für den Begi
 Ziel dieser Aufgabe ist, dass du dich nur aufs Klassen-Design im Code konzentrierst, nicht aber um die konkreten Methoden-Umsetzungen.
 
 #### Aufgabe 3 - Methoden umsetzen
+
 ![task1](/images/task.png) Setze nun die Methoden korrekt um.
 
 Verwende zur Demonstration die Daten aus der <a href="../results.txt" download>`results.txt`</a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine `.java`-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der `results.txt`-Datei steht
 
 ```
-# Gruppe 1				
-Frankreich	    Jugoslawien	        0:1 
+# Gruppe 1
+Frankreich	    Jugoslawien	        0:1
 ```
 
 dann kannst du das wie folgt direkt in deine Java-Datei schreiben:
