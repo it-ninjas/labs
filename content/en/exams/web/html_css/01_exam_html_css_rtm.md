@@ -87,7 +87,7 @@ Die Icons sind [hier](../icons/logos-rtm.zip) hinterlegt. <br>
 |Pfeil-Unten Logo|(disabled)|pfeil_unten.svg|color: lightgrey; width: 9px; height: 14px;|rgba(250, 250, 250, 1);|
 |Speichern Logo|(disabled)|save.svg|color: lightgrey; width: 12px; height: 14px;|rgba(250, 250, 250, 1);|
 |Rückgängig Logo|(disabled)|undo.svg|color: lightgrey; width: 12px; height: 14px;|rgba(250, 250, 250, 1);|
-|SBB Crackhead|rgba(217,230,242,1);|-|width: 716.5px; height: 180px;|rgba(224,231,235,1);|
+|JS Beginner|rgba(217,230,242,1);|-|width: 716.5px; height: 180px;|rgba(224,231,235,1);|
 |Profil Logo|-|profil.svg|width: 140px; height: 140px;|-|
 |Ausrufezeichen Logos|-|request.svg|width: 24px; height: 24px;|-|
 |Absenzen Text|rgb(33, 150, 243);|-|width: 352.75px; height: 180px;|-|
