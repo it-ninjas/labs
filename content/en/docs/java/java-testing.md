@@ -362,6 +362,20 @@ Das JUnit-Framework
 
 Beispiel einer Unit-Test Implementation anhand eines einfachen Beispiels.
 
+**_Hinweis_** im Beispielcode wird folgendes Namensschema für Tests verwendet:
+
+```java
+public void given_when_then() {
+        ...
+}
+```
+
+Wobei:
+
+- **given** die Ausgangslage definiert (z.B. _twoIntegers_ oder _givenTwoIntegers_)
+- **when** ist der Name der Methode, welche getestet wird (z.B. _whenAdd_ oder _add_)
+- **then** ist das Ergebnis, welche erwartet wird (z.B. _thenSumIsCorrect_ oder _sumCorrect_)
+
 **Source-Code**
 
 ```java
@@ -386,14 +400,14 @@ public class CalculatorTest {
     private Calculator uut = new Calculator();
 
     @Test
-    public void testAdd() {
-        // prepare test data
-        int i1 = 5;
-        int i2 = 9;
-        // call method
-        int result = this.uut.add(i1, i2);
-        // verify
-        assertEquals(14, result);
+    void givenTwoIntegers_whenAdd_thenSumIsCorrect() {
+      // prepare test data
+      int i1 = 5;
+      int i2 = 9;
+      // call method
+      int result = this.uut.add(i1, i2);
+      // verify
+      assertEquals(14, result);
     }
 }
 ```
@@ -463,12 +477,28 @@ public class RectangleTest {
     private Rectangle uut = new Rectangle(0, 0, 10, 10);
 
     @Test
-    public void testIsInside() {
-        assertFalse(this.uut.isInside(-1, 5));
-        assertFalse(this.uut.isInside(11, 5));
-        assertFalse(this.uut.isInside(5, -1));
-        assertFalse(this.uut.isInside(5, 11));
-        assertTrue(this.uut.isInside(5, 5));
+    void givenPointLeftOfRectangle_whenIsInsideCheck_thenReturnsFalse() {
+      assertFalse(this.uut.isInside(-1, 5));
+    }
+
+    @Test
+    void givenPointRightOfRectangle_whenIsInsideCheck_thenReturnsFalse() {
+      assertFalse(this.uut.isInside(11, 5));
+    }
+
+    @Test
+    void givenPointAboveRectangle_whenIsInsideCheck_thenReturnsFalse() {
+      assertFalse(this.uut.isInside(5, -1));
+    }
+
+    @Test
+    void givenPointBelowRectangle_whenIsInsideCheck_thenReturnsFalse() {
+      assertFalse(this.uut.isInside(5, 11));
+    }
+
+    @Test
+    void givenPointInsideRectangle_whenIsInsideCheck_thenReturnsTrue() {
+      assertTrue(this.uut.isInside(5, 5));
     }
 
 }
@@ -511,6 +541,35 @@ Der oben gezeigte Unit-Test ist ein typisches Beispiel für einen Test, der mit 
 Wenn wir den Test parametrisieren, können wir die Test-Methode wiederverwenden.
 
 ```java
+package ch.sbb.talentfactory.rectangle;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class RectangleTest {
+
+    private Rectangle uut = new Rectangle(0, 0, 10, 10);
+
+    @ParameterizedTest
+    @CsvSource({
+            "-1, 5, false",
+            "11, 5, false",
+            "5, -1, false",
+            "5, 11, false",
+            "5, 5, true"
+    })
+    void givenPoint_whenIsInside_thenReturnsExpectedResult(int x, int y, boolean expectedResult) {
+      assertEquals(expectedResult, this.uut.isInside(x, y));
+    }
+}
+```
+
+Mit `@CsvSource` können mehrere Parameter mit Komma getrennt angegeben werden. Die Anzahl (im Beispiel 3) muss mit den Parameter der Testklasse übereinstimmen.
+
+Ein simpleres Beispiel ist hier zu sehen:
+
+```java
 package ch.sbb.talentfactory.calculator;
 
 import org.junit.jupiter.api.Test;
@@ -521,7 +580,7 @@ public class CalculatorTest {
 
     @ParameterizedTest
     @ValueSource(ints = { 1, 2, 3, 4, 5, 6, 7, 8, 9 })
-    public void testAddParameterized(int operand1) {
+    public void givenOperand_whenAddFive_thenSumIsCorrect(int operand1) {
         // call method
         int result = this.uut.add(operand1, 5);
 
@@ -547,7 +606,7 @@ public class CalculatorTest {
     private Calculator uut = new Calculator();
 
     @RepeatedTest(10)
-    public void testAddRepeated() {
+    public void givenRandomIntegers_whenAdd_thenSumIsCorrect() {
         // prepare test data
 		Random random = new Random();
         int i1 = random.nextInt(100);
@@ -580,7 +639,7 @@ public class CalculatorTest {
 
     @Test
 	@DisplayName("Ultimate addition test")
-    public void testAdd() {
+    public void givenTwoIntegers_whenAdd_thenSumIsCorrect() {
         // prepare test data
         int i1 = 5;
         int i2 = 9;
@@ -611,7 +670,7 @@ public class CalculatorTest {
     private Calculator uut = new Calculator();
 
     @Test
-    public void testAdd() {
+    public void givenTwoIntegers_whenAdd_thenSumIsCorrect() {
         // prepare test data
         int i1 = 5;
         int i2 = 9;
@@ -641,7 +700,7 @@ public class CalculatorTest {
 
     @Test
 	@Order(1)
-    public void testAdd() {
+    public void givenTwoIntegers_whenAdd_thenSumIsCorrect() {
         // prepare test data
         int i1 = 5;
         int i2 = 9;
@@ -655,7 +714,7 @@ public class CalculatorTest {
 
 	@Test
 	@Order(2)
-	public void testAdd() {
+	public void givenTwoIntegersWithNegative_whenAdd_thenSumIsCorrect() {
         // prepare test data
         int i1 = -1;
         int i2 = 3;
@@ -696,7 +755,7 @@ public class CalculatorTest {
 	}
 
     @Test
-    public void testAdd() {
+    public void givenTwoIntegers_whenAdd_thenSumIsCorrect() {
         // prepare test data
         int i1 = 5;
         int i2 = 9;
@@ -753,7 +812,7 @@ public class VierGewinntTest {
 
     @ParameterizedTest
     @MethodSource("instances")
-    public void testBoardWithWinnerX(ConnectFourCheck cfc) {
+    public void givenBoardWithWinningX_whenCheckWin_thenReturnsX(ConnectFourCheck cfc) {
         try {
             String winner = cfc.checkWin(this.testBoard);
             assertEquals("X", winner);
@@ -879,7 +938,7 @@ public class MyUnitTest {
                                      // Mockito stellt eine rudimentäre Umsetzung für JEDE Methode der Liste zur Verfügung
 
     @Test
-    public void testMockedListSize() {
+    public void givenMockedList_whenAddElement_thenSizeRemainsZero() {
         mockedList.add("one");
 
         assertEquals(0, mockedList.size());
@@ -945,9 +1004,8 @@ public class MyServiceTest {
   private MyService myService;  // der Mock von DataService wird in die MyService-Instanz "injiziiert", das heisst
                                 // überall im DataService-Objekt, wo der DataService verwendet wird, wird der Mock zum Zug kommen!
 
-
   @Test
-  public void testProcessData() {
+  public void givenListOfNumbers_whenProcessData_thenReturnsSum() {
     List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 
     Mockito.when(dataService.sum(numbers)).thenReturn(15);
@@ -986,7 +1044,7 @@ public class MyUnitTest {
   private ArgumentCaptor<String> stringCaptor; // stringCaptor wird ein Argument vom Typ String "fangen"
 
   @Test
-  public void testMockedList() {
+  public void givenSpiedList_whenAddElement_thenCaptorCapturesValue() {
     spiedList.add("one");
     Mockito.verify(spiedList).add(stringCaptor.capture()); // während der Prüfung wird das Argument
     // für die Methode add() gefangen
@@ -1030,7 +1088,7 @@ public class MyUnitTest {
   private ArgumentCaptor<String> stringCaptor; // stringCaptor wird ein Argument vom Typ String "fangen"
 
   @Test
-  public void testMockedList() {
+  public void givenMockedList_whenAddElement_thenCaptorCapturesValue() {
     mockedList.add("one");
     Mockito.verify(mockedList).add(stringCaptor.capture()); // während der Prüfung wird das Argument
                                                             // für die Methode add() gefangen
@@ -1059,7 +1117,7 @@ public class MyUnitTest {
     private List<String> mockedList; // eine Mock-Liste, mit Mockitos-Standardimplementierung für alle Methoden
 
     @Test
-    public void testMockedList() {
+    public void givenMockedList_whenSizeIsOverridden_thenReturnsConfiguredValues() {
         assertEquals(0, mockedList.size()); // die Mockito-Standardimplementierung für "size()"
                                             // liefert immer 0 zurück
 
@@ -1109,7 +1167,7 @@ public class MyUnitTest {
   private List<String> spiedList; // ein Spy über eine Liste.
 
   @Test
-  public void testSpiedList() {
+  public void givenSpiedList_whenAddAndClear_thenVerifyInteractions() {
     spiedList.add("one"); // hier wird die "echte" add Methode einer Liste aufgerufen!
 
     verify(spiedList).add("one"); // prüfe, ob die "add" Methode mit dem Parameter "one" auf dem spyList aufgerufen wurde
@@ -1121,7 +1179,7 @@ public class MyUnitTest {
   }
 
   @Test
-  public void testMockedList() {
+  public void givenMockedList_whenSizeCalled_thenVerifyInteractionCount() {
     Mockito.verifyNoInteractions(mockedList); // bis hier gab es keine Interaktionen mit dem mockedList Objekt
 
     mockedList.size();
@@ -1169,20 +1227,6 @@ In diesem Walkthrough wird der TDD Entwicklungszyklus anhand eines Beispiels erl
 
 In diesem Beispiel geht es darum eine Klasse zu schreiben, welche ein Tier modelliert.
 Das Tier soll uns informieren, ob es Hunger hat oder nicht.
-
-**_Hinweis_** im Beispielcode, wird folgendes Namensschema für Tests verwendet:
-
-```java
-public void given_when_then() {
-        ...
-}
-```
-
-Wobei:
-
-- **given** die Ausgangslage definiert (z.B. _newAnimal_ oder _animalAte_)
-- **when** ist der Name der Methode, welche getestet wird (z.B. _isHungry_)
-- **then** ist das Ergebnis, welche erwartet wird (z.B. _returnTrue_ oder _returnFalse_)
 
 #### Schritt 1: Grundgerüst erstellen
 
