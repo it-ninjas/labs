@@ -1028,7 +1028,7 @@ Als erstes wird in der `createReducer` Funktion der `initialState` aus der `inde
 mitgegeben, worauf dann die jeweiligen Reducer folgen.
 Der Reducer für die `addTask`-action ist hierbei praktisch gleich wie der `addProduct`-Reducer aus
 Aufgabe 2; Es wird eine Shallow-Copy des derzeitigen `state` gemacht und die neue task wird
-angehängt,
+angehängt.
 
 Der Reducer für `removeTask` funktioniert ebenfalls praktisch gleich wie der `removeProduct`-Reducer
 aus Aufgabe 2; Es wird eine Shallow-Copy des derzeitigen `state` gemacht, wonach der Eintrag im
