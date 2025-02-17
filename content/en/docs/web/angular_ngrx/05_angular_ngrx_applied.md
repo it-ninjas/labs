@@ -1164,7 +1164,7 @@ Zuletzt bereiten wir auch schon direkt die Funktion für das Erstellen einer neu
 erstellen wir zuerst ein neues Objekt vom Typ `TaskModel`.
 Als Parameter geben wir dabei zuerst die id in Form von `Date.now()` mit, da wir so garantieren
 können, dass das `id`-Attribut über alle Tasks einzigartig ist.
-Als zweiten Parameter geben wir dann, insofern der value der `FormControl` für den Namen nicht`null`
+Als zweiten Parameter geben wir dann, insofern der value der `FormControl` für den Namen nicht `null`
 oder `undefned` entspricht, den Inhalt der `FormControl` mit. Entspricht dieser `null` oder
 `undefined` geben wir einen leeren String als Namen mit.
 
