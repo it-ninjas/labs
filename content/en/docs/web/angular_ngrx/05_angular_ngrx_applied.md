@@ -1037,7 +1037,7 @@ Denken wir nochmal kurz zu Aufgabe 2 zurück: Dort war das Problem bei `removePr
 Einträge mit demselben Namen aus dem Array entfernt wurden, da wir anhand des `name`-Attributs des
 Produkts gefiltert haben.
 Dieses Problem gibt es hier nicht mehr, da wir mit der `id` gefiltert haben, die ja einzigartig
-ist (Da sie basierend auf der derzeitigen Uhrzeit generiert wird, die Umsetzung dazu folgt noch).
+ist (da sie basierend auf der derzeitigen Uhrzeit generiert wird, die Umsetzung dazu folgt noch).
 
 Der Reducer für `completeTask` ist hierbei der spannendenste. Wir können nicht einfach eine neue
 Task anfügen oder herausfiltern. Wir müssen stattdessen anhand der gelieferten `id` den
