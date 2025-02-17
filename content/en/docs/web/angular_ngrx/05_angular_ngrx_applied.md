@@ -12,7 +12,7 @@ description: >
 
 - in diesem Abschnitt sollen die Lösungen zu den (optionalen) NgRx-Labs genauer beleuchtet werden.
 
-Wenn du du die Labs zu NgRx noch nicht gemacht hast, musst du dir diese Dokumentation nicht
+Wenn du die Labs zu NgRx noch nicht gemacht hast, musst du dir diese Dokumentation nicht
 anschauen.
 
 Wir gehen hier Schritt für Schritt die Aufgaben des NgRx-Labs durch, um zum Einen den
