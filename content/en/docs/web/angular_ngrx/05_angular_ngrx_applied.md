@@ -572,7 +572,7 @@ export class ProductService {
 
 ## Aufgabe 2 - Components erstellen / Routing
 
-Wir brauchen in dieser Aufgabe 2 Components;
+Wir brauchen in dieser Aufgabe 2 Components:
 
 - Ein Component als Startseite mit allen Produkten
 - Ein Component als Warenkorb mit allen ausgewählten Produkten
