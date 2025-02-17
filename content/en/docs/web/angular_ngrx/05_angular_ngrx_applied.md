@@ -963,7 +963,7 @@ export class TaskModel {
 ```
 
 Achte hierbei darauf, dass das `completed`-Attribut **nicht** durch als Parameter im Constructor
-geliefert wird, sondern direkt auf false gesetzt wird.
+geliefert wird, sondern direkt auf `false` gesetzt wird.
 In der Aufgabenstellung steht als Anforderungen, dass Tasks zum Zeitpunkt der Erstellung **immer**
 nicht completed sein sollen, daher können wir uns so jeweils einen Parameter beim Erstellen einer
 neuen Task sparen.
