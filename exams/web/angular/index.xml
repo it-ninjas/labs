@@ -1,4 +1,62 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Angular Exams</title><link>/exams/web/angular/</link><description>Recent content in Angular Exams on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 16 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="/exams/web/angular/index.xml" rel="self" type="application/rss+xml"/><item><title>Exams: Exam zu Angular</title><link>/exams/web/angular/01_notenverwaltung/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/exams/web/angular/01_notenverwaltung/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Angular Exams</title><link>/exams/web/angular/</link><description>Recent content in Angular Exams on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 16 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="/exams/web/angular/index.xml" rel="self" type="application/rss+xml"/><item><title>Exams: Exam zu den Angular-Basics</title><link>/exams/web/angular/01_1_angular_exam/</link><pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate><guid>/exams/web/angular/01_1_angular_exam/</guid><description>
+&lt;h1 id="exam-2---angular">Exam 2 - Angular&lt;/h1>
+&lt;p>&lt;img alt="task1" src="/images/task.png"> - Einzelarbeit&lt;br>&lt;/p>
+&lt;h2 id="ausgangslage">Ausgangslage&lt;/h2>
+&lt;p>In deinem Unternehmen werden die Arbeitszeiten immer noch im Excel erfasst. Dein Linienvorgesetzter ist mit diesem Excel-File nicht mehr so zufrieden. Er verlangt von dir, dass du ein Angular-Projekt realisieren sollst, welches das aktuelle Excel-File ablöst. Designtechnisch ist alles dir überlassen. Du kannst entweder mit einem lokalen Projekt arbeiten oder eine Backendschnittstelle basteln.&lt;/p>
+&lt;h2 id="anforderungen">Anforderungen&lt;/h2>
+&lt;h3 id="funktionale-anforderungen">Funktionale Anforderungen&lt;/h3>
+&lt;p>Dein Linienvorgesetzter gibt dir folgende funktionale Anforderungen für das Arbeitszeitprogramm:&lt;/p>
+&lt;ul>
+&lt;li>Die Mittagszeit von 30 Minuten &lt;strong>muss&lt;/strong> gemacht werden. Sofern über 9h gearbeitet wird, &lt;strong>muss&lt;/strong> mindestens 1h Mittagspause gemacht werden.&lt;/li>
+&lt;li>Man kann entweder von Hand oder mit Hilfe eines QR-Codes ein- und ausstempeln.&lt;/li>
+&lt;li>Es gibt drei Rollen: &lt;em>Admin, Vorgesetzter und Mitarbeiter&lt;/em>.&lt;br>Der &lt;em>Admin&lt;/em> kann neue Mitglieder (&lt;em>Admin, Vorgesetzter, Mitarbeiter&lt;/em>) hinzufügen und den &lt;em>Vorgesetzten&lt;/em> zuweisen. Sieht aber keine Zeitaufschreibung ausser die eigene. Der &lt;em>Vorgesetzte&lt;/em> sieht die eigene Zeit, wieauch die Zeit seiner Mitarbeiter. Der &lt;em>Mitarbeiter&lt;/em> sieht nur seine eigene Zeit.&lt;/li>
+&lt;li>Der &lt;em>Admin&lt;/em> kann neue Auftragszeiten (Projekt X, Projekt Y, Daily Business, etc.) hinzufügen, welche von allen Mitarbeitern gewählt werden können.&lt;/li>
+&lt;li>Jedes Mitglied &lt;strong>muss&lt;/strong> bei der Zeitaufschreibung ein Auftrag wählen, wo er gerade arbeitet. Diese Projekte können favorisiert werden, damit man sie nicht jedes Mal wählen muss.&lt;/li>
+&lt;li>Jedes Mitglied kann zudem diverse Zeitcodes anwenden, welche vom Admin hinzugefügt werden. Das sind beispielsweise: Krank, Kompensation, Berufsschule, Ferien,etc.&lt;/li>
+&lt;li>Man kann die Zeiten im späteren Verlauf noch ändern. Hierzu werden aber alle geänderten Zeiten (Datum bearbeitung, etc.) angezeigt.&lt;/li>
+&lt;li>Jedes Mitglied kann sein Passwort (und Profilbild) ändern.&lt;/li>
+&lt;li>Der &lt;em>Admin&lt;/em> kann die Daten jedes Mitglieds ändern(Nachname, Vorname, Abteilung, etc.) oder löschen.&lt;/li>
+&lt;/ul>
+&lt;h3 id="nicht-funktionale-anforderungen">Nicht-funktionale Anforderungen&lt;/h3>
+&lt;ul>
+&lt;li>Das System muss innerhalb von 100ms die Daten liefern.&lt;/li>
+&lt;li>IT-Sicherheit: Das System bockiert nach drei Fehlrversuchen die Anmeldung.&lt;/li>
+&lt;li>Abfragen können nur mit einem JWT ausgeführt werden.&lt;/li>
+&lt;/ul>
+&lt;h2 id="daten">Daten&lt;/h2>
+&lt;h3 id="mitglieder-daten">Mitglieder-Daten&lt;/h3>
+&lt;p>Die Mitglieder bestehen aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Nachname&lt;/li>
+&lt;li>Vorname&lt;/li>
+&lt;li>Passwort(muss bei der ersten Anmeldung geändert werden)&lt;/li>
+&lt;li>Abteilung&lt;/li>
+&lt;li>Arbeitszeit(bspw. 100% oder 8h)&lt;/li>
+&lt;li>Rolle&lt;/li>
+&lt;li>(nicht zwingend Profilbild)&lt;/li>
+&lt;/ul>
+&lt;h3 id="zeit-daten">Zeit-Daten&lt;/h3>
+&lt;p>Die Zeit besteht aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Von&lt;/li>
+&lt;li>Bis&lt;/li>
+&lt;li>Datum&lt;/li>
+&lt;/ul>
+&lt;h3 id="auftragszeit-daten">Auftragszeit-Daten&lt;/h3>
+&lt;p>Die Auftragszeit besteht aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Auftragsnummer&lt;/li>
+&lt;li>Text&lt;/li>
+&lt;/ul>
+&lt;h3 id="zeitcodes-daten">Zeitcodes-Daten&lt;/h3>
+&lt;p>Die Zeitcodes besteht aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Nummer&lt;/li>
+&lt;li>Beschreibung&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img alt="hint1" src="/images/hint.png"> - Hinweis:&lt;/p>
+&lt;p>Beziehungen zwischen Daten nicht vergessen.&lt;/p>
+&lt;p>Bei Fragen ungeniert melden.&lt;/p></description></item><item><title>Exams: Exam zu Angular</title><link>/exams/web/angular/01_notenverwaltung/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/exams/web/angular/01_notenverwaltung/</guid><description>
 &lt;h2 id="inhalt">Inhalt&lt;/h2>
 &lt;p>Im Lab von &lt;a href="/labs/java/spring/01_spring/">Spring Boot&lt;/a> hast du bereits ein Backend für eine Notenverwaltung geschrieben.
 In diesem Exam sollst du zusätzlich ein Frontend schreiben, welches dieses Backend verwendet. Schlussendlich
@@ -107,66 +165,4 @@ richtige Struktur finden.&lt;/p>
 wir noch die Admin- und Student-Funktionen trennen. Dazu besteht im Backend ein Endpunkt, welcher das gestartete Profil
 im Backend an das Frontend sendet. Darüber soll das Frontend die verschiedenen freischalten oder verstecken.
 Dazu hast du im Backend einen oder mehrere Endpunkte erstellt, die du jetzt einsetzen kannst.
-Deine Applikation soll auch selbständig erkennen, welche Funktionen verfügbar sind und welche nicht.&lt;/p></description></item><item><title>Exams: Exam zu den TypeScript-Basics</title><link>/exams/web/angular/01_1_typescript_exam/</link><pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate><guid>/exams/web/angular/01_1_typescript_exam/</guid><description>
-&lt;h1 id="exam-typscript">Exam Typscript&lt;/h1>
-&lt;p>TODO: Exam zu Typescript erstellen.&lt;/p>
-&lt;h1 id="zurück-zur-theorie">Zurück zur Theorie&lt;/h1>
-&lt;p>&lt;a href="/docs/web/typescript/01_ts_intro_typescript/">Hier&lt;/a> gelangst du zurück zur Theorie.&lt;/p></description></item><item><title>Exams: Exam zu den Angular-Basics</title><link>/exams/web/angular/01_2_angular_exam/</link><pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate><guid>/exams/web/angular/01_2_angular_exam/</guid><description>
-&lt;h1 id="exam-2---angular">Exam 2 - Angular&lt;/h1>
-&lt;p>&lt;img alt="task1" src="/images/task.png"> - Einzelarbeit&lt;br>&lt;/p>
-&lt;h2 id="ausgangslage">Ausgangslage&lt;/h2>
-&lt;p>In deinem Unternehmen werden die Arbeitszeiten immer noch im Excel erfasst. Dein Linienvorgesetzter ist mit diesem Excel-File nicht mehr so zufrieden. Er verlangt von dir, dass du ein Angular-Projekt realisieren sollst, welches das aktuelle Excel-File ablöst. Designtechnisch ist alles dir überlassen. Du kannst entweder mit einem lokalen Projekt arbeiten oder eine Backendschnittstelle basteln.&lt;/p>
-&lt;h2 id="anforderungen">Anforderungen&lt;/h2>
-&lt;h3 id="funktionale-anforderungen">Funktionale Anforderungen&lt;/h3>
-&lt;p>Dein Linienvorgesetzter gibt dir folgende funktionale Anforderungen für das Arbeitszeitprogramm:&lt;/p>
-&lt;ul>
-&lt;li>Die Mittagszeit von 30 Minuten &lt;strong>muss&lt;/strong> gemacht werden. Sofern über 9h gearbeitet wird, &lt;strong>muss&lt;/strong> mindestens 1h Mittagspause gemacht werden.&lt;/li>
-&lt;li>Man kann entweder von Hand oder mit Hilfe eines QR-Codes ein- und ausstempeln.&lt;/li>
-&lt;li>Es gibt drei Rollen: &lt;em>Admin, Vorgesetzter und Mitarbeiter&lt;/em>.&lt;br>Der &lt;em>Admin&lt;/em> kann neue Mitglieder (&lt;em>Admin, Vorgesetzter, Mitarbeiter&lt;/em>) hinzufügen und den &lt;em>Vorgesetzten&lt;/em> zuweisen. Sieht aber keine Zeitaufschreibung ausser die eigene. Der &lt;em>Vorgesetzte&lt;/em> sieht die eigene Zeit, wieauch die Zeit seiner Mitarbeiter. Der &lt;em>Mitarbeiter&lt;/em> sieht nur seine eigene Zeit.&lt;/li>
-&lt;li>Der &lt;em>Admin&lt;/em> kann neue Auftragszeiten (Projekt X, Projekt Y, Daily Business, etc.) hinzufügen, welche von allen Mitarbeitern gewählt werden können.&lt;/li>
-&lt;li>Jedes Mitglied &lt;strong>muss&lt;/strong> bei der Zeitaufschreibung ein Auftrag wählen, wo er gerade arbeitet. Diese Projekte können favorisiert werden, damit man sie nicht jedes Mal wählen muss.&lt;/li>
-&lt;li>Jedes Mitglied kann zudem diverse Zeitcodes anwenden, welche vom Admin hinzugefügt werden. Das sind beispielsweise: Krank, Kompensation, Berufsschule, Ferien,etc.&lt;/li>
-&lt;li>Man kann die Zeiten im späteren Verlauf noch ändern. Hierzu werden aber alle geänderten Zeiten (Datum bearbeitung, etc.) angezeigt.&lt;/li>
-&lt;li>Jedes Mitglied kann sein Passwort (und Profilbild) ändern.&lt;/li>
-&lt;li>Der &lt;em>Admin&lt;/em> kann die Daten jedes Mitglieds ändern(Nachname, Vorname, Abteilung, etc.) oder löschen.&lt;/li>
-&lt;/ul>
-&lt;h3 id="nicht-funktionale-anforderungen">Nicht-funktionale Anforderungen&lt;/h3>
-&lt;ul>
-&lt;li>Das System muss innerhalb von 100ms die Daten liefern.&lt;/li>
-&lt;li>IT-Sicherheit: Das System bockiert nach drei Fehlrversuchen die Anmeldung.&lt;/li>
-&lt;li>Abfragen können nur mit einem JWT ausgeführt werden.&lt;/li>
-&lt;/ul>
-&lt;h2 id="daten">Daten&lt;/h2>
-&lt;h3 id="mitglieder-daten">Mitglieder-Daten&lt;/h3>
-&lt;p>Die Mitglieder bestehen aus folgenden Werten:&lt;/p>
-&lt;ul>
-&lt;li>Nachname&lt;/li>
-&lt;li>Vorname&lt;/li>
-&lt;li>Passwort(muss bei der ersten Anmeldung geändert werden)&lt;/li>
-&lt;li>Abteilung&lt;/li>
-&lt;li>Arbeitszeit(bspw. 100% oder 8h)&lt;/li>
-&lt;li>Rolle&lt;/li>
-&lt;li>(nicht zwingend Profilbild)&lt;/li>
-&lt;/ul>
-&lt;h3 id="zeit-daten">Zeit-Daten&lt;/h3>
-&lt;p>Die Zeit besteht aus folgenden Werten:&lt;/p>
-&lt;ul>
-&lt;li>Von&lt;/li>
-&lt;li>Bis&lt;/li>
-&lt;li>Datum&lt;/li>
-&lt;/ul>
-&lt;h3 id="auftragszeit-daten">Auftragszeit-Daten&lt;/h3>
-&lt;p>Die Auftragszeit besteht aus folgenden Werten:&lt;/p>
-&lt;ul>
-&lt;li>Auftragsnummer&lt;/li>
-&lt;li>Text&lt;/li>
-&lt;/ul>
-&lt;h3 id="zeitcodes-daten">Zeitcodes-Daten&lt;/h3>
-&lt;p>Die Zeitcodes besteht aus folgenden Werten:&lt;/p>
-&lt;ul>
-&lt;li>Nummer&lt;/li>
-&lt;li>Beschreibung&lt;/li>
-&lt;/ul>
-&lt;p>&lt;img alt="hint1" src="/images/hint.png"> - Hinweis:&lt;/p>
-&lt;p>Beziehungen zwischen Daten nicht vergessen.&lt;/p>
-&lt;p>Bei Fragen ungeniert melden.&lt;/p></description></item></channel></rss>
+Deine Applikation soll auch selbständig erkennen, welche Funktionen verfügbar sind und welche nicht.&lt;/p></description></item></channel></rss>
