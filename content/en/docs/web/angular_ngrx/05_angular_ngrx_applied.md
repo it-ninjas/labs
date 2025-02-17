@@ -773,7 +773,7 @@ Hier passiert direkt einiges:
 1. Werden die Produkte in einem Observable gespeichert, da die Daten unter Auslesung aus dem Store
    diese Form annehmen. Der Typ des Observables ist dabei `ProductModel[]`.
 2. Wir definieren im Constructor einen privaten `store`, über den wir die actions ausführen. Mit
-   `{products: ProductModel[]}` spezifizieren wir dabei, welche Form die Ausgelesenen Daten haben.
+   `{products: ProductModel[]}` spezifizieren wir dabei, welche Form die ausgelesenen Daten haben.
 3. Wir lesen die Daten aus dem Store mit dem zu Beginn von uns definierten selector
    `getShoppingCartProducts` und übergeben diese an `products$`.
 4. Wir definieren die jeweiligen Funktionen für das Entfernen eines Produkts, das Leeren des
