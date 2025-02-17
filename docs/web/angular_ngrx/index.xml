@@ -465,7 +465,7 @@ Diesen findet man im &lt;code>index.ts&lt;/code>, wo man auch Erweiterungen umse
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: NgRx angwendet (Erst anschauen, nachdem das NgRx-Labs durchgeführt wurde)</title><link>/docs/web/angular_ngrx/05_angular_ngrx_applied/</link><pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/05_angular_ngrx_applied/</guid><description>
+&lt;/div></description></item><item><title>Docs: NgRx angwendet (Erst nach der Durchführung der NgRx-Labs anschauen)</title><link>/docs/web/angular_ngrx/05_angular_ngrx_applied/</link><pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/05_angular_ngrx_applied/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>in diesem Abschnitt sollen die Lösungen zu den (optionalen) NgRx-Labs genauer beleuchtet werden.&lt;/li>
@@ -473,7 +473,7 @@ Diesen findet man im &lt;code>index.ts&lt;/code>, wo man auch Erweiterungen umse
 &lt;p>Wenn du die Labs zu NgRx noch nicht gemacht hast, musst du dir diese Dokumentation nicht
 anschauen.&lt;/p>
 &lt;p>Wir gehen hier Schritt für Schritt die Aufgaben des NgRx-Labs durch, um zum Einen den
-Lösungsfindungsweg genauer anzuschauen, zum Anderen aber auch, um potenzielle Unklarheiten aus dem
+Weg der Lösungsfindung genauer anzuschauen, zum Anderen aber auch, um potenzielle Unklarheiten aus dem
 Weg zu räumen, die bei der Erarbeitung der Aufgabe aufgekommen sein könnten.&lt;/p>
 &lt;h2 id="aufgabe-1---aufgabenstellung">Aufgabe 1 - Aufgabenstellung&lt;/h2>
 &lt;p>Im Rahmen der ersten Aufgabe des Labs galt es, in einer neuen Angular-Applikation mit NgRx einen
@@ -488,8 +488,8 @@ Actions.&lt;/p>
 &lt;h2 id="aufgabe-1--actions-erstellen">Aufgabe 1- Actions erstellen&lt;/h2>
 &lt;p>Als erstes gilt es, die jeweiligen Actions für die drei oben beschriebenen Anwendungsfälle zu
 definieren. Für die Actions solltest du eine Datei &lt;code>counter.actions.ts&lt;/code> erstellen, in der du die
-Actions erstellen kannst.
-Die fertigen Actions sehen dann aus wie folgt:&lt;/p>
+Actions definieren kannst.
+Die fertigen Actions sehen aus wie folgt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -518,25 +518,25 @@ Die fertigen Actions sehen dann aus wie folgt:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">reset&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createAction&lt;/span>(&lt;span style="color:#a6e22e">ActionTypes&lt;/span>.&lt;span style="color:#a6e22e">RESET&lt;/span>);
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Gehen wir das also einmal durch:
+&lt;/div>&lt;p>Gehen wir das einmal durch:
 In der Aufgabenstellung war es vorgesehen, dass die verschiedenen Actions in ein Enum ausgelagert
-werden. So sind diese direkt alle über &lt;code>ActionTypes&lt;/code> verfügbar. Dafür kannst du einfach die
+werden. So sind diese direkt alle über die Variable &lt;code>ActionTypes&lt;/code> verfügbar. Dafür kannst du einfach die
 einzelnen Actions in ein Enum wrappen, wie es im Code oben gemacht wurde.
 Der String nach dem &lt;code>=&lt;/code> wird jeweils hinzugefügt, um die Action in Kontext zur Applikation zu
-stellen. In diesem Fall sagen sie also aus, dass im &lt;code>CounterComponent&lt;/code> der Wert entweder
+stellen. In diesem Fall sagen die Strings also aus, dass im &lt;code>CounterComponent&lt;/code> der Wert entweder
 inkrementiert, dekrementiert oder resettet wurde.&lt;/p>
 &lt;p>Nun haben wir bereits das Grundgerüst für die Actions, diese können aber noch nicht verwendet
-werden. Um das zu Ändern, müssen wir diese zu exportierbaren Actions machen, was im zweiten
+werden. Um das zu ändern, müssen wir diese zu exportierbaren Actions machen, was im zweiten
 Abschnitt des Codebeispiels oben passiert.
 Für jede Action, die wir definieren wollen, müssen wir eine entsprechende exportierbare Konstante
-erstellen. Relevant ist hierbei das Keyword &lt;code>createAction&lt;/code>, welches die Actions erste wirklich als
+erstellen. Relevant ist hierbei das Keyword &lt;code>createAction&lt;/code>, welches die Actions erst wirklich als
 solche definiert.&lt;/p>
 &lt;p>Haben wir nun für jede Action eine entsprechende Definition vorgenommen, können wir mit dem nächsten
-Schritt fortfahren, den Reducers.&lt;/p>
+Schritt fortfahren; den Reducers.&lt;/p>
 &lt;h2 id="aufgabe-1---reducers-erstellen">Aufgabe 1 - Reducers erstellen&lt;/h2>
 &lt;p>Damit nun beim Aufrufen der Actions, die wir definiert haben, auch etwas passiert, müssen wir die
-für die Actions entsprechendne Reducers erstellen.
-Der entsprechende Code-Block in der Datei &lt;code>counter.reducer.ts&lt;/code>, die du erstellt haben solltest,
+für die Actions entsprechenden Reducers erstellen.
+Der dazugehörige Code-Block in der Datei &lt;code>counter.reducer.ts&lt;/code>, die du erstellt haben solltest,
 sieht aus wie folgt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -584,8 +584,8 @@ erstes Argument wird hierbei die Action angegeben, die als Auslöser für den Re
 du auf Zeile 1 sehen kannst, werden die jeweiligen Actions direkt aus &lt;code>counter.actions&lt;/code> importiert.)
 Insofern also eine der Actions getriggert wird, wird als nächstes der &lt;code>state&lt;/code> ausgelesen. Dieser
 beschreibt den derzeitigen Zustand des Counters, den wir mit den Reducers mutieren wollen.
-Zuletzt wird dann auch schon die entsprechende Mutation durchgeführt; Im Falle der Inkrementation
-wird der state um 1 erhöht, im Falle der Dekrementation um 1 verringert und im Falle des
+Zuletzt wird dann auch schon die entsprechende Mutation durchgeführt; Im Falle der Inkrementierung
+wird der state um 1 erhöht, im Falle der Dekrementierung um 1 verringert und im Falle des
 Zurücksetzens auf 0 gesetzt.&lt;/p>
 &lt;p>Das heisst also: Prinzipiell wartet der &lt;code>Reducer&lt;/code> ab, bis eine bestimmte &lt;code>Action&lt;/code> aufgerufen wird
 und mutiert dann entsprechend den &lt;code>state&lt;/code>.&lt;/p>
@@ -680,12 +680,12 @@ Der Component, den du im Rahmen der Aufgabe erstellt haben solltest, sollte auss
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Gehen wir auch diesen Code mal Schritt für Schritt durch: Der Component ist grundsätzlich aufgebaut
-wie jeder andere. Er besteht aus einer &lt;code>HTML&lt;/code>-Datei, einer &lt;code>(S)CSS&lt;/code>-Datei, einer &lt;code>TS&lt;/code>-Datei und
+wie jeder andere. Er besteht aus einer &lt;code>html&lt;/code>-Datei, einer &lt;code>(s)css&lt;/code>-Datei, einer &lt;code>ts&lt;/code>-Datei und
 einer &lt;code>spec.ts&lt;/code>-Datei und beinhält einen Constructor.
 Interessant wird es ab Zeile 11: Dort wird ein Obvservable &lt;code>count$&lt;/code> (achte hierbei auf das &lt;code>$&lt;/code> am
 Ende der Variable =&amp;gt; Best Practice bei der Benennung von Observables!) definiert, welches uns
-anschliessend zur Darstellung des Counts nutzen wird.
-Im Konstruktor auf Zeile 13 wird eine private Variable &lt;code>store&lt;/code> instanziert, welche die
+anschliessend zur Darstellung des Counts innerhalb des Templates nutzen wird.
+Im Constructor auf Zeile 13 wird eine private Variable &lt;code>store&lt;/code> instanziert, welche die
 Zahlen-Variable &lt;code>count&lt;/code> in diesem erstellt.&lt;/p>
 &lt;p>Der &lt;code>Store&lt;/code> dient in NgRx als &amp;ldquo;Eimer&amp;rdquo; für die &lt;code>States&lt;/code> und ist applikationsweit zugänglich. Diese
 &lt;code>States&lt;/code> werden dann auf Befehl der &lt;code>Actions&lt;/code> von den &lt;code>Reducern&lt;/code> mutiert.&lt;/p>
@@ -703,16 +703,16 @@ unserem Fall mussten 3 Funktionen definiert werden:&lt;/p>
 Constructor instanzierte Store genutzt und dessen Methode &lt;code>dispatch()&lt;/code> aufgerufen. Diese Methode
 wird verwendet, um im Store eine Action auszulösen.
 In unseren 3 Fällen wären das die Actions &lt;code>increment()&lt;/code>, &lt;code>decrement()&lt;/code> und &lt;code>reset()&lt;/code>.&lt;/p>
-&lt;p>Alles was nun noch bleibt, ist das Template. (Siehe oben) Dieses besteht aus 4 Bestandteilen:&lt;/p>
+&lt;p>Alles was nun noch bleibt, ist das Template (siehe oben). Dieses besteht aus 4 Bestandteilen:&lt;/p>
 &lt;ul>
 &lt;li>Jeweils ein &lt;code>button&lt;/code>-Element pro Funktion&lt;/li>
 &lt;li>Ein &lt;code>div&lt;/code>-Element, welches den derzeitigen Zustand des Counters anzeigt.&lt;/li>
 &lt;/ul>
-&lt;p>In den jeweiligen Buttons muss jeweils lediglich das &lt;code>(click)&lt;/code>-Event abgefangen werden, woraufhin
+&lt;p>In den jeweiligen Buttons muss jeweils lediglich das &lt;code>(click)&lt;/code>-Event abgehört werden, woraufhin
 die jeweilige Funktion aufgerufen wird.&lt;/p>
 &lt;h2 id="aufgabe-1---appconfigts-anpassen">Aufgabe 1 - app.config.ts anpassen&lt;/h2>
-&lt;p>Seit in Angular standardmässig standalone-Component verwendet werden und somit normalerweise kein
-AppModule mehr exisitert, muss für das korrekte Funktionieren der Reducer eine Anpassung in der
+&lt;p>Seit in Angular standardmässig &lt;code>standalone&lt;/code>-Components verwendet werden und somit normalerweise kein
+&lt;code>AppModule&lt;/code> mehr exisitert, muss für das korrekte Funktionieren der Reducer eine Anpassung in der
 &lt;code>app.config.ts&lt;/code>-Datei gemacht werden, nämlich die folgende:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -761,7 +761,7 @@ AppModule mehr exisitert, muss für das korrekte Funktionieren der Reducer eine 
 &lt;/div>&lt;p>Für uns relevant sind die beiden letzten provider in der &lt;code>appConfig&lt;/code>. Zum einen muss der Store
 provided werden, zum anderen müssen aber auch Provider für die Reducer importiert werden.
 Auf der letzten Zeile innerhalb &lt;code>forRoot&lt;/code> müssen also &lt;strong>alle&lt;/strong> Reducer hinzugefügt werden, ansonsten
-funktioniert gar nichts.
+funktioniert die Applikation nicht.
 Hast du das alles gemacht (und natürlich den MyCounterComponent im &lt;code>app.component.html&lt;/code> hinzugefügt,
 damit dieser angezeigt wird) dürfte der Counter wie gewünscht funktionieren.&lt;/p>
 &lt;h2 id="aufgabe-2---aufgabenstellung">Aufgabe 2 - Aufgabenstellung&lt;/h2>
@@ -787,7 +787,7 @@ sollen im Kontext des Warenkorbs ausgeführt werden können:&lt;/p>
 &lt;li>Ausgabe einer Liste aller Produkte im Warenkorb&lt;/li>
 &lt;/ul>
 &lt;p>Zudem soll es ebenfalls möglich sein, den Kaufprozess per Knopfdruck abzuschliessen (und somit den
-Warenkorb leeren), womit ebenfalls die folgende Funktionalität dazukommt:&lt;/p>
+Warenkorb zu leeren), womit ebenfalls die folgende Funktionalität dazukommt:&lt;/p>
 &lt;ul>
 &lt;li>Leeren des Warenkorbs&lt;/li>
 &lt;/ul>
@@ -855,12 +855,12 @@ Die 4 Actions sähen umgesetzt aus wie folgt (in diesem Fall heisst die Datei
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Die Actions für das Leeren des Warenkorbs und das Abschliessen der Bestellung sind wie oben erwähnt
-identisch und unterscheiden sich nicht von den bisherigen Actions, die wir gesehen haben.
-Interessant wird es bei der Action für das hinzufügen eines Produkts; Dort nutzen wir nämlich die
+identisch und unterscheiden sich nicht von den Actions, die wir bisher umgesetzt haben.
+Interessant wird es bei der Action für das Hinzufügen eines Produkts; Dort nutzen wir nämlich die
 &lt;code>props&lt;/code>-Funktion.
 In diesem Fall beschreibt &lt;code>props&lt;/code> die Parameter, die wir der Action beifügen wollen. Im Falle von
 &lt;code>addProduct&lt;/code> entspricht das einer Instanz des &lt;code>ProductModel&lt;/code> (schauen wir gleich noch an), im Falle
-von &lt;code>removeProduct&lt;/code> einem string, welcher den Namen des zu entfernenden Produkts enthält.
+von &lt;code>removeProduct&lt;/code> einem String, welcher den Namen des zu entfernenden Produkts enthält.
 Das ist bereits alles, was wir in den Actions machen müssen.&lt;/p>
 &lt;h2 id="aufgabe-2---model">Aufgabe 2 - Model&lt;/h2>
 &lt;p>Oben haben wir bereits das &lt;code>ProductModel&lt;/code> verwendet. Dieses ist eine Klasse, welches wir der
@@ -897,7 +897,7 @@ Das Model sieht aus wie folgt und befindet sich in diesem Beispiel in der Datei 
 Applikation verwendet werden, einfacher zu gestalten und die spätere Nutzung von &lt;code>selectors&lt;/code> zu
 ermöglichen, können wir jeweils eigene definieren.
 Der eigene State für die Produkte, die später im Warenkorb angezeigt werden, sieht im Beispiel aus
-wie folgt und befindet sich in der (eigens erstellten) Datei &lt;code>index.ts&lt;/code>:&lt;/p>
+wie folgt und befindet sich in der (eigens dazu erstellten) Datei &lt;code>index.ts&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -928,7 +928,7 @@ Zudem definieren wir einen initialen Zustand für den Inhalt des States, in dies
 leeres Array.&lt;/p>
 &lt;h2 id="aufgabe-2---reducers">Aufgabe 2 - Reducers&lt;/h2>
 &lt;p>Wie bereits bei der ersten Aufgabe folgt auf die Definition der Actions die Definition der
-jeweiligen dazugehörigen Reducers.
+jeweils dazugehörigen Reducers.
 Diese sehen aus wie folgt und befinden sich in diesem Beispiel in der Datei
 &lt;code>shopping-cart.reducers.ts&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1001,7 +1001,7 @@ Diese sehen aus wie folgt und befinden sich in diesem Beispiel in der Datei
 &lt;/div>
 &lt;/div>&lt;p>Hier wird es interessant: Da wir mit einem Array arbeiten, können wir nicht, wie beispielsweise in
 der ersten Aufgabe, einfach den state nehmen und diesen mutieren.
-Schauen wir uns mal den ersten Reducer an:&lt;/p>
+Schauen wir uns dazu mal den ersten Reducer an:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1018,14 +1018,14 @@ Schauen wir uns mal den ersten Reducer an:&lt;/p>
 &lt;/div>
 &lt;/div>&lt;p>Als erstes definieren wir wieder zu Beginn mit &lt;code>on()&lt;/code>, wann der Reducer ausgeführt werden soll. In
 diesem Fall passiert das, sobald die Action &lt;code>addProduct&lt;/code> aufgerufen wird.
-Danach wird es spannend: In den runden Klammern als zweites Argument geben wir &lt;code>state, {product}&lt;/code>an.
+Danach wird es spannend: In den runden Klammern geben wir als zweites Argument &lt;code>state, {product}&lt;/code>an.
 Der state erklärt sich von selbst, den brauchen wir immer. &lt;code>{product}&lt;/code> hingegen stellt den Parameter
-an, der mit der Action geliefert wird.
+dar, der mit der Action geliefert wird.
 Innerhalb der Arrow-Function passieren dann zwei Dinge:&lt;/p>
 &lt;ol>
 &lt;li>Es wird eine &lt;code>shallow-copy&lt;/code> des states gemacht.&lt;/li>
-&lt;li>Das Attribut &lt;code>products&lt;/code> wird mit den bisherigen products + dem neu hinzuzufügenden product
-angereichert.&lt;/li>
+&lt;li>Das Attribut &lt;code>products&lt;/code> wird mit den bisherigen products plus dem neu hinzuzufügenden &lt;code>product&lt;/code>
+gespeichert.&lt;/li>
 &lt;/ol>
 &lt;p>Auf diese Art und Weise garantieren wir, dass beim Hinzufügen eines neuen Produkts alle bisherigen
 Werte ebenfalls übernommen werden.&lt;/p>
@@ -1045,10 +1045,10 @@ wird:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}));
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Der Ablauf bis zur Anreicherung des &lt;code>products&lt;/code>-Arrays ist derselbe, ausser dass hier nur der name
+&lt;/div>&lt;p>Der Ablauf bis zur Anpassung des &lt;code>products&lt;/code>-Arrays ist derselbe, ausser dass hier nur der name
 des Produkts und nicht die ganze Struktur als Parameter erwartet wird.
-In der Definition des &lt;code>products&lt;/code>-Arrays werden dann der aktuelle Zustand des Arrays genommen und
-alle darin enthaltenen Produkte mit dem entsprechenden Namen, der geliefert wurde, entfernt.&lt;/p>
+In der Definition des &lt;code>products&lt;/code>-Arrays wird dann der aktuelle Zustand des Arrays genommen und
+alle darin enthaltenen Produkte mit dem entsprechenden Namen, der geliefert wurde, werden entfernt.&lt;/p>
 &lt;p>Wichtig: Diese Lösung ist eher unschön, es werden nämlich alle Instanzen eines Produkts aus dem
 Array entfernt, wenn mehrere vorhanden sind.
 Wenn beispielsweise 2 Fussbälle im Array sind, werden beide entfernt, da sie ja denselben Namen
@@ -1059,13 +1059,13 @@ akzeptieren.
 Es ist aber auch möglich, den Filter so anzupassen, dass nach einer Entfernung eines Elements, das
 mehrfach vorkommt, die Filtrierung gestoppt wird. Wenn du möchtest, kannst du probieren, den Filter
 entsprechend anzupassen.&lt;/p>
-&lt;p>Die beiden Reducer für das Leeren des Warenkorbs und das Abschliessend der Bestellung sind hierbei
+&lt;p>Die beiden Reducer für das Leeren des Warenkorbs und das Abschliessen der Bestellung sind hierbei
 nicht gross erwähnenswert, da einfach das Array &lt;code>products&lt;/code> auf einen leeren Zustand zurückgesetzt
 wird.&lt;/p>
 &lt;h2 id="aufgabe-2---selectors">Aufgabe 2 - Selectors&lt;/h2>
 &lt;p>Im Vergleich zu der ersten Aufgabe gibt es hier ein neues Konzept, welches wir verwenden, nämlich
 die sogenannten &lt;code>Selectors&lt;/code>.
-In der ersten Aufgabe haben wir den Inhalt des Stores mit &lt;code>store.select()&lt;/code> ausgelesen und dabei
+In der ersten Aufgabe haben wir den Inhalt des Stores direkt im Component mit &lt;code>store.select()&lt;/code> ausgelesen und dabei
 einfach den entsprechenden Key aus dem Store verwendet.
 Um die Auslese der Daten aus dem Store aber ein wenig zu verschönern und applikationsweit zu
 vereinheitlichen, können wir mit Selektoren arbeiten.
@@ -1097,12 +1097,12 @@ Der Selektor für diese Aufgabe sieht aus wie folgt und befindet sich in der Dat
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Hier kommt der &lt;code>ProductState&lt;/code> zum Tragen, den wir zu Beginn in der &lt;code>index.ts&lt;/code> Datei definiert haben.
+&lt;/div>&lt;p>Hier kommt der &lt;code>ProductState&lt;/code> zum Tragen, den wir zu Beginn in der &lt;code>index.ts&lt;/code>-Datei definiert haben.
 Mit diesem erstellen wir zuerst eine exportierbare Konstante &lt;code>selectShoppingCartState&lt;/code>, die einen
 sogenannten FeatureSelector darstellt, die den &lt;code>ProductState&lt;/code> ausliest.
 Daraufhin müssen wir erneut eine exportierbare Konstante &lt;code>getShoppingCartProducts&lt;/code> erstellen, welche
 wir dann jeweils in den Components aufrufen können.
-Dieser nimmt innerhalb der Funktion &lt;code>createSelector&lt;/code> als Parameter entgegen und gibt darauf aus dem
+Dieser nimmt innerhalb der Funktion &lt;code>createSelector&lt;/code> den vorher erstellten FeatureSelector &lt;code>selectShoppingCartState&lt;/code> als Parameter entgegen und gibt darauf aus dem
 state heraus die products aus.
 Das wäre bereits alles, was wir im Rahmen der Selectors machen müssen.&lt;/p>
 &lt;h2 id="aufgabe-2---appconfigts">Aufgabe 2 - app.config.ts&lt;/h2>
@@ -1152,7 +1152,7 @@ Anpassungen in der &lt;code>app.config.ts&lt;/code>-Datei machen:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Relevant sind für uns die beiden Auszüge aus dem &lt;code>providers&lt;/code>-Array:&lt;/p>
+&lt;/div>&lt;p>Relevant sind für uns diese beiden Auszüge aus dem &lt;code>providers&lt;/code>-Array:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1167,9 +1167,9 @@ im Selektor ausgelesen werden kann.&lt;/p>
 &lt;h2 id="aufgabe-2---service">Aufgabe 2 - Service&lt;/h2>
 &lt;p>Im Rahmen der Aufgabe solltest du einen Service erstellen, mit dem du gemockte Daten an den
 Übersichts-Component senden kannst.
-Einen neuen Service für die Produkte kannst du einfach via &lt;code>ng g s product&lt;/code> in der Konsole
+Einen neuen Service für die Produkte kannst du einfach mit dem Befehl &lt;code>ng g s product&lt;/code> in der Konsole
 generieren lassen. Der Inhalt des Services bleibt dabei relativ simpel:
-Wir müssen zum einen die Produkte mocken (dafür können wir direkt das Model nutzen, das wir bisher
+Wir müssen zum einen die Produkte mocken (dafür können wir direkt das Model nutzen, das wir bisher auch schon
 gebraucht haben) und eine Methode bereitstellen, die diese an den entsprechenden Component liefern
 kann.
 Der Service sähe dann in etwa so aus:&lt;/p>
@@ -1286,7 +1286,7 @@ ihm einfach einen leeren Path an.
 Nun bleiben nur noch die Components, dann haben wir die Übung bereits geschafft.&lt;/p>
 &lt;h2 id="aufgabe-2---übersichts-component">Aufgabe 2 - Übersichts-Component&lt;/h2>
 &lt;p>Im Übersichts-Component wollen wir als erstes die Mock-Daten aus dem Service holen. Dazu müssen wir
-lediglich im Constructor die &lt;code>getAllProducts()&lt;/code> aus dem Service ausrufen und einer entsprechenden
+lediglich im Constructor die &lt;code>getAllProducts()&lt;/code> aus dem Service aufrufen und einer entsprechenden
 Variable zuweisen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -1340,7 +1340,7 @@ Variable zuweisen:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Nachdem wir die Daten für die Anzeige vorbereitet haben, können wir direkt auch schon die Funktion
+&lt;/div>&lt;p>Nachdem wir die Daten für die Anzeige vorbereitet haben, können wir auch schon die Funktion
 für das Hinzufügen eines Produkts definieren:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -1348,15 +1348,9 @@ für das Hinzufügen eines Produkts definieren:&lt;/p>
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">addProduct&lt;/span>(&lt;span style="color:#a6e22e">product&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">ProductModel&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>)
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">addProduct&lt;/span>(&lt;span style="color:#a6e22e">product&lt;/span>:&lt;span style="color:#66d9ef">ProductModel&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">dispatch&lt;/span>(&lt;span style="color:#a6e22e">addProduct&lt;/span>({ &lt;span style="color:#a6e22e">product&lt;/span>: &lt;span style="color:#66d9ef">product&lt;/span> }));
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
@@ -1364,7 +1358,7 @@ für das Hinzufügen eines Produkts definieren:&lt;/p>
 &lt;/div>
 &lt;/div>&lt;p>Da wir das jeweilige Product aus dem Template erhalten, geben wir dieses hier als Parameter für die
 Funktion an.
-Die action für das hinzufügen des Produkts lösen wir entsprechend mit
+Die action für das Hinzufügen des Produkts lösen wir entsprechend mit
 &lt;code>this.store.dispatch(addProduct()))&lt;/code> aus. Neu ist hier die Nutzung eines Parameters innerhalb der
 Action.
 Parameter für actions werden jeweils in geschweiften Klammern als key-value-Paar angegeben. Da wir
@@ -1546,7 +1540,7 @@ Zur Erinnerung; Im Warenkorb müssen die folgenden Funktionalitäten umgesetzt s
 &lt;/div>
 &lt;/div>&lt;p>Hier passiert direkt einiges:&lt;/p>
 &lt;ol>
-&lt;li>Werden die Produkte in einem Observable gespeichert, da die Daten unter Auslesung aus dem Store
+&lt;li>Es werden die Produkte in einem Observable gespeichert, da die Daten unter Auslesung aus dem Store
 diese Form annehmen. Der Typ des Observables ist dabei &lt;code>ProductModel[]&lt;/code>.&lt;/li>
 &lt;li>Wir definieren im Constructor einen privaten &lt;code>store&lt;/code>, über den wir die actions ausführen. Mit
 &lt;code>{products: ProductModel[]}&lt;/code> spezifizieren wir dabei, welche Form die ausgelesenen Daten haben.&lt;/li>
@@ -1626,9 +1620,9 @@ Components.
 Darauf wird wieder mit &lt;code>@for&lt;/code> über die Produkte iteriert. Ein wichtiger Unterschied ist hierbei die
 &lt;code>|async&lt;/code>-Pipe. Diese wird benötigt, da nur asynchron über Observables iteriert werden kann.
 Innerhalb des Loops hat es wieder eine Darstellung mit dem jeweligen Namen und Preis und einen
-Button für das entfernen eines Produkts aus dem Warenkorb.
+Button für das Entfernen eines Produkts aus dem Warenkorb.
 Mit &lt;code>@empty&lt;/code> nach dem Loop wird beschrieben, was passieren soll, wenn &lt;code>products$&lt;/code> keinen Wert
-enthält. In diesem Fall wird einfach ein Text &amp;ldquo;No Products in shopping cart&amp;rdquo; angezeigt.&lt;/p>
+enthält. In diesem Fall wird einfach der Text &amp;ldquo;No Products in shopping cart&amp;rdquo; angezeigt.&lt;/p>
 &lt;p>Schlussendlich hat es dann noch 2 Buttons, welche jeweils die Funktionen für das Leeren des
 Warenkorbs und das Abschliessen einer Bestellung aufrufen.&lt;/p>
 &lt;p>Hier noch das SCSS-File für die Interessierten:&lt;/p>
@@ -1743,9 +1737,9 @@ Forms eingetragen werden können und der Wert &lt;code>completed&lt;/code> immer
 sicherzugehen, dass die IDs jeweils einzigartig sind, nutzen wir für die Definition dieser
 &lt;code>new Date().getTime()&lt;/code> (aktuelle Uhrzeit).&lt;/li>
 &lt;/ul>
-&lt;p>Gehen wir also nun wie gewohnt die einzelnen Schritte durch:&lt;/p>
+&lt;p>Gehen wir also nun wie gehabt die einzelnen Schritte durch:&lt;/p>
 &lt;h2 id="aufgabe-3---actions">Aufgabe 3 - Actions&lt;/h2>
-&lt;p>Als erstes kommen wieder die Actions, die wir anhand der vorgegebenen Anwendungsfälle definieren
+&lt;p>Als Erstes kommen wieder die Actions, die wir anhand der vorgegebenen Anwendungsfälle definieren
 müssen. In dieser Aufgabe gibt es drei Funktionalitäten, die wir mithilfe von Actions bereitstellen
 müssen:&lt;/p>
 &lt;ul>
@@ -1809,8 +1803,8 @@ Darauf folgt dann die effektive Definition der actions. Dabei wird wie immer zue
 &lt;code>addTask&lt;/code> braucht eine ganze Task (da ja eine neue erstellt werden soll), wohingegen &lt;code>removeTask&lt;/code> und
 &lt;code>completeTask&lt;/code> jeweils nur die id der betroffenen Task brauchen.&lt;/p>
 &lt;h2 id="aufgabe-3---model">Aufgabe 3 - Model&lt;/h2>
-&lt;p>Wie auch schon in Aufgabe 2 benutzen wir in dieser Lösung für die Tasks, um das Ganze übersichtlich
-zu gestalten. Diese wurde in den Actions bereits in den &lt;code>props&lt;/code> von &lt;code>addTask&lt;/code> verwendet und sieht so
+&lt;p>Wie auch schon in Aufgabe 2 benutzen wir in dieser Lösung ein Model für die Tasks, um das Ganze übersichtlich
+zu gestalten. Das Model wurde in den Actions bereits in den &lt;code>props&lt;/code> von &lt;code>addTask&lt;/code> verwendet und sieht so
 aus:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -1840,14 +1834,14 @@ aus:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Achte hierbei darauf, dass das &lt;code>completed&lt;/code>-Attribut &lt;strong>nicht&lt;/strong> durch als Parameter im Constructor
+&lt;/div>&lt;p>Achte hierbei darauf, dass das &lt;code>completed&lt;/code>-Attribut &lt;strong>nicht&lt;/strong> als Parameter im Constructor
 geliefert wird, sondern direkt auf &lt;code>false&lt;/code> gesetzt wird.
-In der Aufgabenstellung steht als Anforderungen, dass Tasks zum Zeitpunkt der Erstellung &lt;strong>immer&lt;/strong>
+In der Aufgabenstellung steht als Anforderung, dass Tasks zum Zeitpunkt der Erstellung &lt;strong>immer&lt;/strong>
 nicht completed sein sollen, daher können wir uns so jeweils einen Parameter beim Erstellen einer
 neuen Task sparen.&lt;/p>
 &lt;h2 id="aufgabe-3---interfaces">Aufgabe 3 - Interfaces&lt;/h2>
 &lt;p>Wie auch in Aufgabe 2 macht es in diesem Fall Sinn, einen separaten State für die Tasks zu
-erstellen. Dazu wurde hier wieder eine Datei &lt;code>index.ts&lt;/code> erstellt, um den das Interface für den State
+erstellen. Dazu wurde hier wieder eine Datei &lt;code>index.ts&lt;/code> erstellt, um das Interface für den State
 und den intialState für den Reducer unterzubringen.
 Die Datei sieht aus wie folgt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1946,12 +1940,12 @@ Array mit der mitgegebenen &lt;code>id&lt;/code> aus dem Array gefiltert wird.
 Denken wir nochmal kurz zu Aufgabe 2 zurück: Dort war das Problem bei &lt;code>removeProduct&lt;/code> ja, dass alle
 Einträge mit demselben Namen aus dem Array entfernt wurden, da wir anhand des &lt;code>name&lt;/code>-Attributs des
 Produkts gefiltert haben.
-Dieses Problem gibt es hier nicht mehr, da wir mit der &lt;code>id&lt;/code> gefiltert haben, die ja einzigartig
+Dieses Problem gibt es hier nicht mehr, da wir mit der &lt;code>id&lt;/code> gefiltert haben, die einzigartig
 ist (da sie basierend auf der derzeitigen Uhrzeit generiert wird, die Umsetzung dazu folgt noch).&lt;/p>
 &lt;p>Der Reducer für &lt;code>completeTask&lt;/code> ist hierbei der spannendenste. Wir können nicht einfach eine neue
 Task anfügen oder herausfiltern. Wir müssen stattdessen anhand der gelieferten &lt;code>id&lt;/code> den
 entsprechenden Eintrag aus dem Array herauspicken und dessen &lt;code>completed&lt;/code>-Attribut verändern.
-Dazu können wir die auf dem &lt;code>tasks&lt;/code>-Array die &lt;code>map&lt;/code>-Methode nutzen, um auf die einzelnen Tasks
+Dazu können wir auf dem &lt;code>tasks&lt;/code>-Array die &lt;code>map&lt;/code>-Methode nutzen, um auf die einzelnen Tasks
 zugreifen zu können. Bei den einzelnen Tasks prüfen wir daraufhin, ob deren &lt;code>id&lt;/code> mit der gelieferten
 übereinstimmt.
 Ist das der Fall, wird für die jeweilige Task das &lt;code>completed&lt;/code>-Attribut auf &lt;code>true&lt;/code> gesetzt, ansonsten
@@ -1981,7 +1975,7 @@ aus dem Store auszulesen. Der Code dazu sieht aus wie folgt:&lt;/p>
 exportierbare Konstante &lt;code>selectTaskState&lt;/code>, die einen &lt;code>FeatureSelector&lt;/code> erstellt, der die &lt;code>tasks&lt;/code> aus
 dem &lt;code>TaskState&lt;/code> ausliest.
 Danach definieren wir eine exportierbare Konstante &lt;code>getTasks&lt;/code>, welche einen Selector beinhält, der
-den &lt;code>TaskState&lt;/code> mit &lt;code>selectTaskSate&lt;/code> ausliest und darauf basierend die &lt;code>tasks&lt;/code> zurückgibt.&lt;/p>
+den &lt;code>TaskState&lt;/code> mit &lt;code>selectTaskState&lt;/code> ausliest und darauf basierend die &lt;code>tasks&lt;/code> zurückgibt.&lt;/p>
 &lt;h2 id="aufgabe-3---appconfigts">Aufgabe 3 - app.config.ts&lt;/h2>
 &lt;p>Wie immer müssen wir die Datei &lt;code>app.config.ts&lt;/code> anpassen, damit unsere Reducer und Selectors
 funktionieren. Die Datei sollte angepasst so aussehen:&lt;/p>
@@ -2125,7 +2119,7 @@ Beginnen wir beim &lt;code>ts&lt;/code>-File des Components:&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Als erstes bereiten wir in der Datei die &lt;code>FormControl&lt;/code> für die Eingabe des Namens vor (die
-Aufgabenstellung sieht vor, dass der Name der zu erstellenden Task mit einem Reactive Forms
+Aufgabenstellung sieht vor, dass der Name der zu erstellenden Task mit einem Reactive Form
 eingetragen wird).
 Im Constructor instanzieren wir darauf direkt den Store, um anschliessend die Actions aufrufen zu
 können.&lt;/p>
@@ -2134,11 +2128,11 @@ erstellen wir zuerst ein neues Objekt vom Typ &lt;code>TaskModel&lt;/code>.
 Als Parameter geben wir dabei zuerst die id in Form von &lt;code>Date.now()&lt;/code> mit, da wir so garantieren
 können, dass das &lt;code>id&lt;/code>-Attribut über alle Tasks einzigartig ist.
 Als zweiten Parameter geben wir dann, insofern der value der &lt;code>FormControl&lt;/code> für den Namen nicht &lt;code>null&lt;/code>
-oder &lt;code>undefned&lt;/code> entspricht, den Inhalt der &lt;code>FormControl&lt;/code> mit. Entspricht dieser &lt;code>null&lt;/code> oder
+oder &lt;code>undefined&lt;/code> entspricht, den Inhalt der &lt;code>FormControl&lt;/code> mit. Entspricht dieser &lt;code>null&lt;/code> oder
 &lt;code>undefined&lt;/code> geben wir einen leeren String als Namen mit.&lt;/p>
 &lt;p>Zuletzt instanzieren wir die &lt;code>FormControl&lt;/code> für den Namen neu, um die das Textfeld für den Nutzer
 wieder zu leeren.&lt;/p>
-&lt;p>Als nächstes muss das entsprechende Template für die Erstellung der Task umgesetzt werden. Das sieht
+&lt;p>Als Nächstes muss das entsprechende Template für die Erstellung der Task umgesetzt werden. Das sieht
 in diesem Fall aus wie folgt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -2183,7 +2177,7 @@ dem wir zwischen der Übersicht und der Task-Erstellung hin- und herwechseln kö
 &lt;p>Darunter befindet sich dann schon die Eingabe für die Task-Erstellung. Wir verbinden einen &lt;code>Input&lt;/code>
 mit der &lt;code>FormControl&lt;/code> und einen Knopf mit der &lt;code>addTask()&lt;/code>-Funktion, die wir vorher erstellt haben.
 Wie auch schon in Aufgabe 2 wurde für diese Lösung ein rudimentäres Styling umgesetzt, welches ihr
-aber &lt;strong>nicht&lt;/strong> braucht. Für die Interessierten folgt noch der Inhalt das &lt;code>SCSS&lt;/code>-Files:&lt;/p>
+aber &lt;strong>nicht&lt;/strong> zwingend umsetzen müsst. Für die Interessierten folgt noch der Inhalt das &lt;code>SCSS&lt;/code>-Files:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -2290,14 +2284,14 @@ Die fertige Version der &lt;code>ts&lt;/code>-Datei für diesen Component sieht 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Als erstes erstellen wir Observable vom Typ &lt;code>Observable&amp;lt;TaskModel[]&amp;gt;&lt;/code>, in dem wir anschliessend die
+&lt;/div>&lt;p>Als Erstes erstellen wir ein Observable vom Typ &lt;code>Observable&amp;lt;TaskModel[]&amp;gt;&lt;/code>, in dem wir anschliessend die
 Tasks aus dem Store ablegen können.
-Im Constructor instanzieren wir daraufhin den Store, um die Ausführung von Actions und das Nutzen
+Im Constructor instanzieren wir daraufhin den Store, um die Ausführung von Actions und die Nutzung
 von Selectors zu ermöglichen. Innerhalb des Constructors befüllen wir zudem direkt das vorher
 erstellte Observable mit den Tasks, indem wir den Selector ausführen.&lt;/p>
-&lt;p>Zuletzt definieren wir direkt die beiden Funktionen für das komplettieren und entfernen der Tasks.
+&lt;p>Zuletzt definieren wir direkt die beiden Funktionen für das Komplettieren und Entfernen der Tasks.
 Beide Funktionen nehmen jeweils die &lt;code>id&lt;/code> der jeweiligen Task entgegen und rufen mit
-&lt;code>this.store.dispatch()&lt;/code> die enstprechende action aus.&lt;/p>
+&lt;code>this.store.dispatch()&lt;/code> die entsprechende action auf.&lt;/p>
 &lt;p>Anschliessend können wir das Template umsetzen, das im Falle dieser Lösung aussieht wie folgt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -2347,7 +2341,7 @@ nicht vergessen!)
 Darauf prüfen wir, bevor etwas angezeigt wird, für jede Task, ob das &lt;code>completed&lt;/code>-Attribut auf &lt;code>false&lt;/code>
 gesetzt ist. Die Task wird nur angezeigt, solange das der Fall ist.
 Insofern &lt;code>completed&lt;/code> auf &lt;code>false&lt;/code> gesetzt ist, wird anschliessend die &lt;code>id&lt;/code> und der &lt;code>name&lt;/code> der Task angezeigt. Für jede Task werden zudem zwei Knöpfe angezeigt, über die man sie jeweils abschliessen oder entfernen kann.
-Für den Fall, dass &lt;code>tasks$&lt;/code> keinen Inhalt hat, definieren wir &lt;code>@empty&lt;/code> den Text &amp;ldquo;Keine Tasks vorhanden&amp;rdquo; als &amp;ldquo;Platzhalter&amp;rdquo;, damit nicht einfach nichts angezeigt wird.&lt;/p>
+Für den Fall, dass &lt;code>tasks$&lt;/code> keinen Inhalt hat, definieren wir mit &lt;code>@empty&lt;/code> den Text &amp;ldquo;Keine Tasks vorhanden&amp;rdquo; als Platzhalter, damit nicht einfach nichts angezeigt wird.&lt;/p>
 &lt;p>Für die Interessierten folgt noch das SCSS-File zum Component:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
