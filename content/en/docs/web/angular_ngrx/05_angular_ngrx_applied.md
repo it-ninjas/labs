@@ -238,7 +238,7 @@ damit dieser angezeigt wird) dürfte der Counter wie gewünscht funktionieren.
 ## Aufgabe 2 - Aufgabenstellung
 
 Gehen wir nun weiter zur zweiten Aufgabe. Das Ziel der Aufgabe ist es, einen Online-Shop mit einer
-Produkübersicht und einem Warenkorb zu erstellen. Dabei sollen die Produktdaten in als Mockdaten
+Produkübersicht und einem Warenkorb zu erstellen. Dabei sollen die Produktdaten als Mockdaten
 über einen Service bereitgestellt werden.
 Zudem soll es möglich sein, mithilfe von Routing zwischen den beiden Ansichten hin- und
 herzuwechseln.
