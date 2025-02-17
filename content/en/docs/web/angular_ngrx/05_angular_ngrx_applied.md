@@ -1071,7 +1071,7 @@ den `TaskState` mit `selectTaskSate` ausliest und darauf basierend die `tasks` z
 ## Aufgabe 3 - app.config.ts
 
 Wie immer müssen wir die Datei `app.config.ts` Anpassen, damit unsere Reducer und Selectors
-funktionieren. Die Datei sollte ausgepasst so aussehen:
+funktionieren. Die Datei sollte angepasst so aussehen:
 
 ```typescript
 import {
