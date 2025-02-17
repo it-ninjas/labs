@@ -313,7 +313,7 @@ Interessant wird es bei der Action für das hinzufügen eines Produkts; Dort nut
 `props`-Funktion.
 In diesem Fall beschreibt `props` die Parameter, die wir der Action beifügen wollen. Im Falle von
 `addProduct` entspricht das einer Instanz des `ProductModel` (schauen wir gleich noch an), im Falle
-von `Produkt` einem string, welcher den Namen des zu entfernenden Produkts enthält.
+von `removeProduct` einem string, welcher den Namen des zu entfernenden Produkts enthält.
 Das ist bereits alles, was wir in den Actions machen müssen.
 
 ## Aufgabe 2 - Model
