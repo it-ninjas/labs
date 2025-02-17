@@ -259,7 +259,7 @@ sollen im Kontext des Warenkorbs ausgeführt werden können:
 - Entfernen von Produkten aus dem Warenkorb
 - Ausgabe einer Liste aller Produkte im Warenkorb
 
-Zudem soll es ebenfalls möglich sein, den Kaufprozess per Knopfdruck abzuschliessen (Und somit den
+Zudem soll es ebenfalls möglich sein, den Kaufprozess per Knopfdruck abzuschliessen (und somit den
 Warenkorb leeren), womit ebenfalls die folgende Funktionalität dazukommt:
 
 - Leeren des Warenkorbs
