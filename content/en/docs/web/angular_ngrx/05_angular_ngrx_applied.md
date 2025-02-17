@@ -108,7 +108,7 @@ Die Definition funktioniert jeweils wie folgt: Der Reducer wird in die Funktion 
 erstes Argument wird hierbei die Action angegeben, die als Auslöser für den Reducer fungiert. (Wie
 du auf Zeile 1 sehen kannst, werden die jeweiligen Actions direkt aus `counter.actions` importiert.)
 Insofern also eine der Actions getriggert wird, wird als nächstes der `state` ausgelesen. Dieser
-beshreibt den derzeitigen Zustand des Counters, den wir mit den Reducers mutieren wollen.
+beschreibt den derzeitigen Zustand des Counters, den wir mit den Reducers mutieren wollen.
 Zuletzt wird dann auch schon die entsprechende Mutation durchgeführt; Im Falle der Inkrementation
 wird der state um 1 erhöht, im Falle der Dekrementation um 1 verringert und im Falle des
 Zurücksetzens auf 0 gesetzt.
