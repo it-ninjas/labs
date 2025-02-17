@@ -114,7 +114,7 @@ wird der state um 1 erhöht, im Falle der Dekrementation um 1 verringert und im 
 Zurücksetzens auf 0 gesetzt.
 
 Das heisst also: Prinzipiell wartet der `Reducer` ab, bis eine bestimmte `Action` aufgerufen wird
-und `mutiert` dann entsprechend den `state`.
+und mutiert dann entsprechend den `state`.
 
 ## Aufgabe 1 - Component
 
