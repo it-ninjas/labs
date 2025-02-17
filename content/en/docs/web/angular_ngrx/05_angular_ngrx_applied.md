@@ -183,9 +183,9 @@ Zustand der Variable `count` aus dem Store zugeschrieben, welcher zu diesem Zeit
 Hiermit ist die Vorbereitung auch schon erledigt, womit wir nun zur Component-Logik weiterkönnen. In
 unserem Fall mussten 3 Funktionen definiert werden:
 
-- increment()
-- decrement()
-- reset()
+- `increment()`
+- `decrement()`
+- `reset()`
 
 Die Logik in diesen gehen wir nun ebenfalls kurz durch. Innerhalb der Funktionen wird der im
 Constructor instanzierte Store genutzt und dessen Methode `dispatch()` aufgerufen. Diese Methode
