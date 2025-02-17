@@ -1154,7 +1154,7 @@ export class CreateTaskComponent {
 }
 ```
 
-Als erstes bereiten wir in der Datei die `FormControl` für die Eingabe des Namens vor (Die
+Als erstes bereiten wir in der Datei die `FormControl` für die Eingabe des Namens vor (die
 Aufgabenstellung sieht vor, dass der Name der zu erstellenden Task mit einem Reactive Forms
 eingetragen wird).
 Im Constructor instanzieren wir darauf direkt den Store, um anschliessend die Actions aufrufen zu
