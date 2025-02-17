@@ -1161,7 +1161,7 @@ Im Constructor instanzieren wir darauf direkt den Store, um anschliessend die Ac
 können.
 
 Zuletzt bereiten wir auch schon direkt die Funktion für das Erstellen einer neuen Task vor. Dazu
-erstellen wir zuerst ein neues Objekt vom Typ TaskModel.
+erstellen wir zuerst ein neues Objekt vom Typ `TaskModel`.
 Als Parameter geben wir dabei zuerst die id in Form von `Date.now()` mit, da wir so garantieren
 können, dass das `id`-Attribut über alle Tasks einzigartig ist.
 Als zweiten Parameter geben wir dann, insofern der value der `FormControl` für den Namen nicht`null`
