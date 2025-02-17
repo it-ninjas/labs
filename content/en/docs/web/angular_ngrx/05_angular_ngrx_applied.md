@@ -939,7 +939,7 @@ Hier gibt es im Vergleich zu Aufgabe 2 eigentlich nichts Neues. Wie gewohnt erst
 jeweliigen `ActionTypes`, die die actions jeweils nachvollziehbar machen.
 Darauf folgt dann die effektive Definition der actions. Dabei wird wie immer zuerst der jewelige
 `ActionType` zugewiesen. In unserem Fall benötigen alle actions jeweils noch `props` (Paramater).
-`addTask` braucht eine ganze Task (da ja eine neue erstellt werden soll), wohingegen `removeTask`und
+`addTask` braucht eine ganze Task (da ja eine neue erstellt werden soll), wohingegen `removeTask` und
 `completeTask` jeweils nur die id der betroffenen Task brauchen.
 
 ## Aufgabe 3 - Model
