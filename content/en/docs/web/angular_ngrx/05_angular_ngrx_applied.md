@@ -12,7 +12,6 @@ description: >
 
 - in diesem Abschnitt sollen die Lösungen zu den (optionalen) NgRx-Labs genauer beleuchtet werden.
 
-
 Wenn du die Labs zu NgRx noch nicht gemacht hast, musst du dir diese Dokumentation nicht
 anschauen.
 
@@ -653,7 +652,7 @@ addProduct(product:ProductModel)
 
 Da wir das jeweilige Product aus dem Template erhalten, geben wir dieses hier als Parameter für die
 Funktion an.
-Die action für das Hinzufügen des Produkts lösen wir entsprechend mit 
+Die action für das Hinzufügen des Produkts lösen wir entsprechend mit
 `this.store.dispatch(addProduct()))` aus. Neu ist hier die Nutzung eines Parameters innerhalb der
 Action.
 Parameter für actions werden jeweils in geschweiften Klammern als key-value-Paar angegeben. Da wir
