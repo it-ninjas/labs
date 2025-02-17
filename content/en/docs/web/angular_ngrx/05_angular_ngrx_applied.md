@@ -257,7 +257,7 @@ sollen im Kontext des Warenkorbs ausgeführt werden können:
 
 - Hinzufügen von Produkten in den Warenkorb
 - Entfernen von Produkten aus dem Warenkorb
-- Asugabe einer Liste aller Produkte im Warenkorb
+- Ausgabe einer Liste aller Produkte im Warenkorb
 
 Zudem soll es ebenfalls möglich sein, den Kaufprozess per Knopfdruck abzuschliessen (Und somit den
 Warenkorb leeren), womit ebenfalls die folgende Funktionalität dazukommt:
