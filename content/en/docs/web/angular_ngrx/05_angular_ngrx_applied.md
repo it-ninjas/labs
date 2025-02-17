@@ -1,5 +1,5 @@
 ---
-title: "NgRx angwendet (Erst anschauen, nachdem das NgRx-Labs durchgeführt wurde)"
+title: "NgRx angwendet (Erst nach der Durchführung der NgRx-Labs anschauen)"
 type: docs
 linkTitle: "NgRx angewendet"
 weight: 5
@@ -16,7 +16,7 @@ Wenn du die Labs zu NgRx noch nicht gemacht hast, musst du dir diese Dokumentati
 anschauen.
 
 Wir gehen hier Schritt für Schritt die Aufgaben des NgRx-Labs durch, um zum Einen den
-Lösungsfindungsweg genauer anzuschauen, zum Anderen aber auch, um potenzielle Unklarheiten aus dem
+Weg der Lösungsfindung genauer anzuschauen, zum Anderen aber auch, um potenzielle Unklarheiten aus dem
 Weg zu räumen, die bei der Erarbeitung der Aufgabe aufgekommen sein könnten.
 
 ## Aufgabe 1 - Aufgabenstellung
@@ -35,8 +35,8 @@ Actions.
 
 Als erstes gilt es, die jeweiligen Actions für die drei oben beschriebenen Anwendungsfälle zu
 definieren. Für die Actions solltest du eine Datei `counter.actions.ts` erstellen, in der du die
-Actions erstellen kannst.
-Die fertigen Actions sehen dann aus wie folgt:
+Actions definieren kannst.
+Die fertigen Actions sehen aus wie folgt:
 
 ```typescript
 import { createAction } from "@ngrx/store";
@@ -52,29 +52,29 @@ export const decrement = createAction(ActionTypes.DECREMENT);
 export const reset = createAction(ActionTypes.RESET);
 ```
 
-Gehen wir das also einmal durch:
+Gehen wir das einmal durch:
 In der Aufgabenstellung war es vorgesehen, dass die verschiedenen Actions in ein Enum ausgelagert
-werden. So sind diese direkt alle über `ActionTypes` verfügbar. Dafür kannst du einfach die
+werden. So sind diese direkt alle über die Variable `ActionTypes` verfügbar. Dafür kannst du einfach die
 einzelnen Actions in ein Enum wrappen, wie es im Code oben gemacht wurde.
 Der String nach dem `=` wird jeweils hinzugefügt, um die Action in Kontext zur Applikation zu
-stellen. In diesem Fall sagen sie also aus, dass im `CounterComponent` der Wert entweder
+stellen. In diesem Fall sagen die Strings also aus, dass im `CounterComponent` der Wert entweder
 inkrementiert, dekrementiert oder resettet wurde.
 
 Nun haben wir bereits das Grundgerüst für die Actions, diese können aber noch nicht verwendet
-werden. Um das zu Ändern, müssen wir diese zu exportierbaren Actions machen, was im zweiten
+werden. Um das zu ändern, müssen wir diese zu exportierbaren Actions machen, was im zweiten
 Abschnitt des Codebeispiels oben passiert.
 Für jede Action, die wir definieren wollen, müssen wir eine entsprechende exportierbare Konstante
-erstellen. Relevant ist hierbei das Keyword `createAction`, welches die Actions erste wirklich als
+erstellen. Relevant ist hierbei das Keyword `createAction`, welches die Actions erst wirklich als
 solche definiert.
 
 Haben wir nun für jede Action eine entsprechende Definition vorgenommen, können wir mit dem nächsten
-Schritt fortfahren, den Reducers.
+Schritt fortfahren; den Reducers.
 
 ## Aufgabe 1 - Reducers erstellen
 
 Damit nun beim Aufrufen der Actions, die wir definiert haben, auch etwas passiert, müssen wir die
-für die Actions entsprechendne Reducers erstellen.
-Der entsprechende Code-Block in der Datei `counter.reducer.ts`, die du erstellt haben solltest,
+für die Actions entsprechenden Reducers erstellen.
+Der dazugehörige Code-Block in der Datei `counter.reducer.ts`, die du erstellt haben solltest,
 sieht aus wie folgt:
 
 ```typescript
@@ -109,8 +109,8 @@ erstes Argument wird hierbei die Action angegeben, die als Auslöser für den Re
 du auf Zeile 1 sehen kannst, werden die jeweiligen Actions direkt aus `counter.actions` importiert.)
 Insofern also eine der Actions getriggert wird, wird als nächstes der `state` ausgelesen. Dieser
 beschreibt den derzeitigen Zustand des Counters, den wir mit den Reducers mutieren wollen.
-Zuletzt wird dann auch schon die entsprechende Mutation durchgeführt; Im Falle der Inkrementation
-wird der state um 1 erhöht, im Falle der Dekrementation um 1 verringert und im Falle des
+Zuletzt wird dann auch schon die entsprechende Mutation durchgeführt; Im Falle der Inkrementierung
+wird der state um 1 erhöht, im Falle der Dekrementierung um 1 verringert und im Falle des
 Zurücksetzens auf 0 gesetzt.
 
 Das heisst also: Prinzipiell wartet der `Reducer` ab, bis eine bestimmte `Action` aufgerufen wird
@@ -166,12 +166,12 @@ export class MyCounterComponent {
 ```
 
 Gehen wir auch diesen Code mal Schritt für Schritt durch: Der Component ist grundsätzlich aufgebaut
-wie jeder andere. Er besteht aus einer `HTML`-Datei, einer `(S)CSS`-Datei, einer `TS`-Datei und
+wie jeder andere. Er besteht aus einer `html`-Datei, einer `(s)css`-Datei, einer `ts`-Datei und
 einer `spec.ts`-Datei und beinhält einen Constructor.
 Interessant wird es ab Zeile 11: Dort wird ein Obvservable `count$` (achte hierbei auf das `$` am
 Ende der Variable => Best Practice bei der Benennung von Observables!) definiert, welches uns
-anschliessend zur Darstellung des Counts nutzen wird.
-Im Konstruktor auf Zeile 13 wird eine private Variable `store` instanziert, welche die
+anschliessend zur Darstellung des Counts innerhalb des Templates nutzen wird.
+Im Constructor auf Zeile 13 wird eine private Variable `store` instanziert, welche die
 Zahlen-Variable `count` in diesem erstellt.
 
 Der `Store` dient in NgRx als "Eimer" für die `States` und ist applikationsweit zugänglich. Diese
@@ -192,18 +192,18 @@ Constructor instanzierte Store genutzt und dessen Methode `dispatch()` aufgerufe
 wird verwendet, um im Store eine Action auszulösen.
 In unseren 3 Fällen wären das die Actions `increment()`, `decrement()` und `reset()`.
 
-Alles was nun noch bleibt, ist das Template. (Siehe oben) Dieses besteht aus 4 Bestandteilen:
+Alles was nun noch bleibt, ist das Template (siehe oben). Dieses besteht aus 4 Bestandteilen:
 
 - Jeweils ein `button`-Element pro Funktion
 - Ein `div`-Element, welches den derzeitigen Zustand des Counters anzeigt.
 
-In den jeweiligen Buttons muss jeweils lediglich das `(click)`-Event abgefangen werden, woraufhin
+In den jeweiligen Buttons muss jeweils lediglich das `(click)`-Event abgehört werden, woraufhin
 die jeweilige Funktion aufgerufen wird.
 
 ## Aufgabe 1 - app.config.ts anpassen
 
-Seit in Angular standardmässig standalone-Component verwendet werden und somit normalerweise kein
-AppModule mehr exisitert, muss für das korrekte Funktionieren der Reducer eine Anpassung in der
+Seit in Angular standardmässig `standalone`-Components verwendet werden und somit normalerweise kein
+`AppModule` mehr exisitert, muss für das korrekte Funktionieren der Reducer eine Anpassung in der
 `app.config.ts`-Datei gemacht werden, nämlich die folgende:
 
 ```typescript
@@ -231,7 +231,7 @@ export const appConfig: ApplicationConfig = {
 Für uns relevant sind die beiden letzten provider in der `appConfig`. Zum einen muss der Store
 provided werden, zum anderen müssen aber auch Provider für die Reducer importiert werden.
 Auf der letzten Zeile innerhalb `forRoot` müssen also **alle** Reducer hinzugefügt werden, ansonsten
-funktioniert gar nichts.
+funktioniert die Applikation nicht.
 Hast du das alles gemacht (und natürlich den MyCounterComponent im `app.component.html` hinzugefügt,
 damit dieser angezeigt wird) dürfte der Counter wie gewünscht funktionieren.
 
@@ -260,7 +260,7 @@ sollen im Kontext des Warenkorbs ausgeführt werden können:
 - Ausgabe einer Liste aller Produkte im Warenkorb
 
 Zudem soll es ebenfalls möglich sein, den Kaufprozess per Knopfdruck abzuschliessen (und somit den
-Warenkorb leeren), womit ebenfalls die folgende Funktionalität dazukommt:
+Warenkorb zu leeren), womit ebenfalls die folgende Funktionalität dazukommt:
 
 - Leeren des Warenkorbs
 
@@ -308,12 +308,12 @@ export const completeOrder = createAction(ActionTypes.COMPLETEORDER);
 ```
 
 Die Actions für das Leeren des Warenkorbs und das Abschliessen der Bestellung sind wie oben erwähnt
-identisch und unterscheiden sich nicht von den bisherigen Actions, die wir gesehen haben.
-Interessant wird es bei der Action für das hinzufügen eines Produkts; Dort nutzen wir nämlich die
+identisch und unterscheiden sich nicht von den Actions, die wir bisher umgesetzt haben.
+Interessant wird es bei der Action für das Hinzufügen eines Produkts; Dort nutzen wir nämlich die
 `props`-Funktion.
 In diesem Fall beschreibt `props` die Parameter, die wir der Action beifügen wollen. Im Falle von
 `addProduct` entspricht das einer Instanz des `ProductModel` (schauen wir gleich noch an), im Falle
-von `removeProduct` einem string, welcher den Namen des zu entfernenden Produkts enthält.
+von `removeProduct` einem String, welcher den Namen des zu entfernenden Produkts enthält.
 Das ist bereits alles, was wir in den Actions machen müssen.
 
 ## Aufgabe 2 - Model
@@ -343,7 +343,7 @@ Um uns die Handhabung der jeweiligen States, insbesondere für den Fall, dass me
 Applikation verwendet werden, einfacher zu gestalten und die spätere Nutzung von `selectors` zu
 ermöglichen, können wir jeweils eigene definieren.
 Der eigene State für die Produkte, die später im Warenkorb angezeigt werden, sieht im Beispiel aus
-wie folgt und befindet sich in der (eigens erstellten) Datei `index.ts`:
+wie folgt und befindet sich in der (eigens dazu erstellten) Datei `index.ts`:
 
 ```typescript
 import { ProductModel } from "../models/product-model";
@@ -365,7 +365,7 @@ leeres Array.
 ## Aufgabe 2 - Reducers
 
 Wie bereits bei der ersten Aufgabe folgt auf die Definition der Actions die Definition der
-jeweiligen dazugehörigen Reducers.
+jeweils dazugehörigen Reducers.
 Diese sehen aus wie folgt und befinden sich in diesem Beispiel in der Datei
 `shopping-cart.reducers.ts`:
 
@@ -405,7 +405,7 @@ export const shoppingCartReducer = createReducer(
 
 Hier wird es interessant: Da wir mit einem Array arbeiten, können wir nicht, wie beispielsweise in
 der ersten Aufgabe, einfach den state nehmen und diesen mutieren.
-Schauen wir uns mal den ersten Reducer an:
+Schauen wir uns dazu mal den ersten Reducer an:
 
 ```typescript
 on(addProduct, (state, { product }) => ({
@@ -416,14 +416,14 @@ on(addProduct, (state, { product }) => ({
 
 Als erstes definieren wir wieder zu Beginn mit `on()`, wann der Reducer ausgeführt werden soll. In
 diesem Fall passiert das, sobald die Action `addProduct` aufgerufen wird.
-Danach wird es spannend: In den runden Klammern als zweites Argument geben wir `state, {product}`an.
+Danach wird es spannend: In den runden Klammern geben wir als zweites Argument `state, {product}`an.
 Der state erklärt sich von selbst, den brauchen wir immer. `{product}` hingegen stellt den Parameter
-an, der mit der Action geliefert wird.
+dar, der mit der Action geliefert wird.
 Innerhalb der Arrow-Function passieren dann zwei Dinge:
 
 1. Es wird eine `shallow-copy` des states gemacht.
-2. Das Attribut `products` wird mit den bisherigen products + dem neu hinzuzufügenden product
-   angereichert.
+2. Das Attribut `products` wird mit den bisherigen products plus dem neu hinzuzufügenden `product`
+   gespeichert.
 
 Auf diese Art und Weise garantieren wir, dass beim Hinzufügen eines neuen Produkts alle bisherigen
 Werte ebenfalls übernommen werden.
@@ -438,10 +438,10 @@ on(removeProduct, (state, { name }) => ({
 }));
 ```
 
-Der Ablauf bis zur Anreicherung des `products`-Arrays ist derselbe, ausser dass hier nur der name
+Der Ablauf bis zur Anpassung des `products`-Arrays ist derselbe, ausser dass hier nur der name
 des Produkts und nicht die ganze Struktur als Parameter erwartet wird.
-In der Definition des `products`-Arrays werden dann der aktuelle Zustand des Arrays genommen und
-alle darin enthaltenen Produkte mit dem entsprechenden Namen, der geliefert wurde, entfernt.
+In der Definition des `products`-Arrays wird dann der aktuelle Zustand des Arrays genommen und
+alle darin enthaltenen Produkte mit dem entsprechenden Namen, der geliefert wurde, werden entfernt.
 
 Wichtig: Diese Lösung ist eher unschön, es werden nämlich alle Instanzen eines Produkts aus dem
 Array entfernt, wenn mehrere vorhanden sind.
@@ -454,7 +454,7 @@ Es ist aber auch möglich, den Filter so anzupassen, dass nach einer Entfernung 
 mehrfach vorkommt, die Filtrierung gestoppt wird. Wenn du möchtest, kannst du probieren, den Filter
 entsprechend anzupassen.
 
-Die beiden Reducer für das Leeren des Warenkorbs und das Abschliessend der Bestellung sind hierbei
+Die beiden Reducer für das Leeren des Warenkorbs und das Abschliessen der Bestellung sind hierbei
 nicht gross erwähnenswert, da einfach das Array `products` auf einen leeren Zustand zurückgesetzt
 wird.
 
@@ -462,7 +462,7 @@ wird.
 
 Im Vergleich zu der ersten Aufgabe gibt es hier ein neues Konzept, welches wir verwenden, nämlich
 die sogenannten `Selectors`.
-In der ersten Aufgabe haben wir den Inhalt des Stores mit `store.select()` ausgelesen und dabei
+In der ersten Aufgabe haben wir den Inhalt des Stores direkt im Component mit `store.select()` ausgelesen und dabei
 einfach den entsprechenden Key aus dem Store verwendet.
 Um die Auslese der Daten aus dem Store aber ein wenig zu verschönern und applikationsweit zu
 vereinheitlichen, können wir mit Selektoren arbeiten.
@@ -482,12 +482,12 @@ export const getShoppingCartProducts = createSelector(
 );
 ```
 
-Hier kommt der `ProductState` zum Tragen, den wir zu Beginn in der `index.ts` Datei definiert haben.
+Hier kommt der `ProductState` zum Tragen, den wir zu Beginn in der `index.ts`-Datei definiert haben.
 Mit diesem erstellen wir zuerst eine exportierbare Konstante `selectShoppingCartState`, die einen
 sogenannten FeatureSelector darstellt, die den `ProductState` ausliest.
 Daraufhin müssen wir erneut eine exportierbare Konstante `getShoppingCartProducts` erstellen, welche
 wir dann jeweils in den Components aufrufen können.
-Dieser nimmt innerhalb der Funktion `createSelector` als Parameter entgegen und gibt darauf aus dem
+Dieser nimmt innerhalb der Funktion `createSelector` den vorher erstellten FeatureSelector `selectShoppingCartState` als Parameter entgegen und gibt darauf aus dem
 state heraus die products aus.
 Das wäre bereits alles, was wir im Rahmen der Selectors machen müssen.
 
@@ -518,7 +518,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Relevant sind für uns die beiden Auszüge aus dem `providers`-Array:
+Relevant sind für uns diese beiden Auszüge aus dem `providers`-Array:
 
 ```typescript
 provideStore(), importProvidersFrom(StoreModule.forRoot({ products: shoppingCartReducer })
@@ -532,9 +532,9 @@ im Selektor ausgelesen werden kann.
 
 Im Rahmen der Aufgabe solltest du einen Service erstellen, mit dem du gemockte Daten an den
 Übersichts-Component senden kannst.
-Einen neuen Service für die Produkte kannst du einfach via `ng g s product` in der Konsole
+Einen neuen Service für die Produkte kannst du einfach mit dem Befehl `ng g s product` in der Konsole
 generieren lassen. Der Inhalt des Services bleibt dabei relativ simpel:
-Wir müssen zum einen die Produkte mocken (dafür können wir direkt das Model nutzen, das wir bisher
+Wir müssen zum einen die Produkte mocken (dafür können wir direkt das Model nutzen, das wir bisher auch schon
 gebraucht haben) und eine Methode bereitstellen, die diese an den entsprechenden Component liefern
 kann.
 Der Service sähe dann in etwa so aus:
@@ -611,7 +611,7 @@ Nun bleiben nur noch die Components, dann haben wir die Übung bereits geschafft
 ## Aufgabe 2 - Übersichts-Component
 
 Im Übersichts-Component wollen wir als erstes die Mock-Daten aus dem Service holen. Dazu müssen wir
-lediglich im Constructor die `getAllProducts()` aus dem Service ausrufen und einer entsprechenden
+lediglich im Constructor die `getAllProducts()` aus dem Service aufrufen und einer entsprechenden
 Variable zuweisen:
 
 ```typescript
@@ -640,14 +640,11 @@ export class OverviewComponent {
 }
 ```
 
-Nachdem wir die Daten für die Anzeige vorbereitet haben, können wir direkt auch schon die Funktion
+Nachdem wir die Daten für die Anzeige vorbereitet haben, können wir auch schon die Funktion
 für das Hinzufügen eines Produkts definieren:
 
 ```typescript
-addProduct(product
-:
-ProductModel
-)
+addProduct(product:ProductModel)
 {
   this.store.dispatch(addProduct({ product: product }));
 }
@@ -655,7 +652,7 @@ ProductModel
 
 Da wir das jeweilige Product aus dem Template erhalten, geben wir dieses hier als Parameter für die
 Funktion an.
-Die action für das hinzufügen des Produkts lösen wir entsprechend mit
+Die action für das Hinzufügen des Produkts lösen wir entsprechend mit
 `this.store.dispatch(addProduct()))` aus. Neu ist hier die Nutzung eines Parameters innerhalb der
 Action.
 Parameter für actions werden jeweils in geschweiften Klammern als key-value-Paar angegeben. Da wir
@@ -770,7 +767,7 @@ export class ShoppingCartComponent {
 
 Hier passiert direkt einiges:
 
-1. Werden die Produkte in einem Observable gespeichert, da die Daten unter Auslesung aus dem Store
+1. Es werden die Produkte in einem Observable gespeichert, da die Daten unter Auslesung aus dem Store
    diese Form annehmen. Der Typ des Observables ist dabei `ProductModel[]`.
 2. Wir definieren im Constructor einen privaten `store`, über den wir die actions ausführen. Mit
    `{products: ProductModel[]}` spezifizieren wir dabei, welche Form die ausgelesenen Daten haben.
@@ -819,9 +816,9 @@ Components.
 Darauf wird wieder mit `@for` über die Produkte iteriert. Ein wichtiger Unterschied ist hierbei die
 `|async`-Pipe. Diese wird benötigt, da nur asynchron über Observables iteriert werden kann.
 Innerhalb des Loops hat es wieder eine Darstellung mit dem jeweligen Namen und Preis und einen
-Button für das entfernen eines Produkts aus dem Warenkorb.
+Button für das Entfernen eines Produkts aus dem Warenkorb.
 Mit `@empty` nach dem Loop wird beschrieben, was passieren soll, wenn `products$` keinen Wert
-enthält. In diesem Fall wird einfach ein Text "No Products in shopping cart" angezeigt.
+enthält. In diesem Fall wird einfach der Text "No Products in shopping cart" angezeigt.
 
 Schlussendlich hat es dann noch 2 Buttons, welche jeweils die Funktionen für das Leeren des
 Warenkorbs und das Abschliessen einer Bestellung aufrufen.
@@ -897,11 +894,11 @@ Es sollen, ähnlich wie bei der zweiten Aufgabe, 2 Seiten erstellt werden:
   sicherzugehen, dass die IDs jeweils einzigartig sind, nutzen wir für die Definition dieser
   `new Date().getTime()` (aktuelle Uhrzeit).
 
-Gehen wir also nun wie gewohnt die einzelnen Schritte durch:
+Gehen wir also nun wie gehabt die einzelnen Schritte durch:
 
 ## Aufgabe 3 - Actions
 
-Als erstes kommen wieder die Actions, die wir anhand der vorgegebenen Anwendungsfälle definieren
+Als Erstes kommen wieder die Actions, die wir anhand der vorgegebenen Anwendungsfälle definieren
 müssen. In dieser Aufgabe gibt es drei Funktionalitäten, die wir mithilfe von Actions bereitstellen
 müssen:
 
@@ -944,8 +941,8 @@ Darauf folgt dann die effektive Definition der actions. Dabei wird wie immer zue
 
 ## Aufgabe 3 - Model
 
-Wie auch schon in Aufgabe 2 benutzen wir in dieser Lösung für die Tasks, um das Ganze übersichtlich
-zu gestalten. Diese wurde in den Actions bereits in den `props` von `addTask` verwendet und sieht so
+Wie auch schon in Aufgabe 2 benutzen wir in dieser Lösung ein Model für die Tasks, um das Ganze übersichtlich
+zu gestalten. Das Model wurde in den Actions bereits in den `props` von `addTask` verwendet und sieht so
 aus:
 
 ```typescript
@@ -962,16 +959,16 @@ export class TaskModel {
 }
 ```
 
-Achte hierbei darauf, dass das `completed`-Attribut **nicht** durch als Parameter im Constructor
+Achte hierbei darauf, dass das `completed`-Attribut **nicht** als Parameter im Constructor
 geliefert wird, sondern direkt auf `false` gesetzt wird.
-In der Aufgabenstellung steht als Anforderungen, dass Tasks zum Zeitpunkt der Erstellung **immer**
+In der Aufgabenstellung steht als Anforderung, dass Tasks zum Zeitpunkt der Erstellung **immer**
 nicht completed sein sollen, daher können wir uns so jeweils einen Parameter beim Erstellen einer
 neuen Task sparen.
 
 ## Aufgabe 3 - Interfaces
 
 Wie auch in Aufgabe 2 macht es in diesem Fall Sinn, einen separaten State für die Tasks zu
-erstellen. Dazu wurde hier wieder eine Datei `index.ts` erstellt, um den das Interface für den State
+erstellen. Dazu wurde hier wieder eine Datei `index.ts` erstellt, um das Interface für den State
 und den intialState für den Reducer unterzubringen.
 Die Datei sieht aus wie folgt:
 
@@ -1036,13 +1033,13 @@ Array mit der mitgegebenen `id` aus dem Array gefiltert wird.
 Denken wir nochmal kurz zu Aufgabe 2 zurück: Dort war das Problem bei `removeProduct` ja, dass alle
 Einträge mit demselben Namen aus dem Array entfernt wurden, da wir anhand des `name`-Attributs des
 Produkts gefiltert haben.
-Dieses Problem gibt es hier nicht mehr, da wir mit der `id` gefiltert haben, die ja einzigartig
+Dieses Problem gibt es hier nicht mehr, da wir mit der `id` gefiltert haben, die einzigartig
 ist (da sie basierend auf der derzeitigen Uhrzeit generiert wird, die Umsetzung dazu folgt noch).
 
 Der Reducer für `completeTask` ist hierbei der spannendenste. Wir können nicht einfach eine neue
 Task anfügen oder herausfiltern. Wir müssen stattdessen anhand der gelieferten `id` den
 entsprechenden Eintrag aus dem Array herauspicken und dessen `completed`-Attribut verändern.
-Dazu können wir die auf dem `tasks`-Array die `map`-Methode nutzen, um auf die einzelnen Tasks
+Dazu können wir auf dem `tasks`-Array die `map`-Methode nutzen, um auf die einzelnen Tasks
 zugreifen zu können. Bei den einzelnen Tasks prüfen wir daraufhin, ob deren `id` mit der gelieferten
 übereinstimmt.
 Ist das der Fall, wird für die jeweilige Task das `completed`-Attribut auf `true` gesetzt, ansonsten
@@ -1066,7 +1063,7 @@ Der Aufbau des Selectors ist genau derselbe wie bei Aufgabe 2; Als erstes defini
 exportierbare Konstante `selectTaskState`, die einen `FeatureSelector` erstellt, der die `tasks` aus
 dem `TaskState` ausliest.
 Danach definieren wir eine exportierbare Konstante `getTasks`, welche einen Selector beinhält, der
-den `TaskState` mit `selectTaskSate` ausliest und darauf basierend die `tasks` zurückgibt.
+den `TaskState` mit `selectTaskState` ausliest und darauf basierend die `tasks` zurückgibt.
 
 ## Aufgabe 3 - app.config.ts
 
@@ -1155,7 +1152,7 @@ export class CreateTaskComponent {
 ```
 
 Als erstes bereiten wir in der Datei die `FormControl` für die Eingabe des Namens vor (die
-Aufgabenstellung sieht vor, dass der Name der zu erstellenden Task mit einem Reactive Forms
+Aufgabenstellung sieht vor, dass der Name der zu erstellenden Task mit einem Reactive Form
 eingetragen wird).
 Im Constructor instanzieren wir darauf direkt den Store, um anschliessend die Actions aufrufen zu
 können.
@@ -1165,13 +1162,13 @@ erstellen wir zuerst ein neues Objekt vom Typ `TaskModel`.
 Als Parameter geben wir dabei zuerst die id in Form von `Date.now()` mit, da wir so garantieren
 können, dass das `id`-Attribut über alle Tasks einzigartig ist.
 Als zweiten Parameter geben wir dann, insofern der value der `FormControl` für den Namen nicht `null`
-oder `undefned` entspricht, den Inhalt der `FormControl` mit. Entspricht dieser `null` oder
+oder `undefined` entspricht, den Inhalt der `FormControl` mit. Entspricht dieser `null` oder
 `undefined` geben wir einen leeren String als Namen mit.
 
 Zuletzt instanzieren wir die `FormControl` für den Namen neu, um die das Textfeld für den Nutzer
 wieder zu leeren.
 
-Als nächstes muss das entsprechende Template für die Erstellung der Task umgesetzt werden. Das sieht
+Als Nächstes muss das entsprechende Template für die Erstellung der Task umgesetzt werden. Das sieht
 in diesem Fall aus wie folgt:
 
 ```html
@@ -1199,7 +1196,7 @@ dem wir zwischen der Übersicht und der Task-Erstellung hin- und herwechseln kö
 Darunter befindet sich dann schon die Eingabe für die Task-Erstellung. Wir verbinden einen `Input`
 mit der `FormControl` und einen Knopf mit der `addTask()`-Funktion, die wir vorher erstellt haben.
 Wie auch schon in Aufgabe 2 wurde für diese Lösung ein rudimentäres Styling umgesetzt, welches ihr
-aber **nicht** braucht. Für die Interessierten folgt noch der Inhalt das `SCSS`-Files:
+aber **nicht** zwingend umsetzen müsst. Für die Interessierten folgt noch der Inhalt das `SCSS`-Files:
 
 ```scss
 .header {
@@ -1260,15 +1257,15 @@ export class OverviewComponent {
 }
 ```
 
-Als erstes erstellen wir Observable vom Typ `Observable<TaskModel[]>`, in dem wir anschliessend die
+Als Erstes erstellen wir ein Observable vom Typ `Observable<TaskModel[]>`, in dem wir anschliessend die
 Tasks aus dem Store ablegen können.
-Im Constructor instanzieren wir daraufhin den Store, um die Ausführung von Actions und das Nutzen
+Im Constructor instanzieren wir daraufhin den Store, um die Ausführung von Actions und die Nutzung
 von Selectors zu ermöglichen. Innerhalb des Constructors befüllen wir zudem direkt das vorher
 erstellte Observable mit den Tasks, indem wir den Selector ausführen.
 
-Zuletzt definieren wir direkt die beiden Funktionen für das komplettieren und entfernen der Tasks.
+Zuletzt definieren wir direkt die beiden Funktionen für das Komplettieren und Entfernen der Tasks.
 Beide Funktionen nehmen jeweils die `id` der jeweiligen Task entgegen und rufen mit
-`this.store.dispatch()` die enstprechende action aus.
+`this.store.dispatch()` die entsprechende action auf.
 
 Anschliessend können wir das Template umsetzen, das im Falle dieser Lösung aussieht wie folgt:
 
@@ -1300,7 +1297,7 @@ nicht vergessen!)
 Darauf prüfen wir, bevor etwas angezeigt wird, für jede Task, ob das `completed`-Attribut auf `false`
 gesetzt ist. Die Task wird nur angezeigt, solange das der Fall ist.
 Insofern `completed` auf `false` gesetzt ist, wird anschliessend die `id` und der `name` der Task angezeigt. Für jede Task werden zudem zwei Knöpfe angezeigt, über die man sie jeweils abschliessen oder entfernen kann.
-Für den Fall, dass `tasks$` keinen Inhalt hat, definieren wir `@empty` den Text "Keine Tasks vorhanden" als "Platzhalter", damit nicht einfach nichts angezeigt wird.
+Für den Fall, dass `tasks$` keinen Inhalt hat, definieren wir mit `@empty` den Text "Keine Tasks vorhanden" als Platzhalter, damit nicht einfach nichts angezeigt wird.
 
 Für die Interessierten folgt noch das SCSS-File zum Component:
 
