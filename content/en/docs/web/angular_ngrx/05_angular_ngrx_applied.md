@@ -1297,7 +1297,7 @@ Zuoberst haben wir den exakt selben Header wie im Component für die Erstellung 
 
 Spannend wird es aber ab Zeile 6. Dort iterieren wir übr das `tasks$`-Observable. (`|async`-Pipe
 nicht vergessen!)
-Darauf prüfen wir, bevor etwas angezeigt wird, für jede Task, ob das `completed`-Attribut auf`false`
+Darauf prüfen wir, bevor etwas angezeigt wird, für jede Task, ob das `completed`-Attribut auf `false`
 gesetzt ist. Die Task wird nur angezeigt, solange das der Fall ist.
 Insofern `completed` auf `false` gesetzt ist, wird anschliessend die `id` und der `name` der Task angezeigt. Für jede Task werden zudem zwei Knöpfe angezeigt, über die man sie jeweils abschliessen oder entfernen kann.
 Für den Fall, dass `tasks$` keinen Inhalt hat, definieren wir `@empty` den Text "Keine Tasks vorhanden" als "Platzhalter", damit nicht einfach nichts angezeigt wird.
