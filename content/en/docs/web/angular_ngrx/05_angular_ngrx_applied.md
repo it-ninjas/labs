@@ -894,7 +894,7 @@ Es sollen, ähnlich wie bei der zweiten Aufgabe, 2 Seiten erstellt werden:
   können. Zudem sollen wie bei Aufgabe 2 Selektoren für das Auslesen der Tasks verwendet werden.
 - Eine, auf der neue Tasks erstellt werden können. Hierbei soll der Name mittels eines Reactive
   Forms eingetragen werden können und der Wert `completed` immer mit `false` instanziert werden. Um
-  sicherzugehen, dass die IDs jeweils einzigartig send, nutzen wir für die Definition dieser
+  sicherzugehen, dass die IDs jeweils einzigartig sind, nutzen wir für die Definition dieser
   `new Date().getTime()` (aktuelle Uhrzeit).
 
 Gehen wir also nun wie gewohnt die einzelnen Schritte durch:
