@@ -2,7 +2,7 @@
 title: "Exam zu Angular"
 type: docs
 linkTitle: "Angular Exam - Notenverwaltung"
-weight: 2
+weight: 3
 date: 2023-05-24
 description: >
   Ein Angular Exam zum Erstellen eines Frontends zu einem bestehenden Backend.
