@@ -282,7 +282,7 @@ und beim Abschliessen einer Bestellung
 einfach die Action für das leeren des Warenkorbs nutzen, der Vollständigkeit halber wird in diesem
 Beispiel aber mit einer separaten Action für den Abschluss einer Bestellung gearbeitet.
 Die 4 Actions sähen umgesetzt aus wie folgt (in diesem Fall heisst die Datei
-`shopping-cart.actions.ts`:
+`shopping-cart.actions.ts`):
 
 ```typescript
 import { createAction, props } from "@ngrx/store";
