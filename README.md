@@ -77,6 +77,8 @@ podman run --rm --rmi --interactive --publish 8080:8080 localhost/puzzle-bbt/tra
 
 ## How to develop locally
 
+### Using Docker
+
 To develop locally we don't want to rebuild the entire container image every time something changed, and it is also important to use the same hugo versions like in production.
 We simply mount the working directory into a running container, where hugo is started in the server mode.
 
@@ -96,6 +98,23 @@ docker run \
   klakegg/hugo:${HUGO_VERSION} \
   server -p 8080 --bind 0.0.0.0
 ```
+
+### Using Hugo locally installed
+
+If you want to run Hugo locally instead of using Docker, please follow these steps:
+
+1. Install Hugo, e.g. using [choco](https://chocolatey.org/install):
+   ```bash
+   choco install hugo-extended
+   ```
+2. Open a Terminal and change directory into the */labs* folder.
+3. Start Hugo:
+   ```bash
+   hugo serve
+   ```
+4. Hugo is available on port 1313 (default). You can access IT-Ninjas: [http://localhost:1313/docs/](http://localhost:1313/docs/). All changes in .md-Files are applied on the fly. 
+
+Please ensure to use the same Hugo version as it is used in GitHub Pages (see https://github.com/it-ninjas/labs/blob/master/.github/workflows/build-deploy.yml). 
 
 ### Linting of Markdown content
 
