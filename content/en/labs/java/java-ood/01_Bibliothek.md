@@ -2,7 +2,7 @@
 title: "Bibliothek"
 linkTitle: "Bibliothek"
 type: docs
-weight: 2
+weight: 1
 description: >
   Aufgabe zu Modul #J3 - [OOD](../../../../docs/java/java-ood) - Bibliothek
 ---
