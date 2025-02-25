@@ -1127,7 +1127,7 @@ class Kiwi {
 
     private Fliegen flugVerhalten;
 
-    public Vogel(Fliegen flugVerhalten) {
+    public Kiwi(Fliegen flugVerhalten) {
         this.flugVerhalten = flugVerhalten;
     }
 
