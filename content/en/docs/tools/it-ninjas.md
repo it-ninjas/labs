@@ -25,7 +25,7 @@ Die Plattform wird auf [GitHub](https://github.com/) gehostet, ähnlich wie dein
 - Alle Kommentare werden auf der [GitHub-Discussions-Seite von IT-Ninjas](https://github.com/it-ninjas/labs/discussions) gespeichert.
 
 Wenn du oben rechts auf der Seite nachsiehst, solltest du einen Hyperlink zu der Kommentarfunktion finden.
-Klickst du darauf, wirst du auf das Ende der Seite referenziert. Dort findest du die Kommentarfunktion
+Klickst du darauf, scrollst du ans Ende der Seite. Dort findest du die Kommentarfunktion.
 Falls diese für dich nicht sichtbar oder gesperrt ist, musst du dich zuerst mit GitHub anmelden.
 
 ---
