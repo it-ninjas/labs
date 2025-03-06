@@ -11,7 +11,7 @@ description: >
 - Ich kann ohne Hilfsmittel die Bestandteile einer Klasse vollständig auflisten.
 - Ich kann den Unterschied zwischen einer Klasse und einem Objekt mit konkreten Beispielen
   demonstrieren.
-- Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte
+- Ich implementiere Klassen anhand vorgegebenen Anforderungen und instanziiere (erzeuge) Objekte 
   dazu.
 
 ---
@@ -34,7 +34,8 @@ Mögliche Verhaltensweisen eines Autos sind normalerweise
 
 ## Problemstellung
 
-Stell dir vor, du möchtest ein Auto in Java programmieren. Dazu könnten wir für jedes Auto einfach drei separate Variablen verwenden:
+Stell dir vor, du möchtest ein Auto in Java programmieren. Dazu könnten wir für jedes Auto einfach
+drei separate Variablen verwenden:
 
 ```java
 public class AutoProblemOhneOOP {
@@ -52,8 +53,10 @@ public class AutoProblemOhneOOP {
 }
 ```
 
-Das funktioniert für ein oder zwei Autos, aber was passiert, wenn wir viele Autos haben? Was passiert, wenn wir viele Autos haben? Es wird schwierig, jedes Auto mit seinen individuellen Merkmalen zu verwalten, und der Code wird unübersichtlich. Wir müssten
-mehrere Variablen für jeden Zustand eines Autos pflegen. Eine Lösung wäre die Verwendung von Arrays:
+Das funktioniert für ein oder zwei Autos, aber was passiert, wenn wir viele Autos haben? Es wird
+schwierig, jedes Auto mit seinen individuellen Merkmalen zu verwalten, und der Code wird
+unübersichtlich. Wir müssten mehrere Variablen für jeden Zustand eines Autos pflegen. Eine Lösung
+wäre die Verwendung von Arrays:
 
 ```java
 public class AutoProblemMitArrays {
@@ -111,14 +114,17 @@ public class AutoBeispiel {
 Vorteile dieser Lösung:
 
 - Die Eigenschaften eines Autos sind in einer einzigen Einheit (Klasse) zusammengefasst.
-- Es ist einfach, neue Autos zu erstellen und zu verwalten, da wir nicht mehr mehrere Arrays benötigen. Wir können einfach einen Array von unserem Typ Auto erstellen: `Auto[] autos`.
+- Es ist einfach, neue Autos zu erstellen und zu verwalten, da wir nicht mehr mehrere Arrays 
+  benötigen. Wir können einfach einen Array von unserem Typ Auto erstellen: `Auto[] autos`.
 - Der Code wird klarer und wartbarer.
 
-Klassen können noch viel mehr als nur Behälter für mehrere Variablen sein. Das wirst du in den folgenden Kapiteln lernen.
+Klassen können noch viel mehr als nur Behälter für mehrere Variablen sein. Das wirst du in den
+folgenden Kapiteln lernen.
 
 ### Definitionen
 
-Um die nachfolgenden Kapitel besser zu verstehen, ist es hilfreich zuerst einige Basisdefinitionen zu etablieren.
+Um die nachfolgenden Kapitel besser zu verstehen, ist es hilfreich zuerst einige Basisdefinitionen
+zu etablieren.
 
 #### Objektorientierte Programmierung
 
@@ -130,9 +136,10 @@ dieser Klasse erstellt werden können.
 
 #### Klasse
 
-Eine Klasse ist eine Vorlage, die die gemeinsamen Eigenschaften und das Verhalten von Objekten desselben Typs beschreibt Die Klasse dient als Bauplan für die Abbildung
-von realen Objekten in Softwareobjekte und beschreibt Attribute (Eigenschaften) und Methoden (
-Verhaltensweisen) der Objekte.
+Eine Klasse ist eine Vorlage, die die gemeinsamen Eigenschaften und das Verhalten von Objekten
+desselben Typs beschreibt Die Klasse dient als Bauplan für die Abbildung von realen Objekten in
+Softwareobjekte und beschreibt Attribute (Eigenschaften) und Methoden (Verhaltensweisen) der
+Objekte.
 
 #### Objekt
 
@@ -262,7 +269,8 @@ Objekte aus.
 public class PatientDemo {
 
     public static void main(String[] args) {
-        // Wir erstellen einen neuen Patienten, alle Variablen werden mit ihren Standardwerten initialisiert
+        // Wir erstellen einen neuen Patienten, alle Variablen werden mit ihren Standardwerten 
+        // initialisiert
         Patient john = new Patient();
         // Wir greifen über den Punkt-Operator auf die Variablen zu und speichern Werte darin
         john.name = "John";
