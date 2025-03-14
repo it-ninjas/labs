@@ -18,7 +18,7 @@ Das Ziel ist es, Daten effizient, konsistent und strukturiert zu speichern, zu v
 
 Was bedeutet das genau? Wir wollen zum Beispiel **doppelte (redundante) Daten** in der Datenbank vermeiden.
 Das sparrt einerseits **Speicherplatz**, stellt aber andererseits auch sicher, das die **Integrität** gewährleistet ist.
-Was passiert, wenn ich den gleichen User zweimal in einer Datenbank habe, und dann nur einen Eintrag davon bearbeitet.
+Was passiert, wenn ich den gleichen User zweimal in einer Datenbank habe, und dann nur einen Eintrag davon bearbeite?
 Dadurch kann es zu Anomalien (Fehler, unerwartetes Verhalten) kommen, die man im Design verhindern kann.
 
 Ein Datenbankschema kann in unterschiedlichem Mass gegen Anomalien wie Inkonsistenzen oder Redundanzen geschützt werden.
@@ -308,7 +308,7 @@ Höhere Normalformen wie die **Boyce-Codd-Normalform (BCNF)** oder die **vierte 
 ## Datenbankdesign
 
 In diesem Abschnitt betrachten wir die beiden Begriffe **ERM (Entity-Relationship-Modell)** und **ERD (Entity-Relationship-Diagramm)**.
-Es ist wichtig, den Unterschied zwischen beiden zu verstehen.
+Es ist wichtig, den Unterschied zwischen den beiden zu verstehen.
 
 ### Entity-Relationship-Modell (ERM)
 
