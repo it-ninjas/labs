@@ -14,3 +14,7 @@ description: >
 ## Continuous Deployment
 
 Continuous Deployment, was verwirrenderweise ebenfalls gleich wie Continuous Delivery abgekürzt wird, treibt das Prinzip auf die Spitze. Jede Änderung wird sofort produktiv gesetzt, vorausgesetzt es gibt keinen Fehler in den automatischen Tests.
+
+Das hat verschiedene Vorteile. Man kriegt sehr schnell Feedback von Kunden und es gibt keinen stressigen "Release-Day" mehr. Wenn man jedoch eine schlechte CI-Pipeline und/oder Code-Reviews hat, führt das Verfahren zu mehr Problemen als Nutzen.
+
+![](../images/continuous-deployment.png)
