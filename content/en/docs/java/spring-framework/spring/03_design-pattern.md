@@ -38,18 +38,19 @@ Ein Beispiel sieht so aus:
 
 @Component
 public class Store {
-    @Bean
-    private final Item item;
+    
+    private final ProductCatalog catalog;
+    private final PricingService pricing;
 
-    public Store(Item item1) {
-        this.item = item1;
+    public Store(ProductCatalog catalog, PricingService pricing) {
+        this.catalog = catalog;
+        this.pricing = pricing;
     }
 }
 ```
 
-In diesem Beispiel wird die Bean `item1` injektiert.
-
-Die `@Bean` Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu [hier](#beans).
+In diesem Beispiel werden die Beans `catalog` und `pricing` injektiert. Spring sucht sich die passenden Beans selbst heraus, wenn diese
+zuvor als solche gekennzeichnet wurden, siehe [hier](#beans).
 
 ##### Felder Injection
 
@@ -64,7 +65,7 @@ public class Store {
 ```
 
 Ein Nachteil der Field-Injection ist, dass es im Gegensatz zur Konstruktor-Injection nicht möglich ist,
-alle Instanzvariablen mit `final` zu deklarieren. Mehr Informationen zu der `@Autowired`-Annotation findest du auf dieser [Seite](05_annotationen).
+alle Instanzvariablen mit `final` zu deklarieren. Mehr Informationen zu der `@Autowired`-Annotation findest du auf dieser [Seite](05_annotationen.md).
 
 ### Singleton
 
@@ -111,7 +112,7 @@ Beans können auf verschiedene Weisen erstellt werden:
 #### Verwendung von Beans
 
 Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer
-Anwendung zu verwalten. Dies geschieht via Dependency Injection:
+Anwendung zu verwalten. Dies geschieht via Dependency Injection (hier wieder Konstruktor Injection):
 
 ```java
 @Component
@@ -130,13 +131,17 @@ Hier wird `ExampleRepository` als Abhängigkeit von `ExampleService` injiziert. 
 
 Beans sind flexibel, wiederverwendbar und ermöglichen die Modularität von Anwendungen.
 
-In der folgenden offiziellen Dokumentation zu der `@Bean`-Annotation findest du weitere Beispiele, wie Beans verwendet werden:
+In der folgenden offiziellen Dokumentation zu der `@Bean`-Annotation findest du weitere Beispiele, wie Beans erzeugt werden:
 
 - [Using the Bean Annotation](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation)
 
+Und wie sie verwendet werden können:
+
+- [Dependency Injection](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html)
+
 ##### Scope
 
-Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird. Zudem sagt das Scope auch, wielange ein Bean "lebt".
+Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird. Zudem sagt der Scope auch, wie lange ein Bean "lebt".
 
 Hier eine Liste der Scopes:
 
