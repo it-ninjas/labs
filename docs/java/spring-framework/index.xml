@@ -267,22 +267,26 @@ Ein Beispiel sieht so aus:&lt;/p>
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Component&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Store&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Bean&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> Item item;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Store&lt;/span>(Item item1) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">item&lt;/span> &lt;span style="color:#f92672">=&lt;/span> item1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> ProductCatalog catalog;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> PricingService pricing;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">Store&lt;/span>(ProductCatalog catalog, PricingService pricing) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">catalog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> catalog;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">pricing&lt;/span> &lt;span style="color:#f92672">=&lt;/span> pricing;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>In diesem Beispiel wird die Bean &lt;code>item1&lt;/code> injektiert.&lt;/p>
-&lt;p>Die &lt;code>@Bean&lt;/code> Annotation besagt, dass es sich hier um ein Bean handelt. Mehr dazu &lt;a href="/docs/java/spring-framework/spring/03_design-pattern/#beans">hier&lt;/a>.&lt;/p>
+&lt;/div>&lt;p>In diesem Beispiel werden die Beans &lt;code>catalog&lt;/code> und &lt;code>pricing&lt;/code> injektiert. Spring sucht sich die passenden Beans selbst heraus, wenn diese
+zuvor als solche gekennzeichnet wurden, siehe &lt;a href="/docs/java/spring-framework/spring/03_design-pattern/#beans">hier&lt;/a>.&lt;/p>
 &lt;h5 id="felder-injection">Felder Injection&lt;/h5>
 &lt;p>Bei der Felder Injection werden die Abhängigkeiten direkt in die Felder Injected.
 Hier ein Beispiel:&lt;/p>
@@ -359,7 +363,7 @@ da Spring viele dieser Aufgaben für dich übernimmt.&lt;/p>
 &lt;/ul>
 &lt;h4 id="verwendung-von-beans">Verwendung von Beans&lt;/h4>
 &lt;p>Beans werden normalerweise über Injektionen verwendet, um Abhängigkeiten zwischen verschiedenen Komponenten einer
-Anwendung zu verwalten. Dies geschieht via Dependency Injection:&lt;/p>
+Anwendung zu verwalten. Dies geschieht via Dependency Injection (hier wieder Konstruktor Injection):&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -388,12 +392,16 @@ Anwendung zu verwalten. Dies geschieht via Dependency Injection:&lt;/p>
 &lt;/div>
 &lt;/div>&lt;p>Hier wird &lt;code>ExampleRepository&lt;/code> als Abhängigkeit von &lt;code>ExampleService&lt;/code> injiziert. Die &lt;code>@Component&lt;/code>-Annotation wird für dieses Beispiel verwendet, damit die Abhängigkeiten via Dependency Injection eingefügt werden.&lt;/p>
 &lt;p>Beans sind flexibel, wiederverwendbar und ermöglichen die Modularität von Anwendungen.&lt;/p>
-&lt;p>In der folgenden offiziellen Dokumentation zu der &lt;code>@Bean&lt;/code>-Annotation findest du weitere Beispiele, wie Beans verwendet werden:&lt;/p>
+&lt;p>In der folgenden offiziellen Dokumentation zu der &lt;code>@Bean&lt;/code>-Annotation findest du weitere Beispiele, wie Beans erzeugt werden:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java-bean-annotation">Using the Bean Annotation&lt;/a>&lt;/li>
 &lt;/ul>
+&lt;p>Und wie sie verwendet werden können:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html">Dependency Injection&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;h5 id="scope">Scope&lt;/h5>
-&lt;p>Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird. Zudem sagt das Scope auch, wielange ein Bean &amp;ldquo;lebt&amp;rdquo;.&lt;/p>
+&lt;p>Der Scope eines Beans besagt, wann und wie ein Bean erstellt wird. Zudem sagt der Scope auch, wie lange ein Bean &amp;ldquo;lebt&amp;rdquo;.&lt;/p>
 &lt;p>Hier eine Liste der Scopes:&lt;/p>
 &lt;table>
 &lt;thead>
