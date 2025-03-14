@@ -1,8 +1,8 @@
 ---
-title: "CI-Pipelines"
-linkTitle: "CI-Pipelines"
+title: "Continuous Integration"
+linkTitle: "Continuous Integration"
 type: docs
-weight: 5
+weight: 1
 description: >
   Fortlaufendes Testen mit CI-Pipelines
 ---
@@ -12,18 +12,16 @@ description: >
 - Ich kann den Begriff Continuous Integration erklären
 - Ich kann einen typischen Aufbau eine CI-Pipeline erklären
 - Ich kenne typische Aufgaben einer CI-Pipeline
-- Ich kann den Begriff Continous Deployment erklären
-- Ich kenne typische Aufgaben einer CD-Pipelines
 
-## Continous Integration
+## Continuous Integration
 
-Continous Integration, oder kurz CI, heisst auf Deutsch so viel wie "Fortlaufende Integration". Es beschreibt die Praxis Codeänderungen oft und regelmässig in die Code Basis zu integrieren. Dazu gehört auch das Testen dieser Änderungen sowie andere Checks, wie etwa Security Scans. Da dies mühsame Arbeit ist, passiert das meistens vollautomatisiert in einer sogenannten Pipeline. Diese heissen so da die der Code wie durch ein (oder mehre) Rohre muss, welche diese Checks ausführen und das Ventil zudrehen können, sollte etwas nicht gut sein.
+Continuous Integration, oder kurz CI, heisst auf Deutsch so viel wie "Fortlaufende Integration". Es beschreibt die Praxis Codeänderungen oft und regelmässig in die Code Basis zu integrieren. Dazu gehört auch das Testen dieser Änderungen sowie andere Checks, wie etwa Security Scans. Da dies mühsame Arbeit ist, passiert das meistens vollautomatisiert in einer sogenannten Pipeline. Diese heissen so da die der Code wie durch ein (oder mehre) Rohre muss, welche diese Checks ausführen und das Ventil zudrehen können, sollte etwas nicht gut sein.
 
 ![](../images/pipeline.gif)
 
 Das Ausführen so einer Pipeline passieren entweder nach einem bestimmten Ereignis, z.B. einem Push auf einen Git-Branch, oder periodisch, jede Nacht um 3:00. Damit das Möglich ist, werden sie nicht auf dem Computer des Entwicklers sondern einem separaten CI-Server ausgeführt. So kann sichergestellt werden das nicht vergessen geht und die Ergebnise transparent sind.
 
-Wichtig ist dass das fortlaufende Integrieren von Änderungen nicht heisst, das nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe [Continous Deployment](#continous-deployment-continous-delivery)) muss aber nicht. Viel mehr geht es darum das die Änderungen jeweils klein und gut getestet sind.
+Wichtig ist dass das fortlaufende Integrieren von Änderungen nicht heisst, das nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe [Continuous Deployment](#continuous-deployment-continuous-delivery)) muss aber nicht. Viel mehr geht es darum das die Änderungen jeweils klein und gut getestet sind.
 
 ### Beispiel einer CI-Pipeline
 
@@ -194,10 +192,3 @@ Dieser Workflow macht, in dieser Reihenfolge:
 
 Sollte es zu einem Fehler in den Tests kommen, wird der Workflow fehlschlagen und den Entwickler informieren.
 ![](../images/gh-actions-failure.png)
-
-## Continous Deployment, Continous Delivery
-
-Continous Delivery, kurz CD, erweitert das automatische Testing um einen automatiserten Freigabeprozess. Eine neue Version der Anwendung soll also per Knopfdruck (und nach dem erfolgreichen Durchlaufen der CI-Pipeline) jederzeit deployed werden können.
-Continous Deployment, was verwirrenderweise ebenfalls CD abgekürzt wird, treibt das Prinzip auf die Spitze. Jede Änderung wird sofort produktiv gesetzt, vorausgesetzt es gibt keinen Fehler in den automatischen Tests.
-
-Da es hier aber nur um das testen gehen soll, beschränken wir uns auf CI. Wer Lust auf mehr hat, findet [hier](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment) einen guten Artikel welcher die Unterschiede erklärt.
