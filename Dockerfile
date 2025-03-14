@@ -1,4 +1,4 @@
-FROM hugomods/hugo:0.135.0 AS builder
+FROM hugomods/hugo:0.145.0 AS builder
 
 ARG HUGO_ENV=default
 
