@@ -515,7 +515,7 @@ Da der Unit-Test nun alle Möglichkeiten der Methode abdeckt, kann ein einfaches
 
 ```java
 public boolean isInside(int x, int y) {
-	return x > left && x &lt; left + width && y &gt; top && y < top + height;
+	return x > left && x < left + width && y > top && y < top + height;
 }
 ```
 
