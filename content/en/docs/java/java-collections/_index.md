@@ -9,7 +9,7 @@ description: >
 #### Ziele
 
 - Ich kann erklären, was Collections sind.
-- Ich kenne grob den Aufbau des Collection-Frameworks.
+- Ich kenne grob den Aufbau des Collections-Frameworks.
 - Ich kenne die wichtigsten Interfaces und ihre Merkmale: `List`, `Set`, `Queue`, `Map`.
 - Ich verstehe den Einsatz der Hash-Funktion zur Performance-Verbesserung.
 - Ich kenne die wichtigsten Implementierungen und ihre Einsatzmöglichkeiten: `ArrayList`, `HashSet`, `HashMap`.
@@ -29,7 +29,7 @@ description: >
 ## Einleitung
 
 Beim Programmieren müssen wir oft Daten speichern bzw. Informationen verwalten, um gewisse Probleme zu lösen.
-In diesem Modul werden wir das Java Collection Framework anschauen, weil dieses Framework uns die Werkzeuge zum
+In diesem Modul werden wir das Java Collections Framework anschauen, weil dieses Framework uns die Werkzeuge zum
 effizienten Verwalten von Informationen liefert.
 
 Eine **Collection** ist ein Objekt, das eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit
@@ -61,7 +61,7 @@ farben.remove("blau");
 
 Wir werden die ArrayList Klasse später noch genauer anschauen.
 
-Das **Java Collection Framework** ist eine Menge von Interfaces und Klassen, die allgemein wiederverwendbare
+Das **Java Collections Framework** ist eine Menge von Interfaces und Klassen, die allgemein wiederverwendbare
 Collection-Datenstrukturen liefern. Es bietet uns also sowohl Interfaces, die Collection-Typen definieren, als auch
 Klassen, die diese implementieren an. Obwohl es als Framework bezeichnet wird, funktioniert es im Grunde wie eine Library.
 
@@ -69,7 +69,7 @@ Das Java Collections Frameworks stellt für uns **Hochleistungsimplementierungen
 bereit, um Sammlungen von Objekten beliebiger Datentypen darzustellen. Da wir diese Funktionalität nicht immer selbst
 programmieren müssen, reduziert sich für uns der Programmieraufwand markant.
 
-Das Java Collection Framework befindet sich im Paket `java.util`.
+Das Java Collections Framework befindet sich im Paket `java.util`.
 
 Wir haben die **ArrayList** Klasse (`java.util.ArrayList`) als Beispiel für eine Collection gesehen. Die ArrayList Klasse
 repräsentiert eine **Collection vom Typ List** (implementiert also das Interface `java.util.List`) und wird mithilfe von
@@ -81,7 +81,7 @@ zugrunde liegenden Arrays implementiert, deshalb auch der Name ArrayList. Es gib
 
 ---
 
-Das **Java Collection Framework** ist eine einheitliche Architektur zur Darstellung und Bearbeitung von Collections, welche
+Das **Java Collections Framework** ist eine einheitliche Architektur zur Darstellung und Bearbeitung von Collections, welche
 folgendes enthält:
 
 - **Interfaces**: Dies sind abstrakte Datentypen, die verschiedene Collections darstellen.
@@ -126,7 +126,7 @@ Collections bieten uns im Allgemeinen die Möglichkeit neue Elemente hinzuzufüg
 
 ### List
 
-Eine [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) ist eine geordnete Sequenz, welche duplizierte Elemente erlaubt.
+Eine [List](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html) ist eine geordnete Sequenz, welche duplizierte Elemente erlaubt.
 Zusätzlich zu den geerbten Methoden der `Collection` bietet die `List` folgende an:
 
 **Elemente auf Basis ihrer Position zugreifen:**  
@@ -143,12 +143,12 @@ Zusätzlich zu den geerbten Methoden der `Collection` bietet die `List` folgende
 
 > Folgend sind zwei gängige `List` Implementierungen:
 >
-> - **[ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)** welche in Normalfall die leistungsfähigere Implementation ist. Sie basiert auf einem primitiven Array.
-> - **[LinkedList](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html)** welche in bestimmten Situation die effizientere Lösung sein kann.
+> - **[ArrayList](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html)** welche in Normalfall die leistungsfähigere Implementation ist. Sie basiert auf einem primitiven Array.
+> - **[LinkedList](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html)** welche in bestimmten Situation die effizientere Lösung sein kann.
 
 ### Set
 
-Ein [Set](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html) ist eine Collection, in welche man ein Element nur einmal hinzufügen kann.
+Ein [Set](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html) ist eine Collection, in welche man ein Element nur einmal hinzufügen kann.
 Das Set enthält die Funktionen der Collection, stellt aber sicher, dass Elemente nicht doppelt vorkommen können.
 Die `equals` und `hashCode` Funktionen spielen dabei eine wichtige Rolle.
 Sie definieren, wann zwei Elemente als gleich gelten.
@@ -164,24 +164,24 @@ Sie definieren, wann zwei Elemente als gleich gelten.
 
 > Folgend sind 3 gängige `Set` Implementationen:
 >
-> **[HashSet](https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html) - Schnell, aber unsortiert**
+> **[HashSet](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html) - Schnell, aber unsortiert**
 >
 > - Speichert Elemente in keiner bestimmten Reihenfolge.
 > - Sehr schnell beim Einfügen und Suchen.
 >
-> **[TreeSet](https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html) – Sortiert, aber langsamer**
+> **[TreeSet](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html) – Sortiert, aber langsamer**
 >
 > - Speichert Elemente aufsteigend sortiert.
 > - Einfügen und Suchen dauert länger.
 >
-> **[LinkedHashSet](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashSet.html) – Reihenfolge bleibt erhalten**
+> **[LinkedHashSet](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashSet.html) – Reihenfolge bleibt erhalten**
 >
 > - Speichert Elemente in der Reihenfolge, in der sie hinzugefügt wurden.
 > - Schneller als TreeSet, aber etwas langsamer als HashSet.
 
 ### Map
 
-Eine [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html) ist ein Objekt, dass **Schüssel (keys) auf Werte (values) zuordnet**.
+Eine [Map](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html) ist ein Objekt, dass **Schüssel (keys) auf Werte (values) zuordnet**.
 Eine Map kann nicht zwei gleiche Schlüssel enthalten.
 Jeder Schlüssel zeigt genau auf einen Wert.
 Das Interface Map definiert Grundfunktionen für das Einfügen, Lesen, Löschen, Abfragen von Schlüsseln usw.
@@ -199,24 +199,24 @@ Zusätzlich zu den vererbten Methoden der `Collection` bietet die `List` folgend
 
 > Folgend sind 3 gängige Implementationen von `Map`:
 >
-> **[HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) – Schnell, aber unsortiert**
+> **[HashMap](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html) – Schnell, aber unsortiert**
 >
 > - Speichert Schlüssel-Wert-Paare in keiner bestimmten Reihenfolge.
 > - Sehr schnell beim Einfügen und Suchen.
 >
-> **[TreeMap](https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html) – Sortiert, aber langsamer**
+> **[TreeMap](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html) – Sortiert, aber langsamer**
 >
 > - Speichert Schlüssel **nach ihrer natürlichen Ordnung** oder mit einem Comparator.
 > - Einfügen und Suchen dauert länger.
 >
-> **[LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html) – Reihenfolge bleibt erhalten**
+> **[LinkedHashMap](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashMap.html) – Reihenfolge bleibt erhalten**
 >
 > - Speichert Schlüssel in der Reihenfolge, in der sie hinzugefügt wurden.
 > - Schneller als `TreeMap`, aber etwas langsamer als `HashMap`.
 
 ## Performanz
 
-Das **Collection-Framework** nutzt intensiv die **Hash-Funktion**.
+Das **Collections-Framework** nutzt intensiv die **Hash-Funktion**.
 Klassen wie `HashSet` oder `HashMap` verwenden die Hash-Funktion zur Steigerung der Performanz.
 
 ### Hash-Funktion
@@ -252,7 +252,7 @@ Die Klasse `HashSet` verfolgt daher eine optimierte Strategie:
 3. Da der Java-Hash-Code nicht eindeutig ist, erfolgt bei Übereinstimmung zusätzlich ein Vergleich mit der Methode `equals(Object o)`,
    um sicherzustellen, dass es sich tatsächlich um dasselbe Objekt handelt.
 
-> Mit dem Hash Code Strategie kann das `HashSet` die allermeisten Vergleiche auf ein Integer-Vergleich reduzieren.
+> Mit der Hash-Code Strategie kann das `HashSet` die allermeisten Vergleiche auf einen Integer-Vergleich reduzieren.
 
 #### Anforderung an die Hash Berechnung
 
