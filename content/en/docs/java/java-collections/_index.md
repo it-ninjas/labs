@@ -10,7 +10,7 @@ description: >
 
 - Ich kann erklären, was Collections sind.
 - Ich kenne grob den Aufbau des Collection-Frameworks.
-- Ich kenne die wichtigsten Interfaces und ihreMerkmale: `List`, `Set`, `Queue`, `Map`.
+- Ich kenne die wichtigsten Interfaces und ihre Merkmale: `List`, `Set`, `Queue`, `Map`.
 - Ich verstehe den Einsatz der Hash-Funktion zur Performance-Verbesserung.
 - Ich kenne die wichtigsten Implementierungen und ihre Einsatzmöglichkeiten: `ArrayList`, `HashSet`, `HashMap`.
 - Ich verstehe die Funktionsweise und Anwendung der Klasse `ArrayList`.
