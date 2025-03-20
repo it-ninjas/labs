@@ -17,7 +17,7 @@ Die Normalisierung in SQL ist ein Prozess, bei dem Datenbanktabellen in bestimmt
 Das Ziel ist es, Daten effizient, konsistent und strukturiert zu speichern, zu verwalten und abzufragen.
 
 Was bedeutet das genau? Wir wollen zum Beispiel **doppelte (redundante) Daten** in der Datenbank vermeiden.
-Das sparrt einerseits **Speicherplatz**, stellt aber andererseits auch sicher, das die **Integrität** gewährleistet ist.
+Das spart einerseits **Speicherplatz**, stellt aber andererseits auch sicher, das die **Integrität** gewährleistet ist.
 Was passiert, wenn ich den gleichen User zweimal in einer Datenbank habe, und dann nur einen Eintrag davon bearbeite?
 Dadurch kann es zu Anomalien (Fehler, unerwartetes Verhalten) kommen, die man im Design verhindern kann.
 
