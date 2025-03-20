@@ -149,7 +149,7 @@ Zusätzlich zu den geerbten Methoden der `Collection` bietet die `List` folgende
 ### Set
 
 Ein [Set](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html) ist eine Collection, in welche man ein Element nur einmal hinzufügen kann.
-Das Set enthält die Funktionen der Collection, stellt aber sicher, dass doppelte Elemente verhindert werden.
+Das Set enthält die Funktionen der Collection, stellt aber sicher, dass Elemente nicht doppelt vorkommen können.
 Die `equals` und `hashCode` Funktionen spielen dabei eine wichtige Rolle.
 Sie definieren, wann zwei Elemente als gleich gelten.
 
