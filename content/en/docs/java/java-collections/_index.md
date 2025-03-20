@@ -71,7 +71,7 @@ programmieren müssen, reduziert sich für uns der Programmieraufwand markant.
 
 Das Java Collection Framework befindet sich im Paket `java.util`.
 
-Wir haben die **ArrayList** Klasse (java.util.ArrayList) als Beispiel für eine Collection gesehen. Die ArrayList Klasse
+Wir haben die **ArrayList** Klasse (`java.util.ArrayList`) als Beispiel für eine Collection gesehen. Die ArrayList Klasse
 repräsentiert eine **Collection vom Typ List** (implementiert also das Interface `java.util.List`) und wird mithilfe von
 zugrunde liegenden Arrays implementiert, deshalb auch der Name ArrayList. Es gibt aber auch andere Klassen, die Collections vom Typ `List` darstellen. Wir werden später einige davon noch kennenlernen.
 
