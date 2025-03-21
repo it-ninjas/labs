@@ -38,7 +38,7 @@ Ein Beispiel sieht so aus:
 
 @Component
 public class Store {
-    
+
     private final ProductCatalog catalog;
     private final PricingService pricing;
 
