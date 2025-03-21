@@ -67,7 +67,7 @@ Um sicherzustellen, dass SQL in verschiedenen Datenbanksystemen wie **MariaDB, P
 
 Allerdings implementieren viele Datenbanksysteme zusätzliche SQL-Erweiterungen, die nicht im ANSI-Standard enthalten sind. Deshalb kann sich die SQL-Syntax je nach System leicht unterscheiden. Im IT-Ninjas werden wir hauptsächlich mit **MariaDB** arbeiten.
 
-Mehr Informationen zur SQL-Syntax findest du im Kapitel **SQL Syntax**.
+Mehr Informationen zur SQL-Syntax findest du im Kapitel (SQL Syntax)[../02_sql-syntax/].
 
 #### SQL Datentypen
 
