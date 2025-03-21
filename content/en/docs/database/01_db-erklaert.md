@@ -67,7 +67,7 @@ Um sicherzustellen, dass SQL in verschiedenen Datenbanksystemen wie **MariaDB, P
 
 Allerdings implementieren viele Datenbanksysteme zusätzliche SQL-Erweiterungen, die nicht im ANSI-Standard enthalten sind. Deshalb kann sich die SQL-Syntax je nach System leicht unterscheiden. Im IT-Ninjas werden wir hauptsächlich mit **MariaDB** arbeiten.
 
-Mehr Informationen zur SQL-Syntax findest du im Kapitel (SQL Syntax)[../02_sql-syntax/].
+Mehr Informationen zur SQL-Syntax findest du im Kapitel [SQL Syntax](../02_sql-syntax/).
 
 #### SQL Datentypen
 
@@ -97,7 +97,7 @@ abzurufen. Dadurch können natürlich auch keine **Structured** Query Language A
 
 Wie erklärt gibt es viele verschiedene Ansätze bei NoSQL, deshalb gibt es auch keine gemeinsame Syntax wie es sie bei
 SQL gibt. Bei den verschiedenen Anbietern kann sich also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen
-Speicherarten ist keine NO-SQL Datenbank wie die andere.
+Speicherarten ist keine NoSQL Datenbank wie die andere.
 
 ![](../images/NoSQLDatabases.jpg)
 
