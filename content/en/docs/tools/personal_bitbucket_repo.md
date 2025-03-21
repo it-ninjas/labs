@@ -35,7 +35,7 @@ Stell dir folgendes Szenario vor:
 Du arbeitest mit deinem Computer seit mehreren Stunden an deine Hausaufgaben, welche morgen fällig werden.
 Du speicherst deine Anpassungen immer wieder, damit diese nicht verloren gehen.
 Plötzlich stürzt dein Computer ab und startet nicht wieder.
-Zum Glück hast du noch ein altes Laptop, welcher funktional ist und womit du morgen in die Schule gehen kannst.
+Zum Glück hast du noch einen alten Laptop, welcher noch funktioniert und mit dem du morgen in die Schule gehen kannst.
 Nur, was ist mit deinen Hausaufgaben? Die ganze Arbeit ist verloren und du musst wieder von Anfang an beginnen. Grrr....
 
 Wenn du deine Arbeit nicht nur auf deinem Computer, sondern auch irgendwo anders gespeichert hättest (z.B. Dropbox, Google-Drive usw.),
