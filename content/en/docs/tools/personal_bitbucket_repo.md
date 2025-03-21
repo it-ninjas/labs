@@ -8,7 +8,7 @@ description: >
 
 #### Ziele
 
-- Ich erkläre anhand von Beispielen, wozu Git verwendet werden kann.
+- Ich kann anhand von Beispielen erklären, wozu Git verwendet werden kann.
 - Ich richte selbständig ein persönliches Git-Repository gemäss Anleitung korrekt ein.
 - Ich verwalte meine Code-Aufgaben im persönlichen Git-Repository unter Einhaltung der firmeninternen Richtlinien korrekt.
 
