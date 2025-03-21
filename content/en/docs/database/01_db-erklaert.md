@@ -93,7 +93,7 @@ Wenn du noch mehr über die einzelnen Datentypen erfahren möchtest, findest du 
 
 Im Gegensatz zu relationalen Datenbanken speichern NoSQL-Datenbanken Daten in Formaten wie Dokumenten,
 Schlüssel-Wert-Paaren, Spalten oder Graphen. Dies ermöglicht es, unstrukturierte Daten effektiver zu speichern und
-abzurufen. Dadurch können natürlich auch keine **Structured** Query Language abfragen gemacht werden, deshalb NoSQL.
+abzurufen. Dadurch können natürlich auch keine **Structured** Query Language Abfragen gemacht werden, deshalb NoSQL.
 
 Wie erklärt gibt es viele verschiedene Ansätze bei NO-SQL, deshalb gibt es auch keine gemeinsame Syntax wie es sie bei
 SQL gibt. Bei den verschiedenen Anbietern kann also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen
