@@ -130,7 +130,7 @@ Da du jetzt einen Ort hast, an dem du deine Arbeitsdateien hinzufügen und siche
 von deinem lokalen System (also direkt von deinem Computer und nicht nur über Browser) darauf zuzugreifen.  
 Um dies einzurichten, kopierst du das Bitbucket-Repository auf dein System.  
 Bei Git wird dieser Kopiervorgang als **Klonen** bezeichnet.  
-Wenn du ein Repository klonst, erstellst du eine Verbindung zwischen dem Bitbucket-Server (bei Git als Origin benannt) und deinem lokalen System.
+Wenn du ein Repository klonst, erstellst du eine Verbindung zwischen dem Bitbucket-Server (bei Git als "origin" benannt) und deinem lokalen System.
 
 ![Git Clone](../bitbucket/git_clone.png)
 
