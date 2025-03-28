@@ -1,7 +1,7 @@
 ---
-title: "(Zusatz) NgRx"
+title: "NgRx"
 type: docs
-linkTitle: "(Zusatz) NgRx"
+linkTitle: "NgRx"
 weight: 1
 date: 2023-04-20
 description: >
