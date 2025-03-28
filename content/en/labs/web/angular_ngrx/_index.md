@@ -1,6 +1,6 @@
 ---
-title: "Angular NgRx Labs (Optional)"
-linkTitle: "Angular NgRx"
+title: "Angular NgRx Labs (optional)"
+linkTitle: "Angular NgRx (optional)"
 type: docs
 weight: 5
 date: 2021-11-02

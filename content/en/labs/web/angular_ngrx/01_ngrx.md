@@ -1,7 +1,7 @@
 ---
-title: "(Zusatz) NgRx Labs"
+title: "NgRx Labs"
 type: docs
-linkTitle: "(Zusatz) NgRx Labs"
+linkTitle: "NgRx Labs"
 weight: 3
 date: 2023-05-26
 description: >
