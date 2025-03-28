@@ -56,7 +56,7 @@ public class Mover {
         return lastDirection;
     }
 
-    private enum Direction {
+    public enum Direction {
         NORTH,
         EAST,
         SOUTH,
