@@ -1,5 +1,5 @@
 ---
-title: "Maven und Continuous Integration"
+title: "Maven"
 linkTitle: "Maven"
 weight: 5
 description: >
@@ -15,8 +15,6 @@ description: >
 - Ich kenne die wichtigsten Maven Befehle und kann diese auf der Kommandozeile anwenden.
 - Ich kann die Abhängigkeiten meiner Applikationen mit Maven verwalten.
 - Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern.
-- Ich kann den Begriff Continuous Integration erklären.
-- Ich kenne die Komponenten der Deployment-Pipeline und deren Aufgaben.
 - (Optional): Ich habe erste Erfahrungen gesammelt mit dem alternativen Build-Tool Gradle.
 
 ## Maven
