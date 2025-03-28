@@ -7,7 +7,7 @@ description: >
   Aufgabe ein temporäres Team bilden für [Git Vertiefung](../../../../docs/git/vertiefung/preliminaries)
 ---
 
-Dies ist einen Gemeinschaftsaufgabe, die gemeinsam von allen Beteiligten und nur einmal ausgeführt weerden muss.
+Dies ist einen Gemeinschaftsaufgabe, die gemeinsam von allen Beteiligten und nur einmal ausgeführt werden muss.
 
 ### Schritt 1: Teambildung
 
