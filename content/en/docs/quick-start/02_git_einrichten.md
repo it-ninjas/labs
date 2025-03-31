@@ -12,12 +12,10 @@ description: >
 - Ich kenne das von der SBB gehostete Bitbucket.
 - Ich habe ein persönliches GIT-Repository erstellt
 
-
 ## Inhalt
 
 - [Git unter Linux installieren](#git-unter-linux-installieren)
 - [Git unter Windows installieren](#git-unter-windows-installieren)
-
 
 ## Installation
 
@@ -41,9 +39,9 @@ git --version
 1.  Navigiere zum [Git für Windows Installer](https://git-scm.com/download/win) und lade die neuste Version herunter.
 2.  Folge den Installationsanweisungen bis die Installation abgeschlossen ist.
     - Es wird empfohlen während der Installation Git Bash zu installieren
-      ![Git Setup Bash](../git-install/git-setup-bash.png "Git Setup Bash")
+      ![Git Setup Bash](../images/git-setup-bash.png "Git Setup Bash")
     - Es wird empfohlen während der Installation den PATH zu ändern.
-      ![Git Setup PATH](../git-install/git-setup-path.png "Git Setup PATH")
+      ![Git Setup PATH](../images/git-setup-path.png "Git Setup PATH")
 3.  Öffne Git Bash
 4.  Schreibe `git --version` zum Überprüfen, ob Git erfolgreich installiert wurde.
 
@@ -100,7 +98,7 @@ Repository hast, womit du auch ohne Internetverbindung arbeiten kannst.
 1. Klicke auf den folgenden Link, um Bitbucket in deinem Browser zu öffnen: [Bitbucket](https://code.sbb.ch/)
 2. Wenn du noch nicht eingeloggt bist, folge den Anweisungen auf der Login-Seite
 3. Nach dem Login wirst du oben rechts ein, vermutlich, noch leeres Profil-Bild sehen. Klicke darauf und wähle **View Profile** (Profil anzeigen) aus  
-   ![View Profile](../tools/bitbucket/bitbucket_view_profile.png)
+   ![View Profile](../images/bitbucket_view_profile.png)
 4. Auf deiner Profilseite, klickst du nun den **Create repository** (Neues Repository erstellen) Schaltfläche
 5. Gib im geöffneten Formular deinem Repository einen Namen (z.B. "ausbildungsprogramm") und lasse die andere Felder leer. Anschliessend klicke auf **Create Repository** (Repository erstellen).
 
@@ -144,11 +142,10 @@ Als letzter Schritt legst du deinen öffentlichen SSH-Schlüssel wie folgt in Bi
 C:\Users\u123456\.ssh> cat id_rsa.pub
 ```
 
-
 3. Markiere die Ausgabe und kopiere sie zum Clipboard (CTRL+C)
 4. [Klicke hier, um deinen öffentlichen Schlüssel ins Bitbucket hinzuzufügen](https://code.sbb.ch/plugins/servlet/ssh/account/keys)
 5. Klicke die "Add key" Schaltfläche, fülle das geöffnete Formular wie folgt aus und drücke anschliessend die "Save" Schaltfläche:  
-   ![Bitbucket SSH-Schlüssel](../tools/bitbucket/bitbucket_ssh_key.png)
+   ![Bitbucket SSH-Schlüssel](../images/bitbucket_ssh_key.png)
 
 Somit hast du die SSH-Konfiguration abgeschlossen und du kannst dieses Protokoll beim Klonen benutzen.
 
@@ -183,4 +180,3 @@ C:\Users\e123456\local_repos> # fertig...
 #### Repository klonen
 
 Um dein Repository zu klonen und mit der lokalen Instanz arbeiten zu können, installiere zuerst [IntelliJ IDEA](03_intellij_idea.md)!
-
