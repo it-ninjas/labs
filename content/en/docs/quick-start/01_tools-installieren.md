@@ -26,7 +26,6 @@ Die folgenden Programme sollten heruntergeladen und installiert werden, sie werd
 | JDK                          | [https://www.oracle.com/java/technologies/javase-jdk14-downloads.html](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html)   | Java Development Kit zur Herstellung von Java-Anwendungen                                                                                     |
 | Insomnia                     | [https://insomnia.rest/](https://insomnia.rest/)                                                                                               | Anwendung zum Absetzen von Requests an REST-Schnittstellen                                                                                    |
 
-
 ### Firewall / Sicherheit
 
 Dein Betriebssystem verfügt mit dem Windows-Betriebssystem über eine eigene Firewall. Du bist persönlich für deren Konfiguration verantwortlich.

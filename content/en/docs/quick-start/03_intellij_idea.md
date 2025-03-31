@@ -7,6 +7,7 @@ description: >
 ---
 
 #### Ziele
+
 - Ich kenne die wichtigsten Funktionen der IntelliJ IDEA
 - Ich kann Projekte innerhalb IntelliJ IDEA neu anlegen, konfigurieren und verwalten
 - Ich kann IntelliJ IDEA zusammen mit meinem GIT-Repository verwenden

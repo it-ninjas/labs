@@ -12,4 +12,3 @@ Das erste Modul ist ein Schnelleinstieg der dich befähigen soll, selbständig m
 Dazu musst du die Entwicklungsumgebung, sowie einige weitere Programme auf deinem Notebook installieren,
 ein einfaches «Hello-World» Programm erstellen und dieses erfolgreich in das Git-Repository
 übertragen. Du solltest das Modul innerhalb eines Tages abschliessen können.
-
