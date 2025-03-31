@@ -1091,7 +1091,220 @@ In der Bibliothek findet man unterschiedliche Exemplare. z.B: Bücher, Zeitschri
 &lt;p>&lt;strong>Info:&lt;/strong> Bei dieser Aufgabe darf man &lt;strong>NICHT&lt;/strong> Gebrauch von Lombok machen.&lt;/p>
 &lt;p>&lt;em>Es soll kein Scanner eingesetzt werden.&lt;/em>&lt;/p>
 &lt;hr>
-&lt;p>Hier kannst du &lt;a href="/docs/java/java-ood/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Docs: Datenbank 101</title><link>/docs/database/01_db-erklaert/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/01_db-erklaert/</guid><description>
+&lt;p>Hier kannst du &lt;a href="/docs/java/java-ood/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Docs: Continuous Integration</title><link>/docs/cicd/continuous-integration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/cicd/continuous-integration/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann den Begriff Continuous Integration erklären&lt;/li>
+&lt;li>Ich kann einen typischen Aufbau eine CI-Pipeline erklären&lt;/li>
+&lt;li>Ich kenne typische Aufgaben einer CI-Pipeline&lt;/li>
+&lt;/ul>
+&lt;h2 id="continuous-integration">Continuous Integration&lt;/h2>
+&lt;p>Continuous Integration, oder kurz CI, heisst auf Deutsch so viel wie &amp;ldquo;Fortlaufende Integration&amp;rdquo;. Es beschreibt die Praxis Codeänderungen oft und regelmässig in die Code Basis zu integrieren. Dazu gehört auch das Testen dieser Änderungen sowie andere Checks, wie etwa Security Scans. Da dies mühsame Arbeit ist, passiert das meistens vollautomatisiert in einer sogenannten Pipeline. Diese heissen so da die der Code wie durch ein (oder mehre) Rohre muss, welche diese Checks ausführen und das Ventil zudrehen können, sollte etwas nicht gut sein.&lt;/p>
+&lt;p>&lt;img src="../images/pipeline.gif" alt="">&lt;/p>
+&lt;p>Das Ausführen so einer Pipeline passieren entweder nach einem bestimmten Ereignis, z.B. einem Push auf einen Git-Branch, oder periodisch, jede Nacht um 3:00. Damit das Möglich ist, werden sie nicht auf dem Computer des Entwicklers sondern einem separaten CI-Server ausgeführt. So kann sichergestellt werden das nicht vergessen geht und die Ergebnise transparent sind.&lt;/p>
+&lt;p>Wichtig ist dass das fortlaufende Integrieren von Änderungen nicht heisst, das nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe &lt;a href="/docs/cicd/continuous-deployment/">Continuous Deployment&lt;/a>) muss aber nicht. Viel mehr geht es darum das die Änderungen jeweils klein und gut getestet sind.&lt;/p>
+&lt;h3 id="beispiel-einer-ci-pipeline">Beispiel einer CI-Pipeline&lt;/h3>
+&lt;p>Als Beispiel nehmen wir eine Anwendung, welche eine neue Login-Page bekommen soll. Der Entwickler macht also einen neuen Branch &lt;code>feature/new-login-page&lt;/code>. Auf diesem nimmt er seine Änderungen vor und mergt, sobald er fertig ist, diese wieder in den &lt;code>main&lt;/code>-Branch. Vor dem Mergen können andere Entwickler noch Tests ausführen oder einen Security Scan laufen lassen. Da dies jedoch manuell gemacht werden muss, geht das oft vergessen oder wird aus Faulheit nicht umgesetzt.&lt;/p>
+&lt;p>&lt;img src="../images/no-ci.png" alt="">&lt;/p>
+&lt;!--
+gitGraph
+commit
+commit
+branch feature/new-login-page
+checkout feature/new-login-page
+commit id: "Remove Google+"
+commit id: "Implement new design"
+commit id: "Fix styling"
+checkout main
+merge feature/new-login-page id: "Merge into main"
+commit
+-->
+&lt;p>Mithilfe einer CI-Pipeline können wir diese zwei Sachen automatisiert ausführen nach (oder idealerweise noch vor) einem Merge. Pipelines können also dazu dienen langweilige, wiederkehrende Arbeiten zu verrichten und Entwickler zum einhalten von Standards zu bewegen. Durch die Pipeline merken wir z.B. das mehrere Unit-Test fehlschlagen. Dazu hat die Pipeline ganz einfach den Maven-Command &lt;code>mvn clean test&lt;/code> ausgeführt und geschaut ob jeder Test grün ist. So wie es ein Entwickler auch auf seiner Maschine tun kann.&lt;/p>
+&lt;p>&lt;img src="../images/simple-ci.png" alt="">&lt;/p>
+&lt;!--
+gitGraph
+commit id: "0-2932c65"
+commit id: "1-8da8549"
+branch feature/new-login-page
+checkout feature/new-login-page
+commit id: "Remove Google+"
+commit id: "Implement new design"
+commit id: "Fix styling"
+checkout main
+merge feature/new-login-page id: "✅ Security Scan ❌ Tests"
+commit id: "6-e293507"
+-->
+&lt;p>Das hätte der Entwickler merken können wenn er nach jedem Commit die Tests ausgeführt hat. Da dies aber manuelle und langweilige Arbeit ist, hat er das natürlich nicht gemacht. Werden die Tests stattdessen auch in einer Pipeline nach jedem &lt;code>git push&lt;/code> ausgeführt merkt der Entwickler schneller das sein Code noch nicht gut ist.&lt;/p>
+&lt;p>&lt;img src="../images/reasonable-ci.png" alt="">&lt;/p>
+&lt;!--
+gitGraph
+commit id: "0-2932c65"
+commit id: "1-8da8549"
+branch feature/new-login-page
+checkout feature/new-login-page
+commit id: "Remove Google+ ✅ Tests"
+commit id: "Implement new design ❌ Tests"
+commit id: "Fix styling ✅ Tests"
+checkout main
+merge feature/new-login-page id: "✅ Security Scan ✅ Tests"
+commit id: "6-e293507"
+-->
+&lt;p>Es muss also nicht für jedes Ereignis die gleiche Pipeline ausgeführt werden. Der Security Scan kann etwa mehrere Minuten dauern, weshalb er nicht bei jedem &lt;code>git push&lt;/code> sondern nur vor einem Merge ausgeführt wird. Grosse Projekte können duzende solcher Pipelines haben, für verschiedene Anlässe und Zwecke.&lt;/p>
+&lt;h3 id="anwendungszwecke-von-ci-pipelines">Anwendungszwecke von CI-Pipelines&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Testing&lt;/strong>&lt;br>
+Die wahrscheinlich häufigste Verwendung ist das automatiserte Ausführen von Tests. Das können von Unit-Tests bis hin zu E2E-Tests alles sein. Ein Vorteil davon ist das die Entwickler das nicht mehr manuell machen müssen. Ein weiterer das die Test beschleunigt werden können, etwa durch das Aufteilen der Tests viele Maschinen. Es wird auch vermieden das die Test auf einem Entwickler-Laptop laufen, auf einem anderen aber nicht und nun nicht klar ist ob die Tests gut sind oder nicht. Das was in der CI-Pipeline passiert gilt.&lt;/li>
+&lt;li>&lt;strong>Durchsetzen von Standards&lt;/strong>
+Ebenfalls sehr häufig werden Pipelines eingesetzt um gewisse Standards zu überprüfen. Dazu gehört etwa ob der Code richtig formattiert ist oder genügend Tests geschrieben wurden.&lt;/li>
+&lt;li>&lt;strong>Security Checks&lt;/strong>
+Niemand hat Zeit sich alle Meldungen über Hacks oder Sicherheitslücken durchzulesen und herauszufinden ob diese auf die eigene Software zutreffen. Eine Pipeline kann stattdessen jede Nacht einen automatisierten Scan durchführen und so die Entwickler am nächsten Morgen benachrichtigen.&lt;/li>
+&lt;li>&lt;strong>Bauen von Artefakten&lt;/strong>
+Docker-Container oder JARs können durch die Pipelines automatisch generiert und richtig versioniert werden. So sind sie für ein spätere Deployment bereit oder können sogar in einer anderen Pipeline verwendet werden.&lt;/li>
+&lt;/ul>
+&lt;h3 id="umsetzen-einer-ci-pipeline">Umsetzen einer CI-Pipeline&lt;/h3>
+&lt;p>Es gibt viele Möglichkeiten eine CI-Pipeline umzusetzen. Gewisse sind eigenständige Tools wie &lt;a href="https://www.jenkins.io/">Jenkins&lt;/a> oder &lt;a href="https://circleci.com/">CircleCI&lt;/a>. Viele Plattformen bauen direkt ihre eigenen Lösungen ein, wie etwa &lt;a href="https://docs.gitlab.com/ee/ci/">GitLab&lt;/a> oder &lt;a href="https://github.com/features/actions">GitHub&lt;/a>. Für dieses Guide benutzen wir GitHub, viele der Konzepte können aber auch auf andere Tools übertragen werden.&lt;/p>
+&lt;p>GitHub stellt sogenannte Actions oder Workflow als CI-Lösung zur Verfügung. Das sind &lt;a href="https://geekflare.com/de/what-is-yaml/">YAML&lt;/a>-Dateien, welche in &lt;code>.github/workflows&lt;/code> abgelegt werden. Jede Datei ist dabei ein &amp;ldquo;Workflow&amp;rdquo; und kann beliebig benannt werden, solange sie mit &lt;code>.yml&lt;/code> oder &lt;code>.yaml&lt;/code> aufhört. Vorhandene Workflows, werden im &lt;a href="https://github.com/it-ninjas/labs/actions">Actions&lt;/a>-Tab eines Repositories angezeigt.&lt;/p>
+&lt;h4 id="simpler-workflow">Simpler Workflow&lt;/h4>
+&lt;p>Ein simpler Workflow könnte etwa in &lt;code>.github/workflows/hello-world.yaml&lt;/code> gespeichert sein und so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">GitHub Actions Hello World&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">on&lt;/span>: [&lt;span style="color:#ae81ff">push]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">jobs&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hello-world&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">runs-on&lt;/span>: &lt;span style="color:#ae81ff">ubuntu-latest&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">steps&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">echo &amp;#34;Hello world!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">echo &amp;#34;🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">echo &amp;#34;🔎 The name of your branch is ${{ github.ref }}, your repository is ${{ github.repository }} and this workflow was triggered by ${{ github.actor }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Check out repository code&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/checkout@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Execute multiple commands&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">run&lt;/span>: |&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;One line&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;Another one&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Workflow besteht aus folgenen Elementen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>name&lt;/code> Der Name des Workflows.&lt;/li>
+&lt;li>&lt;code>on&lt;/code> Wann der Workflow ausgeführt werden soll. Das kann von einem &lt;code>git push&lt;/code> bis zum Erstellen eines neuen Issues alles Mögliche sein, wobei GitHub hier &lt;a href="https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows">eine gute Dokumentation dazu hat&lt;/a>. In unserem Fall wird der Workflow bei jedem &lt;code>git push&lt;/code> ausgeführt.&lt;/li>
+&lt;li>&lt;code>jobs&lt;/code> Eine Liste mit Aufgaben, welche der Workflow ausführen soll. Jeder Job hat dabei einen eindeutigen Namen, hier &lt;code>hello-world&lt;/code>.&lt;/li>
+&lt;li>&lt;code>runs-on&lt;/code> Definiert auf was für einem Computer der Workflow ausgeführt werden soll. Standardmässig ist das ein Ubuntu-Linux, Windows und OSX sind aber ebenfalls möglich.&lt;/li>
+&lt;li>&lt;code>steps&lt;/code> Eine Liste mit Anweisungen, welche nacheinander in diesem Job ausgeführt werden.&lt;/li>
+&lt;/ul>
+&lt;p>Ein ganz simpler Step, wie z.B. &lt;code>run: echo &amp;quot;Hello world!&amp;quot;&lt;/code>, macht nichts anderes als den Befehl &lt;code>echo &amp;quot;Hello World!&amp;quot;&lt;/code> auszuführen.&lt;/p>
+&lt;p>Um ein wenig mehr Dynamik in die Sache zu bringen, können wir Teile eines Befehls mit dieser Syntax ersetzen &lt;code>${{ dein.variable.name }}&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;🐧 This job is now running on a &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>{ runner.os &lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">} server hosted by GitHub!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>wird somit zu&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;🐧 This job is now running on a ubuntu-latest server hosted by GitHub!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Damit man nicht alles selber schreiben muss, kann man auch einfach bereits erstellte &amp;ldquo;steps&amp;rdquo; benutzen. GitHub nennt diese &amp;ldquo;Actions&amp;rdquo; und hat &lt;a href="https://github.com/marketplace?type=actions">einen ganzen Marktplatz&lt;/a> damit. Es lohnt sich zuerst zu schauen ob jemand schon eine Action geschrieben hat, bevor man sich selber die Mühe macht.
+Ein Beispiel davon ist dieser Step hier:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Check out repository code&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/checkout@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>name&lt;/code> ist wie der Step heisst. &lt;code>uses&lt;/code> gibt an das wir die &lt;a href="https://github.com/marketplace/actions/checkout">Checkout Action&lt;/a> benutzen wollen. Diese macht ein &lt;code>git clone&lt;/code> des Repositories und kann in fast jedem CI-Workflow angetroffen werden. Viele&lt;/p>
+&lt;p>Falls es mal doch keine Action gibt welche den Zweck erfüllt, können mehrere Befehle mit dieser Syntax auch über mehrere Zeilen geschrieben werden. Das macht die Sache etwas übersichtlicher.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Execute multiple commands&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">run&lt;/span>: |&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;One line&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;Another one&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="testing-workflow">Testing Workflow&lt;/h4>
+&lt;p>Ein einfacher Workflow für das Testen ein Spring Boot App mit Maven könnte so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Testing with Maven&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">on&lt;/span>: [&lt;span style="color:#ae81ff">push]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">jobs&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">test&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">runs-on&lt;/span>: &lt;span style="color:#ae81ff">ubuntu-latest&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">steps&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/checkout@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Set up JDK&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/setup-java@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">with&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">java-version&lt;/span>: &lt;span style="color:#ae81ff">21&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">distribution&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;temurin&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">cache&lt;/span>: &lt;span style="color:#ae81ff">maven&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">mvn clean verify&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Workflow macht, in dieser Reihenfolge:&lt;/p>
+&lt;ul>
+&lt;li>ein &lt;code>git clone&lt;/code>&lt;/li>
+&lt;li>installiert Java mit der Version 21&lt;/li>
+&lt;li>führt die Tests mit dem Befehl &lt;code>mvn clean verify&lt;/code> aus&lt;/li>
+&lt;/ul>
+&lt;p>Sollte es zu einem Fehler in den Tests kommen, wird der Workflow fehlschlagen und den Entwickler informieren.
+&lt;img src="../images/gh-actions-failure.png" alt="">&lt;/p></description></item><item><title>Docs: Datenbank 101</title><link>/docs/database/01_db-erklaert/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/01_db-erklaert/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du kennst den allgemeinen Aufbau einer Datenbank und kannst ihn erklären.&lt;/li>
@@ -2905,7 +3118,7 @@ Es ist also vor der Berechnung unklar, wie lange die Liste werden kann.&lt;/p>
 &lt;/div>&lt;p>21 ist grösser als 20, deshalb stoppt die Liste nach diesem Eintrag.&lt;/p>
 &lt;p>&lt;em>Bei der Umsetzung dürfen keine Streams verwendet werden!&lt;/em>&lt;/p>
 &lt;hr>
-&lt;p>Hier kannst du &lt;a href="/docs/java/j2-oop/05-list-basics/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Maven und Continuous Integration - Aufgaben</title><link>/labs/java/maven/01_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/maven/01_exercises/</guid><description>
+&lt;p>Hier kannst du &lt;a href="/docs/java/j2-oop/05-list-basics/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Maven - Aufgaben</title><link>/labs/java/maven/01_exercises/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/java/maven/01_exercises/</guid><description>
 &lt;h2 id="auftrag">Auftrag&lt;/h2>
 &lt;h3 id="einrichten-von-maven">Einrichten von Maven&lt;/h3>
 &lt;ul>
@@ -5874,7 +6087,15 @@ Aufgaben
 &lt;/div>
 &lt;/section>
 &lt;h2 id="aufgaben">Aufgaben&lt;/h2>
-&lt;p>&lt;a href="/labs/java/java-collections/01_list/">Aufgaben zu Modul #J6 - Java Collections - List&lt;/a>&lt;/p></description></item><item><title>Labs: CSS - Aufgaben</title><link>/labs/web/html_css/02_css/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/web/html_css/02_css/</guid><description>
+&lt;p>&lt;a href="/labs/java/java-collections/01_list/">Aufgaben zu Modul #J6 - Java Collections - List&lt;/a>&lt;/p></description></item><item><title>Docs: Continuous Delivery</title><link>/docs/cicd/continuous-delivery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/cicd/continuous-delivery/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann den Begriff Continuous Delivery erklären&lt;/li>
+&lt;/ul>
+&lt;h2 id="continuous-delivery">Continuous Delivery&lt;/h2>
+&lt;p>Continuous Delivery, kurz CD, erweitert das automatische Testing um einen automatiserten Freigabeprozess. Eine neue Version der Anwendung soll also per Knopfdruck (und nach dem erfolgreichen Durchlaufen der CI-Pipeline) jederzeit deployed werden können.&lt;/p>
+&lt;p>Theoretisch kann man mit CD also mit einem einzigen Knopfdruck die neue Version der Software auf den Server laden. Dabei spielt es im Prinzip keine Rolle ob man das täglich, wöchentlich oder nach Lust und Laune tut. Es ist jedoch generell eine gute Idee regelmässig Deployments durchzuführen. Falls etwas dabei schief geht, ist das Problemlöseverfahren meistens einfacher.&lt;/p>
+&lt;p>&lt;img src="../images/continuous-delivery.png" alt="">&lt;/p></description></item><item><title>Labs: CSS - Aufgaben</title><link>/labs/web/html_css/02_css/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/web/html_css/02_css/</guid><description>
 &lt;h3 id="aufgabe-1---header-navigation">Aufgabe 1 - Header-Navigation&lt;/h3>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Erstelle nachfolgende Seite.&lt;/p>
 &lt;p>Der Schwerpunkt ist die Navigation im Header: Das Bild und die Links auf der rechten Seite.&lt;/p>
@@ -6584,194 +6805,4 @@ um die Einträge in der Datenbank zu speichern und zu finden:&lt;/p>
 &lt;li>Jede Test-Methode prüft, dass alle Methoden eines Mocks/Spy&amp;rsquo;s welche NICHT aufgerufen werden sollen, auch nicht aufgerufen wurden.&lt;/li>
 &lt;/ul>
 &lt;hr>
-&lt;p>Hier kannst du &lt;a href="/docs/java/java-testing/#mockito">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Challenges: Objektorientierte Programmierung Challenge</title><link>/challenges/java/java-oop/01_oop_challenge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/challenges/java/java-oop/01_oop_challenge/</guid><description>
-&lt;h3 id="hogwarts-sorting-hat-system">Hogwarts Sorting Hat System&lt;/h3>
-&lt;p>Hogwarts ist bekanntlich die beste Schule für Hexerei und Zauberei.
-Alle Hogwarts Schüler:innen werden vor Beginn des ersten Schuljahres gemäss ihren
-Charakter-Eigenschaften und Fähigkeiten in einem der vier Hogwarts &amp;ldquo;Häuser&amp;rdquo; eingeteilt.
-Die Einteilung in die Häuser ist die Aufgabe des &amp;ldquo;sprechenden Hutes&amp;rdquo; (engl. &amp;ldquo;Sorting Hat&amp;rdquo;).&lt;/p>
-&lt;p>Der sprechende Hut ist mittlerweile mehr als 1000 Jahre alt und soll in den verdienten Ruhestand gehen.
-Dazu ist die Digitalisierung auch bei Hogwarts endlich angekommen und der Schulmeister möchte dich beauftragen
-ein Sorting-Hat System zu bauen, welche die Aufgabe des sprechenden Hutes übernimmt und neue Schüler:innen
-in eines der vier Hogwarts-Häuser aufgrund von bestimmten Kriterien und Eigenschaften einteilt.&lt;/p>
-&lt;h4 id="die-hogwarts-häuser-und-ihre-eigenschaftenmerkmale">Die Hogwarts Häuser und ihre Eigenschaften/Merkmale&lt;/h4>
-&lt;p>Die vier Hogwarts Häuser - Gryffindor, Hufflepuff, Ravenclaw und Slytherin - haben bestimmte Merkmale
-und Eigenschaften, welche dem sprechenden Hut dabei helfen, die Schüler:innen in das richtige Haus einzuteilen.&lt;/p>
-&lt;p>Die folgende Tabelle listet ein paar wichtige Merkmale für jedes Haus auf:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Haus&lt;/th>
-&lt;th>Wichtigste Charakter-Eigenschaften&lt;/th>
-&lt;th>Hausfarben&lt;/th>
-&lt;th>Haustier&lt;/th>
-&lt;th>Element&lt;/th>
-&lt;th>Gründer:in&lt;/th>
-&lt;th>Anzahl Schüler:innen&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Gryffindor&lt;/td>
-&lt;td>Tapferkeit, Kühnheit, Courage, Ritterlichkeit, Entschlossenheit&lt;/td>
-&lt;td>Gold, Scharlachrot&lt;/td>
-&lt;td>Löwe&lt;/td>
-&lt;td>Feuer&lt;/td>
-&lt;td>Godric Gryffindor&lt;/td>
-&lt;td>31&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hufflepuff&lt;/td>
-&lt;td>Fleiss, Hingabe, Geduld, Loyalität, Fairplay&lt;/td>
-&lt;td>Gelb, Schwarz&lt;/td>
-&lt;td>Dachs&lt;/td>
-&lt;td>Erde&lt;/td>
-&lt;td>Helga Hufflepuff&lt;/td>
-&lt;td>15&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Ravenclaw&lt;/td>
-&lt;td>Intelligenz, Wissen, Neugier, Kreativität, geistige Wendigkeit&lt;/td>
-&lt;td>Blau, Bronze&lt;/td>
-&lt;td>Adler&lt;/td>
-&lt;td>Luft&lt;/td>
-&lt;td>Rowena Ravenclaw&lt;/td>
-&lt;td>33&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Slytherin&lt;/td>
-&lt;td>Ehrgeiz, Führerschaft, Selbsterhaltung, List, Einfallsreichtum&lt;/td>
-&lt;td>Smaragdgrün, Silber&lt;/td>
-&lt;td>Schlange&lt;/td>
-&lt;td>Wasser&lt;/td>
-&lt;td>Salazar Slytherin&lt;/td>
-&lt;td>48&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4 id="einteilungsalgorithmus">Einteilungsalgorithmus&lt;/h4>
-&lt;p>Der sprechende Hut teilt angehende Hogwarts Schüler:innen in eines der vier Hogwarts-Häuser
-anhand von bestimmten Kriterien ein. Diese Kriterien sind:&lt;/p>
-&lt;ul>
-&lt;li>Charakter-Eigenschaften der Person, verglichen mit den Charakter-Eigenschaften, welche dem/der Gründer:in des Hauses wichtig waren&lt;/li>
-&lt;li>Lieblingsfarbe, verglichen mit den Hausfarben&lt;/li>
-&lt;li>Verwandtschaft mit einem ehemaligen Mitglied eines der Häuser&lt;/li>
-&lt;li>Das Wunschhaus der Person, welche eingeteilt werden soll&lt;/li>
-&lt;/ul>
-&lt;p>Der/die Schüler:in wird zu jedem Kriterium befragt (mehrere Antworten sind bei den meisten Kriterien möglich!).
-Die Antworten zu jedem Kriterium werden bewertet, sodass am Schluss für jedes Haus eine Gesamtbewertung vorliegt.
-Der/die Schüler:in wird in das Haus mit dem höchsten Wert eingeteilt.&lt;/p>
-&lt;p>Aber vorsicht, es gelten auch folgende Bestimmungen, welche die Auswertung des gewählten Hauses beeinflussen:&lt;/p>
-&lt;ul>
-&lt;li>Nicht alle Kriterien/Werte werden beim Einteilungsentscheid gleich gewichtet (die Gewichtung wird später erläutert).&lt;/li>
-&lt;li>Wenn zwei Häuser die gleiche Bewertung erhalten, wird das Haus mit der niedrigeren Anzahl Schüler:innen ausgewählt.&lt;/li>
-&lt;li>Das Wunschhaus wird bei der Gesamtbeurteilung manchmal berücksichtigt und manchmal nicht (mehr dazu später)&lt;/li>
-&lt;/ul>
-&lt;h4 id="gewichtung-der-kriterien">Gewichtung der Kriterien&lt;/h4>
-&lt;p>Folgend findest du die Bestimmungen und Gewichtungen, welche bei der Auswertung des passenden Hauses eingehalten werden müssen.
-Die Gesamtauswertung eines Hauses besteht aus der Summe aller Punkte, welche bei jedem Kriterium für dieses Haus berechnet worden sind.&lt;/p>
-&lt;h5 id="charakter-eigenschaften">Charakter-Eigenschaften&lt;/h5>
-&lt;p>Es sind insgesamt 20 Charakter-Eigenschaften möglich (siehe Tabelle der Hogwarts-Häuser hier oben).
-Der/die Benutzer:in muss mindestens drei Charakter-Eigenschaften auswählen, welche zu ihm/ihr passen.&lt;/p>
-&lt;p>Per Haus, hat jede Charakter-Eigenschaft ein Gewicht zwischen 1 und 20.
-Die wichtigsten Charakter-Eigenschaften eines Hauses erhalten die höchsten Gewichtswerte für dieses Haus.
-Die anderen Charakter-Eigenschaften bekommen niedrigere Werte.
-Bei der Auswertung werden für jedes Haus die Gewichtswerte für die eingegebenen Eigenschaften zusammenaddiert.&lt;/p>
-&lt;h5 id="farben">Farben&lt;/h5>
-&lt;p>In Hogwarts gibt es vier Hausfarben-Paare, also insgesamt acht Hausfarben (siehe Tabelle der Hogwarts-Häuser hier oben).
-Der/die Benutzer:in gibt seine/ihre Lieblingsfarbe ein.
-Wenn die Farbe, mit einer Hausfarbe übereinstimmt, erhält dieses Haus zusätzliche 10 Punkte.&lt;/p>
-&lt;h5 id="verwandtschaft">Verwandtschaft&lt;/h5>
-&lt;p>Eine Person kann mehrere Verwandte haben, welche in Hogwarts studiert haben und entsprechend
-einem Haus eingeteilt wurden.&lt;br>
-Die Anzahl Verwandte, welche einem Haus eingeteilt wurden, gibt diesem Haus einen zusätzlichen Wert,
-welcher der Fakultät dieser Anzahl Verwandten entspricht.&lt;/p>
-&lt;p>&lt;em>Hinweis:&lt;/em> eine Person kann mehrere Verwandte haben, welche in unterschiedliche Häuser eingeteilt worden waren&amp;hellip;&lt;/p>
-&lt;h5 id="wunschhaus">Wunschhaus&lt;/h5>
-&lt;p>Der/die Benutzer:in kann sein/ihr Wunschhaus eingeben.
-Das Wunschhaus &amp;ldquo;schenkt&amp;rdquo; dem gewählten Haus eine zufällige Anzahl Punkte zwischen 5 und 10 zur
-Gesamtbeurteilung aber nur wenn der/die Benutzer:in auch eine der Hausfarben dieses Hauses als Lieblingsfarbe ausgewählt hat.&lt;/p>
-&lt;h4 id="anforderungen-an-das-system">Anforderungen an das System&lt;/h4>
-&lt;ul>
-&lt;li>Verwende viele verschiedene Klassen, um dein System zu modellieren&lt;/li>
-&lt;li>Erzeuge ein gutes Abbild der Aufgabenstellung&lt;/li>
-&lt;li>Die &lt;em>main&lt;/em> Methode soll nur zur Interaktion mit dem/der Benutzer:in dienen.&lt;/li>
-&lt;li>Skizziere dein Modell, sodass du es danach auch erklären kannst&lt;/li>
-&lt;li>Teil der Aufgabe ist es, bestimmte Prinzipien kennenzulernen und zu verstehen. Wende entsprechend bei der Umsetzung folgende Prinzipien an:
-&lt;ul>
-&lt;li>Single Responsibility Principle&lt;/li>
-&lt;li>Immutable Objects&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Bonus Anforderungen&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Wenn sinnvoll, wende Generics an&lt;/li>
-&lt;li>Verwende, wenn möglich, Streams statt Loops&lt;/li>
-&lt;li>Füge ein Einteilungskriterium hinzu&lt;/li>
-&lt;/ul>
-&lt;p>&lt;em>Wenn du an der Challenge teilnehmen willst, dann musst du die Aufgabe alleine lösen.
-Die Lösung vom Pult-Nachbar interessiert uns also nicht.&lt;/em>&lt;/p></description></item><item><title>Exams: Objektorientierte Programmierung Exam</title><link>/exams/java/java-oop/oopexam/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-oop/oopexam/</guid><description>
-&lt;p>&lt;em>Für dieses Exam dürfen auch Inhalte der Themen Lists und Generics verwendet werden.&lt;/em>&lt;/p>
-&lt;h2 id="weltmeisterschaft---oop-exam">Weltmeisterschaft - OOP Exam&lt;/h2>
-&lt;p>Bei diesem Exam geht es darum, dass du deine Vorgehensweise beim Erstellen eines objektorientierten Modells trainierst.&lt;/p>
-&lt;p>Zentral bei dieser Aufgabe ist also, wie du das Datenmodell erstellst, welches beschreibt, welche Klassen mit welchen Feldern und Methoden du schreibst.&lt;/p>
-&lt;p>Ziel ist nicht, dass du dich mit &lt;code>Scanner&lt;/code> oder viel Logik herumschlagen musst.&lt;/p>
-&lt;h3 id="sachverhalt">Sachverhalt&lt;/h3>
-&lt;p>Bei diesem Exam modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der &lt;a href="../results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei gespeichert sind, im Code abbilden.
-Die Idee ist nicht, dass du diese Datei im Programm ausliest oder diese Information mit &lt;code>System.out.print()&lt;/code> direkt ausgibst, sondern dass dein Code die Informationen repräsentiert. Mehr dazu in Aufgabe 3.&lt;/p>
-&lt;p>Deine Klassen sollen folgendes abbilden:&lt;/p>
-&lt;ul>
-&lt;li>In diesem Turnier (Competition) spielen die Mannschaften (Team) gegeneinander.&lt;/li>
-&lt;li>Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), PLAYOFF, Viertel- (QUARTER_FINAL), Halbfinale (SEMI_FINAL) oder FINAL.&lt;/li>
-&lt;li>Bei jedem Spiel (Game) gibt es immer eine Heim- (home) und Gast-Mannschaft (visiting/away team).&lt;/li>
-&lt;li>Bei jedem Spiel wird festgehalten, wie viele Tore (goals) welche Mannschaft (home oder visiting) geschossen hat. Zudem wird festgehalten, wo (location) das Spiel stattgefunden hat.&lt;/li>
-&lt;/ul>
-&lt;h3 id="was-soll-die-anwendung-können">Was soll die Anwendung können?&lt;/h3>
-&lt;p>Auf Stufe Spiel (Game)&lt;/p>
-&lt;ul>
-&lt;li>möchten wir wissen, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (&lt;code>didTeamPlayThisGame(team)&lt;/code>).&lt;/li>
-&lt;li>Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (&lt;code>getPointsFor(team)&lt;/code>).&lt;/li>
-&lt;/ul>
-&lt;p>Auf Stufe Turnier (Competition)&lt;/p>
-&lt;ul>
-&lt;li>wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (&lt;code>getScoresDuringGroupStageFor(team)&lt;/code>).&lt;/li>
-&lt;li>Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (&lt;code>getGoalsForTeam(team)&lt;/code>).&lt;/li>
-&lt;li>Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (&lt;code>getAllGamesForLocation(location)&lt;/code>).&lt;/li>
-&lt;/ul>
-&lt;p>Abgesehen von der &lt;code>main(...)&lt;/code>-Methode soll keine weitere Methode statisch sein.&lt;/p>
-&lt;h3 id="aufgaben">Aufgaben&lt;/h3>
-&lt;h4 id="aufgabe-1---entwurf">Aufgabe 1 - Entwurf&lt;/h4>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Erstelle einen Entwurf vom Klassenmodell.&lt;/p>
-&lt;ul>
-&lt;li>Der Entwurf kann auf Papier oder mit einem Tool (z.B. draw.io, Visio, plantUML) erstellt werden.&lt;/li>
-&lt;li>Plane auch schon die Methoden im Entwurf ein.&lt;/li>
-&lt;/ul>
-&lt;p>Zeige den Entwurf zuerst einem Praxisbildner, bevor du weiterfährst.&lt;/p>
-&lt;h4 id="aufgabe-2---klassen-umsetzen">Aufgabe 2 - Klassen umsetzen&lt;/h4>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Setze die Klassen im Code um, inkl. Methoden.&lt;/p>
-&lt;p>Für den Moment müssen die Methoden noch nichts machen und sollen für den Beginn nur einen Default-Wert zurückgeben - der Einfachheit halber.&lt;/p>
-&lt;p>Ziel dieser Aufgabe ist, dass du dich nur aufs Klassen-Design im Code konzentrierst, nicht aber um die konkreten Methoden-Umsetzungen.&lt;/p>
-&lt;h4 id="aufgabe-3---methoden-umsetzen">Aufgabe 3 - Methoden umsetzen&lt;/h4>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Setze nun die Methoden korrekt um.&lt;/p>
-&lt;p>Verwende zur Demonstration die Daten aus der &lt;a href="../results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine &lt;code>.java&lt;/code>-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der &lt;code>results.txt&lt;/code>-Datei steht&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span># Gruppe 1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Frankreich Jugoslawien 0:1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>dann kannst du das wie folgt direkt in deine Java-Datei schreiben:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">new&lt;/span> Game(FRANCE, YUGOSLAVIA, 0, 1);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&lt;p>Hier kannst du &lt;a href="/docs/java/java-testing/#mockito">zurück zur Theorie&lt;/a>.&lt;/p></description></item></channel></rss>
