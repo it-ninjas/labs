@@ -50,7 +50,7 @@ Hier kannst du [zurück zur Theorie](../../../../docs/java/java-grundlagen/01_ja
 ![task1](/images/task.png) Löse die folgenden Aufgaben:
 
 - Schreibe ein Programm, das feststellen kann, ob eine Zahl grösser, kleiner oder gleich 0 ist.
-- Schreibe ein Programm, das dich begrüsst wenn dein Name in einer Variable gespeichert wird.
+- Schreibe ein Programm, welches dein Name in einer Variable speichert und dann eine Begrüssung ausgibt (z.B. "Hallo, IT-Ninja").
 - Schreibe ein Programm, das feststellt, ob ein Jahr in einer Variable ein Schaltjahr ist. Recherchiere, was die Bedingungen sind.
 - Schreibe ein Programm, das überprüft, ob eine Zahl in einer Variable gerade oder ungerade ist.
 
