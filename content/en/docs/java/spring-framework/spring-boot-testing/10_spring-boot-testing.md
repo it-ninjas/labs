@@ -1,7 +1,7 @@
 ---
 title: "Spring Boot Testing"
 linkTitle: "Spring Boot Testing"
-weight: 9
+weight: 10
 description: >
   Modul #J08 - Spring Framework - Spring Boot Testing
 ---

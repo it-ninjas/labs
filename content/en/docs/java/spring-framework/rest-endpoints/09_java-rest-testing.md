@@ -1,7 +1,7 @@
 ---
 title: "Testing von REST-Schnittstellen"
 linkTitle: "Testing von REST-Schnittstellen"
-weight: 8
+weight: 9
 description: >
   Modul #J8 - Spring Framework - Testing von REST-Schnittstellen
 ---

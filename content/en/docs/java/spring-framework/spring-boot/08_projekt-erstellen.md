@@ -1,7 +1,7 @@
 ---
 title: "Projekt Erstellen"
 linkTitle: "Projekt Erstellen"
-weight: 7
+weight: 8
 description: >
   Modul #J8 - Spring Framework - Wie erstelle ich ein Projekt mit Spring
 ---
@@ -237,7 +237,7 @@ Die möglichen Annotationen für einen Spring Component sind die folgenden:
 - _@Service_
 - _@Repository_
 
-Mehr Informationen zu diesen Annotationen findest auf dieser [Seite](../spring/05_annotationen).
+Mehr Informationen zu diesen Annotationen findest auf dieser [Seite](../spring/06_annotationen).
 
 Im folgenden Beispiel wird nun eine Service-Klasse angelegt, welche den vom Controller empfangenen Request-Body als Parameter entgegennimmt
 und diesen dann später weiter verarbeiten wird. Im Moment begnügen wir uns damit die Mock-Daten aus dem Controller hierher zu verschieben.
