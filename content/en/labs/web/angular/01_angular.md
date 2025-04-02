@@ -196,7 +196,6 @@ Erweitern wir die Anwendung nun ein wenig.
 - Erstelle einen weiteren neuen Component, welcher ein Eingabefeld, mit ReactiveForms, besitzt um nach einem Fahrrad zu suchen und dieses anzuzeigen.
 - Erstelle eine Navigation für zwischen den Components hin und her zu wechseln.
 - Erstelle eine Route für die Components. Der Component welcher alle Fahrräder anzeigt ist zudem die Defaultroute.
-- Füge auf der Seite aller Fahrräder zwei Buttons hinzu. Einer um die Such-Seite zu aktiveren und den anderen um sie zu deaktivieren. Verwende hier ein `BehaviorSubject` um den momentan State zu kennen.
 - Erstelle einen Guard welcher dich nur zu der Suche-Seite lässt, wenn du diese aktiviert hast mittels Button.
 - Erstelle auch ein Routing auf den neu zu Erstellenden Component, welche mithilfe eines Parameters alle Fahrräder (der name, wert, marke und typen) der jeweiligen Marke anzeigt. Zudem soll die Marke als Titel der Seite stehen.
 - Verlinke die brand_id, als routerLink auf der Seite aller Fahrräder um auf den neuen Component zu gelangen.
