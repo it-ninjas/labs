@@ -1,7 +1,7 @@
 ---
 title: "Spring Boot"
 linkTitle: "Spring Boot"
-weight: 6
+weight: 7
 description: >
   Modul #J8 - Spring Framework - Spring Boot
 ---
@@ -65,7 +65,7 @@ zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@Enab
 Annotation schaltet die automatische Konfiguration ein, was einer der Hauptbestandteile von Spring
 Boot ist.
 
-Mehr dazu findest du [hier](../spring/05_annotationen).
+Mehr dazu findest du [hier](../spring/06_annotationen).
 
 ### Spring Boot Starter
 
