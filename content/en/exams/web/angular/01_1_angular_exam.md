@@ -8,8 +8,6 @@ description: >
   Einfache Aufgaben zu den Basics von Angular.
 ---
 
-# Exam 2 - Angular
-
 ![task1](/images/task.png) - Einzelarbeit<br>
 
 ## Ausgangslage
