@@ -25,68 +25,6 @@ Zuerst prüfen wir, ob Node.js bereits auf dem System installiert ist:
 node --version
 ```
 
-Falls Node.js noch nicht auf dem System installiert ist, kann Node.js über nvm (Node Version Manager) installiert werden.
-
-Um nvm zu installieren, verwende das Skript`install.sh`, das sich innerhalb des repository <a href="https://github.com/nvm-sh/nvm" target="_blank">github.com/nvm-sh/nvm</a> befindet:
-
-```shell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-```
-
-Verwende den Befehl
-
-```shell
-nvm --version
-```
-
-um zu überprüfen, ob nvm richtig installiert wurde.
-
-**nvm install**
-
-Um eine spezifische Version`<x.y.z>`von Node.js zu installieren (Beispiel `12.22.7`), verwende den Befehl
-
-```shell
-nvm install <version>
-```
-
-**nvm list**
-
-Verwende den Befehl
-
-```shell
-nvm list
-```
-
-um alle installierten Versionen von Node.js aufzulisten.
-
-**nvm use**
-
-Falls bereits eine Version von Node.js auf dem System installiert war, und man nvm nachträglich installiert hat, kann mit dem Befehl
-
-```shell
-nvm use system
-```
-
-die bereits vorher installierte Version zur Verwendung ausgewählt werden.
-
-Eine über nvm installierte Version <x.y.z> von Node.js kannst du mit
-
-```shell
-nvm use <x.y.z>
-```
-
-zur Verwendung auswählen.
-
-**nvm alias default**
-
-Zum Schluss, verwende
-
-```shell
-nvm alias default <version>
-```
-
-um eine mit Angular kompatible Version \<version\> (Beispiele `system`, `12.22.7`) von Node.js als Standard festzulegen.
-
 ### npm
 
 Node.js enthält einem integrierten Package-Manager namens "_npm_" (Node Package Manager). _npm_ ermöglicht es, Libraries und Module von anderen Entwicklern herunterzuladen, zu installieren und in eigenen Projekten zu verwenden. _npm_ bietet Zugriff auf eine riesige Sammlung von Open-Source-Packages.
