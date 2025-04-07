@@ -296,7 +296,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 
@@ -306,7 +306,7 @@ class PersonServiceSpringBootTest {
     @Autowired
     private PersonRepo personRepo;
 
-    @SpyBean
+    @MockitoSpyBean
     private MyUtilityBean myUtilityBean;
 
     @Autowired
@@ -350,7 +350,7 @@ class PersonServiceSpringBootTest {
 Wichtige Punkte zum Test:
 
 - Zur DB-Konfiguration verwenden wir das application.properties aus _/src/**test**/resources_. Wird ein Test gestartet, scannt Spring zuerst die Dateien in _/src/test_. Da dort ein _application.properties_ vorhanden ist, wird dieses verwenden. Falls nicht, würde in einem zweiten Schritt _/src/main_ gescannt und die entsprechende _application.properties_ Datei verwendet werden.
-- Anstelle von `@Spy` (und `@Mock`) wird `@SpyBean` (und `@MockBean`) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden. `@MockBean` wird eingesetzt, damit der Mock die effektive Bean im Application-Context ersetzt und so überall der Mock verwendet wird. `@SpyBean` wird genutzt, um die bestehende Bean innerhalb des Applikation-Contexts auszuspionieren und nicht isoliert zu betrachten.
+- Anstelle von `@Spy` (und `@Mock`) wird `@MockitoSpyBean` (und `@MockitoBean`) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden. `@MockitoBean` wird eingesetzt, damit der Mock die effektive Bean im Application-Context ersetzt und so überall der Mock verwendet wird. `@MockitoSpyBean` wird genutzt, um die bestehende Bean innerhalb des Applikation-Contexts auszuspionieren und nicht isoliert zu betrachten.
 - Für den Test `getAllPersons()` verwenden wir ein spezifisches `@Sql` Script _data_personservice.sql_.
 - Die Annotation `@DirtiesContext` bewirkt, dass nach dem Test die DB zurückgesetzt wird. Andernfalls hätten wir noch die Daten aus dem vorherigen Test in der DB.
 - Im Test `createPersons()` verwenden wir einen ArgumentCaptor auf der `myUtilityBean` und zählen, ob auf ihr 2x die Methode `addPerson()` aufgerufen wird und ob die erste Person auch unseren Testdaten entspricht.
@@ -431,7 +431,7 @@ import org.hamcrest.core.StringContains;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -444,7 +444,7 @@ class PersonControllerWebMvcTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @MockBean
+    @MockitoBean
     private PersonService personService;
 
     @Test
