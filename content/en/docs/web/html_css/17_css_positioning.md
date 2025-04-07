@@ -44,8 +44,6 @@ img {
 
 Mit `position: relative` bewirken wir, dass CSS-Properties wie `top`, `bottom`, `left` und `right` beachtet werden. Mithilfe der relativen Positionierung können wir dann das Element verschieben, ohne dass es andere Elemente bzw. den Textfluss verändert. Wir haben hier `top` verwendet, um **oben** einen Abstand einzufügen. Würdest du `left` verwenden, so würde sich das Element entsprechend nach rechts verschieben. Wichtig zu beachten ist hierbei, dass unter Verwendung von `top`, `bottom`, `left` und `right` der Abstand relativ zum Objekt selbst eingefügt wird.
 
-![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../../labs/web/html_css/02_css).
-
 ## Absolute Positionierung
 
 Möchtest du ein Element an einer bestimmten Position platzieren, dann kann dir `position: absolute` weiterhelfen:
@@ -71,4 +69,4 @@ Mache deinen Browser mal ein wenig kleiner und beobachte, wie sich die Positioni
 
 Möchtest du, dass die Positionierung immer - unabhängig vom Scrollen - gleich ist? Dann versuche mal, das Bild mit `position: fixed` zu platzieren.
 
-![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../../labs/web/html_css/02_css).
+![asset](/images/hint.png) Löse die [Aufgaben 1 - 3 im Lab](../../../../labs/web/html_css/02_css).
