@@ -37,7 +37,23 @@ Erstelle nun eine Cookie-Meldung wie diese (der weisse Teil mit dem roten Button
 
 ![exCookieBanner](../ex_pos_abs_cookie_banner.jpeg)
 
-### Aufgabe 4 - Bootstrap
+### Aufgabe 4 - Transitionen
+
+Erstelle einen Fliesstext. Dort drin soll es bestimmte Elemente haben wie z.B. Links. Diese Elemente befinden sich zwingend im Fliesstext.
+
+![task1](/images/task.png) Lasse diese Elemente (z.B. Links) vergrössern und gib' ihnen z.B. einen Border, wenn sich die Maus darüber befindet. Zusätzlich sollen noch weitere Informationen zum Element angezeigt werden.
+
+Beispiel: Auf Wikipedia erscheint eine kleine Ansicht, die eine Kurzbeschreibung beinhaltet, wenn du mit der Maus über einen Wikipedia-Link darüberfährst.
+
+### Aufgabe 5 - Animationen
+
+Hier hattest du ein Beispiel für einen Ladebalken: https://www.w3schools.com/howto/howto_css_loader.asp
+
+Sicherlich kennst du den Ladebalken von Apple. Sieh dir den Cupertino Loading Indicator als GIF hier an: https://flutterawesome.com/a-collection-of-high-fidelity-loading-animations-in-gif-format-with-flutter/
+
+![task1](/images/task.png) Implementiere diesen Loading Indicator. Du darfst gerne ein (aber nicht mehrere) Bild benutzen, welches du dann entsprechend animierst.
+
+### Aufgabe 6 - Bootstrap
 
 ![task1](/images/task.png) Nachfolgend ist eine Beispiel-Seite. Setze diese mit Bootstrap um:
 
@@ -50,19 +66,3 @@ Schaue dir [diese Seite](https://getbootstrap.com/docs/5.1/examples/pricing/) au
 Solltest du nicht weiterkommen, dann schaue in den Entwickler-Tools ([F12]-Taste) im DOM nach. Da diese Seite auch mit Bootstrap umgesetzt wurde, kannst du nachschauen, welche Bootstrap-Klassen sie verwendet haben.
 
 {{% /details %}}
-
-### Aufgabe 5 - Transitionen
-
-Erstelle einen Fliesstext. Dort drin soll es bestimmte Elemente haben wie z.B. Links. Diese Elemente befinden sich zwingend im Fliesstext.
-
-![task1](/images/task.png) Lasse diese Elemente (z.B. Links) vergrössern und gib' ihnen z.B. einen Border, wenn sich die Maus darüber befindet. Zusätzlich sollen noch weitere Informationen zum Element angezeigt werden.
-
-Beispiel: Auf Wikipedia erscheint eine kleine Ansicht, die eine Kurzbeschreibung beinhaltet, wenn du mit der Maus über einen Wikipedia-Link darüberfährst.
-
-### Aufgabe 6 - Animationen
-
-Hier hattest du ein Beispiel für einen Ladebalken: https://www.w3schools.com/howto/howto_css_loader.asp
-
-Sicherlich kennst du den Ladebalken von Apple. Sieh dir den Cupertino Loading Indicator als GIF hier an: https://flutterawesome.com/a-collection-of-high-fidelity-loading-animations-in-gif-format-with-flutter/
-
-![task1](/images/task.png) Implementiere diesen Loading Indicator. Du darfst gerne ein (aber nicht mehrere) Bild benutzen, welches du dann entsprechend animierst.

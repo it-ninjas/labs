@@ -253,7 +253,3 @@ Die Definition von Dimensionen - besonders auch der Höhe von Elementen -, sowie
 ### Display-Flex-Properties üben
 
 Auf [Flexbox Froggy](https://flexboxfroggy.com/#de) kannst du dein Flexbox-Wissen auf lustige Art und Weise trainieren. Nimm dir kurz Zeit dafür.
-
-### Aufgaben im Lab
-
-![asset](/images/hint.png) Hierzu findest du eine [Aufgabe im Lab](../../../../labs/web/html_css/02_css).
