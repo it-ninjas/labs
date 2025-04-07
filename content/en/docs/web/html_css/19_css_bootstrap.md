@@ -78,4 +78,4 @@ Von den folgenden Abschnitten solltest du lediglich mitnehmen, dass Bootstrap f√
 - Utilities
 - alles unter Forms
 
-![asset](/images/hint.png) Hierzu findest du die [Aufgabe 6 im Lab](../../../../labs/web/html_css/02_css/#aufgabe-4---bootstrap).
+![asset](/images/hint.png) Hierzu findest du die [Aufgabe 6 im Lab](../../../../labs/web/html_css/02_css).
