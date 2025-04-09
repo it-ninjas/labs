@@ -23,8 +23,10 @@ description: >
 
 Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus steuern.
 Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt.
-Ein Build ist der Prozess, bei dem der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch Kompilieren und Paketieren.
-Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte Plattform reichen.
+Ein Build ist der Prozess, bei dem der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch
+Kompilieren und Paketieren.
+Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte
+Plattform reichen.
 
 Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:
 
@@ -36,10 +38,13 @@ Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:
 
 ---
 
-### Manuelle Installation
+### Installation
 
-Idealerweise wurde Apache Maven bereits mit IntelliJ installiert. Damit du Maven auch auf der Kommandozeile ausführen kannst, kannst du Maven hier herunterladen:
-[https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi). Verwende die Binary anstelle der Source, und zwar am besten die Datei im `Binary zip archive` Format.
+#### Manuelle Installation
+
+Idealerweise wurde Apache Maven bereits mit IntelliJ installiert. Alternativ kannst du Maven auch hier herunterladen:
+[https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi). Verwende die Binary anstelle der Source,
+und zwar am besten die Datei im `Binary zip archive` Format.
 
 Klicke dazu auf den folgenden Link, wie hier im Beispiel:
 ![Apache Maven Project Download (Stand: 22.09.2024)](../maven/maven_download.png)
@@ -51,20 +56,50 @@ Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariable
 
 ---
 
+#### IntelliJ IDEA
+
+Ist IntelliJ installiert, findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise
+sind diese Einstellungen bereits korrekt.
+
+![Intellij Maven settings](../maven/intellij_maven_settings.png)
+
+Die wichtigsten Einstellungen sind:
+
+| Einstellung          | Beschreibung                                                                                                                                        |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Maven home directory | Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als "Bundled" bezeichnet. |
+| User settings file   | Die XML-Datei, welche bei der Installation angelegt wurde.                                                                                          |
+| Local repository     | Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\\\<Personalnummer>\\.m2.\\repository zu finden.                    |
+
+Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository
+korrekt sind.
+
+---
+
 ### Umgebungsvariablen setzen
 
 Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
-Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:
+Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die
+Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:
 
-| #   | Beschreibung                                                                                                                                                                                                                                                                                                   |
-| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten. Falls das nicht geht, musst du dir (temporär) lokale Admin-Rechte aktivieren.                                                                                                                                                 |
-| 2   | Unten rechts auf den Button "Umgebungsvariablen" klicken.                                                                                                                                                                                                                                                      |
-| 3   | Im unteren Teil "Benutzervariablen" die Variable "Path" suchen und anklicken.                                                                                                                                                                                                                                  |
-| 4   | Auf den Button "Bearbeiten..." klicken.                                                                                                                                                                                                                                                                        |
-| 5   | Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten.                                                                                                                                                                                                                             |
-| 6   | Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte auf bin zeigen, also zum Beispiel: **C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin**. Du musst sicherstellen, dass die Version mit deiner heruntergeladenen Version übereinstimmt. |
-| 7   | Alle offenen Windows-Fenster mit "OK" schliessen.                                                                                                                                                                                                                                                              |
+1. Anwendung "Systemumgebungsvariablen bearbeiten" aus der Systemsteuerung starten. Falls das nicht geht, musst du dir
+   (temporär) lokale Admin-Rechte aktivieren.
+
+2. Unten rechts auf den Button "Umgebungsvariablen" klicken.
+
+3. Im unteren Teil "Benutzervariablen" die Variable "Path" suchen und anklicken.
+
+4. Auf den Button "Bearbeiten..." klicken.
+
+5. Oben rechts auf den Button "Neu" klicken, es erscheint eine neue Zeile ganz unten.
+
+6. Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte
+   auf das Verzeichnis bin zeigen, also zum Beispiel:
+
+   - manuelle Installation: **C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin**
+   - IntelliJ installiert: **C:\Users\u......\AppData\Local\Programs\IntelliJ IDEA Ultimate\plugins\maven\lib\maven3\bin**
+
+7. Alle offenen Windows-Fenster mit "OK" schliessen.
 
 Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter _Eingabeaufforderung_ oder _cmd_ in der Windows Suche) aus:\
 `mvn -version`
@@ -72,7 +107,7 @@ Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Term
 Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:\
 `Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)`
 
-![img.png](../maven/cmd_maven_version.png)
+![Maven Version](../maven/cmd_maven_version.png)
 
 Die Version muss nicht mit deiner übereinstimmen.
 
@@ -108,24 +143,6 @@ JAVA_HOME:{JDK home path}
 Ersetze `{JDK home path}` mit deinem kopierten Wert. Öffne danach ein neues Terminal und versuche es erneut.
 
 </details>
-
----
-
-### IntelliJ IDEA einrichten
-
-Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise sind diese Einstellungen bereits korrekt.
-
-![Intellij Maven settings](../maven/intellij_maven_settings.png)
-
-Die wichtigsten Einstellungen sind:
-
-| Einstellung          | Beschreibung                                                                                                                                        |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Maven home directory | Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als "Bundled" bezeichnet. |
-| User settings file   | Die XML-Datei, welche bei der Installation angelegt wurde.                                                                                          |
-| Local repository     | Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\\\<Personalnummer>\\.m2.\\repository zu finden.                    |
-
-Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository korrekt sind.
 
 ---
 
