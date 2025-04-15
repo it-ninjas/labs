@@ -100,7 +100,7 @@ Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die 
 
 7. Alle offenen Windows-Fenster mit "OK" schliessen.
 
-Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter 
+Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter
 _Eingabeaufforderung_ oder _cmd_ in der Windows Suche) aus:
 
 `mvn -version`
@@ -349,14 +349,16 @@ Plugins für Maven zur Verfügung, eine Übersicht gibt es [hier](https://maven.
 Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.
 
 ---
+
 ### Maven Mirror
 
 Ein Mirror in Maven ist eine alternative Quelle, von der Maven Artefakte (wie Abhängigkeiten, Plugins usw.) herunterladen
 kann. Mirrors werden verwendet, um die Verfügbarkeit und Geschwindigkeit des Downloads zu verbessern, insbesondere wenn
-das Standard-Repository (z. B. Maven Central) aus irgendeinem Grund nicht erreichbar ist oder wenn ein internes 
+das Standard-Repository (z. B. Maven Central) aus irgendeinem Grund nicht erreichbar ist oder wenn ein internes
 Repository bevorzugt wird.
 
 #### Konfiguration eines Mirrors
+
 Die Konfiguration eines Mirrors erfolgt in der settings.xml-Datei von Maven. Diese Datei befindet sich normalerweise im
 Verzeichnis `~/.m2` (bei Unix/Linux) oder `%USERPROFILE%\.m2` (bei Windows).
 
@@ -379,12 +381,12 @@ Hier ist ein Beispiel, wie ein Mirror in der settings.xml konfiguriert werden ka
 
 Artefakte, welche mit Maven gebildet werden, kommen zuerst in ein lokales Repository. Von dort können sie dann wieder
 verwendet werden (z.B. für Testing). Will man eine Version auch anderen Entwicklern zur Vefügung stellen, kann man das
-Projekt deployen. Dazu muss man aber zuerst ein Repository konfigurieren, damit Maven weiss, wohin die Artefakte sollen. 
+Projekt deployen. Dazu muss man aber zuerst ein Repository konfigurieren, damit Maven weiss, wohin die Artefakte sollen.
 
 Da das Deployment projektspezifisch ist, erfolgt die Konfiguration für das Repository im `pom.xml`:
 
 ```xmlmarkdown.md
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
@@ -408,7 +410,7 @@ Falls der Zugriff auf ein Repository eine Berechtigung benötigt, wird diese im 
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-    
+
     <servers>
         <server>
             <id>remoteRepository</id>
@@ -419,8 +421,8 @@ Falls der Zugriff auf ein Repository eine Berechtigung benötigt, wird diese im 
 </settings>
 ```
 
->> Das speichern von Zugangsdaten in `settings.xml` stellt sicher, dass diese nicht in ein Code Repository gelangen und so
-  in falsche Hände geraten können.
+> > Das speichern von Zugangsdaten in `settings.xml` stellt sicher, dass diese nicht in ein Code Repository gelangen und so
+> > in falsche Hände geraten können.
 
 ### Commands
 

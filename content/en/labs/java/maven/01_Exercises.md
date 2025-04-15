@@ -13,11 +13,11 @@ description: >
 
 {{< SBBOnly >}}
 Falls du nicht in Ausbildung bei der SBB bist und deinen Code in einem Repository ablegen möchtest, musst du dir ein
-eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [GitHub](https://github.com/) oder 
+eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [GitHub](https://github.com/) oder
 [Azure](azure.microsoft.com/services/devops).
 {{< /SBBOnly >}}
 
-1. Erstelle ein neues 
+1. Erstelle ein neues
    [persönliches Repository](../../../../docs/tools/personal_bitbucket_repo/#persönliches-bitbucket-repository-einrichten)
 2. Klone das neue Repository mit IntelliJ IDEA
 
@@ -29,8 +29,8 @@ eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [Git
 4. Optional: Konfigure den [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn)
 
 > Achtung: Der [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn) ist nur im VPN erreichbar. Mit konfiguriertem
-  [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn) kann es beim Builden zu Problemen kommen, wenn man nicht
-  mit dem VPN verbunden ist.
+> [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn) kann es beim Builden zu Problemen kommen, wenn man nicht
+> mit dem VPN verbunden ist.
 
 ### Maven-Projekt aufsetzen
 
@@ -230,7 +230,7 @@ Aktualisiere alle Dependencies mit Hilfe des Plugins `org.codehaus.mojo:versions
 - Erstelle auf deinem Rechner ein Verzeichnis (z.B. unter `C:\Development\Repository`)
 
 - passe die Einstellungen in deinem Projekt so an, dass beim Befehl `mvn -deploy` das Artefakt von deinem Projekt in
-den zuvor erstellten Ordner erstellt wird.
+  den zuvor erstellten Ordner erstellt wird.
 
 ---
 
