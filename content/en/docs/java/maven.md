@@ -21,10 +21,9 @@ description: >
 
 ### Allgemeine Informationen
 
-Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus steuern.
-Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt.
-Ein Build ist der Prozess, bei dem der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch
-Kompilieren und Paketieren.
+Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus
+steuern. Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Ein Build ist der Prozess, bei dem
+der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch Kompilieren und Paketieren.
 Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte
 Plattform reichen.
 
@@ -101,10 +100,13 @@ Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die 
 
 7. Alle offenen Windows-Fenster mit "OK" schliessen.
 
-Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter _Eingabeaufforderung_ oder _cmd_ in der Windows Suche) aus:\
+Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter 
+_Eingabeaufforderung_ oder _cmd_ in der Windows Suche) aus:
+
 `mvn -version`
 
-Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:\
+Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:
+
 `Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)`
 
 ![Maven Version](../maven/cmd_maven_version.png)
@@ -148,8 +150,9 @@ Ersetze `{JDK home path}` mit deinem kopierten Wert. Öffne danach ein neues Ter
 
 ### pom.xml
 
-Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem umfangreichen Beispiel.
-Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses Project Object Model nicht alle Inhalte vollständig erklärt, sondern nur als erstes Beispiel dient.
+Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem
+umfangreichen Beispiel. Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses
+Project Object Model nicht alle Inhalte vollständig erklärt, sondern nur als erstes Beispiel dient.
 
 ```xmlmarkdown.md
 <!-- (1) Header -->
@@ -235,14 +238,20 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
 
 #### Abschnitt 1
 
-Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.
+Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei
+optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.
 
 #### Abschnitt 2
 
 Die Angaben zum Artefakt enthalten die folgenden Informationen:
 
-- **Gruppen-ID**: Die Gruppen-ID ist in Maven normalerweise als umgekehrte Domain-Name-Notation (Reverse Domain Name Notation) aufgebaut, ähnlich wie bei Java-Paketen. Diese Struktur dient dazu, Konflikte zwischen Artefakten von verschiedenen Organisationen zu vermeiden. Zum Beispiel wird die Gruppen-ID für ein Projekt der SBB oft in der Form ch.sbb beginnen, da sbb.ch die Domain der Schweizerischen Bundesbahnen ist. Beispiel: ch.sbb.interviewtool
-- **Artefakt-ID**: Die Artefakt-ID ist der eindeutige Name eines Projekts oder einer Komponente, der zusammen mit der Gruppen-ID und der Version verwendet wird, um ein Artefakt im Repository eindeutig zu identifizieren. Beispiel: interviewtool-backend, mit der Gruppen-ID: ch.sbb.interviewtool:interviewtool-backend.
+- **Gruppen-ID**: Die Gruppen-ID ist in Maven normalerweise als umgekehrte Domain-Name-Notation (Reverse Domain Name
+  Notation) aufgebaut, ähnlich wie bei Java-Paketen. Diese Struktur dient dazu, Konflikte zwischen Artefakten von
+  verschiedenen Organisationen zu vermeiden. Zum Beispiel wird die Gruppen-ID für ein Projekt der SBB oft in der
+  Form ch.sbb beginnen, da sbb.ch die Domain der Schweizerischen Bundesbahnen ist. Beispiel: ch.sbb.interviewtool
+- **Artefakt-ID**: Die Artefakt-ID ist der eindeutige Name eines Projekts oder einer Komponente, der zusammen mit der
+  Gruppen-ID und der Version verwendet wird, um ein Artefakt im Repository eindeutig zu identifizieren. Beispiel:
+  interviewtool-backend, mit der Gruppen-ID: ch.sbb.interviewtool:interviewtool-backend.
 - **Version**: Die momentane Version des Projekts, diese wird später durch Releases verändert.
 - **Paketierung**: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR).
 
@@ -265,18 +274,23 @@ Dazu ein paar Beispiele:
 | Build-Number        | 1.4.2<font color="red">-12</font>     |
 | Qualifier           | 1.2<font color="red">-beta-2</font>   |
 
-Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version **1.2-beta-2** älter als die Version **1.2**.
-Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den Vergleich dieser als String verglichen. So ist die Version **1.2-beta-2** neuer als die Version **1.2-alpha-6**.
+Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version
+**1.2-beta-2** älter als die Version **1.2**. Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den
+Vergleich dieser als String verglichen. So ist die Version **1.2-beta-2** neuer als die Version **1.2-alpha-6**.
 
-Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version **0.1.2-SNAPSHOT** sehr wahrscheinlich als Version **0.1.2** ausgeliefert werden.
+Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version
+**0.1.2-SNAPSHOT** sehr wahrscheinlich als Version **0.1.2** ausgeliefert werden.
 
 #### Abschnitt 3
 
-Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](spring-framework/spring-boot/06_spring-boot.md) Projekten wichtig.
+Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten
+Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](spring-framework/spring-boot/06_spring-boot.md)
+Projekten wichtig.
 
 #### Abschnitt 4
 
-Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine Version definiert werden.
+Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine
+Version definiert werden.
 
 Beispiel:
 
@@ -294,37 +308,124 @@ auf die Einstellung (Tag) und damit auf dessen Wert (Value) zugegriffen werden.
 
 #### Abschnitt 5
 
-Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
-Eine Liste der möglichen Typen findest du hier: [https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html).
+Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der
+Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR
+ausgeliefert.
+
+Eine Liste der möglichen Typen findest du hier:
+[https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html](https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html).
+
 Vielfach wird auch der Scope verwendet, der angibt, in welchem Umfang die Fremdbibliothek einbezogen wird.
 Mögliche Scopes sind unter anderem:
 
-- compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also mitausgeliefert.
-- provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und bereitgestellt wird.
-- runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur Verfügung.
+- compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also
+  mitausgeliefert.
+- provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und
+  bereitgestellt wird.
+- runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur
+  Verfügung.
 - test - Die Bibliothek steht nur für Tests zur Verfügung und wird nur fürs Testing benötigt.
 - system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss.
 
+Das [MVN Repository](https://mvnrepository.com/) stellt eine Vielzahl von Fremdbibliotheken zur Verfügung. Maven
+versucht Abhängigkeiten über dieses Repository aufzulösen.
+
+##### Beispiel einer Abhängigkeit (junit-jupiter-engine)
+
+Die Dependency `junit-jupiter-engine` ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
+einem weit verbreiteten Test-Framework für Java. Im Kapitel [Testing](../java-testing) wirst diese ausführlich genutzt.
+
+Ein weiteres Beispiel für eine Abhängigkeit ist `lombok`. Diese Library wird im Kapitel [Lombok](../lombok) ausführlich
+beschrieben.
+
 #### Abschnitt 6
 
-Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische Erweiterungen beliebig angepasst werden.
-Es ist auch möglich, eigene Maven-Plugins zu entwickeln. Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es [hier](https://maven.apache.org/plugins/index.html).
+Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische
+Erweiterungen beliebig angepasst werden. Es ist auch möglich, eigene Maven-Plugins zu entwickeln. Es stehen sehr viele
+Plugins für Maven zur Verfügung, eine Übersicht gibt es [hier](https://maven.apache.org/plugins/index.html).
 
 #### Abschnitt 7
 
 Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.
 
 ---
+### Maven Mirror
 
-### Beispiel einer Abhängigkeit (spring-boot-starter)
+Ein Mirror in Maven ist eine alternative Quelle, von der Maven Artefakte (wie Abhängigkeiten, Plugins usw.) herunterladen
+kann. Mirrors werden verwendet, um die Verfügbarkeit und Geschwindigkeit des Downloads zu verbessern, insbesondere wenn
+das Standard-Repository (z. B. Maven Central) aus irgendeinem Grund nicht erreichbar ist oder wenn ein internes 
+Repository bevorzugt wird.
 
-Die Dependency `spring-boot-starter` ist eine grundlegende Bibliothek für Spring-Boot Projekte, die automatisch alle benötigten Abhängigkeiten einbindet, um die Anwendung zu starten und auszuführen. Dadurch wird der Aufbau von Spring-Anwendungen vereinfacht, da häufig verwendete Bibliotheken in einem einzigen Package zusammengefasst sind.
+#### Konfiguration eines Mirrors
+Die Konfiguration eines Mirrors erfolgt in der settings.xml-Datei von Maven. Diese Datei befindet sich normalerweise im
+Verzeichnis `~/.m2` (bei Unix/Linux) oder `%USERPROFILE%\.m2` (bei Windows).
 
-Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](../lombok). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
+Hier ist ein Beispiel, wie ein Mirror in der settings.xml konfiguriert werden kann:
+
+```xmlmarkdown.md
+<settings>
+  <mirrors>
+    <mirror>
+      <id>my-internal-repo</id>
+      <name>My Internal Repository</name>
+      <url>http://my.internal.repo/repository/maven-public/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>
+```
+
+### Repository und Deployment
+
+Artefakte, welche mit Maven gebildet werden, kommen zuerst in ein lokales Repository. Von dort können sie dann wieder
+verwendet werden (z.B. für Testing). Will man eine Version auch anderen Entwicklern zur Vefügung stellen, kann man das
+Projekt deployen. Dazu muss man aber zuerst ein Repository konfigurieren, damit Maven weiss, wohin die Artefakte sollen. 
+
+Da das Deployment projektspezifisch ist, erfolgt die Konfiguration für das Repository im `pom.xml`:
+
+```xmlmarkdown.md
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    ...
+
+    <distributionManagement>
+        <repository>
+            <id>remoteRepository</id>
+            <url>file:///C:/Development/Repository</url>
+        </repository>
+    </distributionManagement>
+</project>
+```
+
+Im obigen Beispiel wurde ein lokales Repository konfiguriert. Die `url` kann auch auf einen Remote Server verweisen
+(Maven Central, JFrog Artifactery, Azure Artifacts, ...).
+
+Falls der Zugriff auf ein Repository eine Berechtigung benötigt, wird diese im `settings.xml` abgelegt:
+
+```xmlmarkdown.md
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    
+    <servers>
+        <server>
+            <id>remoteRepository</id>
+            <username>your-username</username>
+            <password>your-password</password>
+        </server>
+    </servers>
+</settings>
+```
+
+>> Das speichern von Zugangsdaten in `settings.xml` stellt sicher, dass diese nicht in ein Code Repository gelangen und so
+  in falsche Hände geraten können.
 
 ### Commands
 
-Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt, kannst du das Terminal öffnen und den folgenden Befehl eingeben:
+Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt,
+kannst du das Terminal öffnen und den folgenden Befehl eingeben:
 
 ```console
 mvn -version
@@ -375,7 +476,8 @@ mvn compile
 ```
 
 Kompiliert den Sourcecode je nach Abhängigkeit von Plugins.
-Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung herangezogen.
+Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung
+herangezogen.
 
 #### test
 
@@ -391,7 +493,8 @@ Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-
 mvn package
 ```
 
-Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das Verzeichnis "target".
+Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das
+Verzeichnis "target".
 
 #### verify
 
@@ -399,7 +502,8 @@ Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwen
 mvn verify
 ```
 
-Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen Maven-Befehl vorausgesetzt.
+Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen
+Maven-Befehl vorausgesetzt.
 
 #### install
 
@@ -415,7 +519,8 @@ Lädt das Artefakt in dein lokales Maven-Repository (dies findest du typischerwe
 mvn install -DskipTests
 ```
 
-Mit dem Parameter `-DskipTests` kannst du die Ausführung der Tests während der Installation überspringen, um Zeit zu sparen. Der Parameter kann auch bei anderen Aktionen wie `compile`, `package` usw. verwendet werden.
+Mit dem Parameter `-DskipTests` kannst du die Ausführung der Tests während der Installation überspringen, um Zeit zu
+sparen. Der Parameter kann auch bei anderen Aktionen wie `compile`, `package` usw. verwendet werden.
 
 #### deploy
 
@@ -439,4 +544,7 @@ Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen 
 
 ---
 
-![hint-gradle](/images/hint.png) (Optional) **Gradle**: Als Alternative zu Maven wird oft auch das Build-System [Gradle](https://docs.gradle.org/) eingesetzt. Unter [Building Java Applications Sample](https://docs.gradle.org/current/samples/sample_building_java_applications.html) kannst du dir einen ersten Eindruck verschaffen.
+![hint-gradle](/images/hint.png) (Optional) **Gradle**: Als Alternative zu Maven wird oft auch das Build-System
+[Gradle](https://docs.gradle.org/) eingesetzt. Unter
+[Building Java Applications Sample](https://docs.gradle.org/current/samples/sample_building_java_applications.html)
+kannst du dir einen ersten Eindruck verschaffen.
