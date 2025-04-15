@@ -3477,7 +3477,7 @@ Application-Context hoch:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.mockito.ArgumentCaptor;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.beans.factory.annotation.Autowired;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.boot.test.context.SpringBootTest;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.boot.test.mock.mockito.SpyBean;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.test.annotation.DirtiesContext;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.test.context.jdbc.Sql;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -3487,7 +3487,7 @@ Application-Context hoch:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Autowired&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> PersonRepo personRepo;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@SpyBean&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@MockitoSpyBean&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> MyUtilityBean myUtilityBean;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Autowired&lt;/span>
@@ -3531,7 +3531,7 @@ Application-Context hoch:&lt;/p>
 &lt;/div>&lt;p>Wichtige Punkte zum Test:&lt;/p>
 &lt;ul>
 &lt;li>Zur DB-Konfiguration verwenden wir das application.properties aus &lt;em>/src/&lt;strong>test&lt;/strong>/resources&lt;/em>. Wird ein Test gestartet, scannt Spring zuerst die Dateien in &lt;em>/src/test&lt;/em>. Da dort ein &lt;em>application.properties&lt;/em> vorhanden ist, wird dieses verwenden. Falls nicht, würde in einem zweiten Schritt &lt;em>/src/main&lt;/em> gescannt und die entsprechende &lt;em>application.properties&lt;/em> Datei verwendet werden.&lt;/li>
-&lt;li>Anstelle von &lt;code>@Spy&lt;/code> (und &lt;code>@Mock&lt;/code>) wird &lt;code>@SpyBean&lt;/code> (und &lt;code>@MockBean&lt;/code>) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden. &lt;code>@MockBean&lt;/code> wird eingesetzt, damit der Mock die effektive Bean im Application-Context ersetzt und so überall der Mock verwendet wird. &lt;code>@SpyBean&lt;/code> wird genutzt, um die bestehende Bean innerhalb des Applikation-Contexts auszuspionieren und nicht isoliert zu betrachten.&lt;/li>
+&lt;li>Anstelle von &lt;code>@Spy&lt;/code> (und &lt;code>@Mock&lt;/code>) wird &lt;code>@MockitoSpyBean&lt;/code> (und &lt;code>@MockitoBean&lt;/code>) verwendet. Du kannst jedoch dieselben Assertions und Verifys verwenden. &lt;code>@MockitoBean&lt;/code> wird eingesetzt, damit der Mock die effektive Bean im Application-Context ersetzt und so überall der Mock verwendet wird. &lt;code>@MockitoSpyBean&lt;/code> wird genutzt, um die bestehende Bean innerhalb des Applikation-Contexts auszuspionieren und nicht isoliert zu betrachten.&lt;/li>
 &lt;li>Für den Test &lt;code>getAllPersons()&lt;/code> verwenden wir ein spezifisches &lt;code>@Sql&lt;/code> Script &lt;em>data_personservice.sql&lt;/em>.&lt;/li>
 &lt;li>Die Annotation &lt;code>@DirtiesContext&lt;/code> bewirkt, dass nach dem Test die DB zurückgesetzt wird. Andernfalls hätten wir noch die Daten aus dem vorherigen Test in der DB.&lt;/li>
 &lt;li>Im Test &lt;code>createPersons()&lt;/code> verwenden wir einen ArgumentCaptor auf der &lt;code>myUtilityBean&lt;/code> und zählen, ob auf ihr 2x die Methode &lt;code>addPerson()&lt;/code> aufgerufen wird und ob die erste Person auch unseren Testdaten entspricht.&lt;/li>
@@ -3722,7 +3722,7 @@ Deshalb mocken wir den &lt;code>PersonService&lt;/code>:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.junit.jupiter.api.Test;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.beans.factory.annotation.Autowired;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.boot.test.mock.mockito.MockBean;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.test.context.bean.override.mockito.MockitoBean;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.http.MediaType;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> org.springframework.test.web.servlet.MockMvc;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -3735,7 +3735,7 @@ Deshalb mocken wir den &lt;code>PersonService&lt;/code>:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Autowired&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> ObjectMapper objectMapper;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@MockBean&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@MockitoBean&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> PersonService personService;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
