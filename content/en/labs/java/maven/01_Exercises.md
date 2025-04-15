@@ -14,7 +14,7 @@ description: >
 {{< SBBOnly >}}
 Falls du nicht in Ausbildung bei der SBB bist und deinen Code in einem Repository ablegen möchtest, musst du dir ein
 eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [GitHub](https://github.com/) oder
-[Azure](azure.microsoft.com/services/devops).
+[Azure](https://azure.microsoft.com/en-us/products/devops/).
 {{< /SBBOnly >}}
 
 1. Erstelle ein neues
@@ -25,7 +25,7 @@ eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [Git
 
    ![Create Project from Version Control Dialog](../03_NewProjectFromVersionControlDialog.png)
 
-3. Richte das Repository ein, wie auf [code.sbb.ch](code.sbb.ch) beschrieben (nachdem man das Repo erstellt hat)
+3. Richte das Repository ein, wie auf [code.sbb.ch](https://code.sbb.ch/) beschrieben (nachdem man das Repo erstellt hat)
 4. Optional: Konfigure den [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn)
 
 > Achtung: Der [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn) ist nur im VPN erreichbar. Mit konfiguriertem
