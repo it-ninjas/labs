@@ -111,3 +111,5 @@ Damit du die Animation (hier mit dem Namen `wave`) verwenden kannst, musst du di
 Das ist bereits alles an Basis-Wissen, das es zu Animationen in CSS zu wissen gibt. Interessierst du dich weiter für Animationen, dann kannst du dein Wissen gerne hier vertiefen: https://www.w3schools.com/css/css3_animations.asp
 
 Damit du erkennst, wofür Animationen eingesetzt werden können, schaue dir dieses Beispiel an, wie einfach und ohne die Nutzung von Javascript ein Ladebalken implementiert werden kann: https://www.w3schools.com/howto/howto_css_loader.asp
+
+![asset](/images/hint.png) Löse die [Aufgaben 4 und 5 im Lab](../../../../labs/web/html_css/02_css).
