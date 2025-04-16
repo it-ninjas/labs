@@ -41,7 +41,7 @@ Erstelle nun eine Cookie-Meldung wie diese (der weisse Teil mit dem roten Button
 
 Erstelle einen Fliesstext. Dort drin soll es bestimmte Elemente haben wie z.B. Links. Diese Elemente befinden sich zwingend im Fliesstext.
 
-![task1](/images/task.png) Lasse diese Elemente (z.B. Links) vergrössern und gib' ihnen z.B. einen Border, wenn sich die Maus darüber befindet. Zusätzlich sollen noch weitere Informationen zum Element angezeigt werden.
+![task1](/images/task.png) Lasse diese Elemente (z.B. Links) vergrössern und gib ihnen z.B. einen Border, wenn sich die Maus darüber befindet. Zusätzlich sollen noch weitere Informationen zum Element angezeigt werden.
 
 Beispiel: Auf Wikipedia erscheint eine kleine Ansicht, die eine Kurzbeschreibung beinhaltet, wenn du mit der Maus über einen Wikipedia-Link darüberfährst.
 
@@ -59,7 +59,7 @@ Sicherlich kennst du den Ladebalken von Apple. Sieh dir den Cupertino Loading In
 
 ![pricingPage](../bootstrap-pricing-page-example.jpg)
 
-Schaue dir [diese Seite](https://getbootstrap.com/docs/5.1/examples/pricing/) auf auf kleineren Bildschirmen an - also verändere die Fenster-Breite deines Browsers. Du wirst sehen, dass z.B. die einzelnen Abos untereinander erscheinen, wenn die Breite kleiner wird. Berücksichtige dies auch in deinem Code.
+Schaue dir [diese Seite](https://getbootstrap.com/docs/5.1/examples/pricing/) auch auf einem kleineren Bildschirm an, indem du die Fensterbreite deines Browsers veränderst. Du wirst sehen, dass z.B. die einzelnen Abos untereinander erscheinen, wenn die Breite kleiner wird. Berücksichtige dies auch in deinem Code.
 
 {{% details title="Hinweis" %}}
 
