@@ -256,11 +256,11 @@ Die folgenden JARs werden benötigt:
 
 Die Einbindung in ein Projekt muss (ohne Maven) manuell gemacht werden. Die folgende Anleitung soll dabei helfen:
 
-| #   | Beschreibung                                                                                                                                              | Screenshot                                                   |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| #   | Beschreibung                                                                                                                                              | Screenshot                                            |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | 1   | Ordner für Bibliotheken im Projekt anlegen. Im Projekt (Root) einfach einen neuen Ordner "lib" erzeugen.                                                  | ![lib-Verzeichnis erstellen](./images/1518642046.png) |
 | 2   | Die oben genannten JAR-Bibliotheken in den neuen Ordner kopieren                                                                                          | ![JARs kopieren](./images/1616908690.png)             |
-| 3   | Projekteinstellungen öffnen. Das Projekt mit einem Klick markieren und Taste F4 drücken. Die Projekteinstellungen werden geöffnet                         |                                                              |
+| 3   | Projekteinstellungen öffnen. Das Projekt mit einem Klick markieren und Taste F4 drücken. Die Projekteinstellungen werden geöffnet                         |                                                       |
 | 4   | Auf der linken Seite den Tab "Libraries" auswählen                                                                                                        | ![Lib-Tab auswählen](./images/1518642115.png)         |
 | 5   | Oben auf das Plus-Icon klicken und Java auswählen                                                                                                         | ![Bibliothek hinzufügen](./images/1518642153.png)     |
 | 6   | Die vorhin kopierten Bibliotheken auswählen und alle Dialoge mit OK bestätigen                                                                            | ![Bibliotheken auswählen](./images/1616908730.png)    |
@@ -1334,4 +1334,4 @@ Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Test
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/java-testing) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../labs/L02_java/L08_java-testing) in den Labs.

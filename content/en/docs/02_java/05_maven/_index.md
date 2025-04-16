@@ -255,7 +255,7 @@ Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert
 
 #### Abschnitt 3
 
-Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](spring-framework/spring-boot/06_spring-boot.md) Projekten wichtig.
+Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](../12_spring-framework/spring-boot/06_spring-boot) Projekten wichtig.
 
 #### Abschnitt 4
 
@@ -303,7 +303,7 @@ Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen
 
 Die Dependency `spring-boot-starter` ist eine grundlegende Bibliothek für Spring-Boot Projekte, die automatisch alle benötigten Abhängigkeiten einbindet, um die Anwendung zu starten und auszuführen. Dadurch wird der Aufbau von Spring-Anwendungen vereinfacht, da häufig verwendete Bibliotheken in einem einzigen Package zusammengefasst sind.
 
-Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](../lombok). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
+Ein weiteres Beispiel für eine Abhängigkeit ist [Lombok](../06_lombok). Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.
 
 ### Commands
 
@@ -418,7 +418,7 @@ Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen 
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/java/maven) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../labs/L02_java/L05_maven) in den Labs.
 
 ---
 

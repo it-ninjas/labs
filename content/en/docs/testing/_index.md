@@ -9,7 +9,7 @@ description: >
 
 Diese Seite soll als Landing Page dienen und den Absprung zu den verschiedenen Testing-Seiten erleichtern.
 
-- [Testing Konzepte / JUnit / Mockito](../../../../docs/java/java-testing/)
-- [Spring Boot Testing](../java/spring-framework/spring-boot-testing/09_spring-boot-testing)
-- [Rest-Schnittstellen testen](../java/spring-framework/rest-endpoints/08_java-rest-testing.md)
-- [Angular Testfiles](../../../../docs/web/angular/02_7_angular_unit_test/)
+- [Testing Konzepte / JUnit / Mockito](../02_java/08_java-testing)
+- [Spring Boot Testing](../02_java/12_spring-framework/spring-boot-testing/09_spring-boot-testing)
+- [Rest-Schnittstellen testen](../02_java/12_spring-framework/rest-endpoints/08_java-rest-testing.md)
+- [Angular Testfiles](../web/angular/02_7_angular_unit_test/)

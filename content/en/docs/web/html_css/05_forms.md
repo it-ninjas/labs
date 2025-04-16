@@ -112,7 +112,7 @@ Folgender Code erzeugt ein Formular, welches eine E-Mail und einen Boolean-Wert 
 </form>
 ```
 
-Entscheidend ist hier das `<form>`-Tag. Das `action`-Attribut legt fest, wo die Daten hingeschickt werden. Die `method` legt fest, welche HTTP Request Method verwendet wird (GET oder POST). Bist du dir nicht mehr sicher, welche Methode was bedeutet, dann schaue dir das folgende "REST"-Kapitel noch einmal an: https://labs.it-ninjas.ch/docs/java/spring/#rest
+Entscheidend ist hier das `<form>`-Tag. Das `action`-Attribut legt fest, wo die Daten hingeschickt werden. Die `method` legt fest, welche HTTP Request Method verwendet wird (GET oder POST). Bist du dir nicht mehr sicher, welche Methode was bedeutet, dann schaue dir das ["REST"-Kapitel](../../02_java/12_spring-framework/rest-endpoints/02_rest-endpoints) noch einmal an.
 
 Bei Formularen verwendet man meistens entweder GET oder POST. Obwohl beide zum selben Resultat führen können, unterscheiden die beiden Methoden sich trotzdem grundlegend voneinander. Die zu verwendende Methode wird meistens vom Backend festgelegt. Unser Backend unterstützt in diesem Fall aber beide Methoden.
 

@@ -510,7 +510,7 @@ public interface GradeRepository extends JpaRepository<Grade, Integer> {
 
 ### Möglichkeit 2: JDBC-Template
 
-Wer nicht mehr genau weiss was JDBC ist kann es [hier](../../java-jdbc.md) nachlesen.
+Wer nicht mehr genau weiss was JDBC ist kann es [hier](../../11_java-jdbc) nachlesen.
 
 #### Dependency
 
@@ -1107,4 +1107,4 @@ public class AdminControllerIntegrationTest {
 }
 ```
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Spring](../../../../labs/java/spring) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Spring](../../../../labs/L02_java/L12_spring-framework/L01_Spring) in den Labs.

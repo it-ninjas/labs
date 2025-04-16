@@ -75,7 +75,7 @@ Wir haben die **ArrayList** Klasse (`java.util.ArrayList`) als Beispiel für ein
 repräsentiert eine **Collection vom Typ List** (implementiert also das Interface `java.util.List`) und wird mithilfe von
 zugrunde liegenden Arrays implementiert, deshalb auch der Name ArrayList. Es gibt aber auch andere Klassen, die Collections vom Typ `List` darstellen. Wir werden später einige davon noch kennenlernen.
 
-![list0](./images/index-list.png)
+![list0](./images/list.png)
 
 ## Theorie
 
@@ -99,7 +99,7 @@ Die Interfaces in der folgenden Abbildung (`Collection`, `Set`, `List`, `Queue`,
 bilden die **Grundlage des Collection Frameworks**. Durch diese grundlegenden Interfaces bildet sich eine Hierarchie
 innerhalb des Collection Frameworks:
 
-![hierarchy3](./images/index-hierarchy.png)
+![hierarchy](./images/hierarchy.png)
 
 Auf dieser Grafik ist zu sehen, dass zum Beispiel:
 
