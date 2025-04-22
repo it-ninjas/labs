@@ -65,7 +65,7 @@ public class Store {
 ```
 
 Ein Nachteil der Field-Injection ist, dass es im Gegensatz zur Konstruktor-Injection nicht möglich ist,
-alle Instanzvariablen mit `final` zu deklarieren. Mehr Informationen zu der `@Autowired`-Annotation findest du auf dieser [Seite](05_annotationen.md).
+alle Instanzvariablen mit `final` zu deklarieren. Mehr Informationen zu der `@Autowired`-Annotation findest du auf dieser [Seite](../05_annotationen/).
 
 ### Singleton
 

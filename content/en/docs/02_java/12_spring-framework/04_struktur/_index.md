@@ -8,7 +8,7 @@ description: >
 
 ## Spring Struktur
 
-![spring-struktur.png](../../images/spring-struktur.png)
+![spring-struktur.png](../images/spring-struktur.png)
 
 Die Meisten modernen Webapplikationen bestehen aus 3 Schichten:
 
@@ -26,7 +26,7 @@ tun haben definiert. Mit der `@Controller` Annotation werden Komponenten, welche
 der Aussenwelt zu tun haben definiert. In der `@Service` Annotation werden Komponenten, welche mit der Kontrolllogik zu
 tun haben definiert.
 
-Mehr Informationen zu den einzelnen Annotationen findest du [hier](05_annotationen).
+Mehr Informationen zu den einzelnen Annotationen findest du [hier](../05_annotationen).
 
 ### Die Schichten (Layer) in Spring
 

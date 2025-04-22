@@ -28,7 +28,7 @@ Beide Möglichkeiten werden in dieser Aufgabe aufgeführt.
 #### Erstelle ein Maven-Projekt in IntelliJ
 
 Öffne IntelliJ und erstelle ein neues Maven-Projekt (File → New → Project):
-![](../../images/03_create_project_with_intellij.png)
+![](../images/03_create_project_with_intellij.png)
 Ersetze **GroupId**, **ArtifactId**, **Name** und **Location** durch passende Werte.
 
 #### Passe dein pom.xml File an
@@ -87,7 +87,7 @@ Diese Main Klasse werden wir nun in einer SpringBootApplication-Klasse umwandeln
 ```
 
 Zuletzt solltest du noch deine Projektstruktur überprüfen. Diese sollte wie folgt aussehen:
-![](../../images/04_projekt_struktur.png)
+![](../images/04_projekt_struktur.png)
 
 Gratuliere! Du hast nun dein Projekt angelegt, und zwar Hard-Core. Bravo!
 Fahre nun mit dem Schritt "[Führe deine Anwendung aus](#führe-deine-anwendung-aus)" fort.
@@ -97,7 +97,7 @@ Fahre nun mit dem Schritt "[Führe deine Anwendung aus](#führe-deine-anwendung-
 Öffne die Seite: https://start.spring.io/ und ersetzte die Angaben zu Group, Artifact (der Name wird sich automatisch ändern) und Description durch passende Werte.
 Achte das bei Project "Maven" ausgewählt ist und nicht Gradle.
 Füge die Abhängigkeit für "Spring Web" hinzu und drücke den "GENERATE" Knopf.
-![](../../images/01_spring-initializr.png)
+![](../images/01_spring-initializr.png)
 
 Entpacke das heruntergeladene Zip-File in deinem Repository-Verzeichnis und öffne die Anwendung als Maven-Projekt in IntelliJ:
 File → New → Project from existing sources → Zum Root-Folder des Projektes navigieren und pom.xml auswählen.
@@ -109,7 +109,7 @@ Wenn du Spring-Initializr benutzt hast, wurde diese Klasse für dich automatisch
 Starte deine Anwendung mit der Default-Run-Konfiguration. Zu diesem Zweck kannst du die Application-Klasse öffnen und die Main-Methode ausführen.
 
 Nach dem Start sollte die Run-Konsole wie folgt aussehen:
-![](../../images/02_application_success_run_console.png)
+![](../images/02_application_success_run_console.png)
 
 ## Schritt 2: Rest Schnittstellen definieren und umsetzen
 
@@ -237,7 +237,7 @@ Die möglichen Annotationen für einen Spring Component sind die folgenden:
 - _@Service_
 - _@Repository_
 
-Mehr Informationen zu diesen Annotationen findest auf dieser [Seite](../spring/05_annotationen).
+Mehr Informationen zu diesen Annotationen findest auf dieser [Seite](../05_annotationen).
 
 Im folgenden Beispiel wird nun eine Service-Klasse angelegt, welche den vom Controller empfangenen Request-Body als Parameter entgegennimmt
 und diesen dann später weiter verarbeiten wird. Im Moment begnügen wir uns damit die Mock-Daten aus dem Controller hierher zu verschieben.
@@ -950,13 +950,13 @@ Für unsere Test-Zwecke reicht der IntelliJ HTTP-Client völlig aus.
 ### Testen mit IntelliJ HTTP Client
 
 Wenn du eine RestController-Klasse in IntelliJ offen hast, wird an einigen Stellen ein Symbol dargestellt, wie hier mit Rot unterstrichen:
-![](../../images/05_intellij_http_client_symbol.png)
+![](../images/05_intellij_http_client_symbol.png)
 
 Wenn man den Pfeil neben dem Symbol drückt, kann man die Option "Generate Request in HTTP Client" auswählen:
-![](../../images/06_intellij_http_client_dropdown.png)
+![](../images/06_intellij_http_client_dropdown.png)
 
 Somit wird der HTTP-Client Editor geöffnet, mit dem entsprechenden HTTP-Method und Pfad:
-![](../../images/07_intellij_http_client_editor.png)
+![](../images/07_intellij_http_client_editor.png)
 
 Mit einem Klick auf dem grünen Pfeil, wird die HTTP Request ausgeführt.
 Wenn du ein Beispiel brauchst, um zu wissen, wie du Requests erstellst (z.B. solche mit einem Request-Body)

@@ -50,7 +50,7 @@ Die weiteren Verbindungs-Informationen entnimmst du _/src/main/resources/applica
 
 Die Applikation ist minimalistisch aber mit den wichtigsten Spring-Boot-Layers aufgebaut:
 
-![Applikations-Aufbau](../../images/application-structure.png)
+![Applikations-Aufbau](../images/application-structure.png)
 
 - Wir haben 1 Entity: `Person`
 - Das `PersonRepo` basiert auf `JpaRepository` und definiert keine zusätzlichen Methoden.
@@ -164,7 +164,7 @@ public class PersonService {
 
 Wir schreiben zuerst **Mockito**-Tests. Wie das geht, sollte dir bereits bekannt sein. So sieht unser Testaufbau aus:
 
-![Service-Mockito-Tests](../../images/service-mockito.png)
+![Service-Mockito-Tests](../images/service-mockito.png)
 
 <details>
   <summary>Damit Mockito funktioniert, verwende die folgende Dependency im pom.xml</summary>
@@ -259,7 +259,7 @@ Wir testen erneut den `PersonService`, jetzt aber mit dem kompletten Application
 verzichten wir. Es gibt keine spezielle Annotation für Slice-Tests mit Services. Deshalb fahren wir den gesamten
 Application-Context hoch:
 
-![Service-SpringBootTest-Tests](../../images/service-springboottest.png)
+![Service-SpringBootTest-Tests](../images/service-springboottest.png)
 
 Wir verwenden eine H2 In-Memory Datenbank.
 
@@ -361,7 +361,7 @@ Wichtige Punkte zum Test:
 Nun testen wir den `PersonController`. Dazu fahren wir einen Slice-Test mit `@WebMvcTest`. Es werden weder Services, noch Repos, noch Entities hochgefahren.
 Deshalb mocken wir den `PersonService`:
 
-![Controller-WebMvcTest-Tests](../../images/controller-webmvctest.png)
+![Controller-WebMvcTest-Tests](../images/controller-webmvctest.png)
 
 <details>
   <summary>Verwende die folgenden Dependencies im pom.xml</summary>
@@ -509,7 +509,7 @@ Falls deine Applikation mit JDBC implementiert ist, kannst du einfach `@DataJpaT
 
 Es werden nur DB, Entities und Repositories initialisert, keine Services, keine Controller:
 
-![Repo-DataJpaTest-Tests](../../images/repo-datajpajdbctest.png)
+![Repo-DataJpaTest-Tests](../images/repo-datajpajdbctest.png)
 
 Auch hier verwenden wir die H2 In-Memory DB.
 

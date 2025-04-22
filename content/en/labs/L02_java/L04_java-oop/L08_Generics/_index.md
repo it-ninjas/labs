@@ -25,4 +25,4 @@ _Die Typen der Input-Zahlen können unterschiedlich sein (Ganzzahlen, Kommazahle
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/04_java-oop/12_java-generics).
+Hier kannst du [zurück zur Theorie](../../../../docs/02_java/04_java-oop/11_java-generics).

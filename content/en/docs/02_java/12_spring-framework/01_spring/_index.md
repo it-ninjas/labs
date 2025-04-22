@@ -78,7 +78,7 @@ Mehr dazu auf [GitHub Spring Projects](https://github.com/spring-projects).
 
 #### Spring Boot
 
-[Spring Boot](../spring-boot/06_spring-boot) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
+[Spring Boot](../06_spring-boot) vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die
 Konfiguration.

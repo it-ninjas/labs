@@ -65,7 +65,7 @@ zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@Enab
 Annotation schaltet die automatische Konfiguration ein, was einer der Hauptbestandteile von Spring
 Boot ist.
 
-Mehr dazu findest du [hier](../spring/05_annotationen).
+Mehr dazu findest du [hier](../05_annotationen).
 
 ### Spring Boot Starter
 
