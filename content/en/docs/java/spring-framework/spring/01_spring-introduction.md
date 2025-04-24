@@ -125,7 +125,7 @@ Eine POST-Anfrage mit Body könnte nun so aussehen:
 
 ```
 POST /reise
-Host: locahost
+Host: localhost
 
 
 {
