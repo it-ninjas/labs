@@ -1,0 +1,102 @@
+{{/* 
+ usage
+
+ This snippet allows you to include code from a (java) source file into
+ documentation, see example below.
+
+ Target is to have all Snippets coming from real source files to ensure
+ they will realy work and follow our coding rules.
+
+Parameters:
+
+file:       Path to the file the snippet is coming from
+snippet:    The name of the snippet, will be expanded to: 
+            snippet-{snippet}-start
+            snippet-{snippet}-end
+code:       formatter to use, default is java, use raw for plain text.
+prefix:     prefix used befor the snippet markers, default is // for java
+shiftleft:  number of chars to remove at the beginnig of each line (to move
+            content to the left), default is 0
+
+--------------------------------------------------------------------------------
+Examples:
+
+/content/en/docs/../../_index.md:
+
+{{< snippet file="/src/sbb/itninja/test/test.java" snippet="1" shiftleft="8" >}}
+{{< snippet file="/src/sbb/itninja/test/test.java" snippet="1" code="java" >}}
+{{< snippet file="/src/sbb/itninja/test/test.cmd" snippet="2" code="raw" prefix="REM" >}}
+
+--------------------------------------------------------------------------------
+/src/sbb/itninja/test/test.java:
+
+public class test {
+    public static void main( String[] args) {
+
+        //snippet-1-start
+        System.out.println("1st Line :-)");
+        System.out.println("2nd Line :-)");
+        //snippet-1-end
+    }
+}
+
+--------------------------------------------------------------------------------
+/src/sbb/itninja/test/test.cmd:
+
+REM snippet-2-start
+mkdir C:\Test
+cd C:\Test
+REM snippet-2-end
+
+--------------------------------------------------------------------------------
+*/}}
+
+{{- $filePath := .Get "file" -}}
+
+{{- $code := "java" -}}
+{{- $code := .Get "code" | default "java" -}}
+{{- $prefix := .Get "prefix" | default "//" -}}
+{{- $snippetName := .Get "snippet" -}}
+{{- $startMarker := printf "snippet-%s-start" ($snippetName) -}}
+{{- $endMarker := printf "%s snippet-%s-end" ($prefix) ($snippetName) -}}
+{{- $endMarkerWithSpace := printf "%ssnippet-%s-end" ($prefix) ($snippetName) -}}
+{{- $indent := .Get "shiftleft" | default "0" | int }}
+{{- $snippet := "" }}
+
+<!-- Read file -->
+{{- $content := readFile $filePath -}}
+<!-- Show error if file does not exist -->
+{{- if eq $content "" }}
+    {{- $snippet = printf "File not found or empty:\n%s\n" $filePath }}
+    {{- $code = "raw" }}
+{{- else }}
+    <!-- get snippet -->
+    {{- $start := index (split $content $startMarker) 1 -}}
+    {{- $snippet := index (split $start $endMarkerWithSpace) 0 -}}
+    {{- $snippet := index (split $snippet $endMarker) 0 -}}
+
+    <!-- normalize snippet -->
+    {{- $snippet := replace $snippet "\r\n" "\n" -}}
+    {{- $snippet := replace $snippet "\r" "\n" -}}
+    {{- $snippet := replace $snippet "\t" "    " -}}
+
+    <!-- remove spaces and new lines before/after the snippet -->
+    {{- $trimmedSnippet := strings.Trim $snippet " " -}}
+    {{- $trimmedSnippet := strings.Trim $trimmedSnippet "\n" -}}
+
+    <!-- shift left content from snippet -->
+    {{- $lines := split $trimmedSnippet "\n" }}
+    {{- $snippet := "" }}
+    {{- range $line := $lines }}
+        {{- if ge (len $line) $indent }}
+            {{- $lineLength := len $line }}
+            {{- $trimmedLine := substr $line $indent (sub $lineLength $indent) }}
+            {{- $snippet = printf "%s%s\n" $snippet $trimmedLine }}
+        {{- end }}
+    {{- end }}
+{{- end }}
+
+<!-- convert snippet into code block -->
+{{ $snippet := printf "```%s\n%s\n```" ($code) ($snippet | htmlUnescape) }}
+<!-- convert mark down to html -->
+{{ $snippet | markdownify }}
