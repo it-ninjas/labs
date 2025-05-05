@@ -40,6 +40,6 @@ Berufsübergreifende Module finden in Form von Workshops und Erfahrungstransfers
 ### Absprung zu den Testing-Seiten
 
 - [Testing Konzepte / JUnit / Mockito](02_java/08_java-testing)
-- [Spring Boot Testing](02_java/12_spring-framework/09_spring-boot-testing)
-- [Rest-Schnittstellen testen](02_java/12_spring-framework/08_rest-testing/)
+- [Spring Boot Testing](02_java/12_spring-framework/10_spring-boot-testing)
+- [Rest-Schnittstellen testen](02_java/12_spring-framework/09_rest-testing/)
 - [Angular Testfiles](web/angular/02_7_angular_unit_test/)

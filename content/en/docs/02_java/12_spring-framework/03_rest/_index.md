@@ -1,7 +1,7 @@
 ---
 title: "REST-Endpoints"
 linkTitle: "REST-Endpoints"
-weight: 2
+weight: 3
 description: >
   Modul #J8 - Spring Framework - REST-Endpoints
 ---
