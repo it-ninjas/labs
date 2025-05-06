@@ -1,7 +1,7 @@
 ---
 title: "Design-Pattern"
 linkTitle: "Design-Pattern"
-weight: 3
+weight: 4
 description: >
   Modul #J8 - Spring Framework - Wie sieht das Design-Pattern aus?
 ---
@@ -65,7 +65,7 @@ public class Store {
 ```
 
 Ein Nachteil der Field-Injection ist, dass es im Gegensatz zur Konstruktor-Injection nicht möglich ist,
-alle Instanzvariablen mit `final` zu deklarieren. Mehr Informationen zu der `@Autowired`-Annotation findest du auf dieser [Seite](../05_annotationen/).
+alle Instanzvariablen mit `final` zu deklarieren. Mehr Informationen zu der `@Autowired`-Annotation findest du auf dieser [Seite](../06_annotationen/).
 
 ### Singleton
 

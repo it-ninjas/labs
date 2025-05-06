@@ -1,7 +1,7 @@
 ---
 title: "Annotationen"
 linkTitle: "Annotationen"
-weight: 5
+weight: 6
 description: >
   Modul #J8 - Spring Framework - Was sind Annotationen und welche gibt es in Spring?
 ---

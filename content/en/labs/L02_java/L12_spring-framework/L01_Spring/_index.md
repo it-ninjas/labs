@@ -25,7 +25,7 @@ Bei Bedarf kannst du das Model erweitern.
 
 Die Aufgaben in diesem Lab führen dich Schritt für Schritt durch die Umsetzung einer Webanwendung mit Spring Boot, welche einem Notenverwaltungssystem entspricht.
 Die folgenden Abschnitte listen die groben Funktionalen (was soll die Anwendung können) und die nicht-funktionalen (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung auf.
-Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu [Spring Boot](../../../../docs/02_java//12_spring-framework/07_projekt-erstellen).
+Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu [Spring Boot](../../../../docs/02_java//12_spring-framework/08_projekt-erstellen).
 
 ### Funktionale Anforderungen
 
@@ -58,4 +58,4 @@ Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 T
 
 ---
 
-Zurück zur [Spring](../../../../docs/02_java/12_spring-framework/01_spring) und [Spring Boot](../../../../docs/02_java/12_spring-framework/06_spring-boot) Theorie.
+Zurück zur [Spring](../../../../docs/02_java/12_spring-framework/02_spring) und [Spring Boot](../../../../docs/02_java/12_spring-framework/07_spring-boot) Theorie.
