@@ -1,4 +1,395 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Spring Framework</title><link>/docs/02_java/12_spring-framework/</link><description>Recent content in Spring Framework on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/docs/02_java/12_spring-framework/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Spring</title><link>/docs/02_java/12_spring-framework/01_spring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/01_spring/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Spring Framework</title><link>/docs/02_java/12_spring-framework/</link><description>Recent content in Spring Framework on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/docs/02_java/12_spring-framework/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Einführung in Spring und Webentwicklung</title><link>/docs/02_java/12_spring-framework/01_spring_introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/01_spring_introduction/</guid><description>
+&lt;h2 id="vom-kommandozeilentool-zur-webapplikation">Vom Kommandozeilentool zur Webapplikation&lt;/h2>
+&lt;p>Bisher hast du Programme geschrieben, welche auf der Kommandozeile laufen. Dein Code könnte zum Beispiel so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Hallo, Welt!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das ist perfekt, um Grundlagen zu üben – aber was, wenn du eine Anwendung entwickeln möchtest, die über einen Browser erreichbar ist? Wie funktioniert eine Webseite wie sbb.ch eigentlich? Wie können Nutzer:innen Züge suchen oder Tickets buchen?&lt;/p>
+&lt;p>Genau hier kommt das Internetprotokoll &lt;strong>HTTP&lt;/strong> ins Spiel.&lt;/p>
+&lt;hr>
+&lt;h2 id="http-wie-dein-browser-mit-servern-spricht">HTTP: Wie dein Browser mit Servern spricht&lt;/h2>
+&lt;p>HTTP (HyperText Transfer Protocol) ist ein Protokoll, mit dem Clients (z. B. dein Browser) und Server (z. B. sbb.ch) miteinander kommunizieren. Ursprünglich wurde es entwickelt, um HTML-Dateien von Servern abzurufen.&lt;/p>
+&lt;p>Wenn du &lt;a href="https://sbb.ch">https://sbb.ch&lt;/a> im Browser öffnest, passiert Folgendes:&lt;/p>
+&lt;ol>
+&lt;li>Dein Browser sendet eine HTTP-Anfrage an den Server.&lt;/li>
+&lt;li>Der Server antwortet mit Dateien – oft HTML, CSS oder JavaScript.&lt;/li>
+&lt;li>Dein Browser stellt daraus die Webseite zusammen, die du siehst.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="../images/08_browser.png" alt="08_browser.png">&lt;/p>
+&lt;p>Quelle: &lt;a href="https://www.browserstack.com/guide/what-is-browser">https://www.browserstack.com/guide/what-is-browser&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h2 id="rest-was-wenn-du-daten-statt-dateien-möchtest">REST: Was, wenn du Daten statt Dateien möchtest?&lt;/h2>
+&lt;p>Angenommen, du möchtest wissen, welche Züge heute von Zürich nach Bern fahren. Statt einer Webseite benötigst du nun reine Daten (z.B. eine Liste der Züge). Oder du möchtest neue Fahrten hinzufügen.&lt;/p>
+&lt;p>Hierfür nutzt man oft REST (&lt;strong>Representational State Transfer&lt;/strong>).&lt;/p>
+&lt;p>REST beschreibt, wie Webservices aufgebaut sein sollen. Die wichtigsten HTTP-Methoden dafür sind:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>GET&lt;/strong> → Daten abrufen&lt;/li>
+&lt;li>&lt;strong>POST&lt;/strong> → Daten erstellen&lt;/li>
+&lt;li>&lt;strong>PUT&lt;/strong> → Daten aktualisieren&lt;/li>
+&lt;li>&lt;strong>DELETE&lt;/strong> → Daten löschen&lt;/li>
+&lt;/ul>
+&lt;p>Ein typischer REST-Endpunkt könnte so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>GET /api/zuege?von=Zürich&amp;amp;nach=Bern
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dazu benötigst du eine passende Methode, welche auf diesen Endpunkt mappt, auf deinem Server (also in deinem Programm). Spring nutzt dafür &lt;strong>Annotationen&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@RestController&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@RequestMapping&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/api/zuege&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ZugController&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Autowired&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> ZugService zugService;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@GetMapping&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Zugverbindung&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">suche&lt;/span>(&lt;span style="color:#a6e22e">@RequestParam&lt;/span> String von, &lt;span style="color:#a6e22e">@RequestParam&lt;/span> String nach) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> zugService.&lt;span style="color:#a6e22e">findeZugverbindungen&lt;/span>(von, nach);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;strong>@RestController&lt;/strong> markiert diese Klasse als REST-Controller - hier sollen also HTTP-Anfragen gemappt werden.&lt;/li>
+&lt;li>&lt;strong>@RequestMapping&lt;/strong> legt fest, auf welchen Pfad diese Klasse reagiert - also zum Beispiel &lt;code>/api/zuege&lt;/code>.&lt;/li>
+&lt;li>&lt;strong>@GetMapping&lt;/strong> wird bei GET-Anfragen auf diesem Pfad, also &lt;code>GET /api/zuege&lt;/code>, ausgeführt.&lt;/li>
+&lt;li>&lt;strong>@RequestParam&lt;/strong> liest URL-Parameter aus.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="java-objekte-über-http-senden-json--jackson">Java-Objekte über HTTP senden: JSON &amp;amp; Jackson&lt;/h2>
+&lt;p>Das Problem: Du arbeitest mit Java-Objekten – HTTP spricht aber nur Text.
+Vielleicht möchtest du nicht immer nur ein paar Strings haben, sondern ganze Listen von Objekten.
+Daher brauchen wir eine Möglichkeit, Objekte in Text zu verwandeln - und umgekehrt.&lt;/p>
+&lt;p>Hier hilft &lt;strong>JSON&lt;/strong> (&lt;strong>JavaScript Object Notation&lt;/strong>), ein einfaches Datenformat:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;von&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Zürich&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;nach&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Bern&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;zeit&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">1743511904&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Um JSON in Java zu nutzen, definieren wir ein DTO (&lt;strong>Data Transfer Object&lt;/strong>):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">record&lt;/span> &lt;span style="color:#a6e22e">TravelRequestDto&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String von,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String nach,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Integer zeit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>) {}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dank der Bibliothek &lt;strong>Jackson&lt;/strong> geschieht die Umwandlung zwischen JSON und Java automatisch.
+Wir können also das DTO als RequestBody (ähnlich wie RequestParam) definieren:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@PostMapping&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/reise&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">handleTravelRequest&lt;/span>(&lt;span style="color:#a6e22e">@RequestBody&lt;/span> TravelRequestDto request) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Zugriff auf Werte: request.von(), request.nach(), request.zeit()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Jackson wird nun, falls möglich, automatisch den gesendeten JSON-Text in ein &lt;code>TravelRequestDto&lt;/code> mappen.&lt;/p>
+&lt;p>Eine POST-Anfrage mit Body könnte nun so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>POST /reise
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Host: localhost
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;#34;von&amp;#34;: &amp;#34;Zürich&amp;#34;,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;#34;nach&amp;#34;: &amp;#34;Bern&amp;#34;,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;#34;zeit&amp;#34;: &amp;#34;09:00&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="crud-mit-spring-eine-bewährte-struktur">CRUD mit Spring: Eine bewährte Struktur&lt;/h2>
+&lt;p>Viele Webanwendungen haben dieselbe Grundstruktur – das &lt;strong>CRUD&lt;/strong>-Prinzip:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Create&lt;/strong> (POST)&lt;/li>
+&lt;li>&lt;strong>Read&lt;/strong> (GET)&lt;/li>
+&lt;li>&lt;strong>Update&lt;/strong> (PUT)&lt;/li>
+&lt;li>&lt;strong>Delete&lt;/strong> (DELETE)&lt;/li>
+&lt;/ul>
+&lt;p>Dadurch ist die Architektur vieler Webapplikation ähnlich:&lt;/p>
+&lt;ol>
+&lt;li>Der Client ruft den Server mit Input auf.&lt;/li>
+&lt;li>Der Server verarbeitet die Daten und interagiert mit einer Datenbank.&lt;/li>
+&lt;li>Der Server schickt Output zurück an den Client.&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="../images/10_web_architektur.png" alt="10_web_architektur.png">&lt;/p>
+&lt;p>Natürlich ist es möglich, all dies eigenständig umzusetzen.
+Allerdings bedeutet das einen erheblichen Aufwand, und das Projekt kann schnell unübersichtlich werden.
+Beispielsweise könnte an einer Stelle dieselbe Klasse sowohl die Anfrage entgegennehmen als auch die Datenbank abfragen, während anderswo eine klare Trennung vorgenommen wurde.
+Dies führt zu Inkonsistenzen und erschwert langfristig die Wartung und Erweiterung des Projekts.&lt;/p>
+&lt;p>Spring bietet eine Struktur in drei Ebenen an:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Controller&lt;/strong> → nimmt Anfragen entgegen.&lt;/li>
+&lt;li>&lt;strong>Service&lt;/strong> → Geschäftslogik, transformiert Daten.&lt;/li>
+&lt;li>&lt;strong>Repository&lt;/strong> → Zugriff auf Datenbanken.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="../images/09_spring_diagram.png" alt="09_spring_diagram.png">&lt;/p>
+&lt;p>&lt;strong>Controller&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@RestController&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@RequestMapping&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/api/zuege&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ZugController&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> ZugService zugService;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">ZugController&lt;/span>(ZugService zugService) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">zugService&lt;/span> &lt;span style="color:#f92672">=&lt;/span> zugService;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@GetMapping&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>ZugverbindungEntity&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">suche&lt;/span>(&lt;span style="color:#a6e22e">@RequestParam&lt;/span> String von, &lt;span style="color:#a6e22e">@RequestParam&lt;/span> String nach) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> zugService.&lt;span style="color:#a6e22e">findeZugverbindungen&lt;/span>(von, nach);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im Controller wird wie oben beschrieben das Mapping von HTTP-Anfragen gemacht.
+Es gibt also unter &lt;code>/api/zuege&lt;/code> ein Mapping für &lt;code>GET&lt;/code> mit den Parametern &lt;code>von&lt;/code> und &lt;code>nach&lt;/code>.
+Optimal sollte hier aus den zwei Parameter ein DTO erstellt werden.&lt;/p>
+&lt;p>&lt;strong>Service&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Service&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ZugService&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> ZugRepository zugRepository;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">ZugService&lt;/span>(ZugRepository zugRepository) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">zugRepository&lt;/span> &lt;span style="color:#f92672">=&lt;/span> zugRepository;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>ZugverbindungEntity&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">findeZugverbindungen&lt;/span>(String von, String nach) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> zugRepository.&lt;span style="color:#a6e22e">findByVonUndNach&lt;/span>(von, nach);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im Service befindet sich deine gesamte Geschäftslogik.
+Das können beispielsweise Berechnungen der Fahrzeiten sein oder das Einbinden zusätzlicher Informationen wie Baustellen oder Verspätungen.
+In manchen Fällen, wie im aktuellen Beispiel, wird jedoch lediglich das Repository aufgerufen, um direkt Daten abzufragen.&lt;/p>
+&lt;p>&lt;strong>Repository&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">ZugRepository&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> JpaRepository&lt;span style="color:#f92672">&amp;lt;&lt;/span>Zugverbindung, Long&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> List&lt;span style="color:#f92672">&amp;lt;&lt;/span>ZugverbindungEntity&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">findByVonUndNach&lt;/span>(String von, String nach);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im Repository wird die Kommunikation zu der Datenbank definiert.
+Du kennst bereits &lt;strong>JDBC&lt;/strong>, in diesem Beispiel wird &lt;strong>JPA&lt;/strong> verwendet, dazu mehr im nächsten Kapitel.&lt;/p>
+&lt;hr>
+&lt;h2 id="jpa-datenbankzugriff-leicht-gemacht">JPA: Datenbankzugriff leicht gemacht&lt;/h2>
+&lt;p>In Java kannst du natürlich auch direkt SQL schreiben. Aber das ist fehleranfällig und aufwendig.&lt;/p>
+&lt;p>Spring verwendet &lt;strong>JPA (Java Persistence API)&lt;/strong>, um Objekte direkt in Datenbanktabellen zu speichern – ohne SQL schreiben zu müssen.&lt;/p>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Entity&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Table&lt;/span>(name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;zugverbindung&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Zugverbindung&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Id&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@GeneratedValue&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> Long id;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String von;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String nach;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String zeit;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Getter, Setter...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Java-Klasse wird mit der Annotation &lt;code>@Entity&lt;/code> markiert, wodurch sie genau einer Zeile in der Datenbanktabelle &lt;code>zugverbindung&lt;/code> entspricht.
+Dank dieser Annotation kann JPA automatisch die Tabelle erzeugen. Wenn du etwa alle Einträge aus der Tabelle abfragst, bekommst du eine &lt;code>List&amp;lt;Zugverbindung&amp;gt;&lt;/code>, also eine Sammlung von Java-Objekten.
+Im Repository kannst du Methoden wie &lt;code>findAll()&lt;/code> oder &lt;code>findByVonUndNach(String von, String nach)&lt;/code> verwenden.
+Die dafür benötigten SQL-Abfragen werden automatisch von JPA generiert.&lt;/p>
+&lt;hr>
+&lt;h2 id="dependency-injection--ioc-wer-erstellt-die-objekte">Dependency Injection &amp;amp; IoC: Wer erstellt die Objekte?&lt;/h2>
+&lt;p>Dir ist vielleicht aufgefallen, dass bei Controllern, Services und Repositories immer Annotationen wie &lt;code>@Autowired&lt;/code> verwendet werden, aber nie Objekte manuell mit &lt;code>new&lt;/code> erzeugt werden (z.B. &lt;code>new ZugRepository()&lt;/code>).
+Hier greift das Prinzip der &lt;strong>Inversion of Control (IoC)&lt;/strong> und &lt;strong>Dependency Injection (DI)&lt;/strong>: Anstatt dass du die Objekte selbst erzeugst, übernimmt Spring diese Aufgabe automatisch für dich.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Service&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ZugService&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">final&lt;/span> ZugRepository repository;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#a6e22e">ZugService&lt;/span>(ZugRepository repository) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">repository&lt;/span> &lt;span style="color:#f92672">=&lt;/span> repository;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Spring sucht zur Laufzeit nach einer passenden Instanz von ZugRepository und übergibt sie automatisch. Das macht deinen Code testbar, modular und lesbar.
+In diesem Beispiel wird es direkt im Konstruktor definiert ohne @Autowired - das ist eine weitere Möglichkeit, welche das Gleiche macht.&lt;/p>
+&lt;hr>
+&lt;h2 id="wieso-brauche-ich-überhaupt-noch-main">Wieso brauche ich überhaupt noch &lt;code>main&lt;/code>?&lt;/h2>
+&lt;p>In Spring Boot startest du deine gesamte Anwendung mit einer simplen &lt;code>main&lt;/code>-Methode:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@SpringBootApplication&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ZugApplication&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SpringApplication.&lt;span style="color:#a6e22e">run&lt;/span>(ZugApplication.&lt;span style="color:#a6e22e">class&lt;/span>, args);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Annotation &lt;code>@SpringBootApplication&lt;/code> sorgt automatisch dafür, dass Spring alle Klassen findet, welche als Komponenten (&lt;code>@Controller&lt;/code>, &lt;code>@Service&lt;/code>, &lt;code>@Repository&lt;/code>) definiert sind.
+Diese automatische Suche nennt sich &lt;strong>Component Scan&lt;/strong> und erlaubt die Dependency Injection.&lt;/p>
+&lt;p>Damit kannst du einfach und schnell deine Webanwendung starten und musst dich nicht mehr um technische Details kümmern.&lt;/p>
+&lt;hr>
+&lt;h2 id="und-wo-kommt-jetzt-html-ins-spiel">Und wo kommt jetzt HTML ins Spiel?&lt;/h2>
+&lt;p>Mit Spring Boot entwickelst du hauptsächlich &lt;strong>Backends&lt;/strong> – also Anwendungen, die Daten verarbeiten, speichern oder bereitstellen.
+Diese Anwendungen liefern oft keine komplette Webseite, sondern nur Daten im JSON-Format über eine REST-API.&lt;/p>
+&lt;p>Doch wie wird daraus eine sichtbare Webseite? Und was ist eigentlich der Unterschied zwischen &lt;strong>Frontend&lt;/strong> und &lt;strong>Backend&lt;/strong>?&lt;/p>
+&lt;p>Backend vs. Frontend&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Backend&lt;/strong>: Das ist der Teil der Anwendung, der „im Hintergrund“ läuft – etwa auf einem Server. Hier werden Daten gespeichert, verarbeitet und über eine API bereitgestellt. In unserem Fall ist das die Anwendung mit Spring Boot.&lt;/li>
+&lt;li>&lt;strong>Frontend&lt;/strong>: Das ist das, was Nutzer:innen im Browser sehen – z.B. Buttons, Eingabefelder oder Tabellen. Frontends werden meist mit HTML, CSS und JavaScript entwickelt.&lt;/li>
+&lt;/ul>
+&lt;p>Das Frontend spricht also mit dem Backend (z.B. dein REST-API mit Spring), um Daten abzuholen oder zu bearbetien – häufig über HTTP.&lt;/p></description></item><item><title>Docs: Spring</title><link>/docs/02_java/12_spring-framework/02_spring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/02_spring/</guid><description>
 &lt;h2 id="spring">Spring&lt;/h2>
 &lt;h3 id="ziele">Ziele&lt;/h3>
 &lt;ul>
@@ -53,10 +444,10 @@ erweitern. Zu diesen gehören z. B. Spring Security, Spring Shell, Spring Boot, 
 Funktionalitäten bereitstellen.&lt;/p>
 &lt;p>Mehr dazu auf &lt;a href="https://github.com/spring-projects">GitHub Spring Projects&lt;/a>.&lt;/p>
 &lt;h4 id="spring-boot">Spring Boot&lt;/h4>
-&lt;p>&lt;a href="/docs/02_java/12_spring-framework/06_spring-boot/">Spring Boot&lt;/a> vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
+&lt;p>&lt;a href="/docs/02_java/12_spring-framework/07_spring-boot/">Spring Boot&lt;/a> vereinfacht das normale Spring Framework. Mit dem Spring Initializer können Abhängigkeiten wie
 Datenbanktreiber oder Software für die Cloud-Infrastruktur ausgewählt werden, was die manuelle Konfiguration des
 Projekts überflüssig macht. Spring Boot ist jedoch kein Ersatz für das Spring Framework, sondern vereinfacht die
-Konfiguration.&lt;/p></description></item><item><title>Docs: REST-Endpoints</title><link>/docs/02_java/12_spring-framework/02_rest/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/02_rest/</guid><description>
+Konfiguration.&lt;/p></description></item><item><title>Docs: REST-Endpoints</title><link>/docs/02_java/12_spring-framework/03_rest/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/03_rest/</guid><description>
 &lt;h2 id="was-ist-rest">Was ist REST&lt;/h2>
 &lt;p>REST (Representational State Transfer) ist ein Architekturstil für die Kommunikation zwischen Computern in Netzwerken, insbesondere im World Wide Web.
 Es basiert auf einer einfachen Idee: Ressourcen, wie z.B. Daten oder Dienste, werden durch eindeutige URLs (Uniform Resource Locators) identifiziert.
@@ -235,7 +626,7 @@ Services gespeichert und das Ergebnis zurückgegeben.&lt;/p>
 wenn die HTTP-Methode &lt;code>Delete&lt;/code> verwendet wurde. Dank der &lt;code>@PathVariable&lt;/code> Annotation wird die ID des zu löschenden Objektes aus der URL genommen und als Long-Wert gespeichert.
 Anschliessend wird im Body mithilfe des Services die &lt;code>Order&lt;/code> mit der entsprechenden ID gelöscht.
 Nach dem Löschen wird eine erfolgreiche Antwort (HTTP 200 OK) zurückgegeben.&lt;/p>
-&lt;p>Mehr Informationen zu den verschiedenen Annotationen findest du &lt;a href="/docs/02_java/12_spring-framework/05_annotationen/">hier&lt;/a>.&lt;/p></description></item><item><title>Docs: Design-Pattern</title><link>/docs/02_java/12_spring-framework/03_design-pattern/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/03_design-pattern/</guid><description>
+&lt;p>Mehr Informationen zu den verschiedenen Annotationen findest du &lt;a href="/docs/02_java/12_spring-framework/06_annotationen/">hier&lt;/a>.&lt;/p></description></item><item><title>Docs: Design-Pattern</title><link>/docs/02_java/12_spring-framework/04_design-pattern/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/04_design-pattern/</guid><description>
 &lt;h2 id="design-pattern">Design-Pattern&lt;/h2>
 &lt;p>Design-Patterns sind wiederverwendbare Vorlagen für die Anwendungsentwicklung und sind nicht spezifisch für eine
 Programmiersprache. Es gibt verschiedene Arten, z. B. Kreationsmuster, Strukturmuster und Verhaltensmuster, die auch in
@@ -286,7 +677,7 @@ Ein Beispiel sieht so aus:&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>In diesem Beispiel werden die Beans &lt;code>catalog&lt;/code> und &lt;code>pricing&lt;/code> injektiert. Spring sucht sich die passenden Beans selbst heraus, wenn diese
-zuvor als solche gekennzeichnet wurden, siehe &lt;a href="/docs/02_java/12_spring-framework/03_design-pattern/#beans">hier&lt;/a>.&lt;/p>
+zuvor als solche gekennzeichnet wurden, siehe &lt;a href="/docs/02_java/12_spring-framework/04_design-pattern/#beans">hier&lt;/a>.&lt;/p>
 &lt;h5 id="felder-injection">Felder Injection&lt;/h5>
 &lt;p>Bei der Felder Injection werden die Abhängigkeiten direkt in die Felder Injected.
 Hier ein Beispiel:&lt;/p>
@@ -305,7 +696,7 @@ Hier ein Beispiel:&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Ein Nachteil der Field-Injection ist, dass es im Gegensatz zur Konstruktor-Injection nicht möglich ist,
-alle Instanzvariablen mit &lt;code>final&lt;/code> zu deklarieren. Mehr Informationen zu der &lt;code>@Autowired&lt;/code>-Annotation findest du auf dieser &lt;a href="/docs/02_java/12_spring-framework/05_annotationen/">Seite&lt;/a>.&lt;/p>
+alle Instanzvariablen mit &lt;code>final&lt;/code> zu deklarieren. Mehr Informationen zu der &lt;code>@Autowired&lt;/code>-Annotation findest du auf dieser &lt;a href="/docs/02_java/12_spring-framework/06_annotationen/">Seite&lt;/a>.&lt;/p>
 &lt;h3 id="singleton">Singleton&lt;/h3>
 &lt;p>Das Singleton Design Pattern stellt sicher, dass von einer Klasse nur eine Instanz existiert. Im Kontext von Spring
 können Singleton-Beans erstellt werden, aber es ist wichtig zu beachten, das dies nur innerhalb des Spring-Containers
@@ -413,7 +804,7 @@ Anwendung zu verwalten. Dies geschieht via Dependency Injection (hier wieder Kon
 &lt;tbody>
 &lt;tr>
 &lt;td>singleton (Standard)&lt;/td>
-&lt;td>Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur &lt;strong>eine&lt;/strong> Bean-Instanz in jedem IoC-Container. Mehr &lt;a href="/docs/02_java/12_spring-framework/03_design-pattern/#singleton">hier&lt;/a>.&lt;/td>
+&lt;td>Singleton besagt, dass es immer nur eine Instanz eines Beans gibt, welche dann geteilt wird. Es wird daher nur &lt;strong>eine&lt;/strong> Bean-Instanz in jedem IoC-Container. Mehr &lt;a href="/docs/02_java/12_spring-framework/04_design-pattern/#singleton">hier&lt;/a>.&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>prototype&lt;/td>
@@ -462,7 +853,7 @@ Hier ein Beispiel:&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Struktur</title><link>/docs/02_java/12_spring-framework/04_struktur/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/04_struktur/</guid><description>
+&lt;/div></description></item><item><title>Docs: Struktur</title><link>/docs/02_java/12_spring-framework/05_struktur/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/05_struktur/</guid><description>
 &lt;h2 id="spring-struktur">Spring Struktur&lt;/h2>
 &lt;p>&lt;img src="../images/spring-struktur.png" alt="spring-struktur.png">&lt;/p>
 &lt;p>Die Meisten modernen Webapplikationen bestehen aus 3 Schichten:&lt;/p>
@@ -495,7 +886,7 @@ Konfiguration definiert. Mit der &lt;code>@Repository&lt;/code> Annotation werde
 tun haben definiert. Mit der &lt;code>@Controller&lt;/code> Annotation werden Komponenten, welche mit der Kommunikation mit
 der Aussenwelt zu tun haben definiert. In der &lt;code>@Service&lt;/code> Annotation werden Komponenten, welche mit der Kontrolllogik zu
 tun haben definiert.&lt;/p>
-&lt;p>Mehr Informationen zu den einzelnen Annotationen findest du &lt;a href="/docs/02_java/12_spring-framework/05_annotationen/">hier&lt;/a>.&lt;/p>
+&lt;p>Mehr Informationen zu den einzelnen Annotationen findest du &lt;a href="/docs/02_java/12_spring-framework/06_annotationen/">hier&lt;/a>.&lt;/p>
 &lt;h3 id="die-schichten-layer-in-spring">Die Schichten (Layer) in Spring&lt;/h3>
 &lt;h4 id="boundary-layer">Boundary Layer&lt;/h4>
 &lt;p>In diesem Layer definieren wir unsere REST Ressourcen. Hier ein Beispiel einer Order-Klasse in einem
@@ -979,7 +1370,7 @@ Beispiel hier:&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Bei beiden Möglichkeiten wurde das Profil &lt;code>test&lt;/code> aktiviert. Weitere Informationen in
-der &lt;a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition-profiles">offiziellen Dokumentation&lt;/a> oder in dieser &lt;a href="https://www.baeldung.com/spring-profiles">Erklärung&lt;/a>.&lt;/p></description></item><item><title>Docs: Annotationen</title><link>/docs/02_java/12_spring-framework/05_annotationen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/05_annotationen/</guid><description>
+der &lt;a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-definition-profiles">offiziellen Dokumentation&lt;/a> oder in dieser &lt;a href="https://www.baeldung.com/spring-profiles">Erklärung&lt;/a>.&lt;/p></description></item><item><title>Docs: Annotationen</title><link>/docs/02_java/12_spring-framework/06_annotationen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/06_annotationen/</guid><description>
 &lt;h2 id="annotationen-in-spring">Annotationen in Spring&lt;/h2>
 &lt;p>Annotationen in Spring sind spezielle Markierungen im Code, die verwendet werden,
 um Metadaten bereitzustellen und das Verhalten von Klassen, Methoden oder Feldern zu konfigurieren.
@@ -1170,7 +1561,7 @@ da die wichtigsten Einstellungen und Scans automatisch durchgeführt werden.&lt;
 Diese Annotation sorgt dafür, dass Spring Boot die Konfigurationseinstellungen basierend auf den Abhängigkeiten, die sich im Klassenpfad befinden,
 automatisch übernimmt. Dies ermöglicht es dir, eine Spring-Anwendung schnell und einfach zu starten, ohne umfangreiche Konfigurationsdateien erstellen zu müssen.&lt;/p>
 &lt;p>Wenn du &lt;code>@EnableAutoConfiguration&lt;/code> in deiner Hauptanwendungsklasse verwendest, durchsucht Spring Boot den Klassenpfad nach Bibliotheken und
-aktiviert automatisch die entsprechenden Konfigurationen. Zum Beispiel, wenn du eine Datenbankabhängigkeit hinzufügst, wird Spring Boot automatisch die Datenbankkonfiguration vornehmen.&lt;/p></description></item><item><title>Docs: Spring Boot</title><link>/docs/02_java/12_spring-framework/06_spring-boot/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/06_spring-boot/</guid><description>
+aktiviert automatisch die entsprechenden Konfigurationen. Zum Beispiel, wenn du eine Datenbankabhängigkeit hinzufügst, wird Spring Boot automatisch die Datenbankkonfiguration vornehmen.&lt;/p></description></item><item><title>Docs: Spring Boot</title><link>/docs/02_java/12_spring-framework/07_spring-boot/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/07_spring-boot/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss was Spring Boot ist und wofür es verwendet wird.&lt;/li>
@@ -1222,7 +1613,7 @@ Klasse. Die &lt;code>@SpringBootApplication&lt;/code> Annotation ist equivalent
 zu &lt;code>@Configuration&lt;/code>, &lt;code>@EnableAutoConfiguration&lt;/code> und &lt;code>@ComponentScan&lt;/code>. Die &lt;code>@EnableAutoConfiguration&lt;/code>
 Annotation schaltet die automatische Konfiguration ein, was einer der Hauptbestandteile von Spring
 Boot ist.&lt;/p>
-&lt;p>Mehr dazu findest du &lt;a href="/docs/02_java/12_spring-framework/05_annotationen/">hier&lt;/a>.&lt;/p>
+&lt;p>Mehr dazu findest du &lt;a href="/docs/02_java/12_spring-framework/06_annotationen/">hier&lt;/a>.&lt;/p>
 &lt;h3 id="spring-boot-starter">Spring Boot Starter&lt;/h3>
 &lt;p>Wichtig zu erwähnen ist, dass die hier aufgeführten Starter nur ein Bruchteil von allen verfügbaren sind.
 Es sind jedoch die wichtigsten und am häufigsten verwendeten Starter.&lt;/p>
@@ -1322,7 +1713,7 @@ Konfigurationen, wenn du ein Spring Boot Backend für Web aufbauen willst.&lt;/l
 Jedoch musst du die Interaktionen zwischen Repositorys, Services und Controllern gut verstehen und wissen,
 wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step Into behilflich sein.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/l02_java/l12_spring-framework/l01_spring/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Projekt Erstellen</title><link>/docs/02_java/12_spring-framework/07_projekt-erstellen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/07_projekt-erstellen/</guid><description>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/l02_java/l12_spring-framework/l01_spring/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Projekt Erstellen</title><link>/docs/02_java/12_spring-framework/08_projekt-erstellen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/08_projekt-erstellen/</guid><description>
 &lt;h2 id="schritt-1-maven-projekt-erstellen--pomxml">Schritt 1: Maven-Projekt erstellen / pom.xml&lt;/h2>
 &lt;p>In diesem ersten Schritt wirst du eine Spring Boot Anwendung erstellen und ausführen.
 Hier stehen dir zwei Möglichkeiten für die Umsetzung zur Verfügung:&lt;/p>
@@ -1437,7 +1828,7 @@ Diese Main Klasse werden wir nun in einer SpringBootApplication-Klasse umwandeln
 &lt;/div>&lt;p>Zuletzt solltest du noch deine Projektstruktur überprüfen. Diese sollte wie folgt aussehen:
 &lt;img src="../images/04_projekt_struktur.png" alt="">&lt;/p>
 &lt;p>Gratuliere! Du hast nun dein Projekt angelegt, und zwar Hard-Core. Bravo!
-Fahre nun mit dem Schritt &amp;ldquo;&lt;a href="/docs/02_java/12_spring-framework/07_projekt-erstellen/#f%c3%bchre-deine-anwendung-aus">Führe deine Anwendung aus&lt;/a>&amp;rdquo; fort.&lt;/p>
+Fahre nun mit dem Schritt &amp;ldquo;&lt;a href="/docs/02_java/12_spring-framework/08_projekt-erstellen/#f%c3%bchre-deine-anwendung-aus">Führe deine Anwendung aus&lt;/a>&amp;rdquo; fort.&lt;/p>
 &lt;h3 id="variante-ii-projekt-mit-spring-initializr-anlegen">Variante II: Projekt mit Spring-Initializr anlegen&lt;/h3>
 &lt;p>Öffne die Seite: &lt;a href="https://start.spring.io/">https://start.spring.io/&lt;/a> und ersetzte die Angaben zu Group, Artifact (der Name wird sich automatisch ändern) und Description durch passende Werte.
 Achte das bei Project &amp;ldquo;Maven&amp;rdquo; ausgewählt ist und nicht Gradle.
@@ -1594,7 +1985,7 @@ Diese Annotation ist eine der möglichen Spezialisierungen eines Spring Componen
 &lt;li>&lt;em>@Service&lt;/em>&lt;/li>
 &lt;li>&lt;em>@Repository&lt;/em>&lt;/li>
 &lt;/ul>
-&lt;p>Mehr Informationen zu diesen Annotationen findest auf dieser &lt;a href="/docs/02_java/12_spring-framework/05_annotationen/">Seite&lt;/a>.&lt;/p>
+&lt;p>Mehr Informationen zu diesen Annotationen findest auf dieser &lt;a href="/docs/02_java/12_spring-framework/06_annotationen/">Seite&lt;/a>.&lt;/p>
 &lt;p>Im folgenden Beispiel wird nun eine Service-Klasse angelegt, welche den vom Controller empfangenen Request-Body als Parameter entgegennimmt
 und diesen dann später weiter verarbeiten wird. Im Moment begnügen wir uns damit die Mock-Daten aus dem Controller hierher zu verschieben.&lt;/p>
 &lt;p>&lt;strong>Beispiel: Service für die Schulfachverwaltung&lt;/strong>&lt;/p>
@@ -2847,7 +3238,7 @@ Es wird die Verbindungs-URL, der Treiber und die Anmeldeinformationen für H2 fe
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/l02_java/l12_spring-framework/l01_spring/">Aufgaben zu Spring&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Testing von REST-Schnittstellen</title><link>/docs/02_java/12_spring-framework/08_rest-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/08_rest-testing/</guid><description>
+&lt;/div>&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/l02_java/l12_spring-framework/l01_spring/">Aufgaben zu Spring&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Testing von REST-Schnittstellen</title><link>/docs/02_java/12_spring-framework/09_rest-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/09_rest-testing/</guid><description>
 &lt;p>Wenn du ein Backend schreibst - was du mit Spring in den meisten Fällen tust, dann möchtest du deinen Code auch ausführen können.
 Um deine HTTP-Schnittstellen zu triggern, musst du entsprechende HTTP-Anfragen an dein Backend schicken. Dies kannst du mit HTTP-Clients tun.
 Es gibt einen Haufen solcher Programme. In diesem Kapitel zeigen wir dir ein paar.&lt;/p>
@@ -2993,7 +3384,7 @@ Dies ist nützlich, um Web-APIs schnell zu testen, ohne eine separate Anwendung 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Wenn man nun die Applikation startet, kann man diese HTTP-Anfrage ausführen und sehen, was die Schnittstelle antwortet.&lt;/p></description></item><item><title>Docs: Spring Boot Testing</title><link>/docs/02_java/12_spring-framework/09_spring-boot-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/09_spring-boot-testing/</guid><description>
+&lt;/div>&lt;p>Wenn man nun die Applikation startet, kann man diese HTTP-Anfrage ausführen und sehen, was die Schnittstelle antwortet.&lt;/p></description></item><item><title>Docs: Spring Boot Testing</title><link>/docs/02_java/12_spring-framework/10_spring-boot-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/10_spring-boot-testing/</guid><description>
 &lt;h2 id="spring-boot-testing">Spring Boot Testing&lt;/h2>
 &lt;p>In diesem Kapitel lernst du verschiedene Testarten kennen, um eine Spring Boot Applikation auf Herz und Nieren zu prüfen.&lt;/p>
 &lt;h4 id="ziele">Ziele&lt;/h4>
@@ -3113,7 +3504,7 @@ fahren wir in diesem Projekt aber alle Tests als Unit-Tests (Maven Phase &amp;rs
 &lt;h2 id="tests-ausführen-springboot-tests-ignorieren">Tests ausführen, SpringBoot-Tests ignorieren&lt;/h2>
 &lt;p>Du kannst alle Tests mit &lt;code>mvn clean test&lt;/code> ausführen.&lt;/p>
 &lt;p>&lt;img src="/images/hint.png" alt="tippFailingTests"> Evtl. schlägt der Test &lt;code>PersonRepoTestContainerDataJpaTest&lt;/code> fehl. Das hat damit zu tun,
-dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten im Abschnitt &lt;a href="/docs/02_java/12_spring-framework/09_spring-boot-testing/#testcontainers">Testcontainers&lt;/a> an.&lt;/p>
+dass bei dir Docker/Podman noch nicht installiert ist. Wir schauen das weiter unten im Abschnitt &lt;a href="/docs/02_java/12_spring-framework/10_spring-boot-testing/#testcontainers">Testcontainers&lt;/a> an.&lt;/p>
 &lt;p>Wie bereits weiter oben erwähnt, sind &lt;code>@DataJpaTest&lt;/code>-, &lt;code>@DataJdbcTest&lt;/code>-, &lt;code>@WebMvcTest&lt;/code>- und &lt;code>@SpringBootTest&lt;/code>-Tests zeitaufwändig bei der Ausführung.
 Deshalb wird auf diese Tests manchmal in einem ersten Testlauf auch verzichtet. Dazu gibt es verschiedene
 Wege, der einfachste ist aber so:&lt;/p>
@@ -3971,7 +4362,7 @@ für den Test hochgefahren und initalisiert werden. Der Vorteil ist, dass du fü
 wie in der Produktion verwenden kannst. Beispiel: Anstelle einer H2 In-Memory-DB können wir nun eine Maria-DB verwenden,
 wie sie auch in der deployten App genutzt wird. Grundsätzlich kannst du alle Container verwenden, die auf &lt;a href="https://hub.docker.com/">https://hub.docker.com/&lt;/a> zur Verfügung gestellt werden oder die du selber erstellt hast.&lt;/p>
 &lt;p>Damit Testcontainers funktionieren, musst du zuerst Podman/Docker installieren. Falls noch nicht gemacht,
-führe die Schritte 1-4 aus im oben beschriebenen &lt;a href="/docs/02_java/12_spring-framework/09_spring-boot-testing/#podman-setup">Datenbank Setup&lt;/a>. Nun hast du Podman installiert und gestartet.&lt;/p>
+führe die Schritte 1-4 aus im oben beschriebenen &lt;a href="/docs/02_java/12_spring-framework/10_spring-boot-testing/#podman-setup">Datenbank Setup&lt;/a>. Nun hast du Podman installiert und gestartet.&lt;/p>
 &lt;p>Wir testen erneut das &lt;code>PersonRepo&lt;/code> mit einem &lt;code>@DataJpaTest&lt;/code>.&lt;/p>
 &lt;details>
 &lt;summary>Verwende die folgenden Dependencies im pom.xml&lt;/summary>
