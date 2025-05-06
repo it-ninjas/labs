@@ -16,7 +16,7 @@ Um eine Übersicht über die Programmiersprache zu erhalten, kannst du dir als E
 
 ## Motivation für JavaScript
 
-JavaScript hat sehr viele Anwendungsfälle im Browser. Einerseits können Funktionen ähnlich wie mit Java programmiert werden, sodass beispielsweise Berechnungen ausgeführt werden können. Dazu kann aber auch direkt mit dem angezeigten Inhalt interagiert werden. So können Validierungen oder auch Animationen ausgeführt werden. Wenn du mal sehen willst, wie eine Website aussieht, die kein JS verwendet, kannst du dir [hier](https://chrome.google.com/webstore/detail/disable-javascript/jfpdlihdedhlmhlbgooailmfhahieoem?hl=en) eine Chrome-Extension herunterladen, mit welcher du das JS einer Webseite komplett ausschalten kannst.
+JavaScript hat sehr viele Anwendungsfälle im Browser. Einerseits können Funktionen ähnlich wie mit Java programmiert werden, sodass beispielsweise Berechnungen ausgeführt werden können. Dazu kann aber auch direkt mit dem angezeigten Inhalt interagiert werden. So können Validierungen oder auch Animationen ausgeführt werden. Wenn du mal sehen willst, wie eine Website aussieht, die kein JS verwendet, kannst du dir [hier](https://chromewebstore.google.com/detail/toggle-javascript/cidlcjdalomndpeagkjpnefhljffbnlo?hl=en) eine Chrome-Extension herunterladen, mit welcher du das JS einer Webseite komplett ausschalten kannst.
 
 Wir beginnen erstmal klein: Mit einem Button, der bei einem Klick eine MessageBox anzeigt.
 
