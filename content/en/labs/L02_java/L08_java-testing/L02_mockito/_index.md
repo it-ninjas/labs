@@ -101,8 +101,6 @@ Schreibe eine Test-Klasse für _Dictionary_, welche folgende Tests beinhaltet:
 - Tests der Methode _getDefinition_:
   - Das gesuchte Wort existiert in der Datenbank
   - Das gesuchte Wort existiert nicht in der Datenbank
-  - Das gesuchte Wort is ungültig: leerer String
-  - Das gesuchte Wort is ungültig: das Wort beinhaltet Zahlen
 
 **Anforderungen**
 
