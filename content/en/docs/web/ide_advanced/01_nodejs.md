@@ -25,6 +25,15 @@ Zuerst prüfen wir, ob Node.js bereits auf dem System installiert ist:
 node --version
 ```
 
+Falls nicht, kannst du hier Node.js installieren:
+
+![task3](/images/task.png) 5' - Einzelarbeit
+
+    Installiere Node.js unter folgendem Link: https://nodejs.org/en/. Verwende die LTS Version, diese wird für die meisten Nutzer empfohlen.
+    Bei der Installation sind keine Anpassungen notwendig. Du kannst dich einfach durchklicken.
+
+Prüfe danach die Version noch einmal.
+
 ### npm
 
 Node.js enthält einem integrierten Package-Manager namens "_npm_" (Node Package Manager). _npm_ ermöglicht es, Libraries und Module von anderen Entwicklern herunterzuladen, zu installieren und in eigenen Projekten zu verwenden. _npm_ bietet Zugriff auf eine riesige Sammlung von Open-Source-Packages.
@@ -68,8 +77,3 @@ Die Befehle `npm i` und `npm ci` werden beide verwendet, um die Dependencies ein
 ### node_modules
 
 Um ein Package zu installieren, kann man den Befehl `npm install <packagename>` verwenden. _npm_ lädt das Package und alle seine Dependencies (Dependency) herunter und installiert sie in einem Verzeichnis namens `node_modules` im Projektordner. Wenn man dann den Code schreibt, kann man das installierte Package in den JavaScript-Dateien verwenden.
-
-![task3](/images/task.png) 5' - Einzelarbeit
-
-    Installiere Node.js unter folgendem Link: https://nodejs.org/en/. Verwende die LTS Version, diese werden für die meisten Nutzer empfohlen.
-    Bei der Installation sind keine Anpassungen notwendig. Du kannst dich einfach durchklicken.
