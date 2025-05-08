@@ -29,7 +29,7 @@ Falls nicht, kannst du hier Node.js installieren:
 
 ![task3](/images/task.png) 5' - Einzelarbeit
 
-    Installiere Node.js unter folgendem Link: https://nodejs.org/en/. Verwende die LTS Version, diese werden für die meisten Nutzer empfohlen.
+    Installiere Node.js unter folgendem Link: https://nodejs.org/en/. Verwende die LTS Version, diese wird für die meisten Nutzer empfohlen.
     Bei der Installation sind keine Anpassungen notwendig. Du kannst dich einfach durchklicken.
 
 Prüfe danach die Version noch einmal.
