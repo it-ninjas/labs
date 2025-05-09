@@ -93,6 +93,8 @@ Jede verfügbare Tastenkombinationen wird dir bei Verwendung eines Menüs oder K
 
 Um den Code in IntelliJ IDEA zu formatieren, können die integrierten Funktionen für Codeformatierung verwendet werden. So kann der Code formatiert werden:
 
+> Die Regeln, welche wir innerhalb IT-Ninjas befolgen findest Du [hier](../../00_Shared/coding-guidelines/java)
+
 1. Den Code auswählen, welcher zu formatieren ist. Es kann sich um eine einzelne Zeile, einen Codeblock oder die gesamte Datei handeln.
 
 2. Die entsprechende Tastenkombination basierend auf deinem Betriebssystem drücken:
