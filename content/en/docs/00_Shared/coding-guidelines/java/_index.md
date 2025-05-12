@@ -9,14 +9,14 @@ IT-Ninjas für Java – mit ausgewählten Empfehlungen aus dem
 
 ## Inhaltsverzeichnis
 
-1. [Sprache](#1-Sprache)  
-2. [Einrückung und Formatierung](#2-einrückung-und-formatierung)  
-3. [Zeilenlänge und Umbrüche](#3-zeilenlänge-und-umbrüche)  
-4. [Kommentare](#4-kommentare)  
-5. [Benennungsregeln](#5-benennungsregeln)  
-6. [Klassenaufbau](#6-klassenaufbau)  
-7. [Verwendung von Konstanten](#7-verwendung-von-konstanten)  
-8. [Fehlerbehandlung](#8-fehlerbehandlung)  
+1. [Sprache](#1-Sprache)
+2. [Einrückung und Formatierung](#2-einrückung-und-formatierung)
+3. [Zeilenlänge und Umbrüche](#3-zeilenlänge-und-umbrüche)
+4. [Benennungsregeln](#4-benennungsregeln)
+5. [Verwendung von Konstanten](#5-verwendung-von-konstanten)
+6. [Kommentare](#6-kommentare)
+7. [Klassenaufbau](#7-klassenaufbau)
+8. [Fehlerbehandlung](#8-fehlerbehandlung)
 9. [Hilfreiche Tools](#9-hilfreiche-tools)
 10. [Vergleich Java Coding Guidelines](#10-vergleich-java-coding-guidelines)
 
@@ -28,7 +28,7 @@ Da viele Projekte heutzutage international ausgerichtet sind, empfehlen wir, im 
 Dokumentation konsequent die englische Sprache zu verwenden. Wird stattdessen Deutsch gewählt, sollte auch dies
 durchgängig und konsistent erfolgen – ein Mix aus Deutsch und Englisch ist zu vermeiden.
 
-In beiden Fällen gilt: Fachbegriffe dürfen in einer anderen Sprache verwendet werden, wenn eine Übersetzung unüblich 
+In beiden Fällen gilt: Fachbegriffe dürfen in einer anderen Sprache verwendet werden, wenn eine Übersetzung unüblich
 oder weniger verständlich wäre (z. B. Interface statt Schnittstelle im Deutschen).
 
 ## 2. Einrückung und Formatierung
@@ -50,19 +50,19 @@ oder weniger verständlich wäre (z. B. Interface statt Schnittstelle im Deuts
 
 ---
 
-## 5. Benennungsregeln
+## 4. Benennungsregeln
 
-| Element     | Stil           | Beispiel                     |
-|-------------|----------------|------------------------------|
-| Klassen     | PascalCase     | `CustomerAccount`            |
-| Methoden    | camelCase      | `getUserName()`              |
-| Variablen   | camelCase      | `maxRetries`                 |
-| Konstanten  | UPPER_SNAKE    | `MAX_CONNECTIONS`            |
-| Pakete      | lower.case     | `com.company.project.module` |
+| Element    | Stil        | Beispiel                     |
+| ---------- | ----------- | ---------------------------- |
+| Klassen    | PascalCase  | `CustomerAccount`            |
+| Methoden   | camelCase   | `getUserName()`              |
+| Variablen  | camelCase   | `maxRetries`                 |
+| Konstanten | UPPER_SNAKE | `MAX_CONNECTIONS`            |
+| Pakete     | lower.case  | `com.company.project.module` |
 
 ---
 
-## 7. Verwendung von Konstanten
+## 5. Verwendung von Konstanten
 
 Vermeide "magische Zahlen" oder Strings:
 
@@ -70,7 +70,7 @@ Vermeide "magische Zahlen" oder Strings:
 
 ---
 
-## 4. Kommentare
+## 6. Kommentare
 
 ### Inline-Kommentare
 
@@ -92,7 +92,7 @@ Regel nicht erforderlich – außer der Code ist komplex oder der Zweck nicht un
 Triviale Getter/Setter oder klar benannte Hilfsmethoden benötigen in der Regel keine zusätzliche Dokumentation.
 
 > **Gut benannte Methoden und Parameter machen eine zusätzliche Dokumentation oft überflüssig.** Dennoch sollte bei
-komplexem Verhalten oder öffentlich zugänglichen APIs auf aussagekräftige JavaDoc-Kommentare nicht verzichtet werden.
+> komplexem Verhalten oder öffentlich zugänglichen APIs auf aussagekräftige JavaDoc-Kommentare nicht verzichtet werden.
 
 {{< snippet name="javadoc" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" >}}
 
@@ -104,7 +104,7 @@ komplexem Verhalten oder öffentlich zugänglichen APIs auf aussagekräftige Jav
 
 ---
 
-## 6. Klassenaufbau
+## 7. Klassenaufbau
 
 Die Reihenfolge der Elemente innerhalb einer Klasse folgt dem Google Java Style Guide:
 
@@ -123,8 +123,8 @@ Die Reihenfolge der Elemente innerhalb einer Klasse folgt dem Google Java Style 
 
 ## 8. Fehlerbehandlung
 
-- Verwende checked exceptions nur, wenn sinnvoll.  
-- Logge Fehler sinnvoll, aber ohne zu spammen.  
+- Verwende checked exceptions nur, wenn sinnvoll.
+- Logge Fehler sinnvoll, aber ohne zu spammen.
 - Vermeide leere `catch`-Blöcke – wenn nötig, kommentiere sie mit `// intentionally empty`.
 
 {{< snippet name="exceptions" shiftleft="8" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" >}}
@@ -133,7 +133,7 @@ Die Reihenfolge der Elemente innerhalb einer Klasse folgt dem Google Java Style 
 
 ## 9. Hilfreiche Tools
 
-- **Formatter**: IntelliJ/Eclipse mit einheitlichem Profil  
+- **Formatter**: IntelliJ/Eclipse mit einheitlichem Profil
 - **Analyse**: Checkstyle, PMD, SpotBugs, Sonar
 - **Build-Integration**: Linter und Formatierung in CI/CD einbauen
 
@@ -145,49 +145,49 @@ Dieser Vergleich zeigt Gemeinsamkeiten und Unterschiede zwischen IT-Ninjas und a
 
 ### Übersicht
 
-| **Aspekt**                  | **IT-Ninjas (aktualisiert)**           | **Spring Java Format**                | **Google Java Style Guide**        | **Oracle/Sun Conventions**            |
-|-----------------------------|----------------------------------------|---------------------------------------|-------------------------------------|----------------------------------------|
-| **Einrückung**              | 4 Leerzeichen                         | 4 Leerzeichen                         | **2 Leerzeichen**                   | 4 Leerzeichen                          |
-| **Zeilenlänge**             | max. 120 Zeichen                      | max. 120 Zeichen                      | **max. 100 Zeichen strikt**         | **max. 80 Zeichen**                    |
-| **Klammern `{}`**           | in derselben Zeile                    | in derselben Zeile                    | in derselben Zeile                  | in derselben Zeile                     |
-| **Annotations**             | eigene Zeile                          | eigene Zeile                          | eigene Zeile                        | keine Angabe (vor Java 5 entstanden)   |
-| **Leere Blöcke**            | erlaubt mit Kommentar                 | optionaler Kommentar                  | nur mit `// intentionally empty`    | keine konkrete Regel                   |
+| **Aspekt**        | **IT-Ninjas (aktualisiert)** | **Spring Java Format** | **Google Java Style Guide**      | **Oracle/Sun Conventions**           |
+| ----------------- | ---------------------------- | ---------------------- | -------------------------------- | ------------------------------------ |
+| **Einrückung**    | 4 Leerzeichen                | 4 Leerzeichen          | **2 Leerzeichen**                | 4 Leerzeichen                        |
+| **Zeilenlänge**   | max. 120 Zeichen             | max. 120 Zeichen       | **max. 100 Zeichen strikt**      | **max. 80 Zeichen**                  |
+| **Klammern `{}`** | in derselben Zeile           | in derselben Zeile     | in derselben Zeile               | in derselben Zeile                   |
+| **Annotations**   | eigene Zeile                 | eigene Zeile           | eigene Zeile                     | keine Angabe (vor Java 5 entstanden) |
+| **Leere Blöcke**  | erlaubt mit Kommentar        | optionaler Kommentar   | nur mit `// intentionally empty` | keine konkrete Regel                 |
 
 ---
 
 ### JavaDoc & Kommentare
 
-| **Aspekt**           | **IT-Ninjas**                         | **Spring Format**                    | **Google Style**                    | **Oracle/Sun**                         |
-|----------------------|----------------------------------------|--------------------------------------|-------------------------------------|----------------------------------------|
-| **JavaDoc Pflicht**  | für öffentliche APIs                  | für öffentliche APIs empfohlen       | **für alle öffentlichen Elemente**  | für öffentliche Klassen/Methoden       |
-| **JavaDoc-Tags**     | `@param`, `@return`, `@throws`        | empfohlen                            | **verpflichtend**                   | empfohlen                              |
+| **Aspekt**          | **IT-Ninjas**                  | **Spring Format**              | **Google Style**                   | **Oracle/Sun**                   |
+| ------------------- | ------------------------------ | ------------------------------ | ---------------------------------- | -------------------------------- |
+| **JavaDoc Pflicht** | für öffentliche APIs           | für öffentliche APIs empfohlen | **für alle öffentlichen Elemente** | für öffentliche Klassen/Methoden |
+| **JavaDoc-Tags**    | `@param`, `@return`, `@throws` | empfohlen                      | **verpflichtend**                  | empfohlen                        |
 
 ---
 
 ### Benennungsregeln
 
-| **Element**     | **Alle vier Richtlinien**                                                                 |
-|------------------|--------------------------------------------------------------------------------------------|
-| **Klassen**       | PascalCase – z. B. `MyService`                                                           |
-| **Methoden**      | camelCase – z. B. `calculateSum()`                                                       |
-| **Variablen**     | camelCase – z. B. `userName`                                                              |
-| **Konstanten**    | UPPER_SNAKE_CASE – z. B. `MAX_SIZE`                                                      |
-| **Pakete**        | nur Kleinbuchstaben, z. B. `com.example.project`                                         |
+| **Element**    | **Alle vier Richtlinien**                        |
+| -------------- | ------------------------------------------------ |
+| **Klassen**    | PascalCase – z. B. `MyService`                   |
+| **Methoden**   | camelCase – z. B. `calculateSum()`               |
+| **Variablen**  | camelCase – z. B. `userName`                     |
+| **Konstanten** | UPPER_SNAKE_CASE – z. B. `MAX_SIZE`              |
+| **Pakete**     | nur Kleinbuchstaben, z. B. `com.example.project` |
 
 ---
 
 ### Klassenstruktur
 
-| **Klassenelemente-Reihenfolge** | **IT-Ninjas**                        | **Spring**                         | **Google Style**                   | **Oracle/Sun**                         |
-|----------------------------------|--------------------------------------|-------------------------------------|-------------------------------------|----------------------------------------|
-| Konstanten → statische Felder → Instanzvariablen → Konstruktor → Methoden | ✅                                | ✅                                  | ✅ mit detaillierter Unterscheidung     | grob ähnlich                          |
+| **Klassenelemente-Reihenfolge**                                           | **IT-Ninjas** | **Spring** | **Google Style**                    | **Oracle/Sun** |
+| ------------------------------------------------------------------------- | ------------- | ---------- | ----------------------------------- | -------------- |
+| Konstanten → statische Felder → Instanzvariablen → Konstruktor → Methoden | ✅            | ✅         | ✅ mit detaillierter Unterscheidung | grob ähnlich   |
 
 ---
 
 ### Tooling & Formatierung
 
-| **Aspekt**              | **IT-Ninjas**                         | **Spring Format**                        | **Google Style**                             | **Oracle/Sun**                         |
-|-------------------------|----------------------------------------|-------------------------------------------|----------------------------------------------|----------------------------------------|
-| Formatter               | IntelliJ/Eclipse Profil manuell       | `spring-javaformat` Plugin (Maven/Gradle) | Google Java Format / Checkstyle              | keine Tooling-Angabe                   |
-| Checkstyle              | optional                              | nicht direkt verwendet                    | eigene Checkstyle XML                        | Sun Checkstyle-XML verfügbar           |
-| IDE-Unterstützung       | manuell einstellbar                   | Spring Boot Starter Integration           | Google Formatter Plugin für IntelliJ         | nicht spezifiziert                     |
+| **Aspekt**        | **IT-Ninjas**                   | **Spring Format**                         | **Google Style**                     | **Oracle/Sun**               |
+| ----------------- | ------------------------------- | ----------------------------------------- | ------------------------------------ | ---------------------------- |
+| Formatter         | IntelliJ/Eclipse Profil manuell | `spring-javaformat` Plugin (Maven/Gradle) | Google Java Format / Checkstyle      | keine Tooling-Angabe         |
+| Checkstyle        | optional                        | nicht direkt verwendet                    | eigene Checkstyle XML                | Sun Checkstyle-XML verfügbar |
+| IDE-Unterstützung | manuell einstellbar             | Spring Boot Starter Integration           | Google Formatter Plugin für IntelliJ | nicht spezifiziert           |
