@@ -4,7 +4,7 @@ linkTitle: "SSH-Key in Git"
 weight: 8
 ---
 
-Du findest die Anleitung zur Einrichtung eines SSH-Keys [hier.](../../tools/personal_bitbucket_repo/)
+Du findest die Anleitung zur Einrichtung eines SSH-Keys [hier.](../../01_tools/personal_bitbucket_repo/)
 
 ---
 

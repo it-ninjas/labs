@@ -15,7 +15,7 @@ description: >
 ### Voraussetzungen
 
 - Du hast Zugriff auf das Git-Tool Bitbucket
-- Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls das noch nicht geschehen ist, siehe: [Install Git](../git/basics/git-install)
+- Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls das noch nicht geschehen ist, siehe: [Install Git](../../git/basics/git-install)
 - Du hast die Grundeinstellungen für Git im Terminal nach der Installation gemacht
   {{% details title="Folgende Einstellungen sind hier gemeint und können im Git-Bash Terminal ausgeführt werden:" %}}
 
@@ -69,7 +69,7 @@ Repository hast, womit du auch ohne Internetverbindung arbeiten kannst.
 1. Klicke auf den folgenden Link, um Bitbucket in deinem Browser zu öffnen: [Bitbucket](https://code.sbb.ch/).
 2. Wenn du noch nicht eingeloggt bist, folge den Anweisungen auf der Login-Seite.
 3. Nach dem Login wirst du oben rechts ein, vermutlich, noch leeres Profil-Bild sehen. Klicke darauf und wähle **View Profile** (Profil anzeigen) aus:
-   ![View Profile](../bitbucket/bitbucket_view_profile.png)
+   ![View Profile](images/bitbucket-view-profile.png)
 4. Auf deiner Profilseite, klickst du nun den **Create repository** (Neues Repository erstellen) Button.
 5. Gib im geöffneten Formular deinem Repository einen Namen (z.B. "ausbildungsprogramm") und lasse die andere Felder leer. Anschliessend klicke auf **Create Repository** (Repository erstellen).
 
@@ -116,7 +116,7 @@ C:\Users\u123456\.ssh> type id_rsa.pub
 3. Markiere die Ausgabe und kopiere sie zum Clipboard (CTRL+C).
 4. [Klicke hier, um deinen öffentlichen Schlüssel ins Bitbucket hinzuzufügen](https://code.sbb.ch/plugins/servlet/ssh/account/keys).
 5. Klicke die "Add key" Schaltfläche, fülle das geöffnete Formular wie folgt aus und drücke anschliessend die "Save" Schaltfläche:  
-   ![Bitbucket SSH-Schlüssel](../bitbucket/bitbucket_ssh_key.png)
+   ![Bitbucket SSH-Schlüssel](images/bitbucket-ssh-key.png)
 
 Somit hast du die SSH-Konfiguration abgeschlossen und du kannst dieses Protokoll beim Klonen benutzen.
 
@@ -132,7 +132,7 @@ Um dies einzurichten, kopierst du das Bitbucket-Repository auf dein System.
 Bei Git wird dieser Kopiervorgang als **Klonen** bezeichnet.  
 Wenn du ein Repository klonst, erstellst du eine Verbindung zwischen dem Bitbucket-Server (bei Git als "origin" benannt) und deinem lokalen System.
 
-![Git Clone](../bitbucket/git_clone.png)
+![Git Clone](images/git-clone.png)
 
 #### Ordner für deine Repositories anlegen
 
@@ -156,7 +156,7 @@ C:\Users\e123456\local_repos> # fertig...
 
 1. Auf deiner Bitbucket-Repository Seite, klicke die **Clone** (klonen) Schaltfläche.
 2. Im geöffneten Popup-Fenster, wähle **SSH** als Protokoll und kopiere (CTRL+C) die URL zu deinem Repository (direkt neben dem Protokoll) in dein Clipboard:
-   ![Bitbucket Clone](../bitbucket/bitbucket_clone.png)
+   ![Bitbucket Clone](images/bitbucket-clone.png)
 3. Öffne nun dein Git-Bash Terminal und navigiere zu deinem, im vorherigen Schritt erstellten, "local_repos" Ordner.
 4. Verwende folgenden Befehl, um dein Repository zu klonen:
 
@@ -176,7 +176,7 @@ Jetzt erstellst du eine Ordnerstruktur, welche dazu dient, deine Arbeit im Ausbi
 **Aufgabe:**  
 Erstelle folgende Ordnerstruktur in deinem lokalen Repository Ordner:
 
-![Ordnerstruktur](../bitbucket/ordner_struktur.png)
+![Ordnerstruktur](images/ordner-struktur.png)
 
 Im Ordner **J1** wirst du die Arbeit, welche zum ersten Java-Modul gehört speichern und verwalten (J1 entspricht der ID des ersten Moduls).
 Für jedes weitere Modul, welches du bearbeitest, wirst du einen Ordner unter deinem Repository-Ordner erstellen mit der ID des Moduls als Ordnername.
@@ -220,7 +220,7 @@ Wenn du wieder **git status** ausführst, wirst du sehen, dass es jetzt nichts z
 
 Wenn du beim Ausführen von **git status** die folgende Meldung siehst:
 
-![Meldung Upstream branch is gone](../bitbucket/upstream_branch_gone.png)
+![Meldung Upstream branch is gone](images/upstream-branch-gone.png)
 
 kannst du dies mit dem vorgeschlagenen Befehl korrigieren:
 
@@ -314,8 +314,8 @@ Dies erledigst du mit folgenden Schritten:
 
 1. Öffne dein Bitbucket-Repository im Browser.
 2. Im Navigationsbereich klicke auf _Repository Settings_ und dort auf _Repository Permissions_:
-   ![Bitbucket Repo Permissions](../bitbucket/bitbucket_repo_permissions.png)
+   ![Bitbucket Repo Permissions](images/bitbucket-repo-permissions.png)
 3. Klicke die Schaltfläche "Add user or group" und berechtige alle Praxisbildner als Administratoren auf deinem Repository. Anschliessend klicke die "Add" Schaltfläche:
-   ![Praxisbildner Permissions](../bitbucket/praxisbildner_admin_permission.png)
+   ![Praxisbildner Permissions](images/praxisbildner-admin-permission.png)
 
 Nun sind alle Praxisbildner auf deinem Repository berechtigt.
