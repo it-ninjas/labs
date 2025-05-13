@@ -43,7 +43,7 @@ Die wichtigsten Anpassungen sind folgende:
 Um die Seitenzahl automatisch generieren zu lassen, kann man diese direkt einfügen lassen. Auch dort ist uns Word sehr
 behilflich und bietet uns einige Vorlagen an.
 
-![Seitenzahl](../word/Seitenzahl.png)
+![Seitenzahl](images/seitenzahl.png)
 
 **Optionen**
 
@@ -51,7 +51,7 @@ In den meisten Fällen ist die erste Seite eines Dokuments ein Titelblatt. Dort 
 Um das einzustellen, kann man unter **Optionen** den Punkt **Erste Seite anders** auswählen. Damit bekommt die erste
 Seite eine eigene Kopf- und Fusszeile.
 
-![Kopf- und Fusszeile](../word/Kopf-Fusszeile.png)
+![Kopf- und Fusszeile](images/kopf-fusszeile.png)
 
 ---
 
@@ -64,7 +64,7 @@ zuschneiden, die Grösse anpassen, eine Formatvorlage hinzufügen oder verschied
 Damit man in einer Dokumentation die Bilder zusammen mit Text darstellen kann, gibt es für die Bilder Layoutoptionen.
 Mit diesen Optionen kann man den Textumbruch verändern und somit das Bild in den Text integrieren.
 
-![Layoutoptionen](../word/Layoutoptionen.png)
+![Layoutoptionen](images/layoutoptionen.png)
 
 ---
 
@@ -75,7 +75,7 @@ Diese sind direkt im Register **Start** zu finden. Die verschiedenen Formatvorla
 neue Formatvorlagen erstellen. Um eine Vorlage zu bearbeiten, macht man einfach einen Rechtsklick auf die Vorlage und
 wählt dort **Ändern** aus. Nun kann man alle Optionen individuell anpassen.
 
-![Formatvorlagen](../word/Formatvorlagen.png)
+![Formatvorlagen](images/formatvorlagen.png)
 
 ---
 
@@ -91,4 +91,4 @@ Nimmt man nach dem Einfügen vom Inhaltsverzeichnis noch weitere Änderungen am 
 aktualisieren. Dafür klickt man einfach auf das Inhaltsverzeichnis im Dokument und kann dann oberhalb vom Verzeichnis
 auf **Inhaltsverzeichnis aktualisieren** klicken. Damit werden die Titel und Seitenzahlen aktualisiert.
 
-![Inhaltsverzeichnis](../word/Inhaltsverzeichnis.png)
+![Inhaltsverzeichnis](images/inhaltsverzeichnis.png)
