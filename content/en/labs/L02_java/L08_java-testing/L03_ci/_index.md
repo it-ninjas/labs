@@ -32,4 +32,4 @@ In diesem Repository soll mithilfe von [GH Actions](https://docs.github.com/en/a
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/cicd/continuous-integration.md).
+Hier kannst du [zurück zur Theorie](../../../../docs/08_cicd/01_continuous-integration).
