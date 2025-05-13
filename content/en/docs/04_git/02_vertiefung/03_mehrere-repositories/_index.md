@@ -6,7 +6,7 @@ weight: 4
 
 ## Voraussetzungen
 
-Die Vorbereitungen aus [Aufgabe 1](../../../../labs/git/02_vertiefung/01_team) sind umgesetzt. Insbesondere sind erledigt:
+Die Vorbereitungen aus [Aufgabe 1](../../../../labs/02_git/02_vertiefung/01_team) sind umgesetzt. Insbesondere sind erledigt:
 
 - Zwei neue Repositories mit vorhandenen Projekten wurden erstellt.
 - Es sind jeweils die Branches `master` und `develop` vorhanden.
@@ -51,5 +51,5 @@ wechseln, wisst, wann stash eingesetzt wird und seid mit checkout, rebase, push 
 
 Zu den Labs:
 
-- [Simultanes Arbeiten an mehreren Projekten](../../../../labs/git/02_vertiefung/05_project-switch)
-- [Wechseln zwischen Branches desselben Projekts](../../../../labs/git/02_vertiefung/06_branch-switch)
+- [Simultanes Arbeiten an mehreren Projekten](../../../../labs/02_git/02_vertiefung/05_project-switch)
+- [Wechseln zwischen Branches desselben Projekts](../../../../labs/02_git/02_vertiefung/06_branch-switch)

@@ -8,4 +8,4 @@ Du findest die Anleitung zur Einrichtung eines SSH-Keys [hier.](../../../tools/p
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Git Hands On Aufgabe](../../../../labs/git/01_grundlagen) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Git Hands On Aufgabe](../../../../labs/02_git/01_grundlagen) in den Labs.

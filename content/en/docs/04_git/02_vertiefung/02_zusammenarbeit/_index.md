@@ -6,7 +6,7 @@ weight: 3
 
 ## Voraussetzungen
 
-Die Vorbereitungen aus [Aufgabe 1](../../../../labs/git/02_vertiefung/01_team) sind umgesetzt. Insbesondere sind erledigt:
+Die Vorbereitungen aus [Aufgabe 1](../../../../labs/02_git/02_vertiefung/01_team) sind umgesetzt. Insbesondere sind erledigt:
 
 - Zwei neue Repositories mit vorhandenen Projekten wurden erstellt.
 - Es sind jeweils die Branches `master` und `develop` vorhanden.
@@ -118,8 +118,8 @@ die es zu lösen gilt.
 
 Die passenden Aufgaben sind in den Labs unter
 
-- [Vorbereiten der IDE](../../../../labs/git/02_vertiefung/02_preparing)
-- [Gemeinsames Arbeiten an einem Projekt (ohne Konflikte)](../../../../labs/git/02_vertiefung/03_collaboration)
-- und [Gemeinsames Arbeitane an einem Projekt (mit Merge-Konflikten)](../../../../labs/git/02_vertiefung/04_merge-conflict)
+- [Vorbereiten der IDE](../../../../labs/02_git/02_vertiefung/02_preparing)
+- [Gemeinsames Arbeiten an einem Projekt (ohne Konflikte)](../../../../labs/02_git/02_vertiefung/03_collaboration)
+- und [Gemeinsames Arbeitane an einem Projekt (mit Merge-Konflikten)](../../../../labs/02_git/02_vertiefung/04_merge-conflict)
 
 zu finden.
