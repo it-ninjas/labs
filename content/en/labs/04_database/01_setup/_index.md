@@ -21,16 +21,16 @@ gesetzt hast. Du wirst es im nächsten Schritt brauchen. Nach der Installation k
 wie folgt verbinden:
 
 1. Klicke oben links auf das Verbinden-Icon (Stecker, im Bild rot markiert):
-   ![](../images/Neue_Verbindung.PNG)
+   ![](images/neue-verbindung.png)
 2. Wähle MariaDB aus und klicke auf "Weiter":
-   ![](../images/DB_Auswahl.PNG)
+   ![](images/db-auswahl.png)
 3. Gib dein Passwort ein und klicke auf "Fertigstellen":
-   ![](../images/Connection.PNG)
+   ![](images/connection.png)
 4. Wenn alles funktioniert hat, solltest du die DB in der Liste sehen können:
-   ![](../images/Ende.PNG)
+   ![](images/ende.png)
 5. Um ein SQL-Script auszuführen, musst du einen SQL-Editor öffnen. Mache dazu Rechtsklick auf localhost und wähle
    `SQL-Editor -> SQL-Skript` aus:  
-    ![](../images/SQL-Editor.PNG)
+    ![](images/sql-editor.png)
 6. Vom SQL-Editor aus kannst du alle gelernten SQL-Statements anwenden. Zuerst solltest du jedoch eine Datenbank mit
    `CREATE DATABASE name` erstellen. Dort kannst du wie in den Docs gelernt Tabellen usw. erstellen.
 
