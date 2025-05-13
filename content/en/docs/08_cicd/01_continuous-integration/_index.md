@@ -17,17 +17,17 @@ description: >
 
 Continuous Integration, oder kurz CI, heisst auf Deutsch so viel wie "Fortlaufende Integration". Es beschreibt die Praxis, Codeänderungen oft und regelmässig in die Code-Basis zu integrieren. Dazu gehört auch das Testen dieser Änderungen sowie andere Checks, wie etwa Security Scans. Da dies mühsame Arbeit ist, passiert das meistens vollautomatisiert in einer sogenannten Pipeline. Diese Pipelines heissen so, da der Code wie durch ein (oder mehrere) Rohre muss, welche diese Checks ausführen und das Ventil zudrehen können, sollte etwas nicht gut sein.
 
-![](../images/pipeline.gif)
+![](images/pipeline.gif)
 
 Das Ausführen so einer Pipeline passiert entweder nach einem bestimmten Ereignis, z.B. einem Push auf einen Git-Branch, oder periodisch, jede Nacht um 3:00. Damit das möglich ist, wird sie nicht auf dem Computer des Entwicklers, sondern auf einem separaten CI-Server ausgeführt. So kann sichergestellt werden, dass nichts vergessen geht und die Ergebnisse transparent sind.
 
-Wichtig ist, dass das fortlaufende Integrieren von Änderungen nicht heisst, dass nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe [Continuous Deployment](./continuous-deployment.md)), muss aber nicht. Vielmehr geht es darum, dass die Änderungen jeweils klein und gut getestet sind.
+Wichtig ist, dass das fortlaufende Integrieren von Änderungen nicht heisst, dass nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe [Continuous Deployment](../03_continuous-deployment/_index)), muss aber nicht. Vielmehr geht es darum, dass die Änderungen jeweils klein und gut getestet sind.
 
 ### Beispiel einer CI-Pipeline
 
 Als Beispiel nehmen wir eine Anwendung, welche eine neue Login-Page bekommen soll. Der/Die Entwickler:in macht also einen neuen Branch `feature/new-login-page`. Auf diesem nimmt er/sie seine/ihre Änderungen vor und mergt - sobald fertig - diese wieder in den `main`-Branch. Vor dem Mergen können andere Entwickler:innen noch Tests ausführen oder einen Security-Scan laufen lassen. Da dies jedoch manuell gemacht werden muss, geht das oft vergessen oder wird aus Faulheit nicht umgesetzt.
 
-![](../images/no-ci.png)
+![](images/no-ci.png)
 
 <!--
 gitGraph
@@ -45,7 +45,7 @@ gitGraph
 
 Mithilfe einer CI-Pipeline können wir diese zwei Aufgaben automatisiert ausführen nach (oder idealerweise noch vor) einem Merge. Pipelines können also dazu dienen, langweilige, wiederkehrende Arbeiten zu verrichten und Entwickler:innen zum Einhalten von Standards zu bewegen. Durch die Pipeline merken wir z.B., dass mehrere Unit-Tests fehlschlagen. Dazu hat die Pipeline ganz einfach den Maven-Command `mvn clean test` ausgeführt und geschaut, ob jeder Test grün ist. So wie es ein:e Entwickler:in auch auf seiner/ihrer Maschine tun kann.
 
-![](../images/simple-ci.png)
+![](images/simple-ci.png)
 
 <!--
 gitGraph
@@ -63,7 +63,7 @@ gitGraph
 
 Das hätte der/die Entwickler:in merken können, wenn er/sie nach jedem Commit die Tests ausgeführt hätte. Da dies aber manuelle und langweilige Arbeit ist, hat er/sie das natürlich nicht gemacht. Werden die Tests stattdessen auch in einer Pipeline nach jedem `git push` ausgeführt, merkt der/die Entwickler:in schneller, dass sein/ihr Code noch nicht gut ist.
 
-![](../images/reasonable-ci.png)
+![](images/reasonable-ci.png)
 
 <!--
 gitGraph
@@ -191,4 +191,4 @@ Dieser Workflow macht in dieser Reihenfolge:
 - führt die Tests mit dem Befehl `mvn clean verify` aus
 
 Sollte es zu einem Fehler in den Tests kommen, wird der Workflow fehlschlagen und den Entwickler informieren.
-![](../images/gh-actions-failure.png)
+![](images/gh-actions-failure.png)

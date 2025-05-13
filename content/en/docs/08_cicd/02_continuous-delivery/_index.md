@@ -17,4 +17,4 @@ Continuous Delivery, kurz CD, erweitert das automatische Testing um einen automa
 
 Theoretisch kann man mit CD also mit einem einzigen Knopfdruck die neue Version der Software auf den Server laden. Dabei spielt es im Prinzip keine Rolle, ob man das täglich, wöchentlich oder nach Lust und Laune tut. Es ist jedoch generell eine gute Idee, regelmässig Deployments durchzuführen. Falls etwas dabei schiefgeht, ist das Problemlöseverfahren meistens einfacher.
 
-![](../images/continuous-delivery.png)
+![](images/continuous-delivery.png)
