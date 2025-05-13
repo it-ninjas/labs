@@ -399,7 +399,7 @@ Alternativ kann auch die **[Martin-Notation](https://de.wikipedia.org/wiki/Marti
 
 Ein klassisches Beispiel für Kardinalitäten ist eine **Buchdatenbank**, die **Bücher** und **Autoren** verwaltet.
 
-![Buch-ERD](../images/Buch-ERD.png)
+![Buch-ERD](images/buch-erd.png)
 
 Hier sind einige typische Beziehungen:
 
@@ -438,4 +438,4 @@ Diese zusätzliche Tabelle ermöglicht eine **eindeutige Zuordnung** zwischen B�
 
 Die Kardinalität ist ein wichtiger Bestandteil des **Entity-Relationship-Modells (ERM)** und beschreibt, wie Entitäten miteinander verknüpft sind. Das Verständnis der Kardinalitäten hilft, eine **optimale Datenbankstruktur** zu entwickeln, die **Redundanzen vermeidet** und **Datenkonsistenz sicherstellt**.
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Datenbanken](../../../../labs/database) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Datenbanken](../../../labs/04_database) in den Labs.

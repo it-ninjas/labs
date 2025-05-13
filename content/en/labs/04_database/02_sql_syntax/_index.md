@@ -33,7 +33,7 @@ Praxisbildner an, um Feedback dazu zu erhalten.
 Erstelle anhand dieses ERDs eine Datenbank. Verwende hierbei die deiner Meinung nach richtigen Datentypen. Die Datenbank
 soll die 3NF erreichen. **Achtung!** das ERD ist nicht in der 3NF. Schau deine fertige Datenbank mit einem Praxisbildner an.
 
-![ERD Zoo](../images/Zoo-ERD.png)
+![ERD Zoo](images/zoo-erd.png)
 
 ## Übung 3
 
