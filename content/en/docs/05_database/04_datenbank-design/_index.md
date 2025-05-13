@@ -399,7 +399,7 @@ Alternativ kann auch die **[Martin-Notation](https://de.wikipedia.org/wiki/Marti
 
 Ein klassisches Beispiel für Kardinalitäten ist eine **Buchdatenbank**, die **Bücher** und **Autoren** verwaltet.
 
-![Buch-ERD](../images/Buch-ERD.png)
+![Buch-ERD](images/01_Buch-ERD.png)
 
 Hier sind einige typische Beziehungen:
 
