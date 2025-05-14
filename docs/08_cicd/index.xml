@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – CI/CD</title><link>/docs/cicd/</link><description>Recent content in CI/CD on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/docs/cicd/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Continuous Integration</title><link>/docs/cicd/continuous-integration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/cicd/continuous-integration/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – CI/CD</title><link>/docs/08_cicd/</link><description>Recent content in CI/CD on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/docs/08_cicd/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Continuous Integration</title><link>/docs/08_cicd/01_continuous-integration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/08_cicd/01_continuous-integration/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann den Begriff Continuous Integration erklären.&lt;/li>
@@ -7,12 +7,12 @@
 &lt;/ul>
 &lt;h2 id="continuous-integration">Continuous Integration&lt;/h2>
 &lt;p>Continuous Integration, oder kurz CI, heisst auf Deutsch so viel wie &amp;ldquo;Fortlaufende Integration&amp;rdquo;. Es beschreibt die Praxis, Codeänderungen oft und regelmässig in die Code-Basis zu integrieren. Dazu gehört auch das Testen dieser Änderungen sowie andere Checks, wie etwa Security Scans. Da dies mühsame Arbeit ist, passiert das meistens vollautomatisiert in einer sogenannten Pipeline. Diese Pipelines heissen so, da der Code wie durch ein (oder mehrere) Rohre muss, welche diese Checks ausführen und das Ventil zudrehen können, sollte etwas nicht gut sein.&lt;/p>
-&lt;p>&lt;img src="../images/pipeline.gif" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/08_cicd/01_continuous-integration/images/pipeline.gif" alt="">&lt;/p>
 &lt;p>Das Ausführen so einer Pipeline passiert entweder nach einem bestimmten Ereignis, z.B. einem Push auf einen Git-Branch, oder periodisch, jede Nacht um 3:00. Damit das möglich ist, wird sie nicht auf dem Computer des Entwicklers, sondern auf einem separaten CI-Server ausgeführt. So kann sichergestellt werden, dass nichts vergessen geht und die Ergebnisse transparent sind.&lt;/p>
-&lt;p>Wichtig ist, dass das fortlaufende Integrieren von Änderungen nicht heisst, dass nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe &lt;a href="/docs/cicd/continuous-deployment/">Continuous Deployment&lt;/a>), muss aber nicht. Vielmehr geht es darum, dass die Änderungen jeweils klein und gut getestet sind.&lt;/p>
+&lt;p>Wichtig ist, dass das fortlaufende Integrieren von Änderungen nicht heisst, dass nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe &lt;a href="/docs/08_cicd/03_continuous-deployment/">Continuous Deployment&lt;/a>), muss aber nicht. Vielmehr geht es darum, dass die Änderungen jeweils klein und gut getestet sind.&lt;/p>
 &lt;h3 id="beispiel-einer-ci-pipeline">Beispiel einer CI-Pipeline&lt;/h3>
 &lt;p>Als Beispiel nehmen wir eine Anwendung, welche eine neue Login-Page bekommen soll. Der/Die Entwickler:in macht also einen neuen Branch &lt;code>feature/new-login-page&lt;/code>. Auf diesem nimmt er/sie seine/ihre Änderungen vor und mergt - sobald fertig - diese wieder in den &lt;code>main&lt;/code>-Branch. Vor dem Mergen können andere Entwickler:innen noch Tests ausführen oder einen Security-Scan laufen lassen. Da dies jedoch manuell gemacht werden muss, geht das oft vergessen oder wird aus Faulheit nicht umgesetzt.&lt;/p>
-&lt;p>&lt;img src="../images/no-ci.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/08_cicd/01_continuous-integration/images/no-ci.png" alt="">&lt;/p>
 &lt;!--
 gitGraph
 commit
@@ -27,7 +27,7 @@ merge feature/new-login-page id: "Merge into main"
 commit
 -->
 &lt;p>Mithilfe einer CI-Pipeline können wir diese zwei Aufgaben automatisiert ausführen nach (oder idealerweise noch vor) einem Merge. Pipelines können also dazu dienen, langweilige, wiederkehrende Arbeiten zu verrichten und Entwickler:innen zum Einhalten von Standards zu bewegen. Durch die Pipeline merken wir z.B., dass mehrere Unit-Tests fehlschlagen. Dazu hat die Pipeline ganz einfach den Maven-Command &lt;code>mvn clean test&lt;/code> ausgeführt und geschaut, ob jeder Test grün ist. So wie es ein:e Entwickler:in auch auf seiner/ihrer Maschine tun kann.&lt;/p>
-&lt;p>&lt;img src="../images/simple-ci.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/08_cicd/01_continuous-integration/images/simple-ci.png" alt="">&lt;/p>
 &lt;!--
 gitGraph
 commit id: "0-2932c65"
@@ -42,7 +42,7 @@ merge feature/new-login-page id: "✅ Security Scan ❌ Tests"
 commit id: "6-e293507"
 -->
 &lt;p>Das hätte der/die Entwickler:in merken können, wenn er/sie nach jedem Commit die Tests ausgeführt hätte. Da dies aber manuelle und langweilige Arbeit ist, hat er/sie das natürlich nicht gemacht. Werden die Tests stattdessen auch in einer Pipeline nach jedem &lt;code>git push&lt;/code> ausgeführt, merkt der/die Entwickler:in schneller, dass sein/ihr Code noch nicht gut ist.&lt;/p>
-&lt;p>&lt;img src="../images/reasonable-ci.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/08_cicd/01_continuous-integration/images/reasonable-ci.png" alt="">&lt;/p>
 &lt;!--
 gitGraph
 commit id: "0-2932c65"
@@ -211,7 +211,7 @@ Ein Beispiel davon ist dieser Step hier:&lt;/p>
 &lt;li>führt die Tests mit dem Befehl &lt;code>mvn clean verify&lt;/code> aus&lt;/li>
 &lt;/ul>
 &lt;p>Sollte es zu einem Fehler in den Tests kommen, wird der Workflow fehlschlagen und den Entwickler informieren.
-&lt;img src="../images/gh-actions-failure.png" alt="">&lt;/p></description></item><item><title>Docs: Continuous Delivery</title><link>/docs/cicd/continuous-delivery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/cicd/continuous-delivery/</guid><description>
+&lt;img src="/docs/08_cicd/01_continuous-integration/images/gh-actions-failure.png" alt="">&lt;/p></description></item><item><title>Docs: Continuous Delivery</title><link>/docs/08_cicd/02_continuous-delivery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/08_cicd/02_continuous-delivery/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann den Begriff Continuous Delivery erklären.&lt;/li>
@@ -219,7 +219,7 @@ Ein Beispiel davon ist dieser Step hier:&lt;/p>
 &lt;h2 id="continuous-delivery">Continuous Delivery&lt;/h2>
 &lt;p>Continuous Delivery, kurz CD, erweitert das automatische Testing um einen automatiserten Freigabeprozess. Eine neue Version der Anwendung soll also per Knopfdruck (und nach dem erfolgreichen Durchlaufen der CI-Pipeline) jederzeit deployed werden können.&lt;/p>
 &lt;p>Theoretisch kann man mit CD also mit einem einzigen Knopfdruck die neue Version der Software auf den Server laden. Dabei spielt es im Prinzip keine Rolle, ob man das täglich, wöchentlich oder nach Lust und Laune tut. Es ist jedoch generell eine gute Idee, regelmässig Deployments durchzuführen. Falls etwas dabei schiefgeht, ist das Problemlöseverfahren meistens einfacher.&lt;/p>
-&lt;p>&lt;img src="../images/continuous-delivery.png" alt="">&lt;/p></description></item><item><title>Docs: Continuous Deployment</title><link>/docs/cicd/continuous-deployment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/cicd/continuous-deployment/</guid><description>
+&lt;p>&lt;img src="/docs/08_cicd/02_continuous-delivery/images/continuous-delivery.png" alt="">&lt;/p></description></item><item><title>Docs: Continuous Deployment</title><link>/docs/08_cicd/03_continuous-deployment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/08_cicd/03_continuous-deployment/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann den Begriff Continuous Deployment erklären.&lt;/li>
@@ -227,4 +227,4 @@ Ein Beispiel davon ist dieser Step hier:&lt;/p>
 &lt;h2 id="continuous-deployment">Continuous Deployment&lt;/h2>
 &lt;p>Continuous Deployment, was verwirrenderweise ebenfalls gleich wie Continuous Delivery abgekürzt wird, treibt das Prinzip auf die Spitze. Jede Änderung wird sofort produktiv gesetzt, vorausgesetzt es gibt keinen Fehler in den automatisierten Tests.&lt;/p>
 &lt;p>Das hat verschiedene Vorteile. Man kriegt sehr schnell Feedback von Kunden und es gibt keinen stressigen &amp;ldquo;Release-Day&amp;rdquo; mehr. Wenn man jedoch eine schlechte CI-Pipeline und/oder ungenügende Code-Reviews hat, führt das Verfahren zu mehr Problemen, als dass es nützt.&lt;/p>
-&lt;p>&lt;img src="../images/continuous-deployment.png" alt="">&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img src="/docs/08_cicd/03_continuous-deployment/images/continuous-deployment.png" alt="">&lt;/p></description></item></channel></rss>
