@@ -37,7 +37,7 @@ oder weniger verständlich wäre (z. B. Interface statt Schnittstelle im Deuts
 - `{` kommt **in dieselbe Zeile** wie die Anweisung.
 - **Annotations** (z. B. `@Override`) stehen immer **in einer eigenen Zeile** über der Deklaration.
 
-{{< snippet name="format_and_indent" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" >}}
+{{< snippet name="format_and_indent" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ---
 
@@ -46,7 +46,7 @@ oder weniger verständlich wäre (z. B. Interface statt Schnittstelle im Deuts
 - Max. **120 Zeichen pro Zeile** (empfohlen).
 - Lange Aufrufe umschlagen.
 
-{{< snippet name="long_lines_with_lot_params" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" >}}
+{{< snippet name="long_lines_with_lot_params" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ---
 
@@ -66,7 +66,7 @@ oder weniger verständlich wäre (z. B. Interface statt Schnittstelle im Deuts
 
 Vermeide "magische Zahlen" oder Strings:
 
-{{< snippet file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" name="name_constants" shiftleft="4" >}}
+{{< snippet file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" name="name_constants" shiftleft="4" >}}
 
 ---
 
@@ -80,7 +80,7 @@ klarere Benennung oder Struktur vereinfachen lässt.
 Zur besseren Lesbarkeit sollten Inline-Kommentare in der Regel auf einer eigenen Zeile vor dem entsprechenden Code
 stehen. Kommentare am Zeilenende gelten als Ausnahme und sollten nur für sehr kurze Erklärungen verwendet werden.
 
-{{< snippet name="inline_comment" shiftleft="8" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" >}}
+{{< snippet name="inline_comment" shiftleft="8" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ### JavaDoc-Kommentare
 
@@ -94,7 +94,7 @@ Triviale Getter/Setter oder klar benannte Hilfsmethoden benötigen in der Regel 
 > **Gut benannte Methoden und Parameter machen eine zusätzliche Dokumentation oft überflüssig.** Dennoch sollte bei
 > komplexem Verhalten oder öffentlich zugänglichen APIs auf aussagekräftige JavaDoc-Kommentare nicht verzichtet werden.
 
-{{< snippet name="javadoc" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" >}}
+{{< snippet name="javadoc" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 #### JavaDoc-Tags
 
@@ -127,7 +127,7 @@ Die Reihenfolge der Elemente innerhalb einer Klasse folgt dem Google Java Style 
 - Logge Fehler sinnvoll, aber ohne zu spammen.
 - Vermeide leere `catch`-Blöcke – wenn nötig, kommentiere sie mit `// intentionally empty`.
 
-{{< snippet name="exceptions" shiftleft="8" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/Program.java" >}}
+{{< snippet name="exceptions" shiftleft="8" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ---
 
