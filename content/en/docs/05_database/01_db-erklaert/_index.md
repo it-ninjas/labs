@@ -23,7 +23,7 @@ Eine Datenbank ist meist in Stufen aufgebaut, die wie folgt aussehen können:
 
 Zusammenfassend ergibt sich folgender Aufbau:
 
-![](../images/Beispiel_Bank.png)
+![](images/beispiel-bank.png)
 
 ### Schema und Tabelle
 
@@ -55,7 +55,7 @@ Beispiel: Eine Spalte mit dem Namen „Alter“ hat einen numerischen Datentyp. 
 
 Eine Zeile _(Row)_, auch **Tupel** genannt, enthält jeweils einen vollständigen Datensatz, wie beispielsweise alle Benutzerdaten.
 
-![](../images/Begriffe_relationaler_Datenbanken.png)
+![](images/begriffe-relationaler-datenbanken.png)
 
 _Quelle: [Wikipedia – Datenbanktabelle](https://de.wikipedia.org/wiki/Datenbanktabelle)_
 
@@ -99,7 +99,7 @@ Wie erklärt gibt es viele verschiedene Ansätze bei NoSQL, deshalb gibt es auch
 SQL gibt. Bei den verschiedenen Anbietern kann sich also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen
 Speicherarten ist keine NoSQL Datenbank wie die andere.
 
-![](../images/NoSQLDatabases.jpg)
+![](images/nosql-databases.jpg)
 
 _Quelle: https://www.geeksforgeeks.org/types-of-nosql-databases/_
 

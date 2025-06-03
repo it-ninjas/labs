@@ -303,7 +303,7 @@ Der Inner Join ist der wichtigste und am meisten benötigte Join. Der Inner Join
 die Schnittmenge zurück. Also alle Werte aus der Tabelle A, die auch ein Gegenstück in der Tabelle B haben. Grafisch
 dargestellt würde dieser Join so aus sehen:
 
-![Inner Join](../images/inner-join.png)
+![Inner Join](images/inner-join.png)
 
 _Quelle: https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/_
 
@@ -320,13 +320,13 @@ Menge zurückgegeben. Grafisch würde das so aussehen:
 
 #### Right Join
 
-![Right Join](../images/right-join.png)
+![Right Join](images/right-join.png)
 
 _Quelle: https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/_
 
 #### Left Join
 
-![Left Join](../images/left-join.png)
+![Left Join](images/left-join.png)
 
 _Quelle: https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/_
 
@@ -403,7 +403,7 @@ Der Full Join ist sehr eng mit dem Left und Right Join verwandt. Jetzt werden je
 Gegenstück zu einem Wert vorhanden ist, werden diese gleich wie beim Left und Right Join mit `null` angegeben. Grafisch
 sieht das ganze so aus:
 
-![Full Join](../images/full-join.png)
+![Full Join](images/full-join.png)
 
 _Quelle: https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/_
 
