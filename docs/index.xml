@@ -979,121 +979,7 @@ Die Klasse besitzt zwei Funktionen, eine um die email zu validieren (mit dem For
 &lt;h2 id="aufgabe-6">Aufgabe 6&lt;/h2>
 &lt;p>Implementiere eine &lt;code>ShoppingCart&lt;/code> Klasse, welche den ShoppingCart eines Onlineshops repräsentieren soll.
 Die Klasse sollte Funktionen für das hinzufügen von Produkten, dem Errechnen des gesamten Preises und für das Anzeigen der sich im ShoppingCart befindenden Produkten haben.
-Ein Produkt sollte einen &lt;code>name&lt;/code> und &lt;code>price&lt;/code> haben.&lt;/p></description></item><item><title>Docs: Datenbank 101</title><link>/docs/database/01_db-erklaert/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/01_db-erklaert/</guid><description>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Du kennst den allgemeinen Aufbau einer Datenbank und kannst ihn erklären.&lt;/li>
-&lt;li>Du kennst den Unterschied zwischen relationalen und NoSQL-Datenbanken.&lt;/li>
-&lt;li>Du weisst, wann welcher Datenbanktyp sinnvoll ist.&lt;/li>
-&lt;li>Du kennst die wichtigsten Datentypen und ihren Nutzen.&lt;/li>
-&lt;/ul>
-&lt;h2 id="was-ist-eine-datenbank">Was ist eine Datenbank?&lt;/h2>
-&lt;p>Eine Datenbank ist ein System zur elektronischen Verwaltung von Daten. Grundsätzlich sagt der Name „Datenbank“ bereits, was sie ist: In einer Datenbank werden Daten in einer bestimmten Ordnung abgelegt. Ähnlich wie bei einer normalen Bank werden die Daten an einem klar definierten Ort gespeichert – fast so wie bei deinem Bankkonto, auf das jeweils der Lohn eingezahlt wird.&lt;/p>
-&lt;p>Eine Datenbank ist meist in Stufen aufgebaut, die wie folgt aussehen können:&lt;/p>
-&lt;ul>
-&lt;li>Ganz oben steht die Datenbank an sich. Sie ist vergleichbar mit dem Gebäude einer Bank, in dem sich die Infrastruktur sowie das Geld befinden.&lt;/li>
-&lt;li>Die nächste Stufe ist das Schema. Dieses kann mit einem Raum verglichen werden, der viele verschiedene Aktenschränke enthält.&lt;/li>
-&lt;li>Diese Aktenschränke entsprechen in einer Datenbank den Tabellen. Die Tabellen beinhalten schliesslich die verschiedenen Daten – wie zum Beispiel dein erwähntes Bankkonto mit deinem Kontostand.&lt;/li>
-&lt;/ul>
-&lt;p>Zusammenfassend ergibt sich folgender Aufbau:&lt;/p>
-&lt;p>&lt;img src="../images/Beispiel_Bank.png" alt="">&lt;/p>
-&lt;h3 id="schema-und-tabelle">Schema und Tabelle&lt;/h3>
-&lt;p>Ein Schema ist eine strukturierte Art und Weise, wie Daten organisiert werden. Es legt fest, wie die Datenbank aufgebaut ist und wie die Daten gespeichert und abgerufen werden können.&lt;/p>
-&lt;p>Eine Tabelle ist eine strukturierte Anordnung von Spalten und Zeilen, in der die eigentlichen Daten gespeichert werden.&lt;/p>
-&lt;p>Schemata und Tabellen helfen dabei, Daten organisiert und leicht zugänglich zu halten. Sie ermöglichen es, Daten effizient abzufragen, zu aktualisieren und zu verwalten. Darüber hinaus spielen sie eine wichtige Rolle bei der Sicherstellung der Sicherheit und Integrität der Daten, indem sie Zugriffsrechte und Einschränkungen festlegen.&lt;/p>
-&lt;p>Im nächsten Kapitel kannst du sehen, wie so eine Tabelle aussehen kann.&lt;/p>
-&lt;h2 id="arten-von-datenbanken">Arten von Datenbanken&lt;/h2>
-&lt;p>In diesem Kapitel soll ein kurzer Überblick über die verschiedenen Arten von Datenbanken sowie deren Vor- und Nachteile gegeben werden.&lt;/p>
-&lt;p>Die am häufigsten verwendeten Datenbankarten sind relationale &lt;em>(SQL)&lt;/em> und NoSQL-Datenbanken.&lt;br>
-Relationale &lt;em>(SQL)&lt;/em> Datenbanken werden am häufigsten eingesetzt und sind auch am bekanntesten.&lt;/p>
-&lt;blockquote>
-&lt;p>In den Übungen sowie in den Prüfungen werden ausschliesslich relationale &lt;em>(SQL)&lt;/em> Datenbanken verwendet.&lt;/p>&lt;/blockquote>
-&lt;h3 id="relational-sql">Relational &lt;em>(SQL)&lt;/em>&lt;/h3>
-&lt;p>Relationale Datenbanken sind ähnlich wie Excel-Tabellen aufgebaut. Der Name stammt vom Konzept der Relationen (Tabellen), die es ermöglichen, Daten logisch und strukturiert zu speichern und abzurufen.&lt;/p>
-&lt;p>Sie verwenden Tabellen, die jeweils Zeilen und Spalten enthalten &lt;em>(auch Rows und Columns genannt)&lt;/em>.&lt;br>
-Pro Spalte &lt;em>(Column)&lt;/em>, auch &lt;strong>Attribut&lt;/strong> genannt, muss ein Datentyp festgelegt werden. Dieser Datentyp definiert, welche Art von Daten in dieser Spalte gespeichert werden kann.&lt;/p>
-&lt;p>Beispiel: Eine Spalte mit dem Namen „Alter“ hat einen numerischen Datentyp. Das bedeutet, dass ausschliesslich Zahlen in dieser Spalte eingegeben werden können.&lt;/p>
-&lt;p>Eine Zeile &lt;em>(Row)&lt;/em>, auch &lt;strong>Tupel&lt;/strong> genannt, enthält jeweils einen vollständigen Datensatz, wie beispielsweise alle Benutzerdaten.&lt;/p>
-&lt;p>&lt;img src="../images/Begriffe_relationaler_Datenbanken.png" alt="">&lt;/p>
-&lt;p>&lt;em>Quelle: &lt;a href="https://de.wikipedia.org/wiki/Datenbanktabelle">Wikipedia – Datenbanktabelle&lt;/a>&lt;/em>&lt;/p>
-&lt;h4 id="was-ist-sql">Was ist SQL?&lt;/h4>
-&lt;p>Wieso heisst es eigentlich &lt;strong>SQL&lt;/strong>-Datenbank? SQL steht für &lt;strong>Structured Query Language&lt;/strong> und ist eine standardisierte Sprache zur Verwaltung und Abfrage von Daten in relationalen Datenbanken.&lt;/p>
-&lt;p>Um sicherzustellen, dass SQL in verschiedenen Datenbanksystemen wie &lt;strong>MariaDB, PostgreSQL, MySQL oder SQL Server&lt;/strong> ähnlich funktioniert, gibt es den &lt;strong>ANSI SQL-Standard&lt;/strong>. ANSI (American National Standards Institute) hat SQL standardisiert, um eine einheitliche Syntax und grundlegende Funktionen für alle relationalen Datenbanken zu gewährleisten.&lt;/p>
-&lt;p>Allerdings implementieren viele Datenbanksysteme zusätzliche SQL-Erweiterungen, die nicht im ANSI-Standard enthalten sind. Deshalb kann sich die SQL-Syntax je nach System leicht unterscheiden. Im IT-Ninjas werden wir hauptsächlich mit &lt;strong>MariaDB&lt;/strong> arbeiten.&lt;/p>
-&lt;p>Mehr Informationen zur SQL-Syntax findest du im Kapitel &lt;a href="../02_sql-syntax/">SQL Syntax&lt;/a>.&lt;/p>
-&lt;h4 id="sql-datentypen">SQL Datentypen&lt;/h4>
-&lt;p>In diesem Teil werden kurz die wichtigsten Datentypen aufgelistet.
-Je nach Datenbank können die Namen der Datentypen abweichen, sollten jedoch von der Funktionalität gleich sein.
-In dieser Auflistung wurden die &lt;strong>MariaDB-Datentypen&lt;/strong> verwendet:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Typ-Name&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;th>Beispiel&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>INT&lt;/td>
-&lt;td>Ganze Zahlen ohne Nachkommastellen im Bereich von -2.147.483.648 bis 2.147.483.647.&lt;/td>
-&lt;td>123&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>DECIMAL(p,s)&lt;/td>
-&lt;td>Genaue Dezimalzahlen mit festgelegter Genauigkeit &lt;em>(p = Gesamtanzahl der Ziffern, s = Nachkommastellen)&lt;/em>, häufig in der Finanz- und Buchhaltungsbranche verwendet.&lt;/td>
-&lt;td>1234.567&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>CHAR(n)&lt;/td>
-&lt;td>Zeichenkette mit fester Länge von n Zeichen, aufgefüllt mit Leerzeichen, falls kürzer.&lt;/td>
-&lt;td>&amp;lsquo;ABC&amp;rsquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>VARCHAR(n)&lt;/td>
-&lt;td>Zeichenkette mit variabler Länge bis maximal n Zeichen.&lt;/td>
-&lt;td>&amp;lsquo;OpenAI&amp;rsquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>DATE&lt;/td>
-&lt;td>Datumsangaben im Bereich zwischen dem Jahr 1000 und 9999.&lt;/td>
-&lt;td>&amp;lsquo;2023-05-31&amp;rsquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>TIME&lt;/td>
-&lt;td>Zeitwerte im Bereich zwischen -838:59:59 und 838:59:59.&lt;/td>
-&lt;td>&amp;lsquo;14:30:00&amp;rsquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>DATETIME&lt;/td>
-&lt;td>Datum und Uhrzeit kombiniert, häufig für Zeitstempel in Anwendungen verwendet.&lt;/td>
-&lt;td>&amp;lsquo;2023-05-31 14:30:00&amp;rsquo;&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>BOOLEAN&lt;/td>
-&lt;td>Wahrheitswerte (TINYINT 1), wobei 0 für FALSE und 1 für TRUE steht.&lt;/td>
-&lt;td>TRUE (intern 1)&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Wenn du noch mehr über die einzelnen Datentypen erfahren möchtest, findest du unter diesem Link alle verfügbaren Datentypen in MariaDB:&lt;br>
-&lt;a href="https://mariadb.com/kb/en/data-types/">Liste aller Datentypen (MariaDB)&lt;/a>&lt;/p>
-&lt;h3 id="nosql">NoSQL&lt;/h3>
-&lt;p>Im Gegensatz zu relationalen Datenbanken speichern NoSQL-Datenbanken Daten in Formaten wie Dokumenten,
-Schlüssel-Wert-Paaren, Spalten oder Graphen. Dies ermöglicht es, unstrukturierte Daten effektiver zu speichern und
-abzurufen. Dadurch können natürlich auch keine &lt;strong>Structured&lt;/strong> Query Language Abfragen gemacht werden, deshalb NoSQL.&lt;/p>
-&lt;p>Wie erklärt gibt es viele verschiedene Ansätze bei NoSQL, deshalb gibt es auch keine gemeinsame Syntax wie es sie bei
-SQL gibt. Bei den verschiedenen Anbietern kann sich also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen
-Speicherarten ist keine NoSQL Datenbank wie die andere.&lt;/p>
-&lt;p>&lt;img src="../images/NoSQLDatabases.jpg" alt="">&lt;/p>
-&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/types-of-nosql-databases/">https://www.geeksforgeeks.org/types-of-nosql-databases/&lt;/a>&lt;/em>&lt;/p>
-&lt;h3 id="wann-verwende-ich-welche-datenbank">Wann verwende ich welche Datenbank?&lt;/h3>
-&lt;p>Eine relationale Datenbank eignet sich gut für Anwendungsfälle, bei denen eine komplexe Datenstruktur mit starken
-Beziehungen zwischen den Daten besteht, z. B. in Unternehmenssystemen oder Finanzanwendungen, da sie eine konsistente
-und sichere Datenhaltung gewährleistet.&lt;/p>
-&lt;p>NoSQL-Datenbanken sind nützlich, wenn Flexibilität und Skalierbarkeit Priorität haben und wenn die Datenstruktur häufig
-geändert werden muss oder es viele unstrukturierte oder semistrukturierte Daten gibt, wie beispielsweise in Big
-Data-Anwendungen, sozialen Netzwerken oder Echtzeit-Analysen.&lt;/p></description></item><item><title>Exams: Exam Java Grundlagen - Zahlen-Array</title><link>/exams/java/java-grundlagen/exam1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-grundlagen/exam1/</guid><description>
+Ein Produkt sollte einen &lt;code>name&lt;/code> und &lt;code>price&lt;/code> haben.&lt;/p></description></item><item><title>Exams: Exam Java Grundlagen - Zahlen-Array</title><link>/exams/java/java-grundlagen/exam1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/java/java-grundlagen/exam1/</guid><description>
 &lt;h2 id="gegeben">Gegeben&lt;/h2>
 &lt;p>Gegeben ist das folgende Array mit Zahlen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1516,36 +1402,7 @@ dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen
 &lt;p>Schreibe zusätzlich eine Funktion, um neue Schüler zu erfassen. Der zu erfassende Schüler darf jedoch noch nicht existieren ansonsten soll eine Exception geworfen werden. Auch die Noten sollen validiert werden so, dass nur Dezimalzahlen als Noten akzeptiert werden und die Dezimalzahl muss zwischen 1.0 und 6.0 liegen.&lt;/p>
 &lt;p>Noch zu ergänzen sind je eine Funktion, welche beide auch ein Array von Schülern erwarten. Die eine Funktion soll den Schüler mit der besten und die andere Funktion mit dem schlechtesten Durchschnitt herausfinden. Die Funktionen sollen den Namen des Schülers und dessen Durchschnitt zurückgegeben. Versuche diese beiden Funktionen mit so wenig Redundanzen wie möglich zu schreiben (evtl. kann man eine Funktion draus machen).&lt;/p>
 &lt;p>Die letzte Funktion sollte ein Array von Schülern entgegennehmen und sie anhand des Durchschnitts ordnen. Der schlechteste Durchschnitt kommt zuerst. Die Funktion soll ein Promise mit nur den Namen aller Schüler zurückgeben, nachdem diese sortiert wurden.&lt;/p>
-&lt;p>Schreibe ein HTML-File, in welchem man neue Schüler hinzufügen kann und wo die Ergebnisse aus den Funktionen angezeigt werden.&lt;/p></description></item><item><title>Labs: Setup</title><link>/labs/database/00_setup/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/database/00_setup/</guid><description>
-&lt;p>Um alle Übungen machen zu können wird eine lokale Datenbank benötigt. Dazu verwenden wir MariaDB. Falls du MariaDB noch
-nicht installiert hast, sind hier die Downloadlinks. Das DB-Tool dbeaver ist optional. Beim Download von MariaDB wird
-gleichzeitig HeidiSQL installiert, jedoch ist dieses Tool teilweise nicht so praktisch. Eine Alternative zu dbeaver ist
-die Intellij-Datenbankview, die bereits in Intellij ohne installation vorhanden ist.&lt;/p>
-&lt;p>MariaDB:&lt;/p>
-&lt;ul>
-&lt;li>Download: &lt;a href="https://mariadb.org/download/">https://mariadb.org/download/&lt;/a>&lt;/li>
-&lt;li>DB-Tool: &lt;a href="https://dbeaver.io/download/">https://dbeaver.io/download/&lt;/a>&lt;/li>
-&lt;li>Intellij-Datenbankview: &lt;a href="https://www.jetbrains.com/help/idea/relational-databases.html#first-steps">https://www.jetbrains.com/help/idea/relational-databases.html#first-steps&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>Bei beiden Tools kann der normale Installationsprozess durchlaufen werden. Merke dir das Passwort, dass du bei MariaDB
-gesetzt hast. Du wirst es im nächsten Schritt brauchen. Nach der Installation kannst du DBeaver öffnen und MariaDB
-wie folgt verbinden:&lt;/p>
-&lt;ol>
-&lt;li>Klicke oben links auf das Verbinden-Icon (Stecker, im Bild rot markiert):
-&lt;img src="../images/Neue_Verbindung.PNG" alt="">&lt;/li>
-&lt;li>Wähle MariaDB aus und klicke auf &amp;ldquo;Weiter&amp;rdquo;:
-&lt;img src="../images/DB_Auswahl.PNG" alt="">&lt;/li>
-&lt;li>Gib dein Passwort ein und klicke auf &amp;ldquo;Fertigstellen&amp;rdquo;:
-&lt;img src="../images/Connection.PNG" alt="">&lt;/li>
-&lt;li>Wenn alles funktioniert hat, solltest du die DB in der Liste sehen können:
-&lt;img src="../images/Ende.PNG" alt="">&lt;/li>
-&lt;li>Um ein SQL-Script auszuführen, musst du einen SQL-Editor öffnen. Mache dazu Rechtsklick auf localhost und wähle
-&lt;code>SQL-Editor -&amp;gt; SQL-Skript&lt;/code> aus:&lt;br>
-&lt;img src="../images/SQL-Editor.PNG" alt="">&lt;/li>
-&lt;li>Vom SQL-Editor aus kannst du alle gelernten SQL-Statements anwenden. Zuerst solltest du jedoch eine Datenbank mit
-&lt;code>CREATE DATABASE name&lt;/code> erstellen. Dort kannst du wie in den Docs gelernt Tabellen usw. erstellen.&lt;/li>
-&lt;/ol>
-&lt;p>Wenn diese Schritte funktioniert haben, bist du für die Labs bereit.&lt;/p></description></item><item><title>Docs: Was ist Git</title><link>/docs/git/basics/was-ist-git/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/basics/was-ist-git/</guid><description>
+&lt;p>Schreibe ein HTML-File, in welchem man neue Schüler hinzufügen kann und wo die Ergebnisse aus den Funktionen angezeigt werden.&lt;/p></description></item><item><title>Docs: Was ist Git</title><link>/docs/git/basics/was-ist-git/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/basics/was-ist-git/</guid><description>
 &lt;blockquote>
 &lt;p>Git [ɡɪt] ist eine freie Software zur verteilten Versionsverwaltung von Dateien, die durch Linus Torvalds initiiert wurde.&lt;/p>&lt;/blockquote>
 &lt;h2 id="inhalt">Inhalt&lt;/h2>
@@ -3876,1477 +3733,7 @@ Dies erledigst du mit folgenden Schritten:&lt;/p>
 &lt;li>Klicke die Schaltfläche &amp;ldquo;Add user or group&amp;rdquo; und berechtige alle Praxisbildner als Administratoren auf deinem Repository. Anschliessend klicke die &amp;ldquo;Add&amp;rdquo; Schaltfläche:
 &lt;img src="../bitbucket/praxisbildner_admin_permission.png" alt="Praxisbildner Permissions">&lt;/li>
 &lt;/ol>
-&lt;p>Nun sind alle Praxisbildner auf deinem Repository berechtigt.&lt;/p></description></item><item><title>Docs: SQL Syntax</title><link>/docs/database/02_sql-syntax/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/02_sql-syntax/</guid><description>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Du weisst wofür SQL verwendet wird&lt;/li>
-&lt;li>Du kennst die verschiedenen Statements in SQL&lt;/li>
-&lt;li>Du kannst einfache SQL Queries/Statements schreiben&lt;/li>
-&lt;/ul>
-&lt;h2 id="was-ist-sql">Was ist SQL?&lt;/h2>
-&lt;p>SQL oder „Structured Query Language“ ist eine Programmiersprache für die Bearbeitung von Daten und relationalen
-Datenbanksystemen. Diese Sprache wird hauptsächlich für die Kommunikation mit Datenbanken verwendet, um die darin
-enthaltenen Daten zu verwalten.&lt;/p>
-&lt;h2 id="statements">Statements&lt;/h2>
-&lt;h3 id="was-ist-ein-sql-statement">Was ist ein SQL Statement?&lt;/h3>
-&lt;p>Ganz einfach gesagt ist ein Statement ein Befehl, der an die Datenbank geschickt und dort ausgeführt wird. Es gibt
-viele verschiedene Statements, die teilweise kombiniert werden können, um den gewünschten Effekt auf der Datenbank zu
-erzielen. Grundsätzlich werden Teile der Syntax (Select, Insert, usw.) gross geschrieben, um eine Unterscheidung
-zwischen der Syntax und anderen Elementen wie tabellennamen usw. zu erhalten. Jedoch ist diese Regel nicht erzwungen.&lt;/p>
-&lt;h3 id="select">SELECT&lt;/h3>
-&lt;p>Das Select Statement wird verwendet, um Daten aus bestimmten Tabellen auszuwählen. Ein SELECT ist grundsätzlich wie
-folgt aufgebaut:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Beispiel mit der Tabelle &amp;#34;benutzer&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> benutzer;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;SELECT&amp;rdquo; gefolgt von den gewünschten Attribute. In diesem Statement wird ein Stern verwendet,
-dieser steht für alle Attribute. Dementsprechend werden alle Attribute, die in der Tabelle vorhanden sind, zurückgegeben.
-Auf die Attribute folgt das FROM, auf dieses folgt jeweils eine Tabelle, von welcher die Werte gewünscht sind.
-Im Beispiel ist es die Tabelle &amp;ldquo;benutzer&amp;rdquo;. Das Resultat dieses Statements würde schlussendlich so aussehen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Wenn wir nur eine Spalte auswählen möchten, können wir das Statement wie folgt anpassen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">column_name&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">--Beispiel mit der Tabelle &amp;#34;benutzer&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">SELECT&lt;/span> vorname &lt;span style="color:#66d9ef">FROM&lt;/span> benutzer;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das Resultat würde dementsprechend so aussehen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="insert">INSERT&lt;/h3>
-&lt;p>Das Insert Statement wird verwendet, um Daten in eine bestimmte Tabelle einzufügen. Ein INSERT ist grundsätzlich wie
-folgt aufgebaut:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> (column1, column2, column3, ...) &lt;span style="color:#66d9ef">VALUES&lt;/span> (value1, value2, value3, ...);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;INSERT INTO&amp;rdquo; gefolgt von der betroffenen Tabelle. Schlussendlich wird mit VALUES angegeben, dass
-ein oder mehrere Tupel eingefügt werden. In den Klammern können respektiv die Spaltennamen (optional) und die Inhalte angegeben werden.&lt;/p>
-&lt;p>Ein konkretes Beispiel würde mit dieser Tabelle beginnen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Dann wird dieses INSERT Statement ausgeführt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> benutzer &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Mustermann&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">16&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Maurer/in&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Nach dem Statement ist der neue Benutzer Max in der Tabelle zu finden:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;em>Max&lt;/em>&lt;/td>
-&lt;td>&lt;em>Mustermann&lt;/em>&lt;/td>
-&lt;td>&lt;em>16&lt;/em>&lt;/td>
-&lt;td>&lt;em>Maurer/in&lt;/em>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Alternativ zum vorherigen Statement können auch nur bestimmte Daten eingefügt werden. In unserem Beispiel könnte ein
-Benutzer auch Arbeitslos sein, dementsprechend hätte er keinen Beruf. Wenn wir also so einen Benutzer hinzufügen möchten
-würden wir das wie folgt machen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> benutzer(vorname, nachname, &lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Piccolo&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">37&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>In den Klammern nach der Tabelle können wir also die Attribute auswählen, die wir hinzufügen möchten. In der Tabelle
-würde es so aussehen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>16&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;em>Peter&lt;/em>&lt;/td>
-&lt;td>&lt;em>Piccolo&lt;/em>&lt;/td>
-&lt;td>&lt;em>37&lt;/em>&lt;/td>
-&lt;td>&lt;strong>&lt;code>null&lt;/code>&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Der Beruf wurde automatisch auf &lt;code>null&lt;/code> gesetzt und ist dementsprechend leer.&lt;/p>
-&lt;h3 id="create">CREATE&lt;/h3>
-&lt;p>Das Create Statement wird verwendet, um Tabellen, Datenbanken, usw. zu erstellen. Ein CREATE Statement ist grundsätzlich
-wie folgt aufgebaut:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Datenbank erstellen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">DATABASE&lt;/span> databasename;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">--Tabelle erstellen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> (
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> column1 datatype,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> column2 datatype,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> column3 datatype,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ....
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Beispiel: die Tabelle &amp;#34;benutzer&amp;#34; erstellen
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> benutzer (vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>),
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>),
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">alter&lt;/span> number,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> beruf varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;CREATE&amp;rdquo; gefolgt dem zu erstellenden Objekt, in diesem Fall eine Tabelle. Schlussendlich wird
-noch ein Name festgelegt (die neue Tabelle heisst &amp;ldquo;benutzer&amp;rdquo;), gefolgt von den gewünschten Attributen der Tabelle und dem entsprechenden Datentyp.&lt;/p>
-&lt;p>Das Resultat dieses Statements würde schliesslich so aussehen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="where">WHERE&lt;/h3>
-&lt;p>Die WHERE-Klausel ist im Vergleich zu den anderen kein Statement, sondern eine Ergänzung dazu. Mit WHERE kann
-spezifiziert werden, welche Daten für das Statement verwendet werden sollen. Mehrere Bedingungen können mit den Keywords
-&lt;code>AND&lt;/code> und &lt;code>OR&lt;/code> aneinandergereiht werden. Hier ein Beispiel dazu:&lt;/p>
-&lt;p>Ausgangstabelle:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>16&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Dieses Statement schränkt das Alter zwischen 15 und 30 Jahren ein.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> benutzer &lt;span style="color:#66d9ef">WHERE&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">15&lt;/span> &lt;span style="color:#66d9ef">AND&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">30&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das Statement gibt schliesslich alle Werte zurück, die die Bedingung erfüllen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>16&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Zusätzlich gibt es bei Texten die Möglichkeit eine Teilüberprüfung mit &lt;code>Like&lt;/code> zu machen. Damit können beispielsweise
-Alle Adressen gesucht werden, die mit &amp;ldquo;Strasse&amp;rdquo; enden. Dazu muss beim &lt;code>Like&lt;/code> angegeben werden, wo sich der Rest des
-Textes befinden. Das funktioniert mit dem % Zeichen. Wenn der restliche Text vor dem Suchtext ist, wird das % vor diesem
-platziert. Dasselbe funktioniert natürlich auch umgekehrt. Weiter kann auch auf beiden Seiten ein % verwendet werden, so
-ist es egal wo sich der Suchtext befinden. Hier ein Beispiel-Query dazu:&lt;/p>
-&lt;p>Ausgangstabelle:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>16&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">WHERE&lt;/span> nachname &lt;span style="color:#66d9ef">like&lt;/span> &lt;span style="color:#e6db74">&amp;#39;%mann&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>16&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="update">UPDATE&lt;/h3>
-&lt;p>Das Update Statement wird verwendet, um Inhalte (Tabelle, Datenbank, Constraints, etc.) zu ändern. Ein UPDATE
-Statement ist grundsätzlich wie folgt aufgebaut:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">UPDATE&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SET&lt;/span> column1 &lt;span style="color:#f92672">=&lt;/span> value1, column2 &lt;span style="color:#f92672">=&lt;/span> value2, ...
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">WHERE&lt;/span> condition;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;UPDATE&amp;rdquo; gefolgt von dem zu aktualisierenden Objekt, in diesem Fall eine Tabelle.
-Anschliessend wird ein SET durchgeführt, wo die gewünschte Änderung gemacht wird. Dabei können auch mehrere Attribute
-gleichzeitig geändert werden. Dazu kann hinter dem Wert ein Komma hinzugefügt werden und eine weitere Änderung angegeben
-werden. Nach dem SET kann optional ein WHERE hinzugefügt werden, wenn die aktualisierung nicht für alle Werte
-durchgeführt werden soll. Hier ein konkretes Beispiel dazu:&lt;/p>
-&lt;p>Ausgangstabelle:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>16&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Dieses Statement setzt das Alter aller Benutzer mit dem Vornamen &amp;ldquo;Max&amp;rdquo; auf 18 und ändert den Beruf zu &amp;ldquo;Lehrer/in&amp;rdquo;&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">UPDATE&lt;/span> benutzer
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SET&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">18&lt;/span>, beruf &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Lehrer/in&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">WHERE&lt;/span> vorname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Lehrer/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="delete">DELETE&lt;/h3>
-&lt;p>Wie es der Name schon sagt, wird das Delete Statement zum Löschen von Daten verwendet. Ein DELETE Statement ist
-grundsätzlich wie folgt aufgebaut:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">DELETE&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> &lt;span style="color:#66d9ef">WHERE&lt;/span> condition;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;DELETE&amp;rdquo; gefolgt von FROM und der betroffenen Tabelle. Ein Delete sollte immer mit einem
-Where verwendet werden, da sonst alle Daten aus der Tabelle gelöscht werden. Hier ein konkretes Beispiel dazu:&lt;/p>
-&lt;p>Ausgangstabelle:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Dieses Statement löscht alle Benutzer mit dem Vornamen &amp;ldquo;Max&amp;rdquo;.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">DELETE&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> benutzer &lt;span style="color:#66d9ef">WHERE&lt;/span> vorname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="join">Join&lt;/h2>
-&lt;p>Ähnlich wie Where ist Join kein eigenes Statement, sondern eine Erweiterung. Mit dem Join Keyword werden in einem
-Select mehrere Tabellen miteinander verbunden. Das wird benötigt wenn die gewünschten Daten sich nicht in einer sondern in mehreren Tabellen befinden. Zum Beispiel, wenn die Personalien und die Adresse
-einer Person in verschiedenen Tabellen gespeichert wird. Ein Join funktioniert eigentlich immer gleich, es gibt jeweils
-eine Tabelle A die mit der Tabelle B verbunden wird. Dazu wird jeweils eine Id oder zumindest ein Attribut verwendet,
-welches in beiden Tabellen vertreten ist. So wird dann die Verbindung hergestellt.&lt;/p>
-&lt;p>Bei Joins gibt es viele verschiedene und teilweise sehr
-komplexe Varianten, welche auch dementsprechend selten benutzt werden. Wir schauen uns hier die vier wichtigsten an.&lt;/p>
-&lt;h3 id="inner-join-join">Inner Join (&lt;em>join&lt;/em>)&lt;/h3>
-&lt;p>Der Inner Join ist der wichtigste und am meisten benötigte Join. Der Inner Join verbindet die Tabellen und gibt nur
-die Schnittmenge zurück. Also alle Werte aus der Tabelle A, die auch ein Gegenstück in der Tabelle B haben. Grafisch
-dargestellt würde dieser Join so aus sehen:&lt;/p>
-&lt;p>&lt;img src="../images/inner-join.png" alt="Inner Join">&lt;/p>
-&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
-&lt;p>Das dazugehörige Statement würde so aussehen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">INNER&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="right-und-left-join">Right und Left Join&lt;/h3>
-&lt;p>Im Vergleich zum Inner Join wird beim Right und Left Join nicht nur die Schnittmenge, sondern auch noch eine äussere
-Menge zurückgegeben. Grafisch würde das so aussehen:&lt;/p>
-&lt;h4 id="right-join">Right Join&lt;/h4>
-&lt;p>&lt;img src="../images/right-join.png" alt="Right Join">&lt;/p>
-&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
-&lt;h4 id="left-join">Left Join&lt;/h4>
-&lt;p>&lt;img src="../images/left-join.png" alt="Left Join">&lt;/p>
-&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
-&lt;p>Die äussere Menge ist jeweils eine der beiden angegebenen Tabellen. Welche Tabelle das verwendet wird, ist dabei
-abhängig vom Statement und welches Keyword verwendet wird. Schauen wir uns das in einem Beispiel an.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">RIGHT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>In diesem Query wird das Keyword &lt;code>RIGHT&lt;/code> verwendet. Das bedeutet, dass die &lt;strong>rechte&lt;/strong> Tabelle verwendet wird. Was
-definiert jetzt aber welches die rechte Tabelle ist? In diesem Fall ist tabelle_b die rechte Tabelle, da sie rechts
-vom &lt;code>JOIN&lt;/code> steht. Dieser Logik entsprechend ist im unteren Beispiel tabelle_a die linke Tabelle, die also komplett
-zurückgegeben wird.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">LEFT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Was jedoch bei einem Right und Left Join zu beachten ist, dass &lt;code>null&lt;/code> Werte entstehen können. Bei allen Werten, die kein
-Gegenstück haben, werden die Attribute dieser Tabelle &lt;code>null&lt;/code> sein. So würde das Resultat eines Left Joins aussehen:&lt;/p>
-&lt;p>Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Rolf&lt;/td>
-&lt;td>Ringer&lt;/td>
-&lt;td>30&lt;/td>
-&lt;td>1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Loris&lt;/td>
-&lt;td>Liechti&lt;/td>
-&lt;td>21&lt;/td>
-&lt;td>40&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Beruf:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>beruf_id&lt;/th>
-&lt;th>berufsbezeichnung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Lehrer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Informatiker/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">LEFT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> beruf &lt;span style="color:#66d9ef">ON&lt;/span> person.beruf_id &lt;span style="color:#f92672">=&lt;/span> beruf.beruf_id;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;th>berufsbezeichnung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Rolf&lt;/td>
-&lt;td>Ringer&lt;/td>
-&lt;td>30&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>Lehrer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Loris&lt;/td>
-&lt;td>Liechti&lt;/td>
-&lt;td>21&lt;/td>
-&lt;td>40&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;blockquote>
-&lt;p>beruf_id ist doppelt, da es in beiden Tabellen ein Attribut mit diesem Namen gibt. Könnte mit der Auswahl im Select
-auch ausgeblendet werden.&lt;/p>&lt;/blockquote>
-&lt;p>Umgekehrt würde das ganze so aussehen:&lt;/p>
-&lt;p>Statement:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">RIGHT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> beruf &lt;span style="color:#66d9ef">ON&lt;/span> person.beruf_id &lt;span style="color:#f92672">=&lt;/span> beruf.beruf_id;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;th>berufsbezeichnung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Rolf&lt;/td>
-&lt;td>Ringer&lt;/td>
-&lt;td>30&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>Lehrer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>2&lt;/td>
-&lt;td>Informatiker/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;blockquote>
-&lt;p>beruf_id ist doppelt, da es in beiden Tabellen ein Attribut mit diesem Namen gibt. Könnte mit der Auswahl im Select
-auch ausgeblendet werden.&lt;/p>&lt;/blockquote>
-&lt;h3 id="full-join">Full Join&lt;/h3>
-&lt;p>Der Full Join ist sehr eng mit dem Left und Right Join verwandt. Jetzt werden jedoch alle Werte zurückgegeben. Wenn kein
-Gegenstück zu einem Wert vorhanden ist, werden diese gleich wie beim Left und Right Join mit &lt;code>null&lt;/code> angegeben. Grafisch
-sieht das ganze so aus:&lt;/p>
-&lt;p>&lt;img src="../images/full-join.png" alt="Full Join">&lt;/p>
-&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
-&lt;p>Das Statement würde schlussendlich so aussehen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">FULL&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Mit dem vorherigen Beispiel würde das Resultat so aussehen:&lt;/p>
-&lt;p>Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Rolf&lt;/td>
-&lt;td>Ringer&lt;/td>
-&lt;td>30&lt;/td>
-&lt;td>1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Loris&lt;/td>
-&lt;td>Liechti&lt;/td>
-&lt;td>21&lt;/td>
-&lt;td>40&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Beruf:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>beruf_id&lt;/th>
-&lt;th>berufsbezeichnung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Lehrer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Informatiker/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;th>beruf_id&lt;/th>
-&lt;th>berufsbezeichnung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Rolf&lt;/td>
-&lt;td>Ringer&lt;/td>
-&lt;td>30&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>Lehrer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>2&lt;/td>
-&lt;td>Informatiker/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Loris&lt;/td>
-&lt;td>Liechti&lt;/td>
-&lt;td>21&lt;/td>
-&lt;td>40&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;blockquote>
-&lt;p>beruf_id ist doppelt, da es in beiden Tabellen ein Attribut mit diesem Namen gibt. Könnte mit der Auswahl im Select
-auch ausgeblendet werden.&lt;/p>&lt;/blockquote>
-&lt;h2 id="aggregationen--weiteres">Aggregationen &amp;amp; weiteres&lt;/h2>
-&lt;p>In diesem Abschnitt gehen wird auf Aggregationen und weitere wichtige Syntax-Elemente ein. Aggregationen in SQL sind
-Funktionen, die verwendet werden, um zusammengefasste Informationen aus großen Datenmengen zu erhalten.
-Dadurch wird es einfacher, die Daten zu analysieren und Muster oder Trends zu erkennen.&lt;/p>
-&lt;h3 id="count">Count&lt;/h3>
-&lt;p>Die Aggregation Count zählt wie viele Resultate das beim Query zurückgegeben werden. Count funktioniert bei allen
-Datentypen gleich und muss nicht angepasst werden. Hier ein Beispiel zu Count:&lt;/p>
-&lt;p>Ausgangstabelle Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>Leonidas&lt;/td>
-&lt;td>35&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">COUNT&lt;/span>(&lt;span style="color:#f92672">*&lt;/span>), &lt;span style="color:#66d9ef">COUNT&lt;/span>(beruf) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>count(*)&lt;/th>
-&lt;th>count(beruf)&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>5&lt;/td>
-&lt;td>4&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Aus dem Resultat lässt sich schliessen, dass NULL-Werte im Count nicht beachtet werden.&lt;/p>
-&lt;h3 id="maxmin">Max/Min&lt;/h3>
-&lt;p>Die Aggregationen Max und Min sind logischerweise zum Finden des grössten und kleinsten Wertes. Beide funktionieren
-bei allen Datentypen, jedoch haben sie beispielsweise bei einem String einen anderen Weg das Maximum und Minimum zu
-finden. Dort wird anhand einer Collation (Sortierungsregel) das Maximum und Minimum bestimmt. Bei normalen Zahlen sieht
-es so aus:&lt;/p>
-&lt;p>Ausgangstabelle Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>Leonidas&lt;/td>
-&lt;td>35&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">MAX&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>), &lt;span style="color:#66d9ef">MIN&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>max(alter)&lt;/th>
-&lt;th>min(alter)&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>52&lt;/td>
-&lt;td>13&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="sum">Sum&lt;/h3>
-&lt;p>Sum summiert die Werte einer Spalte. Im Gegensatz zu den vorherigen Aggregationen funktioniert Sum nur mit Zahlenwerten.
-Bei Strings oder ähnlichem wird ein Fehler zurückgegeben. Hier ein Beispiel zur Verwendung von Sum:&lt;/p>
-&lt;p>Ausgangstabelle Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>Leonidas&lt;/td>
-&lt;td>35&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">SUM&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>sum(alter)&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>144&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="avg">Avg&lt;/h3>
-&lt;p>Um den Durchschnitt von Zahlen zu finden wird die Funktion AVG verwendet. Gleich wie Sum funktioniert Avg nur mit Zahlen.
-Hier ein Beispiel zu avg:&lt;/p>
-&lt;p>Ausgangstabelle Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>Leonidas&lt;/td>
-&lt;td>35&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">AVG&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>avg(alter)&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>28.8&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="order-by">Order By&lt;/h3>
-&lt;p>Das Keyword Order By ist zum Sortieren des Resultats sehr nützlich. Zusammen mit ASC (=Ascending, Aufsteigend) und DESC
-(=Descending, Absteigend) kann das Resultat auf verschiedenste Weisen nach einem oder mehreren Attributen sortiert
-werden. Standardmässig verwendet Order By ASC, daher kann das ASC im Query auch weggelassen werden. Beispiel zu Order By:&lt;/p>
-&lt;p>Ausgangstabelle Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Schüler/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Maurer/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>Leonidas&lt;/td>
-&lt;td>35&lt;/td>
-&lt;td>&lt;code>null&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement ASC:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> vorname, &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">ORDER&lt;/span> &lt;span style="color:#66d9ef">BY&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">ASC&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>13&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>18&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>26&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>35&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>52&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement DESC:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> vorname, &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">ORDER&lt;/span> &lt;span style="color:#66d9ef">BY&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">DESC&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>52&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>35&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>26&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>18&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>13&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="group-by">Group By&lt;/h3>
-&lt;p>Mit Group By können Tupel mit gleichen Werten bei einem Attribut zusammen geführt werden, um beispielsweise in einem
-Count gezählt zu werden. Wie bei Order By kann ein Resultat mehrfach gruppiert werden. Hier ein einfaches Beispiel zu
-Order By:&lt;/p>
-&lt;p>Ausgangstabelle Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Anja&lt;/td>
-&lt;td>Ackermann&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Fritz&lt;/td>
-&lt;td>Fischer&lt;/td>
-&lt;td>26&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Hans&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;td>52&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Max&lt;/td>
-&lt;td>Mustermann&lt;/td>
-&lt;td>18&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Leo&lt;/td>
-&lt;td>Leonidas&lt;/td>
-&lt;td>35&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Statement:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">COUNT&lt;/span>(&lt;span style="color:#f92672">*&lt;/span>), beruf &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">GROUP&lt;/span> &lt;span style="color:#66d9ef">BY&lt;/span> beruf;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Resultat:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>count(*)&lt;/th>
-&lt;th>beruf&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Hochbauzeichner/in&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Pilot/in&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table></description></item><item><title>Labs: SQL Syntax</title><link>/labs/database/01_sql_syntax/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/database/01_sql_syntax/</guid><description>
-&lt;h2 id="übung-1">Übung 1&lt;/h2>
-&lt;p>In der ersten Übung sollst du anhand eines Textes ein ERD erstellen.
-Du sollst für einen Kunden ein ERD für einen Online-Shop erstellen. Der Kunde gibt dir folgende Informationen:&lt;/p>
-&lt;p>Der Online-Shop verfügt über Produkte, Kunden und Bestellungen. Ein Kunde kann mehrere Produkte bestellen,
-und eine Bestellung kann mehrere Produkte enthalten. Die Produkte haben Eigenschaften wie Name, Beschreibung und Preis.&lt;/p>
-&lt;p>Hier sind einige grundlegende Informationen, die dir helfen sollen, ein ERD für den Online-Shop zu erstellen:&lt;/p>
-&lt;ol>
-&lt;li>Produkte:
-&lt;ul>
-&lt;li>Jedes Produkt hat eine eindeutige Produkt-ID, einen Namen, eine Beschreibung und einen Preis.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Kunden:
-&lt;ul>
-&lt;li>Jeder Kunde hat eine eindeutige Kunden-ID, einen Vornamen, einen Nachnamen, eine Adresse und eine E-Mail-Adresse.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Bestellungen:
-&lt;ul>
-&lt;li>Jede Bestellung hat eine eindeutige Bestell-ID, ein Bestelldatum und ist einem bestimmten Kunden zugeordnet.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Bestellpositionen:
-&lt;ul>
-&lt;li>Eine Bestellung kann mehrere Positionen enthalten, und jede Position ist einem bestimmten Produkt zugeordnet.
-Eine Position enthält Informationen wie die Produktmenge.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;p>Erstelle das ERD mithilfe von Draw.io so, dass die 3NF erreicht wird. Schaue anschliessend das fertige ERD mit einem
-Praxisbildner an, um Feedback dazu zu erhalten.&lt;/p>
-&lt;h2 id="übung-2">Übung 2&lt;/h2>
-&lt;p>Erstelle anhand dieses ERDs eine Datenbank. Verwende hierbei die deiner Meinung nach richtigen Datentypen. Die Datenbank
-soll die 3NF erreichen. &lt;strong>Achtung!&lt;/strong> das ERD ist nicht in der 3NF. Schau deine fertige Datenbank mit einem Praxisbildner an.&lt;/p>
-&lt;p>&lt;img src="../images/Zoo-ERD.png" alt="ERD Zoo">&lt;/p>
-&lt;h2 id="übung-3">Übung 3&lt;/h2>
-&lt;p>In dieser Übung geht es darum, mit deinen SQL-Kenntnissen einen Mord zu lösen. Ziel ist es, dass du alle Rätsel löst und
-das letzte Query mit einem Praxisbildner anschaust. Beim Lösen empfiehlt es sich Zwischenschritte aufzuschreiben, um die
-Übersicht zu behalten. Falls du diese Zwischenschritte auch mit einem Praxisbildner anschauen möchtest, ist dies auch möglich.
-&lt;a href="https://mystery.knightlab.com/">SQL Murder Mystery&lt;/a>&lt;/p></description></item><item><title>Docs: Voraussetzungen</title><link>/docs/git/vertiefung/preliminaries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/vertiefung/preliminaries/</guid><description>
+&lt;p>Nun sind alle Praxisbildner auf deinem Repository berechtigt.&lt;/p></description></item><item><title>Docs: Voraussetzungen</title><link>/docs/git/vertiefung/preliminaries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/vertiefung/preliminaries/</guid><description>
 &lt;p>Das Modul soll den Einsatz von Git/Bitbucket unter realen Bedingungen vermitteln. Dazu ist es erforderlich,
 dass ihr als Team agiert. Mehrere IT-Ninjas, die das Modul #S1 - Git erfolgreich abgeschlossen haben, bilden ein
 Team, welches gemeinsam an zwei unterschiedlichen Projekten arbeitet. Hierbei geht es weniger um die
@@ -6486,292 +4873,7 @@ Indem wir innerhalb des &lt;code>&amp;lt;script&amp;gt;&lt;/code>-Tags unseren C
 &lt;p>Die Tags inklusive deren Inhalt nennen wir &amp;ldquo;Element&amp;rdquo;. Das Element ist wie folgt aufgebaut:&lt;/p>
 &lt;p>&lt;img src="../html-tag.svg" alt="htmlElement" title="(Bild, das den Aufbau eines HTML-Elements zeigt.)">&lt;/p>
 &lt;p>Jedes Element beginnt mit einem &amp;ldquo;Opening Tag&amp;rdquo;. Zwischen diesem und dem Closing Tag befindet sich der Content, der auf Grundlage des Tags formatiert wird. Der Content wird oft &amp;ldquo;InnerText&amp;rdquo; oder &amp;ldquo;InnerHtml&amp;rdquo; genannt. Das Closing Tag hat immer vor dem Tag-Namen ein &amp;ldquo;/&amp;rdquo;, das symbolisiert, dass es sich um ein Closing Tag handelt.&lt;/p>
-&lt;p>Im Opening Tag können Attribute vorkommen, die den Tag &amp;ldquo;konfigurieren&amp;rdquo;. Eine solche Konfiguration beinhaltet in den meisten Fällen einen Attribut-Key und -Value, welche mit einem Gleichzeichen verbunden werden. Der Attribut-Value (Wert) beginnt und endet &lt;strong>in jedem Fall&lt;/strong> mit einem Anführungs- beziehungsweise Schlusszeichen, auch wenn der Wert eine Zahl oder true/false ist.&lt;/p></description></item><item><title>Docs: Constraints</title><link>/docs/database/03_constraints/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/database/03_constraints/</guid><description>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Du weisst wofür Constraints verwendet werden&lt;/li>
-&lt;li>Du kennst die wichtigsten Constraints&lt;/li>
-&lt;li>Du kannst ein Constraint erstellen&lt;/li>
-&lt;/ul>
-&lt;h2 id="was-ist-ein-constraint">Was ist ein Constraint?&lt;/h2>
-&lt;p>Ein Constraint in SQL ist dazu da den Inhalt eines Attributs weiter zu beschränken. Theoretisch ist die Angabe des
-Datentyps bereits eine Art Constraint, da bestimmt wird was für ein Wertebereich eingefügt werden darf. Ein Constraint
-kann entweder beim Erstellen der Tabelle oder mit einem &lt;code>ALTER&lt;/code>-Statement hinzugefügt werden. Constraints können sich
-auf eine Tabelle oder eine einzelne Spalte beziehen. Ebenso können mehrere Constraints, sowohl bei Tabellen als auch
-bei Spalten, gleichzeitig angewendet werden.&lt;/p>
-&lt;h2 id="not-null">Not Null&lt;/h2>
-&lt;p>Das &lt;code>Not Null&lt;/code> Constraint legt fest, dass ein Attribut nicht Null, spricht &lt;strong>nicht leer&lt;/strong> sein darf. Das kann
-beispielsweise bei einer Id, die zum Verbinden von Tabellen verwendet wird, eingesetzt werden, damit es immer einen Wert
-gibt. Hier ein Beispiel wie ein &lt;code>Not Null&lt;/code> Constraint erstellt wird:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(personen_id number &lt;span style="color:#66d9ef">NOT&lt;/span> &lt;span style="color:#66d9ef">NULL&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da die Id nicht null sein darf.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da keine Id hinzugefügt wird.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person(vorname, nachname) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Fischer&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da die Id angegeben wird und die anderen Attribute null sein dürfen.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="unique">Unique&lt;/h2>
-&lt;p>Das &lt;code>Unique&lt;/code> Constraint bedingt, dass jeder eingefügte Wert einzigartig, also noch nicht in der Spalte oder in der Tabelle, vorhanden. So können
-beispielsweise duplikationen von Ids verhindert werden. Hier ein Beispiel zum &lt;code>Unique&lt;/code> Constraint:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(personen_id number &lt;span style="color:#66d9ef">UNIQUE&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Beispieldaten Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>personen_id&lt;/th>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Hans&lt;/td>
-&lt;td>Peterson&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Peter&lt;/td>
-&lt;td>Fritschi&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Fritz&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da bereits eine Person mit der personen_id 2 besteht.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Ueli&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Mueli&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da keine Person mit der personen_id 4 besteht.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karl&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karlsen&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="primary-key">Primary Key&lt;/h2>
-&lt;p>Das &lt;code>Primary Key&lt;/code> Constraint kombiniert prinzipiell die Constraints &lt;code>Unique&lt;/code> und &lt;code>Not Null&lt;/code> zu einem. Gerade für Ids ist
-dieses Constraint praktisch, da in eigentlich jedem Fall eine Id bestehen sollte und sie auch eindeutig sein sollte.
-Hier ein beispiel zum &lt;code>Primary Key&lt;/code>:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(personen_id number &lt;span style="color:#66d9ef">PRIMARY&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Beispieldaten Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>personen_id&lt;/th>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Hans&lt;/td>
-&lt;td>Peterson&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Peter&lt;/td>
-&lt;td>Fritschi&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Fritz&lt;/td>
-&lt;td>Hansen&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da keine personen_id angegeben wurde.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Philippe&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Pfister&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da bereits eine Person mit der personen_id 2 besteht.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Ueli&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Mueli&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da keine Person mit der personen_id 4 besteht.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karl&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karlsen&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="foreign-key">Foreign Key&lt;/h2>
-&lt;p>Das &lt;code>Foreign Key&lt;/code> Constraint stellt sicher, dass der Wert in einer Spalte einer Tabelle auf einen existierenden Wert in
-einer anderen Tabelle verweist. Das bedeutet, dass die Beziehungen zwischen den Tabellen beibehalten werden und
-Datenkonsistenz gewährleistet wird. Ein Fremdschlüssel wird durch das Verknüpfen von Spalten in verschiedenen Tabellen
-erstellt. Dazu wird im CREATE das Keyword &lt;code>REFERENCES&lt;/code> verwendet. Dort wird angegeben, auf welche Spalte der
-Fremdschlüssel verweist. Hier ein Beispiel dazu:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> adresse(id number &lt;span style="color:#66d9ef">PRIMARY&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span>, strasse varchar(&lt;span style="color:#ae81ff">255&lt;/span>), hausnummer number, plz number, ort varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(id number &lt;span style="color:#66d9ef">PRIMARY&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), &lt;span style="color:#66d9ef">alter&lt;/span> number, adresse_id number
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">FOREIGN&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span> &lt;span style="color:#66d9ef">REFERENCES&lt;/span> adresse(id));
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>&lt;strong>Info:&lt;/strong> Die Benennung des Fremdschlüssels wurde in diesem Beispiel der Einfachheit halber nicht korrekt gemacht.
-Je nach Naming Convention im Projekt muss der Fremdschüssel anders benannt werden. Hier ein Link mit weiteren Infos:
-&lt;a href="https://www.dotnettricks.com/learn/sqlserver/sql-server-naming-conventions-and-standards">Naming Conventions SQL Server&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;p>Beispiel Daten Person:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>id&lt;/th>
-&lt;th>vorname&lt;/th>
-&lt;th>nachname&lt;/th>
-&lt;th>alter&lt;/th>
-&lt;th>adresse_id&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Christoph&lt;/td>
-&lt;td>Spycher&lt;/td>
-&lt;td>45&lt;/td>
-&lt;td>1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Sepp&lt;/td>
-&lt;td>Blatter&lt;/td>
-&lt;td>87&lt;/td>
-&lt;td>2&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Gianni&lt;/td>
-&lt;td>Infantion&lt;/td>
-&lt;td>53&lt;/td>
-&lt;td>2&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>4&lt;/td>
-&lt;td>Nilo&lt;/td>
-&lt;td>Nashorn&lt;/td>
-&lt;td>2&lt;/td>
-&lt;td>3&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Beispiel Daten Adresse:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>id&lt;/th>
-&lt;th>strasse&lt;/th>
-&lt;th>hausnummer&lt;/th>
-&lt;th>plz&lt;/th>
-&lt;th>ort&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Papeiermuehlestrasse&lt;/td>
-&lt;td>71&lt;/td>
-&lt;td>3014&lt;/td>
-&lt;td>Bern&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Seestrasse&lt;/td>
-&lt;td>27&lt;/td>
-&lt;td>8002&lt;/td>
-&lt;td>Zuerich&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Binningerstrasse&lt;/td>
-&lt;td>30&lt;/td>
-&lt;td>3054&lt;/td>
-&lt;td>Basel&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da in der Tabelle Adresse keine Adresse mit der Id 27 besteht.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Boris&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Biberratte&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">27&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da die Id 3 in der Tabelle Adresse vergeben ist.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Hecht&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da der Foreign Key auch null sein darf.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Silvia&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Stachelschwein&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Docs: Git Basics</title><link>/docs/git/basics/git-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/basics/git-basics/</guid><description>
+&lt;p>Im Opening Tag können Attribute vorkommen, die den Tag &amp;ldquo;konfigurieren&amp;rdquo;. Eine solche Konfiguration beinhaltet in den meisten Fällen einen Attribut-Key und -Value, welche mit einem Gleichzeichen verbunden werden. Der Attribut-Value (Wert) beginnt und endet &lt;strong>in jedem Fall&lt;/strong> mit einem Anführungs- beziehungsweise Schlusszeichen, auch wenn der Wert eine Zahl oder true/false ist.&lt;/p></description></item><item><title>Docs: Git Basics</title><link>/docs/git/basics/git-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/basics/git-basics/</guid><description>
 &lt;p>Git kann auf unterschiedliche Arten eingesetzt werden, es gibt graphische Oberflächen und die meisten Git-Server Software bieten Weboberflächen, welche das interagieren mit Git Repositories kinderleicht gestalten. Da diese Oberflächen meist sehr Produktspezifisch sind und oft auch nicht alle Funktionen beinhaltet werden hier nur die Kommandozeilen Befehle angeschaut. Ausserdem empfiehlt es sich mit git auf der Kommandozeile zu starten da es so viel verständlicher ist.&lt;/p>
 &lt;h2 id="inhalt">Inhalt&lt;/h2>
 &lt;ul>
@@ -7553,4 +5655,354 @@ legt fest, wer an welchem Projekt arbeitet und welche &amp;ldquo;Verbesserung&am
 &lt;/ul>
 &lt;h3 id="schritt-4-festlegen-des-repositories-für-die-aufgabe-zusammenarbeit">Schritt 4: Festlegen des Repositories für die Aufgabe &amp;ldquo;Zusammenarbeit&amp;rdquo;&lt;/h3>
 &lt;p>Legt gemeinsam fest, welches Repository für die gemeinsame Arbeit an einem Projekt genutzt werden soll.
-Dieses wird in den nachfolgenden Aufgaben immer als &lt;em>erstes Repository&lt;/em> bezeichnet.&lt;/p></description></item></channel></rss>
+Dieses wird in den nachfolgenden Aufgaben immer als &lt;em>erstes Repository&lt;/em> bezeichnet.&lt;/p></description></item><item><title>Labs: Aufgabe: Vorbereiten der IDE</title><link>/labs/git/vertiefung/02_preparing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/git/vertiefung/02_preparing/</guid><description>
+&lt;p>Diese Aufgabe ist von jedem Teilnehmer auf seinem Rechner auszuführen.&lt;/p>
+&lt;h3 id="schritt-1-klonen-des-ersten-repository">Schritt 1: Klonen des ersten Repository&lt;/h3>
+&lt;ol>
+&lt;li>Starte deinen Browser.&lt;/li>
+&lt;li>Rufe die Bitbucketseite mit dem ersten Repository auf.&lt;/li>
+&lt;li>Wähle &amp;ldquo;Klonen&amp;rdquo; in der Navigationsleiste (links) aus und kopiere die URL.&lt;/li>
+&lt;li>Starte IntelliJ.&lt;/li>
+&lt;li>Wähle im Menu Git -&amp;gt; Clone&amp;hellip; aus.&lt;/li>
+&lt;li>Füge die kopierte URL in der ersten Zeile ein.&lt;/li>
+&lt;li>Wähle dein Arbeitsverzeichnis für das neue Repository aus.&lt;/li>
+&lt;li>Klicke auf &amp;ldquo;Clone&amp;rdquo;.&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-2-klonen-des-zweiten-repository">Schritt 2: Klonen des zweiten Repository&lt;/h3>
+&lt;ol>
+&lt;li>Wiederhole die Punkte 2, 3 und 5 - 8 aus Schritt 4 für das zweite Repository.&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-3-branch-für-die-aufgabe-zusammenarbeit-erstellen">Schritt 3: Branch für die Aufgabe &amp;ldquo;Zusammenarbeit&amp;rdquo; erstellen&lt;/h3>
+&lt;ol>
+&lt;li>Starte deinen Browser.&lt;/li>
+&lt;li>Rufe die Bitbucketseite mit dem ersten Repository auf.&lt;/li>
+&lt;li>Klicke auf &lt;em>Branch erstellen&lt;/em>.&lt;/li>
+&lt;li>Wähle den &lt;em>Branch-Typ&lt;/em> &amp;ldquo;Feature&amp;rdquo; aus.&lt;/li>
+&lt;li>Wähle unter &lt;em>Branch von&lt;/em> &amp;ldquo;develop&amp;rdquo; aus.&lt;/li>
+&lt;li>Trage als &lt;em>Branch-Name&lt;/em> &amp;ldquo;Modul-S3-‹dein Vorname›-collaboration&amp;rdquo; ein (ohne Anführungszeichen).&lt;/li>
+&lt;li>Klicke auf &lt;em>Branch erstellen&lt;/em>.&lt;/li>
+&lt;/ol></description></item><item><title>Docs: Zusammenarbeit im Projekt</title><link>/docs/git/vertiefung/collaboration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/git/vertiefung/collaboration/</guid><description>
+&lt;h2 id="voraussetzungen">Voraussetzungen&lt;/h2>
+&lt;p>Die Vorbereitungen aus &lt;a href="/labs/git/vertiefung/01_team/">Aufgabe 1&lt;/a> sind umgesetzt. Insbesondere sind erledigt:&lt;/p>
+&lt;ul>
+&lt;li>Zwei neue Repositories mit vorhandenen Projekten wurden erstellt.&lt;/li>
+&lt;li>Es sind jeweils die Branches &lt;code>master&lt;/code> und &lt;code>develop&lt;/code> vorhanden.&lt;/li>
+&lt;li>Alle Team-Mitglieder haben diese Repositories geklont.&lt;/li>
+&lt;/ul>
+&lt;h2 id="simulieren-einer-realen-projektarbeit">Simulieren einer realen Projektarbeit&lt;/h2>
+&lt;p>Ein realistisches Szenario beinhaltet die konkurrierende Arbeit mehrerer Team-Mitglieder auf demselben
+Repository, die Arbeit mit mehreren Projekten und die Notwendigkeit schnell zwischen den Projekten und
+einzelnen Versionsständen wechseln zu können.&lt;/p>
+&lt;p>Im ersten Abschnitt wird die Zusammenarbeit an einem Projekt simuliert, um die Kenntnisse zum Anlegen,
+Aktualisieren,Vergleichen und Mergen von Branches aufzufrischen. Hierzu werden die Git Befehle&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>branch&lt;/strong>,&lt;/li>
+&lt;li>&lt;strong>checkout&lt;/strong>,&lt;/li>
+&lt;li>&lt;strong>push&lt;/strong>,&lt;/li>
+&lt;li>&lt;strong>diff&lt;/strong>,&lt;/li>
+&lt;li>&lt;strong>branch -merged&lt;/strong>,&lt;/li>
+&lt;li>&lt;strong>merge&lt;/strong>,&lt;/li>
+&lt;li>&lt;strong>rebase&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>verwendet/wiederholt. In den Labs zu diesem Modul werden die Git-Aktionen hauptsächlich innerhalb
+von IntelliJ oder über die Weboberfläche von Bitbucket ausgeführt, da dies das in den Projekten
+übliche Vorgehen ist.&lt;/p>
+&lt;h3 id="bitbucket">Bitbucket&lt;/h3>
+&lt;h4 id="hauptansicht">Hauptansicht&lt;/h4>
+&lt;p>Die Standardanzeige von Bitbucket ist die Auflistung der vorhandenen Branches. Wichtige Elemente auf
+der Bitbucket Weboberfläche, die in diesem Modul benutzt werden, sind durch rote Markierungen hervorgehoben.&lt;/p>
+&lt;p>&lt;img src="../images/bitbucket-main.jpg" alt="Bitbucket Mainview">&lt;/p>
+&lt;p>Ein Pull Request kann durch einen Klick auf den Branch in der Branch-Übersicht oder auf der
+Übersichtsseite der Pull Requests über den Button &lt;code>Pull-Anfrage erstellen&lt;/code> (oben rechts) erstellt werden.
+(&lt;em>siehe nächstes Bild&lt;/em>)&lt;/p>
+&lt;h4 id="pull-request">Pull Request&lt;/h4>
+&lt;p>&lt;strong>Übersicht aller Pull Requests.&lt;/strong> Hier werden alle im Repository erstellt Pull Requests aufgelistet.
+Dabei kann ausgewählt werden, ob nur die offenen Pull Requests (&lt;em>Standardeinstellung&lt;/em>), die zusammengeführten,
+abgelehnten oder alle Pull Requests angezeigt werden sollen.&lt;/p>
+&lt;p>&lt;img src="../images/bitbucket-pr-overview.jpg" alt="Bitbucket Pull Requests">&lt;/p>
+&lt;p>Wird ein neuer Pull Request erstellt, sind Ausgangs- und Zielbranch bereits vorbelegt. Beide können
+geändert oder auch die Richtung der Zusammenführung umgekehrt werden.
+Bei der Erstellung eines neuen Pull Request ist besonders darauf zu achten, dass der richtige Zielbranch
+(rote Markierung) ausgewählt ist. Für die Übungen in diesem Modul wird das immer &lt;code>develop&lt;/code> sein.&lt;/p>
+&lt;p>&lt;img src="../images/bitbucket-create-pr.jpg" alt="Bitbucket Pull Request erstellen">&lt;/p>
+&lt;p>Will man einen Pull Request überprüfen, so gibt es verschiedene Informationen und Aktionen, die dabei
+helfen können.&lt;/p>
+&lt;ol>
+&lt;li>Fügt den aktuellen User als Prüfer hinzu.&lt;/li>
+&lt;li>Zeigt die Aktionen an die erforderlich sind, bevor der Pull Request gemergt werden kann. Dazu gehören neben den erforderlichen Freigaben durch den/die Prüfer, auch erfoderliche Builds und eventuell zu lösende Konflikte.&lt;/li>
+&lt;li>Startet die Überprüfung (nur nötig, wenn eine Protokollierung gefordert ist).&lt;/li>
+&lt;/ol>
+&lt;p>Ausserdem werden die Kommentare des Erstellers und anderer Prüfer in der &lt;em>Übersicht&lt;/em> angezeigt. &lt;em>Diff&lt;/em>
+führt die Unterschiede zwischen Ausgangs- und Zielbranch auf. Dabei werden entfernte Zeilen rot und
+hinzugefügte Zeilen grün hinterlegt. Jede Änderung an einer Zeile, und sei es auch nur ein einzelnes
+Zeichen, wird immer als Entfernen der alten Zeile und Einfügen der neuen Zeile dargestellt.
+Alle zu diesem Pull Request gehörenden &lt;em>Commits&lt;/em> und auch alle &lt;em>Builds&lt;/em> können einzeln angeschaut werden.&lt;/p>
+&lt;p>&lt;img src="../images/bitbucket-approve-pr.jpg" alt="Bitbucket Pull Request prüfen">&lt;/p>
+&lt;h3 id="idea-intellij">IDEA IntelliJ&lt;/h3>
+&lt;p>Einige der Git-Befehle werden auch in IntelliJ ausgeführt. Die in den Labs verwendeten Menueinträge
+sind farbig markiert.&lt;/p>
+&lt;p>&lt;img src="../images/intellij-git-menu.jpg" alt="IDEA IntelliJ Git Menu">&lt;/p>
+&lt;p>Will man die Änderungen vom Arbeitsbereich in das Repository übertragen, wird &lt;code>git commit&lt;/code> verwendet.
+In IntelliJ kann dazu der Menu-Eintrag &lt;em>Commit&amp;hellip;&lt;/em> oder auch &lt;em>Push&lt;/em> aus dem Kontextmenu des Projekts
+aufgerufen werden. Die Ansicht wechselt nun auf die Commit-View:&lt;/p>
+&lt;p>&lt;img src="../images/intellij-commit.jpg" alt="IDEA IntelliJ Commit View">&lt;/p>
+&lt;ol>
+&lt;li>Anzeige der geänderten Dateien; hier können einzelne oder alle Dateien ausgewählt werden, die bei Ausführung von commit im Repository aktualisiert werden.&lt;/li>
+&lt;li>Die Commit-Message ist erforderlich und beschreibt die übertragenen Änderungen in Kurzfassung.&lt;/li>
+&lt;li>Mit dem Button &lt;code>Commit&lt;/code> werden die Änderungen in das lokale Repository übernommen, mit &lt;code>Commit and Push..&lt;/code> werden sie anschliessend auch auf das remote Repository übertragen, wo sie dann allen zugänglich sind.&lt;/li>
+&lt;/ol>
+&lt;h3 id="collaboration">Collaboration&lt;/h3>
+&lt;p>In der Praxis ist es üblich, dass in grossen Projekten mehrere Entwickler an der gleichen Codebasis
+arbeiten, aber für unterschiedliche fachliche Features zuständig sind. Diese Änderungen müssen regelmässig
+zusammengeführt werden, damit alle Entwickler auf dem aktuellen Stand arbeiten können. Dabei kommt es
+immer wieder auch vor, dass Änderungen an einer Klasse in unterschiedlichen Branches zusammen geführt
+werden müssen. Im Regelfall erledigt Git diese Zusammenführung (&lt;em>merge&lt;/em>) automatisch. Wenn jedoch Konflikte
+auftreten, d.h. eine Zeile in beiden Branches, die zusammengeführt werden sollen, geändert wurde, kann
+Git nicht entscheiden, welches die &amp;ldquo;richtige&amp;rdquo; Version ist. Hier muss der Entwickler entscheiden.&lt;/p>
+&lt;p>Dieses Szenario kann leicht nachgestellt werden, indem mehrere Team-Mitglieder einen Feature-Branch
+von develop erstellen und auf diesem arbeiten.&lt;/p>
+&lt;p>In einer ersten Aufgabe sollen kleine Änderungen ohne Merge-Konflikte vorgenommen und zusammegeführt
+werden. Dazu werden in den Feature-Branches unterschiediche Dateien bzw. Codestellen bearbeitet und
+anschliessend auf &lt;code>develop&lt;/code> zusammengeführt.&lt;/p>
+&lt;p>Der zweite Teil stellt Merge-Konflikte und deren Auflösung durch den Entwickler nach. Hier sollen
+jeweils mehrere kleine Änderungen am Code vorgenommen werden. Dabei wird mindestens eine Zeile einer
+bestimmten Datei von allen beteiligten Entwicklern geändert. Die Änderungen werden auf den Feature-Branch
+gepusht und dann nacheinander auf &lt;code>develop&lt;/code> zusammengeführt. Jetzt sollte es zu merge-Konflikten kommen,
+die es zu lösen gilt.&lt;/p>
+&lt;p>Die passenden Aufgaben sind in den Labs unter&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="/labs/git/vertiefung/02_preparing/">Vorbereiten der IDE&lt;/a>&lt;/li>
+&lt;li>&lt;a href="/labs/git/vertiefung/03_collaboration/">Gemeinsames Arbeiten an einem Projekt (ohne Konflikte)&lt;/a>&lt;/li>
+&lt;li>und &lt;a href="/labs/git/vertiefung/04_merge-conflict/">Gemeinsames Arbeitane an einem Projekt (mit Merge-Konflikten)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>zu finden.&lt;/p></description></item><item><title>Docs: Projekt aufsetzen in TypeScript</title><link>/docs/web/typescript/04_ts_projekt_aufsetzen/</link><pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate><guid>/docs/web/typescript/04_ts_projekt_aufsetzen/</guid><description>
+&lt;h3 id="ziele">Ziele&lt;/h3>
+&lt;ul>
+&lt;li>Du kannst eine Typescript-Datei erstellen und ausführen lassen.&lt;/li>
+&lt;li>Du bist in der Lage, eine Typescript-Datei in eine Javascript-Datei zu transpilieren.&lt;/li>
+&lt;/ul>
+&lt;h2 id="hello-world">Hello World&lt;/h2>
+&lt;p>Da Node.js bereits installiert wurde, kann nun anhand des Node Package Manager mühelos Typescript installiert werden.
+Dazu öffnet man eine Konsole und gibt den folgenden Befehl ein:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>npm install -g typescript
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Sobald die Installation abgeschlossen ist, erstellt man eine Datei und nennt diese &lt;code>hello-world.ts&lt;/code>.
+Nun die Datei mit einer IDE öffnen und die folgende Codezeile reinschreiben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Hello World&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Somit wurde das erste Typescript &amp;ldquo;Projekt&amp;rdquo; erstellt. Um dieses auszuführen, muss der Quellcode zu JS transpiliert werden.
+Dazu eine Konsole öffnen und sich in das Verzeichnis, indem sich die Datei befindet, begeben.&lt;/p>
+&lt;p>Danach folgenden Befehl in der Konsole eingeben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>tsc hello-world.ts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie nun zu sehen ist, befindet sich im Verzeichnis eine gleichnamige JS Datei.&lt;/p>
+&lt;p>Diese kann nun mit Node ausgeführt werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>node hello-world.js
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Falls alles funktioniert hat, gibt die Konsole &lt;code>Hello World&lt;/code> aus.&lt;/p></description></item><item><title>Docs: NgRx Selectors</title><link>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</link><pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular_ngrx/04_angular_ngrx_selectors/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, was NgRx Selectors sind und kannst diese anwenden.&lt;/li>
+&lt;li>Du weisst, was der AppState ist.&lt;/li>
+&lt;/ul>
+&lt;h2 id="appstate">AppState&lt;/h2>
+&lt;p>In einer typischen NgRx-Anwendung kann die AppState-Datei verwendet werden, um den gesamten Anwendungsstatus zu definieren und zu typisieren. Sie enthält normalerweise eine Schnittstelle oder ein Interface, das alle Teilzustände oder Slices des Anwendungsstatus definiert und zu einem Gesamtzustand kombiniert.
+Diesen findet man im &lt;code>index.ts&lt;/code>, wo man auch Erweiterungen umsetzen kann.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AbilityState&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">AppState&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">ability&lt;/span>: &lt;span style="color:#66d9ef">AbilityState&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="ngrx-selectors">NgRx Selectors&lt;/h2>
+&lt;p>Selectors sind Funktionen, die dazu dienen, bestimmte Teile des Zustands aus dem Store abzurufen. Sie ermöglichen es, den Zustand zu filtern, zu transformieren und zu kombinieren, um spezifische Daten abzurufen, die von den Components verwendet werden.&lt;/p>
+&lt;p>In unserem Beispiel vereinfachen wir das Beispiel aus den Actions, da man dort nur mühsam zu den &lt;code>abilities&lt;/code> gekommen ist.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">createSelector&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@ngrx/store&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;../reducer/index.ts&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">selectAbilityState&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#a6e22e">state&lt;/span>: &lt;span style="color:#66d9ef">AppState&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span>.&lt;span style="color:#a6e22e">ability&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">getAbilities&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">createSelector&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">selectAbilityState&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#a6e22e">state&lt;/span>) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">state&lt;/span>.&lt;span style="color:#a6e22e">abilities&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span>, &lt;span style="color:#a6e22e">OnInit&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@angular/core&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Store&lt;/span>, &lt;span style="color:#a6e22e">select&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@ngrx/store&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">addAbility&lt;/span>, &lt;span style="color:#a6e22e">deleteAbility&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;src/app/actions/ability.actions&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">AppState&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;src/app/reducer/index.ts&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">getAbilities&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;src/app/selectors/ability.selectors&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">@Component&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ..
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>})
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AbilityComponent&lt;/span> &lt;span style="color:#66d9ef">implements&lt;/span> &lt;span style="color:#a6e22e">OnInit&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">abilities$&lt;/span>: &lt;span style="color:#66d9ef">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt; &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observable&lt;/span>&amp;lt;&lt;span style="color:#f92672">string&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">[]&lt;/span>&amp;gt;();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#a6e22e">store&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">inject&lt;/span>(&lt;span style="color:#a6e22e">Store&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>{ &lt;span style="color:#a6e22e">ability&lt;/span>&lt;span style="color:#f92672">:&lt;/span> { &lt;span style="color:#a6e22e">abilities&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>[] } }&lt;span style="color:#f92672">&amp;gt;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">constructor&lt;/span>() {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">ngOnInit&lt;/span>()&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">abilities$&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">store&lt;/span>.&lt;span style="color:#a6e22e">select&lt;/span>(&lt;span style="color:#a6e22e">getAbilities&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ..
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: Components</title><link>/docs/web/angular/02_3_angular_components/</link><pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate><guid>/docs/web/angular/02_3_angular_components/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst, was ein Angular Component ist.&lt;/li>
+&lt;li>Du weisst, welche vier Dateien zu einem Component gehören.&lt;/li>
+&lt;li>Du kannst einen Component ins Template einbinden.&lt;/li>
+&lt;/ul>
+&lt;p>Ein Angular Component setzt sich aus 4 Dateien zusammen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="/docs/web/angular/02_5_angular_templates/">Template&lt;/a>&lt;/li>
+&lt;li>&lt;a href="/docs/web/angular/02_7_angular_unit_test/">Unit Test File&lt;/a>&lt;/li>
+&lt;li>&lt;a href="/docs/web/angular/02_6_angular_stylesheet/">Stylesheet&lt;/a>&lt;/li>
+&lt;li>Component (Class)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="../images/component-desc.png" alt="Components Description">&lt;/p>
+&lt;h2 id="components">Components&lt;/h2>
+&lt;p>Components sind wie Grundbausteine in einer Angular-Applikation. Components werden mit dem &lt;code>@Component&lt;/code> Decorator definiert.&lt;/p>
+&lt;p>Components sind TypeScript Klassen, die die Daten und Kontrollstrukturen zum Verhalten der Templates beinhalten.
+Metadaten teilen Angular mit, wie die Components verarbeitet werden sollen (selector, template, style), das kann im Kapitel &lt;a href="../03_3_angular_decorator#component">Component Decorator&lt;/a> genauer nachgelesen werden.
+Ein Component hat einen von Angular verwalteten Lifecycle. Angular erstellt und rendert Components zusammen mit ihren Children.
+Überprüft, wann sich ihre Properties ändern, und zerstört sie, bevor sie aus dem DOM entfernt werden.
+Angular bietet sogenannte &lt;a href="/docs/web/angular/02_18_angular_life_cycle_hook/">Lifecycle-Hooks&lt;/a> an, mit denen wir handeln können, sobald ein bestimmter Teils des Lifecycles auftrtitt.&lt;/p>
+&lt;p>&lt;img src="../images/angular_components_description.png" alt="Components">&lt;/p>
+&lt;h3 id="components-im-template-aufrufen">Components im Template aufrufen&lt;/h3>
+&lt;p>In Angular kann man Components im Template aufrufen, indem man ihren Selektor verwendet.&lt;/p>
+&lt;p>Durch das Aufrufen von Components im Template kann man wiederverwendbare Teile der Benutzeroberfläche erstellen und sie in verschiedenen Teilen der Anwendung verwenden, um Code-Duplikation zu vermeiden, aber auch, um die Lesbarkeit und Wartbarkeit des Codes zu verbessern.&lt;/p>
+&lt;p>Als erstes muss man den Component erstellen, das geht mit dem &lt;a href="../02_1_angular_einf%C3%BChrung#commands">CLI Command&lt;/a> &lt;code>ng generate component greeting&lt;/code> oder kürzer &lt;code> ng g c greeting&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">import&lt;/span> { &lt;span style="color:#a6e22e">Component&lt;/span> } &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#e6db74">&amp;#34;@angular/core&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">@Component&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">selector&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;app-greeting&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">templateUrl&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;./app-greeting.html&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">styleUrls&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [&lt;span style="color:#e6db74">&amp;#34;./app-greeting.scss&amp;#34;&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>})
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">export&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">GreetingComponent&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Dragon Warrior&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--app-greeting.html--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;Hello, {{ name }}!&amp;lt;/&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nachdem man den Component erstellt hat, kann man ihn im Template eines anderen Components aufrufen, dazu kann man den Selektor verwenden.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">app-greeting&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">app-greeting&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Ergebnis ist, dass die &lt;code>&amp;lt;app-greeting&amp;gt;&amp;lt;/app-greeting&amp;gt;&lt;/code> Tags durch das gerenderte Template des &lt;code>GreetingComponent&lt;/code> ersetzt werden. In diesem Fall wird eine Überschrift &amp;ldquo;Hello, John!&amp;rdquo; angezeigt, weil &lt;code>name&lt;/code> im Typescript auf &amp;ldquo;John&amp;rdquo; gesetzt ist.&lt;/p></description></item></channel></rss>
