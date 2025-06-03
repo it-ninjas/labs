@@ -118,7 +118,7 @@ public interface MySetInterfaceSimple<E> {
      * @param element element whose presence in this set is to be tested
      * @return true if this set contains the specified element
      */
-    public boolean contains(E object);
+    public boolean contains(E element);
 
     /**
      * Returns the number of elements in this set.
