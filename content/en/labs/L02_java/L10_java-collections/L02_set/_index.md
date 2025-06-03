@@ -111,7 +111,7 @@ public interface MySetInterfaceSimple<E> {
      * @param element element to be removed from this set, if present
      * @return true if the set contained the specified element
      */
-    boolean remove(E object);
+    boolean remove(E element);
 
     /**
      * Returns true if this set contains the specified element.
