@@ -115,7 +115,7 @@ public interface MySetInterfaceSimple<E> {
 
     /**
      * Returns true if this set contains the specified element.
-     * @param object element whose presence in this set is to be tested
+     * @param element element whose presence in this set is to be tested
      * @return true if this set contains the specified element
      */
     public boolean contains(E object);
