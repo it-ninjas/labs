@@ -15,7 +15,7 @@ description: >
 ### Voraussetzungen
 
 - Du hast Zugriff auf das Git-Tool Bitbucket
-- Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls das noch nicht geschehen ist, siehe: [Install Git](../../git/basics/git-install)
+- Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls das noch nicht geschehen ist, siehe: [Install Git](../../docs/04_git/01_grundwissen/02_git-install)
 - Du hast die Grundeinstellungen für Git im Terminal nach der Installation gemacht
   {{% details title="Folgende Einstellungen sind hier gemeint und können im Git-Bash Terminal ausgeführt werden:" %}}
 
