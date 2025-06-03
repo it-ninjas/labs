@@ -4,7 +4,7 @@ linkTitle: "Generics"
 type: docs
 weight: 8
 description: >
-  Aufgabe zu Modul #J2 - OOP - Generics I
+  Aufgabe zu Modul #J2 - OOP - Generics
 ---
 
 ### Aufgabe 1 - generische Methode um alle Elemente in einem Array auszugeben
