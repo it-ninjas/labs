@@ -137,4 +137,4 @@ System.out.printf("Our list contains \"!\". True or false? %b\n", words.contains
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1 und 2](../../../../labs/L02_java/L04_java-oop/L01_lists) in den OOP-Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1 und 2](../../../../labs/02_java/04_java-oop/01_lists) in den OOP-Labs.

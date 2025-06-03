@@ -219,4 +219,4 @@ private static void findByUsernameAndAge(String url, String dbUsername, String p
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte diese [Aufgabe](../../../labs/L02_java/L11_java-jdbc/L01_Jdbc_Exercises) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte diese [Aufgabe](../../../labs/02_java/11_java-jdbc/01_Jdbc_Exercises) in den Labs.

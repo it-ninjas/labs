@@ -2,7 +2,7 @@
 title: "Java Exercises - Grundlagen"
 linkTitle: "Java Exercises - Grundlagen"
 type: docs
-weight: 1
+weight: 3
 description: >
   Exercises zu Modul #J1
 ---

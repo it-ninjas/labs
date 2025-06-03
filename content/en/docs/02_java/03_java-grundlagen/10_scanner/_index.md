@@ -60,4 +60,4 @@ Für die Labs und das Exams im Modul #J1 kannst du diese Methode gut brauchen. S
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 8](../../../../labs/L02_java/L03_java-grundlagen/L01_basicexercises/#aufgabe-8---eingaben-von-der-kommandozeile) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 8](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-8---eingaben-von-der-kommandozeile) in den Labs.

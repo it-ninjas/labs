@@ -180,4 +180,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J6 - Java Collections - Stack](../../../../labs/L02_java/L10_java-collections/L04_stack)
+[Aufgaben zu Modul #J6 - Java Collections - Stack](../../../../labs/02_java/10_java-collections/04_stack)

@@ -2,7 +2,7 @@
 title: "Java Exercises - Exception Handling"
 linkTitle: "Java Exercises - Exception Handling"
 type: docs
-weight: 8
+weight: 9
 description: >
   Aufgaben zu Modul #J5 - [Exception Handling](../../../docs/02_java/09_java-exception_handling)
 ---
