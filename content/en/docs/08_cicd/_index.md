@@ -1,6 +1,6 @@
 ---
 title: "CI/CD"
-weight: 9
+weight: 8
 description: >
   Grundlagen für das Bauen und Warten von CI/CD-Infrastruktur
 ---
