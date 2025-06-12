@@ -1,8 +1,8 @@
 ---
-title: "Objektorientierte Programmierung Exam"
-linkTitle: "Objektorientierte Programmierung Exam"
+title: "Weltmeisterschaft"
+linkTitle: "Weltmeisterschaft"
 type: docs
-weight: 2
+weight: 1
 description: >
   Exam zu Modul #J2
 ---
@@ -19,7 +19,7 @@ Ziel ist nicht, dass du dich mit `Scanner` oder viel Logik herumschlagen musst.
 
 ### Sachverhalt
 
-Bei diesem Exam modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der <a href="../results.txt" download>`results.txt`</a>-Datei gespeichert sind, im Code abbilden.
+Bei diesem Exam modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der <a href="./results.txt" download>`results.txt`</a>-Datei gespeichert sind, im Code abbilden.
 Die Idee ist nicht, dass du diese Datei im Programm ausliest oder diese Information mit `System.out.print()` direkt ausgibst, sondern dass dein Code die Informationen repräsentiert. Mehr dazu in Aufgabe 3.
 
 Deine Klassen sollen folgendes abbilden:
@@ -67,7 +67,7 @@ Ziel dieser Aufgabe ist, dass du dich nur aufs Klassen-Design im Code konzentrie
 
 ![task1](/images/task.png) Setze nun die Methoden korrekt um.
 
-Verwende zur Demonstration die Daten aus der <a href="../results.txt" download>`results.txt`</a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine `.java`-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der `results.txt`-Datei steht
+Verwende zur Demonstration die Daten aus der <a href="./results.txt" download>`results.txt`</a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine `.java`-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der `results.txt`-Datei steht
 
 ```
 # Gruppe 1

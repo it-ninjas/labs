@@ -2,7 +2,7 @@
 title: "Rollenspiel"
 linkTitle: "Rollenspiel"
 type: docs
-weight: 3
+weight: 1
 description: >
   Exam zu Modul #J3 - OOD - Rollenspiel
 ---
