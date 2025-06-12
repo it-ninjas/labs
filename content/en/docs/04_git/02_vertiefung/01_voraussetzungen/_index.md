@@ -67,5 +67,5 @@ Jeder Ninja erstellt einen Klon der Repositories in seinem lokalen Arbeitsbereic
 
 #### Hier geht es zu den Labs.
 
-- [Teambildung](../../../../labs/02_git/02_vertiefung/01_team)
-- [Vorbereitung](../../../../labs/02_git/02_vertiefung/02_preparing)
+- [Teambildung](../../../../labs/04_git/02_vertiefung/01_team)
+- [Vorbereitung](../../../../labs/04_git/02_vertiefung/02_preparing)

@@ -2,7 +2,7 @@
 title: "Git Labs"
 linkTitle: "Git"
 type: docs
-weight: 2
+weight: 4
 description: >
   Labs zu Git
 ---

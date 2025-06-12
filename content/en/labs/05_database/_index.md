@@ -1,7 +1,7 @@
 ---
 title: "Datenbanken"
 type: docs
-weight: 4
+weight: 5
 description: >
   Grundlagen für die Verwendung von Datenbanken
 ---

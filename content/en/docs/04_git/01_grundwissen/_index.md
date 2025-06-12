@@ -44,7 +44,7 @@ Dieses Lab unterteilt sich in folgende Themenbereiche:
 - [Bitbucket](07_bitbucket)
 - [Git Erweitert](04_git-erweitert)
 
-Nachdem du die Docs gelesen hast, solltest du in der Lage sein die [Labs](../../../labs/02_git) zu lösen.
+Nachdem du die Docs gelesen hast, solltest du in der Lage sein die [Labs](../../../labs/04_git) zu lösen.
 
 ## Let's play!
 
