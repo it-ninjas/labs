@@ -1,0 +1,1060 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Aufgaben zu Java - Collections</title><link>/labs/02_java/10_java-collections/</link><description>Recent content in Aufgaben zu Java - Collections on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/labs/02_java/10_java-collections/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: List - Aufgaben</title><link>/labs/02_java/10_java-collections/01_list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/10_java-collections/01_list/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Wir programmieren eine eigene ArrayList-Klasse &lt;code>MyArrayListSimple&lt;/code>:&lt;/p>
+&lt;ol>
+&lt;li>Die Elemente sollen in einem Array gespeichert werden.&lt;/li>
+&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
+&lt;li>Die Klasse muss das Interface &lt;code>MyListInterfaceSimple&lt;/code> implementieren.&lt;/li>
+&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse der internen Datenstruktur dynamische anpassen.&lt;/li>
+&lt;li>Die &lt;code>toString()&lt;/code> Methode der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MyArrayListSimple&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden: &lt;code>[Cat, Hamster, Dog, Goldfish]&lt;/code>&lt;/li>
+&lt;li>Überprüfe deine Implemenation mit dem JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/list/lab1/MyArrayListSimpleTest.java">MyArrayListSimpleTest&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="input">Input&lt;/h3>
+&lt;details>
+&lt;summary>Inferface MyListInterfaceSimple&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.examples.list;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MyListInterfaceSimple&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list .
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(E element);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the element at the specified position in this list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param index index of the element to return
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the element at the specified position in this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the index is out of range
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> E &lt;span style="color:#a6e22e">get&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> index) &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the element that was removed from the list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * soll IndexOutOfBoundsException werfen
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param index the index of the element to be removed
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the element previously at the specified position
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> E &lt;span style="color:#a6e22e">remove&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> index) &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the number of elements in this list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * If this list contains more than Integer.MAX_VALUE elements, returns Integer.MAX_VALUE.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the number of elements in this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns true if this list contains no elements.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if this list contains no elements
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes all the elements from this list. The list will be empty after this call returns.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Nun erweitern wir unsere &lt;code>MyArrayListSimple&lt;/code> Klasse.&lt;/p>
+&lt;ol>
+&lt;li>Erstelle eine Kopie deiner Klasse und nenne diese &lt;code>MyArrayListExtended&lt;/code>.&lt;/li>
+&lt;li>Diese soll das Interface &lt;code>MyListInterfaceExtended&lt;/code> implementieren, welche folgende zusätzliche Methoden aufweist:&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;code>void add(int index, E element)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean contains(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>int indexOf(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>E set(int index, E element)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean equals(Object o)&lt;/code>&lt;/li>
+&lt;li>&lt;code>boolean remove(Object o)&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;ol start="3">
+&lt;li>Überprüfe deine Implemenation mit dem JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/list/lab2/MyArrayListExtendedTest.java">MyArrayListExtendedTest&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="input-1">Input&lt;/h3>
+&lt;details>
+&lt;summary>Inferface MyListInterfaceExtended&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">87
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">88
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">89
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">90
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">91
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">92
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">93
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">94
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">95
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">96
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.examples.list;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MyListInterfaceExtended&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Appends the specified element to the end of this list .
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(E element);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the element at the specified position in this list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param index index of the element to return
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the element at the specified position in this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the index is out of range
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> E &lt;span style="color:#a6e22e">get&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> index) &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes the element at the specified position in this list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the element that was removed from the list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * soll IndexOutOfBoundsException werfen
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param index the index of the element to be removed
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the element previously at the specified position
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> E &lt;span style="color:#a6e22e">remove&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> index) &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the number of elements in this list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * If this list contains more than Integer.MAX_VALUE elements, returns Integer.MAX_VALUE.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the number of elements in this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns true if this list contains no elements.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if this list contains no elements
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes all the elements from this list. The list will be empty after this call returns.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Inserts the specified element at the specified position in this list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Shifts the element currently at that position (if any) and any subsequent elements to the right.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param index index at which the specified element is to be inserted
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param element element to be inserted
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the add operation is not supported by this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> index, E element) &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns true if this list contains the specified element.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param o element whose presence in this list is to be tested
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if this list contains the specified element
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>(Object o);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the index of the first occurrence of the specified element in this list,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * or -1 if this list does not contain the element.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param o element to search for
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the index of the first occurrence of the specified element in this list,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * or -1 if this list does not contain the element
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">indexOf&lt;/span>(Object o);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Replaces the element at the specified position in this list with the specified element.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param index index of the element to replace
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param element element to be stored at the specified position
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the element previously at the specified position
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @throws IndexOutOfBoundsException if the index is out of range
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> E &lt;span style="color:#a6e22e">set&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> index, E element) &lt;span style="color:#66d9ef">throws&lt;/span> IndexOutOfBoundsException;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Compares the specified object with this list for equality.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns true if and only if the specified object is also a list, both lists have the same size,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * and all corresponding pairs of elements in the two lists are equal.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param o the object to be compared for equality with this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if the specified object is equal to this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">equals&lt;/span>(Object o);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes the first occurrence of the specified element from this list, if it is present.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * If this list does not contain the element, it is unchanged.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param o element to be removed from this list, if present
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if this list contained the specified element
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>(Object o);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Erstelle ein Programm, welches ein Zeugnis bestehend aus Modulen und deren Schlussnoten generiert und in der Konsole
+ausgibt.&lt;/p>
+&lt;p>Dazu sollen die Klassen &lt;code>Modul&lt;/code> und &lt;code>LBV&lt;/code> (Prüfung) erstellt werden. Zur weiteren Hilfe soll
+die &lt;code>ModulNotGradeableException&lt;/code> dienen.&lt;/p>
+&lt;p>Anforderungen an die &lt;code>LBV&lt;/code>-Klasse:&lt;/p>
+&lt;ul>
+&lt;li>Die Note der LBV ist als Float-Attribut gespeichert&lt;/li>
+&lt;li>Die Gewichtung der LBV ist ebenfalls als Float-Attribut gespeichert&lt;/li>
+&lt;/ul>
+&lt;p>Anforderungen an die &lt;code>Modul&lt;/code>-Klasse:&lt;/p>
+&lt;ul>
+&lt;li>Ein Modul hat den Modulnamen als Attribut.&lt;/li>
+&lt;li>Alle LBVs des Moduls, werden in einer ArrayList gespeichert.&lt;/li>
+&lt;li>LBVs werden dem Modul über die &lt;code>addLBV(LBV exam)&lt;/code> Methode hinzugefügt.&lt;/li>
+&lt;li>Der Moduldurchschnitt, soll von der Methode &lt;code>getFinalModuleGrade()&lt;/code> als &lt;code>float&lt;/code> zurückgegeben werden.&lt;/li>
+&lt;li>Das Modul kann nur bewertet werden, wenn die Gewichtung aller LBVs genau 1 ergib. Ansonsten soll
+eine &lt;code>ModulNotGradeableException&lt;/code> geworfen werden.&lt;/li>
+&lt;li>Die Methode &lt;code>printReportEntry()&lt;/code> soll den Zeugnis-Eintrag des Moduls generieren und ausgeben. Dieser ist im Format &lt;em>&amp;lt;
+MODUL_NAME&amp;gt;&lt;/em> : &lt;em>&amp;lt;MODUL_SCHLUSSNOTE&amp;gt;&lt;/em> auszugeben.&lt;/li>
+&lt;/ul>
+&lt;p>Zudem wird erwartet, dass ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) zu der Umsetzung gehört.&lt;/p></description></item><item><title>Labs: Streams Basics - Aufgaben</title><link>/labs/02_java/10_java-collections/06_streams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/10_java-collections/06_streams/</guid><description>
+&lt;h2 id="aufgabe-1---user-eingabe-in-liste-umwandeln">Aufgabe 1 - User-Eingabe in Liste umwandeln&lt;/h2>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Schreibe folgendes Programm:&lt;/p>
+&lt;ul>
+&lt;li>Lies eine Reihe von Zahlen aus der Kommandozeile in einer beliebigen Reihenfolge ein.&lt;/li>
+&lt;li>Gib die unsortierte wie auch die sortierte Liste in der Konsole aus.&lt;/li>
+&lt;/ul>
+&lt;p>Verwende hierfür Streams.&lt;/p>
+&lt;p>Zudem wird erwartet, dass ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) zu der Umsetzung gehört.&lt;/p>
+&lt;h2 id="aufgabe-2---einfache-mathematische-operation">Aufgabe 2 - Einfache mathematische Operation&lt;/h2>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Schreibe folgendes Programm:&lt;/p>
+&lt;ul>
+&lt;li>Lies eine Reihe von Zahlen aus der Kommandozeile in einer beliebigen Reihenfolge ein.&lt;/li>
+&lt;li>Jede Zahl in der Liste wird mit sich selber multipliziert&lt;/li>
+&lt;li>und schlussendlich werden die ursprüngliche wie auch die neue Liste (mit den Berechnungen) in der Konsole ausgegeben - einmal unsortiert und einmal sortiert.&lt;/li>
+&lt;/ul>
+&lt;p>Verwende hierfür Streams.&lt;/p>
+&lt;p>Zudem wird erwartet, dass ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) zu der Umsetzung gehört.&lt;/p>
+&lt;h2 id="aufgabe-3---kalorien-berechnen">Aufgabe 3 - Kalorien berechnen&lt;/h2>
+&lt;p>Mache dir Gedanken über das, was du gestern gegessen hast. Schreibe die einzelnen Gerichte/Snacks auf.&lt;/p>
+&lt;p>Versuche für jede Mahlzeit die Anzahl Kalorien zu ermitteln. Speichere die Gerichte mit den Kalorien-Werten als String in einem Array oder einer Liste - z.B. &lt;code>{&amp;quot;Grilled Chicken Breast (230 calories)&amp;quot;, &amp;quot;Mixed Greens Salad (50 calories)&amp;quot;, &amp;quot;Balsamic Vinaigrette Dressing (60 calories)&amp;quot;, &amp;quot;500 ml Cola (200 calories)&amp;quot;}&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Schreibe ein Programm, das mit Hilfe von Streams die Kalorien-Anzahl aus den Strings zusammenzählt.&lt;/p>
+&lt;p>Zudem wird erwartet, dass ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) zu der Umsetzung gehört.&lt;/p>
+&lt;h2 id="aufgabe-4---notenschnitt-berechnen">Aufgabe 4 - Notenschnitt berechnen&lt;/h2>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Schreibe ein Programm, dass den Notenschnitt über Fächer berechnet.&lt;/p>
+&lt;p>Erstelle hierfür eine Klasse, die eine Note und ein Fach speichert. Erstelle einen Stream, der Objekte dieser Klasse beinhaltet.&lt;/p>
+&lt;p>Zudem wird erwartet, dass ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) zu der Umsetzung gehört.&lt;/p></description></item><item><title>Labs: Set - Aufgaben</title><link>/labs/02_java/10_java-collections/02_set/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/10_java-collections/02_set/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Schreibe ein Programm, welches die Personen von vier Vereine auswertet.&lt;/p>
+&lt;ol>
+&lt;li>Pro Verein existiert ein &lt;code>Set&lt;/code> mit allen Vereinsmitliedern (siehe Input).&lt;/li>
+&lt;li>Das Programm analysiert die Vereinsmitglieder und schreibt die folgenden Aussagen in die Konsole (siehe Beispiel-Ausgabe unten):
+&lt;ul>
+&lt;li>Wie viele Personen machen min. in einem Verein mit: Anzahl: Namen&lt;/li>
+&lt;li>Alle Personen, welche im Fussball und Tanz Verein sind: Anzahl: Namen&lt;/li>
+&lt;li>Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: Anzahl: Namen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Die Namen der Personen müssen in alphabetischer Reihenfolge angezeigt werden.&lt;/li>
+&lt;li>Ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) soll umgesetzt werden.&lt;/li>
+&lt;/ol>
+&lt;h3 id="input">Input&lt;/h3>
+&lt;details>
+&lt;summary>4 Sets&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> fussballVerein &lt;span style="color:#f92672">=&lt;/span> Set.&lt;span style="color:#a6e22e">of&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Paula&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> schwimmVerein &lt;span style="color:#f92672">=&lt;/span> Set.&lt;span style="color:#a6e22e">of&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Klaus&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Fritz&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Patrick&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Hanne&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Anina&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Nicole&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Gerda&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> musikVerein &lt;span style="color:#f92672">=&lt;/span> Set.&lt;span style="color:#a6e22e">of&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Kari&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Karin&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Petra&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Set&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> tanzVerein &lt;span style="color:#f92672">=&lt;/span> Set.&lt;span style="color:#a6e22e">of&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Emil&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Paul&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Felix&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Lara&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Anja&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Sabine&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Anna&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h3 id="ausgabe">Ausgabe&lt;/h3>
+&lt;p>Die Ausgabe soll vom Format her so aussehen&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>- Wie viele Personen machen min. in einem Verein mit: [anzahl]: [namen]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Alle Personen, welche im Fussball und Tanz Verein sind: [anzahl]: [namen]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: [anzahl]: [namen]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Achte auf Details wie, dass die Namen ohne Lücken aufgeführt werden ansonsten stimmt der Hash nicht. Die Ausgabe könnte beispielsweise so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>- Wie viele Personen machen min. in einem Verein mit: 19: Anja,Anna,Emil,Fritz,Gerda,Hanne,Hans,Karin,Klaus,Lara,Max,Nicole,Patrick,Paul,Paula,Petra,Sabine
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Alle Personen, welche im Fussball und Tanz Verein sind: 4: Anna,Emil,Felix,Hans,Gerda
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Alle Personen, welche im Fussball sind und nicht im Tanz oder Schwimm Verein: 3: Anja,Emil,Hanne
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="ausgabe-überprüfen">Ausgabe überprüfen&lt;/h3>
+&lt;p>Wie könnt ihr die Ausgabe überprüfen?
+Wir benützen dazu eine kleine Hilfsklasse &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java">&lt;code>OutputValidation&lt;/code>&lt;/a>.
+Die Klasse erlaubt es eure &lt;code>System.out.println()&lt;/code> Anweisungen mit &lt;code>OutputValidation.logAndPrint()&lt;/code> zu ersetzten.
+Am Schluss des Programmes kann man mit &lt;code>OutputValidation.printControlHash()&lt;/code> den Hash-Wert der eigenen Ausgabe anzeigen, oder mit &lt;code>OutputValidation.verifyControlHash()&lt;/code> einen Hash-Wert zur Überprüfung mit eurer Ausgabe überreichen.&lt;/p>
+&lt;p>Ein Anwendungsbeispiel seht ihr unter &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidationUsage.java">OutputValidationUsage&lt;/a>.&lt;/p>
+&lt;p>Der Hash für diese Aufgabe ist: &lt;strong>&lt;code>-1421274666&lt;/code>&lt;/strong>&lt;/p>
+&lt;h2 id="aufgabe-2">Aufgabe 2&lt;/h2>
+&lt;p>Wir programmieren eine eigene Set-Klasse &lt;code>MySet&lt;/code>, welche noch kein Hash-Code verwendet.&lt;/p>
+&lt;ol>
+&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
+&lt;li>Die Klasse muss das Interface &lt;code>MySetInterfaceSimple&lt;/code> implementieren.&lt;/li>
+&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichern muss. Sie muss die Grösse des Arrays dynamische anpassen.&lt;/li>
+&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MySet&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.&lt;/li>
+&lt;li>Überprüfe deine Implemenation mit dem JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="input-1">Input&lt;/h3>
+&lt;details>
+&lt;summary>Inferface MySetInterfaceSimple&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.examples.list;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MySetInterfaceSimple&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>E&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Adds the specified element to this set if it is not already present.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param element element to be appended to this list
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if this set did not already contain the specified element
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(E element);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes the specified element from this set if it is present.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param element element to be removed from this set, if present
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if the set contained the specified element
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>(E element);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns true if this set contains the specified element.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param element element whose presence in this set is to be tested
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if this set contains the specified element
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">contains&lt;/span>(E element);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the number of elements in this set.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the number of elements in this set
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns true if this set contains no elements.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if this set contains no elements
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isEmpty&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes all the elements from this set. The set will be empty after this call returns.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Wir Kopieren unsere &lt;code>MySet&lt;/code> Klasse zu der Klasse &lt;code>MyHashSet&lt;/code> und erweitern diese, damit sie Hash Funktionalität verwendet:&lt;/p>
+&lt;ol>
+&lt;li>Beim Hinzufügen von neuen Elementen wird deren Hash-Code berechnet und ebenfalls abgespeichert.&lt;/li>
+&lt;li>Die Suche nach bestehenden Elementen wird anschliessend über den gespeicherten Hash-Code durchgeführt statt über die Elemente selbst.&lt;/li>
+&lt;li>Du kannst deine Implemenation mit dem gleichen JUnitTest &lt;a href="https://github.com/it-ninjas/work/blob/main/labs/src/test/java/ch/itninjas/labs/j7/set/lab2/MySetTest.java">MySetTest&lt;/a> überprüfen, da sich die neue Klasse gleich verhalten soll. Erstelle vom Test eine Kopie &lt;code>MyHashSetTest&lt;/code> und ändere &lt;code>MySet&lt;/code> überall zu &lt;code>MyHahsSet&lt;/code>.&lt;/li>
+&lt;/ol></description></item><item><title>Labs: Map - Aufgaben</title><link>/labs/02_java/10_java-collections/03_map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/10_java-collections/03_map/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Postleitzahlen einlesen und verarbeiten:&lt;/p>
+&lt;ol>
+&lt;li>Schreibe ein Programm, welches Postleitzahlen aus einer CSV-Datei herausliest und in einer HashMap speichert.&lt;/li>
+&lt;li>Nach dem Speichern schreibt das Programm verschiedene Informationen zu den Daten in die Konsole (siehe Ausgabe).&lt;/li>
+&lt;li>Verwendet wieder die kleine Hilfsklasse &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java">&lt;code>OutputValidation&lt;/code>&lt;/a> zum Verifizieren von eurem Konsole-Output.&lt;/li>
+&lt;li>Ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) soll umgesetzt werden.&lt;/li>
+&lt;/ol>
+&lt;h3 id="input">Input&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="/files/csv/Postleitzahlen_UTF8.csv">PLZ (UTF8 Format)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="/files/csv/Postleitzahlen_ISO-8859-1.csv">PLZ (ISO-8859-1 Format)&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="ausgabe">Ausgabe&lt;/h3>
+&lt;p>Die Ausgabe muss das folgende Format aufweisen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>- Anzahl PLZ: [anzahl]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Kleinste PLZ der Gemeinde Bern: [PLZ] [Ort]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Grösste PLZ der Gemeinde Bern: [PLZ] [Ort]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Gemeinden mit mehr als 10 Buchstaben: [anzahl]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Gemeinden mit 7 Buchstaben: [anzahl]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Gemeinden mit der Buchstabenfolge &amp;#39;ent&amp;#39;: [anzahl]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gemeinden mit 3 Buchstaben: [Ort], [Ort], [Ort]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Buchstaben der kleinsten Gemeinden: [anzahl]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Kleinsten Gemeinden: [Ort], [Ort], [Ort]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Buchstaben der grössten Gemeinden: [anzahl]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Grössten Gemeinden: [Ort], [Ort], [Ort]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beachte, dass die Aufzählungen der Ortschaften sortiert sind. Die Ausgabe könnte Beispielsweise so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>- Anzahl PLZ: 3197
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Kleinste PLZ der Gemeinde Bern: 3000 Bern
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Grösste PLZ der Gemeinde Bern: 3032 Bern
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Gemeinden mit mehr als 10 Buchstaben: 1986
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Gemeinden mit 7 Buchstaben: 232
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Gemeinden mit der Buchstabenfolge &amp;#39;ent&amp;#39;: 45
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gemeinden mit 3 Buchstaben: Auw, Ins, Vex, Vex, Zug, Zug
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Buchstaben der kleinsten Gemeinden: 3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Kleinsten Gemeinden: Ins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Anzahl Buchstaben der grössten Gemeinden: 89
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Grössten Gemeinden: Deisswil bei Münchenbuchsee, Rapperswil (BE), Wiggiswil
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;strong>Ausgabe überprüfen&lt;/strong>&lt;br>
+Der Konsole-Output Hash für diese Aufgabe ist: &lt;strong>&lt;code>494931922&lt;/code>&lt;/strong>&lt;/p>&lt;/blockquote>
+&lt;h2 id="aufgabe-2-optional">Aufgabe 2 (Optional)&lt;/h2>
+&lt;p>Wir programmieren eine eigene Map-Klasse &lt;code>MyMap&lt;/code>, welche noch keinen Hash-Code verwendet:&lt;/p>
+&lt;ol>
+&lt;li>Es dürfen keine Klassen aus dem Collection-Framework verwendet werden.&lt;/li>
+&lt;li>Die Klasse muss das Interface &lt;code>MyMapInterface&lt;/code> implementieren.&lt;/li>
+&lt;li>Die Klasse weiss nicht, wie viele Elemente man speichert. Sie muss die Grösse internen Datenstruktur dynamische anpassen.&lt;/li>
+&lt;li>Die &lt;code>toString()&lt;/code> der &lt;code>java.lang.Object&lt;/code> Klasse soll von der &lt;code>MyMap&lt;/code> so überschrieben werden, dass die Elemente kommasepariert ausgegeben werden.&lt;/li>
+&lt;li>Ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) soll umgesetzt werden.&lt;/li>
+&lt;/ol>
+&lt;details>
+&lt;summary>Inferface MyMapInterface&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> com.examples.list;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">MyMapInterface&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>K, V&lt;span style="color:#f92672">&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Associates the specified value with the specified key in this map.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param key key with which the specified value is to be associated
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param value value to be associated with the specified key
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the previous value associated with {@code key}, or
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * {@code null} if there was no mapping for {@code key}.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> V &lt;span style="color:#a6e22e">put&lt;/span>(K key, V value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the value to which the specified key is mapped,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * or {@code null} if this map contains no mapping for the key.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param key the key whose associated value is to be returned
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the value to which the specified key is mapped, or
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * {@code null} if this map contains no mapping for the key
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> V &lt;span style="color:#a6e22e">get&lt;/span>(Object key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns the number of key-value mappings in this map.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the number of key-value mappings in this map
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes all the mappings from this map.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * The map will be empty after this call returns.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">clear&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Removes the mapping for a key from this map if it is present.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param key key whose mapping is to be removed from the map
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return the previous value associated with {@code key}, or
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * {@code null} if there was no mapping for {@code key}.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> V &lt;span style="color:#a6e22e">remove&lt;/span>(Object key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns {@code true} if this map contains a mapping for the specified
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * key.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param key key whose presence in this map is to be tested
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return {@code true} if this map contains a mapping for the specified
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * key
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">containsKey&lt;/span>(Object key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Returns {@code true} if this map maps one or more keys to the
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * specified value.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param value value whose presence in this map is to be tested
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return {@code true} if this map maps one or more keys to the
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * specified value
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">containsValue&lt;/span>(Object value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Wir Kopieren unsere &lt;code>MyMap&lt;/code> Klasse zu der Klasse &lt;code>MyHashMap&lt;/code> und erweitern diese, damit sie Hash Funktionalität verwendet:&lt;/p>
+&lt;ol>
+&lt;li>Beim Hinzufügen von Zuweisungen wird der Hash-Code vom Schlüssel berechnet und ebenfalls abgespeichert.&lt;/li>
+&lt;li>Die Schlüsselsuche wird anschliessend über die gespeicherten Hash-Code der Schlüssel durchgeführt statt über die Schlüssel selbst.&lt;/li>
+&lt;li>Ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) soll umgesetzt werden.&lt;/li>
+&lt;/ol></description></item><item><title>Labs: Stack - Aufgaben</title><link>/labs/02_java/10_java-collections/04_stack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/10_java-collections/04_stack/</guid><description>
+&lt;h2 id="aufgabe-1-optional">Aufgabe 1 (Optional)&lt;/h2>
+&lt;p>Versuche eine eigene Stack-Klasse (&lt;code>MyStack&amp;lt;E&amp;gt;&lt;/code>) zu implementieren mithilfe von Arrays und verwende dabei keine anderen
+Collections-Klassen.&lt;/p>
+&lt;p>Die MyStack Klasse sollte eine dynamische Grösse haben, d.h. sie der Stack sollte beliebig wachsen können. Da der Stack
+mithilfe von Arrays implementiert werden soll, muss also in deiner Klasse die Kapazität des Stacks sichergestellt
+werden.&lt;/p>
+&lt;p>Implementiere die folgenden Methoden:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>public E push(E item)&lt;/code>&lt;/li>
+&lt;li>&lt;code>public E pop( )&lt;/code> (soll EmptyStackException werfen)&lt;/li>
+&lt;li>&lt;code>public E peek() &lt;/code> (soll EmptyStackException werfen)&lt;/li>
+&lt;li>&lt;code>int size()&lt;/code>&lt;/li>
+&lt;li>&lt;code>public boolean empty()&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Beachte, dass du die &lt;code>toString()&lt;/code> Methode anpasst, sodass die MyStack-Stacks beim printen übersichtlich dargestellt
+werden, wie im Beispiel oben: [blue, yellow, green, orange]&lt;/p>
+&lt;p>Zudem wird erwartet, dass ein eigenes Testing (wie in &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> gelernt) zu der Umsetzung gehört.&lt;/p>
+&lt;h2 id="aufgabe-2-optional">Aufgabe 2 (Optional)&lt;/h2>
+&lt;p>Erweitere deine MyStack Klasse. Implementiere zusätzlich die folgende Methode:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>public int search(Object o)&lt;/code>&lt;/li>
+&lt;/ul></description></item><item><title>Labs: Queue + Deque - Aufgaben</title><link>/labs/02_java/10_java-collections/05_queue/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/10_java-collections/05_queue/</guid><description>
+&lt;h2 id="aufgabe-1-optional">Aufgabe 1 (Optional)&lt;/h2>
+&lt;p>Wir implementieren eine einfache &lt;code>Job&lt;/code>-Verarbeitung.
+Zwei &lt;code>InputWorker&lt;/code> erstellen neue &lt;code>Job&lt;/code>&amp;rsquo;s, welche parallel von einem &lt;code>OutputWorker&lt;/code> abgearbeitet werden.&lt;/p>
+&lt;p>Jeder &lt;code>InputWorker&lt;/code> erstellt eine definierte Anzahl Jobs und stoppt anschliessend. Die Anzahl könnt ihr in der Start-Klasse anpassen: &lt;code>Start.INPUTWORKER_NUMBER_OF_JOBS&lt;/code>.&lt;/p>
+&lt;p>Nach jedem Arbeitsschritt (Job erstellen oder verarbeiten) machen die Workers eine kleine Pause.
+Ihr könnt die maximale zufällige Dauer über die statischen Variablen &lt;code>Start.INPUTWORKER_MAX_RELAX_TIME_MS&lt;/code> und &lt;code>Start.OUTPUTWORKER_MAX_RELAX_TIME_MS&lt;/code> steuern.
+Auch die maximal zufällige Dauer zum Abarbeiten eines Jobs kann definiert werden: &lt;code>Start.OUTPUTWORKER_MAX_PROCESS_TIME_MS&lt;/code>.&lt;/p>
+&lt;p>Der &lt;code>OutputWorker&lt;/code> stoppt, sobald er während einer Anzahl Durchgänge (&lt;code>Start.OUTPUTWORKER_STOP_AFTER_EMPTY_CYCLES&lt;/code>) keine Jobs zum Verarbeiten erhält.&lt;/p>
+&lt;p>Die Worker sind mit dem &lt;code>ProcessingInterface&lt;/code> entkoppelt, welches das Hinzufügen und Abholen der Jobs zur Verfügung stellt:&lt;/p>
+&lt;details>
+&lt;summary>Inferface ProcessingInterface&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.itninjas.labs.j7.queue;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">ProcessingInterface&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Add a job to the system.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return true if the job is added.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">addJob&lt;/span>(Job job);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Get the next job for processing.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> Job &lt;span style="color:#a6e22e">getNextJob&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Put the unprocessed job back to the system.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">getJobBack&lt;/span>(Job job);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Get the number of jobs in the system.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">getJobs&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Has jobs in the system for processing?
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">hasJobs&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;p>In der Konsole seht ihr die Arbeit der Workers:&lt;/p>
+&lt;details>
+&lt;summary>Mögliche Konsole-Ausgabe&lt;/summary>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span> [InputWorker-1] stared successfully
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [InputWorker-2] stared successfully
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-1] add job: Job{id=1, message=&amp;#39;[InputWorker-1]: (14:52:41) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-2] add job: Job{id=2, message=&amp;#39;[InputWorker-2]: (14:52:41) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-2] add job: Job{id=3, message=&amp;#39;[InputWorker-2]: (14:52:43) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-1] add job: Job{id=4, message=&amp;#39;[InputWorker-1]: (14:52:43) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [OutputWorker-1] stared successfully
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=1, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=1, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-2] add job: Job{id=5, message=&amp;#39;[InputWorker-2]: (14:52:43) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=2, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-1] add job: Job{id=6, message=&amp;#39;[InputWorker-1]: (14:52:44) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=2, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=3, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-1] add job: Job{id=7, message=&amp;#39;[InputWorker-1]: (14:52:44) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=3, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-2] add job: Job{id=8, message=&amp;#39;[InputWorker-2]: (14:52:45) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=4, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=4, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=5, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=5, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-1] add job: Job{id=9, message=&amp;#39;[InputWorker-1]: (14:52:46) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=6, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-&amp;gt; [InputWorker-2] add job: Job{id=10, message=&amp;#39;[InputWorker-2]: (14:52:47) It is a very hard job!&amp;#39;, jobState=NEW}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=6, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=7, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=7, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=8, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=8, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=9, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=9, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;- [OutputWorker-1] process job: Job{id=10, message=&amp;#39;It is a really hard job!&amp;#39;, jobState=IN_PROGRESS}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>== [OutputWorker-1] finish job: Job{id=10, message=&amp;#39;It job is finish!&amp;#39;, jobState=FINISH}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>?? [OutputWorker-1] Nothing to do, I stop.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/details>
+&lt;p>Mit der &lt;code>Start&lt;/code>-Klasse wird das gesamte System gestartet.
+Leider fehlt ein zentraler Teil des Systems:
+Ihr müsst das Interface &lt;code>ProcessingInterface&lt;/code> implementieren.&lt;/p>
+&lt;blockquote>
+&lt;p>Ihr findet den Programmcode im &lt;strong>work Repo&lt;/strong>:&lt;br>
+&lt;a href="https://github.com/it-ninjas/work/tree/main/labs/src/main/java/ch/itninjas/labs/j7/queue/lab1">https://github.com/it-ninjas/work/tree/main/labs/src/main/java/ch/itninjas/labs/j7/queue/lab1&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h3 id="aufgabe-11-optional">Aufgabe 1.1 (Optional)&lt;/h3>
+&lt;ol>
+&lt;li>Implementiert das &lt;code>ProcessingInterface&lt;/code> mit einer Queue, damit die Jobs im &lt;strong>FIFO-Prinzip&lt;/strong> (First-In-First-Out) verarbeitet werden.&lt;/li>
+&lt;li>Kontrolliert die Konsole-Ausgabe:
+&lt;ol>
+&lt;li>Ob alle Jobs verarbeitet wurden.&lt;/li>
+&lt;li>Ob die Jobs in der gewünschten Reihenfolge verarbeitet wurden.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Verändert die Pausen und Verarbeitungszeit der Worker und schaut euch der Einfluss in der Konsole an.&lt;/li>
+&lt;/ol>
+&lt;h3 id="aufgabe-12-optional">Aufgabe 1.2 (Optional)&lt;/h3>
+&lt;ol>
+&lt;li>Implementiert das &lt;code>ProcessingInterface&lt;/code> mit einer Queue, damit die Jobs im &lt;strong>LIFO-Prinzip&lt;/strong> (Last-In-First-Out) verarbeitet werden.&lt;/li>
+&lt;li>Kontrolliert die Konsole-Ausgabe:
+&lt;ol>
+&lt;li>Ob alle Jobs verarbeitet wurden.&lt;/li>
+&lt;li>Ob die Jobs in der gewünschten Reihenfolge (Last-In-First-Out) verarbeitet wurden.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Verändert die Pausen und Verarbeitungszeit der Worker und schaut euch der Einfluss in der Konsole an.&lt;/li>
+&lt;/ol>
+&lt;h2 id="aufgabe-2-optional">Aufgabe 2 (Optional)&lt;/h2>
+&lt;p>Erweitert den &lt;code>OutputWorker&lt;/code> so, dass er vor der Verarbeitung eines Jobs die Anzahl offener Jobs anzeigt.&lt;/p>
+&lt;h2 id="aufgabe-3-optional">Aufgabe 3 (Optional)&lt;/h2>
+&lt;p>Erweitert den OutputWorker so, dass er zufällig einzelne Jobs nicht erfolgreich bearbeiten kann und diese mit der Methode &lt;code>ProcessingInterface.getJobBack(Job job)&lt;/code> zurück in die Queue stellt.&lt;/p>
+&lt;h2 id="aufgabe-4-optional">Aufgabe 4 (Optional)&lt;/h2>
+&lt;p>Erstellt ein JUnit-Test (JUnit Version 5), welcher die Schnittstelle &lt;code>ProcessingInterface&lt;/code> der Klasse &lt;code>Processing&lt;/code> ausführlich testet.&lt;/p></description></item><item><title>Labs: LinkedList - Aufgaben</title><link>/labs/02_java/10_java-collections/07_linkedlist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/10_java-collections/07_linkedlist/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Du hast eine Playlist mit 5 Liedern, die in einer LinkedList gespeichert ist und wie folgt vordefiniert ist:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> LinkedList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> songList &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> LinkedList&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>(Arrays.&lt;span style="color:#a6e22e">asList&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Bohemian Rhapsody&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Stairway to Heaven&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Hotel California&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Imagine&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Hey Jude&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nun sollen verschiedene Aktionen mit der Playlist vorgenommen werden.&lt;/p>
+&lt;ol>
+&lt;li>Entferne den ersten Song in der Playlist.&lt;/li>
+&lt;li>Füge den Song &amp;ldquo;Blinding Lights&amp;rdquo; in der Mitte der Playlist ein.&lt;/li>
+&lt;li>Ersetze den letzten Song mit &amp;ldquo;Smells Like Teen Spirit&amp;rdquo;.&lt;/li>
+&lt;/ol>
+&lt;p>Schreibe anschliessend die Playlist in die Konsole. Vom Format her sollte die Ausgabe so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>Stairway to Heaven, Hotel California, Blinding Lights, Imagine, Smells Like Teen Spirit&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Um dieses Format zu erhalten, kannst du die Methode &lt;code>toString()&lt;/code> auf deiner LinkedList aufrufen.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Ausgabe überprüfen&lt;/strong>
+Verwende wieder die kleine Hilfsklasse &lt;a href="https://github.com/it-ninjas/code/blob/main/helper/src/main/java/ch/itninjas/validator/OutputValidation.java">&lt;code>OutputValidation&lt;/code>&lt;/a> zum Verifizieren des Konsolen-Outputs.
+Der Konsole-Output Hash für diese Aufgabe ist: &lt;strong>&lt;code>-642408310&lt;/code>&lt;/strong>&lt;/p>&lt;/blockquote></description></item></channel></rss>

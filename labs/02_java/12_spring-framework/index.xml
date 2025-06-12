@@ -1,0 +1,62 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Spring Framework</title><link>/labs/02_java/12_spring-framework/</link><description>Recent content in Spring Framework on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/labs/02_java/12_spring-framework/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Spring und Spring Boot - Aufgaben</title><link>/labs/02_java/12_spring-framework/01_spring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/12_spring-framework/01_spring/</guid><description>
+&lt;h1 id="aufträge">Aufträge&lt;/h1>
+&lt;h2 id="voraussetzungen">Voraussetzungen&lt;/h2>
+&lt;p>Im &lt;a href="/labs/02_java/11_java-jdbc/01_jdbc_exercises/">Lab zu Modul #J8 (JDBC)&lt;/a> hast du ein persistentes Notenverwaltungssystem umgesetzt.
+Zu diesem Zweck hast du eine MariaDB-Instanz mit folgenden Tabellen aufgesetzt:&lt;/p>
+&lt;ul>
+&lt;li>SCHOOL_SUBJECT&lt;/li>
+&lt;li>GRADE&lt;/li>
+&lt;li>SCHOOL_SUBJECT_GRADE&lt;/li>
+&lt;/ul>
+&lt;p>Mehr Details dazu findest du im obenerwähnten Lab. Diese Datenbank und das dazu gehörende Datenbankmodel wirst du für unsere Spring-Aufgabe benötigen.&lt;br>
+Bei Bedarf kannst du das Model erweitern.&lt;/p>
+&lt;h2 id="auftrag">Auftrag&lt;/h2>
+&lt;p>Die Aufgaben in diesem Lab führen dich Schritt für Schritt durch die Umsetzung einer Webanwendung mit Spring Boot, welche einem Notenverwaltungssystem entspricht.
+Die folgenden Abschnitte listen die groben Funktionalen (was soll die Anwendung können) und die nicht-funktionalen (zusätzliche Anforderungen z.B. an die Qualität der Anwendung) Anforderungen an die Anwendung auf.
+Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu &lt;a href="/docs/02_java/12_spring-framework/08_projekt-erstellen/">Spring Boot&lt;/a>.&lt;/p>
+&lt;h3 id="funktionale-anforderungen">Funktionale Anforderungen&lt;/h3>
+&lt;ul>
+&lt;li>Die Anwendung unterstützt zwei unterschiedliche Profile: &amp;ldquo;student&amp;rdquo; und &amp;ldquo;admin&amp;rdquo;&lt;/li>
+&lt;li>Wenn die Anwendung mit dem Profil &amp;ldquo;student&amp;rdquo; gestartet wird, stehen die folgenden Funktionalitäten zur Verfügung:
+&lt;ul>
+&lt;li>Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)&lt;/li>
+&lt;li>Alle Fächer und deren Durchschnittsnote auflisten&lt;/li>
+&lt;li>Für ein bestimmtes Fach:
+&lt;ul>
+&lt;li>Alle Noten und die Durchschnittsnote des Fachs auflisten&lt;/li>
+&lt;li>Eine neue Note hinzufügen&lt;/li>
+&lt;li>Eine bestehende Note ändern&lt;/li>
+&lt;li>Eine bestehende Note löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Wenn die Anwendung mit dem Profil &amp;ldquo;admin&amp;rdquo; gestartet wird, stehen zusätzlich auch folgende Funktionalitäten zur Verfügung:
+&lt;ul>
+&lt;li>Alle Fächer auflisten&lt;/li>
+&lt;li>Neue Fächer hinzufügen&lt;/li>
+&lt;li>Bestehende Fächer bearbeiten&lt;/li>
+&lt;li>Bestehende Fächer löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Die Anwendung bietet die Möglichkeit abzufragen, welches Profil gestartet ist.&lt;/li>
+&lt;/ul>
+&lt;h3 id="nicht-funktionale-anforderungen-nfas">Nicht funktionale Anforderungen (NFAs)&lt;/h3>
+&lt;ul>
+&lt;li>Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Packages aufgeteilt.&lt;/li>
+&lt;li>Eine Klasse hat eine einzige Aufgabe (Single Responsibility Principle).&lt;/li>
+&lt;li>Direkter Zugriff auf der internen Struktur einer Klasse ist verboten (Encapsulation / Information Hiding).&lt;/li>
+&lt;li>Jede Klasse ist getestet.&lt;/li>
+&lt;/ul>
+&lt;h2 id="unittests">Unittests&lt;/h2>
+&lt;p>Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus &lt;a href="/docs/02_java/08_java-testing/">J4 Testing&lt;/a> bereits kennen.&lt;/p>
+&lt;hr>
+&lt;p>Zurück zur &lt;a href="/docs/02_java/12_spring-framework/02_spring/">Spring&lt;/a> und &lt;a href="/docs/02_java/12_spring-framework/07_spring-boot/">Spring Boot&lt;/a> Theorie.&lt;/p></description></item><item><title>Labs: Spring Boot Testing - Aufgaben</title><link>/labs/02_java/12_spring-framework/02_spring_boot_testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/02_java/12_spring-framework/02_spring_boot_testing/</guid><description>
+&lt;h2 id="aufträge">Aufträge&lt;/h2>
+&lt;p>Erweitere/Korrigiere deine Tests aus den &lt;a href="/labs/02_java/12_spring-framework/01_spring/">Spring und Spring Boot Aufgaben&lt;/a> wie folgt:&lt;/p>
+&lt;ul>
+&lt;li>Schreibe Mockito-Tests für den Service, der die Schulfächer verwaltet (z.B. &lt;code>SchulfachAdminService&lt;/code>).&lt;/li>
+&lt;li>Ändere den Integrationstest zur Verwaltung von Schulfächern (z.B. &lt;code>AdminControllerIntegrationTest&lt;/code>) zu einem &lt;code>@WebMvcTest&lt;/code>.&lt;/li>
+&lt;li>Schreibe einen &lt;code>@DataJpaTest&lt;/code> respektive &lt;code>@DataJdbcTest&lt;/code>, der das Repository zur Verwaltung von Schulfächern inklusive seiner Entities abdeckt.&lt;/li>
+&lt;li>Schreibe einen &lt;code>@SpringBootTest&lt;/code> als kompletten Integrationstest, der vom Controller-Aufruf mittels &lt;code>MockMvc&lt;/code> bis auf die H2-DB “runter” geht. Teste, ob das Anlegen eines neuen Schulfachs funktioniert und ob die Daten persistiert werden.&lt;/li>
+&lt;/ul></description></item></channel></rss>
