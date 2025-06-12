@@ -2,7 +2,7 @@
 title: "Exam zu Angular"
 type: docs
 linkTitle: "Angular Exam - Notenverwaltung"
-weight: 3
+weight: 2
 date: 2023-05-24
 description: >
   Ein Angular Exam zum Erstellen eines Frontends zu einem bestehenden Backend.
@@ -10,7 +10,7 @@ description: >
 
 ## Inhalt
 
-Im Lab von [Spring Boot](../../../labs/02_java/12_spring-framework/01_Spring) hast du bereits ein Backend für eine
+Im Lab von [Spring Boot](../../../../labs/02_java/12_spring-framework/01_Spring) hast du bereits ein Backend für eine
 Notenverwaltung geschrieben. In diesem Exam sollst du zusätzlich ein Frontend schreiben, welches dieses Backend verwendet.
 Schlussendlich solltest du eine komplett selbst erstellte Fullstack Applikation haben, die einwandfrei funktioniert.
 

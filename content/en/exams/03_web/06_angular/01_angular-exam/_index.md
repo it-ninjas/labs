@@ -2,7 +2,7 @@
 title: "Exam zu den Angular-Basics"
 type: docs
 linkTitle: "Angular-Basics"
-weight: 2
+weight: 1
 date: 2021-05-09
 description: >
   Einfache Aufgaben zu den Basics von Angular.

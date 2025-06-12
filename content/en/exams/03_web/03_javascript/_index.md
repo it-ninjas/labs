@@ -12,11 +12,11 @@ description: >
 
 ![task1](/images/task.png) - Einzelarbeit
 
-Bei diesem Exam geht es darum, dass du das Dashboard, welches du im [HTML-CSS-Exam](../01_exam-html-css-rtm) geschrieben hast, mit JavaScript-Logik ergänzt.
+Bei diesem Exam geht es darum, dass du das Dashboard, welches du im [HTML-CSS-Exam](../02_html_css/01_exam-html-css-rtm) geschrieben hast, mit JavaScript-Logik ergänzt.
 
 Die Seite sollte ungefähr so aussehen:
 
-![asset](../01_exam-html-css-rtm)
+![asset](../02_html_css/01_exam-html-css-rtm/images/rtm-home-page.png)
 
 ## Zeitangaben aktualisieren
 
