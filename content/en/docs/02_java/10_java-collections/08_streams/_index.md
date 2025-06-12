@@ -423,4 +423,4 @@ System.out.println("Summe: " + sum);  // Ausgabe: Summe: 15
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1 - 3](../../../../labs/L02_java/L10_java-collections/L06_streams) in den Stream-Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1 - 3](../../../../labs/02_java/10_java-collections/06_streams) in den Stream-Labs.

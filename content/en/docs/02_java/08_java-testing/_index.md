@@ -1334,4 +1334,4 @@ Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Test
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../labs/L02_java/L08_java-testing) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../labs/02_java/08_java-testing) in den Labs.

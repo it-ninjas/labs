@@ -330,4 +330,4 @@ Falls du mehr über RegEx lernen möchtest empfehlen wir [dieses Tutorial](https
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben 6 und 7](../../../../labs/L02_java/L03_java-grundlagen/L01_basicexercises/#aufgabe-6---strings) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben 6 und 7](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-6---strings) in den Labs.

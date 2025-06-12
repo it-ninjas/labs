@@ -98,7 +98,7 @@ Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, emp
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2a zu den if-else-Bedingungen](../../../../labs/L02_java/L03_java-grundlagen/L01_basicexercises/#aufgabe-2a---die-if--und-else-bedingungen) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2a zu den if-else-Bedingungen](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-2a---die-if--und-else-bedingungen) in den Labs.
 
 ---
 
@@ -157,7 +157,7 @@ System.out.println("You're on the " + place + suffix + " place.");
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2b zum Switch-Statement](../../../../labs/L02_java/L03_java-grundlagen/L01_basicexercises/#aufgabe-2b---das-switch-statement) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2b zum Switch-Statement](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-2b---das-switch-statement) in den Labs.
 
 ---
 
@@ -264,4 +264,4 @@ Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, emp
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 3](../../../../labs/L02_java/L03_java-grundlagen/L01_basicexercises/#aufgabe-3---loops) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 3](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-3---loops) in den Labs.

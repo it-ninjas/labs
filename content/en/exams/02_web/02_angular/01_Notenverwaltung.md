@@ -10,7 +10,7 @@ description: >
 
 ## Inhalt
 
-Im Lab von [Spring Boot](../../../labs/L02_java/L12_spring-framework/L01_Spring) hast du bereits ein Backend für eine
+Im Lab von [Spring Boot](../../../labs/02_java/12_spring-framework/01_Spring) hast du bereits ein Backend für eine
 Notenverwaltung geschrieben. In diesem Exam sollst du zusätzlich ein Frontend schreiben, welches dieses Backend verwendet.
 Schlussendlich solltest du eine komplett selbst erstellte Fullstack Applikation haben, die einwandfrei funktioniert.
 

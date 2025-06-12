@@ -200,4 +200,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J6 - Java Collections - Queue + Deque](../../../../labs/L02_java/L10_java-collections/L05_queue)
+[Aufgaben zu Modul #J6 - Java Collections - Queue + Deque](../../../../labs/02_java/10_java-collections/05_queue)
