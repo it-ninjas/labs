@@ -1256,4 +1256,4 @@ bringt:
 ---
 
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte
-die [Aufgaben](../../../labs/L02_java/L07_java-ood) in den Labs.
+die [Aufgaben](../../../labs/02_java/07_java-ood) in den Labs.

@@ -9,7 +9,7 @@ description: >
 
 ## Aufträge
 
-Erweitere/Korrigiere deine Tests aus den [Spring und Spring Boot Aufgaben](../L01_Spring) wie folgt:
+Erweitere/Korrigiere deine Tests aus den [Spring und Spring Boot Aufgaben](../01_Spring) wie folgt:
 
 - Schreibe Mockito-Tests für den Service, der die Schulfächer verwaltet (z.B. `SchulfachAdminService`).
 - Ändere den Integrationstest zur Verwaltung von Schulfächern (z.B. `AdminControllerIntegrationTest`) zu einem `@WebMvcTest`.

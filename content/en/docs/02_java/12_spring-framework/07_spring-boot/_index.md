@@ -140,4 +140,4 @@ wo du die Breakpoints zu setzen hast. Im Zweifelsfall kann dir die Funktion Step
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/L02_java/L12_spring-framework/L01_Spring) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../labs/02_java/12_spring-framework/01_Spring) in den Labs.

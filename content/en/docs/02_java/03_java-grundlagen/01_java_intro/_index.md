@@ -130,4 +130,4 @@ public class HelloWorld {
 
 Jetzt kennst du die Grundstruktur eines Java-Programms! Probiere es aus, indem du dein erstes Programm schreibst und kompilierst.
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1](../../../../labs/L02_java/L03_java-grundlagen/L01_basicexercises/#aufgabe-1---ausgaben-auf-die-kommandozeile) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-1---ausgaben-auf-die-kommandozeile) in den Labs.

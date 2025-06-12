@@ -740,4 +740,4 @@ Wichtige Punkte zum Test:
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse die Aufgaben in [Spring Boot Testing - Aufgaben](../../../../labs/L02_java/L12_spring-framework/L02_Spring_Boot_Testing)!
+![task1](/images/task.png) Jetzt bist du dran. Löse die Aufgaben in [Spring Boot Testing - Aufgaben](../../../../labs/02_java/12_spring-framework/02_Spring_Boot_Testing)!

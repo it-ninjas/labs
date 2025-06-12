@@ -192,4 +192,4 @@ Der Hauptunterschied mit `immutable` Klassen ist daher, dass so viel öfters neu
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse alle verbleibenden [OOP Aufgaben](../../../../labs/L02_java/L04_java-oop).
+![task1](/images/task.png) Jetzt bist du dran. Löse alle verbleibenden [OOP Aufgaben](../../../../labs/02_java/04_java-oop).

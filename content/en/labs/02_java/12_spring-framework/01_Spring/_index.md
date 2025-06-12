@@ -11,7 +11,7 @@ description: >
 
 ## Voraussetzungen
 
-Im [Lab zu Modul #J8 (JDBC)](../../L11_java-jdbc/L01_Jdbc_Exercises) hast du ein persistentes Notenverwaltungssystem umgesetzt.
+Im [Lab zu Modul #J8 (JDBC)](../../11_java-jdbc/01_Jdbc_Exercises) hast du ein persistentes Notenverwaltungssystem umgesetzt.
 Zu diesem Zweck hast du eine MariaDB-Instanz mit folgenden Tabellen aufgesetzt:
 
 - SCHOOL_SUBJECT
