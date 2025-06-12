@@ -1,0 +1,64 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IT Ninjas – Objektorientierte Programmierung Exam</title><link>/exams/02_java/04_java-oop/</link><description>Recent content in Objektorientierte Programmierung Exam on IT Ninjas</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/exams/02_java/04_java-oop/index.xml" rel="self" type="application/rss+xml"/><item><title>Exams: Weltmeisterschaft</title><link>/exams/02_java/04_java-oop/01_weltmeisterschaft/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/exams/02_java/04_java-oop/01_weltmeisterschaft/</guid><description>
+&lt;p>&lt;em>Für dieses Exam dürfen auch Inhalte der Themen Lists und Generics verwendet werden.&lt;/em>&lt;/p>
+&lt;h2 id="weltmeisterschaft---oop-exam">Weltmeisterschaft - OOP Exam&lt;/h2>
+&lt;p>Bei diesem Exam geht es darum, dass du deine Vorgehensweise beim Erstellen eines objektorientierten Modells trainierst.&lt;/p>
+&lt;p>Zentral bei dieser Aufgabe ist also, wie du das Datenmodell erstellst, welches beschreibt, welche Klassen mit welchen Feldern und Methoden du schreibst.&lt;/p>
+&lt;p>Ziel ist nicht, dass du dich mit &lt;code>Scanner&lt;/code> oder viel Logik herumschlagen musst.&lt;/p>
+&lt;h3 id="sachverhalt">Sachverhalt&lt;/h3>
+&lt;p>Bei diesem Exam modellierst du das Turnier von der Fussball-WM 1954 in der Schweiz. Im Prinzip sollst du die Informationen, die in der &lt;a href="./results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei gespeichert sind, im Code abbilden.
+Die Idee ist nicht, dass du diese Datei im Programm ausliest oder diese Information mit &lt;code>System.out.print()&lt;/code> direkt ausgibst, sondern dass dein Code die Informationen repräsentiert. Mehr dazu in Aufgabe 3.&lt;/p>
+&lt;p>Deine Klassen sollen folgendes abbilden:&lt;/p>
+&lt;ul>
+&lt;li>In diesem Turnier (Competition) spielen die Mannschaften (Team) gegeneinander.&lt;/li>
+&lt;li>Jedes Spiel beschreibt entweder eine Vorrunde/Gruppenspiel (GROUP), PLAYOFF, Viertel- (QUARTER_FINAL), Halbfinale (SEMI_FINAL) oder FINAL.&lt;/li>
+&lt;li>Bei jedem Spiel (Game) gibt es immer eine Heim- (home) und Gast-Mannschaft (visiting/away team).&lt;/li>
+&lt;li>Bei jedem Spiel wird festgehalten, wie viele Tore (goals) welche Mannschaft (home oder visiting) geschossen hat. Zudem wird festgehalten, wo (location) das Spiel stattgefunden hat.&lt;/li>
+&lt;/ul>
+&lt;h3 id="was-soll-die-anwendung-können">Was soll die Anwendung können?&lt;/h3>
+&lt;p>Auf Stufe Spiel (Game)&lt;/p>
+&lt;ul>
+&lt;li>möchten wir wissen, ob eine bestimmte Mannschaft dieses Spiel gespielt hat (&lt;code>didTeamPlayThisGame(team)&lt;/code>).&lt;/li>
+&lt;li>Zudem möchten wir schnell ermitteln können, wie viele Punkte eine Mannschaft in diesem Spiel erzielt hat (Sieg: 3, Unentschieden: 1, Niederlage: 0) (&lt;code>getPointsFor(team)&lt;/code>).&lt;/li>
+&lt;/ul>
+&lt;p>Auf Stufe Turnier (Competition)&lt;/p>
+&lt;ul>
+&lt;li>wollten wir ermitteln können, welche Mannschaft wie viele Punkte während der Gruppenphase erzielt hat (&lt;code>getScoresDuringGroupStageFor(team)&lt;/code>).&lt;/li>
+&lt;li>Zudem möchten wir herausfinden, wie viele Tore eine Mannschaft während des ganzen Turniers geschossen hat (&lt;code>getGoalsForTeam(team)&lt;/code>).&lt;/li>
+&lt;li>Des Weiteren wollen wir eine Auflistung, welche Spiele alles an einem bestimmten Ort (location) stattgefunden haben (&lt;code>getAllGamesForLocation(location)&lt;/code>).&lt;/li>
+&lt;/ul>
+&lt;p>Abgesehen von der &lt;code>main(...)&lt;/code>-Methode soll keine weitere Methode statisch sein.&lt;/p>
+&lt;h3 id="aufgaben">Aufgaben&lt;/h3>
+&lt;h4 id="aufgabe-1---entwurf">Aufgabe 1 - Entwurf&lt;/h4>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Erstelle einen Entwurf vom Klassenmodell.&lt;/p>
+&lt;ul>
+&lt;li>Der Entwurf kann auf Papier oder mit einem Tool (z.B. draw.io, Visio, plantUML) erstellt werden.&lt;/li>
+&lt;li>Plane auch schon die Methoden im Entwurf ein.&lt;/li>
+&lt;/ul>
+&lt;p>Zeige den Entwurf zuerst einem Praxisbildner, bevor du weiterfährst.&lt;/p>
+&lt;h4 id="aufgabe-2---klassen-umsetzen">Aufgabe 2 - Klassen umsetzen&lt;/h4>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Setze die Klassen im Code um, inkl. Methoden.&lt;/p>
+&lt;p>Für den Moment müssen die Methoden noch nichts machen und sollen für den Beginn nur einen Default-Wert zurückgeben - der Einfachheit halber.&lt;/p>
+&lt;p>Ziel dieser Aufgabe ist, dass du dich nur aufs Klassen-Design im Code konzentrierst, nicht aber um die konkreten Methoden-Umsetzungen.&lt;/p>
+&lt;h4 id="aufgabe-3---methoden-umsetzen">Aufgabe 3 - Methoden umsetzen&lt;/h4>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Setze nun die Methoden korrekt um.&lt;/p>
+&lt;p>Verwende zur Demonstration die Daten aus der &lt;a href="./results.txt" download>&lt;code>results.txt&lt;/code>&lt;/a>-Datei. Du sollst die Daten nicht automatisiert via Dateisystem laden, sondern du kannst die Informationen aus dieser Datei direkt hartkodiert in eine &lt;code>.java&lt;/code>-Datei hinein kopieren und in Java-Code umschreiben, damit es mit deinen Klassen kompatibel ist. Damit ist keine Hexerei erwartet, sondern wenn z.B. folgendes in der &lt;code>results.txt&lt;/code>-Datei steht&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span># Gruppe 1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Frankreich Jugoslawien 0:1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>dann kannst du das wie folgt direkt in deine Java-Datei schreiben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">new&lt;/span> Game(FRANCE, YUGOSLAVIA, 0, 1);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
