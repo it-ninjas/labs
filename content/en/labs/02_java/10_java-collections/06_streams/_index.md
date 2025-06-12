@@ -2,7 +2,7 @@
 title: "Streams Basics - Aufgaben"
 linkTitle: "Streams Basics - Aufgaben"
 type: docs
-weight: 1
+weight: 6
 description: >
   Aufgaben zu Modul #J6 - Collections
 ---
