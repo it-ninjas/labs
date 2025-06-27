@@ -295,10 +295,11 @@ macOS: Cmd + Option + L&lt;/p>
 &lt;/ul>
 &lt;h2 id="maven">Maven&lt;/h2>
 &lt;h3 id="allgemeine-informationen">Allgemeine Informationen&lt;/h3>
-&lt;p>Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus steuern.
-Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt.
-Ein Build ist der Prozess, bei dem der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch Kompilieren und Paketieren.
-Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte Plattform reichen.&lt;/p>
+&lt;p>Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus
+steuern. Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Ein Build ist der Prozess, bei dem
+der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch Kompilieren und Paketieren.
+Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte
+Plattform reichen.&lt;/p>
 &lt;p>Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:&lt;/p>
 &lt;ul>
 &lt;li>Eine Maven-Installation, entweder separat oder Built-In wie beispielsweise mit IntelliJ&lt;/li>
@@ -308,60 +309,85 @@ Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Ausliefer
 &lt;li>Eine Konfigurationsdatei mit dem Namen settings.xml&lt;/li>
 &lt;/ul>
 &lt;hr>
-&lt;h3 id="manuelle-installation">Manuelle Installation&lt;/h3>
-&lt;p>Idealerweise wurde Apache Maven bereits mit IntelliJ installiert. Damit du Maven auch auf der Kommandozeile ausführen kannst, kannst du Maven hier herunterladen:
-&lt;a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi&lt;/a>. Verwende die Binary anstelle der Source, und zwar am besten die Datei im &lt;code>Binary zip archive&lt;/code> Format.&lt;/p>
+&lt;h3 id="installation">Installation&lt;/h3>
+&lt;h4 id="manuelle-installation">Manuelle Installation&lt;/h4>
+&lt;p>Idealerweise wurde Apache Maven bereits mit IntelliJ installiert. Alternativ kannst du Maven auch hier herunterladen:
+&lt;a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi&lt;/a>. Verwende die Binary anstelle der Source,
+und zwar am besten die Datei im &lt;code>Binary zip archive&lt;/code> Format.&lt;/p>
 &lt;p>Klicke dazu auf den folgenden Link, wie hier im Beispiel:
 &lt;img src="/docs/02_java/05_maven/images/maven_download.png" alt="Apache Maven Project Download (Stand: 22.09.2024)" title="Maven Download Seite">&lt;/p>
 &lt;p>Nachdem du die Datei heruntergeladen hast, kannst du den folgenden Ordner erstellen:&lt;br>
 &lt;code>C:\Program Files\Apache\Maven\&lt;/code>.&lt;/p>
 &lt;p>Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariablen auf dieses Verzeichnis setzen.&lt;/p>
 &lt;hr>
-&lt;h3 id="umgebungsvariablen-setzen">Umgebungsvariablen setzen&lt;/h3>
-&lt;p>Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
-Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:&lt;/p>
+&lt;h4 id="intellij-idea">IntelliJ IDEA&lt;/h4>
+&lt;p>Ist IntelliJ installiert, findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise
+sind diese Einstellungen bereits korrekt.&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/05_maven/images/intellij_maven_settings.png" alt="Intellij Maven settings">&lt;/p>
+&lt;p>Die wichtigsten Einstellungen sind:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th>#&lt;/th>
+&lt;th>Einstellung&lt;/th>
 &lt;th>Beschreibung&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Anwendung &amp;ldquo;Systemumgebungsvariablen bearbeiten&amp;rdquo; aus der Systemsteuerung starten. Falls das nicht geht, musst du dir (temporär) lokale Admin-Rechte aktivieren.&lt;/td>
+&lt;td>Maven home directory&lt;/td>
+&lt;td>Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als &amp;ldquo;Bundled&amp;rdquo; bezeichnet.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Unten rechts auf den Button &amp;ldquo;Umgebungsvariablen&amp;rdquo; klicken.&lt;/td>
+&lt;td>User settings file&lt;/td>
+&lt;td>Die XML-Datei, welche bei der Installation angelegt wurde.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Im unteren Teil &amp;ldquo;Benutzervariablen&amp;rdquo; die Variable &amp;ldquo;Path&amp;rdquo; suchen und anklicken.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>4&lt;/td>
-&lt;td>Auf den Button &amp;ldquo;Bearbeiten&amp;hellip;&amp;rdquo; klicken.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>5&lt;/td>
-&lt;td>Oben rechts auf den Button &amp;ldquo;Neu&amp;rdquo; klicken, es erscheint eine neue Zeile ganz unten.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>6&lt;/td>
-&lt;td>Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte auf bin zeigen, also zum Beispiel: &lt;strong>C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin&lt;/strong>. Du musst sicherstellen, dass die Version mit deiner heruntergeladenen Version übereinstimmt.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>7&lt;/td>
-&lt;td>Alle offenen Windows-Fenster mit &amp;ldquo;OK&amp;rdquo; schliessen.&lt;/td>
+&lt;td>Local repository&lt;/td>
+&lt;td>Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\&amp;lt;Personalnummer&amp;gt;\.m2.\repository zu finden.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter &lt;em>Eingabeaufforderung&lt;/em> oder &lt;em>cmd&lt;/em> in der Windows Suche) aus:&lt;br>
-&lt;code>mvn -version&lt;/code>&lt;/p>
-&lt;p>Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:&lt;br>
-&lt;code>Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)&lt;/code>&lt;/p>
+&lt;p>Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository
+korrekt sind.&lt;/p>
+&lt;hr>
+&lt;h3 id="umgebungsvariablen-setzen">Umgebungsvariablen setzen&lt;/h3>
+&lt;p>Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
+Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die
+Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Anwendung &amp;ldquo;Systemumgebungsvariablen bearbeiten&amp;rdquo; aus der Systemsteuerung starten. Falls das nicht geht, musst du dir
+(temporär) lokale Admin-Rechte aktivieren.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Unten rechts auf den Button &amp;ldquo;Umgebungsvariablen&amp;rdquo; klicken.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Im unteren Teil &amp;ldquo;Benutzervariablen&amp;rdquo; die Variable &amp;ldquo;Path&amp;rdquo; suchen und anklicken.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Auf den Button &amp;ldquo;Bearbeiten&amp;hellip;&amp;rdquo; klicken.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Oben rechts auf den Button &amp;ldquo;Neu&amp;rdquo; klicken, es erscheint eine neue Zeile ganz unten.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte
+auf das Verzeichnis bin zeigen, also zum Beispiel:&lt;/p>
+&lt;ul>
+&lt;li>manuelle Installation: &lt;strong>C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin&lt;/strong>&lt;/li>
+&lt;li>IntelliJ installiert: &lt;strong>C:\Users\u&amp;hellip;&amp;hellip;\AppData\Local\Programs\IntelliJ IDEA Ultimate\plugins\maven\lib\maven3\bin&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Alle offenen Windows-Fenster mit &amp;ldquo;OK&amp;rdquo; schliessen.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter
+&lt;em>Eingabeaufforderung&lt;/em> oder &lt;em>cmd&lt;/em> in der Windows Suche) aus:&lt;/p>
+&lt;p>&lt;code>mvn -version&lt;/code>&lt;/p>
+&lt;p>Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:&lt;/p>
+&lt;p>&lt;code>Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)&lt;/code>&lt;/p>
 &lt;p>&lt;img src="/docs/02_java/05_maven/images/cmd_maven_version.png" alt="Maven Version">&lt;/p>
 &lt;p>Die Version muss nicht mit deiner übereinstimmen.&lt;/p>
 &lt;details>
@@ -403,37 +429,10 @@ Dafür musst du zuerst herausfinden, wo sich die Installation befindet.&lt;/p>
 &lt;/div>&lt;p>Ersetze &lt;code>{JDK home path}&lt;/code> mit deinem kopierten Wert. Öffne danach ein neues Terminal und versuche es erneut.&lt;/p>
 &lt;/details>
 &lt;hr>
-&lt;h3 id="intellij-idea-einrichten">IntelliJ IDEA einrichten&lt;/h3>
-&lt;p>Im IntelliJ findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise sind diese Einstellungen bereits korrekt.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/05_maven/images/intellij_maven_settings.png" alt="Intellij Maven settings">&lt;/p>
-&lt;p>Die wichtigsten Einstellungen sind:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Einstellung&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Maven home directory&lt;/td>
-&lt;td>Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als &amp;ldquo;Bundled&amp;rdquo; bezeichnet.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>User settings file&lt;/td>
-&lt;td>Die XML-Datei, welche bei der Installation angelegt wurde.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Local repository&lt;/td>
-&lt;td>Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\&amp;lt;Personalnummer&amp;gt;\.m2.\repository zu finden.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository korrekt sind.&lt;/p>
-&lt;hr>
 &lt;h3 id="pomxml">pom.xml&lt;/h3>
-&lt;p>Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem umfangreichen Beispiel.
-Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses Project Object Model nicht alle Inhalte vollständig erklärt, sondern nur als erstes Beispiel dient.&lt;/p>
+&lt;p>Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem
+umfangreichen Beispiel. Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses
+Project Object Model nicht alle Inhalte vollständig erklärt, sondern nur als erstes Beispiel dient.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -599,13 +598,22 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h4 id="abschnitt-1">Abschnitt 1&lt;/h4>
-&lt;p>Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.&lt;/p>
+&lt;p>Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei
+optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.&lt;/p>
 &lt;h4 id="abschnitt-2">Abschnitt 2&lt;/h4>
 &lt;p>Die Angaben zum Artefakt enthalten die folgenden Informationen:&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>Gruppen-ID&lt;/strong>: Die Gruppen-ID ist in Maven normalerweise als umgekehrte Domain-Name-Notation (Reverse Domain Name Notation) aufgebaut, ähnlich wie bei Java-Paketen. Diese Struktur dient dazu, Konflikte zwischen Artefakten von verschiedenen Organisationen zu vermeiden. Zum Beispiel wird die Gruppen-ID für ein Projekt der SBB oft in der Form ch.sbb beginnen, da sbb.ch die Domain der Schweizerischen Bundesbahnen ist. Beispiel: ch.sbb.interviewtool&lt;/li>
-&lt;li>&lt;strong>Artefakt-ID&lt;/strong>: Die Artefakt-ID ist der eindeutige Name eines Projekts oder einer Komponente, der zusammen mit der Gruppen-ID und der Version verwendet wird, um ein Artefakt im Repository eindeutig zu identifizieren. Beispiel: interviewtool-backend, mit der Gruppen-ID: ch.sbb.interviewtool:interviewtool-backend.&lt;/li>
+&lt;li>&lt;strong>Gruppen-ID&lt;/strong>: Die Gruppen-ID ist in Maven normalerweise als umgekehrte Domain-Name-Notation (Reverse Domain Name
+Notation) aufgebaut, ähnlich wie bei Java-Paketen. Diese Struktur dient dazu, Konflikte zwischen Artefakten von
+verschiedenen Organisationen zu vermeiden. Zum Beispiel wird die Gruppen-ID für ein Projekt der SBB oft in der
+Form ch.sbb beginnen, da sbb.ch die Domain der Schweizerischen Bundesbahnen ist. Beispiel: ch.sbb.interviewtool&lt;/li>
+&lt;li>&lt;strong>Artefakt-ID&lt;/strong>: Die Artefakt-ID ist der eindeutige Name eines Projekts oder einer Komponente, der zusammen mit der
+Gruppen-ID und der Version verwendet wird, um ein Artefakt im Repository eindeutig zu identifizieren. Beispiel:
+interviewtool-backend, mit der Gruppen-ID: ch.sbb.interviewtool:interviewtool-backend.
+&lt;ul>
 &lt;li>&lt;strong>Version&lt;/strong>: Die momentane Version des Projekts, diese wird später durch Releases verändert.&lt;/li>
+&lt;/ul>
+&lt;/li>
 &lt;li>&lt;strong>Paketierung&lt;/strong>: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR).&lt;/li>
 &lt;/ul>
 &lt;p>Bei der Versionierung nutzt Maven die folgenden Standards:&lt;/p>
@@ -651,13 +659,18 @@ Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte,
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version &lt;strong>1.2-beta-2&lt;/strong> älter als die Version &lt;strong>1.2&lt;/strong>.
-Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den Vergleich dieser als String verglichen. So ist die Version &lt;strong>1.2-beta-2&lt;/strong> neuer als die Version &lt;strong>1.2-alpha-6&lt;/strong>.&lt;/p>
-&lt;p>Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version &lt;strong>0.1.2-SNAPSHOT&lt;/strong> sehr wahrscheinlich als Version &lt;strong>0.1.2&lt;/strong> ausgeliefert werden.&lt;/p>
+&lt;p>Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version
+&lt;strong>1.2-beta-2&lt;/strong> älter als die Version &lt;strong>1.2&lt;/strong>. Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den
+Vergleich dieser als String verglichen. So ist die Version &lt;strong>1.2-beta-2&lt;/strong> neuer als die Version &lt;strong>1.2-alpha-6&lt;/strong>.&lt;/p>
+&lt;p>Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version
+&lt;strong>0.1.2-SNAPSHOT&lt;/strong> sehr wahrscheinlich als Version &lt;strong>0.1.2&lt;/strong> ausgeliefert werden.&lt;/p>
 &lt;h4 id="abschnitt-3">Abschnitt 3&lt;/h4>
-&lt;p>Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten Parent-Projekts hinterlegt werden. Dies ist vor allem bei &lt;a href="/docs/02_java/12_spring-framework/07_spring-boot/">Spring-Boot&lt;/a> Projekten wichtig.&lt;/p>
+&lt;p>Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten
+Parent-Projekts hinterlegt werden. Dies ist vor allem bei &lt;a href="/docs/02_java/12_spring-framework/07_spring-boot/">Spring-Boot&lt;/a>
+Projekten wichtig.&lt;/p>
 &lt;h4 id="abschnitt-4">Abschnitt 4&lt;/h4>
-&lt;p>Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine Version definiert werden.&lt;/p>
+&lt;p>Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine
+Version definiert werden.&lt;/p>
 &lt;p>Beispiel:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -678,28 +691,149 @@ Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den Vergleich di
 &lt;/div>
 &lt;/div>&lt;p>auf die Einstellung (Tag) und damit auf dessen Wert (Value) zugegriffen werden.&lt;/p>
 &lt;h4 id="abschnitt-5">Abschnitt 5&lt;/h4>
-&lt;p>Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR ausgeliefert.
-Eine Liste der möglichen Typen findest du hier: &lt;a href="https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html">https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html&lt;/a>.
-Vielfach wird auch der Scope verwendet, der angibt, in welchem Umfang die Fremdbibliothek einbezogen wird.
+&lt;p>Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der
+Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR
+ausgeliefert.&lt;/p>
+&lt;p>Eine Liste der möglichen Typen findest du hier:
+&lt;a href="https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html">https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html&lt;/a>.&lt;/p>
+&lt;p>Vielfach wird auch der Scope verwendet, der angibt, in welchem Umfang die Fremdbibliothek einbezogen wird.
 Mögliche Scopes sind unter anderem:&lt;/p>
 &lt;ul>
-&lt;li>compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also mitausgeliefert.&lt;/li>
-&lt;li>provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und bereitgestellt wird.&lt;/li>
-&lt;li>runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur Verfügung.&lt;/li>
+&lt;li>compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also
+mitausgeliefert.&lt;/li>
+&lt;li>provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und
+bereitgestellt wird.&lt;/li>
+&lt;li>runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur
+Verfügung.&lt;/li>
 &lt;li>test - Die Bibliothek steht nur für Tests zur Verfügung und wird nur fürs Testing benötigt.&lt;/li>
 &lt;li>system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss.&lt;/li>
 &lt;/ul>
+&lt;p>Das &lt;a href="https://mvnrepository.com/">MVN Repository&lt;/a> stellt eine Vielzahl von Fremdbibliotheken zur Verfügung. Maven
+versucht Abhängigkeiten über dieses Repository aufzulösen.&lt;/p>
+&lt;h5 id="beispiel-einer-abhängigkeit-junit-jupiter-engine">Beispiel einer Abhängigkeit (junit-jupiter-engine)&lt;/h5>
+&lt;p>Die Dependency &lt;code>junit-jupiter-engine&lt;/code> ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
+einem weit verbreiteten Test-Framework für Java. Im Kapitel &lt;a href="/docs/02_java/08_java-testing/">Testing&lt;/a> wirst diese ausführlich genutzt.&lt;/p>
+&lt;p>Ein weiteres Beispiel für eine Abhängigkeit ist &lt;code>lombok&lt;/code>. Diese Library wird im Kapitel &lt;a href="/docs/02_java/06_lombok/">Lombok&lt;/a> ausführlich
+beschrieben.&lt;/p>
 &lt;h4 id="abschnitt-6">Abschnitt 6&lt;/h4>
-&lt;p>Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische Erweiterungen beliebig angepasst werden.
-Es ist auch möglich, eigene Maven-Plugins zu entwickeln. Es stehen sehr viele Plugins für Maven zur Verfügung, eine Übersicht gibt es &lt;a href="https://maven.apache.org/plugins/index.html">hier&lt;/a>.&lt;/p>
+&lt;p>Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische
+Erweiterungen beliebig angepasst werden. Es ist auch möglich, eigene Maven-Plugins zu entwickeln. Es stehen sehr viele
+Plugins für Maven zur Verfügung, eine Übersicht gibt es &lt;a href="https://maven.apache.org/plugins/index.html">hier&lt;/a>.&lt;/p>
 &lt;h4 id="abschnitt-7">Abschnitt 7&lt;/h4>
 &lt;p>Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.&lt;/p>
 &lt;hr>
-&lt;h3 id="beispiel-einer-abhängigkeit-spring-boot-starter">Beispiel einer Abhängigkeit (spring-boot-starter)&lt;/h3>
-&lt;p>Die Dependency &lt;code>spring-boot-starter&lt;/code> ist eine grundlegende Bibliothek für Spring-Boot Projekte, die automatisch alle benötigten Abhängigkeiten einbindet, um die Anwendung zu starten und auszuführen. Dadurch wird der Aufbau von Spring-Anwendungen vereinfacht, da häufig verwendete Bibliotheken in einem einzigen Package zusammengefasst sind.&lt;/p>
-&lt;p>Ein weiteres Beispiel für eine Abhängigkeit ist &lt;a href="/docs/02_java/06_lombok/">Lombok&lt;/a>. Diese Library wird in einem eigenen Kapitel ausführlich beschrieben.&lt;/p>
+&lt;h3 id="maven-mirror">Maven Mirror&lt;/h3>
+&lt;p>Ein Mirror in Maven ist eine alternative Quelle, von der Maven Artefakte (wie Abhängigkeiten, Plugins usw.) herunterladen
+kann. Mirrors werden verwendet, um die Verfügbarkeit und Geschwindigkeit des Downloads zu verbessern, insbesondere wenn
+das Standard-Repository (z. B. Maven Central) aus irgendeinem Grund nicht erreichbar ist oder wenn ein internes
+Repository bevorzugt wird.&lt;/p>
+&lt;h4 id="konfiguration-eines-mirrors">Konfiguration eines Mirrors&lt;/h4>
+&lt;p>Die Konfiguration eines Mirrors erfolgt in der settings.xml-Datei von Maven. Diese Datei befindet sich normalerweise im
+Verzeichnis &lt;code>~/.m2&lt;/code> (bei Unix/Linux) oder &lt;code>%USERPROFILE%\.m2&lt;/code> (bei Windows).&lt;/p>
+&lt;p>Hier ist ein Beispiel, wie ein Mirror in der settings.xml konfiguriert werden kann:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirrors&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirror&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;my-internal-repo&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">name&lt;/span>&amp;gt;My Internal Repository&amp;lt;/&lt;span style="color:#f92672">name&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;http://my.internal.repo/repository/maven-public/&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirrorOf&lt;/span>&amp;gt;*&amp;lt;/&lt;span style="color:#f92672">mirrorOf&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">mirror&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">mirrors&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="repository-und-deployment">Repository und Deployment&lt;/h3>
+&lt;p>Artefakte, welche mit Maven gebildet werden, kommen zuerst in ein lokales Repository. Von dort können sie dann wieder
+verwendet werden (z.B. für Testing). Will man eine Version auch anderen Entwicklern zur Vefügung stellen, kann man das
+Projekt deployen. Dazu muss man aber zuerst ein Repository konfigurieren, damit Maven weiss, wohin die Artefakte sollen.&lt;/p>
+&lt;p>Da das Deployment projektspezifisch ist, erfolgt die Konfiguration für das Repository im &lt;code>pom.xml&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">project&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;remoteRepository&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;file:///C:/Development/Repository&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">project&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im obigen Beispiel wurde ein lokales Repository konfiguriert. Die &lt;code>url&lt;/code> kann auch auf einen Remote Server verweisen
+(Maven Central, JFrog Artifactery, Azure Artifacts, &amp;hellip;).&lt;/p>
+&lt;p>Falls der Zugriff auf ein Repository eine Berechtigung benötigt, wird diese im &lt;code>settings.xml&lt;/code> abgelegt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">settings&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">servers&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">server&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;remoteRepository&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">username&lt;/span>&amp;gt;your-username&amp;lt;/&lt;span style="color:#f92672">username&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">password&lt;/span>&amp;gt;your-password&amp;lt;/&lt;span style="color:#f92672">password&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">server&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">servers&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;blockquote>
+&lt;p>Das speichern von Zugangsdaten in &lt;code>settings.xml&lt;/code> stellt sicher, dass diese nicht in ein Code Repository gelangen und so
+in falsche Hände geraten können.&lt;/p>&lt;/blockquote>&lt;/blockquote>
 &lt;h3 id="commands">Commands&lt;/h3>
-&lt;p>Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt, kannst du das Terminal öffnen und den folgenden Befehl eingeben:&lt;/p>
+&lt;p>Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt,
+kannst du das Terminal öffnen und den folgenden Befehl eingeben:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -756,7 +890,8 @@ Das ist grundsätzlich sehr praktisch, wenn man doppelte Abhängigkeiten erkenne
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Kompiliert den Sourcecode je nach Abhängigkeit von Plugins.
-Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung herangezogen.&lt;/p>
+Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung
+herangezogen.&lt;/p>
 &lt;h4 id="test">test&lt;/h4>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -776,7 +911,8 @@ Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird diese
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn package
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das Verzeichnis &amp;ldquo;target&amp;rdquo;.&lt;/p>
+&lt;/div>&lt;p>Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das
+Verzeichnis &amp;ldquo;target&amp;rdquo;.&lt;/p>
 &lt;h4 id="verify">verify&lt;/h4>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -786,7 +922,8 @@ Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird diese
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn verify
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen Maven-Befehl vorausgesetzt.&lt;/p>
+&lt;/div>&lt;p>Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen
+Maven-Befehl vorausgesetzt.&lt;/p>
 &lt;h4 id="install">install&lt;/h4>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -806,7 +943,8 @@ Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird diese
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn install -DskipTests
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Mit dem Parameter &lt;code>-DskipTests&lt;/code> kannst du die Ausführung der Tests während der Installation überspringen, um Zeit zu sparen. Der Parameter kann auch bei anderen Aktionen wie &lt;code>compile&lt;/code>, &lt;code>package&lt;/code> usw. verwendet werden.&lt;/p>
+&lt;/div>&lt;p>Mit dem Parameter &lt;code>-DskipTests&lt;/code> kannst du die Ausführung der Tests während der Installation überspringen, um Zeit zu
+sparen. Der Parameter kann auch bei anderen Aktionen wie &lt;code>compile&lt;/code>, &lt;code>package&lt;/code> usw. verwendet werden.&lt;/p>
 &lt;h4 id="deploy">deploy&lt;/h4>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -830,7 +968,10 @@ Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird diese
 &lt;hr>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/05_maven/">Aufgaben&lt;/a> in den Labs.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img src="/images/hint.png" alt="hint-gradle"> (Optional) &lt;strong>Gradle&lt;/strong>: Als Alternative zu Maven wird oft auch das Build-System &lt;a href="https://docs.gradle.org/">Gradle&lt;/a> eingesetzt. Unter &lt;a href="https://docs.gradle.org/current/samples/sample_building_java_applications.html">Building Java Applications Sample&lt;/a> kannst du dir einen ersten Eindruck verschaffen.&lt;/p></description></item><item><title>Docs: Lombok</title><link>/docs/02_java/06_lombok/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/06_lombok/</guid><description>
+&lt;p>&lt;img src="/images/hint.png" alt="hint-gradle"> (Optional) &lt;strong>Gradle&lt;/strong>: Als Alternative zu Maven wird oft auch das Build-System
+&lt;a href="https://docs.gradle.org/">Gradle&lt;/a> eingesetzt. Unter
+&lt;a href="https://docs.gradle.org/current/samples/sample_building_java_applications.html">Building Java Applications Sample&lt;/a>
+kannst du dir einen ersten Eindruck verschaffen.&lt;/p></description></item><item><title>Docs: Lombok</title><link>/docs/02_java/06_lombok/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/06_lombok/</guid><description>
 &lt;p>Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
 Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.&lt;/p>
 &lt;p>&lt;strong>(*) Info:&lt;/strong>
