@@ -1,0 +1,15 @@
+{{ $inner := trim .Inner " \n\r\t" }}
+
+{{ if strings.HasPrefix $inner "<!--" }}
+  {{ $inner = $inner | replaceRE "^<!--\\s*" "" }}
+{{ end }}
+
+{{ if strings.HasSuffix $inner "-->" }}
+  {{ $inner = $inner | replaceRE "\\s*-->$" "" }}
+{{ end }}
+
+{{ $inner = printf "\n\n%s\n\n" $inner }}
+
+<div class="is-os-linux" style="display: none;">
+  {{ $inner | markdownify }}
+</div>

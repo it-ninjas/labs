@@ -1,0 +1,22 @@
+{{- $type := .Get 0 | default "info" -}}
+{{- $type := .Get "type" | default $type -}}
+{{- $icons := dict "info" "it-ninja-info.png" "warning" "it-ninja-warning.png" "tip" "it-ninja-tip.png" -}}
+{{- $bgcolors := dict "info" "#e0f2fe" "warning" "#fef3c7" "tip" "#dcfce7" -}}
+
+{{ $inner := .Inner }}
+
+{{ if findRE "^\\s*<!--" $inner }}
+  {{ $inner = $inner | replaceRE "^\\s*<!--\\s*" "" }}
+  {{ $inner = $inner | replaceRE "\\s*-->\\s*$" "" }}
+{{ end }}
+
+{{ $inner = printf "%s\n" $inner }}
+
+<div style="display: flex; align-items: flex-start; background-color: {{ index $bgcolors $type }}; margin-bottom: 1rem; border-radius: 6px">
+  <div style="flex-shrink: 0; margin-right: 1rem">
+    <img src="{{ "images/" | relURL }}{{ index $icons $type }}" alt="it-ninja {{ $type }}" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+  </div>
+  <div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+    {{ $inner | markdownify }}
+  </div>
+</div>

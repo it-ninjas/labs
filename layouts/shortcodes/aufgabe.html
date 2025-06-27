@@ -1,0 +1,10 @@
+{{ $target := .Get 0 }}
+{{ $sanitized := replace (replace (replace $target "/" "" ) "." "-" ) "_" "-" }}
+
+<p id="back-from-lab" data-url="{{ $sanitized }}">
+  <a href="{{ $target }}">
+  <img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+  </a>
+  Neu für 2025: Jetzt bist du dran. Löse bitte die folgende 
+  <a href="{{ $target }}">Aufgabe</a> in den Labs.
+</p>

@@ -1,0 +1,110 @@
+{{/* 
+  Shortcode `oscode` zur Darstellung von mehrteiligen Codeblöcken mit Betriebssystem-abhängiger Sichtbarkeit 
+  und optionalem Syntax-Highlighting.
+
+  Verwendet wird:
+    {{< oscode os="windows" lang="powershell" >}} ... {{< /oscode >}}
+
+  Funktionsweise:
+  - Der Shortcode analysiert den Inhalt zeilenweise und erkennt spezielle Marker wie:
+      // windows powershell
+      // linux bash
+      // all text
+    → Diese Marker starten jeweils einen neuen sichtbaren Codeblock für das angegebene OS und die Sprache.
+
+  - Zusätzlich können `os` und `lang` als Parameter an den Shortcode übergeben werden:
+      - Diese definieren den **ersten Block**, wenn er **nicht explizit per Marker begonnen** wird.
+      - Fehlen sowohl Marker als auch Parameter, wird der gesamte Inhalt dem Block `all text` zugeordnet.
+
+  Verhalten:
+  - Jeder Block wird in ein `<div class="is-os-<os>">...</div>` verpackt.
+  - Blöcke, die **nicht** zum gesetzten `os`-Parameter passen, erhalten zusätzlich `style="display: none;"`.
+  - Das ermöglicht die selektive Anzeige per JavaScript oder CSS, z. B. durch Umschalten des Betriebssystems.
+
+  - Highlighting basiert auf dem angegebenen Sprach-Tag (z. B. `powershell`, `bash`, `text`) mithilfe von Hugos `highlight`.
+
+  Beispiel:
+
+    {{< oscode os="linux" lang="bash" >}}
+    echo "Dies ist der erste Block (linux bash)"
+
+    // windows powershell
+    Write-Host "Windows-spezifischer Code"
+
+    // all text
+    Gemeinsamer Text für alle Systeme
+    {{< /oscode >}}
+
+*/}}
+
+{{ $currentOs := .Get "os" | default "all" }}
+{{ $currentLang := .Get "lang" | default "text" }}
+{{ $normalized := replace (replace .Inner "\r\n" "\n") "\r" "\n" }}
+
+{{ $lines := split $normalized "\n" }}
+{{ $output := "" }}
+{{ $currentContent := "" }}
+{{ $indentStr := "" }}
+{{ $firstLine := true }}
+
+{{ range $lines }}
+  {{ $line := . }}
+  {{ $lineTrim := trim $line " \t" }}
+
+  {{ if findRE "^//\\s*(windows|linux|all)(\\s+[a-zA-Z0-9_-]+)?" $lineTrim }}
+    {{ if gt (len (strings.Trim $currentContent "\n")) 0 }}
+      {{ $highlighted := highlight (strings.Trim $currentContent "\n") $currentLang "" }}
+      {{ $style := cond (eq $currentOs "all") "" ` style="display: none;"` }}
+      {{ $output = printf `%s<div class="is-os-%s"%s>%s</div>` $output $currentOs $style $highlighted }}
+      {{ $currentContent = "" }}
+    {{ end }}
+
+    {{ $osMatch := findRE "^//\\s*(windows|linux|all)" $lineTrim }}
+    {{ $langMatch := findRE "\\s+([a-zA-Z0-9_-]+)$" $lineTrim }}
+
+    {{ if gt (len $osMatch) 0 }}
+      {{ $currentOs = (index $osMatch 0) | replaceRE "^//\\s*" "" }}
+    {{ else }}
+      {{ $currentOs = "all" }}
+    {{ end }}
+
+    {{ if gt (len $langMatch) 1 }}
+      {{ $currentLang = index $langMatch 1 }}
+    {{ else }}
+      {{ $currentLang = "text" }}
+    {{ end }}
+
+    {{ $indentMatch := findRE "^\\s*" $line }}
+    {{ if gt (len $indentMatch) 0 }}
+      {{ $indentStr = index $indentMatch 0 | strings.TrimRight "\r\n" }}
+    {{ else }}
+      {{ $indentStr = "" }}
+    {{ end }}
+
+    {{ $firstLine = false }}
+
+  {{ else }}
+    {{ if $firstLine }}
+      {{ if gt (len (trim $line " \t")) 0 }}
+        {{ $firstLine = false }}
+        {{ $match := findRE "^\\s+" $line }}
+        {{ if gt (len $match) 0 }}
+          {{ $indentStr = index $match 0 | strings.TrimRight "\r\n" }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ if strings.HasPrefix $line $indentStr }}
+      {{ $line = replace $line $indentStr "" 1 }}
+    {{ end }}
+    {{ $currentContent = printf "%s\n%s" $currentContent $line }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len (strings.Trim $currentContent "\n")) 0 }}
+  {{ $highlighted := highlight (strings.Trim $currentContent "\n") $currentLang "" }}
+  {{ $style := cond (eq $currentOs "all") "" ` style="display: none;"` }}
+  {{ $output = printf `%s<div class="is-os-%s"%s>%s</div>` $output $currentOs $style $highlighted }}
+{{ end }}
+
+{{ $output | safeHTML }}
