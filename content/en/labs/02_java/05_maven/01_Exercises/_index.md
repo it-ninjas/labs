@@ -7,23 +7,38 @@ description: >
   Aufgaben zu Modul #S2 - [Maven](../../../../docs/02_java/05_maven)
 ---
 
-## Auftrag
+## Vorbereitung
 
-### Einrichten von Maven
+### Repository und Maven Mirror einrichten
 
-- Generierung REPOSITORY_KEY
-- Aufsetzen settings.xml
-- IntelliJ Einstellungen überprüfen
-- Umgebungsvariable einstellen
+{{< SBBOnly >}}
+Falls du nicht in Ausbildung bei der SBB bist und deinen Code in einem Repository ablegen möchtest, musst du dir ein
+eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [GitHub](https://github.com/) oder
+[Azure](https://azure.microsoft.com/en-us/products/devops/).
+{{< /SBBOnly >}}
+
+1. Erstelle ein neues
+   [persönliches Repository](../../../../docs/tools/personal_bitbucket_repo/#persönliches-bitbucket-repository-einrichten)
+2. Klone das neue Repository mit IntelliJ IDEA
+
+   ![Create Project from Version Control](./images/02_NewProjectFromVersionControl.png)
+
+   ![Create Project from Version Control Dialog](./images//03_NewProjectFromVersionControlDialog.png)
+
+3. Richte das Repository ein, wie auf [code.sbb.ch](https://code.sbb.ch/) beschrieben (nachdem man das Repo erstellt hat)
+4. Optional: Konfigure den [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn)
+
+> Achtung: Der [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn) ist nur im VPN erreichbar. Mit konfiguriertem
+> [Maven Mirror von SBB](https://bin.sbb.ch/artifactory/mvn) kann es beim Builden zu Problemen kommen, wenn man nicht
+> mit dem VPN verbunden ist.
 
 ### Maven-Projekt aufsetzen
 
-Erstellen eines neuen Projekts, welches wir später für das Modul Unit-Testing verwenden werden.
+Erstelle ein neues Projekt, welches wir später für das Modul Unit-Testing verwenden werden.
 
-1. Erstellen eines neuen persönlichen Repositories auf code.sbb.ch, der Name kann frei gewählt werden
-2. Klonen des neuen Repositories mit IntelliJ IDEA
-3. Repository einrichten, wie auf code.sbb.ch beschrieben (nachdem man das Repo erstellt hat)
-4. Im IntelliJ die für Maven erforderliche Ordnerstruktur erstellen
+1. Erstelle in IntelliJ IDEA die für Maven erforderliche Ordnerstruktur:
+   - Im Root-Verzeichnis des Repositories eine [.gitignore Datei](../../../docs/git/basics/git-basics/#gitignore),
+     angepasst für ein IntelliJ Maven Projekt.
    - Ordner src erstellen
    - Im Ordner src zwei Ordner erstellen: main und test
    - In den beiden Ordnern main und test jeweils zwei weitere Ordner erstellen: java und resources
@@ -32,7 +47,7 @@ Erstellen eines neuen Projekts, welches wir später für das Modul Unit-Testing 
      - src/main/resources -> Resources Root
      - src/test/java -> Test Sources Root
      - src/test/resources -> Test Resources Root
-5. Am Root des Projektes eine Datei mit dem Namen pom.xml anlegen und den folgenden Inhalt einfügen:
+2. Lege im Root des Projektes eine Datei mit dem Namen pom.xml an und füge den folgenden Inhalt ein:
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -48,7 +63,7 @@ Erstellen eines neuen Projekts, welches wir später für das Modul Unit-Testing 
 
        <properties>
            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-           <java.version>Java-Version wählen</java.version>
+           <java.version>Java-Major-Version wählen, z.B. 21</java.version>
            <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
            <timestamp>${maven.build.timestamp}</timestamp>
        </properties>
@@ -134,13 +149,88 @@ Erstellen eines neuen Projekts, welches wir später für das Modul Unit-Testing 
    </project>
    ```
 
-6. Passe die GroupID und ArtifactID gemäss der Theorie an. Dabei könntest du für die GroupID ch.sbb.{dein_name} und für die ArtifactID die aktuelle Aufgabe wählen, also zum Beispiel `ch.sbb.johncarmack:J5`.
-7. Das Projekt im IntelliJ als Maven-Projekt hinterlegen, zu diesem Zweck Ctrl+Shift+A drücken und als Aktion "Maven" eintragen.<br>
-   Aus der Liste dann entweder "Add as Maven Project" oder "Add Maven Projects" wählen.<br>
-   Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss das pom.xml noch ausgewählt werden
-8. Auf der rechten Seite in IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.
+3. Passe die GroupID und ArtifactID gemäss der Theorie an. Dabei kannst du für die GroupID ch.sbb.{dein_name} und für
+   die ArtifactID die aktuelle Aufgabe wählen, also zum Beispiel `ch.sbb.johncarmack:J5`.
+4. Passe die Java Version an: `<java.version>Java-Major-Version wählen, z.B. 21</java.version>`. Mit dem Befehl
+   `mvn --version` oder `java --version` findest du heraus, welche Version verwendet wird (Achtung, als Version nur die
+   erste Zahl von der Version nehmen).
+5. Hinterlege das Projekt im IntelliJ als Maven-Projekt. Zu diesem Zweck Ctrl+Shift+A drücken und unter Aktion nach
+   "Maven" suchen.
+
+   Aus der Liste dann entweder "Add as Maven Project" oder "Add Maven Projects" wählen.
+
+   Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss das pom.xml noch ausgewählt werden.
+
+   ![Maven Projekt hinterlegen](./images/01_AddMavenAsProject.png)
+
+6. Auf der rechten Seite in IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.
 
 Wenn alles geklappt hat, dann werden die definierten Abhängigkeiten aus dem POM in das lokale Repository heruntergeladen.
+
+<details>
+<summary>MAVEN Troubleshoot</summary>
+
+Es kann sein, dass nach Ctrl+Shift+A und dem Auswählen als Maven Project der Maven Tab rechts nicht erscheint. Der Grund
+wird wahrscheinlich ein Fehler im pom.xml sein.
+
+Um den Fehler zu finden kannst du in IntelliJ eine Konsole öffnen und dort den Befehl `mvn install clean -e` ausführen.
+Das `-e` gibt zusätzliche Informationen in der Konsole aus, falls es ein Problem gibt.
+
+</details>
+
+## Aufgaben
+
+### Aufgabe 1 - Warnungen behandeln
+
+Mit dem folgenden Befehl kannst Du die Maven Umgebung so aufsetzen, wie sie im pom.xml definiert ist:
+
+```
+mvn clean install -e
+```
+
+Dabei wirst Du womöglich feststellen, dass es mehrere Warnings gibt.
+
+Schau Dir die Warnings an und passe das pom.xml an, damit die Warnings nicht mehr kommen. Falls Du nicht weisst, welche
+Version Du für eine Dependency oder ein Plugin nehmen sollst, kannst Du im [Maven Repository](https://mvnrepository.com/)
+nachschauen gehen.
+
+### Aufgabe 2 - Dependencies aktualisieren
+
+Im pom.xml wird z.B. `org.junit.jupiter:junit-jupiter` in der Version 5.6.2 verwendet. Diese ist aus dem Jahr 2020 und
+hat zahlreiche Verbesserungen erfahren. Auch die anderen Dependencies sind schon recht alt.
+
+Aktualisiere alle Dependencies mit Hilfe des Plugins `org.codehaus.mojo:versions-maven-plugin`:
+
+- Installiere das Plugin in der pom.xml, den Xml-Code für das Plugin findest du im Maven Repository.
+
+- Mit der Standard Konfiguration werden die Dependencies auf die aktuellste Version aktualisert. Das kann auch ein
+  Snapshot oder ein Version mit Qualifier sein. Um nur Releases zu berücksichtigen kannst du folgende Konfiguration zum
+  `org.codehaus.mojo:versions-maven-plugin` Plugin hinzufügen (damit werden alle Versionen ignoriert, welche ein '-'
+  enthalten):
+
+  ```
+    <configuration>
+        <ignoredVersions>.*-.*</ignoredVersions>
+    </configuration>
+  ```
+
+- Mit dem folgenden Befehl kannst du testen, wie ein Update aussehen würde:
+
+  ```
+    mvn versions:display-dependency-updates
+  ```
+
+- Wenn du mit dem Resultat zufrieden bist, die pom.xml mit folgendem Befehl aktualisieren:
+  ```
+    mvn versions:use-latest-versions
+  ```
+
+### Aufgabe 3 - Remote Repository einrichten
+
+- Erstelle auf deinem Rechner ein Verzeichnis (z.B. unter `C:\Development\Repository`)
+
+- passe die Einstellungen in deinem Projekt so an, dass beim Befehl `mvn -deploy` das Artefakt von deinem Projekt in
+  den zuvor erstellten Ordner erstellt wird.
 
 ---
 
