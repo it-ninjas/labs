@@ -1,0 +1,267 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Java Exercises - OOP</title><link>/de/labs/02_java/04_java-oop/</link><description>Recent content in Java Exercises - OOP on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/labs/02_java/04_java-oop/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Lists Basics - Aufgaben</title><link>/de/labs/02_java/04_java-oop/01_lists/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/01_lists/</guid><description>
+&lt;h3 id="aufgabe-1">Aufgabe 1&lt;/h3>
+&lt;p>In dieser Aufgabe werden wir eine Liste von Wörtern analysieren. Die Liste enthält bereits vordefinierte Wörter, und dein Programm soll die folgenden Schritte ausführen:&lt;/p>
+&lt;ul>
+&lt;li>Gib die &lt;strong>Anzahl der Wörter&lt;/strong> in der Liste aus.&lt;/li>
+&lt;li>Gib &lt;strong>alle Wörter&lt;/strong> in der Konsole wieder.&lt;/li>
+&lt;li>Gib alle &lt;strong>Nomen&lt;/strong> (Wörter, die mit einem grossen Buchstaben beginnen) &lt;strong>in Grossbuchstaben&lt;/strong> aus.&lt;/li>
+&lt;li>Gib die &lt;strong>Wörter in umgekehrter Reihenfolge&lt;/strong> aus.&lt;/li>
+&lt;/ul>
+&lt;p>Die Liste, die du verwenden sollst, lautet:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&amp;gt;&lt;/span>(List.&lt;span style="color:#a6e22e">of&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Abstraktion&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;API&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Annotation&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;ArrayList&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Bedingung&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Bibliothek&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Bytecode&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Collection&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Compiler&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Debugging&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Deployment&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;entwickeln&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Exception&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Framework&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;GarbageCollector&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;generisch&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;HashMap&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Heap&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;implementieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Interface&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;JVM&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Kapselung&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Klasse&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;konstruieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Konstruktor&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Lambda&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;lernen&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Methoden&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Modifikator&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Objekt&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;optimieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Polymorphismus&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;reflektieren&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Reflexion&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Schleife&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;sortieren&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Stack&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Stream&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Synchronisation&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Thread&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;TreeSet&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;UnitTest&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Variable&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Vererbung&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;em>Bei der Umsetzung dürfen keine Streams verwendet werden!&lt;/em>&lt;/p>
+&lt;hr>
+&lt;h3 id="aufgabe-2">Aufgabe 2&lt;/h3>
+&lt;p>Schreibe ein Programm, das die &lt;strong>Fibonacci-Zahlen&lt;/strong> bis zu einer bestimmten Zahl &lt;strong>n&lt;/strong> berechnet und in einer ArrayList speichert.&lt;/p>
+&lt;h4 id="was-ist-fibonacci">Was ist Fibonacci?&lt;/h4>
+&lt;p>Die &lt;strong>Fibonacci-Folge&lt;/strong> ist eine berühmte Zahlenreihe, bei der &lt;strong>jede Zahl die Summe der beiden vorangehenden Zahlen ist&lt;/strong>. Sie beginnt immer mit den Zahlen 0 und 1.
+Die ersten Fibonacci-Zahlen sind:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Berechnungen verlaufen also folgendermassen:&lt;/p>
+&lt;ul>
+&lt;li>0 (erste Zahl, fixer Wert)&lt;/li>
+&lt;li>1 (zweite Zahl, fixer Wert)&lt;/li>
+&lt;li>1 (= 0 + 1)&lt;/li>
+&lt;li>2 (= 1 + 1)&lt;/li>
+&lt;li>3 (= 1 + 2)&lt;/li>
+&lt;li>5 (= 2 + 3)&lt;/li>
+&lt;li>8 (= 3 + 5)&lt;/li>
+&lt;li>13 (= 5 + 8)&lt;/li>
+&lt;li>21 (= 8 + 13)&lt;/li>
+&lt;li>34 (= 13 + 21)&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;p>Eine ArrayList eignet sich besonders gut, um Fibonacci-Zahlen zu speichern, da wir im Voraus nicht wissen, wie viele Zahlen berechnet werden müssen, bis eine bestimmte Zahl erreicht ist.
+Die ArrayList kann dynamisch wachsen und neue Zahlen aufnehmen.
+Durch diese Aufgabe lernst du den Umgang mit ArrayLists und wie sie sich dynamisch vergrössern lassen, ohne dass du dir Gedanken über die feste Größe von Arrays machen musst.&lt;/p>
+&lt;p>Die Fibonacci-Folge ist relevant, weil sie in der &lt;strong>Natur&lt;/strong> häufig vorkommt, wie bei der Anordnung von Blättern oder der Struktur von Tannenzapfen.&lt;/p>
+&lt;h4 id="umsetzung">Umsetzung&lt;/h4>
+&lt;p>Du schreibst eine Methode für die Berechnung der Fibonacci-Zahlen bis zu einem bestimmten Wert.
+Die Methode berechnet die Fibonacci-Zahlen, bis die aktuell berechnete Zahl grösser als &lt;strong>n&lt;/strong> ist, und gibt die Liste der berechneten Fibonacci-Zahlen als Rückgabewert zurück.
+Es ist also vor der Berechnung unklar, wie lange die Liste werden kann.&lt;/p>
+&lt;p>Methodensignatur:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>Integer&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">fibonacci&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> n);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wenn wir also zum Beispiel &lt;strong>n&lt;/strong> auf 20 setzen, wäre das Resultat eine ArrayList mit den folgenden Einträgen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>0, 1, 1, 2, 3, 5, 8, 13, 21&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>21 ist grösser als 20, deshalb stoppt die Liste nach diesem Eintrag.&lt;/p>
+&lt;p>&lt;em>Bei der Umsetzung dürfen keine Streams verwendet werden!&lt;/em>&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/05_list-basics/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Patienten</title><link>/de/labs/02_java/04_java-oop/02_patienten/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/02_patienten/</guid><description>
+&lt;p>Schreibe eine Anwendung, in welcher Patienten einen medizinischen Check-Up durchgehen,
+um ihre Daten für das Spital zu erfassen.&lt;/p>
+&lt;p>Ein Patient&lt;/p>
+&lt;ul>
+&lt;li>hat einen Namen&lt;/li>
+&lt;li>hat eine Grösse&lt;/li>
+&lt;li>hat eine Temperatur&lt;/li>
+&lt;li>ist geimpft oder nicht&lt;/li>
+&lt;/ul>
+&lt;p>Der Check-Up soll eine Methode auf dem Patienten sein, welche alle aktuellen Werte ausgibt.&lt;/p>
+&lt;h4 id="die-anwendung-soll">Die Anwendung soll&lt;/h4>
+&lt;ul>
+&lt;li>mit einem Patienten einen Check-Up durchführen&lt;/li>
+&lt;li>die Grösse eines Patienten zurückgeben&lt;/li>
+&lt;li>das Gewicht eines Patienten zurückgeben&lt;/li>
+&lt;li>die Temperatur eines Patienten zurückgeben&lt;/li>
+&lt;li>Überprüfen ob der Patient geimpft ist&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Es sollen keine Set-Methoden für das Einfügen der Werte verwendet werden! Verwende jedoch Get-Methoden für das zurückgeben der Eigenschaften.&lt;/em>&lt;/p>
+&lt;p>&lt;em>Es soll kein Scanner eingesetzt werden.&lt;/em>&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Adressbuch</title><link>/de/labs/02_java/04_java-oop/03_adressbuch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/03_adressbuch/</guid><description>
+&lt;p>Schreibe ein Programm, welches ein Adressbuch implementiert.
+Die Anwendung soll die einzelnen Kontakte der Personen in ein Adressbuch eintragen,
+wenn die entsprechende Methode aufgerufen wurde.&lt;/p>
+&lt;p>Eine Person besitzt&lt;/p>
+&lt;ul>
+&lt;li>einen Namen&lt;/li>
+&lt;li>eine Email-Adresse&lt;/li>
+&lt;li>eine Telefonnummer&lt;/li>
+&lt;/ul>
+&lt;p>Das Adressbuch soll&lt;/p>
+&lt;ul>
+&lt;li>die Anzahl der Kontakte im Adressbuch zurückliefern können&lt;/li>
+&lt;li>einen neuen Kontakt in das Adressbuch einfügen&lt;/li>
+&lt;li>einen Kontakt im Adressbuch durch den Namen finden&lt;/li>
+&lt;li>einen Kontakt aus dem Adressbuch über die E-Mail-Adresse entfernen&lt;/li>
+&lt;/ul>
+&lt;p>Generell gilt die Regel, dass jeder Kontakt einzigartig sein muss.
+Schreibe dazu eine eigene &lt;code>equals()&lt;/code> Methode und verwende diese für die Überprüfung.&lt;/p>
+&lt;p>&lt;strong>Wichtiger Hinweis&lt;/strong> &lt;br>
+In den OOP-Aufgaben sollen in den &lt;code>main&lt;/code>-Methoden nur noch Objekte instanziert werden.
+Sämtliche Logik wie oben beschieben muss in den Klassen definiert werden. Du brauchst also eine Klasse &lt;strong>Person&lt;/strong> und eine Klasse &lt;strong>Adressbuch&lt;/strong>, welche alle Funktionen anbietet.&lt;/p>
+&lt;p>&lt;em>Es soll kein Scanner eingesetzt werden.&lt;/em>&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Streaming Dienst</title><link>/de/labs/02_java/04_java-oop/04_streaming_dienst/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/04_streaming_dienst/</guid><description>
+&lt;p>Schreibe ein Programm, welches einen Streaming Dienst nachstellt.
+Die Anwendung soll die Filme und Serien in einem Streaming Dienst abspeichern,
+wenn die entsprechende Methode aufgerufen wurde.
+Der Streaming Dienst hat auch eine Liste an Personen,
+welche ein Abonnement bei dem Streaming Dienst gelöst haben.&lt;/p>
+&lt;p>Eine Person besitzt&lt;/p>
+&lt;ul>
+&lt;li>einen Namen&lt;/li>
+&lt;li>eine Email-Adresse&lt;/li>
+&lt;li>eine Kreditkarte&lt;/li>
+&lt;/ul>
+&lt;p>Ein Film&lt;/p>
+&lt;ul>
+&lt;li>einen Namen&lt;/li>
+&lt;li>eine Dauer&lt;/li>
+&lt;li>ein Genre&lt;/li>
+&lt;li>einen Produzenten&lt;/li>
+&lt;li>eine oder mehrere Sprachen&lt;/li>
+&lt;/ul>
+&lt;p>Eine Person kann&lt;/p>
+&lt;ul>
+&lt;li>einen Film als gesehen markieren (&lt;em>View&lt;/em>)&lt;/li>
+&lt;li>seine Kreditkarte ändern&lt;/li>
+&lt;li>zwischen der Zahlungsart Monatlich oder Jährlich entscheiden&lt;/li>
+&lt;/ul>
+&lt;p>Der Streaming Dienst kann&lt;/p>
+&lt;ul>
+&lt;li>die Anzahl der Personen zurückliefern, welche ein Abonnement gelöst haben&lt;/li>
+&lt;li>eine neue Person registrieren&lt;/li>
+&lt;li>eine Person löschen&lt;/li>
+&lt;li>nach einem Film über den Namen suchen&lt;/li>
+&lt;li>nach Filmen eines bestimmten Genres suchen&lt;/li>
+&lt;li>die anzahl &lt;em>Views&lt;/em> auf einem Film wiedergeben&lt;/li>
+&lt;li>alle Kreditkarten der Kunden ausgeben &lt;em>(println)&lt;/em>
+die das Abonnemente per Monatlichen Zahlung bezahlen&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Generell gilt die Regel, dass jede E-Mail-Adresse und jeder Film-Name einzigartig sein muss&lt;/em>&lt;/p>
+&lt;p>Für die Sprachen soll folgende Auswahl vorhanden sein: &lt;code>BULGARIAN,CROATIAN,CZECH,DANISH,DUTCH,ENGLISH,ESTONIAN,FINNISH,FRENCH,GERMAN,GREEK,HUNGARIAN,IRISH,ITALIAN,SLOVENIA,LATVIAN,LITHUANIAN,MALTESE,POLISH,PORTUGUESE,ROMANIAN,SLOVAK,SLOVENE,SPANISH,SWEDISH&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Die Sprachen sollen nicht in Form eines Strings gespeichert werden!&lt;/strong>&lt;/p>
+&lt;p>&lt;em>Es soll kein Scanner eingesetzt werden.&lt;/em>&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Immobilienfirma</title><link>/de/labs/02_java/04_java-oop/05_immofirma/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/05_immofirma/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann Namen für Objekte in einem Text identifizieren&lt;/li>
+&lt;li>Ich kann gute Namen für Attribute und Methoden wählen&lt;/li>
+&lt;li>Ich kann Objekte erstellen und ihnen entsprechende Eigenschaften geben&lt;/li>
+&lt;li>Ich kann Objekte untereinander verknüpfen&lt;/li>
+&lt;/ul>
+&lt;h3 id="immobilienfirma">Immobilienfirma&lt;/h3>
+&lt;p>In dieser Aufgabe soll eine Immobilienfirma mit Objekten abgebildet werden.
+Eine solche Firma besitzt beliebige Immobilien und hat einen Firmensitz an einer bestimmten Adresse.
+Die Firma hat diverse Angestellte und einen Namen.
+Eine Immobilie kann aus diversen Wohnungen bestehen, welche vermietet werden.
+Eine Immobilie hat eine bestimmte Adresse und ein Angestellter der Firma ist der Immobilie als Abwart zugeteilt.
+Ein Angestellter der Firma ist zudem der Verwalter einer solchen Immobilie.
+Eine Wohnung befindet sich in einem bestimmten Stockwerk, besitzt eine Wohnungsnummer und eine Beschreibung.
+Wenn ein Mieter in eine Wohnung einzieht, so gibt es zwischen Firma und Mieter einen Vertrag für eine bestimmte Wohnung.
+Jeder Vertrag hat ein Start- und ein End-Datum, zudem regelt der Vertrag den monatlichen Preis für eine Wohnung.
+Die Standardangaben für eine Person werden durch ein Geburtsdatum und ein Geschlecht ergänzt.&lt;/p>
+&lt;h4 id="teil-1">Teil 1&lt;/h4>
+&lt;p>Ermittle aus dem Text oben die verschiedenen Objekte und ihre Eigenschaften.
+Verknüpfe dann die Objekte miteinander, zum Beispiel hat eine Immobilienfirma eine Adresse als Firmensitz.&lt;/p>
+&lt;h4 id="teil-2">Teil 2&lt;/h4>
+&lt;p>Erstelle für deine Firma mindestens zwei Immobilien mit unterschiedlichen Wohnungen.
+Definiere Angestellte und Abwarte. Erstelle Mieter und Verträge.&lt;/p>
+&lt;h4 id="teil-3">Teil 3&lt;/h4>
+&lt;p>Erstelle für die Firma die folgenden Funktionen:&lt;/p>
+&lt;ul>
+&lt;li>Ermittle die total Anzahl an Wohnungen von allen Immobilien&lt;/li>
+&lt;li>Ermittle den Abwart für eine bestimmte Wohnung&lt;/li>
+&lt;li>Ermittle die Verträge für eine bestimmte Immobilie&lt;/li>
+&lt;li>Ermittle die leeren Wohnungen für eine bestimmte Immobilie&lt;/li>
+&lt;li>Ermittle die Verträge, die im nächsten Monat ablaufen&lt;/li>
+&lt;li>Ermittle alle Verträge sortiert nach Personen (eine Person kann mehrere Wohnungen mieten)&lt;/li>
+&lt;li>Ermittle das monatliche Einkommen pro Immobilie&lt;/li>
+&lt;li>Ermittle das jährliche Einkommen der Firma (ein Vertrag kann während dem Jahr ablaufen)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Es soll kein Scanner eingesetzt werden.&lt;/em>&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Wassermenge</title><link>/de/labs/02_java/04_java-oop/06_wassermenge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/06_wassermenge/</guid><description>
+&lt;p>Schreibe eine Anwendung, welche entscheidet ob ein Damm geöffnet sein muss oder nicht.
+Die Entscheidung wird anhand der Wassermenge, welche in einen See hineinfliesst, verglichen
+mit der Wassermenge, welche aus diesem See wieder herausfliesst, gefällt.&lt;/p>
+&lt;p>Eine Wassermenge&lt;/p>
+&lt;ul>
+&lt;li>hat eine Menge&lt;/li>
+&lt;li>hat eine Einheit wie Liter, Hektoliter oder m³&lt;/li>
+&lt;/ul>
+&lt;h2 id="die-anwendung-soll">Die Anwendung soll&lt;/h2>
+&lt;ul>
+&lt;li>Auskunft geben, ob die hineinfliessende Wassermenge gleich ist wie die herausfliessende Wassermenge&lt;/li>
+&lt;li>Den Damm nur dann öffnen, wenn die hineinfliessende Wassermenge grösser ist als die herausfliessende Wassermenge.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Es sollen keine Setter-Methoden für das Einfügen der Werte verwendet werden!&lt;/em>&lt;/p>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Schreibe ein Programm, dass die Anforderungen auf eine objekt-orientierte Art und Weise umsetzt - d.h., dass die Methoden immer noch funktionieren würden, auch wenn es mehrere Dämme geben würde.&lt;/p>
+&lt;p>Simuliere einen Damm zu drei verschiedenen Zeitpunkten mit unterschiedlichen hinein- und hinausfliessenden Wassermengen.&lt;/p>
+&lt;p>Eine Methode &lt;code>status()&lt;/code> soll einen Wert zurückgeben, der aussagt, ob der Damm zum gegebenen Zeitpunkt offen oder geschlossen ist.&lt;/p>
+&lt;h2 id="aufgabe-2---zustände-speichern">Aufgabe 2 - Zustände speichern&lt;/h2>
+&lt;p>(Erst nach dem Kapitel &amp;ldquo;Veränderbarkeit&amp;rdquo; lösen.)&lt;/p>
+&lt;p>Erweitere die &lt;code>status()&lt;/code>-Methode so, dass bei jeder Status-Abfrage (also beim Aufruf der Methode) die Mengen in einer Liste gespeichert werden - und zwar als Objekte eurer Klasse für die Wassermenge.&lt;/p>
+&lt;p>Am Ende des Programms sollen alle Mengen inkl. Einheiten dann in der Konsole ausgegeben werden.&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: NinjaCups</title><link>/de/labs/02_java/04_java-oop/07_ninjacups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/07_ninjacups/</guid><description>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>&lt;code>NinjaCups&lt;/code> ist ein aufstrebendes Kaffeeunternehmen mit verschiedenen Standorten. Jeder Standort verkauft eine Vielzahl
+von Kaffees. Deine Aufgabe ist es, eine Java-Klasse zu schreiben, die den Gesamtverkauf von Kaffee über alle Standorte
+von NinjaCups verfolgt. Eine Instanz dieser Klasse soll somit ein Standort des Unternehmens darstellen. Über die Klasse
+soll schlussendlich ersichtlich sein, wie viele Kaffees über das gesamte Unternehmen verkauft wurden.&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/10_static-non_static/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Labs: Generics</title><link>/de/labs/02_java/04_java-oop/08_generics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/04_java-oop/08_generics/</guid><description>
+&lt;h3 id="aufgabe-1---generische-methode-um-alle-elemente-in-einem-array-auszugeben">Aufgabe 1 - generische Methode um alle Elemente in einem Array auszugeben&lt;/h3>
+&lt;p>Schreibe eine generische Methode, welche ein Array als Parameter erhält und alle Elemente
+im Array ausgibt.
+Verwende diese Methode jeweils mit Arrays, welche folgende Typen beinhalten: Integer, String, Double.&lt;/p>
+&lt;h3 id="aufgabe-2---generische-klasse">Aufgabe 2 - generische Klasse&lt;/h3>
+&lt;p>Schreibe eine generische Klasse &amp;ldquo;NumberList&amp;rdquo;, welche eine Liste von Zahlen erhält und folgende
+Operationen auf diesen Zahlen ausführen kann:&lt;/p>
+&lt;ul>
+&lt;li>Die grösste Zahl in der Liste finden&lt;/li>
+&lt;li>Die kleinste Zahl in der Liste finden&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Die Typen der Input-Zahlen können unterschiedlich sein (Ganzzahlen, Kommazahlen&amp;hellip;)&lt;/em>&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/de/docs/02_java/04_java-oop/11_java-generics/">zurück zur Theorie&lt;/a>.&lt;/p></description></item></channel></rss>

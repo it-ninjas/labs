@@ -1,0 +1,278 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Git Labs</title><link>/de/labs/04_git/</link><description>Recent content in Git Labs on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/labs/04_git/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Git Hands On Aufgabe</title><link>/de/labs/04_git/01_grundlagen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/04_git/01_grundlagen/</guid><description>
+&lt;h3 id="schritt-1-initialisiere-ein-git-repository">Schritt 1: Initialisiere ein Git-Repository&lt;/h3>
+&lt;ol>
+&lt;li>Öffne dein Terminal oder die Kommandozeile.&lt;/li>
+&lt;li>Erstelle ein neues Verzeichnis.&lt;/li>
+&lt;li>Navigiere in das gerade erstellte Verzeichnis.&lt;/li>
+&lt;li>Initialisiere ein neues Git-Repository.
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>git init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git status
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-2-erstelle-eine-konfliktverursachende-datei">Schritt 2: Erstelle eine konfliktverursachende Datei&lt;/h3>
+&lt;ol>
+&lt;li>Erstelle eine neue Datei mit dem Namen &lt;code>index.txt&lt;/code> und füge einen Satz hinzu.&lt;/li>
+&lt;li>Speichere die Datei und committe die initiale Version.
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>git add index.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#e6db74">&amp;#34;Add index.txt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-3-erstelle-einen-neuen-branch-und-mache-änderungen">Schritt 3: Erstelle einen neuen Branch und mache Änderungen&lt;/h3>
+&lt;ol>
+&lt;li>Erstelle einen neuen Branch mit dem Namen &lt;code>feature/my-cool-feature&lt;/code>.
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>git branch feature/my-cool-feature
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git switch feature/my-cool-feature
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>Öffne die &lt;code>index.txt&lt;/code> Datei und ändere den Inhalt. Die Änderung soll dabei auf der gleichen Zeile sein wie den Satz den du zuvor hinzugefügt hast. Z.B. &lt;code>Mein Satz&lt;/code> zu &lt;code>Mein viel besserer Satz&lt;/code>.&lt;/li>
+&lt;li>Speichere die Datei.&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-4-änderungen-im-feature-branch-stashens">Schritt 4: Änderungen im Feature-Branch stashens&lt;/h3>
+&lt;ol>
+&lt;li>Bevor du den Feature-Branch in den Master-Branch mergst, stashe zuerst die Änderungen.
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>git stash save &lt;span style="color:#e6db74">&amp;#34;My stashed changes&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git stash list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-5-konfliktverursachende-änderungen-auf-master-hinzufügen">Schritt 5: Konfliktverursachende Änderungen auf Master hinzufügen&lt;/h3>
+&lt;ol>
+&lt;li>Wechsle zurück zum &lt;code>master&lt;/code>-Branch.&lt;/li>
+&lt;li>Öffne die &lt;code>index.txt&lt;/code> Datei und ändere den Inhalt.&lt;/li>
+&lt;li>Speichere die Datei und committe die Änderungen.
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>git add index.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &amp;#34;Changed something in index.html&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-6-änderungen-aus-dem-feature-branch-in-den-master-branch-picken">Schritt 6: Änderungen aus dem Feature-Branch in den Master-Branch picken&lt;/h3>
+&lt;p>Übernimm nun den letzten Commit aus dem Feature-Branch in den Master-Branch, mithilfe von &lt;code>cherry-pick&lt;/code>.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Mit &lt;code>git log --oneline&lt;/code> den letzten Commit-Hash anzeigen, in diesem Fall wäre das &lt;code>ea95358&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>6238890 (HEAD -&amp;gt; master) Changed something in index.html
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ea95358 (feature/my-cool-branch) Added index.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Danach die Änderungen aus dem Feature-Branch cherry-picken.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>git log --oneline
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git cherry-pick &amp;lt;COMMIT-HASH&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Wenn alles richtige gemacht wurde, erscheint danach eine Warnung über einen Merge-Konflikt.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Auto-merging index.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CONFLICT (add/add): Merge conflict in index.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>error: could not apply ea95358... Added index.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;h3 id="schritt-7-löse-den-merge-konflikt">Schritt 7: Löse den Merge-Konflikt&lt;/h3>
+&lt;p>Um den Merge-Konflikt zu lösen, öffnest du am besten IntelliJ(empfohlen) oder Visual Studio Code. Du kannst es natürlich auch über das Terminal versuchen, wenn du mutig genug bist.&lt;/p>
+&lt;p>Grundsätzlich entsteht ein Merge-Conflict, wenn am gleichen Ort unterschiedliche Änderungen vorgenommen wurden. Git kann dann die Änderungen nicht mehr automatisch zusammenführen (mergen).&lt;/p>
+&lt;p>Git zeigt einen Merge-Konflikt mithilfe von &lt;code>&amp;lt;&amp;lt;&amp;lt;&lt;/code>, &lt;code>&amp;gt;&amp;gt;&amp;gt;&lt;/code> und &lt;code>===&lt;/code> an. Der Text bei &lt;code>&amp;lt;&amp;lt;&amp;lt;&lt;/code> sind deine Änderungen, die Änderungen bei &lt;code>&amp;gt;&amp;gt;&amp;gt;&lt;/code> kommen aus dem Remote-Repository. Getrennt werden sie durch eine Zeile an Gleichzeichen &lt;code>===&lt;/code>. Oft abstrahiert deine IDE diese Darstellung jedoch noch.&lt;/p>
+&lt;p>Bei dieser List von Hobbies wurde lokal die Zeile &amp;ldquo;Schlafen&amp;rdquo; hinzugefügt, remote wurde auf der gleichen Zeile jedoch &amp;ldquo;Gym&amp;rdquo; hinzugefügt.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>- Lesen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gamen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Schlafen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>=======
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gym
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; 3c55804e0fa4cac9002edb45443d4a9c95bc26b4
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Um den Konflikt zu lösen hast folgende Möglichkeiten:&lt;/p>
+&lt;ul>
+&lt;li>Du behältst deine Änderungen und verwirfst die Anderen
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>- Lesen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gamen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Schlafen
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>Du verwirfst deine Änderungen und behältst die Anderen
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>- Lesen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gamen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gym
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>Du behältst alle Änderungen
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>- Lesen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gamen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Schlafen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gym
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>Du verwirfst beide Änderungen
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>- Lesen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gamen
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>Eine Mischung aus allen vorherigen Möglichkeiten
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>- Lesen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Gamen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- Schlafen oder Gym
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;p>Um einen Merge-Konflikt zu lösen, musst du also aus diesen Möglichkeiten auswählen. Du kannst das für jeden Konflikt unterschiedlich machen. Deine IDE wird dir dabei einige Hilfestellungen liefern, welche den Prozess etwas vereinfachen, siehe dazu die Felder weiter unten.&lt;/p>
+&lt;details>
+&lt;summary>Konflikt mit IntelliJ lösen&lt;/summary>
+&lt;p>
+IntelliJ hat ein eingebautes UI um Merge Konflikte zu lösen. JetBrains stellt eine &lt;a href="https://www.jetbrains.com/help/idea/resolve-conflicts.html">super Anleitung&lt;/a> zur Verfügung.
+&lt;/p>
+&lt;/details>
+&lt;details>
+&lt;summary>Konflikt mit Visual Studio Code lösen&lt;/summary>
+&lt;p>
+Visual Studio Code hat sogar zwei verschiedene Arten, wie du Merge-Konflikte lösen kannst. Einen eher simpeln Ansatz, "Inline Editor" genannt, und einen der etwas mehr an IntelliJ erinnert, "3-Way Editor" genannt.
+&lt;/p>
+&lt;p>
+Eine gute Anleitung zu beiden findest du &lt;a href="https://monsterlessons-academy.com/posts/resolving-merge-conflicts-in-visual-studio-code-the-easy-way">hier&lt;/a>.
+&lt;/p>
+&lt;/details>
+&lt;details>
+&lt;summary>Vim schliessen&lt;/summary>
+Je nach Betriebssystem und Einstellungen, kann es sein das Git automatisch den Texteditor Vim öffnet. Das sieht dann etwa so aus wie im Bild unten.
+&lt;p>Um den Editor wieder zu schliessen, kannst du die folgende Schritte verwenden:&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>ESC&lt;/code> drücken&lt;/li>
+&lt;li>&lt;code>:&lt;/code> drücken&lt;/li>
+&lt;li>&lt;code>q!&lt;/code> eintippen&lt;/li>
+&lt;li>&lt;code>ENTER&lt;/code> drücken
+&lt;img src="/de/labs/04_git/01_grundlagen/images/vim.png" alt="" title="Vim">&lt;/li>
+&lt;/ol>
+&lt;/details>
+&lt;p>Es gibt noch unzählige weitere Tools wie &lt;a href="http://meldmerge.org/">Meld&lt;/a> oder vimdiff, welche dazu genutzt werden können Merge-Konflikte zu lösen. Du darfst dich gerne durchprobieren und das Tool wählen, welches dir am besten gefällt. Für die meisten reicht das Tooling ihrer IDE.&lt;/p>
+&lt;h3 id="schritt-8-änderungen-vom-stash-anwenden">Schritt 8: Änderungen vom Stash anwenden&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>Jetzt können wir die Änderungen auf dem Stash, dem Master-Branch hinzufügen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>git stash pop &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Du wirst wieder einen Konflikt in der &lt;code>index.txt&lt;/code> Datei erhalten. Löse den Konflikt. Du kannst das wieder mit dem Tool deiner Wahl machen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Speichere die Datei und mache einen Commit.&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>Labs: Git Vertiefung Labs</title><link>/de/labs/04_git/02_vertiefung/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/04_git/02_vertiefung/</guid><description/></item></channel></rss>

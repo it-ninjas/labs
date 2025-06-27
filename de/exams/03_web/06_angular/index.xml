@@ -1,0 +1,166 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Angular Exams</title><link>/de/exams/03_web/06_angular/</link><description>Recent content in Angular Exams on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><lastBuildDate>Wed, 16 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="/de/exams/03_web/06_angular/index.xml" rel="self" type="application/rss+xml"/><item><title>Exams: Exam zu den Angular-Basics</title><link>/de/exams/03_web/06_angular/01_angular-exam/</link><pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate><guid>/de/exams/03_web/06_angular/01_angular-exam/</guid><description>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> - Einzelarbeit&lt;br>&lt;/p>
+&lt;h2 id="ausgangslage">Ausgangslage&lt;/h2>
+&lt;p>In deinem Unternehmen werden die Arbeitszeiten immer noch im Excel erfasst. Dein Linienvorgesetzter ist mit diesem Excel-File nicht mehr so zufrieden. Er verlangt von dir, dass du ein Angular-Projekt realisieren sollst, welches das aktuelle Excel-File ablöst. Designtechnisch ist alles dir überlassen. Du kannst entweder mit einem lokalen Projekt arbeiten oder eine Backendschnittstelle basteln.&lt;/p>
+&lt;h2 id="anforderungen">Anforderungen&lt;/h2>
+&lt;h3 id="funktionale-anforderungen">Funktionale Anforderungen&lt;/h3>
+&lt;p>Dein Linienvorgesetzter gibt dir folgende funktionale Anforderungen für das Arbeitszeitprogramm:&lt;/p>
+&lt;ul>
+&lt;li>Die Mittagszeit von 30 Minuten &lt;strong>muss&lt;/strong> gemacht werden. Sofern über 9h gearbeitet wird, &lt;strong>muss&lt;/strong> mindestens 1h Mittagspause gemacht werden.&lt;/li>
+&lt;li>Man kann entweder von Hand oder mit Hilfe eines QR-Codes ein- und ausstempeln.&lt;/li>
+&lt;li>Es gibt drei Rollen: &lt;em>Admin, Vorgesetzter und Mitarbeiter&lt;/em>.&lt;br>Der &lt;em>Admin&lt;/em> kann neue Mitglieder (&lt;em>Admin, Vorgesetzter, Mitarbeiter&lt;/em>) hinzufügen und den &lt;em>Vorgesetzten&lt;/em> zuweisen. Sieht aber keine Zeitaufschreibung ausser die eigene. Der &lt;em>Vorgesetzte&lt;/em> sieht die eigene Zeit, wieauch die Zeit seiner Mitarbeiter. Der &lt;em>Mitarbeiter&lt;/em> sieht nur seine eigene Zeit.&lt;/li>
+&lt;li>Der &lt;em>Admin&lt;/em> kann neue Auftragszeiten (Projekt X, Projekt Y, Daily Business, etc.) hinzufügen, welche von allen Mitarbeitern gewählt werden können.&lt;/li>
+&lt;li>Jedes Mitglied &lt;strong>muss&lt;/strong> bei der Zeitaufschreibung ein Auftrag wählen, wo er gerade arbeitet. Diese Projekte können favorisiert werden, damit man sie nicht jedes Mal wählen muss.&lt;/li>
+&lt;li>Jedes Mitglied kann zudem diverse Zeitcodes anwenden, welche vom Admin hinzugefügt werden. Das sind beispielsweise: Krank, Kompensation, Berufsschule, Ferien,etc.&lt;/li>
+&lt;li>Man kann die Zeiten im späteren Verlauf noch ändern. Hierzu werden aber alle geänderten Zeiten (Datum bearbeitung, etc.) angezeigt.&lt;/li>
+&lt;li>Jedes Mitglied kann sein Passwort (und Profilbild) ändern.&lt;/li>
+&lt;li>Der &lt;em>Admin&lt;/em> kann die Daten jedes Mitglieds ändern(Nachname, Vorname, Abteilung, etc.) oder löschen.&lt;/li>
+&lt;/ul>
+&lt;h3 id="nicht-funktionale-anforderungen">Nicht-funktionale Anforderungen&lt;/h3>
+&lt;ul>
+&lt;li>Das System muss innerhalb von 100ms die Daten liefern.&lt;/li>
+&lt;li>IT-Sicherheit: Das System bockiert nach drei Fehlrversuchen die Anmeldung.&lt;/li>
+&lt;li>Abfragen können nur mit einem JWT ausgeführt werden.&lt;/li>
+&lt;/ul>
+&lt;h2 id="daten">Daten&lt;/h2>
+&lt;h3 id="mitglieder-daten">Mitglieder-Daten&lt;/h3>
+&lt;p>Die Mitglieder bestehen aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Nachname&lt;/li>
+&lt;li>Vorname&lt;/li>
+&lt;li>Passwort(muss bei der ersten Anmeldung geändert werden)&lt;/li>
+&lt;li>Abteilung&lt;/li>
+&lt;li>Arbeitszeit(bspw. 100% oder 8h)&lt;/li>
+&lt;li>Rolle&lt;/li>
+&lt;li>(nicht zwingend Profilbild)&lt;/li>
+&lt;/ul>
+&lt;h3 id="zeit-daten">Zeit-Daten&lt;/h3>
+&lt;p>Die Zeit besteht aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Von&lt;/li>
+&lt;li>Bis&lt;/li>
+&lt;li>Datum&lt;/li>
+&lt;/ul>
+&lt;h3 id="auftragszeit-daten">Auftragszeit-Daten&lt;/h3>
+&lt;p>Die Auftragszeit besteht aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Auftragsnummer&lt;/li>
+&lt;li>Text&lt;/li>
+&lt;/ul>
+&lt;h3 id="zeitcodes-daten">Zeitcodes-Daten&lt;/h3>
+&lt;p>Die Zeitcodes besteht aus folgenden Werten:&lt;/p>
+&lt;ul>
+&lt;li>Nummer&lt;/li>
+&lt;li>Beschreibung&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/images/hint.png" alt="hint1"> - Hinweis:&lt;/p>
+&lt;p>Beziehungen zwischen Daten nicht vergessen.&lt;/p>
+&lt;p>Bei Fragen ungeniert melden.&lt;/p></description></item><item><title>Exams: Exam zu Angular</title><link>/de/exams/03_web/06_angular/02_notenverwaltung/</link><pubDate>Wed, 24 May 2023 00:00:00 +0000</pubDate><guid>/de/exams/03_web/06_angular/02_notenverwaltung/</guid><description>
+&lt;h2 id="inhalt">Inhalt&lt;/h2>
+&lt;p>Im Lab von &lt;a href="/de/labs/02_java/12_spring-framework/01_spring/">Spring Boot&lt;/a> hast du bereits ein Backend für eine
+Notenverwaltung geschrieben. In diesem Exam sollst du zusätzlich ein Frontend schreiben, welches dieses Backend verwendet.
+Schlussendlich solltest du eine komplett selbst erstellte Fullstack Applikation haben, die einwandfrei funktioniert.&lt;/p>
+&lt;h3 id="setup">Setup&lt;/h3>
+&lt;p>Bevor du mit den Aufgaben beginnst, solltest du ein neues Angular Projekt wie gelernt aufsetzen. Du kannst beim Setup
+bereits das Routing integrieren und wähle als stylesheet SCSS aus. Den Namen kannst du frei wählen. Wenn diese
+Bedingungen erfüllt sind, kannst du mit den Aufgaben beginnen.&lt;/p>
+&lt;h3 id="anforderungen">Anforderungen&lt;/h3>
+&lt;h4 id="funktional">Funktional&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;p>Die Anwendung unterstützt zwei unterschiedliche Profile: &amp;ldquo;student&amp;rdquo; und &amp;ldquo;admin&amp;rdquo;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Wenn die Anwendung mit dem Profil &amp;ldquo;student&amp;rdquo; gestartet wird, steht folgende Funktionalität zur Verfügung:&lt;/p>
+&lt;ul>
+&lt;li>Alle Fächer und all deren Noten auflisten (ein Fach kann mehreren Noten beinhalten)&lt;/li>
+&lt;li>Alle Fächer und deren Durchschnittsnote auflisten&lt;/li>
+&lt;li>Für ein bestimmtes Fach:
+&lt;ul>
+&lt;li>Alle Noten und die Durchschnittsnote des Fachs auflisten&lt;/li>
+&lt;li>Eine neue Note hinzufügen&lt;/li>
+&lt;li>Eine bestehende Note ändern&lt;/li>
+&lt;li>Eine bestehende Note löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Wenn die Anwendung mit dem Profil &amp;ldquo;admin&amp;rdquo; gestartet wird, steht zusätzlich auch folgende Funktionalität zur Verfügung:&lt;/p>
+&lt;ul>
+&lt;li>Alle Fächer auflisten&lt;/li>
+&lt;li>Neue Fächer hinzufügen&lt;/li>
+&lt;li>Bestehende Fächer bearbeiten&lt;/li>
+&lt;li>Bestehende Fächer löschen&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Die Anwendung ist Responsive gestaltet und ist auf Desktop, Tablet und Mobile verwendbar&lt;/p>
+&lt;ul>
+&lt;li>Die Verwendung von Bootstrap ist nicht erlaubt&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Zusätzliche Anforderungen&lt;/p>
+&lt;ul>
+&lt;li>Die Anwendung ist in den Sprachen Deutsch, Französisch und Englisch verfügbar&lt;/li>
+&lt;li>Die Sprache kann direkt in der Applikation gewechselt werden&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="nicht-funktional">Nicht-Funktional&lt;/h4>
+&lt;ul>
+&lt;li>Der Code (das Design) der Anwendung ist sinnvoll in entsprechenden Components/Services aufgesplittet.&lt;/li>
+&lt;li>Ein Component/Service hat eine einzige Aufgabe (Single Responsibility Prinzip).&lt;/li>
+&lt;/ul>
+&lt;h2 id="design">Design&lt;/h2>
+&lt;p>Die Notenverwaltung sollte ungefähr dem vorgegebenen Design entsprechen. Farben und Schriftarten können frei gewählt
+werden, jedoch sollte das vorgegebene Design immer noch erkennbar sein.&lt;/p>
+&lt;p>Das Design wurde mit Figma erstellt und ist navigierbar. Also kannst du die benötigten Verlinkungen so selbst
+herausfinden. Teilweise wurde eine Funktion, wie das Bearbeiten einer Note, nur einmal umgesetzt. Die Funktion soll
+beim Endprodukt aber logischerweise überall umgesetzt sein. Das Design wurde für Desktop, Tablet und Mobile erstellt,
+die Anwendung sollte sich dementsprechend wie im Design anpassen.&lt;/p>
+&lt;p>Hier der Link zum Design: &lt;a href="https://www.figma.com/proto/CxwGOD9wyGZ1pDucOdusND/Notenverwaltung?type=design&amp;amp;node-id=1-3&amp;amp;scaling=contain&amp;amp;page-id=0%3A1&amp;amp;starting-point-node-id=1%3A3&amp;amp;show-proto-sidebar=1">Figma Design - Notenverwaltung&lt;/a>&lt;/p>
+&lt;p>Es ist zu empfehlen, dass zum Erstellen der Applikation &lt;a href="https://material.angular.io/">Angular Material&lt;/a> eingesetzt
+wird. So können bereits erstellte Komponenten inklusive Design verwendet werden.&lt;/p>
+&lt;h2 id="aufgabe-1---erstellen-der-components">Aufgabe 1 - Erstellen der Components&lt;/h2>
+&lt;p>Um alle Daten der Notenverwaltung anzeigen, erstellen, löschen und bearbeiten zu können, werden verschiedene Components
+benötigt. In dieser Aufgabe solltest du diese Punkte abarbeiten:&lt;/p>
+&lt;ul>
+&lt;li>Überlege dir anhand der &lt;a href="/de/exams/03_web/06_angular/02_notenverwaltung/#anforderungen">Anforderungen&lt;/a>, wofür du alles einen Component benötigst. Die Unterscheidung
+zwischen Admin und Student Profil kann aktuell ignoriert werden. Erstelle bereits jetzt alle Components dazu.&lt;/li>
+&lt;li>Entwickle ein einfaches und benutzerfreundliches Design für die einzelnen Seiten.&lt;/li>
+&lt;li>Verwende aktuell feste Daten, diese werden in einer späteren Aufgabe ersetzt.&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-2---models-erstellen-und-verwenden">Aufgabe 2 - Models erstellen und verwenden&lt;/h2>
+&lt;p>Aktuell werden in deiner Applikation feste Daten angezeigt, die im HTML angegeben sind. Da die Daten später jedoch
+aus dem Backend kommen sollten, ist es von Vorteil, wenn du Models hast, die den benötigten Daten entsprechen. Diese
+Punkte sollten in dieser Aufgabe erledigt werden:&lt;/p>
+&lt;ul>
+&lt;li>Erstelle alle deiner Meinung nach benötigten Models.&lt;/li>
+&lt;li>Ändere deine festen Daten und setze deine erstellten Models ein.&lt;/li>
+&lt;li>Versuche, wo nötig, Forms zu verwenden, um diese Später verwenden zu können.
+&lt;blockquote>
+&lt;p>Tipp: Wenn du dir unsicher bist welche Daten du benötigst, kannst du im Backend bei den DAOs etwas spicken und so die
+richtige Struktur finden.&lt;/p>&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-3---services-erstellen-und-verwenden">Aufgabe 3 - Services erstellen und verwenden&lt;/h2>
+&lt;p>Da wir bald schon das Backend anbinden, solltest du noch die benötigten Services erstellen. Erledige dazu folgende Aufgaben:&lt;/p>
+&lt;ul>
+&lt;li>Erstelle alle deiner Meinung nach benötigten Services&lt;/li>
+&lt;li>Lass alle Daten aus einem Service laden und erstelle dazu Mockdaten&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-4---backend-anbinden">Aufgabe 4 - Backend anbinden&lt;/h2>
+&lt;p>In dieser Aufgabe verbindest du jetzt das Frontend mit dem Backend. Erledige dazu diese Aufgaben:&lt;/p>
+&lt;ul>
+&lt;li>Verwende die korrekten Endpoints aus dem Backend&lt;/li>
+&lt;li>Hole die Daten Asynchron aus dem Backend&lt;/li>
+&lt;li>Entferne alle Mockdaten&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-5---admin-und-student">Aufgabe 5 - Admin und Student&lt;/h2>
+&lt;p>Ab diesem Zeitpunkt sollten alle grundlegenden Funktionen deiner Applikation umgesetzt sein, Glückwunsch! Jetzt möchten
+wir noch die Admin- und Student-Funktionen trennen. Dazu besteht im Backend ein Endpunkt, welcher das gestartete Profil
+im Backend an das Frontend sendet. Darüber soll das Frontend die verschiedenen freischalten oder verstecken.
+Dazu hast du im Backend einen oder mehrere Endpunkte erstellt, die du jetzt einsetzen kannst.
+Deine Applikation soll auch selbständig erkennen, welche Funktionen verfügbar sind und welche nicht.&lt;/p></description></item></channel></rss>

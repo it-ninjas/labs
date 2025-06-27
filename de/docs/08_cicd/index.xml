@@ -1,0 +1,230 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – CI/CD</title><link>/de/docs/08_cicd/</link><description>Recent content in CI/CD on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/docs/08_cicd/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Continuous Integration</title><link>/de/docs/08_cicd/01_continuous-integration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/08_cicd/01_continuous-integration/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann den Begriff Continuous Integration erklären.&lt;/li>
+&lt;li>Ich kann einen typischen Aufbau eine CI-Pipeline erklären.&lt;/li>
+&lt;li>Ich kenne typische Aufgaben einer CI-Pipeline.&lt;/li>
+&lt;/ul>
+&lt;h2 id="continuous-integration">Continuous Integration&lt;/h2>
+&lt;p>Continuous Integration, oder kurz CI, heisst auf Deutsch so viel wie &amp;ldquo;Fortlaufende Integration&amp;rdquo;. Es beschreibt die Praxis, Codeänderungen oft und regelmässig in die Code-Basis zu integrieren. Dazu gehört auch das Testen dieser Änderungen sowie andere Checks, wie etwa Security Scans. Da dies mühsame Arbeit ist, passiert das meistens vollautomatisiert in einer sogenannten Pipeline. Diese Pipelines heissen so, da der Code wie durch ein (oder mehrere) Rohre muss, welche diese Checks ausführen und das Ventil zudrehen können, sollte etwas nicht gut sein.&lt;/p>
+&lt;p>&lt;img src="/de/docs/08_cicd/01_continuous-integration/images/pipeline.gif" alt="">&lt;/p>
+&lt;p>Das Ausführen so einer Pipeline passiert entweder nach einem bestimmten Ereignis, z.B. einem Push auf einen Git-Branch, oder periodisch, jede Nacht um 3:00. Damit das möglich ist, wird sie nicht auf dem Computer des Entwicklers, sondern auf einem separaten CI-Server ausgeführt. So kann sichergestellt werden, dass nichts vergessen geht und die Ergebnisse transparent sind.&lt;/p>
+&lt;p>Wichtig ist, dass das fortlaufende Integrieren von Änderungen nicht heisst, dass nach jeder Änderung eine neue Version der Software verfügbar ist. Das kann der Fall sein (siehe &lt;a href="/de/docs/08_cicd/03_continuous-deployment/">Continuous Deployment&lt;/a>), muss aber nicht. Vielmehr geht es darum, dass die Änderungen jeweils klein und gut getestet sind.&lt;/p>
+&lt;h3 id="beispiel-einer-ci-pipeline">Beispiel einer CI-Pipeline&lt;/h3>
+&lt;p>Als Beispiel nehmen wir eine Anwendung, welche eine neue Login-Page bekommen soll. Der/Die Entwickler:in macht also einen neuen Branch &lt;code>feature/new-login-page&lt;/code>. Auf diesem nimmt er/sie seine/ihre Änderungen vor und mergt - sobald fertig - diese wieder in den &lt;code>main&lt;/code>-Branch. Vor dem Mergen können andere Entwickler:innen noch Tests ausführen oder einen Security-Scan laufen lassen. Da dies jedoch manuell gemacht werden muss, geht das oft vergessen oder wird aus Faulheit nicht umgesetzt.&lt;/p>
+&lt;p>&lt;img src="/de/docs/08_cicd/01_continuous-integration/images/no-ci.png" alt="">&lt;/p>
+&lt;!--
+gitGraph
+commit
+commit
+branch feature/new-login-page
+checkout feature/new-login-page
+commit id: "Remove Google+"
+commit id: "Implement new design"
+commit id: "Fix styling"
+checkout main
+merge feature/new-login-page id: "Merge into main"
+commit
+-->
+&lt;p>Mithilfe einer CI-Pipeline können wir diese zwei Aufgaben automatisiert ausführen nach (oder idealerweise noch vor) einem Merge. Pipelines können also dazu dienen, langweilige, wiederkehrende Arbeiten zu verrichten und Entwickler:innen zum Einhalten von Standards zu bewegen. Durch die Pipeline merken wir z.B., dass mehrere Unit-Tests fehlschlagen. Dazu hat die Pipeline ganz einfach den Maven-Command &lt;code>mvn clean test&lt;/code> ausgeführt und geschaut, ob jeder Test grün ist. So wie es ein:e Entwickler:in auch auf seiner/ihrer Maschine tun kann.&lt;/p>
+&lt;p>&lt;img src="/de/docs/08_cicd/01_continuous-integration/images/simple-ci.png" alt="">&lt;/p>
+&lt;!--
+gitGraph
+commit id: "0-2932c65"
+commit id: "1-8da8549"
+branch feature/new-login-page
+checkout feature/new-login-page
+commit id: "Remove Google+"
+commit id: "Implement new design"
+commit id: "Fix styling"
+checkout main
+merge feature/new-login-page id: "✅ Security Scan ❌ Tests"
+commit id: "6-e293507"
+-->
+&lt;p>Das hätte der/die Entwickler:in merken können, wenn er/sie nach jedem Commit die Tests ausgeführt hätte. Da dies aber manuelle und langweilige Arbeit ist, hat er/sie das natürlich nicht gemacht. Werden die Tests stattdessen auch in einer Pipeline nach jedem &lt;code>git push&lt;/code> ausgeführt, merkt der/die Entwickler:in schneller, dass sein/ihr Code noch nicht gut ist.&lt;/p>
+&lt;p>&lt;img src="/de/docs/08_cicd/01_continuous-integration/images/reasonable-ci.png" alt="">&lt;/p>
+&lt;!--
+gitGraph
+commit id: "0-2932c65"
+commit id: "1-8da8549"
+branch feature/new-login-page
+checkout feature/new-login-page
+commit id: "Remove Google+ ✅ Tests"
+commit id: "Implement new design ❌ Tests"
+commit id: "Fix styling ✅ Tests"
+checkout main
+merge feature/new-login-page id: "✅ Security Scan ✅ Tests"
+commit id: "6-e293507"
+-->
+&lt;p>Es muss also nicht für jedes Ereignis die gleiche Pipeline ausgeführt werden. Der Security-Scan kann etwa mehrere Minuten dauern, weshalb er nicht bei jedem &lt;code>git push&lt;/code>, sondern nur vor einem Merge ausgeführt wird. Grosse Projekte können dutzende solcher Pipelines haben für verschiedene Anlässe und Zwecke.&lt;/p>
+&lt;h3 id="anwendungszwecke-von-ci-pipelines">Anwendungszwecke von CI-Pipelines&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Testing&lt;/strong>&lt;br>
+Die wahrscheinlich häufigste Verwendung ist das automatiserte Ausführen von Tests. Das kann von Unit-Tests bis hin zu E2E-Tests alles sein. Ein Vorteil davon ist, dass die Entwickler:innen das nicht mehr manuell machen müssen. Ein weiterer ist, dass die Tests beschleunigt werden können, etwa durch das Aufteilen der Tests auf viele Maschinen. Es wird auch vermieden, dass die Tests auf einem Entwickler-Laptop laufen, auf einem anderen aber nicht und nun nicht klar ist, ob die Tests gut sind oder nicht. Es gilt, was in der CI-Pipeline passiert.&lt;/li>
+&lt;li>&lt;strong>Durchsetzen von Standards&lt;/strong>
+Ebenfalls sehr häufig werden Pipelines eingesetzt, um gewisse Standards zu überprüfen. Dazu gehört etwa, ob der Code richtig formatiert ist oder genügend Tests geschrieben wurden.&lt;/li>
+&lt;li>&lt;strong>Security Checks&lt;/strong>
+Niemand hat Zeit, sich alle Meldungen über Hacks oder Sicherheitslücken durchzulesen und herauszufinden, ob diese auf die eigene Software zutreffen. Eine Pipeline kann stattdessen jede Nacht einen automatisierten Scan durchführen und so die Entwickler am nächsten Morgen benachrichtigen.&lt;/li>
+&lt;li>&lt;strong>Bauen von Artefakten&lt;/strong>
+Docker-Container oder JARs können durch die Pipelines automatisch generiert und richtig versioniert werden. So sind sie für ein späteres Deployment bereit oder können sogar in einer anderen Pipeline verwendet werden.&lt;/li>
+&lt;/ul>
+&lt;h3 id="umsetzen-einer-ci-pipeline">Umsetzen einer CI-Pipeline&lt;/h3>
+&lt;p>Es gibt viele Möglichkeiten eine CI-Pipeline umzusetzen. Gewisse sind eigenständige Tools wie &lt;a href="https://www.jenkins.io/">Jenkins&lt;/a> oder &lt;a href="https://circleci.com/">CircleCI&lt;/a>. Viele Plattformen bauen direkt ihre eigenen Lösungen ein, wie etwa &lt;a href="https://docs.gitlab.com/ee/ci/">GitLab&lt;/a> oder &lt;a href="https://github.com/features/actions">GitHub&lt;/a>. Für diesen Guide benutzen wir GitHub. Viele der Konzepte können aber auch auf andere Tools übertragen werden.&lt;/p>
+&lt;p>GitHub stellt sogenannte Actions oder Workflows als CI-Lösung zur Verfügung. Das sind &lt;a href="https://geekflare.com/de/what-is-yaml/">YAML&lt;/a>-Dateien, welche in &lt;code>.github/workflows&lt;/code> abgelegt werden. Jede Datei ist dabei ein &amp;ldquo;Workflow&amp;rdquo; und kann beliebig benannt werden, solange sie auf &lt;code>.yml&lt;/code> oder &lt;code>.yaml&lt;/code> endet. Vorhandene Workflows werden im &lt;a href="https://github.com/it-ninjas/labs/actions">Actions&lt;/a>-Tab eines Repositories angezeigt.&lt;/p>
+&lt;h4 id="simpler-workflow">Simpler Workflow&lt;/h4>
+&lt;p>Ein simpler Workflow könnte etwa in &lt;code>.github/workflows/hello-world.yaml&lt;/code> gespeichert sein und so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">GitHub Actions Hello World&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">on&lt;/span>: [&lt;span style="color:#ae81ff">push]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">jobs&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hello-world&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">runs-on&lt;/span>: &lt;span style="color:#ae81ff">ubuntu-latest&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">steps&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">echo &amp;#34;Hello world!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">echo &amp;#34;🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">echo &amp;#34;🔎 The name of your branch is ${{ github.ref }}, your repository is ${{ github.repository }} and this workflow was triggered by ${{ github.actor }}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Check out repository code&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/checkout@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Execute multiple commands&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">run&lt;/span>: |&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;One line&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;Another one&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Workflow besteht aus folgenen Elementen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>name&lt;/code> Der Name des Workflows.&lt;/li>
+&lt;li>&lt;code>on&lt;/code> Wann der Workflow ausgeführt werden soll. Das kann von einem &lt;code>git push&lt;/code> bis zum Erstellen eines neuen Issues alles Mögliche sein, wobei GitHub hier &lt;a href="https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows">eine gute Dokumentation dazu hat&lt;/a>. In unserem Fall wird der Workflow bei jedem &lt;code>git push&lt;/code> ausgeführt.&lt;/li>
+&lt;li>&lt;code>jobs&lt;/code> Eine Liste mit Aufgaben, welche der Workflow ausführen soll. Jeder Job hat dabei einen eindeutigen Namen, hier &lt;code>hello-world&lt;/code>.&lt;/li>
+&lt;li>&lt;code>runs-on&lt;/code> Definiert, auf was für einem Computer der Workflow ausgeführt werden soll. Standardmässig ist das ein Ubuntu-Linux, Windows und OSX sind aber ebenfalls möglich.&lt;/li>
+&lt;li>&lt;code>steps&lt;/code> Eine Liste mit Anweisungen, welche nacheinander in diesem Job ausgeführt werden.&lt;/li>
+&lt;/ul>
+&lt;p>Ein ganz simpler Step, wie z.B. &lt;code>run: echo &amp;quot;Hello world!&amp;quot;&lt;/code>, macht nichts anderes als den Befehl &lt;code>echo &amp;quot;Hello World!&amp;quot;&lt;/code> auszuführen.&lt;/p>
+&lt;p>Um ein wenig mehr Dynamik in die Sache zu bringen, können wir Teile eines Befehls mit dieser Syntax ersetzen: &lt;code>${{ dein.variable.name }}&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;🐧 This job is now running on a &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>{ runner.os &lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">} server hosted by GitHub!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>wird somit zu&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;🐧 This job is now running on a ubuntu-latest server hosted by GitHub!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Damit man nicht alles selber schreiben muss, kann man auch einfach bereits erstellte &amp;ldquo;Steps&amp;rdquo; benutzen. GitHub nennt diese &amp;ldquo;Actions&amp;rdquo; und bietet diese in &lt;a href="https://github.com/marketplace?type=actions">einem Marktplatz&lt;/a> an. Es lohnt sich, zuerst zu schauen, ob jemand schon eine Action geschrieben hat, bevor man sich selber die Mühe macht.
+Ein Beispiel davon ist dieser Step hier:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Check out repository code&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/checkout@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>name&lt;/code> ist wie der Step heisst. &lt;code>uses&lt;/code> gibt an, dass wir die &lt;a href="https://github.com/marketplace/actions/checkout">Checkout Action&lt;/a> benutzen wollen. Dieser Befehl macht ein &lt;code>git clone&lt;/code> des Repositories und kann in fast jedem CI-Workflow angetroffen werden.&lt;/p>
+&lt;p>Falls es mal doch keine Action gibt, welche den Zweck erfüllt, können mehrere Befehle mit dieser Syntax auch über mehrere Zeilen geschrieben werden. Das macht die Sache etwas übersichtlicher.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Execute multiple commands&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">run&lt;/span>: |&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;One line&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> echo &amp;#34;Another one&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="testing-workflow">Testing Workflow&lt;/h4>
+&lt;p>Ein einfacher Workflow für das Testen einer Spring Boot App mit Maven könnte so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Testing with Maven&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">on&lt;/span>: [&lt;span style="color:#ae81ff">push]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">jobs&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">test&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">runs-on&lt;/span>: &lt;span style="color:#ae81ff">ubuntu-latest&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">steps&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/checkout@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Set up JDK&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">uses&lt;/span>: &lt;span style="color:#ae81ff">actions/setup-java@v4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">with&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">java-version&lt;/span>: &lt;span style="color:#ae81ff">21&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">distribution&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;temurin&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">cache&lt;/span>: &lt;span style="color:#ae81ff">maven&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Test&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">run&lt;/span>: &lt;span style="color:#ae81ff">mvn clean verify&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Workflow macht in dieser Reihenfolge:&lt;/p>
+&lt;ul>
+&lt;li>ein &lt;code>git clone&lt;/code>&lt;/li>
+&lt;li>installiert Java mit der Version 21&lt;/li>
+&lt;li>führt die Tests mit dem Befehl &lt;code>mvn clean verify&lt;/code> aus&lt;/li>
+&lt;/ul>
+&lt;p>Sollte es zu einem Fehler in den Tests kommen, wird der Workflow fehlschlagen und den Entwickler informieren.
+&lt;img src="/de/docs/08_cicd/01_continuous-integration/images/gh-actions-failure.png" alt="">&lt;/p></description></item><item><title>Docs: Continuous Delivery</title><link>/de/docs/08_cicd/02_continuous-delivery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/08_cicd/02_continuous-delivery/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann den Begriff Continuous Delivery erklären.&lt;/li>
+&lt;/ul>
+&lt;h2 id="continuous-delivery">Continuous Delivery&lt;/h2>
+&lt;p>Continuous Delivery, kurz CD, erweitert das automatische Testing um einen automatiserten Freigabeprozess. Eine neue Version der Anwendung soll also per Knopfdruck (und nach dem erfolgreichen Durchlaufen der CI-Pipeline) jederzeit deployed werden können.&lt;/p>
+&lt;p>Theoretisch kann man mit CD also mit einem einzigen Knopfdruck die neue Version der Software auf den Server laden. Dabei spielt es im Prinzip keine Rolle, ob man das täglich, wöchentlich oder nach Lust und Laune tut. Es ist jedoch generell eine gute Idee, regelmässig Deployments durchzuführen. Falls etwas dabei schiefgeht, ist das Problemlöseverfahren meistens einfacher.&lt;/p>
+&lt;p>&lt;img src="/de/docs/08_cicd/02_continuous-delivery/images/continuous-delivery.png" alt="">&lt;/p></description></item><item><title>Docs: Continuous Deployment</title><link>/de/docs/08_cicd/03_continuous-deployment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/08_cicd/03_continuous-deployment/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann den Begriff Continuous Deployment erklären.&lt;/li>
+&lt;/ul>
+&lt;h2 id="continuous-deployment">Continuous Deployment&lt;/h2>
+&lt;p>Continuous Deployment, was verwirrenderweise ebenfalls gleich wie Continuous Delivery abgekürzt wird, treibt das Prinzip auf die Spitze. Jede Änderung wird sofort produktiv gesetzt, vorausgesetzt es gibt keinen Fehler in den automatisierten Tests.&lt;/p>
+&lt;p>Das hat verschiedene Vorteile. Man kriegt sehr schnell Feedback von Kunden und es gibt keinen stressigen &amp;ldquo;Release-Day&amp;rdquo; mehr. Wenn man jedoch eine schlechte CI-Pipeline und/oder ungenügende Code-Reviews hat, führt das Verfahren zu mehr Problemen, als dass es nützt.&lt;/p>
+&lt;p>&lt;img src="/de/docs/08_cicd/03_continuous-deployment/images/continuous-deployment.png" alt="">&lt;/p></description></item></channel></rss>
