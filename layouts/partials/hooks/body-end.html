@@ -1,0 +1,128 @@
+<script>
+
+  function banner() {
+    if (document.documentElement.lang !== "de") return;
+
+    const banner = document.createElement("div");
+    banner.className = "alert alert-warning alert-dismissible fade show";
+    banner.style.margin = "0 0 1rem 0";
+    banner.style.padding = "1rem";
+    banner.style.textAlign = "left";
+    banner.style.backgroundColor = "#FFDEBB";
+    banner.innerHTML = `
+      <strong>Hinweis:</strong>
+      Das Ausbildungsprogramm für 2025 ist in Bearbeitung und ändert aktuell noch ständig.
+      Nutze aktuell noch das Ausbildungsprogramm 2024, wenn du ein it-ninja werden willst.
+    `;
+
+    if (window.location.pathname == "/de/") {
+      const header = document.querySelector("header.navbar, .navbar");
+      const offset = (header ? header.offsetHeight : 80) + 20;
+      banner.style.marginTop = offset + "px";
+      banner.style.marginBottom = 0;
+    }
+
+    document.querySelectorAll("main").forEach(main => {
+      const clone = banner.cloneNode(true);
+      main.prepend(clone);
+    });    
+  }
+
+  function replaceTextInNode(node, replacements) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      let text = node.nodeValue;
+
+      // Platzhalter: [[key|fallback]] oder [[key]]
+      text = text.replace(/\[\[([a-zA-Z0-9_]+)(\|([^\]]+))?\]\]/g, (match, key, _fallbackPart, fallbackValue) => {
+        let value;
+
+        if (replacements.hasOwnProperty(key)) {
+          value = replacements[key];
+          console.log(`✅ Verwende aus replacements: [[${key}]] = "${value}"`);
+        } else {
+          value = localStorage.getItem(key);
+          if (value !== null && value !== '') {
+            console.log(`🔁 Ersetze [[${key}]] mit LocalStorage-Wert "${value}"`);
+          }
+        }
+
+        if (value !== undefined && value !== null && value !== '') {
+          return value;
+        } else if (fallbackValue !== undefined) {
+          console.log(`🪙 [[${key}]] nicht gesetzt → fallback "${fallbackValue}"`);
+          return fallbackValue;
+        } else {
+          console.log(`⚠️ [[${key}]] nicht gesetzt und kein fallback`);
+          return '';
+        }
+      });
+
+      node.nodeValue = text;
+    } else {
+      node.childNodes.forEach(child => replaceTextInNode(child, replacements));
+    }
+  }
+
+  function getWithDefault(key, fallback) {
+    const value = localStorage.getItem(key);
+    if (value === null || value === '') {
+      console.log(`ℹ️ ${key} nicht gesetzt → Standardwert verwendet: "${fallback}"`);
+      return fallback;
+    } else {
+      console.log(`✅ ${key} geladen: "${value}"`);
+      return value;
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    console.log("🚀 Wende Konfiguration an...");
+
+    const startyear = getWithDefault('itninja_startyear', '2025');
+    const os = getWithDefault('itninja_os', 'Windows');
+    const ausbildungsort = getWithDefault('itninja_ausbildungsort', '');
+    const username = getWithDefault('itninja_username', 'u123456');
+
+    // Sichtbarkeit nach Ausbildungsort
+    document.querySelectorAll('[class^="is-a-"], [class*=" is-a-"]').forEach(el => {
+      const match = Array.from(el.classList).find(cls => cls.startsWith('is-a-'));
+      if (match && match === 'is-a-' + ausbildungsort.toLowerCase()) {
+        el.style.display = el.dataset.shouldDisplay || 'block';
+      }
+    });
+
+    // Sichtbarkeit nach Jahr
+    document.querySelectorAll('[class^="is-year-"], [class*=" is-year-"]').forEach(el => {
+      const match = Array.from(el.classList).find(cls => cls.startsWith('is-year-'));
+      if (match && match === 'is-year-' + startyear) {
+        el.style.display = el.dataset.shouldDisplay || 'block';
+      }
+    });
+
+    // Sichtbarkeit nach OS
+    document.querySelectorAll('[class^="is-os-"], [class*=" is-os-"]').forEach(el => {
+      const match = Array.from(el.classList).find(cls => cls.startsWith('is-os-'));
+      if (match && match === 'is-os-' + os.toLowerCase()) {
+        el.style.display = el.dataset.shouldDisplay || 'block';
+      }
+    });
+
+    var path = 'C:\\Users\\u123456\\local_repos\\it-ninja-labs'
+    // Check for OS
+    if(os.toLowerCase() === "linux") {
+      path ='/home/u123456/repos.local/it-ninjas-lab'
+    }
+    path = path.replace("u123456", username);
+
+    // Textreplacements
+    const replacements = {
+      'itninja_username': username,
+      'itninja_localrepo': getWithDefault('itninja_localrepo', path),
+    };
+
+    replaceTextInNode(document.body, replacements);
+
+    console.log("✅ Konfiguration angewendet");
+
+    banner();
+  });
+</script>
