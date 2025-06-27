@@ -95,7 +95,8 @@ vertraulichen Informationen oder Geheimnisse...
   }
 
   function saveSettings(){
-    e.preventDefault();
+
+    console.log("🚀 Save settings...");
 
     const username = document.getElementById('username').value;
     const os = document.getElementById('os').value;
@@ -117,7 +118,7 @@ vertraulichen Informationen oder Geheimnisse...
     const status = document.getElementById('save-status');
     status.style.display = 'block';
 
-    setTimeout(() => location.reload(), 500); // 🔁 Reload after short break
+    console.log("✅ Settings saved...");
   }
 
   // ---------------------------------------------------
@@ -130,7 +131,10 @@ vertraulichen Informationen oder Geheimnisse...
 
   // when pressing submit
   document.getElementById('config-form').addEventListener('submit', (e) => {
+    e.preventDefault();
     saveSettings();
+    // 🔁 Reload after short break
+    setTimeout(() => location.reload(), 2000); 
   });
 </script>
 <!-- prettier-ignore-end -->
