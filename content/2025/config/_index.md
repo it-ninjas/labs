@@ -13,14 +13,12 @@ Du kannst diese Einstellungen jederzeit anpassen – ganz nach deinen Bedürfnis
 {{< ninja warning >}}
 **Zu deiner Sicherheit:** Diese Einstellungen werden nur lokal in deinem Browser gespeichert und verlassen deinen Rechner nicht.  
 Das bedeutet allerdings, dass du sie auf einem anderen Gerät erneut eingeben musst.
-{{< /ninja>}}
+{{< /ninja >}}
 
 {{< ninja info >}}
 Die Einstellungen dienen dazu, Inhalte, welche für dich nicht relevant sind auszublenden. Es handelt sich dabei um keine
 vertraulichen Informationen oder Geheimnisse...
-{{< /ninja>}}
-
-
+{{< /ninja >}}
 
 <div id="loading-indicator" style="color: #555; font-style: italic; margin-bottom: 1em;">
   ⏳ Einstellungen werden geladen...
