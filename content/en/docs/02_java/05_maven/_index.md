@@ -60,7 +60,7 @@ Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariable
 Ist IntelliJ installiert, findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise
 sind diese Einstellungen bereits korrekt.
 
-![Intellij Maven settings](../maven/intellij_maven_settings.png)
+![Intellij Maven settings](./images/intellij_maven_settings.png)
 
 Die wichtigsten Einstellungen sind:
 
@@ -284,7 +284,7 @@ Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert
 #### Abschnitt 3
 
 Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten
-Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](spring-framework/spring-boot/06_spring-boot.md)
+Parent-Projekts hinterlegt werden. Dies ist vor allem bei [Spring-Boot](../12_spring-framework/07_spring-boot/)
 Projekten wichtig.
 
 #### Abschnitt 4
@@ -333,9 +333,9 @@ versucht Abhängigkeiten über dieses Repository aufzulösen.
 ##### Beispiel einer Abhängigkeit (junit-jupiter-engine)
 
 Die Dependency `junit-jupiter-engine` ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
-einem weit verbreiteten Test-Framework für Java. Im Kapitel [Testing](../java-testing) wirst diese ausführlich genutzt.
+einem weit verbreiteten Test-Framework für Java. Im Kapitel [Testing](../08_java-testing) wirst diese ausführlich genutzt.
 
-Ein weiteres Beispiel für eine Abhängigkeit ist `lombok`. Diese Library wird im Kapitel [Lombok](../lombok) ausführlich
+Ein weiteres Beispiel für eine Abhängigkeit ist `lombok`. Diese Library wird im Kapitel [Lombok](../06_lombok) ausführlich
 beschrieben.
 
 #### Abschnitt 6

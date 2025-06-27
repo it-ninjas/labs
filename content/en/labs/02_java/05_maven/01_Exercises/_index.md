@@ -18,7 +18,7 @@ eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [Git
 {{< /SBBOnly >}}
 
 1. Erstelle ein neues
-   [persönliches Repository](../../../../docs/tools/personal_bitbucket_repo/#persönliches-bitbucket-repository-einrichten)
+   [persönliches Repository](../../../../docs/01_tools//02_personal-bitbucket/#persönliches-bitbucket-repository-einrichten)
 2. Klone das neue Repository mit IntelliJ IDEA
 
    ![Create Project from Version Control](./images/02_NewProjectFromVersionControl.png)
@@ -37,7 +37,7 @@ eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [Git
 Erstelle ein neues Projekt, welches wir später für das Modul Unit-Testing verwenden werden.
 
 1. Erstelle in IntelliJ IDEA die für Maven erforderliche Ordnerstruktur:
-   - Im Root-Verzeichnis des Repositories eine [.gitignore Datei](../../../docs/git/basics/git-basics/#gitignore),
+   - Im Root-Verzeichnis des Repositories eine [.gitignore Datei](../../../../docs/04_git/01_grundwissen/03_git-basics/#gitignore),
      angepasst für ein IntelliJ Maven Projekt.
    - Ordner src erstellen
    - Im Ordner src zwei Ordner erstellen: main und test
