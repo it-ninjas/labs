@@ -77,7 +77,6 @@
   window.addEventListener('DOMContentLoaded', () => {
     console.log("🚀 Wende Konfiguration an...");
 
-    const startyear = getWithDefault('itninja_startyear', '2025');
     const os = getWithDefault('itninja_os', 'Windows');
     const ausbildungsort = getWithDefault('itninja_ausbildungsort', '');
     const username = getWithDefault('itninja_username', 'u123456');
@@ -86,14 +85,6 @@
     document.querySelectorAll('[class^="is-a-"], [class*=" is-a-"]').forEach(el => {
       const match = Array.from(el.classList).find(cls => cls.startsWith('is-a-'));
       if (match && match === 'is-a-' + ausbildungsort.toLowerCase()) {
-        el.style.display = el.dataset.shouldDisplay || 'block';
-      }
-    });
-
-    // Sichtbarkeit nach Jahr
-    document.querySelectorAll('[class^="is-year-"], [class*=" is-year-"]').forEach(el => {
-      const match = Array.from(el.classList).find(cls => cls.startsWith('is-year-'));
-      if (match && match === 'is-year-' + startyear) {
         el.style.display = el.dataset.shouldDisplay || 'block';
       }
     });
