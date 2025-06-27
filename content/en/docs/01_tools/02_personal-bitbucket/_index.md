@@ -71,7 +71,8 @@ Repository hast, womit du auch ohne Internetverbindung arbeiten kannst.
 3. Nach dem Login wirst du oben rechts ein, vermutlich, noch leeres Profil-Bild sehen. Klicke darauf und wähle **View Profile** (Profil anzeigen) aus:
    ![View Profile](images/bitbucket-view-profile.png)
 4. Auf deiner Profilseite, klickst du nun den **Create repository** (Neues Repository erstellen) Button.
-5. Gib im geöffneten Formular deinem Repository einen Namen (z.B. "ausbildungsprogramm") und lasse die andere Felder leer. Anschliessend klicke auf **Create Repository** (Repository erstellen).
+5. Gib im geöffneten Formular deinem Repository einen Namen. Grundsätzlich ist der Name frei wählbar, aber wir empfehlen etwas in der Form von "IT-Ninjas-{jahr}-{vorname}{name}" zu nutzen, wobei für {jahr} das aktuelle Jahr eingesetzt wird, {vorname} ersetzt Du durch Deinen Vornamen und {name} durch Deinen Namen. Das erleichtert uns die Zusammenarbeit. Lasse die andere Felder leer.
+6. Anschliessend klicke auf **Create Repository** (Repository erstellen).
 
 Bitbucket erstellt nun das Repository für dich und du wirst automatisch zu deinem, noch leeren, Repository geführt.
 Herzliche Gratulation! Du hast soeben dein erstes Git-Repository erstellt.
