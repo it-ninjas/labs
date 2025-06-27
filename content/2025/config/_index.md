@@ -28,25 +28,26 @@ vertraulichen Informationen oder Geheimnisse...
   <label for="username">Benutzername:</label><br />
   <input type="text" id="username" name="username" /><br /><br />
 
-  <label for="localrepo">Pfad zum lokalen Repository (dort wo du deine Übungen speichern willst):</label><br />
-  <input type="text" id="localrepo" name="localrepo" style="width: 100%;" /><br /><br />
+<label for="localrepo">Pfad zum lokalen Repository (dort wo du deine Übungen speichern willst):</label><br />
+<input type="text" id="localrepo" name="localrepo" style="width: 100%;" /><br /><br />
 
-  <label for="os">Betriebssystem des Entwicklungsrechners:</label><br />
-  <select id="os" name="os">
-    <option value="Windows">Windows</option>
-    <option value="Linux">Linux</option>
-  </select><br /><br />
+<label for="os">Betriebssystem des Entwicklungsrechners:</label><br />
+<select id="os" name="os">
+<option value="Windows">Windows</option>
+<option value="Linux">Linux</option>
+</select><br /><br />
 
-  <label for="ausbildungsort">Wahl der Ausbildungsstätte:</label><br />
-  <select id="ausbildungsort" name="ausbildungsort">
-    <option value="">(keine)</option>
-    <option value="SBB">SBB</option>
-    <option value="89grad">89grad</option>
-    <option value="Puzzle ITC">Puzzle ITC</option>
-    <option value="unic">unic</option>
-  </select><br /><br />
+<label for="ausbildungsort">Wahl der Ausbildungsstätte:</label><br />
+<select id="ausbildungsort" name="ausbildungsort">
+<option value="">(keine)</option>
+<option value="SBB">SBB</option>
+<option value="89grad">89grad</option>
+<option value="Puzzle ITC">Puzzle ITC</option>
+<option value="unic">unic</option>
+</select><br /><br />
 
-  <button type="submit">Speichern</button>
+<button type="submit">Speichern</button>
+
 </form>
 
 <p id="save-status" style="color: green; display: none;">Einstellungen gespeichert!</p>
