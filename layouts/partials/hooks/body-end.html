@@ -1,6 +1,6 @@
 <script>
 
-  function banner() {
+  function checkForBanner() {
     if (document.documentElement.lang !== "de") return;
 
     const banner = document.createElement("div");
@@ -38,21 +38,21 @@
 
         if (replacements.hasOwnProperty(key)) {
           value = replacements[key];
-          console.log(`✅ Verwende aus replacements: [[${key}]] = "${value}"`);
+          console.log(`✅ use from replacements: [[${key}]] = "${value}"`);
         } else {
           value = localStorage.getItem(key);
           if (value !== null && value !== '') {
-            console.log(`🔁 Ersetze [[${key}]] mit LocalStorage-Wert "${value}"`);
+            console.log(`🔁 Replace [[${key}]] with local-storage-value "${value}"`);
           }
         }
 
         if (value !== undefined && value !== null && value !== '') {
           return value;
         } else if (fallbackValue !== undefined) {
-          console.log(`🪙 [[${key}]] nicht gesetzt → fallback "${fallbackValue}"`);
+          console.log(`🪙 [[${key}]] not defined → fallback "${fallbackValue}"`);
           return fallbackValue;
         } else {
-          console.log(`⚠️ [[${key}]] nicht gesetzt und kein fallback`);
+          console.log(`⚠️ [[${key}]] not defined and no fallback`);
           return '';
         }
       });
@@ -66,30 +66,30 @@
   function getWithDefault(key, fallback) {
     const value = localStorage.getItem(key);
     if (value === null || value === '') {
-      console.log(`ℹ️ ${key} nicht gesetzt → Standardwert verwendet: "${fallback}"`);
+      console.log(`ℹ️ ${key} not defined → use default value: "${fallback}"`);
       return fallback;
     } else {
-      console.log(`✅ ${key} geladen: "${value}"`);
+      console.log(`✅ ${key} loaded: "${value}"`);
       return value;
     }
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log("🚀 Wende Konfiguration an...");
+  function dynamicAdaptContent(){
+    console.log("🚀 Use configuration settings...");
 
     const os = getWithDefault('itninja_os', 'Windows');
-    const ausbildungsort = getWithDefault('itninja_ausbildungsort', '');
+    const apprenticeshipprovider = getWithDefault('itninja_apprenticeshipprovider', '');
     const username = getWithDefault('itninja_username', 'u123456');
 
-    // Sichtbarkeit nach Ausbildungsort
+    // visibility for apprenticeship users
     document.querySelectorAll('[class^="is-a-"], [class*=" is-a-"]').forEach(el => {
       const match = Array.from(el.classList).find(cls => cls.startsWith('is-a-'));
-      if (match && match === 'is-a-' + ausbildungsort.toLowerCase()) {
+      if (match && match === 'is-a-' + apprenticeshipprovider.toLowerCase()) {
         el.style.display = el.dataset.shouldDisplay || 'block';
       }
     });
 
-    // Sichtbarkeit nach OS
+    // visibility by OS
     document.querySelectorAll('[class^="is-os-"], [class*=" is-os-"]').forEach(el => {
       const match = Array.from(el.classList).find(cls => cls.startsWith('is-os-'));
       if (match && match === 'is-os-' + os.toLowerCase()) {
@@ -112,8 +112,12 @@
 
     replaceTextInNode(document.body, replacements);
 
-    console.log("✅ Konfiguration angewendet");
+    console.log("✅ Configuration settings adapted");
+  }
 
-    banner();
+  window.addEventListener('DOMContentLoaded', () => {
+
+    dynamicAdaptContent();
+    checkForBanner();
   });
 </script>
