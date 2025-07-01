@@ -1,7 +1,7 @@
 ---
 title: "Google API Key"
 linkTitle: "Google API Key"
-weight: 6
+weight: 1
 description: >
   Für Übungen, welche API's von Google verwenden. Nur bei Bedarf.
 ---
@@ -22,7 +22,7 @@ description: >
 Die folgenden Schritte leiten dich durch den Prozess um einen API Key für die Google APIs zu erhalten.
 
 {{< ninja warning>}}
-Behandle den Key vertraulich. Er sollte nicht in einem Git-Repository gespeichert werden. [Hier](../04_intellij/05_secrets/) erfährst du, wie du es in unseren Übungen machen kannst.
+Behandle den Key vertraulich. Er sollte nicht in einem Git-Repository gespeichert werden. [Hier](../../02_ide/01_intellij/05_secrets/) erfährst du, wie du es in unseren Übungen machen kannst.
 {{< /ninja>}}
 
 1. Öffne [https://developers.google.com/?hl=de](https://developers.google.com/?hl=de)
@@ -93,5 +93,5 @@ Behandle den Key vertraulich. Er sollte nicht in einem Git-Repository gespeicher
    ![Show Key](./images/showKey.png)
 
    {{< ninja warning>}}
-   Den Key kopieren und sicher ablegen. Nicht ins Git-Repository. Vertraulich behandeln! [Hier](../04_intellij/05_secrets/) erfährst du, wie du es in unseren Übungen machen kannst.
+   Den Key kopieren und sicher ablegen. Nicht ins Git-Repository. Vertraulich behandeln! [Hier](../../02_ide/01_intellij/05_secrets/) erfährst du, wie du es in unseren Übungen machen kannst.
    {{< /ninja >}}

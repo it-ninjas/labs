@@ -1,9 +1,9 @@
 ---
 title: "Markdown"
 linkTitle: "Markdown"
-weight: 3
+weight: 1
 description: >
-  Tools - Markdown
+  Dokumentieren mit Markdown
 ---
 
 #### Ziele

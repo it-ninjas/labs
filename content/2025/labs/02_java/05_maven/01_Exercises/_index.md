@@ -18,7 +18,7 @@ eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [Git
 {{< /SBBOnly >}}
 
 1. Erstelle ein neues
-   [persönliches Repository](../../../../docs/01_tools/02_source-repositories/01_personal-bitbucket/)
+   [persönliches Repository](../../../../docs/01_tools/04_zusammenarbeit/01_source-repositories/01_personal-bitbucket/)
 2. Klone das neue Repository mit IntelliJ IDEA
 
    ![Create Project from Version Control](./images/02_NewProjectFromVersionControl.png)

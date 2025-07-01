@@ -1,7 +1,7 @@
 ---
 title: "Source Repositories"
 linkTitle: "Source Repositories"
-weight: 2
+weight: 1
 description: >
   Einführung in Source Repositories wie GitHub, GitLab und Bitbucket
 ---

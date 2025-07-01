@@ -40,7 +40,7 @@ Nach dem Erstellen siehst du unten den neuen Git-Tab und kannst mit dem ersten C
 
 Wenn Du ein Git Repository selber erstellt hast, ist dieses nur lokal vorhanden. Beim ersten **Push** wirst du darum von
 IntelliJ nach der URL für das Remote Repository gefragt. Wie du die URL für dein Remote Repository bekommst erfährst du
-unter [Source Repositories](../../02_source-repositories/).
+unter [Source Repositories](../../../04_zusammenarbeit/01_source-repositories/).
 
 {{<todo>}}
 Screenshot Remote Repository hinzufügen...
@@ -71,7 +71,7 @@ build/
 {{< ninja type="tip" >}}
 Die Verzeichnisse `target/` und `build/` haben nichts mit IntelliJ zu tun sondern sind Verzeichnisse welche erstellt
 werden, wenn man Maven oder Gradle nutzt (das sind Build-Mamangement Tools, mehr über Maven erfährst Du
-[hier](../../../02_java/05_maven/)).
+[hier](../../../../../labs/02_java/05_maven/)).
 {{< /ninja >}}
 
 Die Datei sollte am ende etwa so aussehen:
@@ -193,7 +193,7 @@ Du kannst Zeilen einzeln übernehmen.
 ## Was du nicht vergessen solltest
 
 Auch wenn vieles visuell möglich ist: Ein Grundverständnis von Git hilft, Probleme besser zu erkennen und zu lösen.  
-Im [Git-Modul](../../../04_git/) lernst du die Befehle und Konzepte im Detail.
+Im [Git-Modul](../../../../04_git/) lernst du die Befehle und Konzepte im Detail.
 
 {{< ninja type="tip" >}}
 Die `Console` im `Git`-Tab zeigt dir oft auch den einer Aktion zugrunde liegenden Git-Befehl – ideal zum Lernen.

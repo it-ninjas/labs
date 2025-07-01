@@ -1,7 +1,7 @@
 ---
 title: "IntelliJ IDEA – dein Einstieg ins professionelle Programmieren"
 linkTitle: "IntelliJ IDEA"
-weight: 4
+weight: 1
 description: >
   Mit IntelliJ IDEA lernst du von Anfang an, wie professionelle Softwareentwicklung funktioniert – effizient, smart und mit vielen Hilfestellungen.
 ---

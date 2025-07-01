@@ -1,9 +1,9 @@
 ---
 title: "Microsoft Word"
 linkTitle: "Microsoft Word"
-weight: 99
+weight: 2
 description: >
-  Tools - Microsoft Word
+  Dokumentieren mit Microsoft Word
 ---
 
 #### Ziele

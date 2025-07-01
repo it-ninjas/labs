@@ -9,7 +9,7 @@ description: >
 ## Voraussetzungen
 
 - Du hast Zugriff auf das Git-Tool Bitbucket
-- Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls nicht, siehe: [Git installieren](../../../04_git/01_grundwissen/02_git-install)
+- Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls nicht, siehe: [Git installieren](../../../../04_git/01_grundwissen/02_git-install)
 - Du hast die Grundeinstellungen für Git vorgenommen:
 
 {{< details title="Folgende Einstellungen sind gemeint:" >}}
@@ -26,7 +26,7 @@ git config --global core.longpaths true
 
 ---
 
-> Wende dich an deinen Praxisbildner, falls du nicht bei der SBB arbeitest (und falls Du bei SBB arbeitest, kannst du in der [Konfiguartion](../../../../config#apprenticeshipprovider) die spezifischen Anleitungen und Informationen freischalten -> `Wahl der Ausbildungsstätte`).
+> Wende dich an deinen Praxisbildner, falls du nicht bei der SBB arbeitest (und falls Du bei SBB arbeitest, kannst du in der [Konfiguartion](../../../../../config#apprenticeshipprovider) die spezifischen Anleitungen und Informationen freischalten -> `Wahl der Ausbildungsstätte`).
 
 {{< sbb raw>}}
 
