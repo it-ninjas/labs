@@ -1,0 +1,8 @@
+<span class="zeit" data-lesezeit="{{ .Get "lesen" }}" data-üben="{{ .Get "üben" }}">
+  {{- if .Get "lesen" -}}
+    ⏱️ Geschätzte Lesezeit: {{ .Get "lesen" }} Minuten
+  {{- end -}}
+  {{- if .Get "praxis" -}}
+    {{ if .Get "lesen" }} | {{ end }}Umsetzen: {{ .Get "praxis" }} Minuten
+  {{- end -}}
+</span>
