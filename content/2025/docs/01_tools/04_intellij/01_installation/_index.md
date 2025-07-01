@@ -80,8 +80,8 @@ Nutze diesen Zeitraum und fordere eine Lizenz an:
    - Wähle **License Server**
    - Gib die Adresse `https://sbb-license.fls.jetbrains.com` ein
    - Klicke auf **Activate**  
-   ![IntelliJ Register](./images/intellij_register.png)  
-   ![IntelliJ Register Schritt 2](./images/intellij_register1.png)
+     ![IntelliJ Register](./images/intellij_register.png)  
+     ![IntelliJ Register Schritt 2](./images/intellij_register1.png)
 
 Danach ist IntelliJ Ultimate aktiviert.
 {{< /sbb >}}

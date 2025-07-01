@@ -1,4 +1,3 @@
-
 ---
 title: "Bitbucket Repository einrichten"
 linkTitle: "Bitbucket Repository"
@@ -53,6 +52,7 @@ ssh-keygen -t rsa -b 4096 -C "u123456@sbb.ch"
 - Optional: Passphrase setzen
 
 > Die Schlüssel befinden sich in `C:\Users\u123456\.ssh\`:
+>
 > - `id_rsa` (privat, **niemals weitergeben**)
 > - `id_rsa.pub` (öffentlich)
 
@@ -71,6 +71,7 @@ type C:\Users\u123456\.ssh\id_rsa.pub
 ### 4. Repository klonen
 
 > Die genaue URL kannst du im Bitbucket bei deinem erstellten Projekt nachschauen.
+
 ```bash
 mkdir C:\Users\u123456\local_repos
 cd C:\Users\u123456\local_repos

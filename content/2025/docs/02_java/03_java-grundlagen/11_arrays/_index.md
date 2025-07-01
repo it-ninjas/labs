@@ -163,4 +163,3 @@ Labs konvertieren:
 Aufgabe 9
 ../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-9---arrays
 {{< /todo >}}
-

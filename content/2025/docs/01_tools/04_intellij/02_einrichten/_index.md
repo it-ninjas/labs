@@ -40,7 +40,7 @@ Du kannst deine Shortcuts anpassen:
 1. Öffne die Einstellungen (`Ctrl + Alt + S`).
 2. Suche nach **Keymap**.
 3. Ändere oder suche Tastenkombinationen.
-4. Alternativ kannst du auch eine andere Keymap wie *Eclipse* oder *Visual Studio* wählen.
+4. Alternativ kannst du auch eine andere Keymap wie _Eclipse_ oder _Visual Studio_ wählen.
 
 {{< ninja type="tip" >}}
 Unter **Help → Keymap Reference** kannst du deine persönliche Keymap als PDF exportieren.
@@ -48,30 +48,30 @@ Unter **Help → Keymap Reference** kannst du deine persönliche Keymap als PDF 
 
 ### Nützliche Tastenkombinationen für den Einstieg
 
-| Funktion                                           | Shortcut          |
-|----------------------------------------------------|-------------------|
-| Einstellungen öffnen                               | Ctrl + Alt + S    |
-| Überall suchen                                     | 2× Shift          |
+| Funktion                                           | Shortcut           |
+| -------------------------------------------------- | ------------------ |
+| Einstellungen öffnen                               | Ctrl + Alt + S     |
+| Überall suchen                                     | 2× Shift           |
 | Smart Code Completion                              | Ctrl + Alt + Space |
-| Code formatieren                                   | Ctrl + Alt + L    |
-| Imports optimieren                                 | Ctrl + Alt + O    |
-| Code generieren (Konstruktor, Getter, Setter usw.) | Alt + Insert      |
+| Code formatieren                                   | Ctrl + Alt + L     |
+| Imports optimieren                                 | Ctrl + Alt + O     |
+| Code generieren (Konstruktor, Getter, Setter usw.) | Alt + Insert       |
 
 ### Code-Snippets mit Kürzeln
 
 IntelliJ bietet Kürzel, mit denen du automatisch Code generieren kannst. Nutze `Ctrl + J`, um alle verfügbaren Kürzel anzuzeigen.
 
-| Kürzel     | Funktion                                      |
-|------------|-----------------------------------------------|
-| `psvm`     | `public static void main(...)`-Methode        |
-| `sout`     | `System.out.println(...)`                     |
-| `souf`     | Formatierter `System.out.printf(...)`         |
-| `serr`     | `System.err.println(...)`                     |
-| `fori`     | for-Schleife mit Zähler `i`                   |
-| `foreach`  | foreach-Schleife                              |
-| `ifn`      | if (x == null)                                |
-| `itli`     | Iteration über eine Liste                     |
-| `itit`     | Iteration mit Iterator                        |
+| Kürzel    | Funktion                               |
+| --------- | -------------------------------------- |
+| `psvm`    | `public static void main(...)`-Methode |
+| `sout`    | `System.out.println(...)`              |
+| `souf`    | Formatierter `System.out.printf(...)`  |
+| `serr`    | `System.err.println(...)`              |
+| `fori`    | for-Schleife mit Zähler `i`            |
+| `foreach` | foreach-Schleife                       |
+| `ifn`     | if (x == null)                         |
+| `itli`    | Iteration über eine Liste              |
+| `itit`    | Iteration mit Iterator                 |
 
 ## Neues Projekt anlegen
 

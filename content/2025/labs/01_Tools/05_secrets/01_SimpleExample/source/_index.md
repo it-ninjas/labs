@@ -120,10 +120,9 @@ SAMPLE_API_KEY=mein_geheimnis
 
 ```
 
-##### README._md{#readme-_md}
+##### README.\_md{#readme-\_md}
 
 Not able to display content!
-
 
 ### src\main\java\ch\itninja\labs
 
@@ -144,7 +143,6 @@ public class Main {
     }
 }
 ```
-
 
 #### secrets
 
@@ -186,7 +184,6 @@ public class Basic {
 
 ```
 
-
 ### src\test\java\ch\itninja\labs\secrets
 
 ##### BasicTest.java{#src-test-java-ch-itninja-labs-secrets-basictest-java}
@@ -220,7 +217,6 @@ class BasicTest {
 
 ```
 
-
 ### src\test\java\ch\itninja\labs\util
 
 ##### ItNinjaOutput.java{#src-test-java-ch-itninja-labs-util-itninjaoutput-java}
@@ -240,4 +236,3 @@ public class ItNinjaOutput {
 }
 
 ```
-

@@ -14,4 +14,3 @@ Lab konvertieren:
 Git Hands On Aufgabe
 ../../../../labs/04_git/01_grundlagen
 {{< /todo >}}
-

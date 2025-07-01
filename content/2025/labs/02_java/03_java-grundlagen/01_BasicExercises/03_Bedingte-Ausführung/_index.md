@@ -8,73 +8,80 @@ description: >
 ---
 
 <!--suppress CheckEmptyScriptTag -->
+
 #### Voraussetzung
-* Du weisst was Variablen sind.
-* Du kannst eine Variable deklarieren und initialisieren.
-* Du weisst was primitive Datentypen sind.
-* Du verstehst und kennst die verschiedenen Conditional Statements.
-* Du weisst, wann und wie welches Conditional Statement eingesetzt werden sollte.
-* Du weisst, wie man in Java mit Zahlen rechnet und Zahlen vergleicht.
-* Du weisst, was eine Methode ist und was Parameter sind.
+
+- Du weisst was Variablen sind.
+- Du kannst eine Variable deklarieren und initialisieren.
+- Du weisst was primitive Datentypen sind.
+- Du verstehst und kennst die verschiedenen Conditional Statements.
+- Du weisst, wann und wie welches Conditional Statement eingesetzt werden sollte.
+- Du weisst, wie man in Java mit Zahlen rechnet und Zahlen vergleicht.
+- Du weisst, was eine Methode ist und was Parameter sind.
 
 ## Vorbereitungsarbeiten
 
 > **Neu bei it-ninja?**  
-  Die Anleitung enthält ein paar Befehle und Fachbegriffe, welche dir wahrscheinlich noch nichts sagen. Mach dir deswegen keine Sorgen. In den kommenden Modulen werden wir dir alles Schritt für Schritt erklären und schon bald bist auch du ein it-ninja.
+>  Die Anleitung enthält ein paar Befehle und Fachbegriffe, welche dir wahrscheinlich noch nichts sagen. Mach dir deswegen keine Sorgen. In den kommenden Modulen werden wir dir alles Schritt für Schritt erklären und schon bald bist auch du ein it-ninja.
 
 Um die folgenden Aufgaben erfolgreich umzusetzen musst du folgende Schritte erledigen:
 
 1. Beim ersten Mal:
 
-    1. IntelliJ IDEA installieren -> [IntelliJ IDEA einrichten](/docs/02_java/02_intellij-einrichten/)
-    2. Git-Repository einrichten -> [Persönliches Git-Repository](/docs/01_tools/02_personal-bitbucket/)
-
+   1. IntelliJ IDEA installieren -> [IntelliJ IDEA einrichten](/docs/02_java/02_intellij-einrichten/)
+   2. Git-Repository einrichten -> [Persönliches Git-Repository](/docs/01_tools/02_personal-bitbucket/)
 
 2. Öffne eine CMD-Shell und wechsle ins Verzeichnis von deinem Git-Repository
 
-    {{<codeblock os="windows" lang="bash">}}
-    //windows bash
-    cd /d "[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]"
-    git status
-    //linux bash
-    cd "[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]"
-    git status
-    {{</codeblock>}}
+   {{<codeblock os="windows" lang="bash">}}
+   //windows bash
+   cd /d "[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]"
+   git status
+   //linux bash
+   cd "[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]"
+   git status
+   {{</codeblock>}}
 
 3. Stelle sicher, dass alle Dateien im Git-Repository commited sind. Mit `git status` kannst du dir eine Übersicht verschaffen:
-    ```bash
-    git status
-    ```
+
+   ```bash
+   git status
+   ```
 
 4. Erstelle einen neuen Branch für die Übung:
-    ```bash
-    git checkout -b "templates/it-ninja_02_Java_03_java-grundlagen_01_BasicExercises_03_Bedingte-Ausführung"
-    ```
-    > Du kannst auch einen kürzeren Namen für den Branch wählen. Wir nutzen `templates` am Anfang des Branches für Branches, welche den original Source-Code von den Übungen enthalten.
+
+   ```bash
+   git checkout -b "templates/it-ninja_02_Java_03_java-grundlagen_01_BasicExercises_03_Bedingte-Ausführung"
+   ```
+
+   > Du kannst auch einen kürzeren Namen für den Branch wählen. Wir nutzen `templates` am Anfang des Branches für Branches, welche den original Source-Code von den Übungen enthalten.
 
 5. Lade den Source-Code zu den Übungen herunter und entpacke den Inhalt im lokalen Repository ins Root-Verzeichnis: `[[itninja_localrepo|C:\\Users\\u123456\\repos.local\\it-ninjas-lab]]`). Den Source-Code kannst du hier herunterladen: [download](./it-ninja_02_Java_03_java-grundlagen_01_BasicExercises_03_Bedingte-Ausführung.zip) | [online](./source/)
 
 6. Commite den original Source-Code, damit er sicher im Repository ist:
-    ```bash
-    git add .
-    git commit -m "Initial version from it-ninja"
-    ```
+
+   ```bash
+   git add .
+   git commit -m "Initial version from it-ninja"
+   ```
 
 7. Erstelle einen neuen Branch um deine Lösung zu implementieren:
-    ```bash
-    git checkout -b "labs/it-ninja_02_Java_03_java-grundlagen_01_BasicExercises_03_Bedingte-Ausführung"
-    ```
-    > Auch hier kannst Du einen kürzeren Namen für den Branch wählen. Nutze `labs` am Anfang des Branches für Branches, welche Code von dir enthalten.
 
-    > **Pro-Tip:** Du kannst jederzeit einen weitere Branch machen, z.B. wenn du mal etwas ausprobieren willst. Alternativ kannst du auch in der History einen alten Stand wiederherstellen, was aber weniger flexibel ist.
+   ```bash
+   git checkout -b "labs/it-ninja_02_Java_03_java-grundlagen_01_BasicExercises_03_Bedingte-Ausführung"
+   ```
+
+   > Auch hier kannst Du einen kürzeren Namen für den Branch wählen. Nutze `labs` am Anfang des Branches für Branches, welche Code von dir enthalten.
+
+   > **Pro-Tip:** Du kannst jederzeit einen weitere Branch machen, z.B. wenn du mal etwas ausprobieren willst. Alternativ kannst du auch in der History einen alten Stand wiederherstellen, was aber weniger flexibel ist.
 
 8. Starte IntelliJ und öffne mit `File/Open` das Verzeichnis mit dem Source-Code. Wenn du alles korrekt gemacht hast solltest du den Code in deinem Benutzerverzeichnis finden:
 
-    {{<windows>}}`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_Java\03_java-grundlagen\01_BasicExercises\03_Bedingte-Ausführung`{{</windows>}}
+   {{<windows>}}`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_Java\03_java-grundlagen\01_BasicExercises\03_Bedingte-Ausführung`{{</windows>}}
 
-    {{<linux>}}`[[itninja_localrepo|/home/users/u123456/repos.local/it-ninjas-lab]]\02_Java/03_java-grundlagen/01_BasicExercises/03_Bedingte-Ausführung`{{</linux>}}
+   {{<linux>}}`[[itninja_localrepo|/home/users/u123456/repos.local/it-ninjas-lab]]\02_Java/03_java-grundlagen/01_BasicExercises/03_Bedingte-Ausführung`{{</linux>}}
 
-Nun bist du bereit, die untenstehenden Aufgaben zu lösen.
+Nun bist du bereit, die untenstehenden Aufgaben zu lösen.
 
 ## Aufgabe 1 - Hello It-Ninja
 
@@ -98,14 +105,14 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 Hello It-Ninja
 ```
 
-
 ## Aufgabe 2 - Zahlenvergleich
 
 Passe die folgende Methode an. Vergleiche die beiden Zahlen 'zahl1' und 'zahl2' und gib das Resultat des Vergleichs auf
 auf der Konsole aus:
-* `Zahl1(value1) ist kleiner als Zahl2(value2)`
-* `Zahl1(value1) ist grösser als Zahl2(value2)`
-* `Zahl1(value1) ist gleich gross wie Zahl2(value2)`
+
+- `Zahl1(value1) ist kleiner als Zahl2(value2)`
+- `Zahl1(value1) ist grösser als Zahl2(value2)`
+- `Zahl1(value1) ist gleich gross wie Zahl2(value2)`
 
 Wobei in der Ausgabe `value1` und `value2` durch die tatsächlichen Werte ersetzt werden sollen.
 
@@ -180,15 +187,15 @@ Zahl1(0) ist gleich gross wie Zahl2(0)
 
 Passe die folgende Methode an. Stell fest, ob das übergebene Jahr ein Schaltjahr ist (Gregorianischer Kalender). Gib auf
 der Konsole das Resultat aus:
-* `Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender`
-* `Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender`
+
+- `Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender`
+- `Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender`
 
 Wobei in der Ausgabe `year` durch das tatsächliche Jahr ersetzt werden soll.
 Falls das Jahr ein Schaltjahr ist, soll die Methode `true` zurückgeben, andernfalls `false`.
 
-> Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if 
-  Anweisungen.
-
+> Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if
+> Anweisungen.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
 [src\main\java\ch\itninja\labs\basicexercises\LeapYear.java](./source/#src-main-java-ch-itninja-labs-basicexercises-leapyear-java):

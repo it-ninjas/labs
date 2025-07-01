@@ -15,7 +15,7 @@ description: >
 ---
 
 {{< ninja type="tip" >}}
-Um erste Erfahrungen mit IntelliJ zu machen, kannst Du das [Hello World Beispiel](../../../../labs/02_Java/03_java-grundlagen/01_BasicExercises/01_Einfaches-Hello-World/) 
+Um erste Erfahrungen mit IntelliJ zu machen, kannst Du das [Hello World Beispiel](../../../../labs/02_Java/03_java-grundlagen/01_BasicExercises/01_Einfaches-Hello-World/)
 von it-ninjas verwenden.
 {{< /ninja >}}
 
@@ -71,13 +71,13 @@ Im Debug-Fenster kannst du sogar Variablen ändern oder Ausdrücke live auswerte
 
 ## Häufige Shortcuts
 
-| Aktion              | Shortcut           |
-|---------------------|--------------------|
-| Programm ausführen  | `Shift + F10`      |
-| Debug starten       | `Shift + F9`       |
-| Projekt kompilieren | `Ctrl + F9`        |
-| Nächste Zeile (Debug) | `F8`              |
-| In Methode springen (Debug) | `F7`        |
+| Aktion                      | Shortcut      |
+| --------------------------- | ------------- |
+| Programm ausführen          | `Shift + F10` |
+| Debug starten               | `Shift + F9`  |
+| Projekt kompilieren         | `Ctrl + F9`   |
+| Nächste Zeile (Debug)       | `F8`          |
+| In Methode springen (Debug) | `F7`          |
 
 ---
 

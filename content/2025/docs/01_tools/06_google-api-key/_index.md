@@ -93,5 +93,5 @@ Behandle den Key vertraulich. Er sollte nicht in einem Git-Repository gespeicher
    ![Show Key](./images/showKey.png)
 
    {{< ninja warning>}}
-   Den Key kopieren und sicher ablegen. Nicht ins Git-Repository. Vertraulich behandeln!  [Hier](../04_intellij/05_secrets/) erfährst du, wie du es in unseren Übungen machen kannst.
+   Den Key kopieren und sicher ablegen. Nicht ins Git-Repository. Vertraulich behandeln! [Hier](../04_intellij/05_secrets/) erfährst du, wie du es in unseren Übungen machen kannst.
    {{< /ninja >}}

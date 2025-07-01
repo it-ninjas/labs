@@ -67,9 +67,9 @@ Vergewissere dich, dass die `.env`-Datei nicht ins Git-Repository gelangt – **
 
 {{< pom >}}
 <dependency>
-  <groupId>io.github.cdimascio</groupId>
-  <artifactId>dotenv-java</artifactId>
-  <version>3.0.0</version>
+<groupId>io.github.cdimascio</groupId>
+<artifactId>dotenv-java</artifactId>
+<version>3.0.0</version>
 </dependency>
 {{< /pom >}}
 
@@ -120,13 +120,13 @@ Diese Datei darf eingecheckt werden – sie enthält **keine** echten Schlüssel
 
 ## Vorteile von `dotenv-java`
 
-| Vorteil             | Beschreibung |
-|---------------------|--------------|
-| IDE-unabhängig      | Funktioniert mit IntelliJ, VS Code, CLI, Docker usw. |
-| Deployment-tauglich | `.env` wird zur Laufzeit geladen – kein Startskript nötig |
-| Testing-freundlich  | Ideal für Integrationstests mit Umgebungsvariablen |
-| Einfach integrierbar| Nur eine kleine, leichtgewichtige Dependency |
-| Zukunftssicher      | Standardlösung für reale Java-Projekte |
+| Vorteil              | Beschreibung                                              |
+| -------------------- | --------------------------------------------------------- |
+| IDE-unabhängig       | Funktioniert mit IntelliJ, VS Code, CLI, Docker usw.      |
+| Deployment-tauglich  | `.env` wird zur Laufzeit geladen – kein Startskript nötig |
+| Testing-freundlich   | Ideal für Integrationstests mit Umgebungsvariablen        |
+| Einfach integrierbar | Nur eine kleine, leichtgewichtige Dependency              |
+| Zukunftssicher       | Standardlösung für reale Java-Projekte                    |
 
 {{< ninja info >}}
 Natürlich ist `dotenv-java` nicht die einzige Möglichkeit, um Konfiguration und Code voneinander zu trennen. In anderen
@@ -151,7 +151,7 @@ Wenn du keine zusätzliche Bibliothek verwenden willst und nur lokal mit Intelli
 ### Installation
 
 1. IntelliJ IDEA öffnen → `Settings` → `Plugins`
-2. Nach **Env File** (von *Aeris*) suchen und installieren
+2. Nach **Env File** (von _Aeris_) suchen und installieren
 3. IntelliJ neu starten
 
 ### Run-Konfiguration anpassen
@@ -185,10 +185,10 @@ Verwende es nur zum Einstieg oder für Tests – produktiv empfehlen wir `dotenv
 
 ## Empfehlung für it-ninjas-Projekte
 
-| Szenario                           | Empfehlung                |
-|------------------------------------|---------------------------|
-| Lokale Entwicklung (kurzfristig)   | `.env` + Plugin (optional) |
-| Verteilung, Produktivbetrieb       | `.env` mit `dotenv-java`  |
+| Szenario                         | Empfehlung                 |
+| -------------------------------- | -------------------------- |
+| Lokale Entwicklung (kurzfristig) | `.env` + Plugin (optional) |
+| Verteilung, Produktivbetrieb     | `.env` mit `dotenv-java`   |
 
 Verwende `dotenv-java`, wenn dein Projekt wachsen oder weitergegeben werden soll.  
 So stellst du sicher, dass deine Zugangsdaten **nicht im Code landen** – und dein Projekt **überall funktioniert**.

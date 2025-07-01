@@ -95,10 +95,9 @@ Konsole-Übungen
 
 ```
 
-##### README._md{#readme-_md}
+##### README.\_md{#readme-\_md}
 
 Not able to display content!
-
 
 ### src\main\java\ch\itninja\labs
 
@@ -122,7 +121,6 @@ public class Main {
     }
 }
 ```
-
 
 #### basicexercises
 
@@ -166,7 +164,7 @@ public class AsciiSwissFlag {
      * Zeichne eine Schweizer Fahne. Die Fahne muss einen Rahmen haben. Du darfst dazu
      * folgende Zeichen verwenden:
      *
-     * * Im Rahmen: '|', '-', '+'', Leerzeichen (' ') 
+     * * Im Rahmen: '|', '-', '+'', Leerzeichen (' ')
      * * Innerhalb: '|', '-', '+', '*', '=', '@'', Leerzeichen (' ')
      */
     public static void printSwissFlag(){
@@ -206,7 +204,6 @@ public class HelloWorld {
 
 
 ```
-
 
 ### src\test\java\ch\itninja\labs\basicexercises
 
@@ -385,7 +382,6 @@ class HelloWorldTest {
 
 ```
 
-
 ### src\test\java\ch\itninja\labs\util
 
 ##### ItNinjaOutput.java{#src-test-java-ch-itninja-labs-util-itninjaoutput-java}
@@ -405,4 +401,3 @@ public class ItNinjaOutput {
 }
 
 ```
-

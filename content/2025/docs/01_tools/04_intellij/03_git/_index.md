@@ -46,7 +46,7 @@ unter [Source Repositories](../../02_source-repositories/).
 Screenshot Remote Repository hinzufügen...
 {{</todo>}}
 
-#### .gitignore anpassen ####
+#### .gitignore anpassen
 
 IntelliJ erstellt im Projektverzeichnis eigene Dateien, welche nichts mit dem eigentlichen Projekt zu tun haben und
 deshalb im Git Repository nichts verloren haben. Aus diesem Grund empfiehlt es sich, gleich am Anfang eine .gitignore
@@ -107,7 +107,7 @@ Optional kannst du Tests ausführen oder eine Code-Analyse aktivieren.
 
 ![Commit erstellen](./images/commit-erstellen.png)
 
-Du kannst einzelne Änderungen (sogenannte *Hunks*) selektiv in den Commit übernehmen.
+Du kannst einzelne Änderungen (sogenannte _Hunks_) selektiv in den Commit übernehmen.
 
 ![Hunks](./images/hunks.png)
 
@@ -121,7 +121,7 @@ commited immer die ganze Datei).
 ### 4. Änderungen rückgängig machen
 
 > Rechtsklick auf eine Datei → **Git → Rollback**  
-> Oder über die linke Leiste: **Commit** und dort Rechtsclick auf Datei und **Rollback** 
+> Oder über die linke Leiste: **Commit** und dort Rechtsclick auf Datei und **Rollback**
 
 Solange die Datei nicht 'commited ' ist, kannst du Änderungen zurücknehmen. Auch gelöschte Dateien lassen sich so
 wiederherstellen.
@@ -146,6 +146,7 @@ Auf den Branch-Namen mit rechter Maustaste klicken oder `Git → Branches`
 
 Weitere Funktionen stehen dir Oben im Projektfenster zur Verfügung. Dort siehst du den jeweils **aktuellen Branch** und
 kannst Du unter anderem:
+
 - Ebenfalls neue Branches erstellen
 - Zwischen Branches wechseln
 - Branches zusammenführen (merge) oder löschen
@@ -159,7 +160,7 @@ kannst Du unter anderem:
 
 > Oben im Projektfenster beim **Branch** `Update Project...` / `Push...`
 
-- Push: Lokale Commits zum Remote-Server übertragen  
+- Push: Lokale Commits zum Remote-Server übertragen
 - Update Project: Änderungen vom Remote-Server abrufen (Pull)
 
 ![Push](./images/push.png)
@@ -181,8 +182,8 @@ Perfekt, um gezielt frühere Versionen anzuschauen oder zurückzusetzen.
 
 Bei Merge-Konflikten öffnet IntelliJ automatisch den Vergleichsdialog:
 
-- **Left** = deine Änderungen  
-- **Right** = Änderungen vom Remote oder anderen Branch  
+- **Left** = deine Änderungen
+- **Right** = Änderungen vom Remote oder anderen Branch
 - **Result** = zusammengeführte Datei
 
 Du kannst Zeilen einzeln übernehmen.

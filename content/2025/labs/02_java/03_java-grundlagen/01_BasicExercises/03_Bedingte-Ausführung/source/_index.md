@@ -95,10 +95,9 @@ Bedingte-Ausführung
 
 ```
 
-##### README._md{#readme-_md}
+##### README.\_md{#readme-\_md}
 
 Not able to display content!
-
 
 ### src\main\java\ch\itninja\labs
 
@@ -123,7 +122,6 @@ public class Main {
     }
 }
 ```
-
 
 #### basicexercises
 
@@ -215,7 +213,7 @@ public class LeapYear {
      * Wobei in der Ausgabe year durch das tatsächliche Jahr ersetzt werden soll.
      * Falls das Jahr ein Schaltjahr ist, soll die Methode true zurückgeben, andernfalls false.
      *
-     * Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if 
+     * Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if
      *   Anweisungen.
      */
     public static boolean isLeapYear(int year) {
@@ -226,7 +224,6 @@ public class LeapYear {
 }
 
 ```
-
 
 ### src\test\java\ch\itninja\labs\basicexercises
 
@@ -368,7 +365,6 @@ public class LeapYearTest {
 
 ```
 
-
 ### src\test\java\ch\itninja\labs\util
 
 ##### ItNinjaOutput.java{#src-test-java-ch-itninja-labs-util-itninjaoutput-java}
@@ -388,4 +384,3 @@ public class ItNinjaOutput {
 }
 
 ```
-

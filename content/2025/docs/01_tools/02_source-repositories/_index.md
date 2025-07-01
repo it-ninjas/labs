@@ -31,11 +31,11 @@ Ein Repository ist wie ein intelligentes Backup deiner Arbeit, kombiniert mit de
 
 ## Anbieter im Vergleich
 
-| Anbieter      | Beschreibung                                                                                 | Authentifizierung            | Cloud / Self-Hosted |
-|---------------|----------------------------------------------------------------------------------------------|-------------------------------|---------------------|
-| **GitHub**    | Größtes öffentliches Repository-Netzwerk. Starke Community, viele Open-Source-Projekte.     | Benutzername + Token, SSH     | Cloud               |
-| **GitLab**    | Fokus auf DevOps. CI/CD und Issue-Management direkt integriert.                              | Benutzername + Token, SSH     | Cloud & Self-Hosted |
-| **Bitbucket** | Wird von Atlassian (Hersteller von Jira) betrieben. Gut integriert in Unternehmensprozesse. | Benutzername + Token, SSH     | Cloud & Self-Hosted |
+| Anbieter      | Beschreibung                                                                                | Authentifizierung         | Cloud / Self-Hosted |
+| ------------- | ------------------------------------------------------------------------------------------- | ------------------------- | ------------------- |
+| **GitHub**    | Größtes öffentliches Repository-Netzwerk. Starke Community, viele Open-Source-Projekte.     | Benutzername + Token, SSH | Cloud               |
+| **GitLab**    | Fokus auf DevOps. CI/CD und Issue-Management direkt integriert.                             | Benutzername + Token, SSH | Cloud & Self-Hosted |
+| **Bitbucket** | Wird von Atlassian (Hersteller von Jira) betrieben. Gut integriert in Unternehmensprozesse. | Benutzername + Token, SSH | Cloud & Self-Hosted |
 
 ---
 

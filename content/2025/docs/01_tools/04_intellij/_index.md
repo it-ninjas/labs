@@ -12,7 +12,7 @@ Die IDE bietet viele Funktionen, die dir helfen, schneller zu programmieren, dei
 
 Kurz gesagt: IntelliJ ist nicht nur ein Editor, sondern dein persönlicher Programmier-Coach.
 
-Wir setzen IntelliJ bei *it-ninja* bewusst von Anfang an ein, damit du lernst, professionell zu arbeiten – so wie in der echten Arbeitswelt. Die gute Nachricht: Du musst nicht alles auf einmal verstehen. Wir steigen gemeinsam Schritt für Schritt ein – mit einfachen Projekten und Übungen, bei denen du IntelliJ kennenlernen und ausprobieren kannst.
+Wir setzen IntelliJ bei _it-ninja_ bewusst von Anfang an ein, damit du lernst, professionell zu arbeiten – so wie in der echten Arbeitswelt. Die gute Nachricht: Du musst nicht alles auf einmal verstehen. Wir steigen gemeinsam Schritt für Schritt ein – mit einfachen Projekten und Übungen, bei denen du IntelliJ kennenlernen und ausprobieren kannst.
 
 {{< alert info >}}
 Damit du die Grundlagen wirklich verstehst, nutzen wir zu Beginn nur einen Teil der Funktionen. Viele automatische Hilfen und Assistenten sind zunächst deaktiviert – so lernst du, eigenständig zu denken und den Code selbst zu schreiben. Schritt für Schritt schalten wir später mehr Features frei.

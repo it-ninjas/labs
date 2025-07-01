@@ -7,7 +7,7 @@ menu:
     weight: 1
 ---
 
-**Willkommen bei deinem Start ins Abenteuer Softwareentwicklung!**  
+**Willkommen bei deinem Start ins Abenteuer Softwareentwicklung!**
 
 Unser Ausbildungsprogramm ist dein persönlicher Fahrplan durch die Welt der IT – strukturiert, praxisnah und auf deinen Lernerfolg ausgerichtet.
 
@@ -42,7 +42,7 @@ Unter [Konfiguratuion](../config/) kannst du it-ninjas an deine Bedürfnisse anp
 {{< sbb >}}
 Hey cool, willkommen bei der SBB!
 
-Boxen wie diese geben dir zusätzliche Informationen, wie du mit den Tools und Werkzeugen bei SBB deine Herausforderungen meistern kannst. 
+Boxen wie diese geben dir zusätzliche Informationen, wie du mit den Tools und Werkzeugen bei SBB deine Herausforderungen meistern kannst.
 
 {{< ninja info>}}
 Gewisse Tools bedingen, dass du per VPN mit dem Netzwerk von SBB verbunden bist!
@@ -56,16 +56,16 @@ Starte jetzt mit den [Java Grundlagen](./02_java/03_java-grundlagen/) um bald ei
 ---
 
 {{< sbb >}}
+
 ## Übersicht Ausbildungsprogramm
 
-Anbei findest du eine Übersicht, welche Module du zu welchem Zeitpunkt anschauen wirst. 
+Anbei findest du eine Übersicht, welche Module du zu welchem Zeitpunkt anschauen wirst.
 
 [![Ausbildungsprogramm Übersicht](../docs/overview/ausbildungsprogramm_uebersicht.png)](../docs/overview/ausbildungsprogramm_uebersicht.png)
 
 {{< ninja type="info" >}}
 Beachte, die Zeiten sind grobe Vorgaben. Jeder hat sein eigenes Tempo. Es ist wichtig dass du dir Zeit nimmst und den Inhalt verstehst. Die nachfolgenden Module bauen auf das erlernte Wissen auf.
 {{< /ninja >}}
-
 
 {{< ninja type="tip" >}}
 Die berufsübergreifenden Workshops und Erfahrungstransfers sind ebenfalls wichtig – du findest sie ausserhalb von IT-Ninjas in separaten Angeboten.
