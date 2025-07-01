@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Word"
 linkTitle: "Microsoft Word"
-weight: 4
+weight: 99
 description: >
   Tools - Microsoft Word
 ---

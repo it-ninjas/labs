@@ -128,4 +128,9 @@ System.out.println("Dein aktueller Rang ist "
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 4](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-4---einfache-berechnungen) in den Labs.
+{{< todo >}}
+Lab konvertieren:
+
+Aufgabe 4
+../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-4---einfache-berechnungen
+{{< /todo >}}

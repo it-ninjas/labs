@@ -2,11 +2,7 @@
 title: "Tools"
 weight: 1
 description: >
-  Einführung Markdown,  
-  Word Basics
+  Lerne Tools kennen, die dich in der Talent Factory und darüber hinaus begleiten
 ---
 
-## Inhalt
-
-In diesem Bereich werden Tools vorgestellt, welche du beim Erstellen von Lerndokumentation o.ä  
-einsetzen wirst.
+In diesem Bereich findest du hilfreiche Werkzeuge, die dich während deiner Ausbildung unterstützen – und dir auch danach dabei helfen, dein volles Potenzial zu entfalten.

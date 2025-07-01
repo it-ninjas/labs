@@ -130,4 +130,20 @@ public class HelloWorld {
 
 Jetzt kennst du die Grundstruktur eines Java-Programms! Probiere es aus, indem du dein erstes Programm schreibst und kompilierst.
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 1](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-1---ausgaben-auf-die-kommandozeile) in den Labs.
+{{<aufgaben "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/01_einfaches-hello-world">}}
+
+## Vom einfachen Beispiel zum echten Projekt
+
+Im vorherigen Kapitel hast du ein einfaches Java-Programm geschrieben – eine einzelne Datei mit dem Namen HelloWorld.java. Damit konntest du sehen, wie man ein Java-Programm grundsätzlich startet und ausführt.
+
+Doch sobald Programme grösser werden – mit mehreren Klassen, Tests und Bibliotheken – reicht so ein einzelnes File nicht mehr aus.
+
+Deshalb verwenden wir bei it-ninja von Anfang an ein strukturierteres Projektlayout, wie es auch in der Berufswelt üblich ist. Das klingt auf den ersten Blick vielleicht komplizierter, bringt aber viele Vorteile – vor allem, wenn du später mit modernen Tools und grösseren Projekten arbeitest.
+
+Aber keine Sorge – wir starten jetzt nicht gleich mit viel Theorie oder komplexen Konzepten.
+Stattdessen schauen wir uns das Hello World-Beispiel gleich nochmals an – dieses Mal aber in der strukturierten Projektform, wie sie in der Praxis üblich ist.
+
+Dabei wirst du sehen, dass sich gar nicht so viel ändert – aber der Aufbau deutlich mehr Möglichkeiten bietet.
+Und danach kannst du direkt mit ein paar kleinen Übungen loslegen, um dich mit dem Aufbau und der Arbeitsweise vertraut zu machen.
+
+{{<aufgaben "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/02_konsole-übungen">}}
