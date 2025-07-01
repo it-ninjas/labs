@@ -4,5 +4,5 @@ linkTitle: "Java"
 type: docs
 weight: 2
 description: >
-  Labs zu Java
+  Übungen zu Java
 ---

@@ -1,0 +1,12 @@
+{{ $content := printf "Passe das Maven-Konfigurationsfile (`pom.xml`) an:" }}
+{{ $content = printf "%s\n%s" $content "```xml"}}
+{{ $content = printf "%s\n%s" $content .Inner}}
+{{ $content = printf "%s\n%s" $content "```"}}
+{{ $content = printf "%s\n%s" $content ""}}
+{{ $content = printf "%s\n%s" $content "{{< sbb >}}"}}
+{{ $content = printf "%s\n%s" $content "{{< ninja info >}}"}}
+{{ $content = printf "%s\n%s" $content "Falls du Probleme hast, die Maven-Dependency hinzuzufügen, prüfe, ob du mit dem VPN der SBB verbunden bist!"}}
+{{ $content = printf "%s\n%s" $content "{{< /ninja >}}"}}
+{{ $content = printf "%s\n%s" $content "{{< /sbb >}}"}}
+
+{{ $content | markdownify }}

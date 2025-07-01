@@ -96,11 +96,7 @@ if (dollars < 1000) {
 Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
 [Video](https://www.youtube.com/watch?v=BBNrEkv_Sw4).
 
----
-
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2a zu den if-else-Bedingungen](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-2a---die-if--und-else-bedingungen) in den Labs.
-
----
+{{<aufgaben "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_bedingte-ausführung">}}
 
 #### Switch-Statement
 
@@ -157,7 +153,12 @@ System.out.println("You're on the " + place + suffix + " place.");
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 2b zum Switch-Statement](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-2b---das-switch-statement) in den Labs.
+{{< todo >}}
+Lab konvertieren...
+
+Aufgabe 2b zum Switch-Statement
+../../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-2b---das-switch-statement
+{{< /todo >}}
 
 ---
 
@@ -264,4 +265,9 @@ Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, emp
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 3](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-3---loops) in den Labs.
+{{< todo >}}
+Lab konvertieren:
+
+Aufgabe 3
+../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-3---loops
+{{< /todo >}}

@@ -157,4 +157,9 @@ Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, emp
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgabe 9](../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-9---arrays) in den Labs.
+{{< todo >}}
+Labs konvertieren:
+
+Aufgabe 9
+../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-9---arrays
+{{< /todo >}}
