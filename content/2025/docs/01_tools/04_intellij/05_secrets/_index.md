@@ -65,13 +65,13 @@ Vergewissere dich, dass die `.env`-Datei nicht ins Git-Repository gelangt – **
 
 ### Schritt 2: Maven-Dependency hinzufügen
 
-```xml
+{{< pom >}}
 <dependency>
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
   <version>3.0.0</version>
 </dependency>
-```
+{{< /pom >}}
 
 ---
 
@@ -79,6 +79,7 @@ Vergewissere dich, dass die `.env`-Datei nicht ins Git-Repository gelangt – **
 
 ```java
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.MissingResourceException;
 
 Dotenv dotenv = Dotenv.configure()
     .ignoreIfMissing()
@@ -162,6 +163,8 @@ Wenn du keine zusätzliche Bibliothek verwenden willst und nur lokal mit Intelli
 ### Zugriff im Code
 
 ```java
+import java.util.MissingResourceException;
+
 String apiKey = System.getenv("GOOGLE_API_KEY");
 
 if (apiKey == null) {
