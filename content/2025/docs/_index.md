@@ -37,7 +37,7 @@ Alles im begleiteten Selbststudium – individuell, effizient und mit maximalem 
 
 ## Anpassen der Webseite
 
-Unter [Konfiguratuion](../config/) kannst du it-ninjas an deine Bedürfnisse anpassen. Wir empfehlen dir, das gleich zu tun, damit du optimal arbeiten kannst.
+Unter [Konfiguration](../config/) kannst du it-ninjas an deine Bedürfnisse anpassen. Wir empfehlen dir, das gleich zu tun, damit du optimal arbeiten kannst.
 
 {{< sbb >}}
 Hey cool, willkommen bei der SBB!
