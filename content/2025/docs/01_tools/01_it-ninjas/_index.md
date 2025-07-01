@@ -1,9 +1,9 @@
 ---
 title: "Willkommen bei IT-Ninjas"
-linkTitle: "IT-Ninjas"
+linkTitle: "Willkommen bei IT-Ninjas"
 weight: 1
 description: >
-  Tools - IT-Ninja
+  Nützliche Informationen rund um IT-Ninjas
 ---
 
 #### Ziele
