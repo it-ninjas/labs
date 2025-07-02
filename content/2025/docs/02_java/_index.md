@@ -12,7 +12,7 @@ Das Modul beginnt mit den wichtigsten Grundlagen wie Variablen, Kontrollstruktur
 
 {{< ninja info >}}
 Richte möglichst früh deine Entwicklungsumgebung ein – du wirst sie für die Übungen benötigen.  
-Die Anleitung findest du unter: [IntelliJ IDEA einrichten](../01_tools/02_ide/01_intellij/01_installation/)
+Die Anleitung findest du unter: [IntelliJ IDEA einrichten](../99_tools/ide/intellij/01_installation/)
 {{< /ninja >}}
 
 Darauf aufbauend tauchst du in die **objektorientierte Programmierung** ein – ein zentrales Konzept in Java.  
