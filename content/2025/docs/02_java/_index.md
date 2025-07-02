@@ -7,10 +7,21 @@ description: >
 
 ## Inhalt
 
-Dieser Bereich ermöglicht dir das Erlernen der Java-Programmiersprache von Grund auf.
-Nach der Einrichtung der Entwicklungsumgebung lernst du die Basics von Java kennen.
-Die objektorienterte Programmierung bringt dich tiefer in die Möglichkeiten von Java hinein.
-Das Arbeiten mit Listen und Streams vereinfacht dir die Übungen der objektorientierten Programmierung.
-Das objektorientierte Design erlaubt dir die reale Welt innerhalb von Java besser abzubilden.
-Mit Maven lernst du ein mächtiges Build-Management Tool kennen.
-Das Schreiben von automatisierten Tests erlaubt dir deine Applikationen zu testen.
+In diesem Bereich lernst du die Programmiersprache **Java** von Grund auf kennen.  
+Das Modul beginnt mit den wichtigsten Grundlagen wie Variablen, Kontrollstrukturen und Methoden.
+
+{{< ninja info >}}
+Richte möglichst früh deine Entwicklungsumgebung ein – du wirst sie für die Übungen benötigen.  
+Die Anleitung findest du unter: [IntelliJ IDEA einrichten](../01_tools/02_ide/01_intellij/01_installation/)
+{{< /ninja >}}
+
+Darauf aufbauend tauchst du in die **objektorientierte Programmierung** ein – ein zentrales Konzept in Java.  
+Mit **Listen** und **Streams** lernst du effiziente Möglichkeiten kennen, um mit Daten zu arbeiten.  
+Das Kapitel zum **objektorientierten Design** zeigt dir, wie sich komplexe Probleme modellhaft in Java umsetzen lassen.
+
+Zum Abschluss lernst du mit **Maven** ein weit verbreitetes Build-Management-Tool kennen und schreibst **automatisierte Tests**, um die Qualität deiner Programme sicherzustellen.
+
+{{< ninja tip >}}
+Plane genügend Zeit ein, um die Grundlagen sorgfältig durchzuarbeiten.  
+Viele der späteren Module bauen auf diesem Wissen auf – je sicherer du hier bist, desto einfacher wirst du komplexere Themen verstehen.
+{{< /ninja >}}
