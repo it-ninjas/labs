@@ -1,9 +1,14 @@
 {{ $target := .Get 0 }}
 {{ $sanitized := replace (replace (replace $target "/" "" ) "." "-" ) "_" "-" }}
+{{ $title := "" }}
+{{ if ge (len .Params) 2 }}
+  {{ $title = .Get 1 }}
+{{ end }}
 
 <p>
   <a href="{{ $target }}">
-  <img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+    <img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
   </a>
-  Hier kommst Du <a href="{{ $target }}">zurück zur Dokumentation</a>.
+  Hier kommst Du {{ if $title }}zurück zur Dokumentation: {{ end }}
+  <a href="{{ $target }}">{{ if $title }}{{ $title }}{{ else }}zurück zur Dokumentation{{ end }}</a>.
 </p>

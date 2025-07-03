@@ -64,7 +64,7 @@ Anbei findest du eine Übersicht, welche Module du zu welchem Zeitpunkt anschaue
 [![Ausbildungsprogramm Übersicht](../docs/overview/ausbildungsprogramm_uebersicht.png)](../docs/overview/ausbildungsprogramm_uebersicht.png)
 
 {{< ninja type="info" >}}
-Beachte, die Zeiten sind grobe Vorgaben. Jeder hat sein eigenes Tempo. Es ist wichtig dass du dir Zeit nimmst und den Inhalt verstehst. Die nachfolgenden Module bauen auf das erlernte Wissen auf.
+Beachte, die Zeiten sind grobe Vorgaben. Jeder hat sein eigenes Tempo. Es ist wichtig dass du dir Zeit nimmst und den Inhalt verstehst. Nachfolgenden Module bauen oft auf das erlernte Wissen auf.
 {{< /ninja >}}
 
 {{< ninja type="tip" >}}
