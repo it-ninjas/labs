@@ -39,7 +39,6 @@ SimpleExample
 ├── pom.xml
 └── README._md
 ```
-
 ## Dateien in SimpleExample
 
 ##### .env{#env}
@@ -120,10 +119,9 @@ SAMPLE_API_KEY=mein_geheimnis
 
 ```
 
-##### README.\_md{#readme-\_md}
+##### README._md{#readme-_md}
 
 Not able to display content!
-
 ### src\main\java\ch\itninja\labs
 
 ##### Main.java{#src-main-java-ch-itninja-labs-main-java}
@@ -236,3 +234,4 @@ public class ItNinjaOutput {
 }
 
 ```
+

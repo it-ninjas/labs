@@ -41,7 +41,6 @@ Konsole-Übungen
 ├── pom.xml
 └── README._md
 ```
-
 ## Dateien in Konsole-Übungen
 
 ##### pom.xml{#pom-xml}
@@ -95,10 +94,9 @@ Konsole-Übungen
 
 ```
 
-##### README.\_md{#readme-\_md}
+##### README._md{#readme-_md}
 
 Not able to display content!
-
 ### src\main\java\ch\itninja\labs
 
 ##### Main.java{#src-main-java-ch-itninja-labs-main-java}
@@ -164,7 +162,7 @@ public class AsciiSwissFlag {
      * Zeichne eine Schweizer Fahne. Die Fahne muss einen Rahmen haben. Du darfst dazu
      * folgende Zeichen verwenden:
      *
-     * * Im Rahmen: '|', '-', '+'', Leerzeichen (' ')
+     * * Im Rahmen: '|', '-', '+'', Leerzeichen (' ') 
      * * Innerhalb: '|', '-', '+', '*', '=', '@'', Leerzeichen (' ')
      */
     public static void printSwissFlag(){
@@ -401,3 +399,4 @@ public class ItNinjaOutput {
 }
 
 ```
+
