@@ -1,10 +1,9 @@
-
 ---
 title: "Struktur und Syntax"
 linkTitle: "Struktur und Syntax"
 weight: 1
 description: >
-  In diesem Module lernst du die Struktur kennen, wie ein Java Programm aufgabaut ist.
+  In diesem Module lernst du die Struktur kennen, wie ein Java Programm aufgebaut ist.
 ---
 
 {{< module J1 >}}
@@ -85,4 +84,3 @@ Dabei wirst du sehen, dass sich gar nicht so viel ändert – aber der Aufbau de
 Und danach kannst du direkt mit ein paar kleinen Übungen loslegen, um dich mit dem Aufbau und der Arbeitsweise vertraut zu machen.
 
 {{<aufgaben "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/02_konsole-übungen">}}
-
