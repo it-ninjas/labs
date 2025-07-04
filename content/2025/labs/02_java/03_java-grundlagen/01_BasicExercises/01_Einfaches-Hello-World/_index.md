@@ -126,7 +126,9 @@ public class Main {
 ```
 
 ---
+
 {{<dokumentation "../../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab" "Struktur und Syntax">}}
 
 ---
+
 {{<dokumentation "../../../../../docs/99_tools/ide/intellij/01_installation/#back-from-lab" "IntelliJ installieren">}}

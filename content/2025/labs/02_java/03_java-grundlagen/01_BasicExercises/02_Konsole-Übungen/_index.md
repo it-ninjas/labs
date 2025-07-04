@@ -131,7 +131,7 @@ Hello World
 
 Zeichne ein Haus in der Konsole. Du darfst dazu folgende Zeichen verwenden:
 
-*  `'/'`, `'\'`, `'+'`, `'-'`, `'_'`, `'['`, `']'`, `'|'`, Leerzeichen (`' '`)
+- `'/'`, `'\'`, `'+'`, `'-'`, `'_'`, `'['`, `']'`, `'|'`, Leerzeichen (`' '`)
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
 [src\main\java\ch\itninja\labs\basicexercises\AsciiHouse.java](./source/#src-main-java-ch-itninja-labs-basicexercises-asciihouse-java):
@@ -145,7 +145,7 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 ```
 
 > **Hinweis:** Vorsicht bei `'\'`, das ist ein besonderes Zeichen in einem String und muss escaped werden, das
-heisst für ein `'\'` muss man innerhalb von einem String das Zeichen zweimal schreiben → `".\\."`
+  heisst für ein `'\'` muss man innerhalb von einem String das Zeichen zweimal schreiben → `".\\."`
 
 Falls unklar ist, was hier gemeint ist, schau dir [ASCII-Art](https://de.wikipedia.org/wiki/ASCII-Art) an.
 
@@ -179,6 +179,7 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 Falls unklar ist, was hier gemeint ist, schau dir [ASCII-Art](https://de.wikipedia.org/wiki/ASCII-Art) an.
 
 Hier ist die japanische Flagge als Beispiel:
+
 ```console
  ------------------
 |                  |
@@ -192,4 +193,5 @@ Hier ist die japanische Flagge als Beispiel:
 ```
 
 ---
+
 {{<dokumentation "../../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab" "Struktur und Syntax">}}

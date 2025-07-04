@@ -138,7 +138,7 @@ public class AsciiHouse {
     /**
      * Zeichne ein Haus in der Konsole. Du darfst dazu folgende Zeichen verwenden:
      *
-     * *  '/', '\', '+', '-', '_', '[', ']', '|', Leerzeichen (' ')
+     * - '/', '\', '+', '-', '_', '[', ']', '|', Leerzeichen (' ')
      */
     public static void printHouse(){
 
@@ -401,4 +401,3 @@ public class ItNinjaOutput {
 }
 
 ```
-
