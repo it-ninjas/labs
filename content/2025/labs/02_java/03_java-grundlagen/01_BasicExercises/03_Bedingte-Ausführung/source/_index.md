@@ -98,6 +98,7 @@ Bedingte-Ausführung
 ##### README.md{#readme-md}
 
 Not able to display content!
+
 ### src\main\java\ch\itninja\labs
 
 ##### Main.java{#src-main-java-ch-itninja-labs-main-java}
@@ -141,9 +142,10 @@ public class CompareNumbers {
     /**
      * Passe die folgende Methode an. Vergleiche die beiden Zahlen 'zahl1' und 'zahl2' und gib das Resultat des Vergleichs auf
      * auf der Konsole aus:
-     * * Zahl1(value1) ist kleiner als Zahl2(value2)
-     * * Zahl1(value1) ist grösser als Zahl2(value2)
-     * * Zahl1(value1) ist gleich gross wie Zahl2(value2)
+     *
+     * - Zahl1(value1) ist kleiner als Zahl2(value2)
+     * - Zahl1(value1) ist grösser als Zahl2(value2)
+     * - Zahl1(value1) ist gleich gross wie Zahl2(value2)
      *
      * Wobei in der Ausgabe value1 und value2 durch die tatsächlichen Werte ersetzt werden sollen.
      */
@@ -206,8 +208,9 @@ public class LeapYear {
     /**
      * Passe die folgende Methode an. Stell fest, ob das übergebene Jahr ein Schaltjahr ist (Gregorianischer Kalender). Gib auf
      * der Konsole das Resultat aus:
-     * * Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender
-     * * Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender
+     *
+     * - Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender
+     * - Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender
      *
      * Wobei in der Ausgabe year durch das tatsächliche Jahr ersetzt werden soll.
      * Falls das Jahr ein Schaltjahr ist, soll die Methode true zurückgeben, andernfalls false.

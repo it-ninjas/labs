@@ -8,7 +8,8 @@ description: >
 ---
 
 ## Voraussetzung
-* Du bist bereit die nachfolgende Anleitung gründlich zu lesen.
+
+- Du bist bereit die nachfolgende Anleitung gründlich zu lesen.
 
 ## Vorbereitungsarbeiten
 
@@ -109,7 +110,7 @@ ausgibt. Er soll dir helfen, dich mit der Entwicklungsumgebung (IntelliJ) vertra
 ## Aufgabe - Hello World
 
 Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm 
-vorzunehmen. 
+vorzunehmen.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
 [src\Main.java](./source/#src-main-java):
@@ -124,14 +125,8 @@ public class Main {
 }
 ```
 
-
 ---
-
 {{<dokumentation "../../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab" "Struktur und Syntax">}}
 
-
-
 ---
-
 {{<dokumentation "../../../../../docs/99_tools/ide/intellij/01_installation/#back-from-lab" "IntelliJ installieren">}}
-

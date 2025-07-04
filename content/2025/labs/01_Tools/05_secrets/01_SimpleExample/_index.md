@@ -116,11 +116,13 @@ Schaue dir die Datei `.env.template` an und folge den Anweisungen dort. Ersetze 
 `mein_geheimnis`.
 
 {{< pom >}}
+```xml
 <dependency>
   <groupId>io.github.cdimascio</groupId>
   <artifactId>dotenv-java</artifactId>
   <version>3.0.0</version>
 </dependency>
+```
 {{< /pom >}}
 
 Wenn Du alles korrekt erledigt hast, sollte der Unittest erfolgreich durchlaufen:

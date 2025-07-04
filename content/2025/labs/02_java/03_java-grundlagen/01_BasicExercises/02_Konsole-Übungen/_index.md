@@ -8,10 +8,12 @@ description: >
 ---
 
 <!--suppress CheckEmptyScriptTag -->
+
 ## Voraussetzung
-* Du weisst, was mit Konsole gemeint ist.
-* Du kannst Ausgaben auf die Konsole machen.
-* Du weisst wie und warum man Zeichen escapen muss.
+
+- Du weisst, was mit Konsole gemeint ist.
+- Du kannst Ausgaben auf die Konsole machen.
+- Du weisst wie und warum man Zeichen escapen muss.
 
 ## Vorbereitungsarbeiten
 
@@ -188,8 +190,5 @@ Hier ist die japanische Flagge als Beispiel:
  ------------------
 ```
 
-
 ---
-
 {{<dokumentation "../../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab" "Struktur und Syntax">}}
-

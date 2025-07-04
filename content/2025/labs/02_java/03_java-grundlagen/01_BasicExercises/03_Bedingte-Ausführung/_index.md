@@ -8,14 +8,16 @@ description: >
 ---
 
 <!--suppress CheckEmptyScriptTag -->
+
 #### Voraussetzung
-* Du weisst was Variablen sind.
-* Du kannst eine Variable deklarieren und initialisieren.
-* Du weisst was primitive Datentypen sind.
-* Du verstehst und kennst die verschiedenen Conditional Statements.
-* Du weisst, wann und wie welches Conditional Statement eingesetzt werden sollte.
-* Du weisst, wie man in Java mit Zahlen rechnet und Zahlen vergleicht.
-* Du weisst, was eine Methode ist und was Parameter sind.
+
+- Du weisst was Variablen sind.
+- Du kannst eine Variable deklarieren und initialisieren.
+- Du weisst was primitive Datentypen sind.
+- Du verstehst und kennst die verschiedenen Conditional Statements.
+- Du weisst, wann und wie welches Conditional Statement eingesetzt werden sollte.
+- Du weisst, wie man in Java mit Zahlen rechnet und Zahlen vergleicht.
+- Du weisst, was eine Methode ist und was Parameter sind.
 
 ## Vorbereitungsarbeiten
 
@@ -130,14 +132,14 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 Hello It-Ninja
 ```
 
-
 ## Aufgabe 2 - Zahlenvergleich
 
 Passe die folgende Methode an. Vergleiche die beiden Zahlen 'zahl1' und 'zahl2' und gib das Resultat des Vergleichs auf
 auf der Konsole aus:
-* `Zahl1(value1) ist kleiner als Zahl2(value2)`
-* `Zahl1(value1) ist grösser als Zahl2(value2)`
-* `Zahl1(value1) ist gleich gross wie Zahl2(value2)`
+
+- `Zahl1(value1) ist kleiner als Zahl2(value2)`
+- `Zahl1(value1) ist grösser als Zahl2(value2)`
+- `Zahl1(value1) ist gleich gross wie Zahl2(value2)`
 
 Wobei in der Ausgabe `value1` und `value2` durch die tatsächlichen Werte ersetzt werden sollen.
 
@@ -212,8 +214,9 @@ Zahl1(0) ist gleich gross wie Zahl2(0)
 
 Passe die folgende Methode an. Stell fest, ob das übergebene Jahr ein Schaltjahr ist (Gregorianischer Kalender). Gib auf
 der Konsole das Resultat aus:
-* `Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender`
-* `Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender`
+
+- `Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender`
+- `Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender`
 
 Wobei in der Ausgabe `year` durch das tatsächliche Jahr ersetzt werden soll.
 Falls das Jahr ein Schaltjahr ist, soll die Methode `true` zurückgeben, andernfalls `false`.
@@ -359,8 +362,5 @@ Ausgabe:
 Das Jahr 2023 ist kein Schaltjahr gemäss gregorianischem Kalender
 ```
 
-
 ---
-
 {{<dokumentation "../../../../../docs/02_java/03_java-grundlagen/05_control_structures/#back-from-lab" "Kontrollstrukturen">}}
-

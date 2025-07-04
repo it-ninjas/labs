@@ -14,8 +14,9 @@ public class LeapYear {
     /**
      * Passe die folgende Methode an. Stell fest, ob das übergebene Jahr ein Schaltjahr ist (Gregorianischer Kalender). Gib auf
      * der Konsole das Resultat aus:
-     * * Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender
-     * * Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender
+     *
+     * - Das Jahr year ist ein Schaltjahr gemäss gregorianischem Kalender
+     * - Das Jahr year ist kein Schaltjahr gemäss gregorianischem Kalender
      *
      * Wobei in der Ausgabe year durch das tatsächliche Jahr ersetzt werden soll.
      * Falls das Jahr ein Schaltjahr ist, soll die Methode true zurückgeben, andernfalls false.

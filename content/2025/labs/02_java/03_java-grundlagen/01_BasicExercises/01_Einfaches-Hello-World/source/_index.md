@@ -37,6 +37,7 @@ build/
 ##### README.md{#readme-md}
 
 Not able to display content!
+
 ### src
 
 ##### Main.java{#src-main-java}
@@ -44,7 +45,7 @@ Not able to display content!
 ```java
 /**
  * Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm 
- * vorzunehmen. 
+ * vorzunehmen.
  */
 public class Main {
     public static void main(String[] args) {
