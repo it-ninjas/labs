@@ -144,25 +144,26 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
     }
 ```
 
-> **Hinweis:** Vorsicht bei `'\'`, das ist ein besonderes Zeichen in einem String und muss escaped werden, das 
-    heisst für ein `'\'` muss man innerhalb von einem String das Zeichen zweimal schreiben → `".\\."`
+> **Hinweis:** Vorsicht bei `'\'`, das ist ein besonderes Zeichen in einem String und muss escaped werden, das
+heisst für ein `'\'` muss man innerhalb von einem String das Zeichen zweimal schreiben → `".\\."`
 
 Falls unklar ist, was hier gemeint ist, schau dir [ASCII-Art](https://de.wikipedia.org/wiki/ASCII-Art) an.
 
 Hier eine Katze als Beispiel:
+
 ```console
  /\_/\
 ( o.o )
  > ^ <
- ```
+```
 
 ## Aufgabe 3 - Ascii Swiss Flag
 
 Zeichne eine Schweizer Fahne. Die Fahne muss einen Rahmen haben. Du darfst dazu
 folgende Zeichen verwenden:
 
-* Im Rahmen: `'|'`, `'-'`, `'+''`, Leerzeichen (`' '`) 
-* Innerhalb: `'|'`, `'-'`, `'+'`, `'*'`, `'='`, `'@''`, Leerzeichen (`' '`)
+- Im Rahmen: `'|'`, `'-'`, `'+''`, Leerzeichen (`' '`)
+- Innerhalb: `'|'`, `'-'`, `'+'`, `'*'`, `'='`, `'@''`, Leerzeichen (`' '`)
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
 [src\main\java\ch\itninja\labs\basicexercises\AsciiSwissFlag.java](./source/#src-main-java-ch-itninja-labs-basicexercises-asciiswissflag-java):
@@ -175,7 +176,7 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
     }
 ```
 
-Falls unklar ist, was hier gemeint ist, schau dir [ASCII-Art](https://de.wikipedia.org/wiki/ASCII-Art) an. 
+Falls unklar ist, was hier gemeint ist, schau dir [ASCII-Art](https://de.wikipedia.org/wiki/ASCII-Art) an.
 
 Hier ist die japanische Flagge als Beispiel:
 ```console

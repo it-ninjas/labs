@@ -116,6 +116,7 @@ Schaue dir die Datei `.env.template` an und folge den Anweisungen dort. Ersetze 
 `mein_geheimnis`.
 
 {{< pom >}}
+
 ```xml
 <dependency>
   <groupId>io.github.cdimascio</groupId>
@@ -123,6 +124,7 @@ Schaue dir die Datei `.env.template` an und folge den Anweisungen dort. Ersetze 
   <version>3.0.0</version>
 </dependency>
 ```
+
 {{< /pom >}}
 
 Wenn Du alles korrekt erledigt hast, sollte der Unittest erfolgreich durchlaufen:

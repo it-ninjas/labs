@@ -44,7 +44,7 @@ Not able to display content!
 
 ```java
 /**
- * Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm 
+ * Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm
  * vorzunehmen.
  */
 public class Main {

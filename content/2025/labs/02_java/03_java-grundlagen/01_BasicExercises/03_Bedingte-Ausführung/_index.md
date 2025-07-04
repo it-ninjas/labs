@@ -221,9 +221,7 @@ der Konsole das Resultat aus:
 Wobei in der Ausgabe `year` durch das tatsächliche Jahr ersetzt werden soll.
 Falls das Jahr ein Schaltjahr ist, soll die Methode `true` zurückgeben, andernfalls `false`.
 
-> Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if 
-  Anweisungen.
-
+> Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if Anweisungen.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
 [src\main\java\ch\itninja\labs\basicexercises\LeapYear.java](./source/#src-main-java-ch-itninja-labs-basicexercises-leapyear-java):
