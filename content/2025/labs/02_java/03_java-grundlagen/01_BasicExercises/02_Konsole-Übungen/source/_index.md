@@ -39,8 +39,9 @@ Konsole-Übungen
 │                       └── util
 │                           └── ItNinjaOutput.java
 ├── pom.xml
-└── README._md
+└── README.md
 ```
+
 ## Dateien in Konsole-Übungen
 
 ##### pom.xml{#pom-xml}

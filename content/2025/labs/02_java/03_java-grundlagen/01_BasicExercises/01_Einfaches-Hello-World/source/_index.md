@@ -19,8 +19,9 @@ Einfaches-Hello-World
 ├── src
 │   └── Main.java
 ├── .gitignore
-└── README._md
+└── README.md
 ```
+
 ## Dateien in Einfaches-Hello-World
 
 ##### .gitignore{#gitignore}

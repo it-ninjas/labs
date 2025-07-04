@@ -37,8 +37,9 @@ SimpleExample
 ├── .env
 ├── .gitignore
 ├── pom.xml
-└── README._md
+└── README.md
 ```
+
 ## Dateien in SimpleExample
 
 ##### .env{#env}
