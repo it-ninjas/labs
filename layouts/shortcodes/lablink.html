@@ -1,2 +1,2 @@
-{{ $target := .Get 0 }}
-<a id="back-from-lab" href="{{ $target }}">{{ .Inner }}</a>
+{{ $target := lower (.Get 0) }}
+<a id="back-from-lab" href="{{ relref .Page $target }}">{{ .Inner }}</a>
