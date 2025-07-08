@@ -160,4 +160,7 @@ Möchtest du die Inhalte nochmals als Video anschauen? Dann empfehlen wir dir di
 
 ---
 
-{{< aufgabe "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_variablen-und-typen" >}}
+{{< todo >}}
+Aufgabe implementieren...
+"../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_variablen-und-typen"
+{{< /todo >}}

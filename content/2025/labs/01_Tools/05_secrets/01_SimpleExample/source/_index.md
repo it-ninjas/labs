@@ -162,9 +162,6 @@ public class Basic {
         // Prevent instantiation
     }
 
-    /**
-     *
-     */
     public static String getSecret (){
         Dotenv dotenv = Dotenv.configure()
                 .ignoreIfMissing()

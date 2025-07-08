@@ -111,7 +111,8 @@ Viel Erfolg!
 Passe den Code an damit `Hello World` auf der Konsole ausgegeben wird.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\HelloWorld.java](./source/#src-main-java-ch-itninja-labs-basicexercises-helloworld-java):
+[src\main\java\ch\itninja\labs\basicexercises\HelloWorld.java](./source/#
+src-main-java-ch-itninja-labs-basicexercises-helloworld-java):
 
 ```java
     public static void printHelloWorld(){
@@ -134,7 +135,8 @@ Zeichne ein Haus in der Konsole. Du darfst dazu folgende Zeichen verwenden:
 - `'/'`, `'\'`, `'+'`, `'-'`, `'_'`, `'['`, `']'`, `'|'`, Leerzeichen (`' '`)
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\AsciiHouse.java](./source/#src-main-java-ch-itninja-labs-basicexercises-asciihouse-java):
+[src\main\java\ch\itninja\labs\basicexercises\AsciiHouse.java](./source/#
+src-main-java-ch-itninja-labs-basicexercises-asciihouse-java):
 
 ```java
     public static void printHouse(){
@@ -145,7 +147,7 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 ```
 
 > **Hinweis:** Vorsicht bei `'\'`, das ist ein besonderes Zeichen in einem String und muss escaped werden, das
-  heisst für ein `'\'` muss man innerhalb von einem String das Zeichen zweimal schreiben → `".\\."`
+> heisst für ein `'\'` muss man innerhalb von einem String das Zeichen zweimal schreiben → `".\\."`
 
 Falls unklar ist, was hier gemeint ist, schau dir [ASCII-Art](https://de.wikipedia.org/wiki/ASCII-Art) an.
 
@@ -166,7 +168,8 @@ folgende Zeichen verwenden:
 - Innerhalb: `'|'`, `'-'`, `'+'`, `'*'`, `'='`, `'@''`, Leerzeichen (`' '`)
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\AsciiSwissFlag.java](./source/#src-main-java-ch-itninja-labs-basicexercises-asciiswissflag-java):
+[src\main\java\ch\itninja\labs\basicexercises\AsciiSwissFlag.java](./source/#
+src-main-java-ch-itninja-labs-basicexercises-asciiswissflag-java):
 
 ```java
     public static void printSwissFlag(){

@@ -116,7 +116,8 @@ Erstelle eine Variable, welche deinen Namen beinhaltet.
 Gib `Hello [name]` auf der Konsole aus.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\HelloName.java](./source/#src-main-java-ch-itninja-labs-basicexercises-helloname-java):
+[src\main\java\ch\itninja\labs\basicexercises\HelloName.java](./source/#
+src-main-java-ch-itninja-labs-basicexercises-helloname-java):
 
 ```java
     public static void printHelloName(){
@@ -144,7 +145,8 @@ auf der Konsole aus:
 Wobei in der Ausgabe `value1` und `value2` durch die tatsächlichen Werte ersetzt werden sollen.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\CompareNumbers.java](./source/#src-main-java-ch-itninja-labs-basicexercises-comparenumbers-java):
+[src\main\java\ch\itninja\labs\basicexercises\CompareNumbers.java](./source/#
+src-main-java-ch-itninja-labs-basicexercises-comparenumbers-java):
 
 ```java
     public static void compareNumbers(int number1, int number2) {
@@ -224,7 +226,8 @@ Falls das Jahr ein Schaltjahr ist, soll die Methode `true` zurückgeben, andernf
 > Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if Anweisungen.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\LeapYear.java](./source/#src-main-java-ch-itninja-labs-basicexercises-leapyear-java):
+[src\main\java\ch\itninja\labs\basicexercises\LeapYear.java](./source/#
+src-main-java-ch-itninja-labs-basicexercises-leapyear-java):
 
 ```java
     public static boolean isLeapYear(int year) {
