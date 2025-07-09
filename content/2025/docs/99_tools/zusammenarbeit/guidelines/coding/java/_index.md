@@ -49,6 +49,7 @@ public class ShoppingCart {
 ```
 
 Der Unterschied ist klar:
+
 - Die **Namen** machen deutlich, was der Code tut.
 - Strukturierte Formatierung verbessert die Lesbarkeit.
 - Dokumentation erklärt die Schnittstelle.
@@ -67,7 +68,7 @@ Verwende durchgehend **Englisch** im Code, in Kommentaren und in der Dokumentati
 - `{` steht **in derselben Zeile** wie die Anweisung.
 - **Annotations** (z. B. `@Override`) stehen immer **in eigener Zeile**.
 
-{{< snippet name="format_and_indent" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
+{{< snippet name="format_and_indent" shiftleft="4" file="/assets/snippets/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ---
 
@@ -75,20 +76,19 @@ Verwende durchgehend **Englisch** im Code, in Kommentaren und in der Dokumentati
 
 - Empfohlene maximale Zeilenlänge: **120 Zeichen**
 - Lange Ausdrücke umschlagen – Parameter pro Zeile.
-
-{{< snippet name="long_lines_with_lot_params" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
+  {{< snippet name="long_lines_with_lot_params" shiftleft="4" file="/assets/snippets/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ---
 
 ## Benennungsregeln
 
-| Element    | Stil         | Beispiel                     |
-| ---------- | ------------ | ---------------------------- |
-| Klassen    | PascalCase   | `CustomerAccount`            |
-| Methoden   | camelCase    | `getUserName()`              |
-| Variablen  | camelCase    | `maxRetries`                 |
-| Konstanten | UPPER_SNAKE  | `MAX_CONNECTIONS`            |
-| Pakete     | lower.case   | `com.company.project.module` |
+| Element    | Stil        | Beispiel                     |
+| ---------- | ----------- | ---------------------------- |
+| Klassen    | PascalCase  | `CustomerAccount`            |
+| Methoden   | camelCase   | `getUserName()`              |
+| Variablen  | camelCase   | `maxRetries`                 |
+| Konstanten | UPPER_SNAKE | `MAX_CONNECTIONS`            |
+| Pakete     | lower.case  | `com.company.project.module` |
 
 ---
 
@@ -96,7 +96,7 @@ Verwende durchgehend **Englisch** im Code, in Kommentaren und in der Dokumentati
 
 Vermeide "magische Zahlen" oder Strings. Verwende benannte Konstanten mit sinnvollen Namen.
 
-{{< snippet name="name_constants" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
+{{< snippet name="name_constants" shiftleft="4" file="/assets/snippets/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ---
 
@@ -108,7 +108,7 @@ Vermeide "magische Zahlen" oder Strings. Verwende benannte Konstanten mit sinnvo
 - Meist **eigene Zeile** vor dem Code.
 - Nur bei sehr kurzen Hinweisen: am Zeilenende.
 
-{{< snippet name="inline_comment" shiftleft="8" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
+{{< snippet name="inline_comment" shiftleft="8" file="/assets/snippets/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ### JavaDoc
 
@@ -119,7 +119,7 @@ Vermeide "magische Zahlen" oder Strings. Verwende benannte Konstanten mit sinnvo
 
 > **Tipp**: Aussagekräftige Namen reduzieren den Bedarf an JavaDoc.
 
-{{< snippet name="javadoc" shiftleft="4" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
+{{< snippet name="javadoc" shiftleft="4" file="/assets/snippets/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 #### JavaDoc-Tags
 
@@ -152,7 +152,7 @@ Reihenfolge innerhalb einer Klasse (nach Google Java Style Guide):
 - Fehler sinnvoll **loggen**, keine Log-Spam
 - Leere `catch`-Blöcke nur mit Kommentar wie `// intentionally empty`
 
-{{< snippet name="exceptions" shiftleft="8" file="/src/00_shared/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
+{{< snippet name="exceptions" shiftleft="8" file="/assets/snippets/coding-guidelines/java/src/ch/itninjas/program/CodeSnippets.java" >}}
 
 ---
 
@@ -168,41 +168,41 @@ Reihenfolge innerhalb einer Klasse (nach Google Java Style Guide):
 
 ### Übersicht
 
-| Aspekt           | IT-Ninjas          | Spring Format       | Google Style         | Oracle/Sun            |
-| ---------------- | ------------------ | ------------------- | -------------------- | --------------------- |
-| Einrückung       | 4 Leerzeichen      | 4 Leerzeichen       | **2 Leerzeichen**    | 4 Leerzeichen         |
-| Zeilenlänge      | max. 120 Zeichen   | max. 120 Zeichen    | **max. 100 Zeichen** | **max. 80 Zeichen**   |
-| Klammern `{}`    | gleiche Zeile      | gleiche Zeile       | gleiche Zeile        | gleiche Zeile         |
-| Annotations      | eigene Zeile       | eigene Zeile        | eigene Zeile         | –                     |
-| Leere Blöcke     | mit Kommentar      | optionaler Kommentar| `// intentionally empty` | –                  |
+| Aspekt        | IT-Ninjas        | Spring Format        | Google Style             | Oracle/Sun          |
+| ------------- | ---------------- | -------------------- | ------------------------ | ------------------- |
+| Einrückung    | 4 Leerzeichen    | 4 Leerzeichen        | **2 Leerzeichen**        | 4 Leerzeichen       |
+| Zeilenlänge   | max. 120 Zeichen | max. 120 Zeichen     | **max. 100 Zeichen**     | **max. 80 Zeichen** |
+| Klammern `{}` | gleiche Zeile    | gleiche Zeile        | gleiche Zeile            | gleiche Zeile       |
+| Annotations   | eigene Zeile     | eigene Zeile         | eigene Zeile             | –                   |
+| Leere Blöcke  | mit Kommentar    | optionaler Kommentar | `// intentionally empty` | –                   |
 
 ### JavaDoc & Kommentare
 
-| Aspekt           | IT-Ninjas            | Spring Format         | Google Style            | Oracle/Sun            |
-| ---------------- | -------------------- | ----------------------| ------------------------| ----------------------|
-| JavaDoc Pflicht  | öffentliche APIs     | empfohlen              | **alle öffentlichen APIs** | empfohlen           |
-| JavaDoc-Tags     | param/return/throws  | empfohlen              | **verpflichtend**        | empfohlen             |
+| Aspekt          | IT-Ninjas           | Spring Format | Google Style               | Oracle/Sun |
+| --------------- | ------------------- | ------------- | -------------------------- | ---------- |
+| JavaDoc Pflicht | öffentliche APIs    | empfohlen     | **alle öffentlichen APIs** | empfohlen  |
+| JavaDoc-Tags    | param/return/throws | empfohlen     | **verpflichtend**          | empfohlen  |
 
 ### Benennungen (alle identisch)
 
-| Element      | Stil         | Beispiel             |
-| ------------ | ------------ | -------------------- |
-| Klassen      | PascalCase   | `MyService`          |
-| Methoden     | camelCase    | `calculateSum()`     |
-| Variablen    | camelCase    | `userName`           |
-| Konstanten   | UPPER_SNAKE  | `MAX_SIZE`           |
-| Pakete       | lower.case   | `com.example.project`|
+| Element    | Stil        | Beispiel              |
+| ---------- | ----------- | --------------------- |
+| Klassen    | PascalCase  | `MyService`           |
+| Methoden   | camelCase   | `calculateSum()`      |
+| Variablen  | camelCase   | `userName`            |
+| Konstanten | UPPER_SNAKE | `MAX_SIZE`            |
+| Pakete     | lower.case  | `com.example.project` |
 
 ### Klassenstruktur
 
-| Reihenfolge (vereinfacht)                              | IT-Ninjas | Spring | Google | Oracle |
-| ------------------------------------------------------ | --------- | ------ | -------| -------|
-| Konstanten → Felder → Konstruktor → Methoden           | ✅        | ✅     | ✅     | ✅     |
+| Reihenfolge (vereinfacht)                    | IT-Ninjas | Spring | Google | Oracle |
+| -------------------------------------------- | --------- | ------ | ------ | ------ |
+| Konstanten → Felder → Konstruktor → Methoden | ✅        | ✅     | ✅     | ✅     |
 
 ### Tooling
 
-| Aspekt           | IT-Ninjas                     | Spring Format            | Google Style                  | Oracle/Sun            |
-| ---------------- | ----------------------------- | ------------------------ | ----------------------------- | --------------------- |
-| Formatter        | IntelliJ/Eclipse (manuell)    | `spring-javaformat`      | Google Java Format            | keine Vorgabe         |
-| Checkstyle       | optional                      | selten verwendet         | eigene Checkstyle-Regeln      | Sun Checkstyle-XML    |
-| IDE-Integration  | manuell                       | gut integriert            | Plugins verfügbar             | –                     |
+| Aspekt          | IT-Ninjas                  | Spring Format       | Google Style             | Oracle/Sun         |
+| --------------- | -------------------------- | ------------------- | ------------------------ | ------------------ |
+| Formatter       | IntelliJ/Eclipse (manuell) | `spring-javaformat` | Google Java Format       | keine Vorgabe      |
+| Checkstyle      | optional                   | selten verwendet    | eigene Checkstyle-Regeln | Sun Checkstyle-XML |
+| IDE-Integration | manuell                    | gut integriert      | Plugins verfügbar        | –                  |
