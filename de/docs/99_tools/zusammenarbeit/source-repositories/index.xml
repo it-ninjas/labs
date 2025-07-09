@@ -1,0 +1,167 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Source Repositories</title><link>/de/docs/99_tools/zusammenarbeit/source-repositories/</link><description>Recent content in Source Repositories on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/docs/99_tools/zusammenarbeit/source-repositories/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Bitbucket Repository einrichten</title><link>/de/docs/99_tools/zusammenarbeit/source-repositories/personal-bitbucket/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/99_tools/zusammenarbeit/source-repositories/personal-bitbucket/</guid><description>
+&lt;h2 id="voraussetzungen">Voraussetzungen&lt;/h2>
+&lt;ul>
+&lt;li>Du hast Zugriff auf das Git-Tool Bitbucket&lt;/li>
+&lt;li>Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls nicht, siehe: &lt;a href="/de/docs/04_git/01_grundwissen/02_git-install/">Git installieren&lt;/a>&lt;/li>
+&lt;li>Du hast die Grundeinstellungen für Git vorgenommen:&lt;/li>
+&lt;/ul>
+&lt;details>
+&lt;summary>Folgende Einstellungen sind gemeint:&lt;/summary>
+```bash
+git config --global user.name "u123456"
+git config --global user.email "u123456@sbb.ch"
+# Für Windows zusätzlich:
+git config --global core.autocrlf true
+git config --global core.longpaths true
+```
+&lt;/details>
+&lt;hr>
+&lt;blockquote>
+&lt;p>Wende dich an deinen Praxisbildner, falls du nicht bei der SBB arbeitest (und falls Du bei SBB arbeitest, kannst du in der &lt;a href="/de/config/#apprenticeshipprovider">Konfiguartion&lt;/a> die spezifischen Anleitungen und Informationen freischalten -&amp;gt; &lt;code>Wahl der Ausbildungsstätte&lt;/code>).&lt;/p>&lt;/blockquote>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="flex">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="
+display: flex;
+align-items: flex-start;
+border: 2px solid #002b36;
+border-radius: 16px;
+padding: 1rem;
+background-color: #fdfdfd;
+">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/sbb-logo.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1;">
+&lt;h2 id="schritt-für-schritt-anleitung">Schritt-für-Schritt Anleitung&lt;/h2>
+&lt;h3 id="1-repository-in-bitbucket-erstellen">1. Repository in Bitbucket erstellen&lt;/h3>
+&lt;ol>
+&lt;li>Öffne &lt;a href="https://code.sbb.ch/">Bitbucket&lt;/a>&lt;/li>
+&lt;li>Logge dich ggf. ein&lt;/li>
+&lt;li>Klicke oben rechts auf dein Profilbild → &lt;strong>View Profile&lt;/strong>&lt;/li>
+&lt;li>Klicke auf &lt;strong>Create repository&lt;/strong>&lt;/li>
+&lt;li>Vergib einen Namen (z. B. &lt;code>it-ninja-[deinName]&lt;/code>) und klicke auf &lt;strong>Create Repository&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="2-ssh-schlüssel-erstellen">2. SSH-Schlüssel erstellen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ssh-keygen -t rsa -b &lt;span style="color:#ae81ff">4096&lt;/span> -C &lt;span style="color:#e6db74">&amp;#34;u123456@sbb.ch&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Drücke &lt;code>Enter&lt;/code> für den Standardspeicherort&lt;/li>
+&lt;li>Optional: Passphrase setzen&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Die Schlüssel befinden sich in &lt;code>C:\Users\u123456\.ssh\&lt;/code>:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>id_rsa&lt;/code> (privat, &lt;strong>niemals weitergeben&lt;/strong>)&lt;/li>
+&lt;li>&lt;code>id_rsa.pub&lt;/code> (öffentlich)&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="3-ssh-schlüssel-zu-bitbucket-hinzufügen">3. SSH-Schlüssel zu Bitbucket hinzufügen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>type C:&lt;span style="color:#ae81ff">\U&lt;/span>sers&lt;span style="color:#ae81ff">\u&lt;/span>123456&lt;span style="color:#ae81ff">\.&lt;/span>ssh&lt;span style="color:#ae81ff">\i&lt;/span>d_rsa.pub
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Kopiere den Inhalt und füge ihn unter &lt;a href="https://code.sbb.ch/plugins/servlet/ssh/account/keys">SSH-Key hinzufügen&lt;/a> ein&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="4-repository-klonen">4. Repository klonen&lt;/h3>
+&lt;blockquote>
+&lt;p>Die genaue URL kannst du im Bitbucket bei deinem erstellten Projekt nachschauen.&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir C:&lt;span style="color:#ae81ff">\U&lt;/span>sers&lt;span style="color:#ae81ff">\u&lt;/span>123456&lt;span style="color:#ae81ff">\l&lt;/span>ocal_repos
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd C:&lt;span style="color:#ae81ff">\U&lt;/span>sers&lt;span style="color:#ae81ff">\u&lt;/span>123456&lt;span style="color:#ae81ff">\l&lt;/span>ocal_repos
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone ssh://git@codessh.sbb.ch:7999/~u123456/it-ninja-&lt;span style="color:#f92672">[&lt;/span>deinName&lt;span style="color:#f92672">]&lt;/span>.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="5-projektstruktur-anlegen">5. Projektstruktur anlegen&lt;/h3>
+&lt;p>Falls du ein eigenes Projekt erstellen willst, kannst du jetzt die Projektstruktur anlegen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>it-ninja-[deinName]/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Example/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| └── src/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| └── [main.java]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── README.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="6-snapshots-commits-erstellen">6. Snapshots (Commits) erstellen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd it-ninja-&lt;span style="color:#f92672">[&lt;/span>deinName&lt;span style="color:#f92672">]&lt;/span>/J1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add README.md
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#e6db74">&amp;#34;README hinzugefügt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="7-änderungen-auf-bitbucket-hochladen">7. Änderungen auf Bitbucket hochladen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git push origin master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="8-ernstfall-testen-restore">8. Ernstfall testen (Restore)&lt;/h3>
+&lt;ol>
+&lt;li>Lokales Repository löschen&lt;/li>
+&lt;li>Neu klonen:&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd C:&lt;span style="color:#ae81ff">\U&lt;/span>sers&lt;span style="color:#ae81ff">\u&lt;/span>123456&lt;span style="color:#ae81ff">\l&lt;/span>ocal_repos
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone ssh://git@codessh.sbb.ch:7999/~u123456/it-ninja-&lt;span style="color:#f92672">[&lt;/span>deinName&lt;span style="color:#f92672">]&lt;/span>.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ol start="3">
+&lt;li>Änderungen an README.md vornehmen&lt;/li>
+&lt;li>Committen und pushen&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="9-praxisbildner-berechtigen">9. Praxisbildner berechtigen&lt;/h3>
+&lt;ol>
+&lt;li>Repository in Bitbucket öffnen&lt;/li>
+&lt;li>Zu &lt;strong>Repository Settings → Repository Permissions&lt;/strong> navigieren&lt;/li>
+&lt;li>&lt;strong>Add user or group&lt;/strong> klicken&lt;/li>
+&lt;li>Praxisbildner als Administratoren hinzufügen&lt;/li>
+&lt;/ol>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

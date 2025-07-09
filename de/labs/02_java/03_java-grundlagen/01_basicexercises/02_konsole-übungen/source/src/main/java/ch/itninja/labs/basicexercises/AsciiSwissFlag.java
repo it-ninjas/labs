@@ -10,8 +10,8 @@ public class AsciiSwissFlag {
      * Zeichne eine Schweizer Fahne. Die Fahne muss einen Rahmen haben. Du darfst dazu
      * folgende Zeichen verwenden:
      *
-     * * Im Rahmen: '|', '-', '+'', Leerzeichen (' ') 
-     * * Innerhalb: '|', '-', '+', '*', '=', '@'', Leerzeichen (' ')
+     * - Im Rahmen: '|', '-', '+'', Leerzeichen (' ')
+     * - Innerhalb: '|', '-', '+', '*', '=', '@'', Leerzeichen (' ')
      */
     public static void printSwissFlag(){
 

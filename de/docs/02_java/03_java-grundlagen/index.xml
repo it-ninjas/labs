@@ -1,4 +1,11 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Java Grundlagen</title><link>/de/docs/02_java/03_java-grundlagen/</link><description>Recent content in Java Grundlagen on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/docs/02_java/03_java-grundlagen/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Java-Einführung</title><link>/de/docs/02_java/03_java-grundlagen/01_java_intro/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/01_java_intro/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Java Grundlagen</title><link>/de/docs/02_java/03_java-grundlagen/</link><description>Recent content in Java Grundlagen on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/docs/02_java/03_java-grundlagen/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Struktur und Syntax</title><link>/de/docs/02_java/03_java-grundlagen/01_java_intro/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/01_java_intro/</guid><description>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich weiss, dass jede Anweisung mit einem Strichpunkt (auch bekannt als Semikolon: &lt;code>;&lt;/code>) abgeschlossen werden muss.&lt;/li>
@@ -6,68 +13,28 @@
 &lt;li>Ich kenne die &lt;code>main&lt;/code>-Methode und weiss, warum eine Applikation nur EINE main-Methode haben sollte.&lt;/li>
 &lt;li>Ich kenne die Methode &lt;code>System.out.println&lt;/code> und kann sie anwenden.&lt;/li>
 &lt;/ul>
-&lt;h3 id="cheatsheet-zum-herunterladen">Cheatsheet zum Herunterladen&lt;/h3>
+&lt;span class="zeit" data-lesezeit="10" data-üben="">⏱️ Geschätzte Lesezeit: 10 Minuten&lt;/span>
+&lt;h2 id="cheatsheet-zum-herunterladen">Cheatsheet zum Herunterladen&lt;/h2>
 &lt;p>&lt;a href="/de/docs/02_java/03_java-grundlagen/01_java_intro/resources/cheatsheet.pdf">Core Java Cheatsheet&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2 id="einführung">Einführung&lt;/h2>
-&lt;h3 id="was-ist-java">Was ist Java?&lt;/h3>
-&lt;p>Java ist eine objektorientierte Programmiersprache, die schon seit über zwei Jahrzehnten grosse Popularität geniesst.
-Die Entwicklung von Java begann Anfang der 1990er-Jahre beim US-amerikanischen Hard- und Softwarehersteller Sun Microsystems.
-1995 wurde die erste Version veröffentlicht. 2010 wurde Sun Microsystems von Oracle übernommen.
-Gegenwärtig erscheinen im Halbjahrestakt neue Java-Versionen; die nächste Version, Java 24, wird im März 2025 veröffentlicht.&lt;/p>
-&lt;hr>
-&lt;h3 id="wichtigste-merkmale-von-java">Wichtigste Merkmale von Java&lt;/h3>
-&lt;h4 id="plattformunabhängigkeit-write-once-run-anywhere">Plattformunabhängigkeit: «Write once, Run anywhere»&lt;/h4>
-&lt;p>Programmiersprachen wie Java können von einem Computer nicht interpretiert werden. Diese Sprachen sind speziell implementiert, dass sie für Entwickler einfach zu verstehen und schreiben sind.
-Der &lt;strong>Compiler&lt;/strong> ist ein Programm, das den von dir geschriebenen Code in eine andere Form umwandelt, die der Computer verstehen kann.
-In Java wandelt der Compiler den Quellcode in Bytecode um.&lt;/p>
-&lt;p>&lt;strong>Bytecode&lt;/strong> ist ein Zwischencode, der nicht direkt von der Hardware deines Computers ausgeführt wird, sondern von einer speziellen Software, der Java Virtual Machine (JVM).&lt;/p>
-&lt;p>Die &lt;strong>Java Virtual Machine&lt;/strong> ist eine virtuelle Maschine, das heisst, sie simuliert einen Computer innerhalb deines Computers.
-Die JVM kann den Bytecode ausführen, egal ob der simulierte Computer auf Windows, Linux oder Mac OS läuft.
-Der Vorteil von Bytecode ist, dass er plattformunabhängig ist.
-Das bedeutet, dass du deinen Java-Code einmal schreibst und dann auf jedem Betriebssystem ausführen kannst, das eine JVM unterstützt, ohne den Code anpassen zu müssen.&lt;/p>
-&lt;h4 id="mehrfach-paradigma">Mehrfach-Paradigma&lt;/h4>
-&lt;p>Java ist in erster Linie eine &lt;strong>objektorientierte&lt;/strong> Programmiersprache.
-Das bedeutet, dass in Java fast alles als ein &lt;strong>Objekt&lt;/strong> dargestellt wird.
-Ein Objekt ist eine Art Bauplan, der verschiedene Eigenschaften (Daten) und Funktionen (Methoden) enthält.
-Diese Objekte basieren auf sogenannten &lt;strong>Klassen&lt;/strong>, die als Vorlagen für das Erstellen von Objekten dienen.&lt;/p>
-&lt;p>Stell dir vor, du programmierst ein Spiel, in dem Autos vorkommen.
-Jedes Auto hat bestimmte Eigenschaften wie Farbe, Geschwindigkeit oder Marke.
-Diese Eigenschaften kannst du in einer Klasse namens &lt;code>Auto&lt;/code> festlegen.
-Jedes einzelne Auto in deinem Spiel wäre dann ein Objekt, das auf dieser Klasse basiert – also eine &lt;strong>Instanz&lt;/strong> (ein Exemplar) der Klasse &lt;code>Auto&lt;/code>.
-Somit haben zum Beispiel ein Ferrari und ein Fiat eine Geschwindigkeit und eine Farbe, jedoch sind diese Werte bei beiden unterschiedlich.&lt;/p>
-&lt;p>Ein Java-Programm besteht also aus vielen dieser Objekte, die zusammenarbeiten und miteinander kommunizieren, um Aufgaben zu erledigen.
-Wenn wir ein Programm schreiben, beschreiben wir, wie diese Objekte miteinander interagieren sollen.&lt;/p>
-&lt;p>Java unterstützt aber auch andere Programmierparadigmen, das heisst, andere Arten, wie man ein Programm strukturieren kann, unter anderem:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Generische Programmierung&lt;/strong>: Generische Programmierung erlaubt es, Methoden und Klassen so zu schreiben, dass sie mit verschiedenen Datentypen funktionieren. Statt für jeden Datentyp eine eigene Version zu schreiben, kannst du einen Platzhalter verwenden.&lt;/li>
-&lt;li>&lt;strong>Parallele Programmierung&lt;/strong>: Java ermöglicht es, dass mehrere Aufgaben gleichzeitig ausgeführt werden. Dies ist besonders nützlich, wenn Programme schneller und effizienter ausgeführt werden sollen.&lt;/li>
-&lt;li>&lt;strong>Funktionale Programmierung&lt;/strong>: Auch wenn Java hauptsächlich objektorientiert ist, unterstützt es teilweise auch funktionale Programmierung, bei der Funktionen wie Variablen behandelt und in andere Funktionen übergeben werden können. Hier wird weniger Fokus auf Objekte und Klassen gelegt.&lt;/li>
-&lt;/ul>
-&lt;h4 id="ausführbarer-bytecode">Ausführbarer Bytecode&lt;/h4>
-&lt;p>Eine kompilierte Java-Klasse, die bestimmte Voraussetzungen erfüllt (wie eine Main-Methode, siehe untern im Beispiel), kann direkt ausgeführt werden.
-Applikationen und Klassenbibliotheken bestehen oft aus mehreren Klassen, die in einer JAR-Datei (Java-Archiv) zusammengefasst sind.
-Diese Datei kann leicht verteilt und von der JVM ausgeführt werden. Eine JAR-Datei ist technisch gesehen eine komprimierte Datei im ZIP-Format.&lt;/p>
-&lt;h4 id="klassenpfad">Klassenpfad&lt;/h4>
-&lt;p>Der Klassenpfad gibt der JVM an, wo sich die Java-Klassen befinden, die sie zum Ausführen benötigt.
-Diese Klassen können in Ordnern oder in JAR-Dateien abgelegt sein.
-Der Klassenpfad kann bei der Ausführung des Programms übergeben oder als Umgebungsvariable eingestellt werden.&lt;/p>
-&lt;h4 id="garbage-collector">Garbage Collector&lt;/h4>
-&lt;p>Java kümmert sich automatisch um das Aufräumen nicht mehr benötigter Objekte im Speicher. Das sind also Daten, welche vom Programm nicht mehr verwendet werden.
-Diese Aufgabe übernimmt der sogenannte Garbage Collector, der zur Laufzeit (also wenn das Programm läuft) überflüssige Objekte entfernt.
-In anderen Programmiersprachen wie C oder C++ muss der Entwickler sich um das Aufräumen von ungenutzten Daten kümmern.
-Dies kann zu Fehler im Programm führen und macht die Entwicklung aufwendiger.&lt;/p>
-&lt;h4 id="multithreading">Multithreading&lt;/h4>
-&lt;p>Java unterstützt die parallele Ausführung mehrerer Threads (kleine Subprozesse) innerhalb eines Programms.
-Dadurch können Aufgaben schneller und effizienter erledigt werden, besonders bei komplexen Anwendungen, welche eine grosse Anzahl an Daten bearbeiten.&lt;/p>
-&lt;hr>
-&lt;h3 id="code-compile-run">Code, Compile, Run&lt;/h3>
-&lt;p>Als Java-Entwickler/in schreibst du ein Programm in eine Textdatei mit der Erweiterung &lt;code>.java&lt;/code>.
-Diese Datei enthält den Quellcode.
-Der Compiler (&lt;code>javac&lt;/code>) wandelt diesen Quellcode in eine &lt;code>.class&lt;/code>-Datei um, die den Bytecode enthält.
-Anschliessend führt die JVM den Bytecode aus.
-Der Prozess von „Code schreiben“ über „kompilieren“ bis hin zum „ausführen“ sieht einfach aus, doch die eigentliche Arbeit übernimmt die JVM, die den plattformunabhängigen Bytecode ausführt:
+&lt;p>Als Java-Entwickler/in schreibst du ein Programm in eine Textdatei mit der Erweiterung &lt;code>.java&lt;/code>. Diese Datei enthält den
+Quellcode. Der Compiler (&lt;code>javac&lt;/code>) wandelt diesen Quellcode in eine &lt;code>.class&lt;/code>-Datei um, die den Bytecode enthält.
+Anschliessend führt die JVM den Bytecode aus. Der Prozess von „Code schreiben“ über „kompilieren“ bis hin zum „ausführen“
+sieht einfach aus, doch die eigentliche Arbeit übernimmt die JVM, die den plattformunabhängigen Bytecode ausführt:
 &lt;img src="/de/docs/02_java/03_java-grundlagen/01_java_intro/images/code-compile-run.png" alt="">&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Wie du im Bild siehst, kann der Java Byte Code auf einem OSX, Linux oder Windows Rechner ausgeführt werden. Das ist der
+grosse Vorteil einer platformunabhängigen Programmiersprache. Bei vielen anderen Sprachen wie C oder C++ wandelt der
+Compiler den Quellcode zusammen mit platformabhängigen Bibliotheken direkt in Maschinenausführbaren Code um. Dieser Code
+wird auch nativer Code bezeichnet und es muss neben der Platform (OSX, Linux, Windows) auch die Architektur des
+Prozessors (X86, ARM) bekannt sein.
+&lt;/div>
+&lt;/div>
 &lt;hr>
 &lt;h2 id="hello-world">Hello World&lt;/h2>
 &lt;p>Anhand des simplen Hello-World-Programms können wir bereits vieles über die zentralen Bestandteile einer Java-Anwendung erklären. Der folgende Quellcode ist in einer Datei mit dem Namen &lt;code>HelloWorld.java&lt;/code> abgelegt.&lt;/p>
@@ -112,8 +79,8 @@ Der Prozess von „Code schreiben“ über „kompilieren“ bis hin zum „ausf
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/01_basicexercises/01_einfaches-hello-world">
 &lt;img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
 &lt;/a>
-Neu für 2025: Jetzt bist du dran. Löse bitte die folgenden
-&lt;a href="../../../../labs/02_java/03_java-grundlagen/01_basicexercises/01_einfaches-hello-world">Aufgaben&lt;/a> in den Labs.
+Jetzt bist du dran. Löse bitte die folgende
+&lt;a href="../../../../labs/02_java/03_java-grundlagen/01_basicexercises/01_einfaches-hello-world">Aufgabe&lt;/a> in den Labs.
 &lt;/p>
 &lt;h2 id="vom-einfachen-beispiel-zum-echten-projekt">Vom einfachen Beispiel zum echten Projekt&lt;/h2>
 &lt;p>Im vorherigen Kapitel hast du ein einfaches Java-Programm geschrieben – eine einzelne Datei mit dem Namen HelloWorld.java. Damit konntest du sehen, wie man ein Java-Programm grundsätzlich startet und ausführt.&lt;/p>
@@ -127,7 +94,7 @@ Und danach kannst du direkt mit ein paar kleinen Übungen loslegen, um dich mit 
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/01_basicexercises/02_konsole-%c3%bcbungen">
 &lt;img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
 &lt;/a>
-Neu für 2025: Jetzt bist du dran. Löse bitte die folgenden
+Jetzt bist du dran. Löse bitte die folgenden
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/01_basicexercises/02_konsole-%c3%bcbungen">Aufgaben&lt;/a> in den Labs.
 &lt;/p></description></item><item><title>Docs: Variablen in Java</title><link>/de/docs/02_java/03_java-grundlagen/02_variables/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/02_variables/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
@@ -135,9 +102,115 @@ Neu für 2025: Jetzt bist du dran. Löse bitte die folgenden
 &lt;li>Ich weiss, was Variablen sind.&lt;/li>
 &lt;li>Ich kann eine Variable deklarieren und initialisieren.&lt;/li>
 &lt;/ul>
-&lt;h2 id="variablen">Variablen&lt;/h2>
-&lt;p>Auf der letzten Seite hast du ein kleines &amp;ldquo;Hello World&amp;rdquo; geschrieben, welches den Text &amp;ldquo;Hello, world!&amp;rdquo; in der Konsole ausschreibt. Stelle sicher, dass dieses Programm bei dir auch läuft.&lt;/p>
-&lt;p>Ändere dann den Code leicht ab in diesen und führe ihn aus:&lt;/p>
+&lt;span class="zeit" data-lesezeit="10" data-üben="">⏱️ Geschätzte Lesezeit: 10 Minuten&lt;/span>
+&lt;hr>
+&lt;h2 id="was-sind-variablen">Was sind Variablen?&lt;/h2>
+&lt;p>Eine Variable dient dazu, einen Wert zu speichern, damit man später darauf zugreifen oder ihn mehrfach verwenden kann.&lt;/p>
+&lt;p>Schau dir dieses leicht abgeänderte Hello-World-Beispiel an:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Was passiert hier?&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>var nachricht = &amp;quot;Hello, world!&amp;quot;;&lt;/code> erstellt eine neue Variable namens &lt;code>nachricht&lt;/code> und speichert den Text darin.&lt;/li>
+&lt;li>Mit &lt;code>System.out.println(nachricht);&lt;/code> wird der gespeicherte Text ausgegeben.&lt;/li>
+&lt;/ul>
+&lt;p>Du kannst jetzt denselben Text mehrfach ausgeben, ohne ihn mehrfach zu schreiben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das macht deinen Code übersichtlicher und leichter wartbar.&lt;/p>
+&lt;hr>
+&lt;h2 id="deklaration">Deklaration&lt;/h2>
+&lt;p>Bevor du eine Variable verwenden kannst, musst du sie deklarieren. Dabei gibst du ihren &lt;strong>Typ&lt;/strong> und ihren &lt;strong>Namen&lt;/strong> an:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>Typ&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>Name&lt;span style="color:#f92672">&amp;gt;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Zum Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String nachricht;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Hier ist &lt;code>String&lt;/code> der Datentyp (für Text) und &lt;code>nachricht&lt;/code> der Name der Variable.&lt;/p>
+&lt;blockquote>
+&lt;p>Mit &lt;code>var&lt;/code> kannst du seit Java 10 den Typ weglassen – der Compiler erkennt ihn automatisch. Wir zeigen aber beide
+Varianten, weil der explizite Typ in vielen Projekten bevorzugt wird.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="initialisierung">Initialisierung&lt;/h2>
+&lt;p>Eine &lt;strong>Initialisierung&lt;/strong> weist einer deklarierten Variable einen Wert zu:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>Typ&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>Name&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>Wert&lt;span style="color:#f92672">&amp;gt;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> zahl &lt;span style="color:#f92672">=&lt;/span> 3;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Du kannst eine Variable auch zuerst deklarieren und später initialisieren:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> zahl; &lt;span style="color:#75715e">// Deklaration&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zahl &lt;span style="color:#f92672">=&lt;/span> 3; &lt;span style="color:#75715e">// Initialisierung&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Oder beides in einer Zeile:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> zahl &lt;span style="color:#f92672">=&lt;/span> 3;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="wichtige-regel-für-lokale-variablen">Wichtige Regel für lokale Variablen&lt;/h2>
+&lt;p>Lokale Variablen (also solche, die in einer Methode deklariert sind) &lt;strong>müssen initialisiert werden, bevor du sie verwendest&lt;/strong>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -149,199 +222,93 @@ Neu für 2025: Jetzt bist du dran. Löse bitte die folgenden
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> {
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Beispiel&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> 1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> b;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> summe &lt;span style="color:#f92672">=&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b; &lt;span style="color:#75715e">// Fehler!&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>In diesem Beispiel haben wir den Text, den wir ausgeben wollen (&amp;ldquo;Hello, world!&amp;rdquo;), in eine sogenannte &amp;ldquo;&lt;em>Variable&lt;/em>&amp;rdquo; mit dem Namen &lt;code>nachricht&lt;/code> ausgelagert:&lt;/p>
+&lt;/div>&lt;p>Dieser Code führt zu folgendem Fehler:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>error: variable b might &lt;span style="color:#f92672">not&lt;/span> have been initialized
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Aber was macht dieser Code?&lt;/p>
+&lt;/div>&lt;p>Lösung:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> b &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="namenskonventionen-für-variablen">Namenskonventionen für Variablen&lt;/h2>
+&lt;p>Beim Benennen von Variablen beachtest du folgende Regeln:&lt;/p>
 &lt;ul>
-&lt;li>Mit dem Keyword &lt;code>var&lt;/code> teilen wir mit, dass wir eine neue Variable definieren.&lt;/li>
-&lt;li>Mit &lt;code>var nachricht&lt;/code> deklarieren wir eine neue Variable mit dem Namen &lt;code>nachricht&lt;/code>.&lt;/li>
-&lt;li>Mit dem &lt;code>=&lt;/code>-Operator teilen wir mit, dass wir der Variable den Wert von der rechten Seite zuweisen möchten. Die Variable &lt;code>nachricht&lt;/code> wird dann also den Wert &lt;code>&amp;quot;Hello, world!&amp;quot;&lt;/code> enthalten.&lt;/li>
-&lt;li>Mit dem Semikolon (&amp;quot;;&amp;quot;) teilen wir mit, dass diese Anweisung (also die Zuweisung der Variable) abgeschlossen ist.&lt;/li>
+&lt;li>Der Name beginnt mit einem Kleinbuchstaben.&lt;/li>
+&lt;li>Er darf Buchstaben (A–Z, a–z), Ziffern (0–9), &lt;code>$&lt;/code> und &lt;code>_&lt;/code> enthalten.&lt;/li>
+&lt;li>Der Name darf &lt;strong>nicht mit einer Ziffer beginnen&lt;/strong>.&lt;/li>
+&lt;li>Der Name sollte den Inhalt der Variable beschreiben (z. B. &lt;code>summe&lt;/code> für das Ergebnis einer Addition).&lt;/li>
 &lt;/ul>
-&lt;p>Aber was genau bringt mir das jetzt?&lt;/p>
-&lt;blockquote>
-&lt;pre>&lt;code>Variablen werden dazu verwendet, um Werte zu speichern und später ein- oder mehrmals darauf zuzugreifen.
-&lt;/code>&lt;/pre>&lt;/blockquote>
-&lt;p>Möchtest du beispielsweise diesen Text 5 mal ausgeben, dann könntest du das wie folgt tun:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HelloWorld&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(nachricht);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="deklaration">Deklaration&lt;/h3>
-&lt;p>Bevor eine Variable verwendet werden kann, muss das Programm diese Variable kennen. Dies tust du, indem du sie &amp;ldquo;deklarierst&amp;rdquo;.
-Unter der Deklaration einer Variable versteht man das erste &amp;ldquo;Erwähnen&amp;rdquo; einer Variable. In Java bedeutet dies, dass der Typ der Variable festgelegt wird.&lt;/p>
-&lt;p>Formal gilt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>&amp;lt;Typ-der-Variable&amp;gt; &amp;lt;Variablen-Name&amp;gt;;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wir geben also den Datentyp und den Namen der Variable an.&lt;/p>
-&lt;p>Im vorherigen Beispiel hatten wir eine Variable so definiert:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> nachricht &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das Keyword &lt;code>var&lt;/code> ist ein neueres Feature von Java, das den Typ erratet. Normalerweise gibt man stattdessen den Typ der Variable an:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String nachricht;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Bei der Variable &lt;code>nachricht&lt;/code> ist also &lt;code>String&lt;/code> der Typ. &lt;code>String&lt;/code> bedeutet, dass es sich hierbei um einen &lt;em>Text&lt;/em> - also eine &amp;ldquo;&lt;em>Zeichenkette&lt;/em>&amp;rdquo; - handelt.&lt;/p>
-&lt;p>Der Wert selbst muss bei der Deklaration nicht zwingend festgelegt werden. Zur &lt;em>Laufzeit&lt;/em> (also wenn das Programm läuft) wird dann für die Variable einen Bereich im Arbeitsspeicher (RAM) reserviert. Hier werden später die Werte, die der Variablen zugewiesen werden, gespeichert. Die Grösse des Speicherbereichs hängt vom Typ der Variable ab.&lt;/p>
-&lt;h3 id="initialisierung">Initialisierung&lt;/h3>
-&lt;p>Unter dem Begriff Initialisierung wird die direkte Zuweisen eines Wertes bei der Deklaration einer Variablen verstanden.
-Lokale Variablen (Variablen, die lediglich innerhalb einer Methode gültig sind) müssen initialisiert werden, bevor sie verwendet werden können.&lt;/p>
-&lt;p>Formal wird wie folgt eine Variable initialisiert (inkl. Deklaration):&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>Typ&lt;span style="color:#f92672">-&lt;/span>der&lt;span style="color:#f92672">-&lt;/span>Variable&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>Variablen&lt;span style="color:#f92672">-&lt;/span>Name&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>Wert&lt;span style="color:#f92672">-&lt;/span>der&lt;span style="color:#f92672">-&lt;/span>Variable&lt;span style="color:#f92672">&amp;gt;&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Hier ein kleines Beispiel, in welchem der Variable &lt;code>number&lt;/code> den Wert 3 zuweisen und ausgeben:&lt;/p>
+&lt;p>Beispiele für gültige Namen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> number &lt;span style="color:#f92672">=&lt;/span> 3;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(number);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> alter;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">double&lt;/span> preisProStunde;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String benutzername;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Nachfolgend ein Beispiel, in welchem versucht wird, zwei Zahlen zu addieren. Der erste Summand &lt;code>firstSummand&lt;/code> hat den Wert &lt;code>1&lt;/code>, beim zweiten Summand &lt;code>secondSummand&lt;/code> wird kein Wert zugewiesen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> firstSummand &lt;span style="color:#f92672">=&lt;/span> 1;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> secondSummand;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> sum &lt;span style="color:#f92672">=&lt;/span> firstSummand &lt;span style="color:#f92672">+&lt;/span> secondSummand;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(sum);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>&lt;hr>
+&lt;h2 id="zusammenfassung">Zusammenfassung&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Begriff&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Deklaration&lt;/strong>&lt;/td>
+&lt;td>Eine Variable benennen und ihren Typ angeben (&lt;code>int zahl;&lt;/code>)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Initialisierung&lt;/strong>&lt;/td>
+&lt;td>Einer Variable einen Wert zuweisen (&lt;code>zahl = 5;&lt;/code>)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Zuweisung&lt;/strong>&lt;/td>
+&lt;td>Eine bestehende Variable erhält einen neuen Wert&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="lernvideo">Lernvideo&lt;/h2>
+&lt;p>Möchtest du die Inhalte nochmals als Video anschauen? Dann empfehlen wir dir dieses &lt;a href="https://www.youtube.com/watch?v=8YI0etAGQGA">Video (YouTube, bis 4:25)&lt;/a>.&lt;/p>
+&lt;hr>
+&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
 &lt;/div>
-&lt;/div>&lt;p>Weil die Variable &lt;strong>secondSummand&lt;/strong> nicht initialisiert wurde, kann die Zuweisung &lt;strong>int sum = firstSummand + secondSummand&lt;/strong> folglich nicht funktionieren. Deswegen führt dieser Code zu dieser Fehlermeldung:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>error: variable secondSummand might &lt;span style="color:#f92672">not&lt;/span> have been initialized&lt;span style="color:#f92672">.&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
+&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
+--> Aufgabe implementieren&amp;hellip;
+&amp;ldquo;../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_variablen-und-typen&amp;rdquo;
 &lt;/div>
-&lt;/div>&lt;p>Um dieses Problem zu lösen, muss die Variable &lt;code>secondSummand&lt;/code> initialisiert (also einen Wert zugewiesen) werden:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> firstSummand &lt;span style="color:#f92672">=&lt;/span> 1;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> secondSummand &lt;span style="color:#f92672">=&lt;/span> 2;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> sum &lt;span style="color:#f92672">=&lt;/span> firstSummand &lt;span style="color:#f92672">+&lt;/span> secondSummand;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(sum);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="deklaration-mit-initialisierung">Deklaration mit Initialisierung&lt;/h4>
-&lt;p>Wir können eine Variable nacheinander deklarieren und dann initialisieren oder beides zusammen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> number; &lt;span style="color:#75715e">// 1. Deklaration&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>number &lt;span style="color:#f92672">=&lt;/span> 2; &lt;span style="color:#75715e">// 2. Initialisierung&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> number &lt;span style="color:#f92672">=&lt;/span> 2; &lt;span style="color:#75715e">// beides in einer Zeile&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="namensgebung">Namensgebung&lt;/h3>
-&lt;p>Variablen dienen dazu, Werte zu speichern. Zur Benennung von Variablen gibt es vier Regeln:&lt;/p>
-&lt;ul>
-&lt;li>Variablennamen beginnen mit einem Kleinbuchstaben.&lt;/li>
-&lt;li>Ein Variablenname darf die Buchstaben A-Z und a-z enthalten.&lt;/li>
-&lt;li>Ein Variablenname darf beliebige Zahlen von 0-9 enthalten, nicht aber am Anfang.&lt;/li>
-&lt;li>Ein Variablenname darf die Sonderzeichen $ und _ enthalten.&lt;/li>
-&lt;/ul>
-&lt;p>Der Name einer Variable sollte so gewählt werden, dass klar ist, welcher Wert darin gespeichert wird. Als Beispiel wählen wir den Namen &lt;em>sum&lt;/em> für eine Variable, welche das Resultat einer Addition enthält.&lt;/p>
-&lt;h3 id="lernvideo">Lernvideo&lt;/h3>
-&lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
-&lt;a href="https://www.youtube.com/watch?v=8YI0etAGQGA">Video&lt;/a>. Relevant sind nur die Themen bis 4:25.&lt;/p></description></item><item><title>Docs: Datentypen</title><link>/de/docs/02_java/03_java-grundlagen/03_data_types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/03_data_types/</guid><description>
+&lt;/div></description></item><item><title>Docs: Datentypen</title><link>/de/docs/02_java/03_java-grundlagen/03_data_types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/03_data_types/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich weiss, was Datentypen sind.&lt;/li>
@@ -714,7 +681,7 @@ Damit bietet eine Kontrollstruktur die Möglichkeit, Programmteile nur unter gew
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_bedingte-ausf%c3%bchrung">
 &lt;img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
 &lt;/a>
-Neu für 2025: Jetzt bist du dran. Löse bitte die folgenden
+Jetzt bist du dran. Löse bitte die folgenden
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_bedingte-ausf%c3%bchrung">Aufgaben&lt;/a> in den Labs.
 &lt;/p>
 &lt;h4 id="switch-statement">Switch-Statement&lt;/h4>

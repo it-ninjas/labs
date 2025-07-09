@@ -1,6 +1,6 @@
 /**
- * Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm 
- * vorzunehmen. 
+ * Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm
+ * vorzunehmen.
  */
 public class Main {
     public static void main(String[] args) {
