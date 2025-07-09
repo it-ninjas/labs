@@ -8,7 +8,7 @@
   {{- $text = replaceRE $pattern "$1" $raw | plainify -}}
   {{- $path = replaceRE $pattern "$2" $raw | lower -}}
 {{- else -}}
-  {{- $text = .Get 1 | plainify -}}
+  {{- $text = .Inner | plainify -}}
   {{- $path = lower $raw -}}
 {{- end -}}
 
