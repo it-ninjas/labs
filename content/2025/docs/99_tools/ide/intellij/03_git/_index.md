@@ -40,7 +40,7 @@ Nach dem Erstellen siehst du unten den neuen Git-Tab und kannst mit dem ersten C
 
 Wenn Du ein Git Repository selber erstellt hast, ist dieses nur lokal vorhanden. Beim ersten **Push** wirst du darum von
 IntelliJ nach der URL für das Remote Repository gefragt. Wie du die URL für dein Remote Repository bekommst erfährst du
-unter [Source Repositories](../../../04_zusammenarbeit/01_source-repositories/).
+unter [Source Repositories](../../../zusammenarbeit/source-repositories/).
 
 {{<todo>}}
 Screenshot Remote Repository hinzufügen...

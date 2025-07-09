@@ -37,7 +37,7 @@ SimpleExample
 ├── .env
 ├── .gitignore
 ├── pom.xml
-└── README._md
+└── README.md
 ```
 
 ## Dateien in SimpleExample
@@ -120,7 +120,7 @@ SAMPLE_API_KEY=mein_geheimnis
 
 ```
 
-##### README.\_md{#readme-\_md}
+##### README.md{#readme-md}
 
 Not able to display content!
 
@@ -162,9 +162,6 @@ public class Basic {
         // Prevent instantiation
     }
 
-    /**
-     *
-     */
     public static String getSecret (){
         Dotenv dotenv = Dotenv.configure()
                 .ignoreIfMissing()

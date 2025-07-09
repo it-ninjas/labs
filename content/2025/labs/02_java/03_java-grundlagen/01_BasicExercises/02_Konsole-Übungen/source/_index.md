@@ -39,7 +39,7 @@ Konsole-Übungen
 │                       └── util
 │                           └── ItNinjaOutput.java
 ├── pom.xml
-└── README._md
+└── README.md
 ```
 
 ## Dateien in Konsole-Übungen
@@ -95,7 +95,7 @@ Konsole-Übungen
 
 ```
 
-##### README.\_md{#readme-\_md}
+##### README.md{#readme-md}
 
 Not able to display content!
 
@@ -138,7 +138,7 @@ public class AsciiHouse {
     /**
      * Zeichne ein Haus in der Konsole. Du darfst dazu folgende Zeichen verwenden:
      *
-     * *  '/', '\', '+', '-', '_', '[', ']', '|', Leerzeichen (' ')
+     * - '/', '\', '+', '-', '_', '[', ']', '|', Leerzeichen (' ')
      */
     public static void printHouse(){
 
@@ -164,8 +164,8 @@ public class AsciiSwissFlag {
      * Zeichne eine Schweizer Fahne. Die Fahne muss einen Rahmen haben. Du darfst dazu
      * folgende Zeichen verwenden:
      *
-     * * Im Rahmen: '|', '-', '+'', Leerzeichen (' ')
-     * * Innerhalb: '|', '-', '+', '*', '=', '@'', Leerzeichen (' ')
+     * - Im Rahmen: '|', '-', '+'', Leerzeichen (' ')
+     * - Innerhalb: '|', '-', '+', '*', '=', '@'', Leerzeichen (' ')
      */
     public static void printSwissFlag(){
 

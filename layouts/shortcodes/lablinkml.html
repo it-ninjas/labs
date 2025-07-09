@@ -1,0 +1,23 @@
+{{- $raw := .Get 0 | strings.TrimSpace -}}
+{{- $pattern := `\[(.*?)\]\((.*?)\)` -}}
+
+{{- $text := "" -}}
+{{- $path := "" -}}
+
+{{- if findRE $pattern $raw | len | eq 1 -}}
+  {{- $text = replaceRE $pattern "$1" $raw | plainify -}}
+  {{- $path = replaceRE $pattern "$2" $raw | lower -}}
+{{- else -}}
+  {{- $text = .Inner | plainify -}}
+  {{- $path = lower $raw -}}
+{{- end -}}
+
+{{- if strings.HasSuffix $path "/_index.md" -}}
+  {{- $path = replace $path "/_index.md" "/" -}}
+{{- end -}}
+
+{{- $path = replace $path "//" "/" -}}
+
+{{- $url := relref .Page $path -}}
+
+{{- printf `<a id="back-from-lab" href="%s">%s</a>` $url $text | safeHTML -}}

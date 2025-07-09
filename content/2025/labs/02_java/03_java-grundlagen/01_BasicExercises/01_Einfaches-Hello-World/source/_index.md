@@ -19,7 +19,7 @@ Einfaches-Hello-World
 ├── src
 │   └── Main.java
 ├── .gitignore
-└── README._md
+└── README.md
 ```
 
 ## Dateien in Einfaches-Hello-World
@@ -34,7 +34,7 @@ target/
 build/
 ```
 
-##### README.\_md{#readme-\_md}
+##### README.md{#readme-md}
 
 Not able to display content!
 

@@ -48,4 +48,4 @@ In der Talent Factory verwenden wir **Bitbucket**, da es intern gehostet wird un
 - Snapshots erstellst (Commits),
 - und deine Arbeit jederzeit wiederherstellen kannst.
 
-Weiter zur praktischen Anleitung: 👉 [Bitbucket Repository einrichten](./01_personal-bitbucket/)
+Weiter zur praktischen Anleitung: 👉 [Bitbucket Repository einrichten](./personal-bitbucket/)

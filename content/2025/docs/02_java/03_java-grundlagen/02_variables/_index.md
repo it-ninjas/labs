@@ -11,155 +11,156 @@ description: >
 - Ich weiss, was Variablen sind.
 - Ich kann eine Variable deklarieren und initialisieren.
 
-## Variablen
+{{< zeit lesen="10">}}
 
-Auf der letzten Seite hast du ein kleines "Hello World" geschrieben, welches den Text "Hello, world!" in der Konsole ausschreibt. Stelle sicher, dass dieses Programm bei dir auch läuft.
+---
 
-Ändere dann den Code leicht ab in diesen und führe ihn aus:
+## Was sind Variablen?
 
-```java
-public class HelloWorld {
-    public static void main(String[] args) {
-        var nachricht = "Hello, world!";
+Eine Variable dient dazu, einen Wert zu speichern, damit man später darauf zugreifen oder ihn mehrfach verwenden kann.
 
-        System.out.println(nachricht);
-    }
-}
-```
-
-In diesem Beispiel haben wir den Text, den wir ausgeben wollen ("Hello, world!"), in eine sogenannte "_Variable_" mit dem Namen `nachricht` ausgelagert:
-
-```java
-var nachricht = "Hello, world!";
-```
-
-Aber was macht dieser Code?
-
-- Mit dem Keyword `var` teilen wir mit, dass wir eine neue Variable definieren.
-- Mit `var nachricht` deklarieren wir eine neue Variable mit dem Namen `nachricht`.
-- Mit dem `=`-Operator teilen wir mit, dass wir der Variable den Wert von der rechten Seite zuweisen möchten. Die Variable `nachricht` wird dann also den Wert `"Hello, world!"` enthalten.
-- Mit dem Semikolon (";") teilen wir mit, dass diese Anweisung (also die Zuweisung der Variable) abgeschlossen ist.
-
-Aber was genau bringt mir das jetzt?
-
->     Variablen werden dazu verwendet, um Werte zu speichern und später ein- oder mehrmals darauf zuzugreifen.
-
-Möchtest du beispielsweise diesen Text 5 mal ausgeben, dann könntest du das wie folgt tun:
+Schau dir dieses leicht abgeänderte Hello-World-Beispiel an:
 
 ```java
 public class HelloWorld {
     public static void main(String[] args) {
         var nachricht = "Hello, world!";
-
-        System.out.println(nachricht);
-        System.out.println(nachricht);
-        System.out.println(nachricht);
-        System.out.println(nachricht);
         System.out.println(nachricht);
     }
 }
 ```
 
-### Deklaration
+Was passiert hier?
 
-Bevor eine Variable verwendet werden kann, muss das Programm diese Variable kennen. Dies tust du, indem du sie "deklarierst".
-Unter der Deklaration einer Variable versteht man das erste "Erwähnen" einer Variable. In Java bedeutet dies, dass der Typ der Variable festgelegt wird.
+- `var nachricht = "Hello, world!";` erstellt eine neue Variable namens `nachricht` und speichert den Text darin.
+- Mit `System.out.println(nachricht);` wird der gespeicherte Text ausgegeben.
 
-Formal gilt:
-
-```
-<Typ-der-Variable> <Variablen-Name>;
-```
-
-Wir geben also den Datentyp und den Namen der Variable an.
-
-Im vorherigen Beispiel hatten wir eine Variable so definiert:
+Du kannst jetzt denselben Text mehrfach ausgeben, ohne ihn mehrfach zu schreiben:
 
 ```java
-var nachricht = "Hello, world!";
+System.out.println(nachricht);
+System.out.println(nachricht);
+System.out.println(nachricht);
 ```
 
-Das Keyword `var` ist ein neueres Feature von Java, das den Typ erratet. Normalerweise gibt man stattdessen den Typ der Variable an:
+Das macht deinen Code übersichtlicher und leichter wartbar.
+
+---
+
+## Deklaration
+
+Bevor du eine Variable verwenden kannst, musst du sie deklarieren. Dabei gibst du ihren **Typ** und ihren **Namen** an:
+
+```java
+<Typ> <Name>;
+```
+
+Zum Beispiel:
 
 ```java
 String nachricht;
 ```
 
-Bei der Variable `nachricht` ist also `String` der Typ. `String` bedeutet, dass es sich hierbei um einen _Text_ - also eine "_Zeichenkette_" - handelt.
+Hier ist `String` der Datentyp (für Text) und `nachricht` der Name der Variable.
 
-Der Wert selbst muss bei der Deklaration nicht zwingend festgelegt werden. Zur _Laufzeit_ (also wenn das Programm läuft) wird dann für die Variable einen Bereich im Arbeitsspeicher (RAM) reserviert. Hier werden später die Werte, die der Variablen zugewiesen werden, gespeichert. Die Grösse des Speicherbereichs hängt vom Typ der Variable ab.
+> Mit `var` kannst du seit Java 10 den Typ weglassen – der Compiler erkennt ihn automatisch. Wir zeigen aber beide
+> Varianten, weil der explizite Typ in vielen Projekten bevorzugt wird.
 
-### Initialisierung
+---
 
-Unter dem Begriff Initialisierung wird die direkte Zuweisen eines Wertes bei der Deklaration einer Variablen verstanden.
-Lokale Variablen (Variablen, die lediglich innerhalb einer Methode gültig sind) müssen initialisiert werden, bevor sie verwendet werden können.
+## Initialisierung
 
-Formal wird wie folgt eine Variable initialisiert (inkl. Deklaration):
+Eine **Initialisierung** weist einer deklarierten Variable einen Wert zu:
 
 ```java
-<Typ-der-Variable> <Variablen-Name> = <Wert-der-Variable>;
+<Typ> <Name> = <Wert>;
 ```
 
-Hier ein kleines Beispiel, in welchem der Variable `number` den Wert 3 zuweisen und ausgeben:
+Beispiel:
 
 ```java
-public static void main(String[] args) {
-	int number = 3;
-  System.out.println(number);
+int zahl = 3;
+```
+
+Du kannst eine Variable auch zuerst deklarieren und später initialisieren:
+
+```java
+int zahl;    // Deklaration
+zahl = 3;    // Initialisierung
+```
+
+Oder beides in einer Zeile:
+
+```java
+int zahl = 3;
+```
+
+---
+
+## Wichtige Regel für lokale Variablen
+
+Lokale Variablen (also solche, die in einer Methode deklariert sind) **müssen initialisiert werden, bevor du sie verwendest**:
+
+```java
+public class Beispiel {
+    public static void main(String[] args) {
+        int a = 1;
+        int b;
+        int summe = a + b; // Fehler!
+    }
 }
 ```
 
-Nachfolgend ein Beispiel, in welchem versucht wird, zwei Zahlen zu addieren. Der erste Summand `firstSummand` hat den Wert `1`, beim zweiten Summand `secondSummand` wird kein Wert zugewiesen:
+Dieser Code führt zu folgendem Fehler:
+
+```
+error: variable b might not have been initialized
+```
+
+Lösung:
 
 ```java
-public static void main(String[] args) {
-	int firstSummand = 1;
-	int secondSummand;
-	int sum = firstSummand + secondSummand;
-	System.out.println(sum);
-}
+int b = 2;
 ```
 
-Weil die Variable **secondSummand** nicht initialisiert wurde, kann die Zuweisung **int sum = firstSummand + secondSummand** folglich nicht funktionieren. Deswegen führt dieser Code zu dieser Fehlermeldung:
+---
 
-```
-error: variable secondSummand might not have been initialized.
-```
+## Namenskonventionen für Variablen
 
-Um dieses Problem zu lösen, muss die Variable `secondSummand` initialisiert (also einen Wert zugewiesen) werden:
+Beim Benennen von Variablen beachtest du folgende Regeln:
+
+- Der Name beginnt mit einem Kleinbuchstaben.
+- Er darf Buchstaben (A–Z, a–z), Ziffern (0–9), `$` und `_` enthalten.
+- Der Name darf **nicht mit einer Ziffer beginnen**.
+- Der Name sollte den Inhalt der Variable beschreiben (z. B. `summe` für das Ergebnis einer Addition).
+
+Beispiele für gültige Namen:
 
 ```java
-public static void main(String[] args) {
-	int firstSummand = 1;
-	int secondSummand = 2;
-	int sum = firstSummand + secondSummand;
-	System.out.println(sum);
-}
+int alter;
+double preisProStunde;
+String benutzername;
 ```
 
-#### Deklaration mit Initialisierung
+---
 
-Wir können eine Variable nacheinander deklarieren und dann initialisieren oder beides zusammen:
+## Zusammenfassung
 
-```java
-int number;     // 1. Deklaration
-number = 2;     // 2. Initialisierung
+| Begriff             | Bedeutung                                                  |
+| ------------------- | ---------------------------------------------------------- |
+| **Deklaration**     | Eine Variable benennen und ihren Typ angeben (`int zahl;`) |
+| **Initialisierung** | Einer Variable einen Wert zuweisen (`zahl = 5;`)           |
+| **Zuweisung**       | Eine bestehende Variable erhält einen neuen Wert           |
 
-int number = 2; // beides in einer Zeile
-```
+---
 
-### Namensgebung
+## Lernvideo
 
-Variablen dienen dazu, Werte zu speichern. Zur Benennung von Variablen gibt es vier Regeln:
+Möchtest du die Inhalte nochmals als Video anschauen? Dann empfehlen wir dir dieses [Video (YouTube, bis 4:25)](https://www.youtube.com/watch?v=8YI0etAGQGA).
 
-- Variablennamen beginnen mit einem Kleinbuchstaben.
-- Ein Variablenname darf die Buchstaben A-Z und a-z enthalten.
-- Ein Variablenname darf beliebige Zahlen von 0-9 enthalten, nicht aber am Anfang.
-- Ein Variablenname darf die Sonderzeichen $ und \_ enthalten.
+---
 
-Der Name einer Variable sollte so gewählt werden, dass klar ist, welcher Wert darin gespeichert wird. Als Beispiel wählen wir den Namen _sum_ für eine Variable, welche das Resultat einer Addition enthält.
-
-### Lernvideo
-
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
-[Video](https://www.youtube.com/watch?v=8YI0etAGQGA). Relevant sind nur die Themen bis 4:25.
+{{< todo >}}
+Aufgabe implementieren...
+"../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_variablen-und-typen"
+{{< /todo >}}

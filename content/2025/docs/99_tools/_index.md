@@ -1,6 +1,6 @@
 ---
 title: Tools
-weight: 1
+weight: 99
 ---
 
 In diesem Bereich findest du hilfreiche Tools und Anleitungen zur Arbeit mit Entwicklungsumgebungen, Dokumentation, Versionskontrolle und nützlichen Helferlein.
@@ -11,7 +11,7 @@ Die folgenden Programme sollten heruntergeladen und installiert werden, sie werd
 
 | Anwendung     | Link                                                                                 | Zweck                                                       |
 | ------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| IntelliJ IDEA | [IntelliJ IDEA einrichten](./02_ide/01_intellij/01_installation/)                    | Entwicklungsumgebung für Java                               |
+| IntelliJ IDEA | [IntelliJ IDEA einrichten](./ide/intellij/01_installation/)                          | Entwicklungsumgebung für Java                               |
 | Notepad++     | [https://notepad-plus-plus.org/downloads/](https://notepad-plus-plus.org/downloads/) | Erweiterter Texteditor mit vielen nützlichen Funktionen     |
 | Google Chrome | [https://www.google.com/intl/de/chrome/](https://www.google.com/intl/de/chrome/)     | Web-Browser von Google mit sehr guten Entwickler-Funktionen |
 | GIT           | [https://git-scm.com/download/win](https://git-scm.com/download/win)                 | Zugriff auf das Versionsverwaltungssystem GIT               |

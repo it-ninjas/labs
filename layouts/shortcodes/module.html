@@ -1,0 +1,5 @@
+{{ $content := printf "%s\n%s" "" "{{< sbb raw=\"true\" >}}"}}
+{{ $content = printf "%s\nDieses Kapitel gehört zum Modul #%s des Ausbildungsplans" $content (.Get 0)}}
+{{ $content = printf "%s\n%s" $content "{{< /sbb >}}"}}
+
+{{ $content | markdownify }}
