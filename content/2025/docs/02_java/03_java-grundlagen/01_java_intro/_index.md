@@ -19,6 +19,8 @@ description: >
 
 ## Cheatsheet zum Herunterladen
 
+Das Cheatsheet enthält eine Übersicht über grundlegende Java-Syntax, wichtige Befehle und Beispiele. Ideal als schnelle
+Nachschlagehilfe beim Üben:
 [Core Java Cheatsheet](./resources/cheatsheet.pdf)
 
 ---

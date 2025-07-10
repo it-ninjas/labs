@@ -5,6 +5,8 @@ description: >
   Grundlagen der Programmiersprache Java
 ---
 
+{{< module "Java" >}}
+
 ## Voraussetzungen
 
 - Grundlegende Computerkenntnisse (z. B. Datei öffnen/speichern)
