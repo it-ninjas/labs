@@ -3,19 +3,22 @@ title: "Primitive Datentypen"
 linkTitle: "Primitive Datentypen"
 weight: 4
 description: >
-  Modul #J1
+  In diesem Modul lernst du die primitiven Datentypen in Java kennen – also Werte wie Zahlen, Zeichen oder Wahrheitswerte.
 ---
 
 ## Ziele
 
 - Ich kenne die primitiven Datentypen in Java: `boolean`, `byte`, `short`, `int`, `long`, `double`, `float`, `char`.
 
+{{< zeit lesen="25" >}}
+
 ## Primitive Datentypen
 
-Bei Variablen primitiver Datentypen werden die Werte der Variable direkt in der Variable gespeichert. Aus diesem Grund wird dann der Wert der Variable auch dann gelöscht, wenn die Variable gelöscht wird.
-Du erkennst primitive Datentypen auch daran, dass sie klein geschrieben werden. Ein `String` ist daher kein primitiver Datentyp.
+Bei primitiven Datentypen wird der Wert direkt in der Variable gespeichert. Wird die Variable gelöscht, verschwindet
+auch ihr Inhalt. Du erkennst primitive Datentypen daran, dass sie klein geschrieben werden. Ein `String` ist daher
+**kein** primitiver Datentyp.
 
-Die primitiven Datentypen sind die folgenden:
+Die primitiven Datentypen sind:
 
 - `byte` (Ganzzahl)
 - `short` (Ganzzahl)
@@ -23,42 +26,37 @@ Die primitiven Datentypen sind die folgenden:
 - `long` (Ganzzahl)
 - `float` (Kommazahl)
 - `double` (Kommazahl)
-- `boolean` (entweder `true` oder `false`)
-- `char` (ein Zeichen wie ein Buchstabe)
+- `boolean` (`true` oder `false`)
+- `char` (ein einzelnes Zeichen)
 
-### Integraler Datentyp
+### Integrale Datentypen
 
-Integrale Datentypen sind ganze Zahlen, sie besitzen also keine Nachkommastellen.
-Die folgenden Datentypen speichern ganzzahlige Werte, sie unterscheiden sich nur in ihrem Speicherbedarf:
+Integrale Datentypen speichern ganze Zahlen ohne Nachkommastellen. Sie unterscheiden sich im Speicherbedarf:
 
-| Datentyp | Speicherbedarf | Bereich                                             |
-| -------- | -------------- | --------------------------------------------------- |
-| `byte`   | 8 Bit          | -128 ... 127                                        |
-| `short`  | 16 Bit         | -32768 ... 32767                                    |
-| `int`    | 32 Bit         | -2 147 483 648 ... 2 147 483 647 (-2^31 ... 2^31-1) |
-| `long`   | 64 Bit         | -2^63 ... 2^63-1                                    |
+| Datentyp | Speicherbedarf | Bereich                                           |
+| -------- | -------------- | ------------------------------------------------- |
+| `byte`   | 8 Bit          | -128 bis 127                                      |
+| `short`  | 16 Bit         | -32_768 bis 32_767                                |
+| `int`    | 32 Bit         | -2_147_483_648 bis 2_147_483_647 (-2³¹ bis 2³¹−1) |
+| `long`   | 64 Bit         | -2⁶³ bis 2⁶³−1                                    |
 
-Ausserdem sind in den Werten von integralen Datentypen Underscores erlaubt, um die Lesbarkeit zu erhöhen (1_000_000).
-
-Beispiele:
+Zur besseren Lesbarkeit darfst du Underscores verwenden:
 
 ```java
 int count = 0;
 int million = 1_000_000;
 ```
 
-### Gleitkomma-Datentyp
+### Gleitkomma-Datentypen
 
-Gleitkomma-Datentypen speichern wie der Name bereits sagt, Zahlen mit Nachkommastellen. Diese Zahlen besitzen nur eine bestimmte Genauigkeit, sie dürfen nicht als völlig exakt betrachtet werden.
+Gleitkommazahlen enthalten Nachkommastellen, sind aber **nicht exakt** – es können Rundungsfehler auftreten.
 
-Die folgenden Datentypen speichern Zahlen mit Nachkommastellen, sie unterscheiden sich in ihrem Speicherbedarf und der Art und Weise wie sie innerhalb von Java abgelegt werden:
+| Datentyp | Speicherbedarf | Bereich                 | Darstellung             |
+| -------- | -------------- | ----------------------- | ----------------------- |
+| `float`  | 32 Bit         | ±1.4E−45 bis ±3.4E+38   | Gleitkommazahl (32 Bit) |
+| `double` | 64 Bit         | ±4.9E−324 bis ±1.7E+308 | Gleitkommazahl (64 Bit) |
 
-| Datentyp | Speicherbedarf | Bereich                     | Interne Ablage          |
-| -------- | -------------- | --------------------------- | ----------------------- |
-| float    | 32 Bit         | +/-1,4E-45 ... +/-3,4E+38   | Gleitkommazahl (32 Bit) |
-| double   | 64 Bit         | +/-4,9E-324 ... +/-1,7E+308 | Gleitkommazahl (64 Bit) |
-
-Wie folgt können Gleitkommazahlen initialisiert werden:
+Beispiele:
 
 ```java
 float radius = 8.5f;
@@ -66,80 +64,110 @@ double area = 16.48739d;
 double pi = 3.141592653589793;
 ```
 
-Beachte, dass bei `float`-Zahlen ein `f` am Ende steht, da die Zahl sonst als `double` interpretiert wird.
+Beachte: `float`-Werte benötigen das Suffix `f`. Für **exakte** Berechnungen (z. B. Geldbeträge) verwende `BigDecimal`.
 
-Trotz Nachkommastellen dürfen Gleitkommazahlen des Typs `float` und `double` niemals zur Berechnung von Währungen verwendet werden.
-Der Grund dafür sind Rundungsfehler, wenn mit diesen Datentypen gerechnet wird. Falls du exakte Berechnungen mit Gleitkommazahlen durchführen möchtest, musst du die Klasse `BigDecimal` verwenden. `BigDecimal` ist kein primitiver Datentyp.
+### Warum `BigDecimal` statt `double`?
+
+Der Typ `double` speichert Gleitkommazahlen im **Binärformat**. Viele Dezimalzahlen wie `0.1` oder `0.2` lassen sich im
+Binärsystem **nicht exakt darstellen** – ähnlich wie `1/3` in Dezimal als `0.333...` unendlich lang ist.
+
+Das führt zu **kleinen Rundungsfehlern**, die in Finanzanwendungen problematisch sind.
+
+#### Beispiel:
+
+```java
+double x = 0.1;
+double y = 0.2;
+System.out.println(x + y); // ergibt 0.30000000000000004
+```
+
+Auch wenn das nach wenig aussieht: Bei vielen Transaktionen oder Rundungen summieren sich diese Fehler.
+
+#### Die Lösung: `BigDecimal`
+
+`BigDecimal` speichert Zahlen exakt als **Dezimalwerte** und bietet:
+
+- Exakte Rechengenauigkeit
+- Kontrollierte Rundung
+- Präzise Ausgabe
+
+```java
+import java.math.BigDecimal;
+
+BigDecimal a = new BigDecimal("0.1");
+BigDecimal b = new BigDecimal("0.2");
+BigDecimal result = a.add(b);
+
+System.out.println(result); // ergibt 0.3
+```
+
+{{< ninja tip >}}
+Übergib Werte mit Nachkommastellen **immer als String** (`new BigDecimal("0.1")`), sonst übernimmst du den ungenauen `double`-Wert.
+
+Ganzzahlen kannst Du direkt übergeben (`new BigDecimal(22)`).
+{{< /ninja >}}
 
 ### Zeichen-Datentyp
 
-Ein **char** ist ein Datentyp, der ein einzelnes Zeichen darstellt.
+Ein `char` steht für genau ein Zeichen: Buchstabe, Zahl oder Symbol.
 
-Ein einzelnes Zeichen kann eine Ziffer, einen Buchstaben oder ein anderes Symbol sein. Um ein Zeichen zu schreiben, verwenden wir einfache Anführungszeichen wie folgt:
-
-```
-'A', 'B', 'C', 'x', 'y', 'z', '0', '1', '2', '9'
-```
-
-Zeichenliterale können Symbole eines Alphabets, Ziffern von '0' bis '9', Leerzeichen (' ') oder andere Zeichen oder Symbole ('$') darstellen. Verwechsle nicht Zeichen, die Ziffern darstellen ('9'), mit den tatsächlichen Zahlenwerten (9).
-Ein Zeichen kann nicht zwei und mehr Ziffern oder Buchstaben enthalten, da es nur ein einziges Symbol darstellt.
-
-Wir können Zeichen auf verschiedene Arten initialisieren:
-| Beschreibung | Code |
-| --- | --- |
-| Einfache Anführungszeichen | `char A = 'A';` |
-| Wir können ein Char-Literal als Integral-Literal angeben, das den Unicode-Wert des Zeichens darstellt, und Integral-Literale können entweder in Dezimal-, Oktal- oder Hexadezimalform angegeben werden. Der zulässige Unicode-Bereich liegt zwischen 0 und 65535. | `char A = 65;` |
-| In der Unicode-Darstellung `'\\uxxxx'` können Zeichenliterale angegeben werden. Hier steht xxxx für 4 Hexadezimalzahlen. | `char A = '\u0041';` |
-
-Auf der [Unicode Zeichentabelle](https://symbl.cc/de/unicode-table/#latin-extended-a) kannst du sehen, welche Zahl welchem Zeichen entspricht.
-
-Beispiele:
+| Datentyp | Speicherbedarf | Bereich                       |
+| -------- | -------------- | ----------------------------- |
+| `char`   | 16 Bit         | Unicode-Zeichen gemäss UTF-16 |
 
 ```java
 char letter = 'a';
 char point = '.';
-letter++; // 'b'
+letter++; // ergibt 'b'
 ```
 
-`letter++` ist das gleiche wie `letter = letter + 1`. Man nennt das auch inkrementieren.
+{{< ninja >}}
+**Warum ergibt `letter++` den Buchstaben `'b'`?**
 
-#### _Don’t get confused:_
+Ein Computer kennt keine Zeichen, sondern nur Zahlen. Auch ein `char` wird intern als 16-Bit-Zahlenwert gespeichert.  
+Java verwendet für Zeichen die Unicode-Codierung nach UTF-16. In der Unicode-Tabelle ist genau definiert,  
+welche Zahl welchem Zeichen entspricht. Ein `char` deckt dabei die Zeichen aus der **Basic Multilingual Plane (BMP)** ab.
 
-- 123 ist ein Integer, "123" ist ein String;
-- 'A' ein Zeichen (char), "A" ist ein String;
-- '1' ist ein Zeichen (char), 1 ist ein Integer;
+Wenn man nun `letter++` schreibt (das ist das gleiche wie `letter = letter + 1`), wird der Zahlenwert um eins erhöht.  
+Dadurch ergibt sich automatisch das **nächste Zeichen** in der Unicode-Tabelle: Aus `'a'` wird `'b'`, aus `'9'` wird `':'`, usw.
 
-Der Unterschied liegt in den verwendeten Anführungszeichen.
+→ Zur [Unicode-Tabelle](https://symbl.cc/de/unicode-table/#latin-extended-a)
+{{< /ninja >}}
+
+Initialisierungsmöglichkeiten:
+
+| Beschreibung                                          | Beispiel             |
+| ----------------------------------------------------- | -------------------- |
+| Zeichen in einfachen Anführungszeichen                | `char a = 'A';`      |
+| Unicode-Zahl (Dezimal, Oktal, Hexadezimal)            | `char a = 65;`       |
+| Unicode-Schreibweise `\uXXXX` (vierstellige Hex-Zahl) | `char a = '\u0041';` |
+
+#### Zeichen vs. Zahlen vs. Strings
+
+- `123` ist eine Zahl (`int`), `"123"` ein String
+- `'A'` ist ein Zeichen (`char`), `"A"` ein String
+- `'1'` ist ein Zeichen (`char`), `1` eine Zahl
 
 ### Logischer Datentyp
 
-Ein `boolean` kann nur zwei verschiedene Werte haben:
+Ein `boolean` kann nur zwei Zustände annehmen:
 
-- `true` wie wahr (bzw. zutreffend)
-- `false` wie falsch/unwahr (bzw. nicht zutreffend)
+- `true` (wahr)
+- `false` (falsch)
 
-Ein `boolean` speichert, ob eine Bedingung wahr (`true`) oder falsch (`false`) ist. Dieser Wert wird häufig in Bedingungen verwendet, die wir später behandeln werden.
+Beispiel:
 
 ```java
 boolean done = false;
 boolean isBigger = true;
-```
-
-Eine mögliche Verwendung von `boolean`s sind Bedingungen, wenn bestimmter Code nur ausgeführt werden soll, wenn z.B. ein `boolean` den Wert `true` aufweist:
-
-```java
-boolean done = false;
 
 if (done) {
   System.out.println("You're done");
 }
 ```
 
-Damit etwas ausgegeben werden würde, müsste die Variable `done` den Wert `true` haben.
+Der `if`-Block wird nur ausgeführt, wenn `done` den Wert `true` hat.
 
 ---
 
-### Lernvideo
-
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
-[Video](https://www.youtube.com/watch?v=NSeJhsah-hE).
+{{< video "https://www.youtube.com/watch?v=NSeJhsah-hE" >}}

@@ -3,8 +3,10 @@ title: "Variablen in Java"
 linkTitle: "Variablen"
 weight: 2
 description: >
-  Modul #J1
+  In diesem Module lernst du, was Variablen sind und für was sie gebraucht werden.
 ---
+
+{{< module J1 >}}
 
 ## Ziele
 
@@ -154,13 +156,6 @@ String benutzername;
 
 ---
 
-## Lernvideo
-
-Möchtest du die Inhalte nochmals als Video anschauen? Dann empfehlen wir dir dieses [Video (YouTube, bis 4:25)](https://www.youtube.com/watch?v=8YI0etAGQGA).
+{{< video "https://www.youtube.com/watch?v=8YI0etAGQGA" "YouTube, bis 4:25">}}
 
 ---
-
-{{< todo >}}
-Aufgabe implementieren...
-"../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_variablen-und-typen"
-{{< /todo >}}
