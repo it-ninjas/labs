@@ -3,8 +3,11 @@ title: "Java Grundlagen"
 linkTitle: "Java Grundlagen"
 weight: 3
 description: >
-  Modul #J1 – Einstieg in die Programmierung mit Java
+  In diesem Modul lernst du die Grundlagen der Programmierung mit Java: Ausgaben, Variablen, Rechenoperationen,
+  Bedingungen und Schleifen.
 ---
+
+{{< module "J1" >}}
 
 ## Einführung
 
