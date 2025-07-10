@@ -1,5 +1,15 @@
 <script>
 
+  function fixUrl(){
+    document.querySelectorAll('a').forEach(link => {
+      if (link.textContent.startsWith('!')) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+        link.textContent = link.textContent.substring(1); // Entferne führendes "!"
+      }
+    });
+  }
+
   function checkForBanner() {
     if (document.documentElement.lang !== "de") return;
 
@@ -119,5 +129,6 @@
 
     dynamicAdaptContent();
     checkForBanner();
+    fixUrl();
   });
 </script>
