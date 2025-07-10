@@ -111,8 +111,7 @@ Viel Erfolg!
 Passe den Code an damit `Hello World` auf der Konsole ausgegeben wird.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\HelloWorld.java](./source/#
-src-main-java-ch-itninja-labs-basicexercises-helloworld-java):
+[src\main\java\ch\itninja\labs\basicexercises\HelloWorld.java](./source/#src-main-java-ch-itninja-labs-basicexercises-helloworld-java):
 
 ```java
     public static void printHelloWorld(){
@@ -135,8 +134,7 @@ Zeichne ein Haus in der Konsole. Du darfst dazu folgende Zeichen verwenden:
 - `'/'`, `'\'`, `'+'`, `'-'`, `'_'`, `'['`, `']'`, `'|'`, Leerzeichen (`' '`)
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\AsciiHouse.java](./source/#
-src-main-java-ch-itninja-labs-basicexercises-asciihouse-java):
+[src\main\java\ch\itninja\labs\basicexercises\AsciiHouse.java](./source/#src-main-java-ch-itninja-labs-basicexercises-asciihouse-java):
 
 ```java
     public static void printHouse(){
@@ -168,8 +166,7 @@ folgende Zeichen verwenden:
 - Innerhalb: `'|'`, `'-'`, `'+'`, `'*'`, `'='`, `'@''`, Leerzeichen (`' '`)
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\AsciiSwissFlag.java](./source/#
-src-main-java-ch-itninja-labs-basicexercises-asciiswissflag-java):
+[src\main\java\ch\itninja\labs\basicexercises\AsciiSwissFlag.java](./source/#src-main-java-ch-itninja-labs-basicexercises-asciiswissflag-java):
 
 ```java
     public static void printSwissFlag(){

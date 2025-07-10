@@ -1,0 +1,18 @@
+{{- $url := .Get 0 | default "" -}}
+{{- $url = .Get "url" | default $url -}}
+{{- $label := .Get 1 | default "" -}}
+{{- $label = .Get "text" | default $label -}}
+
+{{- $icon := "it-ninja-video.png" -}}
+{{- $bgcolor := "#e0f2fe" -}}
+
+<div style="display: flex; align-items: flex-start; background-color: {{ $bgcolor }}; margin-bottom: 1rem; border-radius: 6px">
+  <div style="flex-shrink: 0; margin-right: 1rem">
+    <img src="{{ "images/" | relURL }}{{ $icon }}" alt="it-ninja video" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+  </div>
+  <div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px;">
+    <b>Lernvideo</b><p>
+    Wenn du dir die Erklärung noch mit einem Video anschauen möchtest, empfehlen wir dir dieses
+    <a href="{{ $url }}">Video{{ if $label }} ({{ $label }}){{ end }}</a>.
+  </div>
+</div>

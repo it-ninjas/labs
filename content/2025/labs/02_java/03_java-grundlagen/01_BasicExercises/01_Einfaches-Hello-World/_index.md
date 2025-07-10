@@ -113,8 +113,7 @@ Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein p
 vorzunehmen.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\Main.java](./source/#
-src-main-java):
+[src\Main.java](./source/#src-main-java):
 
 ```java
 public class Main {

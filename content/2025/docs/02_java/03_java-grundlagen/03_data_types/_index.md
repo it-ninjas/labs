@@ -3,49 +3,83 @@ title: "Datentypen"
 linkTitle: "Datentypen"
 weight: 3
 description: >
-  Modul #J1
+  In diesem Module lernst du was Datentypen sind und was der Unterschied zwischen primitiven Datentypen und
+  Referenztypen ist.
 ---
+
+{{< module J1 >}}
 
 ## Ziele
 
 - Ich weiss, was Datentypen sind.
 
+{{< zeit lesen="10" >}}
+
 ## Datentypen
 
-In Java sind Variablen stark typisiert. Das heisst, dass alle Variablen bei ihrer Erstellung mit einem Datentyp versehen
-werden müssen.
+In Java sind Variablen **stark typisiert**. Das bedeutet, dass jede Variable beim Erstellen mit einem **Datentyp** versehen werden muss.
 
-Um z.B. eine Zahl wie `3` vom Typ `int` in eine Variable `sum` zu speichern, tun wir folgendes:
+Um zum Beispiel die Zahl `3` als `int`-Wert in der Variable `sum` zu speichern, schreibst du:
 
 ```java
 int sum = 3;
 ```
 
-Seit Java 10 gibt es Typinferenz für lokale Variablen, das heisst, eine lokale Variable kann deklariert und
-initialisiert werden (muss gleichzeitig geschehen), ohne dass ein Datentyp angegeben werden muss - anstelle des
-Datentyps kann _var_ verwendet werden:
+Seit Java 10 gibt es eine vereinfachte Schreibweise mit **Typinferenz**. Du kannst den Datentyp bei lokalen Variablen weglassen – Java erkennt den Typ automatisch. Verwende dazu das Schlüsselwort `var`:
 
 ```java
 var sum = 20;
 ```
 
-Es gibt zwei Arten von Datentypen:
+### Zwei Arten von Datentypen
 
-- Primitive Datentypen
-- und Referenztypen.
+In Java unterscheidet man zwischen:
 
-Der grundlegende Unterschied besteht darin, dass eine primitive Variable den tatsächlichen Wert speichert, während eine
-Referenzvariable die Adresse des Objekts speichert, auf welches sie sich bezieht.
+- **Primitiven Datentypen**
+- **Referenztypen**
 
-Dies hat mit dem Java Memory Modell zu tun. Das nachfolgende Bild zeigt das Java Memory Modell als einfache Darstellung:
+Der Unterschied ist grundlegend:
+
+- Ein **primitiver Typ** speichert direkt den Wert (z. B. `3` oder `true`).
+- Ein **Referenztyp** speichert eine Adresse – also den Ort im Speicher, wo das eigentliche Objekt liegt.
+
+Das hängt mit dem **Java Memory Model** zusammen. Die folgende Grafik zeigt das vereinfacht:
 
 ![Java Memory Modell](./images/Datentypen.png)
 
-Es besteht grundsätzlich aus dem Stack Memory und dem Heap Space. Primitive Datentypen (wird im nächsten Kapitel erklärt) werden nur auf dem Stack angelegt.
-Objekte, wie das im Bild gezeigte Auto (Car), sind im Heap abgelegt. Die Referenz auf das Objekt wird auf dem Stack
-angelegt. Die Referenz "zeigt" also auf das Objekt im Heap.
+### Stack und Heap
 
-Dieser fundamentale Unterschied ist relevant beim Vergleich von Werten und Referenzen. Später wirst du lernen, dass der
-Vergleichs-Operator `==` stets die Werte auf dem Stack miteinander vergleicht. Bei Referenzen wird dort also überprüft,
-ob sie auf dasselbe Objekt zeigen. Wenn der Inhalt von Objekten verglichen werden soll, so muss dies mit der Methode
-`equals()` gemacht werden.
+Java arbeitet intern mit zwei Speicherbereichen:
+
+- **Stack Memory**: Hier liegen primitive Werte und Referenzen.
+- **Heap Space**: Hier werden alle Objekte gespeichert, z. B. ein `Car`-Objekt.
+
+Im Bild siehst du: Die Variable `car` liegt auf dem Stack und zeigt auf ein Objekt im Heap.
+
+Der Grund für diese Aufteilung liegt darin, wie ein Programm Daten verarbeitet:
+
+Wenn eine Methode aufgerufen wird, werden die Parameter, die du ihr übergibst, auf den Stack kopiert. Danach „springt“
+das Programm in die Methode. Dort greift es auf die Werte auf dem Stack zu.
+
+Bei primitiven Werten geht das sehr schnell – sie sind klein (nur ein paar Bytes) und lassen sich effizient kopieren.
+
+Objekte hingegen können viel Speicher benötigen – oft hunderte oder tausende Bytes. Wenn bei jedem Methodenaufruf das
+ganze Objekt kopiert würde, würde das das Programm stark verlangsamen. Deshalb wird das Objekt im **Heap** abgelegt, und
+**nur eine Referenz** (also die Adresse im Speicher) wird über den Stack an die Methode übergeben.
+
+Das spart Zeit und Speicher – und ist der Grund, warum Java primitive Typen und Referenztypen unterschiedlich behandelt.
+
+### Vergleiche von Werten
+
+Dieser Unterschied ist entscheidend, wenn du zwei Werte vergleichst:
+
+- Mit `==` vergleichst du **Stack-Inhalte**.
+  - Bei primitiven Typen also den Wert selbst.
+  - Bei Referenzen hingegen die Speicheradresse – also ob es **dasselbe Objekt** ist.
+- Um den **Inhalt zweier Objekte** zu vergleichen, brauchst du die Methode `equals()`:
+
+```java
+car1.equals(car2)
+```
+
+Das prüft, ob die Objekte **inhaltlich gleich** sind, nicht ob sie identisch im Speicher sind.
