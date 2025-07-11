@@ -46,11 +46,15 @@ Vergewissere dich, dass die `.env`-Datei nicht ins Git-Repository gelangt – **
 ### Schritt 2: Maven-Dependency hinzufügen
 
 {{< pom >}}
+
+```xml
 <dependency>
-<groupId>io.github.cdimascio</groupId>
-<artifactId>dotenv-java</artifactId>
-<version>3.0.0</version>
+    <groupId>io.github.cdimascio</groupId>
+    <artifactId>dotenv-java</artifactId>
+    <version>3.0.0</version>
 </dependency>
+```
+
 {{< /pom >}}
 
 ---
