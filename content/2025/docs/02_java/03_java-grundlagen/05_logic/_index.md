@@ -131,6 +131,57 @@ Mit `||` ist es das selbe, nur dass dort der zweite Ausdruck nur ausgewertet wir
 
 ---
 
+### Bitweise Operatoren (Bitwise Operators)
+
+Bitweise Operatoren vergleichen nicht `true` oder `false`, sondern manipulieren einzelne Bits eines Zahlenwerts.  
+Sie funktionieren also nur mit Ganzzahlen (`int`, `long`, `byte`, etc.).
+
+| Symbol | Name                 | Beschreibung                                                                 |
+|--------|----------------------|------------------------------------------------------------------------------|
+| `&`    | UND                  | Bit ist 1, wenn **beide Bits** 1 sind                                       |
+| `|`    | ODER                 | Bit ist 1, wenn **mindestens eines** der Bits 1 ist                         |
+| `^`    | XOR (exklusives ODER)| Bit ist 1, wenn **genau eines** der Bits 1 ist                              |
+| `~`    | NOT (Invertieren)    | Alle Bits werden umgekehrt (1 → 0, 0 → 1)                                   |
+| `<<`   | Linksverschiebung    | Verschiebt alle Bits nach links (Multiplizieren mit 2)                      |
+| `>>`   | Rechtsverschiebung   | Verschiebt alle Bits nach rechts (Dividieren durch 2, vorzeichenbehaftet)  |
+| `>>>`  | Unsigned Shift       | Wie `>>`, aber füllt von links mit 0 (wichtig bei `int` → `long`)           |
+
+#### Beispiel:
+
+```java
+int a = 0b1100; // binär: 1100 = 12
+int b = 0b1010; // binär: 1010 = 10
+
+int resultAnd = a & b;  // 1000 = 8
+int resultOr  = a | b;  // 1110 = 14
+int resultXor = a ^ b;  // 0110 = 6
+int resultNot = ~a;     // alle Bits invertieren → -13 (2er-Komplement-Darstellung)
+
+System.out.println("a & b = " + resultAnd);
+System.out.println("a | b = " + resultOr);
+System.out.println("a ^ b = " + resultXor);
+System.out.println("~a    = " + resultNot);
+```
+
+#### Bitshift Beispiel:
+
+```java
+int x = 4;           // 0100
+int left = x << 1;   // 1000 → 8 (links verschieben)
+int right = x >> 1;  // 0010 → 2 (rechts verschieben)
+
+System.out.println("x << 1 = " + left);
+System.out.println("x >> 1 = " + right);
+```
+
+{{< ninja info >}}
+Bitoperationen sind **nicht dasselbe** wie boolesche Operatoren!  
+`&` bei `int` ist **bitweise UND**, bei `boolean` ist es **logisches UND (nicht lazy)**.  
+Dasselbe gilt für `|` und `^`.
+{{< /ninja >}}
+
+---
+
 ### Ternary Operator
 
 Mit dem Ternary Operator kannst du kurz und elegant eine Bedingung formulieren:  
