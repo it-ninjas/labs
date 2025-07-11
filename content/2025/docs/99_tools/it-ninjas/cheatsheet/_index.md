@@ -20,7 +20,8 @@ description: >
 
 ## Einführung
 
-Dieses Cheatsheet zeigt dir anhand von Beispielen, wie eine Modulseite im Projekt **it-ninjas** aufgebaut ist. Es basiert auf dem _it-ninjas Styleguide_ und wird laufend aktualisiert.
+Dieses Cheatsheet zeigt dir anhand von Beispielen, wie eine Modulseite im Projekt **it-ninjas** aufgebaut ist. Es
+basiert auf dem _it-ninjas Styleguide_ und wird laufend aktualisiert.
 
 ---
 
@@ -156,7 +157,9 @@ Nicht mehr verwenden! Bitte stattdessen Shortcode `sbb` benutzen.
 
 ## ChatGPT Prompt für die it-ninjas Dokumentation
 
-Damit ChatGPT eine Markdown-Datei im **it-ninjas Stil** überarbeiten kann, sollte der Prompt mehr enthalten als nur technische Anweisungen. Ziel ist es, den charakteristischen Ton, die Zielgruppe und die Formatkonventionen zu berücksichtigen.
+Damit ChatGPT eine Markdown-Datei im **it-ninjas Stil** überarbeiten kann, sollte der Prompt mehr enthalten als nur
+technische Anweisungen. Ziel ist es, den charakteristischen Ton, die Zielgruppe und die Formatkonventionen zu
+berücksichtigen.
 
 Hier ein vollständiger Prompt, den du nutzen oder anpassen kannst:
 
@@ -175,7 +178,8 @@ Bitte überarbeite folgenden Markdown-Text für das it-ninjas Projekt.
 
 ### Struktur & Formatierung:
 - Abschnitt **„Ziele“** zu Beginn mit klaren Bulletpoints
-- Nach den Zielen ein `{{< zeit lesen="X" >}}`-Block (geschätzte Lesezeit, auf 5 Minuten aufrunden, konservativ geschätzt bei 100 Wörtern/Min)
+- Nach den Zielen ein `{{< zeit lesen="X" >}}`-Block (geschätzte Lesezeit, auf 5 Minuten aufrunden,
+  konservativ geschätzt bei 100 Wörtern/Min)
 - Abschnittsüberschriften auf der zweiten Ebene (`##`) beginnen
 - **Maximale Zeilenlänge 120 Zeichen** (auch in Codeblöcken)
 - Wo möglich, passende Shortcodes einsetzen (`ninja`, `lablink`, `aufgabe`, `code`, etc.)
@@ -185,6 +189,9 @@ Bitte überarbeite folgenden Markdown-Text für das it-ninjas Projekt.
 - Technische Inhalte wenn möglich mit Beispielen, Bildern oder Code ergänzen
 - Am Ende des Dokuments **freundlich abschliessen** (z. B. „Viel Erfolg!“)
 - Falls `## Ziele` schon vorhanden ist, nicht duplizieren
+
+### Prettier konform
+- Kursiv mit `_..._`, nicht mit `*...*`
 
 ### Markdown-Text:
 ---
@@ -202,11 +209,9 @@ Damit erhalten auch andere Autor:innen dieselbe Qualität wie du – und ChatGPT
 - Verwende **aktive Formulierungen**.
 - Halte Inhalte **zielgruppengerecht** und gut strukturiert.
 - Nutze die zur Verfügung gestellten Shortcodes, um Wiederverwendbarkeit und Einheitlichkeit sicherzustellen.
-- Die Haupttitel beginnen mit `##` (`#` ist für Hugo Template)
 - Zwischen zwei Kapiteln kommt eine Linie (`---`)
+- In allen **Codebeispielen** gilt: Kommentare, Variablennamen, Methodennamen und Code-Sprache sind **auf Englisch**.
+- Die **Ausgabe auf der Konsole oder dem Bildschirm** darf hingegen **auf Deutsch** sein (z. B.
+  `System.out.println("Hallo Welt")`).
 
 ---
-
-## Weitere Ideen?
-
-Falls du neue Shortcodes oder Vorschläge hast, melde dich gerne im Discord-Channel `#styleguide` oder bei der Projektleitung.

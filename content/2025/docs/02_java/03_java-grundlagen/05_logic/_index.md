@@ -61,28 +61,28 @@ Das Erhöhen oder Verringern eines Wertes ist häufig. Es gibt zwei Schreibweise
 
 ```java
 int i = 5;
-int c = i++; // c = 5, danach: i = 6
+int c = i++; // c = 5, afterwards: i = 6
 ```
 
 #### Präinkrement
 
 ```java
 int i = 5;
-int d = ++i; // zuvor: i=6, darum d = 6
+int d = ++i; // previously: i = 6, therefore d = 6
 ```
 
 #### Postdekrement
 
 ```java
 int i = 5;
-int e = i--; // e = 5, danach: i = 4
+int e = i--; // e = 5, afterwards: i = 4
 ```
 
 #### Prädekrement
 
 ```java
 int i = 5;
-int f = --i; // zuvor: i=4, darum f = 4
+int f = --i; // previously: i = 4, therefore f = 4
 ```
 
 ---
@@ -136,26 +136,26 @@ Mit `||` ist es das selbe, nur dass dort der zweite Ausdruck nur ausgewertet wir
 Bitweise Operatoren vergleichen nicht `true` oder `false`, sondern manipulieren einzelne Bits eines Zahlenwerts.  
 Sie funktionieren also nur mit Ganzzahlen (`int`, `long`, `byte`, etc.).
 
-| Symbol | Name                 | Beschreibung                                                                 |
-|--------|----------------------|------------------------------------------------------------------------------|
-| `&`    | UND                  | Bit ist 1, wenn **beide Bits** 1 sind                                       |
-| `|`    | ODER                 | Bit ist 1, wenn **mindestens eines** der Bits 1 ist                         |
-| `^`    | XOR (exklusives ODER)| Bit ist 1, wenn **genau eines** der Bits 1 ist                              |
-| `~`    | NOT (Invertieren)    | Alle Bits werden umgekehrt (1 → 0, 0 → 1)                                   |
-| `<<`   | Linksverschiebung    | Verschiebt alle Bits nach links (Multiplizieren mit 2)                      |
-| `>>`   | Rechtsverschiebung   | Verschiebt alle Bits nach rechts (Dividieren durch 2, vorzeichenbehaftet)  |
-| `>>>`  | Unsigned Shift       | Wie `>>`, aber füllt von links mit 0 (wichtig bei `int` → `long`)           |
+| Symbol | Name                  | Beschreibung                                                              |
+| ------ | --------------------- | ------------------------------------------------------------------------- | --------------------------------------------------- |
+| `&`    | UND                   | Bit ist 1, wenn **beide Bits** 1 sind                                     |
+| `      | `                     | ODER                                                                      | Bit ist 1, wenn **mindestens eines** der Bits 1 ist |
+| `^`    | XOR (exklusives ODER) | Bit ist 1, wenn **genau eines** der Bits 1 ist                            |
+| `~`    | NOT (Invertieren)     | Alle Bits werden umgekehrt (1 → 0, 0 → 1)                                 |
+| `<<`   | Linksverschiebung     | Verschiebt alle Bits nach links (Multiplizieren mit 2)                    |
+| `>>`   | Rechtsverschiebung    | Verschiebt alle Bits nach rechts (Dividieren durch 2, vorzeichenbehaftet) |
+| `>>>`  | Unsigned Shift        | Wie `>>`, aber füllt von links mit 0 (wichtig bei `int` → `long`)         |
 
 #### Beispiel:
 
 ```java
-int a = 0b1100; // binär: 1100 = 12
-int b = 0b1010; // binär: 1010 = 10
+int a = 0b1100; // binary: 1100 = 12
+int b = 0b1010; // binary: 1010 = 10
 
 int resultAnd = a & b;  // 1000 = 8
 int resultOr  = a | b;  // 1110 = 14
 int resultXor = a ^ b;  // 0110 = 6
-int resultNot = ~a;     // alle Bits invertieren → -13 (2er-Komplement-Darstellung)
+int resultNot = ~a;     // invert all bits → -13 (2's complement representation)
 
 System.out.println("a & b = " + resultAnd);
 System.out.println("a | b = " + resultOr);
@@ -167,8 +167,8 @@ System.out.println("~a    = " + resultNot);
 
 ```java
 int x = 4;           // 0100
-int left = x << 1;   // 1000 → 8 (links verschieben)
-int right = x >> 1;  // 0010 → 2 (rechts verschieben)
+int left = x << 1;   // 1000 → 8 (shift left by 1)
+int right = x >> 1;  // 0010 → 2 (shift right by 1)
 
 System.out.println("x << 1 = " + left);
 System.out.println("x >> 1 = " + right);
@@ -178,6 +178,26 @@ System.out.println("x >> 1 = " + right);
 Bitoperationen sind **nicht dasselbe** wie boolesche Operatoren!  
 `&` bei `int` ist **bitweise UND**, bei `boolean` ist es **logisches UND (nicht lazy)**.  
 Dasselbe gilt für `|` und `^`.
+
+```java
+int x = makeSomethingAndReturnResultAsInt();
+int y = makeSomethingOtherAndReturnResultAsInt();
+
+// Error: cannot convert from int to boolean
+// Bitwise AND (&) between two int values returns an int, not a boolean
+if(x & y) { ... } // → does not compile
+// You must use a boolean expression inside the if-statement
+
+// Correct approach using boolean expressions:
+boolean xIsOk = makeSomethingAndReturnResultAsInt() >= 0;  // -1 indicates error
+boolean yIsOk = makeSomethingOtherAndReturnResultAsInt() >= 0;  // -1 indicates error
+
+// Works: both sides are boolean, and '&' performs logical AND (non-short-circuit)
+if(xIsOk & yIsOk) {
+  // do something if both calls succeeded
+}
+```
+
 {{< /ninja >}}
 
 ---
@@ -190,30 +210,32 @@ Mit dem Ternary Operator kannst du kurz und elegant eine Bedingung formulieren:
 #### Beispiel:
 
 ```java
-int alter = 17;
-String zuJung = "Du bist zu jung";
-String genugAlt = "Du bist alt genug :)";
+String tooYoung = "You are too young";
+String oldEnough = "You are old enough :)";
 
-System.out.println(alter >= 18 ? genugAlt : zuJung);
-// Ausgabe: Du bist zu jung
+int age = 17;
+// Use the ternary operator to choose the message based on age
+System.out.println(age >= 18 ? oldEnough : tooYoung);
+// Output: You are too young
 
-alter = 26;
-
-System.out.println(alter >= 18 ? genugAlt : zuJung);
-// Ausgabe: Du bist alt genug :)
+age = 26;
+// Use the ternary operator to choose the message based on age
+System.out.println(age >= 18 ? oldEnough : tooYoung);
+// Output: You are old enough :)
 ```
 
 #### Verschachtelter Ternary Operator:
 
 ```java
-int jahre = 12;
-String rang = jahre >= 20 ? "Kage"
-             : jahre >= 10 ? "Chunin"
-             : jahre >= 5 ? "Akademieschüler"
-             : "Anwärter";
+int years = 12;
+String rank = years >= 20 ? "Kage"
+            : years >= 10 ? "Chunin"
+            : years >= 5  ? "Academy Student"
+            : "Candidate";
 
-System.out.println("Dein aktueller Rang ist " + rang);
-// Ausgabe: Dein aktueller Rang ist Chunin
+// Print the current rank based on the number of years
+System.out.println("Your current rank is " + rank);
+// Output: Your current rank is Chunin
 ```
 
 ---
