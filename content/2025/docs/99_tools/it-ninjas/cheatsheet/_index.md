@@ -202,6 +202,8 @@ Damit erhalten auch andere Autor:innen dieselbe Qualität wie du – und ChatGPT
 - Verwende **aktive Formulierungen**.
 - Halte Inhalte **zielgruppengerecht** und gut strukturiert.
 - Nutze die zur Verfügung gestellten Shortcodes, um Wiederverwendbarkeit und Einheitlichkeit sicherzustellen.
+- Die Haupttitel beginnen mit `##` (`#` ist für Hugo Template)
+- Zwischen zwei Kapiteln kommt eine Linie (`---`)
 
 ---
 
