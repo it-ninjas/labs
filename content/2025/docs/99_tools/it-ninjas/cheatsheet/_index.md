@@ -3,120 +3,208 @@ title: "Cheatsheet"
 linkTitle: "Cheatsheet"
 weight: 1
 description: >
-  Auf dieser Seite zeigen wir den Aufbau einer Modulseite innerhalb it-ninjas.
+  Übersicht über die wichtigsten Shortcodes und Konventionen für Modulseiten im it-ninjas-Projekt.
 ---
 
 {{< module J1 >}}
 
 ## Ziele
 
-- Es soll für jedes Modul klar sein, was das Ziel ist (Im Abschnitt **Ziele**, also hier).
-- Wir geben eine grobe Schätzung, wie lange das lesen dauert (Shortcode `time` nach den Zielen).
--
+- Du verstehst den Aufbau einer typischen Modulseite bei it-ninjas.
+- Du kannst alle verfügbaren Shortcodes korrekt einsetzen.
+- Du kennst empfohlene und veraltete Shortcodes.
 
 {{< zeit lesen="10">}}
 
 ---
 
-## Erster Titel
+## Einführung
 
-In diesem Abschnitt zeigen wir die verschiedenen ninja boxen:
-
-{{< ninja info>}}
-Das ist eine Information.
-{{< /ninja>}}
-
-{{< ninja tip>}}
-Das ist ein Tip.
-{{< /ninja>}}
-
-{{< ninja warning>}}
-Das ist eine Warnung, hier besonders aufpassen.
-{{< /ninja>}}
-
-{{< todo >}}
-Hier fehlt noch was...
-{{< / todo>}}
-
-Um ein Video einzubinden:
-{{< video "./" "Zusätzliche Info">}}
+Dieses Cheatsheet zeigt dir anhand von Beispielen, wie eine Modulseite im Projekt **it-ninjas** aufgebaut ist. Es basiert auf dem *it-ninjas Styleguide* und wird laufend aktualisiert.
 
 ---
 
-## Zweiter Titel
+## Info-Boxen
 
-In diesem Abschnitt zeigen wir weitere Shortcodes, welche die Darstellung vereinheitlichen:
+Verwende Ninja-Boxen, um Informationen klar hervorzuheben:
 
-Um Code einzubinden:
+{{< ninja info >}}
+Das ist eine **Info**-Box für ergänzende Hinweise.
+{{< /ninja >}}
+
+{{< ninja tip >}}
+Das ist eine **Tip**-Box mit einem hilfreichen Hinweis.
+{{< /ninja >}}
+
+{{< ninja warning >}}
+Das ist eine **Warnung** – hier muss man besonders aufpassen.
+{{< /ninja >}}
+
+{{< todo >}}
+Hier fehlt noch etwas – markiert als TODO.
+{{< /todo >}}
+
+---
+
+## Video einbinden
+
+Für zusätzliche Erklärungen kannst du Videos einbinden:
+
+{{< video "https://www.chilloutzone.net/video/angriff-des-ninja-pinguins.html" "ninja-pinguine" >}}
+
+---
+
+## Code und Aufgaben
+
+### Codeblöcke für verschiedene Betriebssysteme
+
 {{< code >}}
-code für Windows oder Linux (default)
+echo Default is visible to all OS
 // windows
-code für Windows
+echo Hello from Windows
 // linux
-code für Linux
+echo Hello from Linux
 // all
-nochmals code für Windows oder Linux
-//windows
-auch code für Windows
-//linux
-auch code für Linux
+echo Visible on all OS
 {{< /code >}}
 
-Um einen Link für eine Aufgabe einzubinden:
-{{<aufgabe "./">}}
+---
 
-Um einen Link für mehrere Aufgaben einzubinden:
-{{<aufgaben "./">}}
+## Links in einem neuen Fenster
 
-Falls Du einen Link zu einem Lab machen willst:
-{{< lablink "./" "Text vom Link">}}
+Da das öffnen in einem neuen Fenster von Markdown und Hugo nicht direkt unterstützt wird kümmert sich ein Script beim
+starten der Seite darum. Mit einem `!` am Anfang des Link-Text, wird der Link in einem neuen Fenster geöffnet.
 
-Oder so (Pfad in VS Code überprüfbar):
-{{< lablink "[Text vom Link](./)">}}
+Das wird [im gleichen Fenster](https://www.chilloutzone.net/video/angriff-des-ninja-pinguins.html) geöffnet.  
 
-Oder in Richtung Html Link:
-{{< lablinkml "./">}}Anderer Text vom Link{{< /lablinkml>}}
+Das wird [!in einem neuen Fenster](https://www.chilloutzone.net/video/angriff-des-ninja-pinguins.html) geöffnet.
 
-Um in einem Lab einen Link zurück in die Dokumentation zu machen:
-{{< dokumentation "./" >}}
+## Aufgabenlinks
 
-Mit Zusätzlicher Info
-{{< dokumentation "./" "Dieses Cheatsheet" >}}
+- Einzelne Aufgabe:
+  {{< aufgabe "../cheatsheet/" >}}
+
+- Mehrere Aufgaben:
+  {{< aufgaben "../cheatsheet/" >}}
+
+## Links zu Labs oder Dokumentationen
+
+- Zu einem Lab:
+  {{< lablink "../cheatsheet/" "Zur Aufgabe" >}}
+
+- Markdown-Link-Variante:
+  {{< lablink "[Zur Aufgabe](../cheatsheet/)" >}}
+
+- HTML-ähnlich:
+  {{< lablinkml "../cheatsheet/" >}}Zur Aufgabe{{< /lablinkml >}}
+
+- Zur Dokumentation zurück:
+  {{< dokumentation "../cheatsheet/" >}}
+  {{< dokumentation "../cheatsheet/" "Java Grundlagen" >}}
+
+---
+
+## Plattformabhängige Inhalte
+
+Zeige Inhalte nur, wenn ein bestimmtes Betriebssystem konfiguriert ist:
 
 {{< linux >}}
-Das wird nur angezeigt, wenn in der Konfiguration Linux eingestellt ist.
+Dieser Abschnitt ist nur unter **Linux** sichtbar.
 {{< /linux >}}
 
 {{< windows >}}
-Das wird nur angezeigt, wenn in der Konfiguration Wind eingestellt ist.
+Dieser Abschnitt ist nur unter **Windows** sichtbar.
 {{< /windows >}}
 
-Wenn was in einem `pom.xml` geändert werden muss:
+---
+
+## Formatierte Konfigurationsdateien (z. B. `pom.xml`)
+
+Verwende diesen Shortcode, damit der XML-Code korrekt eingerückt dargestellt wird:
+
 {{< pom >}}
 
 ```xml
 <dependency>
-    <groupId>io.github.cdimascio</groupId>
-    <artifactId>dotenv-java</artifactId>
-    <version>3.0.0</version>
+  <groupId>io.github.cdimascio</groupId>
+  <artifactId>dotenv-java</artifactId>
+  <version>3.0.0</version>
 </dependency>
 ```
 
 {{< /pom >}}
 
-## Dritter Titel
+---
 
-Spezielle Informationen für SBB, Puzzle,...:
+## Unternehmensspezifische Inhalte
+
 {{< sbb >}}
-Das wird nur angezeigt, wenn als Ausbildungsort 'SBB' ausgewählt wurde.
+Dieser Abschnitt wird nur angezeigt, wenn **SBB** als Ausbildungsort ausgewählt ist.
 {{< /sbb >}}
 
-Weitere folgen...
+---
 
-## Vierter Titel
+## Veraltete Shortcodes
 
-In diesem Abschnitt sind Shortcodes, welche man nicht mehr verwenden sollte.
+Folgende Shortcodes sind **deprecated** und sollen nicht mehr verwendet werden:
 
 {{< SBBOnly >}}
-Das ist deprecated! Besser Shortcode `sbb` verwenden...
+Nicht mehr verwenden! Bitte stattdessen Shortcode `sbb` benutzen.
 {{< /SBBOnly >}}
+
+---
+
+## ChatGPT Prompt für die it-ninjas Dokumentation
+
+Damit ChatGPT eine Markdown-Datei im **it-ninjas Stil** überarbeiten kann, sollte der Prompt mehr enthalten als nur technische Anweisungen. Ziel ist es, den charakteristischen Ton, die Zielgruppe und die Formatkonventionen zu berücksichtigen.
+
+Hier ein vollständiger Prompt, den du nutzen oder anpassen kannst:
+
+```text
+Bitte überarbeite folgenden Markdown-Text für das it-ninjas Projekt.
+
+### Zielgruppe:
+- Lernende (oft ohne Vorwissen), die Java, IntelliJ oder andere Tools im Rahmen der Ausbildung verwenden
+- Ziel ist, Inhalte **leicht verständlich**, **freundlich**, **ermutigend** und **strukturiert** zu präsentieren
+
+### Ton & Stil:
+- **Du-Form** verwenden, nicht „man“
+- Aktiv, klar, ermutigend, niemals belehrend
+- Ein bisschen Witz ist erlaubt, aber stets respektvoll und professionell
+- Sprich direkt zur Leserin oder zum Leser („Du lernst...“, „So kannst du...“)
+
+### Struktur & Formatierung:
+- Abschnitt **„Ziele“** zu Beginn mit klaren Bulletpoints
+- Nach den Zielen ein `{{< zeit lesen="X" >}}`-Block (geschätzte Lesezeit, auf 5 Minuten aufrunden, konservativ geschätzt bei 100 Wörtern/Min)
+- Abschnittsüberschriften auf der zweiten Ebene (`##`) beginnen
+- **Maximale Zeilenlänge 120 Zeichen** (auch in Codeblöcken)
+- Wo möglich, passende Shortcodes einsetzen (`ninja`, `lablink`, `aufgabe`, `code`, etc.)
+- Veraltete Shortcodes vermeiden (`SBBOnly` z. B.)
+
+### Zusätzliche Hinweise:
+- Technische Inhalte wenn möglich mit Beispielen, Bildern oder Code ergänzen
+- Am Ende des Dokuments **freundlich abschliessen** (z. B. „Viel Erfolg!“)
+- Falls `## Ziele` schon vorhanden ist, nicht duplizieren
+
+### Markdown-Text:
+---
+(dein Markdown-Text hier)
+---
+```
+
+Damit erhalten auch andere Autor:innen dieselbe Qualität wie du – und ChatGPT arbeitet im gewünschten *it-ninjas*-Stil.
+
+---
+
+## Hinweise zur Formatierung
+
+- Achte auf **maximal 120 Zeichen pro Zeile**.
+- Verwende **aktive Formulierungen**.
+- Halte Inhalte **zielgruppengerecht** und gut strukturiert.
+- Nutze die zur Verfügung gestellten Shortcodes, um Wiederverwendbarkeit und Einheitlichkeit sicherzustellen.
+
+---
+
+## Weitere Ideen?
+
+Falls du neue Shortcodes oder Vorschläge hast, melde dich gerne im Discord-Channel `#styleguide` oder bei der Projektleitung.
