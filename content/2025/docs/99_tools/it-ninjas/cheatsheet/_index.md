@@ -20,7 +20,7 @@ description: >
 
 ## Einführung
 
-Dieses Cheatsheet zeigt dir anhand von Beispielen, wie eine Modulseite im Projekt **it-ninjas** aufgebaut ist. Es basiert auf dem *it-ninjas Styleguide* und wird laufend aktualisiert.
+Dieses Cheatsheet zeigt dir anhand von Beispielen, wie eine Modulseite im Projekt **it-ninjas** aufgebaut ist. Es basiert auf dem _it-ninjas Styleguide_ und wird laufend aktualisiert.
 
 ---
 
@@ -75,7 +75,7 @@ echo Visible on all OS
 Da das öffnen in einem neuen Fenster von Markdown und Hugo nicht direkt unterstützt wird kümmert sich ein Script beim
 starten der Seite darum. Mit einem `!` am Anfang des Link-Text, wird der Link in einem neuen Fenster geöffnet.
 
-Das wird [im gleichen Fenster](https://www.chilloutzone.net/video/angriff-des-ninja-pinguins.html) geöffnet.  
+Das wird [im gleichen Fenster](https://www.chilloutzone.net/video/angriff-des-ninja-pinguins.html) geöffnet.
 
 Das wird [!in einem neuen Fenster](https://www.chilloutzone.net/video/angriff-des-ninja-pinguins.html) geöffnet.
 
@@ -192,7 +192,7 @@ Bitte überarbeite folgenden Markdown-Text für das it-ninjas Projekt.
 ---
 ```
 
-Damit erhalten auch andere Autor:innen dieselbe Qualität wie du – und ChatGPT arbeitet im gewünschten *it-ninjas*-Stil.
+Damit erhalten auch andere Autor:innen dieselbe Qualität wie du – und ChatGPT arbeitet im gewünschten _it-ninjas_-Stil.
 
 ---
 
