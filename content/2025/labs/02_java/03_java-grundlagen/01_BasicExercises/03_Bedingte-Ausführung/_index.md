@@ -34,26 +34,26 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
    2. Git-Repository einrichten → [Persönliches Git-Repository](/docs/01_tools/02_personal-bitbucket/)
 
 2. Öffne eine CMD-Shell und wechsle ins Verzeichnis deines Git-Repositories:  
-   {{<codeblock os="windows" lang="bash">}}
+   {{< code >}}
    // Windows
    cd /d "[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]"
    git status
    // Linux/macOS
    cd "[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]"
    git status
-   {{</codeblock>}}
+   {{< /code >}}
 
 3. Stelle sicher, dass alle Dateien im Git-Repository committed sind. Mit **git status** erhältst du eine Übersicht:
 
-   ```bash
+   {{< code >}}
    git status
-   ```
+   {{< /code >}}
 
 4. Erstelle einen neuen Branch für die Übung:
 
-   ```bash
+   {{< code >}}
    git checkout -b "templates/it-ninja_02_Java_03_java-grundlagen_01_BasicExercises_03_Bedingte-Ausführung"
-   ```
+   {{< /code >}}
 
    {{< ninja info >}}
    Du kannst auch einen kürzeren Namen für den Branch wählen. Wir verwenden **templates** am Anfang des Branch-Namens für Branches, welche den ursprünglichen Übungscode enthalten.
@@ -66,16 +66,16 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 
 6. Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:
 
-   ```bash
+   {{< code >}}
    git add .
    git commit -m "Initial version from it-ninja"
-   ```
+   {{< /code >}}
 
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
 
-   ```bash
+   {{< code >}}
    git checkout -b "labs/it-ninja_02_Java_03_java-grundlagen_01_BasicExercises_03_Bedingte-Ausführung"
-   ```
+   {{< /code >}}
 
    {{< ninja info >}}
    Auch hier kannst du einen kürzeren Namen wählen. Verwende **labs** am Anfang des Branch-Namens für Branches, die deinen eigenen Code enthalten.

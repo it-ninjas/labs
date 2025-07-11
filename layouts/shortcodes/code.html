@@ -39,6 +39,7 @@
 
 {{ $currentOs := .Get "os" | default "all" }}
 {{ $currentLang := .Get "lang" | default "text" }}
+{{ $defaultLang := .Get "lang" | default "auto" }}
 {{ $normalized := replace (replace .Inner "\r\n" "\n") "\r" "\n" }}
 
 {{ $lines := split $normalized "\n" }}
@@ -72,6 +73,14 @@
       {{ $currentLang = index $langMatch 1 }}
     {{ else }}
       {{ $currentLang = "text" }}
+    {{ end }}
+
+    {{ if eq $currentLang "auto" }}
+      {{ if eq $currentOs "windows" }}
+        {{ $currentLang = "powershell" }}
+      {{ else if eq $currentOs "linux" }}
+        {{ $currentLang = "bash" }}
+      {{ end }}
     {{ end }}
 
     {{ $indentMatch := findRE "^\\s*" $line }}
