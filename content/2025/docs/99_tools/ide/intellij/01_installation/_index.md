@@ -138,5 +138,5 @@ Ein manuelles Herunterladen und Installieren eines JDKs ist nicht nötig – Int
 Du kannst auch direkt mit der **Hello World**-Applikation von it-ninja starten:  
 Die Einführung findest du [hier](../../../../02_java/03_java-grundlagen/01_java_intro)  
 Das Beispielprojekt findest du
-{{< lablink "[hier](../../../../../labs/02_java/03_java-grundlagen/01_BasicExercises/01_Einfaches-Hello-World/_index.md)" >}}  
+{{< lablink "[hier](../../../../../labs/02_java/03_java-grundlagen/00_Einfaches-Hello-World/)" >}}  
 {{< /ninja >}}

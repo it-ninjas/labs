@@ -15,7 +15,8 @@ description: >
 ---
 
 {{< ninja type="tip" >}}
-Um erste Erfahrungen mit IntelliJ zu machen, kannst Du das [Hello World Beispiel](../../../../labs/02_Java/03_java-grundlagen/01_BasicExercises/01_Einfaches-Hello-World/)
+Um erste Erfahrungen mit IntelliJ zu machen, kannst Du das
+{{<lablink "[Hello World Beispiel](../../../../../labs/02_Java/03_java-grundlagen/00_Einfaches-Hello-World/)">}}
 von it-ninjas verwenden.
 {{< /ninja >}}
 

@@ -3,14 +3,16 @@ title: "Primitive Datentypen"
 linkTitle: "Primitive Datentypen"
 weight: 4
 description: >
-  In diesem Modul lernst du die primitiven Datentypen in Java kennen – also Werte wie Zahlen, Zeichen oder Wahrheitswerte.
+  In diesem Modul lernst du die primitiven Datentypen in Java kennen – also Werte wie Zahlen, Zeichen oder
+  Wahrheitswerte.
 ---
 
 ## Ziele
 
 - Ich kenne die primitiven Datentypen in Java: `boolean`, `byte`, `short`, `int`, `long`, `double`, `float`, `char`.
+- Ich weiss, wie ich primitive Datentypen (formatiert) auf der Konsole ausgeben kann.
 
-{{< zeit lesen="25" >}}
+{{< zeit lesen="30" >}}
 
 ## Primitive Datentypen
 
@@ -40,7 +42,7 @@ Integrale Datentypen speichern ganze Zahlen ohne Nachkommastellen. Sie untersche
 | `int`    | 32 Bit         | -2_147_483_648 bis 2_147_483_647 (-2³¹ bis 2³¹−1) |
 | `long`   | 64 Bit         | -2⁶³ bis 2⁶³−1                                    |
 
-Zur besseren Lesbarkeit darfst du Underscores verwenden:
+Zur besseren Lesbarkeit darfst du Unterstriche (\_) innerhalb von Zahlen verwenden (sogenannte Underscores):
 
 ```java
 int count = 0;
@@ -78,7 +80,7 @@ Das führt zu **kleinen Rundungsfehlern**, die in Finanzanwendungen problematisc
 ```java
 double x = 0.1;
 double y = 0.2;
-System.out.println(x + y); // ergibt 0.30000000000000004
+System.out.println(x + y); // gives 0.30000000000000004
 ```
 
 Auch wenn das nach wenig aussieht: Bei vielen Transaktionen oder Rundungen summieren sich diese Fehler.
@@ -98,11 +100,12 @@ BigDecimal a = new BigDecimal("0.1");
 BigDecimal b = new BigDecimal("0.2");
 BigDecimal result = a.add(b);
 
-System.out.println(result); // ergibt 0.3
+System.out.println(result); // gives 0.3
 ```
 
 {{< ninja tip >}}
-Übergib Werte mit Nachkommastellen **immer als String** (`new BigDecimal("0.1")`), sonst übernimmst du den ungenauen `double`-Wert.
+Übergib Werte mit Nachkommastellen **immer als String** (`new BigDecimal("0.1")`), sonst übernimmst du den ungenauen
+`double`-Wert.
 
 Ganzzahlen kannst Du direkt übergeben (`new BigDecimal(22)`).
 {{< /ninja >}}
@@ -118,18 +121,20 @@ Ein `char` steht für genau ein Zeichen: Buchstabe, Zahl oder Symbol.
 ```java
 char letter = 'a';
 char point = '.';
-letter++; // ergibt 'b'
+letter++; // gives 'b'
 ```
 
 {{< ninja >}}
-**Warum ergibt `letter++` den Buchstaben `'b'`?**
+**Warum ergibt `letter++` im Beispiel oben den Buchstaben `'b'`?**
 
 Ein Computer kennt keine Zeichen, sondern nur Zahlen. Auch ein `char` wird intern als 16-Bit-Zahlenwert gespeichert.  
 Java verwendet für Zeichen die Unicode-Codierung nach UTF-16. In der Unicode-Tabelle ist genau definiert,  
-welche Zahl welchem Zeichen entspricht. Ein `char` deckt dabei die Zeichen aus der **Basic Multilingual Plane (BMP)** ab.
+welche Zahl welchem Zeichen entspricht. Ein `char` deckt dabei die Zeichen aus der **Basic Multilingual Plane (BMP)**
+ab.
 
 Wenn man nun `letter++` schreibt (das ist das gleiche wie `letter = letter + 1`), wird der Zahlenwert um eins erhöht.  
-Dadurch ergibt sich automatisch das **nächste Zeichen** in der Unicode-Tabelle: Aus `'a'` wird `'b'`, aus `'9'` wird `':'`, usw.
+Dadurch ergibt sich automatisch das **nächste Zeichen** in der Unicode-Tabelle: Aus `'a'` wird `'b'`, aus `'9'` wird
+`':'`, usw.
 
 → Zur [Unicode-Tabelle](https://symbl.cc/de/unicode-table/#latin-extended-a)
 {{< /ninja >}}
@@ -166,7 +171,89 @@ if (done) {
 }
 ```
 
-Der `if`-Block wird nur ausgeführt, wenn `done` den Wert `true` hat.
+Der `if`-Block mit `System.out.println("You're done");` wird nur ausgeführt, wenn `done` den Wert `true` hat. Du wirst
+in kürze mehr dazu erfahren, was es mit dem `if` auf sich hat.
+
+---
+
+### Ausgabe von Datentypen
+
+Um Werte auf der Konsole auszugeben, hast du bisher `System.out.println(...)` verwendet. Das funktioniert auch mit allen
+primitiven Datentypen:
+
+```java
+int number = 42;
+double temperature = 36.6;
+boolean isDone = true;
+
+System.out.println(number);       // Output: 42
+System.out.println(temperature);  // Output: 36.6
+System.out.println(isDone);       // Output: true
+```
+
+#### Formatierte Ausgabe mit `printf`
+
+Wenn du mehr Kontrolle über die Ausgabe haben möchtest – z. B. **nur 2 Nachkommastellen bei einem `double`** –,
+verwendest du `System.out.printf(...)`.
+
+```java
+double value = 3.14159265;
+
+System.out.printf("Wert auf 2 Stellen: %.2f%n", value); // Gibt: Wert auf 2 Stellen: 3.14
+```
+
+Als ersten Parameter übergibst du einen String mit dem Text und Platzhaltern, welche dann durch die nachfolgenden
+Parameter ersetzt werden sollen.
+
+##### Wichtige Platzhalter bei `printf`
+
+| Platzhalter | Bedeutung                             | Beispielausgabe |
+| ----------- | ------------------------------------- | --------------- |
+| `%d`        | Ganzzahl (`int`, `long`, ...)         | `42`            |
+| `%f`        | Gleitkommazahl (`float`, `double`)    | `3.14`          |
+| `%.2f`      | Gleitkommazahl mit 2 Nachkommastellen | `3.14`          |
+| `%c`        | Zeichen (`char`)                      | `A`             |
+| `%b`        | Wahrheitswert (`boolean`)             | `true`          |
+| `%s`        | String                                | `Hallo`         |
+| `%n`        | Neue Zeile (plattformunabhängig)      |                 |
+
+##### Weitere Optionen bei den Platzhaltern
+
+| Format    | Bedeutung                                                 | Beispiel     |
+| --------- | --------------------------------------------------------- | ------------ |
+| `%5d`     | Zahl mit **mindestens** 5 Stellen (rechtsbündig)          | `   42`      |
+| `%-5d`    | Zahl mit **mindestens** 5 Stellen (linksbündig)           | `42   `      |
+| `%05d`    | Mit Nullen auffüllen                                      | `00042`      |
+| `%,d`     | Tausender-Trennzeichen (je nach Locale)                   | `1,000,000`  |
+| `%10.2f`  | Gleitkommazahl: **mind.** 10 Stellen, 2 Nachkommastellen  | `    123.45` |
+| `%010.2f` | Gleitkommazahl, **mind.** 10 Stellen mit führenden Nullen | `0000123.45` |
+
+#### Beispiel: Alle Typen formatiert ausgeben
+
+```java
+int count = 12;
+double price = 5.6789;
+char symbol = 'Z';
+boolean isActive = true;
+
+System.out.printf("Zahl: %d%n", count);
+System.out.printf("Preis: %.2f CHF%n", price);
+System.out.printf("Zeichen: %c%n", symbol);
+System.out.printf("Status: %b%n", isActive);
+```
+
+**Ausgabe:**
+
+```
+Zahl: 12
+Preis: 5.68 CHF
+Zeichen: Z
+Status: true
+```
+
+{{< ninja tip >}}
+Wenn du `printf` verwendest, wird **nichts automatisch umgebrochen**. Du musst `\n` oder `%n` selbst angeben.
+{{< /ninja >}}
 
 ---
 

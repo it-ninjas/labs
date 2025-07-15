@@ -98,7 +98,7 @@ Beachte, dass bei einem `if` oder `else-if` alle nachfolgenden `else` ignoriert 
 Würde das `else if (dollars < 100_000)` vor dem `else if (dollars < 2000)` kommen, würde es nie eine Ausgabe `Buy a personal computer` geben, da eine Zahl kleiner 2000 immer auch kleiner als 100'000 ist (auch bei 1500 würde die Ausgabe `Buy a server` gemacht werden).
 {{< /ninja >}}
 
-{{< aufgaben "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/03_bedingte-ausführung" >}}
+{{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/06_Bedingte-Ausführung/)" >}}
 
 {{< video "https://www.youtube.com/watch?v=BBNrEkv_Sw4">}}
 
@@ -150,7 +150,7 @@ System.out.println("You're on the " + place + suffix + " place.");
 
 {{< todo >}}
 Lab konvertieren: Aufgabe 2b zum Switch-Statement  
-../../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-2b---das-switch-statement
+../../../../../labs/02_java/03_java-grundlagen/#aufgabe-2b---das-switch-statement
 {{< /todo >}}
 
 ---
@@ -234,5 +234,5 @@ for (int number : numbers) {
 
 {{< todo >}}
 Lab konvertieren: Aufgabe 3  
-../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-3---loops
+../../../../labs/02_java/03_java-grundlagen/#aufgabe-3---loops
 {{< /todo >}}

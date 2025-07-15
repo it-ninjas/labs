@@ -106,27 +106,29 @@ Das Ergebnis ist immer ein `boolean` (true oder false).
 
 Diese Operatoren arbeiten mit `boolean`-Werten (true/false).
 
-| Symbol | Operation             | Erklärung                                                                               |
-| ------ | --------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `&&`   | logisches UND         | true nur wenn beide true sind. Lazy-Evaluation: 2. Ausdruck wird nur bei Bedarf geprüft |
-| `      |                       | `                                                                                       | logisches ODER                               | true wenn mindestens einer true ist. Lazy-Evaluation: 2. Ausdruck nur bei Bedarf geprüft |
-| `!`    | logisches NICHT       | kehrt den Wert um: `!true` → false                                                      |
-| `^`    | exklusives ODER (XOR) | true, wenn genau einer true ist                                                         |
-| `&`    | UND (nicht lazy)      | beide Ausdrücke werden **immer** ausgewertet                                            |
-| `      | `                     | ODER (nicht lazy)                                                                       | beide Ausdrücke werden **immer** ausgewertet |
+| Symbol | Operation             | Erklärung                                                                                |
+| ------ | --------------------- | ---------------------------------------------------------------------------------------- |
+| `&&`   | logisches UND         | true nur wenn beide true sind. Lazy-Evaluation: 2. Ausdruck wird nur bei Bedarf geprüft  |
+| `\|\|  | logisches ODER        | true wenn mindestens einer true ist. Lazy-Evaluation: 2. Ausdruck nur bei Bedarf geprüft |
+| `!`    | logisches NICHT       | kehrt den Wert um: `!true` → false                                                       |
+| `^`    | exklusives ODER (XOR) | true, wenn genau einer true ist                                                          |
+| `&`    | UND (nicht lazy)      | beide Ausdrücke werden **immer** ausgewertet                                             |
+| `\|`   | ODER (nicht lazy)     | beide Ausdrücke werden **immer** ausgewertet                                             |
 
 {{< ninja info >}}
 **Was bedeutet Lazy-Evaluation?**
 
-Wenn zwei Ausdrücke zum Beispiel mit `&&` verknüpft sind, wird der zweite Ausdruck **nur** ausgewertet, wenn der erste `true` zurückgibt.  
+Wenn zwei Ausdrücke zum Beispiel mit `&&` verknüpft sind, wird der zweite Ausdruck **nur** ausgewertet, wenn der erste
+`true` zurückgibt.  
 Gibt der erste `false` zurück, ist das Gesamtergebnis ohnehin `false` – der zweite Ausdruck wird **übersprungen**.  
-Das kann zu unerwartetem Verhalten führen, wenn der zweite Ausdruck nicht nur ein Ergebnis liefert, sondern auch Seiteneffekte hat  
-(z. B. den Zustand eines Objekts verändert).
+Das kann zu unerwartetem Verhalten führen, wenn der zweite Ausdruck nicht nur ein Ergebnis liefert, sondern auch
+Seiteneffekte hat (z. B. den Zustand eines Objekts verändert).
 
-Deshalb ist es wichtig, Ausdrücke möglichst ohne Seiteneffekte zu schreiben – ein Prinzip, das du später im Modul _Clean Code_ unter  
-dem Stichwort _Single Responsibility_ kennenlernen wirst.
+Deshalb ist es wichtig, Ausdrücke möglichst ohne Seiteneffekte zu schreiben – ein Prinzip, das du später im Modul
+_Clean Code_ unter dem Stichwort _Single Responsibility_ kennenlernen wirst.
 
-Mit `||` ist es das selbe, nur dass dort der zweite Ausdruck nur ausgewertet wird, wenn der erste Ausdruck `false` zurückgibt.
+Mit `||` ist es das selbe, nur dass dort der zweite Ausdruck nur ausgewertet wird, wenn der erste Ausdruck `false`
+zurückgibt.
 {{< /ninja >}}
 
 ---
@@ -137,9 +139,9 @@ Bitweise Operatoren vergleichen nicht `true` oder `false`, sondern manipulieren 
 Sie funktionieren also nur mit Ganzzahlen (`int`, `long`, `byte`, etc.).
 
 | Symbol | Name                  | Beschreibung                                                              |
-| ------ | --------------------- | ------------------------------------------------------------------------- | --------------------------------------------------- |
+| ------ | --------------------- | ------------------------------------------------------------------------- |
 | `&`    | UND                   | Bit ist 1, wenn **beide Bits** 1 sind                                     |
-| `      | `                     | ODER                                                                      | Bit ist 1, wenn **mindestens eines** der Bits 1 ist |
+| `\|`   | ODER                  | Bit ist 1, wenn **mindestens eines** der Bits 1 ist                       |
 | `^`    | XOR (exklusives ODER) | Bit ist 1, wenn **genau eines** der Bits 1 ist                            |
 | `~`    | NOT (Invertieren)     | Alle Bits werden umgekehrt (1 → 0, 0 → 1)                                 |
 | `<<`   | Linksverschiebung     | Verschiebt alle Bits nach links (Multiplizieren mit 2)                    |
@@ -240,8 +242,6 @@ System.out.println("Your current rank is " + rank);
 
 ---
 
-{{< todo >}}
-Lab konvertieren:  
-Aufgabe 4  
-../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-4---einfache-berechnungen
-{{< /todo >}}
+{{<aufgaben "[](../../../../labs/02_java/03_java-grundlagen/05_Einfache-Berechnungen/)">}}
+
+---

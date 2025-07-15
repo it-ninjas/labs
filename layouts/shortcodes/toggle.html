@@ -1,0 +1,32 @@
+{{ $uid := printf "toggle-%d" now.UnixNano }}
+<div class="toggle mb-3">
+  <button
+    class="toggle-button"
+    aria-expanded="false"
+    aria-controls="{{ $uid }}"
+    onclick="
+      const btn = this;
+      const content = document.getElementById('{{ $uid }}');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      content.classList.toggle('open');
+      btn.querySelector('svg').classList.toggle('rotated');
+    "
+  >
+    <span class="toggle-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24">
+        <polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </span>
+    <span class="toggle-title">
+      {{ with .Get "title" }}
+        {{ . | markdownify }}
+      {{ else }}
+        Toggle Inhalt
+      {{ end }}
+    </span>
+  </button>
+  <div id="{{ $uid }}" class="toggle-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

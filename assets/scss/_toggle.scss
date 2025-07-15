@@ -1,0 +1,41 @@
+.toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ← linksbündig */
+  gap: 0.5em;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5em 1em;
+  font-weight: normal; /* ← nicht fett */
+  font-size: 1rem;
+  text-align: left; /* ← wichtig für mehrzeiligen Text */
+  width: 100%; /* ← falls du willst, dass es sich anpasst */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-button:hover,
+.toggle-button:focus {
+  background-color: #e9ecef;
+  outline: none;
+}
+
+.toggle-icon svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+.toggle-icon svg.rotated {
+  transform: rotate(180deg);
+}
+
+.toggle-content {
+  margin-top: 0.5em;
+  padding-left: 1em;
+  border-left: 2px solid #ccc;
+  display: none;
+}
+
+.toggle-content.open {
+  display: block;
+}
