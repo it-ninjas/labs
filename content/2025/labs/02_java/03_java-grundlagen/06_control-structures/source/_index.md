@@ -1,10 +1,10 @@
 ---
-title: "Bedingte-Ausführung - Source"
+title: "control-structures - Source"
 linkTitle: "Source"
 type: docs
 weight: 0
 description: >
-  Source code for Bedingte-Ausführung
+  Source code for control-structures
 build:
   list: never
   render: always
@@ -15,7 +15,7 @@ cascade:
 ## Verzeichnis-Struktur
 
 ```console
-Bedingte-Ausführung
+control-structures
 ├── src
 │   ├── main
 │   │   └── java
@@ -38,11 +38,21 @@ Bedingte-Ausführung
 │                       │   └── LeapYearTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
+├── .itninja.hugo.json
 ├── pom.xml
 └── README.md
 ```
 
-## Dateien in Bedingte-Ausführung
+## Dateien in control-structures
+
+##### .itninja.hugo.json{#itninja-hugo-json}
+
+```json
+{
+  "linkTitle": "Bedingte Ausführung",
+  "weight": 0
+}
+```
 
 ##### pom.xml{#pom-xml}
 

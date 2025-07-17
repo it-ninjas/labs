@@ -98,7 +98,7 @@ Beachte, dass bei einem `if` oder `else-if` alle nachfolgenden `else` ignoriert 
 Würde das `else if (dollars < 100_000)` vor dem `else if (dollars < 2000)` kommen, würde es nie eine Ausgabe `Buy a personal computer` geben, da eine Zahl kleiner 2000 immer auch kleiner als 100'000 ist (auch bei 1500 würde die Ausgabe `Buy a server` gemacht werden).
 {{< /ninja >}}
 
-{{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/06_Bedingte-Ausführung/)" >}}
+{{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/06_control-structures/)" >}}
 
 {{< video "https://www.youtube.com/watch?v=BBNrEkv_Sw4">}}
 

@@ -1,10 +1,10 @@
 ---
-title: "Konsole-Übungen - Source"
+title: "console - Source"
 linkTitle: "Source"
 type: docs
 weight: 0
 description: >
-  Source code for Konsole-Übungen
+  Source code for console
 build:
   list: never
   render: always
@@ -15,7 +15,7 @@ cascade:
 ## Verzeichnis-Struktur
 
 ```console
-Konsole-Übungen
+console
 ├── src
 │   ├── main
 │   │   └── java
@@ -38,11 +38,21 @@ Konsole-Übungen
 │                       │   └── HelloWorldTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
+├── .itninja.hugo.json
 ├── pom.xml
 └── README.md
 ```
 
-## Dateien in Konsole-Übungen
+## Dateien in console
+
+##### .itninja.hugo.json{#itninja-hugo-json}
+
+```json
+{
+  "linkTitle": "Konsole Übungen",
+  "weight": 1
+}
+```
 
 ##### pom.xml{#pom-xml}
 

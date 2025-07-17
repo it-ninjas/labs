@@ -1,6 +1,6 @@
 ---
 title: "Java Exercises - Ausgabe auf die Kommandozeile"
-linkTitle: "Konsole Übungen"
+linkTitle: "console"
 type: docs
 weight: 1
 description: >
@@ -26,7 +26,7 @@ exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher
 {{< /ninja>}}
 
 Falls du die Anleitung schon auswendig kennst, findest du den Quellcode zur Übung direkt hier:
-[Download](./it-ninja_02_Java_03_java-grundlagen_01_Konsole-Übungen.zip) | [Online anschauen](./source/)` >}}
+[Download](./it-ninja_02_java_03_java-grundlagen_01_console.zip) | [Online anschauen](./source/)` >}}
 
 {{< ninja info >}}
 **Neu bei it-ninja?**  
@@ -61,7 +61,7 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 4. Erstelle einen neuen Branch für die Übung:
 
    {{< code >}}
-   git checkout -b "templates/it-ninja_02_Java_03_java-grundlagen_01_Konsole-Übungen"
+   git checkout -b "templates/it-ninja_02_java_03_java-grundlagen_01_console"
    {{< /code >}}
 
 {{< ninja info >}}
@@ -72,7 +72,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 5. Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:  
    `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]`
 
-   > Den Source-Code findest du hier: [Download](./it-ninja_02_Java_03_java-grundlagen_01_Konsole-Übungen.zip) | [Online anschauen](./source/)
+   > Den Source-Code findest du hier: [Download](./it-ninja_02_java_03_java-grundlagen_01_console.zip) | [Online anschauen](./source/)
 
 6. Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:
 
@@ -84,7 +84,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
 
    {{< code >}}
-   git checkout -b "labs/it-ninja_02_Java_03_java-grundlagen_01_Konsole-Übungen"
+   git checkout -b "labs/it-ninja_02_java_03_java-grundlagen_01_console"
    {{< /code >}}
 
 {{< ninja info >}}
@@ -102,9 +102,9 @@ du auch in der Git-History einen alten Stand wiederherstellen, was aber weniger 
    hast, findest du das Projekt hier:  
    {{< code >}}
    // windows
-   `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_Java\03_java-grundlagen\01_Konsole-Übungen`
+   `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\01_console`
    // linux
-   `[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_Java/03_java-grundlagen/01_Konsole-Übungen`
+   `[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/01_console`
    {{< /code >}}
 
 9. Falls du zum ersten Mal mit IntelliJ arbeitest, findest du [hier](/docs/99_tools/ide/intellij/03_run-and-debug)

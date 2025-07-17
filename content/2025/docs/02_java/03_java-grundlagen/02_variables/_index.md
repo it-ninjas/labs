@@ -11,7 +11,7 @@ description: >
 ## Ziele
 
 - Ich weiss, was Variablen sind.
-- Ich kann eine Variable deklarieren und initialisieren.
+- Ich kann eine Variable $deklarieren und initialisieren.
 
 {{< zeit lesen="10">}}
 

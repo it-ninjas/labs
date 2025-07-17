@@ -242,6 +242,6 @@ System.out.println("Your current rank is " + rank);
 
 ---
 
-{{<aufgaben "[](../../../../labs/02_java/03_java-grundlagen/05_Einfache-Berechnungen/)">}}
+{{<aufgaben "[](../../../../labs/02_java/03_java-grundlagen/05_logic/)">}}
 
 ---

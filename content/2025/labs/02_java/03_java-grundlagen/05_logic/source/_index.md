@@ -1,10 +1,10 @@
 ---
-title: "Einfache-Berechnungen - Source"
+title: "logic - Source"
 linkTitle: "Source"
 type: docs
 weight: 0
 description: >
-  Source code for Einfache-Berechnungen
+  Source code for logic
 build:
   list: never
   render: always
@@ -15,7 +15,7 @@ cascade:
 ## Verzeichnis-Struktur
 
 ```console
-Einfache-Berechnungen
+logic
 ├── src
 │   ├── main
 │   │   └── java
@@ -36,11 +36,21 @@ Einfache-Berechnungen
 │                       │   └── CalculateFormsTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
+├── .itninja.hugo.json
 ├── pom.xml
 └── README.md
 ```
 
-## Dateien in Einfache-Berechnungen
+## Dateien in logic
+
+##### .itninja.hugo.json{#itninja-hugo-json}
+
+```json
+{
+  "linkTitle": "Einfache Berechnungen",
+  "weight": 5
+}
+```
 
 ##### pom.xml{#pom-xml}
 

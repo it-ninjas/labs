@@ -1,10 +1,10 @@
 ---
-title: "Einfaches-Hello-World - Source"
+title: "simple-hello-world - Source"
 linkTitle: "Source"
 type: docs
 weight: 0
 description: >
-  Source code for Einfaches-Hello-World
+  Source code for simple-hello-world
 build:
   list: never
   render: always
@@ -15,14 +15,15 @@ cascade:
 ## Verzeichnis-Struktur
 
 ```console
-Einfaches-Hello-World
+simple-hello-world
 ├── src
 │   └── Main.java
 ├── .gitignore
+├── .itninja.hugo.json
 └── README.md
 ```
 
-## Dateien in Einfaches-Hello-World
+## Dateien in simple-hello-world
 
 ##### .gitignore{#gitignore}
 
@@ -32,6 +33,15 @@ Einfaches-Hello-World
 out/
 target/
 build/
+```
+
+##### .itninja.hugo.json{#itninja-hugo-json}
+
+```json
+{
+  "linkTitle": "Einfaches Hello World",
+  "weight": 0
+}
 ```
 
 ##### README.md{#readme-md}
