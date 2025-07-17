@@ -43,7 +43,7 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
    // Windows
    cd /d "[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]"
    git status
-   // Linux/macOS
+   // Linux
    cd "[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]"
    git status
    {{< /code >}}

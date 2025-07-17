@@ -36,21 +36,11 @@ logic
 │                       │   └── CalculateFormsTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
-├── .itninja.hugo.json
 ├── pom.xml
 └── README.md
 ```
 
 ## Dateien in logic
-
-##### .itninja.hugo.json{#itninja-hugo-json}
-
-```json
-{
-  "linkTitle": "Einfache Berechnungen",
-  "weight": 5
-}
-```
 
 ##### pom.xml{#pom-xml}
 

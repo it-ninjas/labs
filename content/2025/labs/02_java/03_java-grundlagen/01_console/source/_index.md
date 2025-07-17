@@ -38,21 +38,11 @@ console
 │                       │   └── HelloWorldTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
-├── .itninja.hugo.json
 ├── pom.xml
 └── README.md
 ```
 
 ## Dateien in console
-
-##### .itninja.hugo.json{#itninja-hugo-json}
-
-```json
-{
-  "linkTitle": "Konsole Übungen",
-  "weight": 1
-}
-```
 
 ##### pom.xml{#pom-xml}
 

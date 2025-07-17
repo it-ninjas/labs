@@ -19,7 +19,6 @@ simple-hello-world
 ├── src
 │   └── Main.java
 ├── .gitignore
-├── .itninja.hugo.json
 └── README.md
 ```
 
@@ -33,15 +32,6 @@ simple-hello-world
 out/
 target/
 build/
-```
-
-##### .itninja.hugo.json{#itninja-hugo-json}
-
-```json
-{
-  "linkTitle": "Einfaches Hello World",
-  "weight": 0
-}
 ```
 
 ##### README.md{#readme-md}

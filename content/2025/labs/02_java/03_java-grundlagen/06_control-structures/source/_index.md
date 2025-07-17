@@ -38,21 +38,11 @@ control-structures
 │                       │   └── LeapYearTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
-├── .itninja.hugo.json
 ├── pom.xml
 └── README.md
 ```
 
 ## Dateien in control-structures
-
-##### .itninja.hugo.json{#itninja-hugo-json}
-
-```json
-{
-  "linkTitle": "Bedingte Ausführung",
-  "weight": 0
-}
-```
 
 ##### pom.xml{#pom-xml}
 
