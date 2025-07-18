@@ -1,6 +1,6 @@
 ---
 title: "Java Exercises - Ausgabe auf die Kommandozeile"
-linkTitle: "console"
+linkTitle: "Konsole Übungen"
 type: docs
 weight: 1
 description: >

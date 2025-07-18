@@ -1,6 +1,6 @@
 ---
 title: "Java Exercises - Einfaches Hello World"
-linkTitle: "simple hello world"
+linkTitle: "Einfaches Hello World"
 type: docs
 weight: 0
 description: >

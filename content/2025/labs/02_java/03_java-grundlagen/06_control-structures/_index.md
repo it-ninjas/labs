@@ -1,8 +1,8 @@
 ---
 title: "Java Exercises - Variablen und bedingte Anweisungen"
-linkTitle: "control structures"
+linkTitle: "Bedingte Ausführung"
 type: docs
-weight: 6
+weight: 0
 description: >
   Mit diesen Übungen kannst du dein Wissen über Variablen und bedingte Ausführung vertiefen.
 ---

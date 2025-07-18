@@ -1,6 +1,6 @@
 ---
 title: "Java Exercises - Einfache Berechnungen"
-linkTitle: "logic"
+linkTitle: "Einfache Berechnungen"
 type: docs
 weight: 5
 description: >
