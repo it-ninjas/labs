@@ -334,5 +334,5 @@ Falls du mehr über RegEx lernen möchtest empfehlen wir [dieses Tutorial](https
 Lab konvertieren:
 
 Aufgaben 6 und 7
-../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-6---strings
+../../../../labs/02_java/03_java-grundlagen/#aufgabe-6---strings
 {{< /todo >}}

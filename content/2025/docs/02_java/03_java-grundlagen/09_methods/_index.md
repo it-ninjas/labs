@@ -145,5 +145,5 @@ Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, emp
 Labs konvertieren:
 
 Aufgabe 5
-../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-5---methoden
+../../../../labs/02_java/03_java-grundlagen/#aufgabe-5---methoden
 {{< /todo >}}

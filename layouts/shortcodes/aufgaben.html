@@ -1,10 +1,21 @@
-{{ $target := .Get 0 }}
-{{ $sanitized := replace (replace (replace $target "/" "" ) "." "-" ) "_" "-" }}
+{{/* 
+  Nutzt entweder:
+  - {{< backfromlabplural "link" >}}
+  - {{< backfromlabplural "[optional text](link)" >}}
+*/}}
+
+{{- $raw := .Get 0 -}}
+{{- $re := `^\[(.*?)\]\((.*?)\)$` -}}
+{{- $match := findRE $re $raw -}}
+
+{{- $text := cond (gt (len $match) 0) (index $match 0 | replaceRE $re "${1}") "" -}}
+{{- $target := cond (gt (len $match) 0) (index $match 0 | replaceRE $re "${2}") $raw -}}
+{{- $sanitized := replace (replace (replace $target "/" "" ) "." "-" ) "_" "-" -}}
 
 <p id="back-from-lab" data-url="{{ $sanitized }}">
   <a href="{{ $target }}">
-  <img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+    <img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
   </a>
   Jetzt bist du dran. Löse bitte die folgenden 
-  <a href="{{ $target }}">Aufgaben</a> in den Labs.
+  <a href="{{ $target }}">Aufgaben</a> in den Labs{{ with $text }} ({{ . }}){{ end }}.
 </p>

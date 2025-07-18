@@ -64,5 +64,5 @@ Für die Labs und das Exams im Modul #J1 kannst du diese Methode gut brauchen. S
 Labs konvertieren:
 
 Aufgabe 8
-../../../../labs/02_java/03_java-grundlagen/01_basicexercises/#aufgabe-8---eingaben-von-der-kommandozeile
+../../../../labs/02_java/03_java-grundlagen/#aufgabe-8---eingaben-von-der-kommandozeile
 {{< /todo >}}

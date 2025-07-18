@@ -83,10 +83,14 @@ Das wird [!in einem neuen Fenster](https://www.chilloutzone.net/video/angriff-de
 ## Aufgabenlinks
 
 - Einzelne Aufgabe:
-  {{< aufgabe "../cheatsheet/" >}}
+  {{< aufgabe "[](../cheatsheet/)" >}}
 
 - Mehrere Aufgaben:
-  {{< aufgaben "../cheatsheet/" >}}
+  {{< aufgaben "[](../cheatsheet/)" >}}
+
+> Du kannst die Klammenr auch weglassen und nur den reinen Pfad als Parameter übergeben. Das mit den
+> Klammern hat aber den Vorteil, dass z.B. VS Code den Pfad als Link behandeln und dir in der IDE
+> zeigen, wohin der Pfad zeigt (und so, ob er gültig ist).
 
 ## Links zu Labs oder Dokumentationen
 

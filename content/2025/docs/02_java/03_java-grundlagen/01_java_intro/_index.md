@@ -69,7 +69,7 @@ public class HelloWorld {
 
 Jetzt kennst du die Grundstruktur eines Java-Programms! Probiere es aus, indem du dein erstes Programm schreibst und kompilierst.
 
-{{<aufgabe "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/01_einfaches-hello-world">}}
+{{<aufgabe "[](../../../../labs/02_java/03_java-grundlagen/00_simple-hello-world/)">}}
 
 ## Vom einfachen Beispiel zum echten Projekt
 
@@ -85,4 +85,4 @@ Stattdessen schauen wir uns das Hello World-Beispiel gleich nochmals an – dies
 Dabei wirst du sehen, dass sich gar nicht so viel ändert – aber der Aufbau deutlich mehr Möglichkeiten bietet.
 Und danach kannst du direkt mit ein paar kleinen Übungen loslegen, um dich mit dem Aufbau und der Arbeitsweise vertraut zu machen.
 
-{{<aufgaben "../../../../labs/02_java/03_java-grundlagen/01_basicexercises/02_konsole-übungen">}}
+{{<aufgaben "[](../../../../labs/02_java/03_java-grundlagen/01_console/)">}}

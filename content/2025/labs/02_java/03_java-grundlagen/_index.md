@@ -1,8 +1,8 @@
 ---
 title: "Java Exercises - Grundlagen"
-linkTitle: "Java Exercises - Grundlagen"
+linkTitle: "Grundlagen"
 type: docs
-weight: 3
+weight: 2
 description: >
-  Übungen zu den Java Grundlagen
+  In diesen Übungen kannst du die grundlegenden Themen zu Java vertiefen.
 ---

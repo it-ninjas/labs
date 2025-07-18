@@ -50,7 +50,7 @@
 
 {{ range $lines }}
   {{ $line := . }}
-  {{ $lineTrim := trim $line " \t" }}
+  {{ $lineTrim := lower (trim $line " \t") }}
 
   {{ if findRE "^//\\s*(windows|linux|all)(\\s+[a-zA-Z0-9_-]+)?" $lineTrim }}
     {{ if gt (len (strings.Trim $currentContent "\n")) 0 }}
