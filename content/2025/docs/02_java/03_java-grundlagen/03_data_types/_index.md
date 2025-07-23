@@ -43,7 +43,23 @@ Der Unterschied ist grundlegend:
 - Ein **primitiver Typ** speichert direkt den Wert (z. B. `3` oder `true`).
 - Ein **Referenztyp** speichert eine Adresse – also den Ort im Speicher, wo das eigentliche Objekt liegt.
 
-Das hängt mit dem **Java Memory Model** zusammen. Die folgende Grafik zeigt das vereinfacht:
+##### Kurzbeschreibung: Was ist ein Objekt?
+
+Stell dir vor, du hast ein Objekt, das ein Auto beschreibt. Dieses Objekt hat verschiedene Eigenschaften (sogenannte Attribute), wie zum Beispiel die Anzahl der Türen, die Farbe oder ob sich das Dach öffnen lässt. Diese Attribute können wiederum primitive Werte sein:
+
+| Car-Objekt    | Wert    |
+| ------------- | ------- |
+| amountOfDoors | `5`     |
+| color         | `"Red"` |
+| canRoofOpen   | `false` |
+
+Dieses Objekt gehört zum Referenztyp, weil du in deiner Variablen Car nicht das gesamte Auto speicherst, sondern nur einen Verweis (eine „Adresse“), wo im Speicher das Auto mit allen seinen Attributen liegt.
+
+Mehr über Objekte und wie man damit in Java arbeitet, lernst Du später im Kapitel Java OOP.
+
+Warum ist das wichtig? – Der Unterschied zwischen primitiven und Referenztypen wirkt zunächst nur wie eine Frage der Syntax, hat aber mit der Art und Weise zu tun, wie Java Speicher verwaltet. Dieses Verhalten ist im sogenannten **Java Memory Model** geregelt.
+
+Die folgende Grafik zeigt vereinfacht, wie Java primitive Werte und Referenztypen im Speicher ablegt:
 
 ![Java Memory Modell](./images/Datentypen.png)
 
