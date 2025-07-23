@@ -1,5 +1,7 @@
 package ch.itninja.labs;
 
+import ch.itninja.labs.basicexercises.AgeCalculator;
+import ch.itninja.labs.basicexercises.Basket;
 import ch.itninja.labs.basicexercises.CalculateForms;
 
 /**
@@ -13,5 +15,10 @@ public class Main {
         CalculateForms.printTriangleArea(8, 3);
         CalculateForms.printCircleArea(4);
         CalculateForms.printRectPerimeter(5, 4);
+
+        Basket.printTotalBigDecimal();
+        Basket.printTotalDouble();
+
+        AgeCalculator.ageInMonths();
     }
 }
