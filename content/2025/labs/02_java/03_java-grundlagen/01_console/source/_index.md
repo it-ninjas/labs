@@ -38,11 +38,16 @@ console
 │                       │   └── HelloWorldTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
+├── .idea.zip
 ├── pom.xml
 └── README.md
 ```
 
 ## Dateien in console
+
+##### .idea.zip{#idea-zip}
+
+Not able to display content!
 
 ##### pom.xml{#pom-xml}
 

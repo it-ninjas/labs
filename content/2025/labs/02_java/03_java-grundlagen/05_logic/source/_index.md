@@ -23,9 +23,9 @@ logic
 │   │           └── itninja
 │   │               └── labs
 │   │                   ├── basicexercises
-│   │                   │   ├── CalculateForms.java
-│   │                   │   ├── HelloName.java
-│   │                   │   └── LeapYear.java
+│   │                   │   ├── AgeCalculator.java
+│   │                   │   ├── Basket.java
+│   │                   │   └── CalculateForms.java
 │   │                   └── Main.java
 │   └── test
 │       └── java
@@ -33,6 +33,8 @@ logic
 │               └── itninja
 │                   └── labs
 │                       ├── basicexercises
+│                       │   ├── AgeCalculatorTest.java
+│                       │   ├── BasketTest.java
 │                       │   └── CalculateFormsTest.java
 │                       └── util
 │                           └── ItNinjaOutput.java
@@ -104,6 +106,8 @@ Not able to display content!
 ```java
 package ch.itninja.labs;
 
+import ch.itninja.labs.basicexercises.AgeCalculator;
+import ch.itninja.labs.basicexercises.Basket;
 import ch.itninja.labs.basicexercises.CalculateForms;
 
 /**
@@ -117,11 +121,118 @@ public class Main {
         CalculateForms.printTriangleArea(8, 3);
         CalculateForms.printCircleArea(4);
         CalculateForms.printRectPerimeter(5, 4);
+
+        Basket.printTotalBigDecimal();
+        Basket.printTotalDouble();
+
+        AgeCalculator.ageInMonths();
     }
 }
 ```
 
 #### basicexercises
+
+##### AgeCalculator.java{#src-main-java-ch-itninja-labs-basicexercises-agecalculator-java}
+
+```java
+package ch.itninja.labs.basicexercises;
+
+/**
+ * Utility class providing methods for leap year calculation.
+ */
+public class AgeCalculator {
+
+    public static int dayOfBirth = 11;
+    public static int monthOfBirth = 5;
+    public static int yearOfBirth = 1973;
+
+    public static int dayOfToday = 22;
+    public static int monthOfToday = 7;
+    public static int yearOfToday = 2025;
+
+    private AgeCalculator() {
+        // Prevent instantiation
+    }
+
+    /**
+     * Passe die folgende Methode an. Berechne dein Alter in ganzen Monaten. Zähle den Monat wo du geboren wurdest und den
+     * aktuellen als ganzen Monat dazu. Gib Dein Alter auf der Konsole aus:
+     *
+     * - Ich bin am dd.mm.yyyy geboren und heute am dd.mm.yyyy z Monate alt.
+     *
+     * Wobei in der Ausgabe dd.mm.yyyy durch das tatsächliche Datum von Deinem Geburtstag resp. dem heutigen Datum ersetzt
+     * werden soll und z durch die Anzahl Monate.
+     *
+     * Im Quellcode findest du auch statische Variablen (dayOfBirth, monthOfBirth, yearOfBirth, dayOfToday,
+     * monthOfToday, yearOfToday). Passe diese Variablen an und nutze sie in in deinem Code. Es wird erwartet, dass sich
+     * eine Änderung einer dieser Variablen auf die Berechnung aber auch auf die Ausgabe in der Konsole auswirkt. Was es
+     * genau mit static auf sich hat lernst du bald.
+     */
+    public static void ageInMonths() {
+
+        // IT-Ninja: Füge hier Deinen Code ein...
+        System.out.printf("Ich bin am %02d.%02d.%04d geboren und heute am %02d.%02d.%04d %d Monate alt.%n",
+                dayOfBirth, monthOfBirth, yearOfBirth,
+                dayOfToday, monthOfToday, yearOfToday,
+                months);
+    }
+}
+
+```
+
+##### Basket.java{#src-main-java-ch-itninja-labs-basicexercises-basket-java}
+
+```java
+package ch.itninja.labs.basicexercises;
+
+
+import java.math.BigDecimal;
+
+/**
+ * Utility class providing methods for basket calculation.
+ */
+public class Basket {
+
+    private Basket() {
+        // Prevent instantiation
+    }
+
+    public static void printTotalBigDecimal(){
+
+        // IT-Ninja: Füge hier Deinen Code ein...
+        String expectedResult;
+        if(total.compareTo(totalExpected) == 0){
+            expectedResult = "wie erwartet";
+        }
+        else if(total.compareTo(totalExpected) > 0){
+            expectedResult = "zu hoch";
+        }
+        else {
+            expectedResult = "zu tief";
+        }
+        System.out.println("Alle Artikel zusammen kosten CHF " + total + ". Der Preis ist " + expectedResult + ".");
+    }
+
+    public static void printTotalDouble(){
+
+        // IT-Ninja: Füge hier Deinen Code ein...
+        String expectedResult;
+        if(total == totalExpected){
+            expectedResult = "wie erwartet";
+        }
+        else if(total > totalExpected){
+            expectedResult = "zu hoch";
+        }
+        else {
+            expectedResult = "zu tief";
+        }
+        System.out.printf("Alle Artikel zusammen kosten CHF %.2f. Der Preis ist %s.%n", total, expectedResult);
+
+    }
+
+}
+
+```
 
 ##### CalculateForms.java{#src-main-java-ch-itninja-labs-basicexercises-calculateforms-java}
 
@@ -175,56 +286,148 @@ public class CalculateForms {
 
 ```
 
-##### HelloName.java{#src-main-java-ch-itninja-labs-basicexercises-helloname-java}
-
-```java
-package ch.itninja.labs.basicexercises;
-
-
-/**
- * Utility class providing methods for basic Hello Name output.
- */
-public class HelloName {
-
-    private HelloName() {
-        // Prevent instantiation
-    }
-
-    public static void printHelloName(){
-
-        // IT-Ninja: Füge hier Deinen Code ein...
-
-    }
-}
-
-```
-
-##### LeapYear.java{#src-main-java-ch-itninja-labs-basicexercises-leapyear-java}
-
-```java
-package ch.itninja.labs.basicexercises;
-
-/**
- * Utility class providing methods for leap year calculation.
- */
-public class LeapYear {
-
-    // IT-Ninja: Füge hier Deinen Code ein...
-
-    private LeapYear() {
-        // Prevent instantiation
-    }
-
-    public static boolean isLeapYear(int year) {
-
-        // IT-Ninja: Füge hier Deinen Code ein...
-
-    }
-}
-
-```
-
 ### src\test\java\ch\itninja\labs\basicexercises
+
+##### AgeCalculatorTest.java{#src-test-java-ch-itninja-labs-basicexercises-agecalculatortest-java}
+
+```java
+package ch.itninja.labs.basicexercises;
+
+import ch.itninja.labs.util.ItNinjaOutput;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class AgeCalculatorTest {
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1, 9, 1973, 22, 7, 2025, 623",
+            "2, 15, 4, 2008, 8, 8, 2025, 209",
+    })
+    void givenNumbers_whenCalled_thenOutputAsExpected(int lab, int dayOfBirth, int monthOfBirth, int yearOfBirth,
+                                                      int dayOfToday, int monthOfToday, int yearOfToday,
+                                                      int monthsExpected) {
+        // GIVEN
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        AgeCalculator.dayOfBirth = dayOfBirth;
+        AgeCalculator.monthOfBirth = monthOfBirth;
+        AgeCalculator.yearOfBirth = yearOfBirth;
+        AgeCalculator.dayOfToday = dayOfToday;
+        AgeCalculator.monthOfToday = monthOfToday;
+        AgeCalculator.yearOfToday = yearOfToday;
+
+        String expectedResult = String.format("Ich bin am %02d.%02d.%04d geboren und heute am %02d.%02d.%04d %d Monate alt.",
+                dayOfBirth, monthOfBirth, yearOfBirth,
+                dayOfToday, monthOfToday, yearOfToday,
+                monthsExpected);
+
+        try {
+            // WHEN
+            AgeCalculator.ageInMonths();
+        } finally {
+            System.setOut(originalOut);
+        }
+
+        // THEN
+        String output = outputStream.toString().trim();
+        assertEquals(expectedResult, output, "Output is not as expected");
+
+        // For documentation
+        String input = String.format(
+                "AgeCalculator.dayOfBirth = %d;\n" +
+                "AgeCalculator.monthOfBirth = %d;\n" +
+                "AgeCalculator.yearOfBirth = %d;\n" +
+                "AgeCalculator.dayOfToday = %d;\n" +
+                "AgeCalculator.monthOfToday = %d;\n" +
+                "AgeCalculator.yearOfToday = %d;\n" +
+                "\n" +
+                "AgeCalculator.ageInMonths();",
+            dayOfBirth,
+            monthOfBirth,
+            yearOfBirth,
+            dayOfToday,
+            monthOfToday,
+            yearOfToday
+        );
+        ItNinjaOutput.PrintItNinjaOutput("AgeInMonths"+lab, input, output);
+    }
+
+
+}
+
+```
+
+##### BasketTest.java{#src-test-java-ch-itninja-labs-basicexercises-baskettest-java}
+
+```java
+package ch.itninja.labs.basicexercises;
+
+import ch.itninja.labs.util.ItNinjaOutput;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class BasketTest {
+
+    @Test
+    void givenPrintTotalBigDecimal_whenCalled_thenOutputAsExpected() {
+        // GIVEN
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        try {
+            // WHEN
+            Basket.printTotalBigDecimal();
+        } finally {
+            System.setOut(originalOut);
+        }
+
+        // THEN
+        String output = outputStream.toString().trim();
+        final String expectedResult = "Alle Artikel zusammen kosten CHF 5.70. Der Preis ist wie erwartet.";
+        assertEquals(expectedResult, output, "Output not as expected");
+
+        ItNinjaOutput.PrintItNinjaOutput("Basket.BigDecimal", "", output);
+    }
+
+    @Test
+    void givenPrintTotalDouble_whenCalled_thenOutputAsExpected() {
+        // GIVEN
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        try {
+            // WHEN
+            Basket.printTotalDouble();
+        } finally {
+            System.setOut(originalOut);
+        }
+
+        // THEN
+        String output = outputStream.toString().trim();
+        final String expectedResult = "Alle Artikel zusammen kosten CHF 5.70. Der Preis ist zu hoch.";
+        assertEquals(expectedResult, output, "Output not as expected");
+
+        ItNinjaOutput.PrintItNinjaOutput("Basket.Double", "", output);
+    }
+
+}
+
+```
 
 ##### CalculateFormsTest.java{#src-test-java-ch-itninja-labs-basicexercises-calculateformstest-java}
 

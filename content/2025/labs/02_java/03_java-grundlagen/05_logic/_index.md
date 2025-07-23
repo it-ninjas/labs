@@ -280,7 +280,7 @@ Das Rechteck mit a=0cm und b=0cm hat eine Fläche von 0cm2.
 
 ## Aufgabe 2 - Checkout
 
-Passe die folgende Methode an. Erstelle für die untenstehende Einkaufsliste für jeden Artikel eine Variable und weise
+Passe die folgenden Methoden an. Nutze in einer Methode nur `double`, in der anderen `BigDecimal`. Erstelle für die untenstehende Einkaufsliste für jeden Artikel eine Variable und weise
 der Variable den entsprechenden Wert zu:
 
 - Apfel: CHF 0.50
@@ -289,61 +289,130 @@ der Variable den entsprechenden Wert zu:
 - Ei: CHF 0.60
 - Butter: CHF 1.80
 
-Zähle die Preise der Produkte zusammen und gib das Resultat auf der Konsole aus:
+Erstelle ebenfalls eine Variable `totalExpected` mit dem zu erwartenden Total und berechne es (im Kopf oder Taschenrechner).
 
-- `Alle Artikel zusammen kosten CHF [total].`
+Zähle die Preise der Produkte mittels Java-Code zusammen und speichere sie in der Variable `total`. Der darauf folgende
+Code wird dann die beiden Werte vergleichen und eine entsprechende Ausgabe machen (was der Code macht wirst du im
+nächsten Modul kennenlernen).
 
-Wobei in der Ausgabe `[total]` durch das tatsächliche Werte ersetzt werden sollen.
+> Denke beim Erstellen der Variablen daran, dass bei it-ninja der Code immer in englisch sein sollte, nur die Ausgabe
+> auf den Bildschirm soll auf deutsch sein.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[](./source/#):
+[src\main\java\ch\itninja\labs\basicexercises\Basket.java](./source/#src-main-java-ch-itninja-labs-basicexercises-basket-java):
 
 ```java
+    public static void printTotalBigDecimal(){
 
+        // IT-Ninja: Füge hier Deinen Code ein:
+        String expectedResult;
+        if(total.compareTo(totalExpected) == 0){
+            expectedResult = "wie erwartet";
+        }
+        else if(total.compareTo(totalExpected) > 0){
+            expectedResult = "zu hoch";
+        }
+        else {
+            expectedResult = "zu tief";
+        }
+        System.out.println("Alle Artikel zusammen kosten CHF " + total + ". Der Preis ist " + expectedResult + ".");
+    }
+
+    public static void printTotalDouble(){
+
+        // IT-Ninja: Füge hier Deinen Code ein:
+        String expectedResult;
+        if(total == totalExpected){
+            expectedResult = "wie erwartet";
+        }
+        else if(total > totalExpected){
+            expectedResult = "zu hoch";
+        }
+        else {
+            expectedResult = "zu tief";
+        }
+        System.out.printf("Alle Artikel zusammen kosten CHF %.2f. Der Preis ist %s.%n", total, expectedResult);
+
+    }
+```
+
+Wenn du beide Methoden angepasst hat, vergleiche die Ausgabe. Du solltest folgende Ausgabe erhalten:
+
+**Beispielausgabe:**
+
+```console
+Alle Artikel zusammen kosten CHF 5.70. Der Preis ist wie erwartet.
 ```
 
 ## Aufgabe 3 - Alter in Monaten
 
-Passe die folgende Methode an. Berechne dein Alter in ganzen Monaten. Zähle den Monat wo du geboren wurdest als ganzen
-Monat dazu. Der aktuelle Monat wird nur berücksichtigt, wenn mindestens 14 Tage vom Monat vorbei sind.
+Passe die folgende Methode an. Berechne dein Alter in ganzen Monaten. Zähle den Monat wo du geboren wurdest und den
+aktuellen als ganzen Monat dazu. Gib Dein Alter auf der Konsole aus:
 
-- `Ich bin am dd.mm.yyyy geboren und heute am dd.mm.yyyy z Monate alt`
+- `Ich bin am dd.mm.yyyy geboren und heute am dd.mm.yyyy z Monate alt.`
 
 Wobei in der Ausgabe `dd.mm.yyyy` durch das tatsächliche Datum von Deinem Geburtstag resp. dem heutigen Datum ersetzt
 werden soll und `z` durch die Anzahl Monate.
 
-> Im Quellcode findest du bei der Methode welche du anpassen musst auch statische Variablen (`dayOfBirth`,
-> `monthOfBirth`, `yearOfBirth`, `dayOfToday`, `monthOfToday`, `yearOfToday`). Passe diese Variablen an und nutze sie in
-> der Methode. Es wird erwartet, dass sich eine Änderung einer dieser Variablen auf die Berechnung aber auch auf die
-> Ausgabe inder Konsole auswirkt.
+> Im Quellcode findest du auch statische Variablen (`dayOfBirth`, `monthOfBirth`, `yearOfBirth`, `dayOfToday`,
+> `monthOfToday`, `yearOfToday`). Passe diese Variablen an und nutze sie in in deinem Code. Es wird erwartet, dass sich
+> eine Änderung einer dieser Variablen auf die Berechnung aber auch auf die Ausgabe in der Konsole auswirkt. Was es
+> genau mit `static` auf sich hat lernst du bald.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[](./source/#):
+[src\main\java\ch\itninja\labs\basicexercises\AgeCalculator.java](./source/#src-main-java-ch-itninja-labs-basicexercises-agecalculator-java):
 
 ```java
+    public static void ageInMonths() {
 
+        // IT-Ninja: Füge hier Deinen Code ein:
+        System.out.printf("Ich bin am %02d.%02d.%04d geboren und heute am %02d.%02d.%04d %d Monate alt.%n",
+                dayOfBirth, monthOfBirth, yearOfBirth,
+                dayOfToday, monthOfToday, yearOfToday,
+                months);
+    }
 ```
 
-## Aufgabe 4 - Zahlenspiel
+**Beispiel 1:**
 
-Passe die folgende Methode an. Berechne dein Alter in ganzen Monaten. Zähle den Monat wo du geboren wurdest als ganzen
-Monat dazu. Der aktuelle Monat wird nur berücksichtigt, wenn mindestens 14 Tage vom Monat vorbei sind.
+Eingabe:
 
-- `Ich bin am dd.mm.yyyy geboren und heute am dd.mm.yyyy z Monate alt`
+```console
+AgeCalculator.dayOfBirth = 1;
+AgeCalculator.monthOfBirth = 9;
+AgeCalculator.yearOfBirth = 1973;
+AgeCalculator.dayOfToday = 22;
+AgeCalculator.monthOfToday = 7;
+AgeCalculator.yearOfToday = 2025;
 
-Wobei in der Ausgabe `dd.mm.yyyy` durch das tatsächliche Datum von Deinem Geburtstag resp. dem heutigen Datum ersetzt
-werden soll und `z` durch die Anzahl Monate.
+AgeCalculator.ageInMonths();
+```
 
-> Im Quellcode findest du bei der Methode welche du anpassen musst auch statische Variablen (`dayOfBirth`,
-> `monthOfBirth`, `yearOfBirth`, `dayOfToday`, `monthOfToday`, `yearOfToday`). Passe diese Variablen an und nutze sie in
-> der Methode. Es wird erwartet, dass sich eine Änderung einer dieser Variablen auf die Berechnung, aber auch auf die
-> Ausgabe in der Konsole auswirkt.
+Ausgabe:
 
-Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[](./source/#):
+```console
+Ich bin am 01.09.1973 geboren und heute am 22.07.2025 623 Monate alt.
+```
 
-```java
+**Beispiel 2:**
 
+Eingabe:
+
+```console
+AgeCalculator.dayOfBirth = 15;
+AgeCalculator.monthOfBirth = 4;
+AgeCalculator.yearOfBirth = 2008;
+AgeCalculator.dayOfToday = 8;
+AgeCalculator.monthOfToday = 8;
+AgeCalculator.yearOfToday = 2025;
+
+AgeCalculator.ageInMonths();
+```
+
+Ausgabe:
+
+```console
+Ich bin am 15.04.2008 geboren und heute am 08.08.2025 209 Monate alt.
 ```
 
 ---
