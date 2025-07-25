@@ -44,7 +44,7 @@ vertraulichen Informationen oder Geheimnisse...
     <option value="">(keine)</option>
     <option value="SBB">SBB</option>
     <option value="89grad">89grad</option>
-    <option value="Puzzle ITC">Puzzle ITC</option>
+    <option value="Puzzle">Puzzle ITC</option>
     <option value="unic">unic</option>
   </select><br /><br />
 
