@@ -11,7 +11,7 @@ description: >
 
 #### Voraussetzung
 
-- Du weisst, wie man in Java mit Zahlen rechnet und Zahlen vergleicht.
+- Du weisst, wie man in Java mit Zahlen rechnet.
 
 ## Vorbereitungsarbeiten
 
@@ -366,10 +366,6 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
     public static void ageInMonths() {
 
         // IT-Ninja: Füge hier Deinen Code ein:
-        System.out.printf("Ich bin am %02d.%02d.%04d geboren und heute am %02d.%02d.%04d %d Monate alt.%n",
-                dayOfBirth, monthOfBirth, yearOfBirth,
-                dayOfToday, monthOfToday, yearOfToday,
-                months);
     }
 ```
 

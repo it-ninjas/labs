@@ -12,7 +12,9 @@ description: >
 
 - Ich kann arithmetische Ausdrücke schreiben: Addition, Subtraktion, Multiplikation, Division, Modulo (Rest einer Division).
 - Ich kenne die relationalen Operatoren: `==`, `>=`, `<=`, `>`, `<`, `!=`.
-- Ich kenne die booleschen Operatoren: `&&` (AND), `||` (OR), `!` (NOT), `^`(XOR).
+- Ich kenne die booleschen Operatoren: `&&` oder `&` (AND), `||` oder `|` (OR), `!` (NOT), `^`(XOR).
+- Ich kenne die bitweise Operatoren: `&` (AND), `|` (OR), `~` (NOT), `^`(XOR).
+- Ich weiss, wass Lazy-Evaluation bedeutet.
 
 {{< zeit lesen="15" >}}
 
@@ -177,7 +179,7 @@ System.out.println("x >> 1 = " + right);
 ```
 
 {{< ninja info >}}
-Bitoperationen sind **nicht dasselbe** wie boolesche Operatoren!  
+Bitweise Operationen sind **nicht dasselbe** wie boolesche Operatoren!  
 `&` bei `int` ist **bitweise UND**, bei `boolean` ist es **logisches UND (nicht lazy)**.  
 Dasselbe gilt für `|` und `^`.
 
@@ -204,44 +206,4 @@ if(xIsOk & yIsOk) {
 
 ---
 
-### Ternary Operator
-
-Mit dem Ternary Operator kannst du kurz und elegant eine Bedingung formulieren:  
-`bedingung ? wertWennTrue : wertWennFalse`
-
-#### Beispiel:
-
-```java
-String tooYoung = "You are too young";
-String oldEnough = "You are old enough :)";
-
-int age = 17;
-// Use the ternary operator to choose the message based on age
-System.out.println(age >= 18 ? oldEnough : tooYoung);
-// Output: You are too young
-
-age = 26;
-// Use the ternary operator to choose the message based on age
-System.out.println(age >= 18 ? oldEnough : tooYoung);
-// Output: You are old enough :)
-```
-
-#### Verschachtelter Ternary Operator:
-
-```java
-int years = 12;
-String rank = years >= 20 ? "Kage"
-            : years >= 10 ? "Chunin"
-            : years >= 5  ? "Academy Student"
-            : "Candidate";
-
-// Print the current rank based on the number of years
-System.out.println("Your current rank is " + rank);
-// Output: Your current rank is Chunin
-```
-
----
-
 {{<aufgaben "[](../../../../labs/02_java/03_java-grundlagen/05_logic/)">}}
-
----

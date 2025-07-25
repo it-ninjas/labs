@@ -144,6 +144,12 @@ double preisProStunde;
 String benutzername;
 ```
 
+{{< ninja info>}}
+Du wirst während deiner Ausbildung noch mehrmals Regeln sehen, was wie benannt oder strukturiert werden soll. In der
+Fachsprache nennen wir das **Coding Guidelines** und für Java findest du unsere Regeln
+[hier](../../../99_tools/zusammenarbeit/guidelines/coding/java/).
+{{< /ninja>}}
+
 ---
 
 ## Zusammenfassung

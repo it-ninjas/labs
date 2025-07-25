@@ -66,14 +66,18 @@ double area = 16.48739d;
 double pi = 3.141592653589793;
 ```
 
-Beachte: `float`-Werte benötigen das Suffix `f`. Für **exakte** Berechnungen (z. B. Geldbeträge) verwende `BigDecimal`.
+Beachte: `float`-Werte benötigen das Suffix `f`.
+
+{{< ninja warning>}}
+Für **exakte** Berechnungen (z. B. Geldbeträge) verwende `BigDecimal`.
+{{< /ninja >}}
 
 ### Warum `BigDecimal` statt `double`?
 
 Der Typ `double` speichert Gleitkommazahlen im **Binärformat**. Viele Dezimalzahlen wie `0.1` oder `0.2` lassen sich im
 Binärsystem **nicht exakt darstellen** – ähnlich wie `1/3` in Dezimal als `0.333...` unendlich lang ist.
 
-Das führt zu **kleinen Rundungsfehlern**, die in Finanzanwendungen problematisch sind.
+Das führt zu **kleinen Rundungsfehlern**, die unter anderem in Finanzanwendungen problematisch sind.
 
 #### Beispiel:
 
@@ -136,7 +140,11 @@ Wenn man nun `letter++` schreibt (das ist das gleiche wie `letter = letter + 1`)
 Dadurch ergibt sich automatisch das **nächste Zeichen** in der Unicode-Tabelle: Aus `'a'` wird `'b'`, aus `'9'` wird
 `':'`, usw.
 
-→ Zur [Unicode-Tabelle](https://symbl.cc/de/unicode-table/#latin-extended-a)
+→ Zur [!Unicode-Tabelle](https://symbl.cc/de/unicode-table)
+
+Darum wird aus `'3' + 7` nicht `10` sondern `58` -> `':'` (Java zeigt auch keinen Fehler, da `char` auch als Zahl
+gespeichert wird).
+
 {{< /ninja >}}
 
 Initialisierungsmöglichkeiten:
@@ -251,10 +259,39 @@ Zeichen: Z
 Status: true
 ```
 
+Es können beliebig viele Platzhalter definiert werden.
+
+```java
+int count = 12;
+double price = 5.6789;
+
+System.out.printf("%d Artikel kosten %.2f CHF%n", count, price);
+```
+
+**Ausgabe:**
+
+```
+12 Artikel kosten 5.68 CHF
+```
+
 {{< ninja tip >}}
-Wenn du `printf` verwendest, wird **nichts automatisch umgebrochen**. Du musst `\n` oder `%n` selbst angeben.
+Wenn du `printf` verwendest, wird **nichts automatisch umgebrochen**. Du musst `\n` oder `%n` selbst angeben, damit der
+Text in einer neuen Zeile weitergeht.
+{{< /ninja >}}
+
+{{< ninja warning >}}
+Java zeigt nur eine Warnung, aber keinen Fehler, wenn:
+
+- mehr Platzhalter als Variablen angegeben sind,
+- eine Variable nicht in das gewünschte Format umgewandelt werden kann.
+
+Solche Warnungen sollten nicht ignoriert werden – sie können zur Laufzeit zu unerwartetem Verhalten oder Fehlern führen.
 {{< /ninja >}}
 
 ---
 
 {{< video "https://www.youtube.com/watch?v=NSeJhsah-hE" >}}
+
+---
+
+{{<aufgabe "[](../../../../labs/02_java/03_java-grundlagen/04_variables-and-types/)">}}
