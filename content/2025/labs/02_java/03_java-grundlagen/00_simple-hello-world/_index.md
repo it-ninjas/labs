@@ -2,7 +2,7 @@
 title: "Java Exercises - Einfaches Hello World"
 linkTitle: "Einfaches Hello World"
 type: docs
-weight: 0
+weight: 1
 description: >
   Hier kannst Du erste Erfahrungen sammeln mit einem einfachen Java Programm
 ---

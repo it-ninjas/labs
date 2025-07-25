@@ -17,9 +17,16 @@ description: >
 
 ## Datentypen
 
-In Java sind Variablen **stark typisiert**. Das bedeutet, dass jede Variable beim Erstellen mit einem **Datentyp** versehen werden muss.
+In Java sind Variablen **stark typisiert**. Das bedeutet, dass jede Variable beim Erstellen mit einem **Datentyp** versehen werden muss. Damit wird sichergestellt, dass das Programm jederzeit weiss, um was für einen Typ es sich bei einer Variablen handelt.
 
-Um zum Beispiel die Zahl `3` als `int`-Wert in der Variable `sum` zu speichern, schreibst du:
+{{< ninja warning >}}
+Stell dir einen Gewürzschrank vor. Beim Kochen ist es sehr wichtig, dass man die richtigen Gewürze nimmt und weiss,
+welches Gewürz sich in welchem Gefäss befindet. Was würde passieren, wenn in einem Rezept steht, dass du Salz und
+Pfeffer nehmen sollst, die Gefässe aber nicht oder sogar falsch angeschrieben sind – und du zum ersten Mal vor dem
+Schrank stehst und auch nicht probieren kannst, was in welchem Gefäss drin ist?
+{{< /ninja >}}
+
+Um die Zahl 3 als ganzzahligen (Integer) Wert in der Variable sum zu speichern, schreibst du:
 
 ```java
 int sum = 3;
@@ -30,6 +37,11 @@ Seit Java 10 gibt es eine vereinfachte Schreibweise mit **Typinferenz**. Du kann
 ```java
 var sum = 20;
 ```
+
+{{< ninja info >}}
+Auch wenn du `var` verwendest, bleibt die Variable stark typisiert. Der Unterschied ist nur: Du schreibst den Typ nicht
+selbst hin – Java erkennt ihn automatisch anhand des zugewiesenen Werts.
+{{< /ninja >}}
 
 ### Zwei Arten von Datentypen
 
@@ -83,3 +95,17 @@ car1.equals(car2)
 ```
 
 Das prüft, ob die Objekte **inhaltlich gleich** sind, nicht ob sie identisch im Speicher sind.
+
+{{< ninja info >}}
+Stell dir vor, du kommst zu deinem Auto zurück – und gleich daneben steht ein Auto vom exakt gleichen Modell, gleicher
+Farbe, gleicher Ausstattung. Eine fremde Person könnte nicht sagen, welches dein Auto ist, weil sie es nur oberflächlich
+betrachtet. Man müsste also bewusst festlegen, was genau verglichen wird: Die Farbe reicht vielleicht nicht aus.
+Eindeutig wird es mit der Fahrgestellnummer – oder, falls es keine Wechselnummer ist, mit dem Kennzeichen.
+{{< /ninja >}}
+
+Zeigen zwei Referenzen auf dasselbe Objekt, ist ein Vergleich mit equals() nicht nötig – == genügt in diesem Fall, da es
+sich garantiert um exakt dasselbe Objekt handelt.
+
+Du wirst später lernen, dass Java beim Vergleichen von Objekten standardmässig prüft, ob es sich um dieselben handelt – also ob beide genau auf dasselbe Objekt im Speicher zeigen.
+
+Wenn man aber prüfen möchte, ob zwei Objekte inhaltlich gleich sind (z. B. zwei Autos mit gleicher Farbe und gleichem Modell), muss man in Java definieren, wie dieser Vergleich aussehen soll – zum Beispiel, worauf genau geachtet werden soll.
