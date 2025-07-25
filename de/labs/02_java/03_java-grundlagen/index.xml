@@ -1,4 +1,266 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Java Exercises - Grundlagen</title><link>/de/labs/02_java/03_java-grundlagen/</link><description>Recent content in Java Exercises - Grundlagen on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/labs/02_java/03_java-grundlagen/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Java Exercises - Ausgabe auf die Kommandozeile</title><link>/de/labs/02_java/03_java-grundlagen/01_console/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/01_console/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Java Exercises - Grundlagen</title><link>/de/labs/02_java/03_java-grundlagen/</link><description>Recent content in Java Exercises - Grundlagen on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="/de/labs/02_java/03_java-grundlagen/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Java Exercises - Einfaches Hello World</title><link>/de/labs/02_java/03_java-grundlagen/00_simple-hello-world/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/00_simple-hello-world/</guid><description>
+&lt;h2 id="voraussetzung">Voraussetzung&lt;/h2>
+&lt;ul>
+&lt;li>Du bist bereit die nachfolgende Anleitung gründlich zu lesen.&lt;/li>
+&lt;/ul>
+&lt;h2 id="vorbereitungsarbeiten">Vorbereitungsarbeiten&lt;/h2>
+&lt;div class="toggle mb-3">
+&lt;button
+class="toggle-button"
+aria-expanded="false"
+aria-controls="toggle-1753459769947690242"
+onclick="
+const btn = this;
+const content = document.getElementById('toggle-1753459769947690242');
+const expanded = btn.getAttribute('aria-expanded') === 'true';
+btn.setAttribute('aria-expanded', !expanded);
+content.classList.toggle('open');
+btn.querySelector('svg').classList.toggle('rotated');
+"
+>
+&lt;span class="toggle-icon" aria-hidden="true">
+&lt;svg width="16" height="16" viewBox="0 0 24 24">
+&lt;polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2"/>
+&lt;/svg>
+&lt;/span>
+&lt;span class="toggle-title">
+&lt;p>Drücke auf den Pfeil links um eine detaillierte Anleitung zu erhalten, wie Du den Quellcode auf deinem
+Rechner ablegen sollst.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Liess vor allem am Anfang die detaillierte Anleitung gut durch und befolge die Schritte
+exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher zu verwalten.
+&lt;/div>
+&lt;/div>
+&lt;p>Falls du die Anleitung schon auswendig kennst, findest du den Quellcode zur Übung direkt hier:
+&lt;a href="./it-ninja_02_java_03_java-grundlagen_00_simple-hello-world.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
+&lt;/span>
+&lt;/button>
+&lt;div id="toggle-1753459769947690242" class="toggle-content">
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;strong>Neu bei it-ninja?&lt;/strong>&lt;br>
+Die Anleitung enthält einige Befehle und Fachbegriffe, die dir möglicherweise noch nichts sagen. Mach dir deswegen
+keine Sorgen – in den kommenden Modulen erklären wir dir alles Schritt für Schritt. Schon bald wirst auch du ein
+it-ninja sein.
+&lt;/div>
+&lt;/div>
+&lt;p>Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Beim ersten Mal:&lt;/p>
+&lt;ol>
+&lt;li>IntelliJ IDEA installieren → &lt;a href="/docs/02_java/02_intellij-einrichten/">IntelliJ IDEA einrichten&lt;/a>&lt;/li>
+&lt;li>Git-Repository einrichten → &lt;a href="/docs/01_tools/02_personal-bitbucket/">Persönliches Git-Repository&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>Öffne eine CMD-Shell und wechsle ins Verzeichnis deines Git-Repositories:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-windows" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>cd /d &amp;#34;[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>cd &amp;#34;[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="3">
+&lt;li>Stelle sicher, dass alle Dateien im Git-Repository committed sind. Mit &lt;strong>git status&lt;/strong> erhältst du eine Übersicht:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="4">
+&lt;li>Erstelle einen neuen Branch für die Übung:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;templates/it-ninja_02_java_03_java-grundlagen_00_simple-hello-world&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Du kannst auch einen kürzeren Namen für den Branch wählen. Wir verwenden &lt;strong>templates&lt;/strong> am Anfang des Branch-Namens
+für Branches, welche den ursprünglichen Übungscode enthalten.
+&lt;/div>
+&lt;/div>
+&lt;ol start="5">
+&lt;li>
+&lt;p>Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:&lt;br>
+&lt;code>[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>Den Source-Code findest du hier: &lt;a href="./it-ninja_02_java_03_java-grundlagen_00_simple-hello-world.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git add .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &amp;#34;Initial version from it-ninja&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="7">
+&lt;li>Erstelle einen neuen Branch, um deine Lösung zu implementieren:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;labs/it-ninja_02_java_03_java-grundlagen_00_simple-hello-world&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Auch hier kannst du einen kürzeren Namen wählen. Verwende &lt;strong>labs&lt;/strong> am Anfang des Branch-Namens für Branches, die
+deinen eigenen Code enthalten.
+&lt;/div>
+&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;strong>Pro-Tipp:&lt;/strong>&lt;br>
+Du kannst jederzeit einen weiteren Branch erstellen – z. B. wenn du etwas ausprobieren möchtest. Alternativ kannst
+du auch in der Git-History einen alten Stand wiederherstellen, was aber weniger flexibel ist.
+&lt;/div>
+&lt;/div>
+&lt;ol start="8">
+&lt;li>Starte IntelliJ und öffne mit &lt;code>File → Open&lt;/code> das Verzeichnis mit dem Source-Code. Wenn du alles korrekt gemacht
+hast, findest du das Projekt hier:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-windows" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\00_simple-hello-world`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/00_simple-hello-world`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="9">
+&lt;li>Falls du zum ersten Mal mit IntelliJ arbeitest, findest du &lt;a href="/de/docs/99_tools/ide/intellij/03_run-and-debug/">hier&lt;/a>
+eine Anleitung, wie man ein Programm startet.&lt;/li>
+&lt;/ol>
+&lt;p>Nun bist du bereit, die untenstehenden Aufgaben zu lösen.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Die meisten Übungen sind professionell strukturiert – so wie in echten Softwareprojekten. Zu gutem Code gehören auch
+Tests, die sicherstellen, dass dein Code wie erwartet funktioniert. Sofern nicht anders erwähnt, kannst du mit
+folgendem Befehl im Root-Verzeichnis des Projekts (dort, wo sich auch die &lt;code>pom.xml&lt;/code> befindet) überprüfen, ob du die
+Aufgabe korrekt gelöst hast:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mvn test
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Viel Erfolg!&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>Der zur Übung gehörende Quellcode zeigt dir ein einfaches Programm, welches den Text &lt;code>Hello World&lt;/code> auf die Konsole
+ausgibt. Er soll dir helfen, dich mit der Entwicklungsumgebung (IntelliJ) vertraut zu machen.&lt;/p>
+&lt;h2 id="aufgabe---hello-world">Aufgabe - Hello World&lt;/h2>
+&lt;p>Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm
+vorzunehmen.&lt;/p>
+&lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
+&lt;a href="/de/labs/02_java/03_java-grundlagen/00_simple-hello-world/source/#src-main-java">src\Main.java&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;p>
+&lt;a href="../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab">
+&lt;img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+&lt;/a>
+Hier kommst Du zurück zur Dokumentation:
+&lt;a href="../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab">Struktur und Syntax&lt;/a>.
+&lt;/p>
+&lt;hr>
+&lt;p>
+&lt;a href="../../../../docs/99_tools/ide/intellij/01_installation/#back-from-lab">
+&lt;img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+&lt;/a>
+Hier kommst Du zurück zur Dokumentation:
+&lt;a href="../../../../docs/99_tools/ide/intellij/01_installation/#back-from-lab">IntelliJ installieren&lt;/a>.
+&lt;/p>
+&lt;hr>
+&lt;p>
+&lt;a href="../../../../docs/99_tools/ide/intellij/03_run-and-debug/#back-from-lab">
+&lt;img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+&lt;/a>
+Hier kommst Du zurück zur Dokumentation:
+&lt;a href="../../../../docs/99_tools/ide/intellij/03_run-and-debug/#back-from-lab">Mit IntelliJ Java Code kompilieren, ausführen und debuggen&lt;/a>.
+&lt;/p></description></item><item><title>Labs: Java Exercises - Ausgabe auf die Kommandozeile</title><link>/de/labs/02_java/03_java-grundlagen/01_console/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/01_console/</guid><description>
 &lt;!--suppress CheckEmptyScriptTag -->
 &lt;h2 id="voraussetzung">Voraussetzung&lt;/h2>
 &lt;ul>
@@ -11,10 +273,10 @@
 &lt;button
 class="toggle-button"
 aria-expanded="false"
-aria-controls="toggle-1753429538655813874"
+aria-controls="toggle-1753459769997770360"
 onclick="
 const btn = this;
-const content = document.getElementById('toggle-1753429538655813874');
+const content = document.getElementById('toggle-1753459769997770360');
 const expanded = btn.getAttribute('aria-expanded') === 'true';
 btn.setAttribute('aria-expanded', !expanded);
 content.classList.toggle('open');
@@ -42,7 +304,7 @@ exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher
 &lt;a href="./it-ninja_02_java_03_java-grundlagen_01_console.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
 &lt;/span>
 &lt;/button>
-&lt;div id="toggle-1753429538655813874" class="toggle-content">
+&lt;div id="toggle-1753459769997770360" class="toggle-content">
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem">
 &lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -341,21 +603,353 @@ folgende Zeichen verwenden:&lt;/p>
 &lt;/a>
 Hier kommst Du zurück zur Dokumentation:
 &lt;a href="../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab">Struktur und Syntax&lt;/a>.
-&lt;/p></description></item><item><title>Labs: Java Exercises - Einfache Berechnungen</title><link>/de/labs/02_java/03_java-grundlagen/05_logic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/05_logic/</guid><description>
+&lt;/p></description></item><item><title>Labs: Java Exercises - Variablen und primitive Datentypen</title><link>/de/labs/02_java/03_java-grundlagen/04_variables-and-types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/04_variables-and-types/</guid><description>
 &lt;!--suppress CheckEmptyScriptTag -->
 &lt;h4 id="voraussetzung">Voraussetzung&lt;/h4>
 &lt;ul>
-&lt;li>Du weisst, wie man in Java mit Zahlen rechnet und Zahlen vergleicht.&lt;/li>
+&lt;li>Du weisst was Variablen sind.&lt;/li>
+&lt;li>Du kannst eine Variable deklarieren und initialisieren.&lt;/li>
+&lt;li>Du weisst was primitive Datentypen sind.&lt;/li>
+&lt;li>Du weisst wie man Variablen formatiert auf der Konsole ausgibt.&lt;/li>
 &lt;/ul>
 &lt;h2 id="vorbereitungsarbeiten">Vorbereitungsarbeiten&lt;/h2>
 &lt;div class="toggle mb-3">
 &lt;button
 class="toggle-button"
 aria-expanded="false"
-aria-controls="toggle-1753429539089445053"
+aria-controls="toggle-1753459770366580088"
 onclick="
 const btn = this;
-const content = document.getElementById('toggle-1753429539089445053');
+const content = document.getElementById('toggle-1753459770366580088');
+const expanded = btn.getAttribute('aria-expanded') === 'true';
+btn.setAttribute('aria-expanded', !expanded);
+content.classList.toggle('open');
+btn.querySelector('svg').classList.toggle('rotated');
+"
+>
+&lt;span class="toggle-icon" aria-hidden="true">
+&lt;svg width="16" height="16" viewBox="0 0 24 24">
+&lt;polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2"/>
+&lt;/svg>
+&lt;/span>
+&lt;span class="toggle-title">
+&lt;p>Drücke auf den Pfeil links um eine detaillierte Anleitung zu erhalten, wie Du den Quellcode auf deinem
+Rechner ablegen sollst.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Liess vor allem am Anfang die detaillierte Anleitung gut durch und befolge die Schritte
+exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher zu verwalten.
+&lt;/div>
+&lt;/div>
+&lt;p>Falls du die Anleitung schon auswendig kennst, findest du den Quellcode zur Übung direkt hier:
+&lt;a href="./it-ninja_02_java_03_java-grundlagen_04_variables-and-types.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
+&lt;/span>
+&lt;/button>
+&lt;div id="toggle-1753459770366580088" class="toggle-content">
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;strong>Neu bei it-ninja?&lt;/strong>&lt;br>
+Die Anleitung enthält einige Befehle und Fachbegriffe, die dir möglicherweise noch nichts sagen. Mach dir deswegen
+keine Sorgen – in den kommenden Modulen erklären wir dir alles Schritt für Schritt. Schon bald wirst auch du ein
+it-ninja sein.
+&lt;/div>
+&lt;/div>
+&lt;p>Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Beim ersten Mal:&lt;/p>
+&lt;ol>
+&lt;li>IntelliJ IDEA installieren → &lt;a href="/docs/02_java/02_intellij-einrichten/">IntelliJ IDEA einrichten&lt;/a>&lt;/li>
+&lt;li>Git-Repository einrichten → &lt;a href="/docs/01_tools/02_personal-bitbucket/">Persönliches Git-Repository&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>Öffne eine CMD-Shell und wechsle ins Verzeichnis deines Git-Repositories:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-windows" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>cd /d &amp;#34;[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>cd &amp;#34;[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="3">
+&lt;li>Stelle sicher, dass alle Dateien im Git-Repository committed sind. Mit &lt;strong>git status&lt;/strong> erhältst du eine Übersicht:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="4">
+&lt;li>Erstelle einen neuen Branch für die Übung:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;templates/it-ninja_02_java_03_java-grundlagen_04_variables-and-types&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Du kannst auch einen kürzeren Namen für den Branch wählen. Wir verwenden &lt;strong>templates&lt;/strong> am Anfang des Branch-Namens
+für Branches, welche den ursprünglichen Übungscode enthalten.
+&lt;/div>
+&lt;/div>
+&lt;ol start="5">
+&lt;li>
+&lt;p>Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:&lt;br>
+&lt;code>[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>Den Source-Code findest du hier: &lt;a href="./it-ninja_02_java_03_java-grundlagen_04_variables-and-types.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git add .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &amp;#34;Initial version from it-ninja&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="7">
+&lt;li>Erstelle einen neuen Branch, um deine Lösung zu implementieren:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;labs/it-ninja_02_java_03_java-grundlagen_04_variables-and-types&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Auch hier kannst du einen kürzeren Namen wählen. Verwende &lt;strong>labs&lt;/strong> am Anfang des Branch-Namens für Branches, die
+deinen eigenen Code enthalten.
+&lt;/div>
+&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;strong>Pro-Tipp:&lt;/strong>&lt;br>
+Du kannst jederzeit einen weiteren Branch erstellen – z. B. wenn du etwas ausprobieren möchtest. Alternativ kannst
+du auch in der Git-History einen alten Stand wiederherstellen, was aber weniger flexibel ist.
+&lt;/div>
+&lt;/div>
+&lt;ol start="8">
+&lt;li>Starte IntelliJ und öffne mit &lt;code>File → Open&lt;/code> das Verzeichnis mit dem Source-Code. Wenn du alles korrekt gemacht
+hast, findest du das Projekt hier:&lt;/li>
+&lt;/ol>
+&lt;div class="is-os-windows" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\04_variables-and-types`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/04_variables-and-types`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/div>
+&lt;ol start="9">
+&lt;li>Falls du zum ersten Mal mit IntelliJ arbeitest, findest du &lt;a href="/de/docs/99_tools/ide/intellij/03_run-and-debug/">hier&lt;/a>
+eine Anleitung, wie man ein Programm startet.&lt;/li>
+&lt;/ol>
+&lt;p>Nun bist du bereit, die untenstehenden Aufgaben zu lösen.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Die meisten Übungen sind professionell strukturiert – so wie in echten Softwareprojekten. Zu gutem Code gehören auch
+Tests, die sicherstellen, dass dein Code wie erwartet funktioniert. Sofern nicht anders erwähnt, kannst du mit
+folgendem Befehl im Root-Verzeichnis des Projekts (dort, wo sich auch die &lt;code>pom.xml&lt;/code> befindet) überprüfen, ob du die
+Aufgabe korrekt gelöst hast:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mvn test
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Viel Erfolg!&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="aufgabe-1---hello-it-ninja">Aufgabe 1 - Hello It-Ninja&lt;/h2>
+&lt;p>Erstelle eine Variable, welche deinen Namen beinhaltet.
+Gib &lt;code>Hello [name]&lt;/code> auf der Konsole aus.&lt;/p>
+&lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
+&lt;a href="/de/labs/02_java/03_java-grundlagen/04_variables-and-types/source/#src-main-java-ch-itninja-labs-basicexercises-helloname-java">src\main\java\ch\itninja\labs\basicexercises\HelloName.java&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">printHelloName&lt;/span>(){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// IT-Ninja: Füge hier Deinen Code ein:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispielausgabe:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Hello It-Ninja
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="aufgabe-2---reise-report">Aufgabe 2 - Reise Report&lt;/h2>
+&lt;p>Gib den folgenden Text mit &lt;code>System.out.printf(...)&lt;/code> aus. Ersetze die kursiv, fett dargestellten Werte im Logbuch durch
+Variablen, welche du selber definieren musst.&lt;/p>
+&lt;hr>
+&lt;p>Reise Report – &lt;strong>&lt;em>Takeshi&lt;/em>&lt;/strong>, Codename &lt;strong>&lt;em>ShadowFox&lt;/em>&lt;/strong>&lt;br>
+Datum der Abreise: &lt;strong>&lt;em>26. Juli 2025&lt;/em>&lt;/strong>&lt;br>
+Mission: &lt;strong>&lt;em>Code-Review&lt;/em>&lt;/strong>&lt;br>
+Startpunkt: &lt;strong>&lt;em>Lausanne&lt;/em>&lt;/strong>&lt;br>
+Zielort: &lt;strong>&lt;em>St. Gallen&lt;/em>&lt;/strong>&lt;br>
+Abfahrt: &lt;strong>&lt;em>06:14 Uhr&lt;/em>&lt;/strong>&lt;br>
+Ankunft: &lt;strong>&lt;em>09:07 Uhr&lt;/em>&lt;/strong>&lt;br>
+Zwischenhalte: &lt;strong>&lt;em>5&lt;/em>&lt;/strong>&lt;br>
+Reisekosten: &lt;strong>&lt;em>51.80&lt;/em>&lt;/strong> &lt;strong>&lt;em>CHF&lt;/em>&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>&lt;em>ShadowFox&lt;/em>&lt;/strong> nutzte die &lt;strong>&lt;em>1. Klasse&lt;/em>&lt;/strong> am &lt;strong>&lt;em>26. Juli 2025&lt;/em>&lt;/strong>, um sich auf den anstehenden &lt;strong>&lt;em>Code-Review&lt;/em>&lt;/strong>
+vorzubereiten. Mit einem Akku-Ladestand von &lt;strong>&lt;em>92%&lt;/em>&lt;/strong> und &lt;strong>&lt;em>2&lt;/em>&lt;/strong> mitgeführten Laptops war &lt;strong>&lt;em>er&lt;/em>&lt;/strong> bestens gerüstet.
+Die Mission wurde &lt;strong>&lt;em>erfolgreich&lt;/em>&lt;/strong> abgeschlossen. Die Reisekosten sind in &lt;strong>&lt;em>CHF&lt;/em>&lt;/strong>.&lt;/p>
+&lt;hr>
+&lt;p>Anforderungen:&lt;/p>
+&lt;ul>
+&lt;li>Verwende sinnvolle Datentypen (String, int, double, boolean)&lt;/li>
+&lt;li>Nutze &lt;code>printf&lt;/code> mit Formatangaben wie &lt;code>%.2f&lt;/code>, &lt;code>%d&lt;/code>, &lt;code>%s&lt;/code>, &lt;code>%%&lt;/code>&lt;/li>
+&lt;li>Achte auf Lesbarkeit und saubere Struktur&lt;/li>
+&lt;/ul>
+&lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
+&lt;a href="/de/labs/02_java/03_java-grundlagen/04_variables-and-types/source/#src-main-java-ch-itninja-labs-basicexercises-travelreport-java">src\main\java\ch\itninja\labs\basicexercises\TravelReport.java&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">printTravelReport&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// IT-Ninja: Füge hier Deinen Code ein:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>TravelReport.printTravelReport();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Reise Report – Takeshi, Codename ShadowFox
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Datum der Abreise: 26. Juli 2025
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Mission: Code-Review
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Startpunkt: Lausanne
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Zielort: St. Gallen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Abfahrt: 06:14 Uhr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Ankunft: 09:07 Uhr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Zwischenhalte: 5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Reisekosten: 51.80 CHF
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>ShadowFox nutzte die 1. Klasse am 26. Juli 2025, um sich auf die anstehende Code-Review vorzubereiten. Mit einem Akku-Ladestand von 92% und 2 mitgeführten Laptops war er bestens gerüstet. Die Mission wurde erfolgreich abgeschlossen. Die Reisekosten sind in CHF.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;p>
+&lt;a href="../../../../docs/02_java/03_java-grundlagen/04_primitive_types/#back-from-lab">
+&lt;img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+&lt;/a>
+Hier kommst Du zurück zur Dokumentation:
+&lt;a href="../../../../docs/02_java/03_java-grundlagen/04_primitive_types/#back-from-lab">Primitive Datentypen&lt;/a>.
+&lt;/p></description></item><item><title>Labs: Java Exercises - Einfache Berechnungen</title><link>/de/labs/02_java/03_java-grundlagen/05_logic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/05_logic/</guid><description>
+&lt;!--suppress CheckEmptyScriptTag -->
+&lt;h4 id="voraussetzung">Voraussetzung&lt;/h4>
+&lt;ul>
+&lt;li>Du weisst, wie man in Java mit Zahlen rechnet.&lt;/li>
+&lt;/ul>
+&lt;h2 id="vorbereitungsarbeiten">Vorbereitungsarbeiten&lt;/h2>
+&lt;div class="toggle mb-3">
+&lt;button
+class="toggle-button"
+aria-expanded="false"
+aria-controls="toggle-1753459770466064887"
+onclick="
+const btn = this;
+const content = document.getElementById('toggle-1753459770466064887');
 const expanded = btn.getAttribute('aria-expanded') === 'true';
 btn.setAttribute('aria-expanded', !expanded);
 content.classList.toggle('open');
@@ -383,7 +977,7 @@ exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher
 &lt;a href="./it-ninja_02_java_03_java-grundlagen_05_logic.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
 &lt;/span>
 &lt;/button>
-&lt;div id="toggle-1753429539089445053" class="toggle-content">
+&lt;div id="toggle-1753459770466064887" class="toggle-content">
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem">
 &lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -885,19 +1479,11 @@ genau mit &lt;code>static&lt;/code> auf sich hat lernst du bald.&lt;/p>&lt;/bloc
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">ageInMonths&lt;/span>() {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// IT-Ninja: Füge hier Deinen Code ein:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">printf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Ich bin am %02d.%02d.%04d geboren und heute am %02d.%02d.%04d %d Monate alt.%n&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dayOfBirth, monthOfBirth, yearOfBirth,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dayOfToday, monthOfToday, yearOfToday,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> months);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
@@ -974,13 +1560,10 @@ genau mit &lt;code>static&lt;/code> auf sich hat lernst du bald.&lt;/p>&lt;/bloc
 &lt;/a>
 Hier kommst Du zurück zur Dokumentation:
 &lt;a href="../../../../docs/02_java/03_java-grundlagen/05_logic/#back-from-lab">Mathematik &amp;amp; Logik&lt;/a>.
-&lt;/p></description></item><item><title>Labs: Java Exercises - Variablen und bedingte Anweisungen</title><link>/de/labs/02_java/03_java-grundlagen/06_control-structures/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/06_control-structures/</guid><description>
+&lt;/p></description></item><item><title>Labs: Java Exercises - Variablen und bedingte Anweisungen</title><link>/de/labs/02_java/03_java-grundlagen/06_control-structures-if/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/06_control-structures-if/</guid><description>
 &lt;!--suppress CheckEmptyScriptTag -->
 &lt;h4 id="voraussetzung">Voraussetzung&lt;/h4>
 &lt;ul>
-&lt;li>Du weisst was Variablen sind.&lt;/li>
-&lt;li>Du kannst eine Variable deklarieren und initialisieren.&lt;/li>
-&lt;li>Du weisst was primitive Datentypen sind.&lt;/li>
 &lt;li>Du verstehst und kennst die verschiedenen Conditional Statements.&lt;/li>
 &lt;li>Du weisst, wann und wie welches Conditional Statement eingesetzt werden sollte.&lt;/li>
 &lt;/ul>
@@ -989,10 +1572,10 @@ Hier kommst Du zurück zur Dokumentation:
 &lt;button
 class="toggle-button"
 aria-expanded="false"
-aria-controls="toggle-1753429540102899882"
+aria-controls="toggle-1753459770628000488"
 onclick="
 const btn = this;
-const content = document.getElementById('toggle-1753429540102899882');
+const content = document.getElementById('toggle-1753459770628000488');
 const expanded = btn.getAttribute('aria-expanded') === 'true';
 btn.setAttribute('aria-expanded', !expanded);
 content.classList.toggle('open');
@@ -1017,10 +1600,10 @@ exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher
 &lt;/div>
 &lt;/div>
 &lt;p>Falls du die Anleitung schon auswendig kennst, findest du den Quellcode zur Übung direkt hier:
-&lt;a href="./it-ninja_02_java_03_java-grundlagen_06_control-structures.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
+&lt;a href="./it-ninja_02_java_03_java-grundlagen_06_control-structures-if.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
 &lt;/span>
 &lt;/button>
-&lt;div id="toggle-1753429540102899882" class="toggle-content">
+&lt;div id="toggle-1753459770628000488" class="toggle-content">
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem">
 &lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -1083,7 +1666,7 @@ it-ninja sein.
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;templates/it-ninja_02_java_03_java-grundlagen_06_control-structures&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;templates/it-ninja_02_java_03_java-grundlagen_06_control-structures-if&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
@@ -1100,7 +1683,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 &lt;p>Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:&lt;br>
 &lt;code>[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&lt;/code>&lt;/p>
 &lt;blockquote>
-&lt;p>Den Source-Code findest du hier: &lt;a href="./it-ninja_02_java_03_java-grundlagen_06_control-structures.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>Den Source-Code findest du hier: &lt;a href="./it-ninja_02_java_03_java-grundlagen_06_control-structures-if.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>&lt;/blockquote>
 &lt;/li>
 &lt;li>
 &lt;p>Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:&lt;/p>
@@ -1124,7 +1707,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;labs/it-ninja_02_java_03_java-grundlagen_06_control-structures&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;labs/it-ninja_02_java_03_java-grundlagen_06_control-structures-if&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
@@ -1155,14 +1738,14 @@ hast, findest du das Projekt hier:&lt;/li>
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\06_control-structures`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\06_control-structures-if`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/06_control-structures`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/06_control-structures-if`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>
 &lt;ol start="9">
@@ -1192,37 +1775,7 @@ Aufgabe korrekt gelöst hast:&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;h2 id="aufgabe-1---hello-it-ninja">Aufgabe 1 - Hello It-Ninja&lt;/h2>
-&lt;p>Erstelle eine Variable, welche deinen Namen beinhaltet.
-Gib &lt;code>Hello [name]&lt;/code> auf der Konsole aus.&lt;/p>
-&lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
-&lt;a href="/de/labs/02_java/03_java-grundlagen/06_control-structures/source/#src-main-java-ch-itninja-labs-basicexercises-helloname-java">src\main\java\ch\itninja\labs\basicexercises\HelloName.java&lt;/a>:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">printHelloName&lt;/span>(){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// IT-Ninja: Füge hier Deinen Code ein:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>Beispielausgabe:&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Hello It-Ninja
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="aufgabe-2---zahlenvergleich">Aufgabe 2 - Zahlenvergleich&lt;/h2>
+&lt;h2 id="aufgabe-1---zahlenvergleich">Aufgabe 1 - Zahlenvergleich&lt;/h2>
 &lt;p>Passe die folgende Methode an. Vergleiche die beiden Zahlen &amp;lsquo;zahl1&amp;rsquo; und &amp;lsquo;zahl2&amp;rsquo; und gib das Resultat des Vergleichs auf
 auf der Konsole aus:&lt;/p>
 &lt;ul>
@@ -1232,7 +1785,7 @@ auf der Konsole aus:&lt;/p>
 &lt;/ul>
 &lt;p>Wobei in der Ausgabe &lt;code>value1&lt;/code> und &lt;code>value2&lt;/code> durch die tatsächlichen Werte ersetzt werden sollen.&lt;/p>
 &lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
-&lt;a href="/de/labs/02_java/03_java-grundlagen/06_control-structures/source/#src-main-java-ch-itninja-labs-basicexercises-comparenumbers-java">src\main\java\ch\itninja\labs\basicexercises\CompareNumbers.java&lt;/a>:&lt;/p>
+&lt;a href="/de/labs/02_java/03_java-grundlagen/06_control-structures-if/source/#src-main-java-ch-itninja-labs-basicexercises-comparenumbers-java">src\main\java\ch\itninja\labs\basicexercises\CompareNumbers.java&lt;/a>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1325,7 +1878,7 @@ auf der Konsole aus:&lt;/p>
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Zahl1(0) ist gleich gross wie Zahl2(0)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="aufgabe-3---schaltjahr">Aufgabe 3 - Schaltjahr&lt;/h2>
+&lt;/div>&lt;h2 id="aufgabe-2---schaltjahr">Aufgabe 2 - Schaltjahr&lt;/h2>
 &lt;p>Passe die folgende Methode an. Stell fest, ob das übergebene Jahr ein Schaltjahr ist (Gregorianischer Kalender). Gib auf
 der Konsole das Resultat aus:&lt;/p>
 &lt;ul>
@@ -1337,7 +1890,7 @@ Falls das Jahr ein Schaltjahr ist, soll die Methode &lt;code>true&lt;/code> zur�
 &lt;blockquote>
 &lt;p>Verwende keine logischen Ausdrücke zur Berechnung des Schaltjahres. Nutze stattdessen if-else- und else-if Anweisungen.&lt;/p>&lt;/blockquote>
 &lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
-&lt;a href="/de/labs/02_java/03_java-grundlagen/06_control-structures/source/#src-main-java-ch-itninja-labs-basicexercises-leapyear-java">src\main\java\ch\itninja\labs\basicexercises\LeapYear.java&lt;/a>:&lt;/p>
+&lt;a href="/de/labs/02_java/03_java-grundlagen/06_control-structures-if/source/#src-main-java-ch-itninja-labs-basicexercises-leapyear-java">src\main\java\ch\itninja\labs\basicexercises\LeapYear.java&lt;/a>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1532,20 +2085,21 @@ Falls das Jahr ein Schaltjahr ist, soll die Methode &lt;code>true&lt;/code> zur�
 &lt;/a>
 Hier kommst Du zurück zur Dokumentation:
 &lt;a href="../../../../docs/02_java/03_java-grundlagen/06_control_structures/#back-from-lab">Kontrollstrukturen&lt;/a>.
-&lt;/p></description></item><item><title>Labs: Java Exercises - Einfaches Hello World</title><link>/de/labs/02_java/03_java-grundlagen/00_simple-hello-world/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/00_simple-hello-world/</guid><description>
-&lt;h2 id="voraussetzung">Voraussetzung&lt;/h2>
+&lt;/p></description></item><item><title>Labs: Java Exercises - Das Switch Statement</title><link>/de/labs/02_java/03_java-grundlagen/06_control-structures-switch/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/labs/02_java/03_java-grundlagen/06_control-structures-switch/</guid><description>
+&lt;!--suppress CheckEmptyScriptTag -->
+&lt;h4 id="voraussetzung">Voraussetzung&lt;/h4>
 &lt;ul>
-&lt;li>Du bist bereit die nachfolgende Anleitung gründlich zu lesen.&lt;/li>
+&lt;li>Du kennst den &lt;code>switch&lt;/code> Befehl.&lt;/li>
 &lt;/ul>
 &lt;h2 id="vorbereitungsarbeiten">Vorbereitungsarbeiten&lt;/h2>
 &lt;div class="toggle mb-3">
 &lt;button
 class="toggle-button"
 aria-expanded="false"
-aria-controls="toggle-1753429540108914317"
+aria-controls="toggle-1753459770666577287"
 onclick="
 const btn = this;
-const content = document.getElementById('toggle-1753429540108914317');
+const content = document.getElementById('toggle-1753459770666577287');
 const expanded = btn.getAttribute('aria-expanded') === 'true';
 btn.setAttribute('aria-expanded', !expanded);
 content.classList.toggle('open');
@@ -1570,10 +2124,10 @@ exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher
 &lt;/div>
 &lt;/div>
 &lt;p>Falls du die Anleitung schon auswendig kennst, findest du den Quellcode zur Übung direkt hier:
-&lt;a href="./it-ninja_02_java_03_java-grundlagen_00_simple-hello-world.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
+&lt;a href="./it-ninja_02_java_03_java-grundlagen_06_control-structures-switch.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
 &lt;/span>
 &lt;/button>
-&lt;div id="toggle-1753429540108914317" class="toggle-content">
+&lt;div id="toggle-1753459770666577287" class="toggle-content">
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem">
 &lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -1636,7 +2190,7 @@ it-ninja sein.
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;templates/it-ninja_02_java_03_java-grundlagen_00_simple-hello-world&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;templates/it-ninja_02_java_03_java-grundlagen_06_control-structures-switch&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
@@ -1653,7 +2207,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 &lt;p>Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:&lt;br>
 &lt;code>[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&lt;/code>&lt;/p>
 &lt;blockquote>
-&lt;p>Den Source-Code findest du hier: &lt;a href="./it-ninja_02_java_03_java-grundlagen_00_simple-hello-world.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>Den Source-Code findest du hier: &lt;a href="./it-ninja_02_java_03_java-grundlagen_06_control-structures-switch.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>&lt;/blockquote>
 &lt;/li>
 &lt;li>
 &lt;p>Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:&lt;/p>
@@ -1677,7 +2231,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;labs/it-ninja_02_java_03_java-grundlagen_00_simple-hello-world&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;labs/it-ninja_02_java_03_java-grundlagen_06_control-structures-switch&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
@@ -1708,14 +2262,14 @@ hast, findest du das Projekt hier:&lt;/li>
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\00_simple-hello-world`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\06_control-structures-switch`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/00_simple-hello-world`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/06_control-structures-switch`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/div>
 &lt;ol start="9">
@@ -1745,14 +2299,12 @@ Aufgabe korrekt gelöst hast:&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;/div>
-&lt;h2 id="einführung">Einführung&lt;/h2>
-&lt;p>Der zur Übung gehörende Quellcode zeigt dir ein einfaches Programm, welches den Text &lt;code>Hello World&lt;/code> auf die Konsole
-ausgibt. Er soll dir helfen, dich mit der Entwicklungsumgebung (IntelliJ) vertraut zu machen.&lt;/p>
-&lt;h2 id="aufgabe---hello-world">Aufgabe - Hello World&lt;/h2>
-&lt;p>Schau Dir das Programm an und versuche es zum Laufen zu bringen. Versuche, ein paar kleine Änderungen am Programm
-vorzunehmen.&lt;/p>
+&lt;h2 id="aufgabe-1---monat-ausgeben">Aufgabe 1 - Monat ausgeben&lt;/h2>
+&lt;p>Passe die folgende Methode an. Gib abhängig von der Variable &lt;code>month&lt;/code> den passenden Monat auf der Konsole aus. Der Wert
+&lt;code>1&lt;/code> soll dabei dem Monat &lt;code>Januar&lt;/code> entsprechen, &lt;code>2&lt;/code> dem Monat &lt;code>Februar&lt;/code>, usw. Für Zahlen welche keinem Monat entsprechen
+soll &lt;code>ungültiger Monat&lt;/code> auf der Konsole ausgegeben werden.&lt;/p>
 &lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
-&lt;a href="/de/labs/02_java/03_java-grundlagen/00_simple-hello-world/source/#src-main-java">src\Main.java&lt;/a>:&lt;/p>
+&lt;a href="/de/labs/02_java/03_java-grundlagen/06_control-structures-switch/source/#src-main-java-ch-itninja-labs-basicexercises-monthhelper-java">src\main\java\ch\itninja\labs\basicexercises\MonthHelper.java&lt;/a>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1760,38 +2312,237 @@ vorzunehmen.&lt;/p>
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">printMonthByNumber&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> month) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Hello, world!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// IT-Ninja: Füge hier Deinen Code ein:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 1:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>MonthHelper.printMonthByNumber(1);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Januar
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 2:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>MonthHelper.printMonthByNumber(5);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Mai
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 3:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>MonthHelper.printMonthByNumber(9);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>September
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 4:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>MonthHelper.printMonthByNumber(12);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Dezember
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 5:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>MonthHelper.printMonthByNumber(22);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>ungültiger Monat
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 6:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>MonthHelper.printMonthByNumber(-3);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>ungültiger Monat
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="aufgabe-2---wochentag">Aufgabe 2 - Wochentag&lt;/h2>
+&lt;p>Passe die folgende Methode an. Gib abhängig von der Variable &lt;code>weekdayName&lt;/code> auf der Konsole aus, um welchen Wochentag es sich
+handelt:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Der [weekdayName] ist der [weekday]. Tag in der Woche.&lt;/code>&lt;/li>
+&lt;li>&lt;code>[weekdayName] entspricht keinem bekannten Wochentag.&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Wobei in der Ausgabe &lt;code>[weekdayName]&lt;/code> durch den Namen des Wochentags ersetzt werden soll und &lt;code>[weekday]&lt;/code> durch den Tag
+der Woche, welche dem Wochentag entspricht. Der Montag soll dabei der erste Tag in der Woche sein.&lt;/p>
+&lt;p>Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:&lt;br>
+&lt;a href="/de/labs/02_java/03_java-grundlagen/06_control-structures-switch/source/#src-main-java-ch-itninja-labs-basicexercises-weekhelper-java">src\main\java\ch\itninja\labs\basicexercises\WeekHelper.java&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">printWeekdayNumber&lt;/span>(String weekdayName) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// IT-Ninja: Füge hier Deinen Code ein:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 1:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>WeekHelper.printWeekdayNumber(&amp;#34;Freitag&amp;#34;);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Der Freitag ist der 5. Tag in der Woche.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 2:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>WeekHelper.printWeekdayNumber(&amp;#34;Donnerstag&amp;#34;);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Der Donnerstag ist der 4. Tag in der Woche.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 3:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>WeekHelper.printWeekdayNumber(&amp;#34;Weihnachten&amp;#34;);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Weihnachten entspricht keinem bekannten Wochentag.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Beispiel 4:&lt;/strong>&lt;/p>
+&lt;p>Eingabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>WeekHelper.printWeekdayNumber(&amp;#34;Samstag&amp;#34;);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ausgabe:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>Der Samstag ist der 6. Tag in der Woche.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;hr>
 &lt;p>
-&lt;a href="../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab">
+&lt;a href="../../../../docs/02_java/03_java-grundlagen/06_control_structures/#back-from-lab">
 &lt;img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
 &lt;/a>
 Hier kommst Du zurück zur Dokumentation:
-&lt;a href="../../../../docs/02_java/03_java-grundlagen/01_java_intro/#back-from-lab">Struktur und Syntax&lt;/a>.
-&lt;/p>
-&lt;hr>
-&lt;p>
-&lt;a href="../../../../docs/99_tools/ide/intellij/01_installation/#back-from-lab">
-&lt;img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
-&lt;/a>
-Hier kommst Du zurück zur Dokumentation:
-&lt;a href="../../../../docs/99_tools/ide/intellij/01_installation/#back-from-lab">IntelliJ installieren&lt;/a>.
-&lt;/p>
-&lt;hr>
-&lt;p>
-&lt;a href="../../../../docs/99_tools/ide/intellij/03_run-and-debug/#back-from-lab">
-&lt;img src="/images/info.png" alt="zur Dokumentation" style="width: 50px; vertical-align: middle; margin-right: 8px;">
-&lt;/a>
-Hier kommst Du zurück zur Dokumentation:
-&lt;a href="../../../../docs/99_tools/ide/intellij/03_run-and-debug/#back-from-lab">Mit IntelliJ Java Code kompilieren, ausführen und debuggen&lt;/a>.
+&lt;a href="../../../../docs/02_java/03_java-grundlagen/06_control_structures/#back-from-lab">Kontrollstrukturen&lt;/a>.
 &lt;/p></description></item></channel></rss>
