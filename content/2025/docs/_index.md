@@ -33,21 +33,31 @@ Am Ende des Programms kannst du sicher mit diesen Technologien umgehen:
 - ✅ **HTML, CSS & JavaScript** – dein Einstieg ins Web
 - ✅ **TypeScript & Angular** – moderne Webanwendungen bauen
 
+{{< ninja info>}}
+Wenn du Webseiten oder Webanwendungen entwickelst, unterscheidet man grob zwei Bereiche:
+
+Frontend – das ist alles, was die Benutzer:innen direkt sehen und bedienen können. Es läuft vorwiegend im Browser und
+umfasst HTML, CSS, JavaScript und Frameworks wie Angular.
+
+Backend – das ist die „unsichtbare“ Logik im Hintergrund. Hier laufen Programme (z. B. in Java mit Spring Boot), die
+Daten speichern, verarbeiten und Schnittstellen bereitstellen.
+{{< /ninja >}}
+
 Alles im begleiteten Selbststudium – individuell, effizient und mit maximalem Praxisbezug.
 
 ## Anpassen der Webseite
 
 Unter [Konfiguration](../config/) kannst du it-ninjas an deine Bedürfnisse anpassen. Wir empfehlen dir, das gleich zu tun, damit du optimal arbeiten kannst.
 
-{{< sbb >}}
-Hey cool, willkommen bei der SBB!
+{{< tafy >}}
+Hey cool, willkommen in der Talent Factory!
 
 Boxen wie diese geben dir zusätzliche Informationen, wie du mit den Tools und Werkzeugen bei SBB deine Herausforderungen meistern kannst.
 
 {{< ninja info>}}
-Gewisse Tools bedingen, dass du per VPN mit dem Netzwerk von SBB verbunden bist!
+Gewisse Tools bedingen, dass du per VPN mit dem Netzwerk von der Talent Factory bei der SBB verbunden bist!
 {{< /ninja >}}
-{{< /sbb >}}
+{{< /tafy >}}
 
 ---
 
@@ -55,7 +65,7 @@ Starte jetzt mit den [Java Grundlagen](./02_java/03_java-grundlagen/) um bald ei
 
 ---
 
-{{< sbb >}}
+{{< tafy >}}
 
 ## Übersicht Ausbildungsprogramm
 
@@ -71,7 +81,7 @@ Beachte, die Zeiten sind grobe Vorgaben. Jeder hat sein eigenes Tempo. Es ist wi
 Die berufsübergreifenden Workshops und Erfahrungstransfers sind ebenfalls wichtig – du findest sie ausserhalb von IT-Ninjas in separaten Angeboten.
 {{< /ninja >}}
 
-{{< /sbb >}}
+{{< /tafy >}}
 
 ---
 

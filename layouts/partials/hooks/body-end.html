@@ -93,8 +93,10 @@
 
     // visibility for apprenticeship users
     document.querySelectorAll('[class^="is-a-"], [class*=" is-a-"]').forEach(el => {
-      const match = Array.from(el.classList).find(cls => cls.startsWith('is-a-'));
-      if (match && match === 'is-a-' + apprenticeshipprovider.toLowerCase()) {
+      const matches = Array.from(el.classList).some(cls =>
+        cls === 'is-a-' + apprenticeshipprovider.toLowerCase()
+      );
+      if (matches) {
         el.style.display = el.dataset.shouldDisplay || 'block';
       }
     });

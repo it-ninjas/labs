@@ -1,0 +1,36 @@
+{{ $raw := (.Get "raw") | default "false" }}
+{{ $inner := .Inner }}
+
+{{ if findRE "^\\s*<!--" $inner }}
+  {{ $inner = $inner | replaceRE "^\\s*<!--\\s*" "" }}
+  {{ $inner = $inner | replaceRE "\\s*-->\\s*$" "" }}
+{{ end }}
+
+{{ $inner = printf "%s\n" $inner }}
+
+<div class="is-a-sbb is-a-puzzle" style="display: none;" data-should-display="{{ if eq $raw "true" }}block{{ else }}flex{{ end }}"> 
+  <div style="width: 100%; margin: 1rem auto;">
+    {{ if eq $raw "true" }}
+      <div style="font-size: 1.1rem;">
+        {{ .Inner | markdownify }}
+      </div>
+    {{ else }}
+      <div style="
+        display: flex;
+        align-items: flex-start;
+        border: 2px solid #002b36;
+        border-radius: 16px;
+        padding: 1rem;
+        background-color: #fdfdfd;
+      ">
+        <div style="flex-shrink: 0; margin-right: 1rem;">
+          <img class="is-a-sbb" src="/images/sbb-logo.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px;">
+          <img class="is-a-puzzle" src="/images/puzzle-logo.png" alt="Puzzle Logo" style="width: 60px; height: 60px; border-radius: 12px;">
+        </div>
+        <div style="font-size: 1.1rem; flex-grow: 1;">
+          {{ $inner | markdownify }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</div>
