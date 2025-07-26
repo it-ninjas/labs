@@ -6,6 +6,8 @@ description: >
   In diesem Modul lernst du, wie du Werte von einem Datentyp in einen anderen umwandeln kannst – z. B. von `double` nach `int`.
 ---
 
+{{< module "J1" >}}
+
 ## Ziele
 
 - Ich verstehe den Unterschied zwischen impliziter und expliziter Typumwandlung (Casting).

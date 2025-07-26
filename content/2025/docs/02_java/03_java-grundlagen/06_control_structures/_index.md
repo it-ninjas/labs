@@ -6,6 +6,8 @@ description: >
   In diesem Modul lernst du, wie du mit Kontrollstrukturen wie Bedingungen und Schleifen den Ablauf eines Programms gezielt steuerst.
 ---
 
+{{< module "J1" >}}
+
 ## Ziele
 
 - Ich weiss, was eine bedingte Anweisung ist und kann sie korrekt anwenden.
