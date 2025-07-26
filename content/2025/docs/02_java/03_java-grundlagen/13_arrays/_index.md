@@ -1,7 +1,7 @@
 ---
 title: "Arrays"
 linkTitle: "Arrays"
-weight: 11
+weight: 13
 description: >
   Modul #J1
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Typumwandlung (Casting)"
 linkTitle: "Typumwandlung"
-weight: 6
+weight: 7
 description: >
   In diesem Modul lernst du, wie du Werte von einem Datentyp in einen anderen umwandeln kannst – z. B. von `double` nach `int`.
 ---
