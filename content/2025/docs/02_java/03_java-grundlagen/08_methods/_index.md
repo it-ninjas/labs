@@ -3,41 +3,56 @@ title: "Methoden"
 linkTitle: "Methoden"
 weight: 8
 description: >
-  Modul #J1
+  In diesem Modul lernst du, wie du Methoden in Java definierst, Parameter übergibst und Rückgabewerte nutzt.
 ---
+
+{{< module "J1" >}}
 
 ## Ziele
 
-- Ich weiss, wofür Methoden sind.
-- Ich weiss, wie eine Methode aufgebaut ist.
-- Ich weiss, wie eine Methode mit Parameter aufgebaut ist.
-- Ich weiss, wie eine Methode mit Rückgabewert aufgebaut ist.
+- Ich weiss, wofür Methoden da sind.
+- Ich kenne den Aufbau einer Methode.
+- Ich weiss, wie Parameter an eine Methode übergeben werden.
+- Ich weiss, wie eine Methode einen Wert zurückgibt.
 - Ich kann Methoden gezielt in meinem Programm einsetzen.
+
+{{< zeit lesen="15" >}}
 
 ## Was sind Methoden?
 
-In Java sind Methoden Blöcke von Code, die spezifische Aufgaben ausführen. Sie dienen zur Organisation und
-Wiederverwendung von Code. Methoden ermöglichen es, eine Gruppe von Anweisungen in einem eigenen Codeblock zu kapseln
-und diesen Codeblock durch einen Methodenaufruf auszuführen.
+In Java sind Methoden benannte Codeblöcke, die eine bestimmte Aufgabe ausführen. Sie helfen, Programme besser zu
+strukturieren und wiederverwendbaren Code zu schreiben.
+
+{{< ninja info >}}
+Wenn du die bisherigen Aufgaben anschaust, welche du gelöst hast, wirst du feststellen, dass dort deine Anpassungen
+immer in einem benannten CodeBlock war. Du hast also schon die ganze Zeit Methoden angepasst und benutzt.
+{{< /ninja>}}
+
+Methoden ermöglichen:
+
+- das Bündeln von Anweisungen zu einer klaren Funktionalität
+- das Ausführen dieser Funktionalität durch einen einfachen Aufruf
+- eine saubere Trennung einzelner Aufgaben im Programm
 
 ## Aufbau einer Methode
 
-Eine Methode in Java ist wie folgt aufgebaut:
+Eine Methode besteht aus einem Methodenkopf und einem Rumpf:
 
 ```java
 Rückgabetyp methodName(Parameterliste) {
-    // Methoden Code
+    // Anweisungen
 }
 ```
 
-- `Rückgabetyp`: Dieser Typ gibt an, welchen Datentyp die Methode zurückgibt. Wenn die Methode keinen Rückgabewert hat, wird `void` verwendet.
-- `methodName`: Der Name der Methode, über den sie aufgerufen wird.
-- `Parameterliste`: Hier werden die Parameter aufgelistet, die die Methode erwartet.
-- `Methoden Code`: Dies ist der Codeblock, der die spezifische Aufgabe der Methode ausführt.
+- **Rückgabetyp**: Gibt an, welcher Datentyp zurückgegeben wird (`int`, `String`, …). Wird nichts zurückgegeben, nutzt
+  man `void`.
+- **methodName**: Der Name der Methode – über diesen wird sie aufgerufen.
+- **Parameterliste**: Liste von Eingabewerten, die die Methode beim Aufruf erwartet.
+- **Anweisungen**: Der Code, der ausgeführt wird, wenn die Methode aufgerufen wird.
 
 ## Methoden mit Parametern
 
-Methoden können auch Parameter akzeptieren, die beim Aufruf übergeben werden. Hier ist ein Beispiel:
+Methoden können Parameter (Eingabewerte) erwarten:
 
 ```java
 void greetUser(String name) {
@@ -45,85 +60,97 @@ void greetUser(String name) {
 }
 ```
 
-In diesem Fall erwartet die Methode `greetUser` einen `String`-Parameter, der den Namen des Benutzers enthält.
+Diese Methode erhält einen `String`-Parameter `name` und gibt eine Begrüssung aus.
 
-### Lernvideo
-
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
-[Video](https://www.youtube.com/watch?v=oSDtCcDXcTM).
+{{< video "https://www.youtube.com/watch?v=oSDtCcDXcTM" "YouTube, Methoden einfach erklärt">}}
 
 ## Methoden mit Rückgabewert
 
-Methoden können einen Wert zurückgeben. Hier ist ein Beispiel:
+Methoden können auch Werte zurückgeben:
 
 ```java
-int addiere(int a, int b) {
-    int summe = a + b;
-    return summe;
+int add(int a, int b) {
+    return a + b;
 }
 ```
 
-In diesem Fall gibt die Methode `addiere` die Summe der beiden übergebenen Zahlen als `int` zurück.
+Diese Methode addiert zwei Zahlen und gibt die Summe zurück.
 
-## Wieso brauche ich Methoden?
+## Methoden ohne Rückgabewert (`void`)
 
-Methoden bieten mehrere Vorteile, die deinen Code übersichtlicher und effizienter machen:
+Wenn eine Methode **keinen Wert zurückgeben soll**, verwendest du den Rückgabetyp `void`.
 
-- **Wiederverwendbarkeit**: Anstatt denselben Code mehrfach zu schreiben, kannst du ihn in einer Methode bündeln und diese Methode mehrmals aufrufen.
-- **Weniger Code-Duplikate**: Durch das Verwenden von Methoden reduzierst du Duplikate im Code, was diesen leichter wartbar und fehlerresistenter macht.
-- **Sprechende Methodennamen**: Methoden können selbsterklärende Namen haben, was den Code für andere (und dich selbst) verständlicher macht.
-- **Logische Trennung**: Methoden helfen dabei, den Code in logische Abschnitte zu unterteilen, sodass jede Methode eine spezifische Aufgabe übernimmt.
+Solche Methoden führen Anweisungen aus, ohne ein Ergebnis an den Aufrufer zurückzugeben – z. B. eine Ausgabe oder das
+Setzen eines Wertes.
 
-### Beispiel: Division ohne Methoden
+```java
+void greet() {
+    System.out.println("Hallo!");
+}
+```
 
-Stell dir vor, du möchtest mehrere Zahlen dividieren und dabei vor jeder Division prüfen, ob der Divisor `0` ist. Ohne Methoden sieht der Code vielleicht so aus:
+Du kannst diese Methode so aufrufen:
+
+```java
+greet();
+```
+
+## Wozu brauche ich Methoden?
+
+Methoden bringen viele Vorteile:
+
+- **Wiederverwendbarkeit**: Einmal schreiben, beliebig oft nutzen.
+- **Reduktion von Code-Duplikaten**: Weniger Fehler, einfachere Wartung.
+- **Lesbarkeit**: Durch sprechende Namen versteht man den Code schneller.
+- **Strukturierung**: Jede Methode übernimmt eine klar abgegrenzte Aufgabe.
+
+## Beispiel: Division ohne Methoden
+
+Ohne Methoden wiederholen sich Prüfungen und Ausgaben:
 
 ```java
 public static void main(String[] args) {
     Random random = new Random();
 
-    int a = random.nextInt(11); // eine zufällige Zahl zwischen 0 und 10
+    int a = random.nextInt(11);
     int b = random.nextInt(11);
     int c = random.nextInt(11);
 
-    //Vor jeder Rechnung muss überprüft werden, ob der Divisor 0 ist
-    if (b != 0) {                   //ist b == 0?
-        int ergebnis1 = a / b;
-        if (c != 0) {               //ist c == 0?
-            int ergebnis2 = ergebnis1 / c;
-            System.out.println("Ergebnis: " + ergebnis2);
+    if (b != 0) {
+        int result1 = a / b;
+        if (c != 0) {
+            int result2 = result1 / c;
+            System.out.println("Ergebnis: " + result2);
         } else {
-            System.out.println("Division durch 0 nicht erlaubt.");  //falls c == 0 ist
+            System.out.println("Division durch 0 nicht erlaubt.");
         }
     } else {
-        System.out.println("Division durch 0 nicht erlaubt.");      //falls b == 0 ist
+        System.out.println("Division durch 0 nicht erlaubt.");
     }
 }
 ```
 
-Wie du hier sehen kannst, ist der Code schwierig zu lesen, da die Divisionen verstreut sind. Im Code muss man den Check auf `0` mehrmals definieren.
-Ebenfalls muss die gleiche Fehlermeldung mehrmals definiert werden. Möchtest du eine weitere Division durchführen, musst du den Check und die Fehlermeldung noch mal schreiben.
-Das kannst du dir alles durch eine Methode ersparen.
+⚠️ Gleicher Code mehrfach und verschachtelte Blöcke → schlecht wartbar.
 
-### Beispiel: Division mit Methoden
+## Beispiel: Division mit Methoden
 
-Wenn du eine Methode erstellst, um die Division durchzuführen und die Prüfung auf `0` zu gruppieren, sieht der Code wesentlich sauberer aus:
+Eleganter und übersichtlicher mit einer Methode:
 
 ```java
 public static void main(String[] args) {
     Random random = new Random();
 
-    int a = random.nextInt(11); // eine zufällige Zahl zwischen 0 und 10
+    int a = random.nextInt(11);
     int b = random.nextInt(11);
     int c = random.nextInt(11);
 
-    int ergebnis1 = divide(a, b);
-    int ergebnis2 = divide(ergebnis1, c);
+    int result1 = divide(a, b);
+    int result2 = divide(result1, c);
 
-    System.out.println("Ergebnis: " + ergebnis2);
+    System.out.println("Ergebnis: " + result2);
 }
 
-public int divide(int numerator, int denominator) {
+public static int divide(int numerator, int denominator) {
     if (denominator == 0) {
         System.out.println("Division durch 0 nicht erlaubt.");
         return 0;
@@ -132,18 +159,74 @@ public int divide(int numerator, int denominator) {
 }
 ```
 
-Durch die Verwendung einer Methode sparst du nicht nur Codezeilen, sondern stellst auch sicher, dass du die Prüfung auf `0` nur einmal schreibst und sie dennoch überall angewendet wird, wo es nötig ist.
-Das Gleiche gilt für die Fehlermeldung. Du kannst diese Methode so oft wie du willst für andere Zahlen aufrufen.
-Für den Leser ist auch klar, was in diesem Code passiert, da es einen sprechenden Namen (`divide`) hat.
+✅ Nur eine zentrale Prüfung  
+✅ Verständlicher Code  
+✅ Wiederverwendbare Methode
 
-### Lernvideo
+## Namenskonventionen für Methoden und Parameter
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
-[Video](https://www.youtube.com/watch?v=qQ79aq7HZ-U).
+### Methoden
 
-{{< todo >}}
-Labs konvertieren:
+Beim Benennen von Methoden beachtest du folgende Regeln:
 
-Aufgabe 5
-../../../../labs/02_java/03_java-grundlagen/#aufgabe-5---methoden
-{{< /todo >}}
+- Der Name beginnt mit einem **Kleinbuchstaben**.
+- Er besteht aus mehreren sinnvollen Wörtern im **camelCase** (z. B. `calculateTotal`).
+- Der Name beschreibt eine **Aktion oder Aufgabe** (z. B. `printText`, `getUserName`).
+- Vermeide Abkürzungen, ausser sie sind allgemein verständlich (z. B. `id`, `url`).
+- Parameter sind benannte Eingabewerte von Methoden. Für sie gelten
+  [**die gleichen Regeln wie bei Variablen**](../02_variables/#namenskonventionen-für-variablen)
+
+Beispiele:
+
+```java
+void calculateTaxes(double income) { ... }
+String formatDate(LocalDate date) { ... }
+void printReport(String title, int pageCount) { ... }
+```
+
+{{< ninja info >}}
+Die Regeln zur Benennung von Methoden und Parametern sind Teil unserer **Coding Guidelines**. Du findest die vollständige
+Richtlinie für Java [hier](../../../99_tools/zusammenarbeit/guidelines/coding/java/).
+{{< /ninja >}}
+
+## Rekursive Methoden
+
+Eine Methode kann **sich selbst aufrufen** – das nennt man **Rekursion**.  
+Das ist besonders hilfreich, wenn sich ein Problem in gleichartige Teilprobleme zerlegen lässt.
+
+Beispiel: Fakultät berechnen (`n! = n * (n-1) * (n-2) * ... * 1`)
+
+```java
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n - 1);
+}
+```
+
+Ablauf bei `factorial(3)`:
+
+```
+→ factorial(3)
+→ 3 * factorial(2)
+→ 3 * 2 * factorial(1)
+→ 3 * 2 * 1 → ergibt 6
+```
+
+{{< ninja tip >}}
+Jede Rekursion braucht eine **Abbruchbedingung**, sonst ruft sich die Methode endlos selbst auf – und das führt zu einem
+Fehler ("Stack Overflow").
+
+Vielleicht erinnerst du dich noch an die Erklärung von Stack und Heap. Der Stack wird benutzt, um Parameter an eine
+Methode zu übergeben. Sie bleiben dort, bis die Methode zurückkehrt. Bei Rekursion kommen immer wieder neue Parameter
+auf den Stack, ohne dass sie wieder freigegeben werden. Das führt dann innert kurzer Zeit dazu, dass es keinen Platz
+mehr auf dem Stack hat und es zum sogenannten "Stack Overflow" kommt. Es können dann keine Methoden mehr aufgerufen
+werden und das Programm wird beendet.
+{{< /ninja >}}
+
+---
+
+{{< video "https://www.youtube.com/watch?v=qQ79aq7HZ-U" "YouTube, Methoden mit Rückgabewert" >}}
+
+---
+
+{{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/08_methods/)" >}}
