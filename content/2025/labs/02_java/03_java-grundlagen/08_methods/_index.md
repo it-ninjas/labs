@@ -157,13 +157,13 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 ```java
     public static void main(String[] args) {
 
-        // Sample call for printMessage
+        // Sample call for "Nachricht drucken"
         // IT-Ninja: Füge hier Deinen Code ein:
 
-        // Sample call for minimumOfThree
+        // Sample call for "Minimum von drei Zahlen"
         // IT-Ninja: Füge hier Deinen Code ein:
 
-        // Sample call for fibonacci
+        // Sample call for "Fibonacci"
         // IT-Ninja: Füge hier Deinen Code ein:
     }
 ```
@@ -246,13 +246,13 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 ```java
     public static void main(String[] args) {
 
-        // Sample call for printMessage
+        // Sample call for "Nachricht drucken"
         // IT-Ninja: Füge hier Deinen Code ein:
 
-        // Sample call for minimumOfThree
+        // Sample call for "Minimum von drei Zahlen"
         // IT-Ninja: Füge hier Deinen Code ein:
 
-        // Sample call for fibonacci
+        // Sample call for "Fibonacci"
         // IT-Ninja: Füge hier Deinen Code ein:
     }
 ```
@@ -352,13 +352,13 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 ```java
     public static void main(String[] args) {
 
-        // Sample call for printMessage
+        // Sample call for "Nachricht drucken"
         // IT-Ninja: Füge hier Deinen Code ein:
 
-        // Sample call for minimumOfThree
+        // Sample call for "Minimum von drei Zahlen"
         // IT-Ninja: Füge hier Deinen Code ein:
 
-        // Sample call for fibonacci
+        // Sample call for "Fibonacci"
         // IT-Ninja: Füge hier Deinen Code ein:
     }
 ```
