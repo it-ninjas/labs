@@ -116,13 +116,13 @@ import ch.itninja.labs.basicexercises.NumberHelper;
 public class Main {
     public static void main(String[] args) {
 
-        // Sample call for printMessage
+        // Sample call for "Nachricht drucken"
         // IT-Ninja: Füge hier Deinen Code ein...
 
-        // Sample call for minimumOfThree
+        // Sample call for "Minimum von drei Zahlen"
         // IT-Ninja: Füge hier Deinen Code ein...
 
-        // Sample call for fibonacci
+        // Sample call for "Fibonacci"
         // IT-Ninja: Füge hier Deinen Code ein...
     }
 }
