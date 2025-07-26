@@ -1,7 +1,7 @@
 ---
 title: "Scanner"
 linkTitle: "Scanner"
-weight: 10
+weight: 12
 description: >
   Modul #J1
 ---

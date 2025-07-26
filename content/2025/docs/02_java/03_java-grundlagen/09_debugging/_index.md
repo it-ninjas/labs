@@ -1,7 +1,7 @@
 ---
 title: "Debugging"
 linkTitle: "Debugging"
-weight: 12
+weight: 9
 description: >
   Modul #J1 - Debugging von Java Code
 ---
