@@ -9,5 +9,5 @@ description: >
 
 Diese Seite soll als Landing Page dienen und den Absprung zu den verschiedenen Debugging-Seiten erleichtern.
 
-- [Debugging von Java Code in IntelliJ](../02_java/03_java-grundlagen/09_debugging)
+- [Debugging von Java Code in IntelliJ](../99_tools/ide/intellij/06_debugging/)
 - [Frontend-Debugging](../03_web/03_javascript/24_debugging)

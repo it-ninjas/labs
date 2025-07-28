@@ -37,8 +37,7 @@ variables-and-types
 │                       └── util
 │                           └── ItNinjaOutput.java
 ├── pom.xml
-├── README.md
-└── VariablesExercises.zip
+└── README.md
 ```
 
 ## Dateien in variables-and-types
@@ -95,10 +94,6 @@ variables-and-types
 ```
 
 ##### README.md{#readme-md}
-
-Not able to display content!
-
-##### VariablesExercises.zip{#variablesexercises-zip}
 
 Not able to display content!
 
