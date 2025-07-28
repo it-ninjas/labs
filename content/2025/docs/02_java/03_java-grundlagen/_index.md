@@ -26,7 +26,7 @@ Du arbeitest mit einer modernen Entwicklungsumgebung (IntelliJ) und lernst früh
 {{< ninja info >}}
 Richte möglichst früh deine Entwicklungsumgebung ein – du wirst sie für die Übungen benötigen.
 
-Anleitung: [IntelliJ IDEA einrichten](../99_tools/ide/intellij/01_installation/)
+Anleitung: [IntelliJ IDEA einrichten](../../99_tools/ide/intellij/01_installation/)
 {{< /ninja >}}
 
 {{< ninja info >}}
