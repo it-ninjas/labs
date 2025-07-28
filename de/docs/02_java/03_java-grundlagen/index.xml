@@ -2383,109 +2383,290 @@ Wenn du dir die Erklärung noch mit einem Video anschauen möchtest, empfehlen w
 &lt;/a>
 Jetzt bist du dran. Löse bitte die folgenden
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/08_methods/">Aufgaben&lt;/a> in den Labs.
-&lt;/p></description></item><item><title>Docs: Debugging</title><link>/de/docs/02_java/03_java-grundlagen/09_debugging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/09_debugging/</guid><description>
+&lt;/p></description></item><item><title>Docs: Debugging – Fehler finden und verstehen</title><link>/de/docs/02_java/03_java-grundlagen/10_debugging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/10_debugging/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
-&lt;li>Du weisst, wie du in IntelliJ Java Code debuggen kannst.&lt;/li>
+&lt;li>Du verstehst, was Debugging ist und warum es wichtig ist.&lt;/li>
+&lt;li>Du kannst zwischen Debugging und einfachem Logging unterscheiden.&lt;/li>
+&lt;li>Du kennst verschiedene Wege, Fehler im Code zu analysieren.&lt;/li>
 &lt;/ul>
 &lt;h2 id="wieso-ist-debuggen-wichtig">Wieso ist Debuggen wichtig?&lt;/h2>
-&lt;p>Es gibt eine Vielzahl von Gründen, warum Java-Anwendungen Fehler enthalten können. Typische Fehler sind zum Beispiel unerwartete Exceptions oder auch eine fehlerhafte Logik innerhalb des Codes. Mit Debugging kann man das Program systematisch analysieren und so die entsprechenden Fehler identifizieren und beheben.&lt;/p>
-&lt;p>Debuggen kann Entwicklern auch helfen den Ablauf eines Programms besser zu verstehen. Mit dem Debugger kann man den Code Schritt für Schritt durchlaufen und sieht, wie Daten sich verändern und wo welche Entscheidungen getroffen werden. Gerade wenn man eine Methode zum ersten Mal sieht, kann dies stark zum Verständnis der Funktionsweise des Programms beitragen.&lt;/p>
-&lt;h3 id="warum-debuggen-und-nicht-systemoutprintln-verwenden">Warum debuggen und nicht &lt;code>System.out.println()&lt;/code> verwenden?&lt;/h3>
-&lt;p>Die Antwort ist ziemlich einfach, die gleiche Logik wie beim Loggen eines Wertes kannst du mit einem einfach programmierten Breakpoint erreichen. Dazu gleich mehr.&lt;/p>
-&lt;p>Das Problem beim Loggen von Nachrichten und Werten ist nicht, dass es nicht funktioniert. Es ist, dass es die Lesbarkeit des geschriebenen Codes beeinträchtigt und die Konsole mit sinnlosen Logs überfüllt. Ausserdem birgt jedes geschriebene Log das Risiko, dass es bei einem &lt;code>git push&lt;/code> vergessen wird und so auf die produktiven Umgebungen gelangen könnte.&lt;/p>
-&lt;p>Zudem kann der Debugger deutlich mehr als nur Logs zu schreiben. Er wird benutzt, um mithilfe von Breakpoints den Code während der Ausführung anzuhalten, zu analysieren und Fehler im Code zu finden.
-Somit ist es besser mit Tools von IntelliJ zu debuggen.&lt;/p>
-&lt;h2 id="debuggen-in-intellij">Debuggen in IntelliJ&lt;/h2>
-&lt;p>Um in IntelliJ zu debuggen, muss man nicht zuerst ein File erstellen oder eine Extension haben. Es reicht, bereits wenn man die Breakpoints setzt.
-Dafür kann man, links neben der Zeilenzahl mittels Links-Klick einen normalen Breakpoint setzen oder mit Rechts-Klick die Optionen ansehen:&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-options-intelliJ.png" alt="IntelliJ zeigt nun die Breakpoint Optionen" title="Breakpoint Optionen IntelliJ">&lt;/p>
-&lt;p>Die Optionen zeigen folgende zwei Breakpoints:&lt;/p>
+&lt;p>Es gibt viele Gründe, warum Programme Fehler enthalten können – z. B. falsche Annahmen, vergessene Sonderfälle oder
+unerwartete Eingaben.
+Typische Fehler sind:&lt;/p>
 &lt;ul>
-&lt;li>Breakpoints: Breakpoints sind die am häufigsten verwendeten. Sie ermöglichen es, den Programmfluss an einer bestimmten Zeile zu unterbrechen und den Code schrittweise zu debuggen.&lt;/li>
-&lt;li>Conditional Breakpoints: Conditional Breakpoints ermöglichen es, einen Breakpoint zu setzen, der nur unter bestimmten Bedingungen ausgelöst wird.&lt;/li>
+&lt;li>falsche Berechnungen&lt;/li>
+&lt;li>&lt;code>NullPointerException&lt;/code>&lt;/li>
+&lt;li>Endlosschleifen&lt;/li>
+&lt;li>falsche Bedingungen (&lt;code>if&lt;/code> falsch herum)&lt;/li>
+&lt;li>Methoden werden nicht aufgerufen oder liefern falsche Werte zurück&lt;/li>
 &lt;/ul>
-&lt;p>Um weitere Arten von Breakpoints zu definieren, muss man in der Auswahl den Conditional Breakpoint auswählen und anschliessend auf &lt;code>more&lt;/code> klicken.&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-conditional-breakpoint-intelliJ.png" alt="IntelliJ zeigt nun mehr Optionen" title="Conditional Breakpoint Optionen IntelliJ Code">&lt;/p>
-&lt;p>Es öffnet sich ein Pop-Up, in welchem man weitere Möglichkeiten hat um Breakpoints zu definieren.&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-conditional-breakpoint-extend-intelliJ.png" alt="IntelliJ öffnet ein erweitertes Breakpoint Menü" title="Conditional Breakpoint Optionen IntelliJ Code">&lt;/p>
-&lt;p>Hier kann beispielsweise, wie im Bild ersichtlich, einen Log definieren, so fungiert der Breakpoint zusätzlich als System.out.println(). Man kann auch einstellen, dass der Breakpoint entfernt werden soll, sobald er einmal aufgerufen wurde. Oder dass er solang inaktiv sein soll bis ein anderer Breakpoint ausgelöst wurde.&lt;/p>
-&lt;p>Um den Debug-Modus zu starten, kann man in IntelliJ oben rechts das Icon das wie ein Käfer aussieht verwenden:&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-starten-intelliJ.png" alt="IntelliJ zeigt nun, den Debuggstartbutton" title="Startbutton zum Debuggen in IntelliJ">&lt;/p>
-&lt;p>Das Debugging-Panel unten auf der Benutzeroberfläche besitzt verschiedene nützliche Tools:&lt;/p>
+&lt;p>Mittels debuggen kannst du den Fehler einkreisen und dann jede Anweisung Schritt für Schritt ausführen und prüfen, ob
+die Anweisung wie erwartet Funktioniert.&lt;/p>
+&lt;h3 id="was-bringt-debuggen">Was bringt Debuggen?&lt;/h3>
 &lt;ul>
-&lt;li>Debugger Controls&lt;/li>
-&lt;li>Debug Console&lt;/li>
-&lt;li>Frames&lt;/li>
-&lt;li>Variables&lt;/li>
-&lt;li>Watches&lt;/li>
+&lt;li>Fehler gezielt finden, indem man den Code &lt;strong>Schritt für Schritt&lt;/strong> durchläuft&lt;/li>
+&lt;li>Werte von Variablen und den Kontrollfluss beobachten&lt;/li>
+&lt;li>Besseres Verständnis für fremden oder komplexen Code&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-panel-intelliJ.png" alt="IntelliJ zeigt nun, das Debugger Panel" title="Debugger Panel in IntelliJ">&lt;/p>
-&lt;h3 id="debugger-controls">Debugger Controls:&lt;/h3>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-actions-intelliJ.png" alt="IntelliJ zeigt nun, das Debugger Actions" title="Debugger Actions in IntelliJ">&lt;/p>
+&lt;h2 id="debugging-vs-logging">Debugging vs. Logging&lt;/h2>
+&lt;p>Viele Anfänger schreiben &lt;code>System.out.println(...)&lt;/code>, um zu sehen, was im Code passiert. Das funktioniert, hat aber Nachteile:&lt;/p>
 &lt;ul>
-&lt;li>
-&lt;p>Rerun:
-Dieser Button startet das Programm im Debug-Modus neu.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Stop:
-Mit diesem Button stoppt man den Debug-Modus.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Pause:
-Dieser Button unterbricht den Programmablauf und hält den Debugger an. Man benutzt es, um das Programm zu pausieren und den aktuellen Zustand der Variablen und Objekte zu überprüfen.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Resume Program:
-Mit diesem Button kann man das Programm im Debug-Modus fortsetzen, nachdem es unterbrochen wurde.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Step Over:
-Dieser Button führt das aktuelle Statement im Code aus und hält an der nächsten Zeile an. Wenn das Statement eine Methode aufruft, wird die Methode ausgeführt und der Debugger hält an der nächsten Zeile an.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Step Into:
-Diese Schaltfläche führt das aktuelle Statement im Code aus und hält an der nächsten Zeile an. Wenn das Statement eine Methode aufruft, wird der Debugger in die Methode hineinspringen und an der ersten Zeile der Methode anhalten.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Step Out:
-Mit dieser Schaltfläche kann man aus einer Methode heraus zurückkehren und den Debugger an der nächsten Zeile nach der Methode anhalten.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>View Breakpoints:
-Mit diesem Button kann man alle Breakpoints anzeigen und konfigurieren, einschliesslich Bedingungen und Aktionen, die bei der Unterbrechung ausgelöst werden sollen.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Mute Breakpoint:
-Mit diesem Button kann man einen Breakpoint stumm schalten, ohne ihn zu entfernen. Dies ist nützlich, wenn man schnell durch den Code navigieren möchten, ohne dass der Debugger bei jedem Breakpoint stoppt.&lt;/p>
-&lt;/li>
+&lt;li>Konsolenausgaben verlangsamen das Programm&lt;/li>
+&lt;li>Der Code wird unübersichtlicher&lt;/li>
+&lt;li>Logs werden oft &lt;strong>vergessen zu entfernen&lt;/strong> und gelangen so in Git oder sogar auf den Server&lt;/li>
 &lt;/ul>
-&lt;h3 id="debug-console">Debug Console:&lt;/h3>
-&lt;p>Hier kann man interaktiv mit dem Code interagieren, indem man JS-Befehle eingibt und ihre Ausgabe sieht. Man kann auch Fehlermeldungen oder Ausnahmen sehen, die während der Ausführung des Codes auftreten.&lt;/p>
-&lt;h3 id="frames">Frames:&lt;/h3>
-&lt;p>In diesem Bereich werden die Stack-Frames angezeigt, die den aktuellen Programmablauf darstellen. Man kann durch die Frames navigieren, indem man auf den Namen des Frames klicken.&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-frames-panel-intelliJ.png" alt="IntelliJ zeigt nun, das Frame Panel" title="Frame Panel in IntelliJ">&lt;/p>
-&lt;h3 id="variables">Variables:&lt;/h3>
-&lt;p>Hier kann man die Werte von Variablen während des Debugging-Prozesses überwachen. Man kann die Variablen auswählen, um ihre aktuellen Werte anzuzeigen, oder man kann Ausdrücke eingeben, um ihre Werte zu berechnen.&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-variables-panel-intelliJ.png" alt="IntelliJ zeigt nun, das Variable Panel" title="Variable Panel in IntelliJ">&lt;/p>
-&lt;h3 id="watches">Watches:&lt;/h3>
-&lt;p>Man kann eine Liste von Variablen erstellen, die man überwachen möchten. Man kann Variablen zur Watcherlist hinzufügen, indem man mit der rechten Maustaste auf die Variable klicken und &amp;ldquo;Add to Watches&amp;rdquo; auswählen.
-Die Variable kann man auch im Inputfeld eingeben und auf das Plusicon am Ende klicken, um sie in die Watcherlist hinzuzufügen:&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-add-watcher-intelliJ.png" alt="IntelliJ zeigt nun, das hinzufügen eines Watchers" title="Watcher hinzufügen in IntelliJ">&lt;/p>
-&lt;p>Die Watcher werden dann über den Variablen aufgelistet:&lt;/p>
-&lt;p>&lt;img src="/de/docs/02_java/03_java-grundlagen/09_debugging/images/debugging-watchers-intelliJ.png" alt="IntelliJ zeigt nun, die Watchers" title="Watchers in IntelliJ">&lt;/p>
-&lt;p>Genau wie beim Hinzufügen kann man einen Watcher entfernen, indem man einem rechten Mausklick auf die Variabel tätigt und &amp;ldquo;Remove Watch&amp;rdquo; anklickt.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+In IntelliJ kannst du stattdessen einen sogenannten &lt;strong>Log-Breakpoint&lt;/strong> setzen. Das ist wie ein &lt;code>System.out.println&lt;/code>, aber ohne den Code zu verändern.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="wie-kann-man-debuggen--auch-ohne-tool">Wie kann man debuggen – auch ohne Tool?&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>Code genau lesen&lt;/strong> – viele Fehler erkennt man durch genaues Nachdenken.&lt;/li>
+&lt;li>&lt;strong>Tests schreiben&lt;/strong> – zeigen sofort, wenn etwas nicht stimmt.&lt;/li>
+&lt;li>&lt;strong>Logs schreiben&lt;/strong> – gezielt und kontrolliert.&lt;/li>
+&lt;li>&lt;strong>Assertions verwenden&lt;/strong> – helfen, Annahmen zu überprüfen.&lt;/li>
+&lt;/ol>
+&lt;h2 id="debugging-vs-fehlersuche-im-feld">Debugging vs. Fehlersuche im Feld&lt;/h2>
+&lt;p>Beim Entwickeln am eigenen Rechner kann man den Code komfortabel debuggen – z. B. mit einem Debugger wie in IntelliJ.
+Im &lt;strong>Produktivbetrieb (im Feld)&lt;/strong> ist das aber nicht möglich:&lt;/p>
+&lt;ul>
+&lt;li>Man kann keine Breakpoints setzen, weil das Programm bereits läuft.&lt;/li>
+&lt;li>Man hat keinen Zugriff auf eine Entwicklungsumgebung.&lt;/li>
+&lt;li>Das Verhalten darf &lt;strong>nicht unterbrochen&lt;/strong> oder &lt;strong>verändert&lt;/strong> werden.&lt;/li>
+&lt;/ul>
+&lt;h3 id="logging-im-feld">Logging im Feld&lt;/h3>
+&lt;p>Deshalb ist &lt;strong>Logging&lt;/strong> im Feld die wichtigste Methode, um Fehler zu finden:&lt;/p>
+&lt;ul>
+&lt;li>Man loggt gezielt Informationen (z. B. Zustände, Fehlermeldungen, Eingabewerte)&lt;/li>
+&lt;li>Diese Logs werden in eine Datei oder Datenbank geschrieben und später analysiert&lt;/li>
+&lt;li>Logging sollte sparsam, aber &lt;strong>gezielt&lt;/strong> eingesetzt werden&lt;/li>
+&lt;/ul>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Auch Logging kann das Verhalten eines Programms verändern – vor allem in zeitkritischen oder nebenläufigen Systemen. Jeder Log-Eintrag braucht Rechenzeit und kann z. B. Threads blockieren oder IO-Prozesse verlangsamen.
+&lt;/div>
+&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+In zeitkritischen Methoden (z. B. bei Hardware-Ansteuerung oder Animationen) sollte Logging nur mit Bedacht oder gar nicht eingesetzt werden. Stattdessen kann man Zustände puffern und später gesammelt ausgeben.
+&lt;/div>
+&lt;/div>
+&lt;p>Für die Java Grundlagen reichen vorderhand die Debug-Möglichkeiten aus, welche IntelliJ bietet. Das Logging werden wir
+erst in einem späteren Modul einsetzen.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Auch während der Entwicklung ist es nicht falsch, den Programmfluss per Ausgabe auf die Konsole oder mittels Logging
+festzuhalten. Dies Informationen liefern wertvolle Informationen, wo man mit dem Debugen effektiv beginnen soll. Vor
+allem bei grösseren Programmen ist es ineffizient, das gesamte Programm bis zum Fehler Schritt für Schritt abzuarbeiten.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="nächste-schritte">Nächste Schritte&lt;/h2>
+&lt;p>Wenn du Java mit IntelliJ verwendest, solltest du das integrierte Debugging-Tool kennenlernen:&lt;/p>
+&lt;p>&lt;a href="/de/docs/99_tools/ide/intellij/06_debugging/">Debugging in IntelliJ&lt;/a>&lt;/p></description></item><item><title>Docs: Fehlerbehandlung mit Exceptions</title><link>/de/docs/02_java/03_java-grundlagen/09_exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/09_exception_handling/</guid><description>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich verstehe den Unterschied zwischen Fehlern (Errors) und Ausnahmen (Exceptions).&lt;/li>
+&lt;li>Ich kenne den Unterschied zwischen Checked und Unchecked Exceptions.&lt;/li>
+&lt;li>Ich kann &lt;code>try&lt;/code>, &lt;code>catch&lt;/code>, &lt;code>finally&lt;/code>, &lt;code>throw&lt;/code> und &lt;code>throws&lt;/code> korrekt verwenden.&lt;/li>
+&lt;li>Ich weiss, wie ich NullPointerExceptions vermeide.&lt;/li>
+&lt;li>Ich weiss, warum Exceptions nicht als Kontrollstruktur verwendet werden sollten.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="30" data-üben="">⏱️ Geschätzte Lesezeit: 30 Minuten&lt;/span>
+&lt;h2 id="was-ist-ein-fehler">Was ist ein Fehler?&lt;/h2>
+&lt;p>In Java unterscheidet man zwei grundlegende Arten von Fehlern:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Error&lt;/strong>: nicht abfangbare Fehler wie z. B. Speicherüberläufe&lt;/li>
+&lt;li>&lt;strong>Exception&lt;/strong>: abfangbare Ausnahmen, die während der Programmausführung auftreten&lt;/li>
+&lt;/ul>
+&lt;p>Exceptions kann man behandeln – Errors nicht.&lt;/p>
+&lt;h2 id="checked-vs-unchecked">Checked vs. Unchecked&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Checked Exceptions&lt;/strong>: werden vom Compiler geprüft (z. B. &lt;code>IOException&lt;/code>)&lt;/li>
+&lt;li>&lt;strong>Unchecked Exceptions&lt;/strong>: entstehen zur Laufzeit (z. B. &lt;code>NullPointerException&lt;/code>, &lt;code>ArithmeticException&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;p>Unchecked Exceptions sind oft auf Programmierfehler zurückzuführen und müssen nicht deklariert oder abgefangen werden.&lt;/p>
+&lt;h2 id="try--catch--finally">try / catch / finally&lt;/h2>
+&lt;p>Mit &lt;code>try&lt;/code> und &lt;code>catch&lt;/code> kann man eine Exception abfangen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> result &lt;span style="color:#f92672">=&lt;/span> 10 &lt;span style="color:#f92672">/&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">catch&lt;/span> (ArithmeticException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">err&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Division durch 0 ist nicht erlaubt!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Optional kann ein &lt;code>finally&lt;/code>-Block folgen, der &lt;strong>immer&lt;/strong> ausgeführt wird:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">finally&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Ich werde auf jeden Fall ausgeführt.&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="throw-und-throws">throw und throws&lt;/h2>
+&lt;p>Mit &lt;code>throw&lt;/code> wird eine Exception ausgelöst. Mit &lt;code>throws&lt;/code> gibt man an, dass eine Methode eine Exception auslösen könnte:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">checkAge&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> age) &lt;span style="color:#66d9ef">throws&lt;/span> IllegalArgumentException {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (age &lt;span style="color:#f92672">&amp;lt;&lt;/span> 0) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> IllegalArgumentException(&lt;span style="color:#e6db74">&amp;#34;Alter darf nicht negativ sein&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="nullpointerexception-vermeiden">NullPointerException vermeiden&lt;/h2>
+&lt;p>Ein häufiger Fehler ist das Zugreifen auf &lt;code>null&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(name.&lt;span style="color:#a6e22e">length&lt;/span>()); &lt;span style="color:#75715e">// NullPointerException!&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Abhilfe schafft ein Guard:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (name &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(name.&lt;span style="color:#a6e22e">length&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Oder ein &lt;code>else&lt;/code>-Zweig für den Fehlerfall:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (name &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(name.&lt;span style="color:#a6e22e">length&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Kein Name vorhanden.&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Auch der Ternary-Operator ist möglich:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(name &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span> &lt;span style="color:#f92672">?&lt;/span> name.&lt;span style="color:#a6e22e">length&lt;/span>() : 0);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="exceptions--kontrollstruktur">Exceptions ≠ Kontrollstruktur&lt;/h2>
+&lt;p>&lt;strong>Falsch:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> value &lt;span style="color:#f92672">=&lt;/span> Integer.&lt;span style="color:#a6e22e">parseInt&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;abc&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">catch&lt;/span> (NumberFormatException e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> value &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Richtig:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (input.&lt;span style="color:#a6e22e">matches&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;\d+&amp;#34;&lt;/span>)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> value &lt;span style="color:#f92672">=&lt;/span> Integer.&lt;span style="color:#a6e22e">parseInt&lt;/span>(input);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> value &lt;span style="color:#f92672">=&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="und-assert">Und &lt;code>assert&lt;/code>?&lt;/h2>
+&lt;p>Mit &lt;code>assert&lt;/code> kann man Annahmen prüfen – bricht aber bei Fehlschlag mit einem &lt;code>AssertionError&lt;/code> ab:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">assert&lt;/span> age &lt;span style="color:#f92672">&amp;gt;=&lt;/span> 0 : &lt;span style="color:#e6db74">&amp;#34;Alter darf nicht negativ sein&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das funktioniert nur, wenn Java mit &lt;code>-ea&lt;/code> gestartet wird (enable assertions). &lt;code>assert&lt;/code> ist ein Tool zur Fehlersuche, kein Ersatz für echtes Exception Handling.&lt;/p>
 &lt;hr>
-&lt;p>Mehr Informationen bezüglich Debuggen in IntelliJ findest du unter folgenden Link:
-&lt;a href="https://www.jetbrains.com/help/idea/debugging-code.html">Debug Code&lt;/a>&lt;/p></description></item><item><title>Docs: Referenztypen</title><link>/de/docs/02_java/03_java-grundlagen/10_reference_types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/10_reference_types/</guid><description>
+&lt;p id="back-from-lab" data-url="--------labs02-java03-java-grundlagen09-exception-handling">
+&lt;a href="../../../../labs/02_java/03_java-grundlagen/09_exception_handling/">
+&lt;img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+&lt;/a>
+Jetzt bist du dran. Löse bitte die folgenden
+&lt;a href="../../../../labs/02_java/03_java-grundlagen/09_exception_handling/">Aufgaben&lt;/a> in den Labs.
+&lt;/p></description></item><item><title>Docs: Referenztypen</title><link>/de/docs/02_java/03_java-grundlagen/11_reference_types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/11_reference_types/</guid><description>
 &lt;h2 id="referenztypen">Referenztypen&lt;/h2>
 &lt;p>Nebst primitiven Datentypen gibt es Referenzdatentypen. Eine Variable von diesem Typ enthält nicht die Werte selbst (wie eine Variable primitiven Typs), sondern nur einen Verweis (Referenz) auf den Speicherort der Daten. Der Standardwert von Referenzvariablen ist &lt;code>null&lt;/code>, welcher besagt, dass die Variable auf kein Objekt verweist.&lt;/p>
 &lt;p>Es gibt zwei Unterarten von Referenztypen:&lt;/p>
 &lt;ol>
 &lt;li>Objektdatentyp, repräsentiert ein beliebiges Objekt einer Klasse wie z.B. &lt;code>String&lt;/code> (wird im nächsten Kapitel präsentiert)&lt;/li>
 &lt;li>Array: Eine Datenstruktur fester Grösse, die dazu dient, mehrere Elemente des gleichen Typs zu speichern (wird später im Kapitel Arrays behandelt)&lt;/li>
-&lt;/ol></description></item><item><title>Docs: String</title><link>/de/docs/02_java/03_java-grundlagen/11_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/11_strings/</guid><description>
+&lt;/ol></description></item><item><title>Docs: String</title><link>/de/docs/02_java/03_java-grundlagen/12_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/12_strings/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann &lt;code>String&lt;/code>-Variablen deklarieren und initialisieren.&lt;/li>
@@ -2956,7 +3137,7 @@ Die Variable kann man auch im Inputfeld eingeben und auf das Plusicon am Ende kl
 &lt;p>Aufgaben 6 und 7
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-6&amp;mdash;strings&lt;/p>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Scanner</title><link>/de/docs/02_java/03_java-grundlagen/12_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/12_scanner/</guid><description>
+&lt;/div></description></item><item><title>Docs: Scanner</title><link>/de/docs/02_java/03_java-grundlagen/13_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/13_scanner/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.&lt;/li>
@@ -3029,7 +3210,7 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;p>Aufgabe 8
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-8&amp;mdash;eingaben-von-der-kommandozeile&lt;/p>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Arrays</title><link>/de/docs/02_java/03_java-grundlagen/13_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/13_arrays/</guid><description>
+&lt;/div></description></item><item><title>Docs: Arrays</title><link>/de/docs/02_java/03_java-grundlagen/14_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/14_arrays/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kenne Arrays und kann diese instantiieren, ihnen Werte von Indexen entnehmen und Werte an Indexe zuweisen.&lt;/li>

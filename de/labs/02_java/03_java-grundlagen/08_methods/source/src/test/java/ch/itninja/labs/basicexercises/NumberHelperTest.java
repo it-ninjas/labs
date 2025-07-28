@@ -16,7 +16,7 @@ public class NumberHelperTest {
             "2, 17, 67, 32, 17",
             "3, 4, 56, 3, 3",
     })
-    void testMinimumOfThree(int lab, int a, int b, int c, int expected) {
+    void givenMinimumOfThree_whenCalled_thenOutputAsExpected(int lab, int a, int b, int c, int expected) {
 
         // Init to a number not used by the methode.
         int min = METHOD_NOT_IMPLEMENTED;

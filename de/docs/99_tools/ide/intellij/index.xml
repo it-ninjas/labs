@@ -393,7 +393,70 @@ Für viele unserer Übungen stellen wir dir ein vorbereitetes Projekt zur Verfü
 &lt;li>Speichern mit &lt;strong>OK&lt;/strong> oder &lt;strong>Apply&lt;/strong>.&lt;/li>
 &lt;/ol>
 &lt;p>IntelliJ wendet die Regeln künftig bei jeder Formatierung automatisch an.&lt;/p>
-&lt;hr></description></item><item><title>Docs: Mit IntelliJ Java Code kompilieren, ausführen und debuggen</title><link>/de/docs/99_tools/ide/intellij/03_run-and-debug/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/99_tools/ide/intellij/03_run-and-debug/</guid><description>
+&lt;hr></description></item><item><title>Docs: Debugging in IntelliJ</title><link>/de/docs/99_tools/ide/intellij/06_debugging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/99_tools/ide/intellij/06_debugging/</guid><description>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Noch nicht sicher, was Debugging genau ist oder wann man es verwendet? Schau dir zuerst das Modul &lt;a href="../../../../02_java/03_java-grundlagen/10_debugging/">Debugging – Fehler finden und verstehen&lt;/a> an.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du kannst in IntelliJ Breakpoints setzen und konfigurieren.&lt;/li>
+&lt;li>Du verstehst die wichtigsten Funktionen des Debuggers.&lt;/li>
+&lt;li>Du kannst den Zustand deines Programms gezielt analysieren.&lt;/li>
+&lt;/ul>
+&lt;h2 id="breakpoints-setzen">Breakpoints setzen&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Linksklick&lt;/strong> auf die Zeilennummer: Standard-Breakpoint&lt;/li>
+&lt;li>&lt;strong>Rechtsklick&lt;/strong> für erweiterte Optionen wie Conditional Breakpoints&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-options-intelliJ.png" alt="IntelliJ Breakpoint Optionen" title="Breakpoint Optionen IntelliJ">&lt;/p>
+&lt;h2 id="erweiterte-breakpoint-einstellungen">Erweiterte Breakpoint-Einstellungen&lt;/h2>
+&lt;ul>
+&lt;li>Bedingung festlegen&lt;/li>
+&lt;li>Nur einmal auslösen&lt;/li>
+&lt;li>Log-Nachricht statt Pause&lt;/li>
+&lt;li>Nur aktiv, wenn ein anderer Breakpoint vorher ausgelöst wurde&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-conditional-breakpoint-intelliJ.png" alt="Conditional Breakpoint">
+&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-conditional-breakpoint-extend-intelliJ.png" alt="Erweiterte Optionen">&lt;/p>
+&lt;h2 id="debug-starten">Debug starten&lt;/h2>
+&lt;p>Klicke oben rechts auf das &lt;strong>Käfer-Symbol&lt;/strong>, um im Debug-Modus zu starten:&lt;/p>
+&lt;p>&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-starten-intelliJ.png" alt="Debug starten">&lt;/p>
+&lt;h2 id="debugger-panel">Debugger-Panel&lt;/h2>
+&lt;p>Hier findest du alle wichtigen Bereiche:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Debugger Controls&lt;/strong> (Steuerung)&lt;/li>
+&lt;li>&lt;strong>Variables&lt;/strong> (aktuelle Werte)&lt;/li>
+&lt;li>&lt;strong>Frames&lt;/strong> (Call Stack)&lt;/li>
+&lt;li>&lt;strong>Watches&lt;/strong> (beobachtete Variablen)&lt;/li>
+&lt;li>&lt;strong>Console&lt;/strong> (Fehlermeldungen, Ausgaben)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-panel-intelliJ.png" alt="Debugger Panel">&lt;/p>
+&lt;h3 id="controls-oben-links">Controls (oben links)&lt;/h3>
+&lt;ul>
+&lt;li>▶ Resume: weiterlaufen lassen&lt;/li>
+&lt;li>⏯ Step Over: nächste Zeile&lt;/li>
+&lt;li>🔽 Step Into: in Methode springen&lt;/li>
+&lt;li>🔼 Step Out: aus Methode raus&lt;/li>
+&lt;li>⏹ Stop: Debug beenden&lt;/li>
+&lt;li>♻ Rerun: neu starten&lt;/li>
+&lt;li>🔕 Mute Breakpoints: pausiert alle Breakpoints&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-actions-intelliJ.png" alt="Debugger Controls">&lt;/p>
+&lt;h3 id="watches--variables">Watches &amp;amp; Variables&lt;/h3>
+&lt;p>Variablen und eigene Ausdrücke überwachen:&lt;/p>
+&lt;ul>
+&lt;li>Rechtsklick → „Add to Watches“&lt;/li>
+&lt;li>Oder ins Watch-Feld schreiben&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-add-watcher-intelliJ.png" alt="Watcher hinzufügen">
+&lt;img src="/de/docs/99_tools/ide/intellij/06_debugging/images/debugging-watchers-intelliJ.png" alt="Watchers Übersicht">&lt;/p>
+&lt;h2 id="weitere-infos">Weitere Infos&lt;/h2>
+&lt;p>👉 &lt;a href="https://www.jetbrains.com/help/idea/debugging-code.html">Offizielle JetBrains Doku zu Debugging&lt;/a>&lt;/p></description></item><item><title>Docs: Mit IntelliJ Java Code kompilieren, ausführen und debuggen</title><link>/de/docs/99_tools/ide/intellij/03_run-and-debug/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/99_tools/ide/intellij/03_run-and-debug/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Du kannst deinen Java-Code in IntelliJ ausführen&lt;/li>
