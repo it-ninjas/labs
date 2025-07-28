@@ -7,7 +7,7 @@ description: >
 ---
 
 {{< ninja warning >}}
-Noch nicht sicher, was Debugging genau ist oder wann man es verwendet? Schau dir zuerst das Modul [Debugging – Fehler finden und verstehen](../../../../02_java/03_java-grundlagen/09_debugging/) an.
+Noch nicht sicher, was Debugging genau ist oder wann man es verwendet? Schau dir zuerst das Modul [Debugging – Fehler finden und verstehen](../../../../02_java/03_java-grundlagen/10_debugging/) an.
 {{< /ninja >}}
 
 ## Ziele

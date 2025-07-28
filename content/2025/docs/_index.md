@@ -87,7 +87,7 @@ Die berufsübergreifenden Workshops und Erfahrungstransfers sind ebenfalls wicht
 
 ## Direkt zu den Debugging-Seiten
 
-- [Debugging von Java Code in IntelliJ](02_java/03_java-grundlagen/09_debugging/)
+- [Debugging von Java Code in IntelliJ](02_java/03_java-grundlagen/10_debugging/)
 - [Frontend-Debugging](03_web/03_javascript/24_debugging/)
 
 ## Direkt zu den Testing-Seiten
