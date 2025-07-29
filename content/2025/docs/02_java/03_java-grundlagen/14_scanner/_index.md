@@ -6,6 +6,8 @@ description: >
   Modul #J1
 ---
 
+{{< todo >}} Muss noch überarbeitet werden... {{< /todo >}}
+
 ## Ziele
 
 - Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.
