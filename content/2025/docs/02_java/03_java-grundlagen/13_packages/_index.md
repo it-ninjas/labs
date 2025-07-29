@@ -1,0 +1,221 @@
+---
+title: "Packages"
+linkTitle: "Packages"
+weight: 14
+description: >
+  In diesem Modul lernst du, wie man Java-Packages strukturiert, importiert, wiederverwendet und weitergeben kann.
+---
+
+{{< module "J1" >}}
+
+## Ziele
+
+- Ich weiss, was ein Package ist und wozu man es verwendet.
+- Ich kann eigene Packages deklarieren und verstehen, wie sie im Dateisystem aufgebaut sind.
+- Ich kenne die Sichtbarkeiten `public`, `protected`, `private` und `(default)` und deren Bedeutung im Zusammenhang mit
+  Packages.
+- Ich weiss, wie man Packages importiert und wann dies notwendig ist.
+- Ich verstehe den Unterschied zwischen eingebauten, externen und selbst geschriebenen Packages.
+- Ich weiss, woher externe Packages stammen können (lokal, Maven Central, GitHub ...).
+- Ich kann ein Java-Package lokal so bereitstellen, dass es in anderen Projekten verwendet werden kann.
+- Ich weiss, was eine API ist und warum eine gute JavaDoc wichtig ist.
+- Ich habe eine erste Vorstellung, was `static` bedeutet und wofür man es nutzt.
+
+{{< zeit lesen="15" >}}
+
+## Was ist ein Package?
+
+Ein **Package** ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In Java beginnt jede Datei
+optional mit einer `package`-Anweisung:
+
+```java
+package ch.itninja.tool;
+```
+
+Damit sagst du, dass sich die Datei im Package `ch.itninja.tool` befindet. Entsprechend muss die Datei im Verzeichnis
+`ch/itninja/tool` liegen.
+
+{{< ninja tip >}}
+Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur!
+{{< /ninja >}}
+
+Packages helfen, deinen Code zu strukturieren und Wiederverwendung zu ermöglichen. Auch Bibliotheken wie `java.util`
+oder `java.io` sind Packages.
+
+{{< ninja info >}}
+Packages eröffnen dir eine Welt ungeahnter Möglichkeiten: Bis jetzt hast du Aufgaben meist mit mathematischen und
+logischen Operationen sowie bedingten Anweisungen gelöst. Das kann bei komplexeren Problemen sehr aufwändig werden.
+
+Hier kommen Packages ins Spiel: Für viele wiederkehrende Aufgaben gibt es bereits fertige Hilfsklassen – sogenannte
+**Utility-Klassen**. Du musst das Rad nicht neu erfinden!
+
+Beispiele für nützliche Packages:
+
+- `java.lang.Math`: Mathematische Methoden wie `max()`, `min()`, `pow()` oder `sqrt()`
+- `java.lang.String`: Zeichenketten-Verarbeitung (nächstes Modul)
+- `java.util.Scanner`: Einfache Konsoleneingabe (folgt bald)
+- `java.io.File`: Arbeiten mit Dateien
+
+Die Methoden dieser Klassen kannst du direkt verwenden – oft ohne objektorientierte Programmierung.
+{{< /ninja >}}
+
+## Packages vs. Bibliotheken
+
+| Begriff        | Bedeutung                                                |
+| -------------- | -------------------------------------------------------- |
+| **Package**    | Logische Gruppierung von Klassen im Quellcode            |
+| **Bibliothek** | Weitergabe eines oder mehrerer Packages als `.jar` Datei |
+
+### Package
+
+Ein Package ist eine logische Gruppierung von Klassen, um Code zu strukturieren. Beispiel:
+
+```java
+package ch.itninja.util;
+```
+
+Das Package hilft, Code zu ordnen und wiederzuverwenden. Es zeigt, wo man den Quellcode findet (der Package Name
+entspricht dem Pfad, wo der Quellcode abgelegt ist)
+
+### Bibliothek (Library)
+
+Eine Bibliothek ist ein weitergegebenes `.jar`-Archiv mit einem oder mehreren Packages.  
+Beispiel: Du exportierst `MathUtils` im Package `ch.itninja.util` als `math-utils.jar`.
+
+## Sichtbarkeiten verstehen
+
+In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse oder Methode zugegriffen werden darf:
+
+| Sichtbarkeit | Bedeutung                                                 |
+| ------------ | --------------------------------------------------------- |
+| `public`     | Überall sichtbar (auch von anderen Packages)              |
+| `protected`  | Für Unterklassen sichtbar                                 |
+| `(default)`  | Nur innerhalb desselben Packages sichtbar (kein Modifier) |
+| `private`    | Nur innerhalb derselben Datei/Klasse sichtbar             |
+
+Du brauchst `public`, um etwas für andere Packages nutzbar zu machen.
+
+## Importieren von Packages
+
+Wenn du eine `public`-Klasse aus einem anderen Package brauchst, musst du sie **importieren**:
+
+```java
+import java.util.Scanner;
+```
+
+Oder mit Wildcard (nicht empfohlen):
+
+```java
+import java.util.*;
+```
+
+Manche Klassen stehen dir ohne Import zur Verfügung, z. B. `String` oder `System`. Das sind Klassen aus dem Package
+`java.lang`, welches **automatisch importiert** wird.
+
+## Woher kommen Packages?
+
+Es gibt drei Arten von Packages:
+
+1. **Java-eigene Packages** – z. B. `java.util`, `java.io`, `java.math`
+2. **Externe Packages** – z. B. `org.apache.commons.math3`
+3. **Eigene Packages** – z. B. `ch.itninja.util`
+
+Externe Packages müssen **zuerst zum Projekt hinzugefügt werden**, z. B.:
+
+- aus dem **lokalen Dateisystem** (z. B. `.jar`-Datei)
+- aus einem **Maven-Repository** (z. B. Maven Central)
+- aus einem **GitHub Release** oder privaten Server
+
+## Eigene Packages erstellen
+
+Wenn du eigenen Code schreibst, sollte:
+
+- zu Beginn der Datei der Name des Packages mit `package` definiert werden, z. B. `package ch.itninja.math;`
+- die Datei in einen gleichnamigen Ordner legen: `ch/itninja/math`
+
+{{< ninja warning>}}
+**Verwende keine Klassen ohne package-Deklaration!**
+Nur mit einer package-Zeile liegt deine Datei in einem benannten Package – das ist wichtig für Struktur,
+Wiederverwendbarkeit und Importierbarkeit.
+{{< /ninja>}}
+
+Die `src`-Struktur eines Projekts sieht z. B. so aus:
+
+```
+myproject/
+├── src/
+│   └── main/
+│       └── java/
+│           └── ch/
+│               └── itninja/
+│                   └── math/
+│                       └── Calculator.java
+```
+
+> `src/main/java` ist eine weitverbreitete Abmachung, welche hilft, dass Tools wie Maven mit dem Quellcode arbeiten
+> können. Java selbst kann auch ohne diese Verzeichnisse kompilieren.
+
+## Packages weitergeben und wiederverwenden
+
+Wenn du ein Package (z. B. eine Hilfsklasse) in einem anderen Projekt verwenden willst, hast du zwei Möglichkeiten:
+
+1. **Du erstellst eine `.jar`-Datei** deines Projekts (Java-Archiv)
+2. **Du kopierst den Sourcecode (temporär, nicht empfohlen)**
+
+Ein `.jar` kannst du in anderen Projekten verwenden, z. B. per "Add as Library".
+
+Du kannst eine `.jar` auch weitergeben:
+
+- als **lokale Datei** oder ZIP
+- über ein **gemeinsames Netzlaufwerk**
+- über einen **lokalen Maven-Server** (kommt später)
+
+{{< ninja tip >}}
+Wenn du IntelliJ nutzt und eine `.jar`-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du im Modul [Packages lokal verwenden](../../../99_tools/ide/intellij/07_packages/) wie das geht.
+{{< /ninja >}}
+
+## API und JavaDoc
+
+Ein **API** (Application Programming Interface) ist die Schnittstelle deines Codes nach aussen. Sie besteht aus den **öffentlichen Klassen und Methoden**, die von anderen verwendet werden können.
+
+Damit andere deinen Code verstehen und verwenden können, solltest du ihn **gut dokumentieren**:
+
+```java
+/**
+ * Diese Klasse stellt mathematische Hilfsmethoden bereit.
+ */
+public class Calculator {
+    /**
+     * Addiert zwei Zahlen.
+     */
+    public static int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+
+Das nennt man **JavaDoc**. Tools wie IntelliJ oder `javadoc` erzeugen daraus automatisch eine HTML-Dokumentation.
+
+## Was bedeutet `static`?
+
+Vielleicht hast du bereits `public static void main(String[] args)` gesehen.
+
+`static` bedeutet:
+
+- Diese Methode oder Variable gehört **nicht zu einem Objekt**, sondern direkt zur Klasse.
+- Du kannst sie verwenden, **ohne zuerst etwas zu erzeugen**.
+
+Das ist praktisch für Hilfsmethoden, z. B. `Math.max(5, 10)` oder `System.out.println(...)`.
+
+In Grundlagenprojekten verwendest du fast nur `static` Methoden. Die Objekt Orientiert Programmier Welt (OOP-Welt) kommt
+später.
+
+{{< ninja info >}}
+Klassen, die nur `static`-Methoden enthalten, nennt man **Utility-Klassen** oder **Helper-Klassen**. Damit programmiert
+man eher **modular** und weniger **objektorientiert**.
+
+Der Begriff _Modul_ ist in Java jedoch offiziell vergeben: Ab Java 9 steht er für ein Set von Packages mit eigener
+`module-info.java`.
+
+Daher spricht man bei dieser Art der modularen Strukturierung besser von _Utility-Klassen_ und nicht von _Modulen_.
+{{< /ninja >}}
