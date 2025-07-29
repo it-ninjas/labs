@@ -1,7 +1,7 @@
 ---
 title: "Packages"
 linkTitle: "Packages"
-weight: 14
+weight: 12
 description: >
   In diesem Modul lernst du, wie man Java-Packages strukturiert, importiert, wiederverwendet und weitergeben kann.
 ---
