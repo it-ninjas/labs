@@ -2660,13 +2660,329 @@ Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
 Jetzt bist du dran. Löse bitte die folgenden
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/09_exception_handling/">Aufgaben&lt;/a> in den Labs.
 &lt;/p></description></item><item><title>Docs: Referenztypen</title><link>/de/docs/02_java/03_java-grundlagen/11_reference_types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/11_reference_types/</guid><description>
-&lt;h2 id="referenztypen">Referenztypen&lt;/h2>
-&lt;p>Nebst primitiven Datentypen gibt es Referenzdatentypen. Eine Variable von diesem Typ enthält nicht die Werte selbst (wie eine Variable primitiven Typs), sondern nur einen Verweis (Referenz) auf den Speicherort der Daten. Der Standardwert von Referenzvariablen ist &lt;code>null&lt;/code>, welcher besagt, dass die Variable auf kein Objekt verweist.&lt;/p>
-&lt;p>Es gibt zwei Unterarten von Referenztypen:&lt;/p>
-&lt;ol>
-&lt;li>Objektdatentyp, repräsentiert ein beliebiges Objekt einer Klasse wie z.B. &lt;code>String&lt;/code> (wird im nächsten Kapitel präsentiert)&lt;/li>
-&lt;li>Array: Eine Datenstruktur fester Grösse, die dazu dient, mehrere Elemente des gleichen Typs zu speichern (wird später im Kapitel Arrays behandelt)&lt;/li>
-&lt;/ol></description></item><item><title>Docs: String</title><link>/de/docs/02_java/03_java-grundlagen/12_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/12_strings/</guid><description>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich verstehe den Unterschied zwischen primitiven und Referenztypen.&lt;/li>
+&lt;li>Ich weiss, dass Referenzvariablen nicht den Wert, sondern einen Verweis speichern.&lt;/li>
+&lt;li>Ich kenne &lt;code>null&lt;/code> als möglichen Wert einer Referenz.&lt;/li>
+&lt;li>Ich kann einfache Beispiele von Referenztypen (z. B. &lt;code>String&lt;/code>, &lt;code>Array&lt;/code>) erkennen.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="10" data-üben="">⏱️ Geschätzte Lesezeit: 10 Minuten&lt;/span>
+&lt;h2 id="primitive-und-referenztypen">Primitive und Referenztypen&lt;/h2>
+&lt;p>Als Auffrischung. Du hast bereits gelernt, dass es in Java zwei Arten von Datentypen gibt:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kategorie&lt;/th>
+&lt;th>Beispiele&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Primitive Typen&lt;/strong>&lt;/td>
+&lt;td>&lt;code>int&lt;/code>, &lt;code>double&lt;/code>, &lt;code>char&lt;/code>, &lt;code>boolean&lt;/code>&lt;/td>
+&lt;td>Speichern den &lt;strong>Wert direkt&lt;/strong>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Referenztypen&lt;/strong>&lt;/td>
+&lt;td>&lt;code>String&lt;/code>, &lt;code>Array&lt;/code>, eigene Klassen&lt;/td>
+&lt;td>Speichern &lt;strong>nur einen Verweis&lt;/strong> auf den Wert&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="vergleich-von-int-zu-string">Vergleich von &lt;code>int&lt;/code> zu &lt;code>String&lt;/code>&lt;/h3>
+&lt;p>Folgendes Beispiel zeigt die Initialisierung eines primitiven Datentypes und eines Referenztypes:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> 42;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String text &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>a&lt;/code> enthält direkt die Zahl &lt;code>42&lt;/code>&lt;/li>
+&lt;li>&lt;code>text&lt;/code> enthält nur eine &lt;strong>Referenz&lt;/strong> auf ein &lt;code>String&lt;/code>-Objekt im Speicher&lt;/li>
+&lt;/ul>
+&lt;h2 id="null-als-wert">null als Wert&lt;/h2>
+&lt;p>Wenn eine Referenzvariable noch &lt;strong>auf kein Objekt&lt;/strong> zeigt, ist sie &lt;code>null&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Versucht man, auf &lt;code>name&lt;/code> zuzugreifen, ohne vorher etwas zuzuweisen, gibt es einen &lt;strong>Fehler zur Laufzeit&lt;/strong>.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Hier verhalten sich die Referenztypen wie primitive Datentypen. Auch bei den Referenztypen muss zuerst ein Wert
+zugewiesen werden, bevor die Variable benutzt werden darf.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="vorsicht-bei-vergleichen">Vorsicht bei Vergleichen&lt;/h2>
+&lt;p>Bei Referenztypen vergleicht &lt;code>==&lt;/code> nicht den Inhalt, sondern ob es dieselbe Referenz ist (auf das gleiche Objekt verweist):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String s1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String s2 &lt;span style="color:#f92672">=&lt;/span> s1;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>s1&lt;/code> und &lt;code>s2&lt;/code> beinhalten nur eine Zahl, auch Adresse oder Verweis genannt, welche dem Programm mitteilt, wo sich der
+eigentliche String im Speicher befindet.&lt;/p>
+&lt;h2 id="hinweis-verbindung-zu-objekten">Hinweis: Verbindung zu Objekten&lt;/h2>
+&lt;p>Referenztypen werden vor allem im Zusammenhang mit &lt;strong>Objekten&lt;/strong> verwendet. In diesem Grundlagenmodul lernst du zwar noch nicht, wie man eigene Objekte erstellt – aber du wirst schon erste Referenztypen wie &lt;code>String&lt;/code> und Arrays kennenlernen.&lt;/p>
+&lt;p>&lt;code>String&lt;/code> ist intern bereits ein &lt;strong>Objekt&lt;/strong> – deshalb verhält es sich wie ein Referenztyp.&lt;/p>
+&lt;p>Mehr zu Objekten und Klassen erfährst du später im Modul &lt;strong>Java OOP&lt;/strong>.&lt;/p>
+&lt;h2 id="bekannte-referenztypen">Bekannte Referenztypen&lt;/h2>
+&lt;p>Diese Referenztypen wirst du bald näher kennenlernen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>String&lt;/code>&lt;/strong> – für Text&lt;/li>
+&lt;li>&lt;strong>Arrays&lt;/strong> – Sammlung von Werten (z. B. mehrere Zahlen)&lt;/li>
+&lt;/ul>
+&lt;p>Beide speichern nicht direkt die Werte, sondern sind Referenztypen.&lt;/p>
+&lt;h2 id="unterschied-deklarieren-und-initialisieren">Unterschied deklarieren und initialisieren&lt;/h2>
+&lt;p>Es gibt einen wichtigen Unterschied zwischen einer &lt;strong>expliziten Initialisierung mit &lt;code>null&lt;/code>&lt;/strong> und einer &lt;strong>nicht initialisierten Referenzvariable&lt;/strong>.&lt;/p>
+&lt;h3 id="explizite-initialisierung">Explizite Initialisierung&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Die Variable &lt;code>name&lt;/code> ist deklariert und &lt;strong>explizit mit &lt;code>null&lt;/code> initialisiert&lt;/strong>.&lt;/li>
+&lt;li>&lt;code>null&lt;/code> bedeutet: Die Variable verweist auf &lt;strong>kein Objekt&lt;/strong>.&lt;/li>
+&lt;li>Zugriff auf Methoden oder Eigenschaften führt zu einer &lt;strong>NullPointerException&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(name); &lt;span style="color:#75715e">// Ausgabe: null&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(name.&lt;span style="color:#a6e22e">length&lt;/span>()); &lt;span style="color:#75715e">// NullPointerException&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="nicht-initialisierte-referenzvariable">Nicht initialisierte Referenzvariable&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String name;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Die Variable &lt;code>name&lt;/code> ist &lt;strong>deklariert&lt;/strong>, aber &lt;strong>nicht initialisiert&lt;/strong>.&lt;/li>
+&lt;li>Ein Zugriff ohne vorherige Zuweisung führt zu einem &lt;strong>Compilerfehler&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(name); &lt;span style="color:#75715e">// Fehler: Variable might not have been initialized&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="zusammenfassung">Zusammenfassung&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Ausdruck&lt;/th>
+&lt;th>Status&lt;/th>
+&lt;th>Verwendung möglich?&lt;/th>
+&lt;th>Zugriff erlaubt?&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>String name = null;&lt;/code>&lt;/td>
+&lt;td>Initialisiert mit &lt;code>null&lt;/code>&lt;/td>
+&lt;td>✅ ja&lt;/td>
+&lt;td>⚠️ Vorsicht bei Methodenaufrufen&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>String name;&lt;/code>&lt;/td>
+&lt;td>Nur deklariert&lt;/td>
+&lt;td>❌ nein (Compilerfehler)&lt;/td>
+&lt;td>❌ nicht erlaubt&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="was-passiert-bei-string-text--hallo">Was passiert bei &lt;code>String text = &amp;quot;Hallo&amp;quot;;&lt;/code>?&lt;/h2>
+&lt;p>Wenn du einen &lt;code>String&lt;/code> direkt mit einem Text initialisierst, dann wird der Text im sogenannten &lt;strong>String-Literal-Pool&lt;/strong>
+gespeichert:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String text &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>; &lt;span style="color:#75715e">// &amp;#34;Hallo&amp;#34; ist ein String-Literal&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der &lt;strong>String-Literal-Pool&lt;/strong> ist ein spezieller Bereich im &lt;strong>Heap-Speicher&lt;/strong>, in dem &lt;strong>alle konstanten Textwerte&lt;/strong>
+verwaltet werden. &lt;code>&amp;quot;Hallo&amp;quot;&lt;/code> wird dort &lt;strong>nur einmal gespeichert&lt;/strong>, auch wenn du es mehrfach verwendest.&lt;/p>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String b &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(a &lt;span style="color:#f92672">==&lt;/span> b); &lt;span style="color:#75715e">// true – gleiche Referenz im Literal-Pool&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String c &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String(&lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(a &lt;span style="color:#f92672">==&lt;/span> c); &lt;span style="color:#75715e">// false – c zeigt auf neues Objekt im Heap&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Vorteil:&lt;/p>
+&lt;ul>
+&lt;li>Spart Speicher&lt;/li>
+&lt;li>Macht String-Vergleiche mit &lt;code>==&lt;/code> in einfachen Fällen möglich&lt;/li>
+&lt;/ul>
+&lt;p>Wenn du bewusst &lt;strong>neue String-Objekte&lt;/strong> erzeugst (mit &lt;code>new String(...)&lt;/code>), liegen diese &lt;strong>zusätzlich&lt;/strong> im Heap – auch wenn der Inhalt gleich ist.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Auch wenn String-Literals eingesetzt werden sollte man Strings immer mit &lt;code>.equals()&lt;/code> vergleichen. Das Risiko ist sonst gross, dass ein Vergleich nicht korrekt funktioniert.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>; &lt;span style="color:#75715e">// Jave Kompiler optimiert das zu &amp;#34;Hallo&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String b &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(a &lt;span style="color:#f92672">==&lt;/span> b); &lt;span style="color:#75715e">// true – gleiche Referenz im Literal-Pool&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String c &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String d &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> c; &lt;span style="color:#75715e">// Java kann das nicht optimieren. Wert von d wird zur Laufzeit berechnet.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(a &lt;span style="color:#f92672">==&lt;/span> d); &lt;span style="color:#75715e">// false – d zeigt auf neues Objekt im Heap&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="vergleich-von-referenztypen--vs-equals">Vergleich von Referenztypen: &lt;code>==&lt;/code> vs &lt;code>.equals()&lt;/code>&lt;/h2>
+&lt;p>Wenn du zwei Referenzvariablen vergleichst, musst du unterscheiden:&lt;/p>
+&lt;h3 id="vergleichen-von-referenzen-speicheradresse">Vergleichen von Referenzen (Speicheradresse)&lt;/h3>
+&lt;p>Das folgende Beispiel vergleicht die Adressen der beiden Strings, nicht den Inhalt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String(&lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String b &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String(&lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(a &lt;span style="color:#f92672">==&lt;/span> b); &lt;span style="color:#75715e">// false – verschiedene Objekte im Speicher&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="vergleichen-der-inhalte">Vergleichen der Inhalte&lt;/h3>
+&lt;p>Das folgende Beispiel vergleicht den Inhalt der beiden Strings:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String(&lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String b &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String(&lt;span style="color:#e6db74">&amp;#34;Hallo&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(a.&lt;span style="color:#a6e22e">equals&lt;/span>(b)); &lt;span style="color:#75715e">// true – gleiche Zeichenfolge&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Zwei Strings, welche den gleichen Inhalt (Text) haben gelten als equal.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Die Methode &lt;code>.equals()&lt;/code> ist in der Klasse &lt;code>String&lt;/code> (und vielen anderen Klassen) so programmiert, dass sie den &lt;strong>Inhalt&lt;/strong> vergleicht.
+&lt;/div>
+&lt;/div>
+&lt;h3 id="vorsicht-bei-null">Vorsicht bei &lt;code>null&lt;/code>&lt;/h3>
+&lt;p>Wenn eine Variable &lt;code>null&lt;/code> ist, darfst du &lt;strong>nicht &lt;code>.equals()&lt;/code> darauf aufrufen&lt;/strong>, sonst gibt es eine &lt;code>NullPointerException&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String a &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(a.&lt;span style="color:#a6e22e">equals&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Test&amp;#34;&lt;/span>)); &lt;span style="color:#75715e">// NullPointerException&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Besser so:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Test&amp;#34;&lt;/span>.&lt;span style="color:#a6e22e">equals&lt;/span>(a)); &lt;span style="color:#75715e">// false, aber kein Fehler&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="zusammenfassung-1">Zusammenfassung&lt;/h2>
+&lt;ul>
+&lt;li>Primitive Typen speichern Werte direkt.&lt;/li>
+&lt;li>Referenztypen speichern nur einen Verweis.&lt;/li>
+&lt;li>&lt;code>null&lt;/code> bedeutet: keine Referenz vorhanden.&lt;/li>
+&lt;li>&lt;code>String&lt;/code> und &lt;code>Array&lt;/code> sind die ersten Referenztypen, die du kennenlernen wirst.&lt;/li>
+&lt;/ul></description></item><item><title>Docs: String</title><link>/de/docs/02_java/03_java-grundlagen/12_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/12_strings/</guid><description>
+&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
+&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
+--> Muss noch überarbeitet werden&amp;hellip;
+&lt;/div>
+&lt;/div>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann &lt;code>String&lt;/code>-Variablen deklarieren und initialisieren.&lt;/li>
@@ -3137,7 +3453,16 @@ Jetzt bist du dran. Löse bitte die folgenden
 &lt;p>Aufgaben 6 und 7
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-6&amp;mdash;strings&lt;/p>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Scanner</title><link>/de/docs/02_java/03_java-grundlagen/13_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/13_scanner/</guid><description>
+&lt;/div></description></item><item><title>Docs: Scanner</title><link>/de/docs/02_java/03_java-grundlagen/14_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/14_scanner/</guid><description>
+&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
+&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
+--> Muss noch überarbeitet werden&amp;hellip;
+&lt;/div>
+&lt;/div>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.&lt;/li>
@@ -3210,7 +3535,16 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;p>Aufgabe 8
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-8&amp;mdash;eingaben-von-der-kommandozeile&lt;/p>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Arrays</title><link>/de/docs/02_java/03_java-grundlagen/14_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/14_arrays/</guid><description>
+&lt;/div></description></item><item><title>Docs: Arrays</title><link>/de/docs/02_java/03_java-grundlagen/15_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/15_arrays/</guid><description>
+&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
+&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
+--> Muss noch überarbeitet werden&amp;hellip;
+&lt;/div>
+&lt;/div>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kenne Arrays und kann diese instantiieren, ihnen Werte von Indexen entnehmen und Werte an Indexe zuweisen.&lt;/li>
@@ -3414,5 +3748,282 @@ Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe ang
 --> &lt;p>Labs konvertieren:&lt;/p>
 &lt;p>Aufgabe 9
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-9&amp;mdash;arrays&lt;/p>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: Packages</title><link>/de/docs/02_java/03_java-grundlagen/13_packages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/13_packages/</guid><description>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, was ein Package ist und wozu man es verwendet.&lt;/li>
+&lt;li>Ich kann eigene Packages deklarieren und verstehen, wie sie im Dateisystem aufgebaut sind.&lt;/li>
+&lt;li>Ich kenne die Sichtbarkeiten &lt;code>public&lt;/code>, &lt;code>protected&lt;/code>, &lt;code>private&lt;/code> und &lt;code>(default)&lt;/code> und deren Bedeutung im Zusammenhang mit
+Packages.&lt;/li>
+&lt;li>Ich weiss, wie man Packages importiert und wann dies notwendig ist.&lt;/li>
+&lt;li>Ich verstehe den Unterschied zwischen eingebauten, externen und selbst geschriebenen Packages.&lt;/li>
+&lt;li>Ich weiss, woher externe Packages stammen können (lokal, Maven Central, GitHub &amp;hellip;).&lt;/li>
+&lt;li>Ich kann ein Java-Package lokal so bereitstellen, dass es in anderen Projekten verwendet werden kann.&lt;/li>
+&lt;li>Ich weiss, was eine API ist und warum eine gute JavaDoc wichtig ist.&lt;/li>
+&lt;li>Ich habe eine erste Vorstellung, was &lt;code>static&lt;/code> bedeutet und wofür man es nutzt.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;h2 id="was-ist-ein-package">Was ist ein Package?&lt;/h2>
+&lt;p>Ein &lt;strong>Package&lt;/strong> ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In Java beginnt jede Datei
+optional mit einer &lt;code>package&lt;/code>-Anweisung:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.itninja.tool;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Damit sagst du, dass sich die Datei im Package &lt;code>ch.itninja.tool&lt;/code> befindet. Entsprechend muss die Datei im Verzeichnis
+&lt;code>ch/itninja/tool&lt;/code> liegen.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur!
+&lt;/div>
+&lt;/div>
+&lt;p>Packages helfen, deinen Code zu strukturieren und Wiederverwendung zu ermöglichen. Auch Bibliotheken wie &lt;code>java.util&lt;/code>
+oder &lt;code>java.io&lt;/code> sind Packages.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Packages eröffnen dir eine Welt ungeahnter Möglichkeiten: Bis jetzt hast du Aufgaben meist mit mathematischen und
+logischen Operationen sowie bedingten Anweisungen gelöst. Das kann bei komplexeren Problemen sehr aufwändig werden.&lt;/p>
+&lt;p>Hier kommen Packages ins Spiel: Für viele wiederkehrende Aufgaben gibt es bereits fertige Hilfsklassen – sogenannte
+&lt;strong>Utility-Klassen&lt;/strong>. Du musst das Rad nicht neu erfinden!&lt;/p>
+&lt;p>Beispiele für nützliche Packages:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>java.lang.Math&lt;/code>: Mathematische Methoden wie &lt;code>max()&lt;/code>, &lt;code>min()&lt;/code>, &lt;code>pow()&lt;/code> oder &lt;code>sqrt()&lt;/code>&lt;/li>
+&lt;li>&lt;code>java.lang.String&lt;/code>: Zeichenketten-Verarbeitung (nächstes Modul)&lt;/li>
+&lt;li>&lt;code>java.util.Scanner&lt;/code>: Einfache Konsoleneingabe (folgt bald)&lt;/li>
+&lt;li>&lt;code>java.io.File&lt;/code>: Arbeiten mit Dateien&lt;/li>
+&lt;/ul>
+&lt;p>Die Methoden dieser Klassen kannst du direkt verwenden – oft ohne objektorientierte Programmierung.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="packages-vs-bibliotheken">Packages vs. Bibliotheken&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Begriff&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Package&lt;/strong>&lt;/td>
+&lt;td>Logische Gruppierung von Klassen im Quellcode&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Bibliothek&lt;/strong>&lt;/td>
+&lt;td>Weitergabe eines oder mehrerer Packages als &lt;code>.jar&lt;/code> Datei&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="package">Package&lt;/h3>
+&lt;p>Ein Package ist eine logische Gruppierung von Klassen, um Code zu strukturieren. Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.itninja.util;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Package hilft, Code zu ordnen und wiederzuverwenden. Es zeigt, wo man den Quellcode findet (der Package Name
+entspricht dem Pfad, wo der Quellcode abgelegt ist)&lt;/p>
+&lt;h3 id="bibliothek-library">Bibliothek (Library)&lt;/h3>
+&lt;p>Eine Bibliothek ist ein weitergegebenes &lt;code>.jar&lt;/code>-Archiv mit einem oder mehreren Packages.&lt;br>
+Beispiel: Du exportierst &lt;code>MathUtils&lt;/code> im Package &lt;code>ch.itninja.util&lt;/code> als &lt;code>math-utils.jar&lt;/code>.&lt;/p>
+&lt;h2 id="sichtbarkeiten-verstehen">Sichtbarkeiten verstehen&lt;/h2>
+&lt;p>In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse oder Methode zugegriffen werden darf:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Sichtbarkeit&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>public&lt;/code>&lt;/td>
+&lt;td>Überall sichtbar (auch von anderen Packages)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>protected&lt;/code>&lt;/td>
+&lt;td>Für Unterklassen sichtbar&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>(default)&lt;/code>&lt;/td>
+&lt;td>Nur innerhalb desselben Packages sichtbar (kein Modifier)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>private&lt;/code>&lt;/td>
+&lt;td>Nur innerhalb derselben Datei/Klasse sichtbar&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Du brauchst &lt;code>public&lt;/code>, um etwas für andere Packages nutzbar zu machen.&lt;/p>
+&lt;h2 id="importieren-von-packages">Importieren von Packages&lt;/h2>
+&lt;p>Wenn du eine &lt;code>public&lt;/code>-Klasse aus einem anderen Package brauchst, musst du sie &lt;strong>importieren&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Scanner;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Oder mit Wildcard (nicht empfohlen):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.*;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Manche Klassen stehen dir ohne Import zur Verfügung, z. B. &lt;code>String&lt;/code> oder &lt;code>System&lt;/code>. Das sind Klassen aus dem Package
+&lt;code>java.lang&lt;/code>, welches &lt;strong>automatisch importiert&lt;/strong> wird.&lt;/p>
+&lt;h2 id="woher-kommen-packages">Woher kommen Packages?&lt;/h2>
+&lt;p>Es gibt drei Arten von Packages:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Java-eigene Packages&lt;/strong> – z. B. &lt;code>java.util&lt;/code>, &lt;code>java.io&lt;/code>, &lt;code>java.math&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Externe Packages&lt;/strong> – z. B. &lt;code>org.apache.commons.math3&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Eigene Packages&lt;/strong> – z. B. &lt;code>ch.itninja.util&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>Externe Packages müssen &lt;strong>zuerst zum Projekt hinzugefügt werden&lt;/strong>, z. B.:&lt;/p>
+&lt;ul>
+&lt;li>aus dem &lt;strong>lokalen Dateisystem&lt;/strong> (z. B. &lt;code>.jar&lt;/code>-Datei)&lt;/li>
+&lt;li>aus einem &lt;strong>Maven-Repository&lt;/strong> (z. B. Maven Central)&lt;/li>
+&lt;li>aus einem &lt;strong>GitHub Release&lt;/strong> oder privaten Server&lt;/li>
+&lt;/ul>
+&lt;h2 id="eigene-packages-erstellen">Eigene Packages erstellen&lt;/h2>
+&lt;p>Wenn du eigenen Code schreibst, sollte:&lt;/p>
+&lt;ul>
+&lt;li>zu Beginn der Datei der Name des Packages mit &lt;code>package&lt;/code> definiert werden, z. B. &lt;code>package ch.itninja.math;&lt;/code>&lt;/li>
+&lt;li>die Datei in einen gleichnamigen Ordner legen: &lt;code>ch/itninja/math&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;strong>Verwende keine Klassen ohne package-Deklaration!&lt;/strong>
+Nur mit einer package-Zeile liegt deine Datei in einem benannten Package – das ist wichtig für Struktur,
+Wiederverwendbarkeit und Importierbarkeit.
+&lt;/div>
+&lt;/div>
+&lt;p>Die &lt;code>src&lt;/code>-Struktur eines Projekts sieht z. B. so aus:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>myproject/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── src/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── main/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── java/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── ch/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── itninja/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── math/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── Calculator.java
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;code>src/main/java&lt;/code> ist eine weitverbreitete Abmachung, welche hilft, dass Tools wie Maven mit dem Quellcode arbeiten
+können. Java selbst kann auch ohne diese Verzeichnisse kompilieren.&lt;/p>&lt;/blockquote>
+&lt;h2 id="packages-weitergeben-und-wiederverwenden">Packages weitergeben und wiederverwenden&lt;/h2>
+&lt;p>Wenn du ein Package (z. B. eine Hilfsklasse) in einem anderen Projekt verwenden willst, hast du zwei Möglichkeiten:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Du erstellst eine &lt;code>.jar&lt;/code>-Datei&lt;/strong> deines Projekts (Java-Archiv)&lt;/li>
+&lt;li>&lt;strong>Du kopierst den Sourcecode (temporär, nicht empfohlen)&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>Ein &lt;code>.jar&lt;/code> kannst du in anderen Projekten verwenden, z. B. per &amp;ldquo;Add as Library&amp;rdquo;.&lt;/p>
+&lt;p>Du kannst eine &lt;code>.jar&lt;/code> auch weitergeben:&lt;/p>
+&lt;ul>
+&lt;li>als &lt;strong>lokale Datei&lt;/strong> oder ZIP&lt;/li>
+&lt;li>über ein &lt;strong>gemeinsames Netzlaufwerk&lt;/strong>&lt;/li>
+&lt;li>über einen &lt;strong>lokalen Maven-Server&lt;/strong> (kommt später)&lt;/li>
+&lt;/ul>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du im Modul &lt;a href="../../../99_tools/ide/intellij/07_packages/">Packages lokal verwenden&lt;/a> wie das geht.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="api-und-javadoc">API und JavaDoc&lt;/h2>
+&lt;p>Ein &lt;strong>API&lt;/strong> (Application Programming Interface) ist die Schnittstelle deines Codes nach aussen. Sie besteht aus den &lt;strong>öffentlichen Klassen und Methoden&lt;/strong>, die von anderen verwendet werden können.&lt;/p>
+&lt;p>Damit andere deinen Code verstehen und verwenden können, solltest du ihn &lt;strong>gut dokumentieren&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Diese Klasse stellt mathematische Hilfsmethoden bereit.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Calculator&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Addiert zwei Zahlen.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das nennt man &lt;strong>JavaDoc&lt;/strong>. Tools wie IntelliJ oder &lt;code>javadoc&lt;/code> erzeugen daraus automatisch eine HTML-Dokumentation.&lt;/p>
+&lt;h2 id="was-bedeutet-static">Was bedeutet &lt;code>static&lt;/code>?&lt;/h2>
+&lt;p>Vielleicht hast du bereits &lt;code>public static void main(String[] args)&lt;/code> gesehen.&lt;/p>
+&lt;p>&lt;code>static&lt;/code> bedeutet:&lt;/p>
+&lt;ul>
+&lt;li>Diese Methode oder Variable gehört &lt;strong>nicht zu einem Objekt&lt;/strong>, sondern direkt zur Klasse.&lt;/li>
+&lt;li>Du kannst sie verwenden, &lt;strong>ohne zuerst etwas zu erzeugen&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>Das ist praktisch für Hilfsmethoden, z. B. &lt;code>Math.max(5, 10)&lt;/code> oder &lt;code>System.out.println(...)&lt;/code>.&lt;/p>
+&lt;p>In Grundlagenprojekten verwendest du fast nur &lt;code>static&lt;/code> Methoden. Die Objekt Orientiert Programmier Welt (OOP-Welt) kommt
+später.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Klassen, die nur &lt;code>static&lt;/code>-Methoden enthalten, nennt man &lt;strong>Utility-Klassen&lt;/strong> oder &lt;strong>Helper-Klassen&lt;/strong>. Damit programmiert
+man eher &lt;strong>modular&lt;/strong> und weniger &lt;strong>objektorientiert&lt;/strong>.&lt;/p>
+&lt;p>Der Begriff &lt;em>Modul&lt;/em> ist in Java jedoch offiziell vergeben: Ab Java 9 steht er für ein Set von Packages mit eigener
+&lt;code>module-info.java&lt;/code>.&lt;/p>
+&lt;p>Daher spricht man bei dieser Art der modularen Strukturierung besser von &lt;em>Utility-Klassen&lt;/em> und nicht von &lt;em>Modulen&lt;/em>.&lt;/p>
 &lt;/div>
 &lt;/div></description></item></channel></rss>
