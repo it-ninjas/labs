@@ -18,14 +18,16 @@ description: >
 
 ## Warum das wichtig ist
 
-Wenn du eigene Hilfsklassen oder Utility-Packages erstellt hast, möchtest du sie vielleicht in mehreren Projekten verwenden – **ohne sie jedes Mal neu zu schreiben**. Dafür eignet sich das Java-Archivformat (`.jar`).
+Wenn du eigene Hilfsklassen oder Utility-Packages erstellt hast, möchtest du sie vielleicht in mehreren Projekten
+verwenden – **ohne sie jedes Mal neu zu schreiben**. Dafür eignet sich das Java-Archivformat (`.jar`).
 
 Dieses Modul zeigt dir, wie du in **IntelliJ IDEA ohne Maven**:
 
 - ein `.jar`-Archiv erzeugst
 - es in einem anderen Projekt wieder einbindest
 
-Falls du mehr über Java Packages erfahren willst: [Java Grundlagen - Java Packages](../../../../02_java/03_java-grundlagen/13_packages/)
+Falls du mehr über Java Packages erfahren willst:
+[Java Grundlagen - Java Packages](../../../../02_java/03_java-grundlagen/12_packages/)
 
 ## Schritt 1: Projekt vorbereiten
 
@@ -87,7 +89,8 @@ Du kannst die `.jar`-Datei einfach:
 Wenn du das `.jar` regelmässig aktualisierst, empfiehlt sich später ein zentraler Server oder ein Maven-Repository.
 
 {{< ninja tip >}}
-Die `.jar`-Datei enthält nur die kompilierten `.class`-Dateien. JavaDoc-Kommentare oder Quellcode sind darin nicht enthalten.
+Die `.jar`-Datei enthält nur die kompilierten `.class`-Dateien. JavaDoc-Kommentare oder Quellcode sind darin nicht
+enthalten.
 
 Wenn du willst, kannst du im Artifact auch den Sourcecode oder die JavaDoc einbinden.
 {{< /ninja >}}
