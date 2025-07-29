@@ -1,10 +1,10 @@
 ---
-title: "RegEx in Java"
-linkTitle: "RegEx in Java"
+title: "Reguläre Ausdrücke in Java (RegEx)"
+linkTitle: "Reguläre Ausdrücke"
 weight: 14
 description: >
-  In diesem Modul lernst du, wie du reguläre Ausdrücke in Java einsetzt, um Text zu durchsuchen, zu prüfen oder zu
-  verarbeiten.
+  In diesem Modul lernst du, wie du reguläre Ausdrücke in Java (regular expressions, kurz RegEx) einsetzt, um Text zu
+  durchsuchen, zu prüfen oder zu verarbeiten.
 ---
 
 {{< todo>}} Erster Release, muss noch angeschaut und Aufgaben müssen definiert werden {{< /todo>}}
