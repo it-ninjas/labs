@@ -1,7 +1,7 @@
 ---
 title: "String"
 linkTitle: "String"
-weight: 11
+weight: 13
 description: >
   Modul #J1
 ---
