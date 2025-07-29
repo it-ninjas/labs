@@ -49,27 +49,27 @@ String name = null;
 Versucht man, auf `name` zuzugreifen, ohne vorher etwas zuzuweisen, gibt es einen **Fehler zur Laufzeit**.
 
 {{< ninja info>}}
-Hier verhalten sich die Referenztypen wie primitive Datentypen. Auch bei den primitiven Datentypen muss zuerst ein Wert
+Hier verhalten sich die Referenztypen wie primitive Datentypen. Auch bei den Referenztypen muss zuerst ein Wert
 zugewiesen werden, bevor die Variable benutzt werden darf.
 {{< /ninja>}}
 
 ## Vorsicht bei Vergleichen
 
-Bei Referenztypen vergleicht `==` nicht den Inhalt, sondern ob es dieselbe Referenz ist:
+Bei Referenztypen vergleicht `==` nicht den Inhalt, sondern ob es dieselbe Referenz ist (auf das gleiche Objekt verweist):
 
 ```java
 String s1 = "Hallo";
-String s2 = "Hallo";
-System.out.println(s1 == s2); // (Erklärung später bei String)
+String s2 = s1;
 ```
 
-_Diese Details werden später im Kapitel `String` erklärt. Hier reicht: Referenz bedeutet "Verweis", nicht Inhalt selbst._
+`s1` und `s2` beinhalten nur eine Zahl, auch Adresse oder Verweis genannt, welche dem Programm mitteilt, wo sich der
+eigentliche String im Speicher befindet.
 
 ## Hinweis: Verbindung zu Objekten
 
 Referenztypen werden vor allem im Zusammenhang mit **Objekten** verwendet. In diesem Grundlagenmodul lernst du zwar noch nicht, wie man eigene Objekte erstellt – aber du wirst schon erste Referenztypen wie `String` und Arrays kennenlernen.
 
-Auch `String` ist intern bereits ein **Objekt** – deshalb verhält es sich wie ein Referenztyp.
+`String` ist intern bereits ein **Objekt** – deshalb verhält es sich wie ein Referenztyp.
 
 Mehr zu Objekten und Klassen erfährst du später im Modul **Java OOP**.
 
@@ -82,11 +82,15 @@ Diese Referenztypen wirst du bald näher kennenlernen:
 
 Beide speichern nicht direkt die Werte, sondern sind Referenztypen.
 
-## Unterschied: `String name = null;` vs. `String name;`
+## Unterschied deklarieren und initialisieren
 
-Es gibt einen wichtigen Unterschied zwischen einer **expliziten Initialisierung mit `null`** und einer **nicht initialisierten Referenzvariable**:
+Es gibt einen wichtigen Unterschied zwischen einer **expliziten Initialisierung mit `null`** und einer **nicht initialisierten Referenzvariable**.
 
-### 🧪 `String name = null;`
+### Explizite Initialisierung
+
+```java
+String name = null;
+```
 
 - Die Variable `name` ist deklariert und **explizit mit `null` initialisiert**.
 - `null` bedeutet: Die Variable verweist auf **kein Objekt**.
@@ -98,9 +102,13 @@ System.out.println(name);         // Ausgabe: null
 System.out.println(name.length()); // NullPointerException
 ```
 
-### Deklarieren und initialisieren
+### Nicht initialisierte Referenzvariable
 
-- Die Variable ist **deklariert**, aber **nicht initialisiert**.
+```java
+String name;
+```
+
+- Die Variable `name` ist **deklariert**, aber **nicht initialisiert**.
 - Ein Zugriff ohne vorherige Zuweisung führt zu einem **Compilerfehler**.
 
 ```java
@@ -119,11 +127,11 @@ System.out.println(name); // Fehler: Variable might not have been initialized
 
 ## Was passiert bei `String text = "Hallo";`?
 
-Wenn du einen `String` direkt mit einem Text initialisierst, dann der Text im sogenannten **String-Literal-Pool**
+Wenn du einen `String` direkt mit einem Text initialisierst, dann wird der Text im sogenannten **String-Literal-Pool**
 gespeichert:
 
 ```java
-String text = "Hallo"; // "Hallo" ist ein Strng-Literal
+String text = "Hallo"; // "Hallo" ist ein String-Literal
 ```
 
 Der **String-Literal-Pool** ist ein spezieller Bereich im **Heap-Speicher**, in dem **alle konstanten Textwerte**
