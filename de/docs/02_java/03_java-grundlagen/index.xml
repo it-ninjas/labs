@@ -2973,7 +2973,284 @@ Die Methode &lt;code>.equals()&lt;/code> ist in der Klasse &lt;code>String&lt;/c
 &lt;li>Referenztypen speichern nur einen Verweis.&lt;/li>
 &lt;li>&lt;code>null&lt;/code> bedeutet: keine Referenz vorhanden.&lt;/li>
 &lt;li>&lt;code>String&lt;/code> und &lt;code>Array&lt;/code> sind die ersten Referenztypen, die du kennenlernen wirst.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: String</title><link>/de/docs/02_java/03_java-grundlagen/12_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/12_strings/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Packages</title><link>/de/docs/02_java/03_java-grundlagen/12_packages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/12_packages/</guid><description>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, was ein Package ist und wozu man es verwendet.&lt;/li>
+&lt;li>Ich kann eigene Packages deklarieren und verstehen, wie sie im Dateisystem aufgebaut sind.&lt;/li>
+&lt;li>Ich kenne die Sichtbarkeiten &lt;code>public&lt;/code>, &lt;code>protected&lt;/code>, &lt;code>private&lt;/code> und &lt;code>(default)&lt;/code> und deren Bedeutung im Zusammenhang mit
+Packages.&lt;/li>
+&lt;li>Ich weiss, wie man Packages importiert und wann dies notwendig ist.&lt;/li>
+&lt;li>Ich verstehe den Unterschied zwischen eingebauten, externen und selbst geschriebenen Packages.&lt;/li>
+&lt;li>Ich weiss, woher externe Packages stammen können (lokal, Maven Central, GitHub &amp;hellip;).&lt;/li>
+&lt;li>Ich kann ein Java-Package lokal so bereitstellen, dass es in anderen Projekten verwendet werden kann.&lt;/li>
+&lt;li>Ich weiss, was eine API ist und warum eine gute JavaDoc wichtig ist.&lt;/li>
+&lt;li>Ich habe eine erste Vorstellung, was &lt;code>static&lt;/code> bedeutet und wofür man es nutzt.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;h2 id="was-ist-ein-package">Was ist ein Package?&lt;/h2>
+&lt;p>Ein &lt;strong>Package&lt;/strong> ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In Java beginnt jede Datei
+optional mit einer &lt;code>package&lt;/code>-Anweisung:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.itninja.tool;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Damit sagst du, dass sich die Datei im Package &lt;code>ch.itninja.tool&lt;/code> befindet. Entsprechend muss die Datei im Verzeichnis
+&lt;code>ch/itninja/tool&lt;/code> liegen.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur!
+&lt;/div>
+&lt;/div>
+&lt;p>Packages helfen, deinen Code zu strukturieren und Wiederverwendung zu ermöglichen. Auch Bibliotheken wie &lt;code>java.util&lt;/code>
+oder &lt;code>java.io&lt;/code> sind Packages.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Packages eröffnen dir eine Welt ungeahnter Möglichkeiten: Bis jetzt hast du Aufgaben meist mit mathematischen und
+logischen Operationen sowie bedingten Anweisungen gelöst. Das kann bei komplexeren Problemen sehr aufwändig werden.&lt;/p>
+&lt;p>Hier kommen Packages ins Spiel: Für viele wiederkehrende Aufgaben gibt es bereits fertige Hilfsklassen – sogenannte
+&lt;strong>Utility-Klassen&lt;/strong>. Du musst das Rad nicht neu erfinden!&lt;/p>
+&lt;p>Beispiele für nützliche Packages:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>java.lang.Math&lt;/code>: Mathematische Methoden wie &lt;code>max()&lt;/code>, &lt;code>min()&lt;/code>, &lt;code>pow()&lt;/code> oder &lt;code>sqrt()&lt;/code>&lt;/li>
+&lt;li>&lt;code>java.lang.String&lt;/code>: Zeichenketten-Verarbeitung (nächstes Modul)&lt;/li>
+&lt;li>&lt;code>java.util.Scanner&lt;/code>: Einfache Konsoleneingabe (folgt bald)&lt;/li>
+&lt;li>&lt;code>java.io.File&lt;/code>: Arbeiten mit Dateien&lt;/li>
+&lt;/ul>
+&lt;p>Die Methoden dieser Klassen kannst du direkt verwenden – oft ohne objektorientierte Programmierung.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="packages-vs-bibliotheken">Packages vs. Bibliotheken&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Begriff&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>Package&lt;/strong>&lt;/td>
+&lt;td>Logische Gruppierung von Klassen im Quellcode&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Bibliothek&lt;/strong>&lt;/td>
+&lt;td>Weitergabe eines oder mehrerer Packages als &lt;code>.jar&lt;/code> Datei&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="package">Package&lt;/h3>
+&lt;p>Ein Package ist eine logische Gruppierung von Klassen, um Code zu strukturieren. Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.itninja.util;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Package hilft, Code zu ordnen und wiederzuverwenden. Es zeigt, wo man den Quellcode findet (der Package Name
+entspricht dem Pfad, wo der Quellcode abgelegt ist)&lt;/p>
+&lt;h3 id="bibliothek-library">Bibliothek (Library)&lt;/h3>
+&lt;p>Eine Bibliothek ist ein weitergegebenes &lt;code>.jar&lt;/code>-Archiv mit einem oder mehreren Packages.&lt;br>
+Beispiel: Du exportierst &lt;code>MathUtils&lt;/code> im Package &lt;code>ch.itninja.util&lt;/code> als &lt;code>math-utils.jar&lt;/code>.&lt;/p>
+&lt;h2 id="sichtbarkeiten-verstehen">Sichtbarkeiten verstehen&lt;/h2>
+&lt;p>In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse oder Methode zugegriffen werden darf:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Sichtbarkeit&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>public&lt;/code>&lt;/td>
+&lt;td>Überall sichtbar (auch von anderen Packages)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>protected&lt;/code>&lt;/td>
+&lt;td>Für Unterklassen sichtbar&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>(default)&lt;/code>&lt;/td>
+&lt;td>Nur innerhalb desselben Packages sichtbar (kein Modifier)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>private&lt;/code>&lt;/td>
+&lt;td>Nur innerhalb derselben Datei/Klasse sichtbar&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Du brauchst &lt;code>public&lt;/code>, um etwas für andere Packages nutzbar zu machen.&lt;/p>
+&lt;h2 id="importieren-von-packages">Importieren von Packages&lt;/h2>
+&lt;p>Wenn du eine &lt;code>public&lt;/code>-Klasse aus einem anderen Package brauchst, musst du sie &lt;strong>importieren&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Scanner;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Oder mit Wildcard (nicht empfohlen):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.*;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Manche Klassen stehen dir ohne Import zur Verfügung, z. B. &lt;code>String&lt;/code> oder &lt;code>System&lt;/code>. Das sind Klassen aus dem Package
+&lt;code>java.lang&lt;/code>, welches &lt;strong>automatisch importiert&lt;/strong> wird.&lt;/p>
+&lt;h2 id="woher-kommen-packages">Woher kommen Packages?&lt;/h2>
+&lt;p>Es gibt drei Arten von Packages:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Java-eigene Packages&lt;/strong> – z. B. &lt;code>java.util&lt;/code>, &lt;code>java.io&lt;/code>, &lt;code>java.math&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Externe Packages&lt;/strong> – z. B. &lt;code>org.apache.commons.math3&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Eigene Packages&lt;/strong> – z. B. &lt;code>ch.itninja.util&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>Externe Packages müssen &lt;strong>zuerst zum Projekt hinzugefügt werden&lt;/strong>, z. B.:&lt;/p>
+&lt;ul>
+&lt;li>aus dem &lt;strong>lokalen Dateisystem&lt;/strong> (z. B. &lt;code>.jar&lt;/code>-Datei)&lt;/li>
+&lt;li>aus einem &lt;strong>Maven-Repository&lt;/strong> (z. B. Maven Central)&lt;/li>
+&lt;li>aus einem &lt;strong>GitHub Release&lt;/strong> oder privaten Server&lt;/li>
+&lt;/ul>
+&lt;h2 id="eigene-packages-erstellen">Eigene Packages erstellen&lt;/h2>
+&lt;p>Wenn du eigenen Code schreibst, sollte:&lt;/p>
+&lt;ul>
+&lt;li>zu Beginn der Datei der Name des Packages mit &lt;code>package&lt;/code> definiert werden, z. B. &lt;code>package ch.itninja.math;&lt;/code>&lt;/li>
+&lt;li>die Datei in einen gleichnamigen Ordner legen: &lt;code>ch/itninja/math&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;strong>Verwende keine Klassen ohne package-Deklaration!&lt;/strong>
+Nur mit einer package-Zeile liegt deine Datei in einem benannten Package – das ist wichtig für Struktur,
+Wiederverwendbarkeit und Importierbarkeit.
+&lt;/div>
+&lt;/div>
+&lt;p>Die &lt;code>src&lt;/code>-Struktur eines Projekts sieht z. B. so aus:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>myproject/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── src/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── main/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── java/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── ch/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── itninja/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── math/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── Calculator.java
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;code>src/main/java&lt;/code> ist eine weitverbreitete Abmachung, welche hilft, dass Tools wie Maven mit dem Quellcode arbeiten
+können. Java selbst kann auch ohne diese Verzeichnisse kompilieren.&lt;/p>&lt;/blockquote>
+&lt;h2 id="packages-weitergeben-und-wiederverwenden">Packages weitergeben und wiederverwenden&lt;/h2>
+&lt;p>Wenn du ein Package (z. B. eine Hilfsklasse) in einem anderen Projekt verwenden willst, hast du zwei Möglichkeiten:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Du erstellst eine &lt;code>.jar&lt;/code>-Datei&lt;/strong> deines Projekts (Java-Archiv)&lt;/li>
+&lt;li>&lt;strong>Du kopierst den Sourcecode (temporär, nicht empfohlen)&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>Ein &lt;code>.jar&lt;/code> kannst du in anderen Projekten verwenden, z. B. per &amp;ldquo;Add as Library&amp;rdquo;.&lt;/p>
+&lt;p>Du kannst eine &lt;code>.jar&lt;/code> auch weitergeben:&lt;/p>
+&lt;ul>
+&lt;li>als &lt;strong>lokale Datei&lt;/strong> oder ZIP&lt;/li>
+&lt;li>über ein &lt;strong>gemeinsames Netzlaufwerk&lt;/strong>&lt;/li>
+&lt;li>über einen &lt;strong>lokalen Maven-Server&lt;/strong> (kommt später)&lt;/li>
+&lt;/ul>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du im Modul &lt;a href="../../../99_tools/ide/intellij/07_packages/">Packages lokal verwenden&lt;/a> wie das geht.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="api-und-javadoc">API und JavaDoc&lt;/h2>
+&lt;p>Ein &lt;strong>API&lt;/strong> (Application Programming Interface) ist die Schnittstelle deines Codes nach aussen. Sie besteht aus den &lt;strong>öffentlichen Klassen und Methoden&lt;/strong>, die von anderen verwendet werden können.&lt;/p>
+&lt;p>Damit andere deinen Code verstehen und verwenden können, solltest du ihn &lt;strong>gut dokumentieren&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Diese Klasse stellt mathematische Hilfsmethoden bereit.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Calculator&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Addiert zwei Zahlen.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das nennt man &lt;strong>JavaDoc&lt;/strong>. Tools wie IntelliJ oder &lt;code>javadoc&lt;/code> erzeugen daraus automatisch eine HTML-Dokumentation.&lt;/p>
+&lt;h2 id="was-bedeutet-static">Was bedeutet &lt;code>static&lt;/code>?&lt;/h2>
+&lt;p>Vielleicht hast du bereits &lt;code>public static void main(String[] args)&lt;/code> gesehen.&lt;/p>
+&lt;p>&lt;code>static&lt;/code> bedeutet:&lt;/p>
+&lt;ul>
+&lt;li>Diese Methode oder Variable gehört &lt;strong>nicht zu einem Objekt&lt;/strong>, sondern direkt zur Klasse.&lt;/li>
+&lt;li>Du kannst sie verwenden, &lt;strong>ohne zuerst etwas zu erzeugen&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>Das ist praktisch für Hilfsmethoden, z. B. &lt;code>Math.max(5, 10)&lt;/code> oder &lt;code>System.out.println(...)&lt;/code>.&lt;/p>
+&lt;p>In Grundlagenprojekten verwendest du fast nur &lt;code>static&lt;/code> Methoden. Die Objekt Orientiert Programmier Welt (OOP-Welt) kommt
+später.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Klassen, die nur &lt;code>static&lt;/code>-Methoden enthalten, nennt man &lt;strong>Utility-Klassen&lt;/strong> oder &lt;strong>Helper-Klassen&lt;/strong>. Damit programmiert
+man eher &lt;strong>modular&lt;/strong> und weniger &lt;strong>objektorientiert&lt;/strong>.&lt;/p>
+&lt;p>Der Begriff &lt;em>Modul&lt;/em> ist in Java jedoch offiziell vergeben: Ab Java 9 steht er für ein Set von Packages mit eigener
+&lt;code>module-info.java&lt;/code>.&lt;/p>
+&lt;p>Daher spricht man bei dieser Art der modularen Strukturierung besser von &lt;em>Utility-Klassen&lt;/em> und nicht von &lt;em>Modulen&lt;/em>.&lt;/p>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: String</title><link>/de/docs/02_java/03_java-grundlagen/13_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/13_strings/</guid><description>
 &lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem;">
 &lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -3453,7 +3730,239 @@ Die Methode &lt;code>.equals()&lt;/code> ist in der Klasse &lt;code>String&lt;/c
 &lt;p>Aufgaben 6 und 7
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-6&amp;mdash;strings&lt;/p>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Scanner</title><link>/de/docs/02_java/03_java-grundlagen/14_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/14_scanner/</guid><description>
+&lt;/div></description></item><item><title>Docs: Reguläre Ausdrücke in Java (RegEx)</title><link>/de/docs/02_java/03_java-grundlagen/14_regex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/14_regex/</guid><description>
+&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
+&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
+--> Erster Release, muss noch angeschaut und Aufgaben müssen definiert werden
+&lt;/div>
+&lt;/div>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, wie ich in Java reguläre Ausdrücke mit &lt;code>Pattern&lt;/code> und &lt;code>Matcher&lt;/code> verwende.&lt;/li>
+&lt;li>Ich kann einfache RegEx-Ausdrücke in Java-Code integrieren.&lt;/li>
+&lt;li>Ich kenne Sicherheitsaspekte bei der Verwendung von RegEx in Java.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>Lies zuerst das Modul &lt;a href="/de/docs/99_tools/diverses/regex/">Regex&lt;/a>, bevor du hier weitermachst.&lt;/p>
+&lt;p>In Java werden reguläre Ausdrücke über die Klassen &lt;strong>&lt;code>java.util.regex.Pattern&lt;/code>&lt;/strong> und &lt;strong>&lt;code>java.util.regex.Matcher&lt;/code>&lt;/strong>
+verwendet.&lt;/p>
+&lt;p>&lt;strong>Typische Anwendungsfälle:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Prüfen, ob ein String einem Muster entspricht&lt;/li>
+&lt;li>Teilstrings extrahieren&lt;/li>
+&lt;li>Text mit Mustererkennung ersetzen&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="beispiel-prüfen-einer-e-mail-adresse">Beispiel: Prüfen einer E-Mail-Adresse&lt;/h2>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.regex.Pattern;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.regex.Matcher;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">EmailCheck&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String email &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;test@example.com&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String regex &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Pattern pattern &lt;span style="color:#f92672">=&lt;/span> Pattern.&lt;span style="color:#a6e22e">compile&lt;/span>(regex);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Matcher matcher &lt;span style="color:#f92672">=&lt;/span> pattern.&lt;span style="color:#a6e22e">matcher&lt;/span>(email);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (matcher.&lt;span style="color:#a6e22e">matches&lt;/span>()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;E-Mail ist gültig&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;E-Mail ist ungültig&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="beispiel-alle-zahlen-aus-einem-text-extrahieren">Beispiel: Alle Zahlen aus einem Text extrahieren&lt;/h2>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.regex.Pattern;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.regex.Matcher;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">NumberExtractor&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String text &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Artikel 123 kostet 45 CHF&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Pattern pattern &lt;span style="color:#f92672">=&lt;/span> Pattern.&lt;span style="color:#a6e22e">compile&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;\\d+&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Matcher matcher &lt;span style="color:#f92672">=&lt;/span> pattern.&lt;span style="color:#a6e22e">matcher&lt;/span>(text);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (matcher.&lt;span style="color:#a6e22e">find&lt;/span>()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Gefunden: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> matcher.&lt;span style="color:#a6e22e">group&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Ausgabe:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Gefunden: 123
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Gefunden: 45
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="beispiel-text-ersetzen">Beispiel: Text ersetzen&lt;/h2>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ReplaceExample&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String text &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Meine Telefonnummer ist 079 123 45 67&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String hidden &lt;span style="color:#f92672">=&lt;/span> text.&lt;span style="color:#a6e22e">replaceAll&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;\\d&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;X&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(hidden);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Ausgabe:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Meine Telefonnummer ist XXX XXX XX XX
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="sicherheitsaspekte-bei-regex-in-java">Sicherheitsaspekte bei RegEx in Java&lt;/h2>
+&lt;h3 id="1-catastrophic-backtracking">1. Catastrophic Backtracking&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Auch in Java kann ein ungünstig formulierter RegEx zu extrem langer Laufzeit führen.&lt;/li>
+&lt;li>&lt;strong>Beispiel:&lt;/strong>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String regex &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;(a+)+$&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Pattern pattern &lt;span style="color:#f92672">=&lt;/span> Pattern.&lt;span style="color:#a6e22e">compile&lt;/span>(regex);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Matcher matcher &lt;span style="color:#f92672">=&lt;/span> pattern.&lt;span style="color:#a6e22e">matcher&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(matcher.&lt;span style="color:#a6e22e">matches&lt;/span>()); &lt;span style="color:#75715e">// dauert sehr lange&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>&lt;strong>Lösung:&lt;/strong> Verwende möglichst &lt;strong>präzise Quantifizierer&lt;/strong> (&lt;code>{1,10}&lt;/code> statt &lt;code>+&lt;/code>), &lt;strong>Atomic Groups&lt;/strong> (&lt;code>(?&amp;gt;...)&lt;/code>) oder
+&lt;strong>possessive Quantifiers&lt;/strong> (&lt;code>++&lt;/code>, &lt;code>*+&lt;/code>).&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-injection-durch-dynamische-muster">2. Injection durch dynamische Muster&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Wenn der RegEx direkt aus Benutzereingaben besteht, kann er manipuliert werden.&lt;/li>
+&lt;li>&lt;strong>Unsicher:&lt;/strong>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>Pattern pattern &lt;span style="color:#f92672">=&lt;/span> Pattern.&lt;span style="color:#a6e22e">compile&lt;/span>(userInput);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>&lt;strong>Sicherer:&lt;/strong> Benutzereingabe &lt;strong>escapen&lt;/strong>:
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String safeInput &lt;span style="color:#f92672">=&lt;/span> Pattern.&lt;span style="color:#a6e22e">quote&lt;/span>(userInput);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Pattern pattern &lt;span style="color:#f92672">=&lt;/span> Pattern.&lt;span style="color:#a6e22e">compile&lt;/span>(safeInput);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-übermäßige-komplexität">3. Übermäßige Komplexität&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Java-Entwickler neigen dazu, sehr komplexe RegEx zu schreiben, die kaum wartbar sind.&lt;/li>
+&lt;li>&lt;strong>Empfehlung:&lt;/strong> Komplexe Muster aufteilen, ggf. mit Kommentaren (&lt;code>(?x)&lt;/code>-Flag) lesbarer machen.&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-falsche-annahmen-bei-validierung">4. Falsche Annahmen bei Validierung&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Nur weil ein String das Muster erfüllt, heißt das nicht, dass er inhaltlich gültig ist.&lt;/li>
+&lt;li>&lt;strong>Beispiel:&lt;/strong> &lt;code>a@b.c&lt;/code> erfüllt viele E-Mail-RegEx, ist aber oft ungültig.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="best-practices-für-regex-in-java">Best Practices für RegEx in Java&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>Immer testen&lt;/strong> – mit realistischen und Worst-Case-Eingaben.&lt;/li>
+&lt;li>&lt;strong>Komplexität reduzieren&lt;/strong> – ggf. mehrere kleine RegEx verwenden.&lt;/li>
+&lt;li>&lt;strong>Benutzereingaben escapen&lt;/strong> – &lt;code>Pattern.quote()&lt;/code> nutzen.&lt;/li>
+&lt;li>&lt;strong>Performance im Blick behalten&lt;/strong> – keine unkontrollierten &lt;code>.*&lt;/code> in Kombination mit &lt;code>.+&lt;/code>.&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="tipp">Tipp&lt;/h2>
+&lt;p>Testen von Java-RegEx-Ausdrücken online:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://regex101.com">regex101.com&lt;/a> – Java-Modus auswählen&lt;/li>
+&lt;li>&lt;a href="https://www.regexplanet.com/advanced/java/index.html">RegExPlanet&lt;/a> – Java-spezifischer RegEx-Tester&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Scanner</title><link>/de/docs/02_java/03_java-grundlagen/15_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/15_scanner/</guid><description>
 &lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem;">
 &lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -3535,7 +4044,7 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;p>Aufgabe 8
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-8&amp;mdash;eingaben-von-der-kommandozeile&lt;/p>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Arrays</title><link>/de/docs/02_java/03_java-grundlagen/15_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/15_arrays/</guid><description>
+&lt;/div></description></item><item><title>Docs: Arrays</title><link>/de/docs/02_java/03_java-grundlagen/16_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/16_arrays/</guid><description>
 &lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem;">
 &lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -3748,282 +4257,5 @@ Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe ang
 --> &lt;p>Labs konvertieren:&lt;/p>
 &lt;p>Aufgabe 9
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-9&amp;mdash;arrays&lt;/p>
-&lt;/div>
-&lt;/div></description></item><item><title>Docs: Packages</title><link>/de/docs/02_java/03_java-grundlagen/13_packages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/13_packages/</guid><description>
-&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
-&lt;div style="width: 100%; margin: 1rem auto;">
-&lt;div style="font-size: 1.1rem;">
-Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
-&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Ich weiss, was ein Package ist und wozu man es verwendet.&lt;/li>
-&lt;li>Ich kann eigene Packages deklarieren und verstehen, wie sie im Dateisystem aufgebaut sind.&lt;/li>
-&lt;li>Ich kenne die Sichtbarkeiten &lt;code>public&lt;/code>, &lt;code>protected&lt;/code>, &lt;code>private&lt;/code> und &lt;code>(default)&lt;/code> und deren Bedeutung im Zusammenhang mit
-Packages.&lt;/li>
-&lt;li>Ich weiss, wie man Packages importiert und wann dies notwendig ist.&lt;/li>
-&lt;li>Ich verstehe den Unterschied zwischen eingebauten, externen und selbst geschriebenen Packages.&lt;/li>
-&lt;li>Ich weiss, woher externe Packages stammen können (lokal, Maven Central, GitHub &amp;hellip;).&lt;/li>
-&lt;li>Ich kann ein Java-Package lokal so bereitstellen, dass es in anderen Projekten verwendet werden kann.&lt;/li>
-&lt;li>Ich weiss, was eine API ist und warum eine gute JavaDoc wichtig ist.&lt;/li>
-&lt;li>Ich habe eine erste Vorstellung, was &lt;code>static&lt;/code> bedeutet und wofür man es nutzt.&lt;/li>
-&lt;/ul>
-&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
-&lt;h2 id="was-ist-ein-package">Was ist ein Package?&lt;/h2>
-&lt;p>Ein &lt;strong>Package&lt;/strong> ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In Java beginnt jede Datei
-optional mit einer &lt;code>package&lt;/code>-Anweisung:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.itninja.tool;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Damit sagst du, dass sich die Datei im Package &lt;code>ch.itninja.tool&lt;/code> befindet. Entsprechend muss die Datei im Verzeichnis
-&lt;code>ch/itninja/tool&lt;/code> liegen.&lt;/p>
-&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur!
-&lt;/div>
-&lt;/div>
-&lt;p>Packages helfen, deinen Code zu strukturieren und Wiederverwendung zu ermöglichen. Auch Bibliotheken wie &lt;code>java.util&lt;/code>
-oder &lt;code>java.io&lt;/code> sind Packages.&lt;/p>
-&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-&lt;p>Packages eröffnen dir eine Welt ungeahnter Möglichkeiten: Bis jetzt hast du Aufgaben meist mit mathematischen und
-logischen Operationen sowie bedingten Anweisungen gelöst. Das kann bei komplexeren Problemen sehr aufwändig werden.&lt;/p>
-&lt;p>Hier kommen Packages ins Spiel: Für viele wiederkehrende Aufgaben gibt es bereits fertige Hilfsklassen – sogenannte
-&lt;strong>Utility-Klassen&lt;/strong>. Du musst das Rad nicht neu erfinden!&lt;/p>
-&lt;p>Beispiele für nützliche Packages:&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>java.lang.Math&lt;/code>: Mathematische Methoden wie &lt;code>max()&lt;/code>, &lt;code>min()&lt;/code>, &lt;code>pow()&lt;/code> oder &lt;code>sqrt()&lt;/code>&lt;/li>
-&lt;li>&lt;code>java.lang.String&lt;/code>: Zeichenketten-Verarbeitung (nächstes Modul)&lt;/li>
-&lt;li>&lt;code>java.util.Scanner&lt;/code>: Einfache Konsoleneingabe (folgt bald)&lt;/li>
-&lt;li>&lt;code>java.io.File&lt;/code>: Arbeiten mit Dateien&lt;/li>
-&lt;/ul>
-&lt;p>Die Methoden dieser Klassen kannst du direkt verwenden – oft ohne objektorientierte Programmierung.&lt;/p>
-&lt;/div>
-&lt;/div>
-&lt;h2 id="packages-vs-bibliotheken">Packages vs. Bibliotheken&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Begriff&lt;/th>
-&lt;th>Bedeutung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Package&lt;/strong>&lt;/td>
-&lt;td>Logische Gruppierung von Klassen im Quellcode&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Bibliothek&lt;/strong>&lt;/td>
-&lt;td>Weitergabe eines oder mehrerer Packages als &lt;code>.jar&lt;/code> Datei&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="package">Package&lt;/h3>
-&lt;p>Ein Package ist eine logische Gruppierung von Klassen, um Code zu strukturieren. Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.itninja.util;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das Package hilft, Code zu ordnen und wiederzuverwenden. Es zeigt, wo man den Quellcode findet (der Package Name
-entspricht dem Pfad, wo der Quellcode abgelegt ist)&lt;/p>
-&lt;h3 id="bibliothek-library">Bibliothek (Library)&lt;/h3>
-&lt;p>Eine Bibliothek ist ein weitergegebenes &lt;code>.jar&lt;/code>-Archiv mit einem oder mehreren Packages.&lt;br>
-Beispiel: Du exportierst &lt;code>MathUtils&lt;/code> im Package &lt;code>ch.itninja.util&lt;/code> als &lt;code>math-utils.jar&lt;/code>.&lt;/p>
-&lt;h2 id="sichtbarkeiten-verstehen">Sichtbarkeiten verstehen&lt;/h2>
-&lt;p>In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse oder Methode zugegriffen werden darf:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Sichtbarkeit&lt;/th>
-&lt;th>Bedeutung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;code>public&lt;/code>&lt;/td>
-&lt;td>Überall sichtbar (auch von anderen Packages)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>protected&lt;/code>&lt;/td>
-&lt;td>Für Unterklassen sichtbar&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>(default)&lt;/code>&lt;/td>
-&lt;td>Nur innerhalb desselben Packages sichtbar (kein Modifier)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;code>private&lt;/code>&lt;/td>
-&lt;td>Nur innerhalb derselben Datei/Klasse sichtbar&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Du brauchst &lt;code>public&lt;/code>, um etwas für andere Packages nutzbar zu machen.&lt;/p>
-&lt;h2 id="importieren-von-packages">Importieren von Packages&lt;/h2>
-&lt;p>Wenn du eine &lt;code>public&lt;/code>-Klasse aus einem anderen Package brauchst, musst du sie &lt;strong>importieren&lt;/strong>:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Scanner;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Oder mit Wildcard (nicht empfohlen):&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.*;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Manche Klassen stehen dir ohne Import zur Verfügung, z. B. &lt;code>String&lt;/code> oder &lt;code>System&lt;/code>. Das sind Klassen aus dem Package
-&lt;code>java.lang&lt;/code>, welches &lt;strong>automatisch importiert&lt;/strong> wird.&lt;/p>
-&lt;h2 id="woher-kommen-packages">Woher kommen Packages?&lt;/h2>
-&lt;p>Es gibt drei Arten von Packages:&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>Java-eigene Packages&lt;/strong> – z. B. &lt;code>java.util&lt;/code>, &lt;code>java.io&lt;/code>, &lt;code>java.math&lt;/code>&lt;/li>
-&lt;li>&lt;strong>Externe Packages&lt;/strong> – z. B. &lt;code>org.apache.commons.math3&lt;/code>&lt;/li>
-&lt;li>&lt;strong>Eigene Packages&lt;/strong> – z. B. &lt;code>ch.itninja.util&lt;/code>&lt;/li>
-&lt;/ol>
-&lt;p>Externe Packages müssen &lt;strong>zuerst zum Projekt hinzugefügt werden&lt;/strong>, z. B.:&lt;/p>
-&lt;ul>
-&lt;li>aus dem &lt;strong>lokalen Dateisystem&lt;/strong> (z. B. &lt;code>.jar&lt;/code>-Datei)&lt;/li>
-&lt;li>aus einem &lt;strong>Maven-Repository&lt;/strong> (z. B. Maven Central)&lt;/li>
-&lt;li>aus einem &lt;strong>GitHub Release&lt;/strong> oder privaten Server&lt;/li>
-&lt;/ul>
-&lt;h2 id="eigene-packages-erstellen">Eigene Packages erstellen&lt;/h2>
-&lt;p>Wenn du eigenen Code schreibst, sollte:&lt;/p>
-&lt;ul>
-&lt;li>zu Beginn der Datei der Name des Packages mit &lt;code>package&lt;/code> definiert werden, z. B. &lt;code>package ch.itninja.math;&lt;/code>&lt;/li>
-&lt;li>die Datei in einen gleichnamigen Ordner legen: &lt;code>ch/itninja/math&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-&lt;strong>Verwende keine Klassen ohne package-Deklaration!&lt;/strong>
-Nur mit einer package-Zeile liegt deine Datei in einem benannten Package – das ist wichtig für Struktur,
-Wiederverwendbarkeit und Importierbarkeit.
-&lt;/div>
-&lt;/div>
-&lt;p>Die &lt;code>src&lt;/code>-Struktur eines Projekts sieht z. B. so aus:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>myproject/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── src/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── main/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── java/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── ch/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── itninja/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── math/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── Calculator.java
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>&lt;code>src/main/java&lt;/code> ist eine weitverbreitete Abmachung, welche hilft, dass Tools wie Maven mit dem Quellcode arbeiten
-können. Java selbst kann auch ohne diese Verzeichnisse kompilieren.&lt;/p>&lt;/blockquote>
-&lt;h2 id="packages-weitergeben-und-wiederverwenden">Packages weitergeben und wiederverwenden&lt;/h2>
-&lt;p>Wenn du ein Package (z. B. eine Hilfsklasse) in einem anderen Projekt verwenden willst, hast du zwei Möglichkeiten:&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>Du erstellst eine &lt;code>.jar&lt;/code>-Datei&lt;/strong> deines Projekts (Java-Archiv)&lt;/li>
-&lt;li>&lt;strong>Du kopierst den Sourcecode (temporär, nicht empfohlen)&lt;/strong>&lt;/li>
-&lt;/ol>
-&lt;p>Ein &lt;code>.jar&lt;/code> kannst du in anderen Projekten verwenden, z. B. per &amp;ldquo;Add as Library&amp;rdquo;.&lt;/p>
-&lt;p>Du kannst eine &lt;code>.jar&lt;/code> auch weitergeben:&lt;/p>
-&lt;ul>
-&lt;li>als &lt;strong>lokale Datei&lt;/strong> oder ZIP&lt;/li>
-&lt;li>über ein &lt;strong>gemeinsames Netzlaufwerk&lt;/strong>&lt;/li>
-&lt;li>über einen &lt;strong>lokalen Maven-Server&lt;/strong> (kommt später)&lt;/li>
-&lt;/ul>
-&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du im Modul &lt;a href="../../../99_tools/ide/intellij/07_packages/">Packages lokal verwenden&lt;/a> wie das geht.
-&lt;/div>
-&lt;/div>
-&lt;h2 id="api-und-javadoc">API und JavaDoc&lt;/h2>
-&lt;p>Ein &lt;strong>API&lt;/strong> (Application Programming Interface) ist die Schnittstelle deines Codes nach aussen. Sie besteht aus den &lt;strong>öffentlichen Klassen und Methoden&lt;/strong>, die von anderen verwendet werden können.&lt;/p>
-&lt;p>Damit andere deinen Code verstehen und verwenden können, solltest du ihn &lt;strong>gut dokumentieren&lt;/strong>:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Diese Klasse stellt mathematische Hilfsmethoden bereit.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Calculator&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Addiert zwei Zahlen.
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das nennt man &lt;strong>JavaDoc&lt;/strong>. Tools wie IntelliJ oder &lt;code>javadoc&lt;/code> erzeugen daraus automatisch eine HTML-Dokumentation.&lt;/p>
-&lt;h2 id="was-bedeutet-static">Was bedeutet &lt;code>static&lt;/code>?&lt;/h2>
-&lt;p>Vielleicht hast du bereits &lt;code>public static void main(String[] args)&lt;/code> gesehen.&lt;/p>
-&lt;p>&lt;code>static&lt;/code> bedeutet:&lt;/p>
-&lt;ul>
-&lt;li>Diese Methode oder Variable gehört &lt;strong>nicht zu einem Objekt&lt;/strong>, sondern direkt zur Klasse.&lt;/li>
-&lt;li>Du kannst sie verwenden, &lt;strong>ohne zuerst etwas zu erzeugen&lt;/strong>.&lt;/li>
-&lt;/ul>
-&lt;p>Das ist praktisch für Hilfsmethoden, z. B. &lt;code>Math.max(5, 10)&lt;/code> oder &lt;code>System.out.println(...)&lt;/code>.&lt;/p>
-&lt;p>In Grundlagenprojekten verwendest du fast nur &lt;code>static&lt;/code> Methoden. Die Objekt Orientiert Programmier Welt (OOP-Welt) kommt
-später.&lt;/p>
-&lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-&lt;p>Klassen, die nur &lt;code>static&lt;/code>-Methoden enthalten, nennt man &lt;strong>Utility-Klassen&lt;/strong> oder &lt;strong>Helper-Klassen&lt;/strong>. Damit programmiert
-man eher &lt;strong>modular&lt;/strong> und weniger &lt;strong>objektorientiert&lt;/strong>.&lt;/p>
-&lt;p>Der Begriff &lt;em>Modul&lt;/em> ist in Java jedoch offiziell vergeben: Ab Java 9 steht er für ein Set von Packages mit eigener
-&lt;code>module-info.java&lt;/code>.&lt;/p>
-&lt;p>Daher spricht man bei dieser Art der modularen Strukturierung besser von &lt;em>Utility-Klassen&lt;/em> und nicht von &lt;em>Modulen&lt;/em>.&lt;/p>
 &lt;/div>
 &lt;/div></description></item></channel></rss>

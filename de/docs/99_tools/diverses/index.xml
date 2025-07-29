@@ -88,4 +88,242 @@ Den Key kopieren und sicher ablegen. Nicht ins Git-Repository. Vertraulich behan
 &lt;/div>
 &lt;/div>
 &lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/ol></description></item><item><title>Docs: Reguläre Ausdrücke</title><link>/de/docs/99_tools/diverses/regex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/99_tools/diverses/regex/</guid><description>
+&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
+&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
+--> Erster Release, muss noch angeschaut werden.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, was ein regulärer Ausdruck (RegEx) ist und wofür er verwendet wird.&lt;/li>
+&lt;li>Ich kenne die wichtigsten RegEx-Symbole und deren Bedeutung.&lt;/li>
+&lt;li>Ich kann einfache RegEx-Ausdrücke lesen und verstehen.&lt;/li>
+&lt;li>Ich weiss, wo RegEx typischerweise eingesetzt werden.&lt;/li>
+&lt;li>Ich kenne grundlegende Sicherheitsaspekte im Umgang mit RegEx.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>&lt;strong>Reguläre Ausdrücke&lt;/strong> (englisch: &lt;em>Regular Expressions&lt;/em>, kurz &lt;strong>RegEx&lt;/strong>) sind eine formale Sprache, um
+&lt;strong>Muster in Texten&lt;/strong> zu beschreiben. Mit ihnen kannst du prüfen, ob ein Text einem bestimmten Muster entspricht, oder
+gezielt Textteile daraus extrahieren.&lt;/p>
+&lt;p>&lt;strong>Typische Einsatzgebiete:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Validierung von Benutzereingaben (z. B. E-Mail, Telefonnummer, Postleitzahl)&lt;/li>
+&lt;li>Durchsuchen und Ersetzen von Texten&lt;/li>
+&lt;li>Analyse und Extraktion von Daten aus Dateien oder Log-Einträgen&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="grundsyntax">Grundsyntax&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Zeichen&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;th>Beispiel&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;th>&lt;/th>
+&lt;th>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>.&lt;/code>&lt;/td>
+&lt;td>beliebiges Zeichen&lt;/td>
+&lt;td>&lt;code>a.b&lt;/code>&lt;/td>
+&lt;td>Findet &lt;code>aXb&lt;/code>, &lt;code>a1b&lt;/code>, &lt;code>a_b&lt;/code> usw.&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>*&lt;/code>&lt;/td>
+&lt;td>0 oder mehr Wiederholungen&lt;/td>
+&lt;td>&lt;code>ab*&lt;/code>&lt;/td>
+&lt;td>&lt;code>a&lt;/code>, &lt;code>ab&lt;/code>, &lt;code>abb&lt;/code>, &lt;code>abbb&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>+&lt;/code>&lt;/td>
+&lt;td>1 oder mehr Wiederholungen&lt;/td>
+&lt;td>&lt;code>ab+&lt;/code>&lt;/td>
+&lt;td>&lt;code>ab&lt;/code>, &lt;code>abb&lt;/code>, &lt;code>abbb&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>?&lt;/code>&lt;/td>
+&lt;td>0 oder 1 Wiederholung&lt;/td>
+&lt;td>&lt;code>ab?&lt;/code>&lt;/td>
+&lt;td>&lt;code>a&lt;/code>, &lt;code>ab&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>[]&lt;/code>&lt;/td>
+&lt;td>Zeichenauswahl&lt;/td>
+&lt;td>&lt;code>[abc]&lt;/code>&lt;/td>
+&lt;td>&lt;code>a&lt;/code>, &lt;code>b&lt;/code> oder &lt;code>c&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>[^]&lt;/code>&lt;/td>
+&lt;td>Negation&lt;/td>
+&lt;td>&lt;code>[^abc]&lt;/code>&lt;/td>
+&lt;td>alles außer &lt;code>a&lt;/code>, &lt;code>b&lt;/code>, &lt;code>c&lt;/code>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>()&lt;/code>&lt;/td>
+&lt;td>Gruppierung&lt;/td>
+&lt;td>&lt;code>(abc)+&lt;/code>&lt;/td>
+&lt;td>&lt;code>abc&lt;/code>, &lt;code>abcabc&lt;/code>, …&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>`&lt;/td>
+&lt;td>`&lt;/td>
+&lt;td>Oder-Operator&lt;/td>
+&lt;td>`rot&lt;/td>
+&lt;td>blau`&lt;/td>
+&lt;td>&lt;code>rot&lt;/code> oder &lt;code>blau&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\d&lt;/code>&lt;/td>
+&lt;td>Ziffer&lt;/td>
+&lt;td>&lt;code>\d{3}&lt;/code>&lt;/td>
+&lt;td>genau 3 Ziffern&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\w&lt;/code>&lt;/td>
+&lt;td>Buchstabe/Ziffer/Unterstrich&lt;/td>
+&lt;td>&lt;code>\w+&lt;/code>&lt;/td>
+&lt;td>ein oder mehrere Wortzeichen&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\s&lt;/code>&lt;/td>
+&lt;td>Leerzeichen&lt;/td>
+&lt;td>&lt;code>\s+&lt;/code>&lt;/td>
+&lt;td>ein oder mehrere Leerzeichen&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="beispiele">Beispiele&lt;/h2>
+&lt;p>&lt;strong>E-Mail-Adresse prüfen:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Schweizer Telefonnummer prüfen:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>^0\d{2}\s\d{3}\s\d{2}\s\d{2}$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Nur Zahlen:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>^[0-9]+$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="sicherheitsaspekte">Sicherheitsaspekte&lt;/h2>
+&lt;p>Reguläre Ausdrücke können bei falscher oder unvorsichtiger Anwendung &lt;strong>Sicherheits- und Performanceprobleme&lt;/strong> verursachen.
+Die wichtigsten Risiken sind:&lt;/p>
+&lt;h3 id="1-catastrophic-backtracking">1. Catastrophic Backtracking&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Manche RegEx-Ausdrücke können bei bestimmten Eingaben extrem langsam werden.&lt;/li>
+&lt;li>&lt;strong>Grund:&lt;/strong> Der RegEx-Interpreter probiert sehr viele mögliche Kombinationen aus, bevor er entscheidet, dass ein Match
+nicht möglich ist.&lt;/li>
+&lt;li>&lt;strong>Folge:&lt;/strong> Hohe CPU-Last, im Extremfall ein &lt;strong>Denial of Service (ReDoS)&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Beispiel:&lt;/strong>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>(a+)+$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>Eingabe: &lt;code>&amp;quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!&amp;quot;&lt;/code> → führt zu Millionen von Vergleichsoperationen.&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-injection-durch-dynamische-regex-erstellung">2. Injection durch dynamische RegEx-Erstellung&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Wenn Benutzereingaben ungeprüft in einen RegEx übernommen werden, kann der Nutzer das Muster verändern.&lt;/li>
+&lt;li>&lt;strong>Grund:&lt;/strong> RegEx-Sonderzeichen wie &lt;code>.&lt;/code> oder &lt;code>*&lt;/code> können das Suchmuster manipulieren.&lt;/li>
+&lt;li>&lt;strong>Folge:&lt;/strong> Falsche oder unerwartete Treffer, absichtliche Verlangsamung.&lt;/li>
+&lt;li>&lt;strong>Beispiel:&lt;/strong>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Unsicher – Benutzer bestimmt den gesamten Ausdruck&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Pattern pattern &lt;span style="color:#f92672">=&lt;/span> Pattern.&lt;span style="color:#a6e22e">compile&lt;/span>(userInput);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>→ &lt;code>userInput = &amp;quot;.*&amp;quot;&lt;/code> findet alles.&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-übermäßige-komplexität">3. Übermäßige Komplexität&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Sehr komplexe RegEx-Ausdrücke sind schwer zu lesen und zu warten.&lt;/li>
+&lt;li>&lt;strong>Folge:&lt;/strong> Höheres Risiko für Fehler, falsche Matches oder Sicherheitslücken.&lt;/li>
+&lt;li>&lt;strong>Beispiel:&lt;/strong>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*?&amp;amp;]).{8,}$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>→ Passwort-RegEx, schwer wartbar.&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-falsche-annahmen-bei-validierung">4. Falsche Annahmen bei Validierung&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> RegEx wird manchmal als alleinige Validierungsmethode verwendet.&lt;/li>
+&lt;li>&lt;strong>Grund:&lt;/strong> RegEx prüft nur, ob ein Text einem Muster entspricht – nicht, ob er inhaltlich gültig ist.&lt;/li>
+&lt;li>&lt;strong>Folge:&lt;/strong> Formell korrekte, aber inhaltlich falsche Daten können akzeptiert werden.&lt;/li>
+&lt;li>&lt;strong>Beispiel:&lt;/strong>
+&lt;ul>
+&lt;li>E-Mail: &lt;code>a@b.c&lt;/code> passt, ist aber oft ungültig.&lt;/li>
+&lt;li>Telefonnummer: &lt;code>000 000 00 00&lt;/code> erfüllt das Format, ist aber keine echte Nummer.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="best-practices">Best Practices&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>Einfache RegEx verwenden&lt;/strong> – unnötig komplexe Muster vermeiden.&lt;/li>
+&lt;li>&lt;strong>Eingaben vorverarbeiten&lt;/strong> – z. B. Whitespace entfernen, Größe begrenzen.&lt;/li>
+&lt;li>&lt;strong>RegEx testen&lt;/strong> – Worst-Case-Eingaben prüfen (lange Strings ohne Treffer).&lt;/li>
+&lt;li>&lt;strong>Zusätzliche Logik&lt;/strong> – RegEx nur als einen Teil der Validierung nutzen.&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="tipp">Tipp&lt;/h2>
+&lt;p>Teste RegEx-Ausdrücke mit einem Online-Tool wie &lt;a href="https://regex101.com">regex101.com&lt;/a>.&lt;/p></description></item></channel></rss>
