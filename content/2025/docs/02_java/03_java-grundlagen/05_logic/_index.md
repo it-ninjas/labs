@@ -39,18 +39,18 @@ Mathe in Java ist sehr einfach. Beachte, dass mathematische Java-Operationen ein
 
 Zuweisungsoperatoren kombinieren eine Operation mit einer Zuweisung. Statt z. B. `x = x + 5;` kannst du einfach `x += 5;` schreiben.
 
-| Operator | Bedeutung                    | Beispiel       | Entspricht    |
-| -------- | ---------------------------- | -------------- | ------------- | ----- | ------ | --- |
-| `+=`     | Addition und Zuweisung       | `x += 5;`      | `x = x + 5;`  |
-| `-=`     | Subtraktion und Zuweisung    | `x -= 3;`      | `x = x - 3;`  |
-| `*=`     | Multiplikation und Zuweisung | `x *= 2;`      | `x = x * 2;`  |
-| `/=`     | Division und Zuweisung       | `x /= 4;`      | `x = x / 4;`  |
-| `%=`     | Modulo und Zuweisung         | `x %= 3;`      | `x = x % 3;`  |
-| `&=`     | Bitweises UND                | `x &= y;`      | `x = x & y;`  |
-| `        | =`                           | Bitweises ODER | `x            | = y;` | `x = x | y;` |
-| `^=`     | Bitweises XOR                | `x ^= y;`      | `x = x ^ y;`  |
-| `<<=`    | Linksschieben                | `x <<= 1;`     | `x = x << 1;` |
-| `>>=`    | Rechtsschieben               | `x >>= 1;`     | `x = x >> 1;` |
+| Operator | Bedeutung                    | Beispiel   | Entspricht    |
+| -------- | ---------------------------- | ---------- | ------------- |
+| `+=`     | Addition und Zuweisung       | `x += 5;`  | `x = x + 5;`  |
+| `-=`     | Subtraktion und Zuweisung    | `x -= 3;`  | `x = x - 3;`  |
+| `*=`     | Multiplikation und Zuweisung | `x *= 2;`  | `x = x * 2;`  |
+| `/=`     | Division und Zuweisung       | `x /= 4;`  | `x = x / 4;`  |
+| `%=`     | Modulo und Zuweisung         | `x %= 3;`  | `x = x % 3;`  |
+| `&=`     | Bitweises UND                | `x &= y;`  | `x = x & y;`  |
+| `\|=`    | Bitweises ODER               | `x \|= y;` | `x = x \| y;` |
+| `^=`     | Bitweises XOR                | `x ^= y;`  | `x = x ^ y;`  |
+| `<<=`    | Linksschieben                | `x <<= 1;` | `x = x << 1;` |
+| `>>=`    | Rechtsschieben               | `x >>= 1;` | `x = x >> 1;` |
 
 ### Post- und Prä-Inkrement
 
@@ -111,7 +111,7 @@ Diese Operatoren arbeiten mit `boolean`-Werten (true/false).
 | Symbol | Operation             | Erklärung                                                                                |
 | ------ | --------------------- | ---------------------------------------------------------------------------------------- |
 | `&&`   | logisches UND         | true nur wenn beide true sind. Lazy-Evaluation: 2. Ausdruck wird nur bei Bedarf geprüft  |
-| `\|\|  | logisches ODER        | true wenn mindestens einer true ist. Lazy-Evaluation: 2. Ausdruck nur bei Bedarf geprüft |
+| `\|\|` | logisches ODER        | true wenn mindestens einer true ist. Lazy-Evaluation: 2. Ausdruck nur bei Bedarf geprüft |
 | `!`    | logisches NICHT       | kehrt den Wert um: `!true` → false                                                       |
 | `^`    | exklusives ODER (XOR) | true, wenn genau einer true ist                                                          |
 | `&`    | UND (nicht lazy)      | beide Ausdrücke werden **immer** ausgewertet                                             |
