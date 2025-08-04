@@ -66,31 +66,39 @@ Gewisse Tools bedingen, dass du per VPN mit dem Netzwerk von der Talent Factory 
 
 ---
 
-## Starte mit dem Ausbildungsprogramm
+## Übersicht Ausbildungsprogramm
 
-Starte jetzt mit den [Java Grundlagen](../docs/02_java/03_java-grundlagen/) um bald ein it-ninjas zu werden! Klicke auf
-den Link [hier](../docs/02_java/03_java-grundlagen/) oder wähle rechts aus dem Menu das Modul [Java](../docs/02_java/).
-
-### Übersicht Ausbildungsprogramm
-
-Falls du an einem Ausbildungsprogram teilnimmst und dies in der Konfiguration auch entsprechend ausgewähöt hast, findest
+Falls du an einem Ausbildungsprogram teilnimmst und dies in der Konfiguration auch entsprechend ausgewählt hast, findest
 du hier dein Ausbildungsprogramm.
 
 {{< tafy >}}
 
-[![Ausbildungsprogramm Übersicht](../docs/overview/ausbildungsprogramm_uebersicht.png)](../docs/overview/ausbildungsprogramm_uebersicht.png)
+<div style="width: 100%; position: relative; display: inline-block;">
+    <iframe src="/timeline/index.html?dataset=data-2025-2026.js"
+            style="width: 100%; height: 600px; border: none; transform: scale(0.9); transform-origin: 0 0;">
+    </iframe>
+</div>
+
+Klicke [hier](/timeline/index.html) für die Vollansicht.
 
 {{< ninja type="info" >}}
-Beachte, die Zeiten sind grobe Vorgaben. Jeder hat sein eigenes Tempo. Es ist wichtig dass du dir Zeit nimmst und den Inhalt verstehst. Nachfolgenden Module bauen oft auf das erlernte Wissen auf.
+Beachte, die Zeiten sind grobe Vorgaben. Jeder hat sein eigenes Tempo. Es ist wichtig dass du dir Zeit nimmst und den
+Inhalt verstehst. Nachfolgenden Module bauen oft auf das erlernte Wissen auf.
 {{< /ninja >}}
 
 {{< ninja type="tip" >}}
-Die berufsübergreifenden Workshops und Erfahrungstransfers sind ebenfalls wichtig – du findest sie ausserhalb von IT-Ninjas in separaten Angeboten.
+Die berufsübergreifenden Workshops und Erfahrungstransfers sind ebenfalls wichtig – du findest sie ausserhalb von
+IT-Ninjas in separaten Angeboten.
 {{< /ninja >}}
 
 {{< /tafy >}}
 
 ---
+
+## Starte mit dem Ausbildungsprogramm
+
+Starte jetzt mit den [Java Grundlagen](../docs/02_java/03_java-grundlagen/) um bald ein it-ninjas zu werden! Klicke auf
+den Link [hier](../docs/02_java/03_java-grundlagen/) oder wähle rechts aus dem Menu das Modul [Java](../docs/02_java/).
 
 ## Weitere Links
 
