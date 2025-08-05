@@ -95,7 +95,6 @@ Nutze diesen Zeitraum und fordere eine Lizenz an:
    ![Omada](./images/omada.png)  
    ![Omada Zugriff](./images/omada_zugriff.png)
 4. Sobald du Zugriff hast, registriere IntelliJ:
-
    - Wähle **Activate (another) License**
    - Wähle **License Server**
    - Gib die Adresse `https://sbb-license.fls.jetbrains.com` ein
