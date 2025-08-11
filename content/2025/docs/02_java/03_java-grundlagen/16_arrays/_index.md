@@ -176,6 +176,9 @@ for (String word : words) {
 2. Es entsteht ein Array mit drei Elementen.
 3. Das Array wird mit `foreach` ausgegeben.
 
+Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten ["Regulären Ausdruck" (RegEx)](../14_regex/)
+handelt.
+
 ## Arrays in Strings umwandeln - `String.join(...)`
 
 Mit `String.join(...)` kann man aus einem Array einen String erzeugen.

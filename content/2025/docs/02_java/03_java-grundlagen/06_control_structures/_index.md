@@ -275,24 +275,6 @@ for (int i = 0; i <= n; i++) {
 
 Bei diesem Beispiel wird `System.out.print(i + " ");` für alle Zahlen `i` von 0 bis 9 ausgeführt.
 
-### For-Each-Schleife
-
-Wenn du eine Liste oder Array hast, kannst du mit der for-each-Schleife für jedes Element in der Liste oder dem Array
-eine Anweisung oder einen Anweisungs-Block ausführen. Was Listen und Arrays sind, wirst du in einen späteren Kapitel
-noch kennenlernen.
-
-```java
-int[] numbers = { 125, 381, 98, 12, 235 };
-for (int number : numbers) {
-    System.out.print(number + " ");
-}
-// Output: 125 381 98 12 235
-```
-
-{{< ninja tip >}}
-Du kannst eine `for-each`-Schleife verwenden, wenn du **nicht** den Index brauchst, sondern einfach über alle Elemente einer Liste oder eines Arrays gehen willst.
-{{< /ninja >}}
-
 ---
 
 {{< video "https://www.youtube.com/watch?v=_y5lnzRZeko" "YouTube">}}
