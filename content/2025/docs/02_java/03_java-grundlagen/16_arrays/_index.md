@@ -149,8 +149,8 @@ for (String word : words) {
 `foreach` eignet sich besonders gut, wenn du alle Elemente durchgehen möchtest und den Index nicht benötigst.
 {{< /ninja >}}
 
-{{ video "https://www.youtube.com/watch?v=SRJZ1XmqHfA" "Theoretische Erklärung"}}
-{{ video "https://www.youtube.com/watch?v=lfIUilgq4qo" "Anwendung in Java"}}
+{{< video "https://www.youtube.com/watch?v=SRJZ1XmqHfA" "Theoretische Erklärung" >}}
+{{< video "https://www.youtube.com/watch?v=lfIUilgq4qo" "Anwendung in Java" >}}
 
 ## Arrays und Strings
 
@@ -243,7 +243,7 @@ foreach (int[] row: matrix) {
 }
 ```
 
-{{ video "https://www.youtube.com/watch?v=R0YzQPBusAg" }}
+{{< video "https://www.youtube.com/watch?v=R0YzQPBusAg" >}}
 
 ---
 
