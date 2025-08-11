@@ -154,7 +154,7 @@ for (String word : words) {
 
 ## Arrays und Strings
 
-Du hast [Strings](../13_strings/) im letzten Module kennengelernt. Zwei nützliche Methode welche Strings bietet haben
+Du hast [Strings](../13_strings/) im letzten Modul kennengelernt. Zwei nützliche Methode welche Strings bietet haben
 wir dort noch nicht behandelt, weil sie Kentnisse über Arrays voraussetzen.
 
 ### Strings in Arrays umwandeln – `.split(...)`
