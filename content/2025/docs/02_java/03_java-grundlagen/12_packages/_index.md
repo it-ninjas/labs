@@ -25,8 +25,11 @@ description: >
 
 ## Was ist ein Package?
 
-Ein **Package** ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In Java beginnt jede Datei
-optional mit einer `package`-Anweisung:
+Ein **Package** ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In einem späteren Modul wirst
+du Klassen auch in einem anderen Zusammenhang begegnen. Klassen benötigt man später auch, um Objekte zu beschreiben.
+Vorerst helfen uns die Klassen, Methoden zu gruppieren.
+
+In Java beginnt jede Datei optional mit einer `package`-Anweisung:
 
 ```java
 package ch.itninja.tool;
@@ -36,7 +39,9 @@ Damit sagst du, dass sich die Datei im Package `ch.itninja.tool` befindet. Entsp
 `ch/itninja/tool` liegen.
 
 {{< ninja tip >}}
-Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur!
+Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur und wähle den Namen eines
+Packages mit bedacht. Ein guter Name hilft dir später, den Zusammenhang komplexer Software schneller zu verstehen und
+das passende Packet für eine Problemstellung schneller zu finden.
 {{< /ninja >}}
 
 Packages helfen, deinen Code zu strukturieren und Wiederverwendung zu ermöglichen. Auch Bibliotheken wie `java.util`
@@ -84,16 +89,35 @@ Beispiel: Du exportierst `MathUtils` im Package `ch.itninja.util` als `math-util
 
 ## Sichtbarkeiten verstehen
 
-In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse oder Methode zugegriffen werden darf:
+In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse, Methode oder Variable zugegriffen werden darf:
 
-| Sichtbarkeit | Bedeutung                                                 |
-| ------------ | --------------------------------------------------------- |
-| `public`     | Überall sichtbar (auch von anderen Packages)              |
-| `protected`  | Für Unterklassen sichtbar                                 |
-| `(default)`  | Nur innerhalb desselben Packages sichtbar (kein Modifier) |
-| `private`    | Nur innerhalb derselben Datei/Klasse sichtbar             |
+| Sichtbarkeit | Bedeutung                                                           |
+| ------------ | ------------------------------------------------------------------- |
+| `public`     | Überall sichtbar – auch von anderen Packages                        |
+| `protected`  | Sichtbar für Unterklassen und innerhalb desselben Packages          |
+| `(default)`  | Sichtbar nur innerhalb desselben Packages (kein Modifier angegeben) |
+| `private`    | Sichtbar nur innerhalb derselben Klasse                             |
 
-Du brauchst `public`, um etwas für andere Packages nutzbar zu machen.
+`public` ist nötig, wenn eine Klasse oder Methode von einem **anderen Package** aus genutzt werden soll.  
+Mit `(default)` (kein Modifier) ist die Nutzung nur **innerhalb desselben Packages** erlaubt, das ist sehr praktisch für
+interne Hilfsmethoden oder Klassen.
+
+{{< ninja tip >}}
+Wähle die Sichtbarkeit so restriktiv wie möglich – am besten in dieser Reihenfolge:
+
+1. `private`
+2. `protected`
+3. `(default)` _(package-intern)_
+4. `public`
+
+**Begründung:**  
+Je offener die Sichtbarkeit, desto größer das Risiko von ungewollten Abhängigkeiten und Nebenwirkungen.  
+Wenn etwas `public` ist, kann es von beliebigen anderen Packages (auch außerhalb deines Projekts) genutzt werden.  
+Änderungen an einer `public`-Schnittstelle können daher weitreichende Folgen haben, die du nicht immer abschätzen kannst.
+
+Mit `(default)`, `protected` oder `private` bleiben die Auswirkungen auf dein eigenes Package oder sogar nur auf die
+eigene Klasse beschränkt. Das verringert das Risiko erheblich.
+{{< /ninja >}}
 
 ## Importieren von Packages
 
@@ -171,14 +195,21 @@ Du kannst eine `.jar` auch weitergeben:
 - über einen **lokalen Maven-Server** (kommt später)
 
 {{< ninja tip >}}
-Wenn du IntelliJ nutzt und eine `.jar`-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du im Modul [Packages lokal verwenden](../../../99_tools/ide/intellij/07_packages/) wie das geht.
+Wenn du IntelliJ nutzt und eine `.jar`-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du
+im Modul [Packages lokal verwenden](../../../99_tools/ide/intellij/07_packages/) wie das geht.
 {{< /ninja >}}
 
 ## API und JavaDoc
 
-Ein **API** (Application Programming Interface) ist die Schnittstelle deines Codes nach aussen. Sie besteht aus den **öffentlichen Klassen und Methoden**, die von anderen verwendet werden können.
+Ein **API** (Application Programming Interface) ist die **Schnittstelle** deines Codes nach außen.  
+Zur API gehören alle **`public`-Klassen und `public`-Methoden**, die von anderen Packages oder Projekten aus genutzt
+werden können.
 
-Damit andere deinen Code verstehen und verwenden können, solltest du ihn **gut dokumentieren**:
+**Wichtig:**  
+Alles, was `public` ist, wird Teil deiner API – egal, ob du es als „offizielle Schnittstelle“ geplant hast oder nicht.  
+Darum solltest du `public` nur dort verwenden, wo die Nutzung von außen **gewollt und langfristig stabil** sein soll.
+
+Damit andere deinen Code verstehen und richtig verwenden können, solltest du deine API mit **JavaDoc** gut **dokumentieren**:
 
 ```java
 /**
@@ -187,6 +218,9 @@ Damit andere deinen Code verstehen und verwenden können, solltest du ihn **gut 
 public class Calculator {
     /**
      * Addiert zwei Zahlen.
+     * @param a erste Zahl
+     * @param b zweite Zahl
+     * @return Summe von a und b
      */
     public static int add(int a, int b) {
         return a + b;
@@ -194,7 +228,20 @@ public class Calculator {
 }
 ```
 
-Das nennt man **JavaDoc**. Tools wie IntelliJ oder `javadoc` erzeugen daraus automatisch eine HTML-Dokumentation.
+JavaDoc-Kommentare beginnen mit `/** ... */` und können von Tools wie IntelliJ oder javadoc automatisch in eine
+HTML-Dokumentation umgewandelt werden.
+
+{{< ninja tip >}}
+
+Denke daran:
+
+private, (default) und protected sind nicht Teil der öffentlichen API.
+
+Nur public definiert, was andere Packages direkt nutzen können.
+
+Überlege gut, bevor du etwas public machst, denn jede API-Änderung kann externe Nutzer deines Codes betreffen.
+
+{{< /ninja >}}
 
 ## Was bedeutet `static`?
 

@@ -3,22 +3,36 @@ title: "Arrays"
 linkTitle: "Arrays"
 weight: 16
 description: >
-  Modul #J1
+  In diesem Modul lernst du, wie man Arrays in Java verwendet, durchläuft und Daten darin speichert oder daraus liest.
 ---
 
-{{< todo >}} Muss noch überarbeitet werden... {{< /todo >}}
+{{< module "J1" >}}
 
 ## Ziele
 
-- Ich kenne Arrays und kann diese instantiieren, ihnen Werte von Indexen entnehmen und Werte an Indexe zuweisen.
+- Ich weiss, was ein Array ist und wozu es verwendet wird.
+- Ich kann Arrays deklarieren, instantiieren und initialisieren.
+- Ich kann Werte aus Arrays lesen und in Arrays schreiben.
+- Ich kenne den Unterschied zwischen `for` und `foreach` beim Durchlaufen eines Arrays.
+- Ich kann aus einem `String` mit `.split(...)` ein Array erzeugen.
+- Ich weiss, wie ein zweidimensionales Array aufgebaut ist und wie man damit arbeitet.
 
-## Arrays
+{{< zeit lesen="15" >}}
 
-### Definition
+## Einführung
 
-Häufig benötigen Software-Entwickler mehrere zusammengehörige Variablen desselben Datentyps, die logisch oder verwaltungstechnisch zusammengehören. Es wäre aber sehr aufwendig, diese Variablen alle einzeln zu deklarieren und zu verarbeiten. Zudem ist es möglich, dass die Anzahl an Objekten noch unbekannt ist und erst bei der Ausführung des Programms definiert wird. Deswegen wird in Java, wie in anderen Programmiersprachen auch, die Verwendung von Arrays unterstützt. In Arrays lassen sich beliebige primitive Datentypen und Objekte speichern und systematisch bearbeiten. Alle Variablen haben einen gemeinsamen Namen, werden aber über unterschiedliche Indizes angesprochen. Unter `Arrays` kannst du dir so etwas wie eine Liste vorstellen.
+Oft müssen in einem Programm mehrere Werte desselben Datentyps zusammen gespeichert werden.  
+Anstatt für jeden Wert eine eigene Variable zu erstellen, kann man **Arrays** verwenden.
 
-### Deklaration
+Ein Array ist eine feste Sammlung von Elementen, die alle denselben Datentyp haben und über einen **Index** angesprochen
+werden. Die Länge eines Arrays wird einmal bei der Erstellung festgelegt.
+
+## Deklaration und Initialisierung
+
+Ein Array wird in zwei Schritten erstellt:
+
+1. **Deklaration** – Festlegen des Datentyps und Namens
+2. **Initialisierung** – Erstellen des Array-Objekts und Festlegen der Länge
 
 Die Deklaration eines Arrays enthält folgende Bestandteile:
 | Reihenfolge | Bedeutung | Beispiel |
@@ -27,30 +41,32 @@ Die Deklaration eines Arrays enthält folgende Bestandteile:
 | 2. | Eckige Klammern | `[]` |
 | 3. | Bezeichner / Namen | `words, numbers, values, letters...` |
 
-Konkret können wir so ein `String`-Array deklarieren:
-
-```java
-String[] words;
-```
-
-### Syntax
-
 In Java müssen wir zum Zeitpunkt der Deklaration eines Arrays folgendes angeben:
 
 - den Datentyp
 - den Namen
 
-und zum Zeitpunkt der Initialisierung:
+Konkret können wir so ein `String`-Array deklarieren:
+
+```java
+// Deklaration
+String[] words;
+```
+
+Zum Zeitpunkt der Initialisierung müssen wir folgendes angeben:
 
 - die Grösse
 
-Das Code-Beispiel von der "Deklaration" deklariert die Variable _words_, erstellt das Array-Objekt jedoch noch nicht. Der Operator _new_ wird in Java zum Erstellen von neuen Objekten verwendet:
+Das Code-Beispiel von der "Deklaration" deklariert die Variable _words_, erstellt das Array-Objekt jedoch noch nicht.
+Der Operator _new_ wird in Java zum Erstellen von neuen Objekten verwendet:
 
 ```java
 String[] words = new String[5];
 ```
 
-Damit wird ein Array-Objekt der Länge 5 (also mit 5 Elementen) instantiiert. Die fünf Elemente dieses Arrays wurden mit Standardwerten initialisiert. Bei einem Array des Datentyps `String` ist der Default-Wert `null`. Alle Werte im Array werden also mit `null` aufgefüllt.
+Damit wird ein Array-Objekt der Länge 5 (also mit 5 Elementen) instantiiert. Die fünf Elemente dieses Arrays wurden mit
+Standardwerten initialisiert. Bei einem Array des Datentyps `String` ist der Default-Wert `null`. Alle Werte im Array
+werden also mit `null` aufgefüllt.
 
 Wir können die Werte der Array-Elemente auch gleich direkt angeben:
 
@@ -58,23 +74,37 @@ Wir können die Werte der Array-Elemente auch gleich direkt angeben:
 String[] words = { "Hai", "Oktopus", "Rochen", "Wal", "Fisch" };
 ```
 
-Es wird also ein Array mit der Grösse 5 und den angegebenen Werten erstellt.
+Es wird damit ein Array mit der Grösse 5 und den angegebenen Werten erstellt.
 
 ### Länge eines Arrays
 
-Die Anzahl der Elemente in einem Array wird als Länge eines Arrays bezeichnet. Diese Länge wird zum Zeitpunkt der Erstellung eines Arrays einmal festgelegt. Sie kann später in einem Programm nur durch Definition eines neuen Arrays und dem Kopieren von Werten geändert werden.
+Die Anzahl der Elemente in einem Array wird als Länge eines Arrays bezeichnet. Diese Länge wird zum Zeitpunkt der
+Erstellung eines Arrays einmal festgelegt. Sie kann später in einem Programm nur durch Definition eines neuen Arrays und
+dem Kopieren von Werten geändert werden.
 
 Wir können die Länge eines Arrays mithilfe einer in Java integrierten Funktionalität überprüfen:
 
 ```java
-words.length
+System.out.println("Anzahl Elemente: " + words.length);
 ```
 
-### Indizierung
+## Indizierung
 
-Die Indizes in einem Array reichen immer von `0` bis `length-1`. Ein Array mit den ersten 100 natürlichen Zahlen hat beispielsweise eine Länge von 100 und Indizes von 0 bis 99.
+Die Indizes in einem Array reichen immer von `0` bis `length-1`. Ein Array mit den ersten 100 natürlichen Zahlen hat
+beispielsweise eine Länge von 100 und Indizes von 0 bis 99.
 
-### Zugriff auf Elemente
+```java
+System.out.println(words[0]); // Erstes Element -> "Hai"
+System.out.println(words[words.length - 1]); // Letztes Element -> "Fisch"
+```
+
+{{< ninja warning>}}
+Das ist eine häufige Fehlerquelle bei Programmen. Es passiert einem immer wieder, dass man für das letzte Element im
+Array als Index die Länge des Arrays nimmt. Das führt dann zu einer ArrayIndexOutOfBoundsException, welche erst zur
+Laufzeit auftritt.
+{{< /ninja>}}
+
+## Werte schreiben
 
 Wenn wir den Wert eines Elements in unserem Array verändern möchten, geschieht dies folgendermassen:
 
@@ -85,83 +115,138 @@ words[index] = value;
 Wenn du also das 4. Element (Index 3) mit dem Wert `"Delfin"` ersetzen möchtest, dann kannst du das wie folgt tun:
 
 ```java
-words[index] = "Delfin";
+// Aktueller Wert
+System.out.println(words[3]); // Ausgabe: Wal
+
+// Wert ändern
+words[3] = "Delfin";
+
+// Wert lesen
+String word = words[3];
+System.out.println(word); // Ausgabe: Delfin
 ```
 
-Und wenn wir den Wert eines Array-Elements in einer Variablen ausserhalb des Arrays speichern wollen:
+## Arrays durchlaufen
+
+Im Modul [Kontrollstrukturen](../06_control_structures/) hast du bereits die `for`-Schleife kennengelernt. Mit dieser
+kannst du mit einem index durch das ganze Array iterieren:
 
 ```java
-String value = words[index];
-```
-
-### Durch alle Elemente durchgehen
-
-Im Kapitel der "Kontrollstrukturen" hast du die `for`- und "foreach"-Schlaufe kennengelernt. Beide Schlaufen eignen sich, um ein Array durchzugehen ("iterieren"). Hier ein kleiner Reminder:
-
-```java
-System.out.println("Wörter ausgegeben in der for-Schlaufe");
 for (int i = 0; i < words.length; i++) {
-    System.out.print(words[i] + "\t");
-}
-
-System.out.println("\nWörter ausgegeben in der forEach-Schlaufe");
-for (String word : words) {
-    System.out.print(word + "\t");
+    System.out.println("Tier: " + words[i]);
 }
 ```
 
-### Lernvideo
+Für Arrays gibt es aber auch noch die `foreach`-Schleife, welche kürzer und direkter ist:
 
-Wenn du dir die Erklärung noch mit Videos genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team diese
-Videos: [Theoretische Erklärung](https://www.youtube.com/watch?v=SRJZ1XmqHfA),
-[Anwendung in Java](https://www.youtube.com/watch?v=lfIUilgq4qo)
+```java
+for (String word : words) {
+    System.out.println("Tier: " + animal);
+}
+```
 
-## Zweidimensionale Arrays (2D Array)
+{{< ninja tip>}}
+`foreach` eignet sich besonders gut, wenn du alle Elemente durchgehen möchtest und den Index nicht benötigst.
+{{< /ninja >}}
 
-Bis jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch,
+{{ video "https://www.youtube.com/watch?v=SRJZ1XmqHfA" "Theoretische Erklärung"}}
+{{ video "https://www.youtube.com/watch?v=lfIUilgq4qo" "Anwendung in Java"}}
+
+## Arrays und Strings
+
+Du hast [Strings](../13_strings/) im letzten Module kennengelernt. Zwei nützliche Methode welche Strings bietet haben
+wir dort noch nicht behandelt, weil sie Kentnisse über Arrays voraussetzen.
+
+### Strings in Arrays umwandeln – `.split(...)`
+
+Mit `.split(...)` können Strings in Arrays aufgeteilt werden:
+
+```java
+String text = "Apfel,Birne,Kirsche";
+String[] words = text.split(",");
+
+for (String word : words) {
+    System.out.println("Frucht: " + word);
+}
+```
+
+**Ablauf:**
+
+1. Der String `"Apfel,Birne,Kirsche"` wird beim Komma getrennt.
+2. Es entsteht ein Array mit drei Elementen.
+3. Das Array wird mit `foreach` ausgegeben.
+
+## Arrays in Strings umwandeln - `String.join(...)`
+
+Mit `String.join(...)` kann man aus einem Array einen String erzeugen.
+
+```java
+String[] words = {"Apfel", "Birne", "Kirsche"};
+String text = String.join(",", words);
+
+System.out.println("Früchte: " + text); // Ausgabe: "Früchte: Apfel,Birne,Kirsche"
+```
+
+## Zweidimensionale Arrays
+
+is jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch,
 um Listen-Artige Daten zu speichern. Zweidimensionale Arrays haben wie es der Name schon verrät eine zweite Dimension.
 Diese Art von Arrays sind praktisch für tabellarische Daten.
 
 Du kannst dir ein 2D-Array wie eine Excel vorstellen. Es besteht aus Reihen und Spalten die gleich wie im normalen Array
 mit einem Index/einer Position definiert werden.
 
-### Syntax
-
 Für die Deklaration eines zweidimensionalen Arrays wird eine Angabe von der Anzahl Reihen und Spalten benötigt.
-Bei dieser Art von Array können die gleichen Datentypen wie bei den normalen Arrays verwendet werden. So sieht schliesslich
-die Syntax aus:
+Bei dieser Art von Array können die gleichen Datentypen wie bei den normalen Arrays verwendet werden. So sieht
+schliesslich die Syntax aus:
 
 ```java
-int anzahlReihen = 4;
-int anzahlSpalten = 3;
-
-int[][] zweiDArray = new int[anzahlReihen][anzahlSpalten];
+int rows = 3;
+int cols = 2;
+int[][] matrix = new int[rows][cols];
 ```
 
-### Zugriff auf Elemente
+Da wir jetzt im zweidimensionalen Bereich unterwegs sind, müssen wir für den Zugriff auf Elemente beide Dimensionen
+beachten. Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe angeben müssen.
 
-Da wir jetzt im zweidimensionalen Bereich unterwegs sind, müssen wir für den Zugriff auf Elemente beide Dimensionen beachten.
-Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe angeben müssen. Hier ein Beispiel dazu:
+Hier ein Beispiel dazu:
 
 ```java
-int[][] zweiDArray = new int[4][2];
-
-zweiDArray[0][1] = 69; // Wert 69 zuweisen
-int output = zweiDArray[0][1]; // Wert auf position 0 1 in zweiDArray in output variable speichern
-
-System.out.println(output); // Ausgabe: 69
+matrix[0][1] = 42;
+System.out.println(matrix[0][1]); // Ausgabe: 42
 ```
 
-### Lernvideo
+### Durchlaufen mit verschachtelten Schleifen
 
-Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
-[Video](https://www.youtube.com/watch?v=R0YzQPBusAg).
+Um auf alle Elemente im zweidimensionalen Array zuzugreifen, müssen wir eine verschachtelte `for`-Schleife verwenden:
+
+```java
+for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + "\t");
+    }
+    System.out.println();
+}
+```
+
+Du kannst aber auch eine verschachtelte `foreach`-Schleife verwenden:
+
+```java
+foreach (int[] row: matrix) {
+    for (int value: row) {
+        System.out.print(value + "\t");
+    }
+    System.out.println();
+}
+```
+
+{{ video "https://www.youtube.com/watch?v=R0YzQPBusAg" }}
 
 ---
 
 {{< todo >}}
 Labs konvertieren:
 
-Aufgabe 9
+Aufgabe 9  
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-9---arrays
 {{< /todo >}}
