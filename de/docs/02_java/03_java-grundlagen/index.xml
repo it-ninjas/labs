@@ -2963,8 +2963,10 @@ Packages.&lt;/li>
 &lt;/ul>
 &lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
 &lt;h2 id="was-ist-ein-package">Was ist ein Package?&lt;/h2>
-&lt;p>Ein &lt;strong>Package&lt;/strong> ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In Java beginnt jede Datei
-optional mit einer &lt;code>package&lt;/code>-Anweisung:&lt;/p>
+&lt;p>Ein &lt;strong>Package&lt;/strong> ist ein Namensraum zur Gruppierung von Klassen und anderen Programmteilen. In einem späteren Modul wirst
+du Klassen auch in einem anderen Zusammenhang begegnen. Klassen benötigt man später auch, um Objekte zu beschreiben.
+Vorerst helfen uns die Klassen, Methoden zu gruppieren.&lt;/p>
+&lt;p>In Java beginnt jede Datei optional mit einer &lt;code>package&lt;/code>-Anweisung:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -2980,7 +2982,9 @@ optional mit einer &lt;code>package&lt;/code>-Anweisung:&lt;/p>
 &lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
 &lt;/div>
 &lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur!
+Ein Package entspricht einem Verzeichnis im Dateisystem. Achte auf die korrekte Ordnerstruktur und wähle den Namen eines
+Packages mit bedacht. Ein guter Name hilft dir später, den Zusammenhang komplexer Software schneller zu verstehen und
+das passende Packet für eine Problemstellung schneller zu finden.
 &lt;/div>
 &lt;/div>
 &lt;p>Packages helfen, deinen Code zu strukturieren und Wiederverwendung zu ermöglichen. Auch Bibliotheken wie &lt;code>java.util&lt;/code>
@@ -3039,7 +3043,7 @@ entspricht dem Pfad, wo der Quellcode abgelegt ist)&lt;/p>
 &lt;p>Eine Bibliothek ist ein weitergegebenes &lt;code>.jar&lt;/code>-Archiv mit einem oder mehreren Packages.&lt;br>
 Beispiel: Du exportierst &lt;code>MathUtils&lt;/code> im Package &lt;code>ch.itninja.util&lt;/code> als &lt;code>math-utils.jar&lt;/code>.&lt;/p>
 &lt;h2 id="sichtbarkeiten-verstehen">Sichtbarkeiten verstehen&lt;/h2>
-&lt;p>In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse oder Methode zugegriffen werden darf:&lt;/p>
+&lt;p>In Java steuerst du über Sichtbarkeiten, von wo auf eine Klasse, Methode oder Variable zugegriffen werden darf:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -3050,23 +3054,45 @@ Beispiel: Du exportierst &lt;code>MathUtils&lt;/code> im Package &lt;code>ch.itn
 &lt;tbody>
 &lt;tr>
 &lt;td>&lt;code>public&lt;/code>&lt;/td>
-&lt;td>Überall sichtbar (auch von anderen Packages)&lt;/td>
+&lt;td>Überall sichtbar – auch von anderen Packages&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>protected&lt;/code>&lt;/td>
-&lt;td>Für Unterklassen sichtbar&lt;/td>
+&lt;td>Sichtbar für Unterklassen und innerhalb desselben Packages&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>(default)&lt;/code>&lt;/td>
-&lt;td>Nur innerhalb desselben Packages sichtbar (kein Modifier)&lt;/td>
+&lt;td>Sichtbar nur innerhalb desselben Packages (kein Modifier angegeben)&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>private&lt;/code>&lt;/td>
-&lt;td>Nur innerhalb derselben Datei/Klasse sichtbar&lt;/td>
+&lt;td>Sichtbar nur innerhalb derselben Klasse&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>Du brauchst &lt;code>public&lt;/code>, um etwas für andere Packages nutzbar zu machen.&lt;/p>
+&lt;p>&lt;code>public&lt;/code> ist nötig, wenn eine Klasse oder Methode von einem &lt;strong>anderen Package&lt;/strong> aus genutzt werden soll.&lt;br>
+Mit &lt;code>(default)&lt;/code> (kein Modifier) ist die Nutzung nur &lt;strong>innerhalb desselben Packages&lt;/strong> erlaubt, das ist sehr praktisch für
+interne Hilfsmethoden oder Klassen.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Wähle die Sichtbarkeit so restriktiv wie möglich – am besten in dieser Reihenfolge:&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>private&lt;/code>&lt;/li>
+&lt;li>&lt;code>protected&lt;/code>&lt;/li>
+&lt;li>&lt;code>(default)&lt;/code> &lt;em>(package-intern)&lt;/em>&lt;/li>
+&lt;li>&lt;code>public&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>Begründung:&lt;/strong>&lt;br>
+Je offener die Sichtbarkeit, desto größer das Risiko von ungewollten Abhängigkeiten und Nebenwirkungen.&lt;br>
+Wenn etwas &lt;code>public&lt;/code> ist, kann es von beliebigen anderen Packages (auch außerhalb deines Projekts) genutzt werden.&lt;br>
+Änderungen an einer &lt;code>public&lt;/code>-Schnittstelle können daher weitreichende Folgen haben, die du nicht immer abschätzen kannst.&lt;/p>
+&lt;p>Mit &lt;code>(default)&lt;/code>, &lt;code>protected&lt;/code> oder &lt;code>private&lt;/code> bleiben die Auswirkungen auf dein eigenes Package oder sogar nur auf die
+eigene Klasse beschränkt. Das verringert das Risiko erheblich.&lt;/p>
+&lt;/div>
+&lt;/div>
 &lt;h2 id="importieren-von-packages">Importieren von Packages&lt;/h2>
 &lt;p>Wenn du eine &lt;code>public&lt;/code>-Klasse aus einem anderen Package brauchst, musst du sie &lt;strong>importieren&lt;/strong>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -3161,12 +3187,18 @@ können. Java selbst kann auch ohne diese Verzeichnisse kompilieren.&lt;/p>&lt;/
 &lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
 &lt;/div>
 &lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du im Modul &lt;a href="../../../99_tools/ide/intellij/07_packages/">Packages lokal verwenden&lt;/a> wie das geht.
+Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du
+im Modul &lt;a href="../../../99_tools/ide/intellij/07_packages/">Packages lokal verwenden&lt;/a> wie das geht.
 &lt;/div>
 &lt;/div>
 &lt;h2 id="api-und-javadoc">API und JavaDoc&lt;/h2>
-&lt;p>Ein &lt;strong>API&lt;/strong> (Application Programming Interface) ist die Schnittstelle deines Codes nach aussen. Sie besteht aus den &lt;strong>öffentlichen Klassen und Methoden&lt;/strong>, die von anderen verwendet werden können.&lt;/p>
-&lt;p>Damit andere deinen Code verstehen und verwenden können, solltest du ihn &lt;strong>gut dokumentieren&lt;/strong>:&lt;/p>
+&lt;p>Ein &lt;strong>API&lt;/strong> (Application Programming Interface) ist die &lt;strong>Schnittstelle&lt;/strong> deines Codes nach außen.&lt;br>
+Zur API gehören alle &lt;strong>&lt;code>public&lt;/code>-Klassen und &lt;code>public&lt;/code>-Methoden&lt;/strong>, die von anderen Packages oder Projekten aus genutzt
+werden können.&lt;/p>
+&lt;p>&lt;strong>Wichtig:&lt;/strong>&lt;br>
+Alles, was &lt;code>public&lt;/code> ist, wird Teil deiner API – egal, ob du es als „offizielle Schnittstelle“ geplant hast oder nicht.&lt;br>
+Darum solltest du &lt;code>public&lt;/code> nur dort verwenden, wo die Nutzung von außen &lt;strong>gewollt und langfristig stabil&lt;/strong> sein soll.&lt;/p>
+&lt;p>Damit andere deinen Code verstehen und richtig verwenden können, solltest du deine API mit &lt;strong>JavaDoc&lt;/strong> gut &lt;strong>dokumentieren&lt;/strong>:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -3180,6 +3212,9 @@ Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeuge
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/**
@@ -3188,6 +3223,9 @@ Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeuge
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Calculator&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">/**
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * Addiert zwei Zahlen.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param a erste Zahl
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @param b zweite Zahl
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> * @return Summe von a und b
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> */&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b;
@@ -3195,7 +3233,19 @@ Wenn du IntelliJ nutzt und eine &lt;code>.jar&lt;/code>-Datei ohne Maven erzeuge
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Das nennt man &lt;strong>JavaDoc&lt;/strong>. Tools wie IntelliJ oder &lt;code>javadoc&lt;/code> erzeugen daraus automatisch eine HTML-Dokumentation.&lt;/p>
+&lt;/div>&lt;p>JavaDoc-Kommentare beginnen mit &lt;code>/** ... */&lt;/code> und können von Tools wie IntelliJ oder javadoc automatisch in eine
+HTML-Dokumentation umgewandelt werden.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>Denke daran:&lt;/p>
+&lt;p>private, (default) und protected sind nicht Teil der öffentlichen API.&lt;/p>
+&lt;p>Nur public definiert, was andere Packages direkt nutzen können.&lt;/p>
+&lt;p>Überlege gut, bevor du etwas public machst, denn jede API-Änderung kann externe Nutzer deines Codes betreffen.&lt;/p>
+&lt;/div>
+&lt;/div>
 &lt;h2 id="was-bedeutet-static">Was bedeutet &lt;code>static&lt;/code>?&lt;/h2>
 &lt;p>Vielleicht hast du bereits &lt;code>public static void main(String[] args)&lt;/code> gesehen.&lt;/p>
 &lt;p>&lt;code>static&lt;/code> bedeutet:&lt;/p>
@@ -4012,23 +4062,34 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-8&amp;mdash;eingaben-von-der-kommandozeile&lt;/p>
 &lt;/div>
 &lt;/div></description></item><item><title>Docs: Arrays</title><link>/de/docs/02_java/03_java-grundlagen/16_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/de/docs/02_java/03_java-grundlagen/16_arrays/</guid><description>
-&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem;">
-&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
 &lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
-&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
---> Muss noch überarbeitet werden&amp;hellip;
 &lt;/div>
 &lt;/div>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
-&lt;li>Ich kenne Arrays und kann diese instantiieren, ihnen Werte von Indexen entnehmen und Werte an Indexe zuweisen.&lt;/li>
+&lt;li>Ich weiss, was ein Array ist und wozu es verwendet wird.&lt;/li>
+&lt;li>Ich kann Arrays deklarieren, instantiieren und initialisieren.&lt;/li>
+&lt;li>Ich kann Werte aus Arrays lesen und in Arrays schreiben.&lt;/li>
+&lt;li>Ich kenne den Unterschied zwischen &lt;code>for&lt;/code> und &lt;code>foreach&lt;/code> beim Durchlaufen eines Arrays.&lt;/li>
+&lt;li>Ich kann aus einem &lt;code>String&lt;/code> mit &lt;code>.split(...)&lt;/code> ein Array erzeugen.&lt;/li>
+&lt;li>Ich weiss, wie ein zweidimensionales Array aufgebaut ist und wie man damit arbeitet.&lt;/li>
 &lt;/ul>
-&lt;h2 id="arrays">Arrays&lt;/h2>
-&lt;h3 id="definition">Definition&lt;/h3>
-&lt;p>Häufig benötigen Software-Entwickler mehrere zusammengehörige Variablen desselben Datentyps, die logisch oder verwaltungstechnisch zusammengehören. Es wäre aber sehr aufwendig, diese Variablen alle einzeln zu deklarieren und zu verarbeiten. Zudem ist es möglich, dass die Anzahl an Objekten noch unbekannt ist und erst bei der Ausführung des Programms definiert wird. Deswegen wird in Java, wie in anderen Programmiersprachen auch, die Verwendung von Arrays unterstützt. In Arrays lassen sich beliebige primitive Datentypen und Objekte speichern und systematisch bearbeiten. Alle Variablen haben einen gemeinsamen Namen, werden aber über unterschiedliche Indizes angesprochen. Unter &lt;code>Arrays&lt;/code> kannst du dir so etwas wie eine Liste vorstellen.&lt;/p>
-&lt;h3 id="deklaration">Deklaration&lt;/h3>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>Oft müssen in einem Programm mehrere Werte desselben Datentyps zusammen gespeichert werden.&lt;br>
+Anstatt für jeden Wert eine eigene Variable zu erstellen, kann man &lt;strong>Arrays&lt;/strong> verwenden.&lt;/p>
+&lt;p>Ein Array ist eine feste Sammlung von Elementen, die alle denselben Datentyp haben und über einen &lt;strong>Index&lt;/strong> angesprochen
+werden. Die Länge eines Arrays wird einmal bei der Erstellung festgelegt.&lt;/p>
+&lt;h2 id="deklaration-und-initialisierung">Deklaration und Initialisierung&lt;/h2>
+&lt;p>Ein Array wird in zwei Schritten erstellt:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Deklaration&lt;/strong> – Festlegen des Datentyps und Namens&lt;/li>
+&lt;li>&lt;strong>Initialisierung&lt;/strong> – Erstellen des Array-Objekts und Festlegen der Länge&lt;/li>
+&lt;/ol>
 &lt;p>Die Deklaration eines Arrays enthält folgende Bestandteile:&lt;/p>
 &lt;table>
 &lt;thead>
@@ -4056,26 +4117,28 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>Konkret können wir so ein &lt;code>String&lt;/code>-Array deklarieren:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String&lt;span style="color:#f92672">[]&lt;/span> words;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="syntax">Syntax&lt;/h3>
 &lt;p>In Java müssen wir zum Zeitpunkt der Deklaration eines Arrays folgendes angeben:&lt;/p>
 &lt;ul>
 &lt;li>den Datentyp&lt;/li>
 &lt;li>den Namen&lt;/li>
 &lt;/ul>
-&lt;p>und zum Zeitpunkt der Initialisierung:&lt;/p>
+&lt;p>Konkret können wir so ein &lt;code>String&lt;/code>-Array deklarieren:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Deklaration&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String&lt;span style="color:#f92672">[]&lt;/span> words;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Zum Zeitpunkt der Initialisierung müssen wir folgendes angeben:&lt;/p>
 &lt;ul>
 &lt;li>die Grösse&lt;/li>
 &lt;/ul>
-&lt;p>Das Code-Beispiel von der &amp;ldquo;Deklaration&amp;rdquo; deklariert die Variable &lt;em>words&lt;/em>, erstellt das Array-Objekt jedoch noch nicht. Der Operator &lt;em>new&lt;/em> wird in Java zum Erstellen von neuen Objekten verwendet:&lt;/p>
+&lt;p>Das Code-Beispiel von der &amp;ldquo;Deklaration&amp;rdquo; deklariert die Variable &lt;em>words&lt;/em>, erstellt das Array-Objekt jedoch noch nicht.
+Der Operator &lt;em>new&lt;/em> wird in Java zum Erstellen von neuen Objekten verwendet:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4084,7 +4147,9 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String&lt;span style="color:#f92672">[]&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> String&lt;span style="color:#f92672">[&lt;/span>5&lt;span style="color:#f92672">]&lt;/span>;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Damit wird ein Array-Objekt der Länge 5 (also mit 5 Elementen) instantiiert. Die fünf Elemente dieses Arrays wurden mit Standardwerten initialisiert. Bei einem Array des Datentyps &lt;code>String&lt;/code> ist der Default-Wert &lt;code>null&lt;/code>. Alle Werte im Array werden also mit &lt;code>null&lt;/code> aufgefüllt.&lt;/p>
+&lt;/div>&lt;p>Damit wird ein Array-Objekt der Länge 5 (also mit 5 Elementen) instantiiert. Die fünf Elemente dieses Arrays wurden mit
+Standardwerten initialisiert. Bei einem Array des Datentyps &lt;code>String&lt;/code> ist der Default-Wert &lt;code>null&lt;/code>. Alle Werte im Array
+werden also mit &lt;code>null&lt;/code> aufgefüllt.&lt;/p>
 &lt;p>Wir können die Werte der Array-Elemente auch gleich direkt angeben:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -4094,21 +4159,45 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String&lt;span style="color:#f92672">[]&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> { &lt;span style="color:#e6db74">&amp;#34;Hai&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Oktopus&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Rochen&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Wal&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Fisch&amp;#34;&lt;/span> };
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Es wird also ein Array mit der Grösse 5 und den angegebenen Werten erstellt.&lt;/p>
+&lt;/div>&lt;p>Es wird damit ein Array mit der Grösse 5 und den angegebenen Werten erstellt.&lt;/p>
 &lt;h3 id="länge-eines-arrays">Länge eines Arrays&lt;/h3>
-&lt;p>Die Anzahl der Elemente in einem Array wird als Länge eines Arrays bezeichnet. Diese Länge wird zum Zeitpunkt der Erstellung eines Arrays einmal festgelegt. Sie kann später in einem Programm nur durch Definition eines neuen Arrays und dem Kopieren von Werten geändert werden.&lt;/p>
+&lt;p>Die Anzahl der Elemente in einem Array wird als Länge eines Arrays bezeichnet. Diese Länge wird zum Zeitpunkt der
+Erstellung eines Arrays einmal festgelegt. Sie kann später in einem Programm nur durch Definition eines neuen Arrays und
+dem Kopieren von Werten geändert werden.&lt;/p>
 &lt;p>Wir können die Länge eines Arrays mithilfe einer in Java integrierten Funktionalität überprüfen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>words.&lt;span style="color:#a6e22e">length&lt;/span>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Anzahl Elemente: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> words.&lt;span style="color:#a6e22e">length&lt;/span>);
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="indizierung">Indizierung&lt;/h3>
-&lt;p>Die Indizes in einem Array reichen immer von &lt;code>0&lt;/code> bis &lt;code>length-1&lt;/code>. Ein Array mit den ersten 100 natürlichen Zahlen hat beispielsweise eine Länge von 100 und Indizes von 0 bis 99.&lt;/p>
-&lt;h3 id="zugriff-auf-elemente">Zugriff auf Elemente&lt;/h3>
+&lt;/div>&lt;h2 id="indizierung">Indizierung&lt;/h2>
+&lt;p>Die Indizes in einem Array reichen immer von &lt;code>0&lt;/code> bis &lt;code>length-1&lt;/code>. Ein Array mit den ersten 100 natürlichen Zahlen hat
+beispielsweise eine Länge von 100 und Indizes von 0 bis 99.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(words&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">]&lt;/span>); &lt;span style="color:#75715e">// Erstes Element -&amp;gt; &amp;#34;Hai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(words&lt;span style="color:#f92672">[&lt;/span>words.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">-&lt;/span> 1&lt;span style="color:#f92672">]&lt;/span>); &lt;span style="color:#75715e">// Letztes Element -&amp;gt; &amp;#34;Fisch&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Das ist eine häufige Fehlerquelle bei Programmen. Es passiert einem immer wieder, dass man für das letzte Element im
+Array als Index die Länge des Arrays nimmt. Das führt dann zu einer ArrayIndexOutOfBoundsException, welche erst zur
+Laufzeit auftritt.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="werte-schreiben">Werte schreiben&lt;/h2>
 &lt;p>Wenn wir den Wert eines Elements in unserem Array verändern möchten, geschieht dies folgendermassen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -4122,25 +4211,6 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>words&lt;span style="color:#f92672">[&lt;/span>index&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Delfin&amp;#34;&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Und wenn wir den Wert eines Array-Elements in einer Variablen ausserhalb des Arrays speichern wollen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String value &lt;span style="color:#f92672">=&lt;/span> words&lt;span style="color:#f92672">[&lt;/span>index&lt;span style="color:#f92672">]&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="durch-alle-elemente-durchgehen">Durch alle Elemente durchgehen&lt;/h3>
-&lt;p>Im Kapitel der &amp;ldquo;Kontrollstrukturen&amp;rdquo; hast du die &lt;code>for&lt;/code>- und &amp;ldquo;foreach&amp;rdquo;-Schlaufe kennengelernt. Beide Schlaufen eignen sich, um ein Array durchzugehen (&amp;ldquo;iterieren&amp;rdquo;). Hier ein kleiner Reminder:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -4151,48 +4221,61 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Wörter ausgegeben in der for-Schlaufe&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> words.&lt;span style="color:#a6e22e">length&lt;/span>; i&lt;span style="color:#f92672">++&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">print&lt;/span>(words&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;\t&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Aktueller Wert&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(words&lt;span style="color:#f92672">[&lt;/span>3&lt;span style="color:#f92672">]&lt;/span>); &lt;span style="color:#75715e">// Ausgabe: Wal&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;\nWörter ausgegeben in der forEach-Schlaufe&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (String word : words) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">print&lt;/span>(word &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;\t&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Wert ändern&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>words&lt;span style="color:#f92672">[&lt;/span>3&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Delfin&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Wert lesen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String word &lt;span style="color:#f92672">=&lt;/span> words&lt;span style="color:#f92672">[&lt;/span>3&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(word); &lt;span style="color:#75715e">// Ausgabe: Delfin&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="lernvideo">Lernvideo&lt;/h3>
-&lt;p>Wenn du dir die Erklärung noch mit Videos genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team diese
-Videos: &lt;a href="https://www.youtube.com/watch?v=SRJZ1XmqHfA">Theoretische Erklärung&lt;/a>,
-&lt;a href="https://www.youtube.com/watch?v=lfIUilgq4qo">Anwendung in Java&lt;/a>&lt;/p>
-&lt;h2 id="zweidimensionale-arrays-2d-array">Zweidimensionale Arrays (2D Array)&lt;/h2>
-&lt;p>Bis jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch,
-um Listen-Artige Daten zu speichern. Zweidimensionale Arrays haben wie es der Name schon verrät eine zweite Dimension.
-Diese Art von Arrays sind praktisch für tabellarische Daten.&lt;/p>
-&lt;p>Du kannst dir ein 2D-Array wie eine Excel vorstellen. Es besteht aus Reihen und Spalten die gleich wie im normalen Array
-mit einem Index/einer Position definiert werden.&lt;/p>
-&lt;h3 id="syntax-1">Syntax&lt;/h3>
-&lt;p>Für die Deklaration eines zweidimensionalen Arrays wird eine Angabe von der Anzahl Reihen und Spalten benötigt.
-Bei dieser Art von Array können die gleichen Datentypen wie bei den normalen Arrays verwendet werden. So sieht schliesslich
-die Syntax aus:&lt;/p>
+&lt;/div>&lt;h2 id="arrays-durchlaufen">Arrays durchlaufen&lt;/h2>
+&lt;p>Im Modul &lt;a href="/de/docs/02_java/03_java-grundlagen/06_control_structures/">Kontrollstrukturen&lt;/a> hast du bereits die &lt;code>for&lt;/code>-Schleife kennengelernt. Mit dieser
+kannst du mit einem index durch das ganze Array iterieren:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> anzahlReihen &lt;span style="color:#f92672">=&lt;/span> 4;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> anzahlSpalten &lt;span style="color:#f92672">=&lt;/span> 3;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[][]&lt;/span> zweiDArray &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>anzahlReihen&lt;span style="color:#f92672">][&lt;/span>anzahlSpalten&lt;span style="color:#f92672">]&lt;/span>;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> words.&lt;span style="color:#a6e22e">length&lt;/span>; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Tier: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> words&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="zugriff-auf-elemente-1">Zugriff auf Elemente&lt;/h3>
-&lt;p>Da wir jetzt im zweidimensionalen Bereich unterwegs sind, müssen wir für den Zugriff auf Elemente beide Dimensionen beachten.
-Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe angeben müssen. Hier ein Beispiel dazu:&lt;/p>
+&lt;/div>&lt;p>Für Arrays gibt es aber auch noch die &lt;code>foreach&lt;/code>-Schleife, welche kürzer und direkter ist:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (String word : words) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Tier: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> animal);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;code>foreach&lt;/code> eignet sich besonders gut, wenn du alle Elemente durchgehen möchtest und den Index nicht benötigst.
+&lt;/div>
+&lt;/div>
+&lt;p>{{ video &amp;ldquo;&lt;a href="https://www.youtube.com/watch?v=SRJZ1XmqHfA%22">https://www.youtube.com/watch?v=SRJZ1XmqHfA"&lt;/a> &amp;ldquo;Theoretische Erklärung&amp;rdquo;}}
+{{ video &amp;ldquo;&lt;a href="https://www.youtube.com/watch?v=lfIUilgq4qo%22">https://www.youtube.com/watch?v=lfIUilgq4qo"&lt;/a> &amp;ldquo;Anwendung in Java&amp;rdquo;}}&lt;/p>
+&lt;h2 id="arrays-und-strings">Arrays und Strings&lt;/h2>
+&lt;p>Du hast &lt;a href="/de/docs/02_java/03_java-grundlagen/13_strings/">Strings&lt;/a> im letzten Module kennengelernt. Zwei nützliche Methode welche Strings bietet haben
+wir dort noch nicht behandelt, weil sie Kentnisse über Arrays voraussetzen.&lt;/p>
+&lt;h3 id="strings-in-arrays-umwandeln--split">Strings in Arrays umwandeln – &lt;code>.split(...)&lt;/code>&lt;/h3>
+&lt;p>Mit &lt;code>.split(...)&lt;/code> können Strings in Arrays aufgeteilt werden:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4203,17 +4286,110 @@ Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe ang
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[][]&lt;/span> zweiDArray &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>4&lt;span style="color:#f92672">][&lt;/span>2&lt;span style="color:#f92672">]&lt;/span>;
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String text &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Apfel,Birne,Kirsche&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String&lt;span style="color:#f92672">[]&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> text.&lt;span style="color:#a6e22e">split&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;,&amp;#34;&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zweiDArray&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">][&lt;/span>1&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 69; &lt;span style="color:#75715e">// Wert 69 zuweisen&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> output &lt;span style="color:#f92672">=&lt;/span> zweiDArray&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">][&lt;/span>1&lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#75715e">// Wert auf position 0 1 in zweiDArray in output variable speichern&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(output); &lt;span style="color:#75715e">// Ausgabe: 69&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (String word : words) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Frucht: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> word);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="lernvideo-1">Lernvideo&lt;/h3>
-&lt;p>Wenn du dir die Erklärung noch mit einem Video genauer anschauen möchtest, empfiehlt dir das Praxisbildner-Team dieses
-&lt;a href="https://www.youtube.com/watch?v=R0YzQPBusAg">Video&lt;/a>.&lt;/p>
+&lt;/div>&lt;p>&lt;strong>Ablauf:&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>Der String &lt;code>&amp;quot;Apfel,Birne,Kirsche&amp;quot;&lt;/code> wird beim Komma getrennt.&lt;/li>
+&lt;li>Es entsteht ein Array mit drei Elementen.&lt;/li>
+&lt;li>Das Array wird mit &lt;code>foreach&lt;/code> ausgegeben.&lt;/li>
+&lt;/ol>
+&lt;h2 id="arrays-in-strings-umwandeln---stringjoin">Arrays in Strings umwandeln - &lt;code>String.join(...)&lt;/code>&lt;/h2>
+&lt;p>Mit &lt;code>String.join(...)&lt;/code> kann man aus einem Array einen String erzeugen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String&lt;span style="color:#f92672">[]&lt;/span> words &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#34;Apfel&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Birne&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Kirsche&amp;#34;&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String text &lt;span style="color:#f92672">=&lt;/span> String.&lt;span style="color:#a6e22e">join&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;,&amp;#34;&lt;/span>, words);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Früchte: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> text); &lt;span style="color:#75715e">// Ausgabe: &amp;#34;Früchte: Apfel,Birne,Kirsche&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="zweidimensionale-arrays">Zweidimensionale Arrays&lt;/h2>
+&lt;p>is jetzt hast du ausschliesslich Arrays gesehen, die auf eine Dimension beschränkt waren. Diese Arrays sind praktisch,
+um Listen-Artige Daten zu speichern. Zweidimensionale Arrays haben wie es der Name schon verrät eine zweite Dimension.
+Diese Art von Arrays sind praktisch für tabellarische Daten.&lt;/p>
+&lt;p>Du kannst dir ein 2D-Array wie eine Excel vorstellen. Es besteht aus Reihen und Spalten die gleich wie im normalen Array
+mit einem Index/einer Position definiert werden.&lt;/p>
+&lt;p>Für die Deklaration eines zweidimensionalen Arrays wird eine Angabe von der Anzahl Reihen und Spalten benötigt.
+Bei dieser Art von Array können die gleichen Datentypen wie bei den normalen Arrays verwendet werden. So sieht
+schliesslich die Syntax aus:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> rows &lt;span style="color:#f92672">=&lt;/span> 3;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> cols &lt;span style="color:#f92672">=&lt;/span> 2;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[][]&lt;/span> matrix &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[&lt;/span>rows&lt;span style="color:#f92672">][&lt;/span>cols&lt;span style="color:#f92672">]&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Da wir jetzt im zweidimensionalen Bereich unterwegs sind, müssen wir für den Zugriff auf Elemente beide Dimensionen
+beachten. Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe angeben müssen.&lt;/p>
+&lt;p>Hier ein Beispiel dazu:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>matrix&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">][&lt;/span>1&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">=&lt;/span> 42;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(matrix&lt;span style="color:#f92672">[&lt;/span>0&lt;span style="color:#f92672">][&lt;/span>1&lt;span style="color:#f92672">]&lt;/span>); &lt;span style="color:#75715e">// Ausgabe: 42&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="durchlaufen-mit-verschachtelten-schleifen">Durchlaufen mit verschachtelten Schleifen&lt;/h3>
+&lt;p>Um auf alle Elemente im zweidimensionalen Array zuzugreifen, müssen wir eine verschachtelte &lt;code>for&lt;/code>-Schleife verwenden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> 0; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> matrix.&lt;span style="color:#a6e22e">length&lt;/span>; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> 0; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> matrix&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">]&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span>; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">print&lt;/span>(matrix&lt;span style="color:#f92672">[&lt;/span>i&lt;span style="color:#f92672">][&lt;/span>j&lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;\t&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Du kannst aber auch eine verschachtelte &lt;code>foreach&lt;/code>-Schleife verwenden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>foreach (&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> row: matrix) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> value: row) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">print&lt;/span>(value &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;\t&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>{{ video &amp;ldquo;&lt;a href="https://www.youtube.com/watch?v=R0YzQPBusAg%22">https://www.youtube.com/watch?v=R0YzQPBusAg"&lt;/a> }}&lt;/p>
 &lt;hr>
 &lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem;">
@@ -4222,7 +4398,7 @@ Das bedeutet, dass wir anders als bei einfachen Arrays 2 verschiedene indexe ang
 &lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
 &lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
 --> &lt;p>Labs konvertieren:&lt;/p>
-&lt;p>Aufgabe 9
+&lt;p>Aufgabe 9&lt;br>
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-9&amp;mdash;arrays&lt;/p>
 &lt;/div>
 &lt;/div></description></item></channel></rss>
