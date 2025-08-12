@@ -9,13 +9,13 @@ window.timelineData = [
                 title: "Modulplan",
                 items: [
                     { name: "LoWo | Login;Woche", startDate: "05.08.2025", durationWeeks: 1, color: "#D9D9D9" },
-                    { name: "Java;Grundlagen | Basics;Scanner;Debugging;Arrays;Regex;Exceptions | #J1", startDate: "14.08.2025", durationWeeks: 4, color: "#5AC036" },
-                    { name: "Java;OOP | Klassen;Vererbung;Interfaces;Collections;Exceptions | #J2", durationWeeks: 3, color: "#5AC036" },
-                    { name: "GIT | Branching;Konflikte;Cherry-Pick | #S1", durationWeeks: 2, color: "#F2AA84" },
-                    { name: "Java;Frameworks | Maven;Lombok | #J1", durationWeeks: 2, color: "#5AC036" },
-                    { name: "Java;Testing | Konzepte;JUnit;Mockito;TDD | #J3", durationWeeks: 3, color: "#5AC036" },
-                    { name: "Java;OOD | Klassendiagramme;Datenmodelle;Vertiefung OOP | #J4", durationWeeks: 5, color: "#5AC036" },
-                    { name: "UX | UI Design;Datenanalyse;Accessibility;Workshop | #F1", endDate: "31.12.2025", color: "#D86ECC" },
+                    { name: "Java;Grundlagen | Basics;Scanner;Debugging;Arrays;Regex;Exceptions | #J1", url: "/de/docs/02_java/03_java-grundlagen/", startDate: "14.08.2025", durationWeeks: 4, color: "#5AC036" },
+                    { name: "Java;OOP | Klassen;Vererbung;Interfaces;Collections;Exceptions | #J2", url: "/de/docs/02_java/04_java-oop/", durationWeeks: 3, color: "#5AC036" },
+                    { name: "GIT | Branching;Konflikte;Cherry-Pick | #S1", url: "/de/docs/04_git/", durationWeeks: 2, color: "#F2AA84" },
+                    { name: "Java;Frameworks | Maven;Lombok | #J3", url: "/de/docs/02_java/05_maven/", durationWeeks: 2, color: "#5AC036" },
+                    { name: "Java;Testing | Konzepte;JUnit;Mockito;TDD | #J4", url: "/de/docs/02_java/08_java-testing/", durationWeeks: 3, color: "#5AC036" },
+                    { name: "Java;OOD | Klassendiagramme;Datenmodelle;Vertiefung OOP | #J5", url: "/de/docs/02_java/07_java-ood/", durationWeeks: 5, color: "#5AC036" },
+                    { name: "UX | UI Design;Datenanalyse;Accessibility;Workshop | #F1", url: "/de/docs/03_web/01_ide-basic/", endDate: "31.12.2025", color: "#D86ECC" },
                 ]
             }, {
                 type: "crossover", 
@@ -68,13 +68,13 @@ window.timelineData = [
                 type: "module",
                 title: "Modulplan",
                 items: [
-                    { name: "Java | Grundlagen;OOP;OOD;Vertiefung | #J1", startDate: "1.01.2026", durationWeeks: 3, color: "#5AC036" },
-                    { name: "Java;Datenbanken | SQL;JDBC;Postgress;MariaDB | #J7", durationWeeks: 3, color: "#5AC036" },
-                    { name: "Java;Frameworks | Spring;SpringBoot | #J8", durationWeeks: 4, color: "#5AC036" },
-                    { name: "Web;HTML/CSS | Basiscs | #F3", durationWeeks: 3, color: "#D86ECC" },
-                    { name: "Web;JavaScript | Basiscs;Debugging | #F4", durationWeeks: 3, color: "#D86ECC" },
-                    { name: "Web;TypeScript | Basiscs | #F5", durationWeeks: 3, color: "#D86ECC" },
-                    { name: "Web;Angular | Basiscs;Debugging;Testing;RxJS;(NgRx) | #F6", durationWeeks: 4, color: "#D86ECC" },
+                    { name: "Java | Grundlagen;OOP;OOD;Vertiefung | #J6", url: "/de/docs/02_java/07_java-ood/", startDate: "1.01.2026", durationWeeks: 3, color: "#5AC036" },
+                    { name: "Java;Datenbanken | SQL;JDBC;Postgress;MariaDB | #J7", url: "/de/docs/02_java/11_java-jdbc/", durationWeeks: 3, color: "#5AC036" },
+                    { name: "Java;Frameworks | Spring;SpringBoot | #J8", url: "/de/docs/02_java/12_spring-framework/", durationWeeks: 4, color: "#5AC036" },
+                    { name: "Web;HTML/CSS | Basiscs | #F2", url: "/de/docs/03_web/02_html_css/", durationWeeks: 3, color: "#D86ECC" },
+                    { name: "Web;JavaScript | Basiscs;Debugging | #F3", url: "/de/docs/03_web/03_javascript/", durationWeeks: 3, color: "#D86ECC" },
+                    { name: "Web;TypeScript | Basiscs | #F4", url: "/de/docs/03_web/05_typescript/", durationWeeks: 3, color: "#D86ECC" },
+                    { name: "Web;Angular | Basiscs;Debugging;Testing;RxJS;(Optional: NgRx) | #F5", url: "/de/docs/03_web/06_angular/", durationWeeks: 4, color: "#D86ECC" },
                     { name: "Abschluss | Vertiefung;Wiederholen;Projekt fertigstellen;Vorbereitung Rotationsstelle", endDate: "31.07.2026", color: "#0071FF" },
                 ]
             }, {
