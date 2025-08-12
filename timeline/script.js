@@ -107,15 +107,15 @@ function renderTimeline(data) {
 
             let placed = false;
 
-            for (let r = 0; r < rows.length; r++) {
-                const rowHasGroup = rows[r].some(item => !!item.group);
+            for (const element of rows) {
+                const rowHasGroup = element.some(item => !!item.group);
 
                 if (allowMixedGroupRows || !rowHasGroup) {
-                    const overlaps = rows[r].some(existing =>
+                    const overlaps = element.some(existing =>
                         !(endWeek < existing.startWeek || startWeek > existing.endWeek)
                     );
                     if (!overlaps) {
-                        rows[r].push({ ...m, startWeek, endWeek });
+                        element.push({ ...m, startWeek, endWeek });
                         placed = true;
                         break;
                     }
