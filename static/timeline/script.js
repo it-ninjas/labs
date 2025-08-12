@@ -279,6 +279,22 @@ function renderTimeline(data) {
             content.innerHTML = formatText(m.name);
             mod.appendChild(content);
         }
+
+        if (m.url) {
+            const link = document.createElement('a');
+            link.href = m.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.style.position = 'absolute';
+            link.style.top = '0';
+            link.style.left = '0';
+            link.style.width = '100%';
+            link.style.height = '100%';
+            link.style.zIndex = '10';
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+            mod.appendChild(link);
+        }
         return mod;
     }
 
