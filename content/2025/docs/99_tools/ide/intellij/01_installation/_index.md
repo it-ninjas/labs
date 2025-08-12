@@ -81,7 +81,6 @@ Beim ersten Start:
 
 - Frühere Einstellungen übernehmen? → Optional
 - UI-Stil wählen (hell/dunkel)
-- Plugins konfigurieren
 
 Diese Einstellungen kannst du später jederzeit anpassen.
 
@@ -115,7 +114,7 @@ Beim Erstellen des ersten Projekts prüft IntelliJ, ob ein Java Development Kit 
 1. Klicke auf **Download JDK**
 2. Wähle:
    - Version: **17** oder neuer
-   - Anbieter: z. B. **JetBrains Runtime** oder **Oracle OpenJDK**
+   - Anbieter: z. B. **JetBrains Runtime**, nicht Oracle!
 3. IntelliJ lädt und installiert das JDK automatisch.
 4. Das JDK wird automatisch dem Projekt zugewiesen.
 
@@ -125,14 +124,54 @@ Ein manuelles Herunterladen und Installieren eines JDKs ist nicht nötig – Int
 
 **Empfohlen:** Java 17 oder neuer.
 
-### Schritt 5: Projekt anlegen
+{{< sbb >}}
 
-1. Klicke auf **New Project**
-2. Wähle:
-   - Projekttyp: **Java**
-   - JDK: auswählen
-3. Projektname und Speicherort definieren
-4. IntelliJ erstellt ein leeres Projekt
+Um einen positiven Lerneffekt zu erhalten, verzichten wir am Anfang auf die Unterstützung von KI.
+
+Die folgenden Schritte **must** du ausführen um Code-Vervollständigung innerhalb von IntelliJ auszuschalten.
+
+1. **ZIP-Datei herunterladen**  
+   Lade die bereitgestellte ZIP-Datei mit den IntelliJ-Settings herunter:  
+   [Download Editor-Settings](/files/tools/ide/intellij/BaseProfil.zip)
+
+2. **ZIP entpacken**  
+   Entpacke die ZIP-Datei an einem Ort deiner Wahl.  
+   Du solltest danach die beiden Dateien sehen:
+
+   - `editor.xml`
+   - `full.line.xml`
+
+3. **IntelliJ-Options-Verzeichnis finden**  
+   Das Options-Verzeichnis liegt im **Benutzereinstellungen-Ordner** von IntelliJ IDEA.  
+   Je nach Betriebssystem findest du diesen hier:
+
+   - **Windows**:  
+     `C:\Users\<BENUTZERNAME>\AppData\Roaming\JetBrains\IntelliJIdea<Version>\options`
+   - **macOS**:  
+     `~/Library/Application Support/JetBrains/IntelliJIdea<Version>/options`
+   - **Linux**:  
+     `~/.config/JetBrains/IntelliJIdea<Version>/options`
+
+   Ersetze `<Version>` durch deine IntelliJ-Version, z. B. `2025.2`.
+
+4. **Dateien kopieren**  
+   Kopiere die beiden Dateien `editor.xml` und `full.line.xml` in das **options**-Verzeichnis.
+
+5. **IntelliJ neu starten**  
+   Schließe IntelliJ IDEA vollständig und starte es neu, damit die Änderungen übernommen werden.
+
+{{< ninja info>}}
+Falls das `options`-Verzeichnis noch nicht existiert, starte IntelliJ einmal und beende es wieder – danach wird es automatisch angelegt.
+{{< /ninja>}}
+
+{{< ninja info>}}
+Denk daran, dass du dich verpflichtet hast, auf den Einsatz von KI zu verzichten. Bei Unsicherheiten gehe auf deinen
+Praxisbildner zu, damit er mit dir zusammen prüfen kann, ob alles korrekt eingestellt ist.
+{{< /ninja>}}
+
+{{< /sbb>}}
+
+### Schritt 5: Projekt anlegen
 
 {{< ninja info >}}
 Du kannst auch direkt mit der **Hello World**-Applikation von it-ninja starten:  
@@ -140,3 +179,10 @@ Die Einführung findest du [hier](../../../../02_java/03_java-grundlagen/01_java
 Das Beispielprojekt findest du
 {{< lablink "[hier](../../../../../labs/02_java/03_java-grundlagen/00_simple-hello-world/)" >}}  
 {{< /ninja >}}
+
+1. Klicke auf **New Project**
+2. Wähle:
+   - Projekttyp: **Java**
+   - JDK: auswählen
+3. Projektname und Speicherort definieren
+4. IntelliJ erstellt ein leeres Projekt
