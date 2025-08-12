@@ -85,46 +85,10 @@ Beim ersten Start:
 Diese Einstellungen kannst du später jederzeit anpassen.
 
 {{< sbb >}}
-Nach der Installation beginnt ein 30-tägiger Testzeitraum der **Ultimate Edition**.  
-Nutze diesen Zeitraum und fordere eine Lizenz an:
 
-1. Besuche [https://omada.sbb.ch/home](https://omada.sbb.ch/home)
-2. Suche nach der Gruppe `DG_RBT_INTELLIJ-LICENSE`
-3. Klicke auf **Zugriff anfordern**  
-   ![Omada](./images/omada.png)  
-   ![Omada Zugriff](./images/omada_zugriff.png)
-4. Sobald du Zugriff hast, registriere IntelliJ:
-
-   - Wähle **Activate (another) License**
-   - Wähle **License Server**
-   - Gib die Adresse `https://sbb-license.fls.jetbrains.com` ein
-   - Klicke auf **Activate**  
-     ![IntelliJ Register](./images/intellij_register.png)  
-     ![IntelliJ Register Schritt 2](./images/intellij_register1.png)
-
-Danach ist IntelliJ Ultimate aktiviert.
-{{< /sbb >}}
-
-### Schritt 4: JDK einrichten
-
-Beim Erstellen des ersten Projekts prüft IntelliJ, ob ein Java Development Kit (JDK) vorhanden ist. Falls nicht, erscheint ein Hinweis zum Download.
-
-**Empfohlener Weg:**
-
-1. Klicke auf **Download JDK**
-2. Wähle:
-   - Version: **17** oder neuer
-   - Anbieter: z. B. **JetBrains Runtime**, nicht Oracle!
-3. IntelliJ lädt und installiert das JDK automatisch.
-4. Das JDK wird automatisch dem Projekt zugewiesen.
-
-{{< ninja tip >}}
-Ein manuelles Herunterladen und Installieren eines JDKs ist nicht nötig – IntelliJ übernimmt das für dich.
-{{< /ninja >}}
-
-**Empfohlen:** Java 17 oder neuer.
-
-{{< sbb >}}
+{{< ninja warning>}}
+Das hier musst Du unbedingt lesen!
+{{< /ninja>}}
 
 Um einen positiven Lerneffekt zu erhalten, verzichten wir am Anfang auf die Unterstützung von KI.
 
@@ -164,12 +128,52 @@ Die folgenden Schritte **must** du ausführen um Code-Vervollständigung innerha
 Falls das `options`-Verzeichnis noch nicht existiert, starte IntelliJ einmal und beende es wieder – danach wird es automatisch angelegt.
 {{< /ninja>}}
 
-{{< ninja info>}}
+{{< ninja warning>}}
 Denk daran, dass du dich verpflichtet hast, auf den Einsatz von KI zu verzichten. Bei Unsicherheiten gehe auf deinen
 Praxisbildner zu, damit er mit dir zusammen prüfen kann, ob alles korrekt eingestellt ist.
 {{< /ninja>}}
 
 {{< /sbb>}}
+
+{{< sbb >}}
+Nach der Installation beginnt ein 30-tägiger Testzeitraum der **Ultimate Edition**.  
+Nutze diesen Zeitraum und fordere eine Lizenz an:
+
+1. Besuche [https://omada.sbb.ch/home](https://omada.sbb.ch/home)
+2. Suche nach der Gruppe `DG_RBT_INTELLIJ-LICENSE`
+3. Klicke auf **Zugriff anfordern**  
+   ![Omada](./images/omada.png)  
+   ![Omada Zugriff](./images/omada_zugriff.png)
+4. Sobald du Zugriff hast, registriere IntelliJ:
+
+   - Wähle **Activate (another) License**
+   - Wähle **License Server**
+   - Gib die Adresse `https://sbb-license.fls.jetbrains.com` ein
+   - Klicke auf **Activate**  
+     ![IntelliJ Register](./images/intellij_register.png)  
+     ![IntelliJ Register Schritt 2](./images/intellij_register1.png)
+
+Danach ist IntelliJ Ultimate aktiviert.
+{{< /sbb >}}
+
+### Schritt 4: JDK einrichten
+
+Beim Erstellen des ersten Projekts prüft IntelliJ, ob ein Java Development Kit (JDK) vorhanden ist. Falls nicht, erscheint ein Hinweis zum Download.
+
+**Empfohlener Weg:**
+
+1. Klicke auf **Download JDK**
+2. Wähle:
+   - Version: **17** oder neuer
+   - Anbieter: z. B. **JetBrains Runtime**, nicht Oracle!
+3. IntelliJ lädt und installiert das JDK automatisch.
+4. Das JDK wird automatisch dem Projekt zugewiesen.
+
+{{< ninja tip >}}
+Ein manuelles Herunterladen und Installieren eines JDKs ist nicht nötig – IntelliJ übernimmt das für dich.
+{{< /ninja >}}
+
+**Empfohlen:** Java 17 oder neuer.
 
 ### Schritt 5: Projekt anlegen
 
