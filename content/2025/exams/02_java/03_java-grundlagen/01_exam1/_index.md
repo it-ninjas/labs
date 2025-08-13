@@ -7,6 +7,11 @@ description: >
   Einfache Aufgaben mit einem Zahlen-Array
 ---
 
+## Vorbereitung
+
+Erstelle selbsständig ein neues Projekt in IntelliJ. Eine Anleitung findest du
+[hier](../../../../docs/99_tools/ide/intellij/01_installation/).
+
 ## Gegeben
 
 Gegeben ist das folgende Array mit Zahlen:
@@ -27,30 +32,63 @@ int[] numbers = {
 
 ## Aufgabe 1
 
-Schreibe eine Methode, welche alle Zahlen im Array zählt, welche zwischen 0 und 10 liegen und keine 5 sind.
+Schreibe eine Methode, welche alle Zahlen im Array zählt, welche grösser gleich 0 und kleiner gleich 10, aber nicht 5 sind.
 Die Methode liefert die Anzahl dieser Zahlen zurück.
+
+Wichtig:
+
+- Erstelle deine Methoden in einem eigenen Package.
+- Das Array mit den Zahlen soll als Parameter übergeben werden können.
+- Rufe die Methode aus deinem `main()` auf und gib den erhaltenen Wert auf der Konsole aus:
+  `Es gibt x Zahlen, welche grösser gleich 0 und kleiner gleich 10, aber nicht 5 sind.`
 
 ## Aufgabe 2
 
 Schreibe eine Methode, welche aus dem Array alle positiven Zahlen inklusive 0 in ein neues Array schreibt.
-Die Reihenfolge der Zahlen im Array muss gleich bleiben. Die Methode liefert das neue Array zurück.
+Die Reihenfolge der Zahlen im Array muss gleich bleiben, kommt eine Zahl mehrfach vor, kommt sie auch im neuen Array
+mehrfach vor. Die Methode liefert das neue Array zurück.
+
+Wichtig:
+
+- Erstelle deine Methoden in einem eigenen Package.
+- Das Array mit den Zahlen soll als Parameter übergeben werden können.
+- Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:
+  `Positive Zahlen inklusive 0: x, y, z, ...`
 
 ## Aufgabe 3
 
-Schreibe eine Methode, welche aus dem Array alle Zahlen sucht, welche nicht mehr als 10 von der Zahl -6 abweichen.
-Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück.
+Schreibe eine Methode, welche aus dem Array alle Zahlen sucht, welche nicht mehr als 10 von der Zahl -6 abweichen (eine
+Abweichung von 10 ist noch ok). Schreibe diese Zahlen in ein neues Array. Die Reihenfolge der Zahlen im Array muss
+gleich bleiben, kommt eine Zahl mehrfach vor, kommt sie auch im neuen Array mehrfach vor. Die Methode liefert das neue
+Array zurück.
+
+Wichtig:
+
+- Erstelle deine Methoden in einem eigenen Package.
+- Das Array mit den Zahlen soll als Parameter übergeben werden können.
+- Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:
+  `Zahlen welche nicht mehr als 10 von -6 abweichen: x, y, z, ...`
 
 ## Aufgabe 4
 
-Schreibe eine Methode, welche alle Zahlen aus dem Array in positive Zahlen verwandelt und diese in ein neues Array schreibt.
-Die Methode liefert das neue Array zurück.
+Schreibe eine Methode, welche alle Zahlen aus dem Array in positive Zahlen verwandelt und diese in ein neues Array
+schreibt. Die Reihenfolge der Zahlen im Array muss gleich bleiben, kommt eine Zahl mehrfach vor, kommt sie auch im neuen
+Array mehrfach vor. Die Methode liefert das neue Array zurück.
 
-_`Math.abs` darf für diese Aufgabe nicht verwendet werden._
+Wichtig:
+
+- `Math.abs` darf für diese Aufgabe nicht verwendet werden.
+- Erstelle deine Methoden in einem eigenen Package.
+- Das Array mit den Zahlen soll als Parameter übergeben werden können.
+- Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:
+  `Zahlen welche nicht mehr als 10 von -6 abweichen: x, y, z, ...`
 
 ## Aufgabe 5
 
-Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht mehr als den Wert 5 unterscheiden.
-Schreibe diese Zahlen in ein neues Array. Die Methode liefert das neue Array zurück. Für die erste und die letzte Zahl im Array gibt es nur einen Nachbar.
+Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von ihren direkten Nachbarn um jeweils nicht
+mehr als den Wert 5 unterscheiden. Schreibe diese Zahlen in ein neues Array. Für die erste und die letzte Zahl im Array
+gibt es nur einen Nachbar. Die Reihenfolge der Zahlen im Array muss gleich bleiben, kommt eine Zahl mehrfach vor, kommt
+sie auch im neuen Array mehrfach vor. Die Methode liefert das neue Array zurück.
 
 Ein Beispiel:
 
