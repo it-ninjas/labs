@@ -340,9 +340,4 @@ Beachte auch hier, dass `replace` den ursprünglichen String nicht verändert, s
 
 ---
 
-{{< todo >}}
-Lab konvertieren:
-
-Aufgaben 6 und 7
-../../../../labs/02_java/03_java-grundlagen/#aufgabe-6---strings
-{{< /todo >}}
+{{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/13_strings/)" >}}

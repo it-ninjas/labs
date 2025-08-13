@@ -1,18 +1,18 @@
 ---
-title: "Java Exercises - Debugging"
-linkTitle: "Debugging"
+title: "Java Exercises - Strings"
+linkTitle: "Strings"
 type: docs
 weight: 10
 description: >
-  Mit diesen Übungen kannst du dein Wissen zum Thema Debuggen vertiefen.
+  Mit diesen Übungen kannst du dein Wissen zum Thema Strings vertiefen.
 ---
 
 <!--suppress CheckEmptyScriptTag -->
 
 #### Voraussetzung
 
-- Du weisst was ein Breakpoint ist.
-- Du kannst den Debugger starten und den Code Schritt für Schritt ausführen
+- Du weisst was ein String ist.
+- Du kannst eigene Packages und Methoden erstellen
 
 ## Vorbereitungsarbeiten
 
@@ -25,7 +25,7 @@ exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher
 {{< /ninja>}}
 
 Falls du die Anleitung schon auswendig kennst, findest du den Quellcode zur Übung direkt hier:
-[Download](./it-ninja_02_java_03_java-grundlagen_10_debugging.zip) | [Online anschauen](./source/)` >}}
+[Download](./it-ninja_02_java_03_java-grundlagen_13_strings.zip) | [Online anschauen](./source/)` >}}
 
 {{< ninja info >}}
 **Neu bei it-ninja?**  
@@ -60,7 +60,7 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 4. Erstelle einen neuen Branch für die Übung:
 
    {{< code >}}
-   git checkout -b "templates/it-ninja_02_java_03_java-grundlagen_10_debugging"
+   git checkout -b "templates/it-ninja_02_java_03_java-grundlagen_13_strings"
    {{< /code >}}
 
 {{< ninja info >}}
@@ -71,7 +71,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 5. Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:  
    `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]`
 
-   > Den Source-Code findest du hier: [Download](./it-ninja_02_java_03_java-grundlagen_10_debugging.zip) | [Online anschauen](./source/)
+   > Den Source-Code findest du hier: [Download](./it-ninja_02_java_03_java-grundlagen_13_strings.zip) | [Online anschauen](./source/)
 
 6. Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:
 
@@ -83,7 +83,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
 
    {{< code >}}
-   git checkout -b "labs/it-ninja_02_java_03_java-grundlagen_10_debugging"
+   git checkout -b "labs/it-ninja_02_java_03_java-grundlagen_13_strings"
    {{< /code >}}
 
 {{< ninja info >}}
@@ -101,9 +101,9 @@ du auch in der Git-History einen alten Stand wiederherstellen, was aber weniger 
    hast, findest du das Projekt hier:  
    {{< code >}}
    // windows
-   `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\10_debugging`
+   `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\13_strings`
    // linux
-   `[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/10_debugging`
+   `[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/13_strings`
    {{< /code >}}
 
 9. Falls du zum ersten Mal mit IntelliJ arbeitest, findest du [hier](/docs/99_tools/ide/intellij/03_run-and-debug)
@@ -126,83 +126,91 @@ Viel Erfolg!
 
 {{< /toggle >}}
 
-{{< ninja warning>}}
-Zum Lösen der folgenden Aufgaben darfst du den Quellcode nicht verändern!
+## Ausgangslage
+
+Du hast den folgenden String:
+
+```
+String poem = """
+        Ein Ninja leise wie der Wind,
+        Seine Waffen stets geschwind.
+        "Shurikens" fliegen, scharf und schnell,
+        Klingen funkeln, furchterregend hell.
+        "Nunchakus" wirbeln im Tanz,
+        Mit jedem Schlag, im Vorteil er ganz.
+        Seine Waffen, geheim und klug,
+        Begleiten ihn bei jedem Zug.""";
+```
+
+{{< ninja info >}}
+Schreibe für jede Aufgabe eine eigene Methode, welche den String als Parameter nimmt.
+Passe die `main(...)` Methode an, um deinen Quellcode aufzurufen.
 {{< /ninja >}}
 
-## Aufgabe 1 - Wert in Zwischenberechnung herausfinden
+## Aufgabe 1 - Wörter zählen
 
-Finde heraus, welcher Wert z hat, wenn x = 500 ist.
+Gib in der Konsole die Anzahl Wörtern aus. Als Wort gilt alles was eine Folge von Buchstaben und Zahlen sind.
+
+{{< ninja warning >}}
+Die Methode `String.split(...)` darf in dieser Aufgabe nicht verwendet werden. `String.split(...)` wird erst in einem
+späteren Modul behandelt.
+{{< /ninja >}}
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\MagicNumber.java](./source/#src-main-java-ch-itninja-labs-basicexercises-magicnumber-java):
+[src\main\java\ch\itninja\labs\Main.java](./source/#src-main-java-ch-itninja-labs-main-java):
 
 ```java
-    public static int generate(int iterations) throws InterruptedException {
+    public static void main(String[] args) {
 
-        // IT-Ninja: Zum Lösen der folgenden Aufgaben darfst du den Quellcode nicht verändern!
-
-        // IT-Ninja: Aufgabe 1 - Finde heraus, welcher Wert z hat, wenn x = 500 ist.
-
-        // IT-Ninja: Aufgabe 2 - Hat z am Ende immer den gleichen Wert, auch wenn du in der 'for'-Schleife einen
-        //                       Breakpoint gesetzt hast?
-
-        // IT-Ninja: Erstelle Screenshots und diskutiere deine Resultate und Erkenntnisse mit deinem Praxisbildner.
-
-        int z = 0;
-        for(int x = 0; x < iterations; x++) {
-            z = MagicNumberHelper.getSecretValue(x);
-        }
-        return z;
+        // IT-Ninja: rufe hier deine Methoden auf und gib die Resultate auf der Konsole aus
     }
 ```
 
-## Aufgabe 2 - Verhalten des Programms beim Debuggen
+## Aufgabe 2 - Grossbuchstaben
 
-Beantworte folgende Frage: Hat z am Ende immer den gleichen Wert, auch wenn du in der 'for'-Schleife einen Breakpoint
-gesetzt hast?
+Gib den Text in Grossbuchstaben aus.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
-[src\main\java\ch\itninja\labs\basicexercises\MagicNumber.java](./source/#src-main-java-ch-itninja-labs-basicexercises-magicnumber-java):
+[src\main\java\ch\itninja\labs\Main.java](./source/#src-main-java-ch-itninja-labs-main-java):
 
 ```java
-    public static int generate(int iterations) throws InterruptedException {
+    public static void main(String[] args) {
 
-        // IT-Ninja: Zum Lösen der folgenden Aufgaben darfst du den Quellcode nicht verändern!
-
-        // IT-Ninja: Aufgabe 1 - Finde heraus, welcher Wert z hat, wenn x = 500 ist.
-
-        // IT-Ninja: Aufgabe 2 - Hat z am Ende immer den gleichen Wert, auch wenn du in der 'for'-Schleife einen
-        //                       Breakpoint gesetzt hast?
-
-        // IT-Ninja: Erstelle Screenshots und diskutiere deine Resultate und Erkenntnisse mit deinem Praxisbildner.
-
-        int z = 0;
-        for(int x = 0; x < iterations; x++) {
-            z = MagicNumberHelper.getSecretValue(x);
-        }
-        return z;
+        // IT-Ninja: rufe hier deine Methoden auf und gib die Resultate auf der Konsole aus
     }
 ```
 
-**Beispiel:**
+## Aufgabe 2 - Punkte setzen
 
-Eingabe:
+Gib den Text so aus, dass jedes Leerzeichen mit einem Punkt ersetzt wurde.
 
-```console
-MagicNumber.generate(1000);
+Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
+[src\main\java\ch\itninja\labs\Main.java](./source/#src-main-java-ch-itninja-labs-main-java):
+
+```java
+    public static void main(String[] args) {
+
+        // IT-Ninja: rufe hier deine Methoden auf und gib die Resultate auf der Konsole aus
+    }
 ```
 
-Ausgabe:
+## Aufgabe 2 - Wort ausschneiden
 
-```console
--32414486
-```
+Schneide das Wort “Shurikens” aus. Ermittle hierfür die Position des Wortes anhand des "-Zeichens.
 
-{{< ninja info>}}
-Erstelle ScreenShots und diskutiere deine Resultate und Erkenntnisse mit deinem Praxisbildner.
+**Hinweis:** Die indexOf()-Methode bietet ein optionales Argument fromIndex an. Übergibst du die Position des ersten
+Anführungszeichen + 1, dann wird die Position des zweiten zurückgegeben.
+
+{{< ninja warning >}}
+Die Methode `String.replace(...)` darf in dieser Aufgabe nicht verwendet werden.
 {{< /ninja >}}
 
----
+Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
+[src\main\java\ch\itninja\labs\Main.java](./source/#src-main-java-ch-itninja-labs-main-java):
 
-{{<dokumentation "../../../../docs/02_java/03_java-grundlagen/10_debugging/#back-from-lab" "Debugging – Fehler finden und verstehen">}}
+```java
+    public static void main(String[] args) {
+
+        // IT-Ninja: rufe hier deine Methoden auf und gib die Resultate auf der Konsole aus
+    }
+```
