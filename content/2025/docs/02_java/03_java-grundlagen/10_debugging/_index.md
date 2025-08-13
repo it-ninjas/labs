@@ -92,4 +92,6 @@ Wenn du Java mit IntelliJ verwendest, solltest du das integrierte Debugging-Tool
 
 [Debugging in IntelliJ](../../../99_tools/ide/intellij/06_debugging/)
 
+---
+
 {{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/10_debugging/)" >}}
