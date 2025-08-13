@@ -13,7 +13,6 @@ public class MagicNumber {
 
     public static int generate(int iterations) throws InterruptedException {
 
-// IT-Ninja: Füge hier Deinen Code ein...
         // IT-Ninja: Zum Lösen der folgenden Aufgaben darfst du den Quellcode nicht verändern!
 
         // IT-Ninja: Aufgabe 1 - Finde heraus, welcher Wert z hat, wenn x = 500 ist.
