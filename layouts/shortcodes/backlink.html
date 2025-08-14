@@ -1,0 +1,31 @@
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(window.location.search);
+  const back = p.get('back');
+  if (!back) return;
+
+  try {
+    // Nur relative Pfade derselben Origin erlauben
+    const u = new URL(back, window.location.origin);
+    if (u.origin !== window.location.origin || !back.startsWith('/')) return;
+
+    const text = p.get('backText')?.trim() || 'Zurück';
+    const main = document.querySelector('main');
+    if (!main) return;
+
+    const wrap = document.createElement('div');
+    wrap.style.marginTop = '2rem';
+
+    const a = document.createElement('a');
+    a.href = u.pathname + u.search + u.hash;
+    a.textContent = `← ${text}`;
+    a.setAttribute('rel', 'nofollow');
+    a.className = 'backlink';
+
+    wrap.appendChild(a);
+    main.appendChild(wrap);
+  } catch {
+    // Ignorieren bei ungültiger URL
+  }
+});
+</script>

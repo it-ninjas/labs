@@ -29,7 +29,10 @@ Du startest mit den Grundlagen wie Variablen, Kontrollstrukturen und Methoden. D
 {{< ninja info >}}
 Richte möglichst früh deine Entwicklungsumgebung ein – du wirst sie für die Übungen benötigen.
 
-Anleitung: [IntelliJ IDEA einrichten](../99_tools/ide/intellij/01_installation/)
+Anleitung: [!\*IntelliJ IDEA installieren](../99_tools/ide/intellij/01_installation/)
+
+**Achtung:** Installiere nur IntelliJ IDEA. Die anderen Module kannst du vorerst ignorieren.
+
 {{< /ninja >}}
 
 Der Inhalt ist praxisnah aufgebaut – mit Übungen, Beispielprojekten und kleinen Challenges. Fast jedes Thema ist mit
@@ -70,7 +73,7 @@ Java ist eine bewährte und weit verbreitete Sprache, die in vielen Bereichen de
 
 {{< ninja tip>}}
 Wenn du mehr über Programmiersprachen im allgemeinen erfahren willst, schau dir das Modul
-[Programmiersprachen](../99_tools/programmiersprachen/) an. Es wird dir helfen, besser zu verstehen, warum gewisse Sachen
+[!\*Programmiersprachen](../99_tools/programmiersprachen/) an. Es wird dir helfen, besser zu verstehen, warum gewisse Sachen
 in Java entsprechend umgesetzt wurden.
 {{< /ninja >}}
 

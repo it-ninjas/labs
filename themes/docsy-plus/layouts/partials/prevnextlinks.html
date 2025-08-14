@@ -42,20 +42,21 @@
     {{ end }}
 {{ end }}
 
-<div class="row">
-    <div class="col-sm">
-        {{with ($.Scratch.Get "prevPage")}}
-            <a href="{{.Permalink}}" data-toggle="tooltip" title="{{.Title}}">
-                <i class="fa fa-arrow-circle-left"></i> Previous
-            </a>
-        {{end}}
+{{ if not .Params.no_pagination }}
+    <div class="row">
+        <div class="col-sm">
+            {{with ($.Scratch.Get "prevPage")}}
+                <a href="{{.Permalink}}" data-toggle="tooltip" title="{{.Title}}">
+                    <i class="fa fa-arrow-circle-left"></i> Previous
+                </a>
+            {{end}}
+        </div>
+        <div class="col-sm text-right">
+            {{with ($.Scratch.Get "nextPage")}}
+                <a href="{{.Permalink}}" data-toggle="tooltip" title="{{.Title}}">
+                    Next <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            {{end}}
+        </div>
     </div>
-    <div class="col-sm text-right">
-        {{with ($.Scratch.Get "nextPage")}}
-            <a href="{{.Permalink}}" data-toggle="tooltip" title="{{.Title}}">
-                Next <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        {{end}}
-    </div>
-</div>
-
+{{ end }}
