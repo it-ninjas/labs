@@ -1,33 +1,19 @@
 <script>
 
-  function checkBacklink() {
+  function checkBacklink1() {
     const params = new URLSearchParams(window.location.search);
     if (!params.has('back')) return;
 
-    // Markierung für CSS
     document.documentElement.classList.add('has-backlink');
 
-    // 🔒 Sidebar ausblenden (robust)
-    // Start: irgendein Element der Sidebar (z. B. dein <ul class="td-sidebar-nav__section ...">)
-    const sidebarRootCandidate =
-      document.querySelector('ul.td-sidebar-nav__section') ||
-      document.querySelector('nav.td-sidebar-nav') ||
-      document.querySelector('#td-sidebar-nav');
-
-    if (sidebarRootCandidate) {
-      const sidebarContainer =
-        sidebarRootCandidate.closest('aside, nav, .td-sidebar, .td-sidebar-nav, .td-sidebar') ||
-        sidebarRootCandidate;
-      // Wenn möglich komplett entfernen, sonst verstecken
-      if (sidebarContainer && sidebarContainer.parentNode) {
-        sidebarContainer.style.display = 'none';
-        sidebarContainer.classList.add('backlink-hidden-sidebar');
-      }
-    }
-
-    // Breadcrumbs / Prev-Next / Section-Index weg
+    // UI-Elemente ausblenden
     ['nav[aria-label="breadcrumb"]','.td-breadcrumbs','.td-page-nav','.pagination','.section-index']
       .forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove()));
+    const sidebarRoot = document.querySelector('ul.td-sidebar-nav__section');
+    if (sidebarRoot) {
+      const sidebarContainer = sidebarRoot.closest('aside, nav, .td-sidebar, .td-sidebar-nav') || sidebarRoot;
+      if (sidebarContainer) sidebarContainer.style.display = 'none';
+    }
 
     const raw = params.get('back');
     const normalized = (raw ?? '').trim();
@@ -35,57 +21,89 @@
       normalized === '' || /^=+$/.test(normalized) ||
       normalized.toLowerCase() === 'null' || normalized.toLowerCase() === 'undefined';
 
-    if (isEmptyBack) {
+    const smartBackEmpty = () => {
       if (window.history.length > 1) { window.history.back(); return; }
       try { window.close(); } catch {}
       window.location.assign('/');
-      return;
-    }
+    };
 
-    // Backlink einfügen (vor "Last modified..." oder ans Ende von .td-content)
+    if (isEmptyBack) { smartBackEmpty(); return; }
+
     try {
-      const candidate = new URL(normalized, window.location.origin);
+      // Wichtig: gegen href auflösen (erhält Subpfade wie /docs)
+      const candidate = new URL(normalized, window.location.href);
+      const isSameOrigin = candidate.origin === window.location.origin;
       const isRelative = normalized.startsWith('/') && !normalized.startsWith('//');
-      const isSameOriginAbsolute =
-        !isRelative && candidate.origin === window.location.origin &&
-        (candidate.protocol === 'http:' || candidate.protocol === 'https:');
-      if (!(isRelative || isSameOriginAbsolute)) return;
+      if (!(isRelative || isSameOrigin)) return;
 
       const backText = (params.get('backText') || 'Zurück').trim();
-
-      // Explizit in div.td-content arbeiten (Fallbacks nur wenn nötig)
       const container =
         document.querySelector('div.td-content') ||
         document.querySelector('article.td-content') ||
         document.querySelector('main');
       if (!container) return;
 
+      const backHref = candidate.pathname + (candidate.search || '') + (candidate.hash || '');
+
+      // Heuristik: neues Fenster/Tab?
+      const likelyNewWindow = !!window.opener || window.history.length <= 1;
+
       const wrap = document.createElement('div');
       wrap.style.marginTop = '2rem';
 
-      const a = document.createElement('a');
-      a.href = candidate.pathname + candidate.search + candidate.hash;
-      a.textContent = `← ${backText}`;
-      a.rel = 'nofollow';
-      a.className = 'backlink';
-      a.setAttribute('aria-label', 'Zurück zur vorherigen Seite');
-      wrap.appendChild(a);
+      let control; // <a> oder <button> im Link-Look
+      if (likelyNewWindow) {
+        control = document.createElement('button');
+        control.type = 'button';
+        control.className = 'backlink backlink-btn';
+        control.textContent = `← ${backText}`;
+        control.setAttribute('aria-label', 'Zurück zur vorherigen Seite');
+        control.addEventListener('click', () => {
+          if (window.opener && !window.opener.closed) {
+            try {
+              window.opener.location.href = backHref;
+              window.opener.focus();
+            } catch {}
+            try { window.close(); return; } catch {}
+            window.location.replace(backHref);
+            return;
+          }
+          if (window.history.length > 1) window.history.back();
+          else window.location.replace(backHref);
+        });
+      } else {
+        control = document.createElement('a');
+        control.href = backHref;
+        control.textContent = `← ${backText}`;
+        control.rel = 'nofollow';
+        control.className = 'backlink';
+        control.setAttribute('aria-label', 'Zurück zur vorherigen Seite');
 
-      const lastModPattern = /(last\s*modified|zuletzt\s*geändert|derni[eè]re\s*modification|ultima\s*modifica|última\s*modificación)/i;
-
-      // nur innerhalb des Containers suchen
-      const allDivs = container.querySelectorAll(':scope div');
-      let lastModDiv = null;
-      for (let i = allDivs.length - 1; i >= 0; i--) {
-        const el = allDivs[i];
-        if (lastModPattern.test((el.textContent || '').trim())) {
-          lastModDiv = el;
-          break;
-        }
+        // Fallback-Intercept: falls doch im neuen Fenster gelandet
+        control.addEventListener('click', (ev) => {
+          if (window.opener && !window.opener.closed) {
+            ev.preventDefault();
+            try {
+              window.opener.location.href = backHref;
+              window.opener.focus();
+            } catch {}
+            try { window.close(); return; } catch {}
+            window.location.replace(backHref);
+          }
+        });
       }
 
+      wrap.appendChild(control);
+
+      // „Last modified…“ finden (mehrsprachig) und Link davor setzen
+      const lastModPattern = /(last\s*modified|zuletzt\s*geändert|derni[eè]re\s*modification|ultima\s*modifica|última\s*modificación)/i;
+      const divs = container.querySelectorAll(':scope div');
+      let lastModDiv = null;
+      for (let i = divs.length - 1; i >= 0; i--) {
+        const el = divs[i];
+        if (lastModPattern.test((el.textContent || '').trim())) { lastModDiv = el; break; }
+      }
       if (lastModDiv) {
-        // vor den Top-Level-Block stellen
         let top = lastModDiv;
         while (top.parentElement && top.parentElement !== container) top = top.parentElement;
         container.insertBefore(wrap, top);
@@ -93,14 +111,146 @@
         container.appendChild(wrap);
       }
     } catch {
-      /* ungültige URL -> nichts tun */
+      // ungültige URL -> nichts tun
     }
   }
+
+
+  function checkBacklink() {
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has('back')) return;
+
+  // UI reduzieren
+  document.documentElement.classList.add('has-backlink');
+  ['nav[aria-label="breadcrumb"]','.td-breadcrumbs','.td-page-nav','.pagination','.section-index']
+    .forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove()));
+  const sidebarRoot = document.querySelector('ul.td-sidebar-nav__section');
+  if (sidebarRoot) {
+    const sidebarContainer = sidebarRoot.closest('aside, nav, .td-sidebar, .td-sidebar-nav') || sidebarRoot;
+    if (sidebarContainer) sidebarContainer.style.display = 'none';
+  }
+
+  const raw = params.get('back');
+  const normalized = (raw ?? '').trim();
+  const isEmptyBack =
+    normalized === '' || /^=+$/.test(normalized) ||
+    normalized.toLowerCase() === 'null' || normalized.toLowerCase() === 'undefined';
+
+  // Content-Container (explizit .td-content)
+  const container =
+    document.querySelector('div.td-content') ||
+    document.querySelector('article.td-content') ||
+    document.querySelector('main');
+  if (!container) return;
+
+  // Helfer: Back-Control einfügen (vor "Last modified...", sonst ans Ende)
+  const insertControl = (el) => {
+    const lastModPattern = /(last\s*modified|zuletzt\s*geändert|derni[eè]re\s*modification|ultima\s*modifica|última\s*modificación)/i;
+    const divs = container.querySelectorAll(':scope div');
+    let lastModDiv = null;
+    for (let i = divs.length - 1; i >= 0; i--) {
+      const d = divs[i];
+      if (lastModPattern.test((d.textContent || '').trim())) { lastModDiv = d; break; }
+    }
+    if (lastModDiv) {
+      let top = lastModDiv;
+      while (top.parentElement && top.parentElement !== container) top = top.parentElement;
+      container.insertBefore(el, top);
+    } else {
+      container.appendChild(el);
+    }
+  };
+
+  // Falls back leer: KEIN Auto-Back/Close! Button rendern, der es erst bei Klick macht.
+  if (isEmptyBack) {
+    const text = (params.get('backText') || 'Zurück').trim();
+    const wrap = document.createElement('div');
+    wrap.style.marginTop = '2rem';
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'backlink backlink-btn';
+    btn.textContent = `← ${text}`;
+    btn.setAttribute('aria-label', 'Zurück zur vorherigen Seite');
+
+    btn.addEventListener('click', () => {
+      // Klick-Verhalten: History → Close → Startseite
+      if (window.history.length > 1) { window.history.back(); return; }
+      try { window.close(); return; } catch {}
+      window.location.assign('/');
+    });
+
+    wrap.appendChild(btn);
+    insertControl(wrap);
+    return;
+  }
+
+  // back ist gesetzt → wie gehabt Button/Link erzeugen
+  try {
+    // Wichtig: gegen href auflösen (erhält Subpfade wie /docs)
+    const target = new URL(normalized, window.location.href);
+    const isSameOrigin = target.origin === window.location.origin;
+    const isRelative = normalized.startsWith('/') && !normalized.startsWith('//');
+    if (!(isRelative || isSameOrigin)) return;
+
+    const backText = (params.get('backText') || 'Zurück').trim();
+    const backHref = target.pathname + (target.search || '') + (target.hash || '');
+
+    // Heuristik: neues Fenster/Tab?
+    const likelyNewWindow = !!window.opener || window.history.length <= 1;
+
+    const wrap = document.createElement('div');
+    wrap.style.marginTop = '2rem';
+
+    let control;
+    if (likelyNewWindow) {
+      // Button steuert Opener + schließt dieses Fenster (erst bei Klick)
+      control = document.createElement('button');
+      control.type = 'button';
+      control.className = 'backlink backlink-btn';
+      control.textContent = `← ${backText}`;
+      control.setAttribute('aria-label', 'Du kannst das Fenster schliessen und in der Dokumentation fortfahren');
+      control.addEventListener('click', () => {
+        if (window.opener && !window.opener.closed) {
+          try { window.opener.location.href = backHref; window.opener.focus(); } catch {}
+          try { window.close(); return; } catch {}
+          window.location.replace(backHref);
+          return;
+        }
+        if (window.history.length > 1) window.history.back();
+        else window.location.replace(backHref);
+      });
+    } else {
+      // Normaler Link (mit Fallback-Intercept, falls doch im neuen Tab)
+      control = document.createElement('a');
+      control.href = backHref;
+      control.textContent = `← ${backText}`;
+      control.rel = 'nofollow';
+      control.className = 'backlink';
+      control.setAttribute('aria-label', 'Zurück zur vorherigen Seite');
+      control.addEventListener('click', (ev) => {
+        if (window.opener && !window.opener.closed) {
+          ev.preventDefault();
+          try { window.opener.location.href = backHref; window.opener.focus(); } catch {}
+          try { window.close(); return; } catch {}
+          window.location.replace(backHref);
+        }
+      });
+    }
+
+    wrap.appendChild(control);
+    insertControl(wrap);
+  } catch {
+    // ungültige URL -> nichts tun
+  }
+}
 
   function fixUrl() {
     // Für den Back-Parameter nur der aktuelle Pfad (inkl. evtl. Subpfad wie /docs)
     const backValue = window.location.pathname;
     const backTextValue = 'Gehe zurück zur Dokumentation';
+    const blankTextValue = 'Du kannst das Fenster schliessen und in der Dokumentation fortfahren';
+
 
     document.querySelectorAll('a[href]').forEach(link => {
       let txt = (link.textContent || '').trim();
@@ -148,10 +298,19 @@
 
         // nicht doppeln
         if (!url.searchParams.has('back')) {
-          url.searchParams.set('back', backValue);
+          if (isNewWindow){
+            url.searchParams.set('back', "");
+          } else {
+            url.searchParams.set('back', backValue);
+          }
         }
         if (!url.searchParams.has('backText')) {
-          url.searchParams.set('backText', backTextValue);
+          if (isNewWindow){
+            url.searchParams.set('backText', blankTextValue);
+          } else {
+            url.searchParams.set('backText', backTextValue);
+          }
+
         }
 
         // Href ohne Origin zurückschreiben (absolute Pfade mit /docs bleiben korrekt)
