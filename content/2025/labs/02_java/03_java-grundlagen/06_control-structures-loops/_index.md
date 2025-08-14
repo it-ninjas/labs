@@ -102,6 +102,7 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
    {{< code >}}
    git add .
    git commit -m "Add it-ninja_02_java_03_java-grundlagen_06_control-structures-loops"
+   git push
    {{< /code >}}
 
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
@@ -148,6 +149,37 @@ Dreieck vorhanden sein, welches das Programm startet.
 {{< /ninja >}}
 
 Nun bist du bereit, die untenstehenden Aufgaben zu lösen.
+
+{{< ninja warning >}}
+Wenn du alle Änderungen gemacht hast und mit der Übung fertig bist, oder einen 'Zwischenstand' festhalten willst, führe
+die folgenden Befehle aus um das Repository auf dem Server zu speichern (von wo du es geklont hast):
+
+{{< code >}}
+// Windows
+cd /d "[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]"
+git add --all
+git commit -m "Kurzer Kommentar"
+// Linux
+cd "[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]"
+git add .
+git commit -m "Kurzer Kommentar"
+{{< /code >}}
+
+Wenn du deine Änderungen auf dem Git-Server sichern willst, musst du das mit einem `push` machen.
+
+Beim ersten mal musst du git noch mitteilen, wie der Branch auf dem Git-Server heissen soll:
+
+{{< code >}}
+git push --set-upstream origin labs/it-ninja_02_java_03_java-grundlagen_06_control-structures-loops
+{{< /code >}}
+
+Bei weiteren `pushes` wird es dann einfacher:
+
+{{< code >}}
+git push
+{{< /code >}}
+
+{{< /ninja >}}
 
 {{< ninja tip >}}
 Die meisten Übungen sind professionell strukturiert – so wie in echten Softwareprojekten. Zu gutem Code gehören auch
