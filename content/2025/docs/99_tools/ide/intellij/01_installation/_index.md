@@ -2,6 +2,7 @@
 title: "IntelliJ installieren"
 linkTitle: "Installieren"
 weight: 1
+no_pagination: true
 description: >
   Installation der IntelliJ IDEA
 ---
@@ -16,6 +17,13 @@ description: >
 ## IntelliJ IDEA installieren
 
 ### Schritt 1: Download
+
+{{< sbb >}}
+Wenn du bei der SBB in Ausbildung bist dann wähle hier die **Ultimate Edition**. Damit stehen dir alle Features zur
+Verfügung.
+
+Wie du diese Version aktivierst, erfährst du weiter unten.
+{{< /sbb >}}
 
 1. Öffne [https://www.jetbrains.com/idea/download](https://www.jetbrains.com/idea/download).
 2. Wähle die **Community Edition** für dein Betriebssystem.
@@ -37,13 +45,6 @@ description: >
 > Die Community Edition eignet sich gut für reine Java/Kotlin-Entwicklung und reicht für die grundlegenden Module auf IT-Ninjas.
 
 > Die Ultimate Edition ist ideal für professionelle Full-Stack- und Enterprise-Entwicklung. Sie wird in späteren Modulen (Angular, Spring Boot) benötigt wenn man nicht auf Visual Studio Code wechseln will.
-
-{{< sbb >}}
-Wenn du bei der SBB in Ausbildung bist dann wähle hier die **Ultimate Edition**. Damit stehen dir alle Features zur
-Verfügung.
-
-Wie du diese Version aktivierst, erfährst du weiter unten.
-{{< /sbb >}}
 
 ### Schritt 2: Installation
 
@@ -174,19 +175,3 @@ Ein manuelles Herunterladen und Installieren eines JDKs ist nicht nötig – Int
 {{< /ninja >}}
 
 **Empfohlen:** Java 17 oder neuer.
-
-### Schritt 5: Projekt anlegen
-
-{{< ninja info >}}
-Du kannst auch direkt mit der **Hello World**-Applikation von it-ninja starten:  
-Die Einführung findest du [hier](../../../../02_java/03_java-grundlagen/01_java_intro)  
-Das Beispielprojekt findest du
-{{< lablink "[hier](../../../../../labs/02_java/03_java-grundlagen/00_simple-hello-world/)" >}}  
-{{< /ninja >}}
-
-1. Klicke auf **New Project**
-2. Wähle:
-   - Projekttyp: **Java**
-   - JDK: auswählen
-3. Projektname und Speicherort definieren
-4. IntelliJ erstellt ein leeres Projekt

@@ -14,10 +14,27 @@ description: >
 - Du weisst was ein String ist.
 - Du kannst eigene Packages und Methoden erstellen
 
+{{< ninja tip>}}
+
+Wir stellen dir bei den Übungen jeweils komplette Projekte zur Verfügung. Du musst grundsätzlich nur dort was anpassen,
+wo die folgende Kommentarzeile steht:
+{{< code >}}
+// IT-Ninja: Füge hier Deinen Code ein:
+{{< /code >}}
+
+Alles andere kannst du für den Moment ignorieren. Wir erklären dir die einzelnen Zeilen Schritt für Schritt in den
+Modulen.
+{{< /ninja>}}
+
 ## Vorbereitungsarbeiten
 
 {{< toggle title=`Drücke auf den Pfeil links um eine detaillierte Anleitung zu erhalten, wie Du den Quellcode auf deinem
 Rechner ablegen sollst.
+
+{{< ninja warning >}}
+Diese Schritte musst du bei **jeder Übung erneut machen**. Jede Übung hat ein eigenes ZIP-File, welches du bei dir an
+die richtige Stelle kopieren musst. Die Anleitung zeigt dir ziemlich gut, wie das geht...
+{{< /ninja>}}
 
 {{< ninja tip >}}
 Liess vor allem am Anfang die detaillierte Anleitung gut durch und befolge die Schritte
@@ -38,10 +55,10 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 
 1. Beim ersten Mal:
 
-   1. IntelliJ IDEA installieren → [IntelliJ IDEA einrichten](/docs/99_tools/ide/intellij/01_installation/)
-   2. Git-Repository einrichten → [Persönliches Git-Repository](/docs/99_tools/zusammenarbeit/source-repositories/personal-bitbucket/)
+   1. IntelliJ IDEA installieren → [!\*IntelliJ IDEA einrichten](/docs/99_tools/ide/intellij/01_installation/)
+   2. Git-Repository einrichten → [!\*Persönliches Git-Repository](/docs/99_tools/zusammenarbeit/source-repositories/personal-bitbucket/)
 
-2. Öffne eine [CMD-Shell](/docs/99_tools/shell/cmd/) und wechsle ins Verzeichnis deines Git-Repositories:  
+2. Öffne eine [!\*CMD-Shell](/docs/99_tools/shell/cmd/) und wechsle ins Verzeichnis deines Git-Repositories:  
    {{< code >}}
    // Windows
    cd /d "[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]"
@@ -57,16 +74,24 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
    git status
    {{< /code >}}
 
-4. Erstelle einen neuen Branch für die Übung:
+   Falls du bei diesem Befehl einen roten Text siehst, musst du zuerst die aktuellen Dateien sichern:
 
    {{< code >}}
-   git checkout -b "templates/it-ninja_02_java_03_java-grundlagen_13_strings"
+   git add .
+   git commit -m "[gescheiter Kommentar]"
    {{< /code >}}
 
-{{< ninja info >}}
-Du kannst auch einen kürzeren Namen für den Branch wählen. Wir verwenden **templates** am Anfang des Branch-Namens
-für Branches, welche den ursprünglichen Übungscode enthalten.
-{{< /ninja >}}
+4. Erstelle oder wechsle in den Template Branch:
+
+   Beim ersten Mal musst du einen Template Branch erstellen:
+   {{< code >}}
+   git checkout -b "templates"
+   {{< /code >}}
+
+   Falls er bereits existiert, kannst du einfach switchen:
+   {{< code >}}
+   git switch "templates"
+   {{< /code >}}
 
 5. Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:  
    `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]`
@@ -77,7 +102,7 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
 
    {{< code >}}
    git add .
-   git commit -m "Initial version from it-ninja"
+   git commit -m "Add it-ninja_02_java_03_java-grundlagen_13_strings"
    {{< /code >}}
 
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
@@ -87,8 +112,11 @@ für Branches, welche den ursprünglichen Übungscode enthalten.
    {{< /code >}}
 
 {{< ninja info >}}
-Auch hier kannst du einen kürzeren Namen wählen. Verwende **labs** am Anfang des Branch-Namens für Branches, die
+Hier kannst du auch einen kürzeren Namen wählen. Verwende **labs** am Anfang des Branch-Namens für Branches, die
 deinen eigenen Code enthalten.
+
+Stelle dir einen Branch vorerst als Ordner vor. Jeder Ordner enthält eine Version oder einen Stand von deinem Quellcode.
+Du kannst dann mit git zwischen diesen Ordern hin und her wechseln, sie vergleichen aber später auch zusammenführen.
 {{< /ninja >}}
 
 {{< ninja tip >}}
@@ -97,17 +125,28 @@ Du kannst jederzeit einen weiteren Branch erstellen – z. B. wenn du etwas au
 du auch in der Git-History einen alten Stand wiederherstellen, was aber weniger flexibel ist.
 {{< /ninja >}}
 
-8. Starte IntelliJ und öffne mit `File → Open` das Verzeichnis mit dem Source-Code. Wenn du alles korrekt gemacht
-   hast, findest du das Projekt hier:  
-   {{< code >}}
-   // windows
-   `[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\13_strings`
-   // linux
-   `[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/13_strings`
-   {{< /code >}}
+8. Starte IntelliJ und öffne mit `File → Open` das Verzeichnis mit dem Source-Code.
 
-9. Falls du zum ersten Mal mit IntelliJ arbeitest, findest du [hier](/docs/99_tools/ide/intellij/03_run-and-debug)
+{{< ninja warning >}}
+Du musst mit IntelliJ den Ordner suchen, welches einen Ordner `src` oder die Datei `pom.xml` enthält. Ansonsten wird
+IntelliJ Mühe haben, dir das Programm zu kompilieren.
+{{< /ninja >}}
+
+Wenn du alles korrekt gemacht hast, findest du das Projekt hier:  
+ {{< code >}}
+// windows
+`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\02_java\03_java-grundlagen\13_strings`
+// linux
+`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/13_strings`
+{{< /code >}}
+
+9. Falls du zum ersten Mal mit IntelliJ arbeitest, findest du [!\*hier](/docs/99_tools/ide/intellij/03_run-and-debug)
    eine Anleitung, wie man ein Programm startet.
+
+{{< ninja tip >}}
+Um das Programm zu starten musst du jeweils die Datei Main.java öffenen. Dann sollte in IntelliJ oben rechts ein grünes
+Dreieck vorhanden sein, welches das Programm startet.
+{{< /ninja >}}
 
 Nun bist du bereit, die untenstehenden Aufgaben zu lösen.
 

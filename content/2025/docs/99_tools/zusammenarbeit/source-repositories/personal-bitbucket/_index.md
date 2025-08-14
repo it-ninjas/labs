@@ -45,13 +45,13 @@ git config --global core.longpaths true
 ### 2. SSH-Schlüssel erstellen
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "u123456@sbb.ch"
+ssh-keygen -t rsa -b 4096 -C "[deine-email]"
 ```
 
 - Drücke `Enter` für den Standardspeicherort
 - Optional: Passphrase setzen
 
-> Die Schlüssel befinden sich in `C:\Users\u123456\.ssh\`:
+> Die Schlüssel befinden sich in `C:\Users\[username]\.ssh\`:
 >
 > - `id_rsa` (privat, **niemals weitergeben**)
 > - `id_rsa.pub` (öffentlich)
@@ -64,6 +64,8 @@ ssh-keygen -t rsa -b 4096 -C "u123456@sbb.ch"
 type C:\Users\u123456\.ssh\id_rsa.pub
 ```
 
+> In Windows kannst du die Datei auch einfach mit notepad.exe öffnen und den Inhalt kopieren.
+
 - Kopiere den Inhalt und füge ihn unter [SSH-Key hinzufügen](https://code.sbb.ch/plugins/servlet/ssh/account/keys) ein
 
 ---
@@ -71,6 +73,11 @@ type C:\Users\u123456\.ssh\id_rsa.pub
 ### 4. Repository klonen
 
 > Die genaue URL kannst du im Bitbucket bei deinem erstellten Projekt nachschauen.
+
+{{< ninja tip>}}
+Wie Word-Dokumente unter `Dokumente` abgelegt werden, legen wir unseren Quellcode in einem seperaten Ordner ab. In der
+Talent Factory habe wir uns für `C:\Users\u123456\local_repos` entschieden.
+{{< /ninja>}}
 
 ```bash
 mkdir C:\Users\u123456\local_repos
@@ -80,54 +87,7 @@ git clone ssh://git@codessh.sbb.ch:7999/~u123456/it-ninja-[deinName].git
 
 ---
 
-### 5. Projektstruktur anlegen
-
-Falls du ein eigenes Projekt erstellen willst, kannst du jetzt die Projektstruktur anlegen.
-
-```text
-it-ninja-[deinName]/
-| Example/
-| └── src/
-|     └── [main.java]
-└── README.md
-```
-
----
-
-### 6. Snapshots (Commits) erstellen
-
-```bash
-cd it-ninja-[deinName]/J1
-git add README.md
-git commit -m "README hinzugefügt"
-```
-
----
-
-### 7. Änderungen auf Bitbucket hochladen
-
-```bash
-git push origin master
-```
-
----
-
-### 8. Ernstfall testen (Restore)
-
-1. Lokales Repository löschen
-2. Neu klonen:
-
-```bash
-cd C:\Users\u123456\local_repos
-git clone ssh://git@codessh.sbb.ch:7999/~u123456/it-ninja-[deinName].git
-```
-
-3. Änderungen an README.md vornehmen
-4. Committen und pushen
-
----
-
-### 9. Praxisbildner berechtigen
+### 5. Praxisbildner berechtigen
 
 1. Repository in Bitbucket öffnen
 2. Zu **Repository Settings → Repository Permissions** navigieren

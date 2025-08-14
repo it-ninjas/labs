@@ -1,11 +1,162 @@
 <script>
 
-  function fixUrl(){
-    document.querySelectorAll('a').forEach(link => {
-      if (link.textContent.startsWith('!')) {
+  function checkBacklink() {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('back')) return;
+
+    // Markierung für CSS
+    document.documentElement.classList.add('has-backlink');
+
+    // 🔒 Sidebar ausblenden (robust)
+    // Start: irgendein Element der Sidebar (z. B. dein <ul class="td-sidebar-nav__section ...">)
+    const sidebarRootCandidate =
+      document.querySelector('ul.td-sidebar-nav__section') ||
+      document.querySelector('nav.td-sidebar-nav') ||
+      document.querySelector('#td-sidebar-nav');
+
+    if (sidebarRootCandidate) {
+      const sidebarContainer =
+        sidebarRootCandidate.closest('aside, nav, .td-sidebar, .td-sidebar-nav, .td-sidebar') ||
+        sidebarRootCandidate;
+      // Wenn möglich komplett entfernen, sonst verstecken
+      if (sidebarContainer && sidebarContainer.parentNode) {
+        sidebarContainer.style.display = 'none';
+        sidebarContainer.classList.add('backlink-hidden-sidebar');
+      }
+    }
+
+    // Breadcrumbs / Prev-Next / Section-Index weg
+    ['nav[aria-label="breadcrumb"]','.td-breadcrumbs','.td-page-nav','.pagination','.section-index']
+      .forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove()));
+
+    const raw = params.get('back');
+    const normalized = (raw ?? '').trim();
+    const isEmptyBack =
+      normalized === '' || /^=+$/.test(normalized) ||
+      normalized.toLowerCase() === 'null' || normalized.toLowerCase() === 'undefined';
+
+    if (isEmptyBack) {
+      if (window.history.length > 1) { window.history.back(); return; }
+      try { window.close(); } catch {}
+      window.location.assign('/');
+      return;
+    }
+
+    // Backlink einfügen (vor "Last modified..." oder ans Ende von .td-content)
+    try {
+      const candidate = new URL(normalized, window.location.origin);
+      const isRelative = normalized.startsWith('/') && !normalized.startsWith('//');
+      const isSameOriginAbsolute =
+        !isRelative && candidate.origin === window.location.origin &&
+        (candidate.protocol === 'http:' || candidate.protocol === 'https:');
+      if (!(isRelative || isSameOriginAbsolute)) return;
+
+      const backText = (params.get('backText') || 'Zurück').trim();
+
+      // Explizit in div.td-content arbeiten (Fallbacks nur wenn nötig)
+      const container =
+        document.querySelector('div.td-content') ||
+        document.querySelector('article.td-content') ||
+        document.querySelector('main');
+      if (!container) return;
+
+      const wrap = document.createElement('div');
+      wrap.style.marginTop = '2rem';
+
+      const a = document.createElement('a');
+      a.href = candidate.pathname + candidate.search + candidate.hash;
+      a.textContent = `← ${backText}`;
+      a.rel = 'nofollow';
+      a.className = 'backlink';
+      a.setAttribute('aria-label', 'Zurück zur vorherigen Seite');
+      wrap.appendChild(a);
+
+      const lastModPattern = /(last\s*modified|zuletzt\s*geändert|derni[eè]re\s*modification|ultima\s*modifica|última\s*modificación)/i;
+
+      // nur innerhalb des Containers suchen
+      const allDivs = container.querySelectorAll(':scope div');
+      let lastModDiv = null;
+      for (let i = allDivs.length - 1; i >= 0; i--) {
+        const el = allDivs[i];
+        if (lastModPattern.test((el.textContent || '').trim())) {
+          lastModDiv = el;
+          break;
+        }
+      }
+
+      if (lastModDiv) {
+        // vor den Top-Level-Block stellen
+        let top = lastModDiv;
+        while (top.parentElement && top.parentElement !== container) top = top.parentElement;
+        container.insertBefore(wrap, top);
+      } else {
+        container.appendChild(wrap);
+      }
+    } catch {
+      /* ungültige URL -> nichts tun */
+    }
+  }
+
+  function fixUrl() {
+    // Für den Back-Parameter nur der aktuelle Pfad (inkl. evtl. Subpfad wie /docs)
+    const backValue = window.location.pathname;
+    const backTextValue = 'Gehe zurück zur Dokumentation';
+
+    document.querySelectorAll('a[href]').forEach(link => {
+      let txt = (link.textContent || '').trim();
+      if (!txt) return;
+
+      // Präfixe sammeln: ! = neues Fenster, * = Backlink hinzufügen
+      let isNewWindow = false;
+      let wantsBack = false;
+      while (txt.startsWith('!') || txt.startsWith('*')) {
+        if (txt.startsWith('!')) { isNewWindow = true; txt = txt.slice(1).trimStart(); }
+        else if (txt.startsWith('*')) { wantsBack = true; txt = txt.slice(1).trimStart(); }
+      }
+
+      if (!isNewWindow && !wantsBack) return;
+
+      // Text ohne Präfixe setzen
+      link.textContent = txt;
+
+      // Neues Fenster?
+      if (isNewWindow) {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
-        link.textContent = link.textContent.substring(1); // Entferne führendes "!"
+      }
+
+      // Backlink nur für interne Links (same-origin oder relative)
+      if (wantsBack) {
+        const href = link.getAttribute('href') || '';
+        // skip Sonderprotokolle
+        if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+
+        let url;
+        try {
+          // ⚠️ WICHTIG: gegen window.location.href auflösen, damit /docs erhalten bleibt
+          url = new URL(href, window.location.href);
+        } catch {
+          return;
+        }
+
+        const isSameOrigin = url.origin === window.location.origin;
+        // (Wenn du *nur* same-origin willst, reicht die Zeile oben; relative sind dann automatisch same-origin.)
+        if (!isSameOrigin) {
+          // externer Link -> kein back/backText anhängen
+          return;
+        }
+
+        // nicht doppeln
+        if (!url.searchParams.has('back')) {
+          url.searchParams.set('back', backValue);
+        }
+        if (!url.searchParams.has('backText')) {
+          url.searchParams.set('backText', backTextValue);
+        }
+
+        // Href ohne Origin zurückschreiben (absolute Pfade mit /docs bleiben korrekt)
+        const newHref = url.pathname + (url.search || '') + (url.hash || '');
+        link.setAttribute('href', newHref);
       }
     });
   }
@@ -132,5 +283,6 @@
     dynamicAdaptContent();
     checkForBanner();
     fixUrl();
+    checkBacklink();
   });
 </script>
