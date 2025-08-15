@@ -163,13 +163,13 @@ In der Ausbildung nutzen wir Eclipse Temurin **JDK 21 (LTS)** als Standard JDK.
 
 1. Öffne **File → Project Structure…** (`Strg+Alt+Shift+S`).
 2. Links **Platform Settings → SDKs**.
-3. Klicke **+ → Download JDK**
+3. Klicke **+ → Download JDK**  
    ![Add new SDK](./images/add_new_sdk.png)
    ![Download SDK](./images/download_sdk.png)
 4. Wähle:
 
    - Version: **21**
-   - Anbieter: z. B. **JetBrains Runtime**, nicht Oracle!
+   - Anbieter: **Eclipse Temurin**, nicht Oracle!
    - Den Installationsordner so belassen wie vorgeschlagen  
      ![alt text](./images/select_sdk.png)
 
