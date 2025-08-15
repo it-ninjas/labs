@@ -159,19 +159,18 @@ Danach ist IntelliJ Ultimate aktiviert.
 
 ### Schritt 4: JDK einrichten
 
-Beim Erstellen des ersten Projekts prüft IntelliJ, ob ein Java Development Kit (JDK) vorhanden ist. Falls nicht, erscheint ein Hinweis zum Download.
+In der Ausbildung nutzen wir Eclipse Temurin **JDK 21 (LTS)** als Standard JDK.
 
-**Empfohlener Weg:**
+1. Öffne **File → Project Structure…** (`Strg+Alt+Shift+S`).
+2. Links **Platform Settings → SDKs**.
+3. Klicke **+ → Download JDK**
+   ![Add new SDK](./images/add_new_sdk.png)
+   ![Download SDK](./images/download_sdk.png)
+4. Wähle:
 
-1. Klicke auf **Download JDK**
-2. Wähle:
-   - Version: **17** oder neuer
+   - Version: **21**
    - Anbieter: z. B. **JetBrains Runtime**, nicht Oracle!
-3. IntelliJ lädt und installiert das JDK automatisch.
-4. Das JDK wird automatisch dem Projekt zugewiesen.
+   - Den Installationsordner so belassen wie vorgeschlagen  
+     ![alt text](./images/select_sdk.png)
 
-{{< ninja tip >}}
-Ein manuelles Herunterladen und Installieren eines JDKs ist nicht nötig – IntelliJ übernimmt das für dich.
-{{< /ninja >}}
-
-**Empfohlen:** Java 17 oder neuer.
+5. IntelliJ lädt und installiert das JDK automatisch.
