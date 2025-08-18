@@ -115,7 +115,7 @@ Diese Operatoren arbeiten mit `boolean`-Werten (true/false).
 | `!`    | logisches NICHT       | kehrt den Wert um: `!true` → false                                                       |
 | `^`    | exklusives ODER (XOR) | true, wenn genau einer true ist                                                          |
 | `&`    | UND (nicht lazy)      | beide Ausdrücke werden **immer** ausgewertet                                             |
-| `\|`   | ODER (nicht lazy)     | beide Ausdrücke werden **immer** ausgewertet                                             |
+| `\| `  | ODER (nicht lazy)     | beide Ausdrücke werden **immer** ausgewertet                                             |
 
 {{< ninja info >}}
 **Was bedeutet Lazy-Evaluation?**
