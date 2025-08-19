@@ -2321,107 +2321,6 @@ Wenn du dir die Erklärung noch mit einem Video anschauen möchtest, empfehlen w
 &lt;/a>
 Jetzt bist du dran. Löse bitte die folgenden
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/08_methods/">!*Aufgaben&lt;/a> in den Labs.
-&lt;/p></description></item><item><title>Docs: Debugging – Fehler finden und verstehen</title><link>/docs/02_java/03_java-grundlagen/10_debugging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/10_debugging/</guid><description>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Du verstehst, was Debugging ist und warum es wichtig ist.&lt;/li>
-&lt;li>Du kannst zwischen Debugging und einfachem Logging unterscheiden.&lt;/li>
-&lt;li>Du kennst verschiedene Wege, Fehler im Code zu analysieren.&lt;/li>
-&lt;/ul>
-&lt;h2 id="wieso-ist-debuggen-wichtig">Wieso ist Debuggen wichtig?&lt;/h2>
-&lt;p>Es gibt viele Gründe, warum Programme Fehler enthalten können – z. B. falsche Annahmen, vergessene Sonderfälle oder
-unerwartete Eingaben.
-Typische Fehler sind:&lt;/p>
-&lt;ul>
-&lt;li>falsche Berechnungen&lt;/li>
-&lt;li>&lt;code>NullPointerException&lt;/code>&lt;/li>
-&lt;li>Endlosschleifen&lt;/li>
-&lt;li>falsche Bedingungen (&lt;code>if&lt;/code> falsch herum)&lt;/li>
-&lt;li>Methoden werden nicht aufgerufen oder liefern falsche Werte zurück&lt;/li>
-&lt;/ul>
-&lt;p>Mittels debuggen kannst du den Fehler einkreisen und dann jede Anweisung Schritt für Schritt ausführen und prüfen, ob
-die Anweisung wie erwartet Funktioniert.&lt;/p>
-&lt;h3 id="was-bringt-debuggen">Was bringt Debuggen?&lt;/h3>
-&lt;ul>
-&lt;li>Fehler gezielt finden, indem man den Code &lt;strong>Schritt für Schritt&lt;/strong> durchläuft&lt;/li>
-&lt;li>Werte von Variablen und den Kontrollfluss beobachten&lt;/li>
-&lt;li>Besseres Verständnis für fremden oder komplexen Code&lt;/li>
-&lt;/ul>
-&lt;h2 id="debugging-vs-logging">Debugging vs. Logging&lt;/h2>
-&lt;p>Viele Anfänger schreiben &lt;code>System.out.println(...)&lt;/code>, um zu sehen, was im Code passiert. Das funktioniert, hat aber Nachteile:&lt;/p>
-&lt;ul>
-&lt;li>Konsolenausgaben verlangsamen das Programm&lt;/li>
-&lt;li>Der Code wird unübersichtlicher&lt;/li>
-&lt;li>Logs werden oft &lt;strong>vergessen zu entfernen&lt;/strong> und gelangen so in Git oder sogar auf den Server&lt;/li>
-&lt;/ul>
-&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-In IntelliJ kannst du stattdessen einen sogenannten &lt;strong>Log-Breakpoint&lt;/strong> setzen. Das ist wie ein &lt;code>System.out.println&lt;/code>, aber ohne den Code zu verändern.
-&lt;/div>
-&lt;/div>
-&lt;h2 id="wie-kann-man-debuggen--auch-ohne-tool">Wie kann man debuggen – auch ohne Tool?&lt;/h2>
-&lt;ol>
-&lt;li>&lt;strong>Code genau lesen&lt;/strong> – viele Fehler erkennt man durch genaues Nachdenken.&lt;/li>
-&lt;li>&lt;strong>Tests schreiben&lt;/strong> – zeigen sofort, wenn etwas nicht stimmt.&lt;/li>
-&lt;li>&lt;strong>Logs schreiben&lt;/strong> – gezielt und kontrolliert.&lt;/li>
-&lt;li>&lt;strong>Assertions verwenden&lt;/strong> – helfen, Annahmen zu überprüfen.&lt;/li>
-&lt;/ol>
-&lt;h2 id="debugging-vs-fehlersuche-im-feld">Debugging vs. Fehlersuche im Feld&lt;/h2>
-&lt;p>Beim Entwickeln am eigenen Rechner kann man den Code komfortabel debuggen – z. B. mit einem Debugger wie in IntelliJ.
-Im &lt;strong>Produktivbetrieb (im Feld)&lt;/strong> ist das aber nicht möglich:&lt;/p>
-&lt;ul>
-&lt;li>Man kann keine Breakpoints setzen, weil das Programm bereits läuft.&lt;/li>
-&lt;li>Man hat keinen Zugriff auf eine Entwicklungsumgebung.&lt;/li>
-&lt;li>Das Verhalten darf &lt;strong>nicht unterbrochen&lt;/strong> oder &lt;strong>verändert&lt;/strong> werden.&lt;/li>
-&lt;/ul>
-&lt;h3 id="logging-im-feld">Logging im Feld&lt;/h3>
-&lt;p>Deshalb ist &lt;strong>Logging&lt;/strong> im Feld die wichtigste Methode, um Fehler zu finden:&lt;/p>
-&lt;ul>
-&lt;li>Man loggt gezielt Informationen (z. B. Zustände, Fehlermeldungen, Eingabewerte)&lt;/li>
-&lt;li>Diese Logs werden in eine Datei oder Datenbank geschrieben und später analysiert&lt;/li>
-&lt;li>Logging sollte sparsam, aber &lt;strong>gezielt&lt;/strong> eingesetzt werden&lt;/li>
-&lt;/ul>
-&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-Auch Logging kann das Verhalten eines Programms verändern – vor allem in zeitkritischen oder nebenläufigen Systemen. Jeder Log-Eintrag braucht Rechenzeit und kann z. B. Threads blockieren oder IO-Prozesse verlangsamen.
-&lt;/div>
-&lt;/div>
-&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-In zeitkritischen Methoden (z. B. bei Hardware-Ansteuerung oder Animationen) sollte Logging nur mit Bedacht oder gar nicht eingesetzt werden. Stattdessen kann man Zustände puffern und später gesammelt ausgeben.
-&lt;/div>
-&lt;/div>
-&lt;p>Für die Java Grundlagen reichen vorderhand die Debug-Möglichkeiten aus, welche IntelliJ bietet. Das Logging werden wir
-erst in einem späteren Modul einsetzen.&lt;/p>
-&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem">
-&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
-Auch während der Entwicklung ist es nicht falsch, den Programmfluss per Ausgabe auf die Konsole oder mittels Logging
-festzuhalten. Dies Informationen liefern wertvolle Informationen, wo man mit dem Debugen effektiv beginnen soll. Vor
-allem bei grösseren Programmen ist es ineffizient, das gesamte Programm bis zum Fehler Schritt für Schritt abzuarbeiten.
-&lt;/div>
-&lt;/div>
-&lt;h2 id="nächste-schritte">Nächste Schritte&lt;/h2>
-&lt;p>Wenn du Java mit IntelliJ verwendest, solltest du das integrierte Debugging-Tool kennenlernen:&lt;/p>
-&lt;p>&lt;a href="/docs/99_tools/ide/intellij/06_debugging/">Debugging in IntelliJ&lt;/a>&lt;/p>
-&lt;hr>
-&lt;p id="back-from-lab" data-url="--------labs02-java03-java-grundlagen10-debugging">
-&lt;a href="../../../../labs/02_java/03_java-grundlagen/10_debugging/">
-&lt;img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
-&lt;/a>
-Jetzt bist du dran. Löse bitte die folgenden
-&lt;a href="../../../../labs/02_java/03_java-grundlagen/10_debugging/">!*Aufgaben&lt;/a> in den Labs.
 &lt;/p></description></item><item><title>Docs: Fehlerbehandlung mit Exceptions</title><link>/docs/02_java/03_java-grundlagen/09_exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/09_exception_handling/</guid><description>
 &lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
 &lt;div style="width: 100%; margin: 1rem auto;">
@@ -2605,6 +2504,107 @@ Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
 &lt;/a>
 Jetzt bist du dran. Löse bitte die folgenden
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/09_exception_handling/">!*Aufgaben&lt;/a> in den Labs.
+&lt;/p></description></item><item><title>Docs: Debugging – Fehler finden und verstehen</title><link>/docs/02_java/03_java-grundlagen/10_debugging/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/10_debugging/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du verstehst, was Debugging ist und warum es wichtig ist.&lt;/li>
+&lt;li>Du kannst zwischen Debugging und einfachem Logging unterscheiden.&lt;/li>
+&lt;li>Du kennst verschiedene Wege, Fehler im Code zu analysieren.&lt;/li>
+&lt;/ul>
+&lt;h2 id="wieso-ist-debuggen-wichtig">Wieso ist Debuggen wichtig?&lt;/h2>
+&lt;p>Es gibt viele Gründe, warum Programme Fehler enthalten können – z. B. falsche Annahmen, vergessene Sonderfälle oder
+unerwartete Eingaben.
+Typische Fehler sind:&lt;/p>
+&lt;ul>
+&lt;li>falsche Berechnungen&lt;/li>
+&lt;li>&lt;code>NullPointerException&lt;/code>&lt;/li>
+&lt;li>Endlosschleifen&lt;/li>
+&lt;li>falsche Bedingungen (&lt;code>if&lt;/code> falsch herum)&lt;/li>
+&lt;li>Methoden werden nicht aufgerufen oder liefern falsche Werte zurück&lt;/li>
+&lt;/ul>
+&lt;p>Mittels debuggen kannst du den Fehler einkreisen und dann jede Anweisung Schritt für Schritt ausführen und prüfen, ob
+die Anweisung wie erwartet Funktioniert.&lt;/p>
+&lt;h3 id="was-bringt-debuggen">Was bringt Debuggen?&lt;/h3>
+&lt;ul>
+&lt;li>Fehler gezielt finden, indem man den Code &lt;strong>Schritt für Schritt&lt;/strong> durchläuft&lt;/li>
+&lt;li>Werte von Variablen und den Kontrollfluss beobachten&lt;/li>
+&lt;li>Besseres Verständnis für fremden oder komplexen Code&lt;/li>
+&lt;/ul>
+&lt;h2 id="debugging-vs-logging">Debugging vs. Logging&lt;/h2>
+&lt;p>Viele Anfänger schreiben &lt;code>System.out.println(...)&lt;/code>, um zu sehen, was im Code passiert. Das funktioniert, hat aber Nachteile:&lt;/p>
+&lt;ul>
+&lt;li>Konsolenausgaben verlangsamen das Programm&lt;/li>
+&lt;li>Der Code wird unübersichtlicher&lt;/li>
+&lt;li>Logs werden oft &lt;strong>vergessen zu entfernen&lt;/strong> und gelangen so in Git oder sogar auf den Server&lt;/li>
+&lt;/ul>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+In IntelliJ kannst du stattdessen einen sogenannten &lt;strong>Log-Breakpoint&lt;/strong> setzen. Das ist wie ein &lt;code>System.out.println&lt;/code>, aber ohne den Code zu verändern.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="wie-kann-man-debuggen--auch-ohne-tool">Wie kann man debuggen – auch ohne Tool?&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>Code genau lesen&lt;/strong> – viele Fehler erkennt man durch genaues Nachdenken.&lt;/li>
+&lt;li>&lt;strong>Tests schreiben&lt;/strong> – zeigen sofort, wenn etwas nicht stimmt.&lt;/li>
+&lt;li>&lt;strong>Logs schreiben&lt;/strong> – gezielt und kontrolliert.&lt;/li>
+&lt;li>&lt;strong>Assertions verwenden&lt;/strong> – helfen, Annahmen zu überprüfen.&lt;/li>
+&lt;/ol>
+&lt;h2 id="debugging-vs-fehlersuche-im-feld">Debugging vs. Fehlersuche im Feld&lt;/h2>
+&lt;p>Beim Entwickeln am eigenen Rechner kann man den Code komfortabel debuggen – z. B. mit einem Debugger wie in IntelliJ.
+Im &lt;strong>Produktivbetrieb (im Feld)&lt;/strong> ist das aber nicht möglich:&lt;/p>
+&lt;ul>
+&lt;li>Man kann keine Breakpoints setzen, weil das Programm bereits läuft.&lt;/li>
+&lt;li>Man hat keinen Zugriff auf eine Entwicklungsumgebung.&lt;/li>
+&lt;li>Das Verhalten darf &lt;strong>nicht unterbrochen&lt;/strong> oder &lt;strong>verändert&lt;/strong> werden.&lt;/li>
+&lt;/ul>
+&lt;h3 id="logging-im-feld">Logging im Feld&lt;/h3>
+&lt;p>Deshalb ist &lt;strong>Logging&lt;/strong> im Feld die wichtigste Methode, um Fehler zu finden:&lt;/p>
+&lt;ul>
+&lt;li>Man loggt gezielt Informationen (z. B. Zustände, Fehlermeldungen, Eingabewerte)&lt;/li>
+&lt;li>Diese Logs werden in eine Datei oder Datenbank geschrieben und später analysiert&lt;/li>
+&lt;li>Logging sollte sparsam, aber &lt;strong>gezielt&lt;/strong> eingesetzt werden&lt;/li>
+&lt;/ul>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Auch Logging kann das Verhalten eines Programms verändern – vor allem in zeitkritischen oder nebenläufigen Systemen. Jeder Log-Eintrag braucht Rechenzeit und kann z. B. Threads blockieren oder IO-Prozesse verlangsamen.
+&lt;/div>
+&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+In zeitkritischen Methoden (z. B. bei Hardware-Ansteuerung oder Animationen) sollte Logging nur mit Bedacht oder gar nicht eingesetzt werden. Stattdessen kann man Zustände puffern und später gesammelt ausgeben.
+&lt;/div>
+&lt;/div>
+&lt;p>Für die Java Grundlagen reichen vorderhand die Debug-Möglichkeiten aus, welche IntelliJ bietet. Das Logging werden wir
+erst in einem späteren Modul einsetzen.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Auch während der Entwicklung ist es nicht falsch, den Programmfluss per Ausgabe auf die Konsole oder mittels Logging
+festzuhalten. Dies Informationen liefern wertvolle Informationen, wo man mit dem Debugen effektiv beginnen soll. Vor
+allem bei grösseren Programmen ist es ineffizient, das gesamte Programm bis zum Fehler Schritt für Schritt abzuarbeiten.
+&lt;/div>
+&lt;/div>
+&lt;h2 id="nächste-schritte">Nächste Schritte&lt;/h2>
+&lt;p>Wenn du Java mit IntelliJ verwendest, solltest du das integrierte Debugging-Tool kennenlernen:&lt;/p>
+&lt;p>&lt;a href="/docs/99_tools/ide/intellij/06_debugging/">Debugging in IntelliJ&lt;/a>&lt;/p>
+&lt;hr>
+&lt;p id="back-from-lab" data-url="--------labs02-java03-java-grundlagen10-debugging">
+&lt;a href="../../../../labs/02_java/03_java-grundlagen/10_debugging/">
+&lt;img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
+&lt;/a>
+Jetzt bist du dran. Löse bitte die folgenden
+&lt;a href="../../../../labs/02_java/03_java-grundlagen/10_debugging/">!*Aufgaben&lt;/a> in den Labs.
 &lt;/p></description></item><item><title>Docs: Referenztypen</title><link>/docs/02_java/03_java-grundlagen/11_reference_types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/11_reference_types/</guid><description>
 &lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
 &lt;div style="width: 100%; margin: 1rem auto;">
@@ -3247,15 +3247,6 @@ man eher &lt;strong>modular&lt;/strong> und weniger &lt;strong>objektorientiert&
 &lt;p>Daher spricht man bei dieser Art der modularen Strukturierung besser von &lt;em>Utility-Klassen&lt;/em> und nicht von &lt;em>Modulen&lt;/em>.&lt;/p>
 &lt;/div>
 &lt;/div></description></item><item><title>Docs: String</title><link>/docs/02_java/03_java-grundlagen/13_strings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/13_strings/</guid><description>
-&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem;">
-&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
-&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
---> Muss noch überarbeitet werden&amp;hellip;
-&lt;/div>
-&lt;/div>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann &lt;code>String&lt;/code>-Variablen deklarieren und initialisieren.&lt;/li>
@@ -3961,21 +3952,14 @@ verwendet.&lt;/p>
 &lt;li>&lt;a href="https://regex101.com">regex101.com&lt;/a> – Java-Modus auswählen&lt;/li>
 &lt;li>&lt;a href="https://www.regexplanet.com/advanced/java/index.html">RegExPlanet&lt;/a> – Java-spezifischer RegEx-Tester&lt;/li>
 &lt;/ul></description></item><item><title>Docs: Scanner</title><link>/docs/02_java/03_java-grundlagen/15_scanner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/15_scanner/</guid><description>
-&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem;">
-&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
-&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
---> Muss noch überarbeitet werden&amp;hellip;
-&lt;/div>
-&lt;/div>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.&lt;/li>
 &lt;/ul>
+&lt;span class="zeit" data-lesezeit="10" data-üben="">⏱️ Geschätzte Lesezeit: 10 Minuten&lt;/span>
 &lt;h2 id="scanner">Scanner&lt;/h2>
-&lt;p>Eine Möglichkeit, Benutzereingaben in Java vorzunehmen, besteht in der Verwendung der Scanner-Klasse, die verwendet wird, indem zuerst die Definition der Klasse wie in Zeile 1 importiert und dann ein Objekt dieser Klasse wie in Zeile 6 erstellt wird.&lt;/p>
+&lt;p>Um Benutzereingaben in Java vorzunehmen, kann die &lt;code>Scanner&lt;/code>-Klasse verwendet
+werden. Dazu wird sie zuerst importiert und danach ein Objekt erstellt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -3993,7 +3977,7 @@ verwendet.&lt;/p>
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Scanner;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TakeInput&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span> (String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Scanner scanner &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Scanner(System.&lt;span style="color:#a6e22e">in&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Enter your name: &amp;#34;&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String name &lt;span style="color:#f92672">=&lt;/span> scanner.&lt;span style="color:#a6e22e">nextLine&lt;/span>();
@@ -4002,22 +3986,32 @@ verwendet.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>Zeile 1&lt;/strong>&lt;/p>
-&lt;p>Der erste Schritt besteht darin, die Scanner-Klasse zu importieren, damit sie im folgenden Code verwendet werden kann. Die &lt;em>Java&lt;/em> Scanner-Klasse stammt aus dem Paket &lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html">java.util&lt;/a>.
-Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funktioniert.&lt;/p>
-&lt;p>&lt;strong>Zeile 6&lt;/strong>&lt;/p>
+&lt;/div>&lt;h3 id="erklärung-zum-code">Erklärung zum Code&lt;/h3>
 &lt;ul>
-&lt;li>Wir deklarieren den Datentyp als &lt;em>Scanner&lt;/em> und geben ihm den Bezeichner &lt;em>scanner&lt;/em>&lt;/li>
-&lt;li>Wir weisen der Variable scanner ein neues Objekt zu, welches den System-Eingabestream enthält (&lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#in">System.in&lt;/a>)&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Zeile 1:&lt;/strong>&lt;br>
+Die &lt;code>Scanner&lt;/code>-Klasse stammt aus dem Paket
+&lt;a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html">java.util&lt;/a>.
+Damit sie im Programm verwendet werden kann, muss sie importiert werden.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Zeile 5:&lt;/strong>&lt;br>
+Wir deklarieren eine Variable mit dem Datentyp &lt;code>Scanner&lt;/code> und dem Namen
+&lt;code>scanner&lt;/code>. Anschliessend erstellen wir ein neues Objekt, das den
+Eingabestream &lt;code>System.in&lt;/code> (Tastatureingaben) nutzt.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Zeile 7:&lt;/strong>&lt;br>
+Wir deklarieren eine Variable &lt;code>name&lt;/code> vom Typ &lt;code>String&lt;/code>. Ihr wird der Rückgabewert
+der Methode &lt;code>scanner.nextLine()&lt;/code> zugewiesen.&lt;br>
+Diese Methode liest die gesamte Zeile ein, die der Benutzer in die Konsole
+eingibt, und liefert sie als &lt;code>String&lt;/code> zurück, sobald Enter gedrückt wird.&lt;/p>
+&lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>Zeile 8&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Wir deklarieren eine Variable vom Datentyp String mit dem Bezeichner name&lt;/li>
-&lt;li>Wir weisen der Variable name das Resultat der Methode &lt;em>scanner.nextLine()&lt;/em> zu&lt;/li>
-&lt;li>Diese Methode nimmt die Tastatureingabe vom Benutzer auf der Kommandozeile entgegen. Sie wird beendet, wenn der Benutzer die Enter-Taste drückt.&lt;/li>
-&lt;/ul>
-&lt;h3 id="zahlen-einlesen">Zahlen einlesen&lt;/h3>
-&lt;p>Oft möchtest du, dass der Benutzer Zahlen in der Konsole eingeben kann. Hierfür bietet der &lt;code>Scanner&lt;/code> eine passende Methode an:&lt;/p>
+&lt;hr>
+&lt;h2 id="zahlen-einlesen">Zahlen einlesen&lt;/h2>
+&lt;p>Häufig möchtest du Zahlen von der Konsole einlesen. Dafür bietet &lt;code>Scanner&lt;/code>
+passende Methoden an:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -4028,21 +4022,23 @@ Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funk
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> number &lt;span style="color:#f92672">=&lt;/span> scanner.&lt;span style="color:#a6e22e">nextInt&lt;/span>();
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Die &lt;code>Scanner.nextInt()&lt;/code>-Methode gibt dir die letzte Zahl vor dem Enter und nach dem letzten Leerzeichen zurück.&lt;/p>
-&lt;p>Wie du es bereits an der mühsamen Formulierung des letzten Satzes siehst, hat diese Methode komische Eigenheiten. Wenn du z.B. nach dem Aufruf von &lt;code>nextInt()&lt;/code> wieder &lt;code>nextLine()&lt;/code> aufrufst, so gibt die zweit genannte Methode sofort einen leeren String zurück, weil das Enter von der Zahl noch nicht konsumiert wurde. Um dieses Problem in Java zu beheben, kannst du &lt;code>nextLine()&lt;/code> 2 mal hintereinander aufrufen.&lt;/p>
-&lt;p>Für die Labs und das Exams im Modul #J1 kannst du diese Methode gut brauchen. Spiele aber trotzdem ein bisschen mit dieser &lt;code>nextInt()&lt;/code>-Methode, damit du die komischen Eigenheiten dieser Methode einmal kennenlernst.&lt;/p>
-&lt;hr>
-&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem;">
-&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>&lt;p>Die Methode &lt;code>nextInt()&lt;/code> liest die nächste Zahl und liefert sie als &lt;code>int&lt;/code>
+zurück.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
 &lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
-&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
---> &lt;p>Labs konvertieren:&lt;/p>
-&lt;p>Aufgabe 8
-../../../../labs/02_java/03_java-grundlagen/#aufgabe-8&amp;mdash;eingaben-von-der-kommandozeile&lt;/p>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>&lt;strong>Wichtig:&lt;/strong>&lt;br>
+&lt;code>nextInt()&lt;/code> hat eine Eigenheit: Das gedrückte Enter nach der Zahl wird nicht
+automatisch verarbeitet. Wenn du danach &lt;code>nextLine()&lt;/code> aufrufst, bekommst du
+einen leeren String zurück. Um dieses Verhalten zu umgehen, rufst du nach
+&lt;code>nextInt()&lt;/code> einfach ein zusätzliches &lt;code>nextLine()&lt;/code> auf.&lt;/p>
+&lt;p>Für die Labs und das Exam im Modul #J1 kannst du &lt;code>nextInt()&lt;/code> gut verwenden.
+Spiele aber ruhig ein wenig damit, um die Eigenheiten selbst kennenzulernen.&lt;/p>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Arrays</title><link>/docs/02_java/03_java-grundlagen/16_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/16_arrays/</guid><description>
+&lt;/div>
+&lt;hr></description></item><item><title>Docs: Arrays</title><link>/docs/02_java/03_java-grundlagen/16_arrays/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/16_arrays/</guid><description>
 &lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
 &lt;div style="width: 100%; margin: 1rem auto;">
 &lt;div style="font-size: 1.1rem;">
