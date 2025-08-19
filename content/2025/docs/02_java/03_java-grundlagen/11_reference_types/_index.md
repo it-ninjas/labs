@@ -1,7 +1,7 @@
 ---
 title: "Referenztypen"
 linkTitle: "Referenztypen"
-weight: 10
+weight: 11
 description: >
   In diesem Modul lernst du den Unterschied zwischen primitiven Typen und Referenztypen kennen.
 ---
