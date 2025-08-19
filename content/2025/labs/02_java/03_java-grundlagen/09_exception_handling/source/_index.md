@@ -16,6 +16,10 @@ cascade:
 
 ```console
 exception_handling
+├── .idea
+│   └── runConfigurations
+│       ├── it_ninja.xml
+│       └── it_ninja_test.xml
 ├── src
 │   ├── main
 │   │   └── java
@@ -95,6 +99,68 @@ exception_handling
 ##### README.md{#readme-md}
 
 Not able to display content!
+
+### .idea\runConfigurations
+
+##### it_ninja.xml{#idea-runconfigurations-it_ninja-xml}
+
+```xml
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="it-ninja" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <option name="MAIN_CLASS_NAME" value="ch.itninja.labs.Main" />
+    <module name="itninja-labs-01-basicexercises" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="main.java.ch.itninja.labs.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
+```
+
+##### it_ninja_test.xml{#idea-runconfigurations-it_ninja_test-xml}
+
+```xml
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Test All" type="MavenRunConfiguration" factoryName="Maven">
+    <MavenSettings>
+      <option name="myGeneralSettings" />
+      <option name="myRunnerSettings" />
+      <option name="myRunnerParameters">
+        <MavenRunnerParameters>
+          <option name="cmdOptions" />
+          <option name="profiles">
+            <set />
+          </option>
+          <option name="goals">
+            <list>
+              <option value="clean" />
+              <option value="test" />
+            </list>
+          </option>
+          <option name="multimoduleDir" />
+          <option name="pomFileName" />
+          <option name="profilesMap">
+            <map />
+          </option>
+          <option name="projectsCmdOptionValues">
+            <list />
+          </option>
+          <option name="resolveToWorkspace" value="false" />
+          <option name="workingDirPath" value="$PROJECT_DIR$" />
+        </MavenRunnerParameters>
+      </option>
+    </MavenSettings>
+    <method v="2" />
+  </configuration>
+</component>
+```
 
 ### src\main\java\ch\itninja\labs
 

@@ -1,6 +1,6 @@
 ---
 title: "Java Exercises - Loops"
-linkTitle: "Switch Statement"
+linkTitle: "Loops"
 type: docs
 weight: 6
 description: >
