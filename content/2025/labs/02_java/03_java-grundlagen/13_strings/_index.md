@@ -251,7 +251,7 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
     }
 ```
 
-## Aufgabe 2 - Punkte setzen
+## Aufgabe 3 - Punkte setzen
 
 Gib den Text so aus, dass jedes Leerzeichen mit einem Punkt ersetzt wurde.
 
@@ -265,7 +265,7 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
     }
 ```
 
-## Aufgabe 2 - Wort ausschneiden
+## Aufgabe 4 - Wort ausschneiden
 
 Schneide das Wort “Shurikens” aus. Ermittle hierfür die Position des Wortes anhand des "-Zeichens.
 

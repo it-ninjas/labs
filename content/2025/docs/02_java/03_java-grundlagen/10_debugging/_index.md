@@ -1,7 +1,7 @@
 ---
 title: "Debugging – Fehler finden und verstehen"
 linkTitle: "Debugging"
-weight: 9
+weight: 10
 description: >
   Du lernst, wie du mit Debugging-Strategien und einfachen Hilfsmitteln Fehler in deinem Code findest – auch ohne IDE.
 ---
