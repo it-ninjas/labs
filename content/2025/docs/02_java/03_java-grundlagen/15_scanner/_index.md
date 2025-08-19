@@ -3,68 +3,76 @@ title: "Scanner"
 linkTitle: "Scanner"
 weight: 15
 description: >
-  Modul #J1
+  In diesem Modul lernst du, wie man mit der Scanner-Klasse Eingaben von der
+  Konsole liest und in Variablen speichert.
 ---
-
-{{< todo >}} Muss noch überarbeitet werden... {{< /todo >}}
 
 ## Ziele
 
 - Ich kann eine Eingabe von der Konsole lesen und in einer Variablen speichern.
 
+{{< zeit lesen="10" >}}
+
 ## Scanner
 
-Eine Möglichkeit, Benutzereingaben in Java vorzunehmen, besteht in der Verwendung der Scanner-Klasse, die verwendet wird, indem zuerst die Definition der Klasse wie in Zeile 1 importiert und dann ein Objekt dieser Klasse wie in Zeile 6 erstellt wird.
+Um Benutzereingaben in Java vorzunehmen, kann die `Scanner`-Klasse verwendet
+werden. Dazu wird sie zuerst importiert und danach ein Objekt erstellt:
 
 ```java
 import java.util.Scanner;
 
 public class TakeInput {
-    public static void main (String[] args) {
-	    Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter your name: ");
-		String name = scanner.nextLine();
-		System.out.println("Your name is: " + name);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your name: ");
+        String name = scanner.nextLine();
+        System.out.println("Your name is: " + name);
     }
 }
 ```
 
-**Zeile 1**
+### Erklärung zum Code
 
-Der erste Schritt besteht darin, die Scanner-Klasse zu importieren, damit sie im folgenden Code verwendet werden kann. Die _Java_ Scanner-Klasse stammt aus dem Paket [java.util](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html).
-Es ist einfach zu bedienen, muss jedoch importiert werden, damit die Klasse funktioniert.
+- **Zeile 1:**  
+  Die `Scanner`-Klasse stammt aus dem Paket
+  [java.util](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/package-summary.html).
+  Damit sie im Programm verwendet werden kann, muss sie importiert werden.
 
-**Zeile 6**
+- **Zeile 5:**  
+  Wir deklarieren eine Variable mit dem Datentyp `Scanner` und dem Namen
+  `scanner`. Anschliessend erstellen wir ein neues Objekt, das den
+  Eingabestream `System.in` (Tastatureingaben) nutzt.
 
-- Wir deklarieren den Datentyp als _Scanner_ und geben ihm den Bezeichner _scanner_
-- Wir weisen der Variable scanner ein neues Objekt zu, welches den System-Eingabestream enthält ([System.in](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/System.html#in))
+- **Zeile 7:**  
+  Wir deklarieren eine Variable `name` vom Typ `String`. Ihr wird der Rückgabewert
+  der Methode `scanner.nextLine()` zugewiesen.  
+  Diese Methode liest die gesamte Zeile ein, die der Benutzer in die Konsole
+  eingibt, und liefert sie als `String` zurück, sobald Enter gedrückt wird.
 
-**Zeile 8**
+---
 
-- Wir deklarieren eine Variable vom Datentyp String mit dem Bezeichner name
-- Wir weisen der Variable name das Resultat der Methode _scanner.nextLine()_ zu
-- Diese Methode nimmt die Tastatureingabe vom Benutzer auf der Kommandozeile entgegen. Sie wird beendet, wenn der Benutzer die Enter-Taste drückt.
+## Zahlen einlesen
 
-### Zahlen einlesen
-
-Oft möchtest du, dass der Benutzer Zahlen in der Konsole eingeben kann. Hierfür bietet der `Scanner` eine passende Methode an:
+Häufig möchtest du Zahlen von der Konsole einlesen. Dafür bietet `Scanner`
+passende Methoden an:
 
 ```java
 System.out.print("Enter an integer: ");
 int number = scanner.nextInt();
 ```
 
-Die `Scanner.nextInt()`-Methode gibt dir die letzte Zahl vor dem Enter und nach dem letzten Leerzeichen zurück.
+Die Methode `nextInt()` liest die nächste Zahl und liefert sie als `int`
+zurück.
 
-Wie du es bereits an der mühsamen Formulierung des letzten Satzes siehst, hat diese Methode komische Eigenheiten. Wenn du z.B. nach dem Aufruf von `nextInt()` wieder `nextLine()` aufrufst, so gibt die zweit genannte Methode sofort einen leeren String zurück, weil das Enter von der Zahl noch nicht konsumiert wurde. Um dieses Problem in Java zu beheben, kannst du `nextLine()` 2 mal hintereinander aufrufen.
+{{< ninja warning>}}
+**Wichtig:**  
+`nextInt()` hat eine Eigenheit: Das gedrückte Enter nach der Zahl wird nicht
+automatisch verarbeitet. Wenn du danach `nextLine()` aufrufst, bekommst du
+einen leeren String zurück. Um dieses Verhalten zu umgehen, rufst du nach
+`nextInt()` einfach ein zusätzliches `nextLine()` auf.
 
-Für die Labs und das Exams im Modul #J1 kannst du diese Methode gut brauchen. Spiele aber trotzdem ein bisschen mit dieser `nextInt()`-Methode, damit du die komischen Eigenheiten dieser Methode einmal kennenlernst.
+Für die Labs und das Exam im Modul #J1 kannst du `nextInt()` gut verwenden.
+Spiele aber ruhig ein wenig damit, um die Eigenheiten selbst kennenzulernen.
+{{< /ninja>}}
 
 ---
-
-{{< todo >}}
-Labs konvertieren:
-
-Aufgabe 8
-../../../../labs/02_java/03_java-grundlagen/#aufgabe-8---eingaben-von-der-kommandozeile
-{{< /todo >}}

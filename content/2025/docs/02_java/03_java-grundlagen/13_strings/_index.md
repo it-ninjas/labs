@@ -3,10 +3,8 @@ title: "String"
 linkTitle: "String"
 weight: 13
 description: >
-  Modul #J1
+  In diesem Modul lernst du, wie man mit Strings Texte erstellen und verändern kann.
 ---
-
-{{< todo >}} Muss noch überarbeitet werden... {{< /todo >}}
 
 ## Ziele
 
