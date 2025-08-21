@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – 05_secrets</title><link>/labs/99_tools/java/05_secrets/</link><description>Recent content in 05_secrets on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/labs/99_tools/java/05_secrets/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Secrets - Geheimnisse sicher hinterlegen</title><link>/labs/99_tools/java/05_secrets/01_simpleexample/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/99_tools/java/05_secrets/01_simpleexample/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Geheimnisse sicher aufbewahren</title><link>/labs/99_tools/java/05_secrets/</link><description>Recent content in Geheimnisse sicher aufbewahren on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/labs/99_tools/java/05_secrets/index.xml" rel="self" type="application/rss+xml"/><item><title>Labs: Secrets - Geheimnisse sicher hinterlegen</title><link>/labs/99_tools/java/05_secrets/01_simpleexample/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/labs/99_tools/java/05_secrets/01_simpleexample/</guid><description>
 &lt;!--suppress CheckEmptyScriptTag -->
 &lt;h2 id="voraussetzung">Voraussetzung&lt;/h2>
 &lt;ul>
@@ -14,14 +14,18 @@
 &lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
 &lt;p>Wir stellen dir bei den Übungen jeweils komplette Projekte zur Verfügung. Du musst grundsätzlich nur dort was anpassen,
 wo die folgende Kommentarzeile steht:&lt;/p>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>// IT-Ninja: Füge hier Deinen Code ein:&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>// IT-Ninja: Füge hier Deinen Code ein:&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;p>Alles andere kannst du für den Moment ignorieren. Wir erklären dir die einzelnen Zeilen Schritt für Schritt in den
 Modulen.&lt;/p>
 &lt;/div>
@@ -31,10 +35,10 @@ Modulen.&lt;/p>
 &lt;button
 class="toggle-button"
 aria-expanded="false"
-aria-controls="toggle-1755634910034561101"
+aria-controls="toggle-1755780065563197921"
 onclick="
 const btn = this;
-const content = document.getElementById('toggle-1755634910034561101');
+const content = document.getElementById('toggle-1755780065563197921');
 const expanded = btn.getAttribute('aria-expanded') === 'true';
 btn.setAttribute('aria-expanded', !expanded);
 content.classList.toggle('open');
@@ -71,7 +75,7 @@ exakt. Sie helfen dir, deinen Quellcode gut organisiert, strukturiert und sicher
 &lt;a href="./it-ninja_99_Tools_java_05_secrets_01_SimpleExample.zip">Download&lt;/a> | &lt;a href="./source/">Online anschauen&lt;/a>&lt;/p>
 &lt;/span>
 &lt;/button>
-&lt;div id="toggle-1755634910034561101" class="toggle-content">
+&lt;div id="toggle-1755780065563197921" class="toggle-content">
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem">
 &lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -96,7 +100,11 @@ it-ninja sein.
 &lt;p>Öffne eine &lt;a href="/docs/99_tools/shell/cmd/">!*CMD-Shell&lt;/a> und wechsle ins Verzeichnis deines Git-Repositories:&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;div class="is-os-windows" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-windows" style="display: none;">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>cd /d &amp;#34;[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&amp;#34;
+git status&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -105,7 +113,12 @@ it-ninja sein.
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>cd /d &amp;#34;[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&amp;#34;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;/div>
+&lt;/div>&lt;div class="oscode-wrapper is-os-linux" style="display: none;">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>cd &amp;#34;[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]&amp;#34;
+git status&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -114,20 +127,29 @@ it-ninja sein.
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>cd &amp;#34;[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]&amp;#34;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;ol start="3">
 &lt;li>Stelle sicher, dass alle Dateien im Git-Repository committed sind. Mit &lt;strong>git status&lt;/strong> erhältst du eine Übersicht:&lt;/li>
 &lt;/ol>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git status&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git status&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;p>Falls du bei diesem Befehl einen roten Text siehst, musst du zuerst die aktuellen Dateien sichern:&lt;/p>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git add .
+git commit -m &amp;#34;[gescheiter Kommentar]&amp;#34;&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -136,30 +158,39 @@ it-ninja sein.
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git add .
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &amp;#34;[gescheiter Kommentar]&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;ol start="4">
 &lt;li>
 &lt;p>Erstelle oder wechsle in den Template Branch:&lt;/p>
 &lt;p>Beim ersten Mal musst du einen Template Branch erstellen:&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git checkout -b &amp;#34;templates&amp;#34;&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;templates&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;p>Falls er bereits existiert, kannst du einfach switchen:&lt;/p>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git switch &amp;#34;templates&amp;#34;&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git switch &amp;#34;templates&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;ol start="5">
 &lt;li>
 &lt;p>Lade den Source-Code zu den Übungen herunter und entpacke ihn im Root-Verzeichnis deines lokalen Repositories:&lt;br>
@@ -171,7 +202,12 @@ it-ninja sein.
 &lt;p>Committe den originalen Source-Code, damit er sicher im Repository gespeichert ist:&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git add .
+git commit -m &amp;#34;Add it-ninja_99_Tools_java_05_secrets_01_SimpleExample&amp;#34;
+git push&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -182,18 +218,23 @@ it-ninja sein.
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &amp;#34;Add it-ninja_99_Tools_java_05_secrets_01_SimpleExample&amp;#34;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git push&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;ol start="7">
 &lt;li>Erstelle einen neuen Branch, um deine Lösung zu implementieren:&lt;/li>
 &lt;/ol>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git checkout -b &amp;#34;labs/it-ninja_99_Tools_java_05_secrets_01_SimpleExample&amp;#34;&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git checkout -b &amp;#34;labs/it-ninja_99_Tools_java_05_secrets_01_SimpleExample&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;div style="display: flex; align-items: flex-start; background-color: #e0f2fe; margin-bottom: 1rem; border-radius: 6px">
 &lt;div style="flex-shrink: 0; margin-right: 1rem">
 &lt;img src="/images/it-ninja-info.png" alt="it-ninja info" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
@@ -228,21 +269,29 @@ IntelliJ Mühe haben, dir das Programm zu kompilieren.
 &lt;/div>
 &lt;/div>
 &lt;p>Wenn du alles korrekt gemacht hast, findest du das Projekt hier:&lt;/p>
-&lt;div class="is-os-windows" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-windows" style="display: none;">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\99_Tools\java\05_secrets\01_SimpleExample`&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]\99_Tools\java\05_secrets\01_SimpleExample`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;/div>
+&lt;/div>&lt;div class="oscode-wrapper is-os-linux" style="display: none;">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\99_Tools/java/05_secrets/01_SimpleExample`&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>`[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\99_Tools/java/05_secrets/01_SimpleExample`&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;ol start="9">
 &lt;li>Falls du zum ersten Mal mit IntelliJ arbeitest, findest du &lt;a href="/docs/99_tools/ide/intellij/03_run-and-debug/">!*hier&lt;/a>
 eine Anleitung, wie man ein Programm startet.&lt;/li>
@@ -264,7 +313,12 @@ Dreieck vorhanden sein, welches das Programm startet.
 &lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
 &lt;p>Wenn du alle Änderungen gemacht hast und mit der Übung fertig bist, oder einen &amp;lsquo;Zwischenstand&amp;rsquo; festhalten willst, führe
 die folgenden Befehle aus um das Repository auf dem Server zu speichern (von wo du es geklont hast):&lt;/p>
-&lt;div class="is-os-windows" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-windows" style="display: none;">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>cd /d &amp;#34;[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]&amp;#34;
+git add --all
+git commit -m &amp;#34;Kurzer Kommentar&amp;#34;&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -275,7 +329,13 @@ die folgenden Befehle aus um das Repository auf dem Server zu speichern (von wo 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add --all
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &amp;#34;Kurzer Kommentar&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>&lt;div class="is-os-linux" style="display: none;">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;/div>
+&lt;/div>&lt;div class="oscode-wrapper is-os-linux" style="display: none;">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>cd &amp;#34;[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]&amp;#34;
+git add .
+git commit -m &amp;#34;Kurzer Kommentar&amp;#34;&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -286,26 +346,35 @@ die folgenden Befehle aus um das Repository auf dem Server zu speichern (von wo 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add .
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &amp;#34;Kurzer Kommentar&amp;#34;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;p>Wenn du deine Änderungen auf dem Git-Server sichern willst, musst du das mit einem &lt;code>push&lt;/code> machen.&lt;/p>
 &lt;p>Beim ersten mal musst du git noch mitteilen, wie der Branch auf dem Git-Server heissen soll:&lt;/p>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git push --set-upstream origin labs/it-ninja_99_Tools_java_05_secrets_01_SimpleExample&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git push --set-upstream origin labs/it-ninja_99_Tools_java_05_secrets_01_SimpleExample&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;p>Bei weiteren &lt;code>pushes&lt;/code> wird es dann einfacher:&lt;/p>
-&lt;div class="is-os-all">&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;div class="oscode-wrapper is-os-all">
+&lt;button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren&lt;/button>
+&lt;textarea class="oscode-raw" hidden>git push&lt;/textarea>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>git push&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;/div>
+&lt;/div>
+&lt;/div>
 &lt;/div>
 &lt;/div>
 &lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
