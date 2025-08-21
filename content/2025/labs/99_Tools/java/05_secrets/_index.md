@@ -1,4 +1,4 @@
 ---
-title: "05_secrets"
+title: "Geheimnisse sicher aufbewahren"
 type: docs
 ---

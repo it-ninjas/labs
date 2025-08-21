@@ -223,6 +223,31 @@ mehr auf dem Stack hat und es zum sogenannten "Stack Overflow" kommt. Es können
 werden und das Programm wird beendet.
 {{< /ninja >}}
 
+## Lokale und statische Variablen
+
+- **Lokale Variablen** werden innerhalb einer Methode deklariert und existieren nur während der Ausführung dieser Methode.
+- **Statische Variablen** gehören zur Klasse und behalten ihren Wert zwischen mehreren Methodenaufrufen.
+
+Beispiel:
+
+```java
+public class Demo {
+    private static int calls = 0; // statische Variable
+
+    public static void sayHello() {
+        calls = calls + 1;        // Zugriff auf die statische Variable
+        String message = "Hallo"; // lokale Variable
+        System.out.println(message + " #" + calls);
+    }
+}
+```
+
+In diesem Beispiel:
+
+`message` ist eine lokale Variable: Sie existiert nur innerhalb von sayHello() und wird bei jedem Aufruf neu erstellt.
+
+`calls` ist eine statische Variable: Sie merkt sich, wie oft die Methode aufgerufen wurde – auch über mehrere Aufrufe hinweg.
+
 ---
 
 {{< video "https://www.youtube.com/watch?v=qQ79aq7HZ-U" "YouTube, Methoden mit Rückgabewert" >}}

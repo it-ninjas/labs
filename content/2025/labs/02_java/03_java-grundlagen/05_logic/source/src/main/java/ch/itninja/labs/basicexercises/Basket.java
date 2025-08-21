@@ -1,6 +1,5 @@
 package ch.itninja.labs.basicexercises;
 
-
 import java.math.BigDecimal;
 
 /**
@@ -13,6 +12,10 @@ public class Basket {
     }
 
     public static void printTotalBigDecimal(){
+
+        BigDecimal totalExpected = new BigDecimal("0.0");   // Expected total price (your calculation)
+        BigDecimal total = new BigDecimal(0);               // Actual total price (computed)
+        // to add 2 BigDecimal you can use total = big1.add(big2).add(big3)
 
         // IT-Ninja: Füge hier Deinen Code ein...
         String expectedResult;
@@ -29,6 +32,9 @@ public class Basket {
     }
 
     public static void printTotalDouble(){
+
+        double totalExpected = 0;   // Expected total price (your calculation)
+        double total = 0;           // Actual total price (computed)
 
         // IT-Ninja: Füge hier Deinen Code ein...
         String expectedResult;

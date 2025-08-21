@@ -437,6 +437,39 @@
     console.log("✅ Configuration settings adapted");
   }
 
+  function copyOsCode(btn) {
+    const wrap = btn.closest('.oscode-wrapper');
+    const raw = wrap && wrap.querySelector('.oscode-raw');
+    let text = raw ? raw.value : '';
+
+    // Fallback, falls das <textarea> mal fehlt: Zeilennummern aus dem DOM entfernen
+    if (!text) {
+      const table = wrap.querySelector('table.lntable, table.chroma');
+      if (table) {
+        const rows = table.querySelectorAll('tr');
+        text = Array.from(rows).map(r => {
+          const cells = r.querySelectorAll('td');
+          return cells.length ? cells[cells.length - 1].innerText : '';
+        }).join('\n');
+      } else {
+        const code = wrap.querySelector('pre code, pre');
+        if (code) {
+          const clone = code.cloneNode(true);
+          clone.querySelectorAll('.lnt, .ln, .lineno, .line-numbers-rows, .hljs-line-numbers')
+              .forEach(el => el.remove());
+          text = clone.innerText.replace(/^\s*\d+\s/gm, '');
+        }
+      }
+    }
+
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = 'Kopiert!';
+      setTimeout(() => (btn.textContent = old), 1500);
+    });
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
 
     dynamicAdaptContent();

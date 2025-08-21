@@ -54,9 +54,14 @@
 
   {{ if findRE "^//\\s*(windows|linux|all)(\\s+[a-zA-Z0-9_-]+)?" $lineTrim }}
     {{ if gt (len (strings.Trim $currentContent "\n")) 0 }}
-      {{ $highlighted := highlight (strings.Trim $currentContent "\n") $currentLang "" }}
+      {{ $raw := strings.Trim $currentContent "\n" }}
+      {{ $highlighted := highlight $raw $currentLang "" }}
       {{ $style := cond (eq $currentOs "all") "" ` style="display: none;"` }}
-      {{ $output = printf `%s<div class="is-os-%s"%s>%s</div>` $output $currentOs $style $highlighted }}
+      {{ $output = printf `%s<div class="oscode-wrapper is-os-%s"%s>
+        <button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren</button>
+        <textarea class="oscode-raw" hidden>%s</textarea>
+        %s
+        </div>` $output $currentOs $style (htmlEscape $raw) $highlighted }}
       {{ $currentContent = "" }}
     {{ end }}
 
@@ -111,9 +116,13 @@
 {{ end }}
 
 {{ if gt (len (strings.Trim $currentContent "\n")) 0 }}
-  {{ $highlighted := highlight (strings.Trim $currentContent "\n") $currentLang "" }}
+  {{ $raw := strings.Trim $currentContent "\n" }}
+  {{ $highlighted := highlight $raw $currentLang "" }}
   {{ $style := cond (eq $currentOs "all") "" ` style="display: none;"` }}
-  {{ $output = printf `%s<div class="is-os-%s"%s>%s</div>` $output $currentOs $style $highlighted }}
+  {{ $output = printf `%s<div class="oscode-wrapper is-os-%s"%s>
+    <button class="copy-button" onclick="copyOsCode(this)" aria-label="Copy code">Kopieren</button>
+    <textarea class="oscode-raw" hidden>%s</textarea>
+    %s
+    </div>` $output $currentOs $style (htmlEscape $raw) $highlighted }}
 {{ end }}
-
 {{ $output | safeHTML }}

@@ -1,4 +1,4 @@
 ---
-title: "java"
+title: "Java"
 type: docs
 ---
