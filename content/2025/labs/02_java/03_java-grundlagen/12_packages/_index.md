@@ -196,17 +196,19 @@ Viel Erfolg!
 
 {{< /toggle >}}
 
-## Aufgabe
+## Aufgabe 1
 
 Erstelle ein eigenes Package, welches dir ein paar mathematische Hilfsfunktionen zur Verfügung
 stellt:
 
-- Kleinerer Wert von 2 Integer Zahlen
-- Grösserer Wert von 2 Integer Zahlen
-- Absoluter Wert von einer Integer Zahl
-- Differenz von 2 Zahlen
+- Kleinerer Wert von 2 Integerzahlen
+- Grösserer Wert von 2 Integerzahlen
+- Absoluter Wert von einer Integerzahl
+- Differenz von 2 Integerzahlen
 
 **Achtung:** Das von dir erstellte Package darf nicht `ch.itninja.labs` enthalten.
+
+Passe main an, damit deine Package verwendet wird. Erstelle ein paar Aufrufe und gib das Resultat auf der Konsole aus.
 
 Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle machen:  
 [src\main\java\ch\itninja\labs\Main.java](./source/#src-main-java-ch-itninja-labs-main-java):
@@ -217,3 +219,37 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
         // IT-Ninja: rufe hier deine Methoden auf und gib die Resultate auf der Konsole aus
     }
 ```
+
+## Aufgabe 2
+
+Erstelle ein weiteres Package im gleichen Projekt, welches einen Zähler verwaltet. Der Zähler ist statisch und der
+Datentyp soll int sein. Der Zähler kann mit folgenden Methoden verändert werden:
+
+- Increment -> Zähler um eins erhöhen
+- Decrement -> Zähler um eins reduzieren
+- Add -> Wert zu Zähler hinzufügen
+- Subtract -> Wert vom Zähler abziehen.
+- Reset -> Wert vom Zähler auf 0 setzen.
+
+Bei allen Operationen darf der Zähler den Bereich 0..1000 nicht verlassen. Würde bei einer Operation der Zähler den
+Bereich verlassen, wird er auf die Grenze des Bereichs gesetzt (limitiert).
+
+**Achtung:** Das von dir erstellte Package darf nicht `ch.itninja.labs` enthalten.
+
+Passe main an, damit deine Package verwendet wird. Erstelle ein paar Aufrufe und gib das Resultat auf der Konsole aus.
+
+## Aufgabe 3
+
+{{< ninja warning >}}
+**Zusätzliche Vorbereitung: **
+Erstelle 2 Kopien des IntelliJ-Projekts. Kopiere dazu den Ordner welcher das pom.xml beinhaltet. Normalerweise
+sollte der Ordner `12_packages` heissen und die Kopie zum Beispiel `12_packages.create` und `12_packages.use`.
+{{< /ninja >}}
+
+Passe die beiden Projekte so an, dass du mit dem Projekt `12_packages.create` ein Java Package erstellst und dieses im
+Projekt `12_packages.use` verwendest.
+
+Es wird erwartet, dass dein Package JavaDoc beinhaltet.
+
+Am Ende der Übung soll deine Ausgabe auf der Konsole bei Aufgabe 3 dasselbe ausgeben, was auch bei Aufgabe 1 und 2
+ausgegeben wird.
