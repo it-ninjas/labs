@@ -27,7 +27,7 @@ vertraulichen Informationen oder Geheimnisse...
 </div>
 
 <form id="config-form" style="display: none;">
-  <label for="username">Benutzername:</label><br />
+  <label for="username">Benutzername (siehe Hinweis unten!):</label><br />
   <input type="text" id="username" name="username" /><br /><br />
 
   <label for="localrepo">Pfad zum lokalen Repository (dort wo du deine Übungen speichern willst):</label><br />
@@ -51,6 +51,17 @@ vertraulichen Informationen oder Geheimnisse...
   <button type="submit">Speichern</button>
 
 </form>
+
+## Wie finde ich meinen Benutzernamen heraus?
+
+Öffne eine [!*Cmd Shell](../docs/99_tools/shell/cmd/) und gib folgenden Befehl ein:
+
+{{< code >}}
+//Windows
+echo %username%
+//Linux
+echo $USER
+{{< /code >}}
 
 <p id="save-status" style="color: green; display: none;">Einstellungen gespeichert!</p>
 

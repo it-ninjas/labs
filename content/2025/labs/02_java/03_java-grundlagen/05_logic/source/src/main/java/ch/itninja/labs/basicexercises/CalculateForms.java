@@ -5,6 +5,8 @@ package ch.itninja.labs.basicexercises;
  */
 public class CalculateForms {
 
+    static final double PI = 3.141592653589793;
+
     private CalculateForms() {
         // Prevent instantiation
     }
