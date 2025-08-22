@@ -34,31 +34,6 @@ verwendet.
 
 ---
 
-## Beispiel: Prüfen einer E-Mail-Adresse
-
-```java
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-
-public class EmailCheck {
-    public static void main(String[] args) {
-        String email = "test@example.com";
-        String regex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
-
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(email);
-
-        if (matcher.matches()) {
-            System.out.println("E-Mail ist gültig");
-        } else {
-            System.out.println("E-Mail ist ungültig");
-        }
-    }
-}
-```
-
----
-
 ## Beispiel: Alle Zahlen aus einem Text extrahieren
 
 ```java
@@ -163,3 +138,7 @@ Testen von Java-RegEx-Ausdrücken online:
 
 - [regex101.com](https://regex101.com) – Java-Modus auswählen
 - [RegExPlanet](https://www.regexplanet.com/advanced/java/index.html) – Java-spezifischer RegEx-Tester
+
+---
+
+{{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/16_regex/)" >}}
