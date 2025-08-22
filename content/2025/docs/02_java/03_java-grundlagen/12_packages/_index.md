@@ -266,3 +266,7 @@ Der Begriff _Modul_ ist in Java jedoch offiziell vergeben: Ab Java 9 steht er 
 
 Daher spricht man bei dieser Art der modularen Strukturierung besser von _Utility-Klassen_ und nicht von _Modulen_.
 {{< /ninja >}}
+
+---
+
+{{< aufgaben "[](../../../../labs/02_java/03_java-grundlagen/12_packages//)" >}}
