@@ -39,11 +39,13 @@ Methoden ermöglichen:
 Eine Methode besteht aus einem Methodenkopf und einem Rumpf:
 
 ```java
-Rückgabetyp methodName(Parameterliste) {
+public static Rückgabetyp methodName(Parameterliste) {
     // Anweisungen
 }
 ```
 
+- **public static**: Gibt an, dass die Methode überall und immer genutzt werden darf (darauf gehen wir später genauer
+  ein)
 - **Rückgabetyp**: Gibt an, welcher Datentyp zurückgegeben wird (`int`, `String`, …). Wird nichts zurückgegeben, nutzt
   man `void`.
 - **methodName**: Der Name der Methode – über diesen wird sie aufgerufen.
@@ -55,7 +57,7 @@ Rückgabetyp methodName(Parameterliste) {
 Methoden können Parameter (Eingabewerte) erwarten:
 
 ```java
-void greetUser(String name) {
+public static void greetUser(String name) {
     System.out.println("Hallo, " + name + "!");
 }
 ```
@@ -64,17 +66,41 @@ Diese Methode erhält einen `String`-Parameter `name` und gibt eine Begrüssung 
 
 {{< video "https://www.youtube.com/watch?v=oSDtCcDXcTM" "YouTube, Methoden einfach erklärt">}}
 
+## Methoden ohne Parametern
+
+Methoden können auch ohne Parameter definiert werden:
+
+```java
+public static void sayGoodBye() {
+    System.out.println("Good Bye!");
+}
+```
+
+Diese Methode hat keinen Parameter und gibt einfach einen Text aus.
+
 ## Methoden mit Rückgabewert
 
 Methoden können auch Werte zurückgeben:
 
 ```java
-int add(int a, int b) {
+public static int add(int a, int b) {
     return a + b;
 }
 ```
 
 Diese Methode addiert zwei Zahlen und gibt die Summe zurück.
+
+Du kannst diese Methode so aufrufen:
+
+```java
+int result = add(17, 10); // Variable result will be 27 afterwards
+```
+
+---
+
+{{< video "https://www.youtube.com/watch?v=qQ79aq7HZ-U" "YouTube, Methoden mit Rückgabewert" >}}
+
+---
 
 ## Methoden ohne Rückgabewert (`void`)
 
@@ -84,7 +110,7 @@ Solche Methoden führen Anweisungen aus, ohne ein Ergebnis an den Aufrufer zurü
 Setzen eines Wertes.
 
 ```java
-void greet() {
+public static void greet() {
     System.out.println("Hallo!");
 }
 ```
@@ -179,9 +205,9 @@ Beim Benennen von Methoden beachtest du folgende Regeln:
 Beispiele:
 
 ```java
-void calculateTaxes(double income) { ... }
-String formatDate(LocalDate date) { ... }
-void printReport(String title, int pageCount) { ... }
+public static void calculateTaxes(double income) { ... }
+public static String formatDate(LocalDate date) { ... }
+public static void printReport(String title, int pageCount) { ... }
 ```
 
 {{< ninja info >}}
@@ -197,7 +223,7 @@ Das ist besonders hilfreich, wenn sich ein Problem in gleichartige Teilprobleme 
 Beispiel: Fakultät berechnen (`n! = n * (n-1) * (n-2) * ... * 1`)
 
 ```java
-int factorial(int n) {
+public static int factorial(int n) {
     if (n <= 1) return 1;
     return n * factorial(n - 1);
 }
@@ -223,7 +249,84 @@ mehr auf dem Stack hat und es zum sogenannten "Stack Overflow" kommt. Es können
 werden und das Programm wird beendet.
 {{< /ninja >}}
 
+## Aufruf fremder Methoden
+
+Methoden werden immer einer "Klasse" zugeordnet:
+
+```java
+public class EineKlasse {
+
+    public static void eineMethode() {
+        System.out.println("Ich mach mal was...");
+    }
+}
+```
+
+In anderen Methoden in derselben "Klasse" können sie direkt aufgerufen werden:
+
+```java
+public class EineKlasse {
+
+    public static void eineMethode() {
+        System.out.println("Ich mach mal was...");
+    }
+
+    public static void eineAndereMethode() {
+        eineMethode();
+        System.out.println("... und mach noch was anderes.");
+    }
+}
+```
+
+Der Name einer Methode muss innerhalb der gleichen Klasse eindeutig sein:
+
+```java
+public class EineKlasse {
+
+    public static void eineMethode() {
+        System.out.println("Ich mach mal was...");
+    }
+
+    public static void eineMethode() {  // <- Compiler-Error... 2 Methoden mit gleichem Namen
+        eineMethode();
+        System.out.println("... und mach noch was anderes.");
+    }
+}
+```
+
+Ist die Methode in einer anderen "Klasse", muss man den Namen der Klasse angegen:
+
+```java
+public class EineKlasse {
+
+    public static void eineAndereMethode() {
+        EineAndereKlasse.eineMethode();
+        System.out.println("... und mache noch was anderes.");
+    }
+}
+
+public class EineAndereKlasse {
+
+    public static void eineMethode() {
+        System.out.println("Ich mache AUCH was...");
+    }
+
+    public static void eineAndereMethode() {
+        eineMethode();
+        System.out.println("... und mache noch was anderes.");
+    }
+}
+
+```
+
+{{< ninja info >}}
+Ist die Methode in einer anderen "Klasse", darf der Name gleich sein. Durch den Namen der "Klasse" ist immer klar, welche
+Methode aufgerufen werden soll. Ist keine "Klasse" angegeben, wird immer die Methode aus derselben "Klasse" genommen.
+{{< /ninja >}}
+
 ## Lokale und statische Variablen
+
+Bis jetzt hast du Variablen immer innerhalb einer Methode genutzt. Die bezeichnet man genau genommen als lokale Variablen.
 
 - **Lokale Variablen** werden innerhalb einer Methode deklariert und existieren nur während der Ausführung dieser Methode.
 - **Statische Variablen** gehören zur Klasse und behalten ihren Wert zwischen mehreren Methodenaufrufen.
@@ -247,10 +350,6 @@ In diesem Beispiel:
 `message` ist eine lokale Variable: Sie existiert nur innerhalb von sayHello() und wird bei jedem Aufruf neu erstellt.
 
 `calls` ist eine statische Variable: Sie merkt sich, wie oft die Methode aufgerufen wurde – auch über mehrere Aufrufe hinweg.
-
----
-
-{{< video "https://www.youtube.com/watch?v=qQ79aq7HZ-U" "YouTube, Methoden mit Rückgabewert" >}}
 
 ---
 
