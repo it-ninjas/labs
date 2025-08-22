@@ -1,7 +1,7 @@
 ---
 title: "Arrays"
 linkTitle: "Arrays"
-weight: 16
+weight: 15
 description: >
   In diesem Modul lernst du, wie man Arrays in Java verwendet, durchläuft und Daten darin speichert oder daraus liest.
 ---
@@ -176,8 +176,8 @@ for (String word : words) {
 2. Es entsteht ein Array mit drei Elementen.
 3. Das Array wird mit `foreach` ausgegeben.
 
-Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten ["Regulären Ausdruck" (RegEx)](../14_regex/)
-handelt.
+Anzufügen ist noch, dass es sich beim Suchbegriff um eine sogenannten Regülären Ausdruck (Regex) handelt welchen wir
+bald im Module ["Reguläre Ausdrücke"](../16_regex/) behandeln werden.
 
 ## Arrays in Strings umwandeln - `String.join(...)`
 

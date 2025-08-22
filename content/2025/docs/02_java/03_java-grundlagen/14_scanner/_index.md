@@ -1,7 +1,7 @@
 ---
 title: "Scanner"
 linkTitle: "Scanner"
-weight: 15
+weight: 14
 description: >
   In diesem Modul lernst du, wie man mit der Scanner-Klasse Eingaben von der
   Konsole liest und in Variablen speichert.
