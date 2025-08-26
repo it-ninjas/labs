@@ -7,8 +7,6 @@ description: >
   durchsuchen, zu prüfen oder zu verarbeiten.
 ---
 
-{{< todo>}} Erster Release, muss noch angeschaut und Aufgaben müssen definiert werden {{< /todo>}}
-
 {{< module "J1" >}}
 
 ## Ziele
