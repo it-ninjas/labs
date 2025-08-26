@@ -4379,15 +4379,6 @@ Wenn du dir die Erklärung noch mit einem Video anschauen möchtest, empfehlen w
 ../../../../labs/02_java/03_java-grundlagen/#aufgabe-9&amp;mdash;arrays&lt;/p>
 &lt;/div>
 &lt;/div></description></item><item><title>Docs: Reguläre Ausdrücke in Java (RegEx)</title><link>/docs/02_java/03_java-grundlagen/16_regex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/16_regex/</guid><description>
-&lt;div style="display: flex; align-items: flex-start; background-color: #B0B0B0; margin-bottom: 1rem; border-radius: 12px">
-&lt;div style="flex-shrink: 0; margin-right: 1rem;">
-&lt;img src="/images/it-ninja-work.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
-&lt;/div>
-&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px">
-&lt;p class="font-bold mb-2">Entschuldige, da fehlt noch was...&lt;/p>
---> Erster Release, muss noch angeschaut und Aufgaben müssen definiert werden
-&lt;/div>
-&lt;/div>
 &lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
 &lt;div style="width: 100%; margin: 1rem auto;">
 &lt;div style="font-size: 1.1rem;">
@@ -4574,4 +4565,255 @@ verwendet.&lt;/p>
 &lt;/a>
 Jetzt bist du dran. Löse bitte die folgenden
 &lt;a href="../../../../labs/02_java/03_java-grundlagen/16_regex/">!*Aufgaben&lt;/a> in den Labs.
-&lt;/p></description></item></channel></rss>
+&lt;/p></description></item><item><title>Docs: Utility Klassen</title><link>/docs/02_java/03_java-grundlagen/17_utility_classes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/03_java-grundlagen/17_utility_classes/</guid><description>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J1 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich kann typische Utility-Klassen wie &lt;code>Math&lt;/code>, &lt;code>String&lt;/code>, &lt;code>Arrays&lt;/code>, &lt;code>System&lt;/code> benennen und anwenden.&lt;/li>
+&lt;li>Ich kann statische Methoden anhand der Schreibweise &lt;code>Klasse.Methode(...)&lt;/code> erkennen.&lt;/li>
+&lt;li>Ich weiss, dass viele Aufgaben mit bestehenden Klassen gelöst werden können ohne eigene Objekte zu bauen.&lt;/li>
+&lt;li>Ich verstehe, dass Utility-Klassen in Java oft ohne &lt;code>new&lt;/code> verwendet werden.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>Im Modul &lt;a href="/docs/02_java/03_java-grundlagen/12_packages/">„Packages“&lt;/a> hast du bereits gelernt, was Utility-Klassen sind:
+Klassen mit statischen Methoden, die du direkt über ihren Klassennamen verwenden kannst.&lt;/p>
+&lt;p>In diesem Modul stellen wir dir nun einige besonders nützliche Utility-Klassen aus der Java-Standardbibliothek vor.
+Sie helfen dir dabei, viele typische Aufgaben zu lösen ohne dass du eigene Objekte oder Klassen bauen musst.&lt;/p>
+&lt;p>Java enthält viele praktische Klassen, die du sofort verwenden kannst ohne zuerst eigene Klassen oder Objekte zu
+erstellen. Diese sogenannten &lt;strong>Utility-Klassen&lt;/strong> stellen häufige Funktionen bereit, zum Beispiel um Zahlen zu runden,
+Strings zu verarbeiten, Zufallszahlen zu erzeugen oder Arrays zu sortieren.&lt;/p>
+&lt;p>Die Methoden rufst du dabei, wie in früheren Modulen gelernt, direkt über den Klassennamen auf.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> maximum &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">max&lt;/span>(10, 25); &lt;span style="color:#75715e">// kein Objekt nötig&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das macht Utility-Klassen zu idealen Helfern.&lt;/p>
+&lt;h2 id="typische-utility-klassen">Typische Utility-Klassen&lt;/h2>
+&lt;p>Hier eine Auswahl von Klassen, die du sofort nutzen kannst:&lt;/p>
+&lt;h3 id="math--mathematische-funktionen">&lt;code>Math&lt;/code> – Mathematische Funktionen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> betrag &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">abs&lt;/span>(&lt;span style="color:#f92672">-&lt;/span>42);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">double&lt;/span> wurzel &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">sqrt&lt;/span>(9);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">double&lt;/span> zufall &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">random&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">double&lt;/span> kreis &lt;span style="color:#f92672">=&lt;/span> Math.&lt;span style="color:#a6e22e">PI&lt;/span> &lt;span style="color:#f92672">*&lt;/span> Math.&lt;span style="color:#a6e22e">pow&lt;/span>(5, 2); &lt;span style="color:#75715e">// Fläche eines Kreises mit Radius 5&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="integer--double--texte-in-zahlen-umwandeln">&lt;code>Integer&lt;/code> / &lt;code>Double&lt;/code> – Texte in Zahlen umwandeln&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> zahl &lt;span style="color:#f92672">=&lt;/span> Integer.&lt;span style="color:#a6e22e">parseInt&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;123&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">double&lt;/span> komma &lt;span style="color:#f92672">=&lt;/span> Double.&lt;span style="color:#a6e22e">parseDouble&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;3.14&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="arrays--hilfen-für-arrays">&lt;code>Arrays&lt;/code> – Hilfen für Arrays&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> zahlen &lt;span style="color:#f92672">=&lt;/span> {3, 5, 4, 1, 5};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Arrays.&lt;span style="color:#a6e22e">sort&lt;/span>(zahlen); &lt;span style="color:#75715e">// sortieren → zahlen ist danach {1, 3, 4, 5, 5}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(Arrays.&lt;span style="color:#a6e22e">toString&lt;/span>(zahlen)); &lt;span style="color:#75715e">// Ausgabe&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> kopie &lt;span style="color:#f92672">=&lt;/span> Arrays.&lt;span style="color:#a6e22e">copyOf&lt;/span>(zahlen, 10); &lt;span style="color:#75715e">// Array mit mehr Platz, kopie ist danach {1, 3, 4, 5, 5, 0, 0, 0, 0, 0}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Arrays.&lt;span style="color:#a6e22e">fill&lt;/span>(kopie, 5, 10, 99); &lt;span style="color:#75715e">// auffüllen ab Index 5 mit 99, kopie ist danach {1, 3, 4, 5, 5, 99, 99, 99, 99, 99}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> index &lt;span style="color:#f92672">=&lt;/span> Arrays.&lt;span style="color:#a6e22e">binarySearch&lt;/span>(zahlen, 4); &lt;span style="color:#75715e">// sortiert → Index von der Zahl 4 ist 2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="system--ausgaben-und-informationen">&lt;code>System&lt;/code> – Ausgaben und Informationen&lt;/h3>
+&lt;p>Mit &lt;code>System&lt;/code> kannst du zum Beispiel etwas auf die Konsole schreiben (&lt;code>System.out.println(...)&lt;/code>), die aktuelle Zeit in Millisekunden abfragen oder Informationen über die Umgebung erhalten:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Hallo Welt&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// Kennst du schon lange :-)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">long&lt;/span> zeit &lt;span style="color:#f92672">=&lt;/span> System.&lt;span style="color:#a6e22e">currentTimeMillis&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String benutzer &lt;span style="color:#f92672">=&lt;/span> System.&lt;span style="color:#a6e22e">getenv&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;USERNAME&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// unter Windows&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String home &lt;span style="color:#f92672">=&lt;/span> System.&lt;span style="color:#a6e22e">getenv&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;HOME&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// unter Linux/macOS&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Methode &lt;code>System.getenv(...)&lt;/code> liefert dir &lt;strong>Umgebungsvariablen&lt;/strong>, die vom Betriebssystem gesetzt werden – z. B. dein Benutzername oder dein Home-Verzeichnis.&lt;/p>
+&lt;h3 id="threadlocalrandom--zufallszahlen-ohne-new">&lt;code>ThreadLocalRandom&lt;/code> – Zufallszahlen ohne &lt;code>new&lt;/code>&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> augenzahl &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">util&lt;/span>.&lt;span style="color:#a6e22e">concurrent&lt;/span>.&lt;span style="color:#a6e22e">ThreadLocalRandom&lt;/span>.&lt;span style="color:#a6e22e">current&lt;/span>().&lt;span style="color:#a6e22e">nextInt&lt;/span>(1, 7);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="localdate--mit-datum-rechnen">&lt;code>LocalDate&lt;/code> – mit Datum rechnen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">LocalDate&lt;/span> heute &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">LocalDate&lt;/span>.&lt;span style="color:#a6e22e">now&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">LocalDate&lt;/span> geburtstag &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">time&lt;/span>.&lt;span style="color:#a6e22e">LocalDate&lt;/span>.&lt;span style="color:#a6e22e">of&lt;/span>(2025, 9, 12);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="files--dateien-und-verzeichnisse-verwalten-ab-java-11">&lt;code>Files&lt;/code> – Dateien und Verzeichnisse verwalten (ab Java 11)&lt;/h3>
+&lt;p>Mit der Klasse &lt;code>Files&lt;/code> kannst du einfach auf Dateien und Verzeichnisse zugreifen: lesen, schreiben, anfügen, löschen
+oder auch Verzeichnisse erstellen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span> pfad &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span>.&lt;span style="color:#a6e22e">of&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;daten.txt&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Datei lesen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String inhalt &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Files&lt;/span>.&lt;span style="color:#a6e22e">readString&lt;/span>(pfad);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Datei überschreiben&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Files&lt;/span>.&lt;span style="color:#a6e22e">writeString&lt;/span>(pfad, &lt;span style="color:#e6db74">&amp;#34;Neuer Inhalt\n&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Datei erweitern (anhängen)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Files&lt;/span>.&lt;span style="color:#a6e22e">writeString&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pfad,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Zusätzliche Zeile\n&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">StandardOpenOption&lt;/span>.&lt;span style="color:#a6e22e">APPEND&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Datei löschen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Files&lt;/span>.&lt;span style="color:#a6e22e">delete&lt;/span>(pfad);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Auch für Verzeichnisse gibt es einfache Methoden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span> ordner &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span>.&lt;span style="color:#a6e22e">of&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;meinOrdner&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Verzeichnis erstellen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Files&lt;/span>.&lt;span style="color:#a6e22e">createDirectory&lt;/span>(ordner);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Verzeichnis löschen (nur wenn leer!)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Files&lt;/span>.&lt;span style="color:#a6e22e">delete&lt;/span>(ordner);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Für häufig genutzte Pfade wie das aktuelle Verzeichnis oder das Home-Verzeichnis kannst du folgende Techniken nutzen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>String aktuellerPfad &lt;span style="color:#f92672">=&lt;/span> System.&lt;span style="color:#a6e22e">getProperty&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;user.dir&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// aktuelles Projektverzeichnis&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>String home &lt;span style="color:#f92672">=&lt;/span> System.&lt;span style="color:#a6e22e">getProperty&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;user.home&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// Home-Verzeichnis des Benutzers&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Datei im Home-Verzeichnis ansprechen&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span> logdatei &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span>.&lt;span style="color:#a6e22e">of&lt;/span>(home, &lt;span style="color:#e6db74">&amp;#34;log.txt&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>&lt;strong>Wichtig:&lt;/strong> Wenn du keinen absoluten Pfad angibst (z. B. &lt;code>C:\Daten\file.txt&lt;/code>), dann wird der Pfad relativ zum aktuellen
+Verzeichnis interpretiert. Welches Verzeichnis das ist, erfährst du mit:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(System.&lt;span style="color:#a6e22e">getProperty&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;user.dir&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="wichtige-merkmale">Wichtige Merkmale&lt;/h2>
+&lt;ul>
+&lt;li>Utility-Klassen haben &lt;strong>nur statische Methoden&lt;/strong> → kein &lt;code>new&lt;/code> nötig.&lt;/li>
+&lt;li>Oft sind sie &lt;strong>zustandslos&lt;/strong>: sie verändern keine internen Werte.&lt;/li>
+&lt;li>Sie gehören zu bekannten Paketen wie &lt;code>java.lang&lt;/code>, &lt;code>java.util&lt;/code>, &lt;code>java.time&lt;/code> oder &lt;code>java.nio.file&lt;/code>.&lt;/li>
+&lt;li>Viele Klassen sind sofort verfügbar, ohne &lt;code>import&lt;/code> (z. B. &lt;code>Math&lt;/code>, &lt;code>String&lt;/code>, &lt;code>System&lt;/code>).&lt;/li>
+&lt;/ul>
+&lt;h2 id="wie-findest-du-weitere-utility-klassen">Wie findest du weitere Utility-Klassen?&lt;/h2>
+&lt;p>Java enthält Hunderte von Klassen, viele davon mit nützlichen statischen Methoden. Du kannst sie am besten so entdecken:&lt;/p>
+&lt;ul>
+&lt;li>Schau dir bekannte Pakete wie &lt;code>java.lang&lt;/code>, &lt;code>java.util&lt;/code>, &lt;code>java.time&lt;/code> oder &lt;code>java.nio.file&lt;/code> an.&lt;/li>
+&lt;li>Verwende eine Liste von bekannten Klassen aus diesem Modul und erkunde weitere Klassen in der JavaDoc.&lt;/li>
+&lt;li>Lies die &lt;strong>JavaDoc&lt;/strong>, sie ist für jedes Java-Paket online verfügbar, z. B. unter:
+&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/">!https://docs.oracle.com/en/java/javase/17/docs/api/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="erkenntnis">Erkenntnis&lt;/h2>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+&lt;p>&lt;strong>Du musst das Rad nicht neu erfinden.&lt;/strong>&lt;/p>
+&lt;p>Für viele Probleme gibt es bereits eine Lösung in der Java-Standardbibliothek. Ob du einen Text umwandeln, eine Liste
+sortieren oder mit Datum/Zeit arbeiten möchtest. Es lohnt sich, zuerst zu prüfen, ob es bereits eine passende
+Utility-Methode gibt.&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="ausblick">Ausblick&lt;/h2>
+&lt;p>Später wirst du eigene Klassen schreiben, um Objekte zu erzeugen und gezielt Verhalten zu kapseln. Für den Moment reicht
+es aber, diese vorhandenen Helfer gut zu kennen.&lt;/p></description></item></channel></rss>
