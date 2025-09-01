@@ -1,0 +1,368 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Projekt 2025 – Online Game</title><link>/project/project-2025/</link><description>Recent content in Projekt 2025 – Online Game on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/project/project-2025/index.xml" rel="self" type="application/rss+xml"/><item><title>Project: Projekt: Logger</title><link>/project/project-2025/logger/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/project/project-2025/logger/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich kann ein Java-Package ohne &lt;code>main&lt;/code> erstellen und darin &lt;strong>nur&lt;/strong> statische Hilfsfunktionen bereitstellen.&lt;/li>
+&lt;li>Ich kann zeilenweise &lt;strong>Logausgaben&lt;/strong> in eine Datei schreiben (anhängen, nicht überschreiben).&lt;/li>
+&lt;li>Ich kann &lt;strong>Log-Level&lt;/strong> unterscheiden und sichtbar machen.&lt;/li>
+&lt;li>Ich kann ein leicht lesbares &lt;strong>Zeitformat&lt;/strong> vorneweg in jeder Zeile schreiben.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;hr>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Für das Logger-Projekt musst Du ein neues Repository erstellen!
+&lt;/div>
+&lt;/div>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>&lt;strong>Was ist ein Logger?&lt;/strong> Ein Logger schreibt wichtige Ereignisse deines Programms in eine &lt;strong>Datei&lt;/strong>, damit du später
+nachvollziehen kannst, &lt;strong>was wann passiert&lt;/strong> ist (z. B. Start, Fehler, Warnungen). Jedes Ereignis ist eine &lt;strong>Zeile&lt;/strong>
+(bei langen Nachrichten ggf. mehrere Zeilen), die u. a. Informationen zu &lt;strong>Zeit&lt;/strong>, &lt;strong>Prozess&lt;/strong> und &lt;strong>Thread&lt;/strong> des
+Ereignisses enthält.&lt;/p>
+&lt;p>&lt;strong>Was ist ein Log-Level?&lt;/strong> Log-Level sind &lt;strong>Bedeutungsstufen&lt;/strong>: z. B. &lt;code>INF&lt;/code> (Information), &lt;code>WRN&lt;/code> (Warnung), &lt;code>ERR&lt;/code>
+(Fehler). Optional: &lt;code>DBG&lt;/code> (Debug), &lt;code>TRC&lt;/code> (sehr detailliert). Über einen &lt;strong>Minimal-Level&lt;/strong> kannst du steuern, &lt;strong>ab
+welcher Stufe&lt;/strong> geschrieben wird: &lt;code>TRC&lt;/code> → &lt;code>DBG&lt;/code> → &lt;code>INF&lt;/code> → &lt;code>WRN&lt;/code> → &lt;code>ERR&lt;/code>. Bei Minimal-Level &lt;code>INF&lt;/code> werden auch &lt;code>WRN&lt;/code>
+und &lt;code>ERR&lt;/code> geschrieben, bei Minimal-Level &lt;code>WRN&lt;/code> nur noch &lt;code>WRN&lt;/code> und &lt;code>ERR&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>PID &amp;amp; TID (kurz):&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>PID&lt;/strong> = &lt;em>Process ID&lt;/em>, die Kennzahl deines laufenden &lt;strong>Prozesses&lt;/strong> (Programms).&lt;/li>
+&lt;li>&lt;strong>TID&lt;/strong> = &lt;em>Thread ID&lt;/em>, die Kennzahl eines &lt;strong>Ausführungsstrangs&lt;/strong> innerhalb des Prozesses.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Details zu Threads behandeln wir später im eigenen Modul. Für das Loggen reicht: PID/TID helfen, Aktivitäten
+voneinander zu unterscheiden.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="kontext--einschränkungen">Kontext &amp;amp; Einschränkungen&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Nur statische Hilfsfunktionen:&lt;/strong> keine Instanzen, keine Vererbungsthemen.&lt;/li>
+&lt;li>&lt;strong>Kein &lt;code>main&lt;/code>:&lt;/strong> Das Ergebnis ist &lt;strong>ein Package&lt;/strong>, das in anderen Projekten genutzt werden kann.&lt;/li>
+&lt;li>&lt;strong>Kein Test-Framework:&lt;/strong> Du testest &lt;strong>manuell&lt;/strong> (siehe Abschnitt &lt;em>Manuelles Testen&lt;/em>).&lt;/li>
+&lt;li>&lt;strong>Coding-Style:&lt;/strong> Halte den &lt;strong>Coding-Style-Guide&lt;/strong> strikt ein (Einrückung, Namen, Konstanten, Javadoc etc.).&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabenstellung">Aufgabenstellung&lt;/h2>
+&lt;p>Implementiere ein &lt;strong>Logging-Package&lt;/strong>, das folgende Aufgaben erfüllt:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Log-Zeilen schreiben:&lt;/strong> Pflicht-Methoden &lt;code>info&lt;/code>, &lt;code>warn&lt;/code>, &lt;code>error(msg)&lt;/code>, &lt;code>error(msg, ex)&lt;/code>, &lt;code>debug&lt;/code> schreiben eine
+oder mehrere Zeile(n) in eine Log-Datei &lt;strong>(append → am Ende anfügen, falls Datei schon existiert)&lt;/strong>. Die API ist
+weiter unten definiert.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Dateiformat:&lt;/strong> In der Log-Datei muss klar ersichtlich sein, wann welches Ereignis wo vorgekommen ist.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Zeitstempel:&lt;/strong> Logging-Einträge können über mehrere Tage verteilt, aber auch innerhalb von Millisekunden
+erfolgen. Das muss ersichtlich sein.&lt;/li>
+&lt;li>&lt;strong>Message:&lt;/strong> freie Nachricht; &lt;strong>kann mehrere Zeilen&lt;/strong> enthalten.&lt;/li>
+&lt;li>&lt;strong>PID/TID:&lt;/strong> nach Möglichkeit im Bereich 000–999 darstellen; falls grösser, darf kein Abschneiden erfolgen.&lt;/li>
+&lt;li>&lt;strong>Log-Level:&lt;/strong> Kurzform verwenden: &lt;code>INF&lt;/code>, &lt;code>WRN&lt;/code>, &lt;code>ERR&lt;/code>, …&lt;/li>
+&lt;li>&lt;strong>Quelle (optional):&lt;/strong> Mit einem 4-stelligen String soll mitgeteilt werden können, aus welchem Package der
+Eintrag kommt (z. B. &lt;code>MAIN&lt;/code> → aus dem Main-Package, &lt;code>STHE&lt;/code> → aus dem String-Helper-Package, …).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Dateiverwaltung &amp;amp; Dateiname:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Verzeichnis:&lt;/strong> bei Bedarf erstellen.&lt;/li>
+&lt;li>&lt;strong>Dateiname:&lt;/strong> es muss klar unterschieden werden können, in welcher Reihenfolge die Dateien erstellt wurden
+(über Zeitstempel, Index, …). Es soll ein Text definiert werden können, der jeweils im Dateinamen
+enthalten ist (File Identifier).&lt;/li>
+&lt;li>&lt;strong>Dateigrösse:&lt;/strong> es muss festgelegt werden können, wie gross die Log-Datei werden darf (z. B. 1 MB).&lt;/li>
+&lt;li>&lt;strong>Rotation (Rolling):&lt;/strong> es soll definiert werden können, wie viele (Zahl) oder wie lange (Zeit) Log-Dateien
+aufbewahrt werden sollen. Wird eine der beiden Limiten überschritten, sollen zu viele vorhandene Log-Dateien
+gelöscht werden.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Thread-Sicherheit (basic):&lt;/strong> Mehrere Aufrufe dürfen keine Zeilen &lt;strong>vermischen&lt;/strong> (synchronisieren oder
+&lt;code>Files.newBufferedWriter&lt;/code> mit Append &amp;amp; Flush benutzen).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Konfiguration (ENV/User-Datei):&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Der Logger liest Einstellungen aus &lt;strong>Umgebungsvariablen&lt;/strong> oder einer &lt;strong>User-Konfigdatei&lt;/strong>.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>LogFolder:&lt;/strong> Speicherort der Log-Dateien.&lt;/li>
+&lt;li>&lt;strong>LogIdentifier:&lt;/strong> String, der in jeder Log-Datei enthalten sein soll.&lt;/li>
+&lt;li>&lt;strong>MinLevel:&lt;/strong> Minimal-Level.&lt;/li>
+&lt;li>&lt;strong>MaxFiles:&lt;/strong> maximale Anzahl an Log-Dateien, die aufbewahrt werden sollen.&lt;/li>
+&lt;li>&lt;strong>MaxDays:&lt;/strong> maximale Aufbewahrungszeit für eine Log-Datei in Tagen.&lt;/li>
+&lt;li>&lt;strong>LineLen (optional):&lt;/strong> maximale Länge einer Zeile in der Log-Datei. Längere Zeilen sollen umgebrochen
+werden.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Konfig-Pfad-Ermittlung (Reihenfolge):&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>explizit via &lt;code>setConfigPath(Path)&lt;/code> (falls genutzt),&lt;/li>
+&lt;li>ENV &lt;code>ITNINJA_LOGGER_CONFIG&lt;/code>,&lt;/li>
+&lt;li>Default: im Benutzerverzeichnis, z. B. &lt;code>~/.itninja-logger&lt;/code> (Windows: &lt;code>%USERPROFILE%\.itninja-logger&lt;/code>).&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Umgebungsvariablen:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ITNINJA_LOGGER_LOGFOLDER:&lt;/strong> Speicherort der Log-Dateien.&lt;/li>
+&lt;li>&lt;strong>ITNINJA_LOGGER_LOGIDENTIFIER:&lt;/strong> String, der in jeder Log-Datei enthalten sein soll.&lt;/li>
+&lt;li>&lt;strong>ITNINJA_LOGGER_MINLEVEL:&lt;/strong> Minimal-Level.&lt;/li>
+&lt;li>&lt;strong>ITNINJA_LOGGER_MAXFILES:&lt;/strong> maximale Anzahl an Log-Dateien, die aufbewahrt werden sollen.&lt;/li>
+&lt;li>&lt;strong>ITNINJA_LOGGER_MAXDAYS:&lt;/strong> maximale Aufbewahrungszeit für eine Log-Datei in Tagen.&lt;/li>
+&lt;li>&lt;strong>ITNINJA_LOGGER_LINELEN (optional):&lt;/strong> maximale Länge einer Zeile in der Log-Datei. Längere Zeilen sollen
+umgebrochen werden.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Konfigurationsermittlung (Reihenfolge):&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>explizit via Methodenaufruf im Code (falls vorhanden),&lt;/li>
+&lt;li>aus der Konfigurationsdatei, falls definiert und vorhanden,&lt;/li>
+&lt;li>aus den Umgebungsvariablen.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Fehlertoleranz:&lt;/strong> Wenn die Log-Datei nicht geschrieben werden kann, wirf &lt;strong>keine&lt;/strong> Exception nach aussen.
+Dokumentiere das Verhalten (z. B. Fallback auf &lt;code>System.err&lt;/code>).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Performance:&lt;/strong> Das Schreiben in die Log-Datei soll so performant wie möglich erfolgen. Alle zusätzlichen
+Aufgaben wie z. B. die Dateiverwaltung erfolgen in separaten Methoden, die beim Start aufgerufen werden und vom
+Benutzer des Logging-Packages aufgerufen werden können.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Konsole:&lt;/strong> Per Konfiguration soll es möglich sein, die Log-Ausgabe nicht nur in die Log-Datei zu schreiben,
+sondern auch auf der Konsole auszugeben. (Optional) Mittels farbigem Text soll zwischen den verschiedenen
+Log-Levels unterschieden werden können.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="api--minimale-pflicht">API – minimale Pflicht&lt;/h2>
+&lt;p>Die folgenden &lt;strong>Pflicht-Methoden&lt;/strong> müssen vorhanden sein; alle weiteren sind &lt;strong>optional&lt;/strong>. Der Logger funktioniert
+&lt;strong>ohne&lt;/strong> optionale Methoden (Defaults &amp;amp; Konfigurationsdatei/Umgebungsvariablen).&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">info&lt;/span>(String message);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">warn&lt;/span>(String message);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">error&lt;/span>(String message);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">error&lt;/span>(String message, Throwable exception);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">debug&lt;/span>(String message);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">maintain&lt;/span>(); &lt;span style="color:#75715e">// checks for outdated files, configuration changes, ...&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="api--optionale-erweiterungen">API – optionale Erweiterungen&lt;/h2>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Optional: explizit Konfigpfad setzen (ansonsten ENV/Default)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setConfigPath&lt;/span>(java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span> configFile);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Optional: direkte Datei- oder Verzeichnis-Init (bypasst/ergänzt Konfigdatei)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">initWithDir&lt;/span>(java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span> logDir, String postfix, LogLevel minLevel, String moduleCode);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">init&lt;/span>(java.&lt;span style="color:#a6e22e">nio&lt;/span>.&lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Path&lt;/span> logFile, LogLevel minLevel, String moduleCode);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Optionale Setter (falls nicht ausschliesslich per Konfigdatei gesteuert)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setLogFolder&lt;/span>(Path path);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">enum&lt;/span> LogLevel { TRC, DBG, INF, WRN, ERR }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setMinLevel&lt;/span>(LogLevel level);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setLogIdentifier&lt;/span>(String identifier);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setMaxLineLength&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> len);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setMaxFiles&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> count);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setMaxDays&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> days);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Optional Convenience&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">trace&lt;/span>(String message);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>Du darfst die API &lt;strong>vereinfachen oder erweitern&lt;/strong>, solange die Anforderungen erfüllt sind.&lt;/p>&lt;/blockquote>
+&lt;h2 id="manuelles-testen-ohne-test-framework">Manuelles Testen (ohne Test-Framework)&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Mini-Demo-Klasse&lt;/strong> in &lt;em>einem separaten&lt;/em> Projekt (oder im selben Repo unter &lt;code>demo/&lt;/code>), &lt;strong>nicht&lt;/strong> im Logger-Package:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LoggerDemo&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Logger.&lt;span style="color:#a6e22e">init&lt;/span>(Path.&lt;span style="color:#a6e22e">of&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;./logs/app.log&amp;#34;&lt;/span>), &lt;span style="color:#e6db74">&amp;#34;Tournament&amp;#34;&lt;/span>, LogLevel.&lt;span style="color:#a6e22e">INF&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Logger.&lt;span style="color:#a6e22e">info&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Round started&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Logger.&lt;span style="color:#a6e22e">warn&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Low disk space (drive=C: freeMB=512)&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Logger.&lt;span style="color:#a6e22e">error&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Failed to open config file (path=./cfg/app.yaml)&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Mehrfachlauf:&lt;/strong> Programm 3–5× starten → prüfen, dass Zeilen &lt;strong>angehängt&lt;/strong> werden.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Level-Filter:&lt;/strong> &lt;code>setMinLevel(LogLevel.WRN)&lt;/code> setzen → &lt;code>INF&lt;/code> darf &lt;strong>nicht&lt;/strong> mehr erscheinen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Race-Test (einfach):&lt;/strong> In der Demo mehrere Threads starten, die parallel loggen → keine Zeilenverschachtelung.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Datei öffnen:&lt;/strong> Mit einem Editor prüfen, dass &lt;strong>keine leeren&lt;/strong> Zeilen entstehen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>(Optional) Rotation:&lt;/strong> Datei bis &amp;gt; 1 MB füllen → prüfen, dass eine neue Log-Datei erstellt und beschrieben wird.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="akzeptanzkriterien-definition-of-done">Akzeptanzkriterien (Definition of Done)&lt;/h2>
+&lt;ul>
+&lt;li>Package baut ohne Fehler, &lt;strong>ohne &lt;code>main&lt;/code>&lt;/strong>.&lt;/li>
+&lt;li>Es wird ein &lt;code>.jar&lt;/code> erstellt.&lt;/li>
+&lt;li>Es existiert eine &lt;strong>README.md&lt;/strong> im Package mit &lt;strong>kurzer API-&lt;/strong> und Konfigurations-Beschreibung und Beispiel.&lt;/li>
+&lt;li>API ist mit JavaDoc dokumentiert.&lt;/li>
+&lt;li>Log-Datei wird &lt;strong>angelegt&lt;/strong>, &lt;strong>angehängt&lt;/strong> und enthält die geforderten Informationen.&lt;/li>
+&lt;li>Minimal-Level-Filter funktioniert.&lt;/li>
+&lt;li>Keine Exceptions verlassen die öffentlichen Methoden (Fehler beim Schreiben werden intern behandelt und dokumentiert).&lt;/li>
+&lt;li>&lt;strong>Coding-Style-Guide&lt;/strong> eingehalten (Formatierung, Namen, Kommentare/Javadoc, keine Magic Numbers, sinnvolle
+&lt;code>final&lt;/code>-Konstanten).&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="ordner-dateistruktur-vorschlag">Ordner-/Dateistruktur (Vorschlag)&lt;/h2>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Nutze die folgende Struktur, damit du deinen Code im &lt;strong>Logger-Projekt&lt;/strong> entwickeln und im &lt;strong>Demo-Projekt&lt;/strong> testen kannst!
+Für die &lt;code>pom.xml&lt;/code> in den Verzeichnissen &lt;code>logger&lt;/code> und &lt;code>demo&lt;/code> kannst du eine &lt;code>pom.xml&lt;/code> aus deinen Übungen als Vorlage
+nehmen.
+&lt;/div>
+&lt;/div>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>project-root/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pom.xml (Aggregator)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> logger/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> src/main/java/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ch/individuell/logger/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Logger.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pom.xml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> README.md
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> demo/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> src/main/java/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LoggerDemo.java
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pom.xml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>&lt;code>pom.xml&lt;/code> im Root:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;project&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;modelVersion&amp;gt;&lt;/span>4.0.0&lt;span style="color:#f92672">&amp;lt;/modelVersion&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>ch.itninja&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>itninja-logger-parent&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.0.0-SNAPSHOT&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;packaging&amp;gt;&lt;/span>pom&lt;span style="color:#f92672">&amp;lt;/packaging&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;modules&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;module&amp;gt;&lt;/span>logger&lt;span style="color:#f92672">&amp;lt;/module&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;module&amp;gt;&lt;/span>demo&lt;span style="color:#f92672">&amp;lt;/module&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/modules&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;/project&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="abgabe">Abgabe&lt;/h2>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Für das Logger-Projekt musst Du ein neues Repository erstellen!
+&lt;/div>
+&lt;/div>
+&lt;ul>
+&lt;li>Eigenes Repo &lt;code>it-ninja-[deinName]-logger&lt;/code> (ersetze &lt;code>[deinName]&lt;/code> mit deinem Namen).&lt;/li>
+&lt;li>Repo-URL mit &lt;code>logger/&lt;/code> (Package) und &lt;code>demo/&lt;/code> (manuelle Tests).&lt;/li>
+&lt;li>Kurze Beschreibung in der &lt;code>README.md&lt;/code> – wie ausführen, wo die Datei liegt.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="architektur--austauschbarkeit-ausblick">Architektur &amp;amp; Austauschbarkeit (Ausblick)&lt;/h2>
+&lt;p>Ziel ist eine Struktur, in der wir &lt;strong>Packages austauschen&lt;/strong> können: &lt;code>Logger&lt;/code>, &lt;code>Tournament&lt;/code>, &lt;code>Game&lt;/code> sowie getrennte
+&lt;strong>Frontend&lt;/strong>- und &lt;strong>Backend&lt;/strong>-Varianten. Damit können wir z. B. vergleichen, wie &lt;strong>GameEngine A&lt;/strong> ein Spiel gegenüber
+&lt;strong>GameEngine B&lt;/strong> anders spielt, ohne den Logger oder das Frontend zu ändern.&lt;/p>
+&lt;ul>
+&lt;li>Halte die API des Loggers &lt;strong>stabil&lt;/strong> und minimal.&lt;/li>
+&lt;li>Verwende neutrale, sprechende Methodennamen und kurze, robuste Formate (siehe Pflichtformat), damit andere Module
+leicht integrieren können.&lt;/li>
+&lt;li>Erstelle zusätzliche Utility-Klassen, wenn sinnvoll.&lt;/li>
+&lt;/ul></description></item></channel></rss>
