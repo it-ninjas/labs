@@ -72,6 +72,48 @@ gezielt Textteile daraus extrahieren.
 
 ---
 
+## Lookaheads (Vorausschau)
+
+**Lookaheads** prüfen Bedingungen für den Rest des Textes, ohne Zeichen zu verbrauchen.  
+Sie sind **zero-width**: Sie verändern die Match-Position nicht.
+
+### Syntax
+- Positiv: `(?=X)` → Es muss **X** folgen.  
+- Negativ: `(?!X)` → Es darf **nicht** **X** folgen.  
+
+Mehrere Lookaheads hintereinander bedeuten ein **UND** – alle Bedingungen müssen erfüllt sein.
+
+---
+
+### Einfaches Beispiel
+
+```regex
+foo(?=bar)
+```
+
+Findet `foo`, **nur wenn** danach `bar` folgt.  
+Beispiel: Match in `foobar`, kein Match in `foobaz`.
+
+---
+
+### Beispiel mit zwei Bedingungen
+
+```regex
+^(?=.*Java)(?=.*Regex).*
+```
+
+- `^` und `.*` am Ende → ganzer String.  
+- `(?=.*Java)` → der Text muss **Java** enthalten.  
+- `(?=.*Regex)` → der Text muss **Regex** enthalten.  
+
+**Beispiele:**
+- Match `Ich lerne Java und Regex`..
+- Match `Regex ist spannend, Java auch`  
+- Kein Match mit `Nur Java drin`  
+- Kein Match mit `Nur Regex drin`
+
+---
+
 ## Sicherheitsaspekte
 
 Reguläre Ausdrücke können bei falscher oder unvorsichtiger Anwendung **Sicherheits- und Performanceprobleme** verursachen.
