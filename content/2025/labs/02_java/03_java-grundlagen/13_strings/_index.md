@@ -2,7 +2,7 @@
 title: "Java Exercises - Strings"
 linkTitle: "Strings"
 type: docs
-weight: 10
+weight: 13
 description: >
   Mit diesen Übungen kannst du dein Wissen zum Thema Strings vertiefen.
 ---

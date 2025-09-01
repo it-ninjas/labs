@@ -1,7 +1,7 @@
 ---
 title: "Utility Klassen"
 linkTitle: "Utility Klassen"
-weight: 16
+weight: 17
 description: >
   Häufig verwendete Java-Pakete mit statischen Hilfsmethoden (Utility-Klassen).
 ---

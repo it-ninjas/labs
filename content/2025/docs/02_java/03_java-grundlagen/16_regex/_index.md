@@ -19,7 +19,7 @@ description: >
 
 ## Einführung
 
-Lies zuerst das Modul [Regex](../../../99_tools/diverses/regex/), bevor du hier weitermachst.
+Lies zuerst das Modul [!Regex](../../../99_tools/diverses/regex/), bevor du hier weitermachst.
 
 In Java werden reguläre Ausdrücke über die Klassen **`java.util.regex.Pattern`** und **`java.util.regex.Matcher`**
 verwendet.
