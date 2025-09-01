@@ -1,6 +1,7 @@
 ---
 title: "Projekt: Logger"
 linkTitle: "Logger"
+type: docs
 weight: 1
 description: >
   Baue ein simples Logging-Package mit statischen Hilfsfunktionen. Das Package schreibt strukturierte Log-Zeilen in

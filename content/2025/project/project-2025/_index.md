@@ -2,7 +2,7 @@
 title: "Projekt 2025 – Online Game"
 linkTitle: "Projekt 2025"
 type: docs
-weight: 101
+weight: 1
 description: >
   Im Projekt 2025 entwickelst du ein einfaches Online-Spiel, das schrittweise aufgebaut wird. Von Utility-Klassen über
   eine Gaming Engine bis hin zu Backend und Frontend entsteht ein vollständiges Projekt.
