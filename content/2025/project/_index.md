@@ -1,27 +1,29 @@
 ---
-title: Projekt
+title: "Lernprojekt"
+linkTitle: "Lernprojekt"
 type: docs
+weight: 100
 menu:
   main:
     weight: 4
+description: >
+  Im Lernprojekt wendest du dein erlerntes Wissen praktisch an. Die Projekte orientieren sich am jeweiligen
+  Ausbildungsstand und wachsen zu einer Gesamtlösung zusammen.
 ---
+
+## Einführung
+
+Das Lernprojekt dient dazu, das in den Modulen erarbeitete Wissen praktisch anzuwenden.  
+Du entwickelst über mehrere Monate hinweg ein Projekt, das schrittweise um neue Funktionen erweitert wird.
+
+Während am Anfang viele Vorgaben bestehen, liegt der Fokus später auf der eigenständigen Entwicklung von Features
+sowie dem Schreiben von User Stories. So wird nicht nur das technische Verständnis vertieft,
+sondern auch das Arbeiten nach agilen Prinzipien geübt.
 
 ## Übersicht
 
-In diesem Projekt kannst du alles was du gelernt hast anwenden. Die einzelnen Teilprojekte richten sich nach dem
-jeweiligen Ausbildungsstand und fügen sich gegen Ende des Projekts zu einer Gesamtlösung zusammen.
+Jedes Projekt hat ein eigenes Ziel. So kannst du dich an den realen Fortschritt anpassen und praxisnah arbeiten.
 
-Mit den Projekten wollen wir versuchen, bereits während der Ausbildung in der Talent Factory Arbeitsschritte zu planen
-und umzusetzen, so wie es später auch in echten Projekten gemacht wird.
-
-### Projekt 2025/26 - Online Game
-
-Im Ausbildungsjahr 2025/26 ist unser Ziel, ein Spiel zu realisieren, welches online auf einer Webseite gespielt
-werden kann. Es stehen 2 Varianten zur Verfügung:
-
-- Herr der Bits und Bytes - lass Elfen, Gnome, Zauberer, Hexen digital gegeneinander kämpfen
-- Trumpf-Quartett - suche dir ein Thema (Schiffe, Autos, Blumen, ...) und erstelle ein digitales Kartenspiel
-
-{{< todo >}}
-Mehr folgt bald...
-{{< /todo>}}
+{{< ninja info >}}
+Wir freuen uns auch über Feedback und Vorschläge für weitere Projekte, die in Zukunft angeboten werden könnten.
+{{< /ninja >}}
