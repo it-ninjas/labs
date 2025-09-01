@@ -251,6 +251,50 @@ gezielt Textteile daraus extrahieren.&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;hr>
+&lt;h2 id="lookaheads-vorausschau">Lookaheads (Vorausschau)&lt;/h2>
+&lt;p>&lt;strong>Lookaheads&lt;/strong> prüfen Bedingungen für den Rest des Textes, ohne Zeichen zu verbrauchen.&lt;br>
+Sie sind &lt;strong>zero-width&lt;/strong>: Sie verändern die Match-Position nicht.&lt;/p>
+&lt;h3 id="syntax">Syntax&lt;/h3>
+&lt;ul>
+&lt;li>Positiv: &lt;code>(?=X)&lt;/code> → Es muss &lt;strong>X&lt;/strong> folgen.&lt;/li>
+&lt;li>Negativ: &lt;code>(?!X)&lt;/code> → Es darf &lt;strong>nicht&lt;/strong> &lt;strong>X&lt;/strong> folgen.&lt;/li>
+&lt;/ul>
+&lt;p>Mehrere Lookaheads hintereinander bedeuten ein &lt;strong>UND&lt;/strong> – alle Bedingungen müssen erfüllt sein.&lt;/p>
+&lt;hr>
+&lt;h3 id="einfaches-beispiel">Einfaches Beispiel&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>foo(?=bar)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Findet &lt;code>foo&lt;/code>, &lt;strong>nur wenn&lt;/strong> danach &lt;code>bar&lt;/code> folgt.&lt;br>
+Beispiel: Match in &lt;code>foobar&lt;/code>, kein Match in &lt;code>foobaz&lt;/code>.&lt;/p>
+&lt;hr>
+&lt;h3 id="beispiel-mit-zwei-bedingungen">Beispiel mit zwei Bedingungen&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>^(?=.*Java)(?=.*Regex).*
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>^&lt;/code> und &lt;code>.*&lt;/code> am Ende → ganzer String.&lt;/li>
+&lt;li>&lt;code>(?=.*Java)&lt;/code> → der Text muss &lt;strong>Java&lt;/strong> enthalten.&lt;/li>
+&lt;li>&lt;code>(?=.*Regex)&lt;/code> → der Text muss &lt;strong>Regex&lt;/strong> enthalten.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Beispiele:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Match &lt;code>Ich lerne Java und Regex&lt;/code>..&lt;/li>
+&lt;li>Match &lt;code>Regex ist spannend, Java auch&lt;/code>&lt;/li>
+&lt;li>Kein Match mit &lt;code>Nur Java drin&lt;/code>&lt;/li>
+&lt;li>Kein Match mit &lt;code>Nur Regex drin&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
 &lt;h2 id="sicherheitsaspekte">Sicherheitsaspekte&lt;/h2>
 &lt;p>Reguläre Ausdrücke können bei falscher oder unvorsichtiger Anwendung &lt;strong>Sicherheits- und Performanceprobleme&lt;/strong> verursachen.
 Die wichtigsten Risiken sind:&lt;/p>
