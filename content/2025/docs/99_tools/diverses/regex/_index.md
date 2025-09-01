@@ -78,8 +78,9 @@ gezielt Textteile daraus extrahieren.
 Sie sind **zero-width**: Sie verändern die Match-Position nicht.
 
 ### Syntax
-- Positiv: `(?=X)` → Es muss **X** folgen.  
-- Negativ: `(?!X)` → Es darf **nicht** **X** folgen.  
+
+- Positiv: `(?=X)` → Es muss **X** folgen.
+- Negativ: `(?!X)` → Es darf **nicht** **X** folgen.
 
 Mehrere Lookaheads hintereinander bedeuten ein **UND** – alle Bedingungen müssen erfüllt sein.
 
@@ -102,14 +103,15 @@ Beispiel: Match in `foobar`, kein Match in `foobaz`.
 ^(?=.*Java)(?=.*Regex).*
 ```
 
-- `^` und `.*` am Ende → ganzer String.  
-- `(?=.*Java)` → der Text muss **Java** enthalten.  
-- `(?=.*Regex)` → der Text muss **Regex** enthalten.  
+- `^` und `.*` am Ende → ganzer String.
+- `(?=.*Java)` → der Text muss **Java** enthalten.
+- `(?=.*Regex)` → der Text muss **Regex** enthalten.
 
 **Beispiele:**
+
 - Match `Ich lerne Java und Regex`..
-- Match `Regex ist spannend, Java auch`  
-- Kein Match mit `Nur Java drin`  
+- Match `Regex ist spannend, Java auch`
+- Kein Match mit `Nur Java drin`
 - Kein Match mit `Nur Regex drin`
 
 ---
