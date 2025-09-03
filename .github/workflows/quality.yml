@@ -3,6 +3,9 @@ on: [ push ]
 jobs:
   build:
     uses: ./.github/workflows/build-deploy.yml
+    secrets:
+      CI_APP_ID: ${{ secrets.CI_APP_ID }}
+      CI_APP_PRIVATE_KEY: ${{ secrets.CI_APP_PRIVATE_KEY }}    
     with: 
       upload-artifact: true
       artifact-name: quality-check-build
