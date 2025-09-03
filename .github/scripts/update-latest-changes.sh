@@ -83,10 +83,12 @@ CHANGES_RAW="$(
   | grep -E '\.md($|\s)' || true
 )"
 
-# Self-update ausschließen: latest-changes.md nicht listen
+# Exclude self-updates of the Latest-Changes pages:
+# - any file under .../about/latest-changes/  (new structure with _index.md)
+# - legacy single-file path .../about/latest-changes.md
 CHANGES_RAW="$(
   printf "%s\n" "$CHANGES_RAW" \
-  | awk '$2 !~ /\/about\/latest-changes\.md$/'
+  | awk '$2 !~ /\/about\/latest-changes(\/|$)/ && $2 !~ /\/about\/latest-changes\.md$/'
 )"
 
 # Wenn es weder Release Notes noch Änderungen gibt → kein Eintrag
