@@ -1,16 +1,17 @@
 ---
 title: About
+type: docs
 menu:
   main:
     weight: 5
 ---
 
-{{< blocks/cover title="IT Ninjas" image_anchor="bottom" height="min" >}}
+{{< blocks/section title="IT Ninjas" image_anchor="bottom" height="min" >}}
 
-<p class="lead mt-5">
+<div class="lead mt-5 text-center">
     Freie Plattform für IT Berufsbildung.
-</p>
-{{< /blocks/cover >}}
+</div>
+{{< /blocks/section >}}
 
 {{< blocks/section color="light">}}
 

@@ -13,43 +13,119 @@ on:
       deploy:
         type: boolean
         default: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # nötig für Tags & Commits auf default branch
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           submodules: recursive  # Fetch the Docsy theme
           fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.145.0'
           extended: true
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-      - run: npm ci
-      - run: npm -g install postcss-cli
-      - run: hugo --minify --environment production
+
+      # 1) First Build → Gate: no tag/deploy when failing
+      - name: Install deps
+        run: npm ci
+
+      - name: Install postcss-cli (global)
+        run: npm -g install postcss-cli
+
+      - name: Hugo build (gate)
+        run: hugo --minify --environment production
+
       - name: Upload build artifact
+        if: ${{ inputs.upload-artifact && !inputs.deploy }}
         uses: actions/upload-artifact@v4
-        if: ${{ inputs.upload-artifact }}
         with:
           name: ${{ inputs.artifact-name }}
           path: ./public
           retention-days: ${{ inputs.artifact-retention-days }}
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+
+      # 2) Tag auf neuesten Commit des Default-Branches (main/master/…)
+      - name: Create Tag on default branch (Europe/Zurich)
         if: ${{ inputs.deploy }}
+        id: tagstep
+        run: |
+          set -euo pipefail
+          DEFAULT_BRANCH='${{ github.event.repository.default_branch }}'
+          echo "Default branch: ${DEFAULT_BRANCH}"
+
+          git fetch origin "${DEFAULT_BRANCH}" --tags
+          MAIN_REF="origin/${DEFAULT_BRANCH}"
+          MAIN_SHA=$(git rev-parse "${MAIN_REF}")
+
+          DATE_TAG=$(TZ=Europe/Zurich date +'%Y%m%d-%H%M')
+          TAG="${DATE_TAG}-${GITHUB_RUN_NUMBER}"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git tag -a "${TAG}" -m "Deploy $(TZ=Europe/Zurich date +'%Y-%m-%d %H:%M %Z') on ${DEFAULT_BRANCH} @ ${MAIN_SHA}" "${MAIN_SHA}"
+          git push origin "${TAG}"
+
+          echo "tag_name=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "main_ref=${MAIN_REF}" >> "$GITHUB_OUTPUT"
+          echo "default_branch=${DEFAULT_BRANCH}" >> "$GITHUB_OUTPUT"
+
+      # 3) Latest-Changes je content/<jahr>/... erzeugen & committen
+      - name: Update Latest-Changes pages (per year)
+        if: ${{ inputs.deploy }}
+        run: |
+          set -euo pipefail
+          chmod +x .github/scripts/update-latest-changes.sh
+          .github/scripts/update-latest-changes.sh \
+            "${{ steps.tagstep.outputs.tag_name }}" \
+            "${{ steps.tagstep.outputs.main_ref }}"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Alle Jahresdateien adden (nur wenn vorhanden)
+          git add content/*/about/latest-changes/_index.md || true
+          git commit -m "[skip ci] docs: update Latest-Changes for ${{ steps.tagstep.outputs.tag_name }}" || echo "Nothing to commit."
+          git push origin "HEAD:${{ steps.tagstep.outputs.default_branch }}"
+
+      # 4) Zweiter Build (damit die neuen Latest-Changes im Deploy landen)
+      - name: Hugo rebuild (with updated Latest-Changes)
+        if: ${{ inputs.deploy }}
+        run: hugo --minify --environment production
+
+      - name: Upload build artifact (with deploy)
+        if: ${{ inputs.upload-artifact && inputs.deploy }}
+        uses: actions/upload-artifact@v4
+        with:
+          # Optional: Tag anhängen für Nachvollziehbarkeit
+          name: ${{ inputs.artifact-name }}-${{ steps.tagstep.outputs.tag_name }}
+          path: ./public
+          retention-days: ${{ inputs.artifact-retention-days }}
+          
+      # 5) Deploy auf gh-pages
+      - name: Deploy to GitHub Pages
+        if: ${{ inputs.deploy }}
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Check
-        uses: jtalk/url-health-check-action@v4
+          publish_dir: ./public
+
+      # 6) Health Check
+      - name: Check live site
         if: ${{ inputs.deploy }}
+        uses: jtalk/url-health-check-action@v4
         with:
-          url: https://labs.it-ninjas.ch/ 
+          url: https://labs.it-ninjas.ch/
           follow-redirect: true
-          max-attempts: 3 
+          max-attempts: 3
           retry-delay: 10s
