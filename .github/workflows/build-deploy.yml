@@ -18,13 +18,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed for committing changes and pushing tags
+      contents: write        # needed for commits/tags with the App token
+      pull-requests: write   # harmless if unused; keep for future PR flows
     steps:
-      - name: Checkout
+      # Generate short-lived installation token for your GitHub App (no PAT rotation)
+      - name: Generate GitHub App token
+        id: app-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.CI_APP_ID }}
+          private_key: ${{ secrets.CI_APP_PRIVATE_KEY }}
+
+      - name: Checkout (with App token)
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # Fetch the Docsy theme
-          fetch-depth: 0         # Fetch full history for .GitInfo and .Lastmod
+          token: ${{ steps.app-token.outputs.token }}   # ensures git pushes use the App identity
+          submodules: recursive                         # Fetch the Docsy theme
+          fetch-depth: 0                                # Full history for .GitInfo/.Lastmod
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -37,7 +47,7 @@ jobs:
         with:
           node-version: '22.x'
 
-      # 1) First build acts as a gate. If it fails, we do NOT tag or deploy.
+      # 1) First build acts as a gate. If it fails, no tag/deploy happens.
       - name: Install deps
         run: npm ci
 
@@ -56,8 +66,7 @@ jobs:
           path: ./public
           retention-days: ${{ inputs.artifact-retention-days }}
 
-      # 2) Detect: figure out default branch, compute RANGE since last tag,
-      #    and produce a proposed tag name. This is BEFORE we commit Latest-Changes.
+      # 2) Detect: default branch, RANGE since last tag, and a proposed tag (with run-based build id).
       - name: Detect range & propose tag
         if: ${{ inputs.deploy }}
         id: detect
@@ -91,8 +100,7 @@ jobs:
           PROPOSED_TAG="${DATE_TAG}-${GITHUB_RUN_NUMBER}"
           echo "proposed_tag=${PROPOSED_TAG}" >> "$GITHUB_OUTPUT"
 
-      # 3) Generate & commit Latest-Changes per content/<year>/about/latest-changes/_index.md,
-      #    using RANGE from the previous step. This must happen BEFORE tagging.
+      # 3) Generate per-year Latest-Changes using RANGE (no push yet).
       - name: Update Latest-Changes pages (per year)
         if: ${{ inputs.deploy }}
         run: |
@@ -103,19 +111,24 @@ jobs:
             "${{ steps.detect.outputs.main_ref }}" \
             "${{ steps.detect.outputs.range }}"
 
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Stage all per-year latest changes indices (if any were created/updated)
+      # 4) Commit the generated Latest-Changes directly to the protected branch using the App token.
+      - name: Commit Latest-Changes (protected branch)
+        if: ${{ inputs.deploy }}
+        run: |
+          set -euo pipefail
+          git config user.name  "ci-push-bot[app]"
+          git config user.email "ci-push-bot[app]@users.noreply.github.com"
+          # Stage all per-year indices (if any were created/updated)
           git add content/*/about/latest-changes/_index.md || true
           git commit -m "[skip ci] docs: update Latest-Changes for ${{ steps.detect.outputs.proposed_tag }}" || echo "Nothing to commit."
-          git push origin "HEAD:${{ steps.detect.outputs.default_branch }}"
+          git push origin "HEAD:${{ steps.detect.outputs.default_branch }}" || echo "Nothing to push."
 
-      # 4) Rebuild so the newly committed Latest-Changes are included in the site output.
+      # 5) Rebuild so the newly committed Latest-Changes are included in the site output.
       - name: Hugo rebuild (with updated Latest-Changes)
         if: ${{ inputs.deploy }}
         run: hugo --minify --environment production
 
-      # If deploying, optionally upload the final artifact (includes Latest-Changes).
+      # If deploying, upload the final artifact (includes Latest-Changes).
       - name: Upload build artifact (with deploy)
         if: ${{ inputs.upload-artifact && inputs.deploy }}
         uses: actions/upload-artifact@v4
@@ -124,7 +137,7 @@ jobs:
           path: ./public
           retention-days: ${{ inputs.artifact-retention-days }}
 
-      # 5) Create the tag AFTER the Latest-Changes commit and rebuild,
+      # 6) Create the tag AFTER the Latest-Changes commit & rebuild,
       #    so the tag points to the latest commit on the default branch.
       - name: Create Tag on default branch (Europe/Zurich)
         if: ${{ inputs.deploy }}
@@ -134,27 +147,28 @@ jobs:
           DEFAULT_BRANCH="${{ steps.detect.outputs.default_branch }}"
           PROPOSED_TAG="${{ steps.detect.outputs.proposed_tag }}"
 
+          # Refresh to ensure we tag the commit that includes Latest-Changes.
           git fetch origin "${DEFAULT_BRANCH}" --tags
           MAIN_REF="origin/${DEFAULT_BRANCH}"
           MAIN_SHA=$(git rev-parse "${MAIN_REF}")
 
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name  "ci-push-bot[app]"
+          git config user.email "ci-push-bot[app]@users.noreply.github.com"
 
           git tag -a "${PROPOSED_TAG}" -m "Deploy $(TZ=Europe/Zurich date +'%Y-%m-%d %H:%M %Z') on ${DEFAULT_BRANCH} @ ${MAIN_SHA}" "${MAIN_SHA}"
           git push origin "${PROPOSED_TAG}"
 
           echo "tag_name=${PROPOSED_TAG}" >> "$GITHUB_OUTPUT"
 
-      # 6) Deploy to gh-pages from ./public
+      # 7) Deploy the already-built site. Use the App token to push to gh-pages (if needed).
       - name: Deploy to GitHub Pages
         if: ${{ inputs.deploy }}
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ steps.app-token.outputs.token }}
           publish_dir: ./public
 
-      # 7) Basic health check of the live site
+      # 8) Basic health check of the live site
       - name: Check live site
         if: ${{ inputs.deploy }}
         uses: jtalk/url-health-check-action@v4
