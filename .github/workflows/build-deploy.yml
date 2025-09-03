@@ -16,10 +16,10 @@ on:
     secrets:
       CI_APP_ID:
         description: "GitHub App ID (numeric)"
-        required: false
+        required: true
       CI_APP_PRIVATE_KEY:
         description: "GitHub App private key (PEM)"
-        required: false        
+        required: true        
 
 jobs:
   build:
@@ -30,7 +30,6 @@ jobs:
     steps:
       - name: Generate GitHub App token (optional)
         id: app-token
-        if: ${{ secrets.CI_APP_ID != '' && secrets.CI_APP_PRIVATE_KEY != '' }}
         uses: tibdex/github-app-token@v2
         with:
           app_id: ${{ secrets.CI_APP_ID }}
