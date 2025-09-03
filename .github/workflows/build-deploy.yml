@@ -25,23 +25,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write        # needed for commits/tags with the App token
-      pull-requests: write   # harmless if unused; keep for future PR flows
+      contents: write
+      pull-requests: write
     steps:
-      # Generate short-lived installation token for your GitHub App (no PAT rotation)
-      - name: Generate GitHub App token
+      - name: Generate GitHub App token (optional)
         id: app-token
+        if: ${{ secrets.CI_APP_ID != '' && secrets.CI_APP_PRIVATE_KEY != '' }}
         uses: tibdex/github-app-token@v2
         with:
           app_id: ${{ secrets.CI_APP_ID }}
           private_key: ${{ secrets.CI_APP_PRIVATE_KEY }}
 
-      - name: Checkout (with App token)
+      - name: Checkout (uses App token if available, else GITHUB_TOKEN)
         uses: actions/checkout@v4
         with:
-          token: ${{ steps.app-token.outputs.token }}   # ensures git pushes use the App identity
-          submodules: recursive                         # Fetch the Docsy theme
-          fetch-depth: 0                                # Full history for .GitInfo/.Lastmod
+          token: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
+          submodules: recursive
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -54,7 +54,7 @@ jobs:
         with:
           node-version: '22.x'
 
-      # 1) First build acts as a gate. If it fails, no tag/deploy happens.
+      # 1) Gate build
       - name: Install deps
         run: npm ci
 
@@ -64,7 +64,6 @@ jobs:
       - name: Hugo build (gate)
         run: hugo --minify --environment production
 
-      # If not deploying, optionally upload the artifact from the gate build.
       - name: Upload build artifact (no deploy)
         if: ${{ inputs.upload-artifact && !inputs.deploy }}
         uses: actions/upload-artifact@v4
@@ -73,23 +72,18 @@ jobs:
           path: ./public
           retention-days: ${{ inputs.artifact-retention-days }}
 
-      # 2) Detect: default branch, RANGE since last tag, and a proposed tag (with run-based build id).
+      # 2) Detect range & propose tag
       - name: Detect range & propose tag
         if: ${{ inputs.deploy }}
         id: detect
         run: |
           set -euo pipefail
-
           DEFAULT_BRANCH='${{ github.event.repository.default_branch }}'
           echo "default_branch=${DEFAULT_BRANCH}" >> "$GITHUB_OUTPUT"
-
           git fetch origin "${DEFAULT_BRANCH}" --tags
           MAIN_REF="origin/${DEFAULT_BRANCH}"
           echo "main_ref=${MAIN_REF}" >> "$GITHUB_OUTPUT"
-
           MAIN_SHA=$(git rev-parse "${MAIN_REF}")
-
-          # Determine previous tag (if any) and compute RANGE accordingly.
           PREV_TAG="$(git tag --sort=-creatordate | head -n1 || true)"
           if [ -z "${PREV_TAG}" ]; then
             if git rev-parse "${MAIN_SHA}^" >/dev/null 2>&1; then
@@ -101,13 +95,11 @@ jobs:
             RANGE="${PREV_TAG}..${MAIN_SHA}"
           fi
           echo "range=${RANGE}" >> "$GITHUB_OUTPUT"
-
-          # Proposed tag with monotonic build id (GITHUB_RUN_NUMBER)
           DATE_TAG=$(TZ=Europe/Zurich date +'%Y%m%d-%H%M')
           PROPOSED_TAG="${DATE_TAG}-${GITHUB_RUN_NUMBER}"
           echo "proposed_tag=${PROPOSED_TAG}" >> "$GITHUB_OUTPUT"
 
-      # 3) Generate per-year Latest-Changes using RANGE (no push yet).
+      # 3) Generate Latest-Changes (per year)
       - name: Update Latest-Changes pages (per year)
         if: ${{ inputs.deploy }}
         run: |
@@ -118,24 +110,36 @@ jobs:
             "${{ steps.detect.outputs.main_ref }}" \
             "${{ steps.detect.outputs.range }}"
 
-      # 4) Commit the generated Latest-Changes directly to the protected branch using the App token.
-      - name: Commit Latest-Changes (protected branch)
+      # ✅ NEW: Prettier fix for generated files (runs only if files exist)
+      - name: Prettier fix Latest-Changes
         if: ${{ inputs.deploy }}
         run: |
           set -euo pipefail
-          git config user.name  "ci-push-bot[app]"
-          git config user.email "ci-push-bot[app]@users.noreply.github.com"
-          # Stage all per-year indices (if any were created/updated)
+          if compgen -G "content/*/about/latest-changes/_index.md" > /dev/null; then
+            npx -y prettier -w "content/*/about/latest-changes/_index.md"
+          else
+            echo "No latest-changes files to format."
+          fi
+
+      # 4) Commit Latest-Changes (after Prettier)
+      - name: Commit Latest-Changes (protected branch)
+        if: ${{ inputs.deploy }}
+        env:
+          COMMIT_NAME: ${{ steps.app-token.outputs.token && 'ci-push-bot[app]' || 'github-actions[bot]' }}
+          COMMIT_EMAIL: ${{ steps.app-token.outputs.token && 'ci-push-bot[app]@users.noreply.github.com' || '41898282+github-actions[bot]@users.noreply.github.com' }}
+        run: |
+          set -euo pipefail
+          git config user.name  "${COMMIT_NAME}"
+          git config user.email "${COMMIT_EMAIL}"
           git add content/*/about/latest-changes/_index.md || true
           git commit -m "[skip ci] docs: update Latest-Changes for ${{ steps.detect.outputs.proposed_tag }}" || echo "Nothing to commit."
           git push origin "HEAD:${{ steps.detect.outputs.default_branch }}" || echo "Nothing to push."
 
-      # 5) Rebuild so the newly committed Latest-Changes are included in the site output.
+      # 5) Rebuild (includes Latest-Changes)
       - name: Hugo rebuild (with updated Latest-Changes)
         if: ${{ inputs.deploy }}
         run: hugo --minify --environment production
 
-      # If deploying, upload the final artifact (includes Latest-Changes).
       - name: Upload build artifact (with deploy)
         if: ${{ inputs.upload-artifact && inputs.deploy }}
         uses: actions/upload-artifact@v4
@@ -144,38 +148,33 @@ jobs:
           path: ./public
           retention-days: ${{ inputs.artifact-retention-days }}
 
-      # 6) Create the tag AFTER the Latest-Changes commit & rebuild,
-      #    so the tag points to the latest commit on the default branch.
+      # 6) Tag after commit & rebuild
       - name: Create Tag on default branch (Europe/Zurich)
         if: ${{ inputs.deploy }}
         id: tagstep
+        env:
+          COMMIT_NAME: ${{ steps.app-token.outputs.token && 'ci-push-bot[app]' || 'github-actions[bot]' }}
+          COMMIT_EMAIL: ${{ steps.app-token.outputs.token && 'ci-push-bot[app]@users.noreply.github.com' || '41898282+github-actions[bot]@users.noreply.github.com' }}
         run: |
           set -euo pipefail
           DEFAULT_BRANCH="${{ steps.detect.outputs.default_branch }}"
           PROPOSED_TAG="${{ steps.detect.outputs.proposed_tag }}"
-
-          # Refresh to ensure we tag the commit that includes Latest-Changes.
           git fetch origin "${DEFAULT_BRANCH}" --tags
           MAIN_REF="origin/${DEFAULT_BRANCH}"
           MAIN_SHA=$(git rev-parse "${MAIN_REF}")
-
-          git config user.name  "ci-push-bot[app]"
-          git config user.email "ci-push-bot[app]@users.noreply.github.com"
-
+          git config user.name  "${COMMIT_NAME}"
+          git config user.email "${COMMIT_EMAIL}"
           git tag -a "${PROPOSED_TAG}" -m "Deploy $(TZ=Europe/Zurich date +'%Y-%m-%d %H:%M %Z') on ${DEFAULT_BRANCH} @ ${MAIN_SHA}" "${MAIN_SHA}"
           git push origin "${PROPOSED_TAG}"
-
           echo "tag_name=${PROPOSED_TAG}" >> "$GITHUB_OUTPUT"
 
-      # 7) Deploy the already-built site. Use the App token to push to gh-pages (if needed).
       - name: Deploy to GitHub Pages
         if: ${{ inputs.deploy }}
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ steps.app-token.outputs.token }}
+          github_token: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 
-      # 8) Basic health check of the live site
       - name: Check live site
         if: ${{ inputs.deploy }}
         uses: jtalk/url-health-check-action@v4
