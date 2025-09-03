@@ -78,6 +78,25 @@ Die Datei sollte am ende etwa so aussehen:
 
 ![.gitignore](./images/gitignore.png)
 
+#### IntelliJ Run Configurations
+
+Mit den Run Configurations kann das Starten des Java-Programms vereinfacht werden.
+Wenn du hauptsächlich mit IntelliJ arbeitest, kann es sinnvoll sein, diese Einstellungen ebenfalls im Git-Repository zu speichern.
+
+Passe dazu die .gitignore wie folgt an:
+
+```java
+# IntelliJ
+*.iml
+.idea/*
+!.idea/runConfigurations/
+
+# Build-Output
+out/
+target/
+build/
+```
+
 ---
 
 ## Git-Funktionen in IntelliJ IDEA
