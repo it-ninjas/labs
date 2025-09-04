@@ -15,7 +15,7 @@ window.timelineData = [
                     { name: "Java;Frameworks | Maven;Lombok | #J3", url: "/de/docs/02_java/05_maven/", durationWeeks: 2, color: "#5AC036" },
                     { name: "Java;Testing | Konzepte;JUnit;Mockito;TDD | #J4", url: "/de/docs/02_java/08_java-testing/", durationWeeks: 3, color: "#5AC036" },
                     { name: "Java;OOD | Klassendiagramme;Datenmodelle;Vertiefung OOP | #J5", url: "/de/docs/02_java/07_java-ood/", durationWeeks: 5, color: "#5AC036" },
-                    { name: "UX | UI Design;Datenanalyse;Accessibility;Workshop | #F1", url: "/de/docs/03_web/01_ide-basic/", endDate: "31.12.2025", color: "#D86ECC" },
+                    { name: "UX | UI Design;Datenanalyse;Accessibility | #F1", url: "/de/docs/03_web/01_ide-basic/", endDate: "31.12.2025", color: "#D86ECC" },
                 ]
             }, {
                 type: "crossover", 
@@ -25,15 +25,15 @@ window.timelineData = [
                 items: [
                     { group: "git", name: "GIT Intro", startDate: "18.8.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "git", name: "GIT Wissen vertiefen und anwenden", endDate: "31.12.2025", color: "#F2AA84" },
-                    { group: "journal", name: "MarkDown", startDate: "1.9.2025", durationWeeks: 2, color: "#C04F15" },
-                    { group: "journal", name: "Lernjournal auf GitHub pflegen und auf Confluence publishen", endDate: "31.12.2025", color: "#FFC939" },
-                    { group: "proj", name: "Agile Intro", startDate: "25.9.2025", durationWeeks: 2, color: "#C04F15" },
+                    { group: "div", name: "MarkDown", startDate: "24.9.2025", durationWeeks: 2, color: "#C04F15" },
+                    { group: "div", name: "UX & Design Thinking", startDate: "26.11.2025", durationWeeks: 3, color: "#D86ECC" },
+                    { group: "proj", name: "Agile Intro", startDate: "01.12.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "proj", name: "Agiles Projekt Management Wissen vertiefen und anwenden", endDate: "31.12.2025", color: "#79A4B0" },
-                    { group: "cicd", name: "CI/CD Intro", startDate: "25.10.2025", durationWeeks: 2, color: "#C04F15" },
+                    { group: "cicd", name: "CI/CD Intro", startDate: "8.12.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "cicd", name: "CI/CD Wissen vertiefen und anwenden", endDate: "31.12.2025", color: "#69A882" },
-                    { group: "softskills", name: "Softskills 1", startDate: "8.9.2025", durationWeeks: 3, color: "#C04F15" },
-                    { group: "softskills", name: "Softskills 2", startDate: "6.10.2025", durationWeeks: 3, color: "#C04F15" },
-                    { group: "softskills", name: "KI-Umgang / SBB AI Chat", startDate: "3.11.2025", durationWeeks: 3, color: "#C04F15" },
+                    { group: "softskills", name: "Zeitmanagement / Selbstkompetenz", startDate: "11.9.2025", durationWeeks: 2, color: "#C04F15" },
+                    { group: "softskills", name: "Gewaltfreie Kommunikation", startDate: "06.11.2025", durationWeeks: 2, color: "#C04F15" },
+                    { group: "softskills", name: "KI-Umgang / SBB AI Chat", startDate: "8.10.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "ük", name: "Ük ICT-Arbeitsplatz", startDate: "20.11.2025", endDate: "05.12.2025", color: "#83CBEB" },
 
                 ]
@@ -82,8 +82,8 @@ window.timelineData = [
                 alignMode: "crossover",
                 title: "Übergreifende;Module",
                 items: [
+                    { name: "Security Workshop (1 Nachmittag pro Monat)", startDate: "1.01.2026", endDate: "31.7.2026", color: "#59000E" },
                     { name: "GIT Wissen vertiefen und anwenden", startDate: "1.01.2026", endDate: "31.7.2026", color: "#F2AA84" },
-                    { name: "Lernjournal auf GitHub pflegen und auf Confluence publishen", startDate: "1.01.2026", endDate: "31.7.2026", color: "#FFC939" },
                     { name: "CI/CD Wissen vertiefen und anwenden", startDate: "1.1.2026", endDate: "31.7.2026", color: "#69A882" },
                     { name: "Agiles Projekt Management Wissen vertiefen und anwenden", startDate: "1.1.2026", endDate: "31.7.2026", color: "#79A4B0" },
                     { name: "Barrierefreiheit/Accessibility", startDate: "1.1.2026", durationWeeks: 5, color: "#C04F15" },
