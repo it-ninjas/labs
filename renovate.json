@@ -1,7 +1,21 @@
 {
   "extends": [
-    "config:base"
-  ],"git-submodules": {
+    "config:recommended",
+    "docker:pinDigests"
+  ],
+  "git-submodules": {
     "enabled": true
-  }
+  },
+  "regexManagers": [
+    {
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "hugomods/hugo",
+      "fileMatch": [
+        "^sbb-start-dev\\.sh$""^sbb-start-dev\\.ps1$"
+      ],
+      "matchStrings": [
+        "hugomods/hugo:(?<currentValue>.*?)\\s"
+      ]
+    }
+  ]
 }
