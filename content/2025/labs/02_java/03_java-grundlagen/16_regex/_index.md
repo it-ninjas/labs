@@ -322,7 +322,8 @@ Im zur Übung gehörendem Source kannst Du die Änderung an folgender Stelle mac
 ### Aufgabe 6 - Schweizer Postleitzahlen (CH-PLZ)
 
 <itninja description lab="regex-ch-plz">
-Erkenne CH-Postleitzahlen (genau 4 Ziffern, keine führende 0).
+Erkenne CH-Postleitzahlen (genau 4 Ziffern, keine führende 0). Beachte, dass nach der PLZ eine Ortsbezeichnung kommen
+muss.
 </itninja description>
 
 - Beispiele gültig: `3007`, `1000`
