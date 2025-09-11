@@ -34,6 +34,7 @@ description: >
 ## Schritt-für-Schritt Anleitung
 
 ### 1. Tritt den IT Ninja Warriors bei
+
 Melde dich bei einem deiner Praxisbildnern, damit dieser dich in die der [Organisation auf GitHub](https://github.com/it-ninja-warriors) hinzufügen kann.
 
 {{< ninja tip >}}
@@ -47,12 +48,12 @@ Falls du noch kein GitHub Konto hast, kannst du dich entweder bei deinen Puzzle 
 
 1. Öffne dein Terminal und führe folgenden Befehl aus, vergiss nicht die Email-Adresse anzupassen!
 
-    ```bash
-    ssh-keygen -t ed25519 -C "your_email@example.com"
-    ```
+   ```bash
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   ```
 
-    Der SSH-key ist ein Schlüssel um sich mit anderen Rechnern zu verbinden. Ändert man diesen Schlüssel, muss man auf den
-    anderen Rechnern, wo man bisher Zugang hatte, überall den öffentlichen Teil (das Schlüsselloch) anpassen.
+   Der SSH-key ist ein Schlüssel um sich mit anderen Rechnern zu verbinden. Ändert man diesen Schlüssel, muss man auf den
+   anderen Rechnern, wo man bisher Zugang hatte, überall den öffentlichen Teil (das Schlüsselloch) anpassen.
 
 2. Drücke `Enter` für den Standardspeicherort
 
@@ -77,11 +78,12 @@ ein Passwort zu schützen.
    ```bash
    cat /home/<your-user>/.ssh/id_ed25519.pub
    ```
+
    Du kannst den Text nun kopieren.
 
 2. Öffne die [SSH und GPG-Keys](https://github.com/settings/keys)-Einstellungen auf GitHub
 
-3. Klicke oben rechts auf den grünen "Neuer SSH Key"-Knopf, wähle einen Namen und "Authentifierungs Schlüssel" aus. Füge dann den kopierten Schlüssel im grossen Feld unten ein. 
+3. Klicke oben rechts auf den grünen "Neuer SSH Key"-Knopf, wähle einen Namen und "Authentifierungs Schlüssel" aus. Füge dann den kopierten Schlüssel im grossen Feld unten ein.
 
 4. Klicke wieder auf den grünen Button
 
@@ -89,14 +91,15 @@ ein Passwort zu schützen.
 
 1. [GitHub](https://github.com) öffnen
 2. Oben rechts auf das "+" klicken
-3 "Neues Repository" hinzufügen
-4. Als Owner die it-ninja-warriors Organisation auswählen und einen Namen eingeben
-5. Als Sichtbarkeit "Privat" auswählen
-6. Auf den grünen Knopf klicken
+   3 "Neues Repository" hinzufügen
+3. Als Owner die it-ninja-warriors Organisation auswählen und einen Namen eingeben
+4. Als Sichtbarkeit "Privat" auswählen
+5. Auf den grünen Knopf klicken
 
-  ![GitHub Repository erstellen](./images/github-create-repository.png)
+![GitHub Repository erstellen](./images/github-create-repository.png)
 
 ### 5. Repository auf deinen Rechner klonen
+
 5. Öffne auf deinem Rechner den Ordner, wo Repositories abgelegt werden sollen
 
    {{< ninja tip>}}
@@ -114,11 +117,11 @@ ein Passwort zu schützen.
    cd /home/<your-user>/projects
    {{< /code>}}
 
-5. Clone das Repository. Den Link dazu findest du auf der Seite von deinem Projekt. Er sollte in etwa so aussehen:
+6. Clone das Repository. Den Link dazu findest du auf der Seite von deinem Projekt. Er sollte in etwa so aussehen:
    {{< code >}}
    git clone git@github.com:it-ninja-owners/<your-name>.git
    {{< /code>}}
-  ![GitHub Repository klonen](./images/github-clone.png)
+   ![GitHub Repository klonen](./images/github-clone.png)
 
 ---
 
