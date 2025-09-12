@@ -13,15 +13,24 @@ description: >
   [Git installieren](../../../../99_shared/collaboration/source-repositories/git/01_grundwissen/02_git-install)
 - Du hast die Grundeinstellungen für Git vorgenommen:
 
+  {{<sbb raw>}}
   {{< code >}}
   git config --global user.name "u123456"  
-  git config --global user.email "u123456@sbb.ch"
-
-  # Für Windows zusätzlich:
-
+   git config --global user.email "u123456@sbb.ch"
   git config --global core.autocrlf true  
-  git config --global core.longpaths true  
-  {{< /code >}}
+   git config --global core.longpaths true  
+   {{< /code >}}
+  {{</sbb>}}
+
+  {{<puzzle raw>}}
+
+  ```shell
+   git config --global user.name "Dein Name oder Pseudonym"
+   git config --global user.email "deine-puzzle-email@puzzle.ch"
+   git config --global --add --bool push.autoSetupRemote true
+  ```
+
+  {{</puzzle>}}
 
 ---
 
