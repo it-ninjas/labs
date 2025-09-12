@@ -6,6 +6,10 @@ description: >
   Dokumentieren mit Microsoft Word
 ---
 
+{{< puzzle raw>}}
+Falls du von Puzzle bist, darfst du gerne alle Sachen in Zusammenhang mit MS Word ignorieren. Wir brauchen andere Tools zur Dokumentation.
+{{< /puzzle>}}
+
 #### Ziele
 
 - Ich weiss, wie man mit Microsoft Word eine einfache Dokumentation erstellt
