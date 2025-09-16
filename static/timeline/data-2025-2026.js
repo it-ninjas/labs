@@ -26,7 +26,7 @@ window.timelineData = [
                     { group: "git", name: "GIT Intro", startDate: "18.8.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "git", name: "GIT Wissen vertiefen und anwenden", endDate: "31.12.2025", color: "#F2AA84" },
                     { group: "div", name: "MarkDown", startDate: "24.9.2025", durationWeeks: 2, color: "#C04F15" },
-                    { group: "div", name: "UX & Design Thinking", startDate: "26.11.2025", durationWeeks: 3, color: "#D86ECC" },
+                    { group: "div", name: "UX & Design Thinking", startDate: "16.10.2025", durationWeeks: 3, color: "#D86ECC" },
                     { group: "proj", name: "Agile Intro", startDate: "01.12.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "proj", name: "Agiles Projekt Management Wissen vertiefen und anwenden", endDate: "31.12.2025", color: "#79A4B0" },
                     { group: "cicd", name: "CI/CD Intro", startDate: "8.12.2025", durationWeeks: 2, color: "#C04F15" },
