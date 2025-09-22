@@ -29,7 +29,7 @@ _2025-09-04 06:16 CEST auf origin/master_
 ### Seiten-Änderungen
 
 - **Geändert**
-  - [Docs / Tools / Nützliche Tips, Tricks und Anleitungen / Reguläre Ausdrücke](../../docs/99_tools/diverses/regex/)
+  - [Docs / Tools / Nützliche Tips, Tricks und Anleitungen / Reguläre Ausdrücke](../../docs/99_shared/diverses/regex/)
 
 ---
 
