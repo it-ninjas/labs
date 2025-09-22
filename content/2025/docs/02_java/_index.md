@@ -28,7 +28,7 @@ Anwendungen bauen möchte.
 ## Übersicht
 
 Das Backend bildet die Basis, auf der fast jede moderne Anwendung aufbaut. Deshalb startest du mit den Grundlagen,
-bevor du Schritt für Schritt komplexere Themen und Tools kennenlernst.  
+bevor du Schritt für Schritt komplexere Themen und Tools kennenlernst.
 
 Du beginnst mit den Grundlagen wie Variablen, Kontrollstrukturen und Methoden. Danach lernst du:
 

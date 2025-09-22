@@ -16,9 +16,9 @@ auch benutzerfreundlich und ansprechend gestaltet.
 
 Du startest mit den Grundlagen wie **HTML**, **CSS** und **JavaScript**. Danach lernst du:
 
-- den Einsatz von **TypeScript** für mehr Struktur und Typensicherheit  
-- die Arbeit mit dem **Angular Framework** für moderne Webanwendungen  
-- optionale Erweiterungen wie **NgRx** zur State-Verwaltung  
+- den Einsatz von **TypeScript** für mehr Struktur und Typensicherheit
+- die Arbeit mit dem **Angular Framework** für moderne Webanwendungen
+- optionale Erweiterungen wie **NgRx** zur State-Verwaltung
 
 {{< ninja tip >}}
 Ein durchdachtes Frontend macht den Unterschied zwischen einer Anwendung, die nur funktioniert, und einer, die gerne

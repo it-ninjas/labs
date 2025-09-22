@@ -60,4 +60,3 @@ Bitte poste nicht: \
 🚫 Musterlösungen \
 🚫 Persönliche Informationen \
 🚫 Interne Firmeninformationen
-

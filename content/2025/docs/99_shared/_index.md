@@ -17,14 +17,14 @@ Entwicklungsumgebungen, Dokumentation, Versionskontrolle und weiteren wichtigen 
 
 Die folgenden Programme werden für die Grundausbildung benötigt und sollten installiert sein:
 
-| Anwendung     | Link                                                                                 | Zweck                                                       |
-| ------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| IntelliJ IDEA | [IntelliJ IDEA einrichten](./ide/intellij/01_installation/)                          | Entwicklungsumgebung für Java                               |
-| Notepad++     | [https://notepad-plus-plus.org/downloads/](https://notepad-plus-plus.org/downloads/) | Erweiterter Texteditor mit vielen Funktionen                |
-| Google Chrome | [https://www.google.com/intl/de/chrome/](https://www.google.com/intl/de/chrome/)     | Browser mit leistungsfähigen Entwickler-Tools               |
-| Git           | [https://git-scm.com/download/win](https://git-scm.com/download/win)                 | Versionsverwaltungssystem                                   |
-| Apache Maven  | Bereits in IntelliJ integriert                                                       | Build-Management-Tool von Apache                            |
-| JDK           | Bereits in IntelliJ integriert                                                       | Java Development Kit zur Entwicklung von Java-Anwendungen   |
+| Anwendung     | Link                                                                                 | Zweck                                                     |
+| ------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------- |
+| IntelliJ IDEA | [IntelliJ IDEA einrichten](./ide/intellij/01_installation/)                          | Entwicklungsumgebung für Java                             |
+| Notepad++     | [https://notepad-plus-plus.org/downloads/](https://notepad-plus-plus.org/downloads/) | Erweiterter Texteditor mit vielen Funktionen              |
+| Google Chrome | [https://www.google.com/intl/de/chrome/](https://www.google.com/intl/de/chrome/)     | Browser mit leistungsfähigen Entwickler-Tools             |
+| Git           | [https://git-scm.com/download/win](https://git-scm.com/download/win)                 | Versionsverwaltungssystem                                 |
+| Apache Maven  | Bereits in IntelliJ integriert                                                       | Build-Management-Tool von Apache                          |
+| JDK           | Bereits in IntelliJ integriert                                                       | Java Development Kit zur Entwicklung von Java-Anwendungen |
 
 ---
 
