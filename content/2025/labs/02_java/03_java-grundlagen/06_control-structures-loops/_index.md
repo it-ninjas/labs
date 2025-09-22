@@ -54,10 +54,10 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 
 1. Beim ersten Mal:
 
-   1. IntelliJ IDEA installieren → [!\*IntelliJ IDEA einrichten](/docs/99_tools/ide/intellij/01_installation/)
-   2. Git-Repository einrichten → [!\*Persönliches Git-Repository](/docs/99_tools/zusammenarbeit/source-repositories/personal-bitbucket/)
+   1. IntelliJ IDEA installieren → [!\*IntelliJ IDEA einrichten](/docs/99_shared/ide/intellij/01_installation/)
+   2. Git-Repository einrichten → [!\*Persönliches Git-Repository](/docs/99_shared/collaboration/source-repositories/personal-bitbucket/)
 
-2. Öffne eine [!\*CMD-Shell](/docs/99_tools/shell/cmd/) und wechsle ins Verzeichnis deines Git-Repositories:  
+2. Öffne eine [!\*CMD-Shell](/docs/99_shared/shell/cmd/) und wechsle ins Verzeichnis deines Git-Repositories:  
    {{< code >}}
    // Windows
    cd /d "[[itninja_localrepo|C:\Users\u123456\repos.local\it-ninjas-lab]]"
@@ -77,7 +77,7 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 
    {{< code >}}
    git add .
-   git commit -m "[gescheiter Kommentar]"
+   git commit -m "[Kommentar der deine Änderung beschreibt]"
    {{< /code >}}
 
 4. Erstelle oder wechsle in den Template Branch:
@@ -140,7 +140,7 @@ Wenn du alles korrekt gemacht hast, findest du das Projekt hier:
 `[[itninja_localrepo|/home/u123456/repos.local/it-ninjas-lab]]\02_java/03_java-grundlagen/06_control-structures-loops`
 {{< /code >}}
 
-9. Falls du zum ersten Mal mit IntelliJ arbeitest, findest du [!\*hier](/docs/99_tools/ide/intellij/03_run-and-debug)
+9. Falls du zum ersten Mal mit IntelliJ arbeitest, findest du [!\*hier](/docs/99_shared/ide/intellij/03_run-and-debug)
    eine Anleitung, wie man ein Programm startet.
 
 {{< ninja tip >}}

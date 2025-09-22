@@ -196,7 +196,7 @@ Du kannst eine `.jar` auch weitergeben:
 
 {{< ninja tip >}}
 Wenn du IntelliJ nutzt und eine `.jar`-Datei ohne Maven erzeugen und in ein anderes Projekt einbinden willst, lernst du
-im Modul [Packages lokal verwenden](../../../99_tools/ide/intellij/07_packages/) wie das geht.
+im Modul [Packages lokal verwenden](../../../99_shared/ide/intellij/07_packages/) wie das geht.
 {{< /ninja >}}
 
 ## API und JavaDoc

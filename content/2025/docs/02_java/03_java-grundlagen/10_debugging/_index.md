@@ -90,7 +90,7 @@ allem bei grösseren Programmen ist es ineffizient, das gesamte Programm bis zum
 
 Wenn du Java mit IntelliJ verwendest, solltest du das integrierte Debugging-Tool kennenlernen:
 
-[Debugging in IntelliJ](../../../99_tools/ide/intellij/06_debugging/)
+[Debugging in IntelliJ](../../../99_shared/ide/intellij/06_debugging/)
 
 ---
 

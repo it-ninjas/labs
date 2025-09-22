@@ -212,7 +212,7 @@ public static void printReport(String title, int pageCount) { ... }
 
 {{< ninja info >}}
 Die Regeln zur Benennung von Methoden und Parametern sind Teil unserer **Coding Guidelines**. Du findest die vollständige
-Richtlinie für Java [hier](../../../99_tools/zusammenarbeit/guidelines/coding/java/).
+Richtlinie für Java [hier](../../../99_shared/collaboration/guidelines/coding/java/).
 {{< /ninja >}}
 
 ## Rekursive Methoden

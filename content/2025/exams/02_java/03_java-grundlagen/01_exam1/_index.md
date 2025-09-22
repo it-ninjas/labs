@@ -10,7 +10,7 @@ description: >
 ## Vorbereitung
 
 Erstelle selbsständig ein neues Projekt in IntelliJ. Eine Anleitung findest du
-[hier](../../../../docs/99_tools/ide/intellij/01_installation/).
+[hier](../../../../docs/99_shared/ide/intellij/01_installation/).
 
 ## Gegeben
 

@@ -54,7 +54,7 @@ vertraulichen Informationen oder Geheimnisse...
 
 ## Wie finde ich meinen Benutzernamen heraus?
 
-Öffne eine [!*Cmd Shell](../docs/99_tools/shell/cmd/) und gib folgenden Befehl ein:
+Öffne eine [!*Cmd Shell](../docs/99_shared/shell/cmd/) und gib folgenden Befehl ein:
 
 {{< code >}}
 //Windows
