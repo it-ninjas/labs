@@ -7,6 +7,32 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20250909-1020-132
+
+_2025-09-09 10:20 CEST auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Variablen und bedingte Anweisungen](../../labs/02_java/03_java-grundlagen/06_control-structures-if/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Variablen und bedingte Anweisungen / control-structures-if - Source](../../labs/02_java/03_java-grundlagen/06_control-structures-if/source/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Packages](../../labs/02_java/03_java-grundlagen/12_packages/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Regex](../../labs/02_java/03_java-grundlagen/16_regex/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Regex / regex - Source](../../labs/02_java/03_java-grundlagen/16_regex/source/)
+
+---
+
+## 20250904-0616-130
+
+_2025-09-04 06:16 CEST auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Docs / Tools / Nützliche Tips, Tricks und Anleitungen / Reguläre Ausdrücke](../../docs/99_tools/diverses/regex/)
+
+---
+
 ## 20250903-1654-126
 
 _2025-09-03 16:54 CEST auf origin/master_
