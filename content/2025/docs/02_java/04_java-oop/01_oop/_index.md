@@ -160,7 +160,7 @@ Verhalten, welche zu diesem neuen Datentyp gehören, an einer Stelle im Code zus
 verwaltet. Diese neuen, benutzerdefinierte Datentypen können dann wie anderen Datentypen (primitive
 Datentypen oder andere Klassen) verwendet werden.
 
-Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das UML-Klassendiagramm der
+Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das [UML-Klassendiagramm](../../../99_shared/uml/01_basiscs/) der
 Klasse `Car`, die wir selber erfunden haben. Die oberen 4 Einträge sind ihre Instanzvariablen und
 die untersten 3 sind ihre Methoden. Einträge mit einem `-` sind `private`, Einträge mit einem `+`
 sind öffentlich (`public`):
