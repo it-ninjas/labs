@@ -11,15 +11,15 @@ description: >
 
 ## Voraussetzungen
 
-- Java Grundlagen (Variablen, Methoden, Kontrollstrukturen)  
-- Erste Erfahrungen mit Klassen und Objekten sind hilfreich, aber nicht zwingend notwendig  
+- Java Grundlagen (Variablen, Methoden, Kontrollstrukturen)
+- Erste Erfahrungen mit Klassen und Objekten sind hilfreich, aber nicht zwingend notwendig
 
 ## Ziele
 
-- Grundlagen der UML-Klassendiagramme verstehen  
-- Klassen, Attribute und Methoden in UML notieren  
-- Beziehungen wie *Assoziation*, *Vererbung* und *Aggregation* darstellen  
-- UML-Diagramme lesen und in Java-Code übersetzen  
+- Grundlagen der UML-Klassendiagramme verstehen
+- Klassen, Attribute und Methoden in UML notieren
+- Beziehungen wie _Assoziation_, _Vererbung_ und _Aggregation_ darstellen
+- UML-Diagramme lesen und in Java-Code übersetzen
 
 {{< zeit lesen="15" >}}
 
@@ -31,9 +31,9 @@ und Strukturen sichtbar zu machen.
 
 Mit UML kannst du darstellen:
 
-- Welche **Klassen** es gibt  
-- Welche **Attribute** und **Methoden** sie besitzen  
-- Wie die **Beziehungen** zwischen Klassen aussehen  
+- Welche **Klassen** es gibt
+- Welche **Attribute** und **Methoden** sie besitzen
+- Wie die **Beziehungen** zwischen Klassen aussehen
 
 So schlägst du eine Brücke zwischen **Konzept** und **Java-Code**.
 
@@ -41,9 +41,9 @@ So schlägst du eine Brücke zwischen **Konzept** und **Java-Code**.
 
 Ein **UML-Klassendiagramm** besteht aus drei Bereichen:
 
-1. **Kopf**: Klassenname  
-2. **Attribute**: Variablen mit Typ und Sichtbarkeit (`+` public, `-` private)  
-3. **Methoden**: Funktionen mit Parametern und Rückgabewert  
+1. **Kopf**: Klassenname
+2. **Attribute**: Variablen mit Typ und Sichtbarkeit (`+` public, `-` private)
+3. **Methoden**: Funktionen mit Parametern und Rückgabewert
 
 Beispiel:
 
@@ -84,11 +84,11 @@ public class Person {
 ## Beziehungen zwischen Klassen
 
 - **Assoziation**: Eine Klasse kennt eine andere  
-  → `Student` hat eine `School`  
+  → `Student` hat eine `School`
 - **Vererbung**: Eine Klasse erbt Eigenschaften von einer anderen  
-  → `Car` erbt von `Vehicle`  
+  → `Car` erbt von `Vehicle`
 - **Aggregation/Komposition**: Eine Klasse besteht aus anderen Klassen  
-  → `Team` besteht aus mehreren `Player`  
+  → `Team` besteht aus mehreren `Player`
 
 Diese Konzepte lernst du im OOP-Teil vertieft kennen. UML dient dir hier als **visuelle Unterstützung**.
 
