@@ -29,7 +29,7 @@ _2025-09-04 06:16 CEST auf origin/master_
 ### Seiten-Änderungen
 
 - **Geändert**
-  - [Docs / Tools / Nützliche Tips, Tricks und Anleitungen / Reguläre Ausdrücke](../../docs/99_tools/diverses/regex/)
+  - [Docs / Tools / Nützliche Tips, Tricks und Anleitungen / Reguläre Ausdrücke](../../docs/99_shared/diverses/regex/)
 
 ---
 
@@ -42,7 +42,7 @@ _2025-09-03 16:54 CEST auf origin/master_
 - **Hinzugefügt**
   - [Docs / Java / Java Grundlagen / Module abschliessen](../../docs/02_java/03_java-grundlagen/99_wrap_up/)
 - **Geändert**
-  - [Docs / Tools / Entwicklungsumgebungen - IDE / IntelliJ IDEA – dein Einstieg ins professionelle Programmieren / Git mit IntelliJ nutzen](../../docs/99_tools/ide/intellij/04_git/)
+  - [Docs / Tools / Entwicklungsumgebungen - IDE / IntelliJ IDEA – dein Einstieg ins professionelle Programmieren / Git mit IntelliJ nutzen](../../docs/99_shared/ide/intellij/04_git/)
 
 ---
 
@@ -60,7 +60,7 @@ _2025-09-03 16:32 CEST auf origin/master_
   - [About](../../about/)
   - [Docs / Java / Java Grundlagen / Reguläre Ausdrücke in Java (RegEx)](../../docs/02_java/03_java-grundlagen/16_regex/)
   - [Docs / Java / Java Grundlagen / Utility Klassen](../../docs/02_java/03_java-grundlagen/17_utility_classes/)
-  - [Docs / Tools / Nützliche Tips, Tricks und Anleitungen / Reguläre Ausdrücke](../../docs/99_tools/diverses/regex/)
+  - [Docs / Tools / Nützliche Tips, Tricks und Anleitungen / Reguläre Ausdrücke](../../docs/99_shared/diverses/regex/)
   - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Strings](../../labs/02_java/03_java-grundlagen/13_strings/)
   - [Lernprojekt](../../project/)
 

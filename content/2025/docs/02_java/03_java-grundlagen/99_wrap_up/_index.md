@@ -18,7 +18,7 @@ description: >
 
 #### Master/Main Branch erstellen
 
-Parallel zum Modul Java Grundlagen hast du auch schon erste Erfahrungen mit [Git](../../../04_git/01_grundwissen/) gesammelt und viele Branches angelegt.  
+Parallel zum Modul Java Grundlagen hast du auch schon erste Erfahrungen mit [Git](../../../99_shared/collaboration/source-repositories/git/01_grundwissen/) gesammelt und viele Branches angelegt.  
 Durch deinen Praxisbildner oder das Selbststudium weisst du nun auch, was ein Main- oder Master-Branch ist.
 
 Führe nun alle deine Branches in den Master/Main Branch zusammen und lösche die übrigen Branches. Falls du Probleme beim Mergen hast, frag die anderen Auszubildenden oder einen Praxisbildner um Hilfe.
@@ -34,7 +34,7 @@ Zu Beginn haben wir einfach alle Dateien ins Repository committed. Einige davon 
 Das Aufräumen erfolgt in folgenden Schritten:
 
 1. Erstelle einen neuen Branch (wie immer, wenn du eine Änderung machen willst). Du kannst ihn `cleanup` nennen.
-2. Erstelle ein [.gitignore](../../../99_tools/ide/intellij/04_git/#gitignore-anpassen) für IntelliJ.
+2. Erstelle ein [.gitignore](../../../99_shared/ide/intellij/04_git#gitignore-anpassen) für IntelliJ.
 3. Committe die `.gitignore`-Datei.
 4. Lösche in den einzelnen Projekten die nicht notwendigen Dateien und Verzeichnisse, falls vorhanden:
    - im `.idea`-Verzeichnis alles ausser dem Unterverzeichnis `runConfigurations`

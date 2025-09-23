@@ -44,20 +44,11 @@ regex
 │                           ├── RegexPasswordTest.java
 │                           ├── RegexPhoneTest.java
 │                           └── RegexUrlTest.java
-├── BUILD_INFO.txt
 ├── pom.xml
 └── README.md
 ```
 
 ## Dateien in regex
-
-##### BUILD_INFO.txt{#build_info-txt}
-
-```
-Regex Lab build marker. Timestamp: 2025-08-22 05:40:53
-Expected tests: 6 classes + helpers.
-
-```
 
 ##### pom.xml{#pom-xml}
 

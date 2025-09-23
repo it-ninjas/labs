@@ -132,7 +132,7 @@ Falls du in IntelliJ Probleme mit Lombok hast, kann es sein, dass das Annotation
 
 {{% alert title="Git ready?!" color="warning" %}}
 
-Falls du dich noch nicht intensiver mit Git auseinandergesetzt hast, ist jetzt die Zeit dafür: Erarbeite [**Git**](../../04_git)!
+Falls du dich noch nicht intensiver mit Git auseinandergesetzt hast, ist jetzt die Zeit dafür: Erarbeite [**Git**](../../99_shared/collaboration/source-repositories/git/)!
 
 Bitte kehre nach Abschluss des Git-Moduls hierhin zurück und fahre mit der nächsten Seite fort.
 {{% /alert %}}

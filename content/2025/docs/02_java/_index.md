@@ -1,39 +1,43 @@
 ---
-title: "Java"
+title: "Backend (Java)"
 weight: 2
 description: >
-  Grundlagen der Programmiersprache Java
+  Das Backend bildet das Rückgrat einer webbasierten Applikation. Hier werden Daten eingelesen, verarbeitet,
+  aufbereitet und gespeichert, um sie anschliessend einem Frontend für die Darstellung bereitzustellen.
 ---
 
 {{< module "Java" >}}
 
-## Voraussetzungen
+---
 
-- Grundlegende Computerkenntnisse (z. B. Datei öffnen/speichern)
-- Motivation, Neues zu lernen
-- Neugier – und etwas Geduld 😉
+## Warum Backend?
+
+Ohne ein funktionierendes Backend gäbe es keine zuverlässigen Webapplikationen. Hier werden zentrale Aufgaben
+übernommen, wie zum Beispiel:
+
+- Daten von Benutzern entgegennehmen und verarbeiten
+- Geschäftslogik korrekt und nachvollziehbar umsetzen
+- Daten dauerhaft speichern und wieder abrufen
+- Schnittstellen für das Frontend oder andere Systeme bereitstellen
+
+Ein solides Verständnis des Backends ist deshalb die Grundlage für jede*n Entwickler*in, der oder die komplexere
+Anwendungen bauen möchte.
 
 ---
 
 ## Übersicht
 
-Hier lernst du die Programmiersprache **Java** – von Grund auf. Dieses Modul ist der perfekte Einstieg ins Programmieren.
+Das Backend bildet die Basis, auf der fast jede moderne Anwendung aufbaut. Deshalb startest du mit den Grundlagen,
+bevor du Schritt für Schritt komplexere Themen und Tools kennenlernst.
 
-Du startest mit den Grundlagen wie Variablen, Kontrollstrukturen und Methoden. Danach lernst du:
+Du beginnst mit den Grundlagen wie Variablen, Kontrollstrukturen und Methoden. Danach lernst du:
 
 - Objektorientierte Programmierung (OOP)
 - Datenstrukturen wie Listen und Streams
 - Konzeptuelles Design und sauberes Modellieren
-- Tools wie Maven und Unit-Testing
-
-{{< ninja info >}}
-Richte möglichst früh deine Entwicklungsumgebung ein – du wirst sie für die Übungen benötigen.
-
-Anleitung: [!\*IntelliJ IDEA installieren](../99_tools/ide/intellij/01_installation/)
-
-**Achtung:** Installiere nur IntelliJ IDEA. Die anderen Module kannst du vorerst ignorieren.
-
-{{< /ninja >}}
+- Tools wie Maven und Unit Testing
+- Arbeiten mit Datenbanken über JDBC
+- Aufbau moderner Anwendungen mit Spring Boot
 
 Der Inhalt ist praxisnah aufgebaut – mit Übungen, Beispielprojekten und kleinen Challenges. Fast jedes Thema ist mit
 konkreten Aufgaben verknüpft, die du direkt ausprobieren kannst.
@@ -43,50 +47,4 @@ Viele der späteren Module bauen auf diesem Wissen auf – je sicherer du hier b
 in der Softwareentwicklung.
 {{< /ninja >}}
 
-### Aufbau des Moduls
-
-Das Modul ist in kleine, leicht verständliche Teile unterteilt:
-
-1. **Programaufbau und Ausgabe auf die Konsole**
-2. **Variablen und Primitive Datentypen**
-3. **Kontrollstrukturen (if, while, for)**
-4. **Mathematische und Logische Operationen**
-5. **Referenztypen**
-6. **Strings (Texte)**
-7. **Methoden und Wiederverwendung**
-8. **Scanner für Dateneingabe**
-9. **Arrays (Liste mit gleichen Elementen)**
-10. **Fehler finden (debuggen)**
-
-Zu jedem Kapitel gibt es passende Übungen – meist direkt als IntelliJ-Projekt mit automatisierter Auswertung.
-
 ---
-
-## Warum Java?
-
-Java ist eine bewährte und weit verbreitete Sprache, die in vielen Bereichen der Softwareentwicklung zum Einsatz kommt:
-
-- Plattformunabhängig: Einmal geschrieben, überall lauffähig (JVM).
-- Weit verbreitet in Unternehmen, Schulen und bei Behörden.
-- Stark typisiert: Fehler können früh erkannt werden.
-- Gute Basis für das Verständnis von objektorientierter Programmierung.
-
-{{< ninja tip>}}
-Wenn du mehr über Programmiersprachen im allgemeinen erfahren willst, schau dir das Modul
-[!\*Programmiersprachen](../99_tools/programmiersprachen/) an. Es wird dir helfen, besser zu verstehen, warum gewisse Sachen
-in Java entsprechend umgesetzt wurden.
-{{< /ninja >}}
-
-## Terminologie (zum Nachschlagen)
-
-| Begriff                     | Beschreibung                                                  |
-| --------------------------- | ------------------------------------------------------------- |
-| **Programm**                | Eine Folge von Anweisungen, die ein Computer ausführen kann   |
-| **Anweisung (statement)**   | Ein einzelner Befehl, z. B. eine Ausgabe auf der Konsole      |
-| **Block**                   | Mehrere Anweisungen, zusammengefasst mit `{}`                 |
-| **Methode**                 | Eine benannte Gruppe von Anweisungen mit Wiederverwendbarkeit |
-| **Syntax**                  | Grammatikregeln der Sprache                                   |
-| **Keyword**                 | Reserviertes Wort in Java (z. B. `public`, `class`)           |
-| **Bezeichner (identifier)** | Namen für Variablen, Methoden etc.                            |
-| **Kommentar**               | Beschreibungen im Code, die vom Compiler ignoriert werden     |
-| **Whitespace**              | Leerzeichen und Einrückungen für bessere Lesbarkeit           |
