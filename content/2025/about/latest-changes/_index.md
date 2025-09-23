@@ -7,6 +7,23 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20250923-1318-135
+
+_2025-09-23 13:18 CEST auf origin/master_
+
+### Seiten-Änderungen
+
+- **Hinzugefügt**
+  - [Docs / Übergreifend / UML / Einführung UML](../../docs/99_shared/uml/01_basiscs/)
+  - [Docs / Übergreifend / UML](../../docs/99_shared/uml/)
+- **Geändert**
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Objektorientierte Programmierung](../../docs/02_java/04_java-oop/01_oop/)
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Zugriffsmodifikatoren](../../docs/02_java/04_java-oop/03_access-modifier/)
+- **Gelöscht**
+  - Docs / Backend (Java) / Objektorientierte Programmierung in Java / 02_packages
+
+---
+
 ## 20250923-0926-134
 
 _2025-09-23 09:26 CEST auf origin/master_
