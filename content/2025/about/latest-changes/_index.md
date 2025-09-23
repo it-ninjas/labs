@@ -7,6 +7,17 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20250923-1333-136
+
+_2025-09-23 13:33 CEST auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Docs / Übergreifend / Entwicklungsumgebungen - IDE / IntelliJ IDEA – dein Einstieg ins professionelle Programmieren / Git mit IntelliJ nutzen](../../docs/99_shared/ide/intellij/04_git/)
+
+---
+
 ## 20250923-1318-135
 
 _2025-09-23 13:18 CEST auf origin/master_
