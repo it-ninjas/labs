@@ -1,0 +1,442 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – TypeScript</title><link>/docs/03_frontend/05_typescript/</link><description>Recent content in TypeScript on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 02 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="/docs/03_frontend/05_typescript/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Einführung in TypeScript</title><link>/docs/03_frontend/05_typescript/01_intro-typescript/</link><pubDate>Wed, 16 Feb 2022 00:00:00 +0000</pubDate><guid>/docs/03_frontend/05_typescript/01_intro-typescript/</guid><description>
+&lt;h3 id="ziele">Ziele&lt;/h3>
+&lt;ul>
+&lt;li>Du weisst, was Typescript ist und inwiefern es sich von Javascript unterscheidet.&lt;/li>
+&lt;li>Du weisst, welche Vorteile Typescript im Vergleich zu Javascript hat.&lt;/li>
+&lt;li>Du weisst, wie du den objektorientierten Programmieransatz in Typescript einbinden kannst und wie man in Typescript Klassen verwendet.&lt;/li>
+&lt;/ul>
+&lt;h2 id="was-ist-typescript">Was ist TypeScript?&lt;/h2>
+&lt;p>Die Programmiersprache Typescript wurde von Microsoft entwickelt und wurde im Jahr 2012 mit der ersten Version veröffentlicht.
+Seitdem wird die Programmiersprache kontinuierlich weiterentwickelt. Zahlreiche JavaScript-Frameworks setzen heute auf die Verwendung von TypeScript.
+Dazu gehören zum Beispiel Angular 2+ und React.&lt;/p>
+&lt;p>TypeScript bildet eine Erweiterung von JavaScript, fügt also JavaScript bestimmte Features hinzu.
+Es handelt sich dabei also um ein sogenanntes Superset von JavaScript.&lt;/p>
+&lt;p>Da Quellcode geschrieben in TypeScript zu JavaScript transpiliert wird, ist der Code in jedem Browser lauffähig.&lt;/p>
+&lt;h2 id="vorteile-von-typescript">Vorteile von TypeScript&lt;/h2>
+&lt;ul>
+&lt;li>TypeScript hebt Fehler während der Transpilierung hervor, während JavaScript das erst zur Laufzeit macht.&lt;/li>
+&lt;li>TypeScript unterstützt statische Typisierung.&lt;/li>
+&lt;li>Ermöglicht bessere Code-Strukturierung und Objekt-Orientierte Programmiertechniken.&lt;/li>
+&lt;li>TypeScript ist in jedem Browser und jeder JS-Engine lauffähig.&lt;/li>
+&lt;li>Hervorragendes &amp;ldquo;Tooling&amp;rdquo; mit IntelliSense, das beim Hinzufügen des Codes aktive Hinweise liefert.&lt;/li>
+&lt;/ul>
+&lt;h2 id="grundlegende-syntax">Grundlegende Syntax&lt;/h2>
+&lt;p>Da es sich bei TypeScript um ein Superset von JavaScript handelt, ist JavaScript-Code auch gültiger TypeScript-Code. Jedoch fügt TypeScript darüber hinaus viele neue Funktionen hinzu.&lt;/p>
+&lt;p>Mit TypeScript wird JavaScript zu einer stark typisierten, objektorientierten Sprache, die C# und Java ähnelt. Dies bedeutet, dass TypeScript-Code für grosse Projekte leichter zu verstehen, verwenden und verwalten ist. Die starke Typisierung bedeutet auch, dass die Sprache vorkompiliert werden kann und dass Variablen keine Werte zugewiesen werden können, die ausserhalb ihres angegebenen Bereichs liegen. Wenn zum Beispiel eine TypeScript-Variable als Zahl deklariert ist, kann man dieser Variable keinen Textwert zuweisen.&lt;/p>
+&lt;h2 id="null-safety">Null Safety&lt;/h2>
+&lt;p>In TypeScript gibt es standardmässig keine &amp;ldquo;Null Safety&amp;rdquo; im Sinne einer statischen Typüberprüfung auf mögliche Null- oder Undefined-Werte. Das bedeutet, dass Variablen jeden Typ annehmen können, einschliesslich &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code>, es sei denn, es wird explizit angegeben, dass sie einen anderen Typ haben sollen.
+Das kann dazu führen, dass in TypeScript-Code unerwartete Fehler auftreten, wenn versucht wird, auf Eigenschaften oder Methoden von null- oder undefined-Variablen zuzugreifen. Solche Fehler treten normalerweise zur Laufzeit auf und werden nicht vom Compiler erkannt.&lt;/p>
+&lt;p>Um das Risiko von Fehlern durch null- oder undefined-Werte zu reduzieren, kann man die Option &lt;code>strictNullChecks&lt;/code> in der &lt;code>tsconfig.json&lt;/code>-Datei aktivieren.&lt;/p>
+&lt;h2 id="typanmeldungen">Typanmeldungen&lt;/h2>
+&lt;p>Typdeklarationen können zu Variablen, Funktionsparametern und Funktionsrückgabetypen hinzugefügt werden.
+Der Typ folgt jeweils auf einen Doppelpunkt hinter dem Variablennamen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">num&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Der Compiler überprüft dann die Typen während des Transpilierens und meldet allfällige Typfehler.&lt;/p>
+&lt;p>Die verschiedenen Grundtypen von TypeScript sind &lt;a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html">hier&lt;/a> ersichtlich.&lt;/p>
+&lt;h3 id="type-any">Type Any&lt;/h3>
+&lt;p>Der Typ &lt;code>any&lt;/code> ist ein spezieller Typ, der es ermöglicht, Variablen, Funktionen und andere Objekte ohne explizite Typisierung zu deklarieren. Wenn eine Variable oder ein Objekt mit &lt;code>any&lt;/code> deklariert wird, bedeutet dies, dass der Typ nicht eingeschränkt ist und dass alle Arten von Werten diesem Typ zugewiesen werden können, ohne dass eine Typenüberprüfung durchgeführt wird. Das bedeutet, dass man so die gesamte Typisierung umgehen kann und dann wie bei JavaScript Typfehler erst während der Laufzeit sehen würde.&lt;/p>
+&lt;p>Beispiel mit &lt;code>any&lt;/code>, welches zu Laufzeitfehler führt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>: &lt;span style="color:#66d9ef">any&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>: &lt;span style="color:#66d9ef">any&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;3&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">result&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="der-objektorientierte-ansatz">Der Objektorientierte Ansatz&lt;/h2>
+&lt;p>Bei der objektorientierten Programmierung handelt es sich um einen Programmierstil / eine Denkweise.&lt;/p>
+&lt;p>Man kann sich das so vorstellen, dass alles in der objektorientierten Programmierung durch Objekte abgebildet wird.
+Jedes &amp;ldquo;Teil&amp;rdquo; eines Programmes wird durch ein Objekt beschrieben.&lt;/p>
+&lt;p>Ein Beispiel:&lt;/p>
+&lt;blockquote>
+&lt;p>In einer Spielewelt gibt es einen frei herumlaufenden Hund.
+Dann wäre dieser Hund nichts anderes als ein Objekt.&lt;/p>&lt;/blockquote>
+&lt;pre>&lt;code>Nun könnte man sich fragen, wie man diesen Hund wahrnimmt, denn nicht jeder Hund ist gleich.
+Sie könnten sich in Rasse, Gattung etc. unterscheiden. Ein Objekt kann also verschiedene Eigenschaften besitzen,
+diese werden auch Attribute genannt.
+&lt;/code>&lt;/pre>
+&lt;p>Nun kann sich unser Hund von Anderen unterscheiden, jedoch kann er noch nicht bellen. Deshalb haben
+Objekte auch Funktionen (Methoden). In unserem Beispiel könnte der Hund z.B. über die Methode &amp;ldquo;bark()&amp;rdquo; verfügen,
+welche es ihm erlaubt, zu bellen.&lt;/p>
+&lt;p>In unserem Beispiel handelt es sich bei dem Hund um eine Klasse. Klassen sind also wie Baupläne für Objekte.&lt;/p>
+&lt;p>Nun sagen wir, dass es in unserer Spielwelt auch Katzen gibt.
+An dieser Stelle kommt dann die Vererbung ins Spiel.&lt;/p>
+&lt;p>Hunde sowie Katzen sind beides Tiere. In der Objektorientierten Programmierung würde man dazu also eine Klasse &amp;ldquo;Animal&amp;rdquo; erstellen.
+Die beiden Klassen &amp;ldquo;Cat&amp;rdquo; und &amp;ldquo;Dog&amp;rdquo; würden dann die Klasse &amp;ldquo;Animal&amp;rdquo; erben. Dies Bedeutet, dass sie die Eigenschaften der Klasse &amp;ldquo;Animal&amp;rdquo; übernehmen
+und durch ihre eigenen Eigenschaften ergänzen.&lt;/p>
+&lt;p>Da sich beide Tiere fortbewegen, könnte man also der Klasse &amp;ldquo;Animal&amp;rdquo; die Funktion &amp;ldquo;move()&amp;rdquo; geben, welche dann von den beiden anderen Klassen geerbt werden würde.
+Dadurch hat man verhindert, dass sich die Funktion zum bewegen mehrmals im Quellcode befindet.&lt;/p>
+&lt;p>&lt;img src="/docs/03_frontend/05_typescript/01_intro-typescript/images/vererbung.png" alt="Vererbung" title="Vererbung">&lt;/p>
+&lt;h2 id="klassen">Klassen&lt;/h2>
+&lt;p>Ein einfaches Beispiel einer Klasse:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Greeter&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">greeting&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">string&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">message&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">string&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">greeting&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">message&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">greet&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">greeting&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">greeter&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Greeter&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;world&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Beispiel wird eine neue Klasse &amp;ldquo;Greeter&amp;rdquo; deklariert. Die Klasse enthält 3 Member:&lt;/p>
+&lt;ul>
+&lt;li>Das Property &amp;ldquo;greeting&amp;rdquo;&lt;/li>
+&lt;li>Den Konstruktor&lt;/li>
+&lt;li>Die Methode &amp;ldquo;greet&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;p>Wenn wir in einer Klasse auf ein Member innerhalb der Klasse referenzieren, verwenden wir &lt;code>this.&lt;/code>.&lt;/p>
+&lt;p>Auf der letzten Zeile erstellen wir eine neue Instanz der Klasse &lt;code>Greeter&lt;/code> mit &lt;code>new&lt;/code>.&lt;/p>
+&lt;h2 id="interfaces">Interfaces&lt;/h2>
+&lt;p>Interfaces in TypeScript beschreiben die Struktur von Objekten, ohne tatsächlichen JavaScript-Code zu erzeugen. Bei der Transpilation entfernt TypeScript alle Interfaces, sodass sie in der Laufzeitumgebung nicht mehr existieren. Sie sind also rein für die statische Typisierung gedacht und lassen sich beispielsweise nicht per &lt;code>instanceof&lt;/code> prüfen.&lt;/p>
+&lt;p>Ein einfaches Beispiel ist das folgende:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">string&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">alter&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">number&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">###&lt;/span> &lt;span style="color:#a6e22e">Vererbung&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">In&lt;/span> &lt;span style="color:#a6e22e">TypeScript&lt;/span> &lt;span style="color:#a6e22e">können&lt;/span> &lt;span style="color:#a6e22e">wir&lt;/span> &lt;span style="color:#a6e22e">allgemeine&lt;/span> &lt;span style="color:#a6e22e">objektorientierte&lt;/span> &lt;span style="color:#a6e22e">Muster&lt;/span> &lt;span style="color:#a6e22e">verwenden&lt;/span>. &lt;span style="color:#a6e22e">Eines&lt;/span> &lt;span style="color:#a6e22e">der&lt;/span> &lt;span style="color:#a6e22e">grundlegendsten&lt;/span> &lt;span style="color:#a6e22e">Muster&lt;/span> &lt;span style="color:#66d9ef">in&lt;/span> &lt;span style="color:#a6e22e">der&lt;/span> &lt;span style="color:#a6e22e">klassenbasierten&lt;/span> &lt;span style="color:#a6e22e">Programmierung&lt;/span> &lt;span style="color:#a6e22e">ist&lt;/span> &lt;span style="color:#a6e22e">die&lt;/span> &lt;span style="color:#a6e22e">Möglichkeit&lt;/span>, &lt;span style="color:#a6e22e">vorhandene&lt;/span> &lt;span style="color:#a6e22e">Klassen&lt;/span> &lt;span style="color:#a6e22e">durch&lt;/span> &lt;span style="color:#a6e22e">Vererbung&lt;/span> &lt;span style="color:#a6e22e">zu&lt;/span> &lt;span style="color:#a6e22e">erweitern&lt;/span>, &lt;span style="color:#a6e22e">um&lt;/span> &lt;span style="color:#a6e22e">neue&lt;/span> &lt;span style="color:#a6e22e">Klassen&lt;/span> &lt;span style="color:#a6e22e">zu&lt;/span> &lt;span style="color:#a6e22e">erstellen&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">```typescript
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">class Animal {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> move(distanceInMeters: number = 0) {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> console.log(`&lt;/span>&lt;span style="color:#a6e22e">Animal&lt;/span> &lt;span style="color:#a6e22e">moved&lt;/span> &lt;span style="color:#a6e22e">$&lt;/span>{&lt;span style="color:#a6e22e">distanceInMeters&lt;/span>}&lt;span style="color:#a6e22e">m&lt;/span>.&lt;span style="color:#e6db74">`);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">}
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">class Dog extends Animal {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> bark() {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> console.log(&amp;#34;Woof!&amp;#34;);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">}
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">const dog = new Dog();
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">dog.bark();
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">dog.move(10);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">dog.bark();
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieses Beispiel zeigt die grundlegendste Vererbungsfunktion: Klassen erben Eigenschaften und Methoden von Basisklassen (&lt;code>Animal&lt;/code>). &lt;code>Dog&lt;/code> ist hier eine abgeleitete Klasse, die mit dem Schlüsselwort &lt;code>extends&lt;/code> von der Basisklasse Animal abgeleitet wird. Abgeleitete Klassen werden häufig als Unterklassen bezeichnet, und Basisklassen als Superklassen.&lt;/p>
+&lt;p>Da &lt;code>Dog&lt;/code> die Funktionalität von &lt;code>Animal&lt;/code> erweitert, konnten wir eine Instanz von &lt;code>Dog&lt;/code> erstellen, die sowohl &lt;code>bark()&lt;/code> als auch &lt;code>move()&lt;/code> ausführen konnte.&lt;/p>
+&lt;p>&lt;strong>Ein komplexeres Beispiel zur Vertiefung:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#a6e22e">theName&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">theName&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">move&lt;/span>(&lt;span style="color:#a6e22e">distanceInMeters&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`Animal moved &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">distanceInMeters&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">m.`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Snake&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">move&lt;/span>(&lt;span style="color:#a6e22e">distanceInMeters&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Slithering...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>.&lt;span style="color:#a6e22e">move&lt;/span>(&lt;span style="color:#a6e22e">distanceInMeters&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Horse&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">move&lt;/span>(&lt;span style="color:#a6e22e">distanceInMeters&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">45&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Galloping...&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>.&lt;span style="color:#a6e22e">move&lt;/span>(&lt;span style="color:#a6e22e">distanceInMeters&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">sammy&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Snake&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Sammy the Python&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">tom&lt;/span>: &lt;span style="color:#66d9ef">Animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Horse&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Tom the Palomino&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">sammy&lt;/span>.&lt;span style="color:#a6e22e">move&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">tom&lt;/span>.&lt;span style="color:#a6e22e">move&lt;/span>(&lt;span style="color:#ae81ff">35&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Beispiel werden zwei neue Subklassen von &lt;code>Animal&lt;/code> erstellt: &lt;code>Horse&lt;/code> und &lt;code>Snake&lt;/code>.&lt;/p>
+&lt;p>Ein Unterschied zum vorherigen Beispiel besteht darin, dass jede abgeleitete Klasse, die eine Konstruktorfunktion enthält, &lt;code>super()&lt;/code> aufrufen muss, wodurch der Konstruktor der Basisklasse ausgeführt wird. Ausserdem müssen wir &lt;code>super()&lt;/code> aufrufen, damit wir im Konstruktorkörper auf &lt;code>name&lt;/code> mit &lt;code>this&lt;/code> zugreifen können.&lt;/p>
+&lt;p>Konsolenausgabe des Beispiels:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Slithering...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Sammy the Python moved 5m.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Galloping...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Tom the Palomino moved 34m.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: Special Typescript Operators</title><link>/docs/03_frontend/05_typescript/02_special-operators/</link><pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate><guid>/docs/03_frontend/05_typescript/02_special-operators/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du kennst die wichtigsten Special Operators in Angular und kannst diese anwenden.&lt;/li>
+&lt;/ul>
+&lt;h2 id="special-operators">Special Operators&lt;/h2>
+&lt;p>Viele der relevanten Operatoren wurden bereits beim JavaScript behandelt, diese können auch in TypeScript verwendet
+werden. Die Operatoren können &lt;a href="/docs/03_frontend/03_javascript/06_operators/">hier&lt;/a> nachgelesen werden.&lt;/p>
+&lt;h3 id="-operator">?-Operator&lt;/h3>
+&lt;p>Der &lt;code>?&lt;/code>-Operator ist der optionale Aufruf-Operator (optional chaining operator). Er ermöglicht den Zugriff auf Eigenschaften oder Methoden eines Objekts, wenn das Objekt potenziell &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> sein kann.&lt;/p>
+&lt;p>Er wird verwendet, um sicherzustellen, dass der Code nicht abbricht und einen Fehler auslöst, wenn eine Eigenschaft oder Methode auf einem möglicherweise &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> Objekt aufgerufen wird. Wenn das Objekt &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> ist, gibt er &lt;code>undefined&lt;/code> zurück, anstatt einen Fehler zu werfen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">interface&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">age?&lt;/span>: &lt;span style="color:#66d9ef">number&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">getInfo&lt;/span>()&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">string&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">person1&lt;/span>: &lt;span style="color:#66d9ef">Person&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">person2&lt;/span>: &lt;span style="color:#66d9ef">Person&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Alice&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">getInfo() {&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">`Name: &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">, Age: &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">age&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person1&lt;/span>&lt;span style="color:#f92672">?&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>); &lt;span style="color:#75715e">// undefined
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person2&lt;/span>&lt;span style="color:#f92672">?&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>); &lt;span style="color:#75715e">// &amp;#39;Alice&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person1&lt;/span>&lt;span style="color:#f92672">?&lt;/span>.&lt;span style="color:#a6e22e">getInfo&lt;/span>()); &lt;span style="color:#75715e">// undefined
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person2&lt;/span>&lt;span style="color:#f92672">?&lt;/span>.&lt;span style="color:#a6e22e">getInfo&lt;/span>()); &lt;span style="color:#75715e">// &amp;#39;Name: Alice, Age: undefined&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>Wichtig der hier gezeigte Operator ist nicht das gleiche wie der &lt;a href="/docs/03_frontend/03_javascript/06_operators/#ternary-operator-">ternary Operator(?:)&lt;/a>! Wenn du unsicher bist, lies dir nochmal die Beschreibung des ternary Operators durch.&lt;/p>&lt;/blockquote>
+&lt;h3 id="-operator-1">!-Operator&lt;/h3>
+&lt;p>Der &lt;code>!&lt;/code>-Operator ist ein Non-null-Assertion-Operator. Er wird verwendet, um dem Compiler mitzuteilen und zu garantieren, dass eine Variable während der Laufzeit nicht &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> ist und somit einen gültigen Wert hat.&lt;/p>
+&lt;p>Dadurch wird der Compiler davon abgehalten, Warnungen oder Fehlermeldungen auszugeben, die normalerweise auftreten würden, wenn eine mögliche Null- oder Undefined-Zuweisung vorliegt.&lt;/p>
+&lt;p>Es ist wichtig zu beachten, dass der Operator mit Vorsicht verwendet werden sollte. Wenn der Wert tatsächlich &lt;code>null&lt;/code> oder &lt;code>undefined&lt;/code> ist und der Operator verwendet wird, tritt zur Laufzeit ein Fehler auf.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">greet&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span>)&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">string&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">`Hello, &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">!&lt;/span>.&lt;span style="color:#a6e22e">toUpperCase&lt;/span>()&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">!`&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">userName&lt;/span>: &lt;span style="color:#66d9ef">string&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Alice&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">greet&lt;/span>(&lt;span style="color:#a6e22e">userName&lt;/span>)); &lt;span style="color:#75715e">// &amp;#39;Hello, ALICE!&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">userName&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">greet&lt;/span>(&lt;span style="color:#a6e22e">userName&lt;/span>)); &lt;span style="color:#75715e">// Error: Cannot read properties of null (reading &amp;#39;toUpperCase&amp;#39;)
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: tsconfig Datei</title><link>/docs/03_frontend/05_typescript/03_config/</link><pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate><guid>/docs/03_frontend/05_typescript/03_config/</guid><description>
+&lt;h3 id="ziele">Ziele&lt;/h3>
+&lt;ul>
+&lt;li>Du weisst, was die tsconfig-Datei ist und wofür diese verwendet wird.&lt;/li>
+&lt;li>Du kennst die wichtigsten Einstellungen und Optionen, die du in der tsconfig-Datei anpassen kannst.&lt;/li>
+&lt;/ul>
+&lt;h2 id="konfigurationsdatei-für-typescript-projekte">Konfigurationsdatei für TypeScript-Projekte&lt;/h2>
+&lt;p>Die &lt;code>tsconfig.json&lt;/code>-Datei ist eine Konfigurationsdatei für TypeScript-Projekte. Sie wird verwendet, um verschiedene Einstellungen für den TypeScript-Compiler festzulegen. Wenn sich die tsconfig.json-Datei im Stammverzeichnis eines Projekts befindet, werden diese Einstellungen automatisch von jeder TypeScript-Datei im Projekt übernommen.&lt;/p>
+&lt;p>Hier sind einige der wichtigsten Einstellungen, die in der &lt;code>tsconfig.json&lt;/code>-Datei vorgenommen werden können:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>compilerOptions&lt;/code>: Dieser Abschnitt enthält die Compiler-Optionen, die das Verhalten des TypeScript-Compilers steuern. Einstellungen wie die ECMAScript-Version (target), das Modulsystem (module), der Pfad zum Ausgabeverzeichnis (outDir), der Typen-Check-Modus (strict) und viele andere Optionen können hier konfigurieren werden.&lt;/li>
+&lt;li>&lt;code>include und exclude&lt;/code>: Mit diesen Optionen gibt man an, welche Dateien vom Compiler einbezogen bzw. ausgeschlossen werden sollen. Es können Muster (z.B. &lt;code>src/\*_/_.ts&lt;/code> für alles .ts Dateien) verwendet werden, um Dateien zu filtern.&lt;/li>
+&lt;li>&lt;code>extends&lt;/code>: Diese Option ermöglicht es, eine andere tsconfig.json-Datei als Basis zu verwenden und ihre Einstellungen zu erweitern. Das ist nützlich, wenn eine gemeinsame Konfiguration für mehrere Projekte vorhanden ist und man nur spezifische Einstellungen in der aktuellen Datei ändern möchte.&lt;/li>
+&lt;li>&lt;code>files&lt;/code>: Diese Option ermöglicht es, explizit eine Liste von Dateien anzugeben, die vom Compiler verarbeitet werden soll. Das wird normalerweise gemacht, wenn die include-Option nicht verwendet werden soll und nur bestimmte Dateien im Projekt berücksichtigt werden sollen.&lt;/li>
+&lt;li>&lt;code>references&lt;/code>: Mit dieser Option können Referenzen zu anderen Projekten angegeben werden, um die Abhängigkeiten zwischen den Projekten zu definieren. Das ist nützlich, wenn mehrere TypeScript-Projekte existieren und diese miteinander verknüpfen werden sollen.&lt;/li>
+&lt;/ul>
+&lt;p>Eine der wichtigsten &lt;code>compilerOptions&lt;/code> ist die &lt;code>strict&lt;/code>-Option. Diese ist eine Sammlung von Compiler-Optionen, welche aktiviert werden können, um die strenge Überprüfung von Typen und Codequalität sicherzustellen. Wenn die &lt;code>strict&lt;/code>-Option auf &lt;code>true&lt;/code> gesetzt wird, werden mehrere einzelne Compiler-Optionen aktiviert, um die Typsicherheit zu verbessern und potenziell unsichere Codepraktiken zu verhindern.&lt;/p>
+&lt;p>Hier sind einige der wichtigsten Compiler-Optionen, die von der strict-Option in der tsconfig.json-Datei aktiviert werden:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>strictNullChecks&lt;/code>: Stellt sicher, dass &lt;code>null&lt;/code> und &lt;code>undefined&lt;/code> nur auf Nullable-Typen zugewiesen werden können. Dadurch werden potenzielle Fehler vermieden, wenn auf Eigenschaften oder Methoden von Null- oder Undefined-Werten zugegriffen wird.&lt;/li>
+&lt;li>&lt;code>noImplicitAny&lt;/code>: Verhindert, dass Variablen implizit den &lt;code>any&lt;/code>-Typ annehmen. Dadurch wird man dazu gezwungen, explizite Typen für Variablen zu definieren und den &lt;code>any&lt;/code>-Typ so weit wie möglich zu vermeiden.&lt;/li>
+&lt;li>&lt;code>strictFunctionTypes&lt;/code>: Erzwingt die Kompatibilität von Funktionstypen, einschliesslich der Rückgabetypen von Funktionen. Dadurch werden Fehler vermieden, wenn Funktionen mit inkompatiblen Typen zugewiesen oder aufgerufen werden.&lt;/li>
+&lt;li>&lt;code>strictPropertyInitialization&lt;/code>: Stellt sicher, dass alle Eigenschaften von Klassen explizit initialisiert werden, entweder in ihrem Deklarationsabschnitt oder im Konstruktor. Dadurch wird verhindert, dass unbeabsichtigt auf nicht initialisierte Eigenschaften zugegriffen wird.&lt;/li>
+&lt;li>&lt;code>strictBindCallApply&lt;/code>: Überprüft die Verwendung von &lt;code>bind&lt;/code>, &lt;code>call&lt;/code> und &lt;code>apply&lt;/code> auf Funktionen und stellt sicher, dass die Parameter und Rückgabewerte korrekt typisiert sind.&lt;/li>
+&lt;li>&lt;code>noImplicitThis&lt;/code>: Stellt sicher, dass &lt;code>this&lt;/code> in Funktionen explizit typisiert wird, um Fehler bei der Verwendung zu vermeiden.&lt;/li>
+&lt;/ul>
+&lt;p>Auf der folgenden Seite kannst du dir die tsconfig-Datei und ihre jeweiligen Konfigurationsoptionen noch etwas genauer anschauen: &lt;a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">typescriptlang.org&lt;/a>&lt;/p></description></item><item><title>Docs: Projekt aufsetzen in TypeScript</title><link>/docs/03_frontend/05_typescript/04_projekt-aufsetzen/</link><pubDate>Fri, 02 Jun 2023 00:00:00 +0000</pubDate><guid>/docs/03_frontend/05_typescript/04_projekt-aufsetzen/</guid><description>
+&lt;h3 id="ziele">Ziele&lt;/h3>
+&lt;ul>
+&lt;li>Du kannst eine Typescript-Datei erstellen und ausführen lassen.&lt;/li>
+&lt;li>Du bist in der Lage, eine Typescript-Datei in eine Javascript-Datei zu transpilieren.&lt;/li>
+&lt;/ul>
+&lt;h2 id="hello-world">Hello World&lt;/h2>
+&lt;p>Da Node.js bereits installiert wurde, kann nun anhand des Node Package Manager mühelos Typescript installiert werden.
+Dazu öffnet man eine Konsole und gibt den folgenden Befehl ein:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>npm install -g typescript
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Sobald die Installation abgeschlossen ist, erstellt man eine Datei und nennt diese &lt;code>hello-world.ts&lt;/code>.
+Nun die Datei mit einer IDE öffnen und die folgende Codezeile reinschreiben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-typescript" data-lang="typescript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Hello World&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Somit wurde das erste Typescript &amp;ldquo;Projekt&amp;rdquo; erstellt. Um dieses auszuführen, muss der Quellcode zu JS transpiliert werden.
+Dazu eine Konsole öffnen und sich in das Verzeichnis, indem sich die Datei befindet, begeben.&lt;/p>
+&lt;p>Danach folgenden Befehl in der Konsole eingeben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>tsc hello-world.ts
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wie nun zu sehen ist, befindet sich im Verzeichnis eine gleichnamige JS Datei.&lt;/p>
+&lt;p>Diese kann nun mit Node ausgeführt werden:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>node hello-world.js
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Falls alles funktioniert hat, gibt die Konsole &lt;code>Hello World&lt;/code> aus.&lt;/p></description></item></channel></rss>

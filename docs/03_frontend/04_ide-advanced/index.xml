@@ -1,0 +1,239 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Frontend IDE Advanced</title><link>/docs/03_frontend/04_ide-advanced/</link><description>Recent content in Frontend IDE Advanced on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 19 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="/docs/03_frontend/04_ide-advanced/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Node.js</title><link>/docs/03_frontend/04_ide-advanced/01_nodejs/</link><pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate><guid>/docs/03_frontend/04_ide-advanced/01_nodejs/</guid><description>
+&lt;h2 id="nodejs">Node.js&lt;/h2>
+&lt;p>Traditionell wurde JavaScript hauptsächlich im Browser verwendet, um interaktive Webseiten zu erstellen.
+Node.js ermöglicht es jedoch, JavaScript-Code ausserhalb des Browsers (z.B. direkt via Kommandozeile) auszuführen und bietet auch die Möglichkeiten, serverseitige Anwendungen (Backends) mittels JavaScript zu entwickeln.
+Mit Node können wir später diverse Packages installieren und in unserer Webapplikation einsetzen.&lt;/p>
+&lt;p>NodeJS ermöglicht es also, JavaScript als Programmiersprache im Backend zu verwenden. Zusätzlich verwenden viele Frontends wie Angular oder React NodeJS als Grundgerüst für das Projekt.&lt;/p>
+&lt;h2 id="installation-von-nodejs">Installation von Node.js&lt;/h2>
+&lt;p>In diesem Kapitel werden wir nun Node.js installieren, falls das bei dir noch nicht der Fall ist.&lt;/p>
+&lt;p>Zuerst prüfen wir, ob Node.js bereits auf dem System installiert ist:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>node --version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Falls nicht, kannst du hier Node.js installieren:&lt;/p>
+&lt;p>&lt;img src="/images/task.png" alt="task3"> 5&amp;rsquo; - Einzelarbeit&lt;/p>
+&lt;pre>&lt;code>Installiere Node.js unter folgendem Link: https://nodejs.org/en/. Verwende die LTS Version, diese wird für die meisten Nutzer empfohlen.
+Bei der Installation sind keine Anpassungen notwendig. Du kannst dich einfach durchklicken.
+&lt;/code>&lt;/pre>
+&lt;p>Prüfe danach die Version noch einmal.&lt;/p>
+&lt;h3 id="npm">npm&lt;/h3>
+&lt;p>Node.js enthält einem integrierten Package-Manager namens &amp;ldquo;&lt;em>npm&lt;/em>&amp;rdquo; (Node Package Manager). &lt;em>npm&lt;/em> ermöglicht es, Libraries und Module von anderen Entwicklern herunterzuladen, zu installieren und in eigenen Projekten zu verwenden. &lt;em>npm&lt;/em> bietet Zugriff auf eine riesige Sammlung von Open-Source-Packages.&lt;/p>
+&lt;p>&lt;em>npm&lt;/em> ermöglicht es auch, eigene Packages zu erstellen und zu veröffentlichen, sodass andere Entwickler sie verwenden können. Durch das Veröffentlichen der Packages auf &lt;em>npm&lt;/em> kann man dieses für die gesamte Community zugänglich machen und Updates und Verbesserungen bereitstellen.&lt;/p>
+&lt;h3 id="npm-commands">npm Commands&lt;/h3>
+&lt;p>Hier sind einige wichtige npm-Befehle, die beim Arbeiten mit Node.js-Projekten und dem Node Package Manager (npm) hilfreich sind:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>npm init&lt;/code>: Erstellt eine neue package.json-Datei, um ein neues Projekt zu initialisieren.&lt;/li>
+&lt;li>&lt;code>npm install&lt;/code>: Installiert alle Dependencies, die in der package.json-Datei aufgeführt sind. Der Einfachheit halber kann man auch einfach &lt;code>npm i&lt;/code> schreiben.&lt;/li>
+&lt;li>&lt;code>npm install &amp;lt;packagename&amp;gt;&lt;/code>: Installiert ein bestimmtes Package und fügt es zur package.json-Datei hinzu.&lt;/li>
+&lt;li>&lt;code>npm uninstall &amp;lt;packagename&amp;gt;&lt;/code>: Deinstalliert ein Package und entfernt es aus der package.json-Datei.&lt;/li>
+&lt;li>&lt;code>npm update&lt;/code>: Aktualisiert alle Dependencies auf die neuste Version, gemäss den in der package.json-Datei angegebenen Versionsbeschränkungen.&lt;/li>
+&lt;li>&lt;code>npm run &amp;lt;scriptname&amp;gt;&lt;/code>: Führt ein in der scripts-Sektion der package.json-Datei definiertes Skript aus. Zum Beispiel: &lt;code>npm run build&lt;/code> oder &lt;code>npm run start&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="packagejson">package.json&lt;/h3>
+&lt;p>&lt;em>npm&lt;/em> verwendet eine Datei namens &lt;code>package.json&lt;/code>, um Informationen über das Projekt und seine Dependencies zu speichern. Diese Datei enthält Metadaten wie den Namen des Projekts, die Version, die Autorinformationen und die Liste der Dependencies. Man kann das &lt;code>package.json&lt;/code> manuell erstellen oder den Befehl &lt;code>npm init&lt;/code> verwenden, um einen interaktiven Assistenten zu starten, der hilft, die Informationen einzugeben.&lt;/p>
+&lt;p>In der &lt;code>package.json&lt;/code> Datei werden die Dependencies des Projekts aufgelistet. Es gibt zwei Arten von Dependencies: &amp;ldquo;dependencies&amp;rdquo; und &amp;ldquo;devDependencies&amp;rdquo;. &amp;ldquo;dependencies&amp;rdquo; sind Packages, die für die Ausführung der Anwendung erforderlich sind, während &amp;ldquo;devDependencies&amp;rdquo; Packages sind, die nur für die Entwicklung, Tests und den Build-Prozess verwendet werden. Wenn man ein Package mit &lt;code>npm install&lt;/code> installiert, wird es automatisch zur richtigen Kategorie hinzugefügt.&lt;/p>
+&lt;p>Zudem kann man auch benutzerdefinierte Skripte definieren, die bestimmte Aufgaben ausführen. Diese Skripte können verwendet werden, um Tests durchzuführen, den Code zu kompilieren, den Server zu starten und andere Entwicklungs- oder Build-Aufgaben zu automatisieren. Man kann die Skripte mit dem Befehl &lt;code>npm run &amp;lt;scriptname&amp;gt;&lt;/code> ausführen.&lt;/p>
+&lt;h3 id="package-lockjson">package-lock.json&lt;/h3>
+&lt;p>Die &lt;code>package-lock.json&lt;/code>-Datei ist eine Datei, die von npm automatisch generiert wird, sobald man das erste Mal &lt;code>npm install&lt;/code> im Projektverzeichnis ausgeführt hat. Sie dient dazu, die genauen Versionen der heruntergeladenen Pakete und deren Dependencies festzuhalten.
+Das &lt;code>package-lock.json&lt;/code> ermöglicht eine deterministische Wiederholbarkeit von Paketinstallationen in einem Projekt, was bedeutet, dass jeder Entwickler oder jede Build-Umgebung die gleichen Versionen der Pakete erhält.&lt;/p>
+&lt;p>Es ist wichtig, die &lt;code>package-lock.json&lt;/code>-Datei nicht manuell zu bearbeiten, da dies zu Inkonsistenzen und Problemen führen kann. npm soll die Datei automatisch generieren.&lt;/p>
+&lt;h3 id="npm-i-vs-npm-ci">npm i vs npm ci&lt;/h3>
+&lt;p>Die Befehle &lt;code>npm i&lt;/code> und &lt;code>npm ci&lt;/code> werden beide verwendet, um die Dependencies eines Node.js-Projekts zu installieren. Es gibt jedoch einen wichtigen Unterschied zwischen den beiden Befehlen.&lt;/p>
+&lt;p>&lt;code>npm i&lt;/code> installiert die neuste Version der Dependencies, auch wenn im &lt;code>package.json&lt;/code> eine ältere Version angegeben ist. Jedoch ist dies aber nur bei denjenigen, die mit &lt;code>^&lt;/code> beginnen, der Fall, also z.B. &lt;code>^12.2.12&lt;/code>, wobei sich nur die hinterste Zahl ändert. Denn die hinterste Zahl bei einer Version bedeutet, dass nur Fixes gemacht wurden. Wenn man nun so neue Versionen holt, wird die neue Version automatisch ins &lt;code>package-lock.json&lt;/code> geschrieben.&lt;/p>
+&lt;p>&lt;code>npm ci&lt;/code> holt die Dependencies aus &lt;code>package-lock.json&lt;/code>, heisst, es holt die Dependencies direkt von «resolved» und nicht wie &lt;code>npm i&lt;/code>, welches beim lokalen Register ansetzt. Zudem holt es die Version, welche je nachdem vom &lt;code>npm i&lt;/code> erneuert wurde.&lt;/p>
+&lt;h3 id="node_modules">node_modules&lt;/h3>
+&lt;p>Um ein Package zu installieren, kann man den Befehl &lt;code>npm install &amp;lt;packagename&amp;gt;&lt;/code> verwenden. &lt;em>npm&lt;/em> lädt das Package und alle seine Dependencies (Dependency) herunter und installiert sie in einem Verzeichnis namens &lt;code>node_modules&lt;/code> im Projektordner. Wenn man dann den Code schreibt, kann man das installierte Package in den JavaScript-Dateien verwenden.&lt;/p></description></item><item><title>Docs: Linter</title><link>/docs/03_frontend/04_ide-advanced/02_linter/</link><pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate><guid>/docs/03_frontend/04_ide-advanced/02_linter/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Du weisst, was ein Linter ist und was dieser macht.&lt;/li>
+&lt;li>Du weisst, was Prettier ist, wozu es verwendet wird und wie man es konfiguriert.&lt;/li>
+&lt;li>Du weisst, was ESLint ist, wozu es verwendet wird und wie man es konfiguriert.&lt;/li>
+&lt;/ul>
+&lt;h2 id="linter">Linter&lt;/h2>
+&lt;p>Ein Linter analysiert den Quellcode auf der Grundlage vordefinierter Regeln, Konventionen und Best Practices. Er prüft den Code auf häufige Fehler wie fehlende Semikolons, undefinierte Variablen, nicht verwendete Imports, ungültige Syntax und andere potenzielle Probleme. Darüber hinaus kann ein Linter auch den Code-Stil überprüfen, um sicherzustellen, dass er den vereinbarten Standards im Projekt entspricht.
+Der Hauptzweck eines Linters besteht darin, Entwicklern dabei zu helfen, qualitativ hochwertigen Code zu schreiben, der gut strukturiert und leicht wartbar ist.&lt;/p>
+&lt;h3 id="prettier">Prettier&lt;/h3>
+&lt;p>Prettier ist ein beliebtes Codeformatierungstool, das dazu dient, den Code in einem einheitlichen und konsistenten Stil zu formatieren. Im Gegensatz zu einem Linter wie ESLint, der sich auf Code-Stilregeln konzentriert, konzentriert sich Prettier ausschliesslich auf die Formatierung des Codes.&lt;/p>
+&lt;p>Prettier unterstützt eine Vielzahl von Programmiersprachen, einschliesslich JavaScript, TypeScript, HTML, CSS, JSON etc.
+Es bietet eine Reihe von Formatierungsregeln, die auf bewährten Praktiken basieren, um den Code lesbarer und einheitlicher zu gestalten.
+Prettier kann den gesamten Code automatisch formatieren, einschliesslich Einrückungen, Zeilenumbrüchen, Leerzeichen, Klammern und anderen Formatierungsaspekten.&lt;/p>
+&lt;h4 id="prettier-konfigurieren">Prettier konfigurieren&lt;/h4>
+&lt;p>Prettier benötigt normalerweise keine umfangreiche Konfiguration, da es über standardmässige Formatierungsregeln verfügt. Man kann jedoch bestimmte Einstellungen in einer .&lt;code>prettierrc&lt;/code>-Datei festlegen, um das Verhalten anzupassen.&lt;/p>
+&lt;p>Hier ist ein Beispiel wie man das machen kann:&lt;/p>
+&lt;p>Wenn man beispielsweise.&lt;/p>
+&lt;ul>
+&lt;li>die Anzahl der Leerzeichen (2) festlegen will, die für einen Tab verwendet werden sollen,&lt;/li>
+&lt;li>doppelte Anführungszeichen &lt;code>&amp;quot;&lt;/code> mit einfachen &lt;code>'&lt;/code> ersetzen will,&lt;/li>
+&lt;li>Tabs durch Leerzeichen ersetzen will,&lt;/li>
+&lt;li>fehlende Semikolons (im JavaScript) automatisch hinzufügen will,&lt;/li>
+&lt;li>automatisch Spaces bei Klammern hinzufügen will,
+dann kann das wie folgt getan werden.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;printWidth&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">120&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;singleQuote&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;useTabs&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;tabWidth&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">2&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;semi&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;bracketSpacing&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Weitere Informationen zu den verfügbaren Optionen und deren Werten findet man in der Prettier-Dokumentation unter &lt;a href="https://prettier.io/docs/en/configuration.html">https://prettier.io/docs/en/configuration.html&lt;/a>.&lt;/p>
+&lt;h4 id="prettier-ausführen">Prettier ausführen&lt;/h4>
+&lt;p>Das Prettier Plugin kann man wie folgt ausführen:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>IntelliJ&lt;/strong>: Alt-Shift-Ctrl-P auf Windows und Linux oder Alt-Shift-Cmd-P auf macOS.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>VSCode&lt;/strong>: [Shift] + [Alt] + [F] unter Windows und Linux und [Shift] + [Option] + [F] auf macOS. Alternativ kannst du durch Klick auf [F1] den Task &amp;ldquo;Format Document (With&amp;hellip;)&amp;rdquo; auswählen. Auf diese Weise kannst du auch gleich den Default-Formatter festlegen (wenn du es noch nicht in der Datei &lt;code>settings.json&lt;/code> wie oben beschrieben getan hast).&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="eslint">ESLint&lt;/h3>
+&lt;p>ESLint ist ein äusserst beliebtes und leistungsstarkes statisches Code-Analysetool für JavaScript- und TypeScript-Projekte.&lt;/p>
+&lt;h3 id="eslint-installieren">ESLint installieren&lt;/h3>
+&lt;p>Bevor ESLint verwendet werden kann, muss es installiert werden (und bei Windows am besten noch der PC neu gestartet werden).
+Mit den folgenden drei Befehlen kann man es installeren:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>npm install eslint --save-dev
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npx eslint --init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npx eslint src/index.js
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="eslint-konfigurieren">ESLint konfigurieren&lt;/h4>
+&lt;p>Man kann eigene Regeln erstellen oder bereits vorhandene Regeln anpassen, um den Anforderungen des Projekts gerecht zu werden.
+Die Konfiguration erfolgt über eine &lt;code>.eslintrc&lt;/code>-Datei, in der man die Regeln, Erweiterungen und spezifischen Projekteinstellungen festlegen kann.&lt;/p>
+&lt;p>Hier einige Beispiele wie man dies tun kann:&lt;/p>
+&lt;p>&lt;strong>Anpassen bestehender Regel&lt;/strong>:&lt;/p>
+&lt;p>In der &lt;code>.eslintrc&lt;/code>-Datei kann man die Einstellungen für eine spezifische Regel ändern. Wenn die maximale Zeilenlänge auf 100 Zeichen beschränkt werden soll, wird dies wie folgt eingerichtet.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;rules&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;max-len&amp;#34;&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;error&amp;#34;&lt;/span>, { &lt;span style="color:#f92672">&amp;#34;code&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span> }]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Hinzufügen neuer Regel&lt;/strong>:&lt;/p>
+&lt;p>Man kann Regeln hinzufügen oder entfernen, indem man die &lt;code>rules&lt;/code>-Eigenschaft anpasst. Angenommen, man möchte die Regel &amp;ldquo;no-console&amp;rdquo; aktivieren, um den Einsatz von console.log zu verhindern:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;rules&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;no-console&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;error&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Weitere Informationen findest du in der ESLint-Dokumentation unter &lt;a href="https://eslint.org/docs/user-guide/configuring">https://eslint.org/docs/user-guide/configuring&lt;/a>.&lt;/p>
+&lt;h4 id="eslint-ausführen">ESLint ausführen&lt;/h4>
+&lt;p>ESLint kann man über die Konsole ausführen, dazu sind folgende Schritte erforderlich:&lt;/p>
+&lt;ol>
+&lt;li>In der Konsole zum Wurzelverzeichnis des Projekts navigieren.&lt;/li>
+&lt;li>Den Befehl &lt;code>eslint&lt;/code> gefolgt von den Datei- oder Verzeichnisnamen ausführen, die man überprüfen möchte.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>eslint src/index.js
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ol start="3">
+&lt;li>ESLint überprüft nun die angegebenen Dateien oder Verzeichnisse anhand der definierten Regeln und gibt mögliche Fehler oder Warnungen in der Konsole aus.&lt;/li>
+&lt;/ol>
+&lt;p>ESLint kann man mit zusätzlichen Optionen und Flags verwenden, die wichtigste Flag ist &lt;code>--fix&lt;/code>. Man kann sie verwenden, um automatische Code-Fixes für bestimmte Probleme durchzuführen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>eslint --fix src/index.js
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Vielfach ist ESLint bereits als Script im &lt;code>package.json&lt;/code> hinterlegt und kann dann so mit dem Befehl &lt;code>npm run &amp;lt;scriptname&amp;gt;&lt;/code> (beispielsweise &lt;code>npm run lint&lt;/code>) aufgerufen werden.&lt;/p>
+&lt;h4 id="eslint-automatisch-beim-speichern">ESLint automatisch beim Speichern&lt;/h4>
+&lt;p>&lt;strong>In VS-Code&lt;/strong>:&lt;/p>
+&lt;p>Man öffnet die VS Code-Einstellungen, indem man &amp;ldquo;Datei&amp;rdquo; (File) in der Menüleiste wählt und dann &amp;ldquo;Einstellungen&amp;rdquo; (Preferences) auswählt. Oder man verwendet den Shortcut &amp;ldquo;[Ctrl] + [,]&amp;rdquo; für Windows/Linux oder &amp;ldquo;[Cmd] + [,]&amp;rdquo; für macOS.&lt;/p>
+&lt;p>Man sucht nach &lt;code>Save Actions&lt;/code> in den Einstellungen und wählt &amp;ldquo;In settings.json bearbeiten&amp;rdquo; (Edit in settings.json).&lt;/p>
+&lt;p>In der &lt;code>settings.json&lt;/code>-Datei fügt man den folgenden Code hinzu:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.formatOnSave&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.defaultFormatter&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;esbenp.prettier-vscode&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.codeActionsOnSave&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;source.fixAll.eslint&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>
+&lt;p>&lt;code>&amp;quot;editor.formatOnSave&amp;quot;: true&lt;/code>: Diese Einstellung bewirkt, dass der Code automatisch entsprechend den in den Editor-Einstellungen konfigurierten Regeln formatiert wird, wenn das Dokument gespeichert wird.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>&amp;quot;editor.defaultFormatter&amp;quot;: &amp;quot;esbenp.prettier-vscode&amp;quot;&lt;/code>: Diese Einstellung gibt den Standard-Codeformatter an, der verwendet wird, wenn &lt;code>&amp;quot;editor.formatOnSave&amp;quot;&lt;/code> aktiviert ist. In diesem Fall wird Prettier verwendet.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>&amp;quot;editor.codeActionsOnSave&amp;quot;: { &amp;quot;source.fixAll.eslint&amp;quot;: true }&lt;/code> : Diese Einstellung aktiviert Code-Aktionen beim Speichern des Dokuments. Konkret wird hier die ESLint-Erweiterung verwendet. Durch das Aktivieren von &lt;code>&amp;quot;source.fixAll.eslint&amp;quot;: true&lt;/code> werden automatisch Vorschläge zur Fehlerbehebung und Verbesserung des Codes angezeigt, wenn das Dokument gespeichert wird.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Nun noch die Datei speichern und VS-Code wird automatisch den Code formatieren und Lint-Fixes anwenden.&lt;/p>
+&lt;p>&lt;strong>In IntelliJ&lt;/strong>:&lt;/p>
+&lt;p>Man öffnet die IntelliJ-Einstellungen, indem man den Shortcut &amp;ldquo;Strg + Alt + S&amp;rdquo; für Windows/Linux oder &amp;ldquo;Cmd + ,&amp;rdquo; für macOS verwendet.&lt;/p>
+&lt;p>Man navigiert zu &lt;code>Languages &amp;amp; Frameworks&lt;/code> -&amp;gt; &lt;code>[Code-Language z.B. JavaScript]&lt;/code> -&amp;gt; &lt;code>Code Quality Tools&lt;/code> -&amp;gt; &lt;code>ESLint&lt;/code> nun wählt man die &lt;code>Automatic ESLint configuration&lt;/code> und &lt;code>Run eslint --fix on save&lt;/code> Option an.&lt;/p>
+&lt;h2 id="überprüfen">Überprüfen&lt;/h2>
+&lt;p>Nun gehen wir davon aus, dass alle nötigen Installationen erfolgreich ausgeführt wurden.&lt;/p>
+&lt;p>&lt;img src="/images/task.png" alt="task5"> 5&amp;rsquo; - Einzelarbeit&lt;/p>
+&lt;pre>&lt;code>- Öffne deine IDE
+- Öffne in deiner IDE ein neues Terminal
+- git --version
+- npm -v
+&lt;/code>&lt;/pre>
+&lt;p>Sofern alle Versionen angezeigt werden, war die Installation erfolgreich. Anderweitig solltest du einen Praxisbildner konsultieren.&lt;/p></description></item></channel></rss>

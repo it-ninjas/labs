@@ -1,0 +1,2643 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Datenbanken</title><link>/docs/99_shared/database/</link><description>Recent content in Datenbanken on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/docs/99_shared/database/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Datenbank 101</title><link>/docs/99_shared/database/01_db-erklaert/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/database/01_db-erklaert/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du kennst den allgemeinen Aufbau einer Datenbank und kannst ihn erklären.&lt;/li>
+&lt;li>Du kennst den Unterschied zwischen relationalen und NoSQL-Datenbanken.&lt;/li>
+&lt;li>Du weisst, wann welcher Datenbanktyp sinnvoll ist.&lt;/li>
+&lt;li>Du kennst die wichtigsten Datentypen und ihren Nutzen.&lt;/li>
+&lt;/ul>
+&lt;h2 id="was-ist-eine-datenbank">Was ist eine Datenbank?&lt;/h2>
+&lt;p>Eine Datenbank ist ein System zur elektronischen Verwaltung von Daten. Grundsätzlich sagt der Name „Datenbank“ bereits, was sie ist: In einer Datenbank werden Daten in einer bestimmten Ordnung abgelegt. Ähnlich wie bei einer normalen Bank werden die Daten an einem klar definierten Ort gespeichert – fast so wie bei deinem Bankkonto, auf das jeweils der Lohn eingezahlt wird.&lt;/p>
+&lt;p>Eine Datenbank ist meist in Stufen aufgebaut, die wie folgt aussehen können:&lt;/p>
+&lt;ul>
+&lt;li>Ganz oben steht die Datenbank an sich. Sie ist vergleichbar mit dem Gebäude einer Bank, in dem sich die Infrastruktur sowie das Geld befinden.&lt;/li>
+&lt;li>Die nächste Stufe ist das Schema. Dieses kann mit einem Raum verglichen werden, der viele verschiedene Aktenschränke enthält.&lt;/li>
+&lt;li>Diese Aktenschränke entsprechen in einer Datenbank den Tabellen. Die Tabellen beinhalten schliesslich die verschiedenen Daten – wie zum Beispiel dein erwähntes Bankkonto mit deinem Kontostand.&lt;/li>
+&lt;/ul>
+&lt;p>Zusammenfassend ergibt sich folgender Aufbau:&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/database/01_db-erklaert/images/beispiel-bank.png" alt="">&lt;/p>
+&lt;h3 id="schema-und-tabelle">Schema und Tabelle&lt;/h3>
+&lt;p>Ein Schema ist eine strukturierte Art und Weise, wie Daten organisiert werden. Es legt fest, wie die Datenbank aufgebaut ist und wie die Daten gespeichert und abgerufen werden können.&lt;/p>
+&lt;p>Eine Tabelle ist eine strukturierte Anordnung von Spalten und Zeilen, in der die eigentlichen Daten gespeichert werden.&lt;/p>
+&lt;p>Schemata und Tabellen helfen dabei, Daten organisiert und leicht zugänglich zu halten. Sie ermöglichen es, Daten effizient abzufragen, zu aktualisieren und zu verwalten. Darüber hinaus spielen sie eine wichtige Rolle bei der Sicherstellung der Sicherheit und Integrität der Daten, indem sie Zugriffsrechte und Einschränkungen festlegen.&lt;/p>
+&lt;p>Im nächsten Kapitel kannst du sehen, wie so eine Tabelle aussehen kann.&lt;/p>
+&lt;h2 id="arten-von-datenbanken">Arten von Datenbanken&lt;/h2>
+&lt;p>In diesem Kapitel soll ein kurzer Überblick über die verschiedenen Arten von Datenbanken sowie deren Vor- und Nachteile gegeben werden.&lt;/p>
+&lt;p>Die am häufigsten verwendeten Datenbankarten sind relationale &lt;em>(SQL)&lt;/em> und NoSQL-Datenbanken.&lt;br>
+Relationale &lt;em>(SQL)&lt;/em> Datenbanken werden am häufigsten eingesetzt und sind auch am bekanntesten.&lt;/p>
+&lt;blockquote>
+&lt;p>In den Übungen sowie in den Prüfungen werden ausschliesslich relationale &lt;em>(SQL)&lt;/em> Datenbanken verwendet.&lt;/p>&lt;/blockquote>
+&lt;h3 id="relational-sql">Relational &lt;em>(SQL)&lt;/em>&lt;/h3>
+&lt;p>Relationale Datenbanken sind ähnlich wie Excel-Tabellen aufgebaut. Der Name stammt vom Konzept der Relationen (Tabellen), die es ermöglichen, Daten logisch und strukturiert zu speichern und abzurufen.&lt;/p>
+&lt;p>Sie verwenden Tabellen, die jeweils Zeilen und Spalten enthalten &lt;em>(auch Rows und Columns genannt)&lt;/em>.&lt;br>
+Pro Spalte &lt;em>(Column)&lt;/em>, auch &lt;strong>Attribut&lt;/strong> genannt, muss ein Datentyp festgelegt werden. Dieser Datentyp definiert, welche Art von Daten in dieser Spalte gespeichert werden kann.&lt;/p>
+&lt;p>Beispiel: Eine Spalte mit dem Namen „Alter“ hat einen numerischen Datentyp. Das bedeutet, dass ausschliesslich Zahlen in dieser Spalte eingegeben werden können.&lt;/p>
+&lt;p>Eine Zeile &lt;em>(Row)&lt;/em>, auch &lt;strong>Tupel&lt;/strong> genannt, enthält jeweils einen vollständigen Datensatz, wie beispielsweise alle Benutzerdaten.&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/database/01_db-erklaert/images/begriffe-relationaler-datenbanken.png" alt="">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://de.wikipedia.org/wiki/Datenbanktabelle">Wikipedia – Datenbanktabelle&lt;/a>&lt;/em>&lt;/p>
+&lt;h4 id="was-ist-sql">Was ist SQL?&lt;/h4>
+&lt;p>Wieso heisst es eigentlich &lt;strong>SQL&lt;/strong>-Datenbank? SQL steht für &lt;strong>Structured Query Language&lt;/strong> und ist eine standardisierte Sprache zur Verwaltung und Abfrage von Daten in relationalen Datenbanken.&lt;/p>
+&lt;p>Um sicherzustellen, dass SQL in verschiedenen Datenbanksystemen wie &lt;strong>MariaDB, PostgreSQL, MySQL oder SQL Server&lt;/strong> ähnlich funktioniert, gibt es den &lt;strong>ANSI SQL-Standard&lt;/strong>. ANSI (American National Standards Institute) hat SQL standardisiert, um eine einheitliche Syntax und grundlegende Funktionen für alle relationalen Datenbanken zu gewährleisten.&lt;/p>
+&lt;p>Allerdings implementieren viele Datenbanksysteme zusätzliche SQL-Erweiterungen, die nicht im ANSI-Standard enthalten sind. Deshalb kann sich die SQL-Syntax je nach System leicht unterscheiden. Im IT-Ninjas werden wir hauptsächlich mit &lt;strong>MariaDB&lt;/strong> arbeiten.&lt;/p>
+&lt;p>Mehr Informationen zur SQL-Syntax findest du im Kapitel &lt;a href="/docs/99_shared/database/02_sql-syntax/">SQL Syntax&lt;/a>.&lt;/p>
+&lt;h4 id="sql-datentypen">SQL Datentypen&lt;/h4>
+&lt;p>In diesem Teil werden kurz die wichtigsten Datentypen aufgelistet.
+Je nach Datenbank können die Namen der Datentypen abweichen, sollten jedoch von der Funktionalität gleich sein.
+In dieser Auflistung wurden die &lt;strong>MariaDB-Datentypen&lt;/strong> verwendet:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Typ-Name&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;th>Beispiel&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>INT&lt;/td>
+&lt;td>Ganze Zahlen ohne Nachkommastellen im Bereich von -2.147.483.648 bis 2.147.483.647.&lt;/td>
+&lt;td>123&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>DECIMAL(p,s)&lt;/td>
+&lt;td>Genaue Dezimalzahlen mit festgelegter Genauigkeit &lt;em>(p = Gesamtanzahl der Ziffern, s = Nachkommastellen)&lt;/em>, häufig in der Finanz- und Buchhaltungsbranche verwendet.&lt;/td>
+&lt;td>1234.567&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>CHAR(n)&lt;/td>
+&lt;td>Zeichenkette mit fester Länge von n Zeichen, aufgefüllt mit Leerzeichen, falls kürzer.&lt;/td>
+&lt;td>&amp;lsquo;ABC&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>VARCHAR(n)&lt;/td>
+&lt;td>Zeichenkette mit variabler Länge bis maximal n Zeichen.&lt;/td>
+&lt;td>&amp;lsquo;OpenAI&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>DATE&lt;/td>
+&lt;td>Datumsangaben im Bereich zwischen dem Jahr 1000 und 9999.&lt;/td>
+&lt;td>&amp;lsquo;2023-05-31&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>TIME&lt;/td>
+&lt;td>Zeitwerte im Bereich zwischen -838:59:59 und 838:59:59.&lt;/td>
+&lt;td>&amp;lsquo;14:30:00&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>DATETIME&lt;/td>
+&lt;td>Datum und Uhrzeit kombiniert, häufig für Zeitstempel in Anwendungen verwendet.&lt;/td>
+&lt;td>&amp;lsquo;2023-05-31 14:30:00&amp;rsquo;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>BOOLEAN&lt;/td>
+&lt;td>Wahrheitswerte (TINYINT 1), wobei 0 für FALSE und 1 für TRUE steht.&lt;/td>
+&lt;td>TRUE (intern 1)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Wenn du noch mehr über die einzelnen Datentypen erfahren möchtest, findest du unter diesem Link alle verfügbaren Datentypen in MariaDB:&lt;br>
+&lt;a href="https://mariadb.com/kb/en/data-types/">Liste aller Datentypen (MariaDB)&lt;/a>&lt;/p>
+&lt;h3 id="nosql">NoSQL&lt;/h3>
+&lt;p>Im Gegensatz zu relationalen Datenbanken speichern NoSQL-Datenbanken Daten in Formaten wie Dokumenten,
+Schlüssel-Wert-Paaren, Spalten oder Graphen. Dies ermöglicht es, unstrukturierte Daten effektiver zu speichern und
+abzurufen. Dadurch können natürlich auch keine &lt;strong>Structured&lt;/strong> Query Language Abfragen gemacht werden, deshalb NoSQL.&lt;/p>
+&lt;p>Wie erklärt gibt es viele verschiedene Ansätze bei NoSQL, deshalb gibt es auch keine gemeinsame Syntax wie es sie bei
+SQL gibt. Bei den verschiedenen Anbietern kann sich also die Verwendung sehr unterscheiden. Auch wegen der verschiedenen
+Speicherarten ist keine NoSQL Datenbank wie die andere.&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/database/01_db-erklaert/images/nosql-databases.jpg" alt="">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/types-of-nosql-databases/">https://www.geeksforgeeks.org/types-of-nosql-databases/&lt;/a>&lt;/em>&lt;/p>
+&lt;h3 id="wann-verwende-ich-welche-datenbank">Wann verwende ich welche Datenbank?&lt;/h3>
+&lt;p>Eine relationale Datenbank eignet sich gut für Anwendungsfälle, bei denen eine komplexe Datenstruktur mit starken
+Beziehungen zwischen den Daten besteht, z. B. in Unternehmenssystemen oder Finanzanwendungen, da sie eine konsistente
+und sichere Datenhaltung gewährleistet.&lt;/p>
+&lt;p>NoSQL-Datenbanken sind nützlich, wenn Flexibilität und Skalierbarkeit Priorität haben und wenn die Datenstruktur häufig
+geändert werden muss oder es viele unstrukturierte oder semistrukturierte Daten gibt, wie beispielsweise in Big
+Data-Anwendungen, sozialen Netzwerken oder Echtzeit-Analysen.&lt;/p></description></item><item><title>Docs: SQL Syntax</title><link>/docs/99_shared/database/02_sql-syntax/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/database/02_sql-syntax/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst wofür SQL verwendet wird&lt;/li>
+&lt;li>Du kennst die verschiedenen Statements in SQL&lt;/li>
+&lt;li>Du kannst einfache SQL Queries/Statements schreiben&lt;/li>
+&lt;/ul>
+&lt;h2 id="was-ist-sql">Was ist SQL?&lt;/h2>
+&lt;p>SQL oder „Structured Query Language“ ist eine Programmiersprache für die Bearbeitung von Daten und relationalen
+Datenbanksystemen. Diese Sprache wird hauptsächlich für die Kommunikation mit Datenbanken verwendet, um die darin
+enthaltenen Daten zu verwalten.&lt;/p>
+&lt;h2 id="statements">Statements&lt;/h2>
+&lt;h3 id="was-ist-ein-sql-statement">Was ist ein SQL Statement?&lt;/h3>
+&lt;p>Ganz einfach gesagt ist ein Statement ein Befehl, der an die Datenbank geschickt und dort ausgeführt wird. Es gibt
+viele verschiedene Statements, die teilweise kombiniert werden können, um den gewünschten Effekt auf der Datenbank zu
+erzielen. Grundsätzlich werden Teile der Syntax (Select, Insert, usw.) gross geschrieben, um eine Unterscheidung
+zwischen der Syntax und anderen Elementen wie tabellennamen usw. zu erhalten. Jedoch ist diese Regel nicht erzwungen.&lt;/p>
+&lt;h3 id="select">SELECT&lt;/h3>
+&lt;p>Das Select Statement wird verwendet, um Daten aus bestimmten Tabellen auszuwählen. Ein SELECT ist grundsätzlich wie
+folgt aufgebaut:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Beispiel mit der Tabelle &amp;#34;benutzer&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> benutzer;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;SELECT&amp;rdquo; gefolgt von den gewünschten Attribute. In diesem Statement wird ein Stern verwendet,
+dieser steht für alle Attribute. Dementsprechend werden alle Attribute, die in der Tabelle vorhanden sind, zurückgegeben.
+Auf die Attribute folgt das FROM, auf dieses folgt jeweils eine Tabelle, von welcher die Werte gewünscht sind.
+Im Beispiel ist es die Tabelle &amp;ldquo;benutzer&amp;rdquo;. Das Resultat dieses Statements würde schlussendlich so aussehen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Wenn wir nur eine Spalte auswählen möchten, können wir das Statement wie folgt anpassen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">column_name&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">--Beispiel mit der Tabelle &amp;#34;benutzer&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">SELECT&lt;/span> vorname &lt;span style="color:#66d9ef">FROM&lt;/span> benutzer;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Resultat würde dementsprechend so aussehen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="insert">INSERT&lt;/h3>
+&lt;p>Das Insert Statement wird verwendet, um Daten in eine bestimmte Tabelle einzufügen. Ein INSERT ist grundsätzlich wie
+folgt aufgebaut:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> (column1, column2, column3, ...) &lt;span style="color:#66d9ef">VALUES&lt;/span> (value1, value2, value3, ...);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;INSERT INTO&amp;rdquo; gefolgt von der betroffenen Tabelle. Schlussendlich wird mit VALUES angegeben, dass
+ein oder mehrere Tupel eingefügt werden. In den Klammern können respektiv die Spaltennamen (optional) und die Inhalte angegeben werden.&lt;/p>
+&lt;p>Ein konkretes Beispiel würde mit dieser Tabelle beginnen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Dann wird dieses INSERT Statement ausgeführt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> benutzer &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Mustermann&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">16&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Maurer/in&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Nach dem Statement ist der neue Benutzer Max in der Tabelle zu finden:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;em>Max&lt;/em>&lt;/td>
+&lt;td>&lt;em>Mustermann&lt;/em>&lt;/td>
+&lt;td>&lt;em>16&lt;/em>&lt;/td>
+&lt;td>&lt;em>Maurer/in&lt;/em>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Alternativ zum vorherigen Statement können auch nur bestimmte Daten eingefügt werden. In unserem Beispiel könnte ein
+Benutzer auch Arbeitslos sein, dementsprechend hätte er keinen Beruf. Wenn wir also so einen Benutzer hinzufügen möchten
+würden wir das wie folgt machen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> benutzer(vorname, nachname, &lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Piccolo&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">37&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In den Klammern nach der Tabelle können wir also die Attribute auswählen, die wir hinzufügen möchten. In der Tabelle
+würde es so aussehen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>16&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;em>Peter&lt;/em>&lt;/td>
+&lt;td>&lt;em>Piccolo&lt;/em>&lt;/td>
+&lt;td>&lt;em>37&lt;/em>&lt;/td>
+&lt;td>&lt;strong>&lt;code>null&lt;/code>&lt;/strong>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Der Beruf wurde automatisch auf &lt;code>null&lt;/code> gesetzt und ist dementsprechend leer.&lt;/p>
+&lt;h3 id="create">CREATE&lt;/h3>
+&lt;p>Das Create Statement wird verwendet, um Tabellen, Datenbanken, usw. zu erstellen. Ein CREATE Statement ist grundsätzlich
+wie folgt aufgebaut:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Datenbank erstellen
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">DATABASE&lt;/span> databasename;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">--Tabelle erstellen
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> column1 datatype,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> column2 datatype,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> column3 datatype,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ....
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Beispiel: die Tabelle &amp;#34;benutzer&amp;#34; erstellen
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> benutzer (vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">alter&lt;/span> number,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> beruf varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;CREATE&amp;rdquo; gefolgt dem zu erstellenden Objekt, in diesem Fall eine Tabelle. Schlussendlich wird
+noch ein Name festgelegt (die neue Tabelle heisst &amp;ldquo;benutzer&amp;rdquo;), gefolgt von den gewünschten Attributen der Tabelle und dem entsprechenden Datentyp.&lt;/p>
+&lt;p>Das Resultat dieses Statements würde schliesslich so aussehen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="where">WHERE&lt;/h3>
+&lt;p>Die WHERE-Klausel ist im Vergleich zu den anderen kein Statement, sondern eine Ergänzung dazu. Mit WHERE kann
+spezifiziert werden, welche Daten für das Statement verwendet werden sollen. Mehrere Bedingungen können mit den Keywords
+&lt;code>AND&lt;/code> und &lt;code>OR&lt;/code> aneinandergereiht werden. Hier ein Beispiel dazu:&lt;/p>
+&lt;p>Ausgangstabelle:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>16&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Dieses Statement schränkt das Alter zwischen 15 und 30 Jahren ein.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> benutzer &lt;span style="color:#66d9ef">WHERE&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">15&lt;/span> &lt;span style="color:#66d9ef">AND&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">30&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Statement gibt schliesslich alle Werte zurück, die die Bedingung erfüllen:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>16&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Zusätzlich gibt es bei Texten die Möglichkeit eine Teilüberprüfung mit &lt;code>Like&lt;/code> zu machen. Damit können beispielsweise
+Alle Adressen gesucht werden, die mit &amp;ldquo;Strasse&amp;rdquo; enden. Dazu muss beim &lt;code>Like&lt;/code> angegeben werden, wo sich der Rest des
+Textes befinden. Das funktioniert mit dem % Zeichen. Wenn der restliche Text vor dem Suchtext ist, wird das % vor diesem
+platziert. Dasselbe funktioniert natürlich auch umgekehrt. Weiter kann auch auf beiden Seiten ein % verwendet werden, so
+ist es egal wo sich der Suchtext befinden. Hier ein Beispiel-Query dazu:&lt;/p>
+&lt;p>Ausgangstabelle:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>16&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">WHERE&lt;/span> nachname &lt;span style="color:#66d9ef">like&lt;/span> &lt;span style="color:#e6db74">&amp;#39;%mann&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>16&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="update">UPDATE&lt;/h3>
+&lt;p>Das Update Statement wird verwendet, um Inhalte (Tabelle, Datenbank, Constraints, etc.) zu ändern. Ein UPDATE
+Statement ist grundsätzlich wie folgt aufgebaut:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">UPDATE&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SET&lt;/span> column1 &lt;span style="color:#f92672">=&lt;/span> value1, column2 &lt;span style="color:#f92672">=&lt;/span> value2, ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">WHERE&lt;/span> condition;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;UPDATE&amp;rdquo; gefolgt von dem zu aktualisierenden Objekt, in diesem Fall eine Tabelle.
+Anschliessend wird ein SET durchgeführt, wo die gewünschte Änderung gemacht wird. Dabei können auch mehrere Attribute
+gleichzeitig geändert werden. Dazu kann hinter dem Wert ein Komma hinzugefügt werden und eine weitere Änderung angegeben
+werden. Nach dem SET kann optional ein WHERE hinzugefügt werden, wenn die aktualisierung nicht für alle Werte
+durchgeführt werden soll. Hier ein konkretes Beispiel dazu:&lt;/p>
+&lt;p>Ausgangstabelle:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>16&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Dieses Statement setzt das Alter aller Benutzer mit dem Vornamen &amp;ldquo;Max&amp;rdquo; auf 18 und ändert den Beruf zu &amp;ldquo;Lehrer/in&amp;rdquo;&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">UPDATE&lt;/span> benutzer
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SET&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">18&lt;/span>, beruf &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Lehrer/in&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">WHERE&lt;/span> vorname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Lehrer/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="delete">DELETE&lt;/h3>
+&lt;p>Wie es der Name schon sagt, wird das Delete Statement zum Löschen von Daten verwendet. Ein DELETE Statement ist
+grundsätzlich wie folgt aufgebaut:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">DELETE&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> &lt;span style="color:#66d9ef">WHERE&lt;/span> condition;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Als Erstes kommt immer das &amp;ldquo;DELETE&amp;rdquo; gefolgt von FROM und der betroffenen Tabelle. Ein Delete sollte immer mit einem
+Where verwendet werden, da sonst alle Daten aus der Tabelle gelöscht werden. Hier ein konkretes Beispiel dazu:&lt;/p>
+&lt;p>Ausgangstabelle:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Dieses Statement löscht alle Benutzer mit dem Vornamen &amp;ldquo;Max&amp;rdquo;.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">DELETE&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> benutzer &lt;span style="color:#66d9ef">WHERE&lt;/span> vorname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Max&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="join">Join&lt;/h2>
+&lt;p>Ähnlich wie Where ist Join kein eigenes Statement, sondern eine Erweiterung. Mit dem Join Keyword werden in einem
+Select mehrere Tabellen miteinander verbunden. Das wird benötigt wenn die gewünschten Daten sich nicht in einer sondern in mehreren Tabellen befinden. Zum Beispiel, wenn die Personalien und die Adresse
+einer Person in verschiedenen Tabellen gespeichert wird. Ein Join funktioniert eigentlich immer gleich, es gibt jeweils
+eine Tabelle A die mit der Tabelle B verbunden wird. Dazu wird jeweils eine Id oder zumindest ein Attribut verwendet,
+welches in beiden Tabellen vertreten ist. So wird dann die Verbindung hergestellt.&lt;/p>
+&lt;p>Bei Joins gibt es viele verschiedene und teilweise sehr
+komplexe Varianten, welche auch dementsprechend selten benutzt werden. Wir schauen uns hier die vier wichtigsten an.&lt;/p>
+&lt;h3 id="inner-join-join">Inner Join (&lt;em>join&lt;/em>)&lt;/h3>
+&lt;p>Der Inner Join ist der wichtigste und am meisten benötigte Join. Der Inner Join verbindet die Tabellen und gibt nur
+die Schnittmenge zurück. Also alle Werte aus der Tabelle A, die auch ein Gegenstück in der Tabelle B haben. Grafisch
+dargestellt würde dieser Join so aus sehen:&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/database/02_sql-syntax/images/inner-join.png" alt="Inner Join">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
+&lt;p>Das dazugehörige Statement würde so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">INNER&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="right-und-left-join">Right und Left Join&lt;/h3>
+&lt;p>Im Vergleich zum Inner Join wird beim Right und Left Join nicht nur die Schnittmenge, sondern auch noch eine äussere
+Menge zurückgegeben. Grafisch würde das so aussehen:&lt;/p>
+&lt;h4 id="right-join">Right Join&lt;/h4>
+&lt;p>&lt;img src="/docs/99_shared/database/02_sql-syntax/images/right-join.png" alt="Right Join">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
+&lt;h4 id="left-join">Left Join&lt;/h4>
+&lt;p>&lt;img src="/docs/99_shared/database/02_sql-syntax/images/left-join.png" alt="Left Join">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
+&lt;p>Die äussere Menge ist jeweils eine der beiden angegebenen Tabellen. Welche Tabelle das verwendet wird, ist dabei
+abhängig vom Statement und welches Keyword verwendet wird. Schauen wir uns das in einem Beispiel an.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">RIGHT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In diesem Query wird das Keyword &lt;code>RIGHT&lt;/code> verwendet. Das bedeutet, dass die &lt;strong>rechte&lt;/strong> Tabelle verwendet wird. Was
+definiert jetzt aber welches die rechte Tabelle ist? In diesem Fall ist tabelle_b die rechte Tabelle, da sie rechts
+vom &lt;code>JOIN&lt;/code> steht. Dieser Logik entsprechend ist im unteren Beispiel tabelle_a die linke Tabelle, die also komplett
+zurückgegeben wird.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">LEFT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Was jedoch bei einem Right und Left Join zu beachten ist, dass &lt;code>null&lt;/code> Werte entstehen können. Bei allen Werten, die kein
+Gegenstück haben, werden die Attribute dieser Tabelle &lt;code>null&lt;/code> sein. So würde das Resultat eines Left Joins aussehen:&lt;/p>
+&lt;p>Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Rolf&lt;/td>
+&lt;td>Ringer&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Loris&lt;/td>
+&lt;td>Liechti&lt;/td>
+&lt;td>21&lt;/td>
+&lt;td>40&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Beruf:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>beruf_id&lt;/th>
+&lt;th>berufsbezeichnung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Lehrer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Informatiker/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">LEFT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> beruf &lt;span style="color:#66d9ef">ON&lt;/span> person.beruf_id &lt;span style="color:#f92672">=&lt;/span> beruf.beruf_id;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;th>berufsbezeichnung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Rolf&lt;/td>
+&lt;td>Ringer&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Lehrer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Loris&lt;/td>
+&lt;td>Liechti&lt;/td>
+&lt;td>21&lt;/td>
+&lt;td>40&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>beruf_id ist doppelt, da es in beiden Tabellen ein Attribut mit diesem Namen gibt. Könnte mit der Auswahl im Select
+auch ausgeblendet werden.&lt;/p>&lt;/blockquote>
+&lt;p>Umgekehrt würde das ganze so aussehen:&lt;/p>
+&lt;p>Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">RIGHT&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> beruf &lt;span style="color:#66d9ef">ON&lt;/span> person.beruf_id &lt;span style="color:#f92672">=&lt;/span> beruf.beruf_id;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;th>berufsbezeichnung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Rolf&lt;/td>
+&lt;td>Ringer&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Lehrer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Informatiker/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>beruf_id ist doppelt, da es in beiden Tabellen ein Attribut mit diesem Namen gibt. Könnte mit der Auswahl im Select
+auch ausgeblendet werden.&lt;/p>&lt;/blockquote>
+&lt;h3 id="full-join">Full Join&lt;/h3>
+&lt;p>Der Full Join ist sehr eng mit dem Left und Right Join verwandt. Jetzt werden jedoch alle Werte zurückgegeben. Wenn kein
+Gegenstück zu einem Wert vorhanden ist, werden diese gleich wie beim Left und Right Join mit &lt;code>null&lt;/code> angegeben. Grafisch
+sieht das ganze so aus:&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/database/02_sql-syntax/images/full-join.png" alt="Full Join">&lt;/p>
+&lt;p>&lt;em>Quelle: &lt;a href="https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/">https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/&lt;/a>&lt;/em>&lt;/p>
+&lt;p>Das Statement würde schlussendlich so aussehen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> tabelle_a &lt;span style="color:#66d9ef">FULL&lt;/span> &lt;span style="color:#66d9ef">JOIN&lt;/span> tabelle_b &lt;span style="color:#66d9ef">ON&lt;/span> tabelle_a.id &lt;span style="color:#f92672">=&lt;/span> tabelle_b.id;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Mit dem vorherigen Beispiel würde das Resultat so aussehen:&lt;/p>
+&lt;p>Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Rolf&lt;/td>
+&lt;td>Ringer&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Loris&lt;/td>
+&lt;td>Liechti&lt;/td>
+&lt;td>21&lt;/td>
+&lt;td>40&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Beruf:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>beruf_id&lt;/th>
+&lt;th>berufsbezeichnung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Lehrer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Informatiker/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;th>beruf_id&lt;/th>
+&lt;th>berufsbezeichnung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Rolf&lt;/td>
+&lt;td>Ringer&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Lehrer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Informatiker/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Loris&lt;/td>
+&lt;td>Liechti&lt;/td>
+&lt;td>21&lt;/td>
+&lt;td>40&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>beruf_id ist doppelt, da es in beiden Tabellen ein Attribut mit diesem Namen gibt. Könnte mit der Auswahl im Select
+auch ausgeblendet werden.&lt;/p>&lt;/blockquote>
+&lt;h2 id="aggregationen--weiteres">Aggregationen &amp;amp; weiteres&lt;/h2>
+&lt;p>In diesem Abschnitt gehen wird auf Aggregationen und weitere wichtige Syntax-Elemente ein. Aggregationen in SQL sind
+Funktionen, die verwendet werden, um zusammengefasste Informationen aus großen Datenmengen zu erhalten.
+Dadurch wird es einfacher, die Daten zu analysieren und Muster oder Trends zu erkennen.&lt;/p>
+&lt;h3 id="count">Count&lt;/h3>
+&lt;p>Die Aggregation Count zählt wie viele Resultate das beim Query zurückgegeben werden. Count funktioniert bei allen
+Datentypen gleich und muss nicht angepasst werden. Hier ein Beispiel zu Count:&lt;/p>
+&lt;p>Ausgangstabelle Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>Leonidas&lt;/td>
+&lt;td>35&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">COUNT&lt;/span>(&lt;span style="color:#f92672">*&lt;/span>), &lt;span style="color:#66d9ef">COUNT&lt;/span>(beruf) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>count(*)&lt;/th>
+&lt;th>count(beruf)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>5&lt;/td>
+&lt;td>4&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Aus dem Resultat lässt sich schliessen, dass NULL-Werte im Count nicht beachtet werden.&lt;/p>
+&lt;h3 id="maxmin">Max/Min&lt;/h3>
+&lt;p>Die Aggregationen Max und Min sind logischerweise zum Finden des grössten und kleinsten Wertes. Beide funktionieren
+bei allen Datentypen, jedoch haben sie beispielsweise bei einem String einen anderen Weg das Maximum und Minimum zu
+finden. Dort wird anhand einer Collation (Sortierungsregel) das Maximum und Minimum bestimmt. Bei normalen Zahlen sieht
+es so aus:&lt;/p>
+&lt;p>Ausgangstabelle Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>Leonidas&lt;/td>
+&lt;td>35&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">MAX&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>), &lt;span style="color:#66d9ef">MIN&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>max(alter)&lt;/th>
+&lt;th>min(alter)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>52&lt;/td>
+&lt;td>13&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="sum">Sum&lt;/h3>
+&lt;p>Sum summiert die Werte einer Spalte. Im Gegensatz zu den vorherigen Aggregationen funktioniert Sum nur mit Zahlenwerten.
+Bei Strings oder ähnlichem wird ein Fehler zurückgegeben. Hier ein Beispiel zur Verwendung von Sum:&lt;/p>
+&lt;p>Ausgangstabelle Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>Leonidas&lt;/td>
+&lt;td>35&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">SUM&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>sum(alter)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>144&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="avg">Avg&lt;/h3>
+&lt;p>Um den Durchschnitt von Zahlen zu finden wird die Funktion AVG verwendet. Gleich wie Sum funktioniert Avg nur mit Zahlen.
+Hier ein Beispiel zu avg:&lt;/p>
+&lt;p>Ausgangstabelle Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>Leonidas&lt;/td>
+&lt;td>35&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">AVG&lt;/span>(&lt;span style="color:#66d9ef">alter&lt;/span>) &lt;span style="color:#66d9ef">FROM&lt;/span> person;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>avg(alter)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>28.8&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="order-by">Order By&lt;/h3>
+&lt;p>Das Keyword Order By ist zum Sortieren des Resultats sehr nützlich. Zusammen mit ASC (=Ascending, Aufsteigend) und DESC
+(=Descending, Absteigend) kann das Resultat auf verschiedenste Weisen nach einem oder mehreren Attributen sortiert
+werden. Standardmässig verwendet Order By ASC, daher kann das ASC im Query auch weggelassen werden. Beispiel zu Order By:&lt;/p>
+&lt;p>Ausgangstabelle Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Schüler/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Maurer/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>Leonidas&lt;/td>
+&lt;td>35&lt;/td>
+&lt;td>&lt;code>null&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement ASC:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> vorname, &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">ORDER&lt;/span> &lt;span style="color:#66d9ef">BY&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">ASC&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>13&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>18&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>26&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>35&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>52&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement DESC:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> vorname, &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">ORDER&lt;/span> &lt;span style="color:#66d9ef">BY&lt;/span> &lt;span style="color:#66d9ef">alter&lt;/span> &lt;span style="color:#66d9ef">DESC&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>52&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>35&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>26&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>18&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>13&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="group-by">Group By&lt;/h3>
+&lt;p>Mit Group By können Tupel mit gleichen Werten bei einem Attribut zusammen geführt werden, um beispielsweise in einem
+Count gezählt zu werden. Wie bei Order By kann ein Resultat mehrfach gruppiert werden. Hier ein einfaches Beispiel zu
+Order By:&lt;/p>
+&lt;p>Ausgangstabelle Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Anja&lt;/td>
+&lt;td>Ackermann&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fritz&lt;/td>
+&lt;td>Fischer&lt;/td>
+&lt;td>26&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Hans&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;td>52&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Max&lt;/td>
+&lt;td>Mustermann&lt;/td>
+&lt;td>18&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Leo&lt;/td>
+&lt;td>Leonidas&lt;/td>
+&lt;td>35&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Statement:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">SELECT&lt;/span> &lt;span style="color:#66d9ef">COUNT&lt;/span>(&lt;span style="color:#f92672">*&lt;/span>), beruf &lt;span style="color:#66d9ef">FROM&lt;/span> person &lt;span style="color:#66d9ef">GROUP&lt;/span> &lt;span style="color:#66d9ef">BY&lt;/span> beruf;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Resultat:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>count(*)&lt;/th>
+&lt;th>beruf&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Hochbauzeichner/in&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Pilot/in&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Docs: Constraints</title><link>/docs/99_shared/database/03_constraints/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/database/03_constraints/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst wofür Constraints verwendet werden&lt;/li>
+&lt;li>Du kennst die wichtigsten Constraints&lt;/li>
+&lt;li>Du kannst ein Constraint erstellen&lt;/li>
+&lt;/ul>
+&lt;h2 id="was-ist-ein-constraint">Was ist ein Constraint?&lt;/h2>
+&lt;p>Ein Constraint in SQL ist dazu da den Inhalt eines Attributs weiter zu beschränken. Theoretisch ist die Angabe des
+Datentyps bereits eine Art Constraint, da bestimmt wird was für ein Wertebereich eingefügt werden darf. Ein Constraint
+kann entweder beim Erstellen der Tabelle oder mit einem &lt;code>ALTER&lt;/code>-Statement hinzugefügt werden. Constraints können sich
+auf eine Tabelle oder eine einzelne Spalte beziehen. Ebenso können mehrere Constraints, sowohl bei Tabellen als auch
+bei Spalten, gleichzeitig angewendet werden.&lt;/p>
+&lt;h2 id="not-null">Not Null&lt;/h2>
+&lt;p>Das &lt;code>Not Null&lt;/code> Constraint legt fest, dass ein Attribut nicht Null, spricht &lt;strong>nicht leer&lt;/strong> sein darf. Das kann
+beispielsweise bei einer Id, die zum Verbinden von Tabellen verwendet wird, eingesetzt werden, damit es immer einen Wert
+gibt. Hier ein Beispiel wie ein &lt;code>Not Null&lt;/code> Constraint erstellt wird:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(personen_id number &lt;span style="color:#66d9ef">NOT&lt;/span> &lt;span style="color:#66d9ef">NULL&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da die Id nicht null sein darf.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da keine Id hinzugefügt wird.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person(vorname, nachname) &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#e6db74">&amp;#34;Peter&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Fischer&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da die Id angegeben wird und die anderen Attribute null sein dürfen.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="unique">Unique&lt;/h2>
+&lt;p>Das &lt;code>Unique&lt;/code> Constraint bedingt, dass jeder eingefügte Wert einzigartig, also noch nicht in der Spalte oder in der Tabelle, vorhanden. So können
+beispielsweise duplikationen von Ids verhindert werden. Hier ein Beispiel zum &lt;code>Unique&lt;/code> Constraint:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(personen_id number &lt;span style="color:#66d9ef">UNIQUE&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beispieldaten Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>personen_id&lt;/th>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Hans&lt;/td>
+&lt;td>Peterson&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Peter&lt;/td>
+&lt;td>Fritschi&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Fritz&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da bereits eine Person mit der personen_id 2 besteht.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Ueli&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Mueli&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da keine Person mit der personen_id 4 besteht.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karl&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karlsen&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="primary-key">Primary Key&lt;/h2>
+&lt;p>Das &lt;code>Primary Key&lt;/code> Constraint kombiniert prinzipiell die Constraints &lt;code>Unique&lt;/code> und &lt;code>Not Null&lt;/code> zu einem. Gerade für Ids ist
+dieses Constraint praktisch, da in eigentlich jedem Fall eine Id bestehen sollte und sie auch eindeutig sein sollte.
+Hier ein beispiel zum &lt;code>Primary Key&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(personen_id number &lt;span style="color:#66d9ef">PRIMARY&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beispieldaten Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>personen_id&lt;/th>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Hans&lt;/td>
+&lt;td>Peterson&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Peter&lt;/td>
+&lt;td>Fritschi&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Fritz&lt;/td>
+&lt;td>Hansen&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da keine personen_id angegeben wurde.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#66d9ef">null&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Philippe&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Pfister&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da bereits eine Person mit der personen_id 2 besteht.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Ueli&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Mueli&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da keine Person mit der personen_id 4 besteht.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karl&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Karlsen&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="foreign-key">Foreign Key&lt;/h2>
+&lt;p>Das &lt;code>Foreign Key&lt;/code> Constraint stellt sicher, dass der Wert in einer Spalte einer Tabelle auf einen existierenden Wert in
+einer anderen Tabelle verweist. Das bedeutet, dass die Beziehungen zwischen den Tabellen beibehalten werden und
+Datenkonsistenz gewährleistet wird. Ein Fremdschlüssel wird durch das Verknüpfen von Spalten in verschiedenen Tabellen
+erstellt. Dazu wird im CREATE das Keyword &lt;code>REFERENCES&lt;/code> verwendet. Dort wird angegeben, auf welche Spalte der
+Fremdschlüssel verweist. Hier ein Beispiel dazu:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> adresse(id number &lt;span style="color:#66d9ef">PRIMARY&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span>, strasse varchar(&lt;span style="color:#ae81ff">255&lt;/span>), hausnummer number, plz number, ort varchar(&lt;span style="color:#ae81ff">255&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">CREATE&lt;/span> &lt;span style="color:#66d9ef">TABLE&lt;/span> person(id number &lt;span style="color:#66d9ef">PRIMARY&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span>, vorname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), nachname varchar(&lt;span style="color:#ae81ff">255&lt;/span>), &lt;span style="color:#66d9ef">alter&lt;/span> number, adresse_id number
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">FOREIGN&lt;/span> &lt;span style="color:#66d9ef">KEY&lt;/span> &lt;span style="color:#66d9ef">REFERENCES&lt;/span> adresse(id));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;strong>Info:&lt;/strong> Die Benennung des Fremdschlüssels wurde in diesem Beispiel der Einfachheit halber nicht korrekt gemacht.
+Je nach Naming Convention im Projekt muss der Fremdschüssel anders benannt werden. Hier ein Link mit weiteren Infos:
+&lt;a href="https://www.dotnettricks.com/learn/sqlserver/sql-server-naming-conventions-and-standards">Naming Conventions SQL Server&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>Beispiel Daten Person:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>id&lt;/th>
+&lt;th>vorname&lt;/th>
+&lt;th>nachname&lt;/th>
+&lt;th>alter&lt;/th>
+&lt;th>adresse_id&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Christoph&lt;/td>
+&lt;td>Spycher&lt;/td>
+&lt;td>45&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Sepp&lt;/td>
+&lt;td>Blatter&lt;/td>
+&lt;td>87&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Gianni&lt;/td>
+&lt;td>Infantion&lt;/td>
+&lt;td>53&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>Nilo&lt;/td>
+&lt;td>Nashorn&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>3&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Beispiel Daten Adresse:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>id&lt;/th>
+&lt;th>strasse&lt;/th>
+&lt;th>hausnummer&lt;/th>
+&lt;th>plz&lt;/th>
+&lt;th>ort&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Papeiermuehlestrasse&lt;/td>
+&lt;td>71&lt;/td>
+&lt;td>3014&lt;/td>
+&lt;td>Bern&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Seestrasse&lt;/td>
+&lt;td>27&lt;/td>
+&lt;td>8002&lt;/td>
+&lt;td>Zuerich&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>Binningerstrasse&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>3054&lt;/td>
+&lt;td>Basel&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert nicht, da in der Tabelle Adresse keine Adresse mit der Id 27 besteht.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Boris&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Biberratte&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">27&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da die Id 3 in der Tabelle Adresse vergeben ist.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Hans&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Hecht&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Funktioniert, da der Foreign Key auch null sein darf.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">INSERT&lt;/span> &lt;span style="color:#66d9ef">INTO&lt;/span> person &lt;span style="color:#66d9ef">VALUES&lt;/span> (&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Silvia&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Stachelschwein&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#66d9ef">null&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: Datenbank Design</title><link>/docs/99_shared/database/04_datenbank-design/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/database/04_datenbank-design/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du weisst was Normalisierung ist und wieso sie wichtig ist.&lt;/li>
+&lt;li>Du kannst die ersten drei Normalformen in eigenen Worten erklären.&lt;/li>
+&lt;li>Du kennst den Unterschied zwischen den Begriffen ERM und ERD.&lt;/li>
+&lt;li>Du kennst die verschiedenen Beziehungstypen im Bereich der Kardinalität.&lt;/li>
+&lt;/ul>
+&lt;h2 id="normalisierung">Normalisierung&lt;/h2>
+&lt;p>Die Normalisierung in SQL ist ein Prozess, bei dem Datenbanktabellen in bestimmte &lt;strong>Normalformen&lt;/strong> überführt werden, um die Datenintegrität und -konsistenz zu gewährleisten sowie Redundanzen zu minimieren.
+Das Ziel ist es, Daten effizient, konsistent und strukturiert zu speichern, zu verwalten und abzufragen.&lt;/p>
+&lt;p>Was bedeutet das genau? Wir wollen zum Beispiel &lt;strong>doppelte (redundante) Daten&lt;/strong> in der Datenbank vermeiden.
+Das spart einerseits &lt;strong>Speicherplatz&lt;/strong>, stellt aber andererseits auch sicher, das die &lt;strong>Integrität&lt;/strong> gewährleistet ist.
+Was passiert, wenn ich den gleichen User zweimal in einer Datenbank habe, und dann nur einen Eintrag davon bearbeite?
+Dadurch kann es zu Anomalien (Fehler, unerwartetes Verhalten) kommen, die man im Design verhindern kann.&lt;/p>
+&lt;p>Ein Datenbankschema kann in unterschiedlichem Mass gegen Anomalien wie Inkonsistenzen oder Redundanzen geschützt werden.
+Diese Abstufungen werden als Normalformen bezeichnet.
+In den folgenden Abschnitten wirst du die erste, zweite und dritte Normalform kennenlernen.&lt;/p>
+&lt;h3 id="erste-normalform-1nf">Erste Normalform (1NF)&lt;/h3>
+&lt;p>Angenommen, wir haben eine Tabelle mit Kundendaten, die den Namen, die Adresse und die Telefonnummer enthält:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Adresse&lt;/th>
+&lt;th>Telefonnummer&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Hauptstr. 1, 123&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Nebenstr. 5, 987&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Du bekommst den Auftrag, alle Kunde von einer bestimmten Strasse oder einer bestimmten Postleihzahl aufzulisten.
+Jetzt musst du immer die Adresse auslesen und splitten. Das geht einfacher.&lt;/p>
+&lt;p>Die erste Normalform (1NF) ist eine grundlegende Regel in der Datenbankentwicklung.
+Sie stellt sicher, dass eine Tabelle nur atomare (nicht weiter teilbare) Werte enthält und keine wiederholten Gruppen von Attributen aufweist.
+Das Ziel der 1NF ist es, Daten in ihre einfachsten, nicht weiter unterteilbaren Bestandteile zu zerlegen.&lt;/p>
+&lt;p>In der ersten Normalform muss jede Zelle einer Tabelle genau einen einzigen Wert enthalten.
+Mehrwertige Attribute oder Attribute mit wiederholten Gruppen von Werten sind nicht erlaubt.
+Falls mehrere Werte zu einem Attribut gehören, müssen diese in separate Zeilen oder Tabellen ausgelagert werden.&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>Beispiel 1: Adressaufteilung&lt;/strong>&lt;/p>
+&lt;p>Hier nochmal die gleiche Tabelle.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Adresse&lt;/th>
+&lt;th>Telefonnummer&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Hauptstr. 1, 123&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Nebenstr. 5, 987&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Diese Tabelle ist &lt;strong>nicht&lt;/strong> in der ersten Normalform, weil die Adresse nicht in ihre einzelnen Bestandteile zerlegt ist.&lt;/p>
+&lt;p>Nach der Normalisierung in die 1NF sieht die Tabelle so aus:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Strasse&lt;/th>
+&lt;th>Hausnummer&lt;/th>
+&lt;th>PLZ&lt;/th>
+&lt;th>Ort&lt;/th>
+&lt;th>Telefonnummer&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Hauptstr.&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>123&lt;/td>
+&lt;td>Musterort&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Nebenstr.&lt;/td>
+&lt;td>5&lt;/td>
+&lt;td>987&lt;/td>
+&lt;td>Beispielort&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;p>&lt;strong>Beispiel 2: Liste in einer Spalte&lt;/strong>&lt;/p>
+&lt;p>Angenommen, wir speichern die Lieblingsfarben von Kunden in einer Tabelle:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Lieblingsfarben&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Blau, Rot&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Grün, Gelb, Blau&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Du kennst ja Listen aus Java: Eine &lt;code>List&amp;lt;String&amp;gt;&lt;/code> kann mehrere Werte in einer einzigen Variable speichern.
+Doch in relationalen Datenbanken sollten Werte nicht als Listen innerhalb einer Spalte gespeichert werden.
+Was ist, wenn du gerne alle Kunden auflisten möchtest, welche die Lieblingsfarbe Rot haben?
+Nun muss du wieder alle Lieblingsfarben auslesen und splitten, bevor du eine Analyse machen kannst.&lt;/p>
+&lt;p>Stattdessen sollten sie auf mehrere Zeilen oder Tabellen aufgeteilt werden.
+Die Spalte &lt;strong>Lieblingsfarben&lt;/strong> enthält mehrere Werte in einer einzigen Zelle.
+Dies verstösst gegen die 1NF, da die Werte nicht atomar sind.&lt;/p>
+&lt;p>&lt;strong>Lösung:&lt;/strong> Wir normalisieren die Tabelle, indem wir jede Lieblingsfarbe in eine eigene Zeile auslagern:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Lieblingsfarbe&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Blau&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Rot&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Grün&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Gelb&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Blau&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Nun entspricht die Tabelle der ersten Normalform (1NF), da jede Zelle genau &lt;strong>einen einzigen Wert&lt;/strong> enthält.
+Jetzt kannst du mit einem simplen &lt;code>SELECT&lt;/code> und &lt;code>WHERE&lt;/code> alle Benutzer auflisten, welche eine bestimmte Lieblingsfarbe haben.&lt;/p>
+&lt;p>&lt;strong>Aber&lt;/strong>: Diese Tabelle entspricht noch nicht der zweiten Normalform (2NF). Dazu gleich mehr.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Fazit&lt;/strong>&lt;/p>
+&lt;p>Die erste Normalform (1NF) sorgt dafür, dass alle Daten &lt;strong>atomar&lt;/strong> sind, also nicht weiter unterteilt werden können, und dass keine wiederholten Gruppen von Attributen existieren.
+Dies verbessert die Datenstruktur, minimiert Redundanzen und erhöht die Datenintegrität.
+Zudem wird das Abfragen mit SQL vereinfacht.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="zweite-normalform-2nf">Zweite Normalform (2NF)&lt;/h3>
+&lt;p>Die zweite Normalform (2NF) stellt sicher, dass eine Tabelle keine &lt;strong>funktionalen Abhängigkeiten von einem Teil eines Primärschlüssels&lt;/strong> enthält.
+Das bedeutet, dass alle nicht-schlüsselbezogenen Attribute von einem &lt;strong>vollständigen Primärschlüssel&lt;/strong> abhängig sein müssen.
+Dadurch wird verhindert, dass in einer Tabelle Daten wiederholt gespeichert werden, die nicht direkt zur eigentlichen Entität gehören.&lt;/p>
+&lt;p>Eine Tabelle ist in der 2NF, wenn:&lt;/p>
+&lt;ol>
+&lt;li>Sie bereits in der &lt;strong>1NF&lt;/strong> ist (alle Attribute enthalten atomare Werte und es gibt keine Wiederholungen von Gruppen).&lt;/li>
+&lt;li>Alle nicht-schlüsselbezogenen Attribute vollständig vom gesamten Primärschlüssel abhängen und nicht nur von einem Teil davon.&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;p>&lt;strong>Beispiel 1: Bestellungen in einer Tabelle (Nicht in 2NF)&lt;/strong>&lt;/p>
+&lt;p>Angenommen, wir haben eine Tabelle mit Kundendaten, die den Namen und die Telefonnummer enthält.
+Zusätzlich speichern wir für jeden Kunden die bestellten Produkte und die jeweilige Menge in derselben Tabelle:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Telefonnummer&lt;/th>
+&lt;th>Produkt&lt;/th>
+&lt;th>Menge&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;td>Schuhe&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;td>Hemd&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;td>Hose&lt;/td>
+&lt;td>3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;td>Jacke&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Problem:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Die &lt;strong>Kundennummer&lt;/strong> ist der Primärschlüssel, aber die &lt;strong>Kundenname&lt;/strong> und &lt;strong>Telefonnummer&lt;/strong> hängen &lt;strong>nicht von Produkt oder Menge ab&lt;/strong>. Sie sind ausschliesslich von der Kundennummer abhängig.&lt;/li>
+&lt;li>Wenn ein Kunde mehrere Produkte bestellt, werden seine Daten &lt;strong>mehrfach gespeichert&lt;/strong> → &lt;strong>Redundanz&lt;/strong>.&lt;/li>
+&lt;li>Änderungen an Kundendaten müssen an mehreren Stellen vorgenommen werden → &lt;strong>Anomalien&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Lösung:&lt;/strong>
+Um die 2NF zu erreichen, müssen wir die Daten in &lt;strong>separate Tabellen&lt;/strong> aufteilen:&lt;/p>
+&lt;p>&lt;strong>Kundentabelle:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Telefonnummer&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Bestellungstabelle:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Bestellnummer&lt;/th>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Produkt&lt;/th>
+&lt;th>Menge&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Schuhe&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Hemd&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Hose&lt;/td>
+&lt;td>3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Jacke&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Jetzt sind die Kundendaten in einer separaten Tabelle gespeichert und müssen &lt;strong>nicht mehr für jede Bestellung wiederholt werden&lt;/strong>.
+Die Bestellungen sind über die &lt;strong>Kundennummer&lt;/strong> mit den Kundendaten verknüpft.&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>Beispiel 2: Lieblingsfarben aus der 1NF (Nicht in 2NF)&lt;/strong>&lt;/p>
+&lt;p>Im vorherigen Abschnitt zur 1NF hatten wir eine Tabelle mit Lieblingsfarben:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;th>Lieblingsfarbe&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Blau&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>Rot&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Grün&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Gelb&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>Blau&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h5 id="problem">Problem:&lt;/h5>
+&lt;ul>
+&lt;li>&lt;strong>Kundenname&lt;/strong> hängt nur von der &lt;strong>Kundennummer&lt;/strong> ab und hat &lt;strong>keine direkte Verbindung zu Farben&lt;/strong>.&lt;/li>
+&lt;li>Wenn ein Kunde mehrere Farben bevorzugt, wird der Name mehrfach gespeichert → &lt;strong>Redundanz&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;h5 id="lösung">Lösung:&lt;/h5>
+&lt;p>Wir teilen die Tabelle in &lt;strong>Kundendaten&lt;/strong> und &lt;strong>Lieblingsfarben&lt;/strong> auf:&lt;/p>
+&lt;p>&lt;strong>Kundentabelle:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Kundenname&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Lieblingsfarben-Tabelle:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>KundenfarbeID&lt;/th>
+&lt;th>Kundennummer&lt;/th>
+&lt;th>Lieblingsfarbe&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Blau&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>Rot&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Grün&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Gelb&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>Blau&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Nun entspricht die Datenstruktur der &lt;strong>2NF&lt;/strong>, da sich die &lt;strong>Lieblingsfarben&lt;/strong> und &lt;strong>Kunden&lt;/strong> in separaten Tabellen befinden und alle Attribute &lt;strong>vollständig von ihrem jeweiligen Schlüssel abhängig sind&lt;/strong>.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Fazit&lt;/strong>&lt;/p>
+&lt;p>Die zweite Normalform (2NF) verbessert die Struktur der Datenbank, indem sie sicherstellt, dass &lt;strong>alle nicht-schlüsselbezogenen Attribute vollständig vom gesamten Primärschlüssel abhängen&lt;/strong>.
+Dies reduziert &lt;strong>Redundanzen&lt;/strong>, vermeidet &lt;strong>Änderungsanomalien&lt;/strong> und erleichtert die Datenpflege.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="dritte-normalform-3nf">Dritte Normalform (3NF)&lt;/h3>
+&lt;p>Die dritte Normalform (3NF) baut auf der zweiten Normalform (2NF) auf und stellt eine weitere Anforderung an die Strukturierung der Daten.&lt;/p>
+&lt;p>Das Ziel der 3NF ist es sicherzustellen, dass &lt;strong>keine funktionalen Abhängigkeiten zwischen Nicht-Schlüsselattributen bestehen&lt;/strong>.
+Das bedeutet, dass alle Nicht-Schlüsselattribute &lt;strong>ausschliesslich vom Primärschlüssel&lt;/strong> abhängig sein müssen und nicht von anderen Nicht-Schlüsselattributen.
+Also: Alle Nicht-Schlüsselattribute hängen nur von dem PK ab und nicht untereinander. Nicht-Schlüsselattribute dürfen keinen Einfluss auf andere Nicht-Schlüsselattribute haben.&lt;/p>
+&lt;p>Eine Tabelle ist in der 3NF, wenn:&lt;/p>
+&lt;ol>
+&lt;li>Sie bereits in der &lt;strong>2NF&lt;/strong> ist.&lt;/li>
+&lt;li>&lt;strong>Jedes Nicht-Schlüsselattribut vollständig vom Primärschlüssel abhängt&lt;/strong> (keine Abhängigkeiten zwischen Nicht-Schlüsselattributen bestehen).&lt;/li>
+&lt;/ol>
+&lt;p>Um die 3NF zu erreichen, müssen die Daten weiter aufgeteilt und in separate Tabellen organisiert werden.
+Jede Tabelle sollte dabei einen spezifischen Informationsaspekt abbilden.
+Die Tabellen sind über &lt;strong>Fremdschlüssel&lt;/strong> miteinander verknüpft.&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>Beispiel 1: Online-Shop (Nicht in 3NF)&lt;/strong>&lt;/p>
+&lt;p>Wir haben eine Ausgangstabelle, die alle Informationen eines Online-Shops speichert.
+Diese ist jedoch noch nicht normalisiert:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundenummer&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Telefonnummer&lt;/th>
+&lt;th>ProduktId&lt;/th>
+&lt;th>Produktname&lt;/th>
+&lt;th>Bestellmenge&lt;/th>
+&lt;th>Gesamtpreis&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;td>101&lt;/td>
+&lt;td>Schuhe&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>50.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;td>102&lt;/td>
+&lt;td>Hemd&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>30.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;td>103&lt;/td>
+&lt;td>Hose&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>80.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;td>104&lt;/td>
+&lt;td>Jacke&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>75.00&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h5 id="probleme">Probleme:&lt;/h5>
+&lt;ul>
+&lt;li>&lt;strong>Produktname und Gesamtpreis sind nicht direkt vom Primärschlüssel abhängig.&lt;/strong>&lt;/li>
+&lt;li>Der &lt;strong>Gesamtpreis kann aus der Bestellmenge und dem Produktpreis berechnet werden&lt;/strong>, weshalb er nicht direkt gespeichert werden sollte.&lt;/li>
+&lt;li>&lt;strong>Produktname hängt von der Produkt-ID ab&lt;/strong>, nicht von der Bestellnummer → Diese Daten sollten ausgelagert werden.&lt;/li>
+&lt;/ul>
+&lt;h5 id="lösung-1">Lösung:&lt;/h5>
+&lt;p>Um die &lt;strong>2NF&lt;/strong> zu erreichen, trennen wir die Daten in drei Tabellen:&lt;/p>
+&lt;p>&lt;strong>Kundentabelle:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundenummer&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Telefonnummer&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>Max&lt;/td>
+&lt;td>123456789&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>Lisa&lt;/td>
+&lt;td>987654321&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Produkttabelle:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>ProduktId&lt;/th>
+&lt;th>Produktname&lt;/th>
+&lt;th>Produktpreis&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>101&lt;/td>
+&lt;td>Schuhe&lt;/td>
+&lt;td>25.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>102&lt;/td>
+&lt;td>Hemd&lt;/td>
+&lt;td>30.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>103&lt;/td>
+&lt;td>Hose&lt;/td>
+&lt;td>20.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>104&lt;/td>
+&lt;td>Jacke&lt;/td>
+&lt;td>25.00&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Bestellungstabelle (2NF erreicht, aber noch nicht 3NF):&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundenummer&lt;/th>
+&lt;th>ProduktId&lt;/th>
+&lt;th>Bestellmenge&lt;/th>
+&lt;th>Gesamtpreis&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>101&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>50.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>102&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>30.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>103&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>80.00&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>104&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>75.00&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Nach dieser Aufteilung ist die zweite Normalform erreicht, aber &lt;strong>noch nicht die dritte&lt;/strong>, da der &lt;strong>Gesamtpreis von Produktpreis und Bestellmenge abhängt&lt;/strong>, nicht vom Primärschlüssel.&lt;/p>
+&lt;p>&lt;strong>Um die 3NF zu erreichen, müssen wir den Gesamtpreis entfernen&lt;/strong>, da dieser berechnet werden kann:&lt;/p>
+&lt;p>&lt;strong>Bestellungstabelle (Jetzt in 3NF):&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Kundenummer&lt;/th>
+&lt;th>ProduktId&lt;/th>
+&lt;th>Bestellmenge&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>101&lt;/td>
+&lt;td>2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>102&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>103&lt;/td>
+&lt;td>4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>104&lt;/td>
+&lt;td>3&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Nun entspricht die Datenbank der dritten Normalform (3NF), da &lt;strong>alle Nicht-Schlüsselattribute nur vom Primärschlüssel abhängig sind&lt;/strong>.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Fazit&lt;/strong>&lt;/p>
+&lt;p>Die dritte Normalform (3NF) stellt sicher, dass &lt;strong>alle Nicht-Schlüsselattribute ausschliesslich vom Primärschlüssel abhängig sind und keine funktionalen Abhängigkeiten zwischen Nicht-Schlüsselattributen bestehen&lt;/strong>.
+Dadurch werden:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Datenredundanzen weiter reduziert&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Änderungsanomalien vermieden&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Datenbankabfragen effizienter&lt;/strong>.&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;hr>
+&lt;p>Für den Einstieg reichen die ersten drei Normalformen meist aus.
+Höhere Normalformen wie die &lt;strong>Boyce-Codd-Normalform (BCNF)&lt;/strong> oder die &lt;strong>vierte Normalform (4NF)&lt;/strong> sind komplexer und werden in speziellen Anwendungsfällen eingesetzt.&lt;/p>
+&lt;h2 id="datenbankdesign">Datenbankdesign&lt;/h2>
+&lt;p>In diesem Abschnitt betrachten wir die beiden Begriffe &lt;strong>ERM (Entity-Relationship-Modell)&lt;/strong> und &lt;strong>ERD (Entity-Relationship-Diagramm)&lt;/strong>.
+Es ist wichtig, den Unterschied zwischen den beiden zu verstehen.&lt;/p>
+&lt;h3 id="entity-relationship-modell-erm">Entity-Relationship-Modell (ERM)&lt;/h3>
+&lt;p>Ein &lt;strong>ERM&lt;/strong> ist eine Modellierungstechnik, die verwendet wird, um die Beziehungen zwischen verschiedenen &lt;strong>Entitäten&lt;/strong> in einem System zu beschreiben.
+Dabei wird das Datenbanksystem in &lt;strong>Textform&lt;/strong> dokumentiert, bevor es visuell dargestellt wird.
+Ziel ist es, die Datenbank &lt;strong>so einfach und klar wie möglich&lt;/strong> zu beschreiben, um später ein &lt;strong>ERD&lt;/strong> daraus abzuleiten.&lt;/p>
+&lt;p>Ein ERM besteht aus:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Entitäten (Tabellen)&lt;/strong>: Die zentralen Objekte des Systems, die Daten speichern.&lt;/li>
+&lt;li>&lt;strong>Beziehungen (Relations)&lt;/strong>: Die Verknüpfungen zwischen den Entitäten.&lt;/li>
+&lt;/ul>
+&lt;h4 id="beispiel-eines-einfachen-erms">Beispiel eines einfachen ERMs:&lt;/h4>
+&lt;p>&lt;strong>Entitäten:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Entität-Name&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Student&lt;/td>
+&lt;td>Jeder Student hat eine eindeutige ID, einen Namen, ein Geburtsdatum und Kontaktdaten.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Kurs&lt;/td>
+&lt;td>Jeder Kurs hat eine eindeutige ID, einen Titel, eine Anzahl von Kreditpunkten und einen zugeordneten Dozenten.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Beziehungen:&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Beziehungs-Name&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Einschreibung&lt;/td>
+&lt;td>Diese Beziehung zeigt die Verbindung zwischen Studenten und Kursen an. Jede Einschreibung hat eine eindeutige ID und ist mit einem bestimmten Studenten und einem bestimmten Kurs verknüpft.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="entity-relationship-diagramm-erd">Entity-Relationship-Diagramm (ERD)&lt;/h3>
+&lt;p>Ein &lt;strong>ERD&lt;/strong> ist eine grafische Darstellung eines &lt;strong>ERM&lt;/strong>, die die Beziehungen zwischen Entitäten und deren Attributen visualisiert.
+Es stellt die &lt;strong>Struktur und das Verhalten eines Systems&lt;/strong> formal dar.&lt;/p>
+&lt;h4 id="hauptbestandteile-eines-erd">Hauptbestandteile eines ERD:&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>Entitäten&lt;/strong> (Tabellen), dargestellt als &lt;strong>Rechtecke&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Attribute&lt;/strong>, dargestellt als &lt;strong>Ovale&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Beziehungen&lt;/strong>, dargestellt als &lt;strong>Rauten&lt;/strong> mit Verbindungslinien.&lt;/li>
+&lt;li>&lt;strong>Kardinalitäten&lt;/strong>, die angeben, wie viele Entitäten miteinander verknüpft sind (z. B. 1:1, 1:n, m:n).&lt;/li>
+&lt;/ul>
+&lt;p>Durch ein ERD wird &lt;strong>klar definiert, welche Daten in der Datenbank benötigt werden&lt;/strong> und wie sie strukturiert sind.&lt;/p>
+&lt;hr>
+&lt;h3 id="erd-erstellung-mit-drawio">ERD-Erstellung mit draw.io&lt;/h3>
+&lt;p>Es gibt viele verschiedene Zeichenprogramme zur Erstellung von ERDs.
+Eine besonders empfehlenswerte Web-Applikation ist &lt;strong>&lt;a href="https://draw.io">draw.io&lt;/a>&lt;/strong>, da:&lt;/p>
+&lt;ul>
+&lt;li>Kein Download erforderlich ist.&lt;/li>
+&lt;li>Diagramme online gespeichert und geteilt werden können.&lt;/li>
+&lt;li>Es eine intuitive Benutzeroberfläche für ERD-Erstellungen bietet.&lt;/li>
+&lt;/ul>
+&lt;p>Das spätere ERD in diesem Kurs wird ebenfalls mit &lt;strong>draw.io&lt;/strong> erstellt.&lt;/p>
+&lt;p>Ein besonders wichtiger Aspekt beim Erstellen eines ERD sind die &lt;strong>Kardinalitäten&lt;/strong>.
+Diese zeigen an, wie viele Entitäten miteinander in Beziehung stehen.&lt;/p>
+&lt;p>Lassen uns diese nun genauer betrachten.&lt;/p>
+&lt;h3 id="kardinalität">Kardinalität&lt;/h3>
+&lt;p>Die &lt;strong>Kardinalität&lt;/strong> in einem &lt;strong>Entity-Relationship-Modell (ERM)&lt;/strong> beschreibt die Beziehung zwischen zwei Entitäten und gibt an, wie viele Instanzen einer Entität mit einer oder mehreren Instanzen einer anderen Entität in Verbindung stehen können.&lt;/p>
+&lt;p>Es gibt verschiedene Methoden, um die Kardinalität einer Beziehung darzustellen.
+In diesem Kurs verwenden wir hauptsächlich die &lt;strong>&lt;a href="https://de.wikipedia.org/wiki/Chen-Notation">Chen-Notation&lt;/a>&lt;/strong>.
+Alternativ kann auch die &lt;strong>&lt;a href="https://de.wikipedia.org/wiki/Martin-Notation">Martin-Notation&lt;/a>&lt;/strong> genutzt werden.&lt;/p>
+&lt;h4 id="kardinalitätsarten-in-der-chen-notation">Kardinalitätsarten in der Chen-Notation:&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Notation&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>1:1 (1 zu 1)&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge steht mit genau einer Entität der zweiten Entitätsmenge in Beziehung – und umgekehrt.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>1:c (1 zu [0 oder 1])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge kann mit höchstens einer Entität der zweiten Entitätsmenge in Beziehung stehen. Jede Entität der zweiten Entitätsmenge steht jedoch mit genau einer Entität der ersten Entitätsmenge in Beziehung.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>1:m (1 zu [mindestens 1])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge steht mit mindestens einer Entität der zweiten Entitätsmenge in Beziehung. Jede Entität der zweiten Entitätsmenge steht mit genau einer Entität der ersten Entitätsmenge in Beziehung.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>1:mc (1 zu [beliebig vielen])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge kann mit beliebig vielen Entitäten der zweiten Entitätsmenge in Beziehung stehen. Jede Entität der zweiten Entitätsmenge steht jedoch mit genau einer Entität der ersten Entitätsmenge in Beziehung.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>c:c ([0 oder 1] zu [0 oder 1])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge kann mit höchstens einer Entität der zweiten Entitätsmenge in Beziehung stehen – und umgekehrt.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>c:m ([0 oder 1] zu [mindestens 1])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge steht mit mindestens einer Entität der zweiten Entitätsmenge in Beziehung. Jede Entität der zweiten Entitätsmenge kann jedoch mit höchstens einer Entität der ersten Entitätsmenge in Beziehung stehen.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>c:mc ([0 oder 1] zu [beliebig vielen])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge kann mit beliebig vielen Entitäten der zweiten Entitätsmenge in Beziehung stehen. Jede Entität der zweiten Entitätsmenge kann jedoch mit höchstens einer Entität der ersten Entitätsmenge in Beziehung stehen.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>m:m ([mindestens 1] zu [mindestens 1])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge steht mit mindestens einer Entität der zweiten Entitätsmenge in Beziehung – und umgekehrt.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>m:mc ([mindestens 1] zu [beliebig vielen])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge kann mit beliebig vielen Entitäten der zweiten Entitätsmenge in Beziehung stehen. Jede Entität der zweiten Entitätsmenge steht mit mindestens einer Entität der ersten Entitätsmenge in Beziehung.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>mc:mc ([beliebig viele] zu [beliebig vielen])&lt;/strong>&lt;/td>
+&lt;td>Jede Entität der ersten Entitätsmenge kann mit beliebig vielen Entitäten der zweiten Entitätsmenge in Beziehung stehen – und umgekehrt.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="beispiel-kardinalitäten-in-einem-erd">Beispiel: Kardinalitäten in einem ERD&lt;/h3>
+&lt;p>Ein klassisches Beispiel für Kardinalitäten ist eine &lt;strong>Buchdatenbank&lt;/strong>, die &lt;strong>Bücher&lt;/strong> und &lt;strong>Autoren&lt;/strong> verwaltet.&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/database/04_datenbank-design/images/buch-erd.png" alt="Buch-ERD">&lt;/p>
+&lt;p>Hier sind einige typische Beziehungen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Ein Buch kann von mehreren Autoren geschrieben werden.&lt;/strong> (m:m-Beziehung)&lt;/li>
+&lt;li>&lt;strong>Ein Autor kann mehrere Bücher geschrieben haben.&lt;/strong> (m:m-Beziehung)&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Für die Kardinalitäten in diesem Beispiel gäbe es auch weitere Möglichkeiten.&lt;/p>
+&lt;p>Was ist, wenn ein Autor kein Buch geschrieben hat? Die Beziehung müsste m:mc sein, aber kann jemand ein Autor sein, wenn er kein Buch hat?&lt;/p>
+&lt;p>Das hängt ganz von den Anforderungen ab, vielleicht möchte man bestimmte Autoren erfassen, aber ihre Bücher nicht.&lt;/p>
+&lt;p>Beim Buch gilt natürlich das genau gleich. Was ist, wenn wir ein Buch haben, für das der Autor unbekannt ist oder nicht in der DB?
+Du als Softwareentwickler musst entscheiden, ob diese Fälle in deiner Applikation abgedeckt werden.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="wichtiger-hinweis-zu-mn-beziehungen">Wichtiger Hinweis zu m:n-Beziehungen:&lt;/h3>
+&lt;p>&lt;strong>Viele-zu-Viele-Beziehungen (m:m, mc:m, &amp;hellip;) benötigen normalerweise eine Zwischentabelle&lt;/strong>, da ansonsten keine eindeutige Verbindung zwischen den Tabellen hergestellt werden kann. Diese Zwischentabelle enthält die Fremdschlüssel der beiden verknüpften Tabellen und kann zusätzlich eigene Attribute wie das Erstellungsdatum der Beziehung enthalten.&lt;/p>
+&lt;h4 id="beispiel-einer-zwischentabelle-für-die-buchdatenbank">Beispiel einer Zwischentabelle für die Buchdatenbank:&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>BuchID&lt;/th>
+&lt;th>AutorID&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>101&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>102&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>101&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>103&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Diese zusätzliche Tabelle ermöglicht eine &lt;strong>eindeutige Zuordnung&lt;/strong> zwischen Büchern und Autoren.&lt;/p>
+&lt;hr>
+&lt;h3 id="fazit">Fazit&lt;/h3>
+&lt;p>Die Kardinalität ist ein wichtiger Bestandteil des &lt;strong>Entity-Relationship-Modells (ERM)&lt;/strong> und beschreibt, wie Entitäten miteinander verknüpft sind. Das Verständnis der Kardinalitäten hilft, eine &lt;strong>optimale Datenbankstruktur&lt;/strong> zu entwickeln, die &lt;strong>Redundanzen vermeidet&lt;/strong> und &lt;strong>Datenkonsistenz sicherstellt&lt;/strong>.&lt;/p>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/99_shared/database/">Aufgaben zu Datenbanken&lt;/a> in den Labs.&lt;/p></description></item></channel></rss>

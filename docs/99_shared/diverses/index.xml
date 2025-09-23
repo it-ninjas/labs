@@ -1,0 +1,442 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – Nützliche Tips, Tricks und Anleitungen</title><link>/docs/99_shared/diverses/</link><description>Recent content in Nützliche Tips, Tricks und Anleitungen on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/docs/99_shared/diverses/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Google API Key</title><link>/docs/99_shared/diverses/google-api-key/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/diverses/google-api-key/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Du kannst ein Google-Konto erstellen.&lt;/li>
+&lt;li>Du kannst dich im Google Developer Portal anmelden.&lt;/li>
+&lt;li>Du kannst einen API Key für die Custom Search API generieren.&lt;/li>
+&lt;li>Du weißt, wie du den API Key sicher speicherst.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="10" data-üben="">⏱️ Geschätzte Lesezeit: 10 Minuten | Umsetzen: 15 Minuten&lt;/span>
+&lt;hr>
+&lt;h2 id="google-api-key-erstellen">Google API Key erstellen&lt;/h2>
+&lt;p>Die folgenden Schritte leiten dich durch den Prozess um einen API Key für die Google APIs zu erhalten.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Behandle den Key vertraulich. Er sollte nicht in einem Git-Repository gespeichert werden. &lt;a href="../../ide/intellij/05_secrets/">Hier&lt;/a> erfährst du, wie du es in unseren Übungen machen kannst.
+&lt;/div>
+&lt;/div>
+&lt;ol>
+&lt;li>
+&lt;p>Öffne &lt;a href="https://developers.google.com/?hl=de">https://developers.google.com/?hl=de&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Melde Dich oben rechts an
+&lt;img src="/docs/99_shared/diverses/google-api-key/images/konto.png" alt="Anmelden">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Erstelle ein neues Konto&lt;/p>
+&lt;p>Falls du bereits ein Konto hast, welches Du benutzen willst, kannst Du die nachfolgenden Schritte überspringen&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/anmelden.png" alt="Konto erstellen">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/fuerArbeit.png" alt="Konto erstellen für die Arbeit">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/kostenlos.png" alt="Gmail-Adresse anfordern">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/name.png" alt="Vorname">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/angaben.png" alt="Angaben">&lt;/p>
+&lt;p>Du kannst dir eine neue Email Adresse erstellen (nicht empfohlen)&amp;hellip;&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/neueEmail.png" alt="Neue Email">&lt;/p>
+&lt;p>oder eine bestehende Email Adresse nehmen (empfohlen)&lt;/p>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="flex">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="
+display: flex;
+align-items: flex-start;
+border: 2px solid #002b36;
+border-radius: 16px;
+padding: 1rem;
+background-color: #fdfdfd;
+">
+&lt;div style="flex-shrink: 0; margin-right: 1rem;">
+&lt;img src="/images/sbb-logo.png" alt="SBB Logo" style="width: 60px; height: 60px; border-radius: 12px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1;">
+Nimm deine Email Adresse von SBB (&lt;a href="mailto:vorname.name@sbb.ch">vorname.name@sbb.ch&lt;/a>)
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/bestehendeEmail.png" alt="Bestehende Email">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/emailCode.png" alt="Code eingeben">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/newPassword.png" alt="Passwort">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/telefonNummer.png" alt="Telefon Nummer">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/pruefen.png" alt="Prüfen">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/einstellungen1.png" alt="Einstellungen">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/einstellungen2.png" alt="EULA">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/einstellungen3.png" alt="Bestätigen">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/einstellungen4.png" alt="Datenschutz">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/einstellungen5.png" alt="Jetzt nicht">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Auf &lt;a href="https://developers.google.com/?hl=de">https://developers.google.com/?hl=de&lt;/a> Developers Program als Student&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/developerProgram.png" alt="Developer Program">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/developerProgramRegister.png" alt="Student">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/upgradeToPremium.png" alt="Kein Premium">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>API Key anfordern&lt;/p>
+&lt;p>&lt;a href="https://developers.google.com/custom-search/v1/overview?hl=de">https://developers.google.com/custom-search/v1/overview?hl=de&lt;/a>&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/requestApiKey.png" alt="Api-Key anfordern">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/enableCustomSearchApi.png" alt="Enable Custom Search API">&lt;/p>
+&lt;p>&lt;img src="/docs/99_shared/diverses/google-api-key/images/showKey.png" alt="Show Key">&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #fef3c7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-warning.png" alt="it-ninja warning" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+Den Key kopieren und sicher ablegen. Nicht ins Git-Repository. Vertraulich behandeln! &lt;a href="../../ide/intellij/05_secrets/">Hier&lt;/a> erfährst du, wie du es in unseren Übungen machen kannst.
+&lt;/div>
+&lt;/div>
+&lt;/li>
+&lt;/ol></description></item><item><title>Docs: Reguläre Ausdrücke</title><link>/docs/99_shared/diverses/regex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/diverses/regex/</guid><description>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Ich weiss, was ein regulärer Ausdruck (RegEx) ist und wofür er verwendet wird.&lt;/li>
+&lt;li>Ich kenne die wichtigsten RegEx-Symbole und deren Bedeutung.&lt;/li>
+&lt;li>Ich kann einfache RegEx-Ausdrücke lesen und verstehen.&lt;/li>
+&lt;li>Ich weiss, wo RegEx typischerweise eingesetzt werden.&lt;/li>
+&lt;li>Ich kenne grundlegende Sicherheits- und Performance-Aspekte bei RegEx.&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;hr>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>&lt;strong>Reguläre Ausdrücke&lt;/strong> (englisch: &lt;em>Regular Expressions&lt;/em>, kurz &lt;strong>RegEx&lt;/strong>) sind eine formale Sprache, um
+&lt;strong>Muster in Texten&lt;/strong> zu beschreiben. Mit ihnen kannst du prüfen, ob ein Text einem bestimmten Muster entspricht, oder
+gezielt Textteile daraus extrahieren.&lt;/p>
+&lt;p>&lt;strong>Typische Einsatzgebiete:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Validierung von Benutzereingaben (z. B. E-Mail, Telefonnummer, Postleitzahl)&lt;/li>
+&lt;li>Durchsuchen und Ersetzen von Texten&lt;/li>
+&lt;li>Analyse und Extraktion von Daten aus Dateien oder Log-Einträgen&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="grundsyntax-cheat-tabelle">Grundsyntax (Cheat-Tabelle)&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Zeichen&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;th>Beispiel&lt;/th>
+&lt;th>Trifft z. B.&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>.&lt;/code>&lt;/td>
+&lt;td>beliebiges Zeichen&lt;/td>
+&lt;td>&lt;code>a.b&lt;/code>&lt;/td>
+&lt;td>&lt;code>a1b&lt;/code>, &lt;code>a_b&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>*&lt;/code>&lt;/td>
+&lt;td>0 oder mehr Wiederholungen&lt;/td>
+&lt;td>&lt;code>ab*&lt;/code>&lt;/td>
+&lt;td>&lt;code>a&lt;/code>, &lt;code>abb&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>+&lt;/code>&lt;/td>
+&lt;td>1 oder mehr Wiederholungen&lt;/td>
+&lt;td>&lt;code>ab+&lt;/code>&lt;/td>
+&lt;td>&lt;code>ab&lt;/code>, &lt;code>abb&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>?&lt;/code>&lt;/td>
+&lt;td>0 oder 1 Wiederholung (optional)&lt;/td>
+&lt;td>&lt;code>ab?&lt;/code>&lt;/td>
+&lt;td>&lt;code>a&lt;/code>, &lt;code>ab&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>{3}&lt;/code>&lt;/td>
+&lt;td>genau 3 Wiederholungen&lt;/td>
+&lt;td>&lt;code>X{3}&lt;/code>&lt;/td>
+&lt;td>&lt;code>XXX&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>{3,5}&lt;/code>&lt;/td>
+&lt;td>3 bis 5 Wiederholungen&lt;/td>
+&lt;td>&lt;code>X{3,5}&lt;/code>&lt;/td>
+&lt;td>&lt;code>XXX…XXXXX&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>[]&lt;/code>&lt;/td>
+&lt;td>Zeichenauswahl&lt;/td>
+&lt;td>&lt;code>[abc]&lt;/code>&lt;/td>
+&lt;td>&lt;code>a&lt;/code> oder &lt;code>b&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>[^...]&lt;/code>&lt;/td>
+&lt;td>Negation in Klasse&lt;/td>
+&lt;td>&lt;code>[^abc]&lt;/code>&lt;/td>
+&lt;td>&lt;code>x&lt;/code>, &lt;code>1&lt;/code> …&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>()&lt;/code>&lt;/td>
+&lt;td>Gruppierung / Capturing&lt;/td>
+&lt;td>&lt;code>(abc)+&lt;/code>&lt;/td>
+&lt;td>&lt;code>abcabc&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>(?:...)&lt;/code>&lt;/td>
+&lt;td>Gruppe &lt;strong>ohne&lt;/strong> Capturing&lt;/td>
+&lt;td>&lt;code>(?:ab){2}&lt;/code>&lt;/td>
+&lt;td>&lt;code>abab&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>|&lt;/code>&lt;/td>
+&lt;td>Oder (Alternation)&lt;/td>
+&lt;td>&lt;code>rot|blau&lt;/code>&lt;/td>
+&lt;td>&lt;code>rot&lt;/code>/&lt;code>blau&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\d&lt;/code>&lt;/td>
+&lt;td>Ziffer&lt;/td>
+&lt;td>&lt;code>\d+&lt;/code>&lt;/td>
+&lt;td>&lt;code>123&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\D&lt;/code>&lt;/td>
+&lt;td>&lt;strong>keine&lt;/strong> Ziffer&lt;/td>
+&lt;td>&lt;code>\D+&lt;/code>&lt;/td>
+&lt;td>&lt;code>abc_&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\w&lt;/code>&lt;/td>
+&lt;td>Wortzeichen (&lt;code>A-Za-z0-9_&lt;/code>)&lt;/td>
+&lt;td>&lt;code>\w+&lt;/code>&lt;/td>
+&lt;td>&lt;code>Test_1&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\W&lt;/code>&lt;/td>
+&lt;td>&lt;strong>kein&lt;/strong> Wortzeichen&lt;/td>
+&lt;td>&lt;code>\W+&lt;/code>&lt;/td>
+&lt;td>&lt;code>- !&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\s&lt;/code>&lt;/td>
+&lt;td>Whitespace&lt;/td>
+&lt;td>&lt;code>\s+&lt;/code>&lt;/td>
+&lt;td>&lt;code>␠&lt;/code>, &lt;code>\t&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>\S&lt;/code>&lt;/td>
+&lt;td>&lt;strong>kein&lt;/strong> Whitespace&lt;/td>
+&lt;td>&lt;code>\S+&lt;/code>&lt;/td>
+&lt;td>&lt;code>abc_1&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>&lt;strong>Greedy vs. Lazy:&lt;/strong> &lt;code>*?&lt;/code>, &lt;code>+?&lt;/code>, &lt;code>{m,n}?&lt;/code> sind &lt;strong>faule&lt;/strong> Varianten → sie matchen &lt;strong>so wenig wie möglich&lt;/strong>.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="anker--wortgrenzen">Anker &amp;amp; Wortgrenzen&lt;/h2>
+&lt;h3 id="zeilen-vs-ganze-eingabe">Zeilen vs. ganze Eingabe&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>^&lt;/code> = Anfang &lt;strong>einer Zeile&lt;/strong> (oder Stringanfang, wenn &lt;em>multiline&lt;/em> aus)&lt;/li>
+&lt;li>&lt;code>$&lt;/code> = Ende &lt;strong>einer Zeile&lt;/strong> (oder Stringende, wenn &lt;em>multiline&lt;/em> aus)&lt;/li>
+&lt;li>&lt;code>\A&lt;/code> = &lt;strong>Beginn der gesamten Eingabe&lt;/strong> (unabhängig von &lt;em>multiline&lt;/em>)&lt;/li>
+&lt;li>&lt;code>\z&lt;/code> = &lt;strong>Ende der gesamten Eingabe&lt;/strong> (wirklich letztes Zeichen)
+&lt;em>(Oft existiert auch &lt;code>\Z&lt;/code> = Ende oder direkt vor letztem Zeilenumbruch.)&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Faustregel:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Ganze Eingabe validieren?&lt;/strong> → &lt;code>\A … \z&lt;/code>.&lt;/li>
+&lt;li>&lt;strong>Zeilenweise prüfen (Logs, CSV)?&lt;/strong> → &lt;code>^ … $&lt;/code> mit &lt;em>multiline&lt;/em>-Flag.&lt;/li>
+&lt;/ul>
+&lt;h3 id="wortgrenzen">Wortgrenzen&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>\b&lt;/code> = &lt;strong>Wortgrenze&lt;/strong> (Wechsel zwischen &lt;code>\w&lt;/code> und Nicht-&lt;code>\w&lt;/code>) – &lt;em>zero-width&lt;/em>.
+Beispiel: &lt;code>\bERROR\b&lt;/code> findet „ERROR“ als &lt;strong>eigenständiges Wort&lt;/strong>.&lt;/li>
+&lt;li>&lt;code>\B&lt;/code> = &lt;strong>keine&lt;/strong> Wortgrenze.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Unicode-Hinweis:&lt;/strong> In vielen Engines ist &lt;code>\w&lt;/code> standardmässig ASCII-basiert.
+Für Sprachen mit Umlauten/anderen Schriftsystemen prüfe Unicode-Optionen/Property-Klassen deiner Engine
+(z. B. &lt;code>\p{L}&lt;/code>, &lt;code>\p{N}&lt;/code>).&lt;/p>
+&lt;hr>
+&lt;h2 id="lookaheads-vorausschau">Lookaheads (Vorausschau)&lt;/h2>
+&lt;p>&lt;strong>Lookaheads&lt;/strong> prüfen Bedingungen &lt;strong>an der aktuellen Position&lt;/strong>, schauen &lt;strong>nach vorn&lt;/strong>, &lt;strong>verbrauchen keine Zeichen&lt;/strong>
+und &lt;strong>verschieben die Match-Position nicht&lt;/strong> (&lt;em>zero-width assertions&lt;/em>).&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Positiv&lt;/strong> &lt;code>(?=X)&lt;/code>: Ab hier muss &lt;strong>X&lt;/strong> folgen.&lt;/li>
+&lt;li>&lt;strong>Negativ&lt;/strong> &lt;code>(?!X)&lt;/code>: Ab hier darf &lt;strong>nicht X&lt;/strong> folgen.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>UND-Logik:&lt;/strong> Mehrere Lookaheads hintereinander sind &lt;strong>UND&lt;/strong> (alle Bedingungen müssen erfüllt sein).
+&lt;strong>ODER:&lt;/strong> Im &lt;strong>Inneren&lt;/strong> eines Lookaheads mit &lt;code>|&lt;/code> arbeiten.&lt;/p>
+&lt;p>&lt;strong>Beispiele (neutral):&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Lokale Bedingung:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>foo(?!bar)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>→ &lt;code>foo&lt;/code> nur, &lt;strong>wenn nicht&lt;/strong> &lt;code>bar&lt;/code> folgt.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Reihenfolge egal (global prüfen):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\A(?=.*\bAlpha\b)(?=.*\bBeta\b)[\s\S]*\z
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>„Nur wenn gefolgt von …“ (Suffix prüfen):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\b[A-Z]{2}\d{4}(?=-\d{2}\b)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;code>X&lt;/code> im Lookahead kann ein &lt;strong>vollwertiges Teil-Regex&lt;/strong> sein (Gruppen, Alternativen, Quantifizierer, Wortgrenzen, Anker
+…).&lt;/p>&lt;/blockquote>
+&lt;p>Weitere Beispiele:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Regex&lt;/th>
+&lt;th>Bedeutung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>(?=.*TaFy)&lt;/code>&lt;/td>
+&lt;td>schau rechts ob irgend ein Zeichen vorkommt und dann TaFy&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>(?=\STaFy)&lt;/code>&lt;/td>
+&lt;td>schau rechts ob kein Lehrzeichen vorkommt und dann TaFy&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>(?=[^s,]*TaFy)&lt;/code>&lt;/td>
+&lt;td>schau rechts ob kein Lehrzeichen und kein Komma vorkommt und dann TaFy&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>(?=[^s,]*[A-Z])&lt;/code>&lt;/td>
+&lt;td>schau rechts ob kein Lehrzeichen und kein Komma vorkommt und dann ein Grossbuchstaben&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="mehrere-treffer-in-einer-zeile-finden">Mehrere Treffer in einer Zeile finden&lt;/h2>
+&lt;ul>
+&lt;li>Verwende eine &lt;strong>„find all / global“&lt;/strong>-Suche (nicht „ganze Zeile matchen“).&lt;/li>
+&lt;li>&lt;strong>Überlappende&lt;/strong> Treffer erhältst du per Lookahead-Trick, z. B. &lt;code>(?=(aa))&lt;/code> findet in &lt;code>aaaa&lt;/code> die drei überlappenden
+&lt;code>aa&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Hinweis: Wie „global“ aktiviert wird, hängt von der Engine ab (Flag, API-Methode).
+Für dieses Modul genügt: &lt;strong>global suchen&lt;/strong> und bei Bedarf &lt;strong>Lookahead&lt;/strong> für überlappende Matches.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="beispiele-neutral--kurz">Beispiele (neutral &amp;amp; kurz)&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Ganzes Wort „ERROR“&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\bERROR\b
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Zeile enthält zwei Begriffe (Reihenfolge egal)&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>^(?=.*Alpha)(?=.*Beta).*
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Nur Ziffern (ganze Eingabe)&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>\A[0-9]+\z
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Token nicht von einem bestimmten Zeichen gefolgt&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>TOKEN(?!\))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="flags-modifikatoren-engineneutral">Flags (Modifikatoren, engine‑neutral)&lt;/h2>
+&lt;p>Flags beeinflussen, &lt;strong>wie&lt;/strong> der RegEx interpretiert wird. Bezeichnungen/Schreibweise variieren je nach Engine.
+Häufige Konzepte (inline meist als &lt;code>(?i)&lt;/code>, &lt;code>(?m)&lt;/code>, &lt;code>(?s)&lt;/code> … verfügbar):&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Case‑insensitive&lt;/strong> (&lt;code>i&lt;/code>): Gross/Kleinschreibung ignorieren.&lt;/li>
+&lt;li>&lt;strong>Multiline&lt;/strong> (&lt;code>m&lt;/code>): &lt;code>^&lt;/code> und &lt;code>$&lt;/code> matchen an &lt;strong>Zeilen&lt;/strong>anfang/-ende statt nur am ganzen String.&lt;/li>
+&lt;li>&lt;strong>Dotall / Singleline&lt;/strong> (&lt;code>s&lt;/code>): &lt;code>.&lt;/code> matcht &lt;strong>auch&lt;/strong> Zeilenumbrüche.&lt;/li>
+&lt;li>&lt;strong>Free‑spacing / Verbose&lt;/strong> (&lt;code>x&lt;/code>): Whitespace/Kommentare im Muster ignorieren (für Lesbarkeit).&lt;/li>
+&lt;li>&lt;strong>Unicode‑Optionen&lt;/strong>: Verhalten von &lt;code>\w&lt;/code>, &lt;code>\b&lt;/code>, Klassen wie &lt;code>\p{L}&lt;/code> engineabhängig aktivieren.&lt;/li>
+&lt;li>&lt;strong>Ungreedy/Default‑lazy&lt;/strong> (&lt;code>U&lt;/code>, PCRE): Kehrt Greedy/Lazy-Standard um (vorsichtig einsetzen).&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Details und exakte Namen sind engineabhängig (Java, .NET, PCRE, JavaScript). Schau in die Dokumentation deiner Engine.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="performance--sicherheit-kurz--wichtig">Performance &amp;amp; Sicherheit (kurz &amp;amp; wichtig)&lt;/h2>
+&lt;h3 id="1-catastrophic-backtracking">1) Catastrophic Backtracking&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Bestimmte Muster werden bei ungünstigen Eingaben extrem langsam.&lt;/li>
+&lt;li>&lt;strong>Ursache:&lt;/strong> Viele Backtracking-Wege (z. B. verschachtelte „weite“ Quantifizierer).&lt;/li>
+&lt;li>&lt;strong>Beispiel:&lt;/strong> &lt;code>(a+)+$&lt;/code> mit langer &lt;code>a…a!&lt;/code>-Eingabe.&lt;/li>
+&lt;li>&lt;strong>Gegenmittel (engine‑abhängig):&lt;/strong> Muster präzisieren, &lt;em>lazy&lt;/em> sinnvoll einsetzen, atomare Gruppen &lt;code>(?&amp;gt;...)&lt;/code>,
+possessive Quantifizierer &lt;code>*+&lt;/code>, &lt;code>++&lt;/code>, &lt;code>{m,n}+&lt;/code>, Eingaben &lt;strong>begrenzen&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-dynamische-regex">2) Dynamische RegEx&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Ungeprüfte Benutzereingaben in Muster → Manipulation/Verlangsamung.&lt;/li>
+&lt;li>&lt;strong>Lösung:&lt;/strong> Eingaben escapen/whitelisten, Längenlimits setzen, ggf. Timeouts (falls vorhanden).&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-überkomplexität">3) Überkomplexität&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Problem:&lt;/strong> Sehr komplexe RegEx sind schwer wartbar.&lt;/li>
+&lt;li>&lt;strong>Lösung:&lt;/strong> Aufteilen (Vorverarbeitung), kommentieren, möglichst &lt;strong>einfach&lt;/strong> halten.&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-engineunterschiede">4) Engine‑Unterschiede&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Lookarounds:&lt;/strong> Moderne Engines (PCRE, .NET, Java) unterstützen Lookaheads; Lookbehind teils eingeschränkt.
+Manche Engines (z. B. RE2) &lt;strong>unterstützen keine Lookarounds&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Unicode:&lt;/strong> Verhalten von &lt;code>\w&lt;/code>, &lt;code>\b&lt;/code> variiert. Prüfe Flags/Optionen deiner Engine.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="best-practices">Best Practices&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>So einfach wie möglich.&lt;/strong> Erst dann optimieren/erweitern.&lt;/li>
+&lt;li>&lt;strong>Eingabe begrenzen.&lt;/strong> Länge, Inhalt, Vorverarbeitung (Trim, Normalisierung).&lt;/li>
+&lt;li>&lt;strong>Global testen.&lt;/strong> Einschliesslich Worst-Cases (lange Strings ohne Treffer).&lt;/li>
+&lt;li>&lt;strong>Anker bewusst setzen.&lt;/strong> &lt;code>\A … \z&lt;/code> für „ganze Eingabe“, &lt;code>^ … $&lt;/code> für Zeilen.&lt;/li>
+&lt;li>&lt;strong>Keine unnötigen „weiten“ Teile.&lt;/strong> Unpräzises &lt;code>.*&lt;/code> vor/um Lookarounds sparsam einsetzen.&lt;/li>
+&lt;li>&lt;strong>Dokumentation lesen&lt;/strong>, wenn du Lookarounds, Unicode-Klassen, Flags nutzt (engine-spezifisch).&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="tipp">Tipp&lt;/h2>
+&lt;p>Nutze einen RegEx-Tester (z. B. &lt;em>regex101&lt;/em>) zum Ausprobieren und Debuggen (mit Erklärungen &amp;amp; Match-Schritten).&lt;/p>
+&lt;hr></description></item></channel></rss>
