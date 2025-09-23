@@ -41,7 +41,7 @@ class Person {
 }
 ```
 
-UML-Symbol: `-`
+[UML-Symbol](../../../99_shared/uml/01_basiscs/): `-`
 
 ### Public
 
@@ -65,7 +65,7 @@ Person p = new Person();
 p.getName();
 ```
 
-UML-Symbol: `+`
+[UML-Symbol](../../../99_shared/uml/01_basiscs/): `+`
 
 ### Protected
 
@@ -82,7 +82,7 @@ src
             └── AccessClass.java
 ```
 
-UML-Symbol: `#`
+[UML-Symbol](../../../99_shared/uml/01_basiscs/): `#`
 
 ### Package-Private
 
