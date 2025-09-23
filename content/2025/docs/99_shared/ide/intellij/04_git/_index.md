@@ -97,6 +97,23 @@ target/
 build/
 ```
 
+#### Mehrere Projekte in einem Git Repository
+
+Falls das Repository mehrere Intelli-J Projekte enthält, müssen wir .gitignore anpassen, damit in allen
+Unterverzeichnissen gefiltert wird.
+
+```
+# IntelliJ-Projekte in Unterordnern
+**/*.iml
+**/.idea/*
+!**/.idea/runConfigurations/
+
+# Build-Output in allen Projekten
+**/out/
+**/target/
+**/build/
+```
+
 ---
 
 ## Git-Funktionen in IntelliJ IDEA
