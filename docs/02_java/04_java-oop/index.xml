@@ -186,7 +186,7 @@ Klassendiagramm unten) füllt beispielsweise den Tank, bis dessen Kapazität err
 Verhalten, welche zu diesem neuen Datentyp gehören, an einer Stelle im Code zusammengefasst und
 verwaltet. Diese neuen, benutzerdefinierte Datentypen können dann wie anderen Datentypen (primitive
 Datentypen oder andere Klassen) verwendet werden.&lt;/p>
-&lt;p>Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das UML-Klassendiagramm der
+&lt;p>Beginnen wir mit einem Beispiel einer Auto-Klasse; hier siehst du das &lt;a href="/docs/99_shared/uml/01_basiscs/">UML-Klassendiagramm&lt;/a> der
 Klasse &lt;code>Car&lt;/code>, die wir selber erfunden haben. Die oberen 4 Einträge sind ihre Instanzvariablen und
 die untersten 3 sind ihre Methoden. Einträge mit einem &lt;code>-&lt;/code> sind &lt;code>private&lt;/code>, Einträge mit einem &lt;code>+&lt;/code>
 sind öffentlich (&lt;code>public&lt;/code>):&lt;/p>
@@ -407,212 +407,7 @@ Objekt mit Hilfe beider Referenzen ändern.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(patient2.&lt;span style="color:#a6e22e">age&lt;/span>); &lt;span style="color:#75715e">// 25&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;hr></description></item><item><title>Docs: Packages</title><link>/docs/02_java/04_java-oop/02_packages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/04_java-oop/02_packages/</guid><description>
-&lt;h2 id="ziele">Ziele&lt;/h2>
-&lt;ul>
-&lt;li>Ich kann ohne Hilfsmittel mindestens zwei Vorteile für das Verwenden von Packages nennen.&lt;/li>
-&lt;li>Ich kann ohne Hilfsmittel die Namenkonvention für Java-Packages beschreiben.&lt;/li>
-&lt;li>Ich zeige auf, wie mehrere Klassen vom gleichen Packet mit einem &lt;code>import&lt;/code>-Statement importiert werden.&lt;/li>
-&lt;li>Ich kann korrekt und ohne Hilfsmittel erklären, was ein statischer Import ist und wozu er verwendet wird.&lt;/li>
-&lt;li>Ich kann erläutern, warum es keine gute Idee ist, Klassen ohne Package-Anweisung zu schreiben.&lt;/li>
-&lt;/ul>
-&lt;h2 id="packages">Packages&lt;/h2>
-&lt;p>Bevor wir uns intensiver mit den Bestandteilen einer Klasse auseinandersetzen, schauen wir uns Packages an.
-Ein Package dient der Gruppierung und Organisation von Klassen, Schnittstellen und anderen Packages.
-Es wird zwischen zwei Arten von Packages unterschieden:&lt;/p>
-&lt;ul>
-&lt;li>implizit importierte Packages&lt;/li>
-&lt;li>explizit zu importierende Packages&lt;/li>
-&lt;/ul>
-&lt;p>Wenn wir beispielsweise die Klasse Scanner benötigen, müssen wir dies durch ein &lt;em>import&lt;/em> Statement machen.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.util.Scanner
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Klasse Scanner befindet sich also im Package &lt;em>java&lt;/em> und darin im Package &lt;em>util&lt;/em>.
-Ein Package kann beliebig viele andere Packages enthalten. Ein Package wird auf dem Dateisystem als Verzeichnis behandelt.&lt;/p>
-&lt;h3 id="vorteile">Vorteile&lt;/h3>
-&lt;ul>
-&lt;li>Code-Organisation. Klassen von gleicher Natur (wie beispielsweise Modelle oder Services) befinden sich im gleichen Package&lt;/li>
-&lt;li>Auffindbarkeit. Klassen sind durch die Organisation einfacher zu finden&lt;/li>
-&lt;li>Vermeiden von Namenskonflikten. Zwei Klassen dürfen den gleichen Namen haben, solange sie in unterschiedlichen Packages liegen&lt;/li>
-&lt;li>Zugriffsteuerung. Bestimmte Zugriffsmodifikatoren erlauben den Zugriff auf Klassen im gleichen Package&lt;/li>
-&lt;/ul>
-&lt;h3 id="namenskonventionen">Namenskonventionen&lt;/h3>
-&lt;p>Gemäss der Namenskonvention werden Package-Namen immer in Kleinbuchstaben geschrieben.
-Die Trennung der verschiedenen Packages erfolgt beim Import-Statement durch einen Punkt.&lt;/p>
-&lt;h3 id="ordnerstruktur">Ordnerstruktur&lt;/h3>
-&lt;p>Programmcode muss organisiert sein. Obwohl die Ordnerstruktur nicht vorgegeben ist, hat sich die folgende Konvention in Java-Projekten (vor allem solche, welche Maven im Einsatz haben - dazu mehr im Maven-Modul) etabliert.&lt;/p>
-&lt;p>Grundsätzlich legen wir Quellcode im einem Verzeichnis ab, das &lt;em>src&lt;/em> genannt wird.
-Innerhalb dieses Verzeichnisses legen wir ein Verzeichnis &lt;em>main&lt;/em> und darin wiederum ein Verzeichnis &lt;em>java&lt;/em> an. Innerhalb des Java-Verzeichnisses können wir beliebig viele eigene Packages anlegen, um unseren Programmcode zu organisieren.&lt;/p>
-&lt;h3 id="klassen-mit-gleichem-namen">Klassen mit gleichem Namen&lt;/h3>
-&lt;p>Es kann passieren, dass wir zwei Klassen haben, die den gleichen Namen haben. Beispiel: Wir arbeiten mit der externen Bibliothek Abstract Window Toolkit (AWT). Darin gibt es eine Klasse mit dem Namen &lt;em>Rectangle&lt;/em>. Es ist natürlich erlaubt eine eigene Klasse mit diesem Namen anzulegen, solang sie sich nicht in einem Package mit dem gleichen Namen befindet.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.sbb.main;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> ch.sbb.rectangle.Rectangle;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Deklaration und Initialisierung eines AWT-Rectangles:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> java.&lt;span style="color:#a6e22e">awt&lt;/span>.&lt;span style="color:#a6e22e">Rectangle&lt;/span> rectAWT &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> java.&lt;span style="color:#a6e22e">awt&lt;/span>.&lt;span style="color:#a6e22e">Rectangle&lt;/span>()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Deklaration und Initialisierung eines Rectangles aus dem Package ch.sbb.rectangle:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Rectangle myRect &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Rectangle();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ul>
-&lt;li>Wir importieren die eigene Rectangle-Klasse mit der Import-Anweisung&lt;/li>
-&lt;li>Wir deklarieren und initialisieren ein AWT-Rectangle, indem wir den vollständigen Namen (Package und Klassennamen) angeben&lt;/li>
-&lt;/ul>
-&lt;h3 id="import-">Import *&lt;/h3>
-&lt;p>Wenn sich zwei Klassen im selben Paket befinden und eine Klasse in der anderen verwendet wird, muss die Klasse nicht importiert werden.
-Es ist auch möglich, alle Klassen aus dem Paket zu importieren. Dazu müssen wir einen &lt;code>*&lt;/code> anstelle eines bestimmten Klassennamens in das Import-Statement schreiben.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.awt.*;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Alle Klassen eines Packages, wie in diesem Beispiel, zu importieren ist schlechter Style und soll vermieden werden. Es soll immer explizit importiert werden.&lt;/p>
-&lt;h3 id="package-javalang">Package java.lang&lt;/h3>
-&lt;p>Obwohl wir die meisten Pakete importieren müssen, gibt es ein Java-Paket, das immer automatisch importiert wird. Es ist &lt;code>java.lang&lt;/code>. Dieses Paket enthält viele weit verbreitete Klassen wie &lt;code>String&lt;/code>, &lt;code>System&lt;/code>, &lt;code>Long&lt;/code>, &lt;code>Integer&lt;/code>, &lt;code>NullPointerException&lt;/code> und andere.&lt;/p>
-&lt;h3 id="statischer-import">Statischer Import&lt;/h3>
-&lt;p>Wir können auch statische Elemente (wie z.B. Konstanten oder auch statische Methoden) einer Klasse in eine andere Klasse importieren. Wenn wir &lt;code>*&lt;/code> in die import-Anweisung schreiben, müssen wir den importierten Klassennamen nicht angeben, bevor wir statische Methoden aufrufen oder statische Felder lesen.
-Hier ist ein Beispiel für den statischen Import der Klasse &lt;code>Arrays&lt;/code>, die viele nützliche Methoden zur Verarbeitung von Arrays enthält:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> org.hyperskill.java.packages.theory;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import static&lt;/span> java.util.Arrays.*;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> numbers &lt;span style="color:#f92672">=&lt;/span> { 10, 4, 5, 47, 5, 12 }; &lt;span style="color:#75715e">// an array&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sort(numbers); &lt;span style="color:#75715e">// instead of writing Arrays.sort(...)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">[]&lt;/span> copy &lt;span style="color:#f92672">=&lt;/span> copyOf(numbers, numbers.&lt;span style="color:#a6e22e">length&lt;/span>); &lt;span style="color:#75715e">// instead of writing Arrays.copyOf(...)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wenn wir bei der Implementation von Klassen keine Package-Anweisung schreiben, wird die Klasse ins Default-Package eingefügt. Dies sollte vermieden werden, da Klassen aus dem Default-Package nicht in andere Klasse importiert werden können, welche sich nicht auch im Default-Package befinden.&lt;/p>
-&lt;hr>
-&lt;h3 id="eigene-packages-definieren">Eigene Packages definieren&lt;/h3>
-&lt;p>Packages können auch selber definiert werden. Die Package-Struktur entspricht hierbei der Verzeichnisstruktur des Projekts. Packages erstellt man primär um den Code zu strukturieren.&lt;/p>
-&lt;p>In einem Spring Boot Projekt wird der Code typischerweise in folgende Packages unterteilt:&lt;/p>
-&lt;ul>
-&lt;li>Controller-Package (ch.sbb.demo.controller): Beinhaltet die Controller-Klassen, die HTTP-Anfragen verarbeiten.&lt;/li>
-&lt;li>Service-Package (ch.sbb.demo.service): Enthält die Service-Klassen, die die Geschäftslogik implementieren.&lt;/li>
-&lt;li>Repository-Package (ch.sbb.demo.repository): Beinhaltet die Repository-Klassen für die Datenbankinteraktionen&lt;/li>
-&lt;li>Model-Package (ch.sbb.demo.model): Enthält die Datenmodellklassen (Entities), die die Datenbanktabellen repräsentieren.&lt;/li>
-&lt;/ul>
-&lt;p>Ein eigene Package-Struktur zu definieren ist also gar nicht so schwer, im Grunde muss man dafür nur Verzeichnise erstellen.&lt;/p>
-&lt;p>Wie der Import von eigen definierten Packages erfolgt, ist dem folgenden Beispiel zu entnehmen. Im Beispiel gehen wir von dieser Verzeichnisstruktur aus:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>/src
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── ch
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── sbb
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── examplepackage
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── Beispiel.java
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Die Ordner &lt;code>ch&lt;/code>, &lt;code>sbb&lt;/code> &lt;code>examplepackage&lt;/code> wurden von Hand erstellt.
-Das Package enthält die Klasse &lt;code>Beispiel.java&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.sbb.examplepackage;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Beispiel&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">sagHallo&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Hallo, Welt!&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>In einer anderen Klasse kann das Package wie zuvor beschrieben importiert und verwendet werden. Ein Beispiel für eine Klasse welche das Package importiert und verwendet könnte wie folgt aussehen:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> ch.sbb.main;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> ch.sbb.examplepackage.*;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Beispiel b &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Beispiel();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> b.&lt;span style="color:#a6e22e">sagHallo&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Docs: Zugriffsmodifikatoren</title><link>/docs/02_java/04_java-oop/03_access-modifier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/04_java-oop/03_access-modifier/</guid><description>
+&lt;/div>&lt;hr></description></item><item><title>Docs: Zugriffsmodifikatoren</title><link>/docs/02_java/04_java-oop/03_access-modifier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/04_java-oop/03_access-modifier/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann ohne Hilfsmittel alle Zugriffsmodifikatoren beschreiben.&lt;/li>
@@ -659,7 +454,7 @@ Es ist eine gängige Praxis, Instanzvariablen privat zu halten. Wir möchten sch
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>UML-Symbol: &lt;code>-&lt;/code>&lt;/p>
+&lt;/div>&lt;p>&lt;a href="/docs/99_shared/uml/01_basiscs/">UML-Symbol&lt;/a>: &lt;code>-&lt;/code>&lt;/p>
 &lt;h3 id="public">Public&lt;/h3>
 &lt;p>Auf Klassen, Felder und Methoden, die mit dem Schlüsselwort &lt;code>public&lt;/code> deklariert sind, kann von einem beliebigen Ort des Programms zugegriffen werden.
 Sie sind also öffentlich.&lt;/p>
@@ -694,7 +489,7 @@ Sie sind also öffentlich.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>p.&lt;span style="color:#a6e22e">getName&lt;/span>();
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>UML-Symbol: &lt;code>+&lt;/code>&lt;/p>
+&lt;/div>&lt;p>&lt;a href="/docs/99_shared/uml/01_basiscs/">UML-Symbol&lt;/a>: &lt;code>+&lt;/code>&lt;/p>
 &lt;h3 id="protected">Protected&lt;/h3>
 &lt;p>Wenn ein Feld oder eine Methode mit &lt;code>protected&lt;/code> deklariert ist, dann kann nur vom gleichen Package oder von Unterklassen darauf zugegriffen werden (Unterklassen folgen später im Modul &lt;a href="/docs/02_java/07_java-ood/">Objektorientiertes Design&lt;/a>).&lt;/p>
 &lt;p>Wichtig zu beachten ist, dass Subpackages von Java wie separate Packages behandelt werden. Dementsprechend kann die Klasse &lt;code>AccessClass.java&lt;/code>, wenn die Struktur wie folgt aussieht, nicht auf Protected Members der Klasse &lt;code>ParentClass.java&lt;/code> zugreifen.&lt;/p>
@@ -716,7 +511,7 @@ Sie sind also öffentlich.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── AccessClass.java
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>UML-Symbol: &lt;code>#&lt;/code>&lt;/p>
+&lt;/div>&lt;p>&lt;a href="/docs/99_shared/uml/01_basiscs/">UML-Symbol&lt;/a>: &lt;code>#&lt;/code>&lt;/p>
 &lt;h3 id="package-private">Package-Private&lt;/h3>
 &lt;p>Wenn eine Klasse, ein Feld oder eine Methode keinen Zugriffsmodifikator hat, so besitzt sie trotzdem einen. Dieser wird Package-Private genannt. Die Sichtbarkeit ist grundsätzlich private, wird aber auf Klasse im gleichen Package ausgeweitet.
 Das bedeutet, dass andere Klassen innerhalb derselben Package, Zugriff auf diese Klasse, Felder und Methoden haben. Für Subpackages gilt das Gleiche wie bei Protected.&lt;/p>

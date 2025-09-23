@@ -1,0 +1,124 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome Ninja – UML</title><link>/docs/99_shared/uml/</link><description>Recent content in UML on Welcome Ninja</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="/docs/99_shared/uml/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Einführung UML</title><link>/docs/99_shared/uml/01_basiscs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/uml/01_basiscs/</guid><description>
+&lt;div class="is-a-sbb" style="display: none;" data-should-display="block">
+&lt;div style="width: 100%; margin: 1rem auto;">
+&lt;div style="font-size: 1.1rem;">
+Dieses Kapitel gehört zum Modul #J2 des Ausbildungsplans
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="voraussetzungen">Voraussetzungen&lt;/h2>
+&lt;ul>
+&lt;li>Java Grundlagen (Variablen, Methoden, Kontrollstrukturen)&lt;/li>
+&lt;li>Erste Erfahrungen mit Klassen und Objekten sind hilfreich, aber nicht zwingend notwendig&lt;/li>
+&lt;/ul>
+&lt;h2 id="ziele">Ziele&lt;/h2>
+&lt;ul>
+&lt;li>Grundlagen der UML-Klassendiagramme verstehen&lt;/li>
+&lt;li>Klassen, Attribute und Methoden in UML notieren&lt;/li>
+&lt;li>Beziehungen wie &lt;em>Assoziation&lt;/em>, &lt;em>Vererbung&lt;/em> und &lt;em>Aggregation&lt;/em> darstellen&lt;/li>
+&lt;li>UML-Diagramme lesen und in Java-Code übersetzen&lt;/li>
+&lt;/ul>
+&lt;span class="zeit" data-lesezeit="15" data-üben="">⏱️ Geschätzte Lesezeit: 15 Minuten&lt;/span>
+&lt;h2 id="einführung">Einführung&lt;/h2>
+&lt;p>Die &lt;strong>Unified Modeling Language (UML)&lt;/strong> ist eine standardisierte Sprache, um Software-Entwürfe grafisch
+darzustellen. Besonders in der &lt;strong>Objektorientierten Programmierung (OOP)&lt;/strong> hilft UML, Programme zu planen
+und Strukturen sichtbar zu machen.&lt;/p>
+&lt;p>Mit UML kannst du darstellen:&lt;/p>
+&lt;ul>
+&lt;li>Welche &lt;strong>Klassen&lt;/strong> es gibt&lt;/li>
+&lt;li>Welche &lt;strong>Attribute&lt;/strong> und &lt;strong>Methoden&lt;/strong> sie besitzen&lt;/li>
+&lt;li>Wie die &lt;strong>Beziehungen&lt;/strong> zwischen Klassen aussehen&lt;/li>
+&lt;/ul>
+&lt;p>So schlägst du eine Brücke zwischen &lt;strong>Konzept&lt;/strong> und &lt;strong>Java-Code&lt;/strong>.&lt;/p>
+&lt;h2 id="aufbau-eines-klassendiagramms">Aufbau eines Klassendiagramms&lt;/h2>
+&lt;p>Ein &lt;strong>UML-Klassendiagramm&lt;/strong> besteht aus drei Bereichen:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Kopf&lt;/strong>: Klassenname&lt;/li>
+&lt;li>&lt;strong>Attribute&lt;/strong>: Variablen mit Typ und Sichtbarkeit (&lt;code>+&lt;/code> public, &lt;code>-&lt;/code> private)&lt;/li>
+&lt;li>&lt;strong>Methoden&lt;/strong>: Funktionen mit Parametern und Rückgabewert&lt;/li>
+&lt;/ol>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>+-------------------+
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| Person |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+-------------------+
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| - name: String |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| - age: int |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+-------------------+
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| + getName():String|
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| + setName(n:String)|
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| + birthday():void |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+-------------------+
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="übersetzung-in-java-code">Übersetzung in Java-Code&lt;/h3>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> String &lt;span style="color:#a6e22e">getName&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">setName&lt;/span>(String n) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> n;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">birthday&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> age&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="beziehungen-zwischen-klassen">Beziehungen zwischen Klassen&lt;/h2>
+&lt;ul>
+&lt;li>&lt;strong>Assoziation&lt;/strong>: Eine Klasse kennt eine andere&lt;br>
+→ &lt;code>Student&lt;/code> hat eine &lt;code>School&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Vererbung&lt;/strong>: Eine Klasse erbt Eigenschaften von einer anderen&lt;br>
+→ &lt;code>Car&lt;/code> erbt von &lt;code>Vehicle&lt;/code>&lt;/li>
+&lt;li>&lt;strong>Aggregation/Komposition&lt;/strong>: Eine Klasse besteht aus anderen Klassen&lt;br>
+→ &lt;code>Team&lt;/code> besteht aus mehreren &lt;code>Player&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Diese Konzepte lernst du im OOP-Teil vertieft kennen. UML dient dir hier als &lt;strong>visuelle Unterstützung&lt;/strong>.&lt;/p>
+&lt;div style="display: flex; align-items: flex-start; background-color: #dcfce7; margin-bottom: 1rem; border-radius: 6px">
+&lt;div style="flex-shrink: 0; margin-right: 1rem">
+&lt;img src="/images/it-ninja-tip.png" alt="it-ninja tip" style="width: 60px; height: 60px; border-radius: 12px; margin: 6px;">
+&lt;/div>
+&lt;div style="font-size: 1.1rem; flex-grow: 1; padding-top: 6px; ">
+UML ist kein Code – aber eine gute Vorbereitung für sauberen Code.&lt;br>
+Nutze es, um deine Ideen klar zu strukturieren.
+&lt;/div>
+&lt;/div></description></item></channel></rss>
