@@ -1,8 +1,8 @@
 ---
 title: "Continuous Integration (CI) - Automatisiere deine Builds und Tests"
-linkTitle: "SimpleExample"
+linkTitle: "Continuous Integration (CI)"
 type: docs
-weight: 1
+weight: 5
 description: >
    In diesem Abschnitt lernst du, wie du Continuous Integration (CI) einrichtest, um Builds und Tests zu automatisieren.
 ---
