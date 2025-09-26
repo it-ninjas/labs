@@ -4,7 +4,7 @@ linkTitle: "Continuous Integration (CI)"
 type: docs
 weight: 5
 description: >
-   In diesem Abschnitt lernst du, wie du Continuous Integration (CI) einrichtest, um Builds und Tests zu automatisieren.
+  In diesem Abschnitt lernst du, wie du Continuous Integration (CI) einrichtest, um Builds und Tests zu automatisieren.
 ---
 
 <!--suppress CheckEmptyScriptTag -->
@@ -64,6 +64,7 @@ Die Pipeline wird automatisch ausgeführt, wenn du Code in den `main` Branch pus
    - `./.gitignore`
 
    in deinem Repository haben.
+
 8. Teste, ob Maven funktioniert.
 
    ```shell
@@ -101,21 +102,21 @@ Ein Job kann einen oder mehrere Schritte (`steps`) haben.
    name: java test with maven
 
    on:
-      push:
-         branches:
-            - main
+     push:
+       branches:
+         - main
 
    jobs:
-      java-test:
-         runs-on: ubuntu-latest
-         steps:
-            - uses: actions/checkout@v5
-            - uses: actions/setup-java@v4
-              with:
-                 java-version: "21"
-                 distribution: "temurin"
-            - name: Run JUnit tests using Maven
-              run: mvn test
+     java-test:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v5
+         - uses: actions/setup-java@v4
+           with:
+             java-version: "21"
+             distribution: "temurin"
+         - name: Run JUnit tests using Maven
+           run: mvn test
    ```
 
    <details>
@@ -157,7 +158,7 @@ Du hast deine erste CI erstellt!
 ### Aufgabe 2a: Teste Deine CI! (Optional)
 
 1. Füge dem Java Code einen Fehler hinzu, der verhindert, dass das Java Programm
-kompiliert werden kann oder die Tests fehlschlagen lässt.
+   kompiliert werden kann oder die Tests fehlschlagen lässt.
 2. Committe und pushe die Änderungen.
 3. Gehe zu deinem GitHub Repository und klicke auf den Reiter `Actions`.
    Warte, bis dein Workflow abgeschlossen ist.
