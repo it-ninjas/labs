@@ -50,12 +50,11 @@ Die Pipeline wird automatisch ausgeführt, wenn du Code in den `main` Branch pus
 ### Aufgabe 1: Erstelle ein GitHub Repository
 
 1. Gehe zu [GitHub](https://github.com/new) und erstelle ein neues Repository.
-2. Nenne das Repository `ci-example` und setze es auf "Public".
-3. Initialisiere das Repository mit einer `README.md` Datei.
-4. Klicke auf `Create`.
-5. Clone das Repository auf deinen Rechner.
-6. Öffne das Repository in IntelliJ.
-7. Kopiere den Inhalt der Beispielanwendung (aus dem ZIP-File) in das Repository.
+2. Initialisiere das Repository mit einer `README.md` Datei.
+3. Klicke auf `Create`.
+4. Clone das Repository auf deinen Rechner.
+5. Öffne das Repository in IntelliJ.
+6. Kopiere den Inhalt der Beispielanwendung (aus dem ZIP-File) in das Repository.
    Anschliessend solltest du
 
    - `./src/main/java/ch/itninja/Main.java`
@@ -65,7 +64,7 @@ Die Pipeline wird automatisch ausgeführt, wenn du Code in den `main` Branch pus
 
    in deinem Repository haben.
 
-8. Teste, ob Maven funktioniert.
+7. Teste, ob Maven funktioniert.
 
    ```shell
    mvn test
@@ -82,9 +81,9 @@ Die Pipeline wird automatisch ausgeführt, wenn du Code in den `main` Branch pus
    [INFO] BUILD SUCCESS
    ```
 
-9. Verwende `git add .` und `git commit` um einen Commit zu erstellen.
-10. Pushe deinen neuen Commit.
-    Öffne dein GitHub Repository und überprüfe, ob dein Push funktioniert hat.
+8. Verwende `git add .` und `git commit` um einen Commit zu erstellen.
+9. Pushe deinen neuen Commit.
+   Öffne dein GitHub Repository und überprüfe, ob dein Push funktioniert hat.
 
 ### Aufgabe 2: Erstelle einen GitHub Action, um die Tests auszuführen
 
