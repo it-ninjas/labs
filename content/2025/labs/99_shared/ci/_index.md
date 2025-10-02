@@ -135,13 +135,56 @@ Ein Job kann einen oder mehrere Schritte (`steps`) haben.
 
    </details>
 
-   Unser Job `java-test` verwendet `ubuntu-latest` als Basis, um seine Schritte
-   auszuführen.
-   Unser Job hat 3 Schritte:
+   **Wie funktioniert dieser Workflow genau?**
 
-   - Schritt 1: Checke den aktuellen Stand des Repositories aus.
-   - Schritt 2: Setze Java. Hier können wir die Java Version angeben, die wir benutzen.
-   - Schritt 3: Führe `mvn test` aus.
+   Unser Workflow mit dem Namen `java test with maven` hat verschiedene Teile:
+
+   - Trigger (`on:`): Bestimmt, bei welchen Ereignissen der Workflow ausgelöst wird.
+     Im Beispiel ist das `push` auf `main`.
+
+     Häufig ergänzt man `pull_request`, damit auch PRs geprüft werden, bevor sie gemerged werden.
+     Man kann auch `schedule` nutzen, um den Workflow z.B. täglich auszuführen.
+     Oder man führt den Workflow nur aus, wenn ein Release erstellt wird.
+     Manche Workflows haben gar kein Ereignis als Trigger, sondern werden von anderen Workflows gestartet, d.h. `on: workflow_run`.
+     Dies ist nützlich für komplexe CI/CD-Pipelines, da wir so wiederverwendbare Workflows erstellen können.
+
+   - Jobs (`jobs:`): Ein Workflow kann mehrere Jobs haben, die parallel oder nacheinander ausgeführt werden.
+     In unserem Beispiel gibt es nur einen Job namens `java-test`.
+
+     Jeder Job läuft in einer frischen Umgebung (Runner) und hat seine eigenen Schritte.
+     Jobs können auch durch `needs` voneinander abhängen, d.h. ein Job startet erst, wenn ein anderer erfolgreich abgeschlossen ist.
+     Da wir aber nur einen Job haben, ist das hier nicht relevant.
+
+     Unser `java-test` Job hat folgende Bestandteile:
+
+     - `runs-on`: Legt die Ausführungsumgebung (Runner) fest — in der Regel ein Linux-, Windows- oder macOS-Runner.
+       In unserem Beispiel nutzen wir `ubuntu-latest`, d.h. die neueste verfügbare Ubuntu Version.
+     - `steps`: Die Schritte, die der Job ausführt.
+       Jeder Schritt kann eine fertige GitHub Action (`uses:`) oder einen Shell-Befehl (`run:`) ausführen.
+       GitHub Actions sind wiederverwendbare Komponenten, die bestimmte Aufgaben erledigen.
+       GitHub Actions haben den Vorteil, dass wir uns **nicht** um die Details kümmern müssen.
+       In unserem Beispiel müssen wir z.B. nicht selbst Java installieren, sondern nutzen die `actions/setup-java` Action.
+       Wir können im jeweiligen Online Repository auch die Dokumentation der Actions lesen, um zu verstehen, was sie tun und welche Eingaben sie erwarten.
+
+       Unser Job hat drei Schritte:
+
+       - `uses: actions/checkout@v5`: Der erste Schritt nutzt `git` bzw. die `actions/checkout` GitHub Action, um den Code aus dem Repository in die Runner-Umgebung zu klonen.
+
+         Bei GitHub Actions können wir git Commit Hashes, Branch-Namen, Tags oder Versionsnummern angeben, um eine spezifische Version der Action zu nutzen.
+         Im Beispiel verwenden wir hier die Version `v5`, d.h. wir verwenden den aktuellsten Tag, der mit `v5` beginnt (aktuell ist das `v5.0.0`, könnte aber in Zukunft `v5.3.2` oder höher sein).
+         Wenn wir immer die neueste Version einer Action nutzen wollen, könnten wir auch `@main` angeben, was aber nicht empfohlen wird, da es zu unerwarteten Änderungen führen kann.
+         Wenn wir eine spezifischere Version wie `v5.3.2` angeben wollen, könnten wir das auch tun.
+         Wenn wir immer diesselbe Version einer Action nutzen wollen, auch wenn der Maintainer Tags löscht und neu erstellt, könnten wir auch den Commit Hash angeben, z.B. `@a1b2c3d4e`.
+
+       - `uses: actions/setup-java@v4`: Installiert die gewünschte JDK-Version, damit `mvn` mit der richtigen Java-Version läuft.
+
+         Hier nutzen wir, dass GitHub Actions `inputs` unterstützen, die wir mit `with:` angeben können.
+         In unserem Beispiel geben wir die Java-Version `21` und die Distribution `temurin` an.
+         Die Action installiert dann automatisch das passende JDK.
+
+       - `run: mvn test`: Führt Maven aus und startet Build und Tests.
+         Hier führen wir einen Shell-Befehl aus, der Maven startet und die Tests ausführt.
+         Für die Darstellung in der GitHub Actions Oberfläche ist es hilfreich, wenn wir dem Schritt einen Namen geben, z.B. `Run JUnit tests using Maven`.
 
 4. Committe und pushe die Änderungen.
 5. Gehe zu deinem GitHub Repository und klicke auf den Reiter `Actions`.
@@ -150,9 +193,6 @@ Ein Job kann einen oder mehrere Schritte (`steps`) haben.
 7. Klicke auf den Job `java-test` und dann auf den Step `Run JUnit tests using Maven`.
    Du solltest die Ausgabe von Maven sehen.
 8. Am Ende sollte der Workflow erfolgreich sein und mit einem ✅ markiert sein.
-
-Herzlichen Glückwunsch!
-Du hast deine erste CI erstellt!
 
 ### Aufgabe 2a: Teste Deine CI! (Optional)
 
