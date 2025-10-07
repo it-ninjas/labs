@@ -194,7 +194,7 @@ Ein Job kann einen oder mehrere Schritte (`steps`) haben.
    Du solltest die Ausgabe von Maven sehen.
 8. Am Ende sollte der Workflow erfolgreich sein und mit einem ✅ markiert sein.
 
-### Aufgabe 2a: Teste Deine CI! (Optional)
+### Aufgabe 3: Teste Deine CI!
 
 1. Füge dem Java Code einen Fehler hinzu, der verhindert, dass das Java Programm
    kompiliert werden kann oder die Tests fehlschlagen lässt.
