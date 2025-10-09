@@ -9,7 +9,7 @@ description: >
 ## Voraussetzungen
 
 - Git (inkl. Git-Bash falls du Windows brauchst) ist auf deinem Computer installiert. Falls nicht, siehe:
-  [Git installieren](../../../../04_git/01_grundwissen/02_git-install)
+  [Git installieren](../../../../99_shared/collaboration/source-repositories/git/01_grundwissen/02_git-install)
 - Du hast die Grundeinstellungen für Git vorgenommen:
 
   {{<sbb raw="true">}}
