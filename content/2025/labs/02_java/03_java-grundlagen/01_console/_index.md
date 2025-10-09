@@ -56,8 +56,8 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 
 1. Beim ersten Mal:
 
-   1. IntelliJ IDEA installieren → [!\*IntelliJ IDEA einrichten](/docs/99_tools/ide/intellij/01_installation/)
-   2. Git-Repository einrichten → {{<puzzle type="subtle">}}[!\*Persönliches Git-Repository](/docs/99_tools/zusammenarbeit/source-repositories/github/){{</puzzle>}}{{<sbb type="subtle">}}[!\*Persönliches Git-Repository](/docs/99_tools/zusammenarbeit/source-repositories/personal-bitbucket/){{</sbb>}}
+   1. IntelliJ IDEA installieren → [!\*IntelliJ IDEA einrichten](/docs/99_shared/ide/intellij/01_installation/)
+   2. Git-Repository einrichten → {{<puzzle type="subtle">}}[!\*Persönliches Git-Repository](/docs/99_shared/collaboration/source-repositories/github/){{</puzzle>}}{{<sbb type="subtle">}}[!\*Persönliches Git-Repository](/docs/99_shared/collaboration/source-repositories/personal-bitbucket/){{</sbb>}}
 
 2. Öffne eine [!\*CMD-Shell](/docs/99_shared/shell/cmd/) und wechsle ins Verzeichnis deines Git-Repositories:  
    {{< code >}}
