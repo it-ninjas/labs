@@ -9,7 +9,7 @@ description: >
 ## Voraussetzungen
 
 - Du hast Zugriff auf das Git-Tool Bitbucket
-- Git (inkl. Git-Bash) ist auf deinem Computer installiert. Falls nicht, siehe:
+- Git (inkl. Git-Bash falls du Windows brauchst) ist auf deinem Computer installiert. Falls nicht, siehe:
   [Git installieren](../../../../99_shared/collaboration/source-repositories/git/01_grundwissen/02_git-install)
 - Du hast die Grundeinstellungen für Git vorgenommen:
 
