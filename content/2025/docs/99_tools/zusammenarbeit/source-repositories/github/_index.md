@@ -7,17 +7,20 @@ description: >
 ---
 
 ## Voraussetzungen
+
 - Git (inkl. Git-Bash falls du Windows brauchst) ist auf deinem Computer installiert. Falls nicht, siehe:
   [Git installieren](../../../../04_git/01_grundwissen/02_git-install)
 - Du hast die Grundeinstellungen für Git vorgenommen:
 
   {{<sbb raw="true">}}
+
   ```shell
-   git config --global user.name "u123456"  
+   git config --global user.name "u123456"
    git config --global user.email "u123456@sbb.ch"
-   git config --global core.autocrlf true  
-   git config --global core.longpaths true  
-   ```
+   git config --global core.autocrlf true
+   git config --global core.longpaths true
+  ```
+
   {{</sbb>}}
 
   {{<puzzle raw="true">}}
