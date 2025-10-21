@@ -7,6 +7,31 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251021-1439-138
+
+_2025-10-21 14:39 CEST auf origin/master_
+
+### Seiten-Änderungen
+
+- **Hinzugefügt**
+  - [Labs / Java Labs / Java Exercises - OOP / Wassermenge](../../labs/02_java/04_java-oop/24_Wassermenge/)
+- **Geändert**
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Java Lists Basics](../../docs/02_java/04_java-oop/05_list-basics/)
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Statische und nicht-statische Elemente](../../docs/02_java/04_java-oop/10_static-non_static/)
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Java Generics Grundlagen](../../docs/02_java/04_java-oop/11_java-generics/)
+  - [Labs / Java Labs / Java Exercises - OOP / Listen](../../labs/02_java/04_java-oop/05_lists/)
+  - [Labs / Java Labs / Java Exercises - OOP / NinjaCups](../../labs/02_java/04_java-oop/10_NinjaCups/)
+  - [Labs / Java Labs / Java Exercises - OOP / Generics](../../labs/02_java/04_java-oop/11_Generics/)
+  - [Labs / Java Labs / Java Exercises - OOP / Patienten](../../labs/02_java/04_java-oop/20_Patienten/)
+  - [Labs / Java Labs / Java Exercises - OOP / Adressbuch](../../labs/02_java/04_java-oop/21_Adressbuch/)
+  - [Labs / Java Labs / Java Exercises - OOP / Streaming Dienst](../../labs/02_java/04_java-oop/22_Streaming_Dienst/)
+  - [Labs / Java Labs / Java Exercises - OOP / Immobilienfirma](../../labs/02_java/04_java-oop/23_ImmoFirma/)
+  - [Labs / Java Labs / Java Exercises - OOP](../../labs/02_java/04_java-oop/)
+- **Gelöscht**
+  - Labs / Java Labs / Java Exercises - OOP / 06_Wassermenge
+
+---
+
 ## 20250923-1333-136
 
 _2025-09-23 13:33 CEST auf origin/master_
