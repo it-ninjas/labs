@@ -1,6 +1,6 @@
 ---
 title: "Java Exercises - OOP"
-linkTitle: "Java Exercises - OOP"
+linkTitle: "OOP"
 type: docs
 weight: 4
 description: >

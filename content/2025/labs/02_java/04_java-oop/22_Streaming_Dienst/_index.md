@@ -2,7 +2,7 @@
 title: "Streaming Dienst"
 linkTitle: "Streaming Dienst"
 type: docs
-weight: 4
+weight: 22
 description: >
   Aufgabe zu Modul #J2 - OOP - Streaming Dienst
 ---

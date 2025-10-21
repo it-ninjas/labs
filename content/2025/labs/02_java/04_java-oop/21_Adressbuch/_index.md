@@ -2,7 +2,7 @@
 title: "Adressbuch"
 linkTitle: "Adressbuch"
 type: docs
-weight: 3
+weight: 21
 description: >
   Aufgabe zu Modul #J2 - OOP - Adressbuch
 ---
@@ -31,7 +31,7 @@ Schreibe dazu eine eigene `equals()` Methode und verwende diese für die Überpr
 In den OOP-Aufgaben sollen in den `main`-Methoden nur noch Objekte instanziert werden.
 Sämtliche Logik wie oben beschieben muss in den Klassen definiert werden. Du brauchst also eine Klasse **Person** und eine Klasse **Adressbuch**, welche alle Funktionen anbietet.
 
-_Es soll kein Scanner eingesetzt werden._
+_Es soll kein Scanner eingesetzt werden. Die Daten sollen im Main per Konstruktor an die Objekte übergeben werden._
 
 ---
 

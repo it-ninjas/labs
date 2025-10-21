@@ -2,7 +2,7 @@
 title: "NinjaCups"
 linkTitle: "NinjaCups"
 type: docs
-weight: 7
+weight: 10
 description: >
   Aufgabe zu Modul #J2 - OOP - NinjaCups (static)
 ---

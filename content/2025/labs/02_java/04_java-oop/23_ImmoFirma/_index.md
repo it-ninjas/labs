@@ -2,7 +2,7 @@
 title: "Immobilienfirma"
 linkTitle: "Immobilienfirma"
 type: docs
-weight: 5
+weight: 23
 description: >
   Aufgabe zu Modul #J2 - OOP - Immobilienfirma
 ---
