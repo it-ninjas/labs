@@ -2,7 +2,7 @@
 title: "Listen"
 linkTitle: "Listen"
 type: docs
-weight: 1
+weight: 5
 description: >
   Aufgaben zu Modul #J2 - Lists Basics
 ---

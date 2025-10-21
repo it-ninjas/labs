@@ -2,7 +2,7 @@
 title: "Wassermenge"
 linkTitle: "Wassermenge"
 type: docs
-weight: 6
+weight: 24
 description: >
   Aufgabe zu Modul #J2 - OOP - Wassermenge
 ---

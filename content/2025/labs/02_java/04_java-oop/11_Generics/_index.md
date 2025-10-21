@@ -2,7 +2,7 @@
 title: "Generics"
 linkTitle: "Generics"
 type: docs
-weight: 8
+weight: 11
 description: >
   Aufgabe zu Modul #J2 - OOP - Generics I
 ---

@@ -157,4 +157,5 @@ public final class SpeedConverter {
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [NinjaCups](../../../../labs/02_java/04_java-oop/07_ninjacups) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [NinjaCups](../../../../labs/02_java/04_java-oop/10_ninjacups)
+in den Labs.
