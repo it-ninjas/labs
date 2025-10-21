@@ -1,6 +1,6 @@
 ---
-title: "Lists Basics - Aufgaben"
-linkTitle: "Lists Basics - Aufgaben"
+title: "Listen"
+linkTitle: "Listen"
 type: docs
 weight: 1
 description: >
@@ -70,23 +70,23 @@ Die Fibonacci-Folge ist relevant, weil sie in der **Natur** häufig vorkommt, wi
 
 #### Umsetzung
 
-Du schreibst eine Methode für die Berechnung der Fibonacci-Zahlen bis zu einem bestimmten Wert.
-Die Methode berechnet die Fibonacci-Zahlen, bis die aktuell berechnete Zahl grösser als **n** ist, und gibt die Liste der berechneten Fibonacci-Zahlen als Rückgabewert zurück.
-Es ist also vor der Berechnung unklar, wie lange die Liste werden kann.
+Du schreibst eine Methode für die Berechnung der Fibonacci-Zahlen bis zu einem bestimmten Wert. Die Methode berechnet
+alle Fibonacci-Zahlen, welche kleiner oder gleich **max** sind, und gibt die Liste der berechneten Fibonacci-Zahlen als
+Rückgabewert zurück. Es ist also vor der Berechnung unklar, wie lange die Liste werden kann.
 
 Methodensignatur:
 
 ```java
-List<Integer> fibonacci(int n);
+List<Integer> fibonacci(int max);
 ```
 
 Wenn wir also zum Beispiel **n** auf 20 setzen, wäre das Resultat eine ArrayList mit den folgenden Einträgen:
 
 ```java
-[0, 1, 1, 2, 3, 5, 8, 13, 21]
+[0, 1, 1, 2, 3, 5, 8, 13]
 ```
 
-21 ist grösser als 20, deshalb stoppt die Liste nach diesem Eintrag.
+21 ist grösser als 20, deshalb stoppt die Liste mit 13.
 
 _Bei der Umsetzung dürfen keine Streams verwendet werden!_
 
