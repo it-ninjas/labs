@@ -69,4 +69,4 @@ Nachdem man den Component erstellt hat, kann man ihn im Template eines anderen C
 </div>
 ```
 
-Das Ergebnis ist, dass die `<app-greeting></app-greeting>` Tags durch das gerenderte Template des `GreetingComponent` ersetzt werden. In diesem Fall wird eine Überschrift "Hello, John!" angezeigt, weil `name` im Typescript auf "John" gesetzt ist.
+Das Ergebnis ist, dass die `<app-greeting></app-greeting>` Tags durch das gerenderte Template des `GreetingComponent` ersetzt werden. In diesem Fall wird eine Überschrift "Hello, Dragon Warrior!" angezeigt, weil `name` im Typescript auf "Dragon Warrior" gesetzt ist.

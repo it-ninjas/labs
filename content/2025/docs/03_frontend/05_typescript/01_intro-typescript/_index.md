@@ -225,5 +225,5 @@ Konsolenausgabe des Beispiels:
 Slithering...
 Sammy the Python moved 5m.
 Galloping...
-Tom the Palomino moved 34m.
+Tom the Palomino moved 35m.
 ```
