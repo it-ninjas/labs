@@ -93,6 +93,70 @@ Die Workflows speichern wir im Ordner `.github/workflows`.
 Ein Workflow besteht aus einem oder mehreren Jobs.
 Ein Job kann einen oder mehrere Schritte (`steps`) haben.
 
+Das folgende Diagramm zeigt den Aufbau eines Workflows, der aus zwei Jobs besteht, die jeweils aus einem bzw. zwei Schritten bestehen.
+Der Workflow wird durch ein Ereignis (z.B. ein Push) ausgelöst.
+Die Jobs werden auf verschiedenen Runnern ausgeführt, die die Schritte abarbeiten.
+
+```mermaid
+flowchart LR
+  TRIGGER((Event))
+  TRIGGER --> Workflow
+  job1 --> runner1
+  job2 --> runner2
+  subgraph Workflow[Workflow]
+      subgraph job2["Job 2"]
+        subgraph step2_1["Step 1"]
+            action2_1_1[[actions or shell cmd]]
+        end
+        subgraph step2_2["Step 2"]
+            action2_2_1[[actions or shell cmd]]
+        end
+    end
+    subgraph job1["Job 1"]
+        subgraph step1["Step 1"]
+            action1[[actions or shell cmd]]
+        end
+    end
+
+  end
+  subgraph runner1["Runner 1"]
+        runner_action_1[[actions or shell cmd]]
+        runner_result_1[[Logs results]]
+    end
+    subgraph runner2["Runner 2"]
+        runner_action_2[[actions or shell cmd]]
+        runner_result_2[[Logs results]]
+    end
+```
+
+In dieser Aufgabe erstellst du einen Workflow, der automatisch deine JUnit Tests ausführt, wenn du Code in den `main` Branch pusht.
+
+```mermaid
+flowchart LR
+    subgraph runner1["ubuntu-latest"]
+    end
+  subgraph Workflow[java test with maven]
+    subgraph job1["job: java-test"]
+        subgraph step1["Step 1"]
+            action1_1_1[["actions/checkout@v5"]]
+        end
+        subgraph step2["Step 2"]
+            action1_2_1[["actions/setup-java@v4"]]
+        end
+        subgraph step3["Run JUnit tests using Maven"]
+            action1_3_1[["mvn test"]]
+        end
+        step1 --> step2
+        step2 --> step3
+    end
+
+  end
+  TRIGGER((Push to main))
+
+  TRIGGER -- triggers --> Workflow
+  job1 -- runs on --> runner1
+```
+
 1. Erstelle im Root-Verzeichnis deines Projekts den Ordner `.github/workflows`.
 2. Erstelle im Ordner `.github/workflows` die Datei `java-test.yml`.
 3. Füge folgenden Inhalt in die Datei `java-test.yml` ein:
@@ -194,7 +258,7 @@ Ein Job kann einen oder mehrere Schritte (`steps`) haben.
    Du solltest die Ausgabe von Maven sehen.
 8. Am Ende sollte der Workflow erfolgreich sein und mit einem ✅ markiert sein.
 
-### Aufgabe 3: Teste Deine CI!
+### Aufgabe 3: Teste Deine CI
 
 1. Füge dem Java Code einen Fehler hinzu, der verhindert, dass das Java Programm
    kompiliert werden kann oder die Tests fehlschlagen lässt.
