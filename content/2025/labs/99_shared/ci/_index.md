@@ -85,7 +85,7 @@ Die Pipeline wird automatisch ausgeführt, wenn du Code in den `main` Branch pus
 9. Pushe deinen neuen Commit.
    Öffne dein GitHub Repository und überprüfe, ob dein Push funktioniert hat.
 
-### Aufgabe 2: Erstelle einen GitHub Action, um die Tests auszuführen
+### Aufgabe 2: Erstelle eine GitHub Action, um die Tests auszuführen
 
 GitHub Actions sind das CI System von GitHub.
 In GitHub Actions definieren wir `workflows`.
@@ -156,6 +156,8 @@ flowchart LR
   TRIGGER -- triggers --> Workflow
   job1 -- runs on --> runner1
 ```
+
+Die Schritte sind:
 
 1. Erstelle im Root-Verzeichnis deines Projekts den Ordner `.github/workflows`.
 2. Erstelle im Ordner `.github/workflows` die Datei `java-test.yml`.
