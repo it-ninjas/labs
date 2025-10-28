@@ -166,7 +166,7 @@ Mit `equals()` hingegen vergleichst du den Inhalt der Objekte.
 
 Standardmässig definiert die `equals()`-Methode in der **Object-Klasse**, dass zwei Objekte nur dann gleich sind, wenn sie exakt die gleiche Identität haben.
 Das bedeutet, dass zwei unterschiedliche Objekte derselben Klasse als nicht gleich angesehen werden, selbst wenn alle ihre Felder die gleichen Werte enthalten.
-Es wird also die Speicheradresse mit `==` verlgichen:
+Es wird also die Speicheradresse mit `==` verglichen:
 
 ```java
 // Der Code aus der Klasse Object in Java
