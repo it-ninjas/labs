@@ -1,0 +1,47 @@
+<!--suppress CheckEmptyScriptTag -->
+
+# Secrets - Geheimnisse sicher hinterlegen
+
+Dieses Beispiel zeigt, wie man Geheimnisse in einer Java Applikation sicher hinterlegen kann.
+
+## Voraussetzung
+
+- Du weisst, was mit Geheimnissen gemeint ist.
+- Du weisst was Umgebungsvariablen sind.
+- Du weisst was Maven ist und kannst Maven-Projekte aufsetzen.
+- Du weisst wie man bei Maven ein Paket hinzufügt.
+
+<itninja download lab="All"/>
+
+## Übung
+
+Das Beispiel zeigt, wie ein Projekt korrekt aufgesetzt wird, damit es sicher in einem Git-Repository gesichert werden
+kann.
+
+Schaue dir die Datei `.env.template` an und folge den Anweisungen dort. Ersetze dabei `das_geheimnis` mit
+`mein_geheimnis`.
+
+{{< pom >}}
+
+```xml
+<dependency>
+  <groupId>io.github.cdimascio</groupId>
+  <artifactId>dotenv-java</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
+{{< /pom >}}
+
+Wenn Du alles korrekt erledigt hast, sollte der Unittest erfolgreich durchlaufen:
+
+```
+mvn test
+```
+
+{{< ninja tip>}}
+Wenn du den Unittest anschaust, wirst du feststellen, dass auch dort nirgends das Geheimnis im Klartext steht. Um zu
+testen, ob du das Geheimnis korrekt konfiguriert hast vergleichen wir es mit einem Hash. Der Hash kann nicht zurück in
+einen Klartext verwandelt werden, aber mit der Funktion `match` kann man feststellen, ob ein Wert den gleich Hash
+erzeugt und so verifizieren, ob der Wert korrekt ist.
+{{< /ninja >}}
