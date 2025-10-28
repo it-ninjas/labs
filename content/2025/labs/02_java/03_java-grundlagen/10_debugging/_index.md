@@ -106,6 +106,16 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
    git push
    {{< /code >}}
 
+{{< ninja info >}}
+Beim ersten Mal reklamiert Git, da es den Template Branch auf dem Server noch nicht gibt. Kopiere den Befehl aus der
+Fehlermeldung. Er sollte etwa folgende Form haben:
+
+{{< code >}}
+git push --set-upstream origin templates
+{{< /code >}}
+
+{{< /ninja >}}
+
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
 
    {{< code >}}
