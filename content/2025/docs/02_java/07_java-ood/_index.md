@@ -916,9 +916,10 @@ Beispiel:
 public class Main {
 
     public static void main(String args[]) {
-        Animal dog = new Dog();
-        if (dog instanceof Dog) {
-            // ...
+        Animal animal = new Dog();
+        if (animal instanceof Dog) {
+            Dog dog = (Dog) animal;
+            dog.move();
         }
     }
 }
@@ -926,6 +927,20 @@ public class Main {
 
 Der Operator überprüft also den Typ einer Instanz und berücksichtigt dabei Subklassen und
 Interfaces.
+
+Seit Java 16 funktioniert auch folgende Variante, die keine explizite Typumwandlung benötigt:
+
+```java
+public class Main {
+
+    public static void main(String args[]) {
+        Animal animal = new Dog();
+        if (animal instanceof Dog dog) {
+            dog.move();
+        }
+    }
+}
+```
 
 ### Interfaces
 
