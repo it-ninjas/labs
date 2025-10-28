@@ -7,6 +7,18 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251028-1409-139
+
+_2025-10-28 14:09 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
+  - [Docs / Frontend (Web) / Angular / Components](../../docs/03_frontend/06_angular/02_3_components/)
+
+---
+
 ## 20251021-1439-138
 
 _2025-10-21 14:39 CEST auf origin/master_
