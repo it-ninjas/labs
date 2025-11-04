@@ -73,55 +73,71 @@ String endOfTheWorld =
     // Copyright R.E.M.
 ```
 
+## Rahmenbedingungen
+
+- Erstelle deine Methoden in einem geeigneten Package (alleine oder mit anderen thematisch passenden Methoden).
+- Der Text muss per Parameter an die Methode übergeben werden (direkt oder vorkonvertiert falls sinnvoll).
+- Der Text darf nicht verändert werden.
+- Als Wort gelten alle zusammenhängenden sichtbaren Zeichen, getrennt durch White-Spaces (Leerzeichen, Tabulator,
+  Zeilenumbruch, ...)
+- Die Methode muss auch mit anderen Strings funktionieren bis zu einer Länge von 1'000'000 Zeichen, aber auch mit leerem
+  oder Null-String String.
+
 ## Aufgabe 1
 
-Schreibe eine Methode, welche die Anzahl der Wörter zählt, die mindestens zweimal im Text vorkommen. Entferne zu diesem Zweck zuerst die Sonderzeichen.
-Die Methode liefert die Anzahl dieser Wörter zurück.
+Schreibe eine Methode, welche die Anzahl der Wörter zählt, die mindestens zweimal im Text vorkommen. Entferne zu diesem
+Zweck zuerst die Sonderzeichen. Die Methode liefert die Anzahl dieser Wörter zurück.
+
+Rufe die Methode aus deinem `main()` auf und gib das Resultat auf der Konsole aus:  
+`Anzahl Worte, welche mehrmals im Text vorkommen: ...`
 
 ## Aufgabe 2
 
-Schreibe eine Methode, welche die Wörter aus dem obigen Text alphabetisch sortiert. Entferne zu diesem Zweck zuerst die Sonderzeichen.
-Die Methode liefert ein Array mit den sortierten Wörtern zurück.
+Schreibe eine Methode, welche die Wörter aus dem obigen Text alphabetisch sortiert. Entferne zu diesem Zweck zuerst die
+Sonderzeichen. Die Methode liefert ein Array mit den sortierten Wörtern zurück.
 
 _Die Verwendung von Arrays.sort() und Collections.sort() ist **nicht** erlaubt._
 
-Du kannst allerdings [String.compareTo](https://www.w3schools.com/java/ref_string_compareto.asp) verwenden. Sieh dir zudem diese [Visualisierung](https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/visualize/) zu Bubble Sort an. Neben Bubble Sort gibt es noch weitere Sortieralgorithmen, die du anwenden kannst.
+Du kannst allerdings [String.compareTo](https://www.w3schools.com/java/ref_string_compareto.asp) verwenden. Sieh dir
+zudem diese [Visualisierung](https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/visualize/) zu Bubble
+Sort an. Neben Bubble Sort gibt es noch weitere Sortieralgorithmen, die du anwenden kannst.
+
+Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:  
+`Wörter im Text alphabetisch sortiert: x, x, xy, xz, yx, yy, yz, z, zx, zy, zz, ...`
 
 ## Aufgabe 3
 
-Schreibe eine Methode, welche die durchschnittliche Wortlänge berechnet. Entferne zu diesem Zweck zuerst die Sonderzeichen.
-Die Methode liefert die durchschnittliche Wortlänge als Gleitkommazahl zurück.
+Schreibe eine Methode, welche die durchschnittliche Wortlänge berechnet. Entferne zu diesem Zweck zuerst die
+Sonderzeichen. Die Methode liefert die durchschnittliche Wortlänge als Gleitkommazahl zurück.
+
+Rufe die Methode aus deinem `main()` auf und gib das Resultat auf der Konsole aus:  
+`Die durchschnittliche Wortlänge ist: ...`
 
 ## Aufgabe 4
 
-Schreibe eine Methode, welche die Wörter aus dem Text nach ihrer Länge sortiert. Kurze Wörter kommen dabei zuerst. Entferne zu diesem Zweck zuerst die Sonderzeichen.
-Die Methode liefert ein Array mit den sortierten Wörtern zurück.
+Schreibe eine Methode, welche die Wörter aus dem Text nach ihrer Länge sortiert. Kurze Wörter kommen dabei zuerst.
+Entferne zu diesem Zweck zuerst die Sonderzeichen. Die Methode liefert ein Array mit den sortierten Wörtern zurück.
+
+Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:  
+`Wörter im Text der Länge nach sortiert: z, x, z, xy, xy, xx, zxx, xxx, xzz, zxx, ...`
 
 ## Aufgabe 5
 
-Schreibe eine Methode, welche das Wort zurückliefert, das im Text oben am häufigsten vorkommt. Entferne zu diesem Zweck zuerst die Sonderzeichen.
-Die Methode liefert das gesuchte Wort zurück.
+Schreibe eine Methode, welche das Wort zurückliefert, das im Text oben am häufigsten vorkommt. Entferne zu diesem Zweck
+zuerst die Sonderzeichen. Die Methode liefert das gesuchte Wort zurück.
+
+Abgrenzung: Falls mehrere Worte gleich häufig vorkommen soll alphabetisch soritert das erste Wort zurückgegeben werden.
+
+Rufe die Methode aus deinem `main()` auf und gib das Resultat auf der Konsole aus:  
+`Das häufigste Wort im Text ist: ...`
 
 ## Aufgabe 6
 
-[//]: # "Alte Beschreibung V1"
-[//]: # "Schreibe eine Methode, welche die einzelnen Buchstaben des Textes in ein zweidimensionales Array von Strings überführt."
-[//]: # "Die erste Dimension hat dabei die Grösse der verschiedenen vorkommenden Zeichen im Text in alphabetischer Reihenfolge."
-[//]: # "Sonderzeichen sind ebenfalls Teil dieser alphabetischen Reihenfolge, die Sortierung richtet sich nach dem Integer-Wert der einzelnen Zeichen."
-[//]: # "Die zweite Dimension enthält pro Zeichen ein Array mit den Positionen der Zeichen im Text. An erster Stelle steht dabei das jeweilige Zeichen."
-[//]: # "Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden."
-[//]: # "Alte Beschreibung V2"
-[//]: # "Schreibe eine Methode, welche die einzelnen Buchstaben des Textes in ein zweidimensionales Array von Strings überführt."
-[//]: # "In der ersten Reihe sollen alle einzigartigen im Text vorhandenen Buchstaben stehen. "
-[//]: # "Diese sollen in alphabetischer Reihenfolge sortiert sein. Sonderzeichen sollen auch aufgelistet werden."
-[//]: # "Unter jedem Buchstaben sollen fortlaufend die Positionen(index) im Text dargestellt werden."
-[//]: # "Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden."
-
-Schreibe eine Methode, welche das Vorkommen der einzelnen Buchstaben des Textes mithilfe eines zweidimensionalen Arrays von Strings tabellarisch darstellt.
-In der ersten Reihe sollen alle einzigartigen im Text vorhandenen Buchstaben stehen.
-Diese sollen in alphabetischer Reihenfolge sortiert sein. Sonderzeichen sollen auch aufgelistet werden.
-Stellvertretend für ein Aufkommen soll der Index (Position im Text) unter dem entsprechenden Zeichen aufgelistet werden.
-Sämtliche Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden.
+Schreibe eine Methode, welche das Vorkommen der einzelnen Buchstaben des Textes mithilfe eines zweidimensionalen Arrays
+von Strings tabellarisch darstellt. In der ersten Reihe sollen alle einzigartigen im Text vorhandenen Buchstaben stehen.
+Diese sollen in alphabetischer Reihenfolge sortiert sein. Sonderzeichen sollen auch aufgelistet werden. Stellvertretend
+für ein Aufkommen soll der Index (Position im Text) unter dem entsprechenden Zeichen aufgelistet werden. Sämtliche
+Buchstaben sollen immer nur als kleingeschriebene Buchstaben behandelt werden.
 
 Beispiel:
 
@@ -138,5 +154,6 @@ Der Tabelle kann folgendes entnommen werden:
 Der Buchstabe `a` befindet sich an den Positionen `1` und `12` im String `Hallo mein Name ist Claudio`.
 Das erste Zeichen in der Tabelle ist ein Leerschlag (whitespace).
 
-Um die Tabelle formattiert auszugeben, kannst du `String.format("%-10s", deineZahl)` verwenden.
-Dabei wird der Text immer mit Leerzeichen aufgefüllt und sichergestellt, dass der Text immer 10 Zeichen lang ist, auch wenn die Zahlen unterschiedlich lang sind.
+Um die Tabelle formattiert auszugeben, kannst du `String.format("%-10s", deineZahl)` verwenden. Dabei wird der Text
+immer mit Leerzeichen aufgefüllt und sichergestellt, dass der Text immer 10 Zeichen lang ist, auch wenn die Zahlen
+unterschiedlich lang sind.
