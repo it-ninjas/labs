@@ -298,12 +298,12 @@ Passe untenstehenden Quellcode an und füge folgende Methode hinzu:
 
 ---
 
-**Name der Methode: _Bestimme selber einen passenden Namen für die Methode_  
+**Name der Methode:** _Bestimme selber einen passenden Namen für die Methode_  
 **Funktion:** Gibt die kleinste von 3 Zahlen zurück  
 **Parameter1:** Erste Zahl [int]  
 **Parameter2:** Zweite Zahl [int]  
 **Parameter3:** Dritte Zahl [int]  
-**Rückgabewert:\*\* Kleinste der 3 Zahlen [int]
+**Rückgabewert:** Kleinste der 3 Zahlen [int]
 
 ---
 
