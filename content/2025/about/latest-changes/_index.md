@@ -7,6 +7,18 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251112-1410-140
+
+_2025-11-12 14:10 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/07_java-ood/)
+  - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
+
+---
+
 ## 20251028-1409-139
 
 _2025-10-28 14:09 CET auf origin/master_
