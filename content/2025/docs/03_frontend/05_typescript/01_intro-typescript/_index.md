@@ -142,11 +142,12 @@ Interfaces in TypeScript beschreiben die Struktur von Objekten, ohne tatsächlic
 
 Ein einfaches Beispiel ist das folgende:
 
-````javascript
+```typescript
 interface Person {
     name: string;
     alter: number;
 }
+```
 
 ### Vererbung
 
