@@ -169,7 +169,7 @@ const dog = new Dog();
 dog.bark();
 dog.move(10);
 dog.bark();
-````
+```
 
 Dieses Beispiel zeigt die grundlegendste Vererbungsfunktion: Klassen erben Eigenschaften und Methoden von Basisklassen (`Animal`). `Dog` ist hier eine abgeleitete Klasse, die mit dem Schlüsselwort `extends` von der Basisklasse Animal abgeleitet wird. Abgeleitete Klassen werden häufig als Unterklassen bezeichnet, und Basisklassen als Superklassen.
 
