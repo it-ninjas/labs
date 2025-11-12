@@ -146,8 +146,8 @@ Ein einfaches Beispiel ist das folgende:
 
 ```typescript
 interface Person {
-    name: string;
-    alter: number;
+  name: string;
+  alter: number;
 }
 ```
 
