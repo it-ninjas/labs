@@ -114,13 +114,15 @@ Ein einfaches Beispiel einer Klasse:
 
 ```javascript
 class Greeter {
-    greeting: string;
-    constructor(message: string) {
-        this.greeting = message;
-    }
-    greet() {
-        return "Hello, " + this.greeting;
-    }
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  greet() {
+    return "Hello, " + this.greeting;
+  }
 }
 
 let greeter = new Greeter("world");
@@ -142,11 +144,12 @@ Interfaces in TypeScript beschreiben die Struktur von Objekten, ohne tatsächlic
 
 Ein einfaches Beispiel ist das folgende:
 
-````javascript
+```typescript
 interface Person {
-    name: string;
-    alter: number;
+  name: string;
+  alter: number;
 }
+```
 
 ### Vererbung
 
@@ -169,7 +172,7 @@ const dog = new Dog();
 dog.bark();
 dog.move(10);
 dog.bark();
-````
+```
 
 Dieses Beispiel zeigt die grundlegendste Vererbungsfunktion: Klassen erben Eigenschaften und Methoden von Basisklassen (`Animal`). `Dog` ist hier eine abgeleitete Klasse, die mit dem Schlüsselwort `extends` von der Basisklasse Animal abgeleitet wird. Abgeleitete Klassen werden häufig als Unterklassen bezeichnet, und Basisklassen als Superklassen.
 
