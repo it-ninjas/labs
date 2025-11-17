@@ -2,7 +2,7 @@
 title: "Objektorientiertes Design Challange - Vehicles"
 linkTitle: "Objektorientiertes Design Challange - Vehicles"
 type: docs
-weight: 2
+weight: 4
 description: >
   Challange zu Modul #J3 - Vehicles
 ---
