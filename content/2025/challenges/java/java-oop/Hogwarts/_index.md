@@ -1,13 +1,11 @@
 ---
-title: "Objektorientierte Programmierung Challenge"
-linkTitle: "Objektorientierte Programmierung Challenge"
+title: "Hogwarts Sorting Hat Challenge"
+linkTitle: "Hogwarts Sorting Hat Challenge"
 type: docs
-weight: 2
+weight: 3
 description: >
-  Challenge zu Modul #J2
+  Challenge zu Modul #J2 - Hogwarts Sorting Hat System
 ---
-
-### Hogwarts Sorting Hat System
 
 Hogwarts ist bekanntlich die beste Schule für Hexerei und Zauberei.
 Alle Hogwarts Schüler:innen werden vor Beginn des ersten Schuljahres gemäss ihren

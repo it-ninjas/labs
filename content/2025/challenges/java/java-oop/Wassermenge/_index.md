@@ -1,10 +1,10 @@
 ---
-title: "Wassermenge"
-linkTitle: "Wassermenge"
+title: "Wassermenge Challange"
+linkTitle: "Wassermenge Challange"
 type: docs
-weight: 24
+weight: 2
 description: >
-  Aufgabe zu Modul #J2 - OOP - Wassermenge
+  Challange zu Modul #J2 - Wassermenge
 ---
 
 Schreibe eine Anwendung, welche entscheidet ob ein Damm geöffnet oder geschlossen werden muss. Die Entscheidung wird
