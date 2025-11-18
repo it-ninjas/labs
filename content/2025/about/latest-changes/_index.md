@@ -7,6 +7,19 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251118-0925-141
+
+_2025-11-18 09:25 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Challenges / Java Challenges / java-ood / Objektorientiertes Design Challange - Vehicles](../../challenges/java/java-ood/02_Vehicles/)
+- **Gelöscht**
+  - Labs / Java Labs / Java Exercises - OOD / 01_Bibliothek
+
+---
+
 ## 20251112-1410-140
 
 _2025-11-12 14:10 CET auf origin/master_
