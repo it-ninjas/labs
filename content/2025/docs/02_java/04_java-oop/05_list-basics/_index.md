@@ -48,7 +48,7 @@ Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface
 Das List-Interface stellt mehrere Methoden zur Verfügung, welche dann von Klassen wie `ArrayList` oder `LinkedList` umgesetzt werden.
 
 Nachfolgend werden einige Methoden und deren Zweck aufgelistet.
-Der Rückgabetyp "E" seht hier für einen generischen (universellen) Typ, der stellvertretend für einen spezifischen Objekttyp steht. Dieses Vorgehen wird genauer im Modul [Generics](../11_java-generics) behandelt.
+Der Rückgabetyp "E" steht hier für einen generischen (universellen) Typ, der stellvertretend für einen spezifischen Objekttyp steht. Dieses Vorgehen wird genauer im Modul [Generics](../11_java-generics) behandelt.
 
 ```java
 /*

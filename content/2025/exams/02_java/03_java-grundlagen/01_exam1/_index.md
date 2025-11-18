@@ -10,7 +10,7 @@ description: >
 ## Vorbereitung
 
 Erstelle selbsständig ein neues Projekt in IntelliJ. Eine Anleitung findest du
-[hier](../../../../docs/99_shared/ide/intellij/01_installation/).
+[hier](../../../../docs/99_shared/ide/intellij/02_einrichten/#neues-projekt-anlegen).
 
 ## Gegeben
 
@@ -30,6 +30,14 @@ int[] numbers = {
     -22, 2, 7, 8, -6, 20, 3, -5, -19, -15 };
 ```
 
+Wichtig:
+
+- Deine Methoden müssen auch funktionieren, wenn:
+
+  - andere Zahlenarrays genommen werden mit Grösse 1 bis 1'000'000
+  - ein leeres Zahlenarray genommen wird
+  - der Methode ein Null-Pointer übergeben wird
+
 ## Aufgabe 1
 
 Schreibe eine Methode, welche alle Zahlen im Array zählt, welche grösser gleich 0 und kleiner gleich 10, aber nicht 5 sind.
@@ -37,7 +45,7 @@ Die Methode liefert die Anzahl dieser Zahlen zurück.
 
 Wichtig:
 
-- Erstelle deine Methoden in einem eigenen Package.
+- Erstelle deine Methoden in einem geeigneten Package (alleine oder mit anderen thematisch passenden Methoden).
 - Das Array mit den Zahlen soll als Parameter übergeben werden können.
 - Rufe die Methode aus deinem `main()` auf und gib den erhaltenen Wert auf der Konsole aus:
   `Es gibt x Zahlen, welche grösser gleich 0 und kleiner gleich 10, aber nicht 5 sind.`
@@ -50,7 +58,7 @@ mehrfach vor. Die Methode liefert das neue Array zurück.
 
 Wichtig:
 
-- Erstelle deine Methoden in einem eigenen Package.
+- Erstelle deine Methoden in einem geeigneten Package (alleine oder mit anderen thematisch passenden Methoden).
 - Das Array mit den Zahlen soll als Parameter übergeben werden können.
 - Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:
   `Positive Zahlen inklusive 0: x, y, z, ...`
@@ -64,7 +72,7 @@ Array zurück.
 
 Wichtig:
 
-- Erstelle deine Methoden in einem eigenen Package.
+- Erstelle deine Methoden in einem geeigneten Package (alleine oder mit anderen thematisch passenden Methoden).
 - Das Array mit den Zahlen soll als Parameter übergeben werden können.
 - Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:
   `Zahlen welche nicht mehr als 10 von -6 abweichen: x, y, z, ...`
@@ -78,10 +86,10 @@ Array mehrfach vor. Die Methode liefert das neue Array zurück.
 Wichtig:
 
 - `Math.abs` darf für diese Aufgabe nicht verwendet werden.
-- Erstelle deine Methoden in einem eigenen Package.
+- Erstelle deine Methoden in einem geeigneten Package (alleine oder mit anderen thematisch passenden Methoden).
 - Das Array mit den Zahlen soll als Parameter übergeben werden können.
 - Rufe die Methode aus deinem `main()` auf und gib das erhaltene Array auf der Konsole aus:
-  `Zahlen welche nicht mehr als 10 von -6 abweichen: x, y, z, ...`
+  `Alle zahlen als positive Zahlen: x, y, z, ...`
 
 ## Aufgabe 5
 
@@ -89,6 +97,10 @@ Schreibe eine Methode, welche alle Zahlen aus dem Array ausliest, die sich von i
 mehr als den Wert 5 unterscheiden. Schreibe diese Zahlen in ein neues Array. Für die erste und die letzte Zahl im Array
 gibt es nur einen Nachbar. Die Reihenfolge der Zahlen im Array muss gleich bleiben, kommt eine Zahl mehrfach vor, kommt
 sie auch im neuen Array mehrfach vor. Die Methode liefert das neue Array zurück.
+
+Wichtig:
+
+- Erstelle deine Methoden in einem geeigneten Package (alleine oder mit anderen thematisch passenden Methoden).
 
 Ein Beispiel:
 

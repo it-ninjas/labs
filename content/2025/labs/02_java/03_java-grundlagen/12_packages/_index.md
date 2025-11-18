@@ -105,6 +105,16 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
    git push
    {{< /code >}}
 
+{{< ninja info >}}
+Beim ersten Mal reklamiert Git, da es den Template Branch auf dem Server noch nicht gibt. Kopiere den Befehl aus der
+Fehlermeldung. Er sollte etwa folgende Form haben:
+
+{{< code >}}
+git push --set-upstream origin templates
+{{< /code >}}
+
+{{< /ninja >}}
+
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
 
    {{< code >}}
@@ -241,7 +251,7 @@ Passe main an, damit deine Package verwendet wird. Erstelle ein paar Aufrufe und
 ## Aufgabe 3
 
 {{< ninja warning >}}
-**Zusätzliche Vorbereitung: **
+**Zusätzliche Vorbereitung:**
 Erstelle 2 Kopien des IntelliJ-Projekts. Kopiere dazu den Ordner welcher das pom.xml beinhaltet. Normalerweise
 sollte der Ordner `12_packages` heissen und die Kopie zum Beispiel `12_packages.create` und `12_packages.use`.
 {{< /ninja >}}

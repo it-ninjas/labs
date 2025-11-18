@@ -121,6 +121,83 @@ Du kannst diese Methode so aufrufen:
 greet();
 ```
 
+### Was bedeuted static?
+
+Mit `static` wird unterschieden, ob eine Methode zu einer Klasse gehört (statisch=immer da), oder zu einem Objekt und
+nur genutzt werden kann, wenn man zuvor ein Objekt erstellt hat. Was Objekte sind und wie man diese erstellt lernst du
+aber erst im Modul _Objekt Orientierte Programmierung (OOP)_ kennen. Für den Moment musst du einfach bei jeder Methode
+das Wort `static` voranstellen.
+
+## Verwenden von Methoden
+
+Hast du eine Methode implementiert, kannst du sie einfach über ihren Namen aufrufen:
+
+Beispiel einer Methode mit Rückgabewert:
+
+```java
+public static int add(int a, int b) {
+    return a + b;
+}
+```
+
+Du kannst diese Methode so aufrufen:
+
+```java
+int result = add(17, 10); // Variable result will be 27 afterwards
+```
+
+Oder so:
+
+```java
+int x = 17;
+int y = 10;
+int result1 = add(x, y); // Variable result1 will be 27 afterwards
+
+int u = 17;
+int v = 10;
+int w = add(u, v); // Variable w will be 27 afterwards
+
+int result2 = add(w, x); // Variable result2 will be 44 afterwards: (u + v) + x -> (17 + 10) + 17 = 44
+
+```
+
+Bei diesem Beispiel wurde der Methode der Wert von x und y übergeben. Die Methode selbst arbeitet aber mit den
+Bezeichnern a und b.
+
+### Scope von Variablen
+
+Auch wenn lokale Variablen gleich heissen, handelt es sich trotzdem nicht um die gleichen Variablen!
+
+```java
+public static int add(int a, int b) {
+    int result = a + b;
+    a = 0;
+    b = 0;
+    return result;
+}
+```
+
+Verwendung:
+
+```java
+int a = 17;
+int b = 10;
+int result1 = add(a, b); // Variable result1 will be 27 afterwards
+
+int c = a; // Variable c will be 17 afterwards
+int d = b; // Variable d will be 10 afterwards
+int result2 = add(c, d); // Variable result2 will be 27 afterwards
+
+a = 0; // Variable c will be 17 afterwards
+b = 0; // Variable d will be 10 afterwards
+int result3 = add(a, b); // Variable result3 will be 0 afterwards
+
+```
+
+In der Methode `add` wird `a` und `b` auf `0` gesetzt. Dies hat aber keinen Einfluss auf die Variablen `a` und ``b` im
+Code, welcher die Methode aufruft, obwohl die Namen gleich sind. Erst wenn in der aufrufenden Methode `a` und `b` auf
+`0` gesetzt und danach die Methode `add` aufgerufen wird, wir `0` als Resultat zurückgegeben.
+
 ## Wozu brauche ich Methoden?
 
 Methoden bringen viele Vorteile:
