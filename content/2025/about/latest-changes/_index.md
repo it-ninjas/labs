@@ -34,9 +34,7 @@ _2025-10-21 14:39 CEST auf origin/master_
   - [Labs / Java Labs / Java Exercises - OOP / Listen](../../labs/02_java/04_java-oop/05_lists/)
   - [Labs / Java Labs / Java Exercises - OOP / NinjaCups](../../labs/02_java/04_java-oop/10_NinjaCups/)
   - [Labs / Java Labs / Java Exercises - OOP / Generics](../../labs/02_java/04_java-oop/11_Generics/)
-  - [Labs / Java Labs / Java Exercises - OOP / Patienten](../../../../archive/java/java/oop/20_Patienten/)
   - [Labs / Java Labs / Java Exercises - OOP / Adressbuch](../../labs/02_java/04_java-oop/21_Adressbuch/)
-  - [Labs / Java Labs / Java Exercises - OOP / Streaming Dienst](../../../../archive/java/java/oop/22_Streaming_Dienst/)
   - [Labs / Java Labs / Java Exercises - OOP / Immobilienfirma](../../labs/02_java/04_java-oop/23_ImmoFirma/)
   - [Labs / Java Labs / Java Exercises - OOP](../../labs/02_java/04_java-oop/)
 - **Gelöscht**
