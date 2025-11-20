@@ -7,6 +7,21 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251120-1211-142
+
+_2025-11-20 12:11 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Challenges / Java Challenges / java-oop / Hogwarts Sorting Hat Challenge](../../challenges/java/java-oop/Hogwarts/)
+  - [Challenges / Java Challenges / java-oop / Wassermenge Challenge](../../challenges/java/java-oop/Wassermenge/)
+- **Gelöscht**
+  - Labs / Java Labs / Java Exercises - OOP / 20_Patienten
+  - Labs / Java Labs / Java Exercises - OOP / 22_Streaming_Dienst
+
+---
+
 ## 20251118-0925-141
 
 _2025-11-18 09:25 CET auf origin/master_
