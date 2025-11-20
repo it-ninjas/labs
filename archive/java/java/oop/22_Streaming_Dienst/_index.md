@@ -54,4 +54,4 @@ _Es soll kein Scanner eingesetzt werden._
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/04_java-oop).
+Hier kannst du [zurück zur Theorie](../../../../../content/2025/docs/02_java/04_java-oop).
