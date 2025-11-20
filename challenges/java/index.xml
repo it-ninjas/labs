@@ -45,8 +45,64 @@ Der Rückgabewert ist &amp;ldquo;X&amp;rdquo; falls Spieler 1 gewonnen hat, &amp
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Wenn du an der Challenge teilnehmen willst, dann musst du die Aufgabe alleine lösen.
-Die Lösung vom Pult-Nachbar interessiert uns also (leider) nicht.&lt;/p></description></item><item><title>Challenges: Objektorientierte Programmierung Challenge</title><link>/challenges/java/java-oop/01_oop_challenge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/challenges/java/java-oop/01_oop_challenge/</guid><description>
-&lt;h3 id="hogwarts-sorting-hat-system">Hogwarts Sorting Hat System&lt;/h3>
+Die Lösung vom Pult-Nachbar interessiert uns also (leider) nicht.&lt;/p></description></item><item><title>Challenges: Wassermenge Challenge</title><link>/challenges/java/java-oop/wassermenge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/challenges/java/java-oop/wassermenge/</guid><description>
+&lt;p>Schreibe eine Anwendung, welche entscheidet ob ein Damm geöffnet oder geschlossen werden muss. Die Entscheidung wird
+anhand der Wassermenge gefällt, welche in einen See hineinfliesst, verglichen mit der Wassermenge, welche aus diesem See
+herausfliesst wenn der Damm geöffnet ist. Es soll sichergestellt werden, dass die Wassermenge sich zwischen dem
+Minimal- und Maximalvolumen bewegt.&lt;/p>
+&lt;p>Ein See&lt;/p>
+&lt;ul>
+&lt;li>kann mit einer Wassermenge zu einem gegebenen Zeitpunkt (LocalDateTime) initialisiert werden&lt;/li>
+&lt;li>hat ein Mindestvolumen in Liter&lt;/li>
+&lt;li>hat ein Maximalvolumen in Liter&lt;/li>
+&lt;/ul>
+&lt;p>Eine Wassermenge&lt;/p>
+&lt;ul>
+&lt;li>hat eine Menge pro Zeit&lt;/li>
+&lt;li>hat eine Einheit wie Liter, Hektoliter oder m³ pro Stunde&lt;/li>
+&lt;/ul>
+&lt;h2 id="die-anwendung-soll">Die Anwendung soll&lt;/h2>
+&lt;ul>
+&lt;li>Auskunft geben, ob die hineinfliessende Wassermenge gleich ist wie die herausfliessende Wassermenge.&lt;/li>
+&lt;li>Eine Methode haben, welche abhängig von Zeit, Zuflussmenge und Abflussmenge berechnet, ob
+&lt;ul>
+&lt;li>Damm geöffnet werden muss, wenn die Wassermenge grösser ist als das Maximalvolumen.&lt;/li>
+&lt;li>Damm geschlossen werden muss, wenn die Wassermenge kleiner ist als das Minimalvolumen.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Die Methode wird zur Simlation in einem Loop aufgerufen, wobei jede Interation einem definierbaren Zeitpunkt
+entspricht.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>Es sollen Setter-Methoden für das ändern des Zu- und Ablusses verwendet werden!&lt;/em>&lt;/p>
+&lt;h2 id="aufgabe-1">Aufgabe 1&lt;/h2>
+&lt;p>Schreibe ein Programm, dass die Anforderungen auf eine objekt-orientierte Art und Weise umsetzt - d.h., dass die
+Methoden immer noch funktionieren würden, auch wenn es mehrere Dämme geben würde.&lt;/p>
+&lt;p>Simuliere das Verhalten des Damms über eine längere Zeit. Beim Start soll die Menge im See einen zufälligen Wert
+enthalten, welcher zwischen dem Minimal- und Maximalvolumen liegt. Während der Simulation sollen Zufluss und Abfluss
+verändert werden, um Regen- oder Trockenperioden zu simulieren (Tip: Simulation mit Start- und Endzeit und einer Liste
+mit Zeiten, wann sich Zu- und Abfluss ändern sollen, nutze LocalDateTime für die Zeiten).&lt;/p>
+&lt;p>Eine Methode &lt;code>status()&lt;/code> soll ein String zurückgeben, welcher zum Zeitpunkt des Aufrufs aussagt&lt;/p>
+&lt;ul>
+&lt;li>welche Menge sich im See befindet&lt;/li>
+&lt;li>wie gross der Zufluss ist&lt;/li>
+&lt;li>wie gross der Abfluss ist&lt;/li>
+&lt;li>ob der Damm offen oder geschlossen ist.&lt;/li>
+&lt;/ul>
+&lt;h2 id="aufgabe-2---zustände-speichern">Aufgabe 2 - Zustände speichern&lt;/h2>
+&lt;p>(Erst nach dem Kapitel &amp;ldquo;Veränderbarkeit&amp;rdquo; lösen.)&lt;/p>
+&lt;p>Erweitere die &lt;code>status()&lt;/code>-Methode so, dass bei jeder Status-Abfrage (also beim Aufruf der Methode) ein Objekt erstellt
+und in einer Liste gespeichert wird. Das Objekt muss folgende Informationen enthalten:&lt;/p>
+&lt;ul>
+&lt;li>Zeitpunkt der Messung (LocalDateTime)&lt;/li>
+&lt;li>welche Menge sich im See befindet (in Liter)&lt;/li>
+&lt;li>wie gross der Zufluss ist (als Objekte eurer Klasse für die Wassermenge)&lt;/li>
+&lt;li>wie gross der Abfluss ist (als Objekte eurer Klasse für die Wassermenge)&lt;/li>
+&lt;li>ob der Damm offen oder geschlossen ist (Boolean).&lt;/li>
+&lt;/ul>
+&lt;p>Schreibe eine Methode, welche dir die Liste der gespeicherten Zustände zurückgibt. Gib am Ende des Programs eine Liste
+auf der Konsole aus mit allen gespeicherten Zuständen.&lt;/p>
+&lt;hr>
+&lt;p>Hier kannst du &lt;a href="/docs/02_java/04_java-oop/">zurück zur Theorie&lt;/a>.&lt;/p></description></item><item><title>Challenges: Hogwarts Sorting Hat Challenge</title><link>/challenges/java/java-oop/hogwarts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/challenges/java/java-oop/hogwarts/</guid><description>
 &lt;p>Hogwarts ist bekanntlich die beste Schule für Hexerei und Zauberei.
 Alle Hogwarts Schüler:innen werden vor Beginn des ersten Schuljahres gemäss ihren
 Charakter-Eigenschaften und Fähigkeiten in einem der vier Hogwarts &amp;ldquo;Häuser&amp;rdquo; eingeteilt.
