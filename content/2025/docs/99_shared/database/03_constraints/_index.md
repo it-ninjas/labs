@@ -130,6 +130,7 @@ CREATE TABLE person(
     adresse_id BIGINT REFERENCES adresse(id)
 );
 ```
+
 > Hier sieht man auch, wie man reservierte Wörter wie `alter` als Spaltenname verwenden kann, indem man sie in Backticks (`) einschliesst.
 
 > **Info:** Die Benennung des Fremdschlüssels wurde in diesem Beispiel der Einfachheit halber nicht korrekt gemacht.
