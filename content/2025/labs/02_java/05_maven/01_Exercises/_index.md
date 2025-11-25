@@ -229,7 +229,7 @@ Aktualisiere alle Dependencies mit Hilfe des Plugins `org.codehaus.mojo:versions
 
 - Erstelle auf deinem Rechner ein Verzeichnis (z.B. unter `C:\Development\Repository`)
 
-- passe die Einstellungen in deinem Projekt so an, dass beim Befehl `mvn -deploy` das Artefakt von deinem Projekt in
+- passe die Einstellungen in deinem Projekt so an, dass beim Befehl `mvn deploy` das Artefakt von deinem Projekt in
   den zuvor erstellten Ordner erstellt wird.
 
 ---
