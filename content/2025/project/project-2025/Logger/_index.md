@@ -4,18 +4,20 @@ linkTitle: "Logger"
 type: docs
 weight: 1
 description: >
-  Baue ein simples Logging-Package mit statischen Hilfsfunktionen. Das Package schreibt strukturierte Log-Zeilen in
-  eine Datei und kann manuell getestet werden.
+  Baue ein Logging-Package. Das Package schreibt strukturierte Log-Zeilen und kann so informationen über den
+  Programfluss geben.
 ---
 
 ## Ziele
 
 - Ich kann ein Java-Package ohne `main` erstellen und darin **nur** statische Hilfsfunktionen bereitstellen.
-- Ich kann zeilenweise **Logausgaben** in eine Datei schreiben (anhängen, nicht überschreiben).
-- Ich kann **Log-Level** unterscheiden und sichtbar machen.
-- Ich kann ein leicht lesbares **Zeitformat** vorneweg in jeder Zeile schreiben.
+- Ich kann strukturierte Log-Zeilen mit **Zeitstempel**, **Log-Level**, **PID** und **TID** ausgeben.
+- Ich kann **Log-Level** unterscheiden, filtern, sichtbar machen und optional farblich kennzeichnen.
+- Ich kann ein leicht lesbares **Zeitformat** zu Begin von jeder Zeile schreiben.
+- Ich kann das Logging modular erweitern (**Datei**, **Rotation**, **Konfiguration**, **Thread-Sicherheit**).
+- Ich halte eine **verbindliche Public-API** ein, damit Logger zwischen Auszubildenden austauschbar bleiben.
 
-{{< zeit lesen="15" >}}
+{{< zeit lesen="20" >}}
 
 ---
 
@@ -25,17 +27,61 @@ Für das Logger-Projekt musst Du ein neues Repository erstellen!
 
 ## Einführung
 
-**Was ist ein Logger?** Ein Logger schreibt wichtige Ereignisse deines Programms in eine **Datei**, damit du später
-nachvollziehen kannst, **was wann passiert** ist (z. B. Start, Fehler, Warnungen). Jedes Ereignis ist eine **Zeile**
-(bei langen Nachrichten ggf. mehrere Zeilen), die u. a. Informationen zu **Zeit**, **Prozess** und **Thread** des
-Ereignisses enthält.
+Ein **Logger** dokumentiert wichtige Ereignisse deines Programms, damit du später nachvollziehen kannst, **was wann
+passiert ist**. Im Gegensatz zu `System.out.println` sind Log-Einträge **strukturiert**, können **gefiltert** und
+meist zusätzlich in **Dateien** gespeichert werden. Jedes Ereignis ist eine **Zeile** (bei langen Nachrichten ggf.
+mehrere Zeilen), die u. a. Informationen zu **Zeit**, **Prozess** und **Thread** des Ereignisses enthält.  
 
-**Was ist ein Log-Level?** Log-Level sind **Bedeutungsstufen**: z. B. `INF` (Information), `WRN` (Warnung), `ERR`
-(Fehler). Optional: `DBG` (Debug), `TRC` (sehr detailliert). Über einen **Minimal-Level** kannst du steuern, **ab
-welcher Stufe** geschrieben wird: `TRC` → `DBG` → `INF` → `WRN` → `ERR`. Bei Minimal-Level `INF` werden auch `WRN`
-und `ERR` geschrieben, bei Minimal-Level `WRN` nur noch `WRN` und `ERR`.
+In diesem Projekt baust du einen Logger **schrittweise** auf: Zuerst Konsolen-Ausgabe, dann optionale Erweiterungen wie
+Datei-Logging mit Rotation, Konfiguration (API/Args/ENV/Datei) und Thread-Sicherheit.
 
-**PID & TID (kurz):**
+## Informationen zum Aufbau eines Loggers
+
+{{< ninja tip >}}
+Recherchiere ein wenig im Internet, wie andere Applikationen, Tools und Services ihr Verhalten loggen.
+{{< /ninja >}}
+
+### Mitteilung (Message)
+
+Die Mitteilung ist die Kernbotschaft eines Ereignisses. Sie dient dazu, dass der Analyst der Log-Ausgabe sich einer
+Vorstellung machen kann, was aktuell in der Applikation passiert.
+
+### Zeitstempel
+
+Oft beginnt die Log-Ausgabe mit der aktuellen Zeit (bei länger laufenden Prozessen mit Datum). Diese Zeitangaben helfen,
+ein Gefühl zu bekommen, ob es sich bei einem Problem um ein generelles Problem handelt (schreiben in eine Datei geht
+nicht, weil Verzeichnis nicht vorhanden) oder nur zu bestimmten Zeiten auftaucht (jeden Abend um 21:00 ist der File-
+Server für 1h nicht erreichbar da Reinigungskraft die Steckdose des Servers für den Staubsauger braucht).
+
+Beispiel für eine Log-Ausgabe mit Zeitstempel:
+```
+20251118-22:04:16.345 Connection to File-Server reestablished.
+```
+
+### Log-Level
+
+Um eine bessere Übersicht zu behalten, ob eine Log-Eintrag rein informativ ist oder ob es um eine kritische
+Systeminformation geht, wird jedem Log-Eintrag ein **Level** zugeordnet. Die folgenden **Log-Levels** haben sich in der
+Praxis bewährt:
+
+| Level | Beschreibung | Typische Bedeutung / Wann verwenden |
+|-------|--------------|-------------------------------------|
+| TRACE | Sehr feine, detaillierte Informationen | Ablaufverfolgung auf Methoden-/Zeilenebene, tiefes Debugging |
+| DEBUG | Diagnostische Informationen für Entwickler | Untersuchung von Fehlern, interne Zustände, Variablenwerte |
+| INFO  | Allgemeine Laufzeitereignisse | Normaler Betriebsstatus (Start/Stop, erfolgreiche Aktionen) |
+| WARN  | Ungewöhnliche oder potenziell problematische Ereignisse | Hinweise auf mögliche Probleme, die Anwendung läuft weiter |
+| ERROR | Fehler, die Funktionalität beeinträchtigen | Fehler, die ein Feature/Request scheitern lassen, System läuft weiter |
+
+Über einen **Minimal-Level** kann man normalerweise steuern, ab welcher Stufe geschrieben wird:  
+`TRC` → `DBG` → `INF` → `WRN` → `ERR`.  
+
+Bei Minimal-Level `INF` werden auch `WRN` und `ERR` geschrieben, bei Minimal-Level `WRN` nur noch `WRN` und `ERR`.
+
+### Prozess- und Thread-Id
+
+Vorallem bei grösseren Programmen teilen sich mehrere Threads (parallele Tasks) die Ressourcen des Systems, bei
+grösseren Lösungen können es auch mehrere Prozesse sein. Die Prozess- und Thread-Id hilft, ein Ereigniss in der
+Log-Ausgabe dem richtigen Prozess / Thread zuzuordnen.
 
 - **PID** = _Process ID_, die Kennzahl deines laufenden **Prozesses** (Programms).
 - **TID** = _Thread ID_, die Kennzahl eines **Ausführungsstrangs** innerhalb des Prozesses.
@@ -43,171 +89,108 @@ und `ERR` geschrieben, bei Minimal-Level `WRN` nur noch `WRN` und `ERR`.
 > Details zu Threads behandeln wir später im eigenen Modul. Für das Loggen reicht: PID/TID helfen, Aktivitäten
 > voneinander zu unterscheiden.
 
----
+Mit folgenden Befehlen kannst du in Java die PID und TID erhalten:
 
-## Kontext & Einschränkungen
-
-- **Nur statische Hilfsfunktionen:** keine Instanzen, keine Vererbungsthemen.
-- **Kein `main`:** Das Ergebnis ist **ein Package**, das in anderen Projekten genutzt werden kann.
-- **Kein Test-Framework:** Du testest **manuell** (siehe Abschnitt _Manuelles Testen_).
-- **Coding-Style:** Halte den **Coding-Style-Guide** strikt ein (Einrückung, Namen, Konstanten, Javadoc etc.).
-
-## Aufgabenstellung
-
-Implementiere ein **Logging-Package**, das folgende Aufgaben erfüllt:
-
-1. **Log-Zeilen schreiben:** Pflicht-Methoden `info`, `warn`, `error(msg)`, `error(msg, ex)`, `debug` schreiben eine
-   oder mehrere Zeile(n) in eine Log-Datei **(append → am Ende anfügen, falls Datei schon existiert)**. Die API ist
-   weiter unten definiert.
-
-2. **Dateiformat:** In der Log-Datei muss klar ersichtlich sein, wann welches Ereignis wo vorgekommen ist.
-
-   - **Zeitstempel:** Logging-Einträge können über mehrere Tage verteilt, aber auch innerhalb von Millisekunden
-     erfolgen. Das muss ersichtlich sein.
-   - **Message:** freie Nachricht; **kann mehrere Zeilen** enthalten.
-   - **PID/TID:** nach Möglichkeit im Bereich 000–999 darstellen; falls grösser, darf kein Abschneiden erfolgen.
-   - **Log-Level:** Kurzform verwenden: `INF`, `WRN`, `ERR`, …
-   - **Quelle (optional):** Mit einem 4-stelligen String soll mitgeteilt werden können, aus welchem Package der
-     Eintrag kommt (z. B. `MAIN` → aus dem Main-Package, `STHE` → aus dem String-Helper-Package, …).
-
-3. **Dateiverwaltung & Dateiname:**
-
-   - **Verzeichnis:** bei Bedarf erstellen.
-   - **Dateiname:** es muss klar unterschieden werden können, in welcher Reihenfolge die Dateien erstellt wurden
-     (über Zeitstempel, Index, …). Es soll ein Text definiert werden können, der jeweils im Dateinamen
-     enthalten ist (File Identifier).
-   - **Dateigrösse:** es muss festgelegt werden können, wie gross die Log-Datei werden darf (z. B. 1 MB).
-   - **Rotation (Rolling):** es soll definiert werden können, wie viele (Zahl) oder wie lange (Zeit) Log-Dateien
-     aufbewahrt werden sollen. Wird eine der beiden Limiten überschritten, sollen zu viele vorhandene Log-Dateien
-     gelöscht werden.
-
-4. **Thread-Sicherheit (basic):** Mehrere Aufrufe dürfen keine Zeilen **vermischen** (synchronisieren oder
-   `Files.newBufferedWriter` mit Append & Flush benutzen).
-
-5. **Konfiguration (ENV/User-Datei):**
-
-   - Der Logger liest Einstellungen aus **Umgebungsvariablen** oder einer **User-Konfigdatei**.
-
-     - **LogFolder:** Speicherort der Log-Dateien.
-     - **LogIdentifier:** String, der in jeder Log-Datei enthalten sein soll.
-     - **MinLevel:** Minimal-Level.
-     - **MaxFiles:** maximale Anzahl an Log-Dateien, die aufbewahrt werden sollen.
-     - **MaxDays:** maximale Aufbewahrungszeit für eine Log-Datei in Tagen.
-     - **LineLen (optional):** maximale Länge einer Zeile in der Log-Datei. Längere Zeilen sollen umgebrochen
-       werden.
-
-   - **Konfig-Pfad-Ermittlung (Reihenfolge):**
-
-     1. explizit via `setConfigPath(Path)` (falls genutzt),
-     2. ENV `ITNINJA_LOGGER_CONFIG`,
-     3. Default: im Benutzerverzeichnis, z. B. `~/.itninja-logger` (Windows: `%USERPROFILE%\.itninja-logger`).
-
-   - **Umgebungsvariablen:**
-
-     - **ITNINJA_LOGGER_LOGFOLDER:** Speicherort der Log-Dateien.
-     - **ITNINJA_LOGGER_LOGIDENTIFIER:** String, der in jeder Log-Datei enthalten sein soll.
-     - **ITNINJA_LOGGER_MINLEVEL:** Minimal-Level.
-     - **ITNINJA_LOGGER_MAXFILES:** maximale Anzahl an Log-Dateien, die aufbewahrt werden sollen.
-     - **ITNINJA_LOGGER_MAXDAYS:** maximale Aufbewahrungszeit für eine Log-Datei in Tagen.
-     - **ITNINJA_LOGGER_LINELEN (optional):** maximale Länge einer Zeile in der Log-Datei. Längere Zeilen sollen
-       umgebrochen werden.
-
-   - **Konfigurationsermittlung (Reihenfolge):**
-     1. explizit via Methodenaufruf im Code (falls vorhanden),
-     2. aus der Konfigurationsdatei, falls definiert und vorhanden,
-     3. aus den Umgebungsvariablen.
-
-6. **Fehlertoleranz:** Wenn die Log-Datei nicht geschrieben werden kann, wirf **keine** Exception nach aussen.
-   Dokumentiere das Verhalten (z. B. Fallback auf `System.err`).
-
-7. **Performance:** Das Schreiben in die Log-Datei soll so performant wie möglich erfolgen. Alle zusätzlichen
-   Aufgaben wie z. B. die Dateiverwaltung erfolgen in separaten Methoden, die beim Start aufgerufen werden und vom
-   Benutzer des Logging-Packages aufgerufen werden können.
-
-8. **Konsole:** Per Konfiguration soll es möglich sein, die Log-Ausgabe nicht nur in die Log-Datei zu schreiben,
-   sondern auch auf der Konsole auszugeben. (Optional) Mittels farbigem Text soll zwischen den verschiedenen
-   Log-Levels unterschieden werden können.
-
-## API – minimale Pflicht
-
-Die folgenden **Pflicht-Methoden** müssen vorhanden sein; alle weiteren sind **optional**. Der Logger funktioniert
-**ohne** optionale Methoden (Defaults & Konfigurationsdatei/Umgebungsvariablen).
-
-```java
-public static void info(String message);
-public static void warn(String message);
-public static void error(String message);
-public static void error(String message, Throwable exception);
-public static void debug(String message);
-
-public static void maintain(); // checks for outdated files, configuration changes, ...
+```
+  long pid = ProcessHandle.current().pid(); // ab Java 9
+  long tid = Thread.currentThread().getId();
 ```
 
-## API – optionale Erweiterungen
+Implementierungsvorgabe: Möglichst **dreistellig** darstellen (`000–999`) – aber **niemals abschneiden**, wenn größer.
 
-```java
-// Optional: explizit Konfigpfad setzen (ansonsten ENV/Default)
-public static void setConfigPath(java.nio.file.Path configFile);
+### Module-Id / Source-Identifier (optional)
 
-// Optional: direkte Datei- oder Verzeichnis-Init (bypasst/ergänzt Konfigdatei)
-public static void initWithDir(java.nio.file.Path logDir, String postfix, LogLevel minLevel, String moduleCode);
-public static void init(java.nio.file.Path logFile, LogLevel minLevel, String moduleCode);
+Um Log-Ausgaben noch einfacher zuordnen zu können, kann man in der Ausgabe auch eine Module-Id oder einen
+Source-Identifier ausgeben. Dabei kann es sich um einen 3- oder 4-stelligen Kürzel oder aber auch um den Namen der
+Klasse, des Packages, usw. handeln.
 
-// Optionale Setter (falls nicht ausschliesslich per Konfigdatei gesteuert)
-public static void setLogFolder(Path path);
+{{< ninja info >}}
+Beim [einfachen Logger](./Simple/) verzichten wir bei der Standard-API bewusst auf die Möglichkeit eine Module-Id oder 
+Source-Identifier mitzugeben. Einzig die Methode `writeLine` bietet den entsprechenden Parameter an.
+{{< /ninja >}}
 
-enum LogLevel { TRC, DBG, INF, WRN, ERR }
-public static void setMinLevel(LogLevel level);
+### Beispiel einer Log-Ausgabe
 
-public static void setLogIdentifier(String identifier);
-public static void setMaxLineLength(int len);
-public static void setMaxFiles(int count);
-public static void setMaxDays(int days);
+Das folgende Beispiel zeigt eine mögliche Log-Ausgabe. Diese Ausgabe ist nicht bindend. Du kannst sie nach eigenem
+Gutdünken implementieren.
 
-// Optional Convenience
-public static void trace(String message);
+```
+20251118-15:37:12.123 INF [P:184 T:124 M:MAIN] Application started
+20251118-15:38:23.546 DBG [P:184 T:102 M:CONF] Loaded configuration: {"env":"production","maxThreads":8}
+20251118-15:38:48.209 TRC [P:184 T:102 M:HTTP] ConnectionManager.openSocket(host=10.0.0.12, port=5432)
+20251118-15:39:12.844 WRN [P:184 T:131 M:REST] Slow response from service 'user-profile' (latency=1200ms)
+20251118-15:40:59.201 ERR [P:184 T:131 M:REST] NullPointerException while processing request /api/orders/473: (OrderService.java:87)
+20251118-15:41:02.788 ERR [P:184 T:124 M:MAIN] OutOfMemoryError: unable to allocate 256MB — initiating shutdown
 ```
 
-> Du darfst die API **vereinfachen oder erweitern**, solange die Anforderungen erfüllt sind.
+## Allgemeine Vorgaben
 
-## Manuelles Testen (ohne Test-Framework)
+### Kontext & Einschränkungen
 
-1. **Mini-Demo-Klasse** in _einem separaten_ Projekt (oder im selben Repo unter `demo/`), **nicht** im Logger-Package:
+- **Nur statische Hilfsfunktionen:** keine Instanzen, keine Vererbungsthemen (OOP folgt später).
+- **Kein `main`:** Der Logger ist ein Package, das in anderen Projekten verwendet wird.
+- **Manuelle Tests:** ohne Test-Framework (siehe Abschnitt _Manuelles Testen_).
+- **Coding-Style:** Verwende den it‑ninja **Coding-Style-Guide** (Einrückung, Namen, Konstanten, Javadoc).
+- **Fehlertoleranz:** Öffentliche Methoden dürfen **keine Exceptions** nach außen werfen (intern behandeln, z. B. 
+  Fallback auf `System.err`).
 
-   ```java
-   public class LoggerDemo {
-       public static void main(String[] args) {
-           Logger.init(Path.of("./logs/app.log"), "Tournament", LogLevel.INF);
-           Logger.info("Round started");
-           Logger.warn("Low disk space (drive=C: freeMB=512)");
-           Logger.error("Failed to open config file (path=./cfg/app.yaml)");
-       }
-   }
-   ```
+### Verbindliche Public‑API
 
-2. **Mehrfachlauf:** Programm 3–5× starten → prüfen, dass Zeilen **angehängt** werden.
-3. **Level-Filter:** `setMinLevel(LogLevel.WRN)` setzen → `INF` darf **nicht** mehr erscheinen.
-4. **Race-Test (einfach):** In der Demo mehrere Threads starten, die parallel loggen → keine Zeilenverschachtelung.
-5. **Datei öffnen:** Mit einem Editor prüfen, dass **keine leeren** Zeilen entstehen.
-6. **(Optional) Rotation:** Datei bis > 1 MB füllen → prüfen, dass eine neue Log-Datei erstellt und beschrieben wird.
+{{< ninja warning >}}
+Alles, was von außen sichtbar ist (Public-Methoden, Enums, ENV/Datei-Schlüssel), ist **vorgegeben**. Bitte **nicht**
+eigenmächtig Signaturen oder Namen ändern – nur so bleiben Implementierungen verschiedener Auszubildender
+**austauschbar**.
+{{< /ninja >}}
 
----
+Diese API ist für **alle** Implementationen verbindlich. Du kannst intern beliebig umsetzen, solange die äußere API
+gleich bleibt.
 
-## Akzeptanzkriterien (Definition of Done)
+```java
+public final class Logger {
+  // Log-Ausgabe, simple
+  public static void info(String message);
+  public static void warn(String message);
+  public static void error(String message);
+  public static void error(String message, Throwable exception);
+  public static void debug(String message);
+  public static void trace(String message);
 
-- Package baut ohne Fehler, **ohne `main`**.
+  // Log-Ausgabe, advanced
+  public static void writeLine(LogLevel level, String message, String sourceIdentifier, Throwable exception);
+
+  // Level & Konsole
+  public enum LogLevel { TRC, DBG, INF, WRN, ERR }
+  public static void setMinLevel(LogLevel level);
+  public static void enableConsoleOutput(boolean enabled);
+
+  // Wartung / Housekeeping (z. B. Rotation, Aufräumen, Konfig-Reload je nach Umsetzung)
+  public static void maintain();
+}
+```
+### Allgemeine Akzeptanzkriterien
+
 - Es wird ein `.jar` erstellt.
+- Name des Java-Packages: ch.itninja.dojo.[deinName].logger (wobei **deinName** durch **deinen Namen** ersetzt werden
+  muss)
 - Es existiert eine **README.md** im Package mit **kurzer API-** und Konfigurations-Beschreibung und Beispiel.
 - API ist mit JavaDoc dokumentiert.
-- Log-Datei wird **angelegt**, **angehängt** und enthält die geforderten Informationen.
-- Minimal-Level-Filter funktioniert.
+
 - Keine Exceptions verlassen die öffentlichen Methoden (Fehler beim Schreiben werden intern behandelt und dokumentiert).
 - **Coding-Style-Guide** eingehalten (Formatierung, Namen, Kommentare/Javadoc, keine Magic Numbers, sinnvolle
   `final`-Konstanten).
 
----
 
-## Ordner-/Dateistruktur (Vorschlag)
+### Abgabe
+
+{{< ninja warning >}}
+Für das Logger-Projekt musst Du ein neues Repository erstellen!
+{{< /ninja >}}
+
+- Eigenes Repo `itninja-[deinName]-logger` (ersetze `[deinName]` mit deinem Namen).
+- Repo-URL mit `logger/` (Package) und `demo/` (manuelle Tests).
+- Kurze Beschreibung in der `README.md` – wie ausführen, wo die Datei liegt.
+
+### Ordner-/Dateistruktur (Vorschlag)
 
 {{< ninja tip >}}
 Nutze die folgende Struktur, damit du deinen Code im **Logger-Projekt** entwickeln und im **Demo-Projekt** testen kannst!
@@ -217,14 +200,14 @@ nehmen.
 
 ```
 project-root/
-  pom.xml           (Aggregator)
+  .gitignore
+  pom.xml
   logger/
     src/main/java/
-      ch/individuell/logger/
+      ch/itninja/dojo/[deinName]/logger/
         Logger.java
     pom.xml
     README.md
-
   demo/
     src/main/java/
       LoggerDemo.java
@@ -237,7 +220,7 @@ project-root/
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>ch.itninja</groupId>
-  <artifactId>itninja-logger-parent</artifactId>
+  <artifactId>itninja-dojo-[deinName]-logger-parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -247,18 +230,6 @@ project-root/
   </modules>
 </project>
 ```
-
-## Abgabe
-
-{{< ninja warning >}}
-Für das Logger-Projekt musst Du ein neues Repository erstellen!
-{{< /ninja >}}
-
-- Eigenes Repo `it-ninja-[deinName]-logger` (ersetze `[deinName]` mit deinem Namen).
-- Repo-URL mit `logger/` (Package) und `demo/` (manuelle Tests).
-- Kurze Beschreibung in der `README.md` – wie ausführen, wo die Datei liegt.
-
----
 
 ## Architektur & Austauschbarkeit (Ausblick)
 
@@ -270,3 +241,7 @@ Ziel ist eine Struktur, in der wir **Packages austauschen** können: `Logger`, `
 - Verwende neutrale, sprechende Methodennamen und kurze, robuste Formate (siehe Pflichtformat), damit andere Module
   leicht integrieren können.
 - Erstelle zusätzliche Utility-Klassen, wenn sinnvoll.
+
+---
+
+Die folgenden Aufgabe haben alle zum Ziel ein Package mit einem Logger zu erstellen.
