@@ -16,7 +16,7 @@ public class RegexPhoneTest {
 
     static String readMixed() {
         try {
-            return Files.readString(Path.of("labs/regex/data/mixed.txt"));
+            return Files.readString(Path.of("data/mixed.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

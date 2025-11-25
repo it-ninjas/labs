@@ -407,7 +407,112 @@ Objekt mit Hilfe beider Referenzen ändern.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(patient2.&lt;span style="color:#a6e22e">age&lt;/span>); &lt;span style="color:#75715e">// 25&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;hr></description></item><item><title>Docs: Zugriffsmodifikatoren</title><link>/docs/02_java/04_java-oop/03_access-modifier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/04_java-oop/03_access-modifier/</guid><description>
+&lt;/div>&lt;h2 id="speicherverwaltung-von-objekten-wiederholung">Speicherverwaltung von Objekten (Wiederholung)&lt;/h2>
+&lt;p>In den Grundlagen hast du bereits gehört, dass Java Variablen im Speicher ablegt. Jetzt, wo du Objekte und Referenzen
+kennst, lohnt sich ein genauerer Blick darauf, &lt;strong>wo&lt;/strong> diese Daten tatsächlich gespeichert werden.&lt;/p>
+&lt;hr>
+&lt;h3 id="stack-aufrufstapel">Stack (Aufrufstapel)&lt;/h3>
+&lt;p>Der &lt;strong>Stack&lt;/strong> ist ein schneller Speicherbereich, in dem &lt;strong>Methodenaufrufe&lt;/strong> und &lt;strong>lokale Variablen&lt;/strong> verwaltet werden.
+Immer wenn eine Methode gestartet wird, legt Java einen sogenannten &lt;strong>Stack Frame&lt;/strong> an. Dieser Frame enthält alle
+lokalen Variablen der Methode. Sobald die Methode endet, wird der zugehörige Speicherbereich automatisch wieder
+freigegeben.&lt;/p>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> 5; &lt;span style="color:#75715e">// liegt auf dem Stack&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> y &lt;span style="color:#f92672">=&lt;/span> 10; &lt;span style="color:#75715e">// ebenfalls auf dem Stack&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> z &lt;span style="color:#f92672">=&lt;/span> add(x, y);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> a, &lt;span style="color:#66d9ef">int&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a &lt;span style="color:#f92672">+&lt;/span> b; &lt;span style="color:#75715e">// a und b liegen auf dem Stack&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wenn &lt;code>add()&lt;/code> beendet wird, verschwinden &lt;code>a&lt;/code> und &lt;code>b&lt;/code> wieder vom Stack.&lt;br>
+Nur das Ergebnis wird an den Aufrufer zurückgegeben.&lt;/p>
+&lt;hr>
+&lt;h3 id="heap-objektspeicher">Heap (Objektspeicher)&lt;/h3>
+&lt;p>Der &lt;strong>Heap&lt;/strong> ist der Bereich des Arbeitsspeichers, in dem &lt;strong>Objekte&lt;/strong> liegen, die mit &lt;code>new&lt;/code> erzeugt werden. Nur die
+&lt;strong>Referenzen&lt;/strong> auf diese Objekte werden auf dem Stack gespeichert.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>Patient john &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Patient(); &lt;span style="color:#75715e">// john liegt auf dem Stack&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>john.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;John&amp;#34;&lt;/span>; &lt;span style="color:#75715e">// das Patient-Objekt liegt auf dem Heap&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wenn keine Referenz mehr auf ein Objekt zeigt, wird es vom &lt;strong>Garbage Collector&lt;/strong> automatisch gelöscht.&lt;/p>
+&lt;hr>
+&lt;h3 id="zusammenspiel-von-stack-und-heap">Zusammenspiel von Stack und Heap&lt;/h3>
+&lt;p>So kannst du dir das Zusammenspiel vorstellen:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Stack: Heap:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-------- -------------------
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>john ───────────▶ new Patient(&amp;#34;John&amp;#34;)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alice ───────────▶ new Patient(&amp;#34;Alice&amp;#34;)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Die Variablen &lt;code>john&lt;/code> und &lt;code>alice&lt;/code> liegen auf dem Stack, zeigen aber auf unterschiedliche Objekte im Heap.&lt;/p>
+&lt;hr>
+&lt;h3 id="warum-ist-das-wichtig">Warum ist das wichtig?&lt;/h3>
+&lt;p>Das erklärt, warum folgender Code &lt;strong>nicht zwei unabhängige Objekte&lt;/strong>, sondern &lt;strong>zwei Referenzen auf dasselbe Objekt&lt;/strong> erzeugt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>Patient patient &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Patient();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Patient patient2 &lt;span style="color:#f92672">=&lt;/span> patient;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Beide Variablen liegen auf dem Stack, zeigen aber &lt;strong>auf dasselbe Objekt im Heap&lt;/strong>.&lt;br>
+Wenn du also über &lt;code>patient2&lt;/code> eine Eigenschaft änderst, ändert sich dieselbe Speicherstelle, die auch &lt;code>patient&lt;/code> verwendet.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>Stack: Heap:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-------- -------------------
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>patient ─────┬──────▶ new Patient()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>patient2 ─────┘
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="merke-dir">Merke dir&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Primitive Datentypen&lt;/strong> (z. B. &lt;code>int&lt;/code>, &lt;code>double&lt;/code>, &lt;code>boolean&lt;/code>) liegen direkt auf dem &lt;strong>Stack&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Objekte und Arrays&lt;/strong> liegen auf dem &lt;strong>Heap&lt;/strong>; nur ihre Referenzen liegen auf dem Stack.&lt;/li>
+&lt;li>Der &lt;strong>Garbage Collector&lt;/strong> löscht automatisch Objekte, auf die keine Referenz mehr zeigt.&lt;/li>
+&lt;/ul>
+&lt;hr></description></item><item><title>Docs: Zugriffsmodifikatoren</title><link>/docs/02_java/04_java-oop/03_access-modifier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/04_java-oop/03_access-modifier/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kann ohne Hilfsmittel alle Zugriffsmodifikatoren beschreiben.&lt;/li>
@@ -688,7 +793,7 @@ Dieses Framework stellt einige Klassen zur Verfügung, welche das List-Interface
 &lt;h3 id="die-wichtigsten-methoden-einer-liste">Die wichtigsten Methoden einer Liste&lt;/h3>
 &lt;p>Das List-Interface stellt mehrere Methoden zur Verfügung, welche dann von Klassen wie &lt;code>ArrayList&lt;/code> oder &lt;code>LinkedList&lt;/code> umgesetzt werden.&lt;/p>
 &lt;p>Nachfolgend werden einige Methoden und deren Zweck aufgelistet.
-Der Rückgabetyp &amp;ldquo;E&amp;rdquo; seht hier für einen generischen (universellen) Typ, der stellvertretend für einen spezifischen Objekttyp steht. Dieses Vorgehen wird genauer im Modul &lt;a href="/docs/02_java/04_java-oop/11_java-generics/">Generics&lt;/a> behandelt.&lt;/p>
+Der Rückgabetyp &amp;ldquo;E&amp;rdquo; steht hier für einen generischen (universellen) Typ, der stellvertretend für einen spezifischen Objekttyp steht. Dieses Vorgehen wird genauer im Modul &lt;a href="/docs/02_java/04_java-oop/11_java-generics/">Generics&lt;/a> behandelt.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -1376,7 +1481,7 @@ Der Unterschied zu &lt;code>==&lt;/code> ist, dass &lt;code>==&lt;/code> nur pr�
 Mit &lt;code>equals()&lt;/code> hingegen vergleichst du den Inhalt der Objekte.&lt;/p>
 &lt;p>Standardmässig definiert die &lt;code>equals()&lt;/code>-Methode in der &lt;strong>Object-Klasse&lt;/strong>, dass zwei Objekte nur dann gleich sind, wenn sie exakt die gleiche Identität haben.
 Das bedeutet, dass zwei unterschiedliche Objekte derselben Klasse als nicht gleich angesehen werden, selbst wenn alle ihre Felder die gleichen Werte enthalten.
-Es wird also die Speicheradresse mit &lt;code>==&lt;/code> verlgichen:&lt;/p>
+Es wird also die Speicheradresse mit &lt;code>==&lt;/code> verglichen:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
