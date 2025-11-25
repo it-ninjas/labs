@@ -7,6 +7,43 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251125-1135-143
+
+_2025-11-25 11:35 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Hinzugefügt**
+  - [Labs / Tools Exercises](../../labs/99_Tools/)
+  - [Labs / Tools Exercises / Java Exercises - Grundlagen / Geheimnisse in Java sicher aufbewahren / Secrets - Geheimnisse sicher hinterlegen](../../labs/99_Tools/java/05_secrets/01_SimpleExample/)
+  - [Labs / Tools Exercises / Java Exercises - Grundlagen / Geheimnisse in Java sicher aufbewahren / Secrets - Geheimnisse sicher hinterlegen / SimpleExample - Source](../../labs/99_Tools/java/05_secrets/01_SimpleExample/source/)
+  - [Labs / Tools Exercises / Java Exercises - Grundlagen / Geheimnisse in Java sicher aufbewahren](../../labs/99_Tools/java/05_secrets/)
+  - [Labs / Tools Exercises / Java Exercises - Grundlagen](../../labs/99_Tools/java/)
+- **Geändert**
+  - [Docs / Backend (Java) / Java Grundlagen / Methoden](../../docs/02_java/03_java-grundlagen/08_methods/)
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Objektorientierte Programmierung](../../docs/02_java/04_java-oop/01_oop/)
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Java Lists Basics](../../docs/02_java/04_java-oop/05_list-basics/)
+  - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Instanzmethoden](../../docs/02_java/04_java-oop/08_methods/)
+  - [Exams / Java Exams / Java Grundlagen Exams / Exam Java Grundlagen - Zahlen-Array](../../exams/02_java/03_java-grundlagen/01_exam1/)
+  - [Exams / Java Exams / Java Grundlagen Exams / Exam Java Grundlagen - Strings](../../exams/02_java/03_java-grundlagen/02_exam2/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Einfaches Hello World](../../labs/02_java/03_java-grundlagen/00_simple-hello-world/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Ausgabe auf die Kommandozeile](../../labs/02_java/03_java-grundlagen/01_console/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Variablen und primitive Datentypen](../../labs/02_java/03_java-grundlagen/04_variables-and-types/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Einfache Berechnungen](../../labs/02_java/03_java-grundlagen/05_logic/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Variablen und bedingte Anweisungen](../../labs/02_java/03_java-grundlagen/06_control-structures-if/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Loops](../../labs/02_java/03_java-grundlagen/06_control-structures-loops/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Das Switch Statement](../../labs/02_java/03_java-grundlagen/06_control-structures-switch/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Methoden](../../labs/02_java/03_java-grundlagen/08_methods/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Methoden / methods - Source](../../labs/02_java/03_java-grundlagen/08_methods/source/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Exception Handling](../../labs/02_java/03_java-grundlagen/09_exception_handling/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Debugging](../../labs/02_java/03_java-grundlagen/10_debugging/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Packages](../../labs/02_java/03_java-grundlagen/12_packages/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Strings](../../labs/02_java/03_java-grundlagen/13_strings/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Regex](../../labs/02_java/03_java-grundlagen/16_regex/)
+  - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Regex / regex - Source](../../labs/02_java/03_java-grundlagen/16_regex/source/)
+
+---
+
 ## 20251120-1211-142
 
 _2025-11-20 12:11 CET auf origin/master_
