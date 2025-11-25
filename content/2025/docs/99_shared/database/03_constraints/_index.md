@@ -133,7 +133,7 @@ CREATE TABLE person(
 
 > Hier sieht man auch, wie man reservierte Wörter wie `alter` als Spaltenname verwenden kann, indem man sie in Backticks (`) einschliesst.
 
-> **Info:** Die Benennung des Fremdschlüssels wurde in diesem Beispiel der Einfachheit halber nicht korrekt gemacht.
+> **Info:** Die Definition des Fremdschlüssels wurde in diesem Beispiel der Einfachheit halber nicht korrekt gemacht.
 > Je nach Naming Convention im Projekt muss der Fremdschüssel anders benannt werden. Hier ein Link mit weiteren Infos:
 > [Naming Conventions SQL Server](https://www.dotnettricks.com/learn/sqlserver/sql-server-naming-conventions-and-standards)
 
