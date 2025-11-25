@@ -103,6 +103,16 @@ Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
    git push
    {{< /code >}}
 
+{{< ninja info >}}
+Beim ersten Mal reklamiert Git, da es den Template Branch auf dem Server noch nicht gibt. Kopiere den Befehl aus der
+Fehlermeldung. Er sollte etwa folgende Form haben:
+
+{{< code >}}
+git push --set-upstream origin templates
+{{< /code >}}
+
+{{< /ninja >}}
+
 7. Erstelle einen neuen Branch, um deine Lösung zu implementieren:
 
    {{< code >}}
@@ -288,12 +298,12 @@ Passe untenstehenden Quellcode an und füge folgende Methode hinzu:
 
 ---
 
-**Name der Methode: _Bestimme selber einen passenden Namen für die Methode_  
+**Name der Methode:** _Bestimme selber einen passenden Namen für die Methode_  
 **Funktion:** Gibt die kleinste von 3 Zahlen zurück  
 **Parameter1:** Erste Zahl [int]  
 **Parameter2:** Zweite Zahl [int]  
 **Parameter3:** Dritte Zahl [int]  
-**Rückgabewert:\*\* Kleinste der 3 Zahlen [int]
+**Rückgabewert:** Kleinste der 3 Zahlen [int]
 
 ---
 

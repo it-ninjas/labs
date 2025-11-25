@@ -297,7 +297,7 @@ public class RegexChPlzTest {
 
     static String readMixed() {
         try {
-            return Files.readString(Path.of("labs/regex/data/mixed.txt"));
+            return Files.readString(Path.of("data/mixed.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -341,7 +341,7 @@ public class RegexEmailTest {
 
     static String readMixed() {
         try {
-            return Files.readString(Path.of("labs/regex/data/mixed.txt"));
+            return Files.readString(Path.of("data/mixed.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -388,7 +388,7 @@ public class RegexIbanTest {
 
     static String readMixed() {
         try {
-            return Files.readString(Path.of("labs/regex/data/mixed.txt"));
+            return Files.readString(Path.of("data/mixed.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -461,7 +461,7 @@ public class RegexPasswordTest {
 
     static String readMixed() {
         try {
-            return Files.readString(Path.of("labs/regex/data/mixed.txt"));
+            return Files.readString(Path.of("data/mixed.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -505,7 +505,7 @@ public class RegexPhoneTest {
 
     static String readMixed() {
         try {
-            return Files.readString(Path.of("labs/regex/data/mixed.txt"));
+            return Files.readString(Path.of("data/mixed.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -551,7 +551,7 @@ public class RegexUrlTest {
 
     static String readMixed() {
         try {
-            return Files.readString(Path.of("labs/regex/data/mixed.txt"));
+            return Files.readString(Path.of("data/mixed.txt"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

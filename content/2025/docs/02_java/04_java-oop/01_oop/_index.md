@@ -311,4 +311,93 @@ patient.age = 25;
 System.out.println(patient2.age); // 25
 ```
 
+## Speicherverwaltung von Objekten (Wiederholung)
+
+In den Grundlagen hast du bereits gehört, dass Java Variablen im Speicher ablegt. Jetzt, wo du Objekte und Referenzen
+kennst, lohnt sich ein genauerer Blick darauf, **wo** diese Daten tatsächlich gespeichert werden.
+
+---
+
+### Stack (Aufrufstapel)
+
+Der **Stack** ist ein schneller Speicherbereich, in dem **Methodenaufrufe** und **lokale Variablen** verwaltet werden.
+Immer wenn eine Methode gestartet wird, legt Java einen sogenannten **Stack Frame** an. Dieser Frame enthält alle
+lokalen Variablen der Methode. Sobald die Methode endet, wird der zugehörige Speicherbereich automatisch wieder
+freigegeben.
+
+Beispiel:
+
+```java
+public static void main(String[] args) {
+    int x = 5;       // liegt auf dem Stack
+    int y = 10;      // ebenfalls auf dem Stack
+    int z = add(x, y);
+}
+
+public static int add(int a, int b) {
+    return a + b;    // a und b liegen auf dem Stack
+}
+```
+
+Wenn `add()` beendet wird, verschwinden `a` und `b` wieder vom Stack.  
+Nur das Ergebnis wird an den Aufrufer zurückgegeben.
+
+---
+
+### Heap (Objektspeicher)
+
+Der **Heap** ist der Bereich des Arbeitsspeichers, in dem **Objekte** liegen, die mit `new` erzeugt werden. Nur die
+**Referenzen** auf diese Objekte werden auf dem Stack gespeichert.
+
+```java
+Patient john = new Patient(); // john liegt auf dem Stack
+john.name = "John";           // das Patient-Objekt liegt auf dem Heap
+```
+
+Wenn keine Referenz mehr auf ein Objekt zeigt, wird es vom **Garbage Collector** automatisch gelöscht.
+
+---
+
+### Zusammenspiel von Stack und Heap
+
+So kannst du dir das Zusammenspiel vorstellen:
+
+```
+Stack:                    Heap:
+--------                  -------------------
+john  ───────────▶        new Patient("John")
+alice ───────────▶        new Patient("Alice")
+```
+
+Die Variablen `john` und `alice` liegen auf dem Stack, zeigen aber auf unterschiedliche Objekte im Heap.
+
+---
+
+### Warum ist das wichtig?
+
+Das erklärt, warum folgender Code **nicht zwei unabhängige Objekte**, sondern **zwei Referenzen auf dasselbe Objekt** erzeugt:
+
+```java
+Patient patient = new Patient();
+Patient patient2 = patient;
+```
+
+Beide Variablen liegen auf dem Stack, zeigen aber **auf dasselbe Objekt im Heap**.  
+Wenn du also über `patient2` eine Eigenschaft änderst, ändert sich dieselbe Speicherstelle, die auch `patient` verwendet.
+
+```
+Stack:                    Heap:
+--------                  -------------------
+patient  ─────┬──────▶    new Patient()
+patient2 ─────┘
+```
+
+---
+
+### Merke dir
+
+- **Primitive Datentypen** (z. B. `int`, `double`, `boolean`) liegen direkt auf dem **Stack**.
+- **Objekte und Arrays** liegen auf dem **Heap**; nur ihre Referenzen liegen auf dem Stack.
+- Der **Garbage Collector** löscht automatisch Objekte, auf die keine Referenz mehr zeigt.
+
 ---
