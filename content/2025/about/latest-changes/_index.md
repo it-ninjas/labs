@@ -7,6 +7,58 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251120-1211-142
+
+_2025-11-20 12:11 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Challenges / Java Challenges / java-oop / Hogwarts Sorting Hat Challenge](../../challenges/java/java-oop/Hogwarts/)
+  - [Challenges / Java Challenges / java-oop / Wassermenge Challenge](../../challenges/java/java-oop/Wassermenge/)
+- **Gelöscht**
+  - Labs / Java Labs / Java Exercises - OOP / 20_Patienten
+  - Labs / Java Labs / Java Exercises - OOP / 22_Streaming_Dienst
+
+---
+
+## 20251118-0925-141
+
+_2025-11-18 09:25 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Challenges / Java Challenges / java-ood / Objektorientiertes Design Challange - Vehicles](../../challenges/java/java-ood/02_Vehicles/)
+- **Gelöscht**
+  - Labs / Java Labs / Java Exercises - OOD / 01_Bibliothek
+
+---
+
+## 20251112-1410-140
+
+_2025-11-12 14:10 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/07_java-ood/)
+  - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
+
+---
+
+## 20251028-1409-139
+
+_2025-10-28 14:09 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
+  - [Docs / Frontend (Web) / Angular / Components](../../docs/03_frontend/06_angular/02_3_components/)
+
+---
+
 ## 20251021-1439-138
 
 _2025-10-21 14:39 CEST auf origin/master_
@@ -14,7 +66,7 @@ _2025-10-21 14:39 CEST auf origin/master_
 ### Seiten-Änderungen
 
 - **Hinzugefügt**
-  - [Labs / Java Labs / Java Exercises - OOP / Wassermenge](../../labs/02_java/04_java-oop/24_Wassermenge/)
+  - [Labs / Java Labs / Java Exercises - OOP / Wassermenge](../../challenges/java/java-oop/Wassermenge/)
 - **Geändert**
   - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Java Lists Basics](../../docs/02_java/04_java-oop/05_list-basics/)
   - [Docs / Backend (Java) / Objektorientierte Programmierung in Java / Statische und nicht-statische Elemente](../../docs/02_java/04_java-oop/10_static-non_static/)
@@ -22,9 +74,7 @@ _2025-10-21 14:39 CEST auf origin/master_
   - [Labs / Java Labs / Java Exercises - OOP / Listen](../../labs/02_java/04_java-oop/05_lists/)
   - [Labs / Java Labs / Java Exercises - OOP / NinjaCups](../../labs/02_java/04_java-oop/10_NinjaCups/)
   - [Labs / Java Labs / Java Exercises - OOP / Generics](../../labs/02_java/04_java-oop/11_Generics/)
-  - [Labs / Java Labs / Java Exercises - OOP / Patienten](../../labs/02_java/04_java-oop/20_Patienten/)
   - [Labs / Java Labs / Java Exercises - OOP / Adressbuch](../../labs/02_java/04_java-oop/21_Adressbuch/)
-  - [Labs / Java Labs / Java Exercises - OOP / Streaming Dienst](../../labs/02_java/04_java-oop/22_Streaming_Dienst/)
   - [Labs / Java Labs / Java Exercises - OOP / Immobilienfirma](../../labs/02_java/04_java-oop/23_ImmoFirma/)
   - [Labs / Java Labs / Java Exercises - OOP](../../labs/02_java/04_java-oop/)
 - **Gelöscht**

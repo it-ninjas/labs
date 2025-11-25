@@ -1,10 +1,10 @@
 ---
-title: "Vehicles"
-linkTitle: "Vehicles"
+title: "Objektorientiertes Design Challange - Vehicles"
+linkTitle: "Objektorientiertes Design Challange - Vehicles"
 type: docs
-weight: 2
+weight: 4
 description: >
-  Aufgabe zu Modul #J3 - [OOD](../../../../docs/02_java/07_java-ood) - Vehicles
+  Challange zu Modul #J3 - Vehicles
 ---
 
 Entwirf ein Fahrzeugverwaltungssystem für ein Autohaus.
