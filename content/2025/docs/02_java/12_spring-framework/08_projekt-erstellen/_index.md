@@ -473,7 +473,9 @@ public class Schulfach {
   private List<Note> noten;
 
 }
+```
 
+```java
 @Entity
 @Table(name = "GRADE")
 public class Note {

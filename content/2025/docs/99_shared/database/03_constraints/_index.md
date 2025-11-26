@@ -25,7 +25,11 @@ beispielsweise bei einer Id, die zum Verbinden von Tabellen verwendet wird, eing
 gibt. Hier ein Beispiel wie ein `Not Null` Constraint erstellt wird:
 
 ```sql
-CREATE TABLE person(personen_id number NOT NULL, vorname varchar(255), nachname varchar(255));
+CREATE TABLE person(
+    personen_id BIGINT NOT NULL,
+    vorname VARCHAR(255),
+    nachname VARCHAR(255)
+);
 ```
 
 ```sql
@@ -45,7 +49,11 @@ Das `Unique` Constraint bedingt, dass jeder eingefügte Wert einzigartig, also n
 beispielsweise duplikationen von Ids verhindert werden. Hier ein Beispiel zum `Unique` Constraint:
 
 ```sql
-CREATE TABLE person(personen_id number UNIQUE, vorname varchar(255), nachname varchar(255));
+CREATE TABLE person(
+    personen_id BIGINT UNIQUE,
+    VARCHAR VARCHAR(255),
+    VARCHAR VARCHAR(255)
+);
 ```
 
 Beispieldaten Person:
@@ -71,7 +79,11 @@ dieses Constraint praktisch, da in eigentlich jedem Fall eine Id bestehen sollte
 Hier ein beispiel zum `Primary Key`:
 
 ```sql
-CREATE TABLE person(personen_id number PRIMARY KEY, vorname varchar(255), nachname varchar(255));
+CREATE TABLE person(
+   personen_id BIGINT PRIMARY KEY,
+   VARCHAR VARCHAR(255),
+   VARCHAR VARCHAR(255)
+);
 ```
 
 Beispieldaten Person:
@@ -102,13 +114,26 @@ erstellt. Dazu wird im CREATE das Keyword `REFERENCES` verwendet. Dort wird ange
 Fremdschlüssel verweist. Hier ein Beispiel dazu:
 
 ```sql
-CREATE TABLE adresse(id number PRIMARY KEY, strasse varchar(255), hausnummer number, plz number, ort varchar(255));
+CREATE TABLE adresse(
+    id BIGINT PRIMARY KEY,
+    strasse VARCHAR(255),
+    hausnummer VARCHAR(16),
+    plz INT,
+    ort VARCHAR(255)
+);
 
-CREATE TABLE person(id number PRIMARY KEY, vorname varchar(255), nachname varchar(255), alter number, adresse_id number
-FOREIGN KEY REFERENCES adresse(id));
+CREATE TABLE person(
+    id BIGINT PRIMARY KEY,
+    vorname VARCHAR(255),
+    nachname VARCHAR(255),
+    `alter` INT,
+    adresse_id BIGINT REFERENCES adresse(id)
+);
 ```
 
-> **Info:** Die Benennung des Fremdschlüssels wurde in diesem Beispiel der Einfachheit halber nicht korrekt gemacht.
+> Hier sieht man auch, wie man reservierte Wörter wie `alter` als Spaltenname verwenden kann, indem man sie in Backticks (`) einschliesst.
+
+> **Info:** Die Definition des Fremdschlüssels wurde in diesem Beispiel der Einfachheit halber nicht korrekt gemacht.
 > Je nach Naming Convention im Projekt muss der Fremdschüssel anders benannt werden. Hier ein Link mit weiteren Infos:
 > [Naming Conventions SQL Server](https://www.dotnettricks.com/learn/sqlserver/sql-server-naming-conventions-and-standards)
 
