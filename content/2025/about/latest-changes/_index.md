@@ -7,6 +7,19 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251126-0907-144
+
+_2025-11-26 09:07 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Geändert**
+  - [Docs / Backend (Java) / Spring Framework / Projekt Erstellen](../../docs/02_java/12_spring-framework/08_projekt-erstellen/)
+  - [Docs / Übergreifend / Datenbanken / Constraints](../../docs/99_shared/database/03_constraints/)
+  - [Labs / Java Labs / Java Exercises - Maven / Maven - Aufgaben](../../labs/02_java/05_maven/01_Exercises/)
+
+---
+
 ## 20251125-1135-143
 
 _2025-11-25 11:35 CET auf origin/master_
