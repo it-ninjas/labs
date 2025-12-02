@@ -7,6 +7,20 @@ description: >
   Übersicht der Änderungen für 2025 (Release Notes und Seitenänderungen).
 ---
 
+## 20251202-1342-145
+
+_2025-12-02 13:42 CET auf origin/master_
+
+### Seiten-Änderungen
+
+- **Hinzugefügt**
+  - [Docs / Übergreifend / Kollaboration & Versionskontrolle / Source Repositories / Git / Git Workflow im Ausbildungsprogramm](../../docs/99_shared/collaboration/source-repositories/git/03_workflow/)
+- **Geändert**
+  - [Docs / Übergreifend / Kollaboration & Versionskontrolle / Source Repositories / Git / Git Grundwissen](../../docs/99_shared/collaboration/source-repositories/git/01_grundwissen/)
+  - [Docs / Übergreifend / Kollaboration & Versionskontrolle / Source Repositories / Git / Git Vertiefung](../../docs/99_shared/collaboration/source-repositories/git/02_vertiefung/)
+
+---
+
 ## 20251126-0907-144
 
 _2025-11-26 09:07 CET auf origin/master_
