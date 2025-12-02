@@ -85,4 +85,97 @@ von mindestens zwei Lernenden (mehr ist besser) gemeinsam bearbeitet wird.&lt;/p
 &lt;li>Das Team erläutert das Vorgehen und schildert auch aufgetretene Probleme.&lt;/li>
 &lt;li>Ein Beispiel-Projekt soll im Vorfeld zu einem releasefähigen Stand gebracht worden sein, der die Änderungen aller Teammitglieder beinhaltet.&lt;/li>
 &lt;li>Ein weiteres Beispielprojekt befindet sich noch in der Entwicklung.&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Git Workflow im Ausbildungsprogramm</title><link>/docs/99_shared/collaboration/source-repositories/git/03_workflow/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/99_shared/collaboration/source-repositories/git/03_workflow/</guid><description>
+&lt;h2 id="grundstruktur">Grundstruktur&lt;/h2>
+&lt;p>Ziel: Eine saubere, stabile und nachvollziehbare Git-Umgebung für Labs und Exams.&lt;/p>
+&lt;ul>
+&lt;li>Der &lt;code>main&lt;/code>-Branch bleibt jederzeit stabil und sauber.&lt;/li>
+&lt;li>Es wird &lt;strong>niemals direkt auf main gepusht&lt;/strong>.&lt;/li>
+&lt;li>Für das Entwickeln von den Labs/Exams wird vom &lt;code>main&lt;/code> ein &lt;code>dev&lt;/code>-Branch erstellt.&lt;/li>
+&lt;li>Für jedes Lab/Exam wird vom &lt;code>main&lt;/code> ein eigener &lt;code>review&lt;/code>-Branch erstellt.&lt;/li>
+&lt;li>Sobald ein Lab/Exam abgeschlossen ist, wird der entsprechende &lt;code>dev&lt;/code>-Branch in den &lt;code>review&lt;/code>-Branch gemergt.&lt;/li>
+&lt;li>Der &lt;code>review&lt;/code>-Branch stellt den Stand für den offiziellen Review-Prozess dar.&lt;/li>
+&lt;/ul>
+&lt;h3 id="hinweis">Hinweis&lt;/h3>
+&lt;ul>
+&lt;li>Dev-Branches gehören zur persönlichen Arbeit&lt;/li>
+&lt;li>Review-Branches sind “eingefrorene” Stände für PBs
+&lt;img src="/docs/99_shared/collaboration/source-repositories/git/03_workflow/images/workflow.png" alt="">&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="naming-und-prefixes">Naming und Prefixes&lt;/h2>
+&lt;p>Zweck: Klare Identifikation, einheitliche Struktur.&lt;/p>
+&lt;p>Jeder Branch erhält einen Prefix, z. B.:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>dev/xyz&lt;/code>&lt;/li>
+&lt;li>&lt;code>fix/xyz&lt;/code>&lt;/li>
+&lt;li>&lt;code>review/xyz&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Prefixes erleichtern:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Sofortiges Erkennen der Branch-Art&lt;/li>
+&lt;li>Ordnung und Struktur im Repository&lt;/li>
+&lt;li>Automatisierte Workflows (z. B. CI/CD)&lt;/li>
+&lt;li>Saubere, nachvollziehbare Review-Prozesse&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Naming-Conventions:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Kleinschreibung&lt;/li>
+&lt;li>Bindestriche statt Leerzeichen&lt;/li>
+&lt;li>Name beschreibt klar den Inhalt
+&lt;ul>
+&lt;li>z. B. &lt;code>dev/sort-algorithm-task5&lt;/code> statt &lt;code>dev/newbranch&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Aufgaben-übergreifende Branches:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>z. B. &lt;code>dev/java-grundlagen-exams&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="verbesserungen--feedback-auf-review-korrekt-implementieren">Verbesserungen / Feedback auf Review korrekt implementieren&lt;/h2>
+&lt;p>Ziel: Klare Nachvollziehbarkeit aller Review-Anpassungen.&lt;/p>
+&lt;ul>
+&lt;li>Jede zu machende Verbesserung aus dem Review wird in einen eigenen Task überführt.&lt;/li>
+&lt;li>Was das für Tasks werden, wird im Review besprochen.&lt;/li>
+&lt;li>Sobald eine Verbesserung umgesetzt wurde, wird der Task abgehakt.&lt;/li>
+&lt;li>Nach Abschluss aller Tasks gibst du Bescheid.&lt;/li>
+&lt;li>PBs überprüfen die Verbesserungen und resolven die Tasks, sobald sie zufrieden sind.&lt;/li>
+&lt;li>Die Verbesserungen erfolgen auf einem &lt;code>fix&lt;/code>-Branch, der auf dem &lt;code>review&lt;/code>-Branch basiert.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="regeln">Regeln&lt;/h2>
+&lt;ul>
+&lt;li>Keine direkten Commits auf &lt;code>main&lt;/code>.&lt;/li>
+&lt;li>Keine direkten Commits auf &lt;code>review&lt;/code>.&lt;/li>
+&lt;li>Für Labs/Exams erstellt ihr den Pull Request.&lt;/li>
+&lt;/ul>
+&lt;h3 id="reviewer">Reviewer&lt;/h3>
+&lt;ul>
+&lt;li>Lab: mindestens &lt;strong>1 PB&lt;/strong>&lt;/li>
+&lt;li>Exam: mindestens &lt;strong>2 PB&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;h3 id="sobald-der-pr-eröffnet-ist">Sobald der PR eröffnet ist:&lt;/h3>
+&lt;ul>
+&lt;li>Keine neuen Änderungen mehr auf den &lt;code>review&lt;/code>-Branch pushen.&lt;/li>
+&lt;li>Weitere Arbeit darf auf neuen &lt;code>dev&lt;/code>- oder &lt;code>fix&lt;/code>-Branches stattfinden.&lt;/li>
+&lt;li>Gemergt wird erst nach abgeschlossenem Review.&lt;/li>
+&lt;/ul>
+&lt;h3 id="ein-labexam-gilt-als-abgeschlossen-wenn">Ein Lab/Exam gilt als abgeschlossen, wenn:&lt;/h3>
+&lt;ul>
+&lt;li>Der PR von den PBs approved wurde.&lt;/li>
+&lt;li>Der &lt;code>review&lt;/code>-Branch in &lt;code>main&lt;/code> gemergt wurde.&lt;/li>
+&lt;li>Nur die PBs dürfen auf &lt;code>main&lt;/code> mergen.&lt;/li>
+&lt;/ul>
+&lt;h3 id="aufräumen">Aufräumen&lt;/h3>
+&lt;ul>
+&lt;li>Branches, die nach Merge nicht mehr gebraucht werden, sollen gelöscht werden.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="best-practices">Best Practices&lt;/h2>
+&lt;ul>
+&lt;li>Commits klein und thematisch sauber halten.&lt;/li>
+&lt;li>PR-Beschreibung ausfüllen: Was wurde gemacht? Was muss beachtet werden?&lt;/li>
+&lt;li>Branches nicht zu lange offen halten → hohes Konfliktpotenzial.&lt;/li>
+&lt;li>Beim Arbeiten an mehreren Tasks: separate &lt;code>fix&lt;/code>-Branches statt “alles in einen Branch mischen”.&lt;/li>
 &lt;/ul></description></item></channel></rss>
