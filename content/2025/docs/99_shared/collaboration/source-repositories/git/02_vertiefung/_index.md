@@ -4,7 +4,7 @@ linkTitle: "Git Vertiefung"
 sectionnumber: 2
 date: 2024-10-16
 description: Gemeinsame Nutzung von Git in einem Team
-weight: 5
+weight: 2
 ---
 
 Hallo Ninja!

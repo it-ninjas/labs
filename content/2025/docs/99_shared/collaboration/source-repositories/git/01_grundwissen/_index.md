@@ -1,6 +1,6 @@
 ---
 title: "Git Grundwissen"
-weight: 3
+weight: 1
 sectionnumber: 1
 date: 2021-10-28
 description: Verteilte Versionsverwaltung mit Git
