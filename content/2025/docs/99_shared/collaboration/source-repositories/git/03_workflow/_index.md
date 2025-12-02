@@ -7,6 +7,7 @@ description: >
 ---
 
 ## Grundstruktur
+
 Ziel: Eine saubere, stabile und nachvollziehbare Git-Umgebung für Labs und Exams.
 
 - Der `main`-Branch bleibt jederzeit stabil und sauber.
@@ -17,33 +18,39 @@ Ziel: Eine saubere, stabile und nachvollziehbare Git-Umgebung für Labs und Exam
 - Der `review`-Branch stellt den Stand für den offiziellen Review-Prozess dar.
 
 ### Hinweis
+
 - Dev-Branches gehören zur persönlichen Arbeit
 - Review-Branches sind “eingefrorene” Stände für PBs
-![](images/workflow.png)
+  ![](images/workflow.png)
 
 ---
 
 ## Naming und Prefixes
+
 Zweck: Klare Identifikation, einheitliche Struktur.
 
 Jeder Branch erhält einen Prefix, z. B.:
+
 - `dev/xyz`
 - `fix/xyz`
 - `review/xyz`
 
 **Prefixes erleichtern:**
+
 - Sofortiges Erkennen der Branch-Art
 - Ordnung und Struktur im Repository
 - Automatisierte Workflows (z. B. CI/CD)
 - Saubere, nachvollziehbare Review-Prozesse
 
 **Naming-Conventions:**
+
 - Kleinschreibung
 - Bindestriche statt Leerzeichen
-- Name beschreibt klar den Inhalt  
+- Name beschreibt klar den Inhalt
   - z. B. `dev/sort-algorithm-task5` statt `dev/newbranch`
 
 **Aufgaben-übergreifende Branches:**
+
 - z. B. `dev/java-grundlagen-exams`
 
 ---
@@ -68,20 +75,24 @@ Ziel: Klare Nachvollziehbarkeit aller Review-Anpassungen.
 - Für Labs/Exams erstellt ihr den Pull Request.
 
 ### Reviewer
+
 - Lab: mindestens **1 PB**
 - Exam: mindestens **2 PB**
 
 ### Sobald der PR eröffnet ist:
+
 - Keine neuen Änderungen mehr auf den `review`-Branch pushen.
 - Weitere Arbeit darf auf neuen `dev`- oder `fix`-Branches stattfinden.
 - Gemergt wird erst nach abgeschlossenem Review.
 
 ### Ein Lab/Exam gilt als abgeschlossen, wenn:
+
 - Der PR von den PBs approved wurde.
 - Der `review`-Branch in `main` gemergt wurde.
 - Nur die PBs dürfen auf `main` mergen.
 
 ### Aufräumen
+
 - Branches, die nach Merge nicht mehr gebraucht werden, sollen gelöscht werden.
 
 ---
