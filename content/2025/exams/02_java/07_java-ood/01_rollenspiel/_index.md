@@ -24,8 +24,8 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
 - Jede Spielfigur hat einen Namen und besitzt eine bestimmte Anzahl an Lebenspunkten. Diese Lebenspunkte werden später im Kampf mit anderen Spielfiguren verringert
 - Elfen können zaubern und haben einen Zauberwert
 - Alle Spielfigur-Klassen sollen in einem entsprechenden Package angelegt werden
-  -Optional: Falls die Optionalen Anforderungen bezüglich Rüstung und oder Gegenstände umgesetzt werden muss die folgende Anforderung auch umgesetzt werden.
-  - Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)
+  - Optional: Falls die Optionalen Anforderungen bezüglich Rüstung und oder Gegenstände umgesetzt werden muss die folgende Anforderung auch umgesetzt werden:
+    - Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)
 
 ### Waffen
 
@@ -104,8 +104,8 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
   - Waffen geben als Kampfwert ihren Angriffswert zurück
   - Bei Nahkampfwaffen wird zum Angriffswert der halbe Verteidigungswert hinzuaddiert
 - Falls das Attribut Tragkraft implementiert wurde gelten noch folgende Anforderungen:
-  - Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert (Optional)
-  - Spielfiguren können Waffen ablegen, um die verbleibende Tragkraft zu erhöhen (Optional)
+  - Optional: Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert
+  - Optional: Spielfiguren können Waffen ablegen, um die verbleibende Tragkraft zu erhöhen
 
 #### Gegenstände (Optional)
 
@@ -122,8 +122,7 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
   - Steht nach 20 Runden noch kein Sieger fest, wird der Kampf abgebrochen
   - Bei jeder Runde wird der Kampfwert der einen Spielfigur den Lebenspunkten des Gegners abgezogen und umgekehrt
   - Diejenige Spielfigur mit den meisten verbliebenen Lebenspunkten gewinnt
-- Optional:
-  - Jede Spielfigur kann in einem Kampf von ihren Gegenständen Gebrauch machen
+- Optional: Jede Spielfigur kann in einem Kampf von ihren Gegenständen Gebrauch machen
 
 ---
 
@@ -131,7 +130,7 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
 
 - Definiere nun eigene Regeln für deine Spielfiguren, damit das Spiel ein wenig ausgeglichener wird
 - Die Regeln können beliebig geändert werden
-- Es dürfen natürlich auch neue Waffen und Gegenstände(falls umgesetzt) eingeführt werden
+- Es dürfen natürlich auch neue Waffen und Gegenstände (falls umgesetzt) eingeführt werden
 - Dein Entwurf soll mindestens eine neue Spielfigur, eine neue Waffe, einen neuen Gegenstand und eine neue Spezialität für eine Spielfigur enthalten
 
 ---
