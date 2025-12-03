@@ -184,11 +184,19 @@ public class Main {
 ### Abgrenzung
 
 - Wenn ein Thread eine Log-Ausgabe macht, werden andere Threads, welche ebenfalls eine Log-Ausgabe machen wollen
-  blockiert, bis der 
+  blockiert, bis der vorherige Thread die Log-Ausgabe beendet hat.
+
+### Testen
+
+Die Funktion wird durch manuelle Tests geprüft.
+
+### Akzeptanzkriterien
+
+- Mehrere parallel laufende Threads erzeugen eine saubere Log-Ausgabe
 
 ## Aufgabenstellung - Datei Ort, Name, Grösse, Alter
 
-Erweitere dein **Logging-Package**, damit folgende Aufgaben erfüllt wird:
+Erweitere dein **Logging-Package - Schreiben in eine Datei**, damit folgende Aufgaben erfüllt wird:
 
 - Es soll festgelegt werden können, was der **Name der Log‑Datei** enthalten soll und an welchem **Ort** die Log-Datei
   gespeichert werden soll.
@@ -215,7 +223,9 @@ MyOtherApp-2025-11-20.log
   Verhalten wie bei [Aufgabenstellung - Schreiben in Datei](#aufgabenstellung---schreiben-in-datei)).
 - Neuer Dateiname mit Zeitstempel oder Index (z. B. `app-2025-09-23.log`).
 - Zu alte/zu viele Dateien **löschen**, wenn Limits überschritten werden.
-- Logik kann in `maintain()` ausgelöst werden (z. B. beim Start oder periodisch).
+- Logik kann in `maintain()` ausgelöst werden (z. B. beim Start oder periodisch). Die Methodenaufrufe zum erstellen 
+  einer Log-Ausgabe sollen möglichst wenig beeinflusst werden (keine zeitaufwändigen Aufräumaktionen während `info`,
+  `warn`, `error`, `debug`)
 
 ### Abgrenzung
 - Keine Kompression, kein Archivieren an andere Orte.
@@ -231,10 +241,7 @@ Die Funktion wird durch manuelle Tests geprüft.
 - Alte Dateien werden korrekt entfernt gemäss Limits.
 - Reihenfolge der Dateien ist nachvollziehbar.
 
-
-
-
-5. **Konfiguration (ENV/User-Datei):**
+## Aufgabenstellung - Konfiguration (ENV/User-Datei)
 
    - Der Logger liest Einstellungen aus **Umgebungsvariablen** oder einer **User-Konfigdatei**.
 
@@ -267,6 +274,10 @@ Die Funktion wird durch manuelle Tests geprüft.
      2. aus der Konfigurationsdatei, falls definiert und vorhanden,
      3. aus den Umgebungsvariablen.
 
+## ToDo--- wohin
+
+### Abgrenzung
+
 6. **Fehlertoleranz:** Wenn die Log-Datei nicht geschrieben werden kann, wirf **keine** Exception nach aussen.
    Dokumentiere das Verhalten (z. B. Fallback auf `System.err`).
 
@@ -278,49 +289,8 @@ Die Funktion wird durch manuelle Tests geprüft.
    sondern auch auf der Konsole auszugeben. (Optional) Mittels farbigem Text soll zwischen den verschiedenen
    Log-Levels unterschieden werden können.
 
-## API – minimale Pflicht
 
-Die folgenden **Pflicht-Methoden** müssen vorhanden sein; alle weiteren sind **optional**. Der Logger funktioniert
-**ohne** optionale Methoden (Defaults & Konfigurationsdatei/Umgebungsvariablen).
-
-```java
-public static void info(String message);
-public static void warn(String message);
-public static void error(String message);
-public static void error(String message, Throwable exception);
-public static void debug(String message);
-
-public static void maintain(); // checks for outdated files, configuration changes, ...
-```
-
-## API – optionale Erweiterungen
-
-```java
-// Optional: explizit Konfigpfad setzen (ansonsten ENV/Default)
-public static void setConfigPath(java.nio.file.Path configFile);
-
-// Optional: direkte Datei- oder Verzeichnis-Init (bypasst/ergänzt Konfigdatei)
-public static void initWithDir(java.nio.file.Path logDir, String postfix, LogLevel minLevel, String moduleCode);
-public static void init(java.nio.file.Path logFile, LogLevel minLevel, String moduleCode);
-
-// Optionale Setter (falls nicht ausschliesslich per Konfigdatei gesteuert)
-public static void setLogFolder(Path path);
-
-enum LogLevel { TRC, DBG, INF, WRN, ERR }
-public static void setMinLevel(LogLevel level);
-
-public static void setLogIdentifier(String identifier);
-public static void setMaxLineLength(int len);
-public static void setMaxFiles(int count);
-public static void setMaxDays(int days);
-
-// Optional Convenience
-public static void trace(String message);
-```
-
-> Du darfst die API **vereinfachen oder erweitern**, solange die Anforderungen erfüllt sind.
-
-## Manuelles Testen (ohne Test-Framework)
+### Manuelles Testen (ohne Test-Framework)
 
 1. **Mini-Demo-Klasse** in _einem separaten_ Projekt (oder im selben Repo unter `demo/`), **nicht** im Logger-Package:
 
@@ -343,7 +313,7 @@ public static void trace(String message);
 
 ---
 
-## Akzeptanzkriterien (Definition of Done)
+### Akzeptanzkriterien (Definition of Done)
 
 - Package baut ohne Fehler, **ohne `main`**.
 - Es wird ein `.jar` erstellt.
@@ -357,7 +327,7 @@ public static void trace(String message);
 
 ---
 
-## Ordner-/Dateistruktur (Vorschlag)
+### Ordner-/Dateistruktur (Vorschlag)
 
 {{< ninja tip >}}
 Nutze die folgende Struktur, damit du deinen Code im **Logger-Projekt** entwickeln und im **Demo-Projekt** testen kannst!
@@ -398,7 +368,7 @@ project-root/
 </project>
 ```
 
-## Abgabe
+### Abgabe
 
 {{< ninja warning >}}
 Für das Logger-Projekt musst Du ein neues Repository erstellen!
@@ -410,7 +380,7 @@ Für das Logger-Projekt musst Du ein neues Repository erstellen!
 
 ---
 
-## Architektur & Austauschbarkeit (Ausblick)
+### Architektur & Austauschbarkeit (Ausblick)
 
 Ziel ist eine Struktur, in der wir **Packages austauschen** können: `Logger`, `Tournament`, `Game` sowie getrennte
 **Frontend**- und **Backend**-Varianten. Damit können wir z. B. vergleichen, wie **GameEngine A** ein Spiel gegenüber

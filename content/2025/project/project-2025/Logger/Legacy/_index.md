@@ -207,9 +207,7 @@ public static void trace(String message);
 
 ---
 
-## Weiterführende Informationen
-
-### Ordner-/Dateistruktur (Vorschlag)
+## Ordner-/Dateistruktur (Vorschlag)
 
 {{< ninja tip >}}
 Nutze die folgende Struktur, damit du deinen Code im **Logger-Projekt** entwickeln und im **Demo-Projekt** testen kannst!
@@ -262,7 +260,7 @@ Für das Logger-Projekt musst Du ein neues Repository erstellen!
 
 ---
 
-### Architektur & Austauschbarkeit (Ausblick)
+## Architektur & Austauschbarkeit (Ausblick)
 
 Ziel ist eine Struktur, in der wir **Packages austauschen** können: `Logger`, `Tournament`, `Game` sowie getrennte
 **Frontend**- und **Backend**-Varianten. Damit können wir z. B. vergleichen, wie **GameEngine A** ein Spiel gegenüber
