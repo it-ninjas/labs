@@ -24,8 +24,8 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
 - Jede Spielfigur hat einen Namen und besitzt eine bestimmte Anzahl an Lebenspunkten. Diese Lebenspunkte werden später im Kampf mit anderen Spielfiguren verringert
 - Elfen können zaubern und haben einen Zauberwert
 - Alle Spielfigur-Klassen sollen in einem entsprechenden Package angelegt werden
-  - Optional: Falls die Optionalen Anforderungen bezüglich Rüstung und oder Gegenstände umgesetzt werden muss die folgende Anforderung auch umgesetzt werden:
-    - Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)
+- Optional: Falls die Optionalen Anforderungen bezüglich Rüstung und oder Gegenstände umgesetzt werden, muss die folgende Anforderung auch umgesetzt werden:
+  - Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)
 
 ### Waffen
 
