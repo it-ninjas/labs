@@ -22,9 +22,10 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
   - Goblins
   - Trolle
 - Jede Spielfigur hat einen Namen und besitzt eine bestimmte Anzahl an Lebenspunkten. Diese Lebenspunkte werden später im Kampf mit anderen Spielfiguren verringert
-- Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)
 - Elfen können zaubern und haben einen Zauberwert
 - Alle Spielfigur-Klassen sollen in einem entsprechenden Package angelegt werden
+- Optional: Falls die Optionalen Anforderungen bezüglich Rüstung und oder Gegenstände umgesetzt werden, muss die folgende Anforderung auch umgesetzt werden:
+  - Jede Spielfigur hat eine gewisse Tragkraft um Gegenstände und Ausrüstung mit sich herumtragen zu können (siehe weiter unten)
 
 ### Waffen
 
@@ -36,7 +37,7 @@ Lies zuerst die Einführung und arbeite dann die untenstehenden Aufgaben ab.
 - Alle Waffen haben ein Gewicht
 - Alle Waffen-Klassen sollen in einem entsprechenden Package angelegt werden
 
-### Gegenstände
+### Gegenstände (Optional)
 
 - Es gibt verschiedene Gegenstände
   - Tränke (Heiltrank und Stärketrank)
@@ -96,16 +97,17 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
 #### Waffen
 
 - Jede Spielfigur kann mit einer Waffe ausgerüstet werden
-  - Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert
   - Ist die Waffe zu schwer für die verbleibende Tragkraft, so kann die Spielfigur die Waffe nicht aufnehmen
   - Eine Spielfigur kann mehrere Waffen mit sich rumtragen, aber jeweils nur eine Waffe aktiv verwenden
-- Spielfiguren können Waffen ablegen, um die verbleibende Tragkraft zu erhöhen
 - Alle Keulen haben den Angriffswert 5 und den Verteidigungswert 5. Die beiden Werte sind also konstant
 - Jede Waffe hat einen Kampfwert
   - Waffen geben als Kampfwert ihren Angriffswert zurück
   - Bei Nahkampfwaffen wird zum Angriffswert der halbe Verteidigungswert hinzuaddiert
+- Falls das Attribut Tragkraft implementiert wurde gelten noch folgende Anforderungen:
+  - Optional: Wird eine Waffe aufgenommen, wird die Tragkraft entsprechend reduziert
+  - Optional: Spielfiguren können Waffen ablegen, um die verbleibende Tragkraft zu erhöhen
 
-#### Gegenstände
+#### Gegenstände (Optional)
 
 - Jede Spielfigur kann Gegenstände bis zur maximalen Tragkraft aufnehmen
   - Wird ein Gegenstand aufgenommen, wird die Tragkraft entsprechend reduziert
@@ -120,7 +122,7 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
   - Steht nach 20 Runden noch kein Sieger fest, wird der Kampf abgebrochen
   - Bei jeder Runde wird der Kampfwert der einen Spielfigur den Lebenspunkten des Gegners abgezogen und umgekehrt
   - Diejenige Spielfigur mit den meisten verbliebenen Lebenspunkten gewinnt
-  - Jede Spielfigur kann in einem Kampf von ihren Gegenständen Gebrauch machen
+- Optional: Jede Spielfigur kann in einem Kampf von ihren Gegenständen Gebrauch machen
 
 ---
 
@@ -128,7 +130,7 @@ Ergänze die Applikation mit den folgenden Möglichkeiten:
 
 - Definiere nun eigene Regeln für deine Spielfiguren, damit das Spiel ein wenig ausgeglichener wird
 - Die Regeln können beliebig geändert werden
-- Es dürfen natürlich auch neue Waffen und Gegenstände eingeführt werden
+- Es dürfen natürlich auch neue Waffen und Gegenstände (falls umgesetzt) eingeführt werden
 - Dein Entwurf soll mindestens eine neue Spielfigur, eine neue Waffe, einen neuen Gegenstand und eine neue Spezialität für eine Spielfigur enthalten
 
 ---
@@ -167,7 +169,7 @@ nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwo
 
 ---
 
-## Aufgabe 7
+## Aufgabe 7 (Optional)
 
 - Das Spiel soll erweitert werden, dass eine Spielfigur eine Rüstung tragen kann
 - Es gibt leichte und schwere Rüstungen
@@ -194,4 +196,4 @@ nur für genau eine Aufgabe innerhalb dieser Applikation zuständig und verantwo
 - Je höher der Wert, desto früher darf die Spielfigur im Kampf zuschlagen
 - Tiefere Werte verteilen also ihren Schaden später als höhere Werte
 - Eine Spielfigur mit tiefem Initiative-Wert kann nicht mehr zurückschlagen wenn sie getötet wird
-- Das Tragen von schweren Rüstungen verringert den Initiative-Wert
+- Das Tragen von schweren Rüstungen verringert den Initiative-Wert (falls umgesetzt)

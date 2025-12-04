@@ -1,10 +1,10 @@
 ---
-title: "Objektorientiertes Design Challange - Vehicles"
-linkTitle: "Objektorientiertes Design Challange - Vehicles"
+title: "Objektorientiertes Design Challenge - Vehicles"
+linkTitle: "Objektorientiertes Design Challenge - Vehicles"
 type: docs
 weight: 4
 description: >
-  Challange zu Modul #J3 - Vehicles
+  Challenge zu Modul #J3 - Vehicles
 ---
 
 Entwirf ein Fahrzeugverwaltungssystem für ein Autohaus.
