@@ -36,12 +36,6 @@ Bevor du mit der Aufgabe beginnst, sollten folgende Voraussetzungen erfüllt sei
 
 ---
 
-## Einführung
-
-(Erläuterung der Gesamtsituation oder des Szenarios, falls notwendig.)
-
----
-
 ## Kontext & Einschränkungen für alle Aufgaben
 
 Beachte beim Lösen der Aufgabe folgende Regeln:
@@ -55,6 +49,58 @@ Beachte beim Lösen der Aufgabe folgende Regeln:
 
 ---
 
+## Einführung _(optional)_
+
+(Erläuterung der Gesamtsituation oder des Szenarios, falls notwendig.)
+
+---
+
+## Abgrenzung für alle Aufgaben
+
+Folgende Punkte gehören **nicht** zu dieser Aufgabe:
+
+- Inhalt:
+  - Nicht gefordert …
+  - Muss nicht berücksichtigt werden …
+  - Keine Optimierungen …
+  - Fehlerbehandlung nicht zwingend (falls zutreffend)
+
+---
+
+## Allgemeine Testanweisungen
+
+Die geforderte Funktionalität der Teilaufgaben muss wie folgt getestet werden:
+
+- Manuelle Tests
+  - Schreibe ein kleines Programm, welches die verschiedenen Methoden aufruft. Validiere manuell, ob die Ausgabe den
+    Erwartungen entspricht.
+  - Testabdeckung: ungefähr 60%
+
+## Allgemeine Akzeptanzkriterien
+
+Die Aufgabe gilt als erfüllt, wenn:
+
+1. …
+2. …
+3. Das Repository lässt sich lokal klonen, builden und ausführen.
+4. Der Code dem it-ninja Styleguide entspricht.
+
+---
+
+## Abgabe
+
+Damit wir deine Arbeit beurteilen können, musst du uns Folgendes zur Verfügung stellen:
+
+- Bitbucket oder Git-Repository-Link
+- Branch (z. B. `review/aufgabe-xyz`)
+- Dokumentation in einer `README.md` im Repository beim Projekt
+
+---
+
 ## Zusätzliche Informationen _(optional)_
 
 (Weitere Hinweise oder ergänzende Informationen, die für die Gesamtsicht relevant sein können.)
+
+## Aufgaben
+
+Anbei die Liste der Aufgaben, welche für diese Gesamtaufgabe umgesetzt werden müssen:

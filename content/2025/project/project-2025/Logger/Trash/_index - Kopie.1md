@@ -4,85 +4,49 @@ linkTitle: "Logger"
 type: docs
 weight: 1
 description: >
-  Entwickle und baue ein Logging-Package. Das Package schreibt strukturierte Log-Zeilen und kann so informationen über
-  den Programfluss geben.
----
-
-{{< ninja info >}}
-Diese Aufgabe besteht aus mehreren Teilen.
-
-> Falls nicht anders angegeben, müssen die Teilaufgaben in der Reihenfolge gelöst werden, in der sie
-> aufgelistet sind.
-
-> Optionale Aufgaben können weggelassen werden.
-{{< /ninja >}}
-
-{{< ninja warning >}}
-Für das Logger-Projekt musst Du ein neues Repository erstellen!
-{{< /ninja >}}
-
+  Baue ein Logging-Package. Das Package schreibt strukturierte Log-Zeilen und kann so informationen über den
+  Programfluss geben.
 ---
 
 ## Ziele
 
-- Ich kann ein Java-Package ohne `main` erstellen und ausschliesslich statische Hilfsfunktionen bereitstellen.
-- Ich kann strukturierte Log-Zeilen mit **Zeitstempel**, **Log-Level**, **PID** und **TID** erzeugen.
-- Ich kann Log-Level unterscheiden, filtern und sichtbar machen (optional farblich).
-- Ich kann ein konsistentes Zeitformat erzeugen und pro Zeile ausgeben.
-- Ich kann Erweiterungen wie Datei-Logging, Rotation und Konfiguration hinzufügen.
-- Ich halte eine verbindliche Public-API ein, damit Logger verschiedener Lernender austauschbar sind.
+- Ich kann ein Java-Package ohne `main` erstellen und darin **nur** statische Hilfsfunktionen bereitstellen.
+- Ich kann strukturierte Log-Zeilen mit **Zeitstempel**, **Log-Level**, **PID** und **TID** ausgeben.
+- Ich kann **Log-Level** unterscheiden, filtern, sichtbar machen und optional farblich kennzeichnen.
+- Ich kann ein leicht lesbares **Zeitformat** zu Begin von jeder Zeile schreiben.
+- Ich kann das Logging modular erweitern (**Datei**, **Rotation**, **Konfiguration**, **Thread-Sicherheit**).
+- Ich halte eine **verbindliche Public-API** ein, damit Logger zwischen Auszubildenden austauschbar bleiben.
 
 {{< zeit lesen="20" >}}
 
 ---
 
-## Voraussetzungen
-
-Bevor du mit der Aufgabe beginnst, sollten folgende Voraussetzungen erfüllt sein:
-
-- Ich habe die Java-Grundlagen verstanden.
-- Ich kann IntelliJ bedienen und neue Java-Projekte erstellen.
-- Ich weiss, wie ich ein Git-Repository erstelle (Bitbucket oder GitHub) und es lokal klone.
-- Ich kenne die grundlegende Struktur eines Maven-Projekts.
-- Ich kenne die it-ninja Naming-Regeln und den Coding-Style-Guide.
-
----
-
-## Kontext & Einschränkungen für alle Aufgaben
-
-Beachte beim Lösen der Aufgabe folgende Regeln:
-
-- **KI** darf beim Erstellen der Lösung **nur mit ausdrücklicher Erlaubnis Praxisbilder** verwendet werden.
-- kein OOP (ausschliesslich statische Methoden)
-- nur Standardbibliothek: kein Einsatz externer Logging-Frameworks (SLF4J, Log4J, java.util.logging, ...)
-- Öffentliche Methoden dürfen **keine Exceptions werfen**
-
----
+{{< ninja warning >}}
+Für das Logger-Projekt musst Du ein neues Repository erstellen!
+{{< /ninja >}}
 
 ## Einführung
 
-Ein Logger dokumentiert, **was wann** in einem Programm passiert.  
-Im Gegensatz zu `System.out.println()` erzeugt ein Logger **strukturierte** Ausgaben, die:
+Ein **Logger** dokumentiert wichtige Ereignisse deines Programms, damit du später nachvollziehen kannst, **was wann
+passiert ist**. Im Gegensatz zu `System.out.println` sind Log-Einträge **strukturiert**, können **gefiltert** und
+meist zusätzlich in **Dateien** gespeichert werden. Jedes Ereignis ist eine **Zeile** (bei langen Nachrichten ggf.
+mehrere Zeilen), die u. a. Informationen zu **Zeit**, **Prozess** und **Thread** des Ereignisses enthält.  
 
-- gefiltert werden können,
-- modular erweiterbar sind,
-- analysierbar sind,
-- in anderen Projekten wiederverwendet werden können.
+In diesem Projekt baust du einen Logger **schrittweise** auf: Zuerst Konsolen-Ausgabe, dann optionale Erweiterungen wie
+Datei-Logging mit Rotation, Konfiguration (API/Args/ENV/Datei) und Thread-Sicherheit.
 
-In dieser Aufgabe entwickelst du ein solches Logging-Package schrittweise.
+## Informationen zum Aufbau eines Loggers
 
 {{< ninja tip >}}
 Recherchiere ein wenig im Internet, wie andere Applikationen, Tools und Services ihr Verhalten loggen.
 {{< /ninja >}}
 
-### Informationen zum Aufbau eines Loggers
-
-#### Mitteilung (Message)
+### Mitteilung (Message)
 
 Die Mitteilung ist die Kernbotschaft eines Ereignisses. Sie dient dazu, dass der Analyst der Log-Ausgabe sich einer
 Vorstellung machen kann, was aktuell in der Applikation passiert.
 
-#### Zeitstempel
+### Zeitstempel
 
 Oft beginnt die Log-Ausgabe mit der aktuellen Zeit (bei länger laufenden Prozessen mit Datum). Diese Zeitangaben helfen,
 ein Gefühl zu bekommen, ob es sich bei einem Problem um ein generelles Problem handelt (schreiben in eine Datei geht
@@ -94,7 +58,7 @@ Beispiel für eine Log-Ausgabe mit Zeitstempel:
 20251118-22:04:16.345 Connection to File-Server reestablished.
 ```
 
-#### Log-Level
+### Log-Level
 
 Um eine bessere Übersicht zu behalten, ob eine Log-Eintrag rein informativ ist oder ob es um eine kritische
 Systeminformation geht, wird jedem Log-Eintrag ein **Level** zugeordnet. Die folgenden **Log-Levels** haben sich in der
@@ -113,7 +77,7 @@ Praxis bewährt:
 
 Bei Minimal-Level `INF` werden auch `WRN` und `ERR` geschrieben, bei Minimal-Level `WRN` nur noch `WRN` und `ERR`.
 
-#### Prozess- und Thread-Id
+### Prozess- und Thread-Id
 
 Vorallem bei grösseren Programmen teilen sich mehrere Threads (parallele Tasks) die Ressourcen des Systems, bei
 grösseren Lösungen können es auch mehrere Prozesse sein. Die Prozess- und Thread-Id hilft, ein Ereigniss in der
@@ -134,7 +98,7 @@ Mit folgenden Befehlen kannst du in Java die PID und TID erhalten:
 
 Implementierungsvorgabe: Möglichst **dreistellig** darstellen (`000–999`) – aber **niemals abschneiden**, wenn größer.
 
-#### Module-Id / Source-Identifier (optional)
+### Module-Id / Source-Identifier (optional)
 
 Um Log-Ausgaben noch einfacher zuordnen zu können, kann man in der Ausgabe auch eine Module-Id oder einen
 Source-Identifier ausgeben. Dabei kann es sich um einen 3- oder 4-stelligen Kürzel oder aber auch um den Namen der
@@ -145,19 +109,11 @@ Beim [einfachen Logger](./Simple/) verzichten wir bei der Standard-API bewusst a
 Source-Identifier mitzugeben. Einzig die Methode `writeLine` bietet den entsprechenden Parameter an.
 {{< /ninja >}}
 
-### Beispiele von Log-Ausgaben
+### Beispiel einer Log-Ausgabe
 
 Das folgende Beispiel zeigt eine mögliche Log-Ausgabe. Diese Ausgabe ist nicht bindend. Du kannst sie nach eigenem
 Gutdünken implementieren.
 
-```
-20251118-15:37:12.123 INF [P:184 T:124] Application started
-20251118-15:38:23.546 DBG [P:184 T:102] Loaded configuration
-20251118-15:39:12.844 WRN [P:184 T:131] Slow response detected
-20251118-15:40:59.201 ERR [P:184 T:131] NullPointerException while processing request
-```
-
-Mit Module-Id / Soruce-Identifier:
 ```
 20251118-15:37:12.123 INF [P:184 T:124 M:MAIN] Application started
 20251118-15:38:23.546 DBG [P:184 T:102 M:CONF] Loaded configuration: {"env":"production","maxThreads":8}
@@ -167,70 +123,18 @@ Mit Module-Id / Soruce-Identifier:
 20251118-15:41:02.788 ERR [P:184 T:124 M:MAIN] OutOfMemoryError: unable to allocate 256MB — initiating shutdown
 ```
 
----
+## Allgemeine Vorgaben
 
-## Abgrenzung für alle Aufgaben
+### Kontext & Einschränkungen
 
-Folgende Punkte gehören **nicht** zu dieser Aufgabe:
+- **Nur statische Hilfsfunktionen:** keine Instanzen, keine Vererbungsthemen (OOP folgt später).
+- **Kein `main`:** Der Logger ist ein Package, das in anderen Projekten verwendet wird.
+- **Manuelle Tests:** ohne Test-Framework (siehe Abschnitt _Manuelles Testen_).
+- **Coding-Style:** Verwende den it‑ninja **Coding-Style-Guide** (Einrückung, Namen, Konstanten, Javadoc).
+- **Fehlertoleranz:** Öffentliche Methoden dürfen **keine Exceptions** nach außen werfen (intern behandeln, z. B. 
+  Fallback auf `System.err`).
 
-- Keine Optimierungen bzgl. Performance
-- Keine komplexe Fehlerbehandlung (nur interne Abfang-Mechanismen)
-- Keine Nebenprojekte oder Build-Skripte ausserhalb der Vorgabe
-- Wenn nicht explizit gefordert: Keine Multithread-Save Implementation notwendig
-- Log-Ausgaben müssen nicht entkoppelt oder asynchron umgesetzt werden. Ein eigenes Threading- oder Queue-Konzept ist
-  nicht Teil dieser Aufgabe (Ausnahme: Aufgabe - Mehrere Threads).
-
----
-
-## Allgemeine Testanweisungen
-
-Wenn nicht anders definiert, muss die geforderte Funktionalität der Teilaufgaben wie folgt getestet werden:
-
-- Testabdeckung: > 60%
-- Manuelle Tests
-  - Schreibe ein Programm, welches die verschiedenen Methoden aufruft. Validiere manuell, ob die Ausgabe den
-  Erwartungen entspricht.
-
----
-
-## Allgemeine Akzeptanzkriterien
-
-Die Aufgabe gilt als erfüllt, wenn:
-
-- [ ] Ein `.jar` erstellt wird.
-- [ ] Der Name des Java-Packages `ch.itninja.dojo.[deinName].logger` ist
-  (wobei **[deinName]** durch **deinen Namen** ersetzt werden muss).
-- [ ] Projekt-Struktur Maven ist (mit pom.xml).
-- [ ] Die Funktionalität korrekt umgesetzt wurde.
-- [ ] Die Public-API exakt eingehalten wird.
-- [ ] Das Logging strukturiert, nachvollziehbar und reproduzierbar ist.
-- [ ] Das Repository lässt sich lokal klonen, builden und ausführen.
-- [ ] Das Logger-Package enthält **kein `main`**
-- [ ] Der Code dem it-ninja Styleguide entspricht.
-- [ ] Eine README.md die API (JavaDoc) und Konfiguration verständlich beschreibt.
-
-### Public-API
-
-Nachfolgend die **verbindliche Public-API**, die du implementieren musst:
-
-```java
-public final class Logger {
-  public static void info(String message);
-  public static void warn(String message);
-  public static void error(String message);
-  public static void error(String message, Throwable exception);
-  public static void debug(String message);
-  public static void trace(String message);
-
-  public static void writeLine(LogLevel level, String message, String sourceIdentifier, Throwable exception);
-
-  public enum LogLevel { TRC, DBG, INF, WRN, ERR }
-  public static void setMinLevel(LogLevel level);
-  public static void enableConsoleOutput(boolean enabled);
-
-  public static void maintain();
-}
-```
+### Verbindliche Public‑API
 
 {{< ninja warning >}}
 Alles, was von außen sichtbar ist (Public-Methoden, Enums, ENV/Datei-Schlüssel), ist **vorgegeben**. Bitte **nicht**
@@ -238,34 +142,60 @@ eigenmächtig Signaturen oder Namen ändern – nur so bleiben Implementierungen
 **austauschbar**.
 {{< /ninja >}}
 
----
+Diese API ist für **alle** Implementationen verbindlich. Du kannst intern beliebig umsetzen, solange die äußere API
+gleich bleibt.
 
-## Abgabe
+```java
+public final class Logger {
+  // Log-Ausgabe, simple
+  public static void info(String message);
+  public static void warn(String message);
+  public static void error(String message);
+  public static void error(String message, Throwable exception);
+  public static void debug(String message);
+  public static void trace(String message);
+
+  // Log-Ausgabe, advanced
+  public static void writeLine(LogLevel level, String message, String sourceIdentifier, Throwable exception);
+
+  // Level & Konsole
+  public enum LogLevel { TRC, DBG, INF, WRN, ERR }
+  public static void setMinLevel(LogLevel level);
+  public static void enableConsoleOutput(boolean enabled);
+
+  // Wartung / Housekeeping (z. B. Rotation, Aufräumen, Konfig-Reload je nach Umsetzung)
+  public static void maintain();
+}
+```
+### Allgemeine Akzeptanzkriterien
+
+- Es wird ein `.jar` erstellt.
+- Name des Java-Packages: ch.itninja.dojo.[deinName].logger (wobei **deinName** durch **deinen Namen** ersetzt werden
+  muss)
+- Es existiert eine **README.md** im Package mit **kurzer API-** und Konfigurations-Beschreibung und Beispiel.
+- API ist mit JavaDoc dokumentiert.
+
+- Keine Exceptions verlassen die öffentlichen Methoden (Fehler beim Schreiben werden intern behandelt und dokumentiert).
+- **Coding-Style-Guide** eingehalten (Formatierung, Namen, Kommentare/Javadoc, keine Magic Numbers, sinnvolle
+  `final`-Konstanten).
+
+
+### Abgabe
 
 {{< ninja warning >}}
 Für das Logger-Projekt musst Du ein neues Repository erstellen!
 {{< /ninja >}}
 
-Damit wir deine Arbeit beurteilen können, musst du uns folgendes zur Verfügung stellen:
+- Eigenes Repo `itninja-[deinName]-logger` (ersetze `[deinName]` mit deinem Namen).
+- Repo-URL mit `logger/` (Package) und `demo/` (manuelle Tests).
+- Kurze Beschreibung in der `README.md` – wie ausführen, wo die Datei liegt.
 
-- Repository-Link (Bitbucket oder GitHub)
-- Branch, z. B. `review/logger-[Teilaufgabe]` (**[Teilaufgae]** = Stichwort über die Teilaufgabe, z.B. `Basis`)
-- README.md im Projekt mit:
-  - Kurzbeschreibung
-  - API-Überblick
-  - Installationsanleitung
-  - Beispielausgaben
-
----
-
-## Zusätzliche Informationen
-
-### Ordnerstruktur (Vorschlag)
+### Ordner-/Dateistruktur (Vorschlag)
 
 {{< ninja tip >}}
 Nutze die folgende Struktur, damit du deinen Code im **Logger-Projekt** entwickeln und im **Demo-Projekt** testen kannst!
 Für die `pom.xml` in den Verzeichnissen `logger` und `demo` kannst du eine `pom.xml` aus deinen Übungen als Vorlage
-nehmen oder mit IntelliJ ein neues **Maven**-Projekt erstellen.
+nehmen.
 {{< /ninja >}}
 
 ```
@@ -301,8 +231,17 @@ project-root/
 </project>
 ```
 
+## Architektur & Austauschbarkeit (Ausblick)
+
+Ziel ist eine Struktur, in der wir **Packages austauschen** können: `Logger`, `Tournament`, `Game` sowie getrennte
+**Frontend**- und **Backend**-Varianten. Damit können wir z. B. vergleichen, wie **GameEngine A** ein Spiel gegenüber
+**GameEngine B** anders spielt, ohne den Logger oder das Frontend zu ändern.
+
+- Halte die API des Loggers **stabil** und minimal.
+- Verwende neutrale, sprechende Methodennamen und kurze, robuste Formate (siehe Pflichtformat), damit andere Module
+  leicht integrieren können.
+- Erstelle zusätzliche Utility-Klassen, wenn sinnvoll.
+
 ---
 
-## Aufgaben
-
-Anbei die Liste der Aufgaben, welche für diese Gesamtaufgabe umgesetzt werden müssen:
+Die folgenden Aufgabe haben alle zum Ziel ein Package mit einem Logger zu erstellen.

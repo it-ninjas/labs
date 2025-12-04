@@ -1,57 +1,80 @@
 ---
-title: "Projekt: Logger"
-linkTitle: "Logger"
+title: "Projekt: Logger (Basis)"
+linkTitle: "Logger (Basis)"
 type: docs
 weight: 1
 description: >
-  Baue ein simples Logging-Package mit statischen Hilfsfunktionen. Das Package schreibt strukturierte Log-Zeilen auf die
-  Konsole und kann manuell getestet werden.
----
-
-## Ziele
-
-- Ich kann die [Basis-Ziele](../#ziele) umsetzen
-- Ich kann zeilenweise **Log-Ausgaben** auf der Konsole ausgeben.
-- Ich kann **Log-Level** unterscheiden und (farblich) sichtbar machen.
-- Ich kann ein leicht lesbares **Zeitformat** zu Begin von jeder Zeile schreiben.
-- Ich kann mittels API-Aufruf die Log-Ausgabe ein- und ausschalten.
-- Ich kann mittels API-Aufruf festlegen, ab welchem **Log-Level** die Log-Ausgabe erfolgen soll.
-
-{{< zeit lesen="15" >}}
-
+  Baue ein einfaches Logging-Package, das strukturierte Log-Ausgaben auf der Konsole erzeugt und manuell getestet werden kann.
 ---
 
 {{< ninja warning >}}
-Für das Logger-Projekt musst Du ein neues Repository erstellen! [Hier](../#ordner-dateistruktur-vorschlag) findest du
-einen Vorschlag, wie die Verzeichnisstruktur aussehen kann.
+**Wichtig:** Beachte auch die Informationen, Abgrenzungen, Kriterien in der übergeordneten **Hauptaufgabe**!
 {{< /ninja >}}
+
+## Ziele
+
+- Ich kann strukturierte Log-Ausgaben auf der Konsole erzeugen.
+- Ich kann verschiedene Log-Level unterscheiden und sichtbar machen.
+- Ich kann einen gut lesbaren Zeitstempel sowie PID und TID in jede Log-Zeile integrieren.
+
+{{< zeit lesen="20" >}}
+
+---
+
+## Zielsetzung der Aufgabe
+
+Diese Aufgabe bildet das Fundament für den vollständigen **[Logger](../)**.
+
+- Du entwickelst ein minimales, aber robustes Logging-Package.
+- Du übst, wiederverwendbare Utility-Funktionen zu strukturieren.
+- Du schaffst eine Basis, auf der spätere Erweiterungen aufbauen (Datei-Logging, Rotation, Konfiguration).
+
+Weitere Hintergrundinformationen zu Log-Level, Zeitformat, PID/TID usw. findest du in der **[Hauptaufgabe,Informationen zum Aufbau eines Loggers](../#informationen-zum-aufbau-eines-loggers)**
 
 ---
 
 ## Kontext & Einschränkungen
 
-- [Allgemeine Einschränkungen](../#kontext--einschränkungen) werden eingehalten.
+Es gelten alle **[allgemeinen Einschränkungen der Hauptaufgabe](#kontext--einschränkungen-für-alle-aufgaben)**.
+
+Zusätzlich für den Basis-Logger:
+
+- Es wird **nur auf die Konsole** geloggt.
 
 ---
 
-## Aufgabenstellung / Anforderungen
+## Einführung
 
-Implementiere ein **Java-Logging-Package**, das folgende Anforderungen erfüllt:
+Ein Logger ersetzt unstrukturierte `System.out.println()`-Ausgaben durch einheitliche, erweiterbare Logzeilen.  
+Der Basis-Logger implementiert diese Grundfunktionen, ohne zusätzliche Features wie Datei-Handling oder Konfiguration.
 
-### Log-Ausgabe auf Konsole
+Alle Details zum Aufbau eines Logeintrags findest du in der **[Hauptaufgabe,Informationen zum Aufbau eines Loggers](../#informationen-zum-aufbau-eines-loggers)**.
 
-Implementiere die Pflicht-Methoden `info`, `warn`, `error(msg)`, `error(msg, ex)`, `debug`. Jeder Aufruf schreibt eine
-oder mehrere Zeile(n) auf die Konsole. Die API ist [hier](../#verbindliche-publicapi) definiert.
+---
 
-### Maximale Zeilenlänge
+## Aufgabenstellung
 
-Pro Zeile dürfen nicht mehr als 160 Zeichen geschrieben werden.
+Erstelle ein Java-Package, das **strukturierte Log-Ausgaben auf der Konsole** erzeugt.
 
-### Log-Level farblich darstellen (optional)
+Der Basis-Logger muss:
 
-Mittels farbigem Text soll zwischen den verschiedenen Log-Levels unterschieden werden können.
+- die **[Public-API](../#public-api)** vollständig einhalten  
+- Log-Level wie `info`, `warn`, `error(msg)`, `error(msg, ex)`, `debug`, `trace` unterstützen,
+- Zeitstempel, Level, PID, TID und Nachricht korrekt ausgeben,
+- Nachrichten ab einer gewissen Länge sauber umbrechen (max. 160 Zeichen pro Zeile) und einrücken.
 
-Beispiel für farbige Ausgabe auf die Konsole:
+**Keine neuen Anforderungen einführen — alle Angaben basieren auf der Hauptaufgabe.**
+
+---
+
+### Umsetzungshinweise
+
+- Definiere zuerst ein Format für jede Log-Zeile (Zeitstempel, Level, Kontextinformationen).
+- Nutze Hilfsmethoden zum Formatieren und Umbrechen von langen Texten.
+
+#### Farbig codierte Ausgabe (optional)
+
+Mittels farbigem Text soll zwischen den verschiedenen Log-Levels unterschieden werden können. Beispiel für farbige Ausgabe auf die Konsole:
 
 ```
 public class ColorDemo {
@@ -72,46 +95,55 @@ public class ColorDemo {
 
 ---
 
-## Testen: manuell (ohne Test-Framework)
-
-Stelle mit manuellen Test sicher, dass deine Implementation alle Anforderungen erfüllt.
-
-Erstelle eine **Mini-Demo-Klasse** in _einem separaten_ Projekt (oder im selben Repo unter `demo/`), aber **nicht** im
-Logger-Package:
-
-   ```java
-   public class LoggerDemo {
-       public static void main(String[] args) {
-           Logger.info("Round started");
-           Logger.warn("Low disk space (drive=C: freeMB=512)");
-           Logger.error("Failed to open config file (path=./cfg/app.yaml)");
-           ...
-       }
-   }
-   ```
-
-Folgende Aspekte sollten deine Tests umfassen:
-* **Normale Ausgabe:** Eine normale Log-Ausgabe wird korrekt auf der Konsole ausgegeben.
-* **Zeitstempel:** Der Zeitstempel stimmt mit der aktuellen Zeit überein.
-* **Lange Ausgabe:** Eine lange `message` soll korrekt umgebrochen und auf mehrere Zeilen verteilt werden.
-* **Mehrzeilige Ausgabe:** Eine mehrzeilige `message` soll korrekt umgebrochen und auf mehrere Zeilen verteilt werden.
-* **Level-Filter:** `setMinLevel(LogLevel.WRN)` setzen → `INF` darf **nicht** mehr erscheinen.
-
----
-
 ## Abgrenzung
 
-- Ausgabe nur auf Konsole, **keine** schreiben in eine Datei.
-- Keine externe Konfiguration (nur `setMinLevel`, `enableConsoleOutput`).
+Folgende Punkte gehören **nicht** zu dieser Basis-Aufgabe:
+
+- Module-Identifier (nur `writeLine` unterstützt optional einen Identifier)
+
+Vollständige Abgrenzung siehe **[Hauptaufgabe, Abgrenzung für alle Aufgaben](#abgrenzung-für-alle-aufgaben)**.
 
 ---
 
-## Akzeptanzkriterien (Definition of Done)
+## Testen
 
-- Ausgabe der Log-Einträge erfolgen auf der Konsole.
-- Jede Ausgabe enthält Zeitstempel, Level, PID, TID und Nachricht (mehrzeilige Nachrichten sind erlaubt, nach erster
-  Zeile soll eingerückt werden, damit Nachricht als Block wahrgenommen wird).
-- Keine leeren Zeilen entstehen.
-- Log-Ausgabe ist formatiert auf eine maximale Zeilenlänge von 160 Zeichen.
-- Minimal-Level-Filter funktioniert.
-- Package baut ohne Fehler, **ohne `main`**.
+Stelle sicher, dass deine Lösung die Anforderungen erfüllt.
+
+### Manuelles Testen  
+Erstelle eine Demo-Klasse in einem separaten Modul `demo/` (kein `main` im Logger-Package!):
+
+```java
+public class LoggerDemo {
+    public static void main(String[] args) {
+        Logger.info("Round started");
+        Logger.warn("Low disk space (drive=C:, freeMB=512)");
+        Logger.error("Could not load config file (path=./cfg/app.yaml)");
+        Logger.debug("i=42");
+    }
+}
+```
+
+Teste insbesondere:
+
+- **Normale Ausgabe:** Ein Zeile-Log erscheint strukturiert.
+- **Zeitstempel:** korrekte Formatierung.
+- **Lange Nachrichten:** Umbrechen auf mehrere Zeilen (max. 160 Zeichen).
+- **Mehrzeilige Nachrichten:** korrekt aufgesplittet.
+- **Level-Filter:** `setMinLevel(LogLevel.WRN)` blendet `INFO`/`DEBUG`/`TRACE` aus.
+
+---
+
+## Akzeptanzkriterien
+
+Die Aufgabe gilt als erfüllt, wenn:
+
+- [ ] Die **[allgemeinen Akzeptanzkriterien](../#allgemeine-akzeptanzkriterien)** sind erfüllt.
+- [ ] Nachrichten werden korrekt umgebrochen (160-Zeichen-Limit).
+- [ ] Der Minimal-Level-Filter funktioniert wie definiert.
+- [ ] Das Loggen auf die Konsole lässt sich ein- und ausschalten.
+
+---
+
+## Abgabe
+
+Siehe **[Hauptaufgabe, Abgabe](../#abgabe)**

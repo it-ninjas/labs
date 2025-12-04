@@ -1,12 +1,16 @@
 ---
-title: "Projekt: Logger (alte Version)"
-linkTitle: "Logger (alte Version)"
+title: "Projekt: Logger (erste Version)"
+linkTitle: "Logger (erste Version)"
 type: docs
 weight: 3
 description: >
-  Dies ist die erste Version der Aufgabe für den Logger. Bitte nicht umsetzen. Sie wurde durch die beiden Aufgaben 
-  'Logger' und 'Logger (erweitert)' ersetzt.
+  Dies ist die erste Version der Aufgabe für den Logger. Bitte nicht umsetzen. Löse die neueren Aufgaben Schritt für Schritt!
 ---
+
+{{< ninja warning >}}
+  Dies ist die erste Version der Aufgabe für den Logger. Bitte nicht umsetzen. Löse die neueren Aufgaben Schritt für Schritt!
+{{< /ninja >}}
+
 
 ## Ziele
 
