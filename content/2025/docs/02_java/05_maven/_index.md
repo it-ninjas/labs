@@ -1,7 +1,7 @@
 ---
 title: "Maven"
 linkTitle: "Maven"
-weight: 5
+weight: 6
 description: >
   Modul #S2
 ---

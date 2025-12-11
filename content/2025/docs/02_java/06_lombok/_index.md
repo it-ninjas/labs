@@ -1,7 +1,7 @@
 ---
 title: "Lombok"
 linkTitle: "Lombok"
-weight: 6
+weight: 7
 description: >
   Module #J3 - Vor- und Nachteile von Lombok
 ---
