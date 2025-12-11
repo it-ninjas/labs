@@ -1,6 +1,7 @@
 {{ define "main" }}
 <main class="td-main">
-  <div class="td-content">
+  <div class="td-content workbook-container">
+
     <h1>{{ .Title }}</h1>
 
     {{ $.Scratch.Set "inWorkbook" true }}
@@ -19,23 +20,194 @@
       {{ if not $wb }}
         <p><strong>Workbook '{{ $id }}' wurde in <code>data/workbooks</code> nicht gefunden.</strong></p>
       {{ else }}
-        {{ $.Scratch.Set "inWorkbook" true }}
-        {{ range $wb.chapters }}
-          {{ $p := site.GetPage . }}
+
+        {{/* Kapitelanzahl ermitteln */}}
+        {{ $total := len $wb.chapters }}
+
+        <div id="pages">
+        {{/* Wir rendern alle Seiten, zeigen aber per CSS immer nur eine */}}
+        {{ range $index, $chapter := $wb.chapters }}
+          {{ $p := site.GetPage $chapter }}
           {{ if $p }}
-            <hr>
-            <article class="workbook-chapter">
+            <article class="page" data-page="{{ add $index 1 }}">
+              <hr>
               <h2>{{ $p.Title }}</h2>
               <p class="lead">{{ $p.Description }}</p>
               {{ $p.Content }}
             </article>
           {{ else }}
-            <p><em>Fehlende Seite: {{ . }}</em></p>
+            <article class="page missing" data-page="{{ add $index 1 }}">
+               <p><em>Fehlende Seite: {{ $chapter }}</em></p>
+            </article>
           {{ end }}
         {{ end }}
-        {{ $.Scratch.Set "inWorkbook" false }}
+        </div>
+
+        {{/* Navigation */}}
+        <div class="pagination-nav-fixed">
+          <button id="prevBtn" class="btn btn-secondary">← Zurück</button>
+
+          <span id="pagination-info" class="pagination-info"></span>
+
+          <button id="nextBtn" class="btn btn-primary">Weiter →</button>
+        </div>
+
       {{ end }}
     {{ end }}
+
+    {{ $.Scratch.Set "inWorkbook" false }}
   </div>
 </main>
+
+{{/* --- JS + CSS --- */}}
+
+<style>
+
+  .pagination-nav {
+    margin-top: 40px;
+    display:flex;
+    justify-content: space-between;
+  }
+
+  .page { 
+    display:none; 
+    opacity:0; 
+    transition: opacity 0.3s ease; 
+    margin-bottom: 120px; /* Platz für fixe Navigation */ 
+  }
+  .page.active { 
+    display:block; 
+    opacity:1; 
+  }
+
+  /* Fixierte Navigation unten */
+  .pagination-nav-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #ddd;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+  }
+
+  .pagination-info {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0 15px;
+  }
+
+
+</style>
+
+<script>
+
+  let scrollLock = false;
+
+  function attachScrollPaging() {
+
+    pages.forEach(p => {
+
+      p.addEventListener("wheel", function(e) {
+
+        if (!p.classList.contains("active")) return;
+        if (scrollLock) return;
+
+        const atBottom = p.scrollTop + p.clientHeight >= p.scrollHeight - 2;
+        const atTop    = p.scrollTop <= 2;
+
+        // Scroll nach unten am Seitenende
+        if (e.deltaY > 0 && atBottom) {
+          scrollLock = true;
+          showPage(current + 1, "next");
+          setTimeout(() => scrollLock = false, 400);
+        }
+
+        // Scroll nach oben am Seitenanfang
+        if (e.deltaY < 0 && atTop) {
+          scrollLock = true;
+          showPage(current - 1, "prev");
+          setTimeout(() => scrollLock = false, 400);
+        }
+      });
+    });
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+
+    let pages = Array.from(document.querySelectorAll(".page"));
+    let current = 1;
+    const total = pages.length;
+
+    // Speichert pro Seite die letzte Scrollposition
+    let scrollMemory = {};
+
+    function showPage(n, direction = "next") {
+
+      // Speichere Scrollposition der aktuellen Seite
+      let active = document.querySelector(`.page[data-page="${current}"]`);
+      if (active) {
+        scrollMemory[current] = active.scrollTop;
+      }
+
+      if (n < 1 || n > total) return;
+
+      pages.forEach(p => p.classList.remove("active"));
+      let newPage = document.querySelector(`.page[data-page="${n}"]`);
+      newPage.classList.add("active");
+
+      // Standardverhalten beim Weiterblättern: oben
+      if (direction === "next") {
+        newPage.scrollTop = 0;
+      }
+
+      // Standardverhalten beim Zurückblättern: unten
+      if (direction === "prev") {
+        newPage.scrollTop = newPage.scrollHeight;
+      }
+
+      // Falls wir bereits auf der Seite waren → alte Scrollposition nutzen
+      if (scrollMemory[n] !== undefined) {
+        newPage.scrollTop = scrollMemory[n];
+      }
+
+      current = n;
+      updateUI();
+    }
+
+    function updateUI() {
+      document.getElementById("pagination-info").textContent =
+        `Kapitel ${current} / ${total}`;
+
+      document.getElementById("prevBtn").disabled = current === 1;
+      document.getElementById("nextBtn").disabled = current === total;
+    }
+
+    document.getElementById("nextBtn").addEventListener("click", () =>
+      showPage(current + 1, "next")
+    );
+
+    document.getElementById("prevBtn").addEventListener("click", () =>
+      showPage(current - 1, "prev")
+    );
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") showPage(current - 1, "prev");
+      if (e.key === "ArrowRight") showPage(current + 1, "next");
+    });
+
+    // Start bei Seite 1
+    showPage(1);
+    attachScrollPaging();
+  });
+
+
+</script>
+
 {{ end }}
