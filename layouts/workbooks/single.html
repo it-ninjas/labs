@@ -1,0 +1,41 @@
+{{ define "main" }}
+<main class="td-main">
+  <div class="td-content">
+    <h1>{{ .Title }}</h1>
+
+    {{ $.Scratch.Set "inWorkbook" true }}
+
+    {{ with .Content }}
+      <div class="workbook-intro">
+        {{ . }}
+      </div>
+    {{ end }}
+
+    {{ $id := .Params.workbookId }}
+    {{ if not $id }}
+      <p><strong>Fehlende <code>workbookId</code> im Frontmatter.</strong></p>
+    {{ else }}
+      {{ $wb := index site.Data.workbooks $id }}
+      {{ if not $wb }}
+        <p><strong>Workbook '{{ $id }}' wurde in <code>data/workbooks</code> nicht gefunden.</strong></p>
+      {{ else }}
+        {{ $.Scratch.Set "inWorkbook" true }}
+        {{ range $wb.chapters }}
+          {{ $p := site.GetPage . }}
+          {{ if $p }}
+            <hr>
+            <article class="workbook-chapter">
+              <h2>{{ $p.Title }}</h2>
+              <p class="lead">{{ $p.Description }}</p>
+              {{ $p.Content }}
+            </article>
+          {{ else }}
+            <p><em>Fehlende Seite: {{ . }}</em></p>
+          {{ end }}
+        {{ end }}
+        {{ $.Scratch.Set "inWorkbook" false }}
+      {{ end }}
+    {{ end }}
+  </div>
+</main>
+{{ end }}

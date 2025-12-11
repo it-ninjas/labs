@@ -25,5 +25,10 @@
     <img src="/images/task.png" alt="task" style="width: 50px; vertical-align: middle; margin-right: 8px;">
   </a>
   Jetzt bist du dran. Löse bitte die folgende 
-  <a href="{{ $target }}">!*Aufgabe</a> in den Labs{{ with $text }} ({{ . }}){{ end }}.
+{{ if $.Page.Scratch.Get "inWorkbook" }}
+  Aufgabe 
+{{ else }}
+  <a href="{{ $target }}">!*Aufgabe</a> 
+{{ end }}
+  in den Labs{{ with $text }} ({{ . }}){{ end }}.
 </p>
