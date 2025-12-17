@@ -70,7 +70,7 @@ lässt die beschriebenen Tests laufen und versuchst so, die Erkärungen nachzuvo
 
 Wir wollen alle Layers (von der Entity bis zum Controller) testen. Dazu gibt es verschiedene Möglichkeiten und Best-Practices.
 
-Natürlich kannst du jeden Layer mit JUnit/Mockito testen. Das hast du ja bereits [früher gelernt](../../08_java-testing).
+Natürlich kannst du jeden Layer mit JUnit/Mockito testen. Das hast du ja bereits [früher gelernt](../../10_java-testing).
 Dazu nimmst du deine Unit-Under-Test (UUT) und mockst alles, was "darunter" liegt. Je nachdem kann das aber ganz schön mühsam
 sein resp. praktisch nicht möglich: Stell dir vor, du willst ein `@Repository` mit Mockito testen. Wie kommst du
 da an die automatisch durch den Spring-Container generierten Methoden (z.B. `findAll()`)? Die Antwort lautet: Gar nicht.

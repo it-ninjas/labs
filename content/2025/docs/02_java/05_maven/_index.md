@@ -333,7 +333,7 @@ versucht Abhängigkeiten über dieses Repository aufzulösen.
 ##### Beispiel einer Abhängigkeit (junit-jupiter-engine)
 
 Die Dependency `junit-jupiter-engine` ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
-einem weit verbreiteten Test-Framework für Java. Im Kapitel [Testing](../08_java-testing) wirst diese ausführlich genutzt.
+einem weit verbreiteten Test-Framework für Java. Im Kapitel [Testing](../10_java-testing) wirst diese ausführlich genutzt.
 
 Ein weiteres Beispiel für eine Abhängigkeit ist `lombok`. Diese Library wird im Kapitel [Lombok](../06_lombok) ausführlich
 beschrieben.

@@ -265,7 +265,7 @@ _2025-09-23 09:26 CEST auf origin/master_
   - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Regex](../../labs/02_java/03_java-grundlagen/16_regex/)
   - [Labs / Java Labs / Java Exercises - Grundlagen / Java Exercises - Regex / regex - Source](../../labs/02_java/03_java-grundlagen/16_regex/source/)
   - [Labs / Java Labs / Java Exercises - Maven / Maven - Aufgaben](../../labs/02_java/05_maven/01_Exercises/)
-  - [Labs / Java Labs / Java Exercises - Testing / CI-Pipeline - Aufgaben (optional)](../../labs/02_java/08_java-testing/03_ci/)
+  - [Labs / Java Labs / Java Exercises - Testing / CI-Pipeline - Aufgaben (optional)](../../labs/02_java/10_java-testing/03_ci/)
   - [Labs / Web Labs / HTML und CSS - Aufgaben / HTML - Aufgaben](../../labs/03_frontend/01_html-css/01_html/)
   - [Labs / Web Labs / HTML und CSS - Aufgaben / CSS - Aufgaben](../../labs/03_frontend/01_html-css/02_css/)
   - [Labs / Web Labs / HTML und CSS - Aufgaben](../../labs/03_frontend/01_html-css/)
