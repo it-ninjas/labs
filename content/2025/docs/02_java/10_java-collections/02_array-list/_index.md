@@ -1,6 +1,6 @@
 ---
 title: "ArrayList"
-linkTitle: "ArrayList"
+linkTitle: "↳ ArrayList"
 weight: 2
 description: >
   Eine konkrete Umsetzung einer List: Die ArrayList.
@@ -39,9 +39,16 @@ public void add(int index,E element)
 public void clear()
 
 /*
- * Entfernt das Element an der angegebenen Position in dieser Liste.
+ * Entfernt das Element an der angegebenen Position in dieser Liste. Gibt das entfernte Element zurück.
  */
 public E remove(int index)
+
+/*
+ * Entfernt das erste Vorkommen des angegebenen Elements aus dieser Liste,
+ * falls es vorhanden ist. Gibt true zurück, wenn das Objekt gefunden und
+ * entfernt wurde, andernfalls false.
+ */
+public boolean remove(Object o)
 
 /*
  * Gibt das Element an der angegebenen Position in dieser Liste zurück.

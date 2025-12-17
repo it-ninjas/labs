@@ -1,7 +1,7 @@
 ---
-title: "HashSet"
-linkTitle: "HashSet"
-weight: 3
+title: "Set"
+linkTitle: "Set"
+weight: 4
 description: >
   Die gebräuchlichste Umsetzung eines Set: HashSet.
 ---

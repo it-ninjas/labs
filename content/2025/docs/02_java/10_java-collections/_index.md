@@ -1,7 +1,7 @@
 ---
 title: "Java Collections"
 linkTitle: "Java Collections"
-weight: 5
+weight: 8
 description: >
   Modul #J6
 ---

@@ -1,12 +1,12 @@
 ---
-title: "HashMap"
-linkTitle: "HashMap"
-weight: 4
+title: "Map"
+linkTitle: "Map"
+weight: 5
 description: >
   Die gebräuchlichste Umsetzung einer Map: HashMap.
 ---
 
-## java.util.HashMap
+## java.util.Map
 
 Eine [`Map`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Map.html) verwendet man, um Zuweisungen zu speichern.
 Die [`java.util.HashMap`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html) ist die gebräuchlichste Map.

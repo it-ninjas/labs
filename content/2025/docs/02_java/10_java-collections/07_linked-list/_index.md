@@ -1,7 +1,7 @@
 ---
 title: "LinkedList"
-linkTitle: "LinkedList"
-weight: 7
+linkTitle: "↳ LinkedList"
+weight: 3
 description: >
   Eine verkettete Liste, die LinkedList.
 ---
@@ -129,11 +129,13 @@ Die statische Klasse `Node<E>` ist innerhalb der Klasse java.util.LinkedList def
 
 ### Einige Methoden der Klasse java.util.LinkedList
 
+Hier sind einige wichtige Methoden der Klasse java.util.LinkedList. Es sind nur die aufgelistet, die nicht auch schon in ArrayList vorkommen:
+
 ```java
 /*
  * Konstruktor: Erstellt eine initial leere Liste
  */
-public LinkedList()
+public LinkedList<E>()
 
 /*
  * Gibt das erste Element der Liste zurück.
@@ -165,14 +167,6 @@ public void addFirst(E e)
  */
 public void addLast(E e)
 ...
-
-// *** Queue and Deque methods ***
-        ...
-// *** Stack methods ***
-        ...
-// *** List methods ***
-        ...
-
 
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: "Stack"
 linkTitle: "Stack"
-weight: 5
+weight: 6
 description: >
   Die Datenstruktur "Stapel".
 ---
