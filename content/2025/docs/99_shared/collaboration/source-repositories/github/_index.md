@@ -42,7 +42,7 @@ description: >
 Melde dich bei einem deiner Praxisbildnern, damit dieser dich in die der [Organisation auf GitHub](https://github.com/it-ninja-warriors) hinzufügen kann.
 
 {{< ninja tip >}}
-Falls du noch kein GitHub Konto hast, kannst du dich entweder bei deinen Puzzle Praxisbildner melden oder ganz einfach ein neues Konto erstellen.
+Falls du noch kein GitHub Konto hast, kannst du dich entweder bei deinen Praxisbildner melden oder ganz einfach ein neues Konto erstellen.
 Überlegt dir deinen Benutzername gut, da er nicht mehr so einfach geändert werden kann und ihn die ganze Welt sehen wird!
 {{< /ninja>}}
 
