@@ -113,17 +113,17 @@ ein Passwort zu schützen.
    Falls der Ordner noch nicht existiert, muss er zuerst erstellt werden:
 
    {{< code >}}
-   mkdir /home/<your-user>/projects
+   mkdir /home/[deinName]/projects
    {{< /code>}}
 
    Öffne ihn:
    {{< code >}}
-   cd /home/<your-user>/projects
+   cd /home/[deinName]/projects
    {{< /code>}}
 
 6. Clone das Repository. Den Link dazu findest du auf der Seite von deinem Projekt. Er sollte in etwa so aussehen:
    {{< code >}}
-   git clone git@github.com:it-ninja-owners/<your-name>.git
+   git clone git@github.com:it-ninja-owners/[deinName].git
    {{< /code>}}
    ![GitHub Repository klonen](./images/github-clone.png)
 
@@ -138,7 +138,7 @@ Mit diesem Schritt wird sichergestellt, dass es keinen leeren Main Branch gibt.
 Führe die folgenden Befehle aus:
 
 {{< code >}}
-cd /home/<your-user>/projects/<your-name>
+cd /home/[deinName]/projects/[deinName]
 echo it-ninja repository > ./README.md
 git add .
 git commit -m "Initial Commit"
