@@ -234,4 +234,4 @@ Aktualisiere alle Dependencies mit Hilfe des Plugins `org.codehaus.mojo:versions
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/05_maven).
+Hier kannst du [zurück zur Theorie](../../../../docs/02_java/07_maven).

@@ -51,4 +51,4 @@ Das System sollte folgende Funktionen unterstützen:
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/07_java-ood).
+Hier kannst du [zurück zur Theorie](../../../../docs/02_java/08_java-ood).

@@ -64,4 +64,4 @@ Info: Bei dieser Aufgabe darf man NICHT Gebrauch von Lombok machen.
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/07_java-ood).
+Hier kannst du [zurück zur Theorie](../../../../docs/02_java/08_java-ood).

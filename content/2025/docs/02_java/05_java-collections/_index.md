@@ -1,7 +1,7 @@
 ---
 title: "Java Collections"
 linkTitle: "Java Collections"
-weight: 8
+weight: 5
 description: >
   Modul #J6
 ---
@@ -23,6 +23,8 @@ description: >
 #### Voraussetzungen
 
 - Gute Grundlagenkenntnisse von Java-Anwendungen.
+
+> Mach Dir keine Sorgen, wenn Du noch nicht genau über Vererbung, Interfaces usw. Bescheid weisst. Das wird im Kapitel OOD vertieft.
 
 ---
 
