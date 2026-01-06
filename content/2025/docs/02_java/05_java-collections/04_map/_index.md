@@ -147,4 +147,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J6 - Java Collections - Map](../../../../labs/02_java/08_java-collections/03_map)
+[Aufgaben zu Modul #J6 - Java Collections](../../../../labs/02_java/05_java-collections)

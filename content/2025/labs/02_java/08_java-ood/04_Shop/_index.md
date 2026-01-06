@@ -4,7 +4,7 @@ linkTitle: "Shop"
 type: docs
 weight: 4
 description: >
-  Aufgabe zu Modul #J3 - [OOD](../../../../docs/02_java/07_java-ood) - Shop
+  Aufgabe zu Modul #J3 - [OOD](../../../../docs/02_java/08_java-ood) - Shop
 ---
 
 Erstelle ein System für ein Online-Handelshaus, das Produkte aus verschiedenen Kategorien verkauft.

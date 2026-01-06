@@ -175,3 +175,7 @@ class NonLeakingListContaier {
 So muss die Listenreferenz selbst nicht veröffentlicht werden. Denselben Zweck würde man mit einer defensiven Kopie 
 erfüllen, das braucht aber mehr Zeit und Speicher. Trotzdem sollte dieses Muster sparsam verwendet werden, da es nicht
 sehr intuitiv ist, und man in der Praxis meistens mit for-each Schleifen arbeiten möchte.
+
+## Aufgaben
+
+[Aufgaben zu Modul #J6 - Java Collections](../../../../labs/02_java/05_java-collections)

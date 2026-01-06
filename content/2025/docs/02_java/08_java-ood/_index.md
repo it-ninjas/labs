@@ -1271,4 +1271,4 @@ bringt:
 ---
 
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte
-die [Aufgaben](../../../labs/02_java/07_java-ood) in den Labs.
+die [Aufgaben](../../../labs/02_java/08_java-ood) in den Labs.

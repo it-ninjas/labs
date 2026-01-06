@@ -117,4 +117,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J6 - Java Collections - Set](../../../../labs/02_java/08_java-collections/02_set)
+[Aufgaben zu Modul #J6 - Java Collections](../../../../labs/02_java/05_java-collections)

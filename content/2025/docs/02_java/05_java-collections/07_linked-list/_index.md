@@ -202,4 +202,4 @@ public class Main {
 
 ## Aufgaben
 
-Löse nun die [Aufgaben](../../../../labs/02_java/08_java-collections/07_linkedlist) zur LinkedList.
+[Aufgaben zu Modul #J6 - Java Collections](../../../../labs/02_java/05_java-collections)

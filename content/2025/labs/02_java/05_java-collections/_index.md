@@ -2,19 +2,19 @@
 title: "Aufgaben zu Java - Collections"
 linkTitle: "Collections"
 type: docs
-weight: 8
+weight: 5
 description: >
   Aufgaben zu Modul #J6 - Collections
 ---
 
 ## Voraussetzung
 
-Stell Dir vor, Du entwickelst die Vereinsverwaltungs-Software für den Fluffballverein Hinterbünzli. Der Vereinspräsident
+Stell Dir vor, Du entwickelst die Vereinsverwaltungs-Software für den Fluffballverein Hinterbünzligen. Der Vereinspräsident
 möchte nun ein paar Statistiken von Dir. Lade Dir die folgenden Dateien herunter:
 
 - Liste aller Mitglieder: [members.csv](/files/labs/collections/members.csv)
 - Liste aller Turnier-Ergebnisse: [tournament-1.csv](/files/labs/collections/tournament-1.csv)
-- Liste aller Mitglieder, die zusätzlich eine Spende gemacht haben: [donations.csv](/files/labs/collections/donations.csv)
+- Liste aller Mitglieder, die zusätzlich eine Spende gemacht haben: [donations.csv](/files/labs/collections/donors.csv)
 
 ## Aufgaben
 

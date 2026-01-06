@@ -4,7 +4,7 @@ linkTitle: "Bibliothek"
 type: docs
 weight: 1
 description: >
-  Aufgabe zu Modul #J3 - [OOD](../../../../docs/02_java/07_java-ood) - Bibliothek
+  Aufgabe zu Modul #J3 - [OOD](../../../../docs/02_java/08_java-ood) - Bibliothek
 ---
 
 Schreibe eine Anwendung, welche eine Bibliothek modelliert.

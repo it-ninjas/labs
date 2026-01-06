@@ -240,4 +240,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J6 - Java Collections - List](../../../../labs/02_java/08_java-collections/01_list)
+[Aufgaben zu Modul #J6 - Java Collections](../../../../labs/02_java/05_java-collections)

@@ -77,4 +77,4 @@ Aufgaben
 
 ## Aufgaben
 
-[Aufgaben zu Modul #J6 - Java Collections - Queue + Deque](../../../../labs/02_java/08_java-collections/05_queue)
+[Aufgaben zu Modul #J6 - Java Collections](../../../../labs/02_java/05_java-collections)

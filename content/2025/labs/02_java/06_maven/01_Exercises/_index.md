@@ -4,7 +4,7 @@ linkTitle: "Maven - Aufgaben"
 type: docs
 weight: 1
 description: >
-  Aufgaben zu Modul #S2 - [Maven](../../../../docs/02_java/05_maven)
+  Aufgaben zu Modul #S2 - [Maven](../../../../docs/02_java/07_maven)
 ---
 
 ## Vorbereitung
