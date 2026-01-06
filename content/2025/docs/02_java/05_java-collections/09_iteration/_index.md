@@ -6,8 +6,8 @@ weight: 9
 
 ## Iteration über Collections
 
-Iteration ist die Bearbeitung der Elemente einer Collection nacheinander. Es gibt verschiedene Möglichkeiten, über 
-Collections zu iterieren, die Meisten davon wurden schon in den vorhergehenden Kapiteln in Beispielen verwendet, und 
+Iteration ist die Bearbeitung der Elemente einer Collection nacheinander. Es gibt verschiedene Möglichkeiten, über
+Collections zu iterieren, die Meisten davon wurden schon in den vorhergehenden Kapiteln in Beispielen verwendet, und
 werden hier zur Referenz noch einmal zusammengefasst.
 
 ### for Schleife
@@ -26,7 +26,7 @@ Das funktioniert natürlich nur für Collections, die einen nummerierten Index v
 
 ### for-each Schleife
 
-Die for-each Schleife (auch erweiterte for-Schleife genannt) ist eine einfachere und lesbarere Möglichkeit, über 
+Die for-each Schleife (auch erweiterte for-Schleife genannt) ist eine einfachere und lesbarere Möglichkeit, über
 Collections zu iterieren. Sie benötigt keinen Index, sondern gibt einfach der Reihe nach jedes Elemnt der Collection
 in den Schleifen-Body. Beispiel List:
 
@@ -48,12 +48,12 @@ for (String item : items) {
 }
 ```
 
-Maps können auch mit der for-each Schleife durchlaufen werden, allerdings benötigen sie wegen der Key-Value Struktur 
+Maps können auch mit der for-each Schleife durchlaufen werden, allerdings benötigen sie wegen der Key-Value Struktur
 ein Bisschen Sonderbehandlung.
 Interessieren uns nur die Werte, können wir die `values()` Methode der Map verwenden:
 
 ```java
-Map<String, Integer> items = Map.of("Apple", 1, "Banana", 2, "Cherry", 3); 
+Map<String, Integer> items = Map.of("Apple", 1, "Banana", 2, "Cherry", 3);
 
 for (Integer value : items.values()) {
     System.out.println(value);
@@ -68,7 +68,7 @@ for (String key : items.keySet()) {
 }
 ```
 
-Wollen wir sowohl die Keys als auch die Values, können wir die `entrySet()` Methode der Map verwenden. Sie gibt für 
+Wollen wir sowohl die Keys als auch die Values, können wir die `entrySet()` Methode der Map verwenden. Sie gibt für
 jeden Eintrag ein Objekt zurück, von dem man den Key und den Value auslesen kann:
 
 ```java
@@ -79,7 +79,7 @@ for(Map.Entry<String, Integer> entry : items.entrySet()) {
 
 ### forEach-Methode
 
-Viele Collections bieten eine `forEach`-Methode an, die eine Lambda-Funktion als Parameter entgegennimmt. Diese 
+Viele Collections bieten eine `forEach`-Methode an, die eine Lambda-Funktion als Parameter entgegennimmt. Diese
 Funktion wird für jedes Element der Collection aufgerufen. Beispiel List:
 
 ```java
@@ -94,7 +94,7 @@ Dasselbe für Sets:
 Set<String> items = Set.of("Apple", "Banana", "Cherry");
 
 items.forEach(item -> System.out.println(item));
-``` 
+```
 
 Für Maps gibt es eine spezielle `forEach()`-Methode, die zwei Parameter für Key und Value entgegennimmt:
 
@@ -106,8 +106,8 @@ items.forEach((key, value) -> System.out.println(key + ": " + value));
 
 ### Iterator
 
-Es gibt noch die Möglichkeit des Iterators. Ein Iterator ist ein Objekt, dass sich die bisher verarbeiteten Elemente 
-merkt und mit der `next()` Methode das nächste Element zurückgibt. Mit der `hasNext()` Methode kann überprüft werden, 
+Es gibt noch die Möglichkeit des Iterators. Ein Iterator ist ein Objekt, dass sich die bisher verarbeiteten Elemente
+merkt und mit der `next()` Methode das nächste Element zurückgibt. Mit der `hasNext()` Methode kann überprüft werden,
 ob noch weitere Elemente vorhanden sind. Beispiel List:
 
 ```java
@@ -134,8 +134,8 @@ while (it.hasNext()) {
 }
 ```
 
-Iteratoren werden heutzutage eher selten verwendet, da die for-each Schleife in der Regel ausreichend und lesbarer ist. 
-Sie haben aber einen kleinen Vorteil: Wenn man eine Klasse schreibt, die eine Collection beinhaltet, möchte man die 
+Iteratoren werden heutzutage eher selten verwendet, da die for-each Schleife in der Regel ausreichend und lesbarer ist.
+Sie haben aber einen kleinen Vorteil: Wenn man eine Klasse schreibt, die eine Collection beinhaltet, möchte man die
 vielleicht nicht einem Aufrufer in einem Getter zurückgeben:
 
 ```java
@@ -143,21 +143,21 @@ import java.util.ArrayList;
 
 class LeakingListContainer {
     private List<String> privateList = new ArrayList<>();
-    
+
     public List<String> getPrivateList() {
         return privateList;
     }
 }
 ```
 
-Das kommt in der Praxis zwar häufig vor, verletzt aber die Kapselung. Ein Benutzer des Objektes kann so mit der Liste 
+Das kommt in der Praxis zwar häufig vor, verletzt aber die Kapselung. Ein Benutzer des Objektes kann so mit der Liste
 machen, was er will:
 
 ```java
 leakingListContainer.getPrivateList().clear();
 ```
 
-Möchte man die Kontrolle über die Liste behalten, aber einem Aufrufer trotzdem ermöglichen, über die interne Liste zu 
+Möchte man die Kontrolle über die Liste behalten, aber einem Aufrufer trotzdem ermöglichen, über die interne Liste zu
 iterieren, geht das mit einem Iterator:
 
 ```java
@@ -165,14 +165,14 @@ import java.util.ArrayList;
 
 class NonLeakingListContaier {
     private List<String> privateList = new ArrayList<>();
-    
+
     public Iterator<String> getPrivateList() {
         return privateList.iterator();
     }
 }
 ```
 
-So muss die Listenreferenz selbst nicht veröffentlicht werden. Denselben Zweck würde man mit einer defensiven Kopie 
+So muss die Listenreferenz selbst nicht veröffentlicht werden. Denselben Zweck würde man mit einer defensiven Kopie
 erfüllen, das braucht aber mehr Zeit und Speicher. Trotzdem sollte dieses Muster sparsam verwendet werden, da es nicht
 sehr intuitiv ist, und man in der Praxis meistens mit for-each Schleifen arbeiten möchte.
 

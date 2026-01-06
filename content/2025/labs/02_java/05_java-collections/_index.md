@@ -23,6 +23,6 @@ möchte nun ein paar Statistiken von Dir. Lade Dir die folgenden Dateien herunte
 3. Gib eine Rangliste des Turnieres aus
 4. Unterteile in eine Rangliste von Spendern und Nicht-Spendern
 5. Gib den Durchschnitt und dem Median der Punkte des Turnieres aus, und je das Mitglied, das am nächsten des Wertes
-ist
+   ist
 
 6. Für die aufgaben 4 und 5: Zeige jeweils, wie die Aufgabe mit For-Schlaufen und mit Streams gelöst werden kann
