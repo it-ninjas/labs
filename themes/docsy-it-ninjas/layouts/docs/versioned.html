@@ -1,0 +1,49 @@
+{{ warnf "USING TEMPLATE: docs/versioned.html for %s" .Page.File.Path }}
+{{ define "main" }}
+<p>TEST-INHALT</p>
+
+{{/* --- Versionen sammeln --- */}}
+{{ $versions := slice }}
+{{ range .Pages }}
+  {{ $match := findRE `r[0-9]{8}` .RelPermalink }}
+  {{ if gt (len $match) 0 }}
+    {{ $id := index $match 0 }}
+    {{ $versions = $versions | append (dict "name" $id "page" .) }}
+  {{ end }}
+{{ end }}
+
+{{ $versions = sort $versions "name" }}
+
+<h2>Version auswählen</h2>
+<ul>
+  {{ range $versions }}
+    <li><a href="?r={{ (index . "name") | replace "r" "" }}">{{ (index . "name") | replace "r" "" }}</a></li>
+  {{ end }}
+</ul>
+
+<hr>
+
+{{/* --- Aus URL oder Default wählen --- */}}
+{{ $selected := "" }}
+
+{{ if .Params.r }}
+  {{ $selected = printf "r%s" .Params.r }}
+{{ else }}
+  {{ $last := index $versions (sub (len $versions) 1) }}
+  {{ $selected = index $last "name" }}
+{{ end }}
+
+{{/* --- Version anzeigen --- */}}
+{{ range $versions }}
+  {{ if eq (index . "name") $selected }}
+    {{ $page := index . "page" }}
+
+    <article class="td-content">
+      <h1>{{ $page.Title }}</h1>
+      {{ $page.Content }}
+    </article>
+
+  {{ end }}
+{{ end }}
+
+{{ end }} <!-- define main -->

@@ -59,6 +59,27 @@
   </div>
 </main>
 
+<div id="overlay" class="overlay hidden"></div>
+
+<div id="popup" class="popup hidden">
+  <div class="popup-header">
+    <button class="btn btn-light" id="open-window">Open in Window</button>
+    <button class="btn btn-dark" id="open-sidebar">Open in Sidebar</button>
+    <button class="btn btn-danger" id="close-popup">Close</button>
+  </div>
+  <iframe id="popup-iframe"></iframe>
+</div>
+
+<div id="sidebar" class="sidebar hidden">
+  <div class="sidebar-header">
+    <span>Sidebar</span>
+    <button class="btn btn-danger" id="sidebar-close">×</button>
+  </div>
+  <iframe id="sidebar-iframe"></iframe>
+  <div id="sidebar-resizer"></div>
+</div>
+
+
 {{/* --- JS + CSS --- */}}
 
 <style>
@@ -102,6 +123,80 @@
     margin: 0 15px;
   }
 
+  /* Popup */
+  .popup {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 70%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+  }
+  .popup.hidden { display: none; }
+
+  .popup-header {
+    padding: 10px;
+    background: #2d2d2d;
+    color: white;
+    display: flex;
+    gap: 10px;
+  }
+  .popup iframe {
+    flex: 1;
+    border: none;
+  }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 9998;
+  }
+  .overlay.hidden { display: none; }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: white;
+    border-left: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    z-index: 9997;
+  }
+  .sidebar.hidden { display: none; }
+
+  .sidebar-header {
+    padding: 10px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #sidebar-iframe {
+    flex: 1;
+    border: none;
+  }
+
+  #sidebar-resizer {
+    width: 6px;
+    cursor: ew-resize;
+    background: #ccc;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
 
 </style>
 
@@ -207,7 +302,126 @@
     attachScrollPaging();
   });
 
+  document.addEventListener("DOMContentLoaded", () => {
 
+    const popup = document.getElementById("popup");
+    const popupIframe = document.getElementById("popup-iframe");
+
+
+    function cleanupIframe(iframe) {
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc) return;
+
+        // Nur bei internen Seiten aufräumen (gleicher Origin)
+        const src = iframe.src;
+        const sameOrigin =
+          src.startsWith(window.location.origin) || src.startsWith("/");
+
+        if (!sameOrigin) return;
+
+        const main = doc.querySelector("main.td-main");
+        if (!main) return;
+
+        // Variante A: Nur main anzeigen, Rest weg
+        doc.body.innerHTML = "";
+        doc.body.appendChild(main);
+
+        // Optional etwas Styling
+        doc.body.style.margin = "0";
+        doc.body.style.padding = "0";
+
+      } catch (e) {
+        // Cross-Origin → ignorieren
+        console.warn("Could not clean iframe content:", e);
+      }
+    }
+
+    const overlay = document.getElementById("overlay");
+
+    const sidebar = document.getElementById("sidebar");
+    const sidebarIframe = document.getElementById("sidebar-iframe");
+    const sidebarResizer = document.getElementById("sidebar-resizer");
+
+    if (popupIframe) {
+      popupIframe.addEventListener("load", () => cleanupIframe(popupIframe));
+    }
+
+    if (sidebarIframe) {
+      sidebarIframe.addEventListener("load", () => cleanupIframe(sidebarIframe));
+    }
+
+
+    /* ------------------------------------------
+      1. HOOK FÜR ALLE LINKS
+    ------------------------------------------ */
+    document.querySelectorAll(".page a").forEach(a => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const url = a.href;
+
+        openPopup(url);
+      });
+    });
+
+    /* ------------------------------------------
+      2. POPUP FUNKTIONEN
+    ------------------------------------------ */
+    function openPopup(url) {
+      popupIframe.src = url;
+      popup.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    }
+
+    document.getElementById("close-popup").onclick = closePopup;
+
+    function closePopup() {
+      popup.classList.add("hidden");
+      overlay.classList.add("hidden");
+      popupIframe.src = "";
+    }
+
+    document.getElementById("open-window").onclick = () => {
+      window.open(popupIframe.src, "_blank");
+      closePopup();
+    };
+
+    document.getElementById("open-sidebar").onclick = () => {
+      openSidebar(popupIframe.src);
+      closePopup();
+    };
+
+    /* ------------------------------------------
+      3. SIDEBAR
+    ------------------------------------------ */
+    function openSidebar(url) {
+      sidebarIframe.src = url;
+      sidebar.classList.remove("hidden");
+    }
+
+    document.getElementById("sidebar-close").onclick = () => {
+      sidebar.classList.add("hidden");
+      sidebarIframe.src = "";
+    };
+
+    /* Resize Sidebar */
+    sidebarResizer.addEventListener("mousedown", initResize);
+
+    function initResize(e) {
+      window.addEventListener("mousemove", resizeSidebar);
+      window.addEventListener("mouseup", stopResize);
+    }
+
+    function resizeSidebar(e) {
+      const newWidth = window.innerWidth - e.clientX;
+      sidebar.style.width = Math.max(250, Math.min(newWidth, 900)) + "px";
+    }
+
+    function stopResize() {
+      window.removeEventListener("mousemove", resizeSidebar);
+      window.removeEventListener("mouseup", stopResize);
+    }
+  });
 </script>
 
 {{ end }}

@@ -4,6 +4,10 @@
     {{ partial "head.html" . }}
   </head>
   <body class="td-{{ .Kind }}">
+    {{ if strings.Contains .Page.Permalink "view=content" }}
+      {{ block "main" . }}{{ end }}
+      {{ return }}
+    {{ end }}
     <header>
       {{ partial "navbar.html" . }}
     </header>
@@ -28,5 +32,6 @@
       {{ partial "footer.html" . }}
     </div>
     {{ partial "scripts.html" . }}
+    <p>AAAAA - {{ .Page.Permalink }} - AAAAAA</p>
   </body>
 </html>
