@@ -32,7 +32,7 @@ window.timelineData = [
                     { group: "cicd", name: "CI/CD Intro", url: "/docs/99_shared/cicd/", startDate: "8.12.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "cicd", name: "CI/CD vert.", url: "/docs/99_shared/cicd/", endDate: "31.12.2025", color: "#69A882" },
                     { group: "softskills", name: "Zeitmanagement / Selbstkompetenz", startDate: "11.9.2025", durationWeeks: 2, color: "#C04F15" },
-                    { group: "softskills", name: "Gewaltfreie Kommunikation", startDate: "06.11.2025", durationWeeks: 2, color: "#C04F15" },
+                    { group: "softskills", name: "Kommunikation", startDate: "06.11.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "softskills", name: "KI-Umgang / SBB AI Chat", startDate: "8.10.2025", durationWeeks: 2, color: "#C04F15" },
                     { group: "ük", name: "Ük ICT-Arbeitsplatz", startDate: "20.11.2025", endDate: "05.12.2025", color: "#83CBEB" },
 
