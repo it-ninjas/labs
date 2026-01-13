@@ -57,9 +57,9 @@ Beim unteren Beispiel haben wir der Liste den int-Wert 3 als **primitiven Datent
 Obwohl wir den int-Wert 3 als primitiver Datentypen und nicht als Integer-Objekte zur Liste
 `integerList` hinzufügen, kompiliert dieser Code genau so ohne Fehler.
 `integerList` ist jedoch eine Liste von Integer-Objekten und nicht eine Liste von int-Werten.
-Warum haben wir dann beim Kompilieren dieses Codes kein gekriegt?
+Warum haben wir dann beim Kompilieren dieses Codes keinen Fehler gekriegt?
 
-Der Copmpiler konvertiert den int-Wert zu einem Integer-Objekt und fügt dieses dann zur Liste _integerList_ hinzu.
+Der Compiler konvertiert den int-Wert zu einem Integer-Objekt und fügt dieses dann zur Liste _integerList_ hinzu.
 Diese Konvertierung nennt man _Autoboxing_.
 _Autoboxing_ ist die automatische Konvertierung zwischen den primitiven Datentypen zu Objekten ihrer entsprechenden Wrapper-Klassen, die der Java Compiler durchführt
 (beispielsweise `int` zu `Integer`, `double` zu `Double`, ect.).

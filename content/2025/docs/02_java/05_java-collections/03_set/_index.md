@@ -3,7 +3,7 @@ title: "Set"
 linkTitle: "Set"
 weight: 4
 description: >
-  Die gebräuchlichste Umsetzung eines Set: HashSet.
+  Set: Eine Menge von Objekten ohne Duplikate.
 ---
 
 ## java.util.Set

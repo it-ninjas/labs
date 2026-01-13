@@ -44,21 +44,21 @@ darstellt, welche skalierbar ist. Die `ArrayList` Klasse liefert uns beispielswe
 Elemente an das Ende einer Liste angefügt werden kann:
 
 ```java
-List<String> farben=new ArrayList<String>();
-farben.add("rot");
-farben.add("blau");
-farben.add("gelb");
-farben.add("orange");
+List<String> colors = new ArrayList<String>();
+colors.add("rot");
+colors.add("blau");
+colors.add("gelb");
+colors.add("orange");
 ```
 
 Oder sie liefert uns die Methode `remove`, welche Elemente aus der Liste entfernt:
 
 ```java
-List<String> farben=new ArrayList<String>();
-farben.add("rot");
-farben.add("blau");
-farben.add("gelb");
-farben.remove("blau");
+List<String> colors = new ArrayList<String>();
+colors.add("rot");
+colors.add("blau");
+colors.add("gelb");
+colors.remove("blau");
 ```
 
 Wir werden die ArrayList Klasse später noch genauer anschauen.
@@ -69,7 +69,7 @@ Klassen, die diese implementieren an. Obwohl es als Framework bezeichnet wird, f
 
 Das Java Collections Frameworks stellt für uns **Hochleistungsimplementierungen** von Datenstrukturen und Algorithmen
 bereit, um Sammlungen von Objekten beliebiger Datentypen darzustellen. Da wir diese Funktionalität nicht immer selbst
-programmieren müssen, reduziert sich für uns der Programmieraufwand markant.
+programmieren müssen, reduziert sich für uns der Programmieraufwand enorm.
 
 Das Java Collections Framework befindet sich im Paket `java.util`.
 

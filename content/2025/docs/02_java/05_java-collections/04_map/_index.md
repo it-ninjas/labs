@@ -3,7 +3,7 @@ title: "Map"
 linkTitle: "Map"
 weight: 5
 description: >
-  Die gebräuchlichste Umsetzung einer Map: HashMap.
+  Eine Liste von Schlüssel-Wert-Paaren.
 ---
 
 ## java.util.Map

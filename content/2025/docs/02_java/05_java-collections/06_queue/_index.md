@@ -24,6 +24,20 @@ Ein Kunde stellt sich zu hinterst an und rückt "in der Warteschlange" vor, wenn
 
 ![queue1](./images/queue1.png)
 
+Beispiel:
+
+
+```java
+Queue<String> customers = new LinkedList<>();
+customers.offer("Kunde 1");
+customers.offer("Kunde 2");
+customers.offer("Kunde 3");
+
+System.out.println(customers.peek()); // Ausgabe: Kunde 1, Grösse immer noch 3
+System.out.println(customers.poll()); // Ausgabe: Kunde 1, Grösse 2
+System.out.println(customers.poll()); // Ausgabe: Kunde 2, Grösse 1
+```
+
 ### Alle Methoden vom Interface java.util.Queue
 
 ```java
