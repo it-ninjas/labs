@@ -26,7 +26,6 @@ Ein Kunde stellt sich zu hinterst an und rückt "in der Warteschlange" vor, wenn
 
 Beispiel:
 
-
 ```java
 Queue<String> customers = new LinkedList<>();
 customers.offer("Kunde 1");
