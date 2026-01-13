@@ -7,7 +7,7 @@ weight: 9
 ## Iteration über Collections
 
 Iteration ist die Bearbeitung der Elemente einer Collection nacheinander. Es gibt verschiedene Möglichkeiten, über
-Collections zu iterieren, die Meisten davon wurden schon in den vorhergehenden Kapiteln in Beispielen verwendet, und
+Collections zu iterieren, die meisten davon wurden schon in den vorhergehenden Kapiteln in Beispielen verwendet, und
 werden hier zur Referenz noch einmal zusammengefasst.
 
 ### for Schleife
@@ -121,7 +121,7 @@ while (it.hasNext()) {
 }
 ```
 
-Maps können auch mit einem Iterator durchlaufen werden, benötigen aber wieder ein Bisschen Spezialbehandlung:
+Maps können auch mit einem Iterator durchlaufen werden, benötigen aber wieder ein bisschen Spezialbehandlung:
 
 ```java
 Map<String, Integer> items = Map.of("Apple", 1, "Banana", 2, "Cherry", 3);

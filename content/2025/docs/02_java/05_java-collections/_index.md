@@ -61,7 +61,7 @@ colors.add("gelb");
 colors.remove("blau");
 ```
 
-Wir werden die ArrayList Klasse später noch genauer anschauen.
+Wir werden die `ArrayList` Klasse später noch genauer anschauen.
 
 Das **Java Collections Framework** ist eine Menge von Interfaces und Klassen, die allgemein wiederverwendbare
 Collection-Datenstrukturen liefern. Es bietet uns also sowohl Interfaces, die Collection-Typen definieren, als auch
@@ -73,9 +73,9 @@ programmieren müssen, reduziert sich für uns der Programmieraufwand enorm.
 
 Das Java Collections Framework befindet sich im Paket `java.util`.
 
-Wir haben die **ArrayList** Klasse (`java.util.ArrayList`) als Beispiel für eine Collection gesehen. Die ArrayList Klasse
+Wir haben die `ArrayList`-Klasse (`java.util.ArrayList`) als Beispiel für eine Collection gesehen. Die `ArrayList`-Klasse
 repräsentiert eine **Collection vom Typ List** (implementiert also das Interface `java.util.List`) und wird mithilfe von
-zugrunde liegenden Arrays implementiert, deshalb auch der Name ArrayList. Es gibt aber auch andere Klassen, die Collections vom Typ `List` darstellen. Wir werden später einige davon noch kennenlernen.
+zugrunde liegenden Arrays implementiert, deshalb auch der Name `ArrayList`. Es gibt aber auch andere Klassen, die Collections vom Typ `List` darstellen. Wir werden später einige davon noch kennenlernen.
 
 ![list0](./images/list.png)
 
@@ -117,7 +117,7 @@ trotzdem Datenstrukturen zur Darstellung von Sammlungen von Objekten als eine Ei
 ## Collection
 
 Eine `Collection` ist ein Objekt, dass eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit zusammenfasst.
-In der Regel enthält eine Collection Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B. eine Fussballmannschaft, die eine “Sammlung” von Fussballspielern ist, d.h. Fussballspieler enthält.
+In der Regel enthält eine `Collection` Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B. eine Fussballmannschaft, die eine “Sammlung” von Fussballspielern ist, d.h. Fussballspieler enthält.
 Collections bieten uns im Allgemeinen die Möglichkeit neue Elemente hinzuzufügen, Elemente zu löschen und sonst die Elemente zu verwalten.
 
 **Allgemeine Methoden:**  

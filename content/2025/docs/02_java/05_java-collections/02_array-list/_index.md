@@ -8,10 +8,10 @@ description: >
 
 ## java.util.ArrayList
 
-java.util.ArrayList erbt von der abstrakten Klasse java.util.AbstractList und liefert eine konkrete Implementierung für
-das Interface java.util.List. Die ArrayList Klasse implementiert alle Methoden des Interface java.util.List. Der
-Implementierung der ArrayList Klasse liegen Arrays zugrunde, weshalb diese konkrete Klasse auch *Array*List heisst.
-Die Klasse ArrayList enthält also ein normales Array. Wenn ein Element hinzugefügt wird, wird es in dieses Array eingefügt.
+`java.util.ArrayList` erbt von der abstrakten Klasse `java.util.AbstractList` und liefert eine konkrete Implementierung für
+das Interface `java.util.List`. Die `ArrayList`-Klasse implementiert alle Methoden des Interface `java.util.List`. Der
+Implementierung der `ArrayList`-Klasse liegen Arrays zugrunde, weshalb diese konkrete Klasse auch *Array*List heisst.
+Die Klasse `ArrayList` enthält also ein normales Array. Wenn ein Element hinzugefügt wird, wird es in dieses Array eingefügt.
 Wenn das Array nicht gross genug ist, wird ein neues, grösseres Array erstellt, um das alte zu ersetzen, d.h. die Kapazität
 des Arrays wird fortlaufend angepasst.
 

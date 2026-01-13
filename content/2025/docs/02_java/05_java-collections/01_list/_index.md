@@ -35,9 +35,9 @@ Ein Element aus einer Liste entfernen:
 
 Wie zu Beginn erwähnt, enthalten Lists Referenzen auf Objekte. Deshalb ist es nicht möglich, Listen zu erstellen, welche
 primitive Datentypen als Elemente enthalten (`int`, `double`, `boolean`, `char`, `...`). Dafür müssen die sogenannten
-Wrapper-Klassen verwendet werden. Wrapper-Klassen bieten eine Möglichkeit, primitive Datentypen (int, double, boolean,
-char, ...) als Objekte zu verwenden:
-java.lang.Integer, java.lang.Double, java.lang.Boolean, java.lang.Character,..
+Wrapper-Klassen verwendet werden. Wrapper-Klassen bieten eine Möglichkeit, primitive Datentypen (`int`, `double`, `boolean`,
+`char`, ...) als Objekte zu verwenden:
+`java.lang.Integer`, `java.lang.Double`, `java.lang.Boolean`, `java.lang.Character`,..
 
 Schauen wir uns die folgenden Beispiele an, wo wir einer Liste mit Elementen vom Typ Integer das Element 3 hinzufügen:
 
@@ -128,10 +128,9 @@ E remove(int index);
 
 /*
 * Entfernt alle Elemente aus dieser Liste.
-/*
+*/
 void clear();
 
-...
 ```
 
 Das Interface `java.util.List` im Collection Framework ist der Datentyp der Listen, wobei in der abstrakten Klasse

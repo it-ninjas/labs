@@ -8,7 +8,7 @@ description: >
 
 ## java.util.Stack
 
-java.util.Stack ist eine weitere Datenstruktur, bei der Elemente eingefügt und wieder entfernt werden können, wobei bei
+`java.util.Stack` ist eine weitere Datenstruktur, bei der Elemente eingefügt und wieder entfernt werden können, wobei bei
 Stacks immer nur auf dasjenige Element zugegriffen werden kann, das zuletzt eingefügt wurde (Last-In-First-Out = LIFO).
 Auf Deutsch könnte man Stack als "Stapel" übersetzen.
 
@@ -122,9 +122,9 @@ Position of element green: 1
 
 ```
 
-Im oberen Beispiel verwenden wir die Methode _size()_. Diese Methode ist nicht in der java.util.Stack-Klasse
-implementiert, wird jedoch von der Vector-Mutterklasse geerbt. Diese Vector-Klasse implementiert zusätzlich weitere
-Methoden des List-Interfaces, weshalb diese auch für Stacks verwendet werden können. Ein Stack bzw. die Datenstruktur des
+Im oberen Beispiel verwenden wir die Methode `size()`. Diese Methode ist nicht in der `java.util.Stack`-Klasse
+implementiert, wird jedoch von der `Vector`-Mutterklasse geerbt. Diese `Vector`-Klasse implementiert zusätzlich weitere
+Methoden des `List`-Interfaces, weshalb diese auch für Stacks verwendet werden können. Ein Stack bzw. die Datenstruktur des
 Stacks wird jedoch durch die oben aufgeführten Methoden ausgemacht.
 
 #### Beispiel 2 (EmptyStackException)

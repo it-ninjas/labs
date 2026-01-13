@@ -11,7 +11,7 @@ description: >
 LinkedLists sind verkettete Listen. D.h. die Elemente der Listen sind zueinander verkettet
 und nicht wie bei einer ArrayList an bestimmten Positionen platziert.
 
-java.util.LinkedList implementiert zwei Collection-Interfaces: java.util.List und java.util.Deque.
+`java.util.LinkedList` implementiert zwei Collection-Interfaces: `java.util.List` und `java.util.Deque`.
 Das bedeutet grundsätzlich, dass sie sowohl die Methoden des List-Interfaces implementiert, als auch die des Deque-Interfaces.
 
 Grundsätzlich gibt es zwei Arten von verketteten Listen: Einfach verkettete Listen und doppelt verkettete Liste.
@@ -85,24 +85,22 @@ zum ersten Knoten und zum anderen die Referenz zum zweiten Knoten:
 
 ```java
 public class LinkedList<E>  extends AbstractSequentialList<E>  implements List<E>, Deque<E>, Cloneable, java.io.Serializable {
-  transient int size = 0;
+  int size = 0;
 
   /**
    * Pointer to first node.
    */
-  transient Node<E> first;
+  Node<E> first;
 
   /**
    * Pointer to last node.
    */
-  transient Node<E> last;
+  Node<E> last;
 
   ...
 }
 
 ```
-
-Das Java-Schlüsselwort `transient` wird verwendet, um ein Feld in einer Klasse von der Serialisierung auszuschließen. **Serialisierung** ist der Prozess, ein Objekt in einen Byte-Stream umzuwandeln, um es zu speichern oder über ein Netzwerk zu übertragen. Transiente Felder werden dabei nicht gespeichert und erhalten nach der Deserialisierung ihre **Standardwerte** (z. B. `null` für Objekte, `0` für Zahlen).
 
 Ein Knoten, also das Objekt des Typs `Node`, enthält
 
@@ -110,7 +108,7 @@ Ein Knoten, also das Objekt des Typs `Node`, enthält
 - die Referenz auf den vorherigen Knoten, also auf ein Node-Objekt
 - und eine Referenz auf den nächsten Knoten.
 
-Die statische Klasse `Node<E>` ist innerhalb der Klasse java.util.LinkedList definiert:
+Die statische Klasse `Node<E>` ist innerhalb der Klasse `java.util.LinkedList` definiert:
 
 ```java
     private static class Node<E> {

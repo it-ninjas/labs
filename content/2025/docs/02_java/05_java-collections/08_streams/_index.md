@@ -45,7 +45,7 @@ import java.util.Arrays;
 int[] scores = new int[] { 4, 19, 22, 23, 0, 12 };
 int maxScores = 24;
 
-var averageGrade = Arrays.stream(scores)
+OptionalDouble averageGrade = Arrays.stream(scores)
         .filter(score -> score > 0)
         .mapToDouble(score -> score * 5f / maxScores + 1f)
         .average();
@@ -119,7 +119,7 @@ Da Lambda-Expressions oft in Streams verwendet werden, wird hier aufgezeigt, wie
 Lambda-Ausdrücke in Java sind quasi Methoden ohne Namen. Sie bestehen aus folgenden Elementen:
 
 - einer Liste von Parametern. Mehrere Parameter werden durch ein Komma separiert und mit Klammern umrundet.
-  (keine Parameter werden mit leeren Klammern `()` dargestellt, einen Parameter muss nicht zwingend mit Klammern umrundet werden)
+  (keine Parameter werden mit leeren Klammern `()` dargestellt, ein einzelner Parameter muss nicht zwingend mit Klammern umrundet werden `score`)
 - einem Pfeil-Token `->`
 - und einem Funktionsrumpf. Wenn der Funktionsrumpf mehrere Anweisungen lang ist, wird er mit geschweiften Klammern `{ ... }` umrundet. Wenn keine geschweiften Klammern verwendet werden, dann ist der Ausdruck nach dem Pfeil-Token automatisch der Rückgabewert der Funktion (das `return` entfällt).
 
@@ -169,7 +169,7 @@ word -> System.out.printf("Ich habe einen Parameter erhalten, nämlich: %s", wor
 ### Method Reference
 
 Eine Methoden-Referenz ist die verkürzte Schreibweise einer Lambda-Expression, welche nur einen einzigen Methodenaufruf beinhaltet.
-Die generische Syntax für Methodenreferenz sieht wie folgt aus: Klasse::methode.
+Die generische Syntax für Methodenreferenz sieht wie folgt aus: `Klasse::methode`.
 Bei Methoden-Referenzen werden die Argumente für die Methode nicht notiert.
 
 ```java
