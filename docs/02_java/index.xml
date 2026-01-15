@@ -123,7 +123,428 @@ Wenn du mehr über Programmiersprachen im Allgemeinen erfahren willst, schau dir
 &lt;/table>
 &lt;hr>
 &lt;h2 id="los-gehts">Los geht’s&lt;/h2>
-&lt;p>Im nächsten Kapitel startest du mit deinem ersten Programm und lernst, wie man Variablen verwendet.&lt;/p></description></item><item><title>Docs: Objektorientierte Programmierung in Java</title><link>/docs/02_java/04_java-oop/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/04_java-oop/</guid><description/></item><item><title>Docs: Maven</title><link>/docs/02_java/05_maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/05_maven/</guid><description>
+&lt;p>Im nächsten Kapitel startest du mit deinem ersten Programm und lernst, wie man Variablen verwendet.&lt;/p></description></item><item><title>Docs: Objektorientierte Programmierung in Java</title><link>/docs/02_java/04_java-oop/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/04_java-oop/</guid><description/></item><item><title>Docs: Java Collections</title><link>/docs/02_java/05_java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/05_java-collections/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kann erklären, was Collections sind.&lt;/li>
+&lt;li>Ich kenne grob den Aufbau des Collections-Frameworks.&lt;/li>
+&lt;li>Ich kenne die wichtigsten Interfaces und ihre Merkmale: &lt;code>List&lt;/code>, &lt;code>Set&lt;/code>, &lt;code>Queue&lt;/code>, &lt;code>Map&lt;/code>.&lt;/li>
+&lt;li>Ich verstehe den Einsatz der Hash-Funktion zur Performance-Verbesserung.&lt;/li>
+&lt;li>Ich kenne die wichtigsten Implementierungen und ihre Einsatzmöglichkeiten: &lt;code>ArrayList&lt;/code>, &lt;code>HashSet&lt;/code>, &lt;code>HashMap&lt;/code>.&lt;/li>
+&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>ArrayList&lt;/code>.&lt;/li>
+&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>HashSet&lt;/code>.&lt;/li>
+&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>HashMap&lt;/code>.&lt;/li>
+&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>Stack&lt;/code>.&lt;/li>
+&lt;li>Ich kenne die Funktionsweise und den Unterschied zwischen den Klassen &lt;code>Queue&lt;/code> und &lt;code>Deque&lt;/code> und kann diese anwenden.&lt;/li>
+&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>LinkedList&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
+&lt;ul>
+&lt;li>Gute Grundlagenkenntnisse von Java-Anwendungen.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Mach Dir keine Sorgen, wenn Du noch nicht genau über Vererbung, Interfaces usw. Bescheid weisst. Das wird im Kapitel OOD vertieft.&lt;/p>&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="einleitung">Einleitung&lt;/h2>
+&lt;p>Beim Programmieren müssen wir oft Daten speichern bzw. Informationen verwalten, um gewisse Probleme zu lösen.
+In diesem Modul werden wir das Java Collections Framework anschauen, weil dieses Framework uns die Werkzeuge zum
+effizienten Verwalten von Informationen liefert.&lt;/p>
+&lt;p>Eine &lt;strong>Collection&lt;/strong> ist ein Objekt, das eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit
+zusammenfasst. In der Regel enthält eine Collection Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B.
+eine Fussballmannschaft, die eine &amp;ldquo;Sammlung&amp;rdquo; von Fussballspielern ist, d.h. Fussballspieler enthält. Collections bieten
+uns im Allgemeinen die Möglichkeit neue Elemente hinzuzufügen, Elemente zu löschen und sonst die Elemente zu verwalten.&lt;/p>
+&lt;p>Ein bekanntes Beispiel für eine Collection ist die &lt;code>ArrayList&lt;/code> Klasse, wobei eine ArrayList eine Liste von Objekten
+darstellt, welche skalierbar ist. Die &lt;code>ArrayList&lt;/code> Klasse liefert uns beispielsweise die Methode &lt;code>add&lt;/code>, mit welcher
+Elemente an das Ende einer Liste angefügt werden kann:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;rot&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;blau&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gelb&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;orange&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Oder sie liefert uns die Methode &lt;code>remove&lt;/code>, welche Elemente aus der Liste entfernt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> colors &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;rot&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;blau&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gelb&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>colors.&lt;span style="color:#a6e22e">remove&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;blau&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wir werden die &lt;code>ArrayList&lt;/code> Klasse später noch genauer anschauen.&lt;/p>
+&lt;p>Das &lt;strong>Java Collections Framework&lt;/strong> ist eine Menge von Interfaces und Klassen, die allgemein wiederverwendbare
+Collection-Datenstrukturen liefern. Es bietet uns also sowohl Interfaces, die Collection-Typen definieren, als auch
+Klassen, die diese implementieren an. Obwohl es als Framework bezeichnet wird, funktioniert es im Grunde wie eine Library.&lt;/p>
+&lt;p>Das Java Collections Frameworks stellt für uns &lt;strong>Hochleistungsimplementierungen&lt;/strong> von Datenstrukturen und Algorithmen
+bereit, um Sammlungen von Objekten beliebiger Datentypen darzustellen. Da wir diese Funktionalität nicht immer selbst
+programmieren müssen, reduziert sich für uns der Programmieraufwand enorm.&lt;/p>
+&lt;p>Das Java Collections Framework befindet sich im Paket &lt;code>java.util&lt;/code>.&lt;/p>
+&lt;p>Wir haben die &lt;code>ArrayList&lt;/code>-Klasse (&lt;code>java.util.ArrayList&lt;/code>) als Beispiel für eine Collection gesehen. Die &lt;code>ArrayList&lt;/code>-Klasse
+repräsentiert eine &lt;strong>Collection vom Typ List&lt;/strong> (implementiert also das Interface &lt;code>java.util.List&lt;/code>) und wird mithilfe von
+zugrunde liegenden Arrays implementiert, deshalb auch der Name &lt;code>ArrayList&lt;/code>. Es gibt aber auch andere Klassen, die Collections vom Typ &lt;code>List&lt;/code> darstellen. Wir werden später einige davon noch kennenlernen.&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/05_java-collections/images/list.png" alt="list0">&lt;/p>
+&lt;h2 id="theorie">Theorie&lt;/h2>
+&lt;hr>
+&lt;p>Das &lt;strong>Java Collections Framework&lt;/strong> ist eine einheitliche Architektur zur Darstellung und Bearbeitung von Collections, welche
+folgendes enthält:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Interfaces&lt;/strong>: Dies sind abstrakte Datentypen, die verschiedene Collections darstellen.
+Mithilfe von Interfaces können Collections unabhängig von den Details ihrer Implementierung bearbeitet werden.
+Die Interfaces bilden in Java die Hierarchie aller Collections.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Implementierungen/Klassen&lt;/strong>: Dies sind die konkreten Implementierungen der Collection-Interfaces.
+Im Grunde handelt es sich um wiederverwendbare Datenstrukturen mit konkreten Implementierungen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Algorithmen/Methoden&lt;/strong>: Dies sind die Methoden, die nützliche Algorithmen,
+wie z. B. Hinzufügen, Löschen, Suchen und Sortieren, von Objekten in Collections durchführen.
+Viele Methoden und Algorithmen sind für verschiedene Arten der Collections wiederverwendbar.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Die Interfaces in der folgenden Abbildung (&lt;code>Collection&lt;/code>, &lt;code>Set&lt;/code>, &lt;code>List&lt;/code>, &lt;code>Queue&lt;/code>, &lt;code>Deque&lt;/code>, &lt;code>Map&lt;/code> &amp;hellip;)
+bilden die &lt;strong>Grundlage des Collection Frameworks&lt;/strong>. Durch diese grundlegenden Interfaces bildet sich eine Hierarchie
+innerhalb des Collection Frameworks:&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/05_java-collections/images/hierarchy.png" alt="hierarchy">&lt;/p>
+&lt;p>Auf dieser Grafik ist zu sehen, dass zum Beispiel:&lt;/p>
+&lt;ul>
+&lt;li>Sets spezielle Typen von Collections sind. SortedSets wiederum sind spezielle Typen von Sets.&lt;/li>
+&lt;li>Lists sind spezielle Typen von Collections. ArrayLists sind spezielle Typen von Lists.&lt;/li>
+&lt;/ul>
+&lt;p>In der Abbildung sieht man zudem, dass das Collection Framework aus &lt;strong>zwei verschiedenen Teilen&lt;/strong> besteht:
+Zum einen die &lt;strong>Collections&lt;/strong> und zum anderen die &lt;strong>Maps&lt;/strong>. Maps stellen somit keine &amp;ldquo;echten&amp;rdquo; Collections dar. Maps sind
+trotzdem Datenstrukturen zur Darstellung von Sammlungen von Objekten als eine Einheit.&lt;/p>
+&lt;hr>
+&lt;h2 id="collection">Collection&lt;/h2>
+&lt;p>Eine &lt;code>Collection&lt;/code> ist ein Objekt, dass eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit zusammenfasst.
+In der Regel enthält eine &lt;code>Collection&lt;/code> Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B. eine Fussballmannschaft, die eine “Sammlung” von Fussballspielern ist, d.h. Fussballspieler enthält.
+Collections bieten uns im Allgemeinen die Möglichkeit neue Elemente hinzuzufügen, Elemente zu löschen und sonst die Elemente zu verwalten.&lt;/p>
+&lt;p>&lt;strong>Allgemeine Methoden:&lt;/strong>&lt;br>
+&lt;code>size()&lt;/code>, &lt;code>isEmpty()&lt;/code>, &lt;code>contains(Object element)&lt;/code>, &lt;code>add(E element)&lt;/code>, &lt;code>remove(Object element)&lt;/code>, &lt;code>clear()&lt;/code>, &lt;code>iterator()&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
+&lt;code>containsAll(Collection&amp;lt;?&amp;gt; c)&lt;/code>, &lt;code>addAll(Collection&amp;lt;? extends E&amp;gt; c)&lt;/code>, &lt;code>removeAll(Collection&amp;lt;?&amp;gt; c)&lt;/code>, &lt;code>retainAll(Collection&amp;lt;?&amp;gt; c)&lt;/code>&lt;/p>
+&lt;h3 id="list">List&lt;/h3>
+&lt;p>Eine &lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List&lt;/a> ist eine geordnete Sequenz, welche duplizierte Elemente erlaubt.
+Zusätzlich zu den geerbten Methoden der &lt;code>Collection&lt;/code> bietet die &lt;code>List&lt;/code> folgende an:&lt;/p>
+&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong>&lt;br>
+&lt;code>get&lt;/code>, &lt;code>set&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Suche nach einem bestimmten Element in der Liste:&lt;/strong>&lt;br>
+&lt;code>indexOf&lt;/code>, &lt;code>lastIndexOf&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Iteriert durch die Liste:&lt;/strong>&lt;br>
+&lt;code>listIterator&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Ein Teilbereich der Liste erstellen:&lt;/strong>&lt;br>
+&lt;code>sublist&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>Folgend sind zwei gängige &lt;code>List&lt;/code> Implementierungen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html">ArrayList&lt;/a>&lt;/strong> welche in Normalfall die leistungsfähigere Implementation ist. Sie basiert auf einem primitiven Array.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html">LinkedList&lt;/a>&lt;/strong> welche in bestimmten Situation die effizientere Lösung sein kann.&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;h3 id="set">Set&lt;/h3>
+&lt;p>Ein &lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html">Set&lt;/a> ist eine Collection, in welche man ein Element nur einmal hinzufügen kann.
+Das Set enthält die Funktionen der Collection, stellt aber sicher, dass Elemente nicht doppelt vorkommen können.
+Die &lt;code>equals&lt;/code> und &lt;code>hashCode&lt;/code> Funktionen spielen dabei eine wichtige Rolle.
+Sie definieren, wann zwei Elemente als gleich gelten.&lt;/p>
+&lt;p>&lt;strong>Elemente hinzufügen, löschen und Infos abfragen:&lt;/strong>&lt;br>
+&lt;code>add()&lt;/code>, &lt;code>contains()&lt;/code>, &lt;code>remove()&lt;/code>, &lt;code>clear()&lt;/code>, &lt;code>size()&lt;/code>, &lt;code>isEmpty()&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
+&lt;code>addAll()&lt;/code>, &lt;code>removeAll()&lt;/code>, &lt;code>containsAll()&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong>&lt;br>
+&lt;code>iterator()&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>Folgend sind 3 gängige &lt;code>Set&lt;/code> Implementationen:&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html">HashSet&lt;/a> - Schnell, aber unsortiert&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Speichert Elemente in keiner bestimmten Reihenfolge.&lt;/li>
+&lt;li>Sehr schnell beim Einfügen und Suchen.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html">TreeSet&lt;/a> – Sortiert, aber langsamer&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Speichert Elemente aufsteigend sortiert.&lt;/li>
+&lt;li>Einfügen und Suchen dauert länger.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashSet.html">LinkedHashSet&lt;/a> – Reihenfolge bleibt erhalten&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Speichert Elemente in der Reihenfolge, in der sie hinzugefügt wurden.&lt;/li>
+&lt;li>Schneller als TreeSet, aber etwas langsamer als HashSet.&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;h3 id="map">Map&lt;/h3>
+&lt;p>Eine &lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html">Map&lt;/a> ist ein Objekt, dass &lt;strong>Schüssel (keys) auf Werte (values) zuordnet&lt;/strong>.
+Eine Map kann nicht zwei gleiche Schlüssel enthalten.
+Jeder Schlüssel zeigt genau auf einen Wert.
+Das Interface Map definiert Grundfunktionen für das Einfügen, Lesen, Löschen, Abfragen von Schlüsseln usw.&lt;/p>
+&lt;p>Zusätzlich zu den vererbten Methoden der &lt;code>Collection&lt;/code> bietet die &lt;code>List&lt;/code> folgende an:&lt;/p>
+&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong>&lt;br>
+&lt;code>put()&lt;/code>, &lt;code>get()&lt;/code>, &lt;code>containsKey()&lt;/code>, &lt;code>containsValue()&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
+&lt;code>putAll()&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong>&lt;br>
+&lt;code>keySet()&lt;/code>, &lt;code>entrySet()&lt;/code>, &lt;code>values()&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>Folgend sind 3 gängige Implementationen von &lt;code>Map&lt;/code>:&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html">HashMap&lt;/a> – Schnell, aber unsortiert&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Speichert Schlüssel-Wert-Paare in keiner bestimmten Reihenfolge.&lt;/li>
+&lt;li>Sehr schnell beim Einfügen und Suchen.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html">TreeMap&lt;/a> – Sortiert, aber langsamer&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Speichert Schlüssel &lt;strong>nach ihrer natürlichen Ordnung&lt;/strong> oder mit einem Comparator.&lt;/li>
+&lt;li>Einfügen und Suchen dauert länger.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashMap.html">LinkedHashMap&lt;/a> – Reihenfolge bleibt erhalten&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Speichert Schlüssel in der Reihenfolge, in der sie hinzugefügt wurden.&lt;/li>
+&lt;li>Schneller als &lt;code>TreeMap&lt;/code>, aber etwas langsamer als &lt;code>HashMap&lt;/code>.&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;h2 id="performanz">Performanz&lt;/h2>
+&lt;p>Das &lt;strong>Collections-Framework&lt;/strong> nutzt intensiv die &lt;strong>Hash-Funktion&lt;/strong>.
+Klassen wie &lt;code>HashSet&lt;/code> oder &lt;code>HashMap&lt;/code> verwenden die Hash-Funktion zur Steigerung der Performanz.&lt;/p>
+&lt;h3 id="hash-funktion">Hash-Funktion&lt;/h3>
+&lt;p>Alle Java Klassen erben von der Klasse &lt;code>java.lang.Object&lt;/code> die Methode &lt;code>public int hashCode()&lt;/code>.
+Diese liefert ein Hash Code von der eigenen Instanz zurück.
+Bei Java ist dieser ein &lt;code>Integer&lt;/code>.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Hashing&lt;/strong> bezeichnet die Umwandlung einer Zeichenfolge in einen numerischen Wert oder Schlüssel mit fester Länge, der in der Regel kürzer ist. Das bedeutet also, aus einem Java Objekt mit verschiedenen Attributen wird eine Zahl berechnet. Immer, wenn das gleiche Objekt wieder berechnet wird, erhält man die gleiche Zahl.&lt;/p>&lt;/blockquote>
+&lt;p>Der Java Hash Code ist nicht immer eindeutig.
+Es kann also vorkommen, dass unterschiedliche Instanzen verschiedener Klassen denselben Hash-Code zurückgeben.
+In der Praxis ist das jedoch kein Problem, da der Hash-Code lediglich für eine &lt;strong>Vorselektion&lt;/strong> genutzt wird.
+Das bedeutet, wenn die Hash Codes nicht gleich sind, sind die Objekte definitiv nicht gleich. Sind die Hash Codes gleich, werden trotzdem noch die Objekte direkt vergleicht.&lt;/p>
+&lt;h4 id="verwendung">Verwendung&lt;/h4>
+&lt;p>Schauen wir uns die Verwendung von &lt;code>Set&lt;/code> an:
+Bei einem Set können wir mit der Methode &lt;code>contains(Object o)&lt;/code> abfragen, ob ein Objekt in einem Set vorhanden ist.
+Das Set muss somit jedes Objekt mit dem Objekt vergleichen, welches wir der Methode &lt;code>contains&lt;/code> übergeben.
+Falls ein Objekt jedoch viele &lt;strong>Instanzvariablen&lt;/strong> (oder Attribute) besitzt – die wiederum Objekte sein können –,
+wäre ein direkter Vergleich potenziell aufwendig.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Bei einer Handvoll Objekte im &lt;code>Set&lt;/code> ist das vernachlässigbar.&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>Bei mehreren tausend Objekten würde die Suche jedoch deutlich ineffizienter.&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>Die Klasse &lt;code>HashSet&lt;/code> verfolgt daher eine optimierte Strategie:&lt;/p>
+&lt;ol>
+&lt;li>Beim Hinzufügen eines neuen Objekts berechnet &lt;code>HashSet&lt;/code> dessen Hash-Code mit der Methode hashCode().
+Dieser Hash-Code wird gespeichert.&lt;/li>
+&lt;li>Bei der Methode &lt;code>contains(Object o)&lt;/code> wird der Hash-Code des übergebenen Vergleichsobjekts berechnet.
+Anschliessend wird dieser mit den gespeicherten Hash-Codes verglichen (Integer-Vergleich).&lt;/li>
+&lt;li>Da der Java-Hash-Code nicht eindeutig ist, erfolgt bei Übereinstimmung zusätzlich ein Vergleich mit der Methode &lt;code>equals(Object o)&lt;/code>,
+um sicherzustellen, dass es sich tatsächlich um dasselbe Objekt handelt.&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>Mit der Hash-Code Strategie kann das &lt;code>HashSet&lt;/code> die allermeisten Vergleiche auf einen Integer-Vergleich reduzieren.&lt;/p>&lt;/blockquote>
+&lt;h4 id="anforderung-an-die-hash-berechnung">Anforderung an die Hash Berechnung&lt;/h4>
+&lt;p>Was ist die Anforderung an die Java &lt;code>hashCode()&lt;/code> Methode?&lt;/p>
+&lt;blockquote>
+&lt;ol>
+&lt;li>Die Berechnung muss schnell sein.&lt;/li>
+&lt;li>Der Hash Code sollte in der Praxis meistens eindeutig sein.&lt;/li>
+&lt;/ol>&lt;/blockquote></description></item><item><title>Docs: Lombok</title><link>/docs/02_java/06_lombok/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/06_lombok/</guid><description>
+&lt;p>Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
+Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.&lt;/p>
+&lt;p>&lt;strong>(*) Info:&lt;/strong>
+Boilerplate-Code ist wiederkehrender Code, der in verschiedenen Teilen einer Softwareanwendung benötigt wird, aber wenig zur eigentlichen Funktionalität beiträgt.&lt;/p>
+&lt;h3 id="wofür-wird-lombok-verwendet">Wofür wird Lombok verwendet?&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Reduzierung des Boilerplate-Codes:&lt;/strong>
+Lombok eliminiert die Notwendigkeit, viele standardmässige Java-Boilerplate-Codezeilen wie Getter, Setter, Konstruktoren und toString-Methoden manuell zu schreiben.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Verbesserte Lesbarkeit:&lt;/strong>
+Durch die Reduzierung von Boilerplate-Code wird der Quellcode klarer und lesbarer, da unnötige Details ausgeblendet werden.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Kompakte Klassen:&lt;/strong>
+Lombok ermöglicht es, Klassen mit weniger Code zu erstellen, was die Wartung und das Verständnis des Codes erleichtert.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Einige häufig verwendete Annotationen sind &lt;code>@Getter&lt;/code>, &lt;code>@Setter&lt;/code>, &lt;code>@NoArgsConstructor&lt;/code>, &lt;code>@AllArgsConstructor&lt;/code>, usw.&lt;/p>
+&lt;p>In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert, sobald die Annotationen &lt;code>@Getter&lt;/code> und &lt;code>@Setter&lt;/code> über den Klassenattributen &lt;code>firstname&lt;/code> und &lt;code>lastname&lt;/code> verwendet werden. Jedoch für &lt;code>age&lt;/code> werden sie nicht generiert.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Getter;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Setter;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Getter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Setter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String firstname;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Getter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Setter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String lastname;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Wenn es jedoch alle Klassenattribute betrifft, muss man nicht über jedem Klassenattribut die Annotationen hinzufügen, sondern man kann es auch folgendermassen schreiben.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Getter;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Setter;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Getter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Setter&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String firstname;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String lastname;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>@NoArgsConstructor&lt;/code>: Diese Annotation wird verwendet, um einen parameterlosen Konstruktor automatisch zu generieren. Sie ist besonders nützlich, wenn Klassen benötigt werden, welche von Frameworks instanziiert werden müssen.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.NoArgsConstructor;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@NoArgsConstructor&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>@AllArgsConstructor&lt;/code>: Diese Annotation wird verwendet, um einen Konstruktor automatisch zu generieren, der alle Felder der Klasse als Parameter akzeptiert. Dieser Konstruktor ist besonders nützlich, wenn eine Klasse erstellt werden soll, bei welcher man den gesamten Zustand über den Konstruktor initialisieren möchte.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.AllArgsConstructor;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@AllArgsConstructor&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="maven-dependency">Maven Dependency&lt;/h3>
+&lt;p>Im POM.xml muss folgende Dependency hinzugefügt werden.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.projectlombok&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>lombok&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.18.34&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="vorteile-von-lombok">Vorteile von Lombok&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Kompaktheit:&lt;/strong>
+Lombok reduziert die Menge an Code, welcher geschrieben werden muss, um Getter und Setter etc. zu implementieren. Dadurch wird der Quellcode kompakter und einfacher zu lesen.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Zeitersparnis:&lt;/strong>
+Lombok automatisiert die Generierung von Boilerplate-Code, was Entwicklern Zeit spart, die sie sonst mit dem manuellen Schreiben dieser Methoden verbringen würden.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Wartbarkeit:&lt;/strong>
+Durch die Reduzierung von Boilerplate-Code minimiert Lombok die Möglichkeit von Fehlern und erleichtert die Wartung des Codes.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="nachteile-von-lombok">Nachteile von Lombok&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Transparenz:&lt;/strong>
+Für Entwickler, die nicht mit Lombok vertraut sind, kann der automatisch generierte Code möglicherweise undurchsichtig sein, da er nicht explizit im Quellcode angezeigt wird.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Abhängigkeit:&lt;/strong>
+Die Verwendung von Lombok bedeutet, dass ein Projekt von der Lombok-Library abhängig ist. Wenn man Library-Dependencies minimieren möchten, kann dies als Nachteil angesehen werden.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Weniger Kontrolle:&lt;/strong>
+Bei der Verwendung von Lombok hat man möglicherweise weniger Kontrolle über den generierten Code im Vergleich zur manuellen Implementierung.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="lombok-mit-intellij">Lombok mit IntelliJ&lt;/h3>
+&lt;p>Falls du in IntelliJ Probleme mit Lombok hast, kann es sein, dass das Annotation-Processing abgestellt ist. Helfen kann der der folgende Artikel: &lt;a href="https://www.baeldung.com/lombok-ide">Baeldung: Setting up Lombok with Eclipse and Intellij&lt;/a>.&lt;/p>
+&lt;hr>
+&lt;p>&lt;img src="/images/hint.png" alt="hint1"> Optional: Finde mehr Informationen zu Lombok und was es kann unter: &lt;a href="https://projectlombok.org/features/">Lombok Features&lt;/a>&lt;/p>
+&lt;hr>
+&lt;div class="alert alert-warning" role="alert">
+&lt;h4 class="alert-heading">Git ready?!&lt;/h4>
+&lt;p>Falls du dich noch nicht intensiver mit Git auseinandergesetzt hast, ist jetzt die Zeit dafür: Erarbeite &lt;a href="/docs/99_shared/collaboration/source-repositories/git/">&lt;strong>Git&lt;/strong>&lt;/a>!&lt;/p>
+&lt;p>Bitte kehre nach Abschluss des Git-Moduls hierhin zurück und fahre mit der nächsten Seite fort.&lt;/p>
+&lt;/div></description></item><item><title>Docs: Maven</title><link>/docs/02_java/07_maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/07_maven/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kenne die Grundlagen von Maven.&lt;/li>
@@ -157,7 +578,7 @@ Plattform reichen.&lt;/p>
 &lt;a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi&lt;/a>. Verwende die Binary anstelle der Source,
 und zwar am besten die Datei im &lt;code>Binary zip archive&lt;/code> Format.&lt;/p>
 &lt;p>Klicke dazu auf den folgenden Link, wie hier im Beispiel:
-&lt;img src="/docs/02_java/05_maven/images/maven_download.png" alt="Apache Maven Project Download (Stand: 22.09.2024)" title="Maven Download Seite">&lt;/p>
+&lt;img src="/docs/02_java/07_maven/images/maven_download.png" alt="Apache Maven Project Download (Stand: 22.09.2024)" title="Maven Download Seite">&lt;/p>
 &lt;p>Nachdem du die Datei heruntergeladen hast, kannst du den folgenden Ordner erstellen:&lt;br>
 &lt;code>C:\Program Files\Apache\Maven\&lt;/code>.&lt;/p>
 &lt;p>Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariablen auf dieses Verzeichnis setzen.&lt;/p>
@@ -165,7 +586,7 @@ und zwar am besten die Datei im &lt;code>Binary zip archive&lt;/code> Format.&lt
 &lt;h4 id="intellij-idea">IntelliJ IDEA&lt;/h4>
 &lt;p>Ist IntelliJ installiert, findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise
 sind diese Einstellungen bereits korrekt.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/05_maven/images/intellij_maven_settings.png" alt="Intellij Maven settings">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_maven/images/intellij_maven_settings.png" alt="Intellij Maven settings">&lt;/p>
 &lt;p>Die wichtigsten Einstellungen sind:&lt;/p>
 &lt;table>
 &lt;thead>
@@ -230,7 +651,7 @@ auf das Verzeichnis bin zeigen, also zum Beispiel:&lt;/p>
 &lt;p>&lt;code>mvn -version&lt;/code>&lt;/p>
 &lt;p>Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:&lt;/p>
 &lt;p>&lt;code>Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)&lt;/code>&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/05_maven/images/cmd_maven_version.png" alt="Maven Version">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_maven/images/cmd_maven_version.png" alt="Maven Version">&lt;/p>
 &lt;p>Die Version muss nicht mit deiner übereinstimmen.&lt;/p>
 &lt;details>
 &lt;summary>JAVA_HOME Troubleshoot&lt;/summary>
@@ -259,7 +680,7 @@ Dafür musst du zuerst herausfinden, wo sich die Installation befindet.&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Kopiere den Pfad unter &lt;code>JDK home path&lt;/code>.&lt;/p>
-&lt;p>Erstelle nun &lt;a href="/docs/02_java/05_maven/#umgebungsvariablen-setzen">gleich wie zuvor&lt;/a> eine neue Umgebungsvariable mit den folgenden Werten:&lt;/p>
+&lt;p>Erstelle nun &lt;a href="/docs/02_java/07_maven/#umgebungsvariablen-setzen">gleich wie zuvor&lt;/a> eine neue Umgebungsvariable mit den folgenden Werten:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -554,7 +975,7 @@ Verfügung.&lt;/li>
 versucht Abhängigkeiten über dieses Repository aufzulösen.&lt;/p>
 &lt;h5 id="beispiel-einer-abhängigkeit-junit-jupiter-engine">Beispiel einer Abhängigkeit (junit-jupiter-engine)&lt;/h5>
 &lt;p>Die Dependency &lt;code>junit-jupiter-engine&lt;/code> ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
-einem weit verbreiteten Test-Framework für Java. Im Kapitel &lt;a href="/docs/02_java/08_java-testing/">Testing&lt;/a> wirst diese ausführlich genutzt.&lt;/p>
+einem weit verbreiteten Test-Framework für Java. Im Kapitel &lt;a href="/docs/02_java/10_java-testing/">Testing&lt;/a> wirst diese ausführlich genutzt.&lt;/p>
 &lt;p>Ein weiteres Beispiel für eine Abhängigkeit ist &lt;code>lombok&lt;/code>. Diese Library wird im Kapitel &lt;a href="/docs/02_java/06_lombok/">Lombok&lt;/a> ausführlich
 beschrieben.&lt;/p>
 &lt;h4 id="abschnitt-6">Abschnitt 6&lt;/h4>
@@ -685,10 +1106,10 @@ kannst du das Terminal öffnen und den folgenden Befehl eingeben:&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Das sollte nun in etwa so aussehen:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/05_maven/images/cmd_maven_version.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_maven/images/cmd_maven_version.png" alt="">&lt;/p>
 &lt;h4 id="maven-lifecycle">Maven Lifecycle&lt;/h4>
 &lt;p>Bevor wir die einzelnen Befehle kurz anschauen, werfen wir einen Blick auf die einzelnen Phasen des Maven-Lebenszyklus.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/05_maven/images/maven_livecycle.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_maven/images/maven_livecycle.png" alt="">&lt;/p>
 &lt;p>Jeder in der Grafik genannte Befehl wird zusätzlich die vorangehenden Phasen ausführen.
 Die Ausführung des Befehls &lt;code>mvn package&lt;/code> führt somit die Phasen &lt;em>validate&lt;/em>, &lt;em>compile&lt;/em>, &lt;em>test&lt;/em> und &lt;em>package&lt;/em> aus.&lt;/p>
 &lt;h4 id="help">help&lt;/h4>
@@ -808,200 +1229,12 @@ sparen. Der Parameter kann auch bei anderen Aktionen wie &lt;code>compile&lt;/co
 &lt;/div>
 &lt;/div>&lt;p>Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen Maven-Befehle.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/05_maven/">Aufgaben&lt;/a> in den Labs.&lt;/p>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/06_maven/">Aufgaben&lt;/a> in den Labs.&lt;/p>
 &lt;hr>
 &lt;p>&lt;img src="/images/hint.png" alt="hint-gradle"> (Optional) &lt;strong>Gradle&lt;/strong>: Als Alternative zu Maven wird oft auch das Build-System
 &lt;a href="https://docs.gradle.org/">Gradle&lt;/a> eingesetzt. Unter
 &lt;a href="https://docs.gradle.org/current/samples/sample_building_java_applications.html">Building Java Applications Sample&lt;/a>
-kannst du dir einen ersten Eindruck verschaffen.&lt;/p></description></item><item><title>Docs: Lombok</title><link>/docs/02_java/06_lombok/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/06_lombok/</guid><description>
-&lt;p>Lombok ist ein Java-Library, welche die Entwicklung von Java-Anwendungen erleichtert, indem sie die Erstellung von Standardcode reduziert, insbesondere für Getter, Setter, Konstruktoren und andere repetitive Teile des Codes.
-Es automatisiert die Erstellung dieser Boilerplate-Code-Teile (*) und verbessert somit die Lesbarkeit und Wartbarkeit des Codes.&lt;/p>
-&lt;p>&lt;strong>(*) Info:&lt;/strong>
-Boilerplate-Code ist wiederkehrender Code, der in verschiedenen Teilen einer Softwareanwendung benötigt wird, aber wenig zur eigentlichen Funktionalität beiträgt.&lt;/p>
-&lt;h3 id="wofür-wird-lombok-verwendet">Wofür wird Lombok verwendet?&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Reduzierung des Boilerplate-Codes:&lt;/strong>
-Lombok eliminiert die Notwendigkeit, viele standardmässige Java-Boilerplate-Codezeilen wie Getter, Setter, Konstruktoren und toString-Methoden manuell zu schreiben.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Verbesserte Lesbarkeit:&lt;/strong>
-Durch die Reduzierung von Boilerplate-Code wird der Quellcode klarer und lesbarer, da unnötige Details ausgeblendet werden.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Kompakte Klassen:&lt;/strong>
-Lombok ermöglicht es, Klassen mit weniger Code zu erstellen, was die Wartung und das Verständnis des Codes erleichtert.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>Einige häufig verwendete Annotationen sind &lt;code>@Getter&lt;/code>, &lt;code>@Setter&lt;/code>, &lt;code>@NoArgsConstructor&lt;/code>, &lt;code>@AllArgsConstructor&lt;/code>, usw.&lt;/p>
-&lt;p>In folgendem Beispiel werden Getter und Setter automatisch von Lombok generiert, sobald die Annotationen &lt;code>@Getter&lt;/code> und &lt;code>@Setter&lt;/code> über den Klassenattributen &lt;code>firstname&lt;/code> und &lt;code>lastname&lt;/code> verwendet werden. Jedoch für &lt;code>age&lt;/code> werden sie nicht generiert.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Getter;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Setter;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Getter&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Setter&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String firstname;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Getter&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Setter&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String lastname;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wenn es jedoch alle Klassenattribute betrifft, muss man nicht über jedem Klassenattribut die Annotationen hinzufügen, sondern man kann es auch folgendermassen schreiben.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Getter;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.Setter;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Getter&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@Setter&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String firstname;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String lastname;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;code>@NoArgsConstructor&lt;/code>: Diese Annotation wird verwendet, um einen parameterlosen Konstruktor automatisch zu generieren. Sie ist besonders nützlich, wenn Klassen benötigt werden, welche von Frameworks instanziiert werden müssen.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.NoArgsConstructor;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@NoArgsConstructor&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;code>@AllArgsConstructor&lt;/code>: Diese Annotation wird verwendet, um einen Konstruktor automatisch zu generieren, der alle Felder der Klasse als Parameter akzeptiert. Dieser Konstruktor ist besonders nützlich, wenn eine Klasse erstellt werden soll, bei welcher man den gesamten Zustand über den Konstruktor initialisieren möchte.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> lombok.AllArgsConstructor;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@AllArgsConstructor&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> String name;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> age;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="maven-dependency">Maven Dependency&lt;/h3>
-&lt;p>Im POM.xml muss folgende Dependency hinzugefügt werden.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.projectlombok&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>lombok&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.18.34&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="vorteile-von-lombok">Vorteile von Lombok&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Kompaktheit:&lt;/strong>
-Lombok reduziert die Menge an Code, welcher geschrieben werden muss, um Getter und Setter etc. zu implementieren. Dadurch wird der Quellcode kompakter und einfacher zu lesen.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Zeitersparnis:&lt;/strong>
-Lombok automatisiert die Generierung von Boilerplate-Code, was Entwicklern Zeit spart, die sie sonst mit dem manuellen Schreiben dieser Methoden verbringen würden.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Wartbarkeit:&lt;/strong>
-Durch die Reduzierung von Boilerplate-Code minimiert Lombok die Möglichkeit von Fehlern und erleichtert die Wartung des Codes.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h3 id="nachteile-von-lombok">Nachteile von Lombok&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Transparenz:&lt;/strong>
-Für Entwickler, die nicht mit Lombok vertraut sind, kann der automatisch generierte Code möglicherweise undurchsichtig sein, da er nicht explizit im Quellcode angezeigt wird.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Abhängigkeit:&lt;/strong>
-Die Verwendung von Lombok bedeutet, dass ein Projekt von der Lombok-Library abhängig ist. Wenn man Library-Dependencies minimieren möchten, kann dies als Nachteil angesehen werden.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Weniger Kontrolle:&lt;/strong>
-Bei der Verwendung von Lombok hat man möglicherweise weniger Kontrolle über den generierten Code im Vergleich zur manuellen Implementierung.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h3 id="lombok-mit-intellij">Lombok mit IntelliJ&lt;/h3>
-&lt;p>Falls du in IntelliJ Probleme mit Lombok hast, kann es sein, dass das Annotation-Processing abgestellt ist. Helfen kann der der folgende Artikel: &lt;a href="https://www.baeldung.com/lombok-ide">Baeldung: Setting up Lombok with Eclipse and Intellij&lt;/a>.&lt;/p>
-&lt;hr>
-&lt;p>&lt;img src="/images/hint.png" alt="hint1"> Optional: Finde mehr Informationen zu Lombok und was es kann unter: &lt;a href="https://projectlombok.org/features/">Lombok Features&lt;/a>&lt;/p>
-&lt;hr>
-&lt;div class="alert alert-warning" role="alert">
-&lt;h4 class="alert-heading">Git ready?!&lt;/h4>
-&lt;p>Falls du dich noch nicht intensiver mit Git auseinandergesetzt hast, ist jetzt die Zeit dafür: Erarbeite &lt;a href="/docs/99_shared/collaboration/source-repositories/git/">&lt;strong>Git&lt;/strong>&lt;/a>!&lt;/p>
-&lt;p>Bitte kehre nach Abschluss des Git-Moduls hierhin zurück und fahre mit der nächsten Seite fort.&lt;/p>
-&lt;/div></description></item><item><title>Docs: Objektorientiertes Design</title><link>/docs/02_java/07_java-ood/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/07_java-ood/</guid><description>
+kannst du dir einen ersten Eindruck verschaffen.&lt;/p></description></item><item><title>Docs: Objektorientiertes Design</title><link>/docs/02_java/08_java-ood/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/08_java-ood/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann die Konzepte der Generalisierung und Spezialisierung im Kontext der Vererbung erklären
@@ -1418,7 +1651,7 @@ Klassen und Interfaces.
 Je genereller eine Funktion oder Beschreibung ist, desto höher ist sie stets in der
 Klassenhierarchie. Weiter unten in der Hierarchie sind also die spezialisierten Dinge anzutreffen.&lt;/p>
 &lt;p>Darstellung der Generalisierung mit UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Generalisation.png" alt="UML Generalisierung" title="UML Generalisierung">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Generalisation.png" alt="UML Generalisierung" title="UML Generalisierung">&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1440,8 +1673,8 @@ Klassenhierarchie. Weiter unten in der Hierarchie sind also die spezialisierten 
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Bei der Implementation eines Interfaces mit UML wird die folgende Darstellung verwendet (Interfaces
-werden &lt;a href="/docs/02_java/07_java-ood/#interfaces">weiter unten&lt;/a> erklärt):&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Interface.png" alt="">&lt;/p>
+werden &lt;a href="/docs/02_java/08_java-ood/#interfaces">weiter unten&lt;/a> erklärt):&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Interface.png" alt="">&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -1540,7 +1773,7 @@ Beispiel 2:
 &amp;ldquo;Ein Auto hat einen Fahrer oder eine Fahrerin&amp;rdquo;. Die Existenz des Fahrers / der Fahrerin ist nicht an
 die Existenz des Autos gebunden.&lt;/p>
 &lt;p>Darstellung der Aggregation mit UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Aggregation.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Aggregation.png" alt="">&lt;/p>
 &lt;p>In der Aggregation kann das zugeordnete Objekt unabhängig existieren. Es wird also nicht vollständig
 vom &amp;ldquo;Besitzer&amp;rdquo; (Container-Objekt) kontrolliert.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1599,7 +1832,7 @@ Die Komposition ist&lt;/p>
 Beispiel 2:
 &amp;ldquo;Ein Mensch hat ein Herz.&amp;rdquo; Ein Mensch kann ohne Herz nicht existieren.&lt;/p>
 &lt;p>Darstellung der Komposition in UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Composition.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Composition.png" alt="">&lt;/p>
 &lt;p>In der Komposition existiert das &amp;ldquo;Teil&amp;rdquo;-Objekt nur im Kontext des &amp;ldquo;Ganzen&amp;rdquo;. Es kann nicht unabhängig
 existieren.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1662,7 +1895,7 @@ benutzt wird.&lt;/p>
 &lt;p>Beispiel:
 &amp;ldquo;Eine Musikerin spielt ein Instrument.&amp;rdquo; Sie &amp;ldquo;kennt&amp;rdquo; das Instrument, das sie spielt.&lt;/p>
 &lt;p>Darstellung der Assoziation in UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Association.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Association.png" alt="">&lt;/p>
 &lt;p>Die Assoziation beschreibt eine lose Beziehung zwischen Objekten, die miteinander &amp;ldquo;wissen&amp;rdquo; oder &amp;quot;
 kennen&amp;quot;.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1731,7 +1964,7 @@ klare Richtung hat.&lt;/p>
 Du hast zwei Klassen: Kunde und Bestellung. Es besteht eine gerichtete Assoziation von Kunde zu
 Bestellung. Das bedeutet, dass der Kunde eine oder mehrere Bestellungen kennt, Bestellung weiss aber
 nichts über den Kunden.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/gerichtete_Assoziation.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/gerichtete_Assoziation.png" alt="">&lt;/p>
 &lt;p>Eine gerichtete Assoziation zeigt eine Richtung in der Beziehung zwischen zwei Objekten.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -1805,7 +2038,7 @@ Supplier).&lt;/li>
 Parameter vom Typ der unabhängigen Klasse verwendet. Es ist auch möglich, eine Abhängigkeit ohne
 Objekte zu erstellen, zum Beispiel mit statischen Methoden.&lt;/p>
 &lt;p>Darstellung der Abhängigkeit in UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Dependency.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Dependency.png" alt="">&lt;/p>
 &lt;p>Eine Abhängigkeit zeigt, dass eine Klasse eine andere zum Funktionieren benötigt, aber nicht
 dauerhaft hält.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1936,7 +2169,7 @@ Die überschreibende Methode muss dieselbe Signatur (Methodenname; Anzahl, Typ u
 Parameter) aufweisen.
 Die zu überschreibende Methode darf nicht final sein.&lt;/p>
 &lt;p>Beispiel:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Overriding.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Overriding.png" alt="">&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -2852,7 +3085,7 @@ interne Strukturänderungen dieser Klasse keinen Einfluss auf den Code des Benut
 &lt;/ul>
 &lt;hr>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte
-die &lt;a href="/labs/02_java/07_java-ood/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Testing</title><link>/docs/02_java/08_java-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/08_java-testing/</guid><description>
+die &lt;a href="/labs/02_java/08_java-ood/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Testing</title><link>/docs/02_java/10_java-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/10_java-testing/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss, warum das Testen in der Softwareentwicklung eine zentrale Bedeutung hat.&lt;/li>
@@ -2943,7 +3176,7 @@ Belastungen in der Zukunft minimiert werden können. Hauptsächlich verfolgt das
 meist erst verspätet ermöglicht wird. Grundsätzlich ist es so, dass die aus einem Fehler entstehenden Kosten exponentiell ansteigen, je später ein solcher gefunden und behandelt wird.
 Die untenstehende Grafik veranschaulicht das relativ gut. Während das Beheben eines gefundenen Fehlers beim Erstellen und Prüfen der Anforderungen (Reqs) kaum etwas kostet, sind die
 Kosten im Produktiven-Kontext (PROD) schon um einiges höher.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/kosten_fehler.png" alt="Kostenverlauf für Fehler je nach Zeitpunkt">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/kosten_fehler.png" alt="Kostenverlauf für Fehler je nach Zeitpunkt">&lt;/p>
 &lt;p>Da die meisten Fehler schon sehr früh im Umsetzungs-Ablauf passieren, lohnt es sich enorm, in ein sinnvolles Test-Management zu investieren, da so enorm viele Ressourcen gespart
 werden können.&lt;/p>
 &lt;h3 id="die-unsicherheit-bezüglich-der-qualität-der-software-minimieren">Die Unsicherheit bezüglich der Qualität der Software minimieren&lt;/h3>
@@ -2971,7 +3204,7 @@ Das ISTQB hat gängige, bewährte Praktiken und Terminologien zu einem prinzipie
 &lt;li>Change Management&lt;/li>
 &lt;li>Release Management&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/testprozess_ISTQB.png" alt="ISTQB-Prozess">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/testprozess_ISTQB.png" alt="ISTQB-Prozess">&lt;/p>
 &lt;p>Zu den jeweiligen Phasen gehören jeweils noch die entsprechenden Aktivitäten, namentlich die Planung, Spezifikation, Durchführung, Protokollierung und Auswertung der Tests. Diese Aktvitäten werden per
 ISTQB jeweils in die folgenden Gruppen eingerodnet:&lt;/p>
 &lt;ul>
@@ -3087,12 +3320,12 @@ Alle Bibliotheken sind unter den beiden folgenden Links zu finden:&lt;/p>
 &lt;tr>
 &lt;td>1&lt;/td>
 &lt;td>Ordner für Bibliotheken im Projekt anlegen. Im Projekt (Root) einfach einen neuen Ordner &amp;ldquo;lib&amp;rdquo; erzeugen.&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/08_java-testing/images/1518642046.png" alt="lib-Verzeichnis erstellen">&lt;/td>
+&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1518642046.png" alt="lib-Verzeichnis erstellen">&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>2&lt;/td>
 &lt;td>Die oben genannten JAR-Bibliotheken in den neuen Ordner kopieren&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/08_java-testing/images/1616908690.png" alt="JARs kopieren">&lt;/td>
+&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1616908690.png" alt="JARs kopieren">&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>3&lt;/td>
@@ -3102,22 +3335,22 @@ Alle Bibliotheken sind unter den beiden folgenden Links zu finden:&lt;/p>
 &lt;tr>
 &lt;td>4&lt;/td>
 &lt;td>Auf der linken Seite den Tab &amp;ldquo;Libraries&amp;rdquo; auswählen&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/08_java-testing/images/1518642115.png" alt="Lib-Tab auswählen">&lt;/td>
+&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1518642115.png" alt="Lib-Tab auswählen">&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>5&lt;/td>
 &lt;td>Oben auf das Plus-Icon klicken und Java auswählen&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/08_java-testing/images/1518642153.png" alt="Bibliothek hinzufügen">&lt;/td>
+&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1518642153.png" alt="Bibliothek hinzufügen">&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>6&lt;/td>
 &lt;td>Die vorhin kopierten Bibliotheken auswählen und alle Dialoge mit OK bestätigen&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/08_java-testing/images/1616908730.png" alt="Bibliotheken auswählen">&lt;/td>
+&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1616908730.png" alt="Bibliotheken auswählen">&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>7&lt;/td>
 &lt;td>Die Bibliothek muss anschliessend dem Modul hinzugefügt werden. Der Scope sollte auf Test gestellt werden, da es sich um reine Test-Bibliotheken handelt.&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/08_java-testing/images/1616908738.png" alt="Ins Modul aufnehmen">&lt;/td>
+&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1616908738.png" alt="Ins Modul aufnehmen">&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -3243,7 +3476,7 @@ Alle Bibliotheken sind unter den beiden folgenden Links zu finden:&lt;/p>
 &lt;/div>&lt;p>Füge diese Abhängigkeiten (ohne die optionalen) in dein pom.xml ein. Danach besitzt du alle Bibliotheken, die zur Implementation von Unit-Tests notwendig sind.&lt;/p>
 &lt;h3 id="ordnerstruktur-anlegen">Ordnerstruktur anlegen&lt;/h3>
 &lt;p>Um Unit-Tests implementieren zu können benötigen wir grundsätzlich die folgende Ordnerstruktur im IntelliJ IDEA.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/1518642456.png" alt="Ordnerstruktur IntelliJ IDEA">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/1518642456.png" alt="Ordnerstruktur IntelliJ IDEA">&lt;/p>
 &lt;p>Falls dein Projekt kein Maven-Projekt ist, kannst du die Verzeichnisse einfach manuell anlegen. Mit einem Rechtsklick auf die Verzeichnisse, kannst du sie mit dem Befehl &amp;ldquo;Mark Directory as&amp;rdquo; aus dem Kontext-Menü wie folgt markieren:&lt;/p>
 &lt;table>
 &lt;thead>
@@ -3432,7 +3665,7 @@ Eine Methode innerhalb des Rechtecks dient dazu herauszufinden, ob eine bestimmt
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Damit keine Verwirrung entsteht, hier das verwendete Koordinatensystem.
-&lt;img src="/docs/02_java/08_java-testing/images/1623657498.png" alt="Koordinatensystem">&lt;/p>
+&lt;img src="/docs/02_java/10_java-testing/images/1623657498.png" alt="Koordinatensystem">&lt;/p>
 &lt;p>Wie wir in der Implementation sehen können, gibt es hier vier verschiedene Bedingungen. Das Ziel des Tests muss es also sein, dass wir alle diese Bedingungen überprüfen. Wenn immer möglich, sollten alle möglichen Kombinationen getestet werden. Nur so kann sichergestellt werden, dass die Methode wie gewünscht funktioniert. Aufgrund der AND-Verknüpfung werden die zweiten Bedingungen der jeweiligen Statements nicht mehr ausgewertet. Damit müssen die folgenden Kombinationen durch einen Unit-Test abgedeckt werden&lt;/p>
 &lt;table>
 &lt;thead>
@@ -3569,7 +3802,7 @@ Eine Methode innerhalb des Rechtecks dient dazu herauszufinden, ob eine bestimmt
 &lt;/div>
 &lt;/div>&lt;p>Im IntelliJ gibt es wie bei der Ausführung einer Applikation auch die Möglichkeit einen Unit-Test zu debuggen.
 Zusätzlich können wir die Testabdeckung anschauen, wenn wir den Unit-Test mit &amp;ldquo;Coverage&amp;rdquo; durchlaufen lassen. Wenn der Test erfolgreich durchgelaufen ist, dann kann die getestete Klasse geöffnet werden.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/1623656576.png" alt="Klasse mit Coverage">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/1623656576.png" alt="Klasse mit Coverage">&lt;/p>
 &lt;p>Die grünen Balken auf der linken Seite zeigen die Testabdeckung an. In diesem Fall sind sämtliche Zeilen durch einen Test durchlaufen worden.&lt;/p>
 &lt;p>Da der Unit-Test nun alle Möglichkeiten der Methode abdeckt, kann ein einfaches Refactoring durchgeführt werden. In unserem Fall kann die Methode wie folgt vereinfacht werden:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -4728,7 +4961,7 @@ wobei Rot bedeutet, fehlgeschlagen zu sein, und Grün zeigt einen erfolgreichen 
 Diese Schritte werden dann wiederholt.&lt;/p>
 &lt;h3 id="schritte-eines-test-gesteuerten-entwicklungszyklus">Schritte eines test gesteuerten Entwicklungszyklus&lt;/h3>
 &lt;p>Der test-gesteuerte Entwicklungszyklus besteht aus folgenden, sich immer wiederholenden, Schritten:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/tdd.png" alt="TDD Entwicklungszyklus">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/tdd.png" alt="TDD Entwicklungszyklus">&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Hinzufügen eines Tests, der fehlschlägt&lt;/strong>: Jedes neue Feature in TDD beginnt mit einem Test, der nach seiner Implementation fehlschlagen muss, bevor die Features implementiert werden.&lt;/li>
 &lt;li>&lt;strong>Code schreiben und damit den Test &amp;ldquo;begrünen&amp;rdquo;&lt;/strong>: Es wird nur soviel Code geschrieben, wie zum &amp;ldquo;Begrünen&amp;rdquo; des Tests nötig ist - nicht mehr! (alle bisherigen Tests müssen weiterhin erfolgreich durchlaufen!!)&lt;/li>
@@ -4901,7 +5134,7 @@ welcher sich ändert, wenn das Tier gefressen hat:&lt;/p>
 &lt;p>Der code wird so stetig weiterentwickelt und neue Funktionalitäten werden auf diese Weise Schritt für Schritt und getestet hinzugefügt.
 Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/08_java-testing/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Exception Handling und Optionals</title><link>/docs/02_java/09_java-exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/09_java-exception_handling/</guid><description>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/10_java-testing/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Exception Handling und Optionals</title><link>/docs/02_java/09_java-exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/09_java-exception_handling/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
 &lt;li>Ich kenne die Schlüsselwörter &lt;code>try&lt;/code>, &lt;code>catch&lt;/code>, &lt;code>finally&lt;/code>, &lt;code>throw&lt;/code> und &lt;code>throws&lt;/code>.&lt;/li>
@@ -5848,238 +6081,7 @@ Besser ist es, die Eingabe vor der Verarbeitung zu validieren und Exceptions nur
 &lt;/div>
 &lt;/div>&lt;p>&lt;strong>Fazit&lt;/strong>: Durch die Verwendung von Kontrollstrukturen anstelle von Exceptions für den Programmfluss wird der Code nicht nur sauberer und verständlicher, sondern auch effizienter und robuster.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/09_java-exception_handling/">Aufgaben zu Exception Handling&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Java Collections</title><link>/docs/02_java/10_java-collections/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/10_java-collections/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kann erklären, was Collections sind.&lt;/li>
-&lt;li>Ich kenne grob den Aufbau des Collections-Frameworks.&lt;/li>
-&lt;li>Ich kenne die wichtigsten Interfaces und ihre Merkmale: &lt;code>List&lt;/code>, &lt;code>Set&lt;/code>, &lt;code>Queue&lt;/code>, &lt;code>Map&lt;/code>.&lt;/li>
-&lt;li>Ich verstehe den Einsatz der Hash-Funktion zur Performance-Verbesserung.&lt;/li>
-&lt;li>Ich kenne die wichtigsten Implementierungen und ihre Einsatzmöglichkeiten: &lt;code>ArrayList&lt;/code>, &lt;code>HashSet&lt;/code>, &lt;code>HashMap&lt;/code>.&lt;/li>
-&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>ArrayList&lt;/code>.&lt;/li>
-&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>HashSet&lt;/code>.&lt;/li>
-&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>HashMap&lt;/code>.&lt;/li>
-&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>Stack&lt;/code>.&lt;/li>
-&lt;li>Ich kenne die Funktionsweise und den Unterschied zwischen den Klassen &lt;code>Queue&lt;/code> und &lt;code>Deque&lt;/code> und kann diese anwenden.&lt;/li>
-&lt;li>Ich verstehe die Funktionsweise und Anwendung der Klasse &lt;code>LinkedList&lt;/code>.&lt;/li>
-&lt;/ul>
-&lt;h4 id="voraussetzungen">Voraussetzungen&lt;/h4>
-&lt;ul>
-&lt;li>Gute Grundlagenkenntnisse von Java-Anwendungen.&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="einleitung">Einleitung&lt;/h2>
-&lt;p>Beim Programmieren müssen wir oft Daten speichern bzw. Informationen verwalten, um gewisse Probleme zu lösen.
-In diesem Modul werden wir das Java Collections Framework anschauen, weil dieses Framework uns die Werkzeuge zum
-effizienten Verwalten von Informationen liefert.&lt;/p>
-&lt;p>Eine &lt;strong>Collection&lt;/strong> ist ein Objekt, das eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit
-zusammenfasst. In der Regel enthält eine Collection Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B.
-eine Fussballmannschaft, die eine &amp;ldquo;Sammlung&amp;rdquo; von Fussballspielern ist, d.h. Fussballspieler enthält. Collections bieten
-uns im Allgemeinen die Möglichkeit neue Elemente hinzuzufügen, Elemente zu löschen und sonst die Elemente zu verwalten.&lt;/p>
-&lt;p>Ein bekanntes Beispiel für eine Collection ist die &lt;code>ArrayList&lt;/code> Klasse, wobei eine ArrayList eine Liste von Objekten
-darstellt, welche skalierbar ist. Die &lt;code>ArrayList&lt;/code> Klasse liefert uns beispielsweise die Methode &lt;code>add&lt;/code>, mit welcher
-Elemente an das Ende einer Liste angefügt werden kann:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> farben&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;rot&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;blau&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gelb&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;orange&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Oder sie liefert uns die Methode &lt;code>remove&lt;/code>, welche Elemente aus der Liste entfernt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>List&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span> farben&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">new&lt;/span> ArrayList&lt;span style="color:#f92672">&amp;lt;&lt;/span>String&lt;span style="color:#f92672">&amp;gt;&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;rot&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;blau&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gelb&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>farben.&lt;span style="color:#a6e22e">remove&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;blau&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Wir werden die ArrayList Klasse später noch genauer anschauen.&lt;/p>
-&lt;p>Das &lt;strong>Java Collections Framework&lt;/strong> ist eine Menge von Interfaces und Klassen, die allgemein wiederverwendbare
-Collection-Datenstrukturen liefern. Es bietet uns also sowohl Interfaces, die Collection-Typen definieren, als auch
-Klassen, die diese implementieren an. Obwohl es als Framework bezeichnet wird, funktioniert es im Grunde wie eine Library.&lt;/p>
-&lt;p>Das Java Collections Frameworks stellt für uns &lt;strong>Hochleistungsimplementierungen&lt;/strong> von Datenstrukturen und Algorithmen
-bereit, um Sammlungen von Objekten beliebiger Datentypen darzustellen. Da wir diese Funktionalität nicht immer selbst
-programmieren müssen, reduziert sich für uns der Programmieraufwand markant.&lt;/p>
-&lt;p>Das Java Collections Framework befindet sich im Paket &lt;code>java.util&lt;/code>.&lt;/p>
-&lt;p>Wir haben die &lt;strong>ArrayList&lt;/strong> Klasse (&lt;code>java.util.ArrayList&lt;/code>) als Beispiel für eine Collection gesehen. Die ArrayList Klasse
-repräsentiert eine &lt;strong>Collection vom Typ List&lt;/strong> (implementiert also das Interface &lt;code>java.util.List&lt;/code>) und wird mithilfe von
-zugrunde liegenden Arrays implementiert, deshalb auch der Name ArrayList. Es gibt aber auch andere Klassen, die Collections vom Typ &lt;code>List&lt;/code> darstellen. Wir werden später einige davon noch kennenlernen.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/10_java-collections/images/list.png" alt="list0">&lt;/p>
-&lt;h2 id="theorie">Theorie&lt;/h2>
-&lt;hr>
-&lt;p>Das &lt;strong>Java Collections Framework&lt;/strong> ist eine einheitliche Architektur zur Darstellung und Bearbeitung von Collections, welche
-folgendes enthält:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;strong>Interfaces&lt;/strong>: Dies sind abstrakte Datentypen, die verschiedene Collections darstellen.
-Mithilfe von Interfaces können Collections unabhängig von den Details ihrer Implementierung bearbeitet werden.
-Die Interfaces bilden in Java die Hierarchie aller Collections.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Implementierungen/Klassen&lt;/strong>: Dies sind die konkreten Implementierungen der Collection-Interfaces.
-Im Grunde handelt es sich um wiederverwendbare Datenstrukturen mit konkreten Implementierungen.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Algorithmen/Methoden&lt;/strong>: Dies sind die Methoden, die nützliche Algorithmen,
-wie z. B. Hinzufügen, Löschen, Suchen und Sortieren, von Objekten in Collections durchführen.
-Viele Methoden und Algorithmen sind für verschiedene Arten der Collections wiederverwendbar.&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>Die Interfaces in der folgenden Abbildung (&lt;code>Collection&lt;/code>, &lt;code>Set&lt;/code>, &lt;code>List&lt;/code>, &lt;code>Queue&lt;/code>, &lt;code>Deque&lt;/code>, &lt;code>Map&lt;/code> &amp;hellip;)
-bilden die &lt;strong>Grundlage des Collection Frameworks&lt;/strong>. Durch diese grundlegenden Interfaces bildet sich eine Hierarchie
-innerhalb des Collection Frameworks:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/10_java-collections/images/hierarchy.png" alt="hierarchy">&lt;/p>
-&lt;p>Auf dieser Grafik ist zu sehen, dass zum Beispiel:&lt;/p>
-&lt;ul>
-&lt;li>Sets spezielle Typen von Collections sind. SortedSets wiederum sind spezielle Typen von Sets.&lt;/li>
-&lt;li>Lists sind spezielle Typen von Collections. ArrayLists sind spezielle Typen von Lists.&lt;/li>
-&lt;/ul>
-&lt;p>In der Abbildung sieht man zudem, dass das Collection Framework aus &lt;strong>zwei verschiedenen Teilen&lt;/strong> besteht:
-Zum einen die &lt;strong>Collections&lt;/strong> und zum anderen die &lt;strong>Maps&lt;/strong>. Maps stellen somit keine &amp;ldquo;echten&amp;rdquo; Collections dar. Maps sind
-trotzdem Datenstrukturen zur Darstellung von Sammlungen von Objekten als eine Einheit.&lt;/p>
-&lt;hr>
-&lt;h2 id="collection">Collection&lt;/h2>
-&lt;p>Eine &lt;code>Collection&lt;/code> ist ein Objekt, dass eine Sammlung von Objekten darstellt, d.h. mehrere Elemente zu einer Einheit zusammenfasst.
-In der Regel enthält eine Collection Datenelemente, die zusammen eine natürliche Gruppe bilden, wie z.B. eine Fussballmannschaft, die eine “Sammlung” von Fussballspielern ist, d.h. Fussballspieler enthält.
-Collections bieten uns im Allgemeinen die Möglichkeit neue Elemente hinzuzufügen, Elemente zu löschen und sonst die Elemente zu verwalten.&lt;/p>
-&lt;p>&lt;strong>Allgemeine Methoden:&lt;/strong>&lt;br>
-&lt;code>size()&lt;/code>, &lt;code>isEmpty()&lt;/code>, &lt;code>contains(Object element)&lt;/code>, &lt;code>add(E element)&lt;/code>, &lt;code>remove(Object element)&lt;/code>, &lt;code>clear()&lt;/code>, &lt;code>iterator()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
-&lt;code>containsAll(Collection&amp;lt;?&amp;gt; c)&lt;/code>, &lt;code>addAll(Collection&amp;lt;? extends E&amp;gt; c)&lt;/code>, &lt;code>removeAll(Collection&amp;lt;?&amp;gt; c)&lt;/code>, &lt;code>retainAll(Collection&amp;lt;?&amp;gt; c)&lt;/code>&lt;/p>
-&lt;h3 id="list">List&lt;/h3>
-&lt;p>Eine &lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">List&lt;/a> ist eine geordnete Sequenz, welche duplizierte Elemente erlaubt.
-Zusätzlich zu den geerbten Methoden der &lt;code>Collection&lt;/code> bietet die &lt;code>List&lt;/code> folgende an:&lt;/p>
-&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong>&lt;br>
-&lt;code>get&lt;/code>, &lt;code>set&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Suche nach einem bestimmten Element in der Liste:&lt;/strong>&lt;br>
-&lt;code>indexOf&lt;/code>, &lt;code>lastIndexOf&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Iteriert durch die Liste:&lt;/strong>&lt;br>
-&lt;code>listIterator&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Ein Teilbereich der Liste erstellen:&lt;/strong>&lt;br>
-&lt;code>sublist&lt;/code>&lt;/p>
-&lt;blockquote>
-&lt;p>Folgend sind zwei gängige &lt;code>List&lt;/code> Implementierungen:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html">ArrayList&lt;/a>&lt;/strong> welche in Normalfall die leistungsfähigere Implementation ist. Sie basiert auf einem primitiven Array.&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html">LinkedList&lt;/a>&lt;/strong> welche in bestimmten Situation die effizientere Lösung sein kann.&lt;/li>
-&lt;/ul>&lt;/blockquote>
-&lt;h3 id="set">Set&lt;/h3>
-&lt;p>Ein &lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html">Set&lt;/a> ist eine Collection, in welche man ein Element nur einmal hinzufügen kann.
-Das Set enthält die Funktionen der Collection, stellt aber sicher, dass Elemente nicht doppelt vorkommen können.
-Die &lt;code>equals&lt;/code> und &lt;code>hashCode&lt;/code> Funktionen spielen dabei eine wichtige Rolle.
-Sie definieren, wann zwei Elemente als gleich gelten.&lt;/p>
-&lt;p>&lt;strong>Elemente hinzufügen, löschen und Infos abfragen:&lt;/strong>&lt;br>
-&lt;code>add()&lt;/code>, &lt;code>contains()&lt;/code>, &lt;code>remove()&lt;/code>, &lt;code>clear()&lt;/code>, &lt;code>size()&lt;/code>, &lt;code>isEmpty()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
-&lt;code>addAll()&lt;/code>, &lt;code>removeAll()&lt;/code>, &lt;code>containsAll()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong>&lt;br>
-&lt;code>iterator()&lt;/code>&lt;/p>
-&lt;blockquote>
-&lt;p>Folgend sind 3 gängige &lt;code>Set&lt;/code> Implementationen:&lt;/p>
-&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html">HashSet&lt;/a> - Schnell, aber unsortiert&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Speichert Elemente in keiner bestimmten Reihenfolge.&lt;/li>
-&lt;li>Sehr schnell beim Einfügen und Suchen.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html">TreeSet&lt;/a> – Sortiert, aber langsamer&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Speichert Elemente aufsteigend sortiert.&lt;/li>
-&lt;li>Einfügen und Suchen dauert länger.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashSet.html">LinkedHashSet&lt;/a> – Reihenfolge bleibt erhalten&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Speichert Elemente in der Reihenfolge, in der sie hinzugefügt wurden.&lt;/li>
-&lt;li>Schneller als TreeSet, aber etwas langsamer als HashSet.&lt;/li>
-&lt;/ul>&lt;/blockquote>
-&lt;h3 id="map">Map&lt;/h3>
-&lt;p>Eine &lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html">Map&lt;/a> ist ein Objekt, dass &lt;strong>Schüssel (keys) auf Werte (values) zuordnet&lt;/strong>.
-Eine Map kann nicht zwei gleiche Schlüssel enthalten.
-Jeder Schlüssel zeigt genau auf einen Wert.
-Das Interface Map definiert Grundfunktionen für das Einfügen, Lesen, Löschen, Abfragen von Schlüsseln usw.&lt;/p>
-&lt;p>Zusätzlich zu den vererbten Methoden der &lt;code>Collection&lt;/code> bietet die &lt;code>List&lt;/code> folgende an:&lt;/p>
-&lt;p>&lt;strong>Elemente auf Basis ihrer Position zugreifen:&lt;/strong>&lt;br>
-&lt;code>put()&lt;/code>, &lt;code>get()&lt;/code>, &lt;code>containsKey()&lt;/code>, &lt;code>containsValue()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Sammelmethoden:&lt;/strong>&lt;br>
-&lt;code>putAll()&lt;/code>&lt;/p>
-&lt;p>&lt;strong>Zugriff wie auf eine Collection:&lt;/strong>&lt;br>
-&lt;code>keySet()&lt;/code>, &lt;code>entrySet()&lt;/code>, &lt;code>values()&lt;/code>&lt;/p>
-&lt;blockquote>
-&lt;p>Folgend sind 3 gängige Implementationen von &lt;code>Map&lt;/code>:&lt;/p>
-&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html">HashMap&lt;/a> – Schnell, aber unsortiert&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Speichert Schlüssel-Wert-Paare in keiner bestimmten Reihenfolge.&lt;/li>
-&lt;li>Sehr schnell beim Einfügen und Suchen.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html">TreeMap&lt;/a> – Sortiert, aber langsamer&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Speichert Schlüssel &lt;strong>nach ihrer natürlichen Ordnung&lt;/strong> oder mit einem Comparator.&lt;/li>
-&lt;li>Einfügen und Suchen dauert länger.&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>&lt;a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedHashMap.html">LinkedHashMap&lt;/a> – Reihenfolge bleibt erhalten&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Speichert Schlüssel in der Reihenfolge, in der sie hinzugefügt wurden.&lt;/li>
-&lt;li>Schneller als &lt;code>TreeMap&lt;/code>, aber etwas langsamer als &lt;code>HashMap&lt;/code>.&lt;/li>
-&lt;/ul>&lt;/blockquote>
-&lt;h2 id="performanz">Performanz&lt;/h2>
-&lt;p>Das &lt;strong>Collections-Framework&lt;/strong> nutzt intensiv die &lt;strong>Hash-Funktion&lt;/strong>.
-Klassen wie &lt;code>HashSet&lt;/code> oder &lt;code>HashMap&lt;/code> verwenden die Hash-Funktion zur Steigerung der Performanz.&lt;/p>
-&lt;h3 id="hash-funktion">Hash-Funktion&lt;/h3>
-&lt;p>Alle Java Klassen erben von der Klasse &lt;code>java.lang.Object&lt;/code> die Methode &lt;code>public int hashCode()&lt;/code>.
-Diese liefert ein Hash Code von der eigenen Instanz zurück.
-Bei Java ist dieser ein &lt;code>Integer&lt;/code>.&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;strong>Hashing&lt;/strong> bezeichnet die Umwandlung einer Zeichenfolge in einen numerischen Wert oder Schlüssel mit fester Länge, der in der Regel kürzer ist. Das bedeutet also, aus einem Java Objekt mit verschiedenen Attributen wird eine Zahl berechnet. Immer, wenn das gleiche Objekt wieder berechnet wird, erhält man die gleiche Zahl.&lt;/p>&lt;/blockquote>
-&lt;p>Der Java Hash Code ist nicht immer eindeutig.
-Es kann also vorkommen, dass unterschiedliche Instanzen verschiedener Klassen denselben Hash-Code zurückgeben.
-In der Praxis ist das jedoch kein Problem, da der Hash-Code lediglich für eine &lt;strong>Vorselektion&lt;/strong> genutzt wird.
-Das bedeutet, wenn die Hash Codes nicht gleich sind, sind die Objekte definitiv nicht gleich. Sind die Hash Codes gleich, werden trotzdem noch die Objekte direkt vergleicht.&lt;/p>
-&lt;h4 id="verwendung">Verwendung&lt;/h4>
-&lt;p>Schauen wir uns die Verwendung von &lt;code>Set&lt;/code> an:
-Bei einem Set können wir mit der Methode &lt;code>contains(Object o)&lt;/code> abfragen, ob ein Objekt in einem Set vorhanden ist.
-Das Set muss somit jedes Objekt mit dem Objekt vergleichen, welches wir der Methode &lt;code>contains&lt;/code> übergeben.
-Falls ein Objekt jedoch viele &lt;strong>Instanzvariablen&lt;/strong> (oder Attribute) besitzt – die wiederum Objekte sein können –,
-wäre ein direkter Vergleich potenziell aufwendig.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Bei einer Handvoll Objekte im &lt;code>Set&lt;/code> ist das vernachlässigbar.&lt;/strong>&lt;/li>
-&lt;li>&lt;strong>Bei mehreren tausend Objekten würde die Suche jedoch deutlich ineffizienter.&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;p>Die Klasse &lt;code>HashSet&lt;/code> verfolgt daher eine optimierte Strategie:&lt;/p>
-&lt;ol>
-&lt;li>Beim Hinzufügen eines neuen Objekts berechnet &lt;code>HashSet&lt;/code> dessen Hash-Code mit der Methode hashCode().
-Dieser Hash-Code wird gespeichert.&lt;/li>
-&lt;li>Bei der Methode &lt;code>contains(Object o)&lt;/code> wird der Hash-Code des übergebenen Vergleichsobjekts berechnet.
-Anschliessend wird dieser mit den gespeicherten Hash-Codes verglichen (Integer-Vergleich).&lt;/li>
-&lt;li>Da der Java-Hash-Code nicht eindeutig ist, erfolgt bei Übereinstimmung zusätzlich ein Vergleich mit der Methode &lt;code>equals(Object o)&lt;/code>,
-um sicherzustellen, dass es sich tatsächlich um dasselbe Objekt handelt.&lt;/li>
-&lt;/ol>
-&lt;blockquote>
-&lt;p>Mit der Hash-Code Strategie kann das &lt;code>HashSet&lt;/code> die allermeisten Vergleiche auf einen Integer-Vergleich reduzieren.&lt;/p>&lt;/blockquote>
-&lt;h4 id="anforderung-an-die-hash-berechnung">Anforderung an die Hash Berechnung&lt;/h4>
-&lt;p>Was ist die Anforderung an die Java &lt;code>hashCode()&lt;/code> Methode?&lt;/p>
-&lt;blockquote>
-&lt;ol>
-&lt;li>Die Berechnung muss schnell sein.&lt;/li>
-&lt;li>Der Hash Code sollte in der Praxis meistens eindeutig sein.&lt;/li>
-&lt;/ol>&lt;/blockquote></description></item><item><title>Docs: JDBC (Java Database connection)</title><link>/docs/02_java/11_java-jdbc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/11_java-jdbc/</guid><description>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/09_java-exception_handling/">Aufgaben zu Exception Handling&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: JDBC (Java Database connection)</title><link>/docs/02_java/11_java-jdbc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/11_java-jdbc/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss was die JDBC-Schnittstelle ist und wofür sie benutzt wird&lt;/li>
