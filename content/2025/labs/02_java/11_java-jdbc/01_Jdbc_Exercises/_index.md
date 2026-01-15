@@ -38,7 +38,7 @@ Nutze die folgende Maven-Dependency in deinem pom.xml File:
 
 Achte auf korrektes Exception-Handling (denke an "try with resources") und sauberen Code.
 
-Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/02_java/08_java-testing) gelernt) zu der Umsetzung gehört.
+Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../docs/02_java/10_java-testing) gelernt) zu der Umsetzung gehört.
 
 ---
 

@@ -54,7 +54,7 @@ Der Ablauf, um ein Spring Projekt zu erstellen, findet du in den Docs zu [Spring
 
 ## Unittests
 
-Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 Testing](../../../../docs/02_java/08_java-testing) bereits kennen.
+Schreibe zu den Integrationtests auch noch Unittest. Diese solltest du aus [J4 Testing](../../../../docs/02_java/10_java-testing) bereits kennen.
 
 ---
 
