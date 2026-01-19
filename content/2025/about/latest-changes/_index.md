@@ -68,7 +68,6 @@ _2025-12-09 09:36 CET auf origin/master_
 
 - **Geändert**
   - [Challenges / Java Challenges / java-ood / Objektorientiertes Design Challenge - Vehicles](../../challenges/java/java-ood/02_Vehicles/)
-  - [Exams / Java Exams / Java OOD Exams / Rollenspiel](../../exams/02_java/08_java-ood/01_rollenspiel/)
 
 ---
 
