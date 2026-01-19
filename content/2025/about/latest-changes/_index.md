@@ -68,7 +68,7 @@ _2025-12-09 09:36 CET auf origin/master_
 
 - **Geändert**
   - [Challenges / Java Challenges / java-ood / Objektorientiertes Design Challenge - Vehicles](../../challenges/java/java-ood/02_Vehicles/)
-  - [Exams / Java Exams / Java OOD Exams / Rollenspiel](../../exams/02_java/07_java-ood/01_rollenspiel/)
+  - [Exams / Java Exams / Java OOD Exams / Rollenspiel](../../exams/02_java/08_java-ood/01_rollenspiel/)
 
 ---
 
@@ -170,7 +170,7 @@ _2025-11-12 14:10 CET auf origin/master_
 ### Seiten-Änderungen
 
 - **Geändert**
-  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/07_java-ood/)
+  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/08_java-ood/)
   - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
 
 ---

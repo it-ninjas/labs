@@ -540,12 +540,6 @@ mvn clean install
 
 Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen Maven-Befehle.
 
----
-
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../../archive/java/java/06_maven) in den Labs.
-
----
-
 ![hint-gradle](/images/hint.png) (Optional) **Gradle**: Als Alternative zu Maven wird oft auch das Build-System
 [Gradle](https://docs.gradle.org/) eingesetzt. Unter
 [Building Java Applications Sample](https://docs.gradle.org/current/samples/sample_building_java_applications.html)
