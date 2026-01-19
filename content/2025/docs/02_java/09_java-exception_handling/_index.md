@@ -657,4 +657,3 @@ if (input.matches("\\d+")) { // Überprüfung, ob die Eingabe numerisch ist
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Exception Handling](../../../../../archive/java/09_java-exception_handling) in den Labs.
