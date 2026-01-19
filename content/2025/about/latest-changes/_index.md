@@ -96,6 +96,7 @@ _2025-11-26 09:07 CET auf origin/master_
 - **Geändert**
   - [Docs / Backend (Java) / Spring Framework / Projekt Erstellen](../../docs/02_java/12_spring-framework/08_projekt-erstellen/)
   - [Docs / Übergreifend / Datenbanken / Constraints](../../docs/99_shared/database/03_constraints/)
+
 ---
 
 ## 20251125-1135-143
@@ -171,6 +172,7 @@ _2025-11-12 14:10 CET auf origin/master_
 
 - **Geändert**
   - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
+
 ---
 
 ## 20251028-1409-139
