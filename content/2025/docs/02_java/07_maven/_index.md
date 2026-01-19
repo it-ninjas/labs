@@ -542,7 +542,7 @@ Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen 
 
 ---
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../labs/02_java/06_maven) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../../../archive/java/java/06_maven) in den Labs.
 
 ---
 

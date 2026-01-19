@@ -21,7 +21,7 @@ eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [Git
    [persönliches Repository](../../../../docs/99_shared/collaboration/source-repositories/personal-bitbucket/)
 2. Klone das neue Repository mit IntelliJ IDEA
 
-   ![Create Project from Version Control](./images/02_NewProjectFromVersionControl.png)
+   ![Create Project from Version Control](images/02_NewProjectFromVersionControl.png)
 
    ![Create Project from Version Control Dialog](./images//03_NewProjectFromVersionControlDialog.png)
 
@@ -161,7 +161,7 @@ Erstelle ein neues Projekt, welches wir später für das Modul Unit-Testing verw
 
    Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss das pom.xml noch ausgewählt werden.
 
-   ![Maven Projekt hinterlegen](./images/01_AddMavenAsProject.png)
+   ![Maven Projekt hinterlegen](images/01_AddMavenAsProject.png)
 
 6. Auf der rechten Seite in IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.
 
@@ -234,4 +234,4 @@ Aktualisiere alle Dependencies mit Hilfe des Plugins `org.codehaus.mojo:versions
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/07_maven).
+Hier kannst du [zurück zur Theorie](../../../../../content/2025/docs/02_java/07_maven).
