@@ -656,5 +656,3 @@ if (input.matches("\\d+")) { // Überprüfung, ob die Eingabe numerisch ist
 **Fazit**: Durch die Verwendung von Kontrollstrukturen anstelle von Exceptions für den Programmfluss wird der Code nicht nur sauberer und verständlicher, sondern auch effizienter und robuster.
 
 ---
-
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Exception Handling](../../../labs/02_java/09_java-exception_handling) in den Labs.

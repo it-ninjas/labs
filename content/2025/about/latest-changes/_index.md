@@ -42,7 +42,6 @@ _2026-01-15 08:01 CET auf origin/master_
   - [Labs / Java Labs / Java Exercises - OOD / Zoo](../../labs/02_java/08_java-ood/03_Zoo/)
   - [Labs / Java Labs / Java Exercises - OOD / Shop](../../labs/02_java/08_java-ood/04_Shop/)
   - [Labs / Java Labs / Java Exercises - OOD](../../labs/02_java/08_java-ood/)
-  - [Labs / Java Labs / Java Exercises - Exception Handling](../../labs/02_java/09_java-exception_handling/)
   - [Labs / Java Labs / Java Exercises - Testing / Unit Testing mit JUnit - Aufgaben](../../labs/02_java/10_java-testing/01_unit-testing/)
   - [Labs / Java Labs / Java Exercises - Testing / Mockito - Aufgaben](../../labs/02_java/10_java-testing/02_mockito/)
   - [Labs / Java Labs / Java Exercises - Testing / CI-Pipeline - Aufgaben (optional)](../../labs/02_java/10_java-testing/03_ci/)
@@ -97,7 +96,6 @@ _2025-11-26 09:07 CET auf origin/master_
 - **Geändert**
   - [Docs / Backend (Java) / Spring Framework / Projekt Erstellen](../../docs/02_java/12_spring-framework/08_projekt-erstellen/)
   - [Docs / Übergreifend / Datenbanken / Constraints](../../docs/99_shared/database/03_constraints/)
-  - [Labs / Java Labs / Java Exercises - Maven / Maven - Aufgaben](../../labs/02_java/05_maven/01_Exercises/)
 
 ---
 
@@ -173,7 +171,6 @@ _2025-11-12 14:10 CET auf origin/master_
 ### Seiten-Änderungen
 
 - **Geändert**
-  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/07_java-ood/)
   - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
 
 ---
