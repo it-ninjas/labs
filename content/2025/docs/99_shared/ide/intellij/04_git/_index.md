@@ -70,7 +70,7 @@ build/
 
 {{< ninja type="tip" >}}
 Die Verzeichnisse `target/` und `build/` haben nichts mit IntelliJ zu tun sondern sind Verzeichnisse welche erstellt
-werden, wenn man Maven oder Gradle nutzt (das sind Build-Mamangement Tools, mehr über Maven erfährst Du
+werden, wenn man Maven oder Gradle nutzt (das sind Build-Mamangement Tools)
 {{< /ninja >}}
 
 Die Datei sollte am ende etwa so aussehen:
