@@ -942,6 +942,11 @@ public class Main {
 }
 ```
 
+> **Achtung:** `instanceof` ist kein Ersatz für sauberes Design. Häufig deutet die Notwendigkeit
+> zur Verwendung von `instanceof` auf ein schlechtes Design hin. Es ist oft besser, Polymorphie
+> und Methodenüberschreibung zu nutzen, um unterschiedliche Verhaltensweisen zu implementieren, anstatt
+> den Typ eines Objekts explizit zu überprüfen.
+
 ### Interfaces
 
 Ein Interface dient dem Angebot von Methoden, die durch Klassen zu implementieren sind, welche das
