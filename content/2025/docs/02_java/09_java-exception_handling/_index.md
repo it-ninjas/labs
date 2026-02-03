@@ -654,4 +654,3 @@ if (input.matches("\\d+")) { // Überprüfung, ob die Eingabe numerisch ist
 ```
 
 **Fazit**: Durch die Verwendung von Kontrollstrukturen anstelle von Exceptions für den Programmfluss wird der Code nicht nur sauberer und verständlicher, sondern auch effizienter und robuster.
-
