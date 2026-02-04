@@ -31,7 +31,7 @@ in den Entwicklungsprozess integriert werden:
 - **Testing gibt mehr Sicherheit bei Änderungen am Code,** da damit sichergestellt werden kann, dass die Änderung nicht zu unerwünschten Nebenwirkungen geführt haben.
 - **Testing spart Geld** da damit weniger Nachbearbeitungsaufwand in Form von Bug/Hot-Fixes betrieben werden muss.
 - **Testing führt zu höherer Kundenzufriedenheit** da damit weniger Fehler den Kunden davor hindern, fehlerfrei mit dem Produkt zu arbeiten.
-  
+
 ![Kostenverlauf für Fehler je nach Zeitpunkt](./images/kosten_fehler.png)
 
 ## Testarten
@@ -41,7 +41,7 @@ dass Änderungen am Code wie erwartet funktionieren.
 
 Softwaretests können in zwei Bereiche unterteilt werden: manuelles Testen und automatisiertes Testen.
 Beim manuellen Testen werden Testfälle manuell durch einen Menschen und ohne Unterstützung durch Werkzeuge oder Skripte ausgeführt.  
-Beim automatisierten Testen werden Testfälle jedoch mithilfe von Tools, Skripten und Software ausgeführt.  
+Beim automatisierten Testen werden Testfälle jedoch mithilfe von Tools, Skripten und Software ausgeführt.
 
 Hier werden wir uns auf das automatisierte Testen konzentrieren, da dieses im Softwareentwicklungsprozess
 essenziell ist.
