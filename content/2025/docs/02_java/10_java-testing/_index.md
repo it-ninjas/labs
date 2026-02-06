@@ -483,7 +483,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CalculatorTest {
     private Calculator uut = new Calculator();
 
-    @Test 
+    @Test
     @DisplayName("Ultimate addition test")
     public void givenTwoIntegers_whenAdd_thenSumIsCorrect() {
         // prepare test data
@@ -544,7 +544,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CalculatorTest {
     private Calculator uut = new Calculator();
 
-    @Test 
+    @Test
     @Order(1)
     public void givenTwoIntegers_whenAdd_thenSumIsCorrect() {
         // prepare test data
@@ -686,7 +686,6 @@ wie auch solche, deren echtes Verhalten zum Testzweck nicht interessiert oder so
 (man will aber z.B. wissen, dass diese Systeme/Services vom getesteten Code angesprochen worden sind).
 
 Mockito kann in Unit-Tests wie auch in Integrations-Tests verwendet werden.
-
 
 #### Abhängigkeiten einbinden mit Maven
 
