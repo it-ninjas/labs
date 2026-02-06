@@ -109,3 +109,196 @@ Im Rahmen dieser Dokumentation nehmen wir aber alle diese Teilrollen unter einen
 - Erstellung des detaillierten Testausführungsplans
 - Testautomatisierung
 - (Bereitstellung der Testumgebung mit geeigneten Testdaten)
+
+### Wo kann ich das Framework herunterladen?
+
+Damit wir nun Unit-Tests implementieren können benötigen wir zuerst die Bibliotheken von JUnit 5, dies wird in den beiden folgenden Abschnitten beschrieben.
+
+#### Abhängigkeiten einbinden ohne Maven
+
+Dieser Abschnitt kann übersprungen werden, wenn mit einem Maven-Projekt gearbeitet wird.
+Alle Bibliotheken sind unter den beiden folgenden Links zu finden:
+
+- [org.junit.jupiter](https://search.maven.org/search?q=g:org.junit.jupiter%20AND%20v:5.9.0)
+- [org.junit.platform](https://search.maven.org/search?q=g:org.junit.platform%20AND%20v:1.9.0)
+
+Die folgenden JARs werden benötigt:
+
+- Aus dem ersten Link
+  - junit-jupiter-engine
+  - junit-jupiter-params
+  - junit-jupiter
+  - junit-jupiter-api
+- Aus dem zweiten Link
+  - junit-platform-engine
+  - junit-platform-commons
+
+Die Einbindung in ein Projekt muss (ohne Maven) manuell gemacht werden. Die folgende Anleitung soll dabei helfen:
+
+| #   | Beschreibung                                                                                                                                              | Screenshot                                            |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 1   | Ordner für Bibliotheken im Projekt anlegen. Im Projekt (Root) einfach einen neuen Ordner "lib" erzeugen.                                                  | ![lib-Verzeichnis erstellen](./images/1518642046.png) |
+| 2   | Die oben genannten JAR-Bibliotheken in den neuen Ordner kopieren                                                                                          | ![JARs kopieren](./images/1616908690.png)             |
+| 3   | Projekteinstellungen öffnen. Das Projekt mit einem Klick markieren und Taste F4 drücken. Die Projekteinstellungen werden geöffnet                         |                                                       |
+| 4   | Auf der linken Seite den Tab "Libraries" auswählen                                                                                                        | ![Lib-Tab auswählen](./images/1518642115.png)         |
+| 5   | Oben auf das Plus-Icon klicken und Java auswählen                                                                                                         | ![Bibliothek hinzufügen](./images/1518642153.png)     |
+| 6   | Die vorhin kopierten Bibliotheken auswählen und alle Dialoge mit OK bestätigen                                                                            | ![Bibliotheken auswählen](./images/1616908730.png)    |
+| 7   | Die Bibliothek muss anschliessend dem Modul hinzugefügt werden. Der Scope sollte auf Test gestellt werden, da es sich um reine Test-Bibliotheken handelt. | ![Ins Modul aufnehmen](./images/1616908738.png)       |
+
+#### Abhängigkeiten einbinden mit Maven
+
+Dieser Abschnitt kann übersprungen werden, wenn es sich nicht um ein Maven Projekt handelt.
+
+Seit JUnit 5.4 reicht die folgende Abhängigket für das Project Object Model (pom.xml):
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>5.9.0</version>
+    <scope>test</scope>
+  </dependency>
+</dependencies>
+```
+
+Füge diese Abhängigkeit in dein pom.xml ein. Danach besitzt du alle Bibliotheken, die zur Implementation von Unit-Tests notwendig sind.
+
+---
+
+## Test Driven Development (TDD)
+
+Test Driven Development (TDD) (Testgetriebene Entwicklung) ist ein Softwareentwicklungsansatz,
+bei dem ein Test geschrieben wird, bevor der Code geschrieben wird.
+Sobald der neue Code den Test besteht, wird er auf einen akzeptablen Standard umgestellt.
+
+TDD stellt sicher, dass der Quellcode gründlich getestet wird und zu modularisiertem, flexiblem und
+erweiterbarem Code führt. Es konzentriert sich darauf, nur den Code zu schreiben, der notwendig ist,
+um Tests zu bestehen, wodurch das Design einfach und klar wird.  
+Mit TDD kann der Programmierer beim Schreiben von Software kleine Schritte unternehmen.
+
+Der Test wird vor dem Testen der Funktionalität geschrieben und stellt sicher, dass die Anwendung
+für die Testbarkeit geeignet ist, erst danach wird die Funktionalität implementiert. Dies wird als „Rot-Grün-Refaktor“ bezeichnet,
+wobei Rot bedeutet, fehlgeschlagen zu sein, und Grün zeigt einen erfolgreichen Durchlauf an.
+Diese Schritte werden dann wiederholt.
+
+### Schritte eines test gesteuerten Entwicklungszyklus
+
+Der test-gesteuerte Entwicklungszyklus besteht aus folgenden, sich immer wiederholenden, Schritten:
+
+![TDD Entwicklungszyklus](./images/tdd.png)
+
+- **Hinzufügen eines Tests, der fehlschlägt**: Jedes neue Feature in TDD beginnt mit einem Test, der nach seiner Implementation fehlschlagen muss, bevor die Features implementiert werden.
+- **Code schreiben und damit den Test "begrünen"**: Es wird nur soviel Code geschrieben, wie zum "Begrünen" des Tests nötig ist - nicht mehr! (alle bisherigen Tests müssen weiterhin erfolgreich durchlaufen!!)
+- **Code verbessern, ohne dabei die Funktionalität zu verändern (Refactor)**: Code bereinigen (z.B. das Entfernen von Duplikaten, kleinere Methoden usw.) und auf "Clean Code" Standard bringen
+
+### TDD Walkthrough
+
+In diesem Walkthrough wird der TDD Entwicklungszyklus anhand eines Beispiels erläutert.
+
+In diesem Beispiel geht es darum eine Klasse zu schreiben, welche ein Tier modelliert.
+Das Tier soll uns informieren, ob es Hunger hat oder nicht.
+
+#### Schritt 1: Grundgerüst erstellen
+
+Es wird nur die Klasse erstellt, welche dann getestet werden soll:
+
+```java
+public class Animal {
+}
+```
+
+#### Schritt 2: Fehlschlagender Test schreiben
+
+```java
+public class AnimalTest {
+    @Test
+    public void newAnimal_isHungry_returnTrue() {
+        Animal myAnimal = new Animal();
+        assertTrue(myAnimal.isHungry());
+    }
+}
+```
+
+Zu diesem Zeitpunkt existiert die Methode "isHungry" nicht (Kompilierfehler) und natürlich gibt sie kein "true" zurück.
+Im nächsten Schritt wird die Methode hinzugefügt und der Test "begrünt".
+
+#### Schritt 3: Test "begrünen"
+
+```java
+public class Animal {
+    public boolean isHungry() {
+        return true;
+    }
+}
+```
+
+Der Test, welcher vorher geschrieben wurde, kompiliert nun und kann erfolgreich durchlaufen werden.
+Somit ist dieser Zyklus beendet (es gibt noch nichts, was refactored werden soll)
+
+#### Schritt 4: Neuer, fehlschlagender Test schreiben
+
+```java
+public class AnimalTest {
+    @Test // Dieser Test ist nun grün...
+    public void newAnimal_isHungry_returnTrue() {
+        Animal myAnimal = new Animal();
+        assertTrue(myAnimal.isHungry());
+    }
+
+    @Test
+    public void animalAte_isHungry_returnFalse() {
+      Animal myAnimal = new Animal();
+      animal.eat(); // Kompilierfehler, da es diese Methode noch nicht gibt
+      assertFalse(myAnimal.isHungry());
+    }
+}
+```
+
+#### Schritt 5: zweiter Test "begrünen", ohne den ersten Test "kaputt" zu machen
+
+In diesem Schritt finden wir heraus, dass wir einen Hunger-Zustand für unser Tier haben müssen,
+welcher sich ändert, wenn das Tier gefressen hat:
+
+```java
+public class Animal {
+    private boolean isHungry = true; // müssen wir hier so setzen, damit der erste Test noch funktioniert!
+
+    public boolean isHungry() {
+      if (isHungry) {
+          return true;
+      } else {
+          return false;
+      }
+    }
+
+    public void eat() {
+        isHungry = false;
+    }
+}
+```
+
+Nach diesem Schritt kompiliert der Test wieder erfolgreich und beide Tests werden erfolgreich durchlaufen.
+
+#### Schritt 6: Refactor
+
+Unser Code kann nun eleganter geschrieben werden, ohne dabei die Funktionalität zu ändern:
+
+```java
+public class Animal {
+    private boolean isHungry = true;
+
+    public boolean isHungry() {
+        return isHungry; // if-else ersetzt, da nicht nötig
+    }
+
+    public void eat() {
+        isHungry = false;
+    }
+}
+```
+
+Somit ist auch dieser Zyklus beendet.
+
+Der code wird so stetig weiterentwickelt und neue Funktionalitäten werden auf diese Weise Schritt für Schritt und getestet hinzugefügt.
+Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.
