@@ -512,7 +512,7 @@ public interface GradeRepository extends JpaRepository<Grade, Integer> {
 
 ### Möglichkeit 2: JDBC-Template
 
-Wer nicht mehr genau weiss was JDBC ist kann es [hier](../../11_java-jdbc) nachlesen.
+Wer nicht mehr genau weiss was JDBC ist kann es [hier](../../10_java-jdbc) nachlesen.
 
 #### Dependency
 

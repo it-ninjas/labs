@@ -29,10 +29,10 @@ _2026-01-15 08:01 CET auf origin/master_
   - [Docs / Backend (Java) / Java Collections / LinkedList](../../docs/02_java/05_java-collections/07_linked-list/)
   - [Docs / Backend (Java) / Java Collections / Streams Basics](../../docs/02_java/05_java-collections/08_streams/)
   - [Docs / Backend (Java) / Java Collections](../../docs/02_java/05_java-collections/)
-  - [Docs / Backend (Java) / Maven](../../docs/02_java/07_maven/)
-  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/08_java-ood/)
+  - [Docs / Backend (Java) / Maven](../../docs/02_java/11_maven/)
+  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/07_java-ood/)
   - [Docs / Backend (Java) / Exception Handling und Optionals](../../docs/02_java/09_java-exception_handling/)
-  - [Docs / Backend (Java) / Testing](../../docs/02_java/10_java-testing/)
+  - [Docs / Backend (Java) / Testing](../../docs/02_java/08_java-testing/)
   - [Docs / Backend (Java) / Spring Framework / Spring Boot Testing](../../docs/02_java/12_spring-framework/10_spring-boot-testing/)
   - [Docs / Landing Pages / Testing](../../docs/98_landing/testing/)
   - [Docs / Übergreifend / Entwicklungsumgebungen - IDE / IntelliJ IDEA – dein Einstieg ins professionelle Programmieren / Git mit IntelliJ nutzen](../../docs/99_shared/ide/intellij/04_git/)
@@ -169,7 +169,7 @@ _2025-11-12 14:10 CET auf origin/master_
 ### Seiten-Änderungen
 
 - **Geändert**
-  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/08_java-ood/)
+  - [Docs / Backend (Java) / Objektorientiertes Design](../../docs/02_java/07_java-ood/)
   - [Docs / Frontend (Web) / TypeScript / Einführung in TypeScript](../../docs/03_frontend/05_typescript/01_intro-typescript/)
 
 ---
