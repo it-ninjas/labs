@@ -2609,7 +2609,12 @@ Interfaces.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="interfaces">Interfaces&lt;/h3>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;strong>Achtung:&lt;/strong> &lt;code>instanceof&lt;/code> ist kein Ersatz für sauberes Design. Häufig deutet die Notwendigkeit
+zur Verwendung von &lt;code>instanceof&lt;/code> auf ein schlechtes Design hin. Es ist oft besser, Polymorphie
+und Methodenüberschreibung zu nutzen, um unterschiedliche Verhaltensweisen zu implementieren, anstatt
+den Typ eines Objekts explizit zu überprüfen.&lt;/p>&lt;/blockquote>
+&lt;h3 id="interfaces">Interfaces&lt;/h3>
 &lt;p>Ein Interface dient dem Angebot von Methoden, die durch Klassen zu implementieren sind, welche das
 Interface &amp;ldquo;implementieren&amp;rdquo;. Damit definiert ein Interface einen Satz von bestimmten Funktionen, die
 allen implementierenden Klassen des Interfaces gleich sind. Ein Interface muss dabei nicht zwingend
@@ -3110,12 +3115,13 @@ in den Entwicklungsprozess integriert werden:&lt;/p>
 &lt;li>&lt;strong>Testing spart Geld&lt;/strong> da damit weniger Nachbearbeitungsaufwand in Form von Bug/Hot-Fixes betrieben werden muss.&lt;/li>
 &lt;li>&lt;strong>Testing führt zu höherer Kundenzufriedenheit&lt;/strong> da damit weniger Fehler den Kunden davor hindern, fehlerfrei mit dem Produkt zu arbeiten.&lt;/li>
 &lt;/ul>
+&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/kosten_fehler.png" alt="Kostenverlauf für Fehler je nach Zeitpunkt">&lt;/p>
 &lt;h2 id="testarten">Testarten&lt;/h2>
 &lt;p>Es gibt viele verschiedene Softwaretestverfahren und Methoden, mit denen sichergestellt werden kann,
 dass Änderungen am Code wie erwartet funktionieren.&lt;/p>
 &lt;p>Softwaretests können in zwei Bereiche unterteilt werden: manuelles Testen und automatisiertes Testen.
 Beim manuellen Testen werden Testfälle manuell durch einen Menschen und ohne Unterstützung durch Werkzeuge oder Skripte ausgeführt.&lt;br>
-Beim automatisierten Testen werden Testfälle jedoch mithilfe von Tools, Skripten und Software ausgeführt.&lt;br>&lt;/p>
+Beim automatisierten Testen werden Testfälle jedoch mithilfe von Tools, Skripten und Software ausgeführt.&lt;/p>
 &lt;p>Hier werden wir uns auf das automatisierte Testen konzentrieren, da dieses im Softwareentwicklungsprozess
 essenziell ist.&lt;/p>
 &lt;h3 id="unit-tests">Unit-Tests&lt;/h3>
@@ -3162,95 +3168,6 @@ und den Umgang mit gefundenen Fehlern kümmert.&lt;/p>
 hauptsächlich funktionale Anforderungen wie beispielsweise eine Anmeldefunktion geprüft werden, werden mit Akzeptanz-Tests auch
 nicht-funktionale Anforderungen wie bspw. die Latenz von Anfragen geprüft.&lt;/p>
 &lt;hr>
-&lt;h2 id="testmanagement">Testmanagement&lt;/h2>
-&lt;p>Unter Testmanagement versteht man die geplante und effiziente Koordination aller Testprozesse, die die Qualität von Software optimieren und langfristig gewährleisten.
-Grundsätzlich wird so die Identifizierung von und Reduzierung teilweise versteckter Qualitätsrisiken ermöglicht, womit potenzielle zukünftig auftretende finanzielle und aufwandstechnische
-Belastungen in der Zukunft minimiert werden können. Hauptsächlich verfolgt das Testmanagement also 2 Ziele:&lt;/p>
-&lt;ul>
-&lt;li>Möglichst früh Software-Fehler aufdecken.&lt;/li>
-&lt;li>Die Unsicherheit bezüglich der Qualität der Software minimieren.&lt;/li>
-&lt;/ul>
-&lt;p>Diese beiden Punkte sollen nachfolgend noch ein Stück ausformuliert werden.&lt;/p>
-&lt;h3 id="möglichst-früh-software-fehler-aufdecken">Möglichst früh Software-Fehler aufdecken&lt;/h3>
-&lt;p>Oft ist es so, dass in der Entwicklung, Anpassungen oder Installation von Software erst recht spät getestet wird, was dazu führt, dass eine entsprechende Reaktion auf einen Fehler
-meist erst verspätet ermöglicht wird. Grundsätzlich ist es so, dass die aus einem Fehler entstehenden Kosten exponentiell ansteigen, je später ein solcher gefunden und behandelt wird.
-Die untenstehende Grafik veranschaulicht das relativ gut. Während das Beheben eines gefundenen Fehlers beim Erstellen und Prüfen der Anforderungen (Reqs) kaum etwas kostet, sind die
-Kosten im Produktiven-Kontext (PROD) schon um einiges höher.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/kosten_fehler.png" alt="Kostenverlauf für Fehler je nach Zeitpunkt">&lt;/p>
-&lt;p>Da die meisten Fehler schon sehr früh im Umsetzungs-Ablauf passieren, lohnt es sich enorm, in ein sinnvolles Test-Management zu investieren, da so enorm viele Ressourcen gespart
-werden können.&lt;/p>
-&lt;h3 id="die-unsicherheit-bezüglich-der-qualität-der-software-minimieren">Die Unsicherheit bezüglich der Qualität der Software minimieren&lt;/h3>
-&lt;p>Es ist oft schwierig, einen guten Ausgleich zwischen einer guten Testabdeckung und einer lohnenswerten Wirtschaftlichkeit für das Unternehmen zu finden, da beispielsweise eine Testabdeckung
-von 100% bei einer App schon sehr teuer werden kann. Daher ist es auch ein Fehlschluss, dass man mit genügend Tests sicherstellen könne, dass eine Software &lt;strong>fehlerfrei&lt;/strong> ist. Testmanagement
-hat daher zum Ziel, die Unsicherheit, dass eine Software &lt;strong>kritische&lt;/strong> Fehler enthält, soweit zu minimieren, dass eine Produktivsetzung der App ohne schlechtes Gewissen durchgeführt werden kann.
-Testmanagement hat daher &lt;strong>nicht&lt;/strong> zum Ziel, dass eine Software absolut fehlerfrei ist.&lt;/p>
-&lt;h3 id="vorteile-von-testmanagement">Vorteile von Testmanagement&lt;/h3>
-&lt;p>Ein strukturiertes Testmanagement mit klar verteilten Rollen, Verantwortlichkeiten und Aufgaben resultiert zumeist in einigen Vorteilen, beispielsweise den folgenden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Kostenreduktion&lt;/strong>: Da Fehler oft zu einem früheren Zeitpunkt gefunden werden, wenn ein sinnvolles Testmanagement umgesetzt wird, können viele sonst entstehende Mehrkosten vermieden werden.
-Zudem bestehen in diesem Fall auch geringe Wartungsaufwände durch wiederholbare Tests und Klarheit in Bezug auf die zu testenden Anforderungen. Auch so kann stellenweise viel Geld gespart werden.&lt;/li>
-&lt;li>&lt;strong>Bessere Planbarkeit&lt;/strong> der Testphasen durch bekannte Testumfänge.&lt;/li>
-&lt;li>&lt;strong>Personenunabhängige Tests&lt;/strong> durch ausreichende Testfalldefinitionen und -dokumentation, was je nachdem sogar ein Outsourcing des Testings erlaubt.&lt;/li>
-&lt;li>Stetige &lt;strong>Verbesserung der Softwarequalität&lt;/strong> durch das Leben und durchgehende Verbessern des Testmanagements.&lt;/li>
-&lt;li>Potenzielle Ressourcen- und Zeiteinsparung durch automatisierte Tests.&lt;/li>
-&lt;/ul>
-&lt;h3 id="der-testprozess-nach-istqb">Der Testprozess nach ISTQB&lt;/h3>
-&lt;p>Ein offizieller Testprozess, nachdem man sich grundsätzlich ausrichten kann, ist der des International Software Testing Qualitications Board. (ISTQB)
-Das ISTQB hat gängige, bewährte Praktiken und Terminologien zu einem prinzipiell universell anwendbaren Standard gebündelt, auf den nachfolgend etwas genauer eingegangen werden soll.&lt;/p>
-&lt;p>Der ISTQB-Prozess besteht grundsätzlich aus 4 Testphasen:&lt;/p>
-&lt;ul>
-&lt;li>Incident Management&lt;/li>
-&lt;li>Problem Management&lt;/li>
-&lt;li>Change Management&lt;/li>
-&lt;li>Release Management&lt;/li>
-&lt;/ul>
-&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/testprozess_ISTQB.png" alt="ISTQB-Prozess">&lt;/p>
-&lt;p>Zu den jeweiligen Phasen gehören jeweils noch die entsprechenden Aktivitäten, namentlich die Planung, Spezifikation, Durchführung, Protokollierung und Auswertung der Tests. Diese Aktvitäten werden per
-ISTQB jeweils in die folgenden Gruppen eingerodnet:&lt;/p>
-&lt;ul>
-&lt;li>Testplanung und -steuerung&lt;/li>
-&lt;li>Testanalyse und -design&lt;/li>
-&lt;li>Testrealisierung und -durchführung&lt;/li>
-&lt;li>Testauswertung und -bericht&lt;/li>
-&lt;li>Abschluss&lt;/li>
-&lt;/ul>
-&lt;h3 id="rollen-im-testmanagement">Rollen im Testmanagement&lt;/h3>
-&lt;p>Es gibt innerhalb des Testmanagements viele verschiedene Rollen, die jeweils verschiedene Tätigkeiten verfolgen. Wie man diese unterscheidet, ist jeweils abhängig von der Tiefe der Betrachtung pro Fall,
-der Einfachheit nehmen wir hier aber die einfachste Unterscheidung mit 2 Rollen; einmal der des Testmanagers und einmal der des Testers.&lt;/p>
-&lt;h4 id="testmanager">Testmanager&lt;/h4>
-&lt;p>Der Testmanager ist für den gesamten, übergreifenden Testprozess und die erfolgreiche Durchführung der Testaktivitäten zu verantworten. Da es sich hier um eine rein koordinative Arbeit handelt, kann diese Rolle
-von verschiedenen Personen übernommen werden. Wenn es der technische Prozess fordert, kann das ein professioneller Testmanager sein, in anderen Fällen kann es aber genau so gut ein Projektleiter ohne grossen technischen
-Hintergrund sein.&lt;/p>
-&lt;p>Typische Aufgaben eines Testmanagers umfassen:&lt;/p>
-&lt;ul>
-&lt;li>Das Festlegen der Testrategie und -vorgaben für das Unternehmen&lt;/li>
-&lt;li>Das Erstellen und Aktualisieren von Testplänen&lt;/li>
-&lt;li>Das Koordinieren der Testpläne zwischen verschiedenen Stakeholdern&lt;/li>
-&lt;li>Das Einplanen und Anstossen der verschiedenen Testaktivitäten wie der Testanalyse, dem Testdesign, der Testimplementierung und der Testdurchführung.&lt;/li>
-&lt;li>Das Monitoring (Überwachen) der Testfortschritte und -ergebnisse&lt;/li>
-&lt;li>Das Berichten über die Testfortschritte und -ergebnisse&lt;/li>
-&lt;/ul>
-&lt;p>Diese Aufgaben sind nicht als fixe Beschreibung der Rolle eines Testmanagers zu verstehen, sondern mehr als Beispiele. Je nach Grösse des Unternehmens, Anforderungen an das Testmanagement und das Produkt selbst und gegebener Zeit
-können andere Aufgaben dazukommen oder genannte Aufgaben wegfallen. Eine Priorisierung dieser Aufgaben ist somit für jeden Fall unterschiedlich.&lt;/p>
-&lt;h4 id="tester">Tester&lt;/h4>
-&lt;p>Ein Tester übernimmt grundsätzlich alle operativen Aufgaben innerhalb des Testprozesses, wobei das Durchführen der Tests nur eine Aufgabe darstellt, die der Tester übernimmt.
-Je nachdem, welches Rollenmodell verfolgt wird, wird innerhalb der Rolle des Testers noch weiter zwischen einzelnen rollen unterschieden. Das können beispielsweise die folgenden sein:&lt;/p>
-&lt;ul>
-&lt;li>Testdesigner&lt;/li>
-&lt;li>Testautomatisierer&lt;/li>
-&lt;li>Testarchitekt&lt;/li>
-&lt;li>etc.&lt;/li>
-&lt;/ul>
-&lt;p>Im Rahmen dieser Dokumentation nehmen wir aber alle diese Teilrollen unter einen Hut als &amp;ldquo;Tester&amp;rdquo;. Typische Aufgaben in dieser Rolle können das Folgende umfassen:&lt;/p>
-&lt;ul>
-&lt;li>Prüfen der Anforderungen, Spezifikationen und Akzeptanzkriterien in Bezug auf die Testbarkeit&lt;/li>
-&lt;li>Identifizieren und Dokumentieren der Testvoraussetzungen&lt;/li>
-&lt;li>Erstellung und Implementation von Testfällen und Testprozeduren&lt;/li>
-&lt;li>Erstellung des detaillierten Testausführungsplans&lt;/li>
-&lt;li>Testautomatisierung&lt;/li>
-&lt;li>(Bereitstellung der Testumgebung mit geeigneten Testdaten)&lt;/li>
-&lt;/ul>
-&lt;hr>
 &lt;h2 id="junit">JUnit&lt;/h2>
 &lt;p>Zur Implementation von Unit-Tests steht in Java das Framework JUnit zur Verfügung.
 Die aktuellste Version ist 5.9.0. Dies ändert aber stetig, da das Produkt laufend weiterentwickelt wird.
@@ -3282,81 +3199,32 @@ Wir schreiben Unit-Tests also mit JUnit 5.&lt;/p>
 &lt;/tbody>
 &lt;/table>
 &lt;h3 id="wo-kann-ich-das-framework-herunterladen">Wo kann ich das Framework herunterladen?&lt;/h3>
-&lt;p>Damit wir nun Unit-Tests implementieren können benötigen wir zuerst die Bibliotheken von JUnit 5, dies wird in den beiden folgenden Abschnitten beschrieben.&lt;/p>
-&lt;h4 id="abhängigkeiten-einbinden-ohne-maven">Abhängigkeiten einbinden ohne Maven&lt;/h4>
-&lt;p>Dieser Abschnitt kann übersprungen werden, wenn mit einem Maven-Projekt gearbeitet wird.
-Alle Bibliotheken sind unter den beiden folgenden Links zu finden:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://search.maven.org/search?q=g:org.junit.jupiter%20AND%20v:5.9.0">org.junit.jupiter&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://search.maven.org/search?q=g:org.junit.platform%20AND%20v:1.9.0">org.junit.platform&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>Die folgenden JARs werden benötigt:&lt;/p>
-&lt;ul>
-&lt;li>Aus dem ersten Link
-&lt;ul>
-&lt;li>junit-jupiter-engine&lt;/li>
-&lt;li>junit-jupiter-params&lt;/li>
-&lt;li>junit-jupiter&lt;/li>
-&lt;li>junit-jupiter-api&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Aus dem zweiten Link
-&lt;ul>
-&lt;li>junit-platform-engine&lt;/li>
-&lt;li>junit-platform-commons&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>Die Einbindung in ein Projekt muss (ohne Maven) manuell gemacht werden. Die folgende Anleitung soll dabei helfen:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>#&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;th>Screenshot&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>1&lt;/td>
-&lt;td>Ordner für Bibliotheken im Projekt anlegen. Im Projekt (Root) einfach einen neuen Ordner &amp;ldquo;lib&amp;rdquo; erzeugen.&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1518642046.png" alt="lib-Verzeichnis erstellen">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>2&lt;/td>
-&lt;td>Die oben genannten JAR-Bibliotheken in den neuen Ordner kopieren&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1616908690.png" alt="JARs kopieren">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>3&lt;/td>
-&lt;td>Projekteinstellungen öffnen. Das Projekt mit einem Klick markieren und Taste F4 drücken. Die Projekteinstellungen werden geöffnet&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>4&lt;/td>
-&lt;td>Auf der linken Seite den Tab &amp;ldquo;Libraries&amp;rdquo; auswählen&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1518642115.png" alt="Lib-Tab auswählen">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>5&lt;/td>
-&lt;td>Oben auf das Plus-Icon klicken und Java auswählen&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1518642153.png" alt="Bibliothek hinzufügen">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>6&lt;/td>
-&lt;td>Die vorhin kopierten Bibliotheken auswählen und alle Dialoge mit OK bestätigen&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1616908730.png" alt="Bibliotheken auswählen">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>7&lt;/td>
-&lt;td>Die Bibliothek muss anschliessend dem Modul hinzugefügt werden. Der Scope sollte auf Test gestellt werden, da es sich um reine Test-Bibliotheken handelt.&lt;/td>
-&lt;td>&lt;img src="/docs/02_java/10_java-testing/images/1616908738.png" alt="Ins Modul aufnehmen">&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4 id="abhängigkeiten-einbinden-mit-maven">Abhängigkeiten einbinden mit Maven&lt;/h4>
-&lt;p>Dieser Abschnitt kann übersprungen werden, wenn es sich nicht um ein Maven Projekt handelt.&lt;/p>
-&lt;p>Die entsprechenden Abhängigkeiten für das Project Object Model (pom.xml) sind:&lt;/p>
+&lt;p>Damit wir nun Unit-Tests implementieren können benötigen wir zuerst die Bibliotheken von JUnit 5, dies wird in diesem Abschnitt beschrieben.&lt;/p>
+&lt;p>Seit JUnit 5.4 reicht die folgende Abhängigket für das Project Object Model (pom.xml):&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;dependencies&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.jupiter&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-jupiter&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>5.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;/dependencies&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Füge diese Abhängigkeit in dein pom.xml ein. Danach besitzt du alle Bibliotheken, die zur Implementation von Unit-Tests notwendig sind. Die Erklärung zu Maven und der Datei pom.xml kommen später.&lt;/p>
+&lt;p>Wenn du noch keine pom.xml Datei hast, ist hier noch ein komplettes Beispiel aufgeführt:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -3386,94 +3254,38 @@ Alle Bibliotheken sind unter den beiden folgenden Links zu finden:&lt;/p>
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
 &lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;dependencies&amp;gt;&lt;/span>
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;project&lt;/span> &lt;span style="color:#a6e22e">xmlns=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;modelVersion&amp;gt;&lt;/span>4.0.0&lt;span style="color:#f92672">&amp;lt;/modelVersion&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>ch.sbb.tafy.examples&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>maventesting&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.0-SNAPSHOT&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependencies&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Plattform --&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.jupiter&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-jupiter&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>5.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>5.12.2&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependencies&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- API, enthält unter anderem alle Annotationen --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.jupiter&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-jupiter-api&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>5.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;properties&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;maven.compiler.source&amp;gt;&lt;/span>21&lt;span style="color:#f92672">&amp;lt;/maven.compiler.source&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;maven.compiler.target&amp;gt;&lt;/span>21&lt;span style="color:#f92672">&amp;lt;/maven.compiler.target&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;project.build.sourceEncoding&amp;gt;&lt;/span>UTF-8&lt;span style="color:#f92672">&amp;lt;/project.build.sourceEncoding&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/properties&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Test-Engine zur Ausführung von Unit-Tests, die mit JUnit 5 geschrieben wurden --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.jupiter&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-jupiter-engine&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>5.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- JUnit 5 Erweiterung für parametrisierte Tests (Optional) --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.jupiter&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-jupiter-params&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>5.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Test-Enginge zur Ausführung von Unit-Tests, die mit JUnit 3 oder JUnit 4 geschrieben wurden (Optional) --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.vintage&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-vintage-engine&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>5.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Bibliotheken für die Ausführung von Unit-Tests --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.platform&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-platform-engine&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;groupId&amp;gt;&lt;/span>org.junit.platform&lt;span style="color:#f92672">&amp;lt;/groupId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;artifactId&amp;gt;&lt;/span>junit-platform-commons&lt;span style="color:#f92672">&amp;lt;/artifactId&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;version&amp;gt;&lt;/span>1.9.0&lt;span style="color:#f92672">&amp;lt;/version&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;scope&amp;gt;&lt;/span>test&lt;span style="color:#f92672">&amp;lt;/scope&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;lt;/dependency&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;/dependencies&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;/project&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Füge diese Abhängigkeiten (ohne die optionalen) in dein pom.xml ein. Danach besitzt du alle Bibliotheken, die zur Implementation von Unit-Tests notwendig sind.&lt;/p>
+&lt;/div>&lt;p>Speichere diese Datei im Basisverzeichnis deines Projekts ab.&lt;/p>
 &lt;h3 id="ordnerstruktur-anlegen">Ordnerstruktur anlegen&lt;/h3>
 &lt;p>Um Unit-Tests implementieren zu können benötigen wir grundsätzlich die folgende Ordnerstruktur im IntelliJ IDEA.&lt;/p>
 &lt;p>&lt;img src="/docs/02_java/10_java-testing/images/1518642456.png" alt="Ordnerstruktur IntelliJ IDEA">&lt;/p>
@@ -4200,6 +4012,9 @@ Wenn wir den Test parametrisieren, können wir die Test-Methode wiederverwenden.
 &lt;/div>
 &lt;/div>&lt;p>Die Annotation @Order wird nur verwendet, wenn der Typ der Ausführung OrderAnnation.class ist.
 Weitere Angaben sind &amp;ldquo;Alphanumeric&amp;rdquo; (Sortierung nach Methodenname) und &amp;ldquo;Random&amp;rdquo; (Zufällige Ausführungsreihenfolge).&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Achtung:&lt;/strong> Die Reihenfolge der Ausführung von Tests sollte möglichst vermieden werden werden. Ein Unit-Test sollte
+für sich alleine stehend funktionieren und nicht von anderen Tests abhängen.&lt;/p>&lt;/blockquote>
 &lt;h3 id="daten-initialisieren--aufräumen">Daten initialisieren / aufräumen&lt;/h3>
 &lt;p>Mit den Annotationen @BeforeEach, @AfterEach, @BeforeAll und @AfterAll können bestimmte Initialisierungen und Aufräumarbeiten vor und nach Unit-Tests ausgeführt werden.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -4379,15 +4194,7 @@ Mockito ermöglicht auch andere Systeme/Services zu simulieren, welche z.B. von 
 wie auch solche, deren echtes Verhalten zum Testzweck nicht interessiert oder sogar nicht erwünscht ist
 (man will aber z.B. wissen, dass diese Systeme/Services vom getesteten Code angesprochen worden sind).&lt;/p>
 &lt;p>Mockito kann in Unit-Tests wie auch in Integrations-Tests verwendet werden.&lt;/p>
-&lt;h3 id="wo-kann-ich-das-framework-herunterladen-1">Wo kann ich das Framework herunterladen?&lt;/h3>
-&lt;p>Wie bei JUnit, werden auch für die Arbeit mit Mockito die Bibliotheken davon benötigt.&lt;/p>
-&lt;h4 id="abhängigkeiten-einbinden-ohne-maven-1">Abhängigkeiten einbinden ohne Maven&lt;/h4>
-&lt;p>Dieser Abschnitt kann übersprungen werden, wenn mit einem Maven-Projekt gearbeitet wird.
-Das letzte Release (aktuell 5.3.1) kann hier heruntergeladen werden:
-&lt;a href="https://repo1.maven.org/maven2/org/mockito/mockito-core/5.3.1/mockito-core-5.3.1.jar">Mockito Core 5.3.1 Jar-Datei&lt;/a>&lt;/p>
-&lt;p>Die Heruntergeladene Jar-Datei kann nun genau wie die JUnit-Jar-Dateien eingebunden werden.&lt;/p>
-&lt;h4 id="abhängigkeiten-einbinden-mit-maven-1">Abhängigkeiten einbinden mit Maven&lt;/h4>
-&lt;p>Dieser Abschnitt kann übersprungen werden, wenn es sich nicht um ein Maven Projekt handelt.&lt;/p>
+&lt;h4 id="abhängigkeiten-einbinden-mit-maven">Abhängigkeiten einbinden mit Maven&lt;/h4>
 &lt;p>Die entsprechende Abhängigkeit für das Project Object Model (pom.xml) ist:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -4947,193 +4754,6 @@ Geprüft werden kann unter anderem folgendes (weitere Prüfungen werden &lt;a hr
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;hr>
-&lt;h2 id="test-driven-development-tdd">Test Driven Development (TDD)&lt;/h2>
-&lt;p>Test Driven Development (TDD) (Testgetriebene Entwicklung) ist ein Softwareentwicklungsansatz,
-bei dem ein Test geschrieben wird, bevor der Code geschrieben wird.
-Sobald der neue Code den Test besteht, wird er auf einen akzeptablen Standard umgestellt.&lt;/p>
-&lt;p>TDD stellt sicher, dass der Quellcode gründlich getestet wird und zu modularisiertem, flexiblem und
-erweiterbarem Code führt. Es konzentriert sich darauf, nur den Code zu schreiben, der notwendig ist,
-um Tests zu bestehen, wodurch das Design einfach und klar wird.&lt;br>
-Mit TDD kann der Programmierer beim Schreiben von Software kleine Schritte unternehmen.&lt;/p>
-&lt;p>Der Test wird vor dem Testen der Funktionalität geschrieben und stellt sicher, dass die Anwendung
-für die Testbarkeit geeignet ist, erst danach wird die Funktionalität implementiert. Dies wird als „Rot-Grün-Refaktor“ bezeichnet,
-wobei Rot bedeutet, fehlgeschlagen zu sein, und Grün zeigt einen erfolgreichen Durchlauf an.
-Diese Schritte werden dann wiederholt.&lt;/p>
-&lt;h3 id="schritte-eines-test-gesteuerten-entwicklungszyklus">Schritte eines test gesteuerten Entwicklungszyklus&lt;/h3>
-&lt;p>Der test-gesteuerte Entwicklungszyklus besteht aus folgenden, sich immer wiederholenden, Schritten:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/tdd.png" alt="TDD Entwicklungszyklus">&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Hinzufügen eines Tests, der fehlschlägt&lt;/strong>: Jedes neue Feature in TDD beginnt mit einem Test, der nach seiner Implementation fehlschlagen muss, bevor die Features implementiert werden.&lt;/li>
-&lt;li>&lt;strong>Code schreiben und damit den Test &amp;ldquo;begrünen&amp;rdquo;&lt;/strong>: Es wird nur soviel Code geschrieben, wie zum &amp;ldquo;Begrünen&amp;rdquo; des Tests nötig ist - nicht mehr! (alle bisherigen Tests müssen weiterhin erfolgreich durchlaufen!!)&lt;/li>
-&lt;li>&lt;strong>Code verbessern, ohne dabei die Funktionalität zu verändern (Refactor)&lt;/strong>: Code bereinigen (z.B. das Entfernen von Duplikaten, kleinere Methoden usw.) und auf &amp;ldquo;Clean Code&amp;rdquo; Standard bringen&lt;/li>
-&lt;/ul>
-&lt;h3 id="tdd-walkthrough">TDD Walkthrough&lt;/h3>
-&lt;p>In diesem Walkthrough wird der TDD Entwicklungszyklus anhand eines Beispiels erläutert.&lt;/p>
-&lt;p>In diesem Beispiel geht es darum eine Klasse zu schreiben, welche ein Tier modelliert.
-Das Tier soll uns informieren, ob es Hunger hat oder nicht.&lt;/p>
-&lt;h4 id="schritt-1-grundgerüst-erstellen">Schritt 1: Grundgerüst erstellen&lt;/h4>
-&lt;p>Es wird nur die Klasse erstellt, welche dann getestet werden soll:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="schritt-2-fehlschlagender-test-schreiben">Schritt 2: Fehlschlagender Test schreiben&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AnimalTest&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">newAnimal_isHungry_returnTrue&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Animal myAnimal &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Animal();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertTrue(myAnimal.&lt;span style="color:#a6e22e">isHungry&lt;/span>());
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Zu diesem Zeitpunkt existiert die Methode &amp;ldquo;isHungry&amp;rdquo; nicht (Kompilierfehler) und natürlich gibt sie kein &amp;ldquo;true&amp;rdquo; zurück.
-Im nächsten Schritt wird die Methode hinzugefügt und der Test &amp;ldquo;begrünt&amp;rdquo;.&lt;/p>
-&lt;h4 id="schritt-3-test-begrünen">Schritt 3: Test &amp;ldquo;begrünen&amp;rdquo;&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isHungry&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Der Test, welcher vorher geschrieben wurde, kompiliert nun und kann erfolgreich durchlaufen werden.
-Somit ist dieser Zyklus beendet (es gibt noch nichts, was refactored werden soll)&lt;/p>
-&lt;h4 id="schritt-4-neuer-fehlschlagender-test-schreiben">Schritt 4: Neuer, fehlschlagender Test schreiben&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">AnimalTest&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span> &lt;span style="color:#75715e">// Dieser Test ist nun grün...&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">newAnimal_isHungry_returnTrue&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Animal myAnimal &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Animal();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertTrue(myAnimal.&lt;span style="color:#a6e22e">isHungry&lt;/span>());
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@Test&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">animalAte_isHungry_returnFalse&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Animal myAnimal &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Animal();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> animal.&lt;span style="color:#a6e22e">eat&lt;/span>(); &lt;span style="color:#75715e">// Kompilierfehler, da es diese Methode noch nicht gibt&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> assertFalse(myAnimal.&lt;span style="color:#a6e22e">isHungry&lt;/span>());
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="schritt-5-zweiter-test-begrünen-ohne-den-ersten-test-kaputt-zu-machen">Schritt 5: zweiter Test &amp;ldquo;begrünen&amp;rdquo;, ohne den ersten Test &amp;ldquo;kaputt&amp;rdquo; zu machen&lt;/h4>
-&lt;p>In diesem Schritt finden wir heraus, dass wir einen Hunger-Zustand für unser Tier haben müssen,
-welcher sich ändert, wenn das Tier gefressen hat:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> isHungry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>; &lt;span style="color:#75715e">// müssen wir hier so setzen, damit der erste Test noch funktioniert!&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isHungry&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (isHungry) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">eat&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> isHungry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Nach diesem Schritt kompiliert der Test wieder erfolgreich und beide Tests werden erfolgreich durchlaufen.&lt;/p>
-&lt;h4 id="schritt-6-refactor">Schritt 6: Refactor&lt;/h4>
-&lt;p>Unser Code kann nun eleganter geschrieben werden, ohne dabei die Funktionalität zu ändern:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> isHungry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">boolean&lt;/span> &lt;span style="color:#a6e22e">isHungry&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> isHungry; &lt;span style="color:#75715e">// if-else ersetzt, da nicht nötig&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">eat&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> isHungry &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Somit ist auch dieser Zyklus beendet.&lt;/p>
-&lt;p>Der code wird so stetig weiterentwickelt und neue Funktionalitäten werden auf diese Weise Schritt für Schritt und getestet hinzugefügt.
-Dabei werden die bereits bestehenden Funktionalitäten durch die bisherigen Tests vor ungewollten Änderungen geschützt.&lt;/p>
-&lt;hr>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/10_java-testing/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Exception Handling und Optionals</title><link>/docs/02_java/09_java-exception_handling/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/09_java-exception_handling/</guid><description>
 &lt;h2 id="ziele">Ziele&lt;/h2>
 &lt;ul>
