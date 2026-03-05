@@ -449,10 +449,44 @@ Funktionen, die verwendet werden, um zusammengefasste Informationen aus großen 
 Dadurch wird es einfacher, die Daten zu analysieren und Muster oder Trends zu erkennen.
 Dazu gehören unter anderem:
 
-- Count
-- Max/Min
-- Sum
-- Avg
-- Group By
+### Count
 
-Wie diese angewendet werden findest du hier: https://mariadb.com/docs/server/reference/sql-functions/aggregate-functions
+Die Aggregation Count zählt wie viele Resultate das beim Query zurückgegeben werden.
+
+```sql
+SELECT COUNT(*), COUNT(beruf) FROM person;
+```
+
+### Max/Min
+
+Die Aggregationen Max und Min sind logischerweise zum Finden des grössten und kleinsten Wertes.
+
+```sql
+SELECT MAX(alter), MIN(alter) FROM person;
+```
+
+### Sum
+
+Sum summiert die Werte einer Spalte. Im Gegensatz zu den vorherigen Aggregationen funktioniert Sum nur mit Zahlenwerten.
+
+```sql
+SELECT SUM(alter) FROM person;
+```
+
+### Avg
+
+Um den Durchschnitt von Zahlen zu finden wird die Funktion AVG verwendet.
+
+```sql
+SELECT AVG(alter) FROM person;
+```
+
+### Group By
+
+Mit Group By können Tupel mit gleichen Werten bei einem Attribut zusammen geführt werden, um beispielsweise in einem Count gezählt zu werden.
+
+```sql
+SELECT COUNT(*), beruf FROM person GROUP BY beruf;
+```
+
+- Wie diese angewendet werden findest du hier: https://mariadb.com/docs/server/reference/sql-functions/aggregate-functions
