@@ -306,7 +306,7 @@ Vertiefende Informationen zum Feature Branch Flow können auf [dieser Seite](htt
 ### Gitflow
 
 Der Gitflow unterscheidet sich primär vom Feature Branch Flow indem, dass zwei Hauptbranches verwendet werden: `main` für den stabilen Code und `development` für die laufende Entwicklung. So werden Feature-Branches nicht direkt vom `main`-, sondern vom `development`-Branch (Name kann abweichen) abzweigen. So werden fertiggestellte Änderungen auch nicht gleich in den Main integriert, sondern zurück in den Development-Branch.
-Zudem wird ein release-Branch verwendet, auf welchen Änderungen vom Development-Branch gepusht werden, um dort vor einem Release getestet zu werden. Anschließend wird der release-Branch, und nur dieser, in den main gemerged.
+Zudem wird ein release-Branch verwendet, auf welchen Änderungen vom Development-Branch gepusht werden, um dort vor einem Release getestet zu werden. Anschliessend wird der release-Branch, und nur dieser, in den main gemerged.
 Nebst Feature Branches können auch Branches für Releases und Hotfixes (hier nicht abgebildet) erstellt werden.
 
 Der Flow ermöglicht eine strukturierte Vorgehensweise für die Entwicklung und Veröffentlichung von Software, indem Entwicklungs- und Produktionscode getrennt werden. Änderungen sind einfach und schnell nachvollziehbar und es ist jederzeit möglich, schnell auf eine releaste-Version zurückzugreifen.

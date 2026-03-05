@@ -102,7 +102,7 @@ public class LinkedList<E>  extends AbstractSequentialList<E>  implements List<E
 
 ```
 
-Das Java-Schlüsselwort `transient` wird verwendet, um ein Feld in einer Klasse von der Serialisierung auszuschließen. **Serialisierung** ist der Prozess, ein Objekt in einen Byte-Stream umzuwandeln, um es zu speichern oder über ein Netzwerk zu übertragen. Transiente Felder werden dabei nicht gespeichert und erhalten nach der Deserialisierung ihre **Standardwerte** (z. B. `null` für Objekte, `0` für Zahlen).
+Das Java-Schlüsselwort `transient` wird verwendet, um ein Feld in einer Klasse von der Serialisierung auszuschliessen. **Serialisierung** ist der Prozess, ein Objekt in einen Byte-Stream umzuwandeln, um es zu speichern oder über ein Netzwerk zu übertragen. Transiente Felder werden dabei nicht gespeichert und erhalten nach der Deserialisierung ihre **Standardwerte** (z. B. `null` für Objekte, `0` für Zahlen).
 
 Ein Knoten, also das Objekt des Typs `Node`, enthält
 

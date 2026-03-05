@@ -39,7 +39,6 @@ Bedingungen erfüllt sind, kannst du mit den Aufgaben beginnen.
   - Bestehende Fächer bearbeiten
   - Bestehende Fächer löschen
 - Die Anwendung ist Responsive gestaltet und ist auf Desktop, Tablet und Mobile verwendbar
-
   - Die Verwendung von Bootstrap ist nicht erlaubt
 
 - Zusätzliche Anforderungen
