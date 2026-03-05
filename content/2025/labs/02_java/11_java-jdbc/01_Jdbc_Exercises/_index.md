@@ -42,4 +42,4 @@ Zudem wird erwartet, dass ein eigenes Testing (wie in [J4 Testing](../../../../d
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/11_java-jdbc).
+Hier kannst du [zurück zur Theorie](../../../../docs/02_java/10_java-jdbc).

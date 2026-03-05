@@ -1,7 +1,7 @@
 ---
 title: "Exception Handling und Optionals"
 linkTitle: "Exception Handling und Optionals"
-weight: 9
+weight: 09
 description: >
   Modul #J5 - Exception Handling und Optionals
 ---
