@@ -12,7 +12,7 @@ description: >
 
 - Ich weiss, was Floating ist und wie es verwendet wird, um Elemente nebeneinander anzuordnen.
 - Ich weiss, was Flexbox ist und wie man display: flex anwendet, um flexible Layouts zu erstellen.
-- Ich kann Media-Queries nutzen, um Flexbox-Layouts auf unterschiedliche Bildschirmgrößen anpassen zu können.
+- Ich kann Media-Queries nutzen, um Flexbox-Layouts auf unterschiedliche Bildschirmgrössen anpassen zu können.
 
 Du hast dich vielleicht schon gefragt, wie du mehrere Elemente nebeneinander anordnen kannst. Hierfür müssen zuerst ein paar Worte über Layouting verloren werden.
 

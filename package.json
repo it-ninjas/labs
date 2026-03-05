@@ -17,7 +17,8 @@
     "mdlint": "markdownlint --config .markdownlint.json content *.md",
     "prepare": "husky",
     "format": "prettier --no-error-on-unmatched-pattern --ignore-unknown --write --check content/",
-    "lint": "prettier --check content/"
+    "lint": "prettier --check content/",
+    "check-eszett": "grep -rq 'ß' *.md && echo 'ERROR: German eszett (ß) found in content/ - use ss instead' && exit 1 || exit 0"
   },
   "bugs": {
     "url": "https://github.com/puzzle-bbt/training-sbb-puzzle/issues"

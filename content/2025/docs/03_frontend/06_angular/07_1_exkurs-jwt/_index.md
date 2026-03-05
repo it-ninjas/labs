@@ -62,7 +62,7 @@ Der zweite Teil des Tokens ist der Payload, welcher die erstellten Forderungen e
 ### Signatur
 
 Um den Signaturteil zu erstellen, muss man den codierten Header, den codierten Payload, ein Secret und den im Header angegebenen Algorithmus verwenden und diesen signieren.
-Wenn man beispielsweise den HMAC SHA256-Algorithmus verwenden möchte, wird die Signatur folgendermaßen erstellt:
+Wenn man beispielsweise den HMAC SHA256-Algorithmus verwenden möchte, wird die Signatur folgendermassen erstellt:
 
 ```json
 HMACSHA256(

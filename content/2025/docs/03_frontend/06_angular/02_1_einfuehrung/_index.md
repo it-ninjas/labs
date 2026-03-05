@@ -106,7 +106,7 @@ Das Angular CLI (Command Line Interface) ist ein Befehlszeilenwerkzeug, das von 
 
 - ng build: Kompiliert und baut die Angular-Anwendung für die Produktion. Erzeugt optimierten JavaScript-Code, der für die Bereitstellung auf einem Webserver verwendet werden kann.
 
-- ng test: Führt die Unit-Tests des Projekts aus, um sicherzustellen, dass die Anwendung ordnungsgemäß funktioniert.
+- ng test: Führt die Unit-Tests des Projekts aus, um sicherzustellen, dass die Anwendung ordnungsgemäss funktioniert.
 
 - ng lint: Überprüft den Code auf Einhaltung der definierten Linting-Regeln.
 

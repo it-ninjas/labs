@@ -11,7 +11,7 @@ description: >
 - Du kannst ein Google-Konto erstellen.
 - Du kannst dich im Google Developer Portal anmelden.
 - Du kannst einen API Key für die Custom Search API generieren.
-- Du weißt, wie du den API Key sicher speicherst.
+- Du weisst, wie du den API Key sicher speicherst.
 
 {{< zeit lesen="10" praxis="15">}}
 
