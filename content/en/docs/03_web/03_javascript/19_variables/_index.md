@@ -168,7 +168,7 @@ console.log(a);
 Du solltest dann folgende Zahlen im Output erhalten:
 
 ```javascript
-(10, 20, 21, 30, 40, 41, 42, 43, 45, 45, 10, 11);
+10, 20, 21, 30, 40, 41, 42, 43, 45, 45, 10, 11;
 ```
 
 Wie du siehst, haben alle Variablen, die innerhalb einer Funktion mit `var` deklariert werden, den gleichen Scope:

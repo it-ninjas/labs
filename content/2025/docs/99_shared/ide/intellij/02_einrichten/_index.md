@@ -103,6 +103,7 @@ So formatierst du deinen Code in IntelliJ IDEA:
 
 1. Wähle den gewünschten Code aus (eine Zeile, ein Block oder alles).
 2. Nutze die Tastenkombination:
+
    - Windows/Linux: `Ctrl + Alt + L`
    - macOS: `Cmd + Option + L`
 

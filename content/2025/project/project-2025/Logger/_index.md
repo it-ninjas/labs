@@ -61,6 +61,7 @@ Implementiere ein **Logging-Package**, das folgende Aufgaben erfüllt:
    weiter unten definiert.
 
 2. **Dateiformat:** In der Log-Datei muss klar ersichtlich sein, wann welches Ereignis wo vorgekommen ist.
+
    - **Zeitstempel:** Logging-Einträge können über mehrere Tage verteilt, aber auch innerhalb von Millisekunden
      erfolgen. Das muss ersichtlich sein.
    - **Message:** freie Nachricht; **kann mehrere Zeilen** enthalten.
@@ -70,6 +71,7 @@ Implementiere ein **Logging-Package**, das folgende Aufgaben erfüllt:
      Eintrag kommt (z. B. `MAIN` → aus dem Main-Package, `STHE` → aus dem String-Helper-Package, …).
 
 3. **Dateiverwaltung & Dateiname:**
+
    - **Verzeichnis:** bei Bedarf erstellen.
    - **Dateiname:** es muss klar unterschieden werden können, in welcher Reihenfolge die Dateien erstellt wurden
      (über Zeitstempel, Index, …). Es soll ein Text definiert werden können, der jeweils im Dateinamen
@@ -83,7 +85,9 @@ Implementiere ein **Logging-Package**, das folgende Aufgaben erfüllt:
    `Files.newBufferedWriter` mit Append & Flush benutzen).
 
 5. **Konfiguration (ENV/User-Datei):**
+
    - Der Logger liest Einstellungen aus **Umgebungsvariablen** oder einer **User-Konfigdatei**.
+
      - **LogFolder:** Speicherort der Log-Dateien.
      - **LogIdentifier:** String, der in jeder Log-Datei enthalten sein soll.
      - **MinLevel:** Minimal-Level.
@@ -93,11 +97,13 @@ Implementiere ein **Logging-Package**, das folgende Aufgaben erfüllt:
        werden.
 
    - **Konfig-Pfad-Ermittlung (Reihenfolge):**
+
      1. explizit via `setConfigPath(Path)` (falls genutzt),
      2. ENV `ITNINJA_LOGGER_CONFIG`,
      3. Default: im Benutzerverzeichnis, z. B. `~/.itninja-logger` (Windows: `%USERPROFILE%\.itninja-logger`).
 
    - **Umgebungsvariablen:**
+
      - **ITNINJA_LOGGER_LOGFOLDER:** Speicherort der Log-Dateien.
      - **ITNINJA_LOGGER_LOGIDENTIFIER:** String, der in jeder Log-Datei enthalten sein soll.
      - **ITNINJA_LOGGER_MINLEVEL:** Minimal-Level.

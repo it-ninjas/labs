@@ -53,6 +53,7 @@ it-ninja sein.
 Um die folgenden Aufgaben erfolgreich umzusetzen, führe diese Schritte aus:
 
 1. Beim ersten Mal:
+
    1. IntelliJ IDEA installieren → [!\*IntelliJ IDEA einrichten](/docs/99_shared/ide/intellij/01_installation/)
    2. Git-Repository einrichten → [!\*Persönliches Git-Repository](/docs/99_shared/collaboration/source-repositories/personal-bitbucket/)
 

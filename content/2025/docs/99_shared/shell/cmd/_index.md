@@ -36,6 +36,7 @@ Typische Einsatzbereiche:
 Es gibt mehrere Wege, die CMD Shell zu öffnen:
 
 1. **Über das Startmenü**
+
    - Klicke auf die **Windows-Taste** oder das **Startmenü**.
    - Tippe `cmd` ein.
    - Drücke **Enter** oder klicke auf **Eingabeaufforderung**.
