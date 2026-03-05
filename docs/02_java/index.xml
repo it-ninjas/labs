@@ -544,697 +544,7 @@ Bei der Verwendung von Lombok hat man möglicherweise weniger Kontrolle über de
 &lt;h4 class="alert-heading">Git ready?!&lt;/h4>
 &lt;p>Falls du dich noch nicht intensiver mit Git auseinandergesetzt hast, ist jetzt die Zeit dafür: Erarbeite &lt;a href="/docs/99_shared/collaboration/source-repositories/git/">&lt;strong>Git&lt;/strong>&lt;/a>!&lt;/p>
 &lt;p>Bitte kehre nach Abschluss des Git-Moduls hierhin zurück und fahre mit der nächsten Seite fort.&lt;/p>
-&lt;/div></description></item><item><title>Docs: Maven</title><link>/docs/02_java/07_maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/07_maven/</guid><description>
-&lt;h4 id="ziele">Ziele&lt;/h4>
-&lt;ul>
-&lt;li>Ich kenne die Grundlagen von Maven.&lt;/li>
-&lt;li>Ich kann Maven lokal konfigurieren.&lt;/li>
-&lt;li>Ich kann im Artifactory Abhängigkeiten suchen und diese verwenden.&lt;/li>
-&lt;li>Ich kenne die Grundlagen von Project Object Models (POM).&lt;/li>
-&lt;li>Ich kenne die wichtigsten Maven Befehle und kann diese auf der Kommandozeile anwenden.&lt;/li>
-&lt;li>Ich kann die Abhängigkeiten meiner Applikationen mit Maven verwalten.&lt;/li>
-&lt;li>Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern.&lt;/li>
-&lt;li>(Optional): Ich habe erste Erfahrungen gesammelt mit dem alternativen Build-Tool Gradle.&lt;/li>
-&lt;/ul>
-&lt;h2 id="maven">Maven&lt;/h2>
-&lt;h3 id="allgemeine-informationen">Allgemeine Informationen&lt;/h3>
-&lt;p>Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus
-steuern. Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Ein Build ist der Prozess, bei dem
-der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch Kompilieren und Paketieren.
-Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte
-Plattform reichen.&lt;/p>
-&lt;p>Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:&lt;/p>
-&lt;ul>
-&lt;li>Eine Maven-Installation, entweder separat oder Built-In wie beispielsweise mit IntelliJ&lt;/li>
-&lt;li>Eine Project Object Model Datei pro Projekt oder Modul (es handelt sich um eine XML-Datei)&lt;/li>
-&lt;li>Ein zentrales Maven-Repository&lt;/li>
-&lt;li>Ein lokales Maven-Repository&lt;/li>
-&lt;li>Eine Konfigurationsdatei mit dem Namen settings.xml&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3 id="installation">Installation&lt;/h3>
-&lt;h4 id="manuelle-installation">Manuelle Installation&lt;/h4>
-&lt;p>Idealerweise wurde Apache Maven bereits mit IntelliJ installiert. Alternativ kannst du Maven auch hier herunterladen:
-&lt;a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi&lt;/a>. Verwende die Binary anstelle der Source,
-und zwar am besten die Datei im &lt;code>Binary zip archive&lt;/code> Format.&lt;/p>
-&lt;p>Klicke dazu auf den folgenden Link, wie hier im Beispiel:
-&lt;img src="/docs/02_java/07_maven/images/maven_download.png" alt="Apache Maven Project Download (Stand: 22.09.2024)" title="Maven Download Seite">&lt;/p>
-&lt;p>Nachdem du die Datei heruntergeladen hast, kannst du den folgenden Ordner erstellen:&lt;br>
-&lt;code>C:\Program Files\Apache\Maven\&lt;/code>.&lt;/p>
-&lt;p>Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariablen auf dieses Verzeichnis setzen.&lt;/p>
-&lt;hr>
-&lt;h4 id="intellij-idea">IntelliJ IDEA&lt;/h4>
-&lt;p>Ist IntelliJ installiert, findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise
-sind diese Einstellungen bereits korrekt.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_maven/images/intellij_maven_settings.png" alt="Intellij Maven settings">&lt;/p>
-&lt;p>Die wichtigsten Einstellungen sind:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Einstellung&lt;/th>
-&lt;th>Beschreibung&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Maven home directory&lt;/td>
-&lt;td>Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als &amp;ldquo;Bundled&amp;rdquo; bezeichnet.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>User settings file&lt;/td>
-&lt;td>Die XML-Datei, welche bei der Installation angelegt wurde.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Local repository&lt;/td>
-&lt;td>Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\&amp;lt;Personalnummer&amp;gt;\.m2.\repository zu finden.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository
-korrekt sind.&lt;/p>
-&lt;hr>
-&lt;h3 id="umgebungsvariablen-setzen">Umgebungsvariablen setzen&lt;/h3>
-&lt;p>Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
-Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die
-Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>Anwendung &amp;ldquo;Systemumgebungsvariablen bearbeiten&amp;rdquo; aus der Systemsteuerung starten. Falls das nicht geht, musst du dir
-(temporär) lokale Admin-Rechte aktivieren.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Unten rechts auf den Button &amp;ldquo;Umgebungsvariablen&amp;rdquo; klicken.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Im unteren Teil &amp;ldquo;Benutzervariablen&amp;rdquo; die Variable &amp;ldquo;Path&amp;rdquo; suchen und anklicken.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Auf den Button &amp;ldquo;Bearbeiten&amp;hellip;&amp;rdquo; klicken.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Oben rechts auf den Button &amp;ldquo;Neu&amp;rdquo; klicken, es erscheint eine neue Zeile ganz unten.&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte
-auf das Verzeichnis bin zeigen, also zum Beispiel:&lt;/p>
-&lt;ul>
-&lt;li>manuelle Installation: &lt;strong>C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin&lt;/strong>&lt;/li>
-&lt;li>IntelliJ installiert: &lt;strong>C:\Users\u&amp;hellip;&amp;hellip;\AppData\Local\Programs\IntelliJ IDEA Ultimate\plugins\maven\lib\maven3\bin&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>Alle offenen Windows-Fenster mit &amp;ldquo;OK&amp;rdquo; schliessen.&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter
-&lt;em>Eingabeaufforderung&lt;/em> oder &lt;em>cmd&lt;/em> in der Windows Suche) aus:&lt;/p>
-&lt;p>&lt;code>mvn -version&lt;/code>&lt;/p>
-&lt;p>Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:&lt;/p>
-&lt;p>&lt;code>Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)&lt;/code>&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_maven/images/cmd_maven_version.png" alt="Maven Version">&lt;/p>
-&lt;p>Die Version muss nicht mit deiner übereinstimmen.&lt;/p>
-&lt;details>
-&lt;summary>JAVA_HOME Troubleshoot&lt;/summary>
-&lt;p>Es kann sein, dass du folgende Fehlermeldung siehst:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>The JAVA_HOME environment variable is &lt;span style="color:#f92672">not&lt;/span> defined correctly,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>this environment variable is needed to run this program&lt;span style="color:#f92672">.&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das bedeutet, dass die Java-Installation nicht gefunden werden kann.
-IntelliJ enthält zwar eine eigene Java-Installation, allerdings weiss Windows nicht, wo sich diese befindet.
-Aus diesem Grund musst du eine Umgebungsvariable setzen, die auf diese Installation zeigt.
-Dafür musst du zuerst herausfinden, wo sich die Installation befindet.&lt;/p>
-&lt;p>Unter IntelliJ gehe zu folgendem Fenster:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>File &amp;gt; Project Structure &amp;gt; Platform Settings &amp;gt; SDKs
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Kopiere den Pfad unter &lt;code>JDK home path&lt;/code>.&lt;/p>
-&lt;p>Erstelle nun &lt;a href="/docs/02_java/07_maven/#umgebungsvariablen-setzen">gleich wie zuvor&lt;/a> eine neue Umgebungsvariable mit den folgenden Werten:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>JAVA_HOME:{JDK home path}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Ersetze &lt;code>{JDK home path}&lt;/code> mit deinem kopierten Wert. Öffne danach ein neues Terminal und versuche es erneut.&lt;/p>
-&lt;/details>
-&lt;hr>
-&lt;h3 id="pomxml">pom.xml&lt;/h3>
-&lt;p>Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem
-umfangreichen Beispiel. Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses
-Project Object Model nicht alle Inhalte vollständig erklärt, sondern nur als erstes Beispiel dient.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!-- (1) Header --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">project&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">modelVersion&lt;/span>&amp;gt;4.0.0&amp;lt;/&lt;span style="color:#f92672">modelVersion&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (2) Angaben zum Artefakt --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;ch.sbb.interviewtool&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;interviewtool-backend&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;0.0.1-SNAPSHOT&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">packaging&lt;/span>&amp;gt;jar&amp;lt;/&lt;span style="color:#f92672">packaging&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (3) Angaben zum Parent-Projekt --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">parent&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-parent&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;2.2.4.RELEASE&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">relativePath&lt;/span>/&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">parent&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (4) Properties --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">properties&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">project.build.sourceEncoding&lt;/span>&amp;gt;UTF-8&amp;lt;/&lt;span style="color:#f92672">project.build.sourceEncoding&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">java.version&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">java.version&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">maven.build.timestamp.format&lt;/span>&amp;gt;yyyy-MM-dd HH:mm&amp;lt;/&lt;span style="color:#f92672">maven.build.timestamp.format&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">timestamp&lt;/span>&amp;gt;${maven.build.timestamp}&amp;lt;/&lt;span style="color:#f92672">timestamp&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">properties&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (5) Abhängigkeiten --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">dependencies&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Lombok --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.projectlombok&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;lombok&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;1.18.6&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Unit- und Integrationstests --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.junit.jupiter&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;junit-jupiter-engine&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;test&amp;lt;/&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">dependencies&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (6) Build-Informationen --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">build&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">plugins&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-maven-plugin&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.apache.maven.plugins&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;maven-compiler-plugin&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">configuration&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">compilerVersion&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">compilerVersion&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">source&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">source&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">target&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">target&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">configuration&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">plugins&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">build&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (7) Entwickler-Informationen --&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">developers&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">developer&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;U000000&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">name&lt;/span>&amp;gt;Vorname Name&amp;lt;/&lt;span style="color:#f92672">name&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">email&lt;/span>&amp;gt;vorname.name@sbb.ch&amp;lt;/&lt;span style="color:#f92672">email&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">organization&lt;/span>&amp;gt;SBB&amp;lt;/&lt;span style="color:#f92672">organization&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">organizationUrl&lt;/span>&amp;gt;https://www.sbb.ch&amp;lt;/&lt;span style="color:#f92672">organizationUrl&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">roles&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">role&lt;/span>&amp;gt;Software Architect&amp;lt;/&lt;span style="color:#f92672">role&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">role&lt;/span>&amp;gt;Lead Developer&amp;lt;/&lt;span style="color:#f92672">role&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">roles&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">developer&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">developers&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">project&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="abschnitt-1">Abschnitt 1&lt;/h4>
-&lt;p>Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei
-optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.&lt;/p>
-&lt;h4 id="abschnitt-2">Abschnitt 2&lt;/h4>
-&lt;p>Die Angaben zum Artefakt enthalten die folgenden Informationen:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Gruppen-ID&lt;/strong>: Die Gruppen-ID ist in Maven normalerweise als umgekehrte Domain-Name-Notation (Reverse Domain Name
-Notation) aufgebaut, ähnlich wie bei Java-Paketen. Diese Struktur dient dazu, Konflikte zwischen Artefakten von
-verschiedenen Organisationen zu vermeiden. Zum Beispiel wird die Gruppen-ID für ein Projekt der SBB oft in der
-Form ch.sbb beginnen, da sbb.ch die Domain der Schweizerischen Bundesbahnen ist. Beispiel: ch.sbb.interviewtool&lt;/li>
-&lt;li>&lt;strong>Artefakt-ID&lt;/strong>: Die Artefakt-ID ist der eindeutige Name eines Projekts oder einer Komponente, der zusammen mit der
-Gruppen-ID und der Version verwendet wird, um ein Artefakt im Repository eindeutig zu identifizieren. Beispiel:
-interviewtool-backend, mit der Gruppen-ID: ch.sbb.interviewtool:interviewtool-backend.
-&lt;ul>
-&lt;li>&lt;strong>Version&lt;/strong>: Die momentane Version des Projekts, diese wird später durch Releases verändert.&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Paketierung&lt;/strong>: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR).&lt;/li>
-&lt;/ul>
-&lt;p>Bei der Versionierung nutzt Maven die folgenden Standards:&lt;/p>
-&lt;ul>
-&lt;li>Major-Version&lt;/li>
-&lt;li>Minor-Version&lt;/li>
-&lt;li>Incremental-Version&lt;/li>
-&lt;li>Build-Number&lt;/li>
-&lt;li>Qualifier&lt;/li>
-&lt;/ul>
-&lt;p>Dazu ein paar Beispiele:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Typ&lt;/th>
-&lt;th>Beispiel&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Major-Version&lt;/td>
-&lt;td>&lt;font color="red">1&lt;/font>.2.1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Minor-Version&lt;/td>
-&lt;td>2.&lt;font color="red">0&lt;/font>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Incremental-Version&lt;/td>
-&lt;td>1.2&lt;font color="red">-SNAPSHOT&lt;/font>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Patch&lt;/td>
-&lt;td>1.2.&lt;font color="red">1&lt;/font>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Build-Number&lt;/td>
-&lt;td>1.4.2&lt;font color="red">-12&lt;/font>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Qualifier&lt;/td>
-&lt;td>1.2&lt;font color="red">-beta-2&lt;/font>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version
-&lt;strong>1.2-beta-2&lt;/strong> älter als die Version &lt;strong>1.2&lt;/strong>. Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den
-Vergleich dieser als String verglichen. So ist die Version &lt;strong>1.2-beta-2&lt;/strong> neuer als die Version &lt;strong>1.2-alpha-6&lt;/strong>.&lt;/p>
-&lt;p>Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version
-&lt;strong>0.1.2-SNAPSHOT&lt;/strong> sehr wahrscheinlich als Version &lt;strong>0.1.2&lt;/strong> ausgeliefert werden.&lt;/p>
-&lt;h4 id="abschnitt-3">Abschnitt 3&lt;/h4>
-&lt;p>Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten
-Parent-Projekts hinterlegt werden. Dies ist vor allem bei &lt;a href="/docs/02_java/12_spring-framework/07_spring-boot/">Spring-Boot&lt;/a>
-Projekten wichtig.&lt;/p>
-&lt;h4 id="abschnitt-4">Abschnitt 4&lt;/h4>
-&lt;p>Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine
-Version definiert werden.&lt;/p>
-&lt;p>Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;special.setting&amp;gt;&lt;/span>Value&lt;span style="color:#f92672">&amp;lt;/special.setting&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Innerhalb der Project Object Model Datei kann dann mit&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>${special.setting}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>auf die Einstellung (Tag) und damit auf dessen Wert (Value) zugegriffen werden.&lt;/p>
-&lt;h4 id="abschnitt-5">Abschnitt 5&lt;/h4>
-&lt;p>Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der
-Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR
-ausgeliefert.&lt;/p>
-&lt;p>Eine Liste der möglichen Typen findest du hier:
-&lt;a href="https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html">https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html&lt;/a>.&lt;/p>
-&lt;p>Vielfach wird auch der Scope verwendet, der angibt, in welchem Umfang die Fremdbibliothek einbezogen wird.
-Mögliche Scopes sind unter anderem:&lt;/p>
-&lt;ul>
-&lt;li>compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also
-mitausgeliefert.&lt;/li>
-&lt;li>provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und
-bereitgestellt wird.&lt;/li>
-&lt;li>runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur
-Verfügung.&lt;/li>
-&lt;li>test - Die Bibliothek steht nur für Tests zur Verfügung und wird nur fürs Testing benötigt.&lt;/li>
-&lt;li>system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss.&lt;/li>
-&lt;/ul>
-&lt;p>Das &lt;a href="https://mvnrepository.com/">MVN Repository&lt;/a> stellt eine Vielzahl von Fremdbibliotheken zur Verfügung. Maven
-versucht Abhängigkeiten über dieses Repository aufzulösen.&lt;/p>
-&lt;h5 id="beispiel-einer-abhängigkeit-junit-jupiter-engine">Beispiel einer Abhängigkeit (junit-jupiter-engine)&lt;/h5>
-&lt;p>Die Dependency &lt;code>junit-jupiter-engine&lt;/code> ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
-einem weit verbreiteten Test-Framework für Java. Im Kapitel &lt;a href="/docs/02_java/10_java-testing/">Testing&lt;/a> wirst diese ausführlich genutzt.&lt;/p>
-&lt;p>Ein weiteres Beispiel für eine Abhängigkeit ist &lt;code>lombok&lt;/code>. Diese Library wird im Kapitel &lt;a href="/docs/02_java/06_lombok/">Lombok&lt;/a> ausführlich
-beschrieben.&lt;/p>
-&lt;h4 id="abschnitt-6">Abschnitt 6&lt;/h4>
-&lt;p>Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische
-Erweiterungen beliebig angepasst werden. Es ist auch möglich, eigene Maven-Plugins zu entwickeln. Es stehen sehr viele
-Plugins für Maven zur Verfügung, eine Übersicht gibt es &lt;a href="https://maven.apache.org/plugins/index.html">hier&lt;/a>.&lt;/p>
-&lt;h4 id="abschnitt-7">Abschnitt 7&lt;/h4>
-&lt;p>Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.&lt;/p>
-&lt;hr>
-&lt;h3 id="maven-mirror">Maven Mirror&lt;/h3>
-&lt;p>Ein Mirror in Maven ist eine alternative Quelle, von der Maven Artefakte (wie Abhängigkeiten, Plugins usw.) herunterladen
-kann. Mirrors werden verwendet, um die Verfügbarkeit und Geschwindigkeit des Downloads zu verbessern, insbesondere wenn
-das Standard-Repository (z. B. Maven Central) aus irgendeinem Grund nicht erreichbar ist oder wenn ein internes
-Repository bevorzugt wird.&lt;/p>
-&lt;h4 id="konfiguration-eines-mirrors">Konfiguration eines Mirrors&lt;/h4>
-&lt;p>Die Konfiguration eines Mirrors erfolgt in der settings.xml-Datei von Maven. Diese Datei befindet sich normalerweise im
-Verzeichnis &lt;code>~/.m2&lt;/code> (bei Unix/Linux) oder &lt;code>%USERPROFILE%\.m2&lt;/code> (bei Windows).&lt;/p>
-&lt;p>Hier ist ein Beispiel, wie ein Mirror in der settings.xml konfiguriert werden kann:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirrors&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirror&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;my-internal-repo&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">name&lt;/span>&amp;gt;My Internal Repository&amp;lt;/&lt;span style="color:#f92672">name&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;http://my.internal.repo/repository/maven-public/&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirrorOf&lt;/span>&amp;gt;*&amp;lt;/&lt;span style="color:#f92672">mirrorOf&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">mirror&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">mirrors&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="repository-und-deployment">Repository und Deployment&lt;/h3>
-&lt;p>Artefakte, welche mit Maven gebildet werden, kommen zuerst in ein lokales Repository. Von dort können sie dann wieder
-verwendet werden (z.B. für Testing). Will man eine Version auch anderen Entwicklern zur Vefügung stellen, kann man das
-Projekt deployen. Dazu muss man aber zuerst ein Repository konfigurieren, damit Maven weiss, wohin die Artefakte sollen.&lt;/p>
-&lt;p>Da das Deployment projektspezifisch ist, erfolgt die Konfiguration für das Repository im &lt;code>pom.xml&lt;/code>:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">project&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;remoteRepository&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;file:///C:/Development/Repository&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">project&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Im obigen Beispiel wurde ein lokales Repository konfiguriert. Die &lt;code>url&lt;/code> kann auch auf einen Remote Server verweisen
-(Maven Central, JFrog Artifactery, Azure Artifacts, &amp;hellip;).&lt;/p>
-&lt;p>Falls der Zugriff auf ein Repository eine Berechtigung benötigt, wird diese im &lt;code>settings.xml&lt;/code> abgelegt:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">settings&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.0.0&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">servers&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">server&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;remoteRepository&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">username&lt;/span>&amp;gt;your-username&amp;lt;/&lt;span style="color:#f92672">username&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">password&lt;/span>&amp;gt;your-password&amp;lt;/&lt;span style="color:#f92672">password&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">server&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">servers&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;blockquote>
-&lt;p>Das speichern von Zugangsdaten in &lt;code>settings.xml&lt;/code> stellt sicher, dass diese nicht in ein Code Repository gelangen und so
-in falsche Hände geraten können.&lt;/p>&lt;/blockquote>&lt;/blockquote>
-&lt;h3 id="commands">Commands&lt;/h3>
-&lt;p>Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt,
-kannst du das Terminal öffnen und den folgenden Befehl eingeben:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn -version
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das sollte nun in etwa so aussehen:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_maven/images/cmd_maven_version.png" alt="">&lt;/p>
-&lt;h4 id="maven-lifecycle">Maven Lifecycle&lt;/h4>
-&lt;p>Bevor wir die einzelnen Befehle kurz anschauen, werfen wir einen Blick auf die einzelnen Phasen des Maven-Lebenszyklus.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/07_maven/images/maven_livecycle.png" alt="">&lt;/p>
-&lt;p>Jeder in der Grafik genannte Befehl wird zusätzlich die vorangehenden Phasen ausführen.
-Die Ausführung des Befehls &lt;code>mvn package&lt;/code> führt somit die Phasen &lt;em>validate&lt;/em>, &lt;em>compile&lt;/em>, &lt;em>test&lt;/em> und &lt;em>package&lt;/em> aus.&lt;/p>
-&lt;h4 id="help">help&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn -help
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Das Ergebnis dürfte klar sein. Maven listet alle möglichen Befehle auf.&lt;/p>
-&lt;h4 id="dependencytree">dependency:tree&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn dependency:tree
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dieser Befehl listet alle Abhängigkeiten zu Fremdbibliotheken als Baum auf.
-Das ist grundsätzlich sehr praktisch, wenn man doppelte Abhängigkeiten erkennen oder vermeiden will.&lt;/p>
-&lt;h4 id="clean">clean&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn clean
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Dieser Befehl löscht alle vorherigen lokalen Maven-Build-Artefakte, indem er das Verzeichnis &amp;rsquo;target&amp;rsquo; entfernt.&lt;/p>
-&lt;h4 id="compile">compile&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn compile
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Kompiliert den Sourcecode je nach Abhängigkeit von Plugins.
-Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung
-herangezogen.&lt;/p>
-&lt;h4 id="test">test&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn test
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-Tests mit JUnit.&lt;/p>
-&lt;h4 id="package">package&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn package
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das
-Verzeichnis &amp;ldquo;target&amp;rdquo;.&lt;/p>
-&lt;h4 id="verify">verify&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn verify
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen
-Maven-Befehl vorausgesetzt.&lt;/p>
-&lt;h4 id="install">install&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn install
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Lädt das Artefakt in dein lokales Maven-Repository (dies findest du typischerweise unter %UserProfile%.m2).&lt;/p>
-&lt;h4 id="skip-tests">skip tests&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn install -DskipTests
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Mit dem Parameter &lt;code>-DskipTests&lt;/code> kannst du die Ausführung der Tests während der Installation überspringen, um Zeit zu
-sparen. Der Parameter kann auch bei anderen Aktionen wie &lt;code>compile&lt;/code>, &lt;code>package&lt;/code> usw. verwendet werden.&lt;/p>
-&lt;h4 id="deploy">deploy&lt;/h4>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn deploy
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Lädt das Artefakt in das Remote-Repository (Artifactory) hoch.&lt;/p>
-&lt;p>Die Maven-Befehle lassen sich kombinieren. Sehr nützlich ist zum Beispiel:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn clean install
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen Maven-Befehle.&lt;/p>
-&lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/06_maven/">Aufgaben&lt;/a> in den Labs.&lt;/p>
-&lt;hr>
-&lt;p>&lt;img src="/images/hint.png" alt="hint-gradle"> (Optional) &lt;strong>Gradle&lt;/strong>: Als Alternative zu Maven wird oft auch das Build-System
-&lt;a href="https://docs.gradle.org/">Gradle&lt;/a> eingesetzt. Unter
-&lt;a href="https://docs.gradle.org/current/samples/sample_building_java_applications.html">Building Java Applications Sample&lt;/a>
-kannst du dir einen ersten Eindruck verschaffen.&lt;/p></description></item><item><title>Docs: Objektorientiertes Design</title><link>/docs/02_java/08_java-ood/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/08_java-ood/</guid><description>
+&lt;/div></description></item><item><title>Docs: Objektorientiertes Design</title><link>/docs/02_java/07_java-ood/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/07_java-ood/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich kann die Konzepte der Generalisierung und Spezialisierung im Kontext der Vererbung erklären
@@ -1651,7 +961,7 @@ Klassen und Interfaces.
 Je genereller eine Funktion oder Beschreibung ist, desto höher ist sie stets in der
 Klassenhierarchie. Weiter unten in der Hierarchie sind also die spezialisierten Dinge anzutreffen.&lt;/p>
 &lt;p>Darstellung der Generalisierung mit UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Generalisation.png" alt="UML Generalisierung" title="UML Generalisierung">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Generalisation.png" alt="UML Generalisierung" title="UML Generalisierung">&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1673,8 +983,8 @@ Klassenhierarchie. Weiter unten in der Hierarchie sind also die spezialisierten 
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Bei der Implementation eines Interfaces mit UML wird die folgende Darstellung verwendet (Interfaces
-werden &lt;a href="/docs/02_java/08_java-ood/#interfaces">weiter unten&lt;/a> erklärt):&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Interface.png" alt="">&lt;/p>
+werden &lt;a href="/docs/02_java/07_java-ood/#interfaces">weiter unten&lt;/a> erklärt):&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Interface.png" alt="">&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -1773,7 +1083,7 @@ Beispiel 2:
 &amp;ldquo;Ein Auto hat einen Fahrer oder eine Fahrerin&amp;rdquo;. Die Existenz des Fahrers / der Fahrerin ist nicht an
 die Existenz des Autos gebunden.&lt;/p>
 &lt;p>Darstellung der Aggregation mit UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Aggregation.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Aggregation.png" alt="">&lt;/p>
 &lt;p>In der Aggregation kann das zugeordnete Objekt unabhängig existieren. Es wird also nicht vollständig
 vom &amp;ldquo;Besitzer&amp;rdquo; (Container-Objekt) kontrolliert.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1832,7 +1142,7 @@ Die Komposition ist&lt;/p>
 Beispiel 2:
 &amp;ldquo;Ein Mensch hat ein Herz.&amp;rdquo; Ein Mensch kann ohne Herz nicht existieren.&lt;/p>
 &lt;p>Darstellung der Komposition in UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Composition.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Composition.png" alt="">&lt;/p>
 &lt;p>In der Komposition existiert das &amp;ldquo;Teil&amp;rdquo;-Objekt nur im Kontext des &amp;ldquo;Ganzen&amp;rdquo;. Es kann nicht unabhängig
 existieren.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1895,7 +1205,7 @@ benutzt wird.&lt;/p>
 &lt;p>Beispiel:
 &amp;ldquo;Eine Musikerin spielt ein Instrument.&amp;rdquo; Sie &amp;ldquo;kennt&amp;rdquo; das Instrument, das sie spielt.&lt;/p>
 &lt;p>Darstellung der Assoziation in UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Association.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Association.png" alt="">&lt;/p>
 &lt;p>Die Assoziation beschreibt eine lose Beziehung zwischen Objekten, die miteinander &amp;ldquo;wissen&amp;rdquo; oder &amp;quot;
 kennen&amp;quot;.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -1964,7 +1274,7 @@ klare Richtung hat.&lt;/p>
 Du hast zwei Klassen: Kunde und Bestellung. Es besteht eine gerichtete Assoziation von Kunde zu
 Bestellung. Das bedeutet, dass der Kunde eine oder mehrere Bestellungen kennt, Bestellung weiss aber
 nichts über den Kunden.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/gerichtete_Assoziation.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/gerichtete_Assoziation.png" alt="">&lt;/p>
 &lt;p>Eine gerichtete Assoziation zeigt eine Richtung in der Beziehung zwischen zwei Objekten.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -2038,7 +1348,7 @@ Supplier).&lt;/li>
 Parameter vom Typ der unabhängigen Klasse verwendet. Es ist auch möglich, eine Abhängigkeit ohne
 Objekte zu erstellen, zum Beispiel mit statischen Methoden.&lt;/p>
 &lt;p>Darstellung der Abhängigkeit in UML:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Dependency.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Dependency.png" alt="">&lt;/p>
 &lt;p>Eine Abhängigkeit zeigt, dass eine Klasse eine andere zum Funktionieren benötigt, aber nicht
 dauerhaft hält.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -2169,7 +1479,7 @@ Die überschreibende Methode muss dieselbe Signatur (Methodenname; Anzahl, Typ u
 Parameter) aufweisen.
 Die zu überschreibende Methode darf nicht final sein.&lt;/p>
 &lt;p>Beispiel:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/08_java-ood/images/Overriding.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/07_java-ood/images/Overriding.png" alt="">&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 &lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
 &lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -3090,7 +2400,7 @@ interne Strukturänderungen dieser Klasse keinen Einfluss auf den Code des Benut
 &lt;/ul>
 &lt;hr>
 &lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte
-die &lt;a href="/labs/02_java/08_java-ood/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Testing</title><link>/docs/02_java/10_java-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/10_java-testing/</guid><description>
+die &lt;a href="/labs/02_java/08_java-ood/">Aufgaben&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Testing</title><link>/docs/02_java/08_java-testing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/08_java-testing/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss, warum das Testen in der Softwareentwicklung eine zentrale Bedeutung hat.&lt;/li>
@@ -3115,7 +2425,7 @@ in den Entwicklungsprozess integriert werden:&lt;/p>
 &lt;li>&lt;strong>Testing spart Geld&lt;/strong> da damit weniger Nachbearbeitungsaufwand in Form von Bug/Hot-Fixes betrieben werden muss.&lt;/li>
 &lt;li>&lt;strong>Testing führt zu höherer Kundenzufriedenheit&lt;/strong> da damit weniger Fehler den Kunden davor hindern, fehlerfrei mit dem Produkt zu arbeiten.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/kosten_fehler.png" alt="Kostenverlauf für Fehler je nach Zeitpunkt">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/kosten_fehler.png" alt="Kostenverlauf für Fehler je nach Zeitpunkt">&lt;/p>
 &lt;h2 id="testarten">Testarten&lt;/h2>
 &lt;p>Es gibt viele verschiedene Softwaretestverfahren und Methoden, mit denen sichergestellt werden kann,
 dass Änderungen am Code wie erwartet funktionieren.&lt;/p>
@@ -3288,7 +2598,7 @@ Wir schreiben Unit-Tests also mit JUnit 5.&lt;/p>
 &lt;/div>&lt;p>Speichere diese Datei im Basisverzeichnis deines Projekts ab.&lt;/p>
 &lt;h3 id="ordnerstruktur-anlegen">Ordnerstruktur anlegen&lt;/h3>
 &lt;p>Um Unit-Tests implementieren zu können benötigen wir grundsätzlich die folgende Ordnerstruktur im IntelliJ IDEA.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/1518642456.png" alt="Ordnerstruktur IntelliJ IDEA">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/1518642456.png" alt="Ordnerstruktur IntelliJ IDEA">&lt;/p>
 &lt;p>Falls dein Projekt kein Maven-Projekt ist, kannst du die Verzeichnisse einfach manuell anlegen. Mit einem Rechtsklick auf die Verzeichnisse, kannst du sie mit dem Befehl &amp;ldquo;Mark Directory as&amp;rdquo; aus dem Kontext-Menü wie folgt markieren:&lt;/p>
 &lt;table>
 &lt;thead>
@@ -3477,7 +2787,7 @@ Eine Methode innerhalb des Rechtecks dient dazu herauszufinden, ob eine bestimmt
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Damit keine Verwirrung entsteht, hier das verwendete Koordinatensystem.
-&lt;img src="/docs/02_java/10_java-testing/images/1623657498.png" alt="Koordinatensystem">&lt;/p>
+&lt;img src="/docs/02_java/08_java-testing/images/1623657498.png" alt="Koordinatensystem">&lt;/p>
 &lt;p>Wie wir in der Implementation sehen können, gibt es hier vier verschiedene Bedingungen. Das Ziel des Tests muss es also sein, dass wir alle diese Bedingungen überprüfen. Wenn immer möglich, sollten alle möglichen Kombinationen getestet werden. Nur so kann sichergestellt werden, dass die Methode wie gewünscht funktioniert. Aufgrund der AND-Verknüpfung werden die zweiten Bedingungen der jeweiligen Statements nicht mehr ausgewertet. Damit müssen die folgenden Kombinationen durch einen Unit-Test abgedeckt werden&lt;/p>
 &lt;table>
 &lt;thead>
@@ -3614,7 +2924,7 @@ Eine Methode innerhalb des Rechtecks dient dazu herauszufinden, ob eine bestimmt
 &lt;/div>
 &lt;/div>&lt;p>Im IntelliJ gibt es wie bei der Ausführung einer Applikation auch die Möglichkeit einen Unit-Test zu debuggen.
 Zusätzlich können wir die Testabdeckung anschauen, wenn wir den Unit-Test mit &amp;ldquo;Coverage&amp;rdquo; durchlaufen lassen. Wenn der Test erfolgreich durchgelaufen ist, dann kann die getestete Klasse geöffnet werden.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/10_java-testing/images/1623656576.png" alt="Klasse mit Coverage">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/08_java-testing/images/1623656576.png" alt="Klasse mit Coverage">&lt;/p>
 &lt;p>Die grünen Balken auf der linken Seite zeigen die Testabdeckung an. In diesem Fall sind sämtliche Zeilen durch einen Test durchlaufen worden.&lt;/p>
 &lt;p>Da der Unit-Test nun alle Möglichkeiten der Methode abdeckt, kann ein einfaches Refactoring durchgeführt werden. In unserem Fall kann die Methode wie folgt vereinfacht werden:&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -5701,7 +5011,7 @@ Besser ist es, die Eingabe vor der Verarbeitung zu validieren und Exceptions nur
 &lt;/div>
 &lt;/div>&lt;p>&lt;strong>Fazit&lt;/strong>: Durch die Verwendung von Kontrollstrukturen anstelle von Exceptions für den Programmfluss wird der Code nicht nur sauberer und verständlicher, sondern auch effizienter und robuster.&lt;/p>
 &lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/09_java-exception_handling/">Aufgaben zu Exception Handling&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: JDBC (Java Database connection)</title><link>/docs/02_java/11_java-jdbc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/11_java-jdbc/</guid><description>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/09_java-exception_handling/">Aufgaben zu Exception Handling&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: JDBC (Java Database connection)</title><link>/docs/02_java/10_java-jdbc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/10_java-jdbc/</guid><description>
 &lt;h4 id="ziele">Ziele&lt;/h4>
 &lt;ul>
 &lt;li>Ich weiss was die JDBC-Schnittstelle ist und wofür sie benutzt wird&lt;/li>
@@ -5735,7 +5045,7 @@ Ein JDBC-Treiber ist eine Software-Komponente, welche die Zugriffstechnik für e
 wie auch die Ergebnisse zurückzuliefern. Solche Treiber können umgetauscht werden, wenn die unterliegende Datenbank
 geändert werden soll, ohne dass es zu einer Anpassung in der Anwendung-Code kommt.&lt;/p>
 &lt;p>Eine vereinfachte Darstellung der JDBC-Architektur sieht also wie folgt aus:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/jdbc-architektur.png" alt="" title="JDBC-Architektur">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/jdbc-architektur.png" alt="" title="JDBC-Architektur">&lt;/p>
 &lt;h2 id="jdbc-in-der-praxis">JDBC in der Praxis&lt;/h2>
 &lt;p>Die Klassen und Interfaces der JDBC-Schnittstelle befinden sich im Paket &amp;ldquo;java.sql&amp;rdquo;.
 Entsprechend reicht ein &amp;ldquo;import&amp;rdquo;-Statement um mit diesen Klassen/Interfaces arbeiten zu können.
@@ -5751,7 +5061,7 @@ Diese Beispiele wurden in einem Maven-Projekt ohne das Spring-Framework erstellt
 &lt;p>Sobald die gewünschte Datenbank festgelegt wurde, kann der dazugehörende JDBC-Treiber als
 Maven-Abhängigkeit herangezogen werden.&lt;/p>
 &lt;p>Das folgende Beispiel zeigt eine Abhängigkeit zu einem MySql-Treiber:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/dependency.png" alt="dependency.png">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/dependency.png" alt="dependency.png">&lt;/p>
 &lt;p>Die restlichen Schritte erfolgen im Java-Code.&lt;/p>
 &lt;h3 id="treiber-ladenregistrieren">Treiber laden/registrieren&lt;/h3>
 &lt;p>&lt;strong>Hinweis&lt;/strong>&lt;br>
@@ -5762,7 +5072,7 @@ somit braucht es diesen Schritt nicht mehr.&lt;/p>
 Hier geht es um die Datenbank spezifischer Treiber, welche es der Anwendung den Datenzugriff auf der
 gewünschten Datenbank ermöglicht.&lt;/p>
 &lt;p>Im folgenden Beispiel wird der JDBC-Treiber für MySql registriert:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/driver_registration.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/driver_registration.png" alt="">&lt;/p>
 &lt;h3 id="datenbankverbindung-herstellen">Datenbankverbindung herstellen&lt;/h3>
 &lt;p>Der Zugriff auf einer Datenbank erfordert die Konfiguration folgender Elemente:&lt;/p>
 &lt;ul>
@@ -5770,18 +5080,18 @@ gewünschten Datenbank ermöglicht.&lt;/p>
 &lt;li>Benutzername: einer, für den Zugriff auf die Datenbank, autorisierter Benutzer&lt;/li>
 &lt;li>Passwort: das Passwort des autorisierten Benutzers, womit er sich authentifizieren kann&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/connection_configuration.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/connection_configuration.png" alt="">&lt;/p>
 &lt;p>Die Konfiguration wird hier einfachheitshalber als Klartext im Code geschrieben.
 Selbstverständlich dürfen vertrauliche Informationen wie z.B. das Passwort nicht als Klartext im Code stehen.
 Für diesen Zweck, wie auch für die Konfiguration unterschiedlichen Umgebungen, eignen sich System-
 oder Umgebungsvariablen (mit oder ohne Verschlüsselung) besser.&lt;/p>
 &lt;p>Die obige Konfiguration kann nun für die Herstellung einer Datenbankverbindung verwendet werden.
 Dazu wird die statische Methode &lt;em>getConnection&lt;/em> der Klasse &lt;em>DriverManager&lt;/em> verwendet:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/connection_creation.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/connection_creation.png" alt="">&lt;/p>
 &lt;p>Ab diesem Punkt repräsentiert das Connection-Objekt die Verbindung zur Datenbank.&lt;/p>
 &lt;h3 id="sql-anweisung-vorbereiten">SQL-Anweisung vorbereiten&lt;/h3>
 &lt;p>Die SQL-Anweisung kann als String vor der Ausführung vorbereitet werden:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/select_query_no_params.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/select_query_no_params.png" alt="">&lt;/p>
 &lt;p>Wenn eine IDE wie z.B. IntelliJ verwendet wird und eine Datasource mit der richtigen Datenbank definiert wird,
 erkennt die IDE, dass es sich um eine SQL-Anweisung handelt und liefert entsprechend
 Vorschläge und formatiert die Anweisung richtig und gut leserlich.&lt;/p>
@@ -5790,7 +5100,7 @@ SQL-Anweisungen können aber auch Operationen wie Tabellen erstellen, Daten einf
 bearbeiten usw. beinhalten.&lt;/p>
 &lt;p>Als Beispiel, erstellt die folgende SQL-Anweisung eine Tabelle - falls diese noch nicht existiert -
 mit ein paar gewünschten Attributen (Spalten):&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/create_table_query.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/create_table_query.png" alt="">&lt;/p>
 &lt;h3 id="sql-anweisung-ausführen">SQL-Anweisung ausführen&lt;/h3>
 &lt;p>Um SQL-Anweisungen ausführen zu können wird zunächst ein Statement-Objekt aus dem vorhandenen
 Connection-Objekt erzeugt. Dieses Statement-Objekt wird verwendet, um die SQL-Anweisung an die
@@ -5798,7 +5108,7 @@ Datenbank zu richten. Dazu wird eine der &lt;em>execute&lt;/em> Methoden des Sta
 &lt;p>Im folgenden Beispiel wird die ein Statement-Objekt mithilfe des Connection-Objekt erstellt.
 Danach wird die Methode &lt;em>executeQuery&lt;/em> verwendet, welche eine SQL-Anweisung als
 Parameter entgegennimmt, diese ausführt und eine Referenz auf die Ergebnismenge (sog. ResultSet) zurückliefert:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/statement_exectution.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/statement_exectution.png" alt="">&lt;/p>
 &lt;h3 id="parametrisierte-sql-anweisungen">Parametrisierte SQL-Anweisungen&lt;/h3>
 &lt;p>Bis jetzt haben wir SQL-Anweisungen ausgeführt, welche keine Einschränkungen beinhaltet haben.
 Oft werden jedoch SQL-Anweisungen mit bestimmten Kriterien oder Einschränkungen benötigt damit die
@@ -5809,18 +5119,18 @@ In solchen Situationen wird der SQL &amp;ldquo;WHERE&amp;rdquo;-Befehl benutzt. 
 und &lt;em>age &amp;gt; 20&lt;/em> erfüllen.
 Wenn nun dieselbe Anweisung mehrmals ausgeführt werden soll aber jeweils mit anderen Parameter (also mit unterschiedlichen &lt;em>username&lt;/em> und &lt;em>age&lt;/em>),
 wird die Anweisung mit Platzhaltern wie folgt geschrieben (ein Fragezeichen dient als einen Platzhalter):&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/query_with_placeholder.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/query_with_placeholder.png" alt="">&lt;/p>
 &lt;p>Für das eigentliche Ausführen der Anweisung müssen alle Platzhalter durch konkrete Werte ersetzt werden.
 Dazu wird ein &lt;em>PreparedStatement&lt;/em> verwendet, welche es erlaubt, alle Platzhalter anhand ihrer Position (beginnend mit 1)
 mittels &lt;em>setXXX&lt;/em> Methoden anzusprechen und mit den konkreten Werten zu ersetzen.
 Anschliessend, kann auch hier eine der &lt;em>executeXXX&lt;/em> Methoden verwendet werden, um die Anweisung auszuführen:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/prepared_statement.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/prepared_statement.png" alt="">&lt;/p>
 &lt;h3 id="rückgabewerte-verarbeiten">Rückgabewerte verarbeiten&lt;/h3>
 &lt;p>Bei der Ausführung von bestimmten SQL-Anweisungen (z.B. bei SELECT Operationen), wird eine Ergebnismenge zurückgeliefert.
 Ein ResultSet repräsentiert einen sog. &lt;em>Cursor&lt;/em> auf diese Ergebnismenge.
 Die Methoden des ResultSets, bewegen den Cursor (je nach Art des Cursors) vorwärts, rückwärts, zur ersten oder zur letzten Position usw.
 Somit kann über die gesamte Ergebnismenge, Zeile bei Zeile, iteriert werden, um die Werte zu lesen.&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/resultset_iteration.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/resultset_iteration.png" alt="">&lt;/p>
 &lt;p>Im obigen Beispiel wird die &lt;em>next&lt;/em> Methode verwendet um den Cursor jeweils eine Zeile vorwärtszubewegen.
 Aus jeder Zeile werden aus dem ResultSet mittels &lt;em>getXXX&lt;/em> Methoden (XXX steht für den Typ des Wertes)
 die Werte, welche in dieser aktuellen Zeile vorhanden sind.
@@ -5831,7 +5141,7 @@ nachdem alle Zeilen bearbeitet worden sind.&lt;/p>
 &lt;h3 id="verbindungen-schliessen">Verbindungen schliessen&lt;/h3>
 &lt;p>Objekte der Typ &lt;em>Connection&lt;/em>, &lt;em>Statement&lt;/em> oder auch &lt;em>PreparedStatement&lt;/em> sind sog. Ressourcen.
 Solche Ressourcen müssen nach Verbrauch wieder explizit geschlossen werden:&lt;/p>
-&lt;p>&lt;img src="/docs/02_java/11_java-jdbc/images/close_statement_and_connection.png" alt="">&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/10_java-jdbc/images/close_statement_and_connection.png" alt="">&lt;/p>
 &lt;p>Wenn diese Ressourcen innerhalb eines try-with-resources Befehls erstellt werden, entfällt diese
 explizite Schliessung der Ressourcen.&lt;br>
 Die Arbeit mit try-with-resources ist immer vorzuziehen, wenn es um Closable-Ressourcen geht.&lt;/p>
@@ -5878,4 +5188,692 @@ Die Arbeit mit try-with-resources ist immer vorzuziehen, wenn es um Closable-Res
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;hr>
-&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte diese &lt;a href="/labs/02_java/11_java-jdbc/01_jdbc_exercises/">Aufgabe&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Spring Framework</title><link>/docs/02_java/12_spring-framework/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/</guid><description/></item></channel></rss>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte diese &lt;a href="/labs/02_java/11_java-jdbc/01_jdbc_exercises/">Aufgabe&lt;/a> in den Labs.&lt;/p></description></item><item><title>Docs: Maven</title><link>/docs/02_java/11_maven/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/11_maven/</guid><description>
+&lt;h4 id="ziele">Ziele&lt;/h4>
+&lt;ul>
+&lt;li>Ich kenne die Grundlagen von Maven.&lt;/li>
+&lt;li>Ich kann Maven lokal konfigurieren.&lt;/li>
+&lt;li>Ich kann im Artifactory Abhängigkeiten suchen und diese verwenden.&lt;/li>
+&lt;li>Ich kenne die Grundlagen von Project Object Models (POM).&lt;/li>
+&lt;li>Ich kenne die wichtigsten Maven Befehle und kann diese auf der Kommandozeile anwenden.&lt;/li>
+&lt;li>Ich kann die Abhängigkeiten meiner Applikationen mit Maven verwalten.&lt;/li>
+&lt;li>Ich kann Maven Plugins konfigurieren und damit meinen Maven-Build steuern.&lt;/li>
+&lt;li>(Optional): Ich habe erste Erfahrungen gesammelt mit dem alternativen Build-Tool Gradle.&lt;/li>
+&lt;/ul>
+&lt;h2 id="maven">Maven&lt;/h2>
+&lt;h3 id="allgemeine-informationen">Allgemeine Informationen&lt;/h3>
+&lt;p>Apache Maven ist ein Build-Management Tool. Das heisst, Maven kann den Build eines Projekts von einer einzigen Datei aus
+steuern. Diese zentrale Datei ist das Project Object Model, kurz auch POM genannt. Ein Build ist der Prozess, bei dem
+der Quellcode eines Programms in eine ausführbare Form gebracht wird, häufig durch Kompilieren und Paketieren.
+Der Build eines Projekts kann dabei von einfacher Kompilierung bis zur Auslieferung einer Anwendung auf eine bestimmte
+Plattform reichen.&lt;/p>
+&lt;p>Damit Maven funktionieren kann, benötigt ein Projekt die folgenden Dinge:&lt;/p>
+&lt;ul>
+&lt;li>Eine Maven-Installation, entweder separat oder Built-In wie beispielsweise mit IntelliJ&lt;/li>
+&lt;li>Eine Project Object Model Datei pro Projekt oder Modul (es handelt sich um eine XML-Datei)&lt;/li>
+&lt;li>Ein zentrales Maven-Repository&lt;/li>
+&lt;li>Ein lokales Maven-Repository&lt;/li>
+&lt;li>Eine Konfigurationsdatei mit dem Namen settings.xml&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="installation">Installation&lt;/h3>
+&lt;h4 id="manuelle-installation">Manuelle Installation&lt;/h4>
+&lt;p>Idealerweise wurde Apache Maven bereits mit IntelliJ installiert. Alternativ kannst du Maven auch hier herunterladen:
+&lt;a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi&lt;/a>. Verwende die Binary anstelle der Source,
+und zwar am besten die Datei im &lt;code>Binary zip archive&lt;/code> Format.&lt;/p>
+&lt;p>Klicke dazu auf den folgenden Link, wie hier im Beispiel:
+&lt;img src="/docs/02_java/11_maven/images/maven_download.png" alt="Apache Maven Project Download (Stand: 22.09.2024)" title="Maven Download Seite">&lt;/p>
+&lt;p>Nachdem du die Datei heruntergeladen hast, kannst du den folgenden Ordner erstellen:&lt;br>
+&lt;code>C:\Program Files\Apache\Maven\&lt;/code>.&lt;/p>
+&lt;p>Entpacke die heruntergeladene Datei dort. Du kannst danach die Umgebungsvariablen auf dieses Verzeichnis setzen.&lt;/p>
+&lt;hr>
+&lt;h4 id="intellij-idea">IntelliJ IDEA&lt;/h4>
+&lt;p>Ist IntelliJ installiert, findet man in den allgemeinen Einstellungen auch die Einstellungen für Maven. Normalerweise
+sind diese Einstellungen bereits korrekt.&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/11_maven/images/intellij_maven_settings.png" alt="Intellij Maven settings">&lt;/p>
+&lt;p>Die wichtigsten Einstellungen sind:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Einstellung&lt;/th>
+&lt;th>Beschreibung&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Maven home directory&lt;/td>
+&lt;td>Zeigt auf das Verzeichnis einer Maven-Installation. Das IntelliJ verfügt bereits über eine Maven-Installation, diese wird als &amp;ldquo;Bundled&amp;rdquo; bezeichnet.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>User settings file&lt;/td>
+&lt;td>Die XML-Datei, welche bei der Installation angelegt wurde.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Local repository&lt;/td>
+&lt;td>Der Ablageort für das lokale Repository, dieser ist normalerweise unter C:\Users\&amp;lt;Personalnummer&amp;gt;\.m2.\repository zu finden.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Bei diesen Einstellungen muss überprüft werden, dass die Pfad-Angaben für die XML-Datei und das lokale Repository
+korrekt sind.&lt;/p>
+&lt;hr>
+&lt;h3 id="umgebungsvariablen-setzen">Umgebungsvariablen setzen&lt;/h3>
+&lt;p>Damit Maven auch auf der Command-Line funktioniert, muss eine Umgebungsvariable gesetzt werden.
+Unter Windows muss also der Pfad zu deiner installierten Maven-Version hinzugefügt werden. Dadurch weiss Windows, wo die
+Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die folgenden Schritte sind dazu notwendig:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Anwendung &amp;ldquo;Systemumgebungsvariablen bearbeiten&amp;rdquo; aus der Systemsteuerung starten. Falls das nicht geht, musst du dir
+(temporär) lokale Admin-Rechte aktivieren.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Unten rechts auf den Button &amp;ldquo;Umgebungsvariablen&amp;rdquo; klicken.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Im unteren Teil &amp;ldquo;Benutzervariablen&amp;rdquo; die Variable &amp;ldquo;Path&amp;rdquo; suchen und anklicken.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Auf den Button &amp;ldquo;Bearbeiten&amp;hellip;&amp;rdquo; klicken.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Oben rechts auf den Button &amp;ldquo;Neu&amp;rdquo; klicken, es erscheint eine neue Zeile ganz unten.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte
+auf das Verzeichnis bin zeigen, also zum Beispiel:&lt;/p>
+&lt;ul>
+&lt;li>manuelle Installation: &lt;strong>C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin&lt;/strong>&lt;/li>
+&lt;li>IntelliJ installiert: &lt;strong>C:\Users\u&amp;hellip;&amp;hellip;\AppData\Local\Programs\IntelliJ IDEA Ultimate\plugins\maven\lib\maven3\bin&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Alle offenen Windows-Fenster mit &amp;ldquo;OK&amp;rdquo; schliessen.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Um die Installation zu überprüfen, führen den folgenden Befehl in deinem Terminal (du findest es unter
+&lt;em>Eingabeaufforderung&lt;/em> oder &lt;em>cmd&lt;/em> in der Windows Suche) aus:&lt;/p>
+&lt;p>&lt;code>mvn -version&lt;/code>&lt;/p>
+&lt;p>Falls es korrekt installiert ist, wird dir Maven die Version liefern, also zum Beispiel:&lt;/p>
+&lt;p>&lt;code>Apache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)&lt;/code>&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/11_maven/images/cmd_maven_version.png" alt="Maven Version">&lt;/p>
+&lt;p>Die Version muss nicht mit deiner übereinstimmen.&lt;/p>
+&lt;details>
+&lt;summary>JAVA_HOME Troubleshoot&lt;/summary>
+&lt;p>Es kann sein, dass du folgende Fehlermeldung siehst:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>The JAVA_HOME environment variable is &lt;span style="color:#f92672">not&lt;/span> defined correctly,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>this environment variable is needed to run this program&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das bedeutet, dass die Java-Installation nicht gefunden werden kann.
+IntelliJ enthält zwar eine eigene Java-Installation, allerdings weiss Windows nicht, wo sich diese befindet.
+Aus diesem Grund musst du eine Umgebungsvariable setzen, die auf diese Installation zeigt.
+Dafür musst du zuerst herausfinden, wo sich die Installation befindet.&lt;/p>
+&lt;p>Unter IntelliJ gehe zu folgendem Fenster:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>File &amp;gt; Project Structure &amp;gt; Platform Settings &amp;gt; SDKs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Kopiere den Pfad unter &lt;code>JDK home path&lt;/code>.&lt;/p>
+&lt;p>Erstelle nun &lt;a href="/docs/02_java/11_maven/#umgebungsvariablen-setzen">gleich wie zuvor&lt;/a> eine neue Umgebungsvariable mit den folgenden Werten:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>JAVA_HOME:{JDK home path}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Ersetze &lt;code>{JDK home path}&lt;/code> mit deinem kopierten Wert. Öffne danach ein neues Terminal und versuche es erneut.&lt;/p>
+&lt;/details>
+&lt;hr>
+&lt;h3 id="pomxml">pom.xml&lt;/h3>
+&lt;p>Der Aufbau eines Project Object Models kann grob in folgende Abschnitte unterteilt werden, hier erklärt an einem
+umfangreichen Beispiel. Die einzelnen Teile werden gleich im Anschluss näher erläutert. Bitte beachte, dass dieses
+Project Object Model nicht alle Inhalte vollständig erklärt, sondern nur als erstes Beispiel dient.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!-- (1) Header --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">project&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">modelVersion&lt;/span>&amp;gt;4.0.0&amp;lt;/&lt;span style="color:#f92672">modelVersion&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (2) Angaben zum Artefakt --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;ch.sbb.interviewtool&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;interviewtool-backend&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;0.0.1-SNAPSHOT&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">packaging&lt;/span>&amp;gt;jar&amp;lt;/&lt;span style="color:#f92672">packaging&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (3) Angaben zum Parent-Projekt --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">parent&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-starter-parent&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;2.2.4.RELEASE&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">relativePath&lt;/span>/&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">parent&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (4) Properties --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">properties&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">project.build.sourceEncoding&lt;/span>&amp;gt;UTF-8&amp;lt;/&lt;span style="color:#f92672">project.build.sourceEncoding&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">java.version&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">java.version&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">maven.build.timestamp.format&lt;/span>&amp;gt;yyyy-MM-dd HH:mm&amp;lt;/&lt;span style="color:#f92672">maven.build.timestamp.format&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">timestamp&lt;/span>&amp;gt;${maven.build.timestamp}&amp;lt;/&lt;span style="color:#f92672">timestamp&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">properties&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (5) Abhängigkeiten --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">dependencies&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Lombok --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.projectlombok&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;lombok&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">version&lt;/span>&amp;gt;1.18.6&amp;lt;/&lt;span style="color:#f92672">version&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- Unit- und Integrationstests --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.junit.jupiter&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;junit-jupiter-engine&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;test&amp;lt;/&lt;span style="color:#f92672">scope&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">dependency&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">dependencies&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (6) Build-Informationen --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">build&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">plugins&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.springframework.boot&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;spring-boot-maven-plugin&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;org.apache.maven.plugins&amp;lt;/&lt;span style="color:#f92672">groupId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;maven-compiler-plugin&amp;lt;/&lt;span style="color:#f92672">artifactId&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">configuration&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">compilerVersion&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">compilerVersion&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">source&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">source&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">target&lt;/span>&amp;gt;1.21&amp;lt;/&lt;span style="color:#f92672">target&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">configuration&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">plugin&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">plugins&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">build&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- (7) Entwickler-Informationen --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">developers&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">developer&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;U000000&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">name&lt;/span>&amp;gt;Vorname Name&amp;lt;/&lt;span style="color:#f92672">name&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">email&lt;/span>&amp;gt;vorname.name@sbb.ch&amp;lt;/&lt;span style="color:#f92672">email&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">organization&lt;/span>&amp;gt;SBB&amp;lt;/&lt;span style="color:#f92672">organization&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">organizationUrl&lt;/span>&amp;gt;https://www.sbb.ch&amp;lt;/&lt;span style="color:#f92672">organizationUrl&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">roles&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">role&lt;/span>&amp;gt;Software Architect&amp;lt;/&lt;span style="color:#f92672">role&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">role&lt;/span>&amp;gt;Lead Developer&amp;lt;/&lt;span style="color:#f92672">role&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">roles&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">developer&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">developers&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">project&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="abschnitt-1">Abschnitt 1&lt;/h4>
+&lt;p>Der Header einer Project Object Model Datei bleibt grundsätzlich so wie dargestellt. Die Angaben zum Schema sind dabei
+optional. Falls andere Schemas verwendet werden, so sind diese hier zu deklarieren.&lt;/p>
+&lt;h4 id="abschnitt-2">Abschnitt 2&lt;/h4>
+&lt;p>Die Angaben zum Artefakt enthalten die folgenden Informationen:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Gruppen-ID&lt;/strong>: Die Gruppen-ID ist in Maven normalerweise als umgekehrte Domain-Name-Notation (Reverse Domain Name
+Notation) aufgebaut, ähnlich wie bei Java-Paketen. Diese Struktur dient dazu, Konflikte zwischen Artefakten von
+verschiedenen Organisationen zu vermeiden. Zum Beispiel wird die Gruppen-ID für ein Projekt der SBB oft in der
+Form ch.sbb beginnen, da sbb.ch die Domain der Schweizerischen Bundesbahnen ist. Beispiel: ch.sbb.interviewtool&lt;/li>
+&lt;li>&lt;strong>Artefakt-ID&lt;/strong>: Die Artefakt-ID ist der eindeutige Name eines Projekts oder einer Komponente, der zusammen mit der
+Gruppen-ID und der Version verwendet wird, um ein Artefakt im Repository eindeutig zu identifizieren. Beispiel:
+interviewtool-backend, mit der Gruppen-ID: ch.sbb.interviewtool:interviewtool-backend.
+&lt;ul>
+&lt;li>&lt;strong>Version&lt;/strong>: Die momentane Version des Projekts, diese wird später durch Releases verändert.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Paketierung&lt;/strong>: Angabe, in welcher Form das Artefakt geliefert wird. Der Default ist Java Archive (JAR).&lt;/li>
+&lt;/ul>
+&lt;p>Bei der Versionierung nutzt Maven die folgenden Standards:&lt;/p>
+&lt;ul>
+&lt;li>Major-Version&lt;/li>
+&lt;li>Minor-Version&lt;/li>
+&lt;li>Incremental-Version&lt;/li>
+&lt;li>Build-Number&lt;/li>
+&lt;li>Qualifier&lt;/li>
+&lt;/ul>
+&lt;p>Dazu ein paar Beispiele:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Typ&lt;/th>
+&lt;th>Beispiel&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Major-Version&lt;/td>
+&lt;td>&lt;font color="red">1&lt;/font>.2.1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Minor-Version&lt;/td>
+&lt;td>2.&lt;font color="red">0&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Incremental-Version&lt;/td>
+&lt;td>1.2&lt;font color="red">-SNAPSHOT&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Patch&lt;/td>
+&lt;td>1.2.&lt;font color="red">1&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Build-Number&lt;/td>
+&lt;td>1.4.2&lt;font color="red">-12&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Qualifier&lt;/td>
+&lt;td>1.2&lt;font color="red">-beta-2&lt;/font>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Alle Versionen mit Qualifier sind dabei älter als die gleiche Version ohne Qualifier. Beispielsweise ist die Version
+&lt;strong>1.2-beta-2&lt;/strong> älter als die Version &lt;strong>1.2&lt;/strong>. Gleiche Versionen mit unterschiedlichen Qualifiern werden durch den
+Vergleich dieser als String verglichen. So ist die Version &lt;strong>1.2-beta-2&lt;/strong> neuer als die Version &lt;strong>1.2-alpha-6&lt;/strong>.&lt;/p>
+&lt;p>Der SNAPSHOT-Qualifier wird verwendet, wenn eine Version noch nicht ausgeliefert wurde. So wird die Version
+&lt;strong>0.1.2-SNAPSHOT&lt;/strong> sehr wahrscheinlich als Version &lt;strong>0.1.2&lt;/strong> ausgeliefert werden.&lt;/p>
+&lt;h4 id="abschnitt-3">Abschnitt 3&lt;/h4>
+&lt;p>Falls das Projekt Bestandteil eines anderen Projektes ist, müssen hier die Artefakt-Angaben des sogenannten
+Parent-Projekts hinterlegt werden. Dies ist vor allem bei &lt;a href="/docs/02_java/12_spring-framework/07_spring-boot/">Spring-Boot&lt;/a>
+Projekten wichtig.&lt;/p>
+&lt;h4 id="abschnitt-4">Abschnitt 4&lt;/h4>
+&lt;p>Die Einstellungen in Maven sind beliebig wählbare Tags. So kann beispielsweise eine bestimmte Einstellung oder eine
+Version definiert werden.&lt;/p>
+&lt;p>Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xml" data-lang="xml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;special.setting&amp;gt;&lt;/span>Value&lt;span style="color:#f92672">&amp;lt;/special.setting&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Innerhalb der Project Object Model Datei kann dann mit&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>${special.setting}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>auf die Einstellung (Tag) und damit auf dessen Wert (Value) zugegriffen werden.&lt;/p>
+&lt;h4 id="abschnitt-5">Abschnitt 5&lt;/h4>
+&lt;p>Abhängigkeiten zu Fremdbibliotheken. Diese sollten stets Gruppen-ID, Artefakt-ID und Version enthalten. Der Typ der
+Abhängigkeit gibt an, um welche Art von Bibliothek es sich handelt. Nicht alle Java-Bibliotheken werden als JAR
+ausgeliefert.&lt;/p>
+&lt;p>Eine Liste der möglichen Typen findest du hier:
+&lt;a href="https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html">https://maven.apache.org/ref/3.6.3/maven-core/artifact-handlers.html&lt;/a>.&lt;/p>
+&lt;p>Vielfach wird auch der Scope verwendet, der angibt, in welchem Umfang die Fremdbibliothek einbezogen wird.
+Mögliche Scopes sind unter anderem:&lt;/p>
+&lt;ul>
+&lt;li>compile - Das ist der Default-Scope. Diese Bibliotheken sind in allen Klassenpfaden verfügbar (Classpath), werden also
+mitausgeliefert.&lt;/li>
+&lt;li>provided - Gleich wie compile, ausser das die Bibliothek zur Laufzeit von einem Container (wie dem JDK) erwartet und
+bereitgestellt wird.&lt;/li>
+&lt;li>runtime - Zeigt an, dass die Bibliothek zur Kompilierung nicht verwendet wird. Zur Laufzeit steht sie dann zur
+Verfügung.&lt;/li>
+&lt;li>test - Die Bibliothek steht nur für Tests zur Verfügung und wird nur fürs Testing benötigt.&lt;/li>
+&lt;li>system - Gleich wie provided, mit der Ausnahme, dass die Bibliothek explizit auf dem System zur Verfügung stehen muss.&lt;/li>
+&lt;/ul>
+&lt;p>Das &lt;a href="https://mvnrepository.com/">MVN Repository&lt;/a> stellt eine Vielzahl von Fremdbibliotheken zur Verfügung. Maven
+versucht Abhängigkeiten über dieses Repository aufzulösen.&lt;/p>
+&lt;h5 id="beispiel-einer-abhängigkeit-junit-jupiter-engine">Beispiel einer Abhängigkeit (junit-jupiter-engine)&lt;/h5>
+&lt;p>Die Dependency &lt;code>junit-jupiter-engine&lt;/code> ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
+einem weit verbreiteten Test-Framework für Java. Im Kapitel &lt;a href="/docs/02_java/08_java-testing/">Testing&lt;/a> wirst diese ausführlich genutzt.&lt;/p>
+&lt;p>Ein weiteres Beispiel für eine Abhängigkeit ist &lt;code>lombok&lt;/code>. Diese Library wird im Kapitel &lt;a href="/docs/02_java/06_lombok/">Lombok&lt;/a> ausführlich
+beschrieben.&lt;/p>
+&lt;h4 id="abschnitt-6">Abschnitt 6&lt;/h4>
+&lt;p>Die Build-Informationen konfigurieren den Ablauf des Maven-Builds. Mit Plugins kann der Build selbst durch spezifische
+Erweiterungen beliebig angepasst werden. Es ist auch möglich, eigene Maven-Plugins zu entwickeln. Es stehen sehr viele
+Plugins für Maven zur Verfügung, eine Übersicht gibt es &lt;a href="https://maven.apache.org/plugins/index.html">hier&lt;/a>.&lt;/p>
+&lt;h4 id="abschnitt-7">Abschnitt 7&lt;/h4>
+&lt;p>Die Entwickler-Informationen dienen dazu, an der Entwicklung beteiligte Personen zu identifizieren.&lt;/p>
+&lt;hr>
+&lt;h3 id="maven-mirror">Maven Mirror&lt;/h3>
+&lt;p>Ein Mirror in Maven ist eine alternative Quelle, von der Maven Artefakte (wie Abhängigkeiten, Plugins usw.) herunterladen
+kann. Mirrors werden verwendet, um die Verfügbarkeit und Geschwindigkeit des Downloads zu verbessern, insbesondere wenn
+das Standard-Repository (z. B. Maven Central) aus irgendeinem Grund nicht erreichbar ist oder wenn ein internes
+Repository bevorzugt wird.&lt;/p>
+&lt;h4 id="konfiguration-eines-mirrors">Konfiguration eines Mirrors&lt;/h4>
+&lt;p>Die Konfiguration eines Mirrors erfolgt in der settings.xml-Datei von Maven. Diese Datei befindet sich normalerweise im
+Verzeichnis &lt;code>~/.m2&lt;/code> (bei Unix/Linux) oder &lt;code>%USERPROFILE%\.m2&lt;/code> (bei Windows).&lt;/p>
+&lt;p>Hier ist ein Beispiel, wie ein Mirror in der settings.xml konfiguriert werden kann:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirrors&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirror&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;my-internal-repo&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">name&lt;/span>&amp;gt;My Internal Repository&amp;lt;/&lt;span style="color:#f92672">name&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;http://my.internal.repo/repository/maven-public/&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">mirrorOf&lt;/span>&amp;gt;*&amp;lt;/&lt;span style="color:#f92672">mirrorOf&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">mirror&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">mirrors&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="repository-und-deployment">Repository und Deployment&lt;/h3>
+&lt;p>Artefakte, welche mit Maven gebildet werden, kommen zuerst in ein lokales Repository. Von dort können sie dann wieder
+verwendet werden (z.B. für Testing). Will man eine Version auch anderen Entwicklern zur Vefügung stellen, kann man das
+Projekt deployen. Dazu muss man aber zuerst ein Repository konfigurieren, damit Maven weiss, wohin die Artefakte sollen.&lt;/p>
+&lt;p>Da das Deployment projektspezifisch ist, erfolgt die Konfiguration für das Repository im &lt;code>pom.xml&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">project&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;remoteRepository&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">url&lt;/span>&amp;gt;file:///C:/Development/Repository&amp;lt;/&lt;span style="color:#f92672">url&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">repository&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">distributionManagement&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">project&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Im obigen Beispiel wurde ein lokales Repository konfiguriert. Die &lt;code>url&lt;/code> kann auch auf einen Remote Server verweisen
+(Maven Central, JFrog Artifactery, Azure Artifacts, &amp;hellip;).&lt;/p>
+&lt;p>Falls der Zugriff auf ein Repository eine Berechtigung benötigt, wird diese im &lt;code>settings.xml&lt;/code> abgelegt:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-xmlmarkdown.md" data-lang="xmlmarkdown.md">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">settings&lt;/span> &lt;span style="color:#a6e22e">xmlns&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.0.0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xmlns:xsi&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">xsi:schemaLocation&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">servers&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">server&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">id&lt;/span>&amp;gt;remoteRepository&amp;lt;/&lt;span style="color:#f92672">id&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">username&lt;/span>&amp;gt;your-username&amp;lt;/&lt;span style="color:#f92672">username&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">password&lt;/span>&amp;gt;your-password&amp;lt;/&lt;span style="color:#f92672">password&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">server&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">servers&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">settings&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;blockquote>
+&lt;p>Das speichern von Zugangsdaten in &lt;code>settings.xml&lt;/code> stellt sicher, dass diese nicht in ein Code Repository gelangen und so
+in falsche Hände geraten können.&lt;/p>&lt;/blockquote>&lt;/blockquote>
+&lt;h3 id="commands">Commands&lt;/h3>
+&lt;p>Maven lässt sich auf der Kommandozeile oder im IntelliJ-Terminal ausführen. Damit wir sehen, ob das wirklich klappt,
+kannst du das Terminal öffnen und den folgenden Befehl eingeben:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn -version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das sollte nun in etwa so aussehen:&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/11_maven/images/cmd_maven_version.png" alt="">&lt;/p>
+&lt;h4 id="maven-lifecycle">Maven Lifecycle&lt;/h4>
+&lt;p>Bevor wir die einzelnen Befehle kurz anschauen, werfen wir einen Blick auf die einzelnen Phasen des Maven-Lebenszyklus.&lt;/p>
+&lt;p>&lt;img src="/docs/02_java/11_maven/images/maven_livecycle.png" alt="">&lt;/p>
+&lt;p>Jeder in der Grafik genannte Befehl wird zusätzlich die vorangehenden Phasen ausführen.
+Die Ausführung des Befehls &lt;code>mvn package&lt;/code> führt somit die Phasen &lt;em>validate&lt;/em>, &lt;em>compile&lt;/em>, &lt;em>test&lt;/em> und &lt;em>package&lt;/em> aus.&lt;/p>
+&lt;h4 id="help">help&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn -help
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Das Ergebnis dürfte klar sein. Maven listet alle möglichen Befehle auf.&lt;/p>
+&lt;h4 id="dependencytree">dependency:tree&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn dependency:tree
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Befehl listet alle Abhängigkeiten zu Fremdbibliotheken als Baum auf.
+Das ist grundsätzlich sehr praktisch, wenn man doppelte Abhängigkeiten erkennen oder vermeiden will.&lt;/p>
+&lt;h4 id="clean">clean&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn clean
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Dieser Befehl löscht alle vorherigen lokalen Maven-Build-Artefakte, indem er das Verzeichnis &amp;rsquo;target&amp;rsquo; entfernt.&lt;/p>
+&lt;h4 id="compile">compile&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn compile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Kompiliert den Sourcecode je nach Abhängigkeit von Plugins.
+Wenn also beispielsweise ein Maven-Compiler-Plugin verwendet wird, so wird dieses als Regelwerk für die Kompilierung
+herangezogen.&lt;/p>
+&lt;h4 id="test">test&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn test
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Führt alle Tests aus. In einem Java-Projekt sind dies beispielsweise alle Unit-Tests mit JUnit.&lt;/p>
+&lt;h4 id="package">package&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn package
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Führt einen lokalen Maven-Build aus, startet alle Tests und paketiert die Anwendung (normalerweise als JAR) in das
+Verzeichnis &amp;ldquo;target&amp;rdquo;.&lt;/p>
+&lt;h4 id="verify">verify&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn verify
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Prüft die Testergebnisse aller ausgeführten Integrationstests, normalerweise wird das Maven-Failsafe-Plugin für diesen
+Maven-Befehl vorausgesetzt.&lt;/p>
+&lt;h4 id="install">install&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Lädt das Artefakt in dein lokales Maven-Repository (dies findest du typischerweise unter %UserProfile%.m2).&lt;/p>
+&lt;h4 id="skip-tests">skip tests&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn install -DskipTests
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Mit dem Parameter &lt;code>-DskipTests&lt;/code> kannst du die Ausführung der Tests während der Installation überspringen, um Zeit zu
+sparen. Der Parameter kann auch bei anderen Aktionen wie &lt;code>compile&lt;/code>, &lt;code>package&lt;/code> usw. verwendet werden.&lt;/p>
+&lt;h4 id="deploy">deploy&lt;/h4>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn deploy
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Lädt das Artefakt in das Remote-Repository (Artifactory) hoch.&lt;/p>
+&lt;p>Die Maven-Befehle lassen sich kombinieren. Sehr nützlich ist zum Beispiel:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-console" data-lang="console">&lt;span style="display:flex;">&lt;span>mvn clean install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen Maven-Befehle.&lt;/p>
+&lt;p>&lt;img src="/images/task.png" alt="task1"> Jetzt bist du dran. Löse bitte die &lt;a href="/labs/02_java/12_maven/">Aufgaben&lt;/a> in den Labs.&lt;/p>
+&lt;p>&lt;img src="/images/hint.png" alt="hint-gradle"> (Optional) &lt;strong>Gradle&lt;/strong>: Als Alternative zu Maven wird oft auch das Build-System
+&lt;a href="https://docs.gradle.org/">Gradle&lt;/a> eingesetzt. Unter
+&lt;a href="https://docs.gradle.org/current/samples/sample_building_java_applications.html">Building Java Applications Sample&lt;/a>
+kannst du dir einen ersten Eindruck verschaffen.&lt;/p></description></item><item><title>Docs: Spring Framework</title><link>/docs/02_java/12_spring-framework/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/02_java/12_spring-framework/</guid><description/></item></channel></rss>
