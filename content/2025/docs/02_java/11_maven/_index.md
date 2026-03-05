@@ -94,6 +94,7 @@ Binary für Maven zu finden ist, wenn du Maven aus dem Terminal ausführst. Die 
 
 6. Den Pfad zu deinem installierten Maven einfügen. Hier kannst du das erstellte Verzeichnis verwenden. Der Pfad sollte
    auf das Verzeichnis bin zeigen, also zum Beispiel:
+
    - manuelle Installation: **C:\Program Files\Apache\Maven\apache-maven-3.9.9\bin**
    - IntelliJ installiert: **C:\Users\u......\AppData\Local\Programs\IntelliJ IDEA Ultimate\plugins\maven\lib\maven3\bin**
 

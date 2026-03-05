@@ -90,6 +90,7 @@ Das Angular CLI (Command Line Interface) ist ein Befehlszeilenwerkzeug, das von 
 - ng serve --open: Startet den Entwicklungsserver und öffnet automatisch den Standardwebbrowser, um die Anwendung anzuzeigen.
 
 - ng generate <art> <name> (oder ng g <art> <name>): Generiert eine neue Datei oder Komponente basierend auf einer vorgegebenen Vorlage.
+
   - **Component**: ng generate component <name> oder ng g c <name>
     Erzeugt eine neue Komponente mit einer Component-Datei, einer Template-Datei, einer Stylesheet-Datei und einem Testfile.
 
