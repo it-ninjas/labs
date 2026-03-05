@@ -4,7 +4,7 @@ linkTitle: "Maven - Aufgaben"
 type: docs
 weight: 1
 description: >
-  Aufgaben zu Modul #S2 - [Maven](../../../../docs/02_java/07_maven)
+  Aufgaben zu Modul #S2 - [Maven](../../../../docs/02_java/11_maven)
 ---
 
 ## Vorbereitung
@@ -21,7 +21,7 @@ eigenes Repository eröffnen, z.B. auf [BitBucket](https://bitbucket.org/), [Git
    [persönliches Repository](../../../../docs/99_shared/collaboration/source-repositories/personal-bitbucket/)
 2. Klone das neue Repository mit IntelliJ IDEA
 
-   ![Create Project from Version Control](./images/02_NewProjectFromVersionControl.png)
+   ![Create Project from Version Control](images/02_NewProjectFromVersionControl.png)
 
    ![Create Project from Version Control Dialog](./images//03_NewProjectFromVersionControlDialog.png)
 
@@ -161,7 +161,7 @@ Erstelle ein neues Projekt, welches wir später für das Modul Unit-Testing verw
 
    Bei der ersten Aktion wird das Projekt direkt hinzugefügt, bei der zweiten muss das pom.xml noch ausgewählt werden.
 
-   ![Maven Projekt hinterlegen](./images/01_AddMavenAsProject.png)
+   ![Maven Projekt hinterlegen](images/01_AddMavenAsProject.png)
 
 6. Auf der rechten Seite in IntelliJ gibt es den Tab Maven, dort müsste das Projekt nun erscheinen.
 
@@ -225,13 +225,92 @@ Aktualisiere alle Dependencies mit Hilfe des Plugins `org.codehaus.mojo:versions
     mvn versions:use-latest-versions
   ```
 
-### Aufgabe 3 - Remote Repository einrichten
+### Aufgabe 3 - Springboot Projekt vorbereiten.
 
-- Erstelle auf deinem Rechner ein Verzeichnis (z.B. unter `C:\Development\Repository`)
+Da wir im folgenden Modul mit Springboot arbeiten findest du hier die Dependencies dafür und wofür diese gedacht sind.
 
-- passe die Einstellungen in deinem Projekt so an, dass beim Befehl `mvn deploy` das Artefakt von deinem Projekt in
-  den zuvor erstellten Ordner erstellt wird.
+Wichtig zu erwähnen ist, dass die hier aufgeführten Starter nur ein Bruchteil von allen verfügbaren sind.
+Es sind jedoch die wichtigsten und am häufigsten verwendeten Starter.
+
+- Test Starter: Für Testing brauchen wir normalerweise ein Paar der folgenden Erweiterungen:
+  JUnit, Hamcrest, Mockito oder Spring Test. Diese könnten wir manuell einbinden oder verwenden
+  den Test Starter der das für uns erledigt.
+- Data JPA Starter: Der Data JPA Starter hilft dir, dich effizient mit relationalen
+  Datenbanken zu verbinden. Intern verwendet der Data JPA Starter die Spring-boot-Jpa-Abhängigkeit.
+  Jedoch schreiben wir die SQL-Abfragen nicht mehr wie z.b. bei JDBC, denn in der JPA speichern wir
+  die Daten von Objekten in Tabellen und umgekehrt.
+- Mail Starter: Vielleicht wirst du diesen Starter nicht allzu oft verwenden,
+  jedoch ist es wichtig ihn zu erwähnen, damit du ihn kennst. Der Mail Starter kann hilfreich sein
+  in der Unternehmensentwicklung, da dort das Senden von E-Mails und der direkte Umgang
+  mit Java Mail API normalerweise schwierig sein kann. Mail Starter verbirgt diese Komplexitäten.
+- Web Starter: Der Spring Boot Web Starter konfiguriert dir automatisch folgende Dinge: Dispatcher,
+  Servlet, Fehlerseite, Web-JAR's und eingebettete Servlet-Behälter. Dies sind alles wichtige
+  Konfigurationen, wenn du ein Spring Boot Backend für Web aufbauen willst.
+
+Nun schauen wir uns kurz an, wie man diese Starter in das Projekt einbringen würde:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <parent>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-parent</artifactId>
+  <version>4.0.2</version>
+  <relativePath/> <!-- lookup parent from repository -->
+ </parent>
+ <groupId>ch.sbb.tafy.mynotes</groupId>
+ <artifactId>mynotes</artifactId>
+ <version>0.0.1-SNAPSHOT</version>
+ <name>mynotes</name>
+ <description>mynotes</description>
+ <url/>
+ <licenses>
+  <license/>
+ </licenses>
+ <developers>
+  <developer/>
+ </developers>
+ <scm>
+  <connection/>
+  <developerConnection/>
+  <tag/>
+  <url/>
+ </scm>
+
+ <properties>
+  <java.version>21</java.version>
+ </properties>
+
+ <dependencies>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-webmvc</artifactId>
+  </dependency>
+
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-webmvc-test</artifactId>
+   <scope>test</scope>
+  </dependency>
+ </dependencies>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+   </plugin>
+  </plugins>
+ </build>
+
+</project>
+```
+
+- Passe nun die Datei pom.xml nun entsprechend an damit du erolgreich ein Springboot Projekt aufsetzen kannst.
+- Einige der oben verwendeten Dependencies werden hierbei nicht mehr von Nöten sein.
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/07_maven).
+Hier kannst du [zurück zur Theorie](../../../../docs/02_java/11_maven).

@@ -64,73 +64,7 @@ Klasse. Die `@SpringBootApplication` Annotation ist equivalent
 zu `@Configuration`, `@EnableAutoConfiguration` und `@ComponentScan`. Die `@EnableAutoConfiguration`
 Annotation schaltet die automatische Konfiguration ein, was einer der Hauptbestandteile von Spring
 Boot ist.
-
 Mehr dazu findest du [hier](../06_annotationen).
-
-### Spring Boot Starter
-
-Wichtig zu erwähnen ist, dass die hier aufgeführten Starter nur ein Bruchteil von allen verfügbaren sind.
-Es sind jedoch die wichtigsten und am häufigsten verwendeten Starter.
-
-- Test Starter: Für Testing brauchen wir normalerweise ein Paar der folgenden Erweiterungen:
-  JUnit, Hamcrest, Mockito oder Spring Test. Diese könnten wir manuell einbinden oder verwenden
-  den Test Starter der das für uns erledigt.
-- Data JPA Starter: Der Data JPA Starter hilft dir, dich effizient mit relationalen
-  Datenbanken zu verbinden. Intern verwendet der Data JPA Starter die Spring-boot-Jpa-Abhängigkeit.
-  Jedoch schreiben wir die SQL-Abfragen nicht mehr wie z.b. bei JDBC, denn in der JPA speichern wir
-  die Daten von Objekten in Tabellen und umgekehrt.
-- Mail Starter: Vielleicht wirst du diesen Starter nicht allzu oft verwenden,
-  jedoch ist es wichtig ihn zu erwähnen, damit du ihn kennst. Der Mail Starter kann hilfreich sein
-  in der Unternehmensentwicklung, da dort das Senden von E-Mails und der direkte Umgang
-  mit Java Mail API normalerweise schwierig sein kann. Mail Starter verbirgt diese Komplexitäten.
-- Web Starter: Der Spring Boot Web Starter konfiguriert dir automatisch folgende Dinge: Dispatcher,
-  Servlet, Fehlerseite, Web-JAR's und eingebettete Servlet-Behälter. Dies sind alles wichtige
-  Konfigurationen, wenn du ein Spring Boot Backend für Web aufbauen willst.
-
-Nun schauen wir uns kurz an, wie man diese Starter in das Projekt einbringen würde:
-
-Test Starter:
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
-</dependency>
-```
-
-Data JPA Starter
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
-<dependency>
-    <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
-    <scope>runtime</scope>
-</dependency>
-```
-
-Mail Starter
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-mail</artifactId>
-</dependency>
-```
-
-Web Starter
-
-```xml
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-web</artifactId>
-  <version>2.2.2.RELEASE</version>
-</dependency>
-```
 
 ## Debuggen von Spring Boot
 

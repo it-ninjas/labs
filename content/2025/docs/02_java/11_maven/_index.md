@@ -1,7 +1,7 @@
 ---
 title: "Maven"
 linkTitle: "Maven"
-weight: 7
+weight: 11
 description: >
   Modul #S2
 ---
@@ -333,7 +333,7 @@ versucht Abhängigkeiten über dieses Repository aufzulösen.
 ##### Beispiel einer Abhängigkeit (junit-jupiter-engine)
 
 Die Dependency `junit-jupiter-engine` ist eine grundlegende Bibliothek für das Testen von Java-Anwendungen mit JUnit 5,
-einem weit verbreiteten Test-Framework für Java. Im Kapitel [Testing](../10_java-testing) wirst diese ausführlich genutzt.
+einem weit verbreiteten Test-Framework für Java. Im Kapitel [Testing](../08_java-testing) wirst diese ausführlich genutzt.
 
 Ein weiteres Beispiel für eine Abhängigkeit ist `lombok`. Diese Library wird im Kapitel [Lombok](../06_lombok) ausführlich
 beschrieben.
@@ -540,11 +540,7 @@ mvn clean install
 
 Selbstverständlich gibt es sehr viele zusätzliche Optionen für die einzelnen Maven-Befehle.
 
----
-
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../labs/02_java/06_maven) in den Labs.
-
----
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben](../../../labs/02_java/12_maven) in den Labs.
 
 ![hint-gradle](/images/hint.png) (Optional) **Gradle**: Als Alternative zu Maven wird oft auch das Build-System
 [Gradle](https://docs.gradle.org/) eingesetzt. Unter
