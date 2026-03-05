@@ -1,12 +1,12 @@
 name: Quality
-on: [ push ]
+on: [push]
 jobs:
   build:
     uses: ./.github/workflows/build-deploy.yml
     secrets:
       CI_APP_ID: ${{ secrets.CI_APP_ID }}
-      CI_APP_PRIVATE_KEY: ${{ secrets.CI_APP_PRIVATE_KEY }}    
-    with: 
+      CI_APP_PRIVATE_KEY: ${{ secrets.CI_APP_PRIVATE_KEY }}
+    with:
       upload-artifact: true
       artifact-name: quality-check-build
   check-links:
@@ -35,3 +35,14 @@ jobs:
         run: npm install
       - name: Lint
         run: npm run lint
+  check-eszett:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+      - name: Install
+        run: npm install
+      - name: Check for German eszett
+        run: npm run check-eszett
