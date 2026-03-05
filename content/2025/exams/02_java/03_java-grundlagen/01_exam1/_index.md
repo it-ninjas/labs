@@ -33,7 +33,6 @@ int[] numbers = {
 Wichtig:
 
 - Deine Methoden müssen auch funktionieren, wenn:
-
   - andere Zahlenarrays genommen werden mit Grösse 1 bis 1'000'000
   - ein leeres Zahlenarray genommen wird
   - der Methode ein Null-Pointer übergeben wird

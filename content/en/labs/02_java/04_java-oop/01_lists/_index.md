@@ -64,7 +64,7 @@ Die Berechnungen verlaufen also folgendermassen:
 
 Eine ArrayList eignet sich besonders gut, um Fibonacci-Zahlen zu speichern, da wir im Voraus nicht wissen, wie viele Zahlen berechnet werden müssen, bis eine bestimmte Zahl erreicht ist.
 Die ArrayList kann dynamisch wachsen und neue Zahlen aufnehmen.
-Durch diese Aufgabe lernst du den Umgang mit ArrayLists und wie sie sich dynamisch vergrössern lassen, ohne dass du dir Gedanken über die feste Größe von Arrays machen musst.
+Durch diese Aufgabe lernst du den Umgang mit ArrayLists und wie sie sich dynamisch vergrössern lassen, ohne dass du dir Gedanken über die feste Grösse von Arrays machen musst.
 
 Die Fibonacci-Folge ist relevant, weil sie in der **Natur** häufig vorkommt, wie bei der Anordnung von Blättern oder der Struktur von Tannenzapfen.
 

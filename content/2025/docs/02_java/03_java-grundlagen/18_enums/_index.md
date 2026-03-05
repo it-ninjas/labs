@@ -36,12 +36,12 @@ Wenn alle möglichen Werte **zur Kompilierzeit** bekannt sind und sich nicht dyn
 
 ## Enums definieren
 
-- `enum` kann **top-level** (außerhalb einer Klasse) oder **innerhalb** einer Klasse stehen.
+- `enum` kann **top-level** (ausserhalb einer Klasse) oder **innerhalb** einer Klasse stehen.
 - Die **erste Zeile** enthält die **Komma-Liste** der Konstanten (Konvention: GROSSBUCHSTABEN).
 
 Jede Enum-Konstante ist implizit **`public static final`**.
 
-### Beispiel: Definition außerhalb einer Klasse
+### Beispiel: Definition ausserhalb einer Klasse
 
 ```java
 enum Weekday {
