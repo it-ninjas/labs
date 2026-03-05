@@ -297,6 +297,8 @@ welches in beiden Tabellen vertreten ist. So wird dann die Verbindung hergestell
 Bei Joins gibt es viele verschiedene und teilweise sehr
 komplexe Varianten, welche auch dementsprechend selten benutzt werden. Wir schauen uns hier die vier wichtigsten an.
 
+Da diese nicht oft in der Praxis zum Einsatz kommen, sind Right-, Left- sowie auch Full-Join in dieser Doku Optional.
+
 ### Inner Join (_join_)
 
 Der Inner Join ist der wichtigste und am meisten benötigte Join. Der Inner Join verbindet die Tabellen und gibt nur
@@ -313,7 +315,7 @@ Das dazugehörige Statement würde so aussehen:
 SELECT * FROM tabelle_a INNER JOIN tabelle_b ON tabelle_a.id = tabelle_b.id;
 ```
 
-### Right und Left Join
+### Right und Left Join (Optional)
 
 Im Vergleich zum Inner Join wird beim Right und Left Join nicht nur die Schnittmenge, sondern auch noch eine äussere
 Menge zurückgegeben. Grafisch würde das so aussehen:
@@ -397,7 +399,7 @@ Resultat:
 > beruf_id ist doppelt, da es in beiden Tabellen ein Attribut mit diesem Namen gibt. Könnte mit der Auswahl im Select
 > auch ausgeblendet werden.
 
-### Full Join
+### Full Join (Optional)
 
 Der Full Join ist sehr eng mit dem Left und Right Join verwandt. Jetzt werden jedoch alle Werte zurückgegeben. Wenn kein
 Gegenstück zu einem Wert vorhanden ist, werden diese gleich wie beim Left und Right Join mit `null` angegeben. Grafisch
@@ -445,192 +447,46 @@ Resultat:
 In diesem Abschnitt gehen wird auf Aggregationen und weitere wichtige Syntax-Elemente ein. Aggregationen in SQL sind
 Funktionen, die verwendet werden, um zusammengefasste Informationen aus großen Datenmengen zu erhalten.
 Dadurch wird es einfacher, die Daten zu analysieren und Muster oder Trends zu erkennen.
+Dazu gehören unter anderem:
 
 ### Count
 
-Die Aggregation Count zählt wie viele Resultate das beim Query zurückgegeben werden. Count funktioniert bei allen
-Datentypen gleich und muss nicht angepasst werden. Hier ein Beispiel zu Count:
-
-Ausgangstabelle Person:
-
-| vorname | nachname   | alter | beruf              |
-| ------- | ---------- | ----- | ------------------ |
-| Anja    | Ackermann  | 13    | Schüler/in         |
-| Fritz   | Fischer    | 26    | Pilot/in           |
-| Hans    | Hansen     | 52    | Hochbauzeichner/in |
-| Max     | Mustermann | 18    | Maurer/in          |
-| Leo     | Leonidas   | 35    | `null`             |
-
-Statement:
+Die Aggregation Count zählt wie viele Resultate das beim Query zurückgegeben werden.
 
 ```sql
 SELECT COUNT(*), COUNT(beruf) FROM person;
 ```
 
-Resultat:
-
-| count(\*) | count(beruf) |
-| --------- | ------------ |
-| 5         | 4            |
-
-Aus dem Resultat lässt sich schliessen, dass NULL-Werte im Count nicht beachtet werden.
-
 ### Max/Min
 
-Die Aggregationen Max und Min sind logischerweise zum Finden des grössten und kleinsten Wertes. Beide funktionieren
-bei allen Datentypen, jedoch haben sie beispielsweise bei einem String einen anderen Weg das Maximum und Minimum zu
-finden. Dort wird anhand einer Collation (Sortierungsregel) das Maximum und Minimum bestimmt. Bei normalen Zahlen sieht
-es so aus:
-
-Ausgangstabelle Person:
-
-| vorname | nachname   | alter | beruf              |
-| ------- | ---------- | ----- | ------------------ |
-| Anja    | Ackermann  | 13    | Schüler/in         |
-| Fritz   | Fischer    | 26    | Pilot/in           |
-| Hans    | Hansen     | 52    | Hochbauzeichner/in |
-| Max     | Mustermann | 18    | Maurer/in          |
-| Leo     | Leonidas   | 35    | `null`             |
-
-Statement:
+Die Aggregationen Max und Min sind logischerweise zum Finden des grössten und kleinsten Wertes.
 
 ```sql
 SELECT MAX(alter), MIN(alter) FROM person;
 ```
 
-Resultat:
-
-| max(alter) | min(alter) |
-| ---------- | ---------- |
-| 52         | 13         |
-
 ### Sum
 
 Sum summiert die Werte einer Spalte. Im Gegensatz zu den vorherigen Aggregationen funktioniert Sum nur mit Zahlenwerten.
-Bei Strings oder ähnlichem wird ein Fehler zurückgegeben. Hier ein Beispiel zur Verwendung von Sum:
-
-Ausgangstabelle Person:
-
-| vorname | nachname   | alter | beruf              |
-| ------- | ---------- | ----- | ------------------ |
-| Anja    | Ackermann  | 13    | Schüler/in         |
-| Fritz   | Fischer    | 26    | Pilot/in           |
-| Hans    | Hansen     | 52    | Hochbauzeichner/in |
-| Max     | Mustermann | 18    | Maurer/in          |
-| Leo     | Leonidas   | 35    | `null`             |
-
-Statement:
 
 ```sql
 SELECT SUM(alter) FROM person;
 ```
 
-Resultat:
-
-| sum(alter) |
-| ---------- |
-| 144        |
-
 ### Avg
 
-Um den Durchschnitt von Zahlen zu finden wird die Funktion AVG verwendet. Gleich wie Sum funktioniert Avg nur mit Zahlen.
-Hier ein Beispiel zu avg:
-
-Ausgangstabelle Person:
-
-| vorname | nachname   | alter | beruf              |
-| ------- | ---------- | ----- | ------------------ |
-| Anja    | Ackermann  | 13    | Schüler/in         |
-| Fritz   | Fischer    | 26    | Pilot/in           |
-| Hans    | Hansen     | 52    | Hochbauzeichner/in |
-| Max     | Mustermann | 18    | Maurer/in          |
-| Leo     | Leonidas   | 35    | `null`             |
-
-Statement:
+Um den Durchschnitt von Zahlen zu finden wird die Funktion AVG verwendet.
 
 ```sql
 SELECT AVG(alter) FROM person;
 ```
 
-Resultat:
-
-| avg(alter) |
-| ---------- |
-| 28.8       |
-
-### Order By
-
-Das Keyword Order By ist zum Sortieren des Resultats sehr nützlich. Zusammen mit ASC (=Ascending, Aufsteigend) und DESC
-(=Descending, Absteigend) kann das Resultat auf verschiedenste Weisen nach einem oder mehreren Attributen sortiert
-werden. Standardmässig verwendet Order By ASC, daher kann das ASC im Query auch weggelassen werden. Beispiel zu Order By:
-
-Ausgangstabelle Person:
-
-| vorname | nachname   | alter | beruf              |
-| ------- | ---------- | ----- | ------------------ |
-| Anja    | Ackermann  | 13    | Schüler/in         |
-| Fritz   | Fischer    | 26    | Pilot/in           |
-| Hans    | Hansen     | 52    | Hochbauzeichner/in |
-| Max     | Mustermann | 18    | Maurer/in          |
-| Leo     | Leonidas   | 35    | `null`             |
-
-Statement ASC:
-
-```sql
-SELECT vorname, alter FROM person ORDER BY alter ASC;
-```
-
-Resultat:
-
-| vorname | alter |
-| ------- | ----- |
-| Anja    | 13    |
-| Max     | 18    |
-| Fritz   | 26    |
-| Leo     | 35    |
-| Hans    | 52    |
-
-Statement DESC:
-
-```sql
-SELECT vorname, alter FROM person ORDER BY alter DESC;
-```
-
-Resultat:
-
-| vorname | alter |
-| ------- | ----- |
-| Hans    | 52    |
-| Leo     | 35    |
-| Fritz   | 26    |
-| Max     | 18    |
-| Anja    | 13    |
-
 ### Group By
 
-Mit Group By können Tupel mit gleichen Werten bei einem Attribut zusammen geführt werden, um beispielsweise in einem
-Count gezählt zu werden. Wie bei Order By kann ein Resultat mehrfach gruppiert werden. Hier ein einfaches Beispiel zu
-Order By:
-
-Ausgangstabelle Person:
-
-| vorname | nachname   | alter | beruf              |
-| ------- | ---------- | ----- | ------------------ |
-| Anja    | Ackermann  | 13    | Hochbauzeichner/in |
-| Fritz   | Fischer    | 26    | Pilot/in           |
-| Hans    | Hansen     | 52    | Hochbauzeichner/in |
-| Max     | Mustermann | 18    | Pilot/in           |
-| Leo     | Leonidas   | 35    | Pilot/in           |
-
-Statement:
+Mit Group By können Tupel mit gleichen Werten bei einem Attribut zusammen geführt werden, um beispielsweise in einem Count gezählt zu werden.
 
 ```sql
 SELECT COUNT(*), beruf FROM person GROUP BY beruf;
 ```
 
-Resultat:
-
-| count(\*) | beruf              |
-| --------- | ------------------ |
-| 2         | Hochbauzeichner/in |
-| 3         | Pilot/in           |
+- Wie diese angewendet werden findest du hier: https://mariadb.com/docs/server/reference/sql-functions/aggregate-functions
