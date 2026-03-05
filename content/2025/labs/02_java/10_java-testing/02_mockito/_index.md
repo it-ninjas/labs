@@ -121,4 +121,4 @@ Schreibe eine Test-Klasse für _Dictionary_, welche folgende Tests beinhaltet:
 
 ---
 
-Hier kannst du [zurück zur Theorie](../../../../docs/02_java/10_java-testing/#mockito).
+Hier kannst du [zurück zur Theorie](../../../../docs/02_java/08_java-testing/#mockito).
