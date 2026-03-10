@@ -133,7 +133,46 @@ function readJSON(string $file): array {
  */
 function writeJSON(string $file, array $data): void {
 
-    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
+    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT), LOCK_EX);
+}
+
+/**
+ * Reads JSON request body and validates it.
+ *
+ * @return array
+ */
+function readBody(): array {
+
+    $raw = json_decode(file_get_contents("php://input"), true);
+
+    if (!$raw) {
+        bad("Invalid JSON");
+    }
+
+    return $raw;
+}
+
+/**
+ * Appends a line to a log file using file locking.
+ * Prevents race conditions between concurrent requests.
+ *
+ * @param string $file
+ * @param string $line
+ */
+function appendLog(string $file, string $line): void {
+
+    $fp = fopen($file, "a");
+
+    if (!$fp) {
+        bad("Cannot open log file", 500);
+    }
+
+    flock($fp, LOCK_EX);
+    fwrite($fp, $line);
+    fflush($fp);
+    flock($fp, LOCK_UN);
+
+    fclose($fp);
 }
 
 /**
@@ -229,9 +268,13 @@ function findAccess(string $accessKey): ?array {
 
     foreach ($it as $file) {
 
-        if (!$file->isFile()) continue;
+        if (!$file->isFile()) {
+            continue;
+        }
 
-        if ($file->getExtension() !== JSON_EXTENSION_WITHOUT_POINT) continue;
+        if ($file->getExtension() !== JSON_EXTENSION_WITHOUT_POINT) {
+            continue;
+        }
 
         // Extract prefix key from filename
         $base = $file->getBasename(JSON_EXTENSION);
@@ -349,9 +392,13 @@ if ($method === "GET" && $endpoint === "userinfo") {
 
     foreach ($it as $file) {
 
-        if (!$file->isFile()) continue;
+        if (!$file->isFile()) {
+            continue;
+        }
 
-        if ($file->getExtension() !== JSON_EXTENSION_WITHOUT_POINT) continue;
+        if ($file->getExtension() !== JSON_EXTENSION_WITHOUT_POINT) {
+            continue;
+        }
 
         $base = $file->getBasename(JSON_EXTENSION);
 
@@ -384,6 +431,7 @@ if ($method === "GET" && $endpoint === "userinfo") {
         ];
     }
 
+    
     // CSV output
     if ($format === "csv") {
 
@@ -437,9 +485,7 @@ if ($method === "GET" && $endpoint === "userinfo") {
 
 if ($method === "POST" && $endpoint === "update-image") {
 
-    $raw = json_decode(file_get_contents("php://input"), true);
-
-    if (!$raw) bad("Invalid JSON");
+    $raw = readBody();
 
     requireFields($raw, [IMAGE]);
 
@@ -447,7 +493,7 @@ if ($method === "POST" && $endpoint === "update-image") {
 
     $img = $raw[IMAGE];
 
-    // Prevent large base64 uploads
+     // Prevent large base64 uploads
     if (strlen($img) > 5_000_000) {
         bad("Image too large");
     }
@@ -480,9 +526,7 @@ if ($method === "POST" && $endpoint === "update-image") {
 
 if ($method === "POST" && $endpoint === "update-position") {
 
-    $raw = json_decode(file_get_contents("php://input"), true);
-
-    if (!$raw) bad("Invalid JSON");
+    $raw = readBody();
 
     requireFields($raw, [MODULE_ID, DISPLAY_NAME]);
 
@@ -514,11 +558,7 @@ if ($method === "POST" && $endpoint === "update-position") {
 
         $line = "$uid;$mod;$ts\n";
 
-        file_put_contents(
-            "$TRACKING_DIR/$uid.log",
-            $line,
-            FILE_APPEND | LOCK_EX
-        );
+        appendLog("$TRACKING_DIR/$uid.log", $line);
 
         $user[UPDATED] = $ts;
     }
@@ -570,11 +610,15 @@ if ($method === "GET" && $endpoint === "list") {
 
     foreach ($groupsToRead as $g) {
 
-        if (!$g) continue;
+        if (!$g) {
+            continue;
+        }
 
         $gf = "$GROUP_DIR/$g.json";
 
-        if (!file_exists($gf)) continue;
+        if (!file_exists($gf)) {
+            continue;
+        }
 
         $gdata = readJSON($gf);
 
@@ -585,13 +629,17 @@ if ($method === "GET" && $endpoint === "list") {
             if ($isAssoc) {
 
                 foreach ($gdata as $uid => $v) {
-                    if ($uid) $userIdSet[$uid] = true;
+                    if ($uid) {
+                        $userIdSet[$uid] = true;
+                    }
                 }
 
             } else {
 
                 foreach ($gdata as $uid) {
-                    if ($uid) $userIdSet[$uid] = true;
+                    if ($uid) {
+                        $userIdSet[$uid] = true;
+                    }
                 }
 
             }
@@ -604,7 +652,9 @@ if ($method === "GET" && $endpoint === "list") {
 
         $uf = "$USER_DIR/$uid.json";
 
-        if (!file_exists($uf)) continue;
+        if (!file_exists($uf)) {
+            continue;
+        }
 
         $u = readJSON($uf);
 
