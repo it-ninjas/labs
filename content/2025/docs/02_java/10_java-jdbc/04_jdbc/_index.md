@@ -185,7 +185,7 @@ nachdem alle Zeilen bearbeitet worden sind.
 
 ### Verbindungen schliessen
 
-Objekte der Typ _Connection_, _Statement_ oder auch _PreparedStatement_ sind sog. Ressourcen.
+Objekte der Typ `Connection`, `Statement` oder auch `PreparedStatement` sind sog. Ressourcen.
 Solche Ressourcen müssen nach Verbrauch wieder explizit geschlossen werden:
 
 ![](images/close_statement_and_connection.png)
