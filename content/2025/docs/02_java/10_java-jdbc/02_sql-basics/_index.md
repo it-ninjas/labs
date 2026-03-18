@@ -445,7 +445,7 @@ Resultat:
 ## Aggregationen & weiteres
 
 In diesem Abschnitt gehen wird auf Aggregationen und weitere wichtige Syntax-Elemente ein. Aggregationen in SQL sind
-Funktionen, die verwendet werden, um zusammengefasste Informationen aus großen Datenmengen zu erhalten.
+Funktionen, die verwendet werden, um zusammengefasste Informationen aus grossen Datenmengen zu erhalten.
 Dadurch wird es einfacher, die Daten zu analysieren und Muster oder Trends zu erkennen.
 Dazu gehören unter anderem:
 
