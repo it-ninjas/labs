@@ -160,7 +160,10 @@ Für das eigentliche Ausführen der Anweisung müssen alle Platzhalter durch kon
 Dazu wird ein _PreparedStatement_ verwendet, welche es erlaubt, alle Platzhalter anhand ihrer Position (beginnend mit 1)
 mittels _setXXX_ Methoden anzusprechen und mit den konkreten Werten zu ersetzen.
 Anschliessend, kann auch hier eine der _executeXXX_ Methoden verwendet werden, um die Anweisung auszuführen:
-
+Für das eigentliche Ausführen der Anweisung müssen alle Platzhalter durch konkrete Werte ersetzt werden.
+Dazu wird ein `PreparedStatement` verwendet, welche es erlaubt, alle Platzhalter anhand ihrer Position (beginnend mit 1)
+mittels `setXXX` Methoden anzusprechen und mit den konkreten Werten zu ersetzen.
+Anschliessend, kann auch hier eine der `executeXXX` Methoden verwendet werden, um die Anweisung auszuführen:
 ![](images/prepared_statement.png)
 
 ### Rückgabewerte verarbeiten
