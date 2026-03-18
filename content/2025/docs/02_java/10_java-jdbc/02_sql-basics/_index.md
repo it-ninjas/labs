@@ -297,7 +297,7 @@ welches in beiden Tabellen vertreten ist. So wird dann die Verbindung hergestell
 Bei Joins gibt es viele verschiedene und teilweise sehr
 komplexe Varianten, welche auch dementsprechend selten benutzt werden. Wir schauen uns hier die vier wichtigsten an.
 
-Da diese nicht oft in der Praxis zum Einsatz kommen, sind Right-, Left- sowie auch Full-Join in dieser Doku Optional.
+Da diese nicht oft in der Praxis zum Einsatz kommen, sind Right-, Left- sowie auch Full-Join in dieser Doku optional.
 
 ### Inner Join (_join_)
 
