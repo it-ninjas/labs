@@ -3,7 +3,8 @@ title: "Datenbank Design (Optional)"
 linkTitle: "Datenbank Design (Optional)"
 weight: 5
 ---
-Die Inhalte dieses  Moduls sind wichtig für die künftige Datenbank Entwicklung. Da diese Themen für die  Labs nicht zwingend gebraucht werden, sind diese optional.
+
+Die Inhalte dieses Moduls sind wichtig für die künftige Datenbank Entwicklung. Da diese Themen für die Labs nicht zwingend gebraucht werden, sind diese optional.
 
 ## Ziele
 
