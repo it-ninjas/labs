@@ -66,7 +66,7 @@ Diese Beispiele wurden in einem Maven-Projekt ohne das Spring-Framework erstellt
 Sobald die gewünschte Datenbank festgelegt wurde, kann der dazugehörende JDBC-Treiber als
 Maven-Abhängigkeit herangezogen werden.
 
-Das folgende Beispiel zeigt eine Abhängigkeit zu einem MySql-Treiber:
+Das folgende Beispiel zeigt eine Abhängigkeit zu einem MySQL-Treiber:
 
 ![dependency.png](images/dependency.png)
 
