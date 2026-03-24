@@ -103,7 +103,7 @@ Für diesen Zweck, wie auch für die Konfiguration unterschiedlichen Umgebungen,
 oder Umgebungsvariablen (mit oder ohne Verschlüsselung) besser.
 
 Die obige Konfiguration kann nun für die Herstellung einer Datenbankverbindung verwendet werden.
-Dazu wird die statische Methode _getConnection_ der Klasse _DriverManager_ verwendet:
+Dazu wird die statische Methode `getConnection` der Klasse `DriverManager` verwendet:
 
 ![](images/connection_creation.png)
 
