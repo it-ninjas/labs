@@ -83,7 +83,7 @@ Mit der statischen Methode _forName_ von _Class_ wird die Klasse _Driver_ gelade
 Hier geht es um die Datenbank spezifischer Treiber, welche es der Anwendung den Datenzugriff auf der
 gewünschten Datenbank ermöglicht.
 
-Im folgenden Beispiel wird der JDBC-Treiber für MySql registriert:
+Im folgenden Beispiel wird der JDBC-Treiber für MySQL registriert:
 
 ![](images/driver_registration.png)
 
