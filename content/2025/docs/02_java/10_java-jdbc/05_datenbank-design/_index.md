@@ -442,5 +442,3 @@ Diese zusätzliche Tabelle ermöglicht eine **eindeutige Zuordnung** zwischen B�
 Die Kardinalität ist ein wichtiger Bestandteil des **Entity-Relationship-Modells (ERM)** und beschreibt, wie Entitäten miteinander verknüpft sind. Das Verständnis der Kardinalitäten hilft, eine **optimale Datenbankstruktur** zu entwickeln, die **Redundanzen vermeidet** und **Datenkonsistenz sicherstellt**.
 
 ![task1](/images/task.png) Jetzt bist du dran. Löse bitte diese [Aufgabe](../../../../labs/02_java/11_java-jdbc/01_Jdbc_Exercises) in den Labs.
-
-![task1](/images/task.png) Jetzt bist du dran. Hier geht es zu einer Challange bezüglich Datenbank Design [Aufgaben zu Datenbanken](../../../../challenges/database/) .
