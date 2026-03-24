@@ -1,8 +1,9 @@
 ---
-title: "Datenbank Design"
-linkTitle: "Datenbank Design"
+title: "Datenbank Design (Optional)"
+linkTitle: "Datenbank Design (Optional)"
 weight: 5
 ---
+Die Inhalte dieses  Moduls sind wichtig für die künftige Datenbank Entwicklung. Da diese Themen für die  Labs nicht zwingend gebraucht werden, sind diese optional.
 
 ## Ziele
 
@@ -305,7 +306,7 @@ Nun entspricht die Datenbank der dritten Normalform (3NF), da **alle Nicht-Schl�
 Für den Einstieg reichen die ersten drei Normalformen meist aus.
 Höhere Normalformen wie die **Boyce-Codd-Normalform (BCNF)** oder die **vierte Normalform (4NF)** sind komplexer und werden in speziellen Anwendungsfällen eingesetzt.
 
-## Datenbankdesign (Optional)
+## Datenbankdesign
 
 In diesem Abschnitt betrachten wir die beiden Begriffe **ERM (Entity-Relationship-Modell)** und **ERD (Entity-Relationship-Diagramm)**.
 Es ist wichtig, den Unterschied zwischen den beiden zu verstehen.
