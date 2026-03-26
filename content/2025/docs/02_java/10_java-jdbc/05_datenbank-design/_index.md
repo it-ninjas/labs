@@ -1,8 +1,10 @@
 ---
-title: "Datenbank Design"
-linkTitle: "Datenbank Design"
-weight: 4
+title: "Datenbank Design (Optional)"
+linkTitle: "Datenbank Design (Optional)"
+weight: 5
 ---
+
+Die Inhalte dieses Moduls sind wichtig für die künftige Datenbank Entwicklung. Da diese Themen für die Labs nicht zwingend gebraucht werden, sind diese optional.
 
 ## Ziele
 
@@ -309,6 +311,7 @@ Höhere Normalformen wie die **Boyce-Codd-Normalform (BCNF)** oder die **vierte 
 
 In diesem Abschnitt betrachten wir die beiden Begriffe **ERM (Entity-Relationship-Modell)** und **ERD (Entity-Relationship-Diagramm)**.
 Es ist wichtig, den Unterschied zwischen den beiden zu verstehen.
+Entity Relationship Diagramme sowie Modelle werden oft benutzt und es ist wichtig diese erstellen zu können. Für die Labs werden diese allerdings nicht zwingend gebraucht.
 
 ### Entity-Relationship-Modell (ERM)
 
@@ -438,4 +441,4 @@ Diese zusätzliche Tabelle ermöglicht eine **eindeutige Zuordnung** zwischen B�
 
 Die Kardinalität ist ein wichtiger Bestandteil des **Entity-Relationship-Modells (ERM)** und beschreibt, wie Entitäten miteinander verknüpft sind. Das Verständnis der Kardinalitäten hilft, eine **optimale Datenbankstruktur** zu entwickeln, die **Redundanzen vermeidet** und **Datenkonsistenz sicherstellt**.
 
-![task1](/images/task.png) Jetzt bist du dran. Löse bitte die [Aufgaben zu Datenbanken](../../../../labs/99_shared/database/) in den Labs.
+![task1](/images/task.png) Jetzt bist du dran. Löse bitte diese [Aufgabe](../../../../labs/02_java/11_java-jdbc/01_Jdbc_Exercises) in den Labs.
