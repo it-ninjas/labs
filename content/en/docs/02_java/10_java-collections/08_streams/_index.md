@@ -199,7 +199,7 @@ int sum = numbers.stream().reduce(0, Integer::sum);
 int sum = numbers.parallelStream().reduce(0, Integer::sum);
 ```
 
-`ParallelStream` kann bei großen Datenmengen schneller sein, muss aber nicht immer der Fall sein.
+`ParallelStream` kann bei grossen Datenmengen schneller sein, muss aber nicht immer der Fall sein.
 
 ## Methodenausführung auf Streams
 

@@ -111,8 +111,8 @@ Wähle die Sichtbarkeit so restriktiv wie möglich – am besten in dieser Reihe
 4. `public`
 
 **Begründung:**  
-Je offener die Sichtbarkeit, desto größer das Risiko von ungewollten Abhängigkeiten und Nebenwirkungen.  
-Wenn etwas `public` ist, kann es von beliebigen anderen Packages (auch außerhalb deines Projekts) genutzt werden.  
+Je offener die Sichtbarkeit, desto grösser das Risiko von ungewollten Abhängigkeiten und Nebenwirkungen.  
+Wenn etwas `public` ist, kann es von beliebigen anderen Packages (auch ausserhalb deines Projekts) genutzt werden.  
 Änderungen an einer `public`-Schnittstelle können daher weitreichende Folgen haben, die du nicht immer abschätzen kannst.
 
 Mit `(default)`, `protected` oder `private` bleiben die Auswirkungen auf dein eigenes Package oder sogar nur auf die
@@ -201,13 +201,13 @@ im Modul [Packages lokal verwenden](../../../99_shared/ide/intellij/07_packages/
 
 ## API und JavaDoc
 
-Ein **API** (Application Programming Interface) ist die **Schnittstelle** deines Codes nach außen.  
+Ein **API** (Application Programming Interface) ist die **Schnittstelle** deines Codes nach aussen.  
 Zur API gehören alle **`public`-Klassen und `public`-Methoden**, die von anderen Packages oder Projekten aus genutzt
 werden können.
 
 **Wichtig:**  
 Alles, was `public` ist, wird Teil deiner API – egal, ob du es als „offizielle Schnittstelle“ geplant hast oder nicht.  
-Darum solltest du `public` nur dort verwenden, wo die Nutzung von außen **gewollt und langfristig stabil** sein soll.
+Darum solltest du `public` nur dort verwenden, wo die Nutzung von aussen **gewollt und langfristig stabil** sein soll.
 
 Damit andere deinen Code verstehen und richtig verwenden können, solltest du deine API mit **JavaDoc** gut **dokumentieren**:
 

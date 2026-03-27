@@ -88,7 +88,7 @@ class NumberHelperTest {
             // negatives Intervall (z. B. für erweiterte Version)
             "7, -30, 30, 6, 10, 0",  // negatives Vielfaches ignoriert (nach Bedarf anpassen)
 
-            // sehr großer Bereich
+            // sehr grosser Bereich
             "8, 1, 1000, 8, 12, 20664"
     })
 

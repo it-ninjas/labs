@@ -20,7 +20,7 @@ description: >
 
 Ein Objekt ist eine Sammlung von Eigenschaften, die eine Entität repräsentieren.
 
-Objekte können verschiedene Datentypen enthalten, einschließlich anderen Objekten, Arrays, Strings, Zahlen und booleschen Werten.
+Objekte können verschiedene Datentypen enthalten, einschliesslich anderen Objekten, Arrays, Strings, Zahlen und booleschen Werten.
 
 ```javascript
 const person = {

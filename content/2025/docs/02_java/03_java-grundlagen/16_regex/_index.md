@@ -109,14 +109,14 @@ Meine Telefonnummer ist XXX XXX XX XX
   Pattern pattern = Pattern.compile(safeInput);
   ```
 
-### 3. Übermäßige Komplexität
+### 3. Übermässige Komplexität
 
 - **Problem:** Java-Entwickler neigen dazu, sehr komplexe RegEx zu schreiben, die kaum wartbar sind.
 - **Empfehlung:** Komplexe Muster aufteilen, ggf. mit Kommentaren (`(?x)`-Flag) lesbarer machen.
 
 ### 4. Falsche Annahmen bei Validierung
 
-- **Problem:** Nur weil ein String das Muster erfüllt, heißt das nicht, dass er inhaltlich gültig ist.
+- **Problem:** Nur weil ein String das Muster erfüllt, heisst das nicht, dass er inhaltlich gültig ist.
 - **Beispiel:** `a@b.c` erfüllt viele E-Mail-RegEx, ist aber oft ungültig.
 
 ---

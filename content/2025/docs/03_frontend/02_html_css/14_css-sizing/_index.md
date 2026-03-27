@@ -13,7 +13,7 @@ description: >
 #### Ziele
 
 - Ich verstehe den Unterschied zwischen Block- und Inline-Elementen und kann diese in HTML erkennen.
-- Ich kann sowohl relative als auch absolute Einheiten in CSS verwenden, um die Größe von Elementen zu bestimmen.
+- Ich kann sowohl relative als auch absolute Einheiten in CSS verwenden, um die Grösse von Elementen zu bestimmen.
 - Ich kann Abstände zwischen und innerhalb von Elementen mithilfe von Margin und Padding in CSS gezielt einstellen.
 
 ## Block- und Inline-Elemente

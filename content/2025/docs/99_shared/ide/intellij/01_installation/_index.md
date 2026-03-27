@@ -123,7 +123,7 @@ Die folgenden Schritte **must** du ausführen um Code-Vervollständigung innerha
    Kopiere die beiden Dateien `editor.xml` und `full.line.xml` in das **options**-Verzeichnis.
 
 5. **IntelliJ neu starten**  
-   Schließe IntelliJ IDEA vollständig und starte es neu, damit die Änderungen übernommen werden.
+   Schliesse IntelliJ IDEA vollständig und starte es neu, damit die Änderungen übernommen werden.
 
 {{< ninja info>}}
 Falls das `options`-Verzeichnis noch nicht existiert, starte IntelliJ einmal und beende es wieder – danach wird es automatisch angelegt.
@@ -146,7 +146,6 @@ Nutze diesen Zeitraum und fordere eine Lizenz an:
    ![Omada](./images/omada.png)  
    ![Omada Zugriff](./images/omada_zugriff.png)
 4. Sobald du Zugriff hast, registriere IntelliJ:
-
    - Wähle **Activate (another) License**
    - Wähle **License Server**
    - Gib die Adresse `https://sbb-license.fls.jetbrains.com` ein
