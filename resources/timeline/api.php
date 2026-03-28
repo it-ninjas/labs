@@ -244,7 +244,14 @@ function getAccessKey(): ?string {
         return $m[1];
     }
 
-    return $_GET[ACCESS_KEY] ?? null;
+    if (isset($_GET[ACCESS_KEY])) {
+        return $_GET[ACCESS_KEY];
+    }
+
+    // Fallback: accept accessKey in JSON body
+    $raw = json_decode(file_get_contents("php://input"), true);
+
+    return (is_array($raw) && !empty($raw[ACCESS_KEY])) ? $raw[ACCESS_KEY] : null;
 }
 
 /**
