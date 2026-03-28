@@ -5,9 +5,56 @@
     <title>Ausbildungsplan it-ninjas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="timeline.css">
 </head>
 <body>
+    <button id="ninjaBtn" class="ninja-btn">Ninja-Me</button>
+
     <div id="timeline"></div>
+
+    <div id="ninjaDialog" class="ninja-dialog hidden">
+
+        <h3 style="margin-top:0;">Ninja Einstellungen</h3>
+
+        <!-- Access -->
+        <label for="ninjaKey">Access Key</label>
+        <input id="ninjaKey"
+            type="text"
+            placeholder="follow instructions from your instructor or ask for it">
+
+        <!-- Anzeige-Name (nur bei Write-Zugriff sichtbar) -->
+        <div id="rowDisplayName">
+            <label for="ninjaName">Anzeigename</label>
+            <input id="ninjaName"
+                type="text"
+                placeholder="z.B. Max">
+        </div>
+
+        <!-- Avatar (nur bei Write-Zugriff sichtbar) -->
+        <div id="rowAvatar">
+            <label for="ninjaImage">Avatar</label>
+            <input id="ninjaImage"
+                type="file"
+                accept="image/*">
+        </div>
+
+        <!-- Info (optional, readonly, rein informativ) -->
+        <div id="rowInfo" style="font-size:0.85em; opacity:0.8; margin-top:8px;">
+            Zugriff: <span id="accessInfo">–</span>
+        </div>
+
+        <!-- Buttons -->
+        <div style="margin-top:14px; display:flex; gap:8px; justify-content:flex-end;">
+            <button id="ninjaLogout" style="display:none;">Logout</button>
+            <button id="ninjaSave">OK</button>
+            <button id="ninjaClose">Abbrechen</button>
+        </div>
+
+    </div>
+
+    <div id="ninjaAvatar" class="ninja-avatar hidden"></div>
+
     <script src="script.js"></script>
+    <script src="timeline.js"></script>
 </body>
 </html>

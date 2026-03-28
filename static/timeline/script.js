@@ -224,6 +224,89 @@ function renderTimeline(data) {
 
     function createModuleElement(m, moduleDef, startWeek, endWeek, totalWeeks) {
         const mod = document.createElement('div');       
+
+        // WICHTIG: class="module <typ>"
+        mod.className = `module ${moduleDef.type}`;
+
+        // moduleId ans DOM hängen
+        if (m.moduleId) {
+            mod.dataset.moduleId = m.moduleId;
+            console.log("[render] module:", m.name, "→ id =", m.moduleId);
+        } else {
+            console.warn("[render] module without moduleId:", m.name);
+        }
+
+        mod.style.backgroundColor = m.color || '#666';
+
+        // px Abstand zwischen den Modulen
+        const gap = 4; 
+        const percentPerWeek = 100 / totalWeeks;
+
+        mod.style.left = `calc(${(startWeek - 1) * percentPerWeek}% + ${gap / 2}px)`;
+        mod.style.width = `calc(${(endWeek - startWeek + 1) * percentPerWeek}% - ${gap}px)`;
+
+        // Inhalte splitten
+        const parts = m.name?.split('|').map(s => s.trim()) || [m.name || ''];
+
+        if (parts.length > 1) {
+            const title = document.createElement('div');
+            title.className = 'title';
+            title.innerHTML = formatText(parts[0]);
+            mod.appendChild(title);
+
+            const divider25 = document.createElement('div');
+            divider25.className = 'divider divider-top';
+            mod.appendChild(divider25);
+
+            const content = document.createElement('div');
+            content.className = 'content';
+
+            if (parts.length > 2) {
+                content.innerHTML = formatText(parts.slice(1, -1).join('<br>'));
+            } else if (parts.length === 2 && !parts[1].startsWith('#')) {
+                content.innerHTML = formatText(parts[1]);
+            }
+            mod.appendChild(content);
+
+            const divider75 = document.createElement('div');
+            divider75.className = 'divider divider-bottom';
+            mod.appendChild(divider75);
+
+            const last = parts[parts.length - 1];
+            if (last?.startsWith('#')) {
+                const codeDiv = document.createElement('div');
+                codeDiv.className = 'code';
+                codeDiv.textContent = last;
+                mod.appendChild(codeDiv);
+            }
+        } else {
+            const content = document.createElement('div');
+            content.className = 'content';
+            content.innerHTML = formatText(m.name);
+            mod.appendChild(content);
+        }
+
+        if (m.url) {
+            const link = document.createElement('a');
+            link.href = m.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.style.position = 'absolute';
+            link.style.top = '0';
+            link.style.left = '0';
+            link.style.width = '100%';
+            link.style.height = '100%';
+            link.style.zIndex = '10';
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+            mod.appendChild(link);
+        }
+
+        return mod;
+    }
+
+    function createModuleElementOld(m, moduleDef, startWeek, endWeek, totalWeeks) {
+        const mod = document.createElement('div');       
         mod.className = `${moduleDef.type}`;
         mod.style.backgroundColor = m.color || '#666';
 
@@ -321,6 +404,8 @@ function renderTimeline(data) {
 
         container.appendChild(blockDiv);
     });
+
+    document.dispatchEvent(new Event("modules-ready"));
 }
 
 function getQueryParam(name) {
@@ -351,3 +436,10 @@ if (datasetParam && isSafeDataset(datasetParam)) {
 }
 
 loadData(datasetFile);
+
+document.addEventListener("modules-ready", () => {
+    const timeline = document.getElementById("timeline");
+    const btn = document.getElementById("ninjaBtn");
+
+    timeline.appendChild(btn);
+});
