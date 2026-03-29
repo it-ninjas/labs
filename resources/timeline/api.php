@@ -43,9 +43,10 @@ $USER_DIR     = "$ROOT/users";
 $GROUP_DIR    = "$ROOT/groups";
 $IMAGE_DIR    = "$ROOT/images";
 $TRACKING_DIR = "$ROOT/tracking";
+$FEEDBACK_DIR = "$ROOT/feedback";
 
 // Ensure all required directories exist
-foreach ([$ROOT, $ACCESS_DIR, $USER_DIR, $GROUP_DIR, $IMAGE_DIR, $TRACKING_DIR] as $d) {
+foreach ([$ROOT, $ACCESS_DIR, $USER_DIR, $GROUP_DIR, $IMAGE_DIR, $TRACKING_DIR, $FEEDBACK_DIR] as $d) {
     if (!file_exists($d)) {
         mkdir($d, 0777, true);
     }
@@ -69,10 +70,20 @@ const USER_ID = "userId";
 const ADMIN = "admin";
 const VIEW = "view";
 const WRITE = "write";
+const FEEDBACK = "feedback";
 const DISPLAY_NAME = "displayName";
 const MODULE_ID = "moduleId";
 const UPDATED = "updated";
 const IMAGE = "image";
+const PATH_KEY = "path";
+const PAYLOAD = "payload";
+const COUNT_KEY = "count";
+const START_KEY = "start";
+const END_KEY = "end";
+const SCOPE_KEY = "scope";
+const SCOPE_MINE = "mine";
+const SCOPE_ALL = "all";
+const COMMON_ACCESS_FILE = "common.json";
 
 
 // ============================================================
@@ -210,6 +221,102 @@ function normalizeHint(string $hint): string {
 }
 
 /**
+ * Returns true when an array is a list with numeric keys from 0..n-1.
+ *
+ * @param array $data
+ * @return bool
+ */
+function isListArray(array $data): bool {
+
+    return array_keys($data) === range(0, count($data) - 1);
+}
+
+/**
+ * Merges and de-duplicates a list array while preserving order.
+ *
+ * @param array $left
+ * @param array $right
+ * @return array
+ */
+function mergeUniqueList(array $left, array $right): array {
+
+    $seen = [];
+    $result = [];
+
+    foreach (array_merge($left, $right) as $value) {
+
+        $key = is_scalar($value) || $value === null
+            ? json_encode($value)
+            : serialize($value);
+
+        if (isset($seen[$key])) {
+            continue;
+        }
+
+        $seen[$key] = true;
+        $result[] = $value;
+    }
+
+    return $result;
+}
+
+/**
+ * Merges access-related JSON structures.
+ * Scalar values from the token file override common.json values.
+ * List arrays are merged as a union while preserving order.
+ *
+ * @param mixed $base
+ * @param mixed $override
+ * @return mixed
+ */
+function mergeAccessValue($base, $override) {
+
+    if (!is_array($base) || !is_array($override)) {
+        return $override;
+    }
+
+    if (isListArray($base) && isListArray($override)) {
+        return mergeUniqueList($base, $override);
+    }
+
+    $result = $base;
+
+    foreach ($override as $key => $value) {
+
+        if (array_key_exists($key, $result)) {
+            $result[$key] = mergeAccessValue($result[$key], $value);
+        } else {
+            $result[$key] = $value;
+        }
+    }
+
+    return $result;
+}
+
+/**
+ * Reads and resolves a single access file, including common.json from the
+ * same directory when present.
+ *
+ * @param string $file
+ * @return array
+ */
+function readAccessDefinition(string $file): array {
+
+    $tokenData = readJSON($file);
+    $commonFile = dirname($file) . DIRECTORY_SEPARATOR . COMMON_ACCESS_FILE;
+
+    if (basename($file) === COMMON_ACCESS_FILE || !file_exists($commonFile)) {
+        return $tokenData;
+    }
+
+    $commonData = readJSON($commonFile);
+
+    return is_array($commonData)
+        ? mergeAccessValue($commonData, $tokenData)
+        : $tokenData;
+}
+
+/**
  * Validates that a userId cannot escape the storage directory.
  * Only checks for path separators.
  *
@@ -219,6 +326,130 @@ function validateUserId(?string $uid): void {
 
     if ($uid !== null && preg_match('/[\/\\\\]/', $uid)) {
         bad("Invalid userId");
+    }
+}
+
+/**
+ * Validates a feedback group identifier.
+ *
+ * @param string|null $group
+ */
+function validateFeedbackGroup(?string $group): void {
+
+    if ($group === null || !preg_match('/^[a-z]+$/', $group)) {
+        bad("Invalid feedback group");
+    }
+}
+
+/**
+ * Validates a hierarchical feedback path.
+ *
+ * Allowed:
+ *   segment-one/segment-two
+ *
+ * Forbidden:
+ *   backslashes, .., empty segments, leading or trailing slash
+ *
+ * @param string|null $path
+ */
+function validateFeedbackPath(?string $path): void {
+
+    if ($path === null || $path === "") {
+        bad("Invalid feedback path");
+    }
+
+    if (str_contains($path, "\\") || str_contains($path, "..")) {
+        bad("Invalid feedback path");
+    }
+
+    if (str_starts_with($path, "/") || str_ends_with($path, "/")) {
+        bad("Invalid feedback path");
+    }
+
+    $segments = explode("/", $path);
+
+    foreach ($segments as $segment) {
+        if ($segment === "" || $segment === "." || $segment === "..") {
+            bad("Invalid feedback path");
+        }
+    }
+}
+
+/**
+ * Ensures a directory exists.
+ *
+ * @param string $dir
+ */
+function ensureDirectory(string $dir): void {
+
+    if (!is_dir($dir) && !mkdir($dir, 0777, true) && !is_dir($dir)) {
+        bad("Cannot create directory", 500);
+    }
+}
+
+/**
+ * Writes any JSON-serializable value to disk.
+ *
+ * @param string $file
+ * @param mixed  $data
+ */
+function writeJSONValue(string $file, $data): void {
+
+    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT), LOCK_EX);
+}
+
+/**
+ * Validates a timestamp filter and returns it as an integer.
+ *
+ * @param string $name
+ * @param mixed  $value
+ * @return int
+ */
+function parseTimestampFilter(string $name, $value): int {
+
+    if (!is_scalar($value) || !preg_match('/^\d+$/', (string) $value)) {
+        bad("Invalid $name");
+    }
+
+    return (int) $value;
+}
+
+/**
+ * Builds a safe feedback directory path for a group and optional logical path.
+ *
+ * @param string      $group
+ * @param string|null $path
+ * @return string
+ */
+function buildFeedbackDirectory(string $group, ?string $path = null): string {
+
+    global $FEEDBACK_DIR;
+
+    validateFeedbackGroup($group);
+
+    $baseDir = $FEEDBACK_DIR . DIRECTORY_SEPARATOR . $group;
+
+    if ($path === null || $path === "") {
+        return $baseDir;
+    }
+
+    validateFeedbackPath($path);
+
+    return $baseDir . DIRECTORY_SEPARATOR . str_replace("/", DIRECTORY_SEPARATOR, $path);
+}
+
+/**
+ * Checks whether the caller may access a feedback group.
+ *
+ * @param array  $access
+ * @param string $group
+ */
+function requireFeedbackGroupAccess(array $access, string $group): void {
+
+    $allowedGroups = is_array($access[FEEDBACK] ?? null) ? $access[FEEDBACK] : [];
+
+    if (!in_array($group, $allowedGroups, true)) {
+        bad("No feedback permission", 403);
     }
 }
 
@@ -283,6 +514,10 @@ function findAccess(string $accessKey): ?array {
             continue;
         }
 
+        if ($file->getFilename() === COMMON_ACCESS_FILE) {
+            continue;
+        }
+
         // Extract prefix key from filename
         $base = $file->getBasename(JSON_EXTENSION);
 
@@ -291,7 +526,7 @@ function findAccess(string $accessKey): ?array {
         $fileKey = $parts[0];
 
         if ($fileKey === $accessKey) {
-            return readJSON($file->getPathname());
+            return readAccessDefinition($file->getPathname());
         }
     }
 
@@ -407,13 +642,17 @@ if ($method === "GET" && $endpoint === "userinfo") {
             continue;
         }
 
+        if ($file->getFilename() === COMMON_ACCESS_FILE) {
+            continue;
+        }
+
         $base = $file->getBasename(JSON_EXTENSION);
 
         $parts = explode("_", $base, 2);
 
         $fileKey = $parts[0];
 
-        $data = readJSON($file->getPathname());
+        $data = readAccessDefinition($file->getPathname());
 
         $hintParts = [];
 
@@ -598,6 +837,54 @@ if ($method === "POST" && $endpoint === "update-position") {
 
 
 // ============================================================
+// POST /feedback
+// ============================================================
+
+if ($method === "POST" && $endpoint === "feedback") {
+
+    $raw = readBody();
+
+    requireFields($raw, [FEEDBACK, PATH_KEY]);
+
+    if (!array_key_exists(PAYLOAD, $raw)) {
+        bad(sprintf(MISSING_FIELD, PAYLOAD));
+    }
+
+    $access = requireAccess();
+    $group = (string) $raw[FEEDBACK];
+    $path = (string) $raw[PATH_KEY];
+    $payload = $raw[PAYLOAD];
+    $timestamp = (int) floor(microtime(true) * 1000);
+    $userId = $access[USER_ID] ?? null;
+
+    if (!$userId) {
+        bad("Feedback requires userId", 403);
+    }
+
+    validateUserId($userId);
+    validateFeedbackGroup($group);
+    validateFeedbackPath($path);
+    requireFeedbackGroupAccess($access, $group);
+
+    $targetDir = buildFeedbackDirectory($group, $path) . DIRECTORY_SEPARATOR . $userId;
+
+    ensureDirectory($targetDir);
+
+    $file = $targetDir . DIRECTORY_SEPARATOR . $timestamp . JSON_EXTENSION;
+
+    writeJSONValue($file, $payload);
+
+    jsonResponse([
+        "ok" => true,
+        FEEDBACK => $group,
+        PATH_KEY => $path,
+        USER_ID => $userId,
+        "timestamp" => $timestamp
+    ]);
+}
+
+
+// ============================================================
 // GET /list
 // ============================================================
 
@@ -675,6 +962,151 @@ if ($method === "GET" && $endpoint === "list") {
     }
 
     jsonResponse(array_values($result));
+}
+
+
+// ============================================================
+// GET /feedback
+// ============================================================
+
+if ($method === "GET" && $endpoint === "feedback") {
+
+    $access = requireAccess();
+
+    $group = $_GET[FEEDBACK] ?? null;
+    $path = $_GET[PATH_KEY] ?? null;
+    $scope = strtolower((string) ($_GET[SCOPE_KEY] ?? SCOPE_MINE));
+    $countParam = $_GET[COUNT_KEY] ?? 100;
+    $userId = $access[USER_ID] ?? null;
+
+    validateFeedbackGroup($group);
+    requireFeedbackGroupAccess($access, $group);
+
+    if ($path !== null && $path !== "") {
+        validateFeedbackPath($path);
+    } else {
+        $path = null;
+    }
+
+    if (!preg_match('/^\d+$/', (string) $countParam)) {
+        bad("Invalid count");
+    }
+
+    $count = (int) $countParam;
+
+    if ($count < 1 || $count > 500) {
+        bad("Invalid count");
+    }
+
+    if ($scope !== SCOPE_MINE && $scope !== SCOPE_ALL) {
+        bad("Invalid scope");
+    }
+
+    if ($scope === SCOPE_ALL && !($access[ADMIN] ?? false)) {
+        bad("Admin access required", 403);
+    }
+
+    if ($scope === SCOPE_MINE) {
+        if (!$userId) {
+            bad("Feedback requires userId", 403);
+        }
+
+        validateUserId($userId);
+    }
+
+    $start = isset($_GET[START_KEY]) ? parseTimestampFilter(START_KEY, $_GET[START_KEY]) : null;
+    $end = isset($_GET[END_KEY]) ? parseTimestampFilter(END_KEY, $_GET[END_KEY]) : null;
+
+    if ($start !== null && $end !== null && $start > $end) {
+        bad("Invalid range");
+    }
+
+    $searchRoot = buildFeedbackDirectory($group, $path);
+    $items = [];
+
+    if (is_dir($searchRoot)) {
+
+        $it = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($searchRoot, FilesystemIterator::SKIP_DOTS)
+        );
+
+        foreach ($it as $file) {
+
+            if (!$file->isFile() || $file->getExtension() !== JSON_EXTENSION_WITHOUT_POINT) {
+                continue;
+            }
+
+            $timestampRaw = $file->getBasename(JSON_EXTENSION);
+
+            if (!preg_match('/^\d+$/', $timestampRaw)) {
+                continue;
+            }
+
+            $timestamp = (int) $timestampRaw;
+
+            if ($start !== null && $timestamp < $start) {
+                continue;
+            }
+
+            if ($end !== null && $timestamp > $end) {
+                continue;
+            }
+
+            $relativeFile = substr($file->getPathname(), strlen(buildFeedbackDirectory($group)) + 1);
+            $relativeFile = str_replace("\\", "/", $relativeFile);
+            $parts = explode("/", $relativeFile);
+
+            if (count($parts) < 3) {
+                continue;
+            }
+
+            $entryUserId = $parts[count($parts) - 2];
+            $entryPathParts = array_slice($parts, 0, -2);
+            $entryPath = implode("/", $entryPathParts);
+
+            validateUserId($entryUserId);
+
+            if ($scope === SCOPE_MINE && $entryUserId !== $userId) {
+                continue;
+            }
+
+            $items[] = [
+                "timestamp" => $timestamp,
+                USER_ID => $entryUserId,
+                PATH_KEY => $entryPath,
+                "file" => $file->getPathname()
+            ];
+        }
+    }
+
+    usort($items, function (array $left, array $right): int {
+        return $right["timestamp"] <=> $left["timestamp"];
+    });
+
+    $items = array_slice($items, 0, $count);
+    $responseItems = [];
+
+    foreach ($items as $item) {
+        $responseItems[] = [
+            FEEDBACK => $group,
+            PATH_KEY => $item[PATH_KEY],
+            USER_ID => $item[USER_ID],
+            "timestamp" => $item["timestamp"],
+            PAYLOAD => json_decode(file_get_contents($item["file"]), true)
+        ];
+    }
+
+    $timestamps = array_column($items, "timestamp");
+
+    jsonResponse([
+        FEEDBACK => $group,
+        PATH_KEY => $path,
+        SCOPE_KEY => $scope,
+        COUNT_KEY => count($responseItems),
+        "oldestTimestamp" => $timestamps ? min($timestamps) : null,
+        "newestTimestamp" => $timestamps ? max($timestamps) : null,
+        "items" => $responseItems
+    ]);
 }
 
 
