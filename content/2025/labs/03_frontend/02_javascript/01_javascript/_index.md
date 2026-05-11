@@ -46,8 +46,7 @@ dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen
 
 Die Ergebnisse der Operationen sollen dem Benutzer im HTML angezeigt werden.
 
-
-### Aufgabe 5
+### Aufgabe 4
 
 Schreibe eine Funktion, die ein Array von Objekten erwartet. Jedes Objekt im Array repräsentiert einen Schüler mit den folgenden Eigenschaften:
 
