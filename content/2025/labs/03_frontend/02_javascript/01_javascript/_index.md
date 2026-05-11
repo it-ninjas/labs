@@ -15,27 +15,7 @@ Verwende hierfür die Juck Norris-API: `GET https://api.chucknorris.io/jokes/ran
 
 Solltest du fertig mit dieser Aufgabe sein, dann melde dich bei einem Praxisbildner.
 
-### Aufgabe 2 - Eine andere API anbinden
-
-![task1](/images/task.png) Versuche, ein(e) andere(s) API/Backend anzubinden und etwas auf einer Website anzuzeigen.
-
-### Aufgabe 3 - Uhr
-
-![task1](/images/task.png) Schreibe ein HTML, das eine Uhrzeit visuell anzeigt.
-
-Deine Website soll zentriert eine Uhrzeit anzeigen.
-Die Uhrzeit soll analog angezeigt werden - also mit Stunden-, Minuten- und Sekundenzeiger.
-
-Eine analoge Uhr kannst du mit Hilfe von Vektorgrafiken (SVGs) oder Canvas rendern.
-
-Du kannst es aber auch mit gewöhnlichen HTML-Elementen versuchen.
-
-Hilfestellungen zu
-
-- [SVG](https://www.w3schools.com/graphics/svg_intro.asp)
-- [Canvas](https://www.w3schools.com/html/html5_canvas.asp)
-
-### Aufgabe 4 - Global Scope, Function Scope und Block-Scope
+### Aufgabe 2 - Global Scope, Function Scope und Block-Scope
 
 Im Kapitel [ES6: Variablen deklarieren](../../../../docs/03_frontend/03_javascript/19_variables#global-scope-und-function-scope) hast du die Funktionsweise vom Global und Function Scope kennengelernt mit einem Beispiel-Code mit `console.log(...)`s. In diesem Beispiel wurden alle Variablen mit `var` deklariert/definiert - also keine `let`s oder `const`s.
 
@@ -50,7 +30,7 @@ Beantworte folgende Fragen und dokumentiere deine Antworten:
 - Wie kannst du definieren, welche Variable welchen Scope haben soll?
 - Wann könnte die Verwendung von `var` sinnvoll sein?
 
-### Aufgabe 5 - Nummern Liste
+### Aufgabe 3 - Nummern Liste
 
 Erstelle eine HTML-Seite, auf der ein Benutzer eine Liste von Zahlen eingeben kann.
 Die Eingabe soll geprüft werden, damit der Benutzer nur Zahlen eingeben kann. Der Benutzer kann die Liste speichern und
@@ -66,7 +46,7 @@ dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen
 
 Die Ergebnisse der Operationen sollen dem Benutzer im HTML angezeigt werden.
 
-### Aufgabe 6 - Die optionalen Import-Inseln
+### Aufgabe 4 - Die optionalen Import-Inseln
 
 ![task1](/images/task.png) Entwerfe eine HTML-Seite, welche nachfolgendes JavaScript als Daten-Grundlage verwendet.
 
@@ -113,7 +93,7 @@ for (const island of islands) {
 }
 ```
 
-### Aufgabe 7
+### Aufgabe 5
 
 Schreibe eine Funktion, die ein Array von Objekten erwartet. Jedes Objekt im Array repräsentiert einen Schüler mit den folgenden Eigenschaften:
 
