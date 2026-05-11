@@ -46,52 +46,6 @@ dann Operationen auf der Liste durchführen lassen. Es sind folgende Operationen
 
 Die Ergebnisse der Operationen sollen dem Benutzer im HTML angezeigt werden.
 
-### Aufgabe 4 - Die optionalen Import-Inseln
-
-![task1](/images/task.png) Entwerfe eine HTML-Seite, welche nachfolgendes JavaScript als Daten-Grundlage verwendet.
-
-- Hierfür musst du eine Klasse `Island` in der Datei `island.js` mit genau EINEM Konstruktor erstellen.
-- Auf der HTML-Seite zeigst du alle Inseln an. Wenn eine Insel einen bestimmten Wert besitzt, wird dieser Wert angezeigt, ansonsten nicht. Wenn die Insel ein Bild besitzt, blendest du dieses ein.
-- Das nachfolgende Script darfst du NICHT abändern (auch keine geschweiften Klammern beim Import hinzufügen).
-
-```javascript
-import Island from "./island.js";
-
-export const islands = [
-  new Island({ name: "Atlantis" }),
-  new Island({
-    name: "Maldives",
-    country: "Maldives",
-    imageUrl:
-      "https://www.planetware.com/photos-large/SEY/best-islands-maldives.jpg",
-  }),
-  new Island({
-    name: "Bora Bora",
-    country: "French Polynesia",
-    imageUrl:
-      "https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg",
-  }),
-  new Island({
-    name: "Seychelles",
-    country: "Seychelles",
-    imageUrl:
-      "https://www.planetware.com/photos-large/SEY/best-islands-seychelles.jpg",
-  }),
-  new Island({
-    name: "Diomede",
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Little_Diomede_Island_village.jpeg/1280px-Little_Diomede_Island_village.jpeg",
-  }),
-];
-
-for (const island of islands) {
-  console.info(
-    `Explore the island ${island.name} in ${
-      island.country ?? "an unknown country"
-    }: ${island.imageUrl ?? "no image available :/"}`,
-  );
-}
-```
 
 ### Aufgabe 5
 
